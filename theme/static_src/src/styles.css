@@ -1,23 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-    --main-bg: #F8F9FA; 
-    --container-bg: #FFFFFF; 
-    --title-text: #2E3156; 
-    --subtitle-text: #6C757D; 
-    --primary-action-bg: #73A2D9; 
-    --primary-action-hover-bg: #5C8ABE; 
+    --main-bg: #FBF9F1; /* Warm Off-White */
+    --container-bg: #FFFFFF; /* Sticking with white for main content area for contrast */
+    --title-text: #4E443A; /* Deep Earthy Brown */
+    --subtitle-text: #6C757D; /* Kept for neutrality */
+    --primary-action-bg: #7D9A74; /* Mossy, Muted Green */
+    --primary-action-hover-bg: #688260; /* Darker Mossy Green */
     --primary-action-text: #FFFFFF; 
-    --text-primary: #2E3156; 
-    --text-secondary: #4A5568; 
-    --border-color: #DEE2E6; 
-    --grid-header-bg: #F1F3F5; 
-    --task-bg: #EBF8FF; 
-    --task-hover-bg: #D1E9FA; 
+    --text-primary: #4E443A; /* Deep Earthy Brown */
+    --text-secondary: #57514C; /* Lighter Brown */
+    --border-color: #EAE6D7; /* Light Beige Border */
+    --grid-header-bg: #F1EFE6; /* Light Stone/Beige */
+    --task-bg: #E5EBE3; /* Very Light Muted Green */
+    --task-hover-bg: #D9E0D6; /* Slightly Darker Muted Green */
     --task-completed-bg: #E9ECEF;
     --task-completed-text: #ADB5BD;
-    --delete-button-bg: #DC3545; 
-    --delete-button-hover-bg: #C82333;
+    --delete-button-bg: #C75D52; /* Muted Terracotta Red */
+    --delete-button-hover-bg: #B3544A; /* Darker Terracotta */
     --inline-input-border: #CED4DA;
 }
 /**

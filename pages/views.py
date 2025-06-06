@@ -5,6 +5,9 @@ from django.urls import reverse_lazy
 from .models import Project, RowHeader, ColumnHeader, Task
 # You would also create forms in a forms.py file
 
+def home(request):
+    return render(request, 'pages/general/home.html')
+
 @login_required
 def project_list_view(request):
     projects = Project.objects.filter(user=request.user)
