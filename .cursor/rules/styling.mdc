@@ -1,0 +1,20 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Formatting Rules
+
+- This rule is for when Cursor is creating a new page
+
+# Inheriting
+
+- When creating a new page, please inherit [layout.html](mdc:templates/layout.html)
+- There is no need to inherit inidividual style sheets into individual pages as everything is saved into [master.css](mdc:static/css/master.css)
+
+# Styling and CSS
+
+- As a root please use [styles.css](mdc:theme/static_src/src/styles.css)
+- Please always look to style in tailwind - I am using tailwind v4
+- Where tailwind is not suitable, please use [non-tailwind.css](mdc:static/css/non-tailwind/non-tailwind.css)
+- This will all be collected into [master.css](mdc:static/css/master.css)

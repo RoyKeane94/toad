@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/master.css' %}">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Toad{% endblock %}</title>
+    
+    
+    {% block extra_head %}{% endblock %}
+</head>
+<body class="bg-[var(--main-bg)]">
+    <div id="app" class="min-h-screen p-4 sm:p-6 md:p-8">
+        <div class="max-w-full mx-auto">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
