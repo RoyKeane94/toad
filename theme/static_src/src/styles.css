@@ -1,24 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-    --main-bg: #FBF9F1; /* Warm Off-White */
-    --container-bg: #FFFFFF; /* Sticking with white for main content area for contrast */
-    --title-text: #4E443A; /* Deep Earthy Brown */
-    --subtitle-text: #6C757D; /* Kept for neutrality */
-    --primary-action-bg: #7D9A74; /* Mossy, Muted Green */
-    --primary-action-hover-bg: #688260; /* Darker Mossy Green */
-    --primary-action-text: #FFFFFF; 
-    --text-primary: #4E443A; /* Deep Earthy Brown */
-    --text-secondary: #57514C; /* Lighter Brown */
-    --border-color: #EAE6D7; /* Light Beige Border */
-    --grid-header-bg: #F1EFE6; /* Light Stone/Beige */
-    --task-bg: #E5EBE3; /* Very Light Muted Green */
-    --task-hover-bg: #D9E0D6; /* Slightly Darker Muted Green */
-    --task-completed-bg: #E9ECEF;
-    --task-completed-text: #ADB5BD;
-    --delete-button-bg: #C75D52; /* Muted Terracotta Red */
-    --delete-button-hover-bg: #B3544A; /* Darker Terracotta */
-    --inline-input-border: #CED4DA;
+  --main-bg: #FFFFFF; /* Pure White */
+  --container-bg: #FFFFFF; /* Pure White for maximum contrast */
+  --title-text: #1F2937; /* Clean Charcoal Gray */
+  --subtitle-text: #6B7280; /* Cool Medium Gray */
+  --primary-action-bg: #10B981; /* Vibrant Emerald Green */
+  --primary-action-hover-bg: #059669; /* Deep Emerald Green */
+  --primary-action-text: #FFFFFF; /* Pure White */
+  --text-primary: #1F2937; /* Clean Charcoal Gray */
+  --text-secondary: #4B5563; /* Cool Dark Gray */
+  --border-color: #E5E7EB; /* Light Cool Gray */
+  --grid-header-bg: #F9FAFB; /* Very Light Gray */
+  --task-bg: #ECFDF5; /* Very Light Mint Green */
+  --task-hover-bg: #D1FAE5; /* Light Mint Green */
+  --task-completed-bg: #F3F4F6; /* Clean Light Gray */
+  --task-completed-text: #9CA3AF; /* Medium Gray */
+  --delete-button-bg: #EF4444; /* Clean Bright Red */
+  --delete-button-hover-bg: #DC2626; /* Deep Red */
+  --inline-input-border: #D1D5DB; /* Clean Medium Gray */
 }
 /**
   * A catch-all path to Django template files, JavaScript, and Python files

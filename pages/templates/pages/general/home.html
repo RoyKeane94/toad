@@ -3,6 +3,31 @@
 {% block title %}Home - Toad{% endblock %}
 
 {% block content %}
-<h1>Home</h1>
-{% endblock %}
+<div class="text-center mb-8">
+    <div class="flex items-center justify-center mb-4">
+        <svg class="w-16 h-16 text-[var(--primary-action-bg)] mr-4" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
+        </svg>
+        <h1 class="text-5xl font-bold text-[var(--title-text)]">Welcome to Toad</h1>
+    </div>
+    <p class="text-xl text-[var(--subtitle-text)] max-w-2xl mx-auto">
+        Your productivity companion. Organize tasks, manage projects, and stay on top of your goals with ease.
+    </p>
+</div>
 
+<div class="flex justify-center">
+    {% if user.is_authenticated %}
+        <a href="{% url 'pages:project_list' %}" 
+           class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg text-lg font-medium transition-colors">
+            <i class="fas fa-tasks mr-2"></i>
+            View My Projects
+        </a>
+    {% else %}
+        <a href="{% url 'accounts:login' %}" 
+           class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg text-lg font-medium transition-colors">
+            <i class="fas fa-sign-in-alt mr-2"></i>
+            Get Started
+        </a>
+    {% endif %}
+</div>
+{% endblock %} 

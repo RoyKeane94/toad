@@ -48,13 +48,18 @@ class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='tasks')
     row_header = models.ForeignKey(RowHeader, on_delete=models.CASCADE, related_name='tasks')
     column_header = models.ForeignKey(ColumnHeader, on_delete=models.CASCADE, related_name='tasks')
-    text = models.TextField()
+    text = models.TextField(blank=False, null=False, help_text='Enter the task description')
     completed = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.text[:50]
+        return self.text[:50] if self.text else 'Empty Task'
+    
+    def clean(self):
+        if not self.text or not self.text.strip():
+            from django.core.exceptions import ValidationError
+            raise ValidationError({'text': 'Task text cannot be empty.'})
 
     class Meta:
         ordering = ['created_at']

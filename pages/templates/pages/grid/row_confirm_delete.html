@@ -1,0 +1,41 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}Delete Row - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-lg mx-auto">
+    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-xl font-bold text-[var(--title-text)]">Delete Row</h2>
+                <p class="text-[var(--subtitle-text)] text-sm">This action cannot be undone</p>
+            </div>
+        </div>
+        
+        <div class="mb-6">
+            <p class="text-[var(--text-primary)] mb-3">
+                Are you sure you want to delete the row <strong>"{{ row.name }}"</strong>?
+            </p>
+            <p class="text-[var(--text-secondary)] text-sm">
+                This will permanently delete the row and all tasks in this row.
+            </p>
+        </div>
+        
+        <form method="post" class="flex space-x-3">
+            {% csrf_token %}
+            <button type="submit" 
+                    class="bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                <i class="fas fa-trash mr-1"></i>
+                Delete Row
+            </button>
+            <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+               class="bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %} 
