@@ -87,17 +87,12 @@ def project_grid_view(request, pk):
     # Create a more efficient tasks lookup
     tasks_by_cell = {}
     all_tasks = project.tasks.all().select_related('row_header', 'column_header')
-    print(f"DEBUG: Project {project.id} has {all_tasks.count()} tasks")
+    
     for task in all_tasks:
         cell_key = f"{task.row_header_id}_{task.column_header_id}"
         if cell_key not in tasks_by_cell:
             tasks_by_cell[cell_key] = []
         tasks_by_cell[cell_key].append(task)
-        print(f"DEBUG: Added task '{task.text}' to cell_key '{cell_key}'")
-    
-    print(f"DEBUG: tasks_by_cell dictionary: {list(tasks_by_cell.keys())}")
-    print(f"DEBUG: Row headers: {[(r.id, r.name) for r in row_headers]}")
-    print(f"DEBUG: Column headers: {[(c.id, c.name, c.is_category_column) for c in column_headers]}")
 
     context = {
         'project': project,
