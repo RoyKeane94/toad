@@ -6,7 +6,7 @@ from .models import Project, RowHeader, ColumnHeader, Task
 from .forms import ProjectForm, TaskForm, QuickTaskForm, RowHeaderForm, ColumnHeaderForm
 
 def home(request):
-    return render(request, 'pages/grid/home.html')
+    return render(request, 'pages/general/home.html')
 
 
 @login_required

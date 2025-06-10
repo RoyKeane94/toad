@@ -4,16 +4,6 @@
 {% block title %}{{ project.name }} - Toad{% endblock %}
 
 {% block content %}
-<!-- Messages -->
-{% if messages %}
-    <div class="mb-6">
-        {% for message in messages %}
-            <div class="{% if message.tags == 'error' %}bg-red-50 border border-red-200 text-red-700{% elif message.tags == 'success' %}bg-green-50 border border-green-200 text-green-700{% else %}bg-blue-50 border border-blue-200 text-blue-700{% endif %} px-4 py-3 rounded-md mb-2">
-                {{ message }}
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
 
 <!-- Header -->
 <div class="mb-6">
@@ -38,18 +28,70 @@
     
     <!-- Project Switcher -->
     <div class="flex items-center justify-between">
-        <div class="relative">
-            <select id="project_switcher" 
-                    class="appearance-none bg-[var(--container-bg)] border border-[var(--border-color)] text-[var(--text-primary)] py-2 px-3 pr-8 rounded-md shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)]"
-                    onchange="if (this.value) window.location.href=this.value;">
-                <option value="">Switch Project...</option>
-                {% for p in projects %}
-                    <option value="{% url 'pages:project_grid' pk=p.pk %}" {% if p.pk == project.pk %}selected{% endif %}>{{ p.name }}</option>
-                {% endfor %}
-                <option value="{% url 'pages:project_list' %}">← Back to Projects</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-[var(--text-secondary)]">
-                <i class="fas fa-chevron-down text-xs"></i>
+        <div class="flex items-center space-x-4">
+            <!-- Current Project Display -->
+            <div class="flex items-center space-x-2">
+                <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-project-diagram text-white text-sm"></i>
+                </div>
+                <div>
+                    <div class="text-sm font-medium text-[var(--text-primary)]">Current Project</div>
+                    <div class="text-xs text-[var(--text-secondary)]">{{ project.name }}</div>
+                </div>
+            </div>
+            
+            <!-- Project Switcher Dropdown -->
+            <div class="relative" id="project-switcher-container">
+                <button type="button" 
+                        id="project-switcher-btn"
+                        class="group flex items-center space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30">
+                    <i class="fas fa-exchange-alt text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
+                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch Project</span>
+                    <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="switcher-chevron"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="project-switcher-dropdown" 
+                     class="absolute top-full left-0 mt-2 w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
+                    
+                    <!-- Projects List -->
+                    <div class="px-3 py-2">
+                        <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Projects</div>
+                        <div class="space-y-1 max-h-60 overflow-y-auto">
+                            {% for p in projects %}
+                                <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+                                   class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
+                                    <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br {% if p.pk == project.pk %}from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)]{% else %}from-gray-400 to-gray-500{% endif %} shadow-sm">
+                                        <i class="fas fa-project-diagram text-white text-xs"></i>
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <div class="font-medium text-sm truncate">{{ p.name }}</div>
+                                        {% if p.pk == project.pk %}
+                                            <div class="text-xs opacity-75">Current Project</div>
+                                        {% endif %}
+                                    </div>
+                                    {% if p.pk == project.pk %}
+                                        <i class="fas fa-check text-xs"></i>
+                                    {% endif %}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Divider -->
+                    <div class="border-t border-[var(--border-color)] my-2"></div>
+                    
+                    <!-- Back to Projects -->
+                    <div class="px-3">
+                        <a href="{% url 'pages:project_list' %}" 
+                           class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150">
+                            <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br from-gray-400 to-gray-500 shadow-sm">
+                                <i class="fas fa-arrow-left text-white text-xs"></i>
+                            </div>
+                            <span class="font-medium text-sm">Back to All Projects</span>
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -195,6 +237,72 @@
 {% block extra_js %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
+    // Project Switcher Dropdown Functionality
+    const switcherBtn = document.getElementById('project-switcher-btn');
+    const switcherDropdown = document.getElementById('project-switcher-dropdown');
+    const switcherChevron = document.getElementById('switcher-chevron');
+    const switcherContainer = document.getElementById('project-switcher-container');
+    
+    let isDropdownOpen = false;
+    
+    function toggleDropdown() {
+        isDropdownOpen = !isDropdownOpen;
+        
+        if (isDropdownOpen) {
+            // Show dropdown
+            switcherDropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+            switcherDropdown.classList.add('opacity-100', 'visible', 'scale-100');
+            switcherChevron.style.transform = 'rotate(180deg)';
+            
+            // Add subtle glow effect to button
+            switcherBtn.classList.add('ring-2', 'ring-[var(--primary-action-bg)]/20');
+        } else {
+            // Hide dropdown
+            switcherDropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+            switcherDropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            switcherChevron.style.transform = 'rotate(0deg)';
+            
+            // Remove glow effect
+            switcherBtn.classList.remove('ring-2', 'ring-[var(--primary-action-bg)]/20');
+        }
+    }
+    
+    function closeDropdown() {
+        if (isDropdownOpen) {
+            toggleDropdown();
+        }
+    }
+    
+    // Toggle dropdown on button click
+    switcherBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleDropdown();
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!switcherContainer.contains(e.target)) {
+            closeDropdown();
+        }
+    });
+    
+    // Close dropdown on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+    
+    // Add smooth hover animations to dropdown items
+    const dropdownItems = switcherDropdown.querySelectorAll('a');
+    dropdownItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(2px)';
+        });
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+        });
+    });
     // Auto-submit task form on Enter with visual feedback
     document.querySelectorAll('input[name="text"]').forEach(input => {
         input.addEventListener('keypress', function(e) {
