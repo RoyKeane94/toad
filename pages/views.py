@@ -113,7 +113,7 @@ def task_create_view(request, project_pk, row_pk, col_pk):
     column_header = get_object_or_404(ColumnHeader, pk=col_pk, project=project)
 
     if request.method == 'POST':
-        print(f"DEBUG: POST data received: {request.POST}")
+        
         form = QuickTaskForm(request.POST)
         if form.is_valid():
             # Use the ModelForm's save method but add the relationships
@@ -124,15 +124,11 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             task.save()
             
             messages.success(request, f'Task "{task.text}" added to {row_header.name} → {column_header.name}!')
-            print(f"DEBUG: Created task '{task.text}' in row {row_header.id} ({row_header.name}), col {column_header.id} ({column_header.name})")
+            
         else:
-            messages.error(request, f'Please enter valid task text. Errors: {form.errors}')
-            print(f"DEBUG: Form invalid. POST data: {request.POST}")
-            print(f"DEBUG: Form errors: {form.errors}")
+            messages.error(request, f'Please enter valid task text. Errors: {form.errors}')   
     else:
-        print(f"DEBUG: Non-POST request to task_create_view: {request.method}")
-    
-    return redirect('pages:project_grid', pk=project.pk)
+        return redirect('pages:project_grid', pk=project.pk)
 
 
 def task_edit_view(request, task_pk):

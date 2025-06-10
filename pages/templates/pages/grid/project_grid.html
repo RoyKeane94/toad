@@ -192,15 +192,14 @@
                                                        class="p-1 hover:bg-[var(--container-bg)] rounded transition-colors" title="Edit task">
                                                         <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                                     </a>
-                                                    <form action="{% url 'pages:task_delete' task_pk=task.pk %}" method="post" class="inline">
-                                                        {% csrf_token %}
-                                                        <button type="submit" 
-                                                                class="p-1 hover:bg-red-50 rounded transition-colors" 
-                                                                title="Delete task"
-                                                                onclick="return confirm('Are you sure you want to delete this task?')">
-                                                            <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
-                                                        </button>
-                                                    </form>
+                                                    <button type="button" 
+                                                            class="p-1 hover:bg-red-50 rounded transition-colors delete-task-btn" 
+                                                            title="Delete task"
+                                                            data-task-id="{{ task.pk }}"
+                                                            data-task-text="{{ task.text }}"
+                                                            data-delete-url="{% url 'pages:task_delete' task_pk=task.pk %}">
+                                                        <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -230,6 +229,61 @@
                 {% endfor %}
             </tbody>
         </table>
+    </div>
+</div>
+
+<!-- Task Deletion Modal -->
+<div id="delete-task-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="delete-modal-content">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-sm">
+                    <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Delete Task</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">This action cannot be undone</p>
+                </div>
+            </div>
+            <button type="button" id="close-delete-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-[var(--text-primary)] mb-2">Are you sure you want to delete this task?</p>
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm flex-shrink-0">
+                            <i class="fas fa-tasks text-white text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-medium text-[var(--text-primary)] text-sm" id="task-to-delete">Task Name</p>
+                            <p class="text-xs text-[var(--text-secondary)] mt-1">This task will be permanently removed from your project</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <button type="button" 
+                    id="cancel-delete-task"
+                    class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <form id="delete-task-form" method="post" class="inline">
+                {% csrf_token %}
+                <button type="submit" 
+                        class="w-32 h-10 flex items-center justify-center bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105">
+                    <i class="fas fa-trash mr-2"></i>Delete Task
+                </button>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
@@ -303,6 +357,76 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateX(0)';
         });
     });
+    
+    // Task Deletion Modal Functionality
+    const deleteModal = document.getElementById('delete-task-modal');
+    const deleteModalContent = document.getElementById('delete-modal-content');
+    const deleteForm = document.getElementById('delete-task-form');
+    const taskToDeleteElement = document.getElementById('task-to-delete');
+    const closeModalBtn = document.getElementById('close-delete-modal');
+    const cancelDeleteBtn = document.getElementById('cancel-delete-task');
+    
+    function showDeleteModal(taskId, taskText, deleteUrl) {
+        // Set task details in modal
+        taskToDeleteElement.textContent = taskText;
+        deleteForm.action = deleteUrl;
+        
+        // Show modal with animations
+        deleteModal.classList.remove('opacity-0', 'invisible');
+        deleteModal.classList.add('opacity-100', 'visible');
+        
+        setTimeout(() => {
+            deleteModalContent.classList.remove('scale-95');
+            deleteModalContent.classList.add('scale-100');
+        }, 10);
+        
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function hideDeleteModal() {
+        deleteModalContent.classList.add('scale-95');
+        deleteModalContent.classList.remove('scale-100');
+        
+        setTimeout(() => {
+            deleteModal.classList.add('opacity-0', 'invisible');
+            deleteModal.classList.remove('opacity-100', 'visible');
+        }, 150);
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+    }
+    
+    // Show modal when delete button is clicked
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.delete-task-btn')) {
+            const btn = e.target.closest('.delete-task-btn');
+            const taskId = btn.dataset.taskId;
+            const taskText = btn.dataset.taskText;
+            const deleteUrl = btn.dataset.deleteUrl;
+            
+            showDeleteModal(taskId, taskText, deleteUrl);
+        }
+    });
+    
+    // Close modal events
+    closeModalBtn.addEventListener('click', hideDeleteModal);
+    cancelDeleteBtn.addEventListener('click', hideDeleteModal);
+    
+    // Close modal when clicking outside
+    deleteModal.addEventListener('click', function(e) {
+        if (e.target === deleteModal) {
+            hideDeleteModal();
+        }
+    });
+    
+    // Close modal on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !deleteModal.classList.contains('invisible')) {
+            hideDeleteModal();
+        }
+    });
+    
     // Auto-submit task form on Enter with visual feedback
     document.querySelectorAll('input[name="text"]').forEach(input => {
         input.addEventListener('keypress', function(e) {
