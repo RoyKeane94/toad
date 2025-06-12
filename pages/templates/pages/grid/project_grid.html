@@ -58,7 +58,7 @@
                     <div class="px-3 py-2">
                         <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Projects</div>
                         <div class="space-y-1 max-h-60 overflow-y-auto">
-                            {% for p in projects %}
+                {% for p in projects %}
                                 <a href="{% url 'pages:project_grid' pk=p.pk %}" 
                                    class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
                                     <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br {% if p.pk == project.pk %}from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)]{% else %}from-gray-400 to-gray-500{% endif %} shadow-sm">
@@ -74,7 +74,7 @@
                                         <i class="fas fa-check text-xs"></i>
                                     {% endif %}
                                 </a>
-                            {% endfor %}
+                {% endfor %}
                         </div>
                     </div>
                     
@@ -98,14 +98,14 @@
         <!-- Grid Actions -->
         <div class="flex space-x-2">
             <a href="{% url 'pages:row_create' project_pk=project.pk %}" 
-               class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-3 py-2 rounded-md text-sm font-medium transition-colors">
+               class="w-[160px] text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 <i class="fas fa-plus mr-1"></i> Add Row
             </a>
             <a href="{% url 'pages:column_create' project_pk=project.pk %}" 
-               class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-3 py-2 rounded-md text-sm font-medium transition-colors">
+               class="w-[160px] text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-3 py-2 rounded-md text-sm font-medium transition-colors">
                 <i class="fas fa-plus mr-1"></i> Add Column
             </a>
-        </div>
+        </div>            
     </div>
 </div>
 
@@ -115,13 +115,17 @@
 <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
     <div class="overflow-x-auto">
         <table class="w-full border-collapse min-w-[800px]">
+            <colgroup>
+                {% for col_header in column_headers %}
+                <col class="w-64">
+                {% endfor %}
+            </colgroup>
             <thead>
                 <tr>
                     {% for col_header in column_headers %}
-                    <th class="p-4 border-b border-r border-[var(--border-color)] text-left text-sm font-semibold whitespace-nowrap 
-                               {% if col_header.is_category_column %}bg-[var(--grid-header-bg)] sticky left-0 z-20{% else %}bg-[var(--grid-header-bg)]{% endif %}">
+                    <th class="p-4 border-b border-r border-[var(--border-color)] text-left text-sm font-semibold whitespace-nowrap bg-[var(--grid-header-bg)] w-64 {% if col_header.is_category_column %}sticky left-0 z-20{% endif %}">
                         <div class="flex items-center justify-between">
-                            <span class="text-[var(--title-text)]">{{ col_header.name }}</span>
+                            <span class="text-[var(--title-text)] truncate">{{ col_header.name }}</span>
                             {% if not col_header.is_category_column %}
                                 <div class="flex space-x-1 ml-2">
                                     <a href="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_header.pk %}" 
@@ -143,8 +147,7 @@
                 {% for row_h in row_headers %}
                 <tr class="{% if not forloop.last %}border-b border-[var(--border-color)]{% endif %}">
                     <!-- Row Header -->
-                    <td class="p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)] sticky left-0 z-10 bg-[var(--container-bg)]" 
-                        style="min-width: 200px;">
+                    <td class="p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)] sticky left-0 z-10 bg-[var(--container-bg)] w-64">
                         <div class="flex items-center justify-between">
                             <span>{{ row_h.name }}</span>
                             <div class="flex space-x-1 ml-2">
@@ -163,64 +166,52 @@
                     <!-- Data Cells -->
                     {% for col_h in column_headers %}
                         {% if not col_h.is_category_column %}
-                        <td class="p-3 border-r border-[var(--border-color)] align-top" style="min-width: 220px; min-height: 120px;">
+                        <td class="p-3 border-r border-[var(--border-color)] align-top w-64">
                             <!-- Tasks -->
-                            <div class="space-y-2 mb-3" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}">
+                            <div class="space-y-2 mb-3 w-full" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
                                 {% with cell_key=row_h.pk|cell_key:col_h.pk %}
                                     {% for task in tasks_by_cell|get_item:cell_key %}
-                                        <div class="task-item bg-[var(--task-bg)] hover:bg-[var(--task-hover-bg)] p-3 rounded-md shadow-sm transition-all duration-200 group {% if task.completed %}opacity-60 bg-gray-50{% endif %}" data-task-id="{{ task.pk }}">
-                                            <div class="flex items-start space-x-2">
-                                                <!-- Checkbox -->
-                                                <form action="{% url 'pages:task_toggle_complete' task_pk=task.pk %}" method="post" class="flex-shrink-0">
-                                                    {% csrf_token %}
-                                                    <input type="checkbox" 
-                                                           {% if task.completed %}checked{% endif %}
-                                                           onchange="this.form.submit()"
-                                                           class="mt-1 h-4 w-4 rounded border-[var(--border-color)] text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer transition-colors">
-                                                </form>
-                                                
-                                                <!-- Task Text -->
-                                                <div class="flex-1 min-w-0">
-                                                    <p class="text-sm transition-all duration-200 {% if task.completed %}line-through text-gray-500{% else %}text-[var(--text-primary)]{% endif %}">
-                                                        {{ task.text }}
-                                                    </p>
-                                                </div>
-                                                
-                                                <!-- Actions -->
-                                                <div class="flex-shrink-0 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                                                    <a href="{% url 'pages:task_edit' task_pk=task.pk %}" 
-                                                       class="p-1 hover:bg-[var(--container-bg)] rounded transition-colors" title="Edit task">
-                                                        <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
-                                                    </a>
-                                                    <button type="button" 
-                                                            class="p-1 hover:bg-red-50 rounded transition-colors delete-task-btn" 
-                                                            title="Delete task"
-                                                            data-task-id="{{ task.pk }}"
-                                                            data-task-text="{{ task.text }}"
-                                                            data-delete-url="{% url 'pages:task_delete' task_pk=task.pk %}">
-                                                        <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        {% include 'pages/grid/task_item.html' with task=task %}
                                     {% endfor %}
-                                    
-
                                 {% endwith %}
                             </div>
                             
                             <!-- Add Task Form -->
-                            <form method="post" action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" class="task-form">
+                            <form method="post" 
+                                  action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
+                                  class="task-form"
+                                  hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
+                                  hx-swap="beforeend"
+                                  hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
+                                  _="on htmx:afterRequest(detail) 
+                                     if detail.successful
+                                       set input to closest <form/> querySelector('input[name=text]')
+                                       set input.value to ''
+                                       call input.focus()
+                                       remove .opacity-50 from closest <form/>
+                                     end
+                                     
+                                     on htmx:beforeRequest
+                                       add .opacity-50 to closest <form/>
+                                     
+                                     on htmx:afterRequest(detail)
+                                       if !detail.successful
+                                         set errorDiv to closest <form/> querySelector('.error-message')
+                                         set errorDiv.innerHTML to detail.xhr.response
+                                       else
+                                         set errorDiv to closest <form/> querySelector('.error-message')
+                                         set errorDiv.innerHTML to ''
+                                       end
+                                       remove .opacity-50 from closest <form/>">
                                 {% csrf_token %}
-                                <div class="flex space-x-2">
-                                    <input type="text" 
-                                           name="text" 
-                                           placeholder="Add task... (Press Enter)"
-                                           class="flex-1 px-3 py-2 border border-[var(--inline-input-border)] rounded-md text-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]">
-                                    <button type="submit" class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors">
+                                <div class="flex space-x-2 relative">
+                                    {{ quick_task_form.text }}
+                                    <button type="submit" class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative">
                                         <i class="fas fa-plus"></i>
+                                        <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
                                     </button>
                                 </div>
+                                <div class="error-message mt-1 text-sm text-red-600"></div>
                             </form>
                         </td>
                         {% endif %}
@@ -357,49 +348,49 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.transform = 'translateX(0)';
         });
     });
-    
+
     // Task Deletion Modal Functionality
     const deleteModal = document.getElementById('delete-task-modal');
     const deleteModalContent = document.getElementById('delete-modal-content');
-    const deleteForm = document.getElementById('delete-task-form');
     const taskToDeleteElement = document.getElementById('task-to-delete');
-    const closeModalBtn = document.getElementById('close-delete-modal');
-    const cancelDeleteBtn = document.getElementById('cancel-delete-task');
+    const deleteTaskForm = document.getElementById('delete-task-form');
+    const closeDeleteModalBtn = document.getElementById('close-delete-modal');
+    const cancelDeleteTaskBtn = document.getElementById('cancel-delete-task');
     
+    let currentTaskId = null;
+    let currentDeleteUrl = null;
+    
+    // Show delete modal
     function showDeleteModal(taskId, taskText, deleteUrl) {
-        // Set task details in modal
+        currentTaskId = taskId;
+        currentDeleteUrl = deleteUrl;
+        
         taskToDeleteElement.textContent = taskText;
-        deleteForm.action = deleteUrl;
+        deleteTaskForm.action = deleteUrl;
         
-        // Show modal with animations
+        // Show modal with animation
         deleteModal.classList.remove('opacity-0', 'invisible');
-        deleteModal.classList.add('opacity-100', 'visible');
+        deleteModalContent.classList.remove('scale-95');
+        deleteModalContent.classList.add('scale-100');
         
-        setTimeout(() => {
-            deleteModalContent.classList.remove('scale-95');
-            deleteModalContent.classList.add('scale-100');
-        }, 10);
-        
-        // Prevent body scroll
-        document.body.style.overflow = 'hidden';
+        // Focus on cancel button for accessibility
+        setTimeout(() => cancelDeleteTaskBtn.focus(), 100);
     }
     
+    // Hide delete modal
     function hideDeleteModal() {
-        deleteModalContent.classList.add('scale-95');
+        deleteModal.classList.add('opacity-0', 'invisible');
         deleteModalContent.classList.remove('scale-100');
+        deleteModalContent.classList.add('scale-95');
         
-        setTimeout(() => {
-            deleteModal.classList.add('opacity-0', 'invisible');
-            deleteModal.classList.remove('opacity-100', 'visible');
-        }, 150);
-        
-        // Restore body scroll
-        document.body.style.overflow = '';
+        currentTaskId = null;
+        currentDeleteUrl = null;
     }
     
-    // Show modal when delete button is clicked
+    // Handle delete button clicks
     document.addEventListener('click', function(e) {
         if (e.target.closest('.delete-task-btn')) {
+            e.preventDefault();
             const btn = e.target.closest('.delete-task-btn');
             const taskId = btn.dataset.taskId;
             const taskText = btn.dataset.taskText;
@@ -409,114 +400,66 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Close modal events
-    closeModalBtn.addEventListener('click', hideDeleteModal);
-    cancelDeleteBtn.addEventListener('click', hideDeleteModal);
+    // Handle modal close buttons
+    closeDeleteModalBtn.addEventListener('click', hideDeleteModal);
+    cancelDeleteTaskBtn.addEventListener('click', hideDeleteModal);
     
-    // Close modal when clicking outside
+    // Handle clicking outside modal
     deleteModal.addEventListener('click', function(e) {
         if (e.target === deleteModal) {
             hideDeleteModal();
         }
     });
     
-    // Close modal on escape key
+    // Handle escape key
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && !deleteModal.classList.contains('invisible')) {
             hideDeleteModal();
         }
     });
     
-    // Auto-submit task form on Enter with visual feedback
-    document.querySelectorAll('input[name="text"]').forEach(input => {
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault(); // Prevent default form submission
-                
-                const inputValue = this.value.trim();
-                console.log('Enter pressed, value:', inputValue);
-                
-                if (inputValue) {
-                    // Debug: log form data before submission
-                    console.log('Form action:', this.form.action);
-                    console.log('Input name:', this.name);
-                    console.log('Input value:', this.value);
-                    
-                    // Add visual feedback
-                    this.style.opacity = '0.7';
-                    this.placeholder = 'Adding task...';
-                    
-                    // Submit the form
-                    this.form.submit();
-                } else {
-                    console.log('Empty input, not submitting');
-                    this.focus();
-                }
-            }
-        });
+    // Handle delete form submission
+    deleteTaskForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         
-        // Also add a submit event listener to the form
-        input.form.addEventListener('submit', function(e) {
-            const textInput = this.querySelector('input[name="text"]');
-            console.log('Form submitting with value:', textInput.value);
-            
-            if (!textInput.value.trim()) {
-                e.preventDefault();
-                console.log('Prevented empty form submission');
-                textInput.focus();
-                return false;
+        if (!currentTaskId || !currentDeleteUrl) return;
+        
+        // Show loading state
+        const submitBtn = deleteTaskForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Deleting...';
+        submitBtn.disabled = true;
+        
+        // Make HTMX request
+        fetch(currentDeleteUrl, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'HX-Request': 'true'
             }
-        });
-    });
-
-    // Enhanced checkbox behavior with immediate visual feedback
-    document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const taskItem = this.closest('.task-item');
-            const taskText = taskItem.querySelector('p');
-            
-            if (this.checked) {
-                // Immediate visual feedback for completion
-                taskItem.style.opacity = '0.6';
-                taskItem.style.backgroundColor = '#f9fafb';
-                taskText.style.textDecoration = 'line-through';
-                taskText.style.color = '#6b7280';
-            } else {
-                // Immediate visual feedback for unchecking
-                taskItem.style.opacity = '1';
-                taskItem.style.backgroundColor = '';
-                taskText.style.textDecoration = 'none';
-                taskText.style.color = '';
-            }
-        });
-    });
-
-    // Add fade-in animation for new tasks
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            mutation.addedNodes.forEach(function(node) {
-                if (node.nodeType === 1 && node.classList && node.classList.contains('task-item')) {
-                    node.style.opacity = '0';
-                    node.style.transform = 'translateY(-10px)';
-                    setTimeout(() => {
-                        node.style.transition = 'all 0.3s ease-out';
-                        node.style.opacity = '1';
-                        node.style.transform = 'translateY(0)';
-                    }, 10);
+        })
+        .then(response => {
+            if (response.ok) {
+                // Remove task from DOM
+                const taskElement = document.getElementById(`task-${currentTaskId}`);
+                if (taskElement) {
+                    taskElement.style.transform = 'translateX(-100%)';
+                    taskElement.style.opacity = '0';
+                    setTimeout(() => taskElement.remove(), 300);
                 }
-            });
-        });
-    });
-
-    // Observe task containers for new tasks
-    document.querySelectorAll('[data-row]').forEach(container => {
-        observer.observe(container, { childList: true, subtree: true });
-    });
-
-    // Debug: Log when forms are submitted
-    document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', function(e) {
-            console.log('Form submitted:', this.action);
+                hideDeleteModal();
+            } else {
+                throw new Error('Delete failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error deleting task:', error);
+            alert('Failed to delete task. Please try again.');
+        })
+        .finally(() => {
+            // Restore button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
         });
     });
 });

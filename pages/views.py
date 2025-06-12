@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.urls import reverse
 from .models import Project, RowHeader, ColumnHeader, Task
 from .forms import ProjectForm, TaskForm, QuickTaskForm, RowHeaderForm, ColumnHeaderForm
+from django.http import HttpResponse, JsonResponse
 
 def home(request):
     return render(request, 'pages/general/home.html')
@@ -113,22 +114,33 @@ def task_create_view(request, project_pk, row_pk, col_pk):
     column_header = get_object_or_404(ColumnHeader, pk=col_pk, project=project)
 
     if request.method == 'POST':
-        
         form = QuickTaskForm(request.POST)
         if form.is_valid():
-            # Use the ModelForm's save method but add the relationships
             task = form.save(commit=False)
             task.project = project
             task.row_header = row_header
             task.column_header = column_header
             task.save()
             
-            messages.success(request, f'Task "{task.text}" added to {row_header.name} → {column_header.name}!')
+            if request.headers.get('HX-Request'):
+                # Return just the new task HTML for HTMX to insert
+                return render(request, 'pages/grid/task_item.html', {
+                    'task': task,
+                })
             
+            messages.success(request, f'Task "{task.text}" added successfully!')
+            return redirect('pages:project_grid', pk=project.pk)
         else:
-            messages.error(request, f'Please enter valid task text. Errors: {form.errors}')   
-    else:
-        return redirect('pages:project_grid', pk=project.pk)
+            if request.headers.get('HX-Request'):
+                errors = form.errors.get('text', ['An error occurred'])
+                return HttpResponse(
+                    f'<div class="text-red-600 text-sm">{errors[0]}</div>',
+                    status=422
+                )
+            messages.error(request, 'Please correct the errors below.')
+            return redirect('pages:project_grid', pk=project.pk)
+    
+    return redirect('pages:project_grid', pk=project.pk)
 
 
 def task_edit_view(request, task_pk):
@@ -150,21 +162,36 @@ def task_edit_view(request, task_pk):
     })
 
 
+@login_required
 def task_toggle_complete_view(request, task_pk):
     task = get_object_or_404(Task, pk=task_pk, project__user=request.user)
-    task.completed = not task.completed
-    task.save()
-    status = "completed" if task.completed else "reopened"
-    messages.success(request, f'Task {status}!')
+    
+    if request.method == 'POST':
+        task.completed = not task.completed
+        task.save()
+        status = "completed" if task.completed else "reopened"
+        
+        if request.headers.get('HX-Request'):
+            return JsonResponse({
+                'completed': task.completed,
+                'message': f'Task {status} successfully!'
+            })
+        
+        messages.success(request, f'Task {status} successfully!')
+        return redirect('pages:project_grid', pk=task.project.pk)
+    
     return redirect('pages:project_grid', pk=task.project.pk)
 
 
+@login_required
 def task_delete_view(request, task_pk):
     task = get_object_or_404(Task, pk=task_pk, project__user=request.user)
     project_pk = task.project.pk
     
     if request.method == 'POST':
         task.delete()
+        if request.headers.get('HX-Request'):
+            return HttpResponse('', status=200)
         messages.success(request, 'Task deleted successfully!')
     
     return redirect('pages:project_grid', pk=project_pk)
