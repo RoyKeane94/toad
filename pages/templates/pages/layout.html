@@ -20,7 +20,7 @@
 <body class="bg-[var(--main-bg)] min-h-screen flex flex-col">
     <!-- Top Navbar -->
     <nav class="bg-[var(--container-bg)] shadow-sm border-b border-[var(--border-color)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="w-full px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <!-- Logo and Brand -->
                 <div class="flex items-center space-x-3">
@@ -52,6 +52,9 @@
                                     {{ user.first_name|first|upper }}
                                 </span>
                             </div>
+                            <a href="{% url 'accounts:account_settings' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200">
+                                <i class="fas fa-cog"></i>
+                            </a>
                             <a href="{% url 'accounts:logout' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200">
                                 <i class="fas fa-sign-out-alt"></i>
                             </a>
