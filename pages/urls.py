@@ -14,6 +14,7 @@ urlpatterns = [
     path('projects/<int:pk>/', views.project_grid_view, name='project_grid'),
     path('projects/<int:pk>/edit/', views.project_edit_view, name='project_edit'),
     path('projects/<int:pk>/delete/', views.project_delete_view, name='project_delete'),
+    path('projects/<int:pk>/delete-completed/', views.delete_completed_tasks_view, name='delete_completed_tasks'),
     
     # Task CRUD
     path('projects/<int:project_pk>/tasks/create/<int:row_pk>/<int:col_pk>/', views.task_create_view, name='task_create'),

@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
+from django.contrib.auth import login, update_session_auth_hash
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import FormView
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from .forms import EmailAuthenticationForm, CustomUserCreationForm
 
 # Create your views here.
@@ -57,3 +60,42 @@ class RegisterView(FormView):
         if request.user.is_authenticated:
             return redirect(self.success_url)
         return super().dispatch(request, *args, **kwargs)
+
+@login_required
+def account_settings_view(request):
+    if request.method == 'POST':
+        user = request.user
+        user.first_name = request.POST.get('first_name', '')
+        user.last_name = request.POST.get('last_name', '')
+        user.email = request.POST.get('email', '')
+        user.save()
+        messages.success(request, 'Profile updated successfully!')
+        return redirect('accounts:account_settings')
+    
+    return render(request, 'accounts/account_settings.html')
+
+@login_required
+def change_password_view(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('accounts:account_settings')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    
+    return render(request, 'accounts/account_settings.html', {'password_form': form})
+
+@login_required
+def delete_account_view(request):
+    if request.method == 'POST':
+        user = request.user
+        user.delete()
+        messages.success(request, 'Your account has been deleted.')
+        return redirect('accounts:login')
+    
+    return render(request, 'accounts/delete_account.html')

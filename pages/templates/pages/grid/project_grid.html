@@ -102,14 +102,18 @@
         </div>
         
         <!-- Grid Actions -->
-        <div class="flex space-x-2">
+        <div class="flex items-center space-x-3">
             <a href="{% url 'pages:row_create' project_pk=project.pk %}" 
-               class="w-[160px] text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                <i class="fas fa-plus mr-1"></i> Add Row
+               class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+                <i class="fas fa-plus mr-1"></i>Add Row
             </a>
             <a href="{% url 'pages:column_create' project_pk=project.pk %}" 
-               class="w-[160px] text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-3 py-2 rounded-md text-sm font-medium transition-colors">
-                <i class="fas fa-plus mr-1"></i> Add Column
+               class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+                <i class="fas fa-plus mr-1"></i>Add Column
+            </a>
+            <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
+               class="w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+                <i class="fas fa-broom mr-1"></i>Clear Completed
             </a>
         </div>            
     </div>

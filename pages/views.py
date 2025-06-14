@@ -95,6 +95,10 @@ def project_grid_view(request, pk):
             tasks_by_cell[cell_key] = []
         tasks_by_cell[cell_key].append(task)
 
+    # Initialize forms for modals
+    row_form = RowHeaderForm()
+    column_form = ColumnHeaderForm()
+
     context = {
         'project': project,
         'row_headers': row_headers,
@@ -102,6 +106,8 @@ def project_grid_view(request, pk):
         'tasks_by_cell': tasks_by_cell,
         'projects': Project.objects.filter(user=request.user),
         'quick_task_form': QuickTaskForm(),
+        'row_form': row_form,
+        'column_form': column_form,
     }
     return render(request, 'pages/grid/project_grid.html', context)
 
@@ -213,10 +219,11 @@ def row_create_view(request, project_pk):
     else:
         form = RowHeaderForm()
     
-    return render(request, 'pages/grid/row_form.html', {
+    return render(request, 'pages/grid/grid_item_form.html', {
         'form': form, 
         'project': project, 
-        'title': 'Add Row'
+        'title': 'Add Row',
+        'item_type': 'row'
     })
 
 
@@ -233,10 +240,11 @@ def row_edit_view(request, project_pk, row_pk):
     else:
         form = RowHeaderForm(instance=row)
     
-    return render(request, 'pages/grid/row_form.html', {
+    return render(request, 'pages/grid/grid_item_form.html', {
         'form': form, 
         'project': project, 
-        'row': row, 
+        'item': row,
+        'item_type': 'row',
         'title': 'Edit Row'
     })
 
@@ -273,10 +281,11 @@ def column_create_view(request, project_pk):
     else:
         form = ColumnHeaderForm()
     
-    return render(request, 'pages/grid/column_form.html', {
+    return render(request, 'pages/grid/grid_item_form.html', {
         'form': form, 
         'project': project, 
-        'title': 'Add Column'
+        'title': 'Add Column',
+        'item_type': 'column'
     })
 
 
@@ -293,10 +302,11 @@ def column_edit_view(request, project_pk, col_pk):
     else:
         form = ColumnHeaderForm(instance=column)
     
-    return render(request, 'pages/grid/column_form.html', {
+    return render(request, 'pages/grid/grid_item_form.html', {
         'form': form, 
         'project': project, 
-        'column': column, 
+        'item': column,
+        'item_type': 'column',
         'title': 'Edit Column'
     })
 
@@ -314,4 +324,19 @@ def column_delete_view(request, project_pk, col_pk):
     return render(request, 'pages/grid/column_confirm_delete.html', {
         'project': project, 
         'column': column
+    })
+
+@login_required
+def delete_completed_tasks_view(request, pk):
+    project = get_object_or_404(Project, pk=pk, user=request.user)
+    
+    if request.method == 'POST':
+        completed_tasks = project.tasks.filter(completed=True)
+        count = completed_tasks.count()
+        completed_tasks.delete()
+        messages.success(request, f'Successfully deleted {count} completed tasks!')
+        return redirect('pages:project_grid', pk=project.pk)
+    
+    return render(request, 'pages/grid/delete_completed_tasks.html', {
+        'project': project
     })

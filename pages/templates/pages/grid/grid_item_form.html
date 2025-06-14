@@ -8,16 +8,15 @@
         <div class="mb-6">
             <h2 class="text-2xl font-bold text-[var(--title-text)]">{{ title }}</h2>
             <p class="text-[var(--subtitle-text)] mt-1">
-                {% if row %}Update row details{% else %}Add a new row to organize your tasks{% endif %}
+                {% if item %}Update {{ item_type }} details{% else %}Add a new {{ item_type }} to organize your tasks{% endif %}
             </p>
         </div>
         
         <form method="post" class="space-y-4">
             {% csrf_token %}
-            
             <div>
                 <label for="id_name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                    Row Name
+                    {{ item_type|title }} Name
                 </label>
                 {{ form.name }}
                 {% if form.name.errors %}
@@ -28,12 +27,12 @@
                     </div>
                 {% endif %}
             </div>
-            
+
             <div class="flex space-x-3 pt-4">
                 <button type="submit" 
                         class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors">
                     <i class="fas fa-save mr-1"></i>
-                    {% if row %}Save Changes{% else %}Create Row{% endif %}
+                    {% if item %}Save Changes{% else %}Create {{ item_type|title }}{% endif %}
                 </button>
                 <a href="{% url 'pages:project_grid' pk=project.pk %}" 
                    class="bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] px-4 py-2 rounded-md text-sm font-medium transition-colors">

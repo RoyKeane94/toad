@@ -1,0 +1,100 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Account Settings - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
+        <!-- Header -->
+        <div class="p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-user-cog text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-semibold text-[var(--title-text)]">Account Settings</h1>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Manage your account preferences and information</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Profile Information -->
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-6">
+                    <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Profile Information</h2>
+                    <form method="post" action="{% url 'accounts:account_settings' %}">
+                        {% csrf_token %}
+                        <div class="space-y-4">
+                            <div>
+                                <label for="id_first_name" class="block text-sm font-medium text-[var(--text-primary)] mb-1">First Name</label>
+                                <input type="text" name="first_name" id="id_first_name" value="{{ user.first_name }}" 
+                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="id_last_name" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Last Name</label>
+                                <input type="text" name="last_name" id="id_last_name" value="{{ user.last_name }}" 
+                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="id_email" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Email Address</label>
+                                <input type="email" name="email" id="id_email" value="{{ user.email }}" 
+                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" 
+                                        class="w-full bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                                    Update Profile
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Change Password -->
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-6">
+                    <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Change Password</h2>
+                    <form method="post" action="{% url 'accounts:change_password' %}">
+                        {% csrf_token %}
+                        <div class="space-y-4">
+                            <div>
+                                <label for="id_old_password" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Current Password</label>
+                                <input type="password" name="old_password" id="id_old_password" required
+                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="id_new_password1" class="block text-sm font-medium text-[var(--text-primary)] mb-1">New Password</label>
+                                <input type="password" name="new_password1" id="id_new_password1" required
+                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            </div>
+                            <div>
+                                <label for="id_new_password2" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Confirm New Password</label>
+                                <input type="password" name="new_password2" id="id_new_password2" required
+                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" 
+                                        class="w-full bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                                    Change Password
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Danger Zone -->
+            <div class="mt-6 bg-red-50 border border-red-200 rounded-lg p-6">
+                <h2 class="text-lg font-semibold text-red-700 mb-4">Danger Zone</h2>
+                <p class="text-sm text-red-600 mb-4">Once you delete your account, there is no going back. Please be certain.</p>
+                <a href="{% url 'accounts:delete_account' %}" 
+                   class="inline-flex items-center px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors">
+                    <i class="fas fa-trash mr-2"></i>Delete Account
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
