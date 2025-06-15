@@ -108,3 +108,59 @@ WARNING 2025-06-15 10:04:21,057 log 22812 6131970048 Not Found: /projects/dog
 WARNING 2025-06-15 10:04:21,058 basehttp 22812 6131970048 "GET /projects/dog HTTP/1.1" 404 12815
 INFO 2025-06-15 10:04:28,427 basehttp 22812 6131970048 "GET / HTTP/1.1" 200 11759
 INFO 2025-06-15 10:04:29,782 basehttp 22812 6131970048 "GET /projects/ HTTP/1.1" 200 14373
+INFO 2025-06-15 11:41:46,461 autoreload 23816 8681377600 Watching for file changes with StatReloader
+WARNING 2025-06-15 11:41:49,030 views 23816 6192836608 404 error: /projects/dog - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 11:41:49,041 log 23816 6192836608 Not Found: /projects/dog
+WARNING 2025-06-15 11:41:49,042 basehttp 23816 6192836608 "GET /projects/dog HTTP/1.1" 404 12815
+INFO 2025-06-15 11:41:49,064 basehttp 23816 6209662976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-15 11:41:49,064 basehttp 23816 6192836608 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-15 11:41:50,476 basehttp 23816 6192836608 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 11:41:52,059 basehttp 23816 6192836608 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 11:43:29,777 basehttp 23816 6192836608 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 11:43:29,796 basehttp 23816 6209662976 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-15 11:43:29,796 basehttp 23816 6192836608 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-15 11:43:29,861 basehttp 23816 6209662976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-15 11:43:29,862 basehttp 23816 6192836608 "GET /static/css/dist/styles.css HTTP/1.1" 200 35494
+INFO 2025-06-15 11:44:43,401 autoreload 24163 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:45:12,274 basehttp 23816 6192836608 "GET /static/img/favicon.svg HTTP/1.1" 200 441
+INFO 2025-06-15 11:45:20,840 basehttp 23816 6192836608 "GET / HTTP/1.1" 200 10354
+INFO 2025-06-15 11:45:53,039 basehttp 23816 6192836608 "GET / HTTP/1.1" 200 11979
+INFO 2025-06-15 11:45:53,054 basehttp 23816 6209662976 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-15 11:45:53,055 basehttp 23816 6192836608 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-15 11:45:53,156 basehttp 23816 6209662976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-15 11:45:53,157 basehttp 23816 6192836608 "GET /static/css/dist/styles.css HTTP/1.1" 200 35494
+INFO 2025-06-15 11:46:41,234 autoreload 23816 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 11:46:41,515 autoreload 24294 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:46:44,644 autoreload 24294 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 11:46:44,813 autoreload 24309 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:46:47,914 basehttp 24309 6134493184 "GET / HTTP/1.1" 200 11979
+INFO 2025-06-15 11:46:50,620 basehttp 24309 6134493184 "GET / HTTP/1.1" 200 11979
+INFO 2025-06-15 11:46:51,171 basehttp 24309 6134493184 "GET /projects/ HTTP/1.1" 200 14593
+INFO 2025-06-15 11:46:52,056 basehttp 24309 6134493184 "GET / HTTP/1.1" 200 11979
+INFO 2025-06-15 11:47:07,538 basehttp 24309 6134493184 "GET / HTTP/1.1" 200 11979
+INFO 2025-06-15 11:47:07,555 basehttp 24309 6151319552 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-15 11:47:07,556 basehttp 24309 6134493184 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-15 11:47:07,638 basehttp 24309 6151319552 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-15 11:47:07,638 basehttp 24309 6134493184 "GET /static/css/dist/styles.css HTTP/1.1" 200 35494
+INFO 2025-06-15 11:48:12,516 basehttp 24309 6134493184 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 11:48:18,972 autoreload 24511 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:48:25,024 basehttp 24511 6166065152 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 11:48:25,040 basehttp 24511 6182891520 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-15 11:48:25,040 basehttp 24511 6166065152 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-15 11:48:25,108 basehttp 24511 6182891520 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-15 11:48:25,109 basehttp 24511 6166065152 "GET /static/css/dist/styles.css HTTP/1.1" 200 35494
+INFO 2025-06-15 11:49:09,553 autoreload 24671 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:49:12,222 basehttp 24671 6203371520 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 11:49:53,994 basehttp 24671 6203371520 "HEAD /static/img/favicon.svg HTTP/1.1" 200 0
+INFO 2025-06-15 11:50:01,063 basehttp 24671 6203371520 "GET / HTTP/1.1" 200 10354
+INFO 2025-06-15 11:50:24,854 autoreload 24671 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/urls.py changed, reloading.
+INFO 2025-06-15 11:50:25,131 autoreload 24755 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:50:47,176 basehttp 24755 6168113152 "HEAD /favicon.svg HTTP/1.1" 200 0
+INFO 2025-06-15 11:51:13,164 autoreload 24799 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 11:51:15,649 basehttp 24799 6159888384 "GET / HTTP/1.1" 200 11763
+INFO 2025-06-15 11:51:15,674 basehttp 24799 6159888384 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-15 11:51:35,982 basehttp 24799 6159888384 "GET / HTTP/1.1" 200 11756
+INFO 2025-06-15 11:55:11,837 basehttp 24799 6159888384 "GET /projects/ HTTP/1.1" 200 14377
+INFO 2025-06-15 11:55:32,860 basehttp 24799 6159888384 "GET /projects/1/ HTTP/1.1" 200 136768
+INFO 2025-06-15 11:55:32,872 basehttp 24799 6159888384 "GET /static/js/grid/grid.js HTTP/1.1" 200 8252
+INFO 2025-06-15 11:55:34,758 basehttp 24799 6159888384 "POST /tasks/44/toggle/ HTTP/1.1" 200 79

@@ -19,12 +19,20 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.static import serve
+from django.http import HttpResponse
+from django.views.generic import RedirectView
 import os
+
+# Favicon view
+def favicon_view(request):
+    return serve(request, 'img/favicon.svg', document_root=settings.STATIC_ROOT)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('accounts/', include('accounts.urls')),
+    path('favicon.svg', favicon_view, name='favicon'),
+    path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg', permanent=True)),
 ]
 
 # Custom error handlers
