@@ -27,15 +27,6 @@
                 {% endif %}
             </div>
             
-            {% if form.completed %}
-            <div class="flex items-center">
-                {{ form.completed }}
-                <label for="id_completed" class="ml-2 text-sm text-[var(--text-primary)]">
-                    Mark as completed
-                </label>
-            </div>
-            {% endif %}
-            
             <div class="flex space-x-3 pt-4">
                 <button type="submit" 
                         class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors">

@@ -24,7 +24,19 @@
              end">
         {% csrf_token %}
         <div class="space-y-4">
-            {{ form.as_p }}
+            <div>
+                <label for="{{ form.text.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                    Task Description
+                </label>
+                {{ form.text }}
+                {% if form.text.errors %}
+                    <div class="mt-1 text-sm text-red-600">
+                        {% for error in form.text.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
         </div>
         
         <!-- Modal Footer -->
