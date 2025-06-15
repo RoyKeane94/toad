@@ -1,0 +1,110 @@
+INFO 2025-06-15 09:33:46,846 autoreload 21127 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:34:45,510 autoreload 21435 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:35:27,202 autoreload 21435 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 09:35:39,025 autoreload 21484 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:35:43,294 basehttp 21484 6161231872 "GET /projects/1/ HTTP/1.1" 200 136764
+WARNING 2025-06-15 09:35:43,312 views 21484 6161231872 404 error: /static/js/grid/grid.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:43,314 log 21484 6161231872 Not Found: /static/js/grid/grid.js
+WARNING 2025-06-15 09:35:43,314 basehttp 21484 6161231872 "GET /static/js/grid/grid.js HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:35:43,320 views 21484 6161231872 404 error: /static/css/dist/styles.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:43,320 views 21484 6178058240 404 error: /static/css/non-tailwind/non-tailwind.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:43,321 log 21484 6161231872 Not Found: /static/css/dist/styles.css
+WARNING 2025-06-15 09:35:43,322 log 21484 6178058240 Not Found: /static/css/non-tailwind/non-tailwind.css
+WARNING 2025-06-15 09:35:43,322 basehttp 21484 6178058240 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:35:43,322 basehttp 21484 6161231872 "GET /static/css/dist/styles.css HTTP/1.1" 404 12815
+INFO 2025-06-15 09:35:55,095 basehttp 21484 6161231872 "GET /projects/1/ HTTP/1.1" 200 136764
+WARNING 2025-06-15 09:35:55,113 views 21484 6178058240 404 error: /static/js/general/general.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:55,113 views 21484 6161231872 404 error: /static/css/master.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:55,113 views 21484 6194884608 404 error: /static/js/grid/grid.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:55,114 log 21484 6178058240 Not Found: /static/js/general/general.js
+WARNING 2025-06-15 09:35:55,115 log 21484 6161231872 Not Found: /static/css/master.css
+WARNING 2025-06-15 09:35:55,115 log 21484 6194884608 Not Found: /static/js/grid/grid.js
+WARNING 2025-06-15 09:35:55,116 basehttp 21484 6178058240 "GET /static/js/general/general.js HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:35:55,116 basehttp 21484 6161231872 "GET /static/css/master.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:35:55,117 basehttp 21484 6194884608 "GET /static/js/grid/grid.js HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:35:55,178 views 21484 6194884608 404 error: /static/css/master.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:55,179 log 21484 6194884608 Not Found: /static/css/master.css
+WARNING 2025-06-15 09:35:55,180 basehttp 21484 6194884608 "GET /static/css/master.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:35:55,245 views 21484 6194884608 404 error: /static/img/favicon.svg - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:35:55,247 log 21484 6194884608 Not Found: /static/img/favicon.svg
+WARNING 2025-06-15 09:35:55,247 basehttp 21484 6194884608 "GET /static/img/favicon.svg HTTP/1.1" 404 12815
+INFO 2025-06-15 09:36:00,528 autoreload 21484 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 09:36:00,819 autoreload 21509 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:36:01,875 basehttp 21509 6165082112 "GET /projects/1/ HTTP/1.1" 200 136764
+WARNING 2025-06-15 09:36:01,889 views 21509 6198734848 404 error: /static/js/grid/grid.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:36:01,889 views 21509 6165082112 404 error: /static/css/master.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:36:01,889 views 21509 6181908480 404 error: /static/js/general/general.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:36:01,892 log 21509 6198734848 Not Found: /static/js/grid/grid.js
+WARNING 2025-06-15 09:36:01,892 log 21509 6165082112 Not Found: /static/css/master.css
+WARNING 2025-06-15 09:36:01,892 log 21509 6181908480 Not Found: /static/js/general/general.js
+WARNING 2025-06-15 09:36:01,893 basehttp 21509 6198734848 "GET /static/js/grid/grid.js HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:36:01,893 basehttp 21509 6165082112 "GET /static/css/master.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:36:01,893 basehttp 21509 6181908480 "GET /static/js/general/general.js HTTP/1.1" 404 12815
+INFO 2025-06-15 09:36:01,895 basehttp 21509 6165082112 - Broken pipe from ('127.0.0.1', 63845)
+INFO 2025-06-15 09:36:07,584 basehttp 21509 6181908480 "GET / HTTP/1.1" 200 11759
+WARNING 2025-06-15 09:36:07,600 views 21509 6181908480 404 error: /static/css/master.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:36:07,601 views 21509 6198734848 404 error: /static/js/general/general.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:36:07,602 log 21509 6181908480 Not Found: /static/css/master.css
+WARNING 2025-06-15 09:36:07,603 log 21509 6198734848 Not Found: /static/js/general/general.js
+WARNING 2025-06-15 09:36:07,604 basehttp 21509 6181908480 "GET /static/css/master.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:36:07,604 basehttp 21509 6198734848 "GET /static/js/general/general.js HTTP/1.1" 404 12815
+INFO 2025-06-15 09:36:13,121 autoreload 21509 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 09:36:13,395 autoreload 21524 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:36:14,807 basehttp 21524 6202814464 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 09:36:14,827 basehttp 21524 6202814464 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-15 09:36:14,827 basehttp 21524 6219640832 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-15 09:36:14,829 basehttp 21524 6202814464 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-15 09:36:14,830 basehttp 21524 6219640832 "GET /static/css/dist/styles.css HTTP/1.1" 200 35494
+INFO 2025-06-15 09:37:37,929 autoreload 21524 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/urls.py changed, reloading.
+INFO 2025-06-15 09:37:38,186 autoreload 21587 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:38:15,845 autoreload 21587 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 09:38:16,084 autoreload 21610 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:38:22,251 autoreload 21610 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 09:38:22,417 autoreload 21620 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:38:27,571 autoreload 21620 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-15 09:38:27,795 autoreload 21627 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:38:30,123 basehttp 21627 6190002176 "GET / HTTP/1.1" 200 11759
+WARNING 2025-06-15 09:38:30,144 views 21627 6190002176 404 error: /static/css/dist/styles.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:38:30,146 log 21627 6190002176 Not Found: /static/css/dist/styles.css
+WARNING 2025-06-15 09:38:30,147 basehttp 21627 6190002176 "GET /static/css/dist/styles.css HTTP/1.1" 404 12815
+INFO 2025-06-15 09:41:39,989 autoreload 21627 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/urls.py changed, reloading.
+INFO 2025-06-15 09:41:40,238 autoreload 21774 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:48:57,632 autoreload 22026 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:49:04,001 basehttp 22026 6192967680 "GET / HTTP/1.1" 200 11759
+WARNING 2025-06-15 09:49:04,022 views 22026 6192967680 404 error: /static/css/dist/styles.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:49:04,022 views 22026 6209794048 404 error: /static/css/non-tailwind/non-tailwind.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:49:04,025 log 22026 6192967680 Not Found: /static/css/dist/styles.css
+WARNING 2025-06-15 09:49:04,025 log 22026 6209794048 Not Found: /static/css/non-tailwind/non-tailwind.css
+WARNING 2025-06-15 09:49:04,026 basehttp 22026 6192967680 "GET /static/css/dist/styles.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:49:04,026 basehttp 22026 6209794048 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 404 12815
+INFO 2025-06-15 09:49:10,985 basehttp 22026 6209794048 "GET / HTTP/1.1" 200 11759
+WARNING 2025-06-15 09:49:11,001 views 22026 6209794048 404 error: /static/css/master.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:49:11,002 views 22026 6192967680 404 error: /static/js/general/general.js - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:49:11,003 log 22026 6209794048 Not Found: /static/css/master.css
+WARNING 2025-06-15 09:49:11,004 log 22026 6192967680 Not Found: /static/js/general/general.js
+WARNING 2025-06-15 09:49:11,005 basehttp 22026 6209794048 "GET /static/css/master.css HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:49:11,005 basehttp 22026 6192967680 "GET /static/js/general/general.js HTTP/1.1" 404 12815
+WARNING 2025-06-15 09:49:11,120 views 22026 6192967680 404 error: /static/css/master.css - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 09:49:11,122 log 22026 6192967680 Not Found: /static/css/master.css
+WARNING 2025-06-15 09:49:11,122 basehttp 22026 6192967680 "GET /static/css/master.css HTTP/1.1" 404 12815
+INFO 2025-06-15 09:49:56,732 autoreload 22198 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:50:37,200 autoreload 22026 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/urls.py changed, reloading.
+INFO 2025-06-15 09:50:37,435 autoreload 22237 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:53:09,178 autoreload 22624 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 09:53:17,792 basehttp 22624 6164819968 "HEAD /static/css/dist/styles.css HTTP/1.1" 200 0
+INFO 2025-06-15 09:53:48,017 basehttp 22624 6164819968 "HEAD /static/css/master.css HTTP/1.1" 200 0
+INFO 2025-06-15 09:55:03,615 basehttp 22624 6164819968 "HEAD /static/js/general/general.js HTTP/1.1" 200 0
+INFO 2025-06-15 10:03:41,874 autoreload 22766 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 10:03:52,081 basehttp 22624 6164819968 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 10:03:52,105 basehttp 22624 6181646336 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-15 10:03:52,106 basehttp 22624 6164819968 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-15 10:03:52,111 basehttp 22624 6181646336 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-15 10:03:52,112 basehttp 22624 6164819968 "GET /static/css/dist/styles.css HTTP/1.1" 200 35494
+INFO 2025-06-15 10:03:58,413 autoreload 22791 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 10:04:15,676 autoreload 22812 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-15 10:04:17,549 basehttp 22812 6131970048 "GET /projects/ HTTP/1.1" 200 14373
+WARNING 2025-06-15 10:04:21,053 views 22812 6131970048 404 error: /projects/dog - User: tom_barratt@hotmail.co.uk
+WARNING 2025-06-15 10:04:21,057 log 22812 6131970048 Not Found: /projects/dog
+WARNING 2025-06-15 10:04:21,058 basehttp 22812 6131970048 "GET /projects/dog HTTP/1.1" 404 12815
+INFO 2025-06-15 10:04:28,427 basehttp 22812 6131970048 "GET / HTTP/1.1" 200 11759
+INFO 2025-06-15 10:04:29,782 basehttp 22812 6131970048 "GET /projects/ HTTP/1.1" 200 14373

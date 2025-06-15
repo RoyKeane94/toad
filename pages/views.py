@@ -4,11 +4,51 @@ from django.contrib import messages
 from django.urls import reverse
 from .models import Project, RowHeader, ColumnHeader, Task
 from .forms import ProjectForm, TaskForm, QuickTaskForm, RowHeaderForm, ColumnHeaderForm
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, Http404
+from django.core.exceptions import PermissionDenied
+from django.conf import settings
+import logging
+
+# Set up logging
+logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, 'pages/general/home.html')
 
+# Error handling views
+def handler404(request, exception):
+    """Custom 404 error handler"""
+    logger.warning(f"404 error: {request.path} - User: {request.user if request.user.is_authenticated else 'Anonymous'}")
+    return render(request, 'pages/errors/404.html', status=404)
+
+def handler500(request):
+    """Custom 500 error handler"""
+    logger.error(f"500 error: {request.path} - User: {request.user if request.user.is_authenticated else 'Anonymous'}")
+    return render(request, 'pages/errors/500.html', status=500)
+
+def handler403(request, exception):
+    """Custom 403 error handler"""
+    logger.warning(f"403 error: {request.path} - User: {request.user if request.user.is_authenticated else 'Anonymous'}")
+    return render(request, 'pages/errors/403.html', status=403)
+
+# Test error views (only for development)
+def test_404(request):
+    """Test view to trigger 404 error"""
+    if settings.DEBUG:
+        raise Http404("This is a test 404 error")
+    return redirect('pages:home')
+
+def test_500(request):
+    """Test view to trigger 500 error"""
+    if settings.DEBUG:
+        raise Exception("This is a test 500 error")
+    return redirect('pages:home')
+
+def test_403(request):
+    """Test view to trigger 403 error"""
+    if settings.DEBUG:
+        raise PermissionDenied("This is a test 403 error")
+    return redirect('pages:home')
 
 @login_required
 def project_list_view(request):
@@ -41,8 +81,11 @@ def project_create_view(request):
             RowHeader.objects.create(project=project, name='1 to 3 hours', order=2)
             RowHeader.objects.create(project=project, name='More than 3 hours', order=3)
             
+            logger.info(f'User {request.user.username} created project: {project.name}')
             messages.success(request, f'Project "{project.name}" created successfully!')
             return redirect('pages:project_grid', pk=project.pk)
+        else:
+            logger.warning(f'User {request.user.username} failed to create project - form errors: {form.errors}')
     else:
         form = ProjectForm()
     
@@ -128,6 +171,8 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             task.column_header = column_header
             task.save()
             
+            logger.info(f'User {request.user.username} created task: "{task.text}" in project: {project.name}')
+            
             if request.headers.get('HX-Request'):
                 # Return just the new task HTML for HTMX to insert
                 return render(request, 'pages/grid/actions_in_page/task_item.html', {
@@ -137,6 +182,7 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             messages.success(request, f'Task "{task.text}" added successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:
+            logger.warning(f'User {request.user.username} failed to create task - form errors: {form.errors}')
             if request.headers.get('HX-Request'):
                 errors = form.errors.get('text', ['An error occurred'])
                 return HttpResponse(
@@ -213,8 +259,10 @@ def task_toggle_complete_view(request, task_pk):
 def task_delete_view(request, task_pk):
     task = get_object_or_404(Task, pk=task_pk, project__user=request.user)
     project_pk = task.project.pk
+    task_text = task.text  # Store before deletion
     
     if request.method == 'POST':
+        logger.info(f'User {request.user.username} deleted task: "{task_text}" from project: {task.project.name}')
         task.delete()
         if request.headers.get('HX-Request'):
             return HttpResponse('', status=200)
