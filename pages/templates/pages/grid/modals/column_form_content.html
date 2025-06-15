@@ -1,0 +1,42 @@
+<!-- Modal Header -->
+<div class="flex items-center p-6 border-b border-[var(--border-color)]">
+    <div class="flex items-center space-x-3">
+        <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+            <i class="fas fa-edit text-white"></i>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold text-[var(--text-primary)]">Edit Column</h3>
+            <p class="text-sm text-[var(--text-secondary)]">Update column details</p>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Body -->
+<div class="p-6">
+    <form method="post" 
+          action="{% url 'pages:column_edit' project_pk=project.pk col_pk=column.pk %}"
+          hx-post="{% url 'pages:column_edit' project_pk=project.pk col_pk=column.pk %}"
+          hx-swap="none"
+          _="on htmx:afterRequest(detail)
+             if detail.successful
+               trigger closeModal
+               trigger refreshGrid
+             end">
+        {% csrf_token %}
+        <div class="space-y-4">
+            {{ form.as_p }}
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 mt-6 pt-6 border-t border-[var(--border-color)]">
+            <button type="button" 
+                    class="close-modal px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="submit" 
+                    class="px-4 py-2 flex items-center justify-center bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105 cursor-pointer">
+                <i class="fas fa-save mr-2"></i>Save Changes
+            </button>
+        </div>
+    </form>
+</div> 

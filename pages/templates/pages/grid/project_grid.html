@@ -138,14 +138,24 @@
                             <span class="text-[var(--title-text)] truncate">{{ col_header.name }}</span>
                             {% if not col_header.is_category_column %}
                                 <div class="flex space-x-1 ml-2">
-                                    <a href="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_header.pk %}" 
-                                       class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors" title="Edit column">
+                                    <button type="button"
+                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors" 
+                                            title="Edit column"
+                                            hx-get="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_header.pk %}"
+                                            hx-target="#modal-content"
+                                            hx-trigger="click"
+                                            _="on click trigger openModal">
                                         <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
-                                    </a>
-                                    <a href="{% url 'pages:column_delete' project_pk=project.pk col_pk=col_header.pk %}" 
-                                       class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors" title="Delete column">
+                                    </button>
+                                    <button type="button"
+                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors" 
+                                            title="Delete column"
+                                            hx-get="{% url 'pages:column_delete' project_pk=project.pk col_pk=col_header.pk %}"
+                                            hx-target="#modal-content"
+                                            hx-trigger="click"
+                                            _="on click trigger openModal">
                                         <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             {% endif %}
                         </div>
@@ -161,14 +171,24 @@
                         <div class="flex items-center justify-between">
                             <span>{{ row_h.name }}</span>
                             <div class="flex space-x-1 ml-2">
-                                <a href="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}" 
-                                   class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors" title="Edit row">
+                                <button type="button"
+                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors" 
+                                        title="Edit row"
+                                        hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
+                                        hx-target="#modal-content"
+                                        hx-trigger="click"
+                                        _="on click trigger openModal">
                                     <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
-                                </a>
-                                <a href="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}" 
-                                   class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors" title="Delete row">
+                                </button>
+                                <button type="button"
+                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors" 
+                                        title="Delete row"
+                                        hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
+                                        hx-target="#modal-content"
+                                        hx-trigger="click"
+                                        _="on click trigger openModal">
                                     <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </td>
@@ -181,7 +201,7 @@
                             <div class="space-y-2 mb-3 w-full" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
                                 {% with cell_key=row_h.pk|cell_key:col_h.pk %}
                                     {% for task in tasks_by_cell|get_item:cell_key %}
-                                        {% include 'pages/grid/task_item.html' with task=task %}
+                                        {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
                                     {% endfor %}
                                 {% endwith %}
                             </div>
@@ -205,12 +225,12 @@
                                        add .opacity-50 to closest <form/>
                                      
                                      on htmx:afterRequest(detail)
-                                       if !detail.successful
-                                         set errorDiv to closest <form/> querySelector('.error-message')
-                                         set errorDiv.innerHTML to detail.xhr.response
-                                       else
+                                       if detail.successful
                                          set errorDiv to closest <form/> querySelector('.error-message')
                                          set errorDiv.innerHTML to ''
+                                       else
+                                         set errorDiv to closest <form/> querySelector('.error-message')
+                                         set errorDiv.innerHTML to detail.xhr.response
                                        end
                                        remove .opacity-50 from closest <form/>">
                                 {% csrf_token %}
@@ -285,6 +305,13 @@
                 </button>
             </form>
         </div>
+    </div>
+</div>
+
+<!-- Modal Container -->
+<div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="modal-content">
+        <!-- Modal content will be loaded here -->
     </div>
 </div>
 {% endblock %} 

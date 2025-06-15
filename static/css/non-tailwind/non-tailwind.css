@@ -30,19 +30,17 @@
     transition: all 0.3s ease-out;
 }
 
-.task-item.completed {
-    opacity: 0.6;
-    background-color: var(--task-completed-bg, #f9fafb);
+/* Task Completion Styles */
+.bg-green-50 {
+    background-color: #f0fdf4;
 }
 
-.task-item.completed p {
+.line-through {
     text-decoration: line-through;
-    color: var(--text-secondary, #6b7280);
 }
 
-.task-item.processing {
-    opacity: 0.7;
-    pointer-events: none;
+.text-\[\-\-text-secondary\] {
+    color: var(--text-secondary);
 }
 
 /* Form Transitions */

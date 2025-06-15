@@ -179,4 +179,50 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.disabled = false;
         });
     });
+
+    // Generic Modal Functionality
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+
+    // Show modal
+    document.body.addEventListener('openModal', function() {
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('opacity-100', 'visible');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
+    });
+
+    // Hide modal
+    document.body.addEventListener('closeModal', function() {
+        modal.classList.add('opacity-0', 'invisible');
+        modal.classList.remove('opacity-100', 'visible');
+        modalContent.classList.add('scale-95');
+        modalContent.classList.remove('scale-100');
+    });
+
+    // Refresh grid
+    document.body.addEventListener('refreshGrid', function() {
+        window.location.reload();
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            document.body.dispatchEvent(new Event('closeModal'));
+        }
+    });
+
+    // Close modal when pressing Escape
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+            document.body.dispatchEvent(new Event('closeModal'));
+        }
+    });
+
+    // Handle close modal buttons
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.close-modal')) {
+            document.body.dispatchEvent(new Event('closeModal'));
+        }
+    });
 });

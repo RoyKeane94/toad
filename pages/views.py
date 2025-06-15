@@ -13,7 +13,7 @@ def home(request):
 @login_required
 def project_list_view(request):
     projects = Project.objects.filter(user=request.user)
-    return render(request, 'pages/grid/project_list.html', {'projects': projects})
+    return render(request, 'pages/grid/overview/project_list.html', {'projects': projects})
 
 
 @login_required
@@ -46,7 +46,7 @@ def project_create_view(request):
     else:
         form = ProjectForm()
     
-    return render(request, 'pages/grid/project_form.html', {'form': form, 'title': 'Create Project'})
+    return render(request, 'pages/grid/actions_new_page/project_form.html', {'form': form, 'title': 'Create Project'})
 
 
 def project_edit_view(request, pk):
@@ -60,7 +60,7 @@ def project_edit_view(request, pk):
     else:
         form = ProjectForm(instance=project)
     
-    return render(request, 'pages/grid/project_form.html', {
+    return render(request, 'pages/grid/actions_new_page/project_form.html', {
         'form': form, 
         'project': project, 
         'title': 'Edit Project'
@@ -75,7 +75,7 @@ def project_delete_view(request, pk):
         messages.success(request, f'Project "{project_name}" deleted successfully!')
         return redirect('pages:project_list')
     
-    return render(request, 'pages/grid/project_confirm_delete.html', {'project': project})
+    return render(request, 'pages/grid/actions_new_page/project_confirm_delete.html', {'project': project})
 
 
 @login_required
@@ -130,7 +130,7 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             
             if request.headers.get('HX-Request'):
                 # Return just the new task HTML for HTMX to insert
-                return render(request, 'pages/grid/task_item.html', {
+                return render(request, 'pages/grid/actions_in_page/task_item.html', {
                     'task': task,
                 })
             
@@ -156,10 +156,30 @@ def task_edit_view(request, task_pk):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
+            if request.headers.get('HX-Request'):
+                return JsonResponse({
+                    'success': True,
+                    'message': 'Task updated successfully!'
+                })
             messages.success(request, 'Task updated successfully!')
+            return redirect('pages:project_grid', pk=task.project.pk)
+        else:
+            if request.headers.get('HX-Request'):
+                return JsonResponse({
+                    'success': False,
+                    'errors': form.errors
+                }, status=422)
+            messages.error(request, 'Please correct the errors below.')
             return redirect('pages:project_grid', pk=task.project.pk)
     else:
         form = TaskForm(instance=task)
+    
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/task_form_content.html', {
+            'form': form,
+            'task': task,
+            'title': 'Edit Task'
+        })
     
     return render(request, 'pages/grid/task_form.html', {
         'form': form, 
@@ -175,15 +195,15 @@ def task_toggle_complete_view(request, task_pk):
     if request.method == 'POST':
         task.completed = not task.completed
         task.save()
-        status = "completed" if task.completed else "reopened"
         
         if request.headers.get('HX-Request'):
             return JsonResponse({
+                'success': True,
                 'completed': task.completed,
-                'message': f'Task {status} successfully!'
+                'message': f'Task {"completed" if task.completed else "reopened"} successfully!'
             })
         
-        messages.success(request, f'Task {status} successfully!')
+        messages.success(request, f'Task {"completed" if task.completed else "reopened"} successfully!')
         return redirect('pages:project_grid', pk=task.project.pk)
     
     return redirect('pages:project_grid', pk=task.project.pk)
@@ -219,7 +239,7 @@ def row_create_view(request, project_pk):
     else:
         form = RowHeaderForm()
     
-    return render(request, 'pages/grid/grid_item_form.html', {
+    return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
         'form': form, 
         'project': project, 
         'title': 'Add Row',
@@ -235,14 +255,35 @@ def row_edit_view(request, project_pk, row_pk):
         form = RowHeaderForm(request.POST, instance=row)
         if form.is_valid():
             form.save()
+            if request.headers.get('HX-Request'):
+                return JsonResponse({
+                    'success': True,
+                    'message': f'Row "{row.name}" updated successfully!'
+                })
             messages.success(request, f'Row "{row.name}" updated successfully!')
+            return redirect('pages:project_grid', pk=project.pk)
+        else:
+            if request.headers.get('HX-Request'):
+                return JsonResponse({
+                    'success': False,
+                    'errors': form.errors
+                }, status=422)
+            messages.error(request, 'Please correct the errors below.')
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = RowHeaderForm(instance=row)
     
-    return render(request, 'pages/grid/grid_item_form.html', {
-        'form': form, 
-        'project': project, 
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/row_form_content.html', {
+            'form': form,
+            'project': project,
+            'row': row,
+            'title': 'Edit Row'
+        })
+    
+    return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
+        'form': form,
+        'project': project,
         'item': row,
         'item_type': 'row',
         'title': 'Edit Row'
@@ -256,11 +297,24 @@ def row_delete_view(request, project_pk, row_pk):
     if request.method == 'POST':
         row_name = row.name
         row.delete()
+        if request.headers.get('HX-Request'):
+            return JsonResponse({
+                'success': True,
+                'message': f'Row "{row_name}" deleted successfully!'
+            })
         messages.success(request, f'Row "{row_name}" deleted successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     
-    return render(request, 'pages/grid/row_confirm_delete.html', {
-        'project': project, 
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/row_delete_content.html', {
+            'project': project,
+            'row': row
+        })
+    
+# If HTMX request fails, render the normal page
+
+    return render(request, 'pages/grid/actions_new_page/row_confirm_delete.html', {
+        'project': project,
         'row': row
     })
 
@@ -281,7 +335,7 @@ def column_create_view(request, project_pk):
     else:
         form = ColumnHeaderForm()
     
-    return render(request, 'pages/grid/grid_item_form.html', {
+    return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
         'form': form, 
         'project': project, 
         'title': 'Add Column',
@@ -297,14 +351,35 @@ def column_edit_view(request, project_pk, col_pk):
         form = ColumnHeaderForm(request.POST, instance=column)
         if form.is_valid():
             form.save()
+            if request.headers.get('HX-Request'):
+                return JsonResponse({
+                    'success': True,
+                    'message': f'Column "{column.name}" updated successfully!'
+                })
             messages.success(request, f'Column "{column.name}" updated successfully!')
+            return redirect('pages:project_grid', pk=project.pk)
+        else:
+            if request.headers.get('HX-Request'):
+                return JsonResponse({
+                    'success': False,
+                    'errors': form.errors
+                }, status=422)
+            messages.error(request, 'Please correct the errors below.')
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = ColumnHeaderForm(instance=column)
     
-    return render(request, 'pages/grid/grid_item_form.html', {
-        'form': form, 
-        'project': project, 
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/column_form_content.html', {
+            'form': form,
+            'project': project,
+            'column': column,
+            'title': 'Edit Column'
+        })
+    
+    return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
+        'form': form,
+        'project': project,
         'item': column,
         'item_type': 'column',
         'title': 'Edit Column'
@@ -318,11 +393,24 @@ def column_delete_view(request, project_pk, col_pk):
     if request.method == 'POST':
         column_name = column.name
         column.delete()
+        if request.headers.get('HX-Request'):
+            return JsonResponse({
+                'success': True,
+                'message': f'Column "{column_name}" deleted successfully!'
+            })
         messages.success(request, f'Column "{column_name}" deleted successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     
-    return render(request, 'pages/grid/column_confirm_delete.html', {
-        'project': project, 
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/column_delete_content.html', {
+            'project': project,
+            'column': column
+        })
+
+# If HTMX request fails, render the normal page
+
+    return render(request, 'pages/grid/actions_new_page/column_confirm_delete.html', {
+        'project': project,
         'column': column
     })
 
@@ -337,6 +425,6 @@ def delete_completed_tasks_view(request, pk):
         messages.success(request, f'Successfully deleted {count} completed tasks!')
         return redirect('pages:project_grid', pk=project.pk)
     
-    return render(request, 'pages/grid/delete_completed_tasks.html', {
+    return render(request, 'pages/grid/actions_in_page/clear_completed_tasks.html', {
         'project': project
     })
