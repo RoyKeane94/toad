@@ -213,26 +213,23 @@
                                   hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
                                   hx-swap="beforeend"
                                   hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
-                                  _="on htmx:afterRequest(detail) 
-                                     if detail.successful
-                                       set input to closest <form/> querySelector('input[name=text]')
-                                       set input.value to ''
-                                       call input.focus()
-                                       remove .opacity-50 from closest <form/>
+                                  _="on htmx:beforeRequest
+                                       add .opacity-50 to closest <form/>
                                      end
                                      
-                                     on htmx:beforeRequest
-                                       add .opacity-50 to closest <form/>
-                                     
                                      on htmx:afterRequest(detail)
+                                       remove .opacity-50 from closest <form/>
                                        if detail.successful
+                                         set input to closest <form/> querySelector('input[name=text]')
+                                         set input.value to ''
+                                         call input.focus()
                                          set errorDiv to closest <form/> querySelector('.error-message')
                                          set errorDiv.innerHTML to ''
                                        else
                                          set errorDiv to closest <form/> querySelector('.error-message')
                                          set errorDiv.innerHTML to detail.xhr.response
                                        end
-                                       remove .opacity-50 from closest <form/>">
+                                     end">
                                 {% csrf_token %}
                                 <div class="flex space-x-2 relative">
                                     {{ quick_task_form.text }}

@@ -1,0 +1,177 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Student Revision Template - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <!-- Back Navigation -->
+    <div class="mb-6">
+        <a href="{% url 'pages:templates_overview' %}" 
+           class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Templates
+        </a>
+    </div>
+
+    <!-- Template Header -->
+    <div class="text-center mb-8">
+        <div class="w-20 h-20 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-book-open text-yellow-600 text-2xl"></i>
+        </div>
+        <h1 class="text-3xl font-bold text-[var(--title-text)] mb-4">Student Revision Planner</h1>
+        <p class="text-lg text-[var(--subtitle-text)] max-w-2xl mx-auto">
+            Master your exam preparation with strategic revision planning. Organize topics by priority, 
+            track study progress, and ensure comprehensive coverage before your exams.
+        </p>
+    </div>
+
+    <!-- Template Preview -->
+    <div class="bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)] p-6 mb-8">
+        <h2 class="text-xl font-semibold text-[var(--title-text)] mb-4">Template Preview</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="bg-[var(--grid-header-bg)]">
+                        <th class="text-left p-3 border border-[var(--border-color)] font-medium text-[var(--title-text)]">Priority / Time</th>
+                        <th class="text-left p-3 border border-[var(--border-color)] font-medium text-[var(--title-text)]">Not Started</th>
+                        <th class="text-left p-3 border border-[var(--border-color)] font-medium text-[var(--title-text)]">In Progress</th>
+                        <th class="text-left p-3 border border-[var(--border-color)] font-medium text-[var(--title-text)]">Review Needed</th>
+                        <th class="text-left p-3 border border-[var(--border-color)] font-medium text-[var(--title-text)]">Exam Ready</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="p-3 border border-[var(--border-color)] font-medium bg-red-50">High Priority (< 1 hour)</td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs mb-1">Key formulas review</div>
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Important dates</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Case study analysis</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-completed-bg)] p-2 rounded text-xs line-through text-[var(--task-completed-text)]">Basic concepts</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 border border-[var(--border-color)] font-medium bg-yellow-50">Medium Priority (1-3 hours)</td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs mb-1">Chapter 5 - Advanced Topics</div>
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Practice problems set B</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Chapter 3 review</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Chapter 1 formulas</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 border border-[var(--border-color)] font-medium bg-blue-50">Study Sessions (3-5 hours)</td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Final exam simulation</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Essay writing practice</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                    </tr>
+                    <tr>
+                        <td class="p-3 border border-[var(--border-color)] font-medium bg-green-50">Deep Dive (5+ hours)</td>
+                        <td class="p-3 border border-[var(--border-color)]">
+                            <div class="bg-[var(--task-bg)] p-2 rounded text-xs">Research project</div>
+                        </td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                        <td class="p-3 border border-[var(--border-color)]"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div class="bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)] p-6">
+            <h3 class="text-lg font-semibold text-[var(--title-text)] mb-4">
+                <i class="fas fa-sort-amount-up text-red-500 mr-2"></i>Priority-Based Planning
+            </h3>
+            <ul class="space-y-2 text-sm text-[var(--text-secondary)]">
+                <li><i class="fas fa-check text-green-500 mr-2"></i>High priority items (quick review)</li>
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Medium priority topics (regular study)</li>
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Study sessions (focused blocks)</li>
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Deep dive projects (major time investment)</li>
+            </ul>
+        </div>
+        
+        <div class="bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)] p-6">
+            <h3 class="text-lg font-semibold text-[var(--title-text)] mb-4">
+                <i class="fas fa-chart-line text-blue-500 mr-2"></i>Progress Tracking
+            </h3>
+            <ul class="space-y-2 text-sm text-[var(--text-secondary)]">
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Topics not yet started</li>
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Currently studying materials</li>
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Items needing review</li>
+                <li><i class="fas fa-check text-green-500 mr-2"></i>Exam-ready topics</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Study Tips -->
+    <div class="bg-blue-50 rounded-lg p-6 mb-8">
+        <h3 class="text-lg font-semibold text-[var(--title-text)] mb-4">Study Strategy Tips</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <h4 class="font-medium text-[var(--title-text)] mb-2">Time Management</h4>
+                <ul class="space-y-1 text-sm text-[var(--text-secondary)]">
+                    <li><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Start with high-priority items first</li>
+                    <li><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Use the Pomodoro technique for focus</li>
+                    <li><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Schedule regular review sessions</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-medium text-[var(--title-text)] mb-2">Retention Techniques</h4>
+                <ul class="space-y-1 text-sm text-[var(--text-secondary)]">
+                    <li><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Active recall while studying</li>
+                    <li><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Create summary notes</li>
+                    <li><i class="fas fa-lightbulb text-yellow-500 mr-2"></i>Practice with past papers</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Perfect For Section -->
+    <div class="bg-green-50 rounded-lg p-6 mb-8">
+        <h3 class="text-lg font-semibold text-[var(--title-text)] mb-4">Perfect for Students Who:</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <ul class="space-y-2 text-sm text-[var(--text-secondary)]">
+                <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Have multiple exams to prepare for</li>
+                <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Struggle with study organization</li>
+                <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Want to track revision progress</li>
+            </ul>
+            <ul class="space-y-2 text-sm text-[var(--text-secondary)]">
+                <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Need to prioritize study topics</li>
+                <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Want structured study sessions</li>
+                <li><i class="fas fa-graduation-cap text-green-500 mr-2"></i>Preparing for final exams</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Action Buttons -->
+    <div class="text-center">
+        <form method="post" action="{% url 'pages:create_from_template' 'student_revision' %}" class="inline-block">
+            {% csrf_token %}
+            <button type="submit" 
+                    class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-md font-medium transition-colors duration-200 mr-4">
+                <i class="fas fa-plus mr-2"></i>Create Project from Template
+            </button>
+        </form>
+        <a href="{% url 'pages:templates_overview' %}" 
+           class="border border-[var(--border-color)] text-[var(--text-primary)] px-6 py-3 rounded-md font-medium hover:bg-[var(--task-hover-bg)] transition-colors duration-200 inline-block">
+            Browse Other Templates
+        </a>
+    </div>
+</div>
+{% endblock %}

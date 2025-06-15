@@ -21,8 +21,8 @@
     <!-- Top Navbar -->
     <nav class="bg-[var(--container-bg)] shadow-sm border-b border-[var(--border-color)]">
         <div class="w-full px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo and Brand -->
+            <div class="relative flex items-center h-16">
+                <!-- Logo and Brand (Left) -->
                 <div class="flex items-center space-x-3">
                     <svg class="w-8 h-8 text-[var(--primary-action-bg)]" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                         <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
@@ -30,23 +30,40 @@
                     <h1 class="text-2xl font-bold text-[var(--title-text)]">Toad</h1>
                 </div>
 
-                <!-- Navigation Links -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{% url 'pages:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                <!-- Navigation Links (Center) -->
+                <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 items-center space-x-8">
+                    <a href="{% url 'pages:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
                         Home
                     </a>
+                    <a href="{% url 'pages:templates_overview' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
+                        Templates
+                    </a>
                     {% if user.is_authenticated %}
-                    <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                    <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
                         Projects
                     </a>
                     {% endif %}
                 </div>
 
-                <!-- User Menu -->
-                <div class="flex items-center space-x-4">
+                <!-- User Menu (Right) -->
+                <div class="ml-auto flex items-center space-x-4">
                     {% if user.is_authenticated %}
-                        <div class="flex items-center space-x-3">
-                            <span class="text-[var(--text-secondary)] text-sm">Welcome, {{ user.get_short_name }}</span>
+                        <div class="hidden lg:flex items-center space-x-3">
+                            <span class="text-[var(--text-secondary)] text-sm whitespace-nowrap">Welcome, {{ user.get_short_name }}</span>
+                            <div class="w-8 h-8 bg-[var(--primary-action-bg)] rounded-full flex items-center justify-center">
+                                <span class="text-[var(--primary-action-text)] text-sm font-semibold">
+                                    {{ user.first_name|first|upper }}
+                                </span>
+                            </div>
+                            <a href="{% url 'accounts:account_settings' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200">
+                                <i class="fas fa-cog"></i>
+                            </a>
+                            <a href="{% url 'accounts:logout' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200">
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </div>
+                        <!-- Compact view for medium screens -->
+                        <div class="lg:hidden flex items-center space-x-2">
                             <div class="w-8 h-8 bg-[var(--primary-action-bg)] rounded-full flex items-center justify-center">
                                 <span class="text-[var(--primary-action-text)] text-sm font-semibold">
                                     {{ user.first_name|first|upper }}
@@ -60,14 +77,14 @@
                             </a>
                         </div>
                     {% else %}
-                        <a href="{% url 'accounts:login' %}" class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200">
+                        <a href="{% url 'accounts:login' %}" class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap">
                             Sign In
                         </a>
                     {% endif %}
                 </div>
 
                 <!-- Mobile menu button -->
-                <div class="md:hidden">
+                <div class="md:hidden ml-4">
                     <button type="button" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200" onclick="toggleMobileMenu()">
                         <i class="fas fa-bars text-xl"></i>
                     </button>
@@ -79,6 +96,9 @@
                 <div class="flex flex-col space-y-3">
                     <a href="{% url 'pages:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         Home
+                    </a>
+                    <a href="{% url 'pages:templates_overview' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                        Templates
                     </a>
                     {% if user.is_authenticated %}
                     <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">

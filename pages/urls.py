@@ -13,6 +13,13 @@ urlpatterns = [
     path('test-500/', views.test_500, name='test_500'),
     path('test-403/', views.test_403, name='test_403'),
     
+    # Template URLs
+    path('templates/', views.templates_overview_view, name='templates_overview'),
+    path('templates/student-jobs/', views.student_jobs_template_view, name='student_jobs_template'),
+    path('templates/student-revision/', views.student_revision_template_view, name='student_revision_template'),
+    path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),
+    path('templates/create/<str:template_type>/', views.create_from_template_view, name='create_from_template'),
+    
     # Project URLs
     path('projects/', views.project_list_view, name='project_list'),
     path('projects/create/', views.project_create_view, name='project_create'),

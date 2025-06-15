@@ -476,3 +476,115 @@ def delete_completed_tasks_view(request, pk):
     return render(request, 'pages/grid/actions_in_page/clear_completed_tasks.html', {
         'project': project
     })
+
+# Template Views
+
+def templates_overview_view(request):
+    """Display the templates overview page"""
+    return render(request, 'pages/general/general_templates_overview.html')
+
+def student_jobs_template_view(request):
+    """Display the student job application template"""
+    return render(request, 'pages/general/specific_templates/students/student_jobs.html')
+
+def student_revision_template_view(request):
+    """Display the student revision template"""
+    return render(request, 'pages/general/specific_templates/students/student_revision.html')
+
+def professionals_jobs_template_view(request):
+    """Display the professional job application template"""
+    return render(request, 'pages/general/specific_templates/professionals/professionals_jobs.html')
+
+@login_required
+def create_from_template_view(request, template_type):
+    """Create a new project from a template"""
+    if request.method == 'POST':
+        # Template configurations
+        templates = {
+            'student_jobs': {
+                'name': 'Student Job Applications',
+                'rows': [
+                    'Quick Apply (< 30 min)',
+                    'Standard Apply (30 min - 1 hr)', 
+                    'Detailed Apply (1-3 hrs)',
+                    'Major Investment (3+ hrs)'
+                ],
+                'columns': [
+                    'Research',
+                    'Applied', 
+                    'Interview',
+                    'Final Result'
+                ]
+            },
+            'student_revision': {
+                'name': 'Student Revision Planner',
+                'rows': [
+                    'High Priority (< 1 hour)',
+                    'Medium Priority (1-3 hours)',
+                    'Study Sessions (3-5 hours)',
+                    'Deep Dive (5+ hours)'
+                ],
+                'columns': [
+                    'Not Started',
+                    'In Progress',
+                    'Review Needed',
+                    'Exam Ready'
+                ]
+            },
+            'professionals_jobs': {
+                'name': 'Professional Career Tracker',
+                'rows': [
+                    'Quick Connections (< 30 min)',
+                    'Strategic Outreach (1-2 hrs)',
+                    'Major Opportunity (3+ hrs)'
+                ],
+                'columns': [
+                    'Networking',
+                    'Applications',
+                    'Interviews', 
+                    'Negotiations'
+                ]
+            }
+        }
+        
+        if template_type not in templates:
+            messages.error(request, 'Invalid template type.')
+            return redirect('pages:templates_overview')
+        
+        template_config = templates[template_type]
+        
+        # Create the project
+        project = Project.objects.create(
+            user=request.user,
+            name=template_config['name']
+        )
+        
+        # Create the category column
+        category_col = ColumnHeader.objects.create(
+            project=project,
+            name='Time / Category',
+            order=0,
+            is_category_column=True
+        )
+        
+        # Create columns
+        for i, col_name in enumerate(template_config['columns']):
+            ColumnHeader.objects.create(
+                project=project,
+                name=col_name,
+                order=i + 1
+            )
+        
+        # Create rows
+        for i, row_name in enumerate(template_config['rows']):
+            RowHeader.objects.create(
+                project=project,
+                name=row_name,
+                order=i
+            )
+        
+        logger.info(f'User {request.user.username} created project from template: {template_type}')
+        messages.success(request, f'Project "{project.name}" created from template successfully!')
+        return redirect('pages:project_grid', pk=project.pk)
+    
+    return redirect('pages:templates_overview')
