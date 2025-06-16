@@ -459,3 +459,45 @@ INFO 2025-06-16 07:32:36,237 basehttp 28711 6192263168 "GET /tasks/53/edit/ HTTP
 INFO 2025-06-16 07:32:42,211 basehttp 28711 6192263168 "POST /tasks/53/edit/ HTTP/1.1" 200 58
 INFO 2025-06-16 07:32:42,247 basehttp 28711 6192263168 "GET /projects/1/ HTTP/1.1" 200 157743
 INFO 2025-06-16 07:32:42,264 basehttp 28711 6192263168 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:35:38,025 autoreload 28832 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:35:39,826 basehttp 28832 6191919104 "GET /projects/1/ HTTP/1.1" 200 157664
+INFO 2025-06-16 07:35:39,842 basehttp 28832 6191919104 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:36:02,383 views 28832 6191919104 User None created task: "Consider whether on the jobs one you have two - one more focused on specific roles and one more focused on general applications" in project: Toad
+INFO 2025-06-16 07:36:02,386 basehttp 28832 6191919104 "POST /projects/1/tasks/create/3/12/ HTTP/1.1" 200 2851
+INFO 2025-06-16 07:37:08,896 basehttp 28832 6191919104 "GET /projects/1/ HTTP/1.1" 200 160743
+INFO 2025-06-16 07:37:08,915 basehttp 28832 6191919104 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:37:29,750 basehttp 28832 6191919104 "GET /projects/1/ HTTP/1.1" 200 161058
+INFO 2025-06-16 07:40:56,475 basehttp 28832 6191919104 "GET /projects/1/ HTTP/1.1" 200 161103
+INFO 2025-06-16 07:40:56,495 basehttp 28832 6191919104 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:41:09,968 basehttp 28832 6191919104 "GET /projects/1/ HTTP/1.1" 200 160833
+INFO 2025-06-16 07:41:29,399 views 28832 6191919104 User None created task: "Add a gitignore file" in project: Toad
+INFO 2025-06-16 07:41:29,400 basehttp 28832 6191919104 "POST /projects/1/tasks/create/2/4/ HTTP/1.1" 200 2637
+INFO 2025-06-16 07:41:33,691 views 28832 6191919104 User None deleted task: "Add a gitignore file" from project: Toad
+INFO 2025-06-16 07:41:33,694 basehttp 28832 6191919104 "POST /tasks/61/delete/ HTTP/1.1" 200 0
+INFO 2025-06-16 07:41:37,950 views 28832 6191919104 User None created task: "Add a gitignore file" in project: Toad
+INFO 2025-06-16 07:41:37,951 basehttp 28832 6191919104 "POST /projects/1/tasks/create/2/4/ HTTP/1.1" 200 2637
+INFO 2025-06-16 07:41:43,223 views 28832 6191919104 User None created task: "Test" in project: Toad
+INFO 2025-06-16 07:41:43,225 basehttp 28832 6191919104 "POST /projects/1/tasks/create/2/4/ HTTP/1.1" 200 2605
+INFO 2025-06-16 07:41:47,199 views 28832 6191919104 User None deleted task: "Test" from project: Toad
+INFO 2025-06-16 07:41:47,201 basehttp 28832 6191919104 "POST /tasks/63/delete/ HTTP/1.1" 200 0
+INFO 2025-06-16 07:43:38,942 autoreload 29048 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:43:41,110 basehttp 29048 6132690944 "GET /projects/1/ HTTP/1.1" 200 162753
+INFO 2025-06-16 07:43:41,122 basehttp 29048 6132690944 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:43:43,305 views 29048 6132690944 User None created task: "Test" in project: Toad
+INFO 2025-06-16 07:43:43,306 basehttp 29048 6132690944 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2605
+INFO 2025-06-16 07:43:47,948 basehttp 29048 6132690944 "GET /tasks/64/edit/ HTTP/1.1" 200 2738
+INFO 2025-06-16 07:43:57,275 basehttp 29048 6132690944 "POST /tasks/64/edit/ HTTP/1.1" 200 58
+INFO 2025-06-16 07:43:57,313 basehttp 29048 6132690944 "GET /projects/1/ HTTP/1.1" 200 165514
+INFO 2025-06-16 19:20:56,071 autoreload 29734 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:24:53,929 autoreload 29734 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-16 19:27:37,123 autoreload 30293 8681377600 Watching for file changes with StatReloader
+ERROR 2025-06-16 19:27:39,776 basehttp 30293 6158397440 "GET /projects/1/ HTTP/1.1" 500 59
+ERROR 2025-06-16 19:27:51,814 basehttp 30293 6158397440 "GET /projects/1/ HTTP/1.1" 500 59
+INFO 2025-06-16 19:28:06,697 autoreload 30293 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-16 19:28:06,951 autoreload 30364 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:28:10,174 basehttp 30364 6168260608 "GET /projects/1/ HTTP/1.1" 200 165514
+INFO 2025-06-16 19:28:10,186 basehttp 30364 6185086976 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-16 19:28:10,186 basehttp 30364 6168260608 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:28:10,187 basehttp 30364 6201913344 "GET /static/js/general/general.js HTTP/1.1" 304 0
+INFO 2025-06-16 19:28:10,195 basehttp 30364 6201913344 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:28:10,195 basehttp 30364 6168260608 "GET /static/css/dist/styles.css HTTP/1.1" 304 0

@@ -135,11 +135,11 @@
                     {% for col_header in column_headers %}
                     <th class="p-4 border-b border-r border-[var(--border-color)] text-left text-sm font-semibold whitespace-nowrap bg-[var(--grid-header-bg)] w-64 {% if col_header.is_category_column %}sticky left-0 z-20{% endif %}">
                         <div class="flex items-center justify-between">
-                            <span class="text-[var(--title-text)] truncate">{{ col_header.name }}</span>
                             {% if not col_header.is_category_column %}
+                                <span class="text-[var(--title-text)] truncate">{{ col_header.name }}</span>
                                 <div class="flex space-x-1 ml-2">
                                     <button type="button"
-                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors" 
+                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer" 
                                             title="Edit column"
                                             hx-get="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_header.pk %}"
                                             hx-target="#modal-content"
@@ -148,7 +148,7 @@
                                         <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                     </button>
                                     <button type="button"
-                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors" 
+                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer" 
                                             title="Delete column"
                                             hx-get="{% url 'pages:column_delete' project_pk=project.pk col_pk=col_header.pk %}"
                                             hx-target="#modal-content"
@@ -172,7 +172,7 @@
                             <span>{{ row_h.name }}</span>
                             <div class="flex space-x-1 ml-2">
                                 <button type="button"
-                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors" 
+                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                                         title="Edit row"
                                         hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
                                         hx-target="#modal-content"
@@ -181,7 +181,7 @@
                                     <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                 </button>
                                 <button type="button"
-                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors" 
+                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                                         title="Delete row"
                                         hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
                                         hx-target="#modal-content"
@@ -214,19 +214,19 @@
                                   hx-swap="beforeend"
                                   hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
                                   _="on htmx:beforeRequest
-                                       add .opacity-50 to closest <form/>
+                                       add .opacity-50 to me
                                      end
                                      
                                      on htmx:afterRequest(detail)
-                                       remove .opacity-50 from closest <form/>
+                                       remove .opacity-50 from me
                                        if detail.successful
-                                         set input to closest <form/> querySelector('input[name=text]')
-                                         set input.value to ''
-                                         call input.focus()
-                                         set errorDiv to closest <form/> querySelector('.error-message')
+                                         set textInput to me querySelector('input[name=text]')
+                                         set textInput.value to ''
+                                         call textInput.focus()
+                                         set errorDiv to me querySelector('.error-message')
                                          set errorDiv.innerHTML to ''
                                        else
-                                         set errorDiv to closest <form/> querySelector('.error-message')
+                                         set errorDiv to me querySelector('.error-message')
                                          set errorDiv.innerHTML to detail.xhr.response
                                        end
                                      end">
