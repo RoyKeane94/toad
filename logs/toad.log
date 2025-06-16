@@ -255,3 +255,53 @@ INFO 2025-06-15 19:16:31,539 basehttp 26729 6193278976 "GET /tasks/57/edit/ HTTP
 INFO 2025-06-15 19:19:17,747 basehttp 26729 6193278976 "GET /projects/1/ HTTP/1.1" 200 154794
 INFO 2025-06-15 19:19:17,773 basehttp 26729 6193278976 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
 INFO 2025-06-15 19:19:19,562 basehttp 26729 6193278976 "GET /tasks/57/edit/ HTTP/1.1" 200 2782
+INFO 2025-06-16 06:57:20,651 autoreload 27631 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 06:57:24,241 basehttp 27631 6126448640 "GET /templates/ HTTP/1.1" 200 22243
+INFO 2025-06-16 06:57:24,252 basehttp 27631 6143275008 "GET /static/js/general/general.js HTTP/1.1" 304 0
+INFO 2025-06-16 06:57:24,252 basehttp 27631 6126448640 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-16 06:57:24,256 basehttp 27631 6143275008 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-16 06:57:24,256 basehttp 27631 6126448640 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 06:57:25,766 basehttp 27631 6126448640 "GET /templates/student-jobs/ HTTP/1.1" 200 21154
+INFO 2025-06-16 06:57:29,532 views 27631 6126448640 User None created project from template: student_jobs
+INFO 2025-06-16 06:57:29,533 basehttp 27631 6126448640 "POST /templates/create/student_jobs/ HTTP/1.1" 302 0
+INFO 2025-06-16 06:57:29,556 basehttp 27631 6126448640 "GET /projects/4/ HTTP/1.1" 200 95925
+INFO 2025-06-16 06:57:29,568 basehttp 27631 6126448640 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-16 07:07:42,890 autoreload 27631 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-06-16 07:07:43,127 autoreload 27679 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:07:57,408 autoreload 27679 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-06-16 07:07:57,574 autoreload 27700 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:07:59,805 basehttp 27700 6191280128 "GET /projects/ HTTP/1.1" 200 17769
+INFO 2025-06-16 07:07:59,859 basehttp 27700 6191280128 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 304 0
+INFO 2025-06-16 07:08:04,143 basehttp 27700 6191280128 "GET /projects/ HTTP/1.1" 200 17769
+INFO 2025-06-16 07:08:05,277 basehttp 27700 6191280128 "GET /projects/ HTTP/1.1" 200 17769
+INFO 2025-06-16 07:08:07,561 basehttp 27700 6191280128 "GET /projects/4/delete/ HTTP/1.1" 200 13594
+INFO 2025-06-16 07:08:08,308 basehttp 27700 6191280128 "POST /projects/4/delete/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:08:08,319 basehttp 27700 6191280128 "GET /projects/ HTTP/1.1" 200 15976
+INFO 2025-06-16 07:08:09,286 basehttp 27700 6191280128 "GET /projects/1/ HTTP/1.1" 200 154794
+INFO 2025-06-16 07:08:13,233 basehttp 27700 6191280128 "GET /tasks/18/edit/ HTTP/1.1" 200 2746
+INFO 2025-06-16 07:08:28,595 basehttp 27700 6191280128 "POST /tasks/18/edit/ HTTP/1.1" 200 58
+INFO 2025-06-16 07:08:28,625 basehttp 27700 6191280128 "GET /projects/1/ HTTP/1.1" 200 154912
+INFO 2025-06-16 07:09:09,003 basehttp 27700 6191280128 "GET /projects/ HTTP/1.1" 200 15976
+INFO 2025-06-16 07:09:10,029 basehttp 27700 6191280128 "GET /projects/create/ HTTP/1.1" 200 13707
+INFO 2025-06-16 07:09:12,313 views 27700 6191280128 User None created project: Test
+INFO 2025-06-16 07:09:12,314 basehttp 27700 6191280128 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:09:12,330 basehttp 27700 6191280128 "GET /projects/5/ HTTP/1.1" 200 80236
+INFO 2025-06-16 07:09:16,863 basehttp 27700 6191280128 "GET /projects/5/delete/ HTTP/1.1" 200 13554
+INFO 2025-06-16 07:09:17,992 basehttp 27700 6191280128 "POST /projects/5/delete/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:09:18,002 basehttp 27700 6191280128 "GET /projects/ HTTP/1.1" 200 15976
+INFO 2025-06-16 07:09:39,373 autoreload 27700 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-06-16 07:09:39,636 autoreload 27749 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:09:40,936 basehttp 27749 6155808768 "GET /projects/create/ HTTP/1.1" 200 13707
+INFO 2025-06-16 07:09:43,305 views 27749 6155808768 User None created project: Test
+INFO 2025-06-16 07:09:43,306 basehttp 27749 6155808768 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:09:43,326 basehttp 27749 6155808768 "GET /projects/6/ HTTP/1.1" 200 80254
+INFO 2025-06-16 07:09:55,383 views 27749 6155808768 User None created task: "Test" in project: Test
+INFO 2025-06-16 07:09:55,387 basehttp 27749 6155808768 "POST /projects/6/tasks/create/24/29/ HTTP/1.1" 200 2605
+INFO 2025-06-16 07:11:50,940 autoreload 27749 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-16 07:11:51,170 autoreload 27785 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:12:43,069 autoreload 27785 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-16 07:12:43,319 autoreload 28058 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:13:11,841 autoreload 28058 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-16 07:13:12,095 autoreload 28068 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:14:20,188 autoreload 28068 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-16 07:14:20,436 autoreload 28084 8681377600 Watching for file changes with StatReloader

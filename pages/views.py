@@ -72,14 +72,14 @@ def project_create_view(request):
                 order=0, 
                 is_category_column=True
             )
-            ColumnHeader.objects.create(project=project, name='To Do', order=1)
-            ColumnHeader.objects.create(project=project, name='In Progress', order=2)
-            ColumnHeader.objects.create(project=project, name='Done', order=3)
+            ColumnHeader.objects.create(project=project, name='Column 1 (Rename)', order=1)
+            ColumnHeader.objects.create(project=project, name='Column 2 (Rename)', order=2)
+            ColumnHeader.objects.create(project=project, name='Column 3 (Rename)', order=3)
 
-            RowHeader.objects.create(project=project, name='Less than 30 minutes', order=0)
-            RowHeader.objects.create(project=project, name='30 minutes to 1 hour', order=1)
-            RowHeader.objects.create(project=project, name='1 to 3 hours', order=2)
-            RowHeader.objects.create(project=project, name='More than 3 hours', order=3)
+            RowHeader.objects.create(project=project, name='Row 1 (Rename)', order=0)
+            RowHeader.objects.create(project=project, name='Row 2 (Rename)', order=1)
+            RowHeader.objects.create(project=project, name='Row 3 (Rename)', order=2)
+            RowHeader.objects.create(project=project, name='Row 4 (Rename)', order=3)
             
             logger.info(f'User {request.user.username} created project: {project.name}')
             messages.success(request, f'Project "{project.name}" created successfully!')

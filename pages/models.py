@@ -63,3 +63,59 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['created_at']
+
+class Template(models.Model):
+    CATEGORY_CHOICES = [
+        ('student', 'Student'),
+        ('professional', 'Professional'),
+        ('personal', 'Personal'),
+        ('event', 'Event'),
+        ('everyday', 'Everyday'),
+        ('other', 'Other'),
+    ]
+    
+    name = models.CharField(max_length=100)
+    description = models.TextField(blank=True, null=True)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='other')
+    icon = models.CharField(max_length=50, default='fas fa-project-diagram', help_text='FontAwesome icon class')
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['category', 'name']
+
+
+class TemplateRowHeader(models.Model):
+    template = models.ForeignKey(Template, on_delete=models.CASCADE, related_name='row_headers')
+    name = models.CharField(max_length=100)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'created_at']
+        unique_together = ['template', 'order']
+
+    def __str__(self):
+        return f"{self.template.name} - {self.name}"
+
+
+class TemplateColumnHeader(models.Model):
+    template = models.ForeignKey(Template, on_delete=models.CASCADE, related_name='column_headers')
+    name = models.CharField(max_length=100)
+    order = models.PositiveIntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['order', 'created_at']
+        unique_together = ['template', 'order']
+
+    def __str__(self):
+        return f"{self.template.name} - {self.name}"
+    
+    
