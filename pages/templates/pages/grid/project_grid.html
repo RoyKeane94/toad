@@ -50,7 +50,7 @@
             <div class="relative" id="project-switcher-container">
                 <button type="button" 
                         id="project-switcher-btn"
-                        class="group flex items-center space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30">
+                        class="group flex items-center space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
                     <i class="fas fa-exchange-alt text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
                     <span class="text-sm text-[var(--text-primary)] font-medium">Switch Project</span>
                     <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="switcher-chevron"></i>
@@ -66,7 +66,7 @@
                         <div class="space-y-1 max-h-60 overflow-y-auto">
                 {% for p in projects %}
                                 <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                                   class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
+                                   class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 cursor-pointer {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
                                     <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br {% if p.pk == project.pk %}from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)]{% else %}from-gray-400 to-gray-500{% endif %} shadow-sm">
                                         <i class="fas fa-project-diagram text-white text-xs"></i>
                                     </div>
@@ -90,7 +90,7 @@
                     <!-- Back to Projects -->
                     <div class="px-3">
                         <a href="{% url 'pages:project_list' %}" 
-                           class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150">
+                           class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
                             <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br from-gray-400 to-gray-500 shadow-sm">
                                 <i class="fas fa-arrow-left text-white text-xs"></i>
                             </div>

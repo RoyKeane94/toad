@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, update_session_auth_hash
+from django.contrib.auth import login, update_session_auth_hash, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import FormView
@@ -60,6 +60,16 @@ class RegisterView(FormView):
         if request.user.is_authenticated:
             return redirect(self.success_url)
         return super().dispatch(request, *args, **kwargs)
+
+@login_required
+def logout_view(request):
+    """
+    Custom logout view that handles both GET and POST requests
+    """
+    user_name = request.user.get_short_name()
+    logout(request)
+    messages.success(request, f'You have been logged out successfully. See you later, {user_name}!')
+    return redirect('pages:home')
 
 @login_required
 def account_settings_view(request):

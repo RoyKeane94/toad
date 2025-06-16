@@ -77,7 +77,6 @@ class Template(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(blank=True, null=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='other')
-    icon = models.CharField(max_length=50, default='fas fa-project-diagram', help_text='FontAwesome icon class')
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

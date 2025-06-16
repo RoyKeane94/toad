@@ -305,3 +305,157 @@ INFO 2025-06-16 07:13:11,841 autoreload 28058 8681377600 /Users/tombarratt/Deskt
 INFO 2025-06-16 07:13:12,095 autoreload 28068 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-16 07:14:20,188 autoreload 28068 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
 INFO 2025-06-16 07:14:20,436 autoreload 28084 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:17:04,067 autoreload 28185 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:17:07,720 basehttp 28185 6194950144 "GET /admin HTTP/1.1" 301 0
+INFO 2025-06-16 07:17:07,735 basehttp 28185 6211776512 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:17:07,752 basehttp 28185 6211776512 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4778
+INFO 2025-06-16 07:17:07,770 basehttp 28185 6228602880 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-06-16 07:17:07,771 basehttp 28185 6194950144 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-06-16 07:17:07,771 basehttp 28185 6279081984 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-06-16 07:17:07,771 basehttp 28185 6245429248 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-06-16 07:17:07,772 basehttp 28185 6211776512 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-06-16 07:17:07,772 basehttp 28185 6262255616 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-06-16 07:17:07,773 basehttp 28185 6211776512 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-06-16 07:17:07,776 basehttp 28185 6211776512 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-06-16 07:17:17,146 basehttp 28185 6211776512 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3887
+INFO 2025-06-16 07:17:21,341 basehttp 28185 6211776512 "POST /admin/login/?next=/admin/ HTTP/1.1" 200 3887
+INFO 2025-06-16 07:17:46,130 autoreload 28245 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:17:50,458 basehttp 28245 6158266368 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:17:50,475 basehttp 28245 6158266368 "GET /admin/ HTTP/1.1" 200 11410
+INFO 2025-06-16 07:17:50,489 basehttp 28245 6158266368 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-06-16 07:17:50,492 basehttp 28245 6158266368 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-06-16 07:17:50,492 basehttp 28245 6175092736 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-06-16 07:17:57,772 basehttp 28245 6175092736 "GET /admin/pages/template/ HTTP/1.1" 200 11455
+INFO 2025-06-16 07:17:57,789 basehttp 28245 6175092736 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-06-16 07:17:57,790 basehttp 28245 6208745472 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-06-16 07:17:57,792 basehttp 28245 6225571840 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-06-16 07:17:57,793 basehttp 28245 6242398208 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-06-16 07:17:57,794 basehttp 28245 6208745472 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-06-16 07:17:57,794 basehttp 28245 6175092736 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-06-16 07:17:57,796 basehttp 28245 6225571840 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-06-16 07:17:57,797 basehttp 28245 6158266368 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:17:57,800 basehttp 28245 6191919104 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-06-16 07:17:57,801 basehttp 28245 6242398208 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-06-16 07:17:57,803 basehttp 28245 6242398208 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-06-16 07:17:57,815 basehttp 28245 6242398208 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-06-16 07:18:07,231 basehttp 28245 6242398208 "GET /templates/ HTTP/1.1" 200 22243
+INFO 2025-06-16 07:18:13,290 basehttp 28245 6242398208 "GET /templates/student-jobs/ HTTP/1.1" 200 21154
+INFO 2025-06-16 07:18:16,737 basehttp 28245 6242398208 "GET /admin/pages/template/add/ HTTP/1.1" 200 15124
+INFO 2025-06-16 07:18:16,750 basehttp 28245 6242398208 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-06-16 07:18:16,752 basehttp 28245 6158266368 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-06-16 07:18:16,753 basehttp 28245 6242398208 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-06-16 07:18:16,754 basehttp 28245 6191919104 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:18:16,755 basehttp 28245 6242398208 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-06-16 07:19:06,981 basehttp 28245 6242398208 "POST /admin/pages/template/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:19:06,999 basehttp 28245 6242398208 "GET /admin/pages/template/ HTTP/1.1" 200 12963
+INFO 2025-06-16 07:19:07,015 basehttp 28245 6242398208 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:19:18,843 autoreload 28245 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-16 07:19:19,097 autoreload 28301 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:19:33,073 autoreload 28339 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:19:35,627 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 11528
+INFO 2025-06-16 07:19:35,639 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:19:36,904 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14663
+INFO 2025-06-16 07:19:36,924 basehttp 28339 6187888640 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-06-16 07:19:36,926 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:19:52,621 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:19:52,635 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14951
+INFO 2025-06-16 07:19:52,649 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:19:58,434 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14867
+INFO 2025-06-16 07:19:58,449 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:01,595 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 12879
+INFO 2025-06-16 07:20:01,610 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:02,906 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/1/change/ HTTP/1.1" 200 14941
+INFO 2025-06-16 07:20:02,924 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:05,082 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/1/change/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:20:05,097 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 13122
+INFO 2025-06-16 07:20:05,111 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:07,072 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14663
+INFO 2025-06-16 07:20:07,092 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:13,760 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:20:13,776 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 13414
+INFO 2025-06-16 07:20:13,791 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:24,646 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14663
+INFO 2025-06-16 07:20:24,664 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:33,460 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:20:33,474 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14955
+INFO 2025-06-16 07:20:33,489 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:52,619 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:20:52,632 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/add/ HTTP/1.1" 200 14953
+INFO 2025-06-16 07:20:52,646 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:20:57,382 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:20:57,401 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 14356
+INFO 2025-06-16 07:20:57,414 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:21:05,443 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/ HTTP/1.1" 200 12332
+INFO 2025-06-16 07:21:05,460 basehttp 28339 6171062272 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-06-16 07:21:06,458 basehttp 28339 6171062272 "POST /admin/pages/templaterowheader/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:21:06,470 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 11678
+INFO 2025-06-16 07:21:06,480 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:21:07,204 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/ HTTP/1.1" 200 11549
+INFO 2025-06-16 07:21:07,224 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:21:08,373 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/add/ HTTP/1.1" 200 14687
+INFO 2025-06-16 07:21:08,389 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:21:12,171 basehttp 28339 6171062272 "POST /admin/pages/templatecolumnheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:21:12,187 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/add/ HTTP/1.1" 200 14978
+INFO 2025-06-16 07:21:12,204 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:22:22,219 basehttp 28339 6171062272 "POST /admin/pages/templatecolumnheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:22:22,236 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/ HTTP/1.1" 200 13459
+INFO 2025-06-16 07:22:22,249 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:22:24,604 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/add/ HTTP/1.1" 200 14687
+INFO 2025-06-16 07:22:24,620 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:22:31,125 basehttp 28339 6171062272 "POST /admin/pages/templatecolumnheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:22:31,141 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/add/ HTTP/1.1" 200 14988
+INFO 2025-06-16 07:22:31,155 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:22:52,389 basehttp 28339 6171062272 "POST /admin/pages/templatecolumnheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:22:52,405 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/add/ HTTP/1.1" 200 14986
+INFO 2025-06-16 07:22:52,419 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:23:24,506 basehttp 28339 6171062272 "POST /admin/pages/templatecolumnheader/add/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:23:24,523 basehttp 28339 6171062272 "GET /admin/pages/templatecolumnheader/ HTTP/1.1" 200 14407
+INFO 2025-06-16 07:23:24,538 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:23:28,373 basehttp 28339 6171062272 "GET /admin/pages/templaterowheader/ HTTP/1.1" 200 11528
+INFO 2025-06-16 07:23:28,391 basehttp 28339 6171062272 "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+INFO 2025-06-16 07:26:18,891 basehttp 28339 6171062272 "GET /projects/ HTTP/1.1" 200 13370
+INFO 2025-06-16 07:26:40,984 basehttp 28339 6171062272 "GET /templates/ HTTP/1.1" 200 22243
+INFO 2025-06-16 07:26:46,330 basehttp 28339 6171062272 "GET /projects/create/ HTTP/1.1" 200 13707
+INFO 2025-06-16 07:26:50,882 views 28339 6171062272 User None created project: Test
+INFO 2025-06-16 07:26:50,883 basehttp 28339 6171062272 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:26:50,901 basehttp 28339 6171062272 "GET /projects/7/ HTTP/1.1" 200 78522
+INFO 2025-06-16 07:28:28,112 basehttp 28339 6171062272 "GET /projects/7/ HTTP/1.1" 200 78552
+INFO 2025-06-16 07:29:09,049 autoreload 28627 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:29:11,194 basehttp 28627 6129676288 "GET /projects/7/ HTTP/1.1" 200 78552
+INFO 2025-06-16 07:29:20,784 basehttp 28627 6129676288 "GET /projects/7/ HTTP/1.1" 200 78552
+INFO 2025-06-16 07:29:20,804 basehttp 28627 6163329024 "GET /static/js/grid/grid.js HTTP/1.1" 200 8252
+INFO 2025-06-16 07:29:20,804 basehttp 28627 6129676288 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-16 07:29:20,805 basehttp 28627 6146502656 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-16 07:29:20,909 basehttp 28627 6163329024 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 1463
+INFO 2025-06-16 07:29:20,910 basehttp 28627 6146502656 "GET /static/css/dist/styles.css HTTP/1.1" 200 39673
+INFO 2025-06-16 07:29:21,140 basehttp 28627 6146502656 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+WARNING 2025-06-16 07:29:59,122 base 28627 6146502656 Method Not Allowed (GET): /accounts/logout/
+WARNING 2025-06-16 07:29:59,125 log 28627 6146502656 Method Not Allowed: /accounts/logout/
+WARNING 2025-06-16 07:29:59,125 basehttp 28627 6146502656 "GET /accounts/logout/ HTTP/1.1" 405 0
+INFO 2025-06-16 07:31:05,096 autoreload 28627 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-16 07:31:05,363 autoreload 28689 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:31:12,759 basehttp 28689 6160543744 "GET /projects/7/ HTTP/1.1" 200 78567
+INFO 2025-06-16 07:31:12,774 basehttp 28689 6160543744 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+WARNING 2025-06-16 07:31:15,823 base 28689 6160543744 Method Not Allowed (GET): /accounts/logout/
+WARNING 2025-06-16 07:31:15,825 log 28689 6160543744 Method Not Allowed: /accounts/logout/
+WARNING 2025-06-16 07:31:15,825 basehttp 28689 6160543744 "GET /accounts/logout/ HTTP/1.1" 405 0
+INFO 2025-06-16 07:31:26,864 autoreload 28689 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-06-16 07:31:27,093 autoreload 28711 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 07:31:32,897 basehttp 28711 6192263168 "GET /projects/7/ HTTP/1.1" 200 78567
+INFO 2025-06-16 07:31:32,911 basehttp 28711 6192263168 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:31:35,291 basehttp 28711 6192263168 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:31:35,296 basehttp 28711 6192263168 "GET / HTTP/1.1" 200 10906
+INFO 2025-06-16 07:31:36,621 basehttp 28711 6192263168 "GET /accounts/login/ HTTP/1.1" 200 17436
+INFO 2025-06-16 07:31:50,833 basehttp 28711 6192263168 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:31:50,839 basehttp 28711 6192263168 "GET /projects/ HTTP/1.1" 200 17748
+INFO 2025-06-16 07:31:50,863 basehttp 28711 6192263168 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 07:31:53,516 basehttp 28711 6192263168 "GET /projects/6/delete/ HTTP/1.1" 200 13554
+INFO 2025-06-16 07:31:54,236 basehttp 28711 6192263168 "POST /projects/6/delete/ HTTP/1.1" 302 0
+INFO 2025-06-16 07:31:54,247 basehttp 28711 6192263168 "GET /projects/ HTTP/1.1" 200 15976
+INFO 2025-06-16 07:31:55,422 basehttp 28711 6192263168 "GET /projects/1/ HTTP/1.1" 200 154972
+INFO 2025-06-16 07:32:25,502 views 28711 6192263168 User None created task: "Come up with brand messaging" in project: Toad
+INFO 2025-06-16 07:32:25,504 basehttp 28711 6192263168 "POST /projects/1/tasks/create/4/12/ HTTP/1.1" 200 2653
+INFO 2025-06-16 07:32:36,237 basehttp 28711 6192263168 "GET /tasks/53/edit/ HTTP/1.1" 200 2786
+INFO 2025-06-16 07:32:42,211 basehttp 28711 6192263168 "POST /tasks/53/edit/ HTTP/1.1" 200 58
+INFO 2025-06-16 07:32:42,247 basehttp 28711 6192263168 "GET /projects/1/ HTTP/1.1" 200 157743
+INFO 2025-06-16 07:32:42,264 basehttp 28711 6192263168 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
