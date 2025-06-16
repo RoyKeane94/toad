@@ -75,3 +75,48 @@
 .project-switcher-dropdown {
     transition: opacity 0.2s ease-out, transform 0.2s ease-out;
 }
+
+/* Custom Validation Styling */
+/* Hide default browser validation bubble */
+input:invalid {
+    box-shadow: none;
+}
+
+/* Custom validation styling */
+.custom-validation-error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    margin-top: 4px;
+    padding: 8px 12px;
+    background: var(--container-bg);
+    border: 1px solid var(--delete-button-bg);
+    border-radius: 6px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
+    color: var(--delete-button-bg);
+    display: flex;
+    align-items: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.custom-validation-error::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 12px;
+    width: 8px;
+    height: 8px;
+    background: var(--container-bg);
+    border-left: 1px solid var(--delete-button-bg);
+    border-top: 1px solid var(--delete-button-bg);
+    transform: rotate(45deg);
+}
+
+/* Style invalid inputs */
+input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--delete-button-bg);
+    box-shadow: 0 0 0 1px var(--delete-button-bg);
+}

@@ -186,7 +186,7 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             if request.headers.get('HX-Request'):
                 errors = form.errors.get('text', ['An error occurred'])
                 return HttpResponse(
-                    f'<div class="text-red-600 text-sm">{errors[0]}</div>',
+                    f'<div class="text-[var(--delete-button-bg)] text-sm bg-red-50 border border-red-200 rounded-md px-3 py-2 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i>{errors[0]}</div>',
                     status=422
                 )
             messages.error(request, 'Please correct the errors below.')

@@ -501,3 +501,84 @@ INFO 2025-06-16 19:28:10,186 basehttp 30364 6168260608 "GET /static/css/master.c
 INFO 2025-06-16 19:28:10,187 basehttp 30364 6201913344 "GET /static/js/general/general.js HTTP/1.1" 304 0
 INFO 2025-06-16 19:28:10,195 basehttp 30364 6201913344 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-06-16 19:28:10,195 basehttp 30364 6168260608 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:28:30,430 autoreload 30417 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:28:34,284 basehttp 30417 6189297664 "POST /tasks/40/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:28:34,885 basehttp 30417 6189297664 "POST /tasks/62/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:30:05,858 views 30417 6189297664 User None created task: "Test" in project: Toad
+INFO 2025-06-16 19:30:05,875 basehttp 30417 6189297664 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2605
+INFO 2025-06-16 19:30:30,563 autoreload 30417 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-06-16 19:30:30,811 autoreload 30461 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:32:49,136 autoreload 30461 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/forms.py changed, reloading.
+INFO 2025-06-16 19:32:49,412 autoreload 30556 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:33:30,198 autoreload 30556 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/forms.py changed, reloading.
+INFO 2025-06-16 19:33:30,448 autoreload 30582 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:34:26,546 basehttp 30582 6189461504 "POST /tasks/13/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:37:02,711 basehttp 30582 6189461504 "GET /projects/1/ HTTP/1.1" 200 171381
+INFO 2025-06-16 19:37:18,891 autoreload 30673 8681377600 Watching for file changes with StatReloader
+WARNING 2025-06-16 19:37:22,742 log 30673 6198947840 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-16 19:37:22,742 basehttp 30673 6198947840 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 10187
+INFO 2025-06-16 19:38:31,343 basehttp 30673 6198947840 "GET /projects/1/ HTTP/1.1" 200 171381
+INFO 2025-06-16 19:38:31,359 basehttp 30673 6198947840 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-16 19:38:31,360 basehttp 30673 6232600576 "GET /static/js/grid/grid.js HTTP/1.1" 200 8252
+INFO 2025-06-16 19:38:31,360 basehttp 30673 6215774208 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-16 19:38:31,514 basehttp 30673 6215774208 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 2562
+INFO 2025-06-16 19:38:31,514 basehttp 30673 6232600576 "GET /static/css/dist/styles.css HTTP/1.1" 200 39673
+INFO 2025-06-16 19:38:31,584 basehttp 30673 6232600576 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-16 19:39:24,805 autoreload 30883 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:40:18,318 autoreload 30923 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:40:20,039 basehttp 30923 6169079808 "GET /projects/1/ HTTP/1.1" 200 198688
+INFO 2025-06-16 19:40:20,056 basehttp 30923 6169079808 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:41:40,629 basehttp 30923 6169079808 "GET /projects/1/ HTTP/1.1" 200 169200
+INFO 2025-06-16 19:41:40,645 basehttp 30923 6169079808 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:41:42,349 basehttp 30923 6169079808 "POST /tasks/65/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:41:43,140 basehttp 30923 6169079808 "POST /tasks/65/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:44:37,557 basehttp 30923 6169079808 "GET /projects/1/ HTTP/1.1" 200 169200
+INFO 2025-06-16 19:44:37,573 basehttp 30923 6169079808 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:44:40,646 views 30923 6169079808 User None created task: "Tester" in project: Toad
+INFO 2025-06-16 19:44:40,649 basehttp 30923 6169079808 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2609
+INFO 2025-06-16 19:44:45,320 views 30923 6169079808 User None deleted task: "Tester" from project: Toad
+INFO 2025-06-16 19:44:45,323 basehttp 30923 6169079808 "POST /tasks/66/delete/ HTTP/1.1" 200 0
+INFO 2025-06-16 19:44:48,503 views 30923 6169079808 User None deleted task: "Test" from project: Toad
+INFO 2025-06-16 19:44:48,506 basehttp 30923 6169079808 "POST /tasks/65/delete/ HTTP/1.1" 200 0
+INFO 2025-06-16 19:45:58,081 autoreload 31186 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-16 19:46:05,037 basehttp 31186 6169915392 "GET /projects/1/ HTTP/1.1" 200 166517
+INFO 2025-06-16 19:46:05,052 basehttp 31186 6203568128 "GET /static/js/grid/grid.js HTTP/1.1" 200 9322
+INFO 2025-06-16 19:46:05,052 basehttp 31186 6186741760 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-16 19:46:05,052 basehttp 31186 6169915392 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-16 19:46:05,132 basehttp 31186 6203568128 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 2562
+INFO 2025-06-16 19:46:05,133 basehttp 31186 6169915392 "GET /static/css/dist/styles.css HTTP/1.1" 200 39673
+INFO 2025-06-16 19:46:05,218 basehttp 31186 6169915392 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-16 19:46:08,104 views 31186 6169915392 User None created task: "test" in project: Toad
+INFO 2025-06-16 19:46:08,106 basehttp 31186 6169915392 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2605
+INFO 2025-06-16 19:47:13,295 views 31186 6169915392 User None deleted task: "test" from project: Toad
+INFO 2025-06-16 19:47:13,298 basehttp 31186 6169915392 "POST /tasks/67/delete/ HTTP/1.1" 200 0
+INFO 2025-06-16 19:47:17,002 basehttp 31186 6169915392 "POST /tasks/64/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:50:43,032 basehttp 31186 6169915392 "GET /projects/1/ HTTP/1.1" 200 172763
+INFO 2025-06-16 19:50:43,045 basehttp 31186 6169915392 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-16 19:50:43,049 basehttp 31186 6169915392 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-16 19:50:45,380 basehttp 31186 6169915392 "POST /tasks/57/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:50:46,082 basehttp 31186 6169915392 "POST /tasks/57/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:50:48,062 views 31186 6169915392 User None created task: "Test" in project: Toad
+INFO 2025-06-16 19:50:48,065 basehttp 31186 6169915392 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2717
+INFO 2025-06-16 19:50:51,527 views 31186 6169915392 User None deleted task: "Test" from project: Toad
+INFO 2025-06-16 19:50:51,530 basehttp 31186 6169915392 "POST /tasks/68/delete/ HTTP/1.1" 200 0
+INFO 2025-06-16 19:50:53,029 basehttp 31186 6169915392 "GET /projects/1/rows/2/edit/ HTTP/1.1" 200 2644
+INFO 2025-06-16 19:50:55,662 basehttp 31186 6169915392 "GET /projects/1/rows/2/delete/ HTTP/1.1" 200 2905
+INFO 2025-06-16 19:51:04,273 basehttp 31186 6169915392 "POST /tasks/57/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-16 19:51:05,970 basehttp 31186 6169915392 "GET /projects/3/ HTTP/1.1" 200 82256
+INFO 2025-06-16 19:51:07,485 basehttp 31186 6169915392 "GET /projects/1/ HTTP/1.1" 200 172807
+INFO 2025-06-16 19:51:25,865 basehttp 31186 6169915392 "GET /templates/ HTTP/1.1" 200 22243
+INFO 2025-06-16 19:51:29,936 basehttp 31186 6169915392 "GET /templates/student-jobs/ HTTP/1.1" 200 21154
+INFO 2025-06-16 19:51:38,956 views 31186 6169915392 User None created project from template: student_jobs
+INFO 2025-06-16 19:51:38,957 basehttp 31186 6169915392 "POST /templates/create/student_jobs/ HTTP/1.1" 302 0
+INFO 2025-06-16 19:51:38,973 basehttp 31186 6169915392 "GET /projects/8/ HTTP/1.1" 200 99534
+INFO 2025-06-16 19:51:38,985 basehttp 31186 6169915392 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-16 19:51:47,950 basehttp 31186 6169915392 "GET /projects/8/delete/ HTTP/1.1" 200 13594
+INFO 2025-06-16 19:51:49,008 basehttp 31186 6169915392 "POST /projects/8/delete/ HTTP/1.1" 302 0
+INFO 2025-06-16 19:51:49,024 basehttp 31186 6169915392 "GET /projects/ HTTP/1.1" 200 15976
+INFO 2025-06-16 19:51:50,690 basehttp 31186 6169915392 "GET /projects/1/ HTTP/1.1" 200 172807
+INFO 2025-06-16 19:51:51,948 basehttp 31186 6169915392 "GET /projects/1/clear-completed/ HTTP/1.1" 200 14476
+INFO 2025-06-16 19:51:52,969 basehttp 31186 6169915392 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-06-16 19:51:52,998 basehttp 31186 6169915392 "GET /projects/1/ HTTP/1.1" 200 155323
+INFO 2025-06-16 19:51:57,314 basehttp 31186 6169915392 "GET /projects/ HTTP/1.1" 200 15976
+INFO 2025-06-16 19:51:58,491 basehttp 31186 6169915392 "GET /projects/1/ HTTP/1.1" 200 155323

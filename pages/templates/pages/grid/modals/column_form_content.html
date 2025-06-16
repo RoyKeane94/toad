@@ -17,6 +17,8 @@
           action="{% url 'pages:column_edit' project_pk=project.pk col_pk=column.pk %}"
           hx-post="{% url 'pages:column_edit' project_pk=project.pk col_pk=column.pk %}"
           hx-swap="none"
+          hx-trigger="submit throttle:1s"
+          hx-disabled-elt="this"
           _="on htmx:afterRequest(detail)
              if detail.successful
                trigger closeModal

@@ -7,6 +7,7 @@
 {% block extra_head %}
 <!-- Grid JavaScript -->
 <script src="{% static 'js/grid/grid.js' %}"></script>
+
 {% endblock %}
 
 {% block content %}
@@ -143,7 +144,8 @@
                                             title="Edit column"
                                             hx-get="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_header.pk %}"
                                             hx-target="#modal-content"
-                                            hx-trigger="click"
+                                            hx-trigger="click throttle:500ms"
+                                            hx-disabled-elt="this"
                                             _="on click trigger openModal">
                                         <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                     </button>
@@ -152,7 +154,8 @@
                                             title="Delete column"
                                             hx-get="{% url 'pages:column_delete' project_pk=project.pk col_pk=col_header.pk %}"
                                             hx-target="#modal-content"
-                                            hx-trigger="click"
+                                            hx-trigger="click throttle:500ms"
+                                            hx-disabled-elt="this"
                                             _="on click trigger openModal">
                                         <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
                                     </button>
@@ -176,7 +179,8 @@
                                         title="Edit row"
                                         hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
                                         hx-target="#modal-content"
-                                        hx-trigger="click"
+                                        hx-trigger="click throttle:500ms"
+                                        hx-disabled-elt="this"
                                         _="on click trigger openModal">
                                     <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                 </button>
@@ -185,7 +189,8 @@
                                         title="Delete row"
                                         hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
                                         hx-target="#modal-content"
-                                        hx-trigger="click"
+                                        hx-trigger="click throttle:500ms"
+                                        hx-disabled-elt="this"
                                         _="on click trigger openModal">
                                     <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
                                 </button>
@@ -213,6 +218,8 @@
                                   hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
                                   hx-swap="beforeend"
                                   hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
+                                  hx-trigger="submit throttle:500ms"
+                                  hx-disabled-elt="this"
                                   _="on htmx:beforeRequest
                                        add .opacity-50 to me
                                      end

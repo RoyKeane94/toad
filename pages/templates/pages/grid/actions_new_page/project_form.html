@@ -27,9 +27,12 @@
                 </label>
                 {{ form.name }}
                 {% if form.name.errors %}
-                    <div class="mt-1 text-sm text-red-600">
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)] bg-red-50 border border-red-200 rounded-md px-3 py-2">
                         {% for error in form.name.errors %}
-                            <p>{{ error }}</p>
+                            <div class="flex items-center">
+                                <i class="fas fa-exclamation-triangle mr-2"></i>
+                                <p>{{ error }}</p>
+                            </div>
                         {% endfor %}
                     </div>
                 {% endif %}

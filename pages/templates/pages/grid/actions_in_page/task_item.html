@@ -8,7 +8,8 @@
               class="flex-shrink-0"
               hx-post="{% url 'pages:task_toggle_complete' task.pk %}"
               hx-swap="none"
-              hx-trigger="change"
+              hx-trigger="change throttle:300ms"
+              hx-disabled-elt="find input"
               _="on htmx:afterRequest(detail) 
                  if detail.successful
                    set response to JSON.parse(detail.xhr.response)
@@ -38,7 +39,8 @@
                 title="Edit task"
                 hx-get="{% url 'pages:task_edit' task_pk=task.pk %}"
                 hx-target="#modal-content"
-                hx-trigger="click"
+                hx-trigger="click throttle:500ms"
+                hx-disabled-elt="this"
                 _="on click trigger openModal">
             <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
         </button>

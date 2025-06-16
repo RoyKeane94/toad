@@ -225,4 +225,33 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.dispatchEvent(new Event('closeModal'));
         }
     });
+
+    // Task Form Input Clearing
+    function setupTaskFormClearing() {
+        document.querySelectorAll('.task-form').forEach(form => {
+            const input = form.querySelector('input[name="text"]');
+            if (!input) return;
+            
+            // Clear input after successful HTMX request
+            form.addEventListener('htmx:afterRequest', function(e) {
+                if (e.detail.successful) {
+                    input.value = '';
+                    input.focus();
+                    
+                    // Clear any error messages
+                    const errorDiv = form.querySelector('.error-message');
+                    if (errorDiv) {
+                        errorDiv.innerHTML = '';
+                    }
+                }
+            });
+        });
+    }
+    
+    // Initial setup for task form clearing
+    setupTaskFormClearing();
+    
+    // Re-setup after HTMX updates
+    document.body.addEventListener('htmx:afterSwap', setupTaskFormClearing);
+    document.body.addEventListener('htmx:afterSettle', setupTaskFormClearing);
 });

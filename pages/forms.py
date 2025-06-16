@@ -39,6 +39,7 @@ class QuickTaskForm(forms.ModelForm):
                 'placeholder': 'Add task',
                 'required': True,
                 'name': 'text',
+                'data-validation-message': 'Please enter a task description',
             }),
         }
     
