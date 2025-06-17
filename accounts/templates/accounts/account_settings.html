@@ -27,21 +27,40 @@
                     <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Profile Information</h2>
                     <form method="post" action="{% url 'accounts:account_settings' %}">
                         {% csrf_token %}
+                        <input type="hidden" name="update_profile" value="1">
                         <div class="space-y-4">
                             <div>
-                                <label for="id_first_name" class="block text-sm font-medium text-[var(--text-primary)] mb-1">First Name</label>
-                                <input type="text" name="first_name" id="id_first_name" value="{{ user.first_name }}" 
-                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                                <label for="{{ profile_form.first_name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">{{ profile_form.first_name.label }}</label>
+                                {{ profile_form.first_name }}
+                                {% if profile_form.first_name.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in profile_form.first_name.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div>
-                                <label for="id_last_name" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Last Name</label>
-                                <input type="text" name="last_name" id="id_last_name" value="{{ user.last_name }}" 
-                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                                <label for="{{ profile_form.last_name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">{{ profile_form.last_name.label }}</label>
+                                {{ profile_form.last_name }}
+                                {% if profile_form.last_name.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in profile_form.last_name.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div>
-                                <label for="id_email" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Email Address</label>
-                                <input type="email" name="email" id="id_email" value="{{ user.email }}" 
-                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                                <label for="{{ profile_form.email.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">{{ profile_form.email.label }}</label>
+                                {{ profile_form.email }}
+                                {% if profile_form.email.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in profile_form.email.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div class="pt-2">
                                 <button type="submit" 
@@ -56,24 +75,50 @@
                 <!-- Change Password -->
                 <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Change Password</h2>
-                    <form method="post" action="{% url 'accounts:change_password' %}">
+                    <form method="post" action="{% url 'accounts:account_settings' %}">
                         {% csrf_token %}
+                        <input type="hidden" name="change_password" value="1">
                         <div class="space-y-4">
                             <div>
-                                <label for="id_old_password" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Current Password</label>
-                                <input type="password" name="old_password" id="id_old_password" required
-                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                                <label for="{{ password_form.old_password.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">{{ password_form.old_password.label }}</label>
+                                {{ password_form.old_password }}
+                                {% if password_form.old_password.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in password_form.old_password.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div>
-                                <label for="id_new_password1" class="block text-sm font-medium text-[var(--text-primary)] mb-1">New Password</label>
-                                <input type="password" name="new_password1" id="id_new_password1" required
-                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                                <label for="{{ password_form.new_password1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">{{ password_form.new_password1.label }}</label>
+                                {{ password_form.new_password1 }}
+                                {% if password_form.new_password1.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in password_form.new_password1.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
                             <div>
-                                <label for="id_new_password2" class="block text-sm font-medium text-[var(--text-primary)] mb-1">Confirm New Password</label>
-                                <input type="password" name="new_password2" id="id_new_password2" required
-                                       class="w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                                <label for="{{ password_form.new_password2.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">{{ password_form.new_password2.label }}</label>
+                                {{ password_form.new_password2 }}
+                                {% if password_form.new_password2.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in password_form.new_password2.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
                             </div>
+                            {% if password_form.non_field_errors %}
+                                <div class="text-sm text-[var(--delete-button-bg)]">
+                                    {% for error in password_form.non_field_errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                             <div class="pt-2">
                                 <button type="submit" 
                                         class="w-full bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors">

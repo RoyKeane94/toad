@@ -3,10 +3,16 @@ from django.contrib.auth import login, update_session_auth_hash, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views.generic import FormView
-from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .forms import EmailAuthenticationForm, CustomUserCreationForm
+from django.db import transaction
+from .forms import (
+    EmailAuthenticationForm, 
+    CustomUserCreationForm, 
+    ProfileUpdateForm, 
+    CustomPasswordChangeForm, 
+    AccountDeletionForm
+)
 
 # Create your views here.
 
@@ -73,39 +79,108 @@ def logout_view(request):
 
 @login_required
 def account_settings_view(request):
-    if request.method == 'POST':
-        user = request.user
-        user.first_name = request.POST.get('first_name', '')
-        user.last_name = request.POST.get('last_name', '')
-        user.email = request.POST.get('email', '')
-        user.save()
-        messages.success(request, 'Profile updated successfully!')
-        return redirect('accounts:account_settings')
+    """
+    Main account settings view with profile update form
+    """
+    profile_form = ProfileUpdateForm(instance=request.user)
+    password_form = CustomPasswordChangeForm(request.user)
     
-    return render(request, 'accounts/account_settings.html')
+    if request.method == 'POST':
+        if 'update_profile' in request.POST:
+            profile_form = ProfileUpdateForm(request.POST, instance=request.user)
+            if profile_form.is_valid():
+                with transaction.atomic():
+                    profile_form.save()
+                messages.success(request, 'Your profile has been updated successfully!')
+                return redirect('accounts:account_settings')
+            else:
+                messages.error(request, 'Please correct the errors in the profile form.')
+        
+        elif 'change_password' in request.POST:
+            password_form = CustomPasswordChangeForm(request.user, request.POST)
+            if password_form.is_valid():
+                with transaction.atomic():
+                    user = password_form.save()
+                    update_session_auth_hash(request, user)
+                messages.success(request, 'Your password has been changed successfully!')
+                return redirect('accounts:account_settings')
+            else:
+                messages.error(request, 'Please correct the errors in the password form.')
+    
+    context = {
+        'profile_form': profile_form,
+        'password_form': password_form,
+        'user': request.user,
+    }
+    return render(request, 'accounts/account_settings.html', context)
 
 @login_required
 def change_password_view(request):
-    if request.method == 'POST':
-        form = PasswordChangeForm(request.user, request.POST)
-        if form.is_valid():
-            user = form.save()
-            update_session_auth_hash(request, user)
-            messages.success(request, 'Your password was successfully updated!')
-            return redirect('accounts:account_settings')
-        else:
-            messages.error(request, 'Please correct the error below.')
-    else:
-        form = PasswordChangeForm(request.user)
-    
-    return render(request, 'accounts/account_settings.html', {'password_form': form})
+    """
+    Dedicated password change view (redirects to main settings)
+    """
+    return redirect('accounts:account_settings')
 
 @login_required
 def delete_account_view(request):
-    if request.method == 'POST':
-        user = request.user
-        user.delete()
-        messages.success(request, 'Your account has been deleted.')
-        return redirect('accounts:login')
+    """
+    Account deletion view with confirmation
+    """
+    form = AccountDeletionForm(request.user)
     
-    return render(request, 'accounts/delete_account.html')
+    if request.method == 'POST':
+        form = AccountDeletionForm(request.user, request.POST)
+        if form.is_valid():
+            user_name = request.user.get_short_name()
+            user_email = request.user.email
+            
+            # Log the account deletion
+            import logging
+            logger = logging.getLogger(__name__)
+            logger.info(f'Account deleted: {user_email} ({user_name})')
+            
+            # Delete the user account
+            request.user.delete()
+            
+            messages.success(
+                request, 
+                f'Your account has been permanently deleted, {user_name}. We\'re sorry to see you go!'
+            )
+            return redirect('pages:home')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    
+    context = {
+        'form': form,
+        'user': request.user,
+    }
+    return render(request, 'accounts/delete_account.html', context)
+
+@login_required
+def account_overview_view(request):
+    """
+    Account overview with statistics and recent activity
+    """
+    from pages.models import Project, Task
+    
+    # Get user statistics
+    total_projects = Project.objects.filter(user=request.user).count()
+    total_tasks = Task.objects.filter(project__user=request.user).count()
+    completed_tasks = Task.objects.filter(project__user=request.user, completed=True).count()
+    
+    # Calculate completion rate
+    completion_rate = 0
+    if total_tasks > 0:
+        completion_rate = round((completed_tasks / total_tasks) * 100, 1)
+    
+    # Get recent projects
+    recent_projects = Project.objects.filter(user=request.user).order_by('-created_at')[:5]
+    
+    context = {
+        'total_projects': total_projects,
+        'total_tasks': total_tasks,
+        'completed_tasks': completed_tasks,
+        'completion_rate': completion_rate,
+        'recent_projects': recent_projects,
+    }
+    return render(request, 'accounts/account_overview.html', context)

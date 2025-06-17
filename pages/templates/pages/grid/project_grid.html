@@ -123,18 +123,27 @@
 
 
 <!-- Project Grid -->
-<div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
-    <div class="overflow-x-auto">
-        <table class="w-full border-collapse min-w-[800px]">
+<div class="grid-with-controls">
+    <button class="external-scroll-btn left-scroll-btn" title="Scroll Left">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="grid-container-wrapper">
+        <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
+            <div class="grid-container">
+                <table class="grid-table">
             <colgroup>
                 {% for col_header in column_headers %}
-                <col class="w-64">
+                    {% if col_header.is_category_column %}
+                        <col class="category-column">
+                    {% else %}
+                        <col class="data-column">
+                    {% endif %}
                 {% endfor %}
             </colgroup>
             <thead>
                 <tr>
                     {% for col_header in column_headers %}
-                    <th class="p-4 border-b border-r border-[var(--border-color)] text-left text-sm font-semibold whitespace-nowrap bg-[var(--grid-header-bg)] w-64 {% if col_header.is_category_column %}sticky left-0 z-20{% endif %}">
+                    <th class="p-4 border-b border-r border-[var(--border-color)] text-left text-sm font-semibold whitespace-nowrap {% if col_header.is_category_column %}category-header{% else %}bg-[var(--grid-header-bg)]{% endif %}">
                         <div class="flex items-center justify-between">
                             {% if not col_header.is_category_column %}
                                 <span class="text-[var(--title-text)] truncate">{{ col_header.name }}</span>
@@ -170,7 +179,7 @@
                 {% for row_h in row_headers %}
                 <tr class="{% if not forloop.last %}border-b border-[var(--border-color)]{% endif %}">
                     <!-- Row Header -->
-                    <td class="p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)] sticky left-0 z-10 bg-[var(--container-bg)] w-64">
+                    <td class="row-header p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)]">
                         <div class="flex items-center justify-between">
                             <span>{{ row_h.name }}</span>
                             <div class="flex space-x-1 ml-2">
@@ -201,7 +210,7 @@
                     <!-- Data Cells -->
                     {% for col_h in column_headers %}
                         {% if not col_h.is_category_column %}
-                        <td class="p-3 border-r border-[var(--border-color)] align-top w-64">
+                        <td class="data-cell p-3 border-r border-[var(--border-color)] align-top">
                             <!-- Tasks -->
                             <div class="space-y-2 mb-3 w-full" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
                                 {% with cell_key=row_h.pk|cell_key:col_h.pk %}
@@ -253,8 +262,13 @@
                 </tr>
                 {% endfor %}
             </tbody>
-        </table>
+                </table>
+            </div>
+        </div>
     </div>
+    <button class="external-scroll-btn right-scroll-btn" title="Scroll Right">
+        <i class="fas fa-chevron-right"></i>
+    </button>
 </div>
 
 <!-- Task Deletion Modal -->

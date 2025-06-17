@@ -120,3 +120,212 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border-color: var(--delete-button-bg);
     box-shadow: 0 0 0 1px var(--delete-button-bg);
 }
+
+/* Grid Horizontal Scrolling */
+.grid-container {
+    overflow-x: auto;
+    overflow-y: visible;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    position: relative;
+}
+
+/* Grid with external controls layout */
+.grid-with-controls {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.grid-container-wrapper {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-width: 0; /* Allow flex item to shrink */
+}
+
+.external-scroll-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--border-color);
+    background: var(--container-bg);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0;
+    opacity: 0.4;
+}
+
+.external-scroll-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    background: var(--grid-header-bg);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+}
+
+.external-scroll-btn.active {
+    background: var(--primary-action-bg);
+    border-color: var(--primary-action-bg);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    opacity: 1;
+}
+
+.external-scroll-btn.active:hover {
+    background: var(--primary-action-hover-bg);
+    border-color: var(--primary-action-hover-bg);
+    transform: scale(1.05);
+    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+}
+
+.external-scroll-btn.active:active {
+    transform: scale(0.95);
+}
+
+/* Scroll fade gradients */
+.grid-container::before,
+.grid-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    pointer-events: none;
+    z-index: 25;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid-container::before {
+    left: 0;
+    background: linear-gradient(to right, var(--container-bg), transparent);
+}
+
+.grid-container::after {
+    right: 0;
+    background: linear-gradient(to left, var(--container-bg), transparent);
+}
+
+.grid-container.can-scroll-left::before {
+    opacity: 1;
+}
+
+.grid-container.can-scroll-right::after {
+    opacity: 1;
+}
+
+.grid-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+/* Column sizing - category column stays fixed, data columns flex */
+.grid-table colgroup col.category-column {
+    width: 300px;
+    min-width: 300px;
+}
+
+.grid-table colgroup col.data-column {
+    min-width: 380px;
+    /* Width will be calculated by JavaScript based on available space */
+}
+
+/* Sticky column header */
+.grid-table th.category-header {
+    position: sticky;
+    left: 0;
+    z-index: 30;
+    background: var(--grid-header-bg);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sticky row header */
+.grid-table td.row-header {
+    position: sticky;
+    left: 0;
+    z-index: 20;
+    background: var(--container-bg);
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Data cells */
+.grid-table td.data-cell {
+    overflow: hidden;
+    /* Width controlled dynamically by JavaScript */
+}
+
+/* Scrollbar styling */
+.grid-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.grid-container::-webkit-scrollbar-track {
+    background: var(--grid-header-bg);
+    border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.grid-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* Scroll progress indicator */
+.grid-scroll-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 3px;
+    background: var(--primary-action-bg);
+    border-radius: 2px;
+    transition: width 0.1s ease-out;
+    z-index: 15;
+}
+
+.grid-scroll-progress-track {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--border-color);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 14;
+}
+
+.grid-container:hover + .grid-scroll-progress-track,
+.grid-container:focus + .grid-scroll-progress-track {
+    opacity: 1;
+}
+
+/* Responsive grid adjustments */
+@media (max-width: 1024px) {
+    .grid-table colgroup col.data-column {
+        min-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .grid-table colgroup col.category-column {
+        width: 150px;
+        min-width: 150px;
+    }
+    
+    .grid-table colgroup col.data-column {
+        min-width: 320px;
+    }
+}

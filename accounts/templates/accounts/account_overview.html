@@ -1,0 +1,214 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Account Overview - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="mb-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--title-text)]">Account Overview</h1>
+                <p class="text-[var(--subtitle-text)] mt-1">Welcome back, {{ user.get_short_name }}!</p>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="{% url 'accounts:account_settings' %}" 
+                   class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center">
+                    <i class="fas fa-cog mr-2"></i>Account Settings
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Total Projects -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Total Projects</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ total_projects }}</p>
+                </div>
+                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-project-diagram text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Tasks -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Total Tasks</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ total_tasks }}</p>
+                </div>
+                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-sm">
+                    <i class="fas fa-tasks text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completed Tasks -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Completed Tasks</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ completed_tasks }}</p>
+                </div>
+                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-sm">
+                    <i class="fas fa-check-circle text-white"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completion Rate -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6 shadow-sm">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Completion Rate</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ completion_rate }}%</p>
+                </div>
+                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg shadow-sm">
+                    <i class="fas fa-chart-pie text-white"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <!-- Account Information -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+            <div class="p-6 border-b border-[var(--border-color)]">
+                <h2 class="text-lg font-semibold text-[var(--title-text)]">Account Information</h2>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+                        <span class="text-white font-semibold">{{ user.first_name|first|upper }}</span>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[var(--text-primary)]">{{ user.get_full_name|default:user.get_short_name }}</p>
+                        <p class="text-sm text-[var(--text-secondary)]">{{ user.email }}</p>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+                    <div>
+                        <p class="text-sm text-[var(--text-secondary)]">Member Since</p>
+                        <p class="font-medium text-[var(--text-primary)]">{{ user.date_joined|date:"F d, Y" }}</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-[var(--text-secondary)]">Last Login</p>
+                        <p class="font-medium text-[var(--text-primary)]">{{ user.last_login|date:"M d, Y"|default:"Never" }}</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 border-t border-[var(--border-color)]">
+                    <div class="flex space-x-3">
+                        <a href="{% url 'accounts:account_settings' %}" 
+                           class="flex-1 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors text-center">
+                            Edit Profile
+                        </a>
+                        <a href="{% url 'accounts:logout' %}" 
+                           class="flex-1 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] px-4 py-2 rounded-md text-sm font-medium transition-colors text-center">
+                            Sign Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Projects -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+            <div class="p-6 border-b border-[var(--border-color)]">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-lg font-semibold text-[var(--title-text)]">Recent Projects</h2>
+                    <a href="{% url 'pages:project_list' %}" 
+                       class="text-sm text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] transition-colors">
+                        View All
+                    </a>
+                </div>
+            </div>
+            <div class="p-6">
+                {% if recent_projects %}
+                    <div class="space-y-3">
+                        {% for project in recent_projects %}
+                            <div class="flex items-center justify-between p-3 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] transition-colors">
+                                <div class="flex items-center space-x-3">
+                                    <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+                                        <i class="fas fa-project-diagram text-white text-sm"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium text-[var(--text-primary)] text-sm">{{ project.name }}</p>
+                                        <p class="text-xs text-[var(--text-secondary)]">Created {{ project.created_at|timesince }} ago</p>
+                                    </div>
+                                </div>
+                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                   class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] transition-colors">
+                                    <i class="fas fa-arrow-right text-sm"></i>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-8">
+                        <div class="flex items-center justify-center w-16 h-16 bg-[var(--grid-header-bg)] rounded-full mx-auto mb-4">
+                            <i class="fas fa-project-diagram text-[var(--text-secondary)] text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-medium text-[var(--text-primary)] mb-2">No Projects Yet</h3>
+                        <p class="text-[var(--text-secondary)] mb-4">Create your first project to get started with Toad!</p>
+                        <a href="{% url 'pages:project_create' %}" 
+                           class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                            Create Project
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="mt-8 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+        <div class="p-6 border-b border-[var(--border-color)]">
+            <h2 class="text-lg font-semibold text-[var(--title-text)]">Quick Actions</h2>
+        </div>
+        <div class="p-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="{% url 'pages:project_create' %}" 
+                   class="flex items-center space-x-3 p-4 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] transition-colors group">
+                    <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm group-hover:scale-105 transition-transform">
+                        <i class="fas fa-plus text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[var(--text-primary)]">New Project</p>
+                        <p class="text-sm text-[var(--text-secondary)]">Start organizing your tasks</p>
+                    </div>
+                </a>
+                
+                <a href="{% url 'pages:templates_overview' %}" 
+                   class="flex items-center space-x-3 p-4 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] transition-colors group">
+                    <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-sm group-hover:scale-105 transition-transform">
+                        <i class="fas fa-template text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[var(--text-primary)]">Browse Templates</p>
+                        <p class="text-sm text-[var(--text-secondary)]">Use pre-built project templates</p>
+                    </div>
+                </a>
+                
+                <a href="{% url 'pages:project_list' %}" 
+                   class="flex items-center space-x-3 p-4 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] transition-colors group">
+                    <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-green-500 to-green-600 rounded-lg shadow-sm group-hover:scale-105 transition-transform">
+                        <i class="fas fa-list text-white"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[var(--text-primary)]">View All Projects</p>
+                        <p class="text-sm text-[var(--text-secondary)]">Manage your existing projects</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

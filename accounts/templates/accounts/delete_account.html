@@ -7,52 +7,144 @@
 <div class="max-w-2xl mx-auto">
     <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
         <!-- Header -->
-        <div class="p-6 border-b border-[var(--border-color)]">
+        <div class="p-6 border-b border-[var(--border-color)] bg-red-50">
             <div class="flex items-center space-x-3">
                 <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-sm">
                     <i class="fas fa-exclamation-triangle text-white"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-semibold text-[var(--title-text)]">Delete Account</h1>
-                    <p class="text-sm text-[var(--text-secondary)] mt-1">This action cannot be undone</p>
+                    <h1 class="text-xl font-semibold text-red-700">Delete Account</h1>
+                    <p class="text-sm text-red-600 mt-1">This action cannot be undone</p>
                 </div>
             </div>
         </div>
 
         <!-- Content -->
         <div class="p-6">
+            <!-- Warning Information -->
             <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-6">
-                <div class="flex items-start space-x-3">
-                    <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-sm flex-shrink-0">
-                        <i class="fas fa-exclamation-triangle text-white text-sm"></i>
+                <h2 class="text-lg font-semibold text-red-700 mb-3">⚠️ Warning: Account Deletion</h2>
+                <div class="text-sm text-red-600 space-y-2">
+                    <p><strong>This will permanently delete:</strong></p>
+                    <ul class="list-disc list-inside ml-4 space-y-1">
+                        <li>Your user account and profile information</li>
+                        <li>All your projects and their data</li>
+                        <li>All tasks, rows, and columns you've created</li>
+                        <li>Your account settings and preferences</li>
+                    </ul>
+                    <p class="mt-3"><strong>This action is irreversible.</strong> Once deleted, your data cannot be recovered.</p>
+                </div>
+            </div>
+
+            <!-- Account Summary -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4 mb-6">
+                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-3">Account Summary</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <span class="text-[var(--text-secondary)]">Name:</span>
+                        <span class="text-[var(--text-primary)] font-medium ml-2">{{ user.get_full_name|default:user.get_short_name }}</span>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <p class="font-medium text-red-700">Warning</p>
-                        <p class="text-sm text-red-600 mt-1">
-                            Once you delete your account, all of your data will be permanently removed. This includes:
-                        </p>
-                        <ul class="list-disc list-inside text-sm text-red-600 mt-2 space-y-1">
-                            <li>All your projects and tasks</li>
-                            <li>Your profile information</li>
-                            <li>Account settings and preferences</li>
-                        </ul>
+                    <div>
+                        <span class="text-[var(--text-secondary)]">Email:</span>
+                        <span class="text-[var(--text-primary)] font-medium ml-2">{{ user.email }}</span>
+                    </div>
+                    <div>
+                        <span class="text-[var(--text-secondary)]">Member since:</span>
+                        <span class="text-[var(--text-primary)] font-medium ml-2">{{ user.date_joined|date:"F Y" }}</span>
+                    </div>
+                    <div>
+                        <span class="text-[var(--text-secondary)]">Last login:</span>
+                        <span class="text-[var(--text-primary)] font-medium ml-2">{{ user.last_login|date:"M d, Y"|default:"Never" }}</span>
                     </div>
                 </div>
             </div>
 
-            <form method="post">
+            <!-- Deletion Form -->
+            <form method="post" class="space-y-6">
                 {% csrf_token %}
-                <div class="flex items-center justify-end space-x-3">
-                    <a href="{% url 'accounts:account_settings' %}" 
-                       class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium">
-                        <i class="fas fa-times mr-2"></i>Cancel
-                    </a>
+                
+                <!-- Confirmation Checkbox -->
+                <div class="flex items-start space-x-3">
+                    {{ form.confirm_deletion }}
+                    <label for="{{ form.confirm_deletion.id_for_label }}" class="text-sm text-[var(--text-primary)]">
+                        {{ form.confirm_deletion.label }}
+                    </label>
+                </div>
+                {% if form.confirm_deletion.errors %}
+                    <div class="text-sm text-red-600">
+                        {% for error in form.confirm_deletion.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Password Confirmation -->
+                <div>
+                    <label for="{{ form.password.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        {{ form.password.label }}
+                    </label>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                        <div class="mt-1 text-sm text-red-600">
+                            {% for error in form.password.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <p class="mt-1 text-xs text-[var(--text-secondary)]">
+                        Enter your current password to confirm account deletion
+                    </p>
+                </div>
+
+                <!-- Form Errors -->
+                {% if form.non_field_errors %}
+                    <div class="bg-red-50 border border-red-200 rounded-md p-3">
+                        {% for error in form.non_field_errors %}
+                            <p class="text-sm text-red-600">{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-4">
                     <button type="submit" 
-                            class="w-48 h-10 flex items-center justify-center bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105">
-                        <i class="fas fa-trash mr-2"></i>Delete Account
+                            class="flex-1 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white px-6 py-3 rounded-md text-sm font-medium transition-all duration-200 shadow-sm hover:shadow-md transform hover:scale-105 flex items-center justify-center">
+                        <i class="fas fa-trash mr-2"></i>
+                        Permanently Delete Account
                     </button>
+                    <a href="{% url 'accounts:account_settings' %}" 
+                       class="flex-1 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] px-6 py-3 rounded-md text-sm font-medium transition-colors flex items-center justify-center">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Cancel & Go Back
+                    </a>
                 </div>
             </form>
+
+            <!-- Alternative Actions -->
+            <div class="mt-8 pt-6 border-t border-[var(--border-color)]">
+                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-3">Need Help?</h3>
+                <p class="text-sm text-[var(--text-secondary)] mb-4">
+                    If you're having issues with your account, consider these alternatives before deleting:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <a href="{% url 'accounts:account_settings' %}" 
+                       class="flex items-center space-x-3 p-3 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] transition-colors">
+                        <i class="fas fa-cog text-[var(--primary-action-bg)]"></i>
+                        <div>
+                            <div class="text-sm font-medium text-[var(--text-primary)]">Update Settings</div>
+                            <div class="text-xs text-[var(--text-secondary)]">Change your account preferences</div>
+                        </div>
+                    </a>
+                    <a href="{% url 'accounts:logout' %}" 
+                       class="flex items-center space-x-3 p-3 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] transition-colors">
+                        <i class="fas fa-sign-out-alt text-[var(--primary-action-bg)]"></i>
+                        <div>
+                            <div class="text-sm font-medium text-[var(--text-primary)]">Just Log Out</div>
+                            <div class="text-xs text-[var(--text-secondary)]">Take a break and come back later</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

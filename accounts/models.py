@@ -41,6 +41,7 @@ class User(AbstractUser):
     username = None  # Remove username field
     email = models.EmailField(unique=True, help_text='Required. Enter a valid email address.')
     first_name = models.CharField(max_length=30, help_text='Required. Enter your first name.')
+    last_name = models.CharField(max_length=30, blank=True, help_text='Optional. Enter your last name.')
     
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']  # Fields required when creating superuser (email is already included)

@@ -225,4 +225,297 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.dispatchEvent(new Event('closeModal'));
         }
     });
+
+    // Task Form Input Clearing
+    function setupTaskFormClearing() {
+        document.querySelectorAll('.task-form').forEach(form => {
+            const input = form.querySelector('input[name="text"]');
+            if (!input) return;
+            
+            // Clear input after successful HTMX request
+            form.addEventListener('htmx:afterRequest', function(e) {
+                if (e.detail.successful) {
+                    input.value = '';
+                    input.focus();
+                    
+                    // Clear any error messages
+                    const errorDiv = form.querySelector('.error-message');
+                    if (errorDiv) {
+                        errorDiv.innerHTML = '';
+                    }
+                }
+            });
+        });
+    }
+    
+    // Initial setup for task form clearing
+    setupTaskFormClearing();
+    
+    // Re-setup after HTMX updates
+    document.body.addEventListener('htmx:afterSwap', setupTaskFormClearing);
+    document.body.addEventListener('htmx:afterSettle', setupTaskFormClearing);
+
+    // Grid Horizontal Scrolling Enhancement
+    function setupGridScrolling() {
+        const gridContainer = document.querySelector('.grid-container');
+        if (!gridContainer) return;
+
+        let scrollIndicators = null;
+
+        // Calculate and set column widths
+        function calculateColumnWidths() {
+            const gridTable = gridContainer.querySelector('.grid-table');
+            if (!gridTable) return;
+
+            const categoryColumns = gridTable.querySelectorAll('colgroup col.category-column');
+            const dataColumns = gridTable.querySelectorAll('colgroup col.data-column');
+            
+            if (dataColumns.length === 0) return;
+
+            // Get the actual available width (grid container wrapper is reduced by 120px for buttons)
+            const containerWidth = gridContainer.clientWidth;
+            const windowWidth = window.innerWidth;
+            
+            // Responsive breakpoints
+            let categoryWidth = 300;
+            let minDataColumnWidth = 380;
+            
+            if (windowWidth <= 768) {
+                categoryWidth = 150;
+                minDataColumnWidth = 320;
+            } else if (windowWidth <= 1024) {
+                minDataColumnWidth = 350;
+            }
+
+            const availableWidth = containerWidth - categoryWidth;
+            const idealDataColumnWidth = availableWidth / dataColumns.length;
+
+            // Check if we can fit all columns at their ideal width
+            if (idealDataColumnWidth >= minDataColumnWidth) {
+                // Columns can be evenly distributed
+                gridTable.style.width = '100%';
+                dataColumns.forEach(col => {
+                    col.style.width = idealDataColumnWidth + 'px';
+                });
+            } else {
+                // Columns need to be at minimum width, table becomes scrollable
+                const totalMinWidth = categoryWidth + (dataColumns.length * minDataColumnWidth);
+                gridTable.style.width = totalMinWidth + 'px';
+                dataColumns.forEach(col => {
+                    col.style.width = minDataColumnWidth + 'px';
+                });
+            }
+        }
+
+        // Get scroll amount based on current column width
+        function getScrollAmount() {
+            const windowWidth = window.innerWidth;
+            if (windowWidth <= 768) {
+                return 320; // Mobile column width
+            } else if (windowWidth <= 1024) {
+                return 350; // Tablet column width
+            } else {
+                return 380; // Desktop column width
+            }
+        }
+
+        // Setup external scroll buttons
+        function setupScrollButtons() {
+            // Find existing buttons in the template
+            const leftBtn = document.querySelector('.left-scroll-btn');
+            const rightBtn = document.querySelector('.right-scroll-btn');
+            
+            if (!leftBtn || !rightBtn) return;
+
+            // Store reference to buttons
+            scrollIndicators = {
+                leftBtn: leftBtn,
+                rightBtn: rightBtn
+            };
+
+            // Create scroll progress indicator
+            const progressTrack = document.createElement('div');
+            progressTrack.className = 'grid-scroll-progress-track';
+            
+            const progressBar = document.createElement('div');
+            progressBar.className = 'grid-scroll-progress';
+            progressBar.style.width = '0%';
+            
+            progressTrack.appendChild(progressBar);
+            gridContainer.parentElement.appendChild(progressTrack);
+
+            // Add click handlers for scroll buttons
+            leftBtn.addEventListener('click', () => {
+                const scrollAmount = getScrollAmount();
+                const currentScroll = gridContainer.scrollLeft;
+                const newScrollPosition = Math.max(0, Math.floor(currentScroll / scrollAmount) * scrollAmount - scrollAmount);
+                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+                
+                // Force update indicators after scroll
+                setTimeout(updateScrollIndicators, 50);
+                setTimeout(updateScrollIndicators, 300);
+            });
+
+            rightBtn.addEventListener('click', () => {
+                const scrollAmount = getScrollAmount();
+                const currentScroll = gridContainer.scrollLeft;
+                const maxScroll = gridContainer.scrollWidth - gridContainer.clientWidth;
+                const newScrollPosition = Math.min(maxScroll, Math.ceil(currentScroll / scrollAmount) * scrollAmount + scrollAmount);
+                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+                
+                // Force update indicators after scroll
+                setTimeout(updateScrollIndicators, 50);
+                setTimeout(updateScrollIndicators, 300);
+            });
+        }
+
+        // Update scroll indicators visibility and progress
+        function updateScrollIndicators() {
+            if (!scrollIndicators) return;
+
+            const progressBar = document.querySelector('.grid-scroll-progress');
+
+            const currentScroll = Math.round(gridContainer.scrollLeft);
+            const maxScroll = Math.round(gridContainer.scrollWidth - gridContainer.clientWidth);
+            
+            // More reliable scroll detection
+            const canScrollLeft = currentScroll > 5; // Increased tolerance
+            const canScrollRight = currentScroll < (maxScroll - 5); // Increased tolerance
+
+            // Update button states - grey by default, green when active
+            if (canScrollLeft) {
+                scrollIndicators.leftBtn.classList.add('active');
+                scrollIndicators.leftBtn.disabled = false;
+            } else {
+                scrollIndicators.leftBtn.classList.remove('active');
+                scrollIndicators.leftBtn.disabled = true;
+            }
+
+            if (canScrollRight) {
+                scrollIndicators.rightBtn.classList.add('active');
+                scrollIndicators.rightBtn.disabled = false;
+            } else {
+                scrollIndicators.rightBtn.classList.remove('active');
+                scrollIndicators.rightBtn.disabled = true;
+            }
+
+            // Update scroll fade gradients
+            gridContainer.classList.toggle('can-scroll-left', canScrollLeft);
+            gridContainer.classList.toggle('can-scroll-right', canScrollRight);
+
+            // Update progress bar
+            if (progressBar) {
+                const scrollPercentage = maxScroll > 0 ? (currentScroll / maxScroll) * 100 : 0;
+                progressBar.style.width = Math.min(100, Math.max(0, scrollPercentage)) + '%';
+            }
+        }
+
+        // Initialize column widths and scroll indicators
+        calculateColumnWidths();
+        setupScrollButtons();
+        updateScrollIndicators();
+
+        // Update indicators on scroll
+        gridContainer.addEventListener('scroll', updateScrollIndicators);
+
+        // Force update after a short delay to ensure everything is rendered
+        setTimeout(updateScrollIndicators, 100);
+        setTimeout(updateScrollIndicators, 500);
+
+        // Update everything on window resize
+        window.addEventListener('resize', function() {
+            calculateColumnWidths();
+            setTimeout(updateScrollIndicators, 100);
+        });
+
+        // Keyboard navigation
+        gridContainer.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowLeft' && e.ctrlKey) {
+                e.preventDefault();
+                const scrollAmount = getScrollAmount();
+                const currentScroll = gridContainer.scrollLeft;
+                const newScrollPosition = Math.max(0, Math.floor(currentScroll / scrollAmount) * scrollAmount - scrollAmount);
+                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+            } else if (e.key === 'ArrowRight' && e.ctrlKey) {
+                e.preventDefault();
+                const scrollAmount = getScrollAmount();
+                const currentScroll = gridContainer.scrollLeft;
+                const maxScroll = gridContainer.scrollWidth - gridContainer.clientWidth;
+                const newScrollPosition = Math.min(maxScroll, Math.ceil(currentScroll / scrollAmount) * scrollAmount + scrollAmount);
+                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+            }
+        });
+
+        // Make grid container focusable for keyboard navigation
+        gridContainer.tabIndex = 0;
+        gridContainer.style.outline = 'none';
+
+        // Disable smooth scrolling behavior to prevent partial columns
+        gridContainer.style.scrollBehavior = 'auto';
+
+        // Disable horizontal mouse wheel scrolling only
+        gridContainer.addEventListener('wheel', function(e) {
+            // Only prevent horizontal scrolling, allow vertical scrolling
+            if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+    }
+
+    // Initialize grid scrolling
+    setupGridScrolling();
+
+    // Re-initialize after HTMX updates
+    document.body.addEventListener('htmx:afterSettle', function() {
+        setupGridScrolling();
+        // Small delay to ensure DOM is fully updated
+        setTimeout(() => {
+            const gridContainer = document.querySelector('.grid-container');
+            if (gridContainer) {
+                const calculateColumnWidths = () => {
+                    const gridTable = gridContainer.querySelector('.grid-table');
+                    if (!gridTable) return;
+
+                    const categoryColumns = gridTable.querySelectorAll('colgroup col.category-column');
+                    const dataColumns = gridTable.querySelectorAll('colgroup col.data-column');
+                    
+                    if (dataColumns.length === 0) return;
+
+                    const containerWidth = gridContainer.clientWidth;
+                    const windowWidth = window.innerWidth;
+                    
+                    // Responsive breakpoints
+                    let categoryWidth = 300;
+                    let minDataColumnWidth = 380;
+                    
+                    if (windowWidth <= 768) {
+                        categoryWidth = 150;
+                        minDataColumnWidth = 320;
+                    } else if (windowWidth <= 1024) {
+                        minDataColumnWidth = 350;
+                    }
+
+                    const availableWidth = containerWidth - categoryWidth;
+                    const idealDataColumnWidth = availableWidth / dataColumns.length;
+
+                    // Check if we can fit all columns at their ideal width
+                    if (idealDataColumnWidth >= minDataColumnWidth) {
+                        // Columns can be evenly distributed
+                        gridTable.style.width = '100%';
+                        dataColumns.forEach(col => {
+                            col.style.width = idealDataColumnWidth + 'px';
+                        });
+                    } else {
+                        // Columns need to be at minimum width, table becomes scrollable
+                        const totalMinWidth = categoryWidth + (dataColumns.length * minDataColumnWidth);
+                        gridTable.style.width = totalMinWidth + 'px';
+                        dataColumns.forEach(col => {
+                            col.style.width = minDataColumnWidth + 'px';
+                        });
+                    }
+                };
+                calculateColumnWidths();
+            }
+        }, 100);
+    });
 });

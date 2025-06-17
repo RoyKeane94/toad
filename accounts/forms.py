@@ -1,6 +1,7 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate
+from django.core.exceptions import ValidationError
 from .models import User
 
 class EmailAuthenticationForm(AuthenticationForm):
@@ -97,3 +98,100 @@ class CustomUserCreationForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class ProfileUpdateForm(forms.ModelForm):
+    """
+    Form for updating user profile information
+    """
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name', 'email')
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Enter your first name',
+            }),
+            'last_name': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Enter your last name (optional)',
+            }),
+            'email': forms.EmailInput(attrs={
+                'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Enter your email address',
+            }),
+        }
+        labels = {
+            'first_name': 'First Name',
+            'last_name': 'Last Name (Optional)',
+            'email': 'Email Address',
+        }
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if email and User.objects.filter(email=email).exclude(pk=self.instance.pk).exists():
+            raise ValidationError('A user with this email already exists.')
+        return email
+
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        if not first_name or not first_name.strip():
+            raise ValidationError('First name is required.')
+        return first_name.strip()
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    """
+    Custom password change form with Toad styling
+    """
+    old_password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+            'placeholder': 'Enter your current password',
+        }),
+        label='Current Password'
+    )
+    new_password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+            'placeholder': 'Enter your new password',
+        }),
+        label='New Password'
+    )
+    new_password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+            'placeholder': 'Confirm your new password',
+        }),
+        label='Confirm New Password'
+    )
+
+
+class AccountDeletionForm(forms.Form):
+    """
+    Form for account deletion confirmation
+    """
+    confirm_deletion = forms.BooleanField(
+        required=True,
+        widget=forms.CheckboxInput(attrs={
+            'class': 'h-4 w-4 rounded border-red-300 text-red-600 focus:ring-red-500',
+        }),
+        label='I understand that this action cannot be undone'
+    )
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'w-full px-3 py-2 bg-[var(--container-bg)] border border-red-300 rounded-md text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent',
+            'placeholder': 'Enter your password to confirm',
+        }),
+        label='Password Confirmation'
+    )
+
+    def __init__(self, user, *args, **kwargs):
+        self.user = user
+        super().__init__(*args, **kwargs)
+
+    def clean_password(self):
+        password = self.cleaned_data.get('password')
+        if not self.user.check_password(password):
+            raise ValidationError('Incorrect password.')
+        return password
