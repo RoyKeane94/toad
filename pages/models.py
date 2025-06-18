@@ -16,6 +16,10 @@ class Project(models.Model):
 
     class Meta:
         ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['user', '-created_at']),  # For user's project list
+            models.Index(fields=['user', 'id']),  # For project access checks
+        ]
 
 class RowHeader(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='row_headers')
@@ -29,6 +33,9 @@ class RowHeader(models.Model):
 
     class Meta:
         ordering = ['order', 'created_at']
+        indexes = [
+            models.Index(fields=['project', 'order']),  # For ordered row queries
+        ]
 
 class ColumnHeader(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='column_headers')
@@ -43,6 +50,9 @@ class ColumnHeader(models.Model):
 
     class Meta:
         ordering = ['order', 'created_at']
+        indexes = [
+            models.Index(fields=['project', 'is_category_column', 'order']),  # For ordered column queries
+        ]
 
 class Task(models.Model):
     project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='tasks')
@@ -63,6 +73,11 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['created_at']
+        indexes = [
+            models.Index(fields=['project', 'row_header', 'column_header']),  # For cell-based task queries
+            models.Index(fields=['project', 'completed']),  # For completed task filtering
+            models.Index(fields=['project', 'created_at']),  # For task ordering
+        ]
 
 class Template(models.Model):
     CATEGORY_CHOICES = [

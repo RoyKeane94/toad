@@ -82,7 +82,56 @@ input:invalid {
     box-shadow: none;
 }
 
-/* Custom validation styling */
+/* Error Message Styling */
+.error-message {
+    font-size: 0.875rem;
+    color: var(--delete-button-bg);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-out;
+    line-height: 1.4;
+}
+
+.error-message:not(:empty) {
+    opacity: 1;
+    max-height: 100px;
+    padding: 8px 12px;
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    border-radius: 6px;
+    animation: errorSlideIn 0.3s ease-out;
+}
+
+.error-message:not(:empty)::before {
+    content: '⚠';
+    color: var(--delete-button-bg);
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-top: -1px;
+}
+
+@keyframes errorSlideIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px);
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+        max-height: 100px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+}
+
+/* Custom validation styling for tooltips */
 .custom-validation-error {
     position: absolute;
     top: 100%;

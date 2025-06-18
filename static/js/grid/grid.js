@@ -1,3 +1,24 @@
+// Task form validation function
+function validateTaskForm(form) {
+    const textInput = form.querySelector('input[name="text"]');
+    const errorDiv = form.querySelector('.error-message');
+    
+    if (!textInput.value.trim()) {
+        // Show error
+        errorDiv.innerHTML = 'Please enter a task description';
+        textInput.classList.remove('border-[var(--inline-input-border)]');
+        textInput.classList.add('border-red-500');
+        textInput.focus();
+        return false; // Prevent form submission
+    } else {
+        // Clear error
+        errorDiv.innerHTML = '';
+        textInput.classList.remove('border-red-500');
+        textInput.classList.add('border-[var(--inline-input-border)]');
+        return true; // Allow form submission
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     // Project Switcher Dropdown Functionality
     const switcherBtn = document.getElementById('project-switcher-btn');

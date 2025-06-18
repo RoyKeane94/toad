@@ -224,11 +224,13 @@
                             <form method="post" 
                                   action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
                                   class="task-form"
+                                  novalidate
                                   hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
                                   hx-swap="beforeend"
                                   hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
                                   hx-trigger="submit throttle:500ms"
                                   hx-disabled-elt="this"
+                                  onsubmit="return validateTaskForm(this)"
                                   _="on htmx:beforeRequest
                                        add .opacity-50 to me
                                      end
@@ -236,25 +238,30 @@
                                      on htmx:afterRequest(detail)
                                        remove .opacity-50 from me
                                        if detail.successful
-                                         set textInput to me querySelector('input[name=text]')
+                                         set textInput to the first input in me
                                          set textInput.value to ''
                                          call textInput.focus()
-                                         set errorDiv to me querySelector('.error-message')
+                                         set errorDiv to the first .error-message in me
                                          set errorDiv.innerHTML to ''
+                                         remove .border-red-500 from textInput
+                                         add .border-[var(--inline-input-border)] to textInput
                                        else
-                                         set errorDiv to me querySelector('.error-message')
+                                         set errorDiv to the first .error-message in me
                                          set errorDiv.innerHTML to detail.xhr.response
+                                         set textInput to the first input in me
+                                         remove .border-[var(--inline-input-border)] from textInput
+                                         add .border-red-500 to textInput
                                        end
                                      end">
                                 {% csrf_token %}
                                 <div class="flex space-x-2 relative">
                                     {{ quick_task_form.text }}
-                                    <button type="submit" class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative">
+                                    <button type="submit" class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative cursor-pointer">
                                         <i class="fas fa-plus"></i>
                                         <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
                                     </button>
                                 </div>
-                                <div class="error-message mt-1 text-sm text-red-600"></div>
+                                <div class="error-message mt-2"></div>
                             </form>
                         </td>
                         {% endif %}

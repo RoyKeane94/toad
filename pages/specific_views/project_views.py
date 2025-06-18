@@ -22,7 +22,12 @@ logger = logging.getLogger(__name__)
 
 @login_required
 def project_list_view(request):
-    projects = Project.objects.filter(user=request.user)
+    # Optimize by only loading needed fields and adding task counts
+    projects = Project.objects.filter(user=request.user).annotate(
+        task_count=Count('tasks'),
+        completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
+    ).only('id', 'name', 'created_at').order_by('-created_at')
+    
     return render(request, 'pages/grid/overview/project_list.html', {'projects': projects})
 
 
@@ -93,34 +98,40 @@ def project_delete_view(request, pk):
 
 @login_required
 def project_grid_view(request, pk):
-    project = get_object_or_404(Project, pk=pk, user=request.user)
+    # Use select_related to reduce database queries
+    project = get_object_or_404(
+        Project.objects.select_related('user'), 
+        pk=pk, 
+        user=request.user
+    )
+    
+    # Prefetch related data in single queries with proper ordering
     row_headers = project.row_headers.all().order_by('order')
-    column_headers = list(project.column_headers.filter(is_category_column=True)) + \
-                     list(project.column_headers.filter(is_category_column=False).order_by('order'))
     
-    # Create a more efficient tasks lookup
+    # More efficient column header ordering - category column first, then regular columns by order
+    column_headers = project.column_headers.all().order_by('-is_category_column', 'order')
+    
+    # Optimize tasks query with select_related and ordering
+    all_tasks = project.tasks.select_related('row_header', 'column_header').order_by('id')
+    
+    # Create tasks lookup dictionary more efficiently
     tasks_by_cell = {}
-    all_tasks = project.tasks.all().select_related('row_header', 'column_header')
-    
     for task in all_tasks:
         cell_key = f"{task.row_header_id}_{task.column_header_id}"
         if cell_key not in tasks_by_cell:
             tasks_by_cell[cell_key] = []
         tasks_by_cell[cell_key].append(task)
 
-    # Initialize forms for modals
-    row_form = RowHeaderForm()
-    column_form = ColumnHeaderForm()
+    # Only get project names for dropdown - don't load full objects
+    user_projects = Project.objects.filter(user=request.user).only('id', 'name').order_by('name')
 
     context = {
         'project': project,
         'row_headers': row_headers,
         'column_headers': column_headers,
         'tasks_by_cell': tasks_by_cell,
-        'projects': Project.objects.filter(user=request.user),
+        'projects': user_projects,
         'quick_task_form': QuickTaskForm(),
-        'row_form': row_form,
-        'column_form': column_form,
     }
     return render(request, 'pages/grid/project_grid.html', context)
 
@@ -128,9 +139,10 @@ def project_grid_view(request, pk):
 
 @login_required
 def task_create_view(request, project_pk, row_pk, col_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
-    row_header = get_object_or_404(RowHeader, pk=row_pk, project=project)
-    column_header = get_object_or_404(ColumnHeader, pk=col_pk, project=project)
+    # Optimize by only loading required fields
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
+    row_header = get_object_or_404(RowHeader.objects.only('id', 'name', 'project'), pk=row_pk, project=project)
+    column_header = get_object_or_404(ColumnHeader.objects.only('id', 'name', 'project'), pk=col_pk, project=project)
 
     if request.method == 'POST':
         form = QuickTaskForm(request.POST)
@@ -153,10 +165,7 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             logger.warning(f'User {request.user.username} failed to create task - form errors: {form.errors}')
             if request.headers.get('HX-Request'):
                 errors = form.errors.get('text', ['An error occurred'])
-                return HttpResponse(
-                    f'<div class="text-[var(--delete-button-bg)] text-sm bg-red-50 border border-red-200 rounded-md px-3 py-2 flex items-center"><i class="fas fa-exclamation-triangle mr-2"></i>{errors[0]}</div>',
-                    status=422
-                )
+                return HttpResponse(errors[0], status=422)
             messages.error(request, 'Please correct the errors below.')
             return redirect('pages:project_grid', pk=project.pk)
     
@@ -164,7 +173,12 @@ def task_create_view(request, project_pk, row_pk, col_pk):
 
 
 def task_edit_view(request, task_pk):
-    task = get_object_or_404(Task, pk=task_pk, project__user=request.user)
+    # Optimize with select_related to avoid additional queries
+    task = get_object_or_404(
+        Task.objects.select_related('project', 'project__user'), 
+        pk=task_pk, 
+        project__user=request.user
+    )
     
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
@@ -204,7 +218,12 @@ def task_edit_view(request, task_pk):
 
 @login_required
 def task_toggle_complete_view(request, task_pk):
-    task = get_object_or_404(Task, pk=task_pk, project__user=request.user)
+    # Only load fields needed for the operation
+    task = get_object_or_404(
+        Task.objects.select_related('project').only('id', 'completed', 'project__id', 'project__user'), 
+        pk=task_pk, 
+        project__user=request.user
+    )
     
     if request.method == 'POST':
         task.completed = not task.completed
@@ -225,7 +244,12 @@ def task_toggle_complete_view(request, task_pk):
 
 @login_required
 def task_delete_view(request, task_pk):
-    task = get_object_or_404(Task, pk=task_pk, project__user=request.user)
+    # Only load fields needed for deletion
+    task = get_object_or_404(
+        Task.objects.select_related('project').only('id', 'text', 'project__id', 'project__user', 'project__name'), 
+        pk=task_pk, 
+        project__user=request.user
+    )
     project_pk = task.project.pk
     task_text = task.text  # Store before deletion
     
@@ -241,7 +265,8 @@ def task_delete_view(request, task_pk):
 # Row CRUD Views
 
 def row_create_view(request, project_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
+    # Only load fields needed for row creation
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
     
     if request.method == 'POST':
         form = RowHeaderForm(request.POST)
@@ -264,8 +289,13 @@ def row_create_view(request, project_pk):
 
 
 def row_edit_view(request, project_pk, row_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
-    row = get_object_or_404(RowHeader, pk=row_pk, project=project)
+    # Optimize with select_related and only needed fields
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
+    row = get_object_or_404(
+        RowHeader.objects.select_related('project').only('id', 'name', 'project__id'), 
+        pk=row_pk, 
+        project=project
+    )
     
     if request.method == 'POST':
         form = RowHeaderForm(request.POST, instance=row)
@@ -337,7 +367,8 @@ def row_delete_view(request, project_pk, row_pk):
 # Column CRUD Views
 
 def column_create_view(request, project_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
+    # Only load fields needed for column creation
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
     
     if request.method == 'POST':
         form = ColumnHeaderForm(request.POST)
@@ -432,13 +463,17 @@ def column_delete_view(request, project_pk, col_pk):
 
 @login_required
 def delete_completed_tasks_view(request, pk):
-    project = get_object_or_404(Project, pk=pk, user=request.user)
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=pk, user=request.user)
     
     if request.method == 'POST':
+        # More efficient bulk deletion with direct count
         completed_tasks = project.tasks.filter(completed=True)
         count = completed_tasks.count()
-        completed_tasks.delete()
-        messages.success(request, f'Successfully deleted {count} completed tasks!')
+        if count > 0:  # Only delete if there are tasks to delete
+            completed_tasks.delete()
+            messages.success(request, f'Successfully deleted {count} completed tasks!')
+        else:
+            messages.info(request, 'No completed tasks to delete.')
         return redirect('pages:project_grid', pk=project.pk)
     
     return render(request, 'pages/grid/actions_in_page/clear_completed_tasks.html', {

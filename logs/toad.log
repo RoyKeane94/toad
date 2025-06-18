@@ -940,3 +940,142 @@ INFO 2025-06-18 06:04:02,029 project_views 38847 8681377600 User None deleted ta
 INFO 2025-06-18 06:04:05,300 project_views 38847 8681377600 User None created project from template: professionals_jobs
 INFO 2025-06-18 06:04:05,700 project_views 38847 8681377600 User None created project from template: student_jobs
 INFO 2025-06-18 06:04:06,101 project_views 38847 8681377600 User None created project from template: student_revision
+INFO 2025-06-18 06:08:41,278 autoreload 38990 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 06:08:43,962 basehttp 38990 6132576256 "GET /projects/1/ HTTP/1.1" 200 190462
+INFO 2025-06-18 06:08:49,062 basehttp 38990 6132576256 "POST /tasks/20/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 06:08:50,559 basehttp 38990 6132576256 "POST /tasks/20/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 06:08:50,910 basehttp 38990 6132576256 "POST /tasks/20/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 06:08:51,983 basehttp 38990 6132576256 "GET /tasks/20/edit/ HTTP/1.1" 200 2821
+INFO 2025-06-18 06:08:54,699 basehttp 38990 6132576256 "POST /tasks/20/edit/ HTTP/1.1" 200 58
+INFO 2025-06-18 06:08:54,738 basehttp 38990 6132576256 "GET /projects/1/ HTTP/1.1" 200 190462
+INFO 2025-06-18 06:08:54,793 basehttp 38990 6132576256 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 304 0
+INFO 2025-06-18 06:09:25,429 basehttp 38990 6132576256 "POST /projects/1/tasks/create/3/42/ HTTP/1.1" 200 2779
+INFO 2025-06-18 06:09:32,457 basehttp 38990 6132576256 "GET /tasks/69/edit/ HTTP/1.1" 200 2833
+INFO 2025-06-18 06:09:40,469 basehttp 38990 6132576256 "POST /tasks/69/edit/ HTTP/1.1" 200 58
+INFO 2025-06-18 06:09:40,499 basehttp 38990 6132576256 "GET /projects/1/ HTTP/1.1" 200 193417
+INFO 2025-06-18 18:52:07,301 autoreload 40111 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:52:21,771 basehttp 40111 6189985792 "GET /projects/1/ HTTP/1.1" 200 202321
+INFO 2025-06-18 18:52:21,787 basehttp 40111 6206812160 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-18 18:52:21,787 basehttp 40111 6189985792 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-18 18:52:21,788 basehttp 40111 6223638528 "GET /static/js/grid/grid.js HTTP/1.1" 200 21027
+INFO 2025-06-18 18:52:21,859 basehttp 40111 6189985792 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 8107
+INFO 2025-06-18 18:52:21,861 basehttp 40111 6223638528 "GET /static/css/dist/styles.css HTTP/1.1" 200 41982
+INFO 2025-06-18 18:52:21,940 basehttp 40111 6223638528 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+WARNING 2025-06-18 18:52:23,747 project_views 40111 6223638528 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:52:23,749 log 40111 6223638528 Unprocessable Entity: /projects/1/tasks/create/2/2/
+WARNING 2025-06-18 18:52:23,749 basehttp 40111 6223638528 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 422 23
+WARNING 2025-06-18 18:52:25,475 project_views 40111 6223638528 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:52:25,476 log 40111 6223638528 Unprocessable Entity: /projects/1/tasks/create/2/2/
+WARNING 2025-06-18 18:52:25,477 basehttp 40111 6223638528 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 422 23
+INFO 2025-06-18 18:52:27,560 basehttp 40111 6223638528 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 2717
+INFO 2025-06-18 18:52:29,940 project_views 40111 6223638528 User None deleted task: "Test" from project: Toad
+INFO 2025-06-18 18:52:29,945 basehttp 40111 6223638528 "POST /tasks/73/delete/ HTTP/1.1" 200 0
+INFO 2025-06-18 18:53:07,450 autoreload 40111 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 18:53:07,704 autoreload 40152 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:53:23,040 autoreload 40152 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-18 18:53:23,300 autoreload 40170 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:54:00,648 autoreload 40201 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:54:04,049 basehttp 40201 6171029504 "GET /projects/1/ HTTP/1.1" 200 225568
+INFO 2025-06-18 18:54:04,067 basehttp 40201 6171029504 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-18 18:54:05,916 project_views 40201 6171029504 Task creation attempt - POST data: <QueryDict: {'csrfmiddlewaretoken': ['VCBwb5Ui5oGNGgYButBKMLe0ZrEeMyUkWpYH9NBSb3NEKXqkVJ3OnsNfFb7cnFhD'], 'text': ['']}>
+INFO 2025-06-18 18:54:05,916 project_views 40201 6171029504 Form is valid: False
+INFO 2025-06-18 18:54:05,919 project_views 40201 6171029504 Form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:54:05,919 project_views 40201 6171029504 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:54:05,920 log 40201 6171029504 Unprocessable Entity: /projects/1/tasks/create/2/2/
+WARNING 2025-06-18 18:54:05,921 basehttp 40201 6171029504 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 422 23
+INFO 2025-06-18 18:54:06,651 project_views 40201 6171029504 Task creation attempt - POST data: <QueryDict: {'csrfmiddlewaretoken': ['VCBwb5Ui5oGNGgYButBKMLe0ZrEeMyUkWpYH9NBSb3NEKXqkVJ3OnsNfFb7cnFhD'], 'text': ['']}>
+INFO 2025-06-18 18:54:06,651 project_views 40201 6171029504 Form is valid: False
+INFO 2025-06-18 18:54:06,652 project_views 40201 6171029504 Form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:54:06,652 project_views 40201 6171029504 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:54:06,653 log 40201 6171029504 Unprocessable Entity: /projects/1/tasks/create/2/2/
+WARNING 2025-06-18 18:54:06,653 basehttp 40201 6171029504 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 422 23
+INFO 2025-06-18 18:54:08,658 project_views 40201 6171029504 Task creation attempt - POST data: <QueryDict: {'csrfmiddlewaretoken': ['VCBwb5Ui5oGNGgYButBKMLe0ZrEeMyUkWpYH9NBSb3NEKXqkVJ3OnsNfFb7cnFhD'], 'text': ['Test']}>
+INFO 2025-06-18 18:54:08,658 project_views 40201 6171029504 Form is valid: True
+INFO 2025-06-18 18:54:08,663 basehttp 40201 6171029504 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 2717
+INFO 2025-06-18 18:55:17,055 autoreload 40201 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 18:55:17,308 autoreload 40237 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:55:44,153 autoreload 40260 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:55:49,373 basehttp 40260 6171684864 "GET /projects/1/ HTTP/1.1" 200 227145
+INFO 2025-06-18 18:55:49,385 basehttp 40260 6171684864 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-06-18 18:55:51,039 project_views 40260 6171684864 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:55:51,040 log 40260 6171684864 Unprocessable Entity: /projects/1/tasks/create/2/2/
+WARNING 2025-06-18 18:55:51,041 basehttp 40260 6171684864 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 422 23
+INFO 2025-06-18 18:58:10,621 autoreload 40338 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 18:58:16,696 basehttp 40338 6126645248 "GET /projects/1/ HTTP/1.1" 200 205893
+INFO 2025-06-18 18:58:16,713 basehttp 40338 6143471616 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-18 18:58:16,714 basehttp 40338 6160297984 "GET /static/js/grid/grid.js HTTP/1.1" 200 21795
+INFO 2025-06-18 18:58:16,714 basehttp 40338 6126645248 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-18 18:58:16,776 basehttp 40338 6160297984 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 8107
+INFO 2025-06-18 18:58:16,777 basehttp 40338 6126645248 "GET /static/css/dist/styles.css HTTP/1.1" 200 41982
+INFO 2025-06-18 18:58:16,883 basehttp 40338 6126645248 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+WARNING 2025-06-18 18:58:18,763 project_views 40338 6126645248 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:58:18,765 log 40338 6126645248 Unprocessable Entity: /projects/1/tasks/create/2/2/
+WARNING 2025-06-18 18:58:18,765 basehttp 40338 6126645248 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 422 23
+WARNING 2025-06-18 18:58:22,565 project_views 40338 6126645248 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:58:22,566 log 40338 6126645248 Unprocessable Entity: /projects/1/tasks/create/2/3/
+WARNING 2025-06-18 18:58:22,567 basehttp 40338 6126645248 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 422 23
+INFO 2025-06-18 18:58:26,134 basehttp 40338 6126645248 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 2717
+INFO 2025-06-18 18:58:30,633 project_views 40338 6126645248 User None deleted task: "Test" from project: Toad
+INFO 2025-06-18 18:58:30,636 basehttp 40338 6126645248 "POST /tasks/75/delete/ HTTP/1.1" 200 0
+INFO 2025-06-18 18:58:32,664 project_views 40338 6126645248 User None deleted task: "Test" from project: Toad
+INFO 2025-06-18 18:58:32,668 basehttp 40338 6126645248 "POST /tasks/74/delete/ HTTP/1.1" 200 0
+INFO 2025-06-18 18:58:38,903 basehttp 40338 6126645248 "GET /projects/1/ HTTP/1.1" 200 203098
+INFO 2025-06-18 18:58:38,915 basehttp 40338 6126645248 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+WARNING 2025-06-18 18:58:40,640 project_views 40338 6126645248 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-06-18 18:58:40,641 log 40338 6126645248 Unprocessable Entity: /projects/1/tasks/create/2/3/
+WARNING 2025-06-18 18:58:40,641 basehttp 40338 6126645248 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 422 23
+INFO 2025-06-18 18:58:44,091 basehttp 40338 6126645248 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2717
+INFO 2025-06-18 18:58:46,023 project_views 40338 6126645248 User None deleted task: "Test" from project: Toad
+INFO 2025-06-18 18:58:46,026 basehttp 40338 6126645248 "POST /tasks/76/delete/ HTTP/1.1" 200 0
+INFO 2025-06-18 18:58:48,754 basehttp 40338 6126645248 "POST /tasks/52/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 18:58:54,520 basehttp 40338 6126645248 "POST /tasks/18/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 19:01:02,676 autoreload 40338 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:01:02,959 autoreload 40402 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:01:12,649 basehttp 40402 6134165504 "POST /projects/1/tasks/create/2/4/ HTTP/1.1" 200 2801
+INFO 2025-06-18 19:01:14,260 autoreload 40402 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:01:14,502 autoreload 40416 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:01:23,704 autoreload 40416 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:01:23,942 autoreload 40423 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:01:34,189 autoreload 40423 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:01:34,403 autoreload 40432 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:01:44,692 autoreload 40432 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:01:44,878 autoreload 40437 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:01:56,143 autoreload 40437 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:01:56,409 autoreload 40442 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:02:04,638 autoreload 40442 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:02:04,817 autoreload 40447 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:02:15,064 autoreload 40447 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:02:15,236 autoreload 40450 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:02:24,438 autoreload 40450 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:02:24,617 autoreload 40456 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:02:36,898 autoreload 40456 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:02:37,069 autoreload 40460 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:02:56,497 autoreload 40460 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-18 19:02:56,675 autoreload 40465 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:03:15,030 autoreload 40465 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-18 19:03:15,311 autoreload 40481 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:03:28,584 autoreload 40481 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-18 19:03:28,766 autoreload 40486 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:03:44,097 autoreload 40486 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-06-18 19:03:44,360 autoreload 40491 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:04:17,014 autoreload 40546 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:04:20,679 basehttp 40546 6135328768 "GET /projects/1/ HTTP/1.1" 200 206065
+INFO 2025-06-18 19:04:20,691 basehttp 40546 6135328768 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-18 19:04:20,698 basehttp 40546 6135328768 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-18 19:04:39,605 basehttp 40546 6135328768 "POST /projects/1/tasks/create/2/4/ HTTP/1.1" 200 2717
+INFO 2025-06-18 19:04:42,133 project_views 40546 6135328768 User None deleted task: "Test" from project: Toad
+INFO 2025-06-18 19:04:42,137 basehttp 40546 6135328768 "POST /tasks/78/delete/ HTTP/1.1" 200 0
+INFO 2025-06-18 19:05:07,337 basehttp 40546 6135328768 "GET /projects/1/columns/create/ HTTP/1.1" 200 13480
+INFO 2025-06-18 19:05:09,258 basehttp 40546 6135328768 "POST /projects/1/columns/create/ HTTP/1.1" 302 0
+INFO 2025-06-18 19:05:09,290 basehttp 40546 6135328768 "GET /projects/1/ HTTP/1.1" 200 220276
+INFO 2025-06-18 19:05:09,306 basehttp 40546 6135328768 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-18 19:05:57,478 basehttp 40546 6135328768 "GET /projects/3/ HTTP/1.1" 200 88073
+INFO 2025-06-18 19:05:57,497 basehttp 40546 6135328768 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-18 19:06:05,375 basehttp 40546 6135328768 "GET /projects/3/columns/14/edit/ HTTP/1.1" 200 2646
+INFO 2025-06-18 19:06:08,935 basehttp 40546 6135328768 "GET /projects/1/ HTTP/1.1" 200 220276
+INFO 2025-06-18 19:06:08,947 basehttp 40546 6135328768 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-18 19:06:44,595 autoreload 40546 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:06:44,877 autoreload 40596 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:06:50,062 autoreload 40596 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-18 19:06:50,253 autoreload 40606 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:06:53,538 basehttp 40606 6162165760 "GET /projects/1/ HTTP/1.1" 200 220276

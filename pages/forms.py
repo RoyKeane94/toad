@@ -37,17 +37,22 @@ class QuickTaskForm(forms.ModelForm):
             'text': forms.TextInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md text-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
                 'placeholder': 'Add task',
-                'required': True,
+                'required': True,  # Keep field required
                 'name': 'text',
-                'data-validation-message': 'Please enter a task description',
             }),
         }
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Make the text field required
+        # Make the text field required and strip whitespace
         self.fields['text'].required = True
         self.fields['text'].strip = True
+    
+    def clean_text(self):
+        text = self.cleaned_data.get('text', '')
+        if not text or not text.strip():
+            raise forms.ValidationError('Please enter a task description')
+        return text.strip()
 
 class RowHeaderForm(forms.ModelForm):
     class Meta:
