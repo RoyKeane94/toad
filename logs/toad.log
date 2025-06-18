@@ -813,3 +813,130 @@ INFO 2025-06-18 05:41:16,583 basehttp 37811 6159101952 "POST /accounts/login/ HT
 INFO 2025-06-18 05:41:16,589 basehttp 37811 6159101952 "GET /projects/ HTTP/1.1" 200 15788
 INFO 2025-06-18 05:41:18,206 basehttp 37811 6159101952 "GET /projects/1/ HTTP/1.1" 200 190462
 INFO 2025-06-18 05:41:18,217 basehttp 37811 6159101952 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-18 05:51:00,481 project_views 38448 8681377600 User None created project: Integration Test Project
+INFO 2025-06-18 05:51:00,900 project_views 38448 8681377600 User None created project from template: student_jobs
+WARNING 2025-06-18 05:51:01,951 error_views 38448 8681377600 404 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,951 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:51:01,952 error_views 38448 8681377600 500 error: /projects/2/ - User: user1@example.com
+WARNING 2025-06-18 05:51:03,153 project_views 38448 8681377600 User None failed to create project - form errors: <ul class="errorlist"><li>name<ul class="errorlist" id="id_name_error"><li>This field is required.</li></ul></li></ul>
+INFO 2025-06-18 05:51:03,748 project_views 38448 8681377600 User None created project: New Test Project
+WARNING 2025-06-18 05:51:06,730 error_views 38448 8681377600 404 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:51:06,730 error_views 38448 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+WARNING 2025-06-18 05:51:07,931 error_views 38448 8681377600 404 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:51:07,931 error_views 38448 8681377600 500 error: /projects/1/ - User: other@example.com
+INFO 2025-06-18 05:51:14,714 project_views 38448 8681377600 User None deleted task: "Test Task" from project: Test Project
+INFO 2025-06-18 05:51:15,112 project_views 38448 8681377600 User None deleted task: "Test Task" from project: Test Project
+ERROR 2025-06-18 05:51:15,510 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,510 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,511 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,511 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,511 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,511 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,511 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:51:15,511 error_views 38448 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+INFO 2025-06-18 05:51:18,321 project_views 38448 8681377600 User None created project from template: professionals_jobs
+INFO 2025-06-18 05:51:18,721 project_views 38448 8681377600 User None created project from template: student_jobs
+INFO 2025-06-18 05:51:19,120 project_views 38448 8681377600 User None created project from template: student_revision
+WARNING 2025-06-18 05:57:51,729 project_views 38529 8681377600 User None failed to create project - form errors: <ul class="errorlist"><li>name<ul class="errorlist" id="id_name_error"><li>This field is required.</li></ul></li></ul>
+INFO 2025-06-18 05:57:52,325 project_views 38529 8681377600 User None created project: New Test Project
+WARNING 2025-06-18 05:57:55,345 error_views 38529 8681377600 404 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,345 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,346 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,346 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,346 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,346 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,346 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,347 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:57:55,347 error_views 38529 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+WARNING 2025-06-18 05:57:56,550 error_views 38529 8681377600 404 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:57:56,550 error_views 38529 8681377600 500 error: /projects/1/ - User: other@example.com
+INFO 2025-06-18 05:59:10,214 project_views 38655 8681377600 User None created project: Integration Test Project
+INFO 2025-06-18 05:59:10,668 project_views 38655 8681377600 User None created project from template: student_jobs
+WARNING 2025-06-18 05:59:11,655 error_views 38655 8681377600 404 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,655 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,655 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,656 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,656 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,656 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,656 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,656 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+ERROR 2025-06-18 05:59:11,656 error_views 38655 8681377600 500 error: /projects/2/ - User: user1@example.com
+WARNING 2025-06-18 05:59:12,840 project_views 38655 8681377600 User None failed to create project - form errors: <ul class="errorlist"><li>name<ul class="errorlist" id="id_name_error"><li>This field is required.</li></ul></li></ul>
+INFO 2025-06-18 05:59:13,433 project_views 38655 8681377600 User None created project: New Test Project
+WARNING 2025-06-18 05:59:16,373 error_views 38655 8681377600 404 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+ERROR 2025-06-18 05:59:16,374 error_views 38655 8681377600 500 error: /projects/1/edit/ - User: other@example.com
+WARNING 2025-06-18 05:59:17,560 error_views 38655 8681377600 404 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,560 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,560 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,560 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,561 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,561 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,561 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,561 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+ERROR 2025-06-18 05:59:17,561 error_views 38655 8681377600 500 error: /projects/1/ - User: other@example.com
+INFO 2025-06-18 05:59:24,271 project_views 38655 8681377600 User None deleted task: "Test Task" from project: Test Project
+INFO 2025-06-18 05:59:24,667 project_views 38655 8681377600 User None deleted task: "Test Task" from project: Test Project
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,063 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+ERROR 2025-06-18 05:59:25,064 error_views 38655 8681377600 500 error: /tasks/1/edit/ - User: test@example.com
+INFO 2025-06-18 05:59:27,831 project_views 38655 8681377600 User None created project from template: professionals_jobs
+INFO 2025-06-18 05:59:28,226 project_views 38655 8681377600 User None created project from template: student_jobs
+INFO 2025-06-18 05:59:28,620 project_views 38655 8681377600 User None created project from template: student_revision
+INFO 2025-06-18 06:03:47,147 project_views 38847 8681377600 User None created project: Integration Test Project
+INFO 2025-06-18 06:03:47,570 project_views 38847 8681377600 User None created project from template: student_jobs
+WARNING 2025-06-18 06:03:48,575 error_views 38847 8681377600 404 error: /projects/2/ - User: user1@example.com
+WARNING 2025-06-18 06:03:48,577 log 38847 8681377600 Not Found: /projects/2/
+WARNING 2025-06-18 06:03:48,578 error_views 38847 8681377600 404 error: /projects/2/edit/ - User: user1@example.com
+WARNING 2025-06-18 06:03:48,578 log 38847 8681377600 Not Found: /projects/2/edit/
+WARNING 2025-06-18 06:03:48,579 error_views 38847 8681377600 404 error: /projects/2/delete/ - User: user1@example.com
+WARNING 2025-06-18 06:03:48,579 log 38847 8681377600 Not Found: /projects/2/delete/
+WARNING 2025-06-18 06:03:49,849 project_views 38847 8681377600 User None failed to create project - form errors: <ul class="errorlist"><li>name<ul class="errorlist" id="id_name_error"><li>This field is required.</li></ul></li></ul>
+INFO 2025-06-18 06:03:50,447 project_views 38847 8681377600 User None created project: New Test Project
+WARNING 2025-06-18 06:03:53,501 error_views 38847 8681377600 404 error: /projects/1/edit/ - User: other@example.com
+WARNING 2025-06-18 06:03:53,502 log 38847 8681377600 Not Found: /projects/1/edit/
+WARNING 2025-06-18 06:03:54,712 error_views 38847 8681377600 404 error: /projects/1/ - User: other@example.com
+WARNING 2025-06-18 06:03:54,713 log 38847 8681377600 Not Found: /projects/1/
+INFO 2025-06-18 06:04:01,631 project_views 38847 8681377600 User None deleted task: "Test Task" from project: Test Project
+INFO 2025-06-18 06:04:02,029 project_views 38847 8681377600 User None deleted task: "Test Task" from project: Test Project
+INFO 2025-06-18 06:04:05,300 project_views 38847 8681377600 User None created project from template: professionals_jobs
+INFO 2025-06-18 06:04:05,700 project_views 38847 8681377600 User None created project from template: student_jobs
+INFO 2025-06-18 06:04:06,101 project_views 38847 8681377600 User None created project from template: student_revision
