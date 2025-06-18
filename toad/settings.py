@@ -27,6 +27,13 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['toad-production.up.railway.app', 'localhost', '127.0.0.1']
 
+# CSRF Configuration for production
+CSRF_TRUSTED_ORIGINS = [
+    'https://toad-production.up.railway.app',
+    'http://localhost:8000',
+    'http://127.0.0.1:8000',
+]
+
 
 # Application definition
 
