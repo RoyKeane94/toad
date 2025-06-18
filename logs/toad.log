@@ -1079,3 +1079,11 @@ INFO 2025-06-18 19:06:44,877 autoreload 40596 8681377600 Watching for file chang
 INFO 2025-06-18 19:06:50,062 autoreload 40596 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
 INFO 2025-06-18 19:06:50,253 autoreload 40606 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-18 19:06:53,538 basehttp 40606 6162165760 "GET /projects/1/ HTTP/1.1" 200 220276
+INFO 2025-06-18 19:07:18,761 autoreload 40661 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:07:22,008 basehttp 40661 6163853312 "POST /tasks/25/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 19:07:25,027 basehttp 40661 6163853312 "POST /tasks/20/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-18 19:24:43,125 basehttp 40661 6163853312 "POST /projects/1/tasks/create/3/2/ HTTP/1.1" 200 2869
+INFO 2025-06-18 19:44:00,658 autoreload 40981 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 19:44:04,428 basehttp 40981 6164164608 "GET /projects/1/ HTTP/1.1" 200 223311
+INFO 2025-06-18 19:44:04,441 basehttp 40981 6164164608 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-18 19:44:04,450 basehttp 40981 6164164608 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 7631
