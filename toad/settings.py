@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-change
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://toad-production.up.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['toad-production.up.railway.app', 'localhost', '127.0.0.1']
 
 
 # Application definition
