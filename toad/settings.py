@@ -29,7 +29,13 @@ DEBUG = not bool(os.getenv('RAILWAY_ENVIRONMENT'))
 print(f"RAILWAY_ENVIRONMENT: {os.getenv('RAILWAY_ENVIRONMENT')}")
 print(f"DEBUG setting: {DEBUG}")
 
-ALLOWED_HOSTS = ['toad-production.up.railway.app', 'localhost', '127.0.0.1']
+if os.getenv('RAILWAY_ENVIRONMENT'):
+    ALLOWED_HOSTS = ['toad-production.up.railway.app']
+    private_domain = os.getenv('RAILWAY_PRIVATE_DOMAIN')
+    if private_domain:
+        ALLOWED_HOSTS.append(private_domain)
+else:
+    ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 # Ensure no HTTPS redirects in development
 SECURE_SSL_REDIRECT = False
