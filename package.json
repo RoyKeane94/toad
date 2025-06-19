@@ -13,6 +13,7 @@
     "build:all": "npm run build:css && npm run build:js",
     "collect-static": "python manage.py collectstatic --noinput",
     "build:production": "npm run build:all && npm run collect-static",
+    "heroku-postbuild": "npm run build:all",
     "deploy": "npm run build:production && echo 'Build complete - ready for deployment'"
   },
   "repository": {
