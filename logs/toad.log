@@ -1102,3 +1102,191 @@ INFO 2025-06-18 19:57:24,636 autoreload 41308 8681377600 /Users/tombarratt/Deskt
 INFO 2025-06-18 19:57:24,912 autoreload 41339 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-18 19:57:27,007 autoreload 41339 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
 INFO 2025-06-18 19:57:27,172 autoreload 41350 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 20:08:16,169 autoreload 41567 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-18 20:08:19,078 basehttp 41567 6133723136 "GET /projects/1/ HTTP/1.1" 200 229111
+INFO 2025-06-18 20:08:19,091 basehttp 41567 6133723136 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-18 20:08:19,097 basehttp 41567 6133723136 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-18 20:08:23,941 basehttp 41567 6133723136 "POST /projects/1/tasks/create/3/3/ HTTP/1.1" 200 2739
+INFO 2025-06-19 19:08:11,550 autoreload 41567 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:08:11,969 autoreload 42203 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:09:01,674 autoreload 42203 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:09:02,014 autoreload 42226 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:09:16,318 autoreload 42226 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:09:16,537 autoreload 42239 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:52:38,570 autoreload 44584 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:52:46,192 basehttp 44584 6202699776 "GET /projects/1/ HTTP/1.1" 302 0
+INFO 2025-06-19 19:52:46,210 basehttp 44584 6202699776 "GET /accounts/login/?next=/projects/1/ HTTP/1.1" 200 17248
+INFO 2025-06-19 19:52:46,249 basehttp 44584 6202699776 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-19 19:52:46,249 basehttp 44584 6219526144 "GET /static/js/general/general.js HTTP/1.1" 304 0
+INFO 2025-06-19 19:52:46,259 basehttp 44584 6202699776 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-19 19:52:46,259 basehttp 44584 6219526144 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-19 19:53:24,073 autoreload 44638 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:53:36,521 basehttp 44638 6129840128 "POST /accounts/login/?next=/projects/1/ HTTP/1.1" 302 0
+INFO 2025-06-19 19:53:38,686 basehttp 44638 6129840128 "GET /projects/ HTTP/1.1" 200 13182
+INFO 2025-06-19 19:53:50,189 basehttp 44638 6129840128 "GET /projects/create/ HTTP/1.1" 200 13519
+INFO 2025-06-19 19:53:56,782 project_views 44638 6129840128 User None created project: Toad
+INFO 2025-06-19 19:53:56,786 basehttp 44638 6129840128 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-06-19 19:53:59,615 basehttp 44638 6129840128 "GET /projects/1/ HTTP/1.1" 200 87062
+INFO 2025-06-19 19:53:59,640 basehttp 44638 6129840128 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-19 19:54:12,464 basehttp 44638 6129840128 "GET /projects/1/rows/1/edit/ HTTP/1.1" 200 2638
+INFO 2025-06-19 19:54:15,124 basehttp 44638 6129840128 "GET /projects/1/rows/1/edit/ HTTP/1.1" 200 2638
+INFO 2025-06-19 19:54:22,055 basehttp 44638 6129840128 "POST /projects/1/rows/1/edit/ HTTP/1.1" 200 82
+INFO 2025-06-19 19:54:24,462 basehttp 44638 6146666496 "POST /projects/1/rows/1/edit/ HTTP/1.1" 200 82
+INFO 2025-06-19 19:54:24,850 basehttp 44638 6129840128 - Broken pipe from ('127.0.0.1', 65384)
+INFO 2025-06-19 19:54:27,384 basehttp 44638 6146666496 "GET /projects/1/ HTTP/1.1" 200 87068
+INFO 2025-06-19 19:54:27,436 basehttp 44638 6146666496 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 304 0
+INFO 2025-06-19 19:54:31,990 basehttp 44638 6129840128 "GET /projects/1/rows/2/edit/ HTTP/1.1" 200 2638
+INFO 2025-06-19 19:54:44,297 basehttp 44638 6129840128 "POST /projects/1/rows/2/edit/ HTTP/1.1" 200 95
+INFO 2025-06-19 19:54:46,734 basehttp 44638 6146666496 "POST /projects/1/rows/2/edit/ HTTP/1.1" 200 95
+INFO 2025-06-19 19:54:47,108 basehttp 44638 6129840128 - Broken pipe from ('127.0.0.1', 65396)
+INFO 2025-06-19 19:54:49,510 basehttp 44638 6146666496 "GET /projects/1/ HTTP/1.1" 200 87087
+INFO 2025-06-19 19:56:09,100 autoreload 44638 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:56:09,339 autoreload 44703 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:57:06,378 autoreload 44703 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:57:06,633 autoreload 44721 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:57:15,883 autoreload 44721 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:57:16,104 autoreload 44735 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:57:32,473 autoreload 44735 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:57:32,712 autoreload 44746 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:58:09,376 autoreload 44746 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:58:09,612 autoreload 44760 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:58:25,984 autoreload 44760 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 19:58:26,231 autoreload 44775 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 19:58:37,055 basehttp 44775 6136524800 "GET /projects/1/rows/4/delete/ HTTP/1.1" 200 2899
+INFO 2025-06-19 19:58:40,137 basehttp 44775 6136524800 "POST /projects/1/rows/4/delete/ HTTP/1.1" 200 76
+INFO 2025-06-19 19:58:41,648 basehttp 44775 6136524800 "GET /projects/1/ HTTP/1.1" 200 72995
+INFO 2025-06-19 20:01:46,033 basehttp 44775 6136524800 "GET /projects/1/ HTTP/1.1" 200 72995
+INFO 2025-06-19 20:01:48,773 basehttp 44775 6136524800 "GET /projects/1/rows/3/edit/ HTTP/1.1" 200 2638
+INFO 2025-06-19 20:01:57,632 basehttp 44775 6136524800 "POST /projects/1/rows/3/edit/ HTTP/1.1" 200 82
+INFO 2025-06-19 20:01:59,142 basehttp 44775 6136524800 "GET /projects/1/ HTTP/1.1" 200 73001
+INFO 2025-06-19 20:02:30,121 autoreload 44914 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:02:38,065 basehttp 44914 6165524480 "GET /projects/1/ HTTP/1.1" 200 73001
+INFO 2025-06-19 20:02:43,299 basehttp 44914 6165524480 "GET /projects/1/columns/2/edit/ HTTP/1.1" 200 2656
+INFO 2025-06-19 20:02:48,512 basehttp 44914 6165524480 "POST /projects/1/columns/2/edit/ HTTP/1.1" 200 70
+INFO 2025-06-19 20:02:50,007 basehttp 44914 6165524480 "GET /projects/1/ HTTP/1.1" 200 72989
+INFO 2025-06-19 20:02:50,926 basehttp 44914 6182350848 - Broken pipe from ('127.0.0.1', 49247)
+INFO 2025-06-19 20:03:36,488 autoreload 44914 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:03:36,742 autoreload 44937 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:03:53,127 autoreload 44937 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:03:53,358 autoreload 44953 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:03:59,570 basehttp 44953 6196916224 "GET /projects/1/ HTTP/1.1" 302 0
+INFO 2025-06-19 20:03:59,581 basehttp 44953 6196916224 "GET /accounts/login/?next=/projects/1/ HTTP/1.1" 200 17248
+INFO 2025-06-19 20:04:14,749 autoreload 44968 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:04:32,627 autoreload 44987 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:04:36,093 basehttp 44987 6157316096 "GET /accounts/register/ HTTP/1.1" 200 18476
+INFO 2025-06-19 20:04:48,812 basehttp 44987 6157316096 "POST /accounts/register/ HTTP/1.1" 200 18833
+INFO 2025-06-19 20:04:51,591 basehttp 44987 6157316096 "GET /accounts/register/ HTTP/1.1" 200 18476
+INFO 2025-06-19 20:04:53,923 basehttp 44987 6157316096 "GET /projects/create/ HTTP/1.1" 302 0
+INFO 2025-06-19 20:04:53,930 basehttp 44987 6157316096 "GET /accounts/login/?next=/projects/create/ HTTP/1.1" 200 17248
+INFO 2025-06-19 20:04:57,686 basehttp 44987 6157316096 "GET /accounts/login/ HTTP/1.1" 200 17248
+INFO 2025-06-19 20:05:05,141 basehttp 44987 6157316096 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-06-19 20:05:05,150 basehttp 44987 6157316096 "GET /projects/ HTTP/1.1" 200 15788
+INFO 2025-06-19 20:05:06,785 basehttp 44987 6157316096 "GET /projects/1/ HTTP/1.1" 200 231928
+INFO 2025-06-19 20:05:09,357 basehttp 44987 6157316096 "POST /projects/1/tasks/create/2/3/ HTTP/1.1" 200 2717
+INFO 2025-06-19 20:05:11,012 basehttp 44987 6157316096 "GET /projects/1/rows/2/edit/ HTTP/1.1" 200 2644
+INFO 2025-06-19 20:13:19,461 autoreload 44987 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:13:19,737 autoreload 45043 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:13:29,950 autoreload 45043 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:13:30,177 autoreload 45056 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:14:36,767 autoreload 45134 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:15:41,874 autoreload 45184 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:15:46,081 basehttp 45184 6170030080 "GET /projects/1/ HTTP/1.1" 301 0
+INFO 2025-06-19 20:15:46,083 basehttp 45184 6170030080 code 400, message Bad request version ('F×\x00')
+ERROR 2025-06-19 20:15:46,084 basehttp 45184 6170030080 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:15:46,085 basehttp 45184 6170030080 code 400, message Bad request version ('URb@!HU/µÆÄÔèï<y¸,GÁ\x00/b')
+ERROR 2025-06-19 20:15:46,085 basehttp 45184 6170030080 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:15:56,097 basehttp 45184 6169456640 "GET / HTTP/1.1" 301 0
+INFO 2025-06-19 20:15:56,100 basehttp 45184 6186283008 code 400, message Bad request version ('¿¤\x00/ûkÝ')
+ERROR 2025-06-19 20:15:56,100 basehttp 45184 6186283008 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:15:56,101 basehttp 45184 6186283008 code 400, message Bad request version ('ný.\x92î5w^\x89|o')
+ERROR 2025-06-19 20:15:56,101 basehttp 45184 6186283008 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:12,530 autoreload 45184 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:16:12,756 autoreload 45219 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:16:23,027 autoreload 45219 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:16:23,297 autoreload 45235 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:16:25,676 basehttp 45235 6139146240 code 400, message Bad request version ('À\x98m')
+ERROR 2025-06-19 20:16:25,677 basehttp 45235 6139146240 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:25,677 basehttp 45235 6155972608 code 400, message Bad request syntax ('\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\x06á·\x02bÙjt¨\x02Q\x97.g*')
+ERROR 2025-06-19 20:16:25,678 basehttp 45235 6155972608 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:25,679 basehttp 45235 6139146240 code 400, message Bad request version ('ÚÚ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93::\x00\x00\x00\x1b\x00\x03\x02\x00\x02\x00#\x00\x00DÍ\x00\x05\x00\x03\x02h2\x00\x05\x00\x05\x01\x00\x00\x00\x00\x00')
+ERROR 2025-06-19 20:16:25,679 basehttp 45235 6139146240 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:25,680 basehttp 45235 6155972608 code 400, message Bad request version ('**\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93')
+ERROR 2025-06-19 20:16:25,680 basehttp 45235 6155972608 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:27,584 basehttp 45235 6139146240 code 400, message Bad request version ('½ª')
+ERROR 2025-06-19 20:16:27,584 basehttp 45235 6139146240 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:27,585 basehttp 45235 6155972608 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00')
+ERROR 2025-06-19 20:16:27,585 basehttp 45235 6155972608 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:27,585 basehttp 45235 6139146240 code 400, message Bad request version ('ï\x80')
+ERROR 2025-06-19 20:16:27,586 basehttp 45235 6139146240 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:27,586 basehttp 45235 6172798976 code 400, message Bad request version ('\x93Ö?')
+ERROR 2025-06-19 20:16:27,586 basehttp 45235 6172798976 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:35,857 autoreload 45255 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:16:37,829 basehttp 45255 6197948416 code 400, message Bad request version ('z\x81F5\x1bQ1Qß')
+INFO 2025-06-19 20:16:37,830 basehttp 45255 6214774784 code 400, message Bad request version ('\x00\x02\x01\x00\x00')
+ERROR 2025-06-19 20:16:37,830 basehttp 45255 6197948416 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-06-19 20:16:37,831 basehttp 45255 6214774784 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:37,832 basehttp 45255 6197948416 code 400, message Bad request version ('J×\x17³Ò\x1b\x1aê\x83\x1brs¿w\x9a-(e¤j\x11O$3z')
+ERROR 2025-06-19 20:16:37,832 basehttp 45255 6197948416 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:16:37,832 basehttp 45255 6214774784 code 400, message Bad request version ('\x00')
+ERROR 2025-06-19 20:16:37,832 basehttp 45255 6214774784 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:17:04,489 autoreload 45255 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:17:04,731 autoreload 45272 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:17:12,955 autoreload 45272 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:17:13,227 autoreload 45288 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:17:25,516 autoreload 45288 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:17:25,750 autoreload 45307 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:17:28,963 autoreload 45307 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-06-19 20:17:29,144 autoreload 45315 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:17:35,274 autoreload 45325 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:17:39,377 basehttp 45325 6205878272 code 400, message Bad request version ('J¾#e\x11ÐÄªxÇuhU')
+ERROR 2025-06-19 20:17:39,377 basehttp 45325 6205878272 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:17:39,379 basehttp 45325 6205878272 code 400, message Bad request version ('i\x8fØ\x97¬O\x11ÇÅ³ÌÞ×ÉÁ\x92\x1a')
+ERROR 2025-06-19 20:17:39,379 basehttp 45325 6205878272 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:17:39,379 basehttp 45325 6239531008 code 400, message Bad request version ('O')
+ERROR 2025-06-19 20:17:39,379 basehttp 45325 6239531008 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:17:39,380 basehttp 45325 6205878272 code 400, message Bad request version ('\x00Ú\x00\x00\x01\x00\x01')
+ERROR 2025-06-19 20:17:39,381 basehttp 45325 6205878272 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:18:57,512 basehttp 45325 6205304832 code 400, message Bad request version ('::\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S')
+ERROR 2025-06-19 20:18:57,513 basehttp 45325 6205304832 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:18:57,513 basehttp 45325 6222131200 code 400, message Bad request version ('B§\x95á¨\x97veõ')
+ERROR 2025-06-19 20:18:57,513 basehttp 45325 6222131200 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:18:57,514 basehttp 45325 6205304832 code 400, message Bad request version ('mLtì\x00\x1bä]\x9e\x19:Ëx]]Óö')
+ERROR 2025-06-19 20:18:57,514 basehttp 45325 6205304832 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:18:57,514 basehttp 45325 6222131200 code 400, message Bad request version ('QÓÑmMÝ]-ôÈè\x91ÇG/Pvn\x181¹Û')
+ERROR 2025-06-19 20:18:57,515 basehttp 45325 6222131200 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:19:01,870 autoreload 45423 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:19:08,770 basehttp 45423 6131888128 code 400, message Bad request version ('ó¥QP×I¹§\x9báÔE\x86$K\'\x90\x13\x8c¤+é5Îj\x94»S\x88\\\x12\x91Ï\x9b¸E"&\x12-â\x8c\x93pºK\x91')
+ERROR 2025-06-19 20:19:08,770 basehttp 45423 6131888128 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:19:08,771 basehttp 45423 6131888128 code 400, message Bad request version ('ªª\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06SÚÚ\x00\x00\x00')
+ERROR 2025-06-19 20:19:08,771 basehttp 45423 6131888128 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:19:08,773 basehttp 45423 6148714496 code 400, message Bad request version ('ñ\x8cb>¬±Ó\x93h\x9f÷S\x06\x11\x86dl\x180¬:¸¸\x9c¥[\x99\x9bX=UZ\x8cúò1\x989\x15\x02¢²Xì\x1bU\x15\x00\x9a\x08\x95S\x9a:')
+ERROR 2025-06-19 20:19:08,773 basehttp 45423 6148714496 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:19:08,774 basehttp 45423 6148714496 code 400, message Bad request version ('\x94öö?]\x14¦\x8b<\x04|ý[ÒÍÿåáx>¤\x8b\x03\x06\x9dñ\x93I{\x11¡÷\x00')
+ERROR 2025-06-19 20:19:08,774 basehttp 45423 6148714496 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:21:06,348 basehttp 45423 6165540864 code 400, message Bad request version ('\x00\x12\x00\x10\x04\x03\x08\x04\x04\x01\x05\x03\x08\x05\x05\x01\x08\x06\x06\x01\x00\x1b\x00\x03\x02\x00\x02\x00#\x00\x00\x00')
+ERROR 2025-06-19 20:21:06,349 basehttp 45423 6165540864 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:21:06,350 basehttp 45423 6165540864 code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06')
+ERROR 2025-06-19 20:21:06,350 basehttp 45423 6165540864 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:21:16,158 basehttp 45423 6131888128 code 400, message Bad request version ('ÎVVõ\x11\x16\x02{\x92ÿ\x93')
+INFO 2025-06-19 20:21:16,159 basehttp 45423 6165540864 code 400, message Bad request version ('\x8aD¢Tþ\x97°\x8eÇ-')
+ERROR 2025-06-19 20:21:16,163 basehttp 45423 6131888128 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-06-19 20:21:16,163 basehttp 45423 6165540864 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:21:16,165 basehttp 45423 6131888128 code 400, message Bad request version ('ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06S')
+INFO 2025-06-19 20:21:16,165 basehttp 45423 6165540864 code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03')
+ERROR 2025-06-19 20:21:16,166 basehttp 45423 6131888128 You're accessing the development server over HTTPS, but it only supports HTTP.
+ERROR 2025-06-19 20:21:16,166 basehttp 45423 6165540864 You're accessing the development server over HTTPS, but it only supports HTTP.
+INFO 2025-06-19 20:21:29,913 basehttp 45423 6131888128 "GET / HTTP/1.1" 200 13172
+INFO 2025-06-19 20:21:29,928 basehttp 45423 6131888128 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-19 20:21:29,929 basehttp 45423 6148714496 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-19 20:21:30,012 basehttp 45423 6131888128 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 7631
+INFO 2025-06-19 20:21:30,013 basehttp 45423 6148714496 "GET /static/css/dist/styles.css HTTP/1.1" 200 41982
+INFO 2025-06-19 20:21:30,088 basehttp 45423 6148714496 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-19 20:21:35,392 basehttp 45423 6131888128 "GET /projects/ HTTP/1.1" 200 15788
+INFO 2025-06-19 20:21:36,298 basehttp 45423 6131888128 "GET /projects/1/ HTTP/1.1" 200 234723
+INFO 2025-06-19 20:21:36,310 basehttp 45423 6131888128 "GET /static/js/grid/grid.js HTTP/1.1" 200 21795
+INFO 2025-06-19 20:21:37,558 basehttp 45423 6131888128 "GET /projects/1/columns/3/edit/ HTTP/1.1" 200 2644
+INFO 2025-06-19 20:21:41,576 basehttp 45423 6131888128 "POST /projects/1/columns/3/edit/ HTTP/1.1" 200 69
+INFO 2025-06-19 20:21:41,618 basehttp 45423 6131888128 "GET /projects/1/ HTTP/1.1" 200 234722
+INFO 2025-06-19 20:21:43,344 basehttp 45423 6131888128 "GET /projects/1/columns/3/edit/ HTTP/1.1" 200 2643
+INFO 2025-06-19 20:21:46,144 basehttp 45423 6131888128 "POST /projects/1/columns/3/edit/ HTTP/1.1" 200 70
+INFO 2025-06-19 20:21:46,186 basehttp 45423 6131888128 "GET /projects/1/ HTTP/1.1" 200 234723
