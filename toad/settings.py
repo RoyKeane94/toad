@@ -63,7 +63,8 @@ AUTH_USER_MODEL = 'accounts.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -84,6 +85,12 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            ],
+            'loaders': [
+                ('django.template.loaders.cached.Loader', [
+                    'django.template.loaders.filesystem.Loader',
+                    'django.template.loaders.app_directories.Loader',
+                ]),
             ],
         },
     },
@@ -109,6 +116,7 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
             'OPTIONS': {
                 'connect_timeout': 10,
                 'sslmode': 'require',
+                'MAX_CONNS': 20,
             },
             'CONN_MAX_AGE': 60,
             'CONN_HEALTH_CHECKS': True,
@@ -169,6 +177,11 @@ STATICFILES_DIRS = [
 # Static file compression and caching for production
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# WhiteNoise configuration for better compression and caching
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = True
+WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br']
+
 # Note: When DEBUG = False, you need to:
 # 1. Run 'python manage.py collectstatic' to collect static files
 # 2. Ensure static file serving is configured (see urls.py)
@@ -183,9 +196,38 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 if os.getenv('RAILWAY_ENVIRONMENT'):
     print("Applying production settings...")
     
+    # Static file optimization
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    
+    # WhiteNoise production settings
+    WHITENOISE_USE_FINDERS = False
+    WHITENOISE_AUTOREFRESH = False
+    WHITENOISE_MAX_AGE = 31536000  # 1 year cache
+    WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br']
+    
+    # Template caching
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
+        ('django.template.loaders.cached.Loader', [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ]),
+    ]
+    
+    # Database optimization
+    DATABASES['default']['OPTIONS'].update({
+        'MAX_CONNS': 20,
+        'OPTIONS': {
+            'MAX_CONNS': 20,
+            'connect_timeout': 10,
+            'sslmode': 'require',
+        }
+    })
+    
     # Session optimization
     SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
     SESSION_CACHE_ALIAS = 'default'
+    SESSION_COOKIE_AGE = 86400  # 24 hours
+    SESSION_SAVE_EVERY_REQUEST = False
     
     # Security settings for production
     SECURE_BROWSER_XSS_FILTER = True
@@ -200,6 +242,11 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
+    
+    # Additional performance settings
+    USE_ETAGS = True
+    PREPEND_WWW = False
+    
 else:
     print("Using development settings (no HTTPS redirect)")
     # Explicitly ensure no HTTPS redirects in development

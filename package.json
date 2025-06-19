@@ -1,0 +1,33 @@
+{
+  "name": "toad",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:js": "npm run build:js:grid && npm run build:js:general && npm run build:js:user",
+    "build:js:grid": "terser static/js/grid/grid.js -o static/js/grid/grid.min.js -c -m",
+    "build:js:general": "terser static/js/general/general.js -o static/js/general/general.min.js -c -m",
+    "build:js:user": "terser static/js/user/user.js -o static/js/user/user.min.js -c -m",
+    "build:css": "cd theme/static_src && npm run build",
+    "build:all": "npm run build:css && npm run build:js",
+    "collect-static": "python manage.py collectstatic --noinput",
+    "build:production": "npm run build:all && npm run collect-static",
+    "deploy": "npm run build:production && echo 'Build complete - ready for deployment'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RoyKeane94/toad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/RoyKeane94/toad/issues"
+  },
+  "homepage": "https://github.com/RoyKeane94/toad#readme",
+  "devDependencies": {
+    "terser": "^5.36.0"
+  }
+}

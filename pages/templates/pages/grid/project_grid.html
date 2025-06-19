@@ -6,7 +6,11 @@
 
 {% block extra_head %}
 <!-- Grid JavaScript -->
-<script src="{% static 'js/grid/grid.js' %}"></script>
+{% if not debug %}
+    <script src="{% static 'js/grid/grid.min.js' %}"></script>
+{% else %}
+    <script src="{% static 'js/grid/grid.js' %}"></script>
+{% endif %}
 
 {% endblock %}
 
@@ -244,13 +248,12 @@
                                          set errorDiv to the first .error-message in me
                                          set errorDiv.innerHTML to ''
                                          remove .border-red-500 from textInput
-                                         add .border-[var(--inline-input-border)] to textInput
+                                         set textInput.style.borderColor to 'var(--inline-input-border)'
                                        else
                                          set errorDiv to the first .error-message in me
                                          set errorDiv.innerHTML to detail.xhr.response
                                          set textInput to the first input in me
-                                         remove .border-[var(--inline-input-border)] from textInput
-                                         add .border-red-500 to textInput
+                                         set textInput.style.borderColor to '#ef4444'
                                        end
                                      end">
                                 {% csrf_token %}

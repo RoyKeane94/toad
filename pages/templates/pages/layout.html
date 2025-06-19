@@ -14,7 +14,11 @@
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="{% static 'css/master.css' %}">
     <!-- General JavaScript -->
-    <script src="{% static 'js/general/general.js' %}"></script>
+    {% if not debug %}
+        <script src="{% static 'js/general/general.min.js' %}"></script>
+    {% else %}
+        <script src="{% static 'js/general/general.js' %}"></script>
+    {% endif %}
     {% block extra_head %}{% endblock %}
 </head>
 <body class="bg-[var(--main-bg)] min-h-screen flex flex-col">

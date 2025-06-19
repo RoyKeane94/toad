@@ -12,6 +12,8 @@ from django.db import IntegrityError
 from django.db.models import Count
 from django.db.models.functions import Coalesce
 from django.db.models.functions import Greatest
+from django.views.decorators.cache import cache_control, never_cache
+from django.views.decorators.vary import vary_on_headers
 from pages.models import Project, RowHeader, ColumnHeader, Task
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
 import logging
@@ -21,6 +23,7 @@ logger = logging.getLogger(__name__)
 
 
 @login_required
+@cache_control(max_age=60)
 def project_list_view(request):
     # Optimize by only loading needed fields and adding task counts
     projects = Project.objects.filter(user=request.user).annotate(
@@ -97,6 +100,7 @@ def project_delete_view(request, pk):
 
 
 @login_required
+@cache_control(max_age=60)
 def project_grid_view(request, pk):
     # Use select_related to reduce database queries
     project = get_object_or_404(
