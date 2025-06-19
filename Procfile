@@ -1,2 +1,2 @@
 release: python3 manage.py migrate
-web: gunicorn toad.wsgi --log-file -
+web: python3 manage.py migrate && gunicorn toad.wsgi --log-file -
