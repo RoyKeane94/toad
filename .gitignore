@@ -245,4 +245,10 @@ package-lock.json
 *.min.js
 *.min.css
 theme/static/css/dist/
-static/js/**/*.min.js 
+static/js/**/*.min.js
+
+# Allow specific minified files that we want to commit as fallbacks
+!static/js/grid/grid.min.js
+!static/js/general/general.min.js
+!static/js/user/user.min.js
+!theme/static/css/dist/styles.css 
