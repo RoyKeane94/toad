@@ -30,10 +30,16 @@ print(f"RAILWAY_ENVIRONMENT: {os.getenv('RAILWAY_ENVIRONMENT')}")
 print(f"DEBUG setting: {DEBUG}")
 
 if os.getenv('RAILWAY_ENVIRONMENT'):
-    ALLOWED_HOSTS = ['toad-production.up.railway.app']
-    private_domain = os.getenv('RAILWAY_PRIVATE_DOMAIN')
-    if private_domain:
-        ALLOWED_HOSTS.append(private_domain)
+    ALLOWED_HOSTS = [
+        'toad-production.up.railway.app',
+        'toad.railway.internal', # Hardcode the known internal domain
+    ]
+    # Filter out None values from the list
+    ALLOWED_HOSTS = [host for host in ALLOWED_HOSTS if host]
+    
+    # Also allow any subdomain of railway.app as a fallback for health checks
+    ALLOWED_HOSTS.append('.up.railway.app')
+
 else:
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
@@ -41,11 +47,18 @@ else:
 SECURE_SSL_REDIRECT = False
 
 # CSRF Configuration for production
-CSRF_TRUSTED_ORIGINS = [
-    'https://toad-production.up.railway.app',
-    'http://localhost:8000',
-    'http://127.0.0.1:8000',
-]
+if os.getenv('RAILWAY_ENVIRONMENT'):
+    CSRF_TRUSTED_ORIGINS = [
+        'https://toad-production.up.railway.app',
+        'https://toad.railway.internal', # Hardcode for CSRF
+    ]
+else:
+    # Default for local development
+    CSRF_TRUSTED_ORIGINS = [
+        'http://localhost:8000',
+        'http://127.0.0.1:8000',
+    ]
+
 # Application definition
 
 INSTALLED_APPS = [
