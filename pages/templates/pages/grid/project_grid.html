@@ -149,22 +149,22 @@
                                 <span class="text-[var(--title-text)] truncate">{{ col_header.name }}</span>
                                 <div class="flex space-x-1 ml-2">
                                     <button type="button"
-                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer" 
+                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer modal-trigger-btn" 
                                             title="Edit column"
                                             hx-get="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_header.pk %}"
                                             hx-target="#modal-content"
-                                            hx-trigger="click throttle:500ms"
-                                            hx-disabled-elt="this"
+                                            hx-trigger="click throttle:300ms"
+                                            hx-indicator=".htmx-indicator"
                                             _="on click trigger openModal">
                                         <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                     </button>
                                     <button type="button"
-                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer" 
+                                            class="p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer modal-trigger-btn" 
                                             title="Delete column"
                                             hx-get="{% url 'pages:column_delete' project_pk=project.pk col_pk=col_header.pk %}"
                                             hx-target="#modal-content"
-                                            hx-trigger="click throttle:500ms"
-                                            hx-disabled-elt="this"
+                                            hx-trigger="click throttle:300ms"
+                                            hx-indicator=".htmx-indicator"
                                             _="on click trigger openModal">
                                         <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
                                     </button>
@@ -184,22 +184,22 @@
                             <span>{{ row_h.name }}</span>
                             <div class="flex space-x-1 ml-2">
                                 <button type="button"
-                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer modal-trigger-btn" 
                                         title="Edit row"
                                         hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
                                         hx-target="#modal-content"
-                                        hx-trigger="click throttle:500ms"
-                                        hx-disabled-elt="this"
+                                        hx-trigger="click throttle:300ms"
+                                        hx-indicator=".htmx-indicator"
                                         _="on click trigger openModal">
                                     <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                 </button>
                                 <button type="button"
-                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                                        class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer modal-trigger-btn" 
                                         title="Delete row"
                                         hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
                                         hx-target="#modal-content"
-                                        hx-trigger="click throttle:500ms"
-                                        hx-disabled-elt="this"
+                                        hx-trigger="click throttle:300ms"
+                                        hx-indicator=".htmx-indicator"
                                         _="on click trigger openModal">
                                     <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
                                 </button>
@@ -228,26 +228,26 @@
                                   hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
                                   hx-swap="beforeend"
                                   hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
-                                  hx-trigger="submit throttle:500ms"
-                                  hx-disabled-elt="this"
+                                  hx-trigger="submit throttle:300ms"
+                                  hx-indicator=".htmx-indicator"
                                   onsubmit="return validateTaskForm(this)"
                                   _="on htmx:beforeRequest
-                                       add .opacity-50 to me
+                                       add .opacity-75 to me
                                      end
                                      
                                      on htmx:afterRequest(detail)
-                                       remove .opacity-50 from me
+                                       remove .opacity-75 from me
                                        if detail.successful
                                          set textInput to the first input in me
                                          set textInput.value to ''
                                          call textInput.focus()
                                          set errorDiv to the first .error-message in me
-                                         set errorDiv.innerHTML to ''
+                                         set errorDiv.textContent to ''
                                          remove .border-red-500 from textInput
                                          add .border-[var(--inline-input-border)] to textInput
                                        else
                                          set errorDiv to the first .error-message in me
-                                         set errorDiv.innerHTML to detail.xhr.response
+                                         set errorDiv.textContent to detail.xhr.response
                                          set textInput to the first input in me
                                          remove .border-[var(--inline-input-border)] from textInput
                                          add .border-red-500 to textInput
@@ -333,10 +333,20 @@
     </div>
 </div>
 
-<!-- Modal Container -->
-<div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
-    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="modal-content">
+<!-- Global HTMX Indicator -->
+<div class="htmx-indicator fixed top-4 right-4 z-[60] bg-[var(--primary-action-bg)] text-white px-4 py-2 rounded-lg shadow-lg opacity-0 transition-opacity duration-200">
+    <i class="fas fa-spinner fa-spin mr-2"></i>
+    Loading...
+</div>
+
+<!-- Optimized Modal Container -->
+<div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-200">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-200" id="modal-content">
         <!-- Modal content will be loaded here -->
+        <div class="p-8 text-center">
+            <i class="fas fa-spinner fa-spin text-2xl text-[var(--primary-action-bg)]"></i>
+            <p class="mt-2 text-[var(--text-secondary)]">Loading...</p>
+        </div>
     </div>
 </div>
 {% endblock %} 
