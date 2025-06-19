@@ -20,6 +20,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 5. Copy the rest of your application code
 COPY . .
 
+# 6. Collect static files
+# This runs the collectstatic command to gather all static files into STATIC_ROOT.
+# The --noinput flag prevents any interactive prompts.
+RUN python3 manage.py collectstatic --noinput
+
 # The port the container will listen on.
 # Gunicorn will bind to the $PORT environment variable provided by Railway automatically.
 EXPOSE 8000
