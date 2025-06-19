@@ -12,9 +12,6 @@ from django.db import IntegrityError
 from django.db.models import Count
 from django.db.models.functions import Coalesce
 from django.db.models.functions import Greatest
-from django.views.decorators.cache import cache_control
-from django.views.decorators.http import require_http_methods
-from django.db import transaction
 from pages.models import Project, RowHeader, ColumnHeader, Task
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
 import logging
@@ -141,73 +138,52 @@ def project_grid_view(request, pk):
 # Task CRUD Views
 
 @login_required
-@require_http_methods(["POST"])
-@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def task_create_view(request, project_pk, row_pk, col_pk):
-    # Ultra-fast task creation with minimal DB queries
-    try:
-        # Single query with select_related to get all needed data
-        project = Project.objects.select_related('user').only('id', 'name', 'user__id').get(
-            pk=project_pk, user=request.user
-        )
-        
-        # Use bulk queries for headers - they're likely already in cache from grid view
-        row_header = RowHeader.objects.only('id', 'name', 'project_id').get(
-            pk=row_pk, project_id=project.pk
-        )
-        column_header = ColumnHeader.objects.only('id', 'name', 'project_id').get(
-            pk=col_pk, project_id=project.pk
-        )
-    except (Project.DoesNotExist, RowHeader.DoesNotExist, ColumnHeader.DoesNotExist):
-        if request.headers.get('HX-Request'):
-            return HttpResponse('Invalid request', status=400)
-        return redirect('pages:project_list')
+    # Optimize by only loading required fields
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
+    row_header = get_object_or_404(RowHeader.objects.only('id', 'name', 'project'), pk=row_pk, project=project)
+    column_header = get_object_or_404(ColumnHeader.objects.only('id', 'name', 'project'), pk=col_pk, project=project)
 
-    form = QuickTaskForm(request.POST)
-    if form.is_valid():
-        # Use atomic transaction for faster commits
-        with transaction.atomic():
-            task = Task.objects.create(
-                text=form.cleaned_data['text'],
-                project=project,
-                row_header=row_header,
-                column_header=column_header,
-                completed=False
-            )
-        
-        if request.headers.get('HX-Request'):
-            # Return minimal HTML for faster rendering
-            return render(request, 'pages/grid/actions_in_page/task_item.html', {
-                'task': task,
-            })
-        
-        messages.success(request, f'Task "{task.text}" added successfully!')
-        return redirect('pages:project_grid', pk=project.pk)
-    else:
-        if request.headers.get('HX-Request'):
-            errors = form.errors.get('text', ['Please enter a task description'])
-            return HttpResponse(errors[0], status=422)
-        messages.error(request, 'Please correct the errors below.')
-        return redirect('pages:project_grid', pk=project.pk)
+    if request.method == 'POST':
+        form = QuickTaskForm(request.POST)
+        if form.is_valid():
+            task = form.save(commit=False)
+            task.project = project
+            task.row_header = row_header
+            task.column_header = column_header
+            task.save()
+            
+            if request.headers.get('HX-Request'):
+                # Return just the new task HTML for HTMX to insert
+                return render(request, 'pages/grid/actions_in_page/task_item.html', {
+                    'task': task,
+                })
+            
+            messages.success(request, f'Task "{task.text}" added successfully!')
+            return redirect('pages:project_grid', pk=project.pk)
+        else:
+            logger.warning(f'User {request.user.username} failed to create task - form errors: {form.errors}')
+            if request.headers.get('HX-Request'):
+                errors = form.errors.get('text', ['An error occurred'])
+                return HttpResponse(errors[0], status=422)
+            messages.error(request, 'Please correct the errors below.')
+            return redirect('pages:project_grid', pk=project.pk)
+    
+    return redirect('pages:project_grid', pk=project.pk)
 
 
-@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def task_edit_view(request, task_pk):
-    # Ultra-fast task editing with minimal queries
-    try:
-        task = Task.objects.select_related('project').only(
-            'id', 'text', 'completed', 'project__id', 'project__user_id'
-        ).get(pk=task_pk, project__user=request.user)
-    except Task.DoesNotExist:
-        if request.headers.get('HX-Request'):
-            return HttpResponse('Task not found', status=404)
-        return redirect('pages:project_list')
+    # Optimize with select_related to avoid additional queries
+    task = get_object_or_404(
+        Task.objects.select_related('project', 'project__user'), 
+        pk=task_pk, 
+        project__user=request.user
+    )
     
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
-            with transaction.atomic():
-                form.save()
+            form.save()
             if request.headers.get('HX-Request'):
                 return JsonResponse({
                     'success': True,
@@ -312,23 +288,19 @@ def row_create_view(request, project_pk):
     })
 
 
-@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def row_edit_view(request, project_pk, row_pk):
-    # Fast modal loading with minimal queries
-    try:
-        # Single optimized query
-        project = Project.objects.only('id', 'name', 'user_id').get(pk=project_pk, user=request.user)
-        row = RowHeader.objects.only('id', 'name', 'project_id').get(pk=row_pk, project_id=project.pk)
-    except (Project.DoesNotExist, RowHeader.DoesNotExist):
-        if request.headers.get('HX-Request'):
-            return HttpResponse('Not found', status=404)
-        return redirect('pages:project_list')
+    # Optimize with select_related and only needed fields
+    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
+    row = get_object_or_404(
+        RowHeader.objects.select_related('project').only('id', 'name', 'project__id'), 
+        pk=row_pk, 
+        project=project
+    )
     
     if request.method == 'POST':
         form = RowHeaderForm(request.POST, instance=row)
         if form.is_valid():
-            with transaction.atomic():
-                form.save()
+            form.save()
             if request.headers.get('HX-Request'):
                 return JsonResponse({
                     'success': True,
@@ -348,7 +320,6 @@ def row_edit_view(request, project_pk, row_pk):
         form = RowHeaderForm(instance=row)
     
     if request.headers.get('HX-Request'):
-        # Fast modal content rendering
         return render(request, 'pages/grid/modals/row_form_content.html', {
             'form': form,
             'project': project,
@@ -419,22 +390,14 @@ def column_create_view(request, project_pk):
     })
 
 
-@cache_control(no_cache=True, must_revalidate=True, no_store=True)
 def column_edit_view(request, project_pk, col_pk):
-    # Fast modal loading with minimal queries
-    try:
-        project = Project.objects.only('id', 'name', 'user_id').get(pk=project_pk, user=request.user)
-        column = ColumnHeader.objects.only('id', 'name', 'project_id').get(pk=col_pk, project_id=project.pk)
-    except (Project.DoesNotExist, ColumnHeader.DoesNotExist):
-        if request.headers.get('HX-Request'):
-            return HttpResponse('Not found', status=404)
-        return redirect('pages:project_list')
+    project = get_object_or_404(Project, pk=project_pk, user=request.user)
+    column = get_object_or_404(ColumnHeader, pk=col_pk, project=project)
     
     if request.method == 'POST':
         form = ColumnHeaderForm(request.POST, instance=column)
         if form.is_valid():
-            with transaction.atomic():
-                form.save()
+            form.save()
             if request.headers.get('HX-Request'):
                 return JsonResponse({
                     'success': True,
@@ -454,7 +417,6 @@ def column_edit_view(request, project_pk, col_pk):
         form = ColumnHeaderForm(instance=column)
     
     if request.headers.get('HX-Request'):
-        # Fast modal content rendering
         return render(request, 'pages/grid/modals/column_form_content.html', {
             'form': form,
             'project': project,

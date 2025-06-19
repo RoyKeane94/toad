@@ -1290,3 +1290,30 @@ INFO 2025-06-19 20:21:41,618 basehttp 45423 6131888128 "GET /projects/1/ HTTP/1.
 INFO 2025-06-19 20:21:43,344 basehttp 45423 6131888128 "GET /projects/1/columns/3/edit/ HTTP/1.1" 200 2643
 INFO 2025-06-19 20:21:46,144 basehttp 45423 6131888128 "POST /projects/1/columns/3/edit/ HTTP/1.1" 200 70
 INFO 2025-06-19 20:21:46,186 basehttp 45423 6131888128 "GET /projects/1/ HTTP/1.1" 200 234723
+INFO 2025-06-19 20:32:56,369 autoreload 46036 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:32:58,529 basehttp 46036 6163410944 "GET / HTTP/1.1" 200 13172
+INFO 2025-06-19 20:33:00,226 basehttp 46036 6163410944 "GET /projects/ HTTP/1.1" 200 15788
+INFO 2025-06-19 20:33:00,931 basehttp 46036 6163410944 "GET /projects/1/ HTTP/1.1" 200 236082
+INFO 2025-06-19 20:33:02,752 basehttp 46036 6163410944 "POST /tasks/17/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-19 20:33:03,263 basehttp 46036 6163410944 "POST /tasks/17/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-19 20:33:04,321 basehttp 46036 6163410944 "GET /tasks/17/edit/ HTTP/1.1" 200 2859
+INFO 2025-06-19 20:33:06,752 basehttp 46036 6163410944 "GET /projects/1/columns/3/edit/ HTTP/1.1" 200 2644
+INFO 2025-06-19 20:34:27,156 basehttp 46036 6163410944 "GET /projects/1/ HTTP/1.1" 200 236082
+INFO 2025-06-19 20:34:27,172 basehttp 46036 6180237312 "GET /static/js/general/general.js HTTP/1.1" 200 148
+INFO 2025-06-19 20:34:27,172 basehttp 46036 6163410944 "GET /static/css/master.css HTTP/1.1" 200 91
+INFO 2025-06-19 20:34:27,173 basehttp 46036 6197063680 "GET /static/js/grid/grid.js HTTP/1.1" 200 27233
+INFO 2025-06-19 20:34:27,253 basehttp 46036 6163410944 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 8271
+INFO 2025-06-19 20:34:27,254 basehttp 46036 6197063680 "GET /static/css/dist/styles.css HTTP/1.1" 200 42102
+INFO 2025-06-19 20:34:27,359 basehttp 46036 6197063680 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-19 20:36:57,815 autoreload 46036 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-19 20:36:58,081 autoreload 46098 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:37:22,578 autoreload 46098 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-19 20:37:22,830 autoreload 46116 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:37:39,169 autoreload 46116 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-19 20:37:39,423 autoreload 46129 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:38:04,899 autoreload 46129 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-19 20:38:05,141 autoreload 46140 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:38:27,559 autoreload 46140 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-19 20:38:27,808 autoreload 46148 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-19 20:40:02,474 autoreload 46148 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-19 20:40:02,758 autoreload 46195 8681377600 Watching for file changes with StatReloader

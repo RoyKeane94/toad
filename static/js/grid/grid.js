@@ -1,111 +1,23 @@
-// Optimized task form validation function
+// Task form validation function
 function validateTaskForm(form) {
     const textInput = form.querySelector('input[name="text"]');
     const errorDiv = form.querySelector('.error-message');
-    const value = textInput.value.trim();
     
-    if (!value) {
-        // Show error with faster DOM manipulation
-        errorDiv.textContent = 'Please enter a task description';
-        textInput.classList.replace('border-[var(--inline-input-border)]', 'border-red-500');
+    if (!textInput.value.trim()) {
+        // Show error
+        errorDiv.innerHTML = 'Please enter a task description';
+        textInput.classList.remove('border-[var(--inline-input-border)]');
+        textInput.classList.add('border-red-500');
         textInput.focus();
-        return false;
+        return false; // Prevent form submission
     } else {
-        // Clear error faster
-        errorDiv.textContent = '';
-        textInput.classList.replace('border-red-500', 'border-[var(--inline-input-border)]');
-        return true;
+        // Clear error
+        errorDiv.innerHTML = '';
+        textInput.classList.remove('border-red-500');
+        textInput.classList.add('border-[var(--inline-input-border)]');
+        return true; // Allow form submission
     }
 }
-
-// Debounced validation for real-time feedback
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Fast modal state management
-const ModalManager = {
-    activeModal: null,
-    
-    show(modalId, contentUrl = null) {
-        const modal = document.getElementById(modalId);
-        if (!modal) return;
-        
-        this.activeModal = modal;
-        
-        // Immediate visual feedback
-        modal.classList.remove('opacity-0', 'invisible');
-        modal.classList.add('opacity-100', 'visible');
-        
-        const content = modal.querySelector('[id$="-content"]');
-        if (content) {
-            content.classList.remove('scale-95');
-            content.classList.add('scale-100');
-        }
-        
-        // Load content if URL provided
-        if (contentUrl) {
-            this.loadContent(modalId, contentUrl);
-        }
-    },
-    
-    hide(modalId = null) {
-        const modal = modalId ? document.getElementById(modalId) : this.activeModal;
-        if (!modal) return;
-        
-        modal.classList.add('opacity-0', 'invisible');
-        modal.classList.remove('opacity-100', 'visible');
-        
-        const content = modal.querySelector('[id$="-content"]');
-        if (content) {
-            content.classList.add('scale-95');
-            content.classList.remove('scale-100');
-        }
-        
-        this.activeModal = null;
-    },
-    
-    loadContent(modalId, url) {
-        const modal = document.getElementById(modalId);
-        const content = modal.querySelector('#modal-content');
-        if (!content) return;
-        
-        // Show loading state
-        content.innerHTML = '<div class="p-8 text-center"><i class="fas fa-spinner fa-spin text-2xl text-[var(--primary-action-bg)]"></i><p class="mt-2 text-[var(--text-secondary)]">Loading...</p></div>';
-        
-        // Fast HTMX request with timeout
-        fetch(url, {
-            method: 'GET',
-            headers: {
-                'HX-Request': 'true',
-                'X-Requested-With': 'XMLHttpRequest'
-            },
-            signal: AbortSignal.timeout(5000) // 5 second timeout
-        })
-        .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
-            return response.text();
-        })
-        .then(html => {
-            content.innerHTML = html;
-            // Focus first input for better UX
-            const firstInput = content.querySelector('input, textarea, select');
-            if (firstInput) firstInput.focus();
-        })
-        .catch(error => {
-            console.error('Error loading modal content:', error);
-            content.innerHTML = '<div class="p-8 text-center text-red-500"><i class="fas fa-exclamation-triangle text-2xl"></i><p class="mt-2">Failed to load content. Please try again.</p></div>';
-        });
-    }
-};
 
 document.addEventListener('DOMContentLoaded', function() {
     // Project Switcher Dropdown Functionality
@@ -289,128 +201,69 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Optimized Modal Functionality using ModalManager
+    // Generic Modal Functionality
     const modal = document.getElementById('modal');
     const modalContent = document.getElementById('modal-content');
 
-    // Show modal with instant feedback
+    // Show modal
     document.body.addEventListener('openModal', function() {
-        ModalManager.show('modal');
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('opacity-100', 'visible');
+        modalContent.classList.remove('scale-95');
+        modalContent.classList.add('scale-100');
     });
 
-    // Hide modal with instant feedback
+    // Hide modal
     document.body.addEventListener('closeModal', function() {
-        ModalManager.hide('modal');
+        modal.classList.add('opacity-0', 'invisible');
+        modal.classList.remove('opacity-100', 'visible');
+        modalContent.classList.add('scale-95');
+        modalContent.classList.remove('scale-100');
     });
 
-    // Optimized grid refresh - only refresh if needed
+    // Refresh grid
     document.body.addEventListener('refreshGrid', function() {
-        // Use HTMX to refresh only the grid container instead of full page reload
-        const gridContainer = document.querySelector('.grid-container');
-        if (gridContainer && window.htmx) {
-            htmx.ajax('GET', window.location.href, {
-                target: '.grid-container-wrapper',
-                swap: 'outerHTML'
-            });
-        } else {
-            window.location.reload();
+        window.location.reload();
+    });
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            document.body.dispatchEvent(new Event('closeModal'));
         }
     });
 
-    // Fast modal close handlers
-    if (modal) {
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                ModalManager.hide('modal');
-            }
-        });
-    }
-
-    // Global escape key handler
+    // Close modal when pressing Escape
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && ModalManager.activeModal) {
-            ModalManager.hide();
+        if (e.key === 'Escape' && !modal.classList.contains('invisible')) {
+            document.body.dispatchEvent(new Event('closeModal'));
         }
     });
 
-    // Optimized close button handler with event delegation
+    // Handle close modal buttons
     document.addEventListener('click', function(e) {
         if (e.target.closest('.close-modal')) {
-            e.preventDefault();
-            ModalManager.hide();
+            document.body.dispatchEvent(new Event('closeModal'));
         }
     });
 
-    // Optimize modal button clicks with immediate visual feedback
-    document.addEventListener('click', function(e) {
-        const modalBtn = e.target.closest('[hx-get][hx-target="#modal-content"]');
-        if (modalBtn) {
-            // Show modal immediately, then load content
-            ModalManager.show('modal');
-            
-            // Add loading state to button
-            const originalHtml = modalBtn.innerHTML;
-            modalBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-            modalBtn.disabled = true;
-            
-            // Restore button after a short delay
-            setTimeout(() => {
-                modalBtn.innerHTML = originalHtml;
-                modalBtn.disabled = false;
-            }, 1000);
-        }
-    });
-
-    // Optimized Task Form Management
+    // Task Form Input Clearing
     function setupTaskFormClearing() {
         document.querySelectorAll('.task-form').forEach(form => {
             const input = form.querySelector('input[name="text"]');
             if (!input) return;
             
-            // Add real-time validation
-            const debouncedValidation = debounce(() => {
-                if (input.value.trim()) {
-                    const errorDiv = form.querySelector('.error-message');
-                    if (errorDiv && errorDiv.textContent) {
-                        errorDiv.textContent = '';
-                        input.classList.replace('border-red-500', 'border-[var(--inline-input-border)]');
-                    }
-                }
-            }, 300);
-            
-            input.addEventListener('input', debouncedValidation);
-            
-            // Optimized HTMX response handling
+            // Clear input after successful HTMX request
             form.addEventListener('htmx:afterRequest', function(e) {
                 if (e.detail.successful) {
-                    // Fast DOM updates
                     input.value = '';
                     input.focus();
                     
+                    // Clear any error messages
                     const errorDiv = form.querySelector('.error-message');
                     if (errorDiv) {
-                        errorDiv.textContent = '';
+                        errorDiv.innerHTML = '';
                     }
-                    
-                    // Remove any error styling
-                    input.classList.replace('border-red-500', 'border-[var(--inline-input-border)]');
-                }
-            });
-            
-            // Add optimized form submission feedback
-            form.addEventListener('htmx:beforeRequest', function() {
-                const submitBtn = form.querySelector('button[type="submit"]');
-                if (submitBtn) {
-                    submitBtn.classList.add('opacity-75');
-                    submitBtn.disabled = true;
-                }
-            });
-            
-            form.addEventListener('htmx:afterRequest', function() {
-                const submitBtn = form.querySelector('button[type="submit"]');
-                if (submitBtn) {
-                    submitBtn.classList.remove('opacity-75');
-                    submitBtn.disabled = false;
                 }
             });
         });
@@ -419,10 +272,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initial setup for task form clearing
     setupTaskFormClearing();
     
-    // Re-setup after HTMX updates with debouncing
-    const debouncedSetup = debounce(setupTaskFormClearing, 100);
-    document.body.addEventListener('htmx:afterSwap', debouncedSetup);
-    document.body.addEventListener('htmx:afterSettle', debouncedSetup);
+    // Re-setup after HTMX updates
+    document.body.addEventListener('htmx:afterSwap', setupTaskFormClearing);
+    document.body.addEventListener('htmx:afterSettle', setupTaskFormClearing);
 
     // Grid Horizontal Scrolling Enhancement
     function setupGridScrolling() {

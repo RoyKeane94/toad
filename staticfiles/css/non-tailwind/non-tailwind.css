@@ -1,47 +1,13 @@
-/* Optimized HTMX Loading States */
+/* HTMX Loading States */
 .htmx-indicator {
     opacity: 0;
-    transition: opacity 150ms ease-in;
-    pointer-events: none;
+    transition: opacity 200ms ease-in;
 }
 .htmx-request .htmx-indicator {
-    opacity: 1;
-    pointer-events: auto;
+    opacity: 1
 }
 .htmx-request.htmx-indicator {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-/* Fast Modal Animations */
-.modal-trigger-btn {
-    transition: all 0.15s ease-out;
-}
-
-.modal-trigger-btn:hover {
-    transform: scale(1.05);
-}
-
-.modal-trigger-btn:active {
-    transform: scale(0.95);
-}
-
-/* Performance Optimizations */
-* {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}
-
-/* GPU Acceleration for animations */
-.task-item,
-.modal-trigger-btn,
-.external-scroll-btn,
-#modal,
-#modal-content {
-    will-change: transform;
-    transform: translateZ(0);
+    opacity: 1
 }
 
 /* HTMX Animations */
