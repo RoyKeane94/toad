@@ -9,7 +9,7 @@
     "build:js:grid": "terser static/js/grid/grid.js -o static/js/grid/grid.min.js -c -m",
     "build:js:general": "terser static/js/general/general.js -o static/js/general/general.min.js -c -m",
     "build:js:user": "terser static/js/user/user.js -o static/js/user/user.min.js -c -m",
-    "build:css": "cd theme/static_src && npm run build",
+    "build:css": "cd theme/static_src && npm install && npm run build",
     "build:all": "npm run build:css && npm run build:js",
     "collect-static": "python manage.py collectstatic --noinput",
     "build:production": "npm run build:all && npm run collect-static",
