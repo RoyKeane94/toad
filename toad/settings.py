@@ -214,12 +214,10 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
     ]
     
     # Database optimization
-    DATABASES['default']['OPTIONS'].update({
-        'OPTIONS': {
-            'connect_timeout': 10,
-            'sslmode': 'require',
-        }
-    })
+    DATABASES['default']['OPTIONS'] = {
+        'connect_timeout': 10,
+        'sslmode': 'require',
+    }
     
     # Session optimization
     SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
