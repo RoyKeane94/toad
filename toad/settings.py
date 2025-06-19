@@ -110,7 +110,6 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
             'OPTIONS': {
                 'connect_timeout': 10,
                 'sslmode': 'require',
-                'MAX_CONNS': 20,
             },
             'CONN_MAX_AGE': 60,
             'CONN_HEALTH_CHECKS': True,
@@ -210,9 +209,7 @@ if os.getenv('RAILWAY_ENVIRONMENT'):
     
     # Database optimization
     DATABASES['default']['OPTIONS'].update({
-        'MAX_CONNS': 20,
         'OPTIONS': {
-            'MAX_CONNS': 20,
             'connect_timeout': 10,
             'sslmode': 'require',
         }
