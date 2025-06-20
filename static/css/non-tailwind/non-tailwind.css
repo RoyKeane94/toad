@@ -30,19 +30,6 @@
     transition: all 0.3s ease-out;
 }
 
-/* Task Completion Styles */
-.bg-green-50 {
-    background-color: #f0fdf4;
-}
-
-.line-through {
-    text-decoration: line-through;
-}
-
-.text-\[\-\-text-secondary\] {
-    color: var(--text-secondary);
-}
-
 /* Form Transitions */
 .task-form {
     transition: opacity 0.2s ease-out;

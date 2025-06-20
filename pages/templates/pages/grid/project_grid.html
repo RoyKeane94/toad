@@ -159,7 +159,9 @@
                                             hx-target="#modal-content"
                                             hx-trigger="click throttle:500ms"
                                             hx-disabled-elt="this"
-                                            _="on click trigger openModal">
+                                            _="on click
+                                               put '<div class=\"p-6 text-center\"><i class=\"fas fa-spinner fa-spin text-2xl\"></i></div>' into #modal-content
+                                               trigger openModal">
                                         <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                     </button>
                                     <button type="button"
@@ -169,7 +171,9 @@
                                             hx-target="#modal-content"
                                             hx-trigger="click throttle:500ms"
                                             hx-disabled-elt="this"
-                                            _="on click trigger openModal">
+                                            _="on click
+                                               put '<div class=\"p-6 text-center\"><i class=\"fas fa-spinner fa-spin text-2xl\"></i></div>' into #modal-content
+                                               trigger openModal">
                                         <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
                                     </button>
                                 </div>
@@ -194,7 +198,9 @@
                                         hx-target="#modal-content"
                                         hx-trigger="click throttle:500ms"
                                         hx-disabled-elt="this"
-                                        _="on click trigger openModal">
+                                        _="on click
+                                           put '<div class=\"p-6 text-center\"><i class=\"fas fa-spinner fa-spin text-2xl\"></i></div>' into #modal-content
+                                           trigger openModal">
                                     <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
                                 </button>
                                 <button type="button"
@@ -204,7 +210,9 @@
                                         hx-target="#modal-content"
                                         hx-trigger="click throttle:500ms"
                                         hx-disabled-elt="this"
-                                        _="on click trigger openModal">
+                                        _="on click
+                                           put '<div class=\"p-6 text-center\"><i class=\"fas fa-spinner fa-spin text-2xl\"></i></div>' into #modal-content
+                                           trigger openModal">
                                     <i class="fas fa-trash text-xs text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
                                 </button>
                             </div>
