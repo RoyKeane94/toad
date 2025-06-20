@@ -186,8 +186,11 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Static file compression and caching for production
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Use default storage in development and whitenoise for production
+if DEBUG:
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+else:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # WhiteNoise configuration for better compression and caching
 WHITENOISE_USE_FINDERS = True
