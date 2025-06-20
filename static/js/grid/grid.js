@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Task Form Input Clearing
+    // Task Form Input Clearing and Add Task Form Behavior
     function setupTaskFormClearing() {
         document.querySelectorAll('.task-form').forEach(form => {
             const input = form.querySelector('input[name="text"]');
@@ -353,7 +353,13 @@ document.addEventListener('DOMContentLoaded', function() {
             form.addEventListener('htmx:afterRequest', function(e) {
                 if (e.detail.successful) {
                     input.value = '';
-                    input.focus();
+                    
+                    // For add task forms, collapse back to trigger state
+                    if (form.classList.contains('add-task-form')) {
+                        collapseAddTaskForm(form);
+                    } else {
+                        input.focus();
+                    }
                     
                     // Clear any error messages
                     const errorDiv = form.querySelector('.error-message');
@@ -364,17 +370,110 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Add Task Form Expand/Collapse Functionality
+    function setupAddTaskForms() {
+        document.querySelectorAll('.add-task-form').forEach(form => {
+            const trigger = form.querySelector('.add-task-trigger');
+            const collapsed = form.querySelector('.add-task-collapsed');
+            const expanded = form.querySelector('.add-task-expanded');
+            const cancelBtn = form.querySelector('.add-task-cancel');
+            const input = form.querySelector('input[name="text"]');
+
+            if (!trigger || !collapsed || !expanded || !cancelBtn || !input) return;
+
+            // Expand form when trigger is clicked
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                expandAddTaskForm(form);
+            });
+
+            // Collapse form when cancel is clicked
+            cancelBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                collapseAddTaskForm(form);
+            });
+
+            // Auto-focus input when expanded
+            input.addEventListener('focus', function() {
+                if (collapsed.style.display !== 'none') {
+                    expandAddTaskForm(form);
+                }
+            });
+        });
+
+        // Close all expanded forms when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.add-task-form')) {
+                document.querySelectorAll('.add-task-form').forEach(form => {
+                    collapseAddTaskForm(form);
+                });
+            }
+        });
+
+        // Close expanded forms on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.add-task-form').forEach(form => {
+                    collapseAddTaskForm(form);
+                });
+            }
+        });
+    }
+
+    function expandAddTaskForm(form) {
+        const collapsed = form.querySelector('.add-task-collapsed');
+        const expanded = form.querySelector('.add-task-expanded');
+        const input = form.querySelector('input[name="text"]');
+
+        if (collapsed && expanded && input) {
+            collapsed.style.display = 'none';
+            expanded.classList.remove('hidden');
+            
+            // Focus input after a small delay to ensure it's visible
+            setTimeout(() => {
+                input.focus();
+            }, 100);
+        }
+    }
+
+    function collapseAddTaskForm(form) {
+        const collapsed = form.querySelector('.add-task-collapsed');
+        const expanded = form.querySelector('.add-task-expanded');
+        const input = form.querySelector('input[name="text"]');
+        const errorDiv = form.querySelector('.error-message');
+
+        if (collapsed && expanded) {
+            collapsed.style.display = 'block';
+            expanded.classList.add('hidden');
+            
+            // Clear input and errors when collapsing
+            if (input) {
+                input.value = '';
+                input.classList.remove('border-red-500');
+                input.classList.add('border-[var(--inline-input-border)]');
+            }
+            if (errorDiv) {
+                errorDiv.innerHTML = '';
+            }
+        }
+    }
     
-    // Initial setup for task form clearing
+    // Initial setup for task form clearing and add task forms
     setupTaskFormClearing();
+    setupAddTaskForms();
     
     // Re-setup after HTMX updates
-    document.body.addEventListener('htmx:afterSwap', setupTaskFormClearing);
-    document.body.addEventListener('htmx:afterSettle', setupTaskFormClearing);
-    
-    // Re-setup actions dropdowns after HTMX updates
-    document.body.addEventListener('htmx:afterSwap', setupActionsDropdowns);
-    document.body.addEventListener('htmx:afterSettle', setupActionsDropdowns);
+    document.body.addEventListener('htmx:afterSwap', function() {
+        setupTaskFormClearing();
+        setupAddTaskForms();
+        setupActionsDropdowns();
+    });
+    document.body.addEventListener('htmx:afterSettle', function() {
+        setupTaskFormClearing();
+        setupAddTaskForms();
+        setupActionsDropdowns();
+    });
 
     // Grid Horizontal Scrolling Enhancement
     function setupGridScrolling() {

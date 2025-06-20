@@ -191,9 +191,9 @@
             </thead>
             <tbody>
                 {% for row_h in row_headers %}
-                <tr class="{% if not forloop.last %}border-b border-[var(--border-color)]{% endif %}">
+                <tr class="{% if not forloop.last %}border-b border-[var(--border-color)]{% endif %}" style="height: 200px;">
                     <!-- Row Header -->
-                    <td class="row-header p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)]">
+                    <td class="row-header p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)] align-top">
                         <div class="flex items-center justify-between">
                             <span>{{ row_h.name }}</span>
                             <div class="relative ml-2">
@@ -234,9 +234,9 @@
                     <!-- Data Cells -->
                     {% for col_h in column_headers %}
                         {% if not col_h.is_category_column %}
-                        <td class="data-cell p-3 border-r border-[var(--border-color)] align-top">
-                            <!-- Tasks -->
-                            <div class="space-y-2 mb-3 w-full" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
+                        <td class="data-cell p-3 border-r border-[var(--border-color)] relative align-top">
+                            <!-- Tasks at Top -->
+                            <div class="space-y-2 pb-16" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
                                 {% with cell_key=row_h.pk|cell_key:col_h.pk %}
                                     {% for task in tasks_by_cell|get_item:cell_key %}
                                         {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
@@ -244,48 +244,71 @@
                                 {% endwith %}
                             </div>
                             
-                            <!-- Add Task Form -->
-                            <form method="post" 
-                                  action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
-                                  class="task-form"
-                                  novalidate
-                                  hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
-                                  hx-swap="beforeend"
-                                  hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
-                                  hx-trigger="submit throttle:500ms"
-                                  hx-disabled-elt="this"
-                                  onsubmit="return validateTaskForm(this)"
-                                  _="on htmx:beforeRequest
-                                       add .opacity-50 to me
-                                     end
-                                     
-                                     on htmx:afterRequest(detail)
-                                       remove .opacity-50 from me
-                                       if detail.successful
-                                         set textInput to the first input in me
-                                         set textInput.value to ''
-                                         call textInput.focus()
-                                         set errorDiv to the first .error-message in me
-                                         set errorDiv.innerHTML to ''
-                                         remove .border-red-500 from textInput
-                                         set textInput.style.borderColor to 'var(--inline-input-border)'
-                                       else
-                                         set errorDiv to the first .error-message in me
-                                         set errorDiv.innerHTML to detail.xhr.response
-                                         set textInput to the first input in me
-                                         set textInput.style.borderColor to '#ef4444'
-                                       end
-                                     end">
-                                {% csrf_token %}
-                                <div class="flex space-x-2 relative">
-                                    {{ quick_task_form.text }}
-                                    <button type="submit" class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative cursor-pointer">
-                                        <i class="fas fa-plus"></i>
-                                        <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
-                                    </button>
+                            <!-- Add Task Form - Absolutely positioned at bottom -->
+                            <div class="absolute bottom-3 left-3 right-3 pt-3 border-t border-[var(--border-color)]/30 bg-[var(--container-bg)]">
+                                    <form method="post" 
+                                          action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
+                                          class="task-form add-task-form"
+                                          novalidate
+                                          hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
+                                          hx-swap="beforeend"
+                                          hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
+                                          hx-trigger="submit throttle:500ms"
+                                          hx-disabled-elt="this"
+                                          onsubmit="return validateTaskForm(this)"
+                                          _="on htmx:beforeRequest
+                                               add .opacity-50 to me
+                                             end
+                                             
+                                             on htmx:afterRequest(detail)
+                                               remove .opacity-50 from me
+                                               if detail.successful
+                                                 set textInput to the first input in me
+                                                 set textInput.value to ''
+                                                 call textInput.focus()
+                                                 set errorDiv to the first .error-message in me
+                                                 set errorDiv.innerHTML to ''
+                                                 remove .border-red-500 from textInput
+                                                 set textInput.style.borderColor to 'var(--inline-input-border)'
+                                                 remove .expanded from me
+                                               else
+                                                 set errorDiv to the first .error-message in me
+                                                 set errorDiv.innerHTML to detail.xhr.response
+                                                 set textInput to the first input in me
+                                                 set textInput.style.borderColor to '#ef4444'
+                                               end
+                                             end">
+                                        {% csrf_token %}
+                                        
+                                        <!-- Collapsed state: Just a subtle button -->
+                                        <div class="add-task-collapsed">
+                                            <button type="button" 
+                                                    class="add-task-trigger w-full text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] rounded-md transition-all duration-200 text-sm border border-transparent hover:border-[var(--border-color)] cursor-pointer">
+                                                <i class="fas fa-plus text-xs mr-2"></i>Add task...
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Expanded state: Full form -->
+                                        <div class="add-task-expanded hidden">
+                                            <div class="space-y-2">
+                                                <div class="flex space-x-2">
+                                                    {{ quick_task_form.text }}
+                                                    <button type="submit" 
+                                                            class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative cursor-pointer flex-shrink-0">
+                                                        <i class="fas fa-check text-xs"></i>
+                                                        <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
+                                                    </button>
+                                                    <button type="button" 
+                                                            class="add-task-cancel px-3 py-2 border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] rounded-md text-sm transition-colors cursor-pointer flex-shrink-0">
+                                                        <i class="fas fa-times text-xs"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="error-message text-xs"></div>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
-                                <div class="error-message mt-2"></div>
-                            </form>
+                            </div>
                         </td>
                         {% endif %}
                     {% endfor %}

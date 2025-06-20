@@ -87,6 +87,102 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Row and Column Actions Dropdown Functionality
+    function setupActionsDropdowns() {
+        // Handle column actions dropdowns
+        document.querySelectorAll('.column-actions-btn').forEach(btn => {
+            const dropdown = btn.nextElementSibling;
+            let isOpen = false;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dd => {
+                    if (dd !== dropdown) {
+                        dd.classList.add('opacity-0', 'invisible', 'scale-95');
+                        dd.classList.remove('opacity-100', 'visible', 'scale-100');
+                    }
+                });
+
+                // Toggle current dropdown
+                isOpen = !isOpen;
+                if (isOpen) {
+                    dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+                } else {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                }
+            });
+
+            // Close dropdown when clicking on dropdown items
+            dropdown.addEventListener('click', function() {
+                isOpen = false;
+                dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            });
+        });
+
+        // Handle row actions dropdowns
+        document.querySelectorAll('.row-actions-btn').forEach(btn => {
+            const dropdown = btn.nextElementSibling;
+            let isOpen = false;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dd => {
+                    if (dd !== dropdown) {
+                        dd.classList.add('opacity-0', 'invisible', 'scale-95');
+                        dd.classList.remove('opacity-100', 'visible', 'scale-100');
+                    }
+                });
+
+                // Toggle current dropdown
+                isOpen = !isOpen;
+                if (isOpen) {
+                    dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+                } else {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                }
+            });
+
+            // Close dropdown when clicking on dropdown items
+            dropdown.addEventListener('click', function() {
+                isOpen = false;
+                dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            });
+        });
+
+        // Close all dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.column-actions-btn') && !e.target.closest('.row-actions-btn')) {
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                });
+            }
+        });
+
+        // Close dropdowns on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                });
+            }
+        });
+    }
+
+    // Initialize actions dropdowns
+    setupActionsDropdowns();
+
     // Task Deletion Modal Functionality
     const deleteModal = document.getElementById('delete-task-modal');
     const deleteModalContent = document.getElementById('delete-modal-content');
@@ -247,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Task Form Input Clearing
+    // Task Form Input Clearing and Add Task Form Behavior
     function setupTaskFormClearing() {
         document.querySelectorAll('.task-form').forEach(form => {
             const input = form.querySelector('input[name="text"]');
@@ -257,7 +353,13 @@ document.addEventListener('DOMContentLoaded', function() {
             form.addEventListener('htmx:afterRequest', function(e) {
                 if (e.detail.successful) {
                     input.value = '';
-                    input.focus();
+                    
+                    // For add task forms, collapse back to trigger state
+                    if (form.classList.contains('add-task-form')) {
+                        collapseAddTaskForm(form);
+                    } else {
+                        input.focus();
+                    }
                     
                     // Clear any error messages
                     const errorDiv = form.querySelector('.error-message');
@@ -268,13 +370,110 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Add Task Form Expand/Collapse Functionality
+    function setupAddTaskForms() {
+        document.querySelectorAll('.add-task-form').forEach(form => {
+            const trigger = form.querySelector('.add-task-trigger');
+            const collapsed = form.querySelector('.add-task-collapsed');
+            const expanded = form.querySelector('.add-task-expanded');
+            const cancelBtn = form.querySelector('.add-task-cancel');
+            const input = form.querySelector('input[name="text"]');
+
+            if (!trigger || !collapsed || !expanded || !cancelBtn || !input) return;
+
+            // Expand form when trigger is clicked
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault();
+                expandAddTaskForm(form);
+            });
+
+            // Collapse form when cancel is clicked
+            cancelBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                collapseAddTaskForm(form);
+            });
+
+            // Auto-focus input when expanded
+            input.addEventListener('focus', function() {
+                if (collapsed.style.display !== 'none') {
+                    expandAddTaskForm(form);
+                }
+            });
+        });
+
+        // Close all expanded forms when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.add-task-form')) {
+                document.querySelectorAll('.add-task-form').forEach(form => {
+                    collapseAddTaskForm(form);
+                });
+            }
+        });
+
+        // Close expanded forms on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.add-task-form').forEach(form => {
+                    collapseAddTaskForm(form);
+                });
+            }
+        });
+    }
+
+    function expandAddTaskForm(form) {
+        const collapsed = form.querySelector('.add-task-collapsed');
+        const expanded = form.querySelector('.add-task-expanded');
+        const input = form.querySelector('input[name="text"]');
+
+        if (collapsed && expanded && input) {
+            collapsed.style.display = 'none';
+            expanded.classList.remove('hidden');
+            
+            // Focus input after a small delay to ensure it's visible
+            setTimeout(() => {
+                input.focus();
+            }, 100);
+        }
+    }
+
+    function collapseAddTaskForm(form) {
+        const collapsed = form.querySelector('.add-task-collapsed');
+        const expanded = form.querySelector('.add-task-expanded');
+        const input = form.querySelector('input[name="text"]');
+        const errorDiv = form.querySelector('.error-message');
+
+        if (collapsed && expanded) {
+            collapsed.style.display = 'block';
+            expanded.classList.add('hidden');
+            
+            // Clear input and errors when collapsing
+            if (input) {
+                input.value = '';
+                input.classList.remove('border-red-500');
+                input.classList.add('border-[var(--inline-input-border)]');
+            }
+            if (errorDiv) {
+                errorDiv.innerHTML = '';
+            }
+        }
+    }
     
-    // Initial setup for task form clearing
+    // Initial setup for task form clearing and add task forms
     setupTaskFormClearing();
+    setupAddTaskForms();
     
     // Re-setup after HTMX updates
-    document.body.addEventListener('htmx:afterSwap', setupTaskFormClearing);
-    document.body.addEventListener('htmx:afterSettle', setupTaskFormClearing);
+    document.body.addEventListener('htmx:afterSwap', function() {
+        setupTaskFormClearing();
+        setupAddTaskForms();
+        setupActionsDropdowns();
+    });
+    document.body.addEventListener('htmx:afterSettle', function() {
+        setupTaskFormClearing();
+        setupAddTaskForms();
+        setupActionsDropdowns();
+    });
 
     // Grid Horizontal Scrolling Enhancement
     function setupGridScrolling() {
