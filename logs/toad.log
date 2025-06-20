@@ -1488,3 +1488,38 @@ INFO 2025-06-20 19:14:29,602 basehttp 61757 6167212032 "GET /static/js/grid/grid
 INFO 2025-06-20 20:08:45,009 basehttp 61757 6167212032 "GET /projects/1/ HTTP/1.1" 200 13084
 INFO 2025-06-20 20:08:45,041 basehttp 61757 6167212032 "GET /static/css/master.css HTTP/1.1" 304 0
 INFO 2025-06-20 20:08:45,044 basehttp 61757 6167212032 "GET /static/css/dist/styles.css HTTP/1.1" 200 42006
+INFO 2025-06-20 20:12:19,002 autoreload 62818 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-20 20:12:21,384 basehttp 62818 6134755328 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3042
+INFO 2025-06-20 20:12:21,398 basehttp 62818 6151581696 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-20 20:12:21,399 basehttp 62818 6134755328 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-20 20:12:35,481 basehttp 62818 6134755328 "GET /projects/1/ HTTP/1.1" 200 13050
+INFO 2025-06-20 20:13:05,679 basehttp 62818 6134755328 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 1058
+INFO 2025-06-20 20:13:12,601 project_views 62818 6134755328 User None deleted task: "Test" from project: Toad
+INFO 2025-06-20 20:13:12,604 basehttp 62818 6134755328 "POST /tasks/83/delete/ HTTP/1.1" 200 0
+INFO 2025-06-20 20:15:00,747 autoreload 63114 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-20 20:15:03,125 basehttp 63114 6189395968 "GET /projects/1/ HTTP/1.1" 200 13044
+INFO 2025-06-20 20:15:03,136 basehttp 63114 6189395968 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-20 20:15:03,140 basehttp 63114 6206222336 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-20 20:15:03,140 basehttp 63114 6223048704 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 7907
+INFO 2025-06-20 20:15:09,070 basehttp 63114 6223048704 "GET /projects/1/ HTTP/1.1" 200 13032
+INFO 2025-06-20 20:15:09,082 basehttp 63114 6223048704 "GET /static/css/master.css HTTP/1.1" 200 68
+INFO 2025-06-20 20:15:09,082 basehttp 63114 6206222336 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-20 20:15:09,084 basehttp 63114 6189395968 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 7907
+INFO 2025-06-20 20:15:09,084 basehttp 63114 6206222336 "GET /static/css/dist/styles.css HTTP/1.1" 200 42031
+INFO 2025-06-20 20:15:09,085 basehttp 63114 6223048704 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 7431
+INFO 2025-06-20 20:15:09,218 basehttp 63114 6223048704 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-20 20:15:11,244 basehttp 63114 6223048704 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3051
+INFO 2025-06-20 20:18:03,987 autoreload 63297 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-20 20:18:11,363 basehttp 63297 6158888960 "GET /projects/1/ HTTP/1.1" 200 13052
+INFO 2025-06-20 20:18:11,390 basehttp 63297 6158888960 "GET /static/css/master.css HTTP/1.1" 200 68
+INFO 2025-06-20 20:18:11,390 basehttp 63297 6192541696 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 7907
+INFO 2025-06-20 20:18:11,391 basehttp 63297 6175715328 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-20 20:18:11,392 basehttp 63297 6158888960 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 7474
+INFO 2025-06-20 20:18:11,393 basehttp 63297 6175715328 "GET /static/css/dist/styles.css HTTP/1.1" 200 42031
+INFO 2025-06-20 20:18:11,505 basehttp 63297 6175715328 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-20 20:25:49,529 basehttp 63297 6158888960 "GET /projects/1/ HTTP/1.1" 200 13571
+INFO 2025-06-20 20:25:49,542 basehttp 63297 6158888960 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-20 20:25:49,543 basehttp 63297 6175715328 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-20 20:25:49,543 basehttp 63297 6158888960 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-20 20:25:49,544 basehttp 63297 6175715328 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-20 20:25:49,544 basehttp 63297 6192541696 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 10118

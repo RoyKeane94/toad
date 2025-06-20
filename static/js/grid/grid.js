@@ -87,6 +87,102 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Row and Column Actions Dropdown Functionality
+    function setupActionsDropdowns() {
+        // Handle column actions dropdowns
+        document.querySelectorAll('.column-actions-btn').forEach(btn => {
+            const dropdown = btn.nextElementSibling;
+            let isOpen = false;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dd => {
+                    if (dd !== dropdown) {
+                        dd.classList.add('opacity-0', 'invisible', 'scale-95');
+                        dd.classList.remove('opacity-100', 'visible', 'scale-100');
+                    }
+                });
+
+                // Toggle current dropdown
+                isOpen = !isOpen;
+                if (isOpen) {
+                    dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+                } else {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                }
+            });
+
+            // Close dropdown when clicking on dropdown items
+            dropdown.addEventListener('click', function() {
+                isOpen = false;
+                dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            });
+        });
+
+        // Handle row actions dropdowns
+        document.querySelectorAll('.row-actions-btn').forEach(btn => {
+            const dropdown = btn.nextElementSibling;
+            let isOpen = false;
+
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                
+                // Close all other dropdowns
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dd => {
+                    if (dd !== dropdown) {
+                        dd.classList.add('opacity-0', 'invisible', 'scale-95');
+                        dd.classList.remove('opacity-100', 'visible', 'scale-100');
+                    }
+                });
+
+                // Toggle current dropdown
+                isOpen = !isOpen;
+                if (isOpen) {
+                    dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+                } else {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                }
+            });
+
+            // Close dropdown when clicking on dropdown items
+            dropdown.addEventListener('click', function() {
+                isOpen = false;
+                dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            });
+        });
+
+        // Close all dropdowns when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.column-actions-btn') && !e.target.closest('.row-actions-btn')) {
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                });
+            }
+        });
+
+        // Close dropdowns on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                });
+            }
+        });
+    }
+
+    // Initialize actions dropdowns
+    setupActionsDropdowns();
+
     // Task Deletion Modal Functionality
     const deleteModal = document.getElementById('delete-task-modal');
     const deleteModalContent = document.getElementById('delete-modal-content');
@@ -275,6 +371,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Re-setup after HTMX updates
     document.body.addEventListener('htmx:afterSwap', setupTaskFormClearing);
     document.body.addEventListener('htmx:afterSettle', setupTaskFormClearing);
+    
+    // Re-setup actions dropdowns after HTMX updates
+    document.body.addEventListener('htmx:afterSwap', setupActionsDropdowns);
+    document.body.addEventListener('htmx:afterSettle', setupActionsDropdowns);
 
     // Grid Horizontal Scrolling Enhancement
     function setupGridScrolling() {

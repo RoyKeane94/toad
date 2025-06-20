@@ -208,16 +208,16 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 }
 
 .external-scroll-btn.active {
-    background: var(--primary-action-bg);
-    border-color: var(--primary-action-bg);
+    background: #6EE7B7; /* Light green - lighter than primary action */
+    border-color: #6EE7B7;
     color: white;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 4px 12px rgba(110, 231, 183, 0.3);
     opacity: 1;
 }
 
 .external-scroll-btn.active:hover {
-    background: var(--primary-action-hover-bg);
-    border-color: var(--primary-action-hover-bg);
+    background: var(--primary-action-bg); /* Use primary action green on hover */
+    border-color: var(--primary-action-bg);
     transform: scale(1.05);
     box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
 }
