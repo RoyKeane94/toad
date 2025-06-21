@@ -2048,3 +2048,38 @@ INFO 2025-06-21 12:25:49,642 basehttp 71730 6225817600 "GET /projects/1/ HTTP/1.
 INFO 2025-06-21 12:25:58,910 basehttp 71730 6225817600 "POST /tasks/71/toggle/ HTTP/1.1" 200 79
 INFO 2025-06-21 12:26:01,117 basehttp 71730 6225817600 "POST /tasks/79/toggle/ HTTP/1.1" 200 79
 INFO 2025-06-21 12:26:23,720 basehttp 71730 6225817600 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 1115
+INFO 2025-06-21 12:27:16,367 autoreload 71912 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-21 12:29:17,659 autoreload 71972 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-21 12:29:20,256 basehttp 71972 6192558080 "GET /projects/1/ HTTP/1.1" 200 14956
+INFO 2025-06-21 12:29:20,273 basehttp 71972 6192558080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:29:20,273 basehttp 71972 6209384448 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:29:20,273 basehttp 71972 6226210816 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:30:08,717 basehttp 71972 6226210816 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:30:08,720 basehttp 71972 6226210816 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:30:08,720 basehttp 71972 6192558080 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:30:26,008 autoreload 72035 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-21 12:30:32,340 basehttp 72035 6125498368 "GET /projects/1/ HTTP/1.1" 200 14953
+INFO 2025-06-21 12:30:32,353 basehttp 72035 6125498368 "GET /static/css/master.css HTTP/1.1" 200 68
+INFO 2025-06-21 12:30:32,354 basehttp 72035 6142324736 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-21 12:30:32,354 basehttp 72035 6159151104 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 11679
+INFO 2025-06-21 12:30:32,355 basehttp 72035 6142324736 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 7752
+INFO 2025-06-21 12:30:32,356 basehttp 72035 6125498368 "GET /static/css/dist/styles.css HTTP/1.1" 200 42606
+INFO 2025-06-21 12:30:32,534 basehttp 72035 6125498368 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-21 12:30:51,119 basehttp 72035 6125498368 "GET /projects/1/edit/ HTTP/1.1" 200 2922
+INFO 2025-06-21 12:30:51,127 basehttp 72035 6125498368 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:30:54,818 basehttp 72035 6125498368 "GET /projects/1/delete/ HTTP/1.1" 200 2895
+INFO 2025-06-21 12:31:04,676 project_views 72035 6125498368 User None deleted task: "Lock the page so that it can't you can always see the column headers" from project: Toad
+INFO 2025-06-21 12:31:04,680 basehttp 72035 6125498368 "POST /tasks/81/delete/ HTTP/1.1" 200 0
+INFO 2025-06-21 12:32:24,935 autoreload 72112 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-21 12:32:27,340 basehttp 72112 6192492544 "GET /projects/1/ HTTP/1.1" 200 14812
+INFO 2025-06-21 12:32:27,352 basehttp 72112 6192492544 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:32:27,352 basehttp 72112 6226145280 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:32:27,356 basehttp 72112 6226145280 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:32:27,356 basehttp 72112 6209318912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 7958
+INFO 2025-06-21 12:32:45,806 basehttp 72112 6209318912 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3090
+INFO 2025-06-21 12:32:45,819 basehttp 72112 6209318912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:32:46,741 basehttp 72112 6209318912 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-06-21 12:32:46,776 basehttp 72112 6209318912 "GET /projects/1/ HTTP/1.1" 200 14474
+INFO 2025-06-21 12:32:55,488 basehttp 72112 6209318912 "GET /projects/3/ HTTP/1.1" 200 8796
+INFO 2025-06-21 12:32:55,502 basehttp 72112 6209318912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:33:01,497 basehttp 72112 6209318912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0

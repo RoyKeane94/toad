@@ -347,3 +347,12 @@ input:invalid:not(:focus):not(:placeholder-shown) {
         min-width: 200px;
     }
 }
+
+.grid-table th, .grid-table td {
+    border-right: 1px solid var(--border-color);
+    padding: 1rem;
+    vertical-align: top;
+    text-align: left;
+    white-space: normal;
+    scroll-snap-align: start;
+}
