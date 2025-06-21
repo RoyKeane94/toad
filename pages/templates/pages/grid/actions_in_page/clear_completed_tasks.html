@@ -37,11 +37,11 @@
                 {% csrf_token %}
                 <div class="flex items-center justify-end space-x-3">
                     <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                       class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium">
+                       class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
                         <i class="fas fa-times mr-2"></i>Cancel
                     </a>
                     <button type="submit" 
-                            class="w-48 h-10 flex items-center justify-center bg-gradient-to-r from-[var(--clear-button-bg)] to-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105">
+                            class="w-48 h-10 flex items-center justify-center bg-gradient-to-r from-[var(--clear-button-bg)] to-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105 cursor-pointer">
                         <i class="fas fa-broom mr-2"></i>Clear Tasks
                     </button>
                 </div>

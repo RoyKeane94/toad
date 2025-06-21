@@ -2083,3 +2083,19 @@ INFO 2025-06-21 12:32:46,776 basehttp 72112 6209318912 "GET /projects/1/ HTTP/1.
 INFO 2025-06-21 12:32:55,488 basehttp 72112 6209318912 "GET /projects/3/ HTTP/1.1" 200 8796
 INFO 2025-06-21 12:32:55,502 basehttp 72112 6209318912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-06-21 12:33:01,497 basehttp 72112 6209318912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:33:28,865 autoreload 72183 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-21 12:33:30,716 basehttp 72183 6130462720 "POST /tasks/85/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-21 12:33:33,382 basehttp 72183 6130462720 "POST /tasks/90/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-21 12:33:42,777 basehttp 72183 6130462720 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3002
+INFO 2025-06-21 12:33:42,792 basehttp 72183 6130462720 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:33:42,793 basehttp 72183 6147289088 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:33:42,793 basehttp 72183 6164115456 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:33:43,884 basehttp 72183 6164115456 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-06-21 12:33:43,908 basehttp 72183 6164115456 "GET /projects/1/ HTTP/1.1" 200 14183
+INFO 2025-06-21 12:33:43,928 basehttp 72183 6164115456 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:34:57,630 basehttp 72183 6164115456 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3046
+INFO 2025-06-21 12:34:57,649 basehttp 72183 6130462720 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:34:57,649 basehttp 72183 6164115456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-21 12:34:57,649 basehttp 72183 6147289088 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-21 12:35:00,015 basehttp 72183 6147289088 "GET /projects/1/ HTTP/1.1" 200 14250
+INFO 2025-06-21 12:35:00,032 basehttp 72183 6147289088 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
