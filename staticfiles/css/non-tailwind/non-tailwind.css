@@ -164,6 +164,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     max-width: 100%;
     -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
     position: relative;
+    scroll-snap-type: x mandatory; /* Enable snap scrolling */
 }
 
 /* Grid with external controls layout */
@@ -236,17 +237,19 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     width: 100%;
     table-layout: fixed;
     border-collapse: collapse;
+    min-width: 100%; /* Ensure table fills container */
 }
 
-/* Column sizing - category column stays fixed, data columns flex */
+/* Column sizing - category column stays fixed, data columns calculated dynamically */
 .grid-table colgroup col.category-column {
     width: 300px;
     min-width: 300px;
 }
 
 .grid-table colgroup col.data-column {
-    min-width: 380px;
-    /* Width will be calculated by JavaScript based on available space */
+    /* Width will be set dynamically by JavaScript based on visible columns */
+    min-width: 250px;
+    scroll-snap-align: start;
 }
 
 /* Sticky column header */
@@ -324,18 +327,23 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Responsive grid adjustments */
 @media (max-width: 1024px) {
+    .grid-table colgroup col.category-column {
+        width: 250px;
+        min-width: 250px;
+    }
+    
     .grid-table colgroup col.data-column {
-        min-width: 350px;
+        min-width: 220px;
     }
 }
 
 @media (max-width: 768px) {
     .grid-table colgroup col.category-column {
-        width: 150px;
-        min-width: 150px;
+        width: 200px;
+        min-width: 200px;
     }
     
     .grid-table colgroup col.data-column {
-        min-width: 320px;
+        min-width: 200px;
     }
 }

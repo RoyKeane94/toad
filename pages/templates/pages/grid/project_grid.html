@@ -133,7 +133,7 @@
     </button>
     <div class="grid-container-wrapper">
         <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
-            <div class="grid-container">
+            <div class="grid-container" data-total-columns="{{ column_headers|length }}" data-visible-columns="3">
                 <table class="grid-table">
             <colgroup>
                 {% for col_header in column_headers %}
@@ -165,9 +165,9 @@
                                                 hx-target="#modal-content"
                                                 hx-trigger="click throttle:500ms"
                                                 hx-disabled-elt="this"
-                                                _="on click
-                                                   put '<div class=''p-6 text-center''><i class=''fas fa-spinner fa-spin text-2xl''></i></div>' into #modal-content
-                                                   trigger openModal">
+                                                hx-indicator="#modal-content"
+                                                hx-swap="innerHTML"
+                                                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                                             <i class="fas fa-edit text-xs mr-2 text-[var(--primary-action-bg)]"></i>Edit
                                         </button>
                                         <button type="button"
@@ -176,9 +176,9 @@
                                                 hx-target="#modal-content"
                                                 hx-trigger="click throttle:500ms"
                                                 hx-disabled-elt="this"
-                                                _="on click
-                                                   put '<div class=''p-6 text-center''><i class=''fas fa-spinner fa-spin text-2xl''></i></div>' into #modal-content
-                                                   trigger openModal">
+                                                hx-indicator="#modal-content"
+                                                hx-swap="innerHTML"
+                                                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                                             <i class="fas fa-trash text-xs mr-2 text-[var(--delete-button-bg)]"></i>Delete
                                         </button>
                                     </div>
@@ -210,9 +210,9 @@
                                             hx-target="#modal-content"
                                             hx-trigger="click throttle:500ms"
                                             hx-disabled-elt="this"
-                                            _="on click
-                                               put '<div class=''p-6 text-center''><i class=''fas fa-spinner fa-spin text-2xl''></i></div>' into #modal-content
-                                               trigger openModal">
+                                            hx-indicator="#modal-content"
+                                            hx-swap="innerHTML"
+                                            onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                                         <i class="fas fa-edit text-xs mr-2 text-[var(--primary-action-bg)]"></i>Edit
                                     </button>
                                     <button type="button"
@@ -221,9 +221,9 @@
                                             hx-target="#modal-content"
                                             hx-trigger="click throttle:500ms"
                                             hx-disabled-elt="this"
-                                            _="on click
-                                               put '<div class=''p-6 text-center''><i class=''fas fa-spinner fa-spin text-2xl''></i></div>' into #modal-content
-                                               trigger openModal">
+                                            hx-indicator="#modal-content"
+                                            hx-swap="innerHTML"
+                                            onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                                         <i class="fas fa-trash text-xs mr-2 text-[var(--delete-button-bg)]"></i>Delete
                                     </button>
                                 </div>
@@ -385,4 +385,28 @@
         <!-- Modal content will be loaded here -->
     </div>
 </div>
+
+<script>
+// Monitor for successful form submissions in the modal
+document.addEventListener('htmx:afterRequest', function(event) {
+    // Check if the request originated from within the modal and was successful
+    if (event.detail.successful && 
+        event.target.closest('#modal-content') && 
+        event.detail.requestConfig.verb === 'post') {
+        
+        // Close modal with animation
+        const modal = document.getElementById('modal');
+        const modalContent = document.getElementById('modal-content');
+        
+        modal.classList.add('opacity-0', 'invisible');
+        modalContent.classList.remove('scale-100');
+        modalContent.classList.add('scale-95');
+        
+        // Refresh page after animation completes
+        setTimeout(() => {
+            window.location.reload();
+        }, 300);
+    }
+});
+</script>
 {% endblock %} 

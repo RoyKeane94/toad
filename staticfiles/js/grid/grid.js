@@ -116,11 +116,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Close dropdown when clicking on dropdown items
-            dropdown.addEventListener('click', function() {
-                isOpen = false;
-                dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
-                dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            // Close dropdown when clicking on dropdown actions - but let HTMX handle the request first
+            dropdown.addEventListener('click', function(e) {
+                // Only close if not clicking on a button with HTMX attributes
+                const clickedButton = e.target.closest('button');
+                if (clickedButton && (clickedButton.hasAttribute('hx-get') || clickedButton.hasAttribute('hx-post'))) {
+                    // Let HTMX handle this, close dropdown after a short delay
+                    setTimeout(() => {
+                        isOpen = false;
+                        dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                        dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                    }, 100);
+                } else {
+                    // Close immediately for non-HTMX buttons
+                    isOpen = false;
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                }
             });
         });
 
@@ -151,17 +163,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Close dropdown when clicking on dropdown items
-            dropdown.addEventListener('click', function() {
-                isOpen = false;
-                dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
-                dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+            // Close dropdown when clicking on dropdown actions - but let HTMX handle the request first
+            dropdown.addEventListener('click', function(e) {
+                // Only close if not clicking on a button with HTMX attributes
+                const clickedButton = e.target.closest('button');
+                if (clickedButton && (clickedButton.hasAttribute('hx-get') || clickedButton.hasAttribute('hx-post'))) {
+                    // Let HTMX handle this, close dropdown after a short delay
+                    setTimeout(() => {
+                        isOpen = false;
+                        dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                        dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                    }, 100);
+                } else {
+                    // Close immediately for non-HTMX buttons
+                    isOpen = false;
+                    dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                    dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+                }
             });
         });
 
         // Close all dropdowns when clicking outside
         document.addEventListener('click', function(e) {
-            if (!e.target.closest('.column-actions-btn') && !e.target.closest('.row-actions-btn')) {
+            if (!e.target.closest('.column-actions-btn') && !e.target.closest('.row-actions-btn') && !e.target.closest('.column-actions-dropdown') && !e.target.closest('.row-actions-dropdown')) {
                 document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
                     dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
                     dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
@@ -481,62 +505,78 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!gridContainer) return;
 
         let scrollIndicators = null;
+        let currentVisibleStartColumn = 0; // Track which column is the first visible
+        const maxVisibleColumns = 3; // Maximum number of data columns to show at once
 
-        // Calculate and set column widths
+        // Calculate and set column widths for optimal display
         function calculateColumnWidths() {
             const gridTable = gridContainer.querySelector('.grid-table');
             if (!gridTable) return;
 
-            const categoryColumns = gridTable.querySelectorAll('colgroup col.category-column');
-            const dataColumns = gridTable.querySelectorAll('colgroup col.data-column');
+            // Get total columns info from data attributes
+            const totalColumns = parseInt(gridContainer.dataset.totalColumns) || 0;
+            const totalDataColumns = totalColumns - 1; // Subtract category column
             
-            if (dataColumns.length === 0) return;
+            if (totalDataColumns === 0) return;
 
-            // Get the actual available width (grid container wrapper is reduced by 120px for buttons)
-            const containerWidth = gridContainer.clientWidth;
+            // Get responsive widths for category column
             const windowWidth = window.innerWidth;
-            
-            // Responsive breakpoints
-            let categoryWidth = 300;
-            let minDataColumnWidth = 380;
+            let categoryWidth;
             
             if (windowWidth <= 768) {
-                categoryWidth = 150;
-                minDataColumnWidth = 320;
+                categoryWidth = 200;
             } else if (windowWidth <= 1024) {
-                minDataColumnWidth = 350;
-            }
-
-            const availableWidth = containerWidth - categoryWidth;
-            const idealDataColumnWidth = availableWidth / dataColumns.length;
-
-            // Check if we can fit all columns at their ideal width
-            if (idealDataColumnWidth >= minDataColumnWidth) {
-                // Columns can be evenly distributed
-                gridTable.style.width = '100%';
-                dataColumns.forEach(col => {
-                    col.style.width = idealDataColumnWidth + 'px';
-                });
+                categoryWidth = 250;
             } else {
-                // Columns need to be at minimum width, table becomes scrollable
-                const totalMinWidth = categoryWidth + (dataColumns.length * minDataColumnWidth);
-                gridTable.style.width = totalMinWidth + 'px';
-                dataColumns.forEach(col => {
-                    col.style.width = minDataColumnWidth + 'px';
-                });
+                categoryWidth = 300;
             }
+
+            // Calculate available width for data columns
+            const containerWidth = gridContainer.clientWidth;
+            const availableWidthForDataColumns = containerWidth - categoryWidth;
+            
+            // Determine how many data columns to show (up to max 3)
+            const visibleDataColumns = Math.min(maxVisibleColumns, totalDataColumns);
+            
+            // Each visible data column gets equal share of available space
+            const dataColumnWidth = Math.floor(availableWidthForDataColumns / visibleDataColumns);
+            
+            // Set category column width
+            const categoryCol = gridTable.querySelector('colgroup col.category-column');
+            if (categoryCol) {
+                categoryCol.style.width = categoryWidth + 'px';
+            }
+
+            // Set ALL data column widths to the same value
+            const dataColumns = gridTable.querySelectorAll('colgroup col.data-column');
+            dataColumns.forEach(col => {
+                col.style.width = dataColumnWidth + 'px';
+            });
+
+            // Calculate total table width for scrolling (includes all columns)
+            const totalTableWidth = categoryWidth + (totalDataColumns * dataColumnWidth);
+            gridTable.style.width = totalTableWidth + 'px';
+            
+            return { totalDataColumns, dataColumnWidth, categoryWidth, visibleDataColumns };
         }
 
-        // Get scroll amount based on current column width
+        // Get scroll amount - one column width
         function getScrollAmount() {
-            const windowWidth = window.innerWidth;
-            if (windowWidth <= 768) {
-                return 320; // Mobile column width
-            } else if (windowWidth <= 1024) {
-                return 350; // Tablet column width
-            } else {
-                return 380; // Desktop column width
-            }
+            const columnInfo = calculateColumnWidths();
+            return columnInfo ? columnInfo.dataColumnWidth : 300;
+        }
+
+        // Update which columns are visible based on scroll position
+        function updateVisibleColumns() {
+            const columnInfo = calculateColumnWidths();
+            if (!columnInfo) return;
+
+            const scrollLeft = gridContainer.scrollLeft;
+            const columnWidth = columnInfo.dataColumnWidth;
+            
+            // Calculate which column should be the first visible based on scroll position
+            currentVisibleStartColumn = Math.round(scrollLeft / columnWidth);
+            currentVisibleStartColumn = Math.max(0, Math.min(currentVisibleStartColumn, columnInfo.totalDataColumns - 1));
         }
 
         // Setup external scroll buttons
@@ -554,36 +594,49 @@ document.addEventListener('DOMContentLoaded', function() {
             };
 
             // Create scroll progress indicator
-            const progressTrack = document.createElement('div');
-            progressTrack.className = 'grid-scroll-progress-track';
-            
-            const progressBar = document.createElement('div');
-            progressBar.className = 'grid-scroll-progress';
-            progressBar.style.width = '0%';
-            
-            progressTrack.appendChild(progressBar);
-            gridContainer.parentElement.appendChild(progressTrack);
+            let progressTrack = document.querySelector('.grid-scroll-progress-track');
+            if (!progressTrack) {
+                progressTrack = document.createElement('div');
+                progressTrack.className = 'grid-scroll-progress-track';
+                
+                const progressBar = document.createElement('div');
+                progressBar.className = 'grid-scroll-progress';
+                progressBar.style.width = '0%';
+                
+                progressTrack.appendChild(progressBar);
+                gridContainer.parentElement.appendChild(progressTrack);
+            }
 
             // Add click handlers for scroll buttons
             leftBtn.addEventListener('click', () => {
-                const scrollAmount = getScrollAmount();
-                const currentScroll = gridContainer.scrollLeft;
-                const newScrollPosition = Math.max(0, Math.floor(currentScroll / scrollAmount) * scrollAmount - scrollAmount);
-                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+                const columnInfo = calculateColumnWidths();
+                if (!columnInfo) return;
+
+                // Move one column to the left
+                const targetColumn = Math.max(0, currentVisibleStartColumn - 1);
+                const targetScrollPosition = targetColumn * columnInfo.dataColumnWidth;
                 
-                // Force update indicators after scroll
+                gridContainer.scrollTo({ left: targetScrollPosition, behavior: 'smooth' });
+                
+                // Update immediately for responsive UI
+                currentVisibleStartColumn = targetColumn;
                 setTimeout(updateScrollIndicators, 50);
                 setTimeout(updateScrollIndicators, 300);
             });
 
             rightBtn.addEventListener('click', () => {
-                const scrollAmount = getScrollAmount();
-                const currentScroll = gridContainer.scrollLeft;
-                const maxScroll = gridContainer.scrollWidth - gridContainer.clientWidth;
-                const newScrollPosition = Math.min(maxScroll, Math.ceil(currentScroll / scrollAmount) * scrollAmount + scrollAmount);
-                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+                const columnInfo = calculateColumnWidths();
+                if (!columnInfo) return;
+
+                // Move one column to the right
+                const maxStartColumn = Math.max(0, columnInfo.totalDataColumns - maxVisibleColumns);
+                const targetColumn = Math.min(maxStartColumn, currentVisibleStartColumn + 1);
+                const targetScrollPosition = targetColumn * columnInfo.dataColumnWidth;
                 
-                // Force update indicators after scroll
+                gridContainer.scrollTo({ left: targetScrollPosition, behavior: 'smooth' });
+                
+                // Update immediately for responsive UI
+                currentVisibleStartColumn = targetColumn;
                 setTimeout(updateScrollIndicators, 50);
                 setTimeout(updateScrollIndicators, 300);
             });
@@ -594,40 +647,59 @@ document.addEventListener('DOMContentLoaded', function() {
             if (!scrollIndicators) return;
 
             const progressBar = document.querySelector('.grid-scroll-progress');
+            const columnInfo = calculateColumnWidths();
+            if (!columnInfo) return;
 
-            const currentScroll = Math.round(gridContainer.scrollLeft);
-            const maxScroll = Math.round(gridContainer.scrollWidth - gridContainer.clientWidth);
+            const totalDataColumns = columnInfo.totalDataColumns;
             
-            // More reliable scroll detection
-            const canScrollLeft = currentScroll > 5; // Increased tolerance
-            const canScrollRight = currentScroll < (maxScroll - 5); // Increased tolerance
+            // Update current visible start column based on actual scroll position
+            updateVisibleColumns();
+            
+            // Determine if scrolling is needed
+            const hasScrollableContent = totalDataColumns > maxVisibleColumns;
+            
+            if (hasScrollableContent) {
+                const canScrollLeft = currentVisibleStartColumn > 0;
+                const canScrollRight = currentVisibleStartColumn < (totalDataColumns - maxVisibleColumns);
 
-            // Update button states - grey by default, green when active
-            if (canScrollLeft) {
-                scrollIndicators.leftBtn.classList.add('active');
-                scrollIndicators.leftBtn.disabled = false;
+                // Update button states
+                if (canScrollLeft) {
+                    scrollIndicators.leftBtn.classList.add('active');
+                    scrollIndicators.leftBtn.disabled = false;
+                } else {
+                    scrollIndicators.leftBtn.classList.remove('active');
+                    scrollIndicators.leftBtn.disabled = true;
+                }
+
+                if (canScrollRight) {
+                    scrollIndicators.rightBtn.classList.add('active');
+                    scrollIndicators.rightBtn.disabled = false;
+                } else {
+                    scrollIndicators.rightBtn.classList.remove('active');
+                    scrollIndicators.rightBtn.disabled = true;
+                }
+
+                // Update progress bar
+                if (progressBar) {
+                    const maxScrollableColumns = totalDataColumns - maxVisibleColumns;
+                    const scrollPercentage = maxScrollableColumns > 0 ? (currentVisibleStartColumn / maxScrollableColumns) * 100 : 0;
+                    progressBar.style.width = Math.min(100, Math.max(0, scrollPercentage)) + '%';
+                }
             } else {
+                // No scrolling needed, disable buttons
                 scrollIndicators.leftBtn.classList.remove('active');
                 scrollIndicators.leftBtn.disabled = true;
-            }
-
-            if (canScrollRight) {
-                scrollIndicators.rightBtn.classList.add('active');
-                scrollIndicators.rightBtn.disabled = false;
-            } else {
                 scrollIndicators.rightBtn.classList.remove('active');
                 scrollIndicators.rightBtn.disabled = true;
+                
+                if (progressBar) {
+                    progressBar.style.width = '0%';
+                }
             }
 
-            // Update scroll fade gradients
-            gridContainer.classList.toggle('can-scroll-left', canScrollLeft);
-            gridContainer.classList.toggle('can-scroll-right', canScrollRight);
-
-            // Update progress bar
-            if (progressBar) {
-                const scrollPercentage = maxScroll > 0 ? (currentScroll / maxScroll) * 100 : 0;
-                progressBar.style.width = Math.min(100, Math.max(0, scrollPercentage)) + '%';
-            }
+            // Update scroll fade gradients (if needed in future)
+            gridContainer.classList.toggle('can-scroll-left', hasScrollableContent && currentVisibleStartColumn > 0);
+            gridContainer.classList.toggle('can-scroll-right', hasScrollableContent && currentVisibleStartColumn < (totalDataColumns - maxVisibleColumns));
         }
 
         // Initialize column widths and scroll indicators
@@ -652,17 +724,10 @@ document.addEventListener('DOMContentLoaded', function() {
         gridContainer.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowLeft' && e.ctrlKey) {
                 e.preventDefault();
-                const scrollAmount = getScrollAmount();
-                const currentScroll = gridContainer.scrollLeft;
-                const newScrollPosition = Math.max(0, Math.floor(currentScroll / scrollAmount) * scrollAmount - scrollAmount);
-                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+                scrollIndicators.leftBtn.click();
             } else if (e.key === 'ArrowRight' && e.ctrlKey) {
                 e.preventDefault();
-                const scrollAmount = getScrollAmount();
-                const currentScroll = gridContainer.scrollLeft;
-                const maxScroll = gridContainer.scrollWidth - gridContainer.clientWidth;
-                const newScrollPosition = Math.min(maxScroll, Math.ceil(currentScroll / scrollAmount) * scrollAmount + scrollAmount);
-                gridContainer.scrollTo({ left: newScrollPosition, behavior: 'smooth' });
+                scrollIndicators.rightBtn.click();
             }
         });
 
@@ -688,54 +753,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Re-initialize after HTMX updates
     document.body.addEventListener('htmx:afterSettle', function() {
         setupGridScrolling();
-        // Small delay to ensure DOM is fully updated
-        setTimeout(() => {
-            const gridContainer = document.querySelector('.grid-container');
-            if (gridContainer) {
-                const calculateColumnWidths = () => {
-                    const gridTable = gridContainer.querySelector('.grid-table');
-                    if (!gridTable) return;
-
-                    const categoryColumns = gridTable.querySelectorAll('colgroup col.category-column');
-                    const dataColumns = gridTable.querySelectorAll('colgroup col.data-column');
-                    
-                    if (dataColumns.length === 0) return;
-
-                    const containerWidth = gridContainer.clientWidth;
-                    const windowWidth = window.innerWidth;
-                    
-                    // Responsive breakpoints
-                    let categoryWidth = 300;
-                    let minDataColumnWidth = 380;
-                    
-                    if (windowWidth <= 768) {
-                        categoryWidth = 150;
-                        minDataColumnWidth = 320;
-                    } else if (windowWidth <= 1024) {
-                        minDataColumnWidth = 350;
-                    }
-
-                    const availableWidth = containerWidth - categoryWidth;
-                    const idealDataColumnWidth = availableWidth / dataColumns.length;
-
-                    // Check if we can fit all columns at their ideal width
-                    if (idealDataColumnWidth >= minDataColumnWidth) {
-                        // Columns can be evenly distributed
-                        gridTable.style.width = '100%';
-                        dataColumns.forEach(col => {
-                            col.style.width = idealDataColumnWidth + 'px';
-                        });
-                    } else {
-                        // Columns need to be at minimum width, table becomes scrollable
-                        const totalMinWidth = categoryWidth + (dataColumns.length * minDataColumnWidth);
-                        gridTable.style.width = totalMinWidth + 'px';
-                        dataColumns.forEach(col => {
-                            col.style.width = minDataColumnWidth + 'px';
-                        });
-                    }
-                };
-                calculateColumnWidths();
-            }
-        }, 100);
     });
 });

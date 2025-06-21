@@ -25,10 +25,6 @@ SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-change
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = not bool(os.getenv('RAILWAY_ENVIRONMENT'))
 
-# Debug: Print current environment (remove this later)
-print(f"RAILWAY_ENVIRONMENT: {os.getenv('RAILWAY_ENVIRONMENT')}")
-print(f"DEBUG setting: {DEBUG}")
-
 if os.getenv('RAILWAY_ENVIRONMENT'):
     ALLOWED_HOSTS = [
         'toad-production.up.railway.app',
