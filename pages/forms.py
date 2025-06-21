@@ -21,7 +21,7 @@ class TaskForm(forms.ModelForm):
             'text': forms.Textarea(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)] resize-none',
                 'placeholder': 'Enter task description...',
-                'rows': 3,
+                'rows': 5,
                 'required': True,
             }),
             'completed': forms.CheckboxInput(attrs={

@@ -390,22 +390,67 @@
 // Monitor for successful form submissions in the modal
 document.addEventListener('htmx:afterRequest', function(event) {
     // Check if the request originated from within the modal and was successful
-    if (event.detail.successful && 
-        event.target.closest('#modal-content') && 
+    if (event.detail.successful &&
+        event.target.closest('#modal-content') &&
         event.detail.requestConfig.verb === 'post') {
-        
+
         // Close modal with animation
         const modal = document.getElementById('modal');
         const modalContent = document.getElementById('modal-content');
-        
+
         modal.classList.add('opacity-0', 'invisible');
         modalContent.classList.remove('scale-100');
         modalContent.classList.add('scale-95');
-        
+
         // Refresh page after animation completes
         setTimeout(() => {
             window.location.reload();
         }, 300);
+    }
+});
+
+// Centralized handler for modal content
+document.addEventListener('htmx:afterSwap', function(event) {
+    if (event.detail.target.id !== 'modal-content') {
+        return;
+    }
+
+    const modalContent = event.detail.target;
+
+    // Find the text field (input or textarea) within the newly swapped content
+    const textField = modalContent.querySelector('textarea, input[name="text"]');
+
+    if (textField) {
+        // Define the keydown handler
+        const handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                // If it's a textarea and Shift is held, allow default behavior (new line)
+                if (textField.tagName.toLowerCase() === 'textarea' && e.shiftKey) {
+                    return;
+                }
+
+                // Otherwise, prevent default and submit the form
+                e.preventDefault();
+                const form = textField.closest('form');
+                if (form) {
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    if (submitButton) {
+                        submitButton.click();
+                    } else {
+                        form.submit();
+                    }
+                }
+            }
+        };
+
+        // Attach the event listener directly
+        textField.addEventListener('keydown', handleKeyDown);
+
+        // Focus the field and move cursor to the end
+        setTimeout(() => {
+            textField.focus();
+            textField.setSelectionRange(textField.value.length, textField.value.length);
+        }, 150);
     }
 });
 </script>

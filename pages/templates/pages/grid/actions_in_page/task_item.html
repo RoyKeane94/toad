@@ -29,7 +29,7 @@
                    {% if task.completed %}checked{% endif %}
                    class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer">
         </form>
-        <p id="task-text-{{ task.id }}" class="text-sm text-[var(--text-primary)] {% if task.completed %}line-through text-gray-500{% endif %}">{{ task.text }}</p>
+        <div id="task-text-{{ task.id }}" class="text-sm text-[var(--text-primary)] {% if task.completed %}line-through text-gray-500{% endif %} leading-relaxed">{{ task.text|linebreaks }}</div>
     </div>
     
     <!-- Actions -->
@@ -41,7 +41,9 @@
                 hx-target="#modal-content"
                 hx-trigger="click throttle:500ms"
                 hx-disabled-elt="this"
-                _="on click trigger openModal">
+                hx-indicator="#modal-content"
+                hx-swap="innerHTML"
+                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
             <i class="fas fa-edit text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
         </button>
         <button type="button"
