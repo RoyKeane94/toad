@@ -586,10 +586,19 @@ document.addEventListener('DOMContentLoaded', function() {
         // Restore scroll position
         const savedPosition = sessionStorage.getItem('grid-scroll-position');
         if (savedPosition) {
+            // Use the value, then immediately remove it.
+            sessionStorage.removeItem('grid-scroll-position');
+            
             // Need to wait a moment for widths to apply
             setTimeout(() => {
-                const savedCol = Math.round(parseFloat(savedPosition) / dataColWidth);
-                scrollToCol(savedCol, 'auto');
+                // Check dataColWidth to prevent division by zero
+                if (dataColWidth > 0) {
+                    const savedCol = Math.round(parseFloat(savedPosition) / dataColWidth);
+                    scrollToCol(savedCol, 'auto');
+                } else {
+                    // Fallback if width isn't calculated yet
+                    scrollToCol(0, 'auto');
+                }
             }, 50);
         } else {
             scrollToCol(0, 'auto');

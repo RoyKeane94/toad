@@ -204,8 +204,8 @@ document.addEventListener('htmx:afterRequest', function(event) {
 
         // Refresh page after animation completes, but preserve scroll position
         setTimeout(() => {
-            // Store current scroll position before reload
-            const gridContainer = document.querySelector('.grid-container');
+            // Store current scroll position before reload using the CORRECT selector
+            const gridContainer = document.querySelector('.grid-table-scrollable');
             if (gridContainer) {
                 sessionStorage.setItem('grid-scroll-position', gridContainer.scrollLeft.toString());
             }
@@ -256,29 +256,6 @@ document.addEventListener('htmx:afterSwap', function(event) {
             textField.focus();
             textField.setSelectionRange(textField.value.length, textField.value.length);
         }, 150);
-    }
-});
-
-// Preserve scroll position for task updates
-document.addEventListener('htmx:beforeRequest', function(event) {
-    // Store scroll position before any HTMX request
-    const gridContainer = document.querySelector('.grid-container');
-    if (gridContainer) {
-        sessionStorage.setItem('grid-scroll-position', gridContainer.scrollLeft.toString());
-    }
-});
-
-// Restore scroll position after HTMX updates
-document.addEventListener('htmx:afterSettle', function(event) {
-    // Restore scroll position after HTMX content updates
-    const gridContainer = document.querySelector('.grid-container');
-    if (gridContainer) {
-        const savedPosition = sessionStorage.getItem('grid-scroll-position');
-        if (savedPosition) {
-            setTimeout(() => {
-                gridContainer.scrollLeft = parseInt(savedPosition);
-            }, 50);
-        }
     }
 });
 </script>
