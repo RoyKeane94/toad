@@ -260,20 +260,21 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     z-index: 1;
 }
 
+/* Scroll Buttons */
 .external-scroll-btn {
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    border: 2px solid var(--border-color);
-    background: var(--container-bg);
-    color: var(--text-secondary);
+    border: 2px solid rgba(16, 185, 129, 0.4); /* Light Green Border */
+    background: rgba(16, 185, 129, 0.1); /* Light Green Background */
+    color: var(--primary-action-bg); /* Bright Green Icon */
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
     font-size: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     flex-shrink: 0;
 }
 
@@ -287,15 +288,10 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.external-scroll-btn:not(:disabled) {
-    opacity: 0.7;
-}
-
 .external-scroll-btn:not(:disabled):hover {
-    opacity: 1;
-    background: var(--primary-action-bg);
-    border-color: var(--primary-action-bg);
-    color: white;
+    background: var(--primary-action-bg); /* Bright Green Background */
+    border-color: var(--primary-action-bg); /* Bright Green Border */
+    color: white; /* White Icon */
     transform: scale(1.05);
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
