@@ -20,7 +20,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 5. Copy the rest of your application code
 COPY . .
 
-# 6. Collect static files
+# 6. Build Tailwind CSS
+# This generates the final CSS file (e.g., master.css) from your sources.
+RUN python manage.py tailwind build
+
+# 7. Collect static files
 # This runs the collectstatic command to gather all static files into STATIC_ROOT.
 # The --noinput flag prevents any interactive prompts.
 RUN python3 manage.py collectstatic --noinput
