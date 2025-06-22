@@ -8,8 +8,14 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Ensures Python output is sent straight to the terminal without buffering
 ENV PYTHONUNBUFFERED 1
 
-# 3. Install Node.js and npm for Tailwind CSS build
-RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
+# 3. Install Node.js and npm from NodeSource (the reliable way)
+# This installs curl, downloads and runs the official Node.js setup script,
+# then installs the specified version of Node.js, and finally cleans up.
+RUN apt-get update \
+    && apt-get install -y curl \
+    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/*
 
 # 4. Set the working directory
 WORKDIR /app
