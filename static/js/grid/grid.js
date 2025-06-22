@@ -592,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 scrollToCol(lastColIndex, 'auto');
             }, 50);
 
-        } else {
+                } else {
             // Restore previous scroll position if it exists
             const savedPosition = sessionStorage.getItem('grid-scroll-position');
             if (savedPosition) {
@@ -601,7 +601,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     if (dataColWidth > 0) {
                         const savedCol = Math.round(parseFloat(savedPosition) / dataColWidth);
                         scrollToCol(savedCol, 'auto');
-                    } else {
+                } else {
                         scrollToCol(0, 'auto');
                     }
                 }, 50);
