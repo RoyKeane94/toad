@@ -161,25 +161,103 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 .grid-container {
     overflow-x: auto;
     overflow-y: visible;
-    max-width: 100%;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
     position: relative;
-    scroll-snap-type: x mandatory; /* Enable snap scrolling */
+    scroll-behavior: smooth;
 }
 
-/* Grid with external controls layout */
+/* Styles for grid pagination controls */
 .grid-with-controls {
-    position: relative;
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
+:root {
+    --category-col-width: 300px;
+    --border-color: #e5e7eb; /* Example */
+    --container-bg: #ffffff; /* Example */
+    --grid-header-bg: #f9fafb; /* Example */
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --category-col-width: 250px;
+    }
+}
+@media (max-width: 768px) {
+    :root {
+        --category-col-width: 200px;
+    }
+}
+
+/* Main container for buttons and grid */
 .grid-container-wrapper {
-    flex: 1;
-    position: relative;
-    overflow: hidden;
-    min-width: 0; /* Allow flex item to shrink */
+    display: flex;
+    flex: 1; /* Take up remaining space */
+    min-width: 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden; /* Important: clips the rounded corners */
+}
+
+/* === Fixed Left Table (Category) === */
+.grid-table-fixed-col {
+    flex-shrink: 0; /* Prevent from shrinking */
+    border-right: 1px solid var(--border-color);
+}
+
+/* === Scrollable Right Table (Data) === */
+.grid-table-scrollable {
+    flex: 1; /* Take up remaining space */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+/* === General Table Styles (for both tables) === */
+.grid-table-fixed, .grid-table {
+    border-spacing: 0;
+    table-layout: fixed;
+    background-color: var(--container-bg);
+}
+
+/* === Column Widths === */
+.grid-table-fixed col.category-column {
+    width: var(--category-col-width);
+}
+.grid-table col.data-column {
+    width: auto; /* Fallback */
+}
+
+/* === Cell Styles (for both tables) === */
+.grid-table-fixed th, .grid-table-fixed td,
+.grid-table th, .grid-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: top;
+    text-align: left;
+    white-space: normal;
+    height: 100%; /* For row height sync */
+}
+.grid-table-fixed tr:last-child td,
+.grid-table tr:last-child td {
+    border-bottom: none;
+}
+.grid-table th, .grid-table td {
+    border-right: 1px solid var(--border-color);
+}
+.grid-table th:last-child, .grid-table td:last-child {
+    border-right: none;
+}
+
+/* === Header Styles (for both tables) === */
+.grid-table-fixed th, .grid-table th {
+    background-color: var(--grid-header-bg);
+    font-weight: 600;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 .external-scroll-btn {
@@ -197,162 +275,32 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     font-size: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
-    opacity: 0.4;
 }
 
 .external-scroll-btn:disabled {
-    opacity: 0.3;
+    opacity: 0.4;
     cursor: not-allowed;
     background: var(--grid-header-bg);
-    color: var(--text-secondary);
     border-color: var(--border-color);
+    color: var(--text-secondary);
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.external-scroll-btn.active {
-    background: #6EE7B7; /* Light green - lighter than primary action */
-    border-color: #6EE7B7;
-    color: white;
-    box-shadow: 0 4px 12px rgba(110, 231, 183, 0.3);
+.external-scroll-btn:not(:disabled) {
+    opacity: 0.7;
+}
+
+.external-scroll-btn:not(:disabled):hover {
     opacity: 1;
-}
-
-.external-scroll-btn.active:hover {
-    background: var(--primary-action-bg); /* Use primary action green on hover */
+    background: var(--primary-action-bg);
     border-color: var(--primary-action-bg);
+    color: white;
     transform: scale(1.05);
-    box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-.external-scroll-btn.active:active {
+.external-scroll-btn:not(:disabled):active {
     transform: scale(0.95);
 }
 
-/* Scroll fade gradients - disabled for now to fix white line issue */
-.grid-container::before,
-.grid-container::after {
-    display: none;
-}
-
-.grid-table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    min-width: 100%; /* Ensure table fills container */
-}
-
-/* Column sizing - category column stays fixed, data columns calculated dynamically */
-.grid-table colgroup col.category-column {
-    width: 300px;
-    min-width: 300px;
-}
-
-.grid-table colgroup col.data-column {
-    /* Width will be set dynamically by JavaScript based on visible columns */
-    min-width: 250px;
-    scroll-snap-align: start;
-}
-
-/* Sticky column header */
-.grid-table th.category-header {
-    position: sticky;
-    left: 0;
-    z-index: 30;
-    background: var(--grid-header-bg);
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Sticky row header */
-.grid-table td.row-header {
-    position: sticky;
-    left: 0;
-    z-index: 20;
-    background: var(--container-bg);
-    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.05);
-}
-
-/* Data cells */
-.grid-table td.data-cell {
-    overflow: hidden;
-    /* Width controlled dynamically by JavaScript */
-}
-
-/* Scrollbar styling */
-.grid-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.grid-container::-webkit-scrollbar-track {
-    background: var(--grid-header-bg);
-    border-radius: 4px;
-}
-
-.grid-container::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 4px;
-    transition: background-color 0.2s ease;
-}
-
-.grid-container::-webkit-scrollbar-thumb:hover {
-    background: var(--text-secondary);
-}
-
-/* Scroll progress indicator */
-.grid-scroll-progress {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 3px;
-    background: var(--primary-action-bg);
-    border-radius: 2px;
-    transition: width 0.1s ease-out;
-    z-index: 15;
-}
-
-.grid-scroll-progress-track {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--border-color);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 14;
-}
-
-.grid-container:hover + .grid-scroll-progress-track,
-.grid-container:focus + .grid-scroll-progress-track {
-    opacity: 1;
-}
-
-/* Responsive grid adjustments */
-@media (max-width: 1024px) {
-    .grid-table colgroup col.category-column {
-        width: 250px;
-        min-width: 250px;
-    }
-    
-    .grid-table colgroup col.data-column {
-        min-width: 220px;
-    }
-}
-
-@media (max-width: 768px) {
-    .grid-table colgroup col.category-column {
-        width: 200px;
-        min-width: 200px;
-    }
-    
-    .grid-table colgroup col.data-column {
-        min-width: 200px;
-    }
-}
-
-.grid-table th, .grid-table td {
-    border-right: 1px solid var(--border-color);
-    padding: 1rem;
-    vertical-align: top;
-    text-align: left;
-    white-space: normal;
-    scroll-snap-align: start;
-}

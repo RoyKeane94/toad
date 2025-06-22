@@ -112,19 +112,58 @@ def project_grid_view(request, pk):
     # Prefetch related data in single queries with proper ordering
     row_headers = project.row_headers.all().order_by('order')
     
-    # More efficient column header ordering - category column first, then regular columns by order
-    column_headers = project.column_headers.all().order_by('-is_category_column', 'order')
+    # Get all column headers, separating the category column from data columns
+    all_column_headers = project.column_headers.all().order_by('order')
+    category_column = all_column_headers.filter(is_category_column=True).first()
+    data_column_headers = list(all_column_headers.filter(is_category_column=False))
+
+    # Use ALL columns for display - no pagination
+    column_headers = ([category_column] if category_column else []) + data_column_headers
     
     # Optimize tasks query with select_related and ordering
     all_tasks = project.tasks.select_related('row_header', 'column_header').order_by('id')
     
     # Create tasks lookup dictionary more efficiently
     tasks_by_cell = {}
+    tasks_by_row = {}
     for task in all_tasks:
         cell_key = f"{task.row_header_id}_{task.column_header_id}"
         if cell_key not in tasks_by_cell:
             tasks_by_cell[cell_key] = []
         tasks_by_cell[cell_key].append(task)
+
+        # Group ALL tasks by row (not just visible ones) to find consistent heights
+        if task.row_header_id not in tasks_by_row:
+            tasks_by_row[task.row_header_id] = []
+        tasks_by_row[task.row_header_id].append(task)
+        
+    # Calculate consistent row heights based on ALL tasks in each row across ALL columns
+    row_min_heights = {}
+    
+    # Ensure ALL rows get a height calculation, even if they have no tasks
+    for row_header in row_headers:
+        row_id = row_header.pk
+        if row_id in tasks_by_row and tasks_by_row[row_id]:
+            # Find the maximum content needed for this row across ALL columns
+            max_content_height = 0
+            for task in tasks_by_row[row_id]:
+                # Estimate height based on text length and line breaks
+                text_lines = len(task.text.split('\n'))
+                char_lines = max(1, len(task.text) // 60)  # ~60 chars per line
+                estimated_lines = max(text_lines, char_lines)
+                content_height = estimated_lines * 25  # ~25px per line
+                max_content_height = max(max_content_height, content_height)
+            
+            # Set minimum height with base padding (form area + margins)
+            # Use a consistent height for seamless scrolling
+            calculated_height = max(200, max_content_height + 120)  # 120px for form + padding
+            row_min_heights[row_id] = calculated_height
+        else:
+            # Empty rows still need consistent minimum height
+            row_min_heights[row_id] = 200
+    
+    # Debug: Print the calculated heights
+    print(f"DEBUG: Row heights calculated: {row_min_heights}")
 
     # Only get project names for dropdown - don't load full objects
     user_projects = Project.objects.filter(user=request.user).only('id', 'name').order_by('name')
@@ -132,11 +171,19 @@ def project_grid_view(request, pk):
     context = {
         'project': project,
         'row_headers': row_headers,
-        'column_headers': column_headers,
+        'category_column': category_column,
+        'data_column_headers': data_column_headers,
         'tasks_by_cell': tasks_by_cell,
+        'row_min_heights': row_min_heights,
         'projects': user_projects,
         'quick_task_form': QuickTaskForm(),
+        'total_data_columns': len(data_column_headers),
     }
+    
+    # If the request is from HTMX, only render the grid content partial
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/partials/grid_content.html', context)
+    
     return render(request, 'pages/grid/project_grid.html', context)
 
 # Task CRUD Views

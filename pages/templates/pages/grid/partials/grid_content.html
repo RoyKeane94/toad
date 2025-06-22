@@ -1,0 +1,185 @@
+{% load custom_filters %}
+<div class="grid-with-controls" id="grid-content">
+    <button class="external-scroll-btn left-scroll-btn"
+            data-action="scroll-left"
+            title="Previous columns">
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    <div class="grid-container-wrapper" style="display: flex;">
+        <!-- Fixed Category Column -->
+        <div class="grid-table-fixed-col">
+            <table class="grid-table-fixed">
+                <colgroup>
+                    <col class="category-column">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <th>{{ category_column.name }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row_h in row_headers %}
+                    <tr>
+                        <td>
+                             <div class="flex items-center justify-between">
+                                <span>{{ row_h.name }}</span>
+                                <div class="relative ml-2">
+                                    <button type="button"
+                                            class="row-actions-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                                            title="Row actions"
+                                            data-row-id="{{ row_h.pk }}">
+                                        <i class="fas fa-ellipsis-v text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
+                                    </button>
+                                    <div class="row-actions-dropdown absolute top-full right-0 mt-1 w-32 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-1 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
+                                        <button type="button"
+                                                class="w-full px-3 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors flex items-center cursor-pointer"
+                                                hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
+                                                hx-target="#modal-content"
+                                                hx-trigger="click throttle:500ms"
+                                                hx-disabled-elt="this"
+                                                hx-indicator="#modal-content"
+                                                hx-swap="innerHTML"
+                                                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                                            <i class="fas fa-edit text-xs mr-2 text-[var(--primary-action-bg)]"></i>Edit
+                                        </button>
+                                        <button type="button"
+                                                class="w-full px-3 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors flex items-center cursor-pointer"
+                                                hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
+                                                hx-target="#modal-content"
+                                                hx-trigger="click throttle:500ms"
+                                                hx-disabled-elt="this"
+                                                hx-indicator="#modal-content"
+                                                hx-swap="innerHTML"
+                                                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                                            <i class="fas fa-trash text-xs mr-2 text-[var(--delete-button-bg)]"></i>Delete
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Scrollable Data Columns -->
+        <div class="grid-table-scrollable" style="overflow-x: auto; width: calc(3 * var(--data-col-width, 300px));">
+            <table class="grid-table" data-total-data-columns="{{ total_data_columns }}">
+                <colgroup>
+                    {% for col_h in data_column_headers %}
+                        <col class="data-column">
+                    {% endfor %}
+                </colgroup>
+                <thead>
+                    <tr>
+                        {% for col_h in data_column_headers %}
+                            <th>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-[var(--title-text)] truncate">{{ col_h.name }}</span>
+                                    <div class="relative ml-2">
+                                        <button type="button"
+                                                class="column-actions-btn p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer" 
+                                                title="Column actions"
+                                                data-column-id="{{ col_h.pk }}">
+                                            <i class="fas fa-ellipsis-v text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
+                                        </button>
+                                        <div class="column-actions-dropdown absolute top-full right-0 mt-1 w-32 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-1 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
+                                            <button type="button"
+                                                    class="w-full px-3 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors flex items-center cursor-pointer"
+                                                    hx-get="{% url 'pages:column_edit' project_pk=project.pk col_pk=col_h.pk %}"
+                                                    hx-target="#modal-content"
+                                                    hx-trigger="click throttle:500ms"
+                                                    hx-disabled-elt="this"
+                                                    hx-indicator="#modal-content"
+                                                    hx-swap="innerHTML"
+                                                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                                                <i class="fas fa-edit text-xs mr-2 text-[var(--primary-action-bg)]"></i>Edit
+                                            </button>
+                                            <button type="button"
+                                                    class="w-full px-3 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors flex items-center cursor-pointer"
+                                                    hx-get="{% url 'pages:column_delete' project_pk=project.pk col_pk=col_h.pk %}"
+                                                    hx-target="#modal-content"
+                                                    hx-trigger="click throttle:500ms"
+                                                    hx-disabled-elt="this"
+                                                    hx-indicator="#modal-content"
+                                                    hx-swap="innerHTML"
+                                                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                                                <i class="fas fa-trash text-xs mr-2 text-[var(--delete-button-bg)]"></i>Delete
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row_h in row_headers %}
+                    <tr>
+                        {% for col_h in data_column_headers %}
+                        <td data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" class="relative">
+                            <!-- Tasks at Top -->
+                            <div class="space-y-2 pb-16" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
+                                {% with key=row_h.pk|cell_key:col_h.pk %}
+                                    {% for task in tasks_by_cell|get_item:key %}
+                                        {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
+                                    {% endfor %}
+                                {% endwith %}
+                            </div>
+                            
+                            <!-- Add Task Form - Absolutely positioned at bottom -->
+                            <div class="absolute bottom-3 left-3 right-3 pt-3 border-t border-[var(--border-color)]/30 bg-[var(--container-bg)]">
+                                <form method="post" 
+                                      action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
+                                      class="task-form add-task-form"
+                                      novalidate
+                                      hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
+                                      hx-swap="beforeend"
+                                      hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
+                                      hx-trigger="submit throttle:500ms"
+                                      hx-disabled-elt="this"
+                                      onsubmit="return validateTaskForm(this)">
+                                    {% csrf_token %}
+                                    
+                                    <!-- Collapsed state: Just a subtle button -->
+                                    <div class="add-task-collapsed">
+                                        <button type="button" 
+                                                class="add-task-trigger w-full text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] rounded-md transition-all duration-200 text-sm border border-transparent hover:border-[var(--border-color)] cursor-pointer">
+                                            <i class="fas fa-plus text-xs mr-2"></i>Add task...
+                                        </button>
+                                    </div>
+                                    
+                                    <!-- Expanded state: Full form -->
+                                    <div class="add-task-expanded hidden">
+                                        <div class="space-y-2">
+                                            <div class="flex space-x-2">
+                                                {{ quick_task_form.text }}
+                                                <button type="submit" 
+                                                        class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative cursor-pointer flex-shrink-0">
+                                                    <i class="fas fa-check text-xs"></i>
+                                                    <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
+                                                </button>
+                                                <button type="button" 
+                                                        class="add-task-cancel px-3 py-2 border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] rounded-md text-sm transition-colors cursor-pointer flex-shrink-0">
+                                                    <i class="fas fa-times text-xs"></i>
+                                                </button>
+                                            </div>
+                                            <div class="error-message text-xs"></div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </td>
+                        {% endfor %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <button class="external-scroll-btn right-scroll-btn"
+            data-action="scroll-right"
+            title="Next columns">
+        <i class="fas fa-chevron-right"></i>
+    </button>
+</div> 
