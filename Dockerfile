@@ -8,30 +8,17 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Ensures Python output is sent straight to the terminal without buffering
 ENV PYTHONUNBUFFERED 1
 
-# 3. Install Node.js and npm from NodeSource (the reliable way)
-# This installs curl, downloads and runs the official Node.js setup script,
-# then installs the specified version of Node.js, and finally cleans up.
-RUN apt-get update \
-    && apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
-    && rm -rf /var/lib/apt/lists/*
-
-# 4. Set the working directory
+# 3. Set the working directory
 WORKDIR /app
 
-# 5. Install dependencies
+# 4. Install dependencies
 # This is done in a separate step to take advantage of Docker's caching.
 # The requirements are only re-installed if requirements.txt changes.
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy the rest of your application code
+# 5. Copy the rest of your application code (including pre-built static files)
 COPY . .
-
-# 7. Install Node.js dependencies
-# This installs the packages required for the Tailwind build (like rimraf and tailwindcss).
-RUN npm install --prefix theme/static_src
 
 # The port the container will listen on.
 # Gunicorn will bind to the $PORT environment variable provided by Railway automatically.
