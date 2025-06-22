@@ -3306,3 +3306,151 @@ INFO 2025-06-22 13:29:33,405 basehttp 99853 6143717376 "POST /projects/1/columns
 INFO 2025-06-22 13:29:33,446 basehttp 99853 6143717376 "GET /projects/1/ HTTP/1.1" 200 13470
 INFO 2025-06-22 13:29:33,457 basehttp 99853 6143717376 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-06-22 13:29:33,457 basehttp 99853 6126891008 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:31:10,730 autoreload 95609 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-22 13:31:11,009 autoreload 99952 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-22 13:32:58,843 autoreload 99952 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-06-22 13:32:59,083 autoreload 99990 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-22 13:33:23,582 autoreload 461 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-22 13:33:28,866 basehttp 461 6129250304 "GET /projects/1/ HTTP/1.1" 200 13533
+INFO 2025-06-22 13:33:28,880 basehttp 461 6162903040 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:33:28,885 basehttp 461 6129250304 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-22 13:33:28,885 basehttp 461 6146076672 "GET /static/css/dist/styles.css HTTP/1.1" 200 42441
+INFO 2025-06-22 13:33:28,886 basehttp 461 6179729408 "GET /static/js/grid/grid.js HTTP/1.1" 200 26193
+INFO 2025-06-22 13:33:34,697 basehttp 461 6179729408 "GET /projects/1/ HTTP/1.1" 200 13566
+INFO 2025-06-22 13:33:34,710 basehttp 461 6146076672 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-22 13:33:34,710 basehttp 461 6179729408 "GET /static/css/master.css HTTP/1.1" 200 68
+INFO 2025-06-22 13:33:34,711 basehttp 461 6129250304 "GET /static/js/grid/grid.js HTTP/1.1" 200 26193
+INFO 2025-06-22 13:33:34,713 basehttp 461 6146076672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-22 13:33:34,713 basehttp 461 6179729408 "GET /static/css/dist/styles.css HTTP/1.1" 200 42441
+INFO 2025-06-22 13:33:34,830 basehttp 461 6179729408 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-22 13:33:40,986 basehttp 461 6179729408 "GET /projects/1/columns/create/ HTTP/1.1" 200 2959
+INFO 2025-06-22 13:33:40,999 basehttp 461 6179729408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-22 13:33:41,000 basehttp 461 6146076672 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:33:43,631 basehttp 461 6146076672 "POST /projects/1/columns/create/ HTTP/1.1" 302 0
+INFO 2025-06-22 13:33:43,667 basehttp 461 6146076672 "GET /projects/1/ HTTP/1.1" 200 13795
+INFO 2025-06-22 13:33:43,681 basehttp 461 6146076672 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-22 13:35:15,718 basehttp 461 6146076672 "GET /projects/1/ HTTP/1.1" 200 13858
+INFO 2025-06-22 13:35:15,730 basehttp 461 6179729408 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:35:15,731 basehttp 461 6129250304 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-22 13:35:15,731 basehttp 461 6146076672 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+ERROR 2025-06-22 13:35:20,716 log 461 6146076672 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 444, in column_create_view
+    return render(request, 'pages/grid/modals/column_form_content.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'column_edit' with keyword arguments '{'project_pk': 1, 'col_pk': ''}' not found. 1 pattern(s) tried: ['projects/(?P<project_pk>[0-9]+)/columns/(?P<col_pk>[0-9]+)/edit/\\Z']
+ERROR 2025-06-22 13:35:20,726 basehttp 461 6146076672 "GET /projects/1/columns/create/ HTTP/1.1" 500 17131
+INFO 2025-06-22 13:35:30,874 basehttp 461 6146076672 "GET /projects/1/columns/create/ HTTP/1.1" 200 2926
+INFO 2025-06-22 13:35:30,888 basehttp 461 6146076672 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-22 13:35:30,889 basehttp 461 6179729408 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:35:35,046 basehttp 461 6179729408 "POST /projects/1/columns/create/ HTTP/1.1" 302 0
+INFO 2025-06-22 13:35:35,080 basehttp 461 6179729408 "GET /projects/1/ HTTP/1.1" 200 14110
+INFO 2025-06-22 13:35:37,657 basehttp 461 6179729408 "GET /projects/1/rows/create/ HTTP/1.1" 200 2949
+INFO 2025-06-22 13:36:00,664 basehttp 461 6179729408 "GET / HTTP/1.1" 200 2559
+INFO 2025-06-22 13:36:00,678 basehttp 461 6129250304 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:36:00,679 basehttp 461 6146076672 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:36:00,679 basehttp 461 6179729408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-22 13:36:02,451 basehttp 461 6179729408 "GET /projects/ HTTP/1.1" 200 2891
+INFO 2025-06-22 13:36:03,192 basehttp 461 6179729408 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+ERROR 2025-06-22 13:36:04,504 log 461 6179729408 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 444, in column_create_view
+    return render(request, 'pages/grid/modals/column_form_content.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'column_edit' with keyword arguments '{'project_pk': 1, 'col_pk': ''}' not found. 1 pattern(s) tried: ['projects/(?P<project_pk>[0-9]+)/columns/(?P<col_pk>[0-9]+)/edit/\\Z']
+ERROR 2025-06-22 13:36:04,510 basehttp 461 6179729408 "GET /projects/1/columns/create/ HTTP/1.1" 500 17223
+INFO 2025-06-22 13:36:07,853 basehttp 461 6179729408 "GET /projects/1/rows/create/ HTTP/1.1" 200 2932
+INFO 2025-06-22 13:36:14,914 basehttp 461 6179729408 "GET /projects/ HTTP/1.1" 200 2938
+INFO 2025-06-22 13:36:14,927 basehttp 461 6146076672 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-22 13:36:14,927 basehttp 461 6179729408 "GET /static/css/master.css HTTP/1.1" 200 68
+INFO 2025-06-22 13:36:14,930 basehttp 461 6146076672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-22 13:36:14,930 basehttp 461 6179729408 "GET /static/css/dist/styles.css HTTP/1.1" 200 42441
+INFO 2025-06-22 13:36:15,030 basehttp 461 6179729408 "GET /static/img/favicon.svg?v=2 HTTP/1.1" 200 226
+INFO 2025-06-22 13:36:16,114 basehttp 461 6179729408 "GET /projects/1/ HTTP/1.1" 200 14108
+INFO 2025-06-22 13:36:16,129 basehttp 461 6179729408 "GET /static/js/grid/grid.js HTTP/1.1" 200 26193
+INFO 2025-06-22 13:36:17,057 basehttp 461 6179729408 "GET /projects/1/columns/create/ HTTP/1.1" 200 2968
+INFO 2025-06-22 13:36:19,771 basehttp 461 6179729408 "GET /projects/1/rows/create/ HTTP/1.1" 200 2928
+INFO 2025-06-22 13:36:27,722 basehttp 461 6179729408 "GET /projects/1/columns/49/delete/ HTTP/1.1" 200 988
+INFO 2025-06-22 13:36:28,798 basehttp 461 6179729408 "POST /projects/1/columns/49/delete/ HTTP/1.1" 200 69
+INFO 2025-06-22 13:36:28,827 basehttp 461 6179729408 "GET /projects/1/ HTTP/1.1" 200 13838
+INFO 2025-06-22 13:36:34,197 basehttp 461 6179729408 "GET /projects/1/columns/50/delete/ HTTP/1.1" 200 999
+INFO 2025-06-22 13:36:35,632 basehttp 461 6179729408 "POST /projects/1/columns/50/delete/ HTTP/1.1" 200 71
+INFO 2025-06-22 13:36:35,674 basehttp 461 6179729408 "GET /projects/1/ HTTP/1.1" 200 13485
+INFO 2025-06-22 13:36:35,685 basehttp 461 6146076672 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-22 13:36:35,686 basehttp 461 6179729408 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-22 13:36:50,958 project_views 461 6179729408 User None deleted task: "Test" from project: Toad
+INFO 2025-06-22 13:36:50,962 basehttp 461 6179729408 "POST /tasks/98/delete/ HTTP/1.1" 200 0
+INFO 2025-06-22 13:36:53,895 basehttp 461 6179729408 "POST /tasks/96/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-22 13:36:54,840 basehttp 461 6179729408 "POST /tasks/94/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-22 13:36:57,623 basehttp 461 6179729408 "POST /tasks/93/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-22 13:37:03,331 basehttp 461 6179729408 "POST /tasks/77/toggle/ HTTP/1.1" 200 79

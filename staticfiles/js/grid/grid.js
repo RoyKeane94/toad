@@ -583,25 +583,31 @@ document.addEventListener('DOMContentLoaded', function() {
         calculateAndApplyWidths();
         updateButtons();
         
-        // Restore scroll position
-        const savedPosition = sessionStorage.getItem('grid-scroll-position');
-        if (savedPosition) {
-            // Use the value, then immediately remove it.
-            sessionStorage.removeItem('grid-scroll-position');
-            
-            // Need to wait a moment for widths to apply
+        const scrollToEnd = sessionStorage.getItem('scrollToEnd');
+        if (scrollToEnd) {
+            // Scroll to the very last column
+            sessionStorage.removeItem('scrollToEnd'); // Use the flag and lose it
             setTimeout(() => {
-                // Check dataColWidth to prevent division by zero
-                if (dataColWidth > 0) {
-                    const savedCol = Math.round(parseFloat(savedPosition) / dataColWidth);
-                    scrollToCol(savedCol, 'auto');
-                } else {
-                    // Fallback if width isn't calculated yet
-                    scrollToCol(0, 'auto');
-                }
+                const lastColIndex = totalDataColumns - columnsToShow;
+                scrollToCol(lastColIndex, 'auto');
             }, 50);
+
         } else {
-            scrollToCol(0, 'auto');
+            // Restore previous scroll position if it exists
+            const savedPosition = sessionStorage.getItem('grid-scroll-position');
+            if (savedPosition) {
+                sessionStorage.removeItem('grid-scroll-position');
+                setTimeout(() => {
+                    if (dataColWidth > 0) {
+                        const savedCol = Math.round(parseFloat(savedPosition) / dataColWidth);
+                        scrollToCol(savedCol, 'auto');
+                    } else {
+                        scrollToCol(0, 'auto');
+                    }
+                }, 50);
+            } else {
+                scrollToCol(0, 'auto');
+            }
         }
         
         // Save scroll position before HTMX requests

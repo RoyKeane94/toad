@@ -258,5 +258,13 @@ document.addEventListener('htmx:afterSwap', function(event) {
         }, 150);
     }
 });
+
+// Listen for the custom event to scroll to the end after a reload
+document.body.addEventListener('scrollToEnd', function() {
+    // Set a flag in session storage
+    sessionStorage.setItem('scrollToEnd', 'true');
+    // Reload the page
+    window.location.reload();
+});
 </script>
 {% endblock %} 

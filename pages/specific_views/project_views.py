@@ -418,8 +418,7 @@ def row_delete_view(request, project_pk, row_pk):
 # Column CRUD Views
 
 def column_create_view(request, project_pk):
-    # Only load fields needed for column creation
-    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
+    project = get_object_or_404(Project, pk=project_pk, user=request.user)
     
     if request.method == 'POST':
         form = ColumnHeaderForm(request.POST)
@@ -428,11 +427,27 @@ def column_create_view(request, project_pk):
             column.project = project
             column.order = project.column_headers.filter(is_category_column=False).count() + 1
             column.save()
+            
+            # For HTMX requests, trigger a scroll to the end after reload
+            if request.headers.get('HX-Request'):
+                response = HttpResponse(status=204)
+                response['HX-Trigger'] = 'scrollToEnd'
+                return response
+
             messages.success(request, f'Column "{column.name}" added successfully!')
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = ColumnHeaderForm()
+
+    # This part handles the initial GET request for the form
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/column_form_content.html', {
+            'form': form,
+            'project': project,
+            'title': 'Add Column'
+        })
     
+    # Fallback for non-HTMX GET requests
     return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
         'form': form, 
         'project': project, 
