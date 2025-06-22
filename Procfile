@@ -1,2 +1,2 @@
-release: python3 manage.py tailwind build && python3 manage.py collectstatic --no-input && python3 manage.py migrate
+release: echo "--- Running Tailwind Build ---" && python3 manage.py tailwind build && echo "--- Listing files after build ---" && ls -lR static/ && echo "--- Running collectstatic ---" && python3 manage.py collectstatic --no-input && echo "--- Listing files in staticfiles root ---" && ls -lR staticfiles/ && echo "--- Running migrations ---" && python3 manage.py migrate
 web: gunicorn toad.wsgi --log-file -
