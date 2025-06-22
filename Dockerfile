@@ -8,23 +8,26 @@ ENV PYTHONDONTWRITEBYTECODE 1
 # Ensures Python output is sent straight to the terminal without buffering
 ENV PYTHONUNBUFFERED 1
 
-# 3. Set the working directory
+# 3. Install Node.js and npm for Tailwind CSS build
+RUN apt-get update && apt-get install -y nodejs npm && rm -rf /var/lib/apt/lists/*
+
+# 4. Set the working directory
 WORKDIR /app
 
-# 4. Install dependencies
+# 5. Install dependencies
 # This is done in a separate step to take advantage of Docker's caching.
 # The requirements are only re-installed if requirements.txt changes.
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 5. Copy the rest of your application code
+# 6. Copy the rest of your application code
 COPY . .
 
-# 6. Build Tailwind CSS
+# 7. Build Tailwind CSS
 # This generates the final CSS file (e.g., master.css) from your sources.
 RUN python manage.py tailwind build
 
-# 7. Collect static files
+# 8. Collect static files
 # This runs the collectstatic command to gather all static files into STATIC_ROOT.
 # The --noinput flag prevents any interactive prompts.
 RUN python3 manage.py collectstatic --noinput
