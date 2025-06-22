@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-change-this')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not bool(os.getenv('RAILWAY_ENVIRONMENT'))
+DEBUG = not bool(os.getenv('RAILWAY_DEBUG_ENVIRONMENT'))
 
-if os.getenv('RAILWAY_ENVIRONMENT'):
+if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
     ALLOWED_HOSTS = [
         'toad-production.up.railway.app',
         'toad.railway.internal', # Hardcode the known internal domain
@@ -43,7 +43,7 @@ else:
 SECURE_SSL_REDIRECT = False
 
 # CSRF Configuration for production
-if os.getenv('RAILWAY_ENVIRONMENT'):
+if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
     CSRF_TRUSTED_ORIGINS = [
         'https://toad-production.up.railway.app',
         'https://toad.railway.internal', # Hardcode for CSRF
@@ -112,7 +112,7 @@ WSGI_APPLICATION = 'toad.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 # Database configuration - SQLite locally, PostgreSQL in production
-if os.getenv('RAILWAY_ENVIRONMENT'):
+if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
     # Production database (Railway PostgreSQL)
     DATABASES = {
         'default': {
@@ -182,7 +182,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
 
-# Use default storage in development and whitenoise for production
+# Use default storage in development and WhiteNoise manifest storage in production
 if DEBUG:
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 else:
@@ -204,7 +204,7 @@ WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Production Performance Settings
-if os.getenv('RAILWAY_ENVIRONMENT'):
+if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
     print("Applying production settings...")
     
     # Static file optimization
