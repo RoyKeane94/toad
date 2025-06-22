@@ -29,11 +29,15 @@ RUN pip install --no-cache-dir -r requirements.txt
 # 6. Copy the rest of your application code
 COPY . .
 
-# 7. Build Tailwind CSS
+# 7. Install Node.js dependencies
+# This installs the packages required for the Tailwind build (like rimraf and tailwindcss).
+RUN npm install --prefix theme/static_src
+
+# 8. Build Tailwind CSS
 # This generates the final CSS file (e.g., master.css) from your sources.
 RUN python manage.py tailwind build
 
-# 8. Collect static files
+# 9. Collect static files
 # This runs the collectstatic command to gather all static files into STATIC_ROOT.
 # The --noinput flag prevents any interactive prompts.
 RUN python3 manage.py collectstatic --noinput
