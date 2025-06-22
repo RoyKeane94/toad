@@ -33,15 +33,6 @@ COPY . .
 # This installs the packages required for the Tailwind build (like rimraf and tailwindcss).
 RUN npm install --prefix theme/static_src
 
-# 8. Build Tailwind CSS
-# This generates the final CSS file (e.g., master.css) from your sources.
-RUN python manage.py tailwind build
-
-# 9. Collect static files
-# This runs the collectstatic command to gather all static files into STATIC_ROOT.
-# The --noinput flag prevents any interactive prompts.
-RUN python3 manage.py collectstatic --noinput
-
 # The port the container will listen on.
 # Gunicorn will bind to the $PORT environment variable provided by Railway automatically.
 EXPOSE 8000
