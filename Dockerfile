@@ -24,8 +24,9 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy package.json and postcss.config.js for better caching
+# 6. Copy package files for better caching
 COPY package.json .
+COPY package-lock.json .
 COPY postcss.config.js .
 
 # 7. Install Node.js dependencies
