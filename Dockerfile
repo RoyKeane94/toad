@@ -24,12 +24,12 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy package.json files first for better caching
+# 6. Copy package.json and postcss.config.js for better caching
 COPY package.json .
-COPY theme/static_src/package.json theme/static_src/
+COPY postcss.config.js .
 
 # 7. Install Node.js dependencies
-RUN npm install && npm install --prefix theme/static_src
+RUN npm install
 
 # 8. Copy the rest of your application code
 COPY . .

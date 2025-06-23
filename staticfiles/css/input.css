@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+:root {
+  --main-bg: #FFFFFF;
+  --container-bg: #FFFFFF;
+  --title-text: #1F2937;
+  --subtitle-text: #6B7280;
+  --primary-action-bg: #b94310;
+  --primary-action-hover-bg: #059669;
+  --primary-action-text: #FFFFFF;
+  --text-primary: #1F2937;
+  --text-secondary: #4B5563;
+  --border-color: #E5E7EB;
+  --grid-header-bg: #F9FAFB;
+  --task-bg: #ECFDF5;
+  --task-hover-bg: #D1FAE5;
+  --task-completed-bg: #F3F4F6;
+  --task-completed-text: #9CA3AF;
+  --delete-button-bg: #EF4444;
+  --delete-button-hover-bg: #DC2626;
+  --clear-button-bg: #34D399;
+  --clear-button-hover-bg: #10B981;
+  --clear-button-text: #FFFFFF;
+  --inline-input-border: #D1D5DB;
+} 
