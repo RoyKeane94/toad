@@ -1,7 +1,7 @@
 {
   "name": "toad",
   "version": "1.0.0",
-  "description": "",
+  "description": "Django project with Tailwind CSS v4 and custom styling",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,17 +9,18 @@
     "build:js:grid": "terser static/js/grid/grid.js -o static/js/grid/grid.min.js -c -m",
     "build:js:general": "terser static/js/general/general.js -o static/js/general/general.min.js -c -m",
     "build:js:user": "terser static/js/user/user.js -o static/js/user/user.min.js -c -m",
-    "build:css": "cd theme/static_src && npm install && npm run build",
+    "build:css": "postcss static/css/input.css -o static/css/output.css",
     "build:all": "npm run build:css && npm run build:js",
     "collect-static": "python manage.py collectstatic --noinput",
     "build:production": "npm run build:all && npm run collect-static",
-    "deploy": "npm run build:production && echo 'Build complete - ready for deployment'"
+    "deploy": "npm run build:production && echo 'Build complete - ready for deployment'",
+    "dev:css": "postcss static/css/input.css -o static/css/output.css --watch"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RoyKeane94/toad.git"
   },
-  "keywords": [],
+  "keywords": ["django", "tailwind", "css", "grid", "project-management"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -29,5 +30,12 @@
   "homepage": "https://github.com/RoyKeane94/toad#readme",
   "dependencies": {
     "terser": "^5.36.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.0"
   }
 }

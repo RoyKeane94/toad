@@ -544,7 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Explicitly set the total width of the inner table
                 const totalTableWidth = dataColWidth * totalDataColumns;
                 gridTable.style.width = `${totalTableWidth}px`;
-            }
+        }
             syncRowHeights();
         }
 
@@ -578,7 +578,7 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollToCol(currentCol, 'auto'); // Snap without animation on resize
         });
         resizeObserver.observe(scrollable);
-
+            
         // Initial setup
         calculateAndApplyWidths();
         updateButtons();
@@ -641,7 +641,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Re-initialize components after HTMX swaps
     document.body.addEventListener('htmx:afterSettle', function(event) {
         console.log('HTMX Swap: Re-initializing components.');
-        
+
         // Re-init general components
         if (typeof setupProjectSwitcher === 'function') setupProjectSwitcher();
         if (typeof setupActionsDropdowns === 'function') setupActionsDropdowns();

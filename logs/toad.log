@@ -3474,3 +3474,85 @@ INFO 2025-06-22 18:03:46,917 autoreload 4420 8681377600 /Users/tombarratt/Deskto
 INFO 2025-06-22 18:03:47,213 autoreload 4504 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-22 18:05:13,754 autoreload 4504 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
 INFO 2025-06-22 18:05:14,014 autoreload 4533 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-22 18:11:13,742 autoreload 4736 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-22 18:11:27,200 basehttp 4736 6124957696 "GET /projects/1/ HTTP/1.1" 200 13565
+INFO 2025-06-22 18:11:27,216 basehttp 4736 6124957696 "GET /static/css/master.css HTTP/1.1" 200 68
+INFO 2025-06-22 18:11:27,217 basehttp 4736 6141784064 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-22 18:11:27,217 basehttp 4736 6158610432 "GET /static/js/grid/grid.js HTTP/1.1" 200 26197
+INFO 2025-06-22 18:11:27,219 basehttp 4736 6124957696 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-22 18:11:27,219 basehttp 4736 6141784064 "GET /static/css/dist/styles.css HTTP/1.1" 200 42441
+INFO 2025-06-22 18:11:38,587 basehttp 4736 6141784064 "POST /tasks/17/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-22 18:11:40,612 basehttp 4736 6141784064 "POST /tasks/17/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-22 18:11:48,425 basehttp 4736 6141784064 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 1077
+INFO 2025-06-22 18:11:51,813 basehttp 4736 6141784064 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 1084
+INFO 2025-06-22 18:11:55,624 project_views 4736 6141784064 User None deleted task: "Test" from project: Toad
+INFO 2025-06-22 18:11:55,628 basehttp 4736 6141784064 "POST /tasks/100/delete/ HTTP/1.1" 200 0
+INFO 2025-06-22 18:11:58,005 project_views 4736 6141784064 User None deleted task: "test 2" from project: Toad
+INFO 2025-06-22 18:11:58,008 basehttp 4736 6141784064 "POST /tasks/101/delete/ HTTP/1.1" 200 0
+INFO 2025-06-22 18:12:00,128 basehttp 4736 6141784064 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3096
+INFO 2025-06-22 18:12:01,161 basehttp 4736 6141784064 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-06-22 18:12:01,195 basehttp 4736 6141784064 "GET /projects/1/ HTTP/1.1" 200 13019
+INFO 2025-06-22 18:12:30,594 basehttp 4736 6141784064 "GET /projects/3/ HTTP/1.1" 200 8904
+INFO 2025-06-23 19:35:48,573 autoreload 8527 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:35:51,327 basehttp 8527 6190542848 "GET / HTTP/1.1" 200 2687
+INFO 2025-06-23 19:35:51,348 basehttp 8527 6190542848 "GET /static/css/master.css HTTP/1.1" 200 144
+INFO 2025-06-23 19:35:51,349 basehttp 8527 6207369216 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-23 19:35:51,351 basehttp 8527 6207369216 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-23 19:35:51,352 basehttp 8527 6207369216 "GET /static/css/dist/styles.css HTTP/1.1" 200 5397
+INFO 2025-06-23 19:36:52,925 basehttp 8527 6224195584 "HEAD /static/css/master.css HTTP/1.1" 200 0
+INFO 2025-06-23 19:36:54,527 autoreload 8694 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:36:57,073 basehttp 8527 6224195584 "GET /static/css/master.css HTTP/1.1" 200 144
+INFO 2025-06-23 19:38:54,765 autoreload 9093 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:38:58,211 basehttp 9093 6131396608 "HEAD /static/css/dist/styles.css HTTP/1.1" 200 0
+INFO 2025-06-23 19:39:11,172 basehttp 9093 6131396608 "HEAD /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 0
+INFO 2025-06-23 19:40:09,491 autoreload 9430 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:40:18,023 autoreload 9448 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:40:35,224 autoreload 9470 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:41:06,724 autoreload 9494 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:41:09,822 basehttp 9494 6132641792 "GET / HTTP/1.1" 200 2682
+INFO 2025-06-23 19:41:09,831 basehttp 9494 6149468160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-23 19:41:09,834 basehttp 9494 6132641792 "GET /static/css/master.css HTTP/1.1" 200 545
+INFO 2025-06-23 19:41:09,836 basehttp 9494 6132641792 "GET /static/css/dist/styles.css HTTP/1.1" 200 5397
+INFO 2025-06-23 19:41:18,810 basehttp 9494 6132641792 "GET /projects/1/ HTTP/1.1" 200 12988
+INFO 2025-06-23 19:41:18,824 basehttp 9494 6132641792 "GET /static/css/master.css HTTP/1.1" 200 545
+INFO 2025-06-23 19:41:18,825 basehttp 9494 6149468160 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-23 19:41:18,825 basehttp 9494 6166294528 "GET /static/js/grid/grid.js HTTP/1.1" 200 26197
+INFO 2025-06-23 19:41:18,826 basehttp 9494 6132641792 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-23 19:41:18,827 basehttp 9494 6149468160 "GET /static/css/dist/styles.css HTTP/1.1" 200 5397
+INFO 2025-06-23 19:41:48,098 autoreload 9688 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:41:50,154 basehttp 9688 6125121536 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-23 19:41:50,171 basehttp 9688 6125121536 "GET /static/css/dist/styles.css HTTP/1.1" 200 5397
+INFO 2025-06-23 19:47:37,151 autoreload 9911 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:54:30,146 autoreload 10422 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:54:36,003 basehttp 10422 6190395392 "HEAD /static/css/dist/styles.css HTTP/1.1" 200 0
+INFO 2025-06-23 19:54:42,814 basehttp 10422 6190395392 "HEAD /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 0
+INFO 2025-06-23 19:55:15,465 autoreload 10475 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 19:55:20,598 basehttp 10422 6190395392 "GET /projects/1/ HTTP/1.1" 200 12979
+INFO 2025-06-23 19:55:20,609 basehttp 10422 6190395392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-23 19:55:20,611 basehttp 10422 6190395392 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-23 19:55:20,613 basehttp 10422 6190395392 "GET /static/css/dist/styles.css HTTP/1.1" 304 0
+INFO 2025-06-23 19:55:28,593 basehttp 10422 6190395392 "GET /projects/1/ HTTP/1.1" 200 13002
+INFO 2025-06-23 19:55:28,608 basehttp 10422 6190395392 "GET /static/css/master.css HTTP/1.1" 200 545
+INFO 2025-06-23 19:55:28,609 basehttp 10422 6207221760 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-23 19:55:28,610 basehttp 10422 6224048128 "GET /static/js/grid/grid.js HTTP/1.1" 200 26197
+INFO 2025-06-23 19:55:28,611 basehttp 10422 6207221760 "GET /static/css/dist/styles.css HTTP/1.1" 200 5397
+INFO 2025-06-23 19:55:28,611 basehttp 10422 6190395392 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-23 20:00:32,751 basehttp 10422 6240874496 "GET /projects/1/ HTTP/1.1" 302 0
+INFO 2025-06-23 20:01:46,168 autoreload 11306 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 20:01:58,111 autoreload 11322 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 20:02:00,860 basehttp 11322 6125809664 "GET /projects/1/ HTTP/1.1" 200 12984
+INFO 2025-06-23 20:02:00,876 basehttp 11322 6142636032 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-23 20:02:00,876 basehttp 11322 6125809664 "GET /static/css/master.css HTTP/1.1" 304 0
+INFO 2025-06-23 20:02:00,876 basehttp 11322 6159462400 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-23 20:02:00,879 basehttp 11322 6159462400 "GET /static/css/dist/styles.css HTTP/1.1" 200 12931
+INFO 2025-06-23 20:13:40,197 autoreload 12016 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 20:13:47,327 basehttp 12016 6167572480 "GET /projects/1/ HTTP/1.1" 200 12954
+INFO 2025-06-23 20:13:47,345 basehttp 12016 6201225216 "GET /static/js/grid/grid.js HTTP/1.1" 200 26197
+INFO 2025-06-23 20:13:47,346 basehttp 12016 6167572480 "GET /static/css/master.css HTTP/1.1" 200 545
+INFO 2025-06-23 20:13:47,346 basehttp 12016 6184398848 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-23 20:13:47,348 basehttp 12016 6167572480 "GET /static/css/dist/styles.css HTTP/1.1" 200 7073
+INFO 2025-06-23 20:13:47,348 basehttp 12016 6184398848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-23 20:16:28,044 autoreload 12802 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-23 20:16:40,574 basehttp 12016 6167572480 "GET /projects/1/ HTTP/1.1" 200 12996
+INFO 2025-06-23 20:16:40,597 basehttp 12016 6184398848 "GET /static/js/grid/grid.js HTTP/1.1" 304 0
+INFO 2025-06-23 20:16:40,598 basehttp 12016 6167572480 "GET /static/css/output.css HTTP/1.1" 200 54408

@@ -438,7 +438,7 @@ def column_create_view(request, project_pk):
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = ColumnHeaderForm()
-
+    
     # This part handles the initial GET request for the form
     if request.headers.get('HX-Request'):
         return render(request, 'pages/grid/modals/column_form_content.html', {

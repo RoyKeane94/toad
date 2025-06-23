@@ -24,11 +24,18 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy the rest of your application code
+# 6. Copy package.json files first for better caching
+COPY package.json .
+COPY theme/static_src/package.json theme/static_src/
+
+# 7. Install Node.js dependencies
+RUN npm install && npm install --prefix theme/static_src
+
+# 8. Copy the rest of your application code
 COPY . .
 
-# 7. Install Node.js dependencies and build Tailwind CSS
-RUN npm install --prefix theme/static_src && python manage.py tailwind build
+# 9. Build CSS and JS assets
+RUN npm run build:all
 
 # The port the container will listen on.
 # Gunicorn will bind to the $PORT environment variable provided by Railway automatically.

@@ -1,0 +1,7 @@
+/* Development version - includes all CSS directly */
+
+/* Tailwind CSS */
+@import "dist/styles.css";
+
+/* Custom non-Tailwind styles */
+@import "non-tailwind/non-tailwind.css"; 
