@@ -242,7 +242,6 @@ yarn-error.log*
 
 # Build artifacts
 *.min.js
-*.min.css
 theme/static/css/dist/
 static/js/**/*.min.js
 
@@ -250,4 +249,7 @@ static/js/**/*.min.js
 !static/js/grid/grid.min.js
 !static/js/general/general.min.js
 !static/js/user/user.min.js
-!theme/static/css/dist/styles.css 
+
+# CSS Build - Allow the main output file but ignore temporary/dev files
+!static/css/output.css
+static/css/master-dev.css 
