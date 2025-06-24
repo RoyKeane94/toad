@@ -1,14 +1,11 @@
 # 1. Use an official, slim Python image
-# Using a specific version is better for reproducibility
 FROM python:3.11-slim-bullseye
 
 # 2. Set environment variables
-# Prevents Python from writing .pyc files
 ENV PYTHONDONTWRITEBYTECODE 1
-# Ensures Python output is sent straight to the terminal without buffering
 ENV PYTHONUNBUFFERED 1
 
-# 3. Install Node.js and npm from NodeSource
+# 3. Install Node.js and npm
 RUN apt-get update \
     && apt-get install -y curl \
     && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
@@ -18,45 +15,32 @@ RUN apt-get update \
 # 4. Set the working directory
 WORKDIR /app
 
-# 5. Install dependencies
-# This is done in a separate step to take advantage of Docker's caching.
-# The requirements are only re-installed if requirements.txt changes.
-COPY requirements.txt .
+# 5. Install Python dependencies
+COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 6. Copy package files for better caching
-COPY package.json .
-COPY package-lock.json .
-COPY postcss.config.js .
+# 6. Set Node.js memory limit to prevent OOM errors
+ENV NODE_OPTIONS=--max-old-space-size=2048
 
 # 7. Install Node.js dependencies
+COPY package*.json ./
+COPY postcss.config.js ./
 RUN npm ci
 
-# 8. Copy static source files needed for build
-COPY static/css/input.css static/css/input.css
-COPY static/css/non-tailwind/ static/css/non-tailwind/
-
-# 9. Copy templates for Tailwind content scanning
-COPY pages/templates/ pages/templates/
-COPY accounts/templates/ accounts/templates/
-COPY theme/templates/ theme/templates/
-
-# 10. Build CSS first (before copying all files)
-RUN npm run build:css
-
-# 11. Copy the rest of your application code
+# 8. Copy the rest of your application code
 COPY . .
 
-# 12. Build JS assets
-RUN npm run build:js
+# 9. Build static assets (CSS and JS)
+RUN npm run build:all
 
-# 13. Verify output.css exists
-RUN ls -la static/css/output.css
+# 10. Set the environment variable to ensure collectstatic runs in production mode
+ENV DJANGO_DEBUG_ENVIRONMENT=1
 
-# The port the container will listen on.
-# Gunicorn will bind to the $PORT environment variable provided by Railway automatically.
+# 11. Collect static files, ignoring ALL source CSS files.
+RUN python3 manage.py collectstatic --no-input --clear --ignore input.css --ignore master-dev.css --ignore master.css
+
+# 12. Expose the port. Gunicorn will bind to the $PORT environment variable.
 EXPOSE 8000
 
-# The Procfile will override this, but it's good practice to have it.
-# This command is not strictly necessary if you have a Procfile.
+# 13. The command to run the application.
 CMD ["gunicorn", "toad.wsgi"]

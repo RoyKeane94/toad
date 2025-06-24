@@ -14,48 +14,59 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
-load_dotenv()
+# ---
+# CORE PATH AND ENVIRONMENT CONFIGURATION
+# ---
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('DJANGO_SECRET_KEY', 'django-insecure-fallback-key-change-this')
+# Use python-dotenv to load a .env file for local development.
+# On a hosting platform like Railway, these variables should be set in the environment directly.
+load_dotenv(os.path.join(BASE_DIR, '.env'))
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = not bool(os.getenv('RAILWAY_DEBUG_ENVIRONMENT'))
+# ---
+# SINGLE SOURCE OF TRUTH FOR ENVIRONMENT
+# ---
+# IS_PRODUCTION is True only if DJANGO_DEBUG_ENVIRONMENT is set to '1'.
+# All other settings will be derived from this one variable.
+IS_PRODUCTION = os.environ.get('DJANGO_DEBUG_ENVIRONMENT') == '1'
 
-if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
+# The DEBUG flag is the opposite of IS_PRODUCTION.
+DEBUG = not IS_PRODUCTION
+
+# Log the determined environment for easy debugging during startup.
+if IS_PRODUCTION:
+    print("--- Running in PRODUCTION mode ---")
+else:
+    print("--- Running in DEVELOPMENT mode ---")
+
+
+# ---
+# CORE DJANGO SETTINGS
+# ---
+
+# SECURITY WARNING: keep the secret key used in production secret!
+# It's recommended to set this from the environment in production.
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a-strong-insecure-fallback-key-for-development-only')
+
+if IS_PRODUCTION:
     ALLOWED_HOSTS = [
-        'toad-production.up.railway.app',
-        'toad.railway.internal', # Hardcode the known internal domain
+        'toad-production.up.railway.app',  # Replace with your actual Railway domain
+        '.up.railway.app'  # Allows health checks and other subdomains
     ]
-    # Filter out None values from the list
-    ALLOWED_HOSTS = [host for host in ALLOWED_HOSTS if host]
-    
-    # Also allow any subdomain of railway.app as a fallback for health checks
-    ALLOWED_HOSTS.append('.up.railway.app')
-
+    CSRF_TRUSTED_ORIGINS = [
+        'https://toad-production.up.railway.app', # Replace with your actual Railway domain
+    ]
 else:
+    # In development, allow localhost and 127.0.0.1
     ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+    CSRF_TRUSTED_ORIGINS = []
 
-# Ensure no HTTPS redirects in development
-SECURE_SSL_REDIRECT = False
 
-# CSRF Configuration for production
-if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
-    CSRF_TRUSTED_ORIGINS = [
-        'https://toad-production.up.railway.app',
-        'https://toad.railway.internal', # Hardcode for CSRF
-    ]
-else:
-    # Default for local development
-    CSRF_TRUSTED_ORIGINS = [
-        'http://localhost:8000',
-        'http://127.0.0.1:8000',
-    ]
-
-# Application definition
+# ---
+# APPLICATION DEFINITION
+# ---
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -64,22 +75,22 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Your Apps
     'accounts',
     'pages',
+
+    # Third-party apps
     'tailwind',
     'theme',
 ]
 
-TAILWIND_APP_NAME = 'theme'
-
-# Custom User Model
-AUTH_USER_MODEL = 'accounts.User'
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # WhiteNoise Middleware should be placed directly after the SecurityMiddleware
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.gzip.GZipMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -88,50 +99,72 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'toad.urls'
+WSGI_APPLICATION = 'toad.wsgi.application'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+AUTH_USER_MODEL = 'accounts.User'
+TAILWIND_APP_NAME = 'theme'
 
+
+# ---
+# TEMPLATES
+# ---
+
+TEMPLATE_OPTIONS = {
+    'context_processors': [
+        'django.template.context_processors.debug',
+        'django.template.context_processors.request',
+        'django.contrib.auth.context_processors.auth',
+        'django.contrib.messages.context_processors.messages',
+    ],
+}
+
+# Now, define the main TEMPLATES list
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates'],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
+        'OPTIONS': TEMPLATE_OPTIONS,
     },
 ]
 
-WSGI_APPLICATION = 'toad.wsgi.application'
+# --- Conditionally configure the template loaders based on the environment ---
+
+if IS_PRODUCTION:
+    # In PRODUCTION, we turn off APP_DIRS and specify a cached loader for performance.
+    # The 'django.template.loaders.app_directories.Loader' inside the cached loader
+    # explicitly provides the functionality of APP_DIRS=True.
+    TEMPLATES[0]['APP_DIRS'] = False
+    TEMPLATES[0]['OPTIONS']['loaders'] = [
+        ('django.template.loaders.cached.Loader', [
+            'django.template.loaders.filesystem.Loader',
+            'django.template.loaders.app_directories.Loader',
+        ]),
+    ]
+else:
+    # In DEVELOPMENT, we just use the simple and standard APP_DIRS = True.
+    TEMPLATES[0]['APP_DIRS'] = True
 
 
-# Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
+# ---
+# DATABASE
+# ---
 
-# Database configuration - SQLite locally, PostgreSQL in production
-if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
-    # Production database (Railway PostgreSQL)
+if IS_PRODUCTION:
+    # Production database configuration (e.g., Railway PostgreSQL)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DJANGO_NAME'),
-            'USER': os.getenv('DJANGO_USER'),
-            'PASSWORD': os.getenv('DJANGO_PASSWORD'),
-            'HOST': os.getenv('DJANGO_HOST'),  
-            'PORT': os.getenv('DJANGO_PORT'),
-            'OPTIONS': {
-                'connect_timeout': 10,
-                'sslmode': 'require',
-            },
-            'CONN_MAX_AGE': 60,
-            'CONN_HEALTH_CHECKS': True,
+            'NAME': os.environ.get('DJANGO_NAME'),
+            'USER': os.environ.get('DJANGO_USER'),
+            'PASSWORD': os.environ.get('DJANGO_PASSWORD'),
+            'HOST': os.environ.get('DJANGO_HOST'),
+            'PORT': os.environ.get('DJANGO_PORT'),
+            'OPTIONS': {'sslmode': 'require'},
+            'CONN_MAX_AGE': 60,  # Pool connections for performance
         }
     }
 else:
-    # Local development database (SQLite) - Fast and no network lag
+    # Local development database (SQLite)
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
@@ -140,127 +173,67 @@ else:
     }
 
 
-# Password validation
+# ---
+# STATIC FILES (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/5.0/howto/static-files/
+# ---
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'  # Directory where collectstatic will gather files
+STATICFILES_DIRS = [BASE_DIR / 'static'] # Directory where you place your own static files
+
+# Use WhiteNoise's storage backend in production for compression and caching
+if IS_PRODUCTION:
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+else:
+    # The default storage is fine for development
+    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+
+# ---
+# PASSWORD VALIDATION
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
+# ---
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
-# Internationalization
+# ---
+# INTERNATIONALIZATION
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
+# ---
 
 LANGUAGE_CODE = 'en-us'
-
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
+# ---
+# PRODUCTION-ONLY SECURITY AND PERFORMANCE SETTINGS
+# ---
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-# Additional locations of static files
-STATICFILES_DIRS = [
-    BASE_DIR / 'static',
-]
-
-# Use default storage in development and WhiteNoise manifest storage in production
-if DEBUG:
-    STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-else:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# WhiteNoise configuration for better compression and caching
-WHITENOISE_AUTOREFRESH = True
-WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br']
-
-# Note: When DEBUG = False, you need to:
-# 1. Run 'python manage.py collectstatic' to collect static files
-# 2. Ensure static file serving is configured (see urls.py)
-# 3. In production, use a web server like Nginx to serve static files
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# Production Performance Settings
-if os.getenv('RAILWAY_DEBUG_ENVIRONMENT'):
-    print("Applying production settings...")
-    
-    # Static file optimization
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-    
-    # WhiteNoise production settings
-    WHITENOISE_USE_FINDERS = False
-    WHITENOISE_AUTOREFRESH = False
-    WHITENOISE_MAX_AGE = 31536000  # 1 year cache
-    WHITENOISE_SKIP_COMPRESS_EXTENSIONS = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'zip', 'gz', 'tgz', 'bz2', 'tbz', 'xz', 'br']
-    
-    # Template caching
-    TEMPLATES[0]['APP_DIRS'] = False
-    TEMPLATES[0]['OPTIONS']['loaders'] = [
-        ('django.template.loaders.cached.Loader', [
-            'django.template.loaders.filesystem.Loader',
-            'django.template.loaders.app_directories.Loader',
-        ]),
-    ]
-    
-    # Database optimization
-    DATABASES['default']['OPTIONS'] = {
-        'connect_timeout': 10,
-        'sslmode': 'require',
-    }
-    
-    # Session optimization
-    SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
-    SESSION_CACHE_ALIAS = 'default'
-    SESSION_COOKIE_AGE = 86400  # 24 hours
-    SESSION_SAVE_EVERY_REQUEST = False
-    
-    # Security settings for production
+if IS_PRODUCTION:
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
-    X_FRAME_OPTIONS = 'DENY'
-    
-    # Force HTTPS in production only
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    
-    # HSTS settings
     SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
     SECURE_HSTS_PRELOAD = True
-    
-    # Additional performance settings
-    USE_ETAGS = True
-    PREPEND_WWW = False
-    
-else:
-    print("Using development settings (no HTTPS redirect)")
-    # Explicitly ensure no HTTPS redirects in development
-    SECURE_SSL_REDIRECT = False
-    SECURE_PROXY_SSL_HEADER = None
 
-# Logging Configuration
+
+# ---
+# LOGGING
+# ---
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -275,26 +248,18 @@ LOGGING = {
         },
     },
     'handlers': {
+        'console': {
+            'level': 'DEBUG' if not IS_PRODUCTION else 'INFO',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
         'file': {
             'level': 'INFO',
             'class': 'logging.handlers.RotatingFileHandler',
             'filename': BASE_DIR / 'logs' / 'toad.log',
-            'maxBytes': 1024*1024*5,  # 5 MB
+            'maxBytes': 1024 * 1024 * 5,  # 5 MB
             'backupCount': 5,
             'formatter': 'verbose',
-        },
-        'error_file': {
-            'level': 'ERROR',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR / 'logs' / 'toad_errors.log',
-            'maxBytes': 1024*1024*5,  # 5 MB
-            'backupCount': 5,
-            'formatter': 'verbose',
-        },
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple',
         },
     },
     'root': {
@@ -303,19 +268,10 @@ LOGGING = {
     },
     'loggers': {
         'django': {
-            'handlers': ['console', 'file', 'error_file'],
+            'handlers': ['console', 'file'],
             'level': 'INFO',
             'propagate': False,
         },
-        'pages': {
-            'handlers': ['console', 'file', 'error_file'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
-        'accounts': {
-            'handlers': ['console', 'file', 'error_file'],
-            'level': 'DEBUG',
-            'propagate': False,
-        },
+        # You can add loggers for your own apps here if needed
     },
 }
