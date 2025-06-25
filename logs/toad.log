@@ -3830,3 +3830,16 @@ INFO 2025-06-25 20:19:57,497 basehttp 23911 6212497408 "GET /static/css/non-tail
 INFO 2025-06-25 20:19:57,498 basehttp 23911 6229323776 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
 INFO 2025-06-25 20:19:57,499 basehttp 23911 6246150144 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 10518
 INFO 2025-06-25 20:19:57,499 basehttp 23911 6195671040 "GET /static/css/output.css HTTP/1.1" 200 57135
+INFO 2025-06-25 20:42:16,831 autoreload 24584 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 20:42:21,398 basehttp 24584 6162935808 "GET /projects/1/ HTTP/1.1" 200 13375
+INFO 2025-06-25 20:42:21,415 basehttp 24584 6162935808 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 20:42:21,416 basehttp 24584 6179762176 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-25 20:42:21,417 basehttp 24584 6196588544 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 20:42:21,421 basehttp 24584 6162935808 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 10640
+INFO 2025-06-25 20:42:23,324 basehttp 24584 6162935808 "GET /projects/1/columns/2/edit/ HTTP/1.1" 200 971
+INFO 2025-06-25 20:42:28,046 basehttp 24584 6162935808 "GET /projects/1/columns/2/edit/ HTTP/1.1" 200 1039
+INFO 2025-06-25 20:44:48,915 basehttp 24584 6162935808 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3164
+INFO 2025-06-25 20:44:48,927 basehttp 24584 6162935808 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 20:44:49,814 basehttp 24584 6162935808 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-06-25 20:44:49,845 basehttp 24584 6162935808 "GET /projects/1/ HTTP/1.1" 200 12889
+INFO 2025-06-25 20:44:49,863 basehttp 24584 6162935808 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
