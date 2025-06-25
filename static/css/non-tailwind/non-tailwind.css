@@ -197,7 +197,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     display: flex;
     flex: 1; /* Take up remaining space */
     min-width: 0;
-    border: 1px solid var(--border-color);
+    border: 1px solid #f3f4f6;
     border-radius: 8px;
     overflow: hidden; /* Important: clips the rounded corners */
 }
@@ -205,7 +205,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* === Fixed Left Table (Category) === */
 .grid-table-fixed-col {
     flex-shrink: 0; /* Prevent from shrinking */
-    border-right: 1px solid var(--border-color);
+    border-right: 1px solid #f3f4f6;
 }
 
 /* === Scrollable Right Table (Data) === */
@@ -234,7 +234,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 .grid-table-fixed th, .grid-table-fixed td,
 .grid-table th, .grid-table td {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid #f3f4f6;
     vertical-align: top;
     text-align: left;
     white-space: normal;
@@ -245,7 +245,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border-bottom: none;
 }
 .grid-table th, .grid-table td {
-    border-right: 1px solid var(--border-color);
+    border-right: 1px solid #f3f4f6;
 }
 .grid-table th:last-child, .grid-table td:last-child {
     border-right: none;
