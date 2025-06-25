@@ -14,7 +14,7 @@
                 </colgroup>
                 <thead>
                     <tr>
-                        <th>{{ category_column.name }}</th>
+                        <th class="border-b-2 border-[var(--primary-action-bg)] p-4"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,15 +73,15 @@
                 <thead>
                     <tr>
                         {% for col_h in data_column_headers %}
-                            <th>
+                            <th class="border-b-2 border-[var(--primary-action-bg)] p-4 font-medium">
                                 <div class="flex items-center justify-between">
-                                    <span class="text-[var(--title-text)] truncate">{{ col_h.name }}</span>
+                                    <span class="text-[var(--primary-action-bg)] truncate font-semibold">{{ col_h.name }}</span>
                                     <div class="relative ml-2">
                                         <button type="button"
                                                 class="column-actions-btn p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer" 
                                                 title="Column actions"
                                                 data-column-id="{{ col_h.pk }}">
-                                            <i class="fas fa-ellipsis-v text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
+                                            <i class="fas fa-ellipsis-v text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors"></i>
                                         </button>
                                         <div class="column-actions-dropdown absolute top-full right-0 mt-1 w-32 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-1 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
                                             <button type="button"

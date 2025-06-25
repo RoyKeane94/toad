@@ -3565,3 +3565,53 @@ INFO 2025-06-23 20:39:08,365 basehttp 13316 6198964224 "GET /static/css/output.c
 INFO 2025-06-23 20:39:53,428 autoreload 13539 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-23 20:39:56,104 basehttp 13539 6139162624 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
 INFO 2025-06-23 20:39:56,104 basehttp 13539 6122336256 "GET /static/css/output.css HTTP/1.1" 200 54408
+INFO 2025-06-25 05:53:53,544 autoreload 19177 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 05:53:57,065 basehttp 19177 6135197696 "GET /projects/1/ HTTP/1.1" 302 0
+INFO 2025-06-25 05:53:57,077 basehttp 19177 6135197696 "GET /accounts/login/?next=/projects/1/ HTTP/1.1" 200 3881
+INFO 2025-06-25 05:53:57,095 basehttp 19177 6168850432 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-25 05:53:57,095 basehttp 19177 6152024064 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-25 05:53:57,096 basehttp 19177 6135197696 "GET /static/css/output.css HTTP/1.1" 200 54408
+INFO 2025-06-25 05:54:07,092 basehttp 19177 6135197696 "POST /accounts/login/?next=/projects/1/ HTTP/1.1" 302 0
+INFO 2025-06-25 05:54:07,100 basehttp 19177 6135197696 "GET /projects/ HTTP/1.1" 200 2904
+INFO 2025-06-25 05:54:10,933 basehttp 19177 6135197696 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-06-25 05:54:10,939 basehttp 19177 6135197696 "GET / HTTP/1.1" 200 2460
+INFO 2025-06-25 05:54:12,369 basehttp 19177 6135197696 "GET /accounts/login/ HTTP/1.1" 200 3863
+INFO 2025-06-25 05:54:23,600 basehttp 19177 6135197696 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-06-25 05:54:23,607 basehttp 19177 6135197696 "GET /projects/ HTTP/1.1" 200 3008
+INFO 2025-06-25 05:54:26,017 basehttp 19177 6135197696 "GET /projects/1/ HTTP/1.1" 200 13008
+INFO 2025-06-25 05:54:26,033 basehttp 19177 6135197696 "GET /static/js/grid/grid.js HTTP/1.1" 200 26197
+INFO 2025-06-25 05:56:21,755 autoreload 19416 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 05:56:24,153 basehttp 19416 6189166592 "GET /projects/1/ HTTP/1.1" 200 13136
+INFO 2025-06-25 05:56:34,566 basehttp 19416 6189166592 "GET /projects/1/ HTTP/1.1" 200 13167
+INFO 2025-06-25 05:56:34,587 basehttp 19416 6205992960 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6998
+INFO 2025-06-25 05:56:34,588 basehttp 19416 6222819328 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-25 05:56:34,589 basehttp 19416 6239645696 "GET /static/js/grid/grid.js HTTP/1.1" 200 26197
+INFO 2025-06-25 05:56:34,590 basehttp 19416 6189166592 "GET /static/css/output.css HTTP/1.1" 200 55769
+INFO 2025-06-25 05:56:55,447 autoreload 19469 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 05:56:57,692 basehttp 19469 6174896128 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 05:56:57,693 basehttp 19469 6158069760 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 05:57:12,114 basehttp 19469 6158069760 "POST /tasks/17/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-25 05:57:14,229 basehttp 19469 6158069760 "POST /tasks/17/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-25 06:02:55,818 autoreload 19723 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 06:02:59,554 basehttp 19723 6136393728 "GET /projects/1/ HTTP/1.1" 200 13047
+INFO 2025-06-25 06:02:59,571 basehttp 19723 6153220096 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-25 06:02:59,572 basehttp 19723 6136393728 "GET /static/css/output.css HTTP/1.1" 200 54408
+INFO 2025-06-25 06:04:27,813 autoreload 19922 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 06:04:30,388 basehttp 19922 6197227520 "GET /projects/1/ HTTP/1.1" 200 13079
+INFO 2025-06-25 06:04:30,407 basehttp 19922 6214053888 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-25 06:04:30,407 basehttp 19922 6197227520 "GET /static/css/output.css HTTP/1.1" 200 54507
+INFO 2025-06-25 06:04:52,524 autoreload 19950 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 06:04:54,955 basehttp 19950 6198587392 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 06:04:54,955 basehttp 19950 6215413760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 06:06:56,486 basehttp 19950 6215413760 "GET /projects/3/ HTTP/1.1" 200 8929
+INFO 2025-06-25 06:06:56,505 basehttp 19950 6198587392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 06:06:56,505 basehttp 19950 6215413760 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 06:06:59,065 basehttp 19950 6215413760 "GET /projects/1/ HTTP/1.1" 200 12994
+INFO 2025-06-25 06:07:04,451 basehttp 19950 6215413760 "GET /projects/ HTTP/1.1" 200 2998
+INFO 2025-06-25 06:07:12,874 basehttp 19950 6215413760 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 06:07:12,874 basehttp 19950 6198587392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 06:07:27,477 basehttp 19950 6215413760 "GET /projects/3/edit/ HTTP/1.1" 200 3016
+INFO 2025-06-25 06:07:34,298 basehttp 19950 6198587392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 06:07:34,298 basehttp 19950 6215413760 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 06:07:49,440 basehttp 19950 6215413760 "POST /tasks/80/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-25 06:07:58,198 basehttp 19950 6215413760 "POST /tasks/24/toggle/ HTTP/1.1" 200 79
