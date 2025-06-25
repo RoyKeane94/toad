@@ -39,8 +39,8 @@ ENV DJANGO_DEBUG_ENVIRONMENT=1
 # 11. Collect static files, ignoring ALL source CSS files.
 RUN python3 manage.py collectstatic --no-input --clear --ignore input.css --ignore master-dev.css --ignore master.css
 
-# 12. Expose the port. Gunicorn will bind to the $PORT environment variable.
-EXPOSE 8000
+# 12. Expose the port. Railway will set the $PORT environment variable.
+EXPOSE $PORT
 
-# 13. The command to run the application.
-CMD ["gunicorn", "toad.wsgi"]
+# 13. The command to run the application, binding to the dynamic port.
+CMD ["sh", "-c", "gunicorn toad.wsgi --bind 0.0.0.0:$PORT --log-file -"]
