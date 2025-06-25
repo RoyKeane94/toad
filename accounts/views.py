@@ -80,10 +80,9 @@ def logout_view(request):
 @login_required
 def account_settings_view(request):
     """
-    Main account settings view with profile update form
+    Main account settings view with profile update form only
     """
     profile_form = ProfileUpdateForm(instance=request.user)
-    password_form = CustomPasswordChangeForm(request.user)
     
     if request.method == 'POST':
         if 'update_profile' in request.POST:
@@ -95,21 +94,9 @@ def account_settings_view(request):
                 return redirect('accounts:account_settings')
             else:
                 messages.error(request, 'Please correct the errors in the profile form.')
-        
-        elif 'change_password' in request.POST:
-            password_form = CustomPasswordChangeForm(request.user, request.POST)
-            if password_form.is_valid():
-                with transaction.atomic():
-                    user = password_form.save()
-                    update_session_auth_hash(request, user)
-                messages.success(request, 'Your password has been changed successfully!')
-                return redirect('accounts:account_settings')
-            else:
-                messages.error(request, 'Please correct the errors in the password form.')
     
     context = {
         'profile_form': profile_form,
-        'password_form': password_form,
         'user': request.user,
     }
     return render(request, 'accounts/account_settings.html', context)
@@ -117,9 +104,36 @@ def account_settings_view(request):
 @login_required
 def change_password_view(request):
     """
-    Dedicated password change view (redirects to main settings)
+    Dedicated password change view with enhanced security
     """
-    return redirect('accounts:account_settings')
+    form = CustomPasswordChangeForm(request.user)
+    
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            with transaction.atomic():
+                user = form.save()
+                # Keep user logged in after password change
+                update_session_auth_hash(request, user)
+                
+                # Log the password change for security
+                import logging
+                logger = logging.getLogger(__name__)
+                logger.info(f'Password changed for user: {user.email}')
+            
+            messages.success(
+                request, 
+                'Your password has been changed successfully! You remain logged in on this device.'
+            )
+            return redirect('accounts:account_settings')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    
+    context = {
+        'form': form,
+        'user': request.user,
+    }
+    return render(request, 'accounts/password_change.html', context)
 
 @login_required
 def delete_account_view(request):

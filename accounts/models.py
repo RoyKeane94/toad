@@ -43,6 +43,12 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30, help_text='Required. Enter your first name.')
     last_name = models.CharField(max_length=30, blank=True, help_text='Optional. Enter your last name.')
     
+    # Security and tracking fields
+    email_verified = models.BooleanField(default=False, help_text='Whether the user has verified their email address.')
+    last_login_ip = models.GenericIPAddressField(null=True, blank=True, help_text='IP address of last login.')
+    failed_login_attempts = models.PositiveIntegerField(default=0, help_text='Number of consecutive failed login attempts.')
+    account_locked_until = models.DateTimeField(null=True, blank=True, help_text='Account locked until this time.')
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name']  # Fields required when creating superuser (email is already included)
 
@@ -63,3 +69,35 @@ class User(AbstractUser):
         Return the short name for the user.
         """
         return self.first_name
+    
+    def is_account_locked(self):
+        """
+        Check if the account is currently locked due to failed login attempts.
+        """
+        if self.account_locked_until:
+            from django.utils import timezone
+            return timezone.now() < self.account_locked_until
+        return False
+    
+    def reset_failed_attempts(self):
+        """
+        Reset failed login attempts and unlock account.
+        """
+        self.failed_login_attempts = 0
+        self.account_locked_until = None
+        self.save(update_fields=['failed_login_attempts', 'account_locked_until'])
+    
+    def increment_failed_attempts(self):
+        """
+        Increment failed login attempts and lock account if threshold reached.
+        """
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        self.failed_login_attempts += 1
+        
+        # Lock account for 30 minutes after 5 failed attempts
+        if self.failed_login_attempts >= 5:
+            self.account_locked_until = timezone.now() + timedelta(minutes=30)
+        
+        self.save(update_fields=['failed_login_attempts', 'account_locked_until'])

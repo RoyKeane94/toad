@@ -3691,3 +3691,127 @@ INFO 2025-06-25 19:44:47,541 basehttp 22156 6138949632 "GET /projects/1/ HTTP/1.
 INFO 2025-06-25 19:44:47,558 basehttp 22156 6122123264 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-06-25 19:44:47,558 basehttp 22156 6138949632 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-06-25 19:44:47,559 basehttp 22156 6172602368 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6950
+INFO 2025-06-25 19:47:01,494 autoreload 22438 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:47:05,025 basehttp 22438 6163279872 "POST /tasks/21/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-25 19:48:34,153 basehttp 22438 6163279872 "POST /tasks/28/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-25 19:50:32,216 autoreload 22438 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-06-25 19:50:32,491 autoreload 22513 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:50:49,857 autoreload 22513 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-06-25 19:50:50,104 autoreload 22529 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:52:45,758 autoreload 22772 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:54:08,097 autoreload 22772 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-25 19:54:08,371 autoreload 22809 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:54:17,578 autoreload 22809 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-25 19:54:17,826 autoreload 22822 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:54:56,321 autoreload 22993 8681377600 Watching for file changes with StatReloader
+ERROR 2025-06-25 19:55:00,471 log 22993 6198849536 Internal Server Error: /accounts/settings/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py", line 102, in account_settings_view
+    return render(request, 'accounts/account_settings.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'password_change' not found. 'password_change' is not a valid view function or pattern name.
+ERROR 2025-06-25 19:55:00,475 basehttp 22993 6198849536 "GET /accounts/settings/ HTTP/1.1" 500 19044
+INFO 2025-06-25 19:55:00,515 basehttp 22993 6198849536 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-06-25 19:55:00,518 basehttp 22993 6198849536 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-06-25 19:56:32,085 basehttp 22993 6198849536 "GET /accounts/settings/ HTTP/1.1" 200 3724
+INFO 2025-06-25 19:56:32,103 basehttp 22993 6215675904 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:56:32,104 basehttp 22993 6232502272 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-25 19:56:32,104 basehttp 22993 6198849536 "GET /static/css/output.css HTTP/1.1" 200 56457
+INFO 2025-06-25 19:56:36,883 basehttp 22993 6198849536 "GET /accounts/settings/password/ HTTP/1.1" 200 3843
+INFO 2025-06-25 19:56:53,131 views 22993 6198849536 Password changed for user: tom_barratt@hotmail.co.uk
+INFO 2025-06-25 19:56:53,135 basehttp 22993 6198849536 "POST /accounts/settings/password/ HTTP/1.1" 302 0
+INFO 2025-06-25 19:56:53,140 basehttp 22993 6198849536 "GET /accounts/settings/ HTTP/1.1" 200 3754
+INFO 2025-06-25 19:56:53,156 basehttp 22993 6198849536 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:56:53,156 basehttp 22993 6232502272 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 19:56:57,333 basehttp 22993 6232502272 "GET /accounts/settings/password/ HTTP/1.1" 200 3877
+INFO 2025-06-25 19:57:05,922 views 22993 6232502272 Password changed for user: tom_barratt@hotmail.co.uk
+INFO 2025-06-25 19:57:05,923 basehttp 22993 6232502272 "POST /accounts/settings/password/ HTTP/1.1" 302 0
+INFO 2025-06-25 19:57:05,929 basehttp 22993 6232502272 "GET /accounts/settings/ HTTP/1.1" 200 3774
+INFO 2025-06-25 19:57:05,951 basehttp 22993 6232502272 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:57:05,951 basehttp 22993 6198849536 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 19:57:34,444 basehttp 22993 6198849536 "GET /accounts/settings/password/ HTTP/1.1" 200 3871
+INFO 2025-06-25 19:57:34,458 basehttp 22993 6198849536 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:57:34,459 basehttp 22993 6215675904 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 19:58:49,756 autoreload 23262 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-25 19:58:53,809 basehttp 23262 6135754752 "GET /accounts/settings/password/ HTTP/1.1" 200 3950
+INFO 2025-06-25 19:58:53,824 basehttp 23262 6152581120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:58:53,828 basehttp 23262 6169407488 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-25 19:58:53,829 basehttp 23262 6135754752 "GET /static/css/output.css HTTP/1.1" 200 57135
+INFO 2025-06-25 19:58:55,367 basehttp 23262 6135754752 "GET /accounts/settings/ HTTP/1.1" 200 3861
+INFO 2025-06-25 19:58:55,379 basehttp 23262 6169407488 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 19:58:55,380 basehttp 23262 6135754752 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:59:52,580 basehttp 23262 6135754752 "GET /accounts/settings/password/ HTTP/1.1" 200 3939
+INFO 2025-06-25 19:59:52,595 basehttp 23262 6135754752 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 19:59:52,595 basehttp 23262 6169407488 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 20:00:53,879 basehttp 23262 6169407488 "GET /accounts/settings/ HTTP/1.1" 200 3823
+INFO 2025-06-25 20:00:53,893 basehttp 23262 6135754752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-25 20:00:53,894 basehttp 23262 6169407488 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 20:00:53,894 basehttp 23262 6152581120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 20:01:04,391 basehttp 23262 6152581120 "GET /projects/ HTTP/1.1" 200 3092
+INFO 2025-06-25 20:01:05,504 basehttp 23262 6152581120 "GET /projects/1/ HTTP/1.1" 200 13236
+INFO 2025-06-25 20:03:20,175 basehttp 23262 6152581120 "GET /tasks/55/edit/ HTTP/1.1" 200 1103
+INFO 2025-06-25 20:03:22,484 basehttp 23262 6152581120 "POST /tasks/55/edit/ HTTP/1.1" 200 58
+INFO 2025-06-25 20:03:22,525 basehttp 23262 6152581120 "GET /projects/1/ HTTP/1.1" 200 13201
+INFO 2025-06-25 20:03:22,539 basehttp 23262 6169407488 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-06-25 20:03:22,539 basehttp 23262 6135754752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-25 20:03:22,540 basehttp 23262 6152581120 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-25 20:03:40,874 basehttp 23262 6169407488 "POST /projects/1/tasks/create/3/4/ HTTP/1.1" 200 1191
