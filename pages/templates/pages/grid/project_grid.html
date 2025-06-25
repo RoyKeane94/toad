@@ -19,7 +19,7 @@
             <p class="text-[var(--subtitle-text)] mt-1">Organize your tasks by time and status</p>
         </div>
         
-        <!-- Project Actions -->
+        <!-- Grid Actions -->
         <div class="flex items-center space-x-3">
             <a href="{% url 'pages:project_edit' pk=project.pk %}" 
                class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors">
@@ -32,27 +32,27 @@
         </div>
     </div>
     
-    <!-- Project Switcher -->
+    <!-- Grid Switcher -->
     <div class="flex items-center justify-between">
         <div class="flex items-center space-x-4">
-            <!-- Current Project Display -->
+            <!-- Current Grid Display -->
             <div class="flex items-center space-x-2">
                 <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
                     <i class="fas fa-project-diagram text-white text-sm"></i>
                 </div>
                 <div>
-                    <div class="text-sm font-medium text-[var(--text-primary)]">Current Project</div>
+                    <div class="text-sm font-medium text-[var(--text-primary)]">Current Grid</div>
                     <div class="text-xs text-[var(--text-secondary)]">{{ project.name }}</div>
                 </div>
             </div>
             
-            <!-- Project Switcher Dropdown -->
+            <!-- Grid Switcher Dropdown -->
             <div class="relative" id="project-switcher-container">
                 <button type="button" 
                         id="project-switcher-btn"
                         class="group flex items-center space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
                     <i class="fas fa-exchange-alt text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
-                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch Project</span>
+                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch Grid</span>
                     <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="switcher-chevron"></i>
                 </button>
                 
@@ -60,9 +60,9 @@
                 <div id="project-switcher-dropdown" 
                      class="absolute top-full left-0 mt-2 w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
                     
-                    <!-- Projects List -->
+                    <!-- Grids List -->
                     <div class="px-3 py-2">
-                        <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Projects</div>
+                        <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Grids</div>
                         <div class="space-y-1 max-h-60 overflow-y-auto">
                 {% for p in projects %}
                                 <a href="{% url 'pages:project_grid' pk=p.pk %}" 
@@ -73,7 +73,7 @@
                                     <div class="flex-1 min-w-0">
                                         <div class="font-medium text-sm truncate">{{ p.name }}</div>
                                         {% if p.pk == project.pk %}
-                                            <div class="text-xs opacity-75">Current Project</div>
+                                            <div class="text-xs opacity-75">Current Grid</div>
                                         {% endif %}
                                     </div>
                                     {% if p.pk == project.pk %}
@@ -87,14 +87,14 @@
                     <!-- Divider -->
                     <div class="border-t border-[var(--border-color)] my-2"></div>
                     
-                    <!-- Back to Projects -->
+                    <!-- Back to Grids -->
                     <div class="px-3">
                         <a href="{% url 'pages:project_list' %}" 
                            class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
                             <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br from-gray-400 to-gray-500 shadow-sm">
                                 <i class="fas fa-arrow-left text-white text-xs"></i>
                             </div>
-                            <span class="font-medium text-sm">Back to All Projects</span>
+                            <span class="font-medium text-sm">Back to All Grids</span>
                         </a>
                     </div>
                 </div>
@@ -121,7 +121,7 @@
 
 
 
-<!-- Project Grid -->
+<!-- Task Grid -->
 {% include 'pages/grid/partials/grid_content.html' %}
 
 <!-- Task Deletion Modal -->
@@ -154,7 +154,7 @@
                         </div>
                         <div class="flex-1 min-w-0">
                             <p class="font-medium text-[var(--text-primary)] text-sm" id="task-to-delete">Task Name</p>
-                            <p class="text-xs text-[var(--text-secondary)] mt-1">This task will be permanently removed from your project</p>
+                            <p class="text-xs text-[var(--text-secondary)] mt-1">This task will be permanently removed from your grid</p>
                         </div>
                     </div>
                 </div>

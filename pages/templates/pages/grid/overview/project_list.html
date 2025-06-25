@@ -1,23 +1,23 @@
 {% extends "pages/layout.html" %}
 
-{% block title %}My Projects - Toad{% endblock %}
+{% block title %}My Grids - Toad{% endblock %}
 
 {% block content %}
 
 <!-- Header -->
 <div class="flex items-center justify-between mb-8">
     <div>
-        <h1 class="text-3xl font-bold text-[var(--title-text)]">My Projects</h1>
-        <p class="text-[var(--subtitle-text)] mt-1">Organize your work into focused project grids</p>
+        <h1 class="text-3xl font-bold text-[var(--title-text)]">My Grids</h1>
+        <p class="text-[var(--subtitle-text)] mt-1">Organize your work into focused task grids</p>
     </div>
     <a href="{% url 'pages:project_create' %}" 
        class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md font-medium transition-colors">
         <i class="fas fa-plus mr-2"></i>
-        New Project
+        New Grid
     </a>
 </div>
 
-<!-- Projects Grid -->
+<!-- Grids Overview -->
 {% if projects %}
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {% for project in projects %}
@@ -30,12 +30,12 @@
                         <div class="flex space-x-2 ml-2">
                             <a href="{% url 'pages:project_edit' pk=project.pk %}" 
                                class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors"
-                               title="Edit project">
+                               title="Edit grid">
                                 <i class="fas fa-edit text-sm"></i>
                             </a>
                             <a href="{% url 'pages:project_delete' pk=project.pk %}" 
                                class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors"
-                               title="Delete project">
+                               title="Delete grid">
                                 <i class="fas fa-trash text-sm"></i>
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                     
                     <a href="{% url 'pages:project_grid' pk=project.pk %}" 
                        class="block w-full text-center bg-[var(--task-bg)] hover:bg-[var(--task-hover-bg)] text-[var(--text-primary)] py-2 px-4 rounded-md font-medium transition-colors">
-                        Open Project
+        Open Grid
                     </a>
                 </div>
             </div>
@@ -62,12 +62,12 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
             </svg>
         </div>
-        <h3 class="text-xl font-medium text-[var(--title-text)] mb-2">No projects yet</h3>
-        <p class="text-[var(--subtitle-text)] mb-6">Create your first project to start organizing your tasks</p>
+        <h3 class="text-xl font-medium text-[var(--title-text)] mb-2">No grids yet</h3>
+        <p class="text-[var(--subtitle-text)] mb-6">Create your first grid to start organizing your tasks</p>
         <a href="{% url 'pages:project_create' %}" 
            class="inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-md font-medium transition-colors">
             <i class="fas fa-plus mr-2"></i>
-            Create Your First Project
+            Create Your First Grid
         </a>
     </div>
 {% endif %}

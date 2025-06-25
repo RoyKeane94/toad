@@ -53,21 +53,21 @@
             </div>
         </div>
 
-        <!-- Total Projects -->
-        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-sm font-medium text-[var(--text-secondary)]">Total Projects</p>
-                    <p class="text-3xl font-bold text-[var(--text-primary)] mt-1">{{ total_projects }}</p>
-                    <p class="text-xs text-[var(--primary-action-bg)] mt-1">
-                        <i class="fas fa-plus mr-1"></i>{{ projects_this_week }} this week
-                    </p>
-                </div>
-                <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
-                    <i class="fas fa-project-diagram text-white text-lg"></i>
-                </div>
-            </div>
-        </div>
+                 <!-- Total Grids -->
+         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+             <div class="flex items-center justify-between">
+                 <div>
+                     <p class="text-sm font-medium text-[var(--text-secondary)]">Total Grids</p>
+                     <p class="text-3xl font-bold text-[var(--text-primary)] mt-1">{{ total_projects }}</p>
+                     <p class="text-xs text-[var(--primary-action-bg)] mt-1">
+                         <i class="fas fa-plus mr-1"></i>{{ projects_this_week }} this week
+                     </p>
+                 </div>
+                 <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center">
+                     <i class="fas fa-th text-white text-lg"></i>
+                 </div>
+             </div>
+         </div>
 
         <!-- Completed Tasks -->
         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
@@ -136,10 +136,10 @@
                             <div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
                                 <span class="text-white text-xs font-bold">{{ forloop.counter }}</span>
                             </div>
-                            <div>
-                                <p class="text-sm font-medium text-[var(--text-primary)]">{{ user.username }}</p>
-                                <p class="text-xs text-[var(--text-secondary)]">{{ user.project_count }} projects</p>
-                            </div>
+                                                         <div>
+                                 <p class="text-sm font-medium text-[var(--text-primary)]">{{ user.username }}</p>
+                                 <p class="text-xs text-[var(--text-secondary)]">{{ user.project_count }} grids</p>
+                             </div>
                         </div>
                         <div class="text-right">
                             <p class="text-sm font-medium text-[var(--primary-action-bg)]">{{ user.task_count }}</p>
@@ -211,11 +211,11 @@
             <span>Refresh Data</span>
         </button>
         
-        <a href="{% url 'pages:project_list' %}" 
-           class="flex items-center space-x-2 px-4 py-2 border border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] rounded-lg transition-colors">
-            <i class="fas fa-arrow-left"></i>
-            <span>Back to Projects</span>
-        </a>
+                 <a href="{% url 'pages:project_list' %}" 
+            class="flex items-center space-x-2 px-4 py-2 border border-[var(--border-color)] text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] rounded-lg transition-colors">
+             <i class="fas fa-arrow-left"></i>
+             <span>Back to Grids</span>
+         </a>
     </div>
 </div>
 {% endblock %}
