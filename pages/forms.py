@@ -35,10 +35,13 @@ class QuickTaskForm(forms.ModelForm):
         fields = ['text']
         widgets = {
             'text': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md text-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-1 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
+                'class': 'w-full px-3 py-2 text-sm placeholder-[var(--text-secondary)] text-[var(--text-primary)] transition-colors duration-200',
                 'placeholder': 'Add task',
-                'required': True,  # Keep field required
+                'required': True,
                 'name': 'text',
+                'style': 'border: 0 !important; border-bottom: 2px solid #10b981 !important; border-radius: 0 !important; box-shadow: none !important; outline: none !important; background: transparent !important; height: 36px;',
+                'onfocus': 'this.style.borderBottomColor="#059669"; this.style.boxShadow="none";',
+                'onblur': 'this.style.borderBottomColor="#10b981"; this.style.boxShadow="none";',
             }),
         }
     

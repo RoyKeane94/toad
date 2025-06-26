@@ -128,8 +128,14 @@ class GridManager {
         }
 
         // Modal close buttons
-        if (e.target.closest('.close-modal, #close-delete-modal, #cancel-delete-task')) {
-            this.hideDeleteModal();
+        const closeModalBtn = e.target.closest('.close-modal, #close-delete-modal, #cancel-delete-task');
+        if (closeModalBtn) {
+            // Determine which modal to close based on the button
+            if (closeModalBtn.id === 'close-delete-modal' || closeModalBtn.id === 'cancel-delete-task') {
+                this.hideDeleteModal();
+            } else if (closeModalBtn.classList.contains('close-modal')) {
+                this.hideModal();
+            }
             return;
         }
 

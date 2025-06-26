@@ -127,45 +127,47 @@
                                 {% endwith %}
                             </div>
                             
-                            <!-- Add Task Form - Absolutely positioned at bottom -->
-                            <div class="absolute bottom-3 left-3 right-3 pt-3 border-t border-[var(--border-color)]/30 bg-[var(--container-bg)]">
+                            <!-- Add Task Form - Absolutely positioned at bottom - UPDATED -->
+                            <div class="absolute bottom-3 left-3 right-3 pt-3 border-t border-[var(--border-color)]/30 bg-[var(--container-bg)]" style="height: 60px; display: flex; align-items: center;">
                                 <form method="post" 
                                       action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
-                                      class="task-form add-task-form"
+                                      class="task-form add-task-form w-full"
                                       novalidate
                                       hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
                                       hx-swap="beforeend"
                                       hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
                                       hx-trigger="submit throttle:500ms"
                                       hx-disabled-elt="this"
-                                      onsubmit="return validateTaskForm(this)">
+                                      onsubmit="return validateTaskForm(this)"
+                                      style="height: 36px; display: flex; align-items: center;">
                                     {% csrf_token %}
                                     
                                     <!-- Collapsed state: Just a subtle button -->
-                                    <div class="add-task-collapsed">
+                                    <div class="add-task-collapsed w-full">
                                         <button type="button" 
-                                                class="add-task-trigger w-full text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] rounded-md transition-all duration-200 text-sm border border-transparent hover:border-[var(--border-color)] cursor-pointer">
+                                                class="add-task-trigger w-full text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] transition-all duration-200 text-sm cursor-pointer rounded-md"
+                                                style="height: 36px;">
                                             <i class="fas fa-plus text-xs mr-2"></i>Add task...
                                         </button>
                                     </div>
                                     
                                     <!-- Expanded state: Full form -->
-                                    <div class="add-task-expanded hidden">
-                                        <div class="space-y-2">
-                                            <div class="flex space-x-2">
-                                                {{ quick_task_form.text }}
-                                                <button type="submit" 
-                                                        class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative cursor-pointer flex-shrink-0">
-                                                    <i class="fas fa-check text-xs"></i>
-                                                    <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
-                                                </button>
-                                                <button type="button" 
-                                                        class="add-task-cancel px-3 py-2 border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] rounded-md text-sm transition-colors cursor-pointer flex-shrink-0">
-                                                    <i class="fas fa-times text-xs"></i>
-                                                </button>
-                                            </div>
-                                            <div class="error-message text-xs"></div>
+                                    <div class="add-task-expanded hidden w-full">
+                                        <div class="flex space-x-2" style="height: 36px; align-items: center;">
+                                            {{ quick_task_form.text }}
+                                            <button type="submit" 
+                                                    class="px-3 py-2 bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] text-sm hover:bg-[var(--primary-action-hover-bg)] transition-colors relative cursor-pointer flex-shrink-0 rounded-md"
+                                                    style="height: 36px; width: 36px; border: none;">
+                                                <i class="fas fa-check text-xs"></i>
+                                                <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
+                                            </button>
+                                            <button type="button" 
+                                                    class="add-task-cancel px-3 py-2 text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] text-sm transition-colors cursor-pointer flex-shrink-0 rounded-md"
+                                                    style="height: 36px; width: 36px; border: none;">
+                                                <i class="fas fa-times text-xs"></i>
+                                            </button>
                                         </div>
+                                        <div class="error-message text-xs absolute top-full left-0 right-0 mt-1"></div>
                                     </div>
                                 </form>
                             </div>
