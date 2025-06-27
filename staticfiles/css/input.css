@@ -22,4 +22,19 @@
   --clear-button-hover-bg: #10B981;
   --clear-button-text: #FFFFFF;
   --inline-input-border: #D1D5DB;
+  --checkbox-completed-color: #F59E0B; /* Amber color that contrasts with green */
+}
+
+/* Custom strikethrough for completed tasks - works with multi-line text */
+.task-completed-strikethrough {
+  color: #059669 !important; /* Green color for completed tasks */
+  text-decoration-line: line-through;
+  text-decoration-color: #059669;
+  text-decoration-thickness: 1.5px;
+}
+
+/* Custom checkbox styling for completed tasks */
+.checkbox-completed {
+  accent-color: var(--checkbox-completed-color) !important;
+  color: var(--checkbox-completed-color) !important;
 } 

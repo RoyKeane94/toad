@@ -1,5 +1,5 @@
 {% load static %}
-<div class="group flex items-center justify-between w-full p-2 rounded-lg hover:bg-[var(--grid-header-bg)] transition-all duration-200 {% if task.completed %}bg-green-50{% endif %}"
+<div class="group flex items-center justify-between w-full p-2 rounded-lg hover:bg-[var(--grid-header-bg)] transition-all duration-200"
      data-task-id="{{ task.id }}"
      id="task-{{ task.id }}">
     <div class="flex items-center space-x-3 min-w-0 flex-1">
@@ -14,22 +14,21 @@
                  if detail.successful
                    set response to JSON.parse(detail.xhr.response)
                    if response.completed
-                     add .bg-green-50 to #task-{{ task.id }}
-                     add .line-through to #task-text-{{ task.id }}
-                     add .text-gray-500 to #task-text-{{ task.id }}
+                     add .task-completed-strikethrough to #task-text-{{ task.id }}
+                     add .checkbox-completed to #checkbox-{{ task.id }}
                    else
-                     remove .bg-green-50 from #task-{{ task.id }}
-                     remove .line-through from #task-text-{{ task.id }}
-                     remove .text-gray-500 from #task-text-{{ task.id }}
+                     remove .task-completed-strikethrough from #task-text-{{ task.id }}
+                     remove .checkbox-completed from #checkbox-{{ task.id }}
                    end
                  end">
             {% csrf_token %}
             <input type="checkbox" 
+                   id="checkbox-{{ task.id }}"
                    name="completed" 
                    {% if task.completed %}checked{% endif %}
-                   class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer">
+                   class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer {% if task.completed %}checkbox-completed{% endif %}">
         </form>
-        <div id="task-text-{{ task.id }}" class="text-sm text-[var(--text-primary)] {% if task.completed %}line-through text-gray-500{% endif %} leading-relaxed">{{ task.text|linebreaks }}</div>
+        <div id="task-text-{{ task.id }}" class="text-sm text-[var(--text-primary)] {% if task.completed %}task-completed-strikethrough{% endif %} leading-relaxed">{{ task.text|linebreaks }}</div>
     </div>
     
     <!-- Actions -->

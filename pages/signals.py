@@ -54,25 +54,26 @@ def create_first_grid(sender, instance, created, **kwargs):
         # Create predefined tasks
         tasks_data = [
             # The Basics row
-            (0, 0, "This is a task. You can check it off.", True),
-            (0, 1, "Pick a template for your first grid via the '+ New Grid' button.", False),
-            (0, 2, "We believe software should be simple and fast.", True),
+            (0, 0, "This is a task. You can check it off", False),
+            (0, 1, "Pick a template for your first grid via the '+ New Grid' button", False),
+            (0, 2, "We believe software should be simple and fast", False),
             
             # The Basics row (additional task)
             (0, 0, "Click the '+' at the bottom of a cell to add a new task.", False),
+            (0, 1, "Click 'Clear Completed' to remove all completed tasks", False),
             
             # Make It Your Own row
-            (1, 0, "Customize your grid by adding your own columns and rows.", False),
-            (1, 1, "Tailor a grid for that side project you've been planning.", False),
-            (1, 2, "Toad gives you the building blocks; you create the system.", True),
+            (1, 0, "Customize your grid by adding your own columns and rows", False),
+            (1, 1, "Tailor a grid for that side project you've been planning", False),
+            (1, 2, "Toad gives you the building blocks; you create the system", False),
             
             # Make It Your Own row (additional task)
-            (1, 1, "Finally organize that holiday you've been dreaming of.", False),
+            (1, 1, "Finally organize that holiday you've been dreaming of", False),
             
             # Your Beta Account row
-            (2, 0, "Your account includes a free lifetime Personal plan.", True),
-            (2, 1, "This means you can create up to 10 grids.", True),
-            (2, 2, "Reach out any time with issues or ideas to tom@toad.co.uk", True),
+            (2, 0, "Your account includes a free lifetime Personal plan", False),
+            (2, 1, "This means you can create up to 10 grids", False),
+            (2, 2, "Reach out any time with issues or ideas to tom@toad.co.uk", False),
         ]
         
         # Create all tasks
