@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 import logging
 
 # Set up logging
@@ -6,6 +7,11 @@ logger = logging.getLogger(__name__)
 
 def home(request):
     return render(request, 'pages/general/home.html')
+
+@login_required
+def first_grid_tutorial_view(request):
+    """Display the first grid tutorial page for new users"""
+    return render(request, 'pages/user/first_grid.html')
 
 # Template Views
 

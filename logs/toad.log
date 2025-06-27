@@ -3858,3 +3858,161 @@ INFO 2025-06-26 21:05:11,508 autoreload 27441 8681377600 /Users/tombarratt/Deskt
 INFO 2025-06-26 21:05:11,803 autoreload 27486 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-26 21:05:55,984 autoreload 27682 8681377600 Watching for file changes with StatReloader
 INFO 2025-06-26 21:06:35,920 autoreload 27972 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 18:15:47,006 autoreload 29563 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 18:15:53,961 basehttp 29563 6128807936 "GET /first-grid HTTP/1.1" 301 0
+INFO 2025-06-27 18:15:53,974 basehttp 29563 6145634304 "GET /first-grid/ HTTP/1.1" 200 4539
+INFO 2025-06-27 18:15:53,997 basehttp 29563 6162460672 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-27 18:15:53,998 basehttp 29563 6128807936 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6950
+INFO 2025-06-27 18:15:53,999 basehttp 29563 6145634304 "GET /static/css/output.css HTTP/1.1" 200 60052
+INFO 2025-06-27 18:15:53,999 basehttp 29563 6179287040 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 19338
+INFO 2025-06-27 18:16:00,338 basehttp 29563 6145634304 "GET /templates/ HTTP/1.1" 200 4135
+INFO 2025-06-27 18:16:00,348 basehttp 29563 6145634304 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 18:16:00,348 basehttp 29563 6179287040 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 18:16:02,037 basehttp 29563 6179287040 "GET /projects/create/ HTTP/1.1" 200 3068
+INFO 2025-06-27 18:16:16,990 basehttp 29563 6179287040 "GET /templates/ HTTP/1.1" 200 4129
+INFO 2025-06-27 18:16:17,003 basehttp 29563 6145634304 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 18:16:17,003 basehttp 29563 6179287040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 18:16:18,593 basehttp 29563 6179287040 "GET /projects/create/ HTTP/1.1" 200 3072
+INFO 2025-06-27 18:17:04,601 basehttp 29563 6179287040 "GET / HTTP/1.1" 200 2795
+INFO 2025-06-27 18:17:04,612 basehttp 29563 6145634304 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 18:17:04,612 basehttp 29563 6179287040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 18:17:05,209 basehttp 29563 6179287040 "GET /templates/ HTTP/1.1" 200 4137
+INFO 2025-06-27 18:17:06,508 basehttp 29563 6179287040 "GET /projects/ HTTP/1.1" 200 3060
+INFO 2025-06-27 18:17:07,637 basehttp 29563 6179287040 "GET /projects/1/ HTTP/1.1" 200 13129
+INFO 2025-06-27 18:17:18,398 basehttp 29563 6179287040 "GET /first-grid/ HTTP/1.1" 200 4529
+INFO 2025-06-27 18:17:18,412 basehttp 29563 6145634304 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 18:17:18,412 basehttp 29563 6179287040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:06:29,477 autoreload 29869 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:06:32,978 basehttp 29869 6191788032 "GET /first-grid/ HTTP/1.1" 200 5407
+INFO 2025-06-27 20:06:32,992 basehttp 29869 6191788032 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-27 20:06:32,993 basehttp 29869 6208614400 "GET /static/css/output.css HTTP/1.1" 200 58626
+INFO 2025-06-27 20:06:46,889 basehttp 29869 6208614400 "GET /first-grid/ HTTP/1.1" 200 5461
+INFO 2025-06-27 20:06:46,900 basehttp 29869 6225440768 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-27 20:06:46,901 basehttp 29869 6191788032 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 6950
+INFO 2025-06-27 20:06:46,902 basehttp 29869 6242267136 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 19338
+INFO 2025-06-27 20:06:46,903 basehttp 29869 6208614400 "GET /static/css/output.css HTTP/1.1" 200 58626
+INFO 2025-06-27 20:07:02,844 autoreload 29910 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:07:06,099 basehttp 29910 6156431360 "GET /first-grid/ HTTP/1.1" 200 5477
+INFO 2025-06-27 20:07:06,112 basehttp 29910 6156431360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:07:06,113 basehttp 29910 6173257728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:11:04,331 basehttp 29910 6156431360 "GET /first-grid/ HTTP/1.1" 200 5731
+INFO 2025-06-27 20:11:04,343 basehttp 29910 6156431360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:11:04,343 basehttp 29910 6173257728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:16:56,671 basehttp 29910 6156431360 "GET /admin HTTP/1.1" 301 0
+INFO 2025-06-27 20:16:56,688 basehttp 29910 6173257728 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:16:56,710 basehttp 29910 6173257728 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1808
+INFO 2025-06-27 20:16:56,730 basehttp 29910 6190084096 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-06-27 20:16:56,731 basehttp 29910 6206910464 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-06-27 20:16:56,731 basehttp 29910 6156431360 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-06-27 20:16:56,731 basehttp 29910 6173257728 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-06-27 20:16:56,732 basehttp 29910 6240563200 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-06-27 20:16:56,732 basehttp 29910 6223736832 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-06-27 20:16:56,738 basehttp 29910 6223736832 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-06-27 20:16:56,741 basehttp 29910 6240563200 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-06-27 20:16:56,742 basehttp 29910 6223736832 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-06-27 20:16:56,751 basehttp 29910 6240563200 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-06-27 20:16:56,752 basehttp 29910 6240563200 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-06-27 20:17:05,270 basehttp 29910 6240563200 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:17:05,281 basehttp 29910 6240563200 "GET /admin/ HTTP/1.1" 200 2506
+INFO 2025-06-27 20:17:05,300 basehttp 29910 6240563200 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-06-27 20:17:05,303 basehttp 29910 6240563200 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-06-27 20:17:05,304 basehttp 29910 6173257728 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-06-27 20:17:05,304 basehttp 29910 6223736832 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-06-27 20:17:09,555 basehttp 29910 6223736832 "GET /admin/pages/project/ HTTP/1.1" 200 2959
+INFO 2025-06-27 20:17:09,572 basehttp 29910 6223736832 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-06-27 20:17:09,574 basehttp 29910 6206910464 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-06-27 20:17:09,574 basehttp 29910 6156431360 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-06-27 20:17:09,574 basehttp 29910 6190084096 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-06-27 20:17:09,579 basehttp 29910 6223736832 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-06-27 20:17:09,580 basehttp 29910 6206910464 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-06-27 20:17:09,581 basehttp 29910 6190084096 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-06-27 20:17:09,583 basehttp 29910 6173257728 "GET /admin/jsi18n/ HTTP/1.1" 200 995
+INFO 2025-06-27 20:17:09,585 basehttp 29910 6240563200 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-06-27 20:17:09,586 basehttp 29910 6156431360 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-06-27 20:17:09,588 basehttp 29910 6156431360 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-06-27 20:17:09,600 basehttp 29910 6156431360 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-06-27 20:17:15,088 basehttp 29910 6156431360 "GET /admin/ HTTP/1.1" 200 2429
+INFO 2025-06-27 20:22:15,968 basehttp 29910 6173257728 "GET /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:22:15,985 basehttp 29910 6173257728 "GET /admin/ HTTP/1.1" 200 2509
+WARNING 2025-06-27 20:22:17,289 log 29910 6173257728 Not Found: /projects/1/
+WARNING 2025-06-27 20:22:17,290 basehttp 29910 6173257728 "GET /projects/1/ HTTP/1.1" 404 1402
+INFO 2025-06-27 20:22:20,149 basehttp 29910 6173257728 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:22:20,153 basehttp 29910 6173257728 "GET / HTTP/1.1" 200 2627
+INFO 2025-06-27 20:22:20,169 basehttp 29910 6156431360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:22:20,170 basehttp 29910 6173257728 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:22:21,390 basehttp 29910 6173257728 "GET /accounts/login/ HTTP/1.1" 200 3890
+INFO 2025-06-27 20:22:32,354 basehttp 29910 6173257728 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:22:32,361 basehttp 29910 6173257728 "GET /projects/ HTTP/1.1" 200 3048
+INFO 2025-06-27 20:22:44,540 autoreload 29910 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/apps.py changed, reloading.
+INFO 2025-06-27 20:22:44,805 autoreload 30095 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:22:55,068 autoreload 30095 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-27 20:22:55,244 autoreload 30103 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:23:26,859 autoreload 30103 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:23:27,104 autoreload 30123 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:25:33,382 autoreload 30123 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-27 20:25:33,632 autoreload 30148 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:26:08,274 autoreload 30148 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-27 20:26:08,518 autoreload 30163 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:26:38,037 autoreload 30163 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-27 20:26:38,298 autoreload 30173 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:26:46,451 basehttp 30173 6162903040 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:26:46,460 basehttp 30173 6162903040 "GET / HTTP/1.1" 200 2613
+INFO 2025-06-27 20:26:46,472 basehttp 30173 6162903040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:26:46,472 basehttp 30173 6179729408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:26:48,009 basehttp 30173 6179729408 "GET /accounts/login/ HTTP/1.1" 200 3867
+INFO 2025-06-27 20:26:49,363 basehttp 30173 6179729408 "GET /accounts/register/ HTTP/1.1" 200 4017
+INFO 2025-06-27 20:28:45,595 autoreload 30173 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:28:45,877 autoreload 30208 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:28:51,053 autoreload 30208 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:28:51,221 autoreload 30218 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:28:59,422 autoreload 30218 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-27 20:28:59,603 autoreload 30227 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:29:08,813 autoreload 30227 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:29:08,983 autoreload 30234 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:29:11,095 autoreload 30234 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:29:11,257 autoreload 30241 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:30:42,812 autoreload 30241 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-06-27 20:30:43,063 autoreload 30262 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:30:46,363 basehttp 30262 6161395712 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:30:46,379 basehttp 30262 6161395712 "GET /projects/9/ HTTP/1.1" 200 8927
+INFO 2025-06-27 20:30:46,402 basehttp 30262 6161395712 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:30:46,403 basehttp 30262 6178222080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:30:56,772 basehttp 30262 6178222080 "GET /projects/9/columns/create/ HTTP/1.1" 200 3079
+INFO 2025-06-27 20:30:58,857 basehttp 30262 6178222080 "POST /projects/9/columns/create/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:30:58,882 basehttp 30262 6178222080 "GET /projects/9/ HTTP/1.1" 200 9280
+INFO 2025-06-27 20:31:05,714 basehttp 30262 6178222080 "GET /projects/9/columns/54/delete/ HTTP/1.1" 200 1058
+INFO 2025-06-27 20:31:06,745 basehttp 30262 6178222080 "POST /projects/9/columns/54/delete/ HTTP/1.1" 200 69
+INFO 2025-06-27 20:31:06,771 basehttp 30262 6178222080 "GET /projects/9/ HTTP/1.1" 200 8913
+INFO 2025-06-27 20:33:42,626 autoreload 30528 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:33:47,481 basehttp 30528 6127546368 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:33:47,489 basehttp 30528 6127546368 "GET / HTTP/1.1" 200 2599
+INFO 2025-06-27 20:33:47,507 basehttp 30528 6144372736 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-27 20:33:47,508 basehttp 30528 6127546368 "GET /static/css/output.css HTTP/1.1" 200 58987
+INFO 2025-06-27 20:33:48,626 basehttp 30528 6127546368 "GET /accounts/login/ HTTP/1.1" 200 3955
+INFO 2025-06-27 20:33:48,641 basehttp 30528 6127546368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:33:48,642 basehttp 30528 6144372736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:33:51,978 basehttp 30528 6144372736 "GET /accounts/register/ HTTP/1.1" 200 3972
+INFO 2025-06-27 20:33:51,991 basehttp 30528 6144372736 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:33:51,991 basehttp 30528 6127546368 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:38:33,540 autoreload 30787 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:38:36,342 basehttp 30787 6204043264 "GET /accounts/register/ HTTP/1.1" 200 4019
+INFO 2025-06-27 20:38:36,360 basehttp 30787 6220869632 "GET /static/js/general/general.min.js HTTP/1.1" 200 94
+INFO 2025-06-27 20:38:36,361 basehttp 30787 6204043264 "GET /static/css/output.css HTTP/1.1" 200 58450
+INFO 2025-06-27 20:40:15,359 autoreload 30787 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:40:15,643 autoreload 30827 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:40:23,864 autoreload 30827 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:40:24,121 autoreload 30862 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:40:32,317 autoreload 30862 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:40:32,568 autoreload 30869 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:40:50,927 autoreload 30869 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:40:51,189 autoreload 30888 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:41:01,420 autoreload 30888 8681377600 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-06-27 20:41:01,686 autoreload 30899 8681377600 Watching for file changes with StatReloader
+INFO 2025-06-27 20:41:24,593 basehttp 30899 6129397760 "POST /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-06-27 20:41:24,611 basehttp 30899 6129397760 "GET /projects/10/ HTTP/1.1" 200 10796
+INFO 2025-06-27 20:41:24,634 basehttp 30899 6129397760 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-06-27 20:41:24,634 basehttp 30899 6146224128 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-06-27 20:41:32,785 basehttp 30899 6146224128 "POST /tasks/105/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-27 20:41:33,925 basehttp 30899 6146224128 "POST /tasks/105/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-27 20:41:34,490 basehttp 30899 6146224128 "POST /tasks/105/toggle/ HTTP/1.1" 200 79
+INFO 2025-06-27 20:41:45,401 basehttp 30899 6146224128 "POST /tasks/105/toggle/ HTTP/1.1" 200 79

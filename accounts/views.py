@@ -47,14 +47,28 @@ class RegisterView(FormView):
     """
     template_name = 'accounts/register.html'
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('pages:project_list')
     
     def form_valid(self, form):
         """Create the user and log them in automatically"""
         user = form.save()
         login(self.request, user)
-        messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account has been created.')
-        return super().form_valid(form)
+        
+        # Get the "[FirstName]'s First Grid" project that was created by the signal
+        from pages.models import Project
+        try:
+            grid_name = f"{user.first_name}'s First Grid"
+            first_grid = Project.objects.filter(user=user, name=grid_name).first()
+            if first_grid:
+                messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Let\'s start with your first grid.')
+                return redirect('pages:project_grid', pk=first_grid.pk)
+            else:
+                # Fallback if grid wasn't created for some reason
+                messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account has been created.')
+                return redirect('pages:project_list')
+        except Exception:
+            # Fallback in case of any errors
+            messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account has been created.')
+            return redirect('pages:project_list')
     
     def form_invalid(self, form):
         """Handle invalid form submission"""
@@ -64,7 +78,7 @@ class RegisterView(FormView):
     def dispatch(self, request, *args, **kwargs):
         """Redirect authenticated users away from registration page"""
         if request.user.is_authenticated:
-            return redirect(self.success_url)
+            return redirect('pages:project_list')
         return super().dispatch(request, *args, **kwargs)
 
 @login_required

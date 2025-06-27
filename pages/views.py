@@ -6,6 +6,7 @@ from .specific_views.error_views import (
 
 from .specific_views.general_views import (
     home,
+    first_grid_tutorial_view,
     templates_overview_view,
     student_jobs_template_view,
     student_revision_template_view,

@@ -8,6 +8,9 @@ urlpatterns = [
     # Home
     path('', views.home, name='home'),
     
+    # User tutorial
+    path('first-grid/', views.first_grid_tutorial_view, name='first_grid_tutorial'),
+    
     # Test error pages (development only)
     path('test-404/', views.test_404, name='test_404'),
     path('test-500/', views.test_500, name='test_500'),
