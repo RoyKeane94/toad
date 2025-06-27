@@ -147,6 +147,12 @@ class GridManager {
             this.hideModal();
         }
 
+        // Task edit buttons - store column info for post-edit scroll restoration
+        const taskEditBtn = e.target.closest('button[hx-get*="task_edit"]');
+        if (taskEditBtn) {
+            this.storeTaskEditColumn(taskEditBtn);
+        }
+
         // Add task forms
         const addTaskTrigger = e.target.closest('.add-task-trigger');
         if (addTaskTrigger) {
@@ -339,22 +345,27 @@ class GridManager {
     }
 
     // Grid scrolling methods
-    setupGridScrolling() {
+    setupGridScrolling(skipRestore = false) {
         const { scrollable, leftBtn, rightBtn, gridTable, dataCols } = this.elements;
         if (!scrollable || !leftBtn || !rightBtn || !gridTable || !dataCols.length) return;
 
         this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || 0;
         this.state.columnsToShow = Math.min(3, this.state.totalDataColumns);
 
-        // Setup scroll buttons
-        leftBtn.onclick = () => this.scrollToCol(this.state.currentCol - 1);
-        rightBtn.onclick = () => this.scrollToCol(this.state.currentCol + 1);
+        // Setup scroll buttons (only if not already set)
+        if (!leftBtn.onclick) {
+            leftBtn.onclick = () => this.scrollToCol(this.state.currentCol - 1);
+            rightBtn.onclick = () => this.scrollToCol(this.state.currentCol + 1);
+        }
 
-        // Setup resize observer
+        // Setup resize observer (only once)
         if (!this.observers.has('resize')) {
             const resizeObserver = new ResizeObserver(() => {
+                const currentScrollLeft = scrollable.scrollLeft;
                 this.calculateAndApplyWidths();
-                this.scrollToCol(this.state.currentCol, 'auto');
+                // Restore exact scroll position after resize
+                scrollable.scrollLeft = currentScrollLeft;
+                this.updateScrollButtons();
             });
             resizeObserver.observe(scrollable);
             this.observers.set('resize', resizeObserver);
@@ -362,7 +373,11 @@ class GridManager {
 
         this.calculateAndApplyWidths();
         this.updateScrollButtons();
-        this.restoreScrollPosition();
+        
+        // Only restore position on initial load or explicit requests
+        if (!skipRestore) {
+            this.restoreScrollPosition();
+        }
     }
 
     calculateAndApplyWidths() {
@@ -427,22 +442,36 @@ class GridManager {
     restoreScrollPosition() {
         const scrollToEnd = sessionStorage.getItem('scrollToEnd');
         const savedPosition = sessionStorage.getItem('grid-scroll-position');
+        const editedTaskColumn = sessionStorage.getItem('edited-task-column');
         
-        if (scrollToEnd) {
+        if (editedTaskColumn) {
+            // Restore to the column where a task was edited
+            sessionStorage.removeItem('edited-task-column');
+            const targetCol = parseInt(editedTaskColumn);
+            setTimeout(() => {
+                this.scrollToCol(targetCol, 'smooth');
+            }, 10);
+        } else if (scrollToEnd) {
             sessionStorage.removeItem('scrollToEnd');
+            // Use immediate scroll for scroll-to-end, only small delay for DOM stability
             setTimeout(() => {
                 const lastColIndex = this.state.totalDataColumns - this.state.columnsToShow;
                 this.scrollToCol(lastColIndex, 'auto');
-            }, 50);
+            }, 10);
         } else if (savedPosition) {
             sessionStorage.removeItem('grid-scroll-position');
-            setTimeout(() => {
-                const savedCol = this.state.dataColWidth > 0 
-                    ? Math.round(parseFloat(savedPosition) / this.state.dataColWidth) 
+            // Restore saved position immediately for smoother experience
+            const savedScrollLeft = parseFloat(savedPosition);
+            if (this.elements.scrollable && savedScrollLeft > 0) {
+                this.elements.scrollable.scrollLeft = savedScrollLeft;
+                // Update current column state to match restored position
+                this.state.currentCol = this.state.dataColWidth > 0 
+                    ? Math.round(savedScrollLeft / this.state.dataColWidth) 
                     : 0;
-                this.scrollToCol(savedCol, 'auto');
-            }, 50);
+                this.updateScrollButtons();
+            }
         } else {
+            // Default to start, no delay needed
             this.scrollToCol(0, 'auto');
         }
     }
@@ -452,10 +481,32 @@ class GridManager {
         window.location.reload();
     }
 
+    // Store column information when editing a task
+    storeTaskEditColumn(editBtn) {
+        // Find the parent cell to get column information
+        const cell = editBtn.closest('td[data-col]');
+        if (cell) {
+            const colId = cell.dataset.col;
+            
+            // Find which column index this corresponds to
+            const allColumns = document.querySelectorAll('td[data-col]');
+            const uniqueColumns = [...new Set(Array.from(allColumns).map(td => td.dataset.col))];
+            const columnIndex = uniqueColumns.indexOf(colId);
+            
+            if (columnIndex >= 0) {
+                sessionStorage.setItem('edited-task-column', columnIndex.toString());
+            }
+        }
+    }
+
     // HTMX event handlers
     handleHtmxAfterRequest(e) {
-        // Save scroll position before HTMX requests
-        if (this.elements.scrollable) {
+        // Only save scroll position if this might cause a page reload
+        const shouldReload = e.detail.requestConfig && 
+            (e.detail.requestConfig.verb === 'post' && 
+             e.target.closest('#modal-content')); // Only modals cause full reloads
+        
+        if (shouldReload && this.elements.scrollable) {
             sessionStorage.setItem('grid-scroll-position', this.elements.scrollable.scrollLeft.toString());
         }
 
@@ -479,18 +530,56 @@ class GridManager {
         }
     }
 
-    handleHtmxAfterSwap() {
-        this.reinitializeComponents();
+    handleHtmxAfterSwap(e) {
+        // Only reinitialize if this is a significant change (modal content or full grid updates)
+        const isModalUpdate = e.detail.target && e.detail.target.id === 'modal-content';
+        const isGridUpdate = e.detail.target && e.detail.target.closest('#grid-content');
+        
+        if (isModalUpdate) {
+            // Modal updates need reinitialization
+            this.reinitializeComponents();
+        } else if (isGridUpdate) {
+            // Grid updates just need height sync, not full reinit
+            setTimeout(() => this.syncRowHeights(), 10);
+        }
+        // Task additions/updates don't need any reinitialization
     }
 
-    handleHtmxAfterSettle() {
-        this.reinitializeComponents();
-        setTimeout(() => this.syncRowHeights(), 50);
+    handleHtmxAfterSettle(e) {
+        // Only sync heights for grid changes, and do it faster
+        const isGridRelated = e.detail.target && 
+            (e.detail.target.closest('#grid-content') || e.detail.target.closest('.task-form'));
+        
+        if (isGridRelated) {
+            // Use shorter timeout and preserve scroll position
+            const currentScrollLeft = this.elements.scrollable ? this.elements.scrollable.scrollLeft : 0;
+            setTimeout(() => {
+                this.syncRowHeights();
+                // Restore exact scroll position if it changed
+                if (this.elements.scrollable && this.elements.scrollable.scrollLeft !== currentScrollLeft) {
+                    this.elements.scrollable.scrollLeft = currentScrollLeft;
+                }
+            }, 10);
+        }
     }
 
     reinitializeComponents() {
+        // Store current scroll position before reinitializing
+        const currentScrollLeft = this.elements.scrollable ? this.elements.scrollable.scrollLeft : 0;
+        
         this.cacheElements();
-        this.setupGridScrolling();
+        // Skip restore during reinit to avoid double scroll position changes
+        this.setupGridScrolling(true);
+        
+        // Restore scroll position immediately, no timeout
+        if (this.elements.scrollable && currentScrollLeft > 0) {
+            this.elements.scrollable.scrollLeft = currentScrollLeft;
+            // Update current column state to match scroll position
+            this.state.currentCol = this.state.dataColWidth > 0 
+                ? Math.round(currentScrollLeft / this.state.dataColWidth) 
+                : 0;
+            this.updateScrollButtons();
+        }
     }
 
     // Cleanup method
