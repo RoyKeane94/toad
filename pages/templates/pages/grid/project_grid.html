@@ -194,6 +194,17 @@ document.addEventListener('htmx:afterRequest', function(event) {
         event.target.closest('#modal-content') &&
         event.detail.requestConfig.verb === 'post') {
 
+        // Parse the response to get updated task data
+        let updatedTaskData = null;
+        try {
+            updatedTaskData = JSON.parse(event.detail.xhr.response);
+        } catch (e) {
+            // If response isn't JSON, fall back to page reload for safety
+            console.log('Non-JSON response, reloading page');
+            window.location.reload();
+            return;
+        }
+
         // Close modal with animation
         const modal = document.getElementById('modal');
         const modalContent = document.getElementById('modal-content');
@@ -202,15 +213,27 @@ document.addEventListener('htmx:afterRequest', function(event) {
         modalContent.classList.remove('scale-100');
         modalContent.classList.add('scale-95');
 
-        // Refresh page after animation completes, but preserve scroll position
-        setTimeout(() => {
-            // Store current scroll position before reload using the CORRECT selector
-            const gridContainer = document.querySelector('.grid-table-scrollable');
-            if (gridContainer) {
-                sessionStorage.setItem('grid-scroll-position', gridContainer.scrollLeft.toString());
-            }
-            window.location.reload();
-        }, 300);
+        // Update the task in place instead of reloading
+        if (updatedTaskData && updatedTaskData.task_id && updatedTaskData.task_html) {
+            setTimeout(() => {
+                const taskElement = document.getElementById(`task-${updatedTaskData.task_id}`);
+                if (taskElement) {
+                    // Replace the task content with updated HTML
+                    taskElement.outerHTML = updatedTaskData.task_html;
+                    
+                    // Sync row heights after content change
+                    if (window.gridManager) {
+                        setTimeout(() => window.gridManager.syncRowHeights(), 10);
+                    }
+                } else {
+                    // Task element not found, reload as fallback
+                    window.location.reload();
+                }
+            }, 300);
+        } else {
+            // No task data in response, reload as fallback
+            setTimeout(() => window.location.reload(), 300);
+        }
     }
 });
 

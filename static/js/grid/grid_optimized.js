@@ -147,11 +147,7 @@ class GridManager {
             this.hideModal();
         }
 
-        // Task edit buttons - store column info for post-edit scroll restoration
-        const taskEditBtn = e.target.closest('button[hx-get*="task_edit"]');
-        if (taskEditBtn) {
-            this.storeTaskEditColumn(taskEditBtn);
-        }
+        // Task edit buttons - no longer need column tracking since we update in place
 
         // Add task forms
         const addTaskTrigger = e.target.closest('.add-task-trigger');
@@ -442,16 +438,8 @@ class GridManager {
     restoreScrollPosition() {
         const scrollToEnd = sessionStorage.getItem('scrollToEnd');
         const savedPosition = sessionStorage.getItem('grid-scroll-position');
-        const editedTaskColumn = sessionStorage.getItem('edited-task-column');
         
-        if (editedTaskColumn) {
-            // Restore to the column where a task was edited
-            sessionStorage.removeItem('edited-task-column');
-            const targetCol = parseInt(editedTaskColumn);
-            setTimeout(() => {
-                this.scrollToCol(targetCol, 'smooth');
-            }, 10);
-        } else if (scrollToEnd) {
+        if (scrollToEnd) {
             sessionStorage.removeItem('scrollToEnd');
             // Use immediate scroll for scroll-to-end, only small delay for DOM stability
             setTimeout(() => {
@@ -481,23 +469,7 @@ class GridManager {
         window.location.reload();
     }
 
-    // Store column information when editing a task
-    storeTaskEditColumn(editBtn) {
-        // Find the parent cell to get column information
-        const cell = editBtn.closest('td[data-col]');
-        if (cell) {
-            const colId = cell.dataset.col;
-            
-            // Find which column index this corresponds to
-            const allColumns = document.querySelectorAll('td[data-col]');
-            const uniqueColumns = [...new Set(Array.from(allColumns).map(td => td.dataset.col))];
-            const columnIndex = uniqueColumns.indexOf(colId);
-            
-            if (columnIndex >= 0) {
-                sessionStorage.setItem('edited-task-column', columnIndex.toString());
-            }
-        }
-    }
+    // Task edit column tracking no longer needed since we update in place
 
     // HTMX event handlers
     handleHtmxAfterRequest(e) {

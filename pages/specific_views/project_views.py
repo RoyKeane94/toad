@@ -234,11 +234,19 @@ def task_edit_view(request, task_pk):
     if request.method == 'POST':
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
-            form.save()
+            updated_task = form.save()
             if request.headers.get('HX-Request'):
+                # Render the updated task HTML
+                from django.template.loader import render_to_string
+                task_html = render_to_string('pages/grid/actions_in_page/task_item.html', {
+                    'task': updated_task
+                }, request=request)
+                
                 return JsonResponse({
                     'success': True,
-                    'message': 'Task updated successfully!'
+                    'message': 'Task updated successfully!',
+                    'task_id': updated_task.pk,
+                    'task_html': task_html
                 })
             messages.success(request, 'Task updated successfully!')
             return redirect('pages:project_grid', pk=task.project.pk)
