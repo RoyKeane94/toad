@@ -34,8 +34,6 @@ def create_first_grid(sender, instance, created, **kwargs):
         # Create column headers
         column_headers = [
             "Getting Started",
-            "Next Steps",
-            "Our Promise"
         ]
         
         col_objects = []
@@ -55,25 +53,18 @@ def create_first_grid(sender, instance, created, **kwargs):
         tasks_data = [
             # The Basics row
             (0, 0, "This is a task. You can check it off", False),
-            (0, 1, "Pick a template for your first grid via the '+ New Grid' button", False),
-            (0, 2, "We believe software should be simple and fast", False),
-            
-            # The Basics row (additional task)
-            (0, 0, "Click the '+' at the bottom of a cell to add a new task.", False),
-            (0, 1, "Click 'Clear Completed' to remove all completed tasks", False),
+            (0, 0, "Easily add a new task by clicking 'Add Task'", False),
+            (0, 0, "Tidy your grid by clicking 'Clear Completed' to remove all completed tasks", False),
             
             # Make It Your Own row
-            (1, 0, "Customize your grid by adding your own columns and rows", False),
-            (1, 1, "Tailor a grid for that side project you've been planning", False),
-            (1, 2, "Toad gives you the building blocks; you create the system", False),
-            
-            # Make It Your Own row (additional task)
-            (1, 1, "Finally organize that holiday you've been dreaming of", False),
+            (1, 0, "Make your grid your own by adding your own columns and rows", False),
+            (1, 0, "Pick a template for your first grid using Templates or create your own grid by clicking Grids", False),
+            (1, 0, "Tailor a grid to start planning your week better, find your next job or organise your holiday", False),
             
             # Your Beta Account row
-            (2, 0, "Your account includes a free lifetime Personal plan", False),
-            (2, 1, "This means you can create up to 10 grids", False),
-            (2, 2, "Reach out any time with issues or ideas to tom@toad.co.uk", False),
+            (2, 0, "We have built Toad to be simple and fast", True),
+            (2, 0, "As a Beta user, you have a free Toad Pro plan for life, meaning no limit on grids and the ability to create your own templates", False),
+            (2, 0, "Please reach out any time with issues or ideas to tom@toad.co.uk", False),
         ]
         
         # Create all tasks
