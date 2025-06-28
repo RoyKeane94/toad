@@ -217,13 +217,34 @@ document.addEventListener('htmx:afterRequest', function(event) {
         if (updatedTaskData && updatedTaskData.task_id && updatedTaskData.task_html) {
             setTimeout(() => {
                 const taskElement = document.getElementById(`task-${updatedTaskData.task_id}`);
+                
                 if (taskElement) {
+                    // Store current scroll position before update
+                    const gridScrollable = document.querySelector('.grid-table-scrollable');
+                    const currentScrollLeft = gridScrollable ? gridScrollable.scrollLeft : 0;
+                    
                     // Replace the task content with updated HTML
                     taskElement.outerHTML = updatedTaskData.task_html;
                     
-                    // Sync row heights after content change
+                    // Restore scroll position immediately after update
+                    if (gridScrollable && currentScrollLeft > 0) {
+                        gridScrollable.scrollLeft = currentScrollLeft;
+                    }
+                    
+                    // Sync row heights after content change, preserving scroll position
                     if (window.gridManager) {
-                        setTimeout(() => window.gridManager.syncRowHeights(), 10);
+                        setTimeout(() => {
+                            window.gridManager.syncRowHeights();
+                            // Ensure scroll position is maintained after height sync
+                            if (gridScrollable && currentScrollLeft > 0) {
+                                gridScrollable.scrollLeft = currentScrollLeft;
+                                // Update grid manager's internal state to match
+                                if (window.gridManager.state.dataColWidth > 0) {
+                                    window.gridManager.state.currentCol = Math.round(currentScrollLeft / window.gridManager.state.dataColWidth);
+                                    window.gridManager.updateScrollButtons();
+                                }
+                            }
+                        }, 10);
                     }
                 } else {
                     // Task element not found, reload as fallback

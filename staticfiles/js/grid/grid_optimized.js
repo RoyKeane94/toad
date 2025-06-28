@@ -506,24 +506,28 @@ class GridManager {
         // Only reinitialize if this is a significant change (modal content or full grid updates)
         const isModalUpdate = e.detail.target && e.detail.target.id === 'modal-content';
         const isGridUpdate = e.detail.target && e.detail.target.closest('#grid-content');
+        const isTaskUpdate = e.detail.target && e.detail.target.closest('[id^="task-"]');
         
         if (isModalUpdate) {
             // Modal updates need reinitialization
             this.reinitializeComponents();
-        } else if (isGridUpdate) {
+        } else if (isGridUpdate && !isTaskUpdate) {
             // Grid updates just need height sync, not full reinit
+            // But skip if it's a task update (handled separately)
             setTimeout(() => this.syncRowHeights(), 10);
         }
-        // Task additions/updates don't need any reinitialization
+        // Task additions/updates and individual task edits don't need any reinitialization
     }
 
     handleHtmxAfterSettle(e) {
         // Only sync heights for grid changes, and do it faster
         const isGridRelated = e.detail.target && 
             (e.detail.target.closest('#grid-content') || e.detail.target.closest('.task-form'));
+        const isTaskUpdate = e.detail.target && e.detail.target.closest('[id^="task-"]');
         
-        if (isGridRelated) {
+        if (isGridRelated && !isTaskUpdate) {
             // Use shorter timeout and preserve scroll position
+            // But skip if it's a task update (handled separately in modal success handler)
             const currentScrollLeft = this.elements.scrollable ? this.elements.scrollable.scrollLeft : 0;
             setTimeout(() => {
                 this.syncRowHeights();
