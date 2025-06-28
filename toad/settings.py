@@ -53,7 +53,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'a-strong-insecure-fallback-key
 if IS_PRODUCTION:
     ALLOWED_HOSTS = [
         'toad-production.up.railway.app',  # Replace with your actual Railway domain
-        '.up.railway.app'  # Allows health checks and other subdomains
+        '.up.railway.app',
+        'meettoad.co.uk',
+        'www.meettoad.co.uk'
     ]
     CSRF_TRUSTED_ORIGINS = [
         'https://toad-production.up.railway.app', # Replace with your actual Railway domain
