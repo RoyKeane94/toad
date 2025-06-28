@@ -168,7 +168,11 @@
                     class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium">
                 <i class="fas fa-times mr-2"></i>Cancel
             </button>
-            <form id="delete-task-form" method="post" class="inline">
+            <form id="delete-task-form" method="post" class="inline"
+                  hx-post=""
+                  hx-swap="none"
+                  hx-trigger="submit"
+                  hx-disabled-elt="this">
                 {% csrf_token %}
                 <button type="submit" 
                         class="w-32 h-10 flex items-center justify-center bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105">
@@ -187,9 +191,64 @@
 </div>
 
 <script>
-// Monitor for successful form submissions in the modal
+// Monitor for successful delete requests from the delete modal
 document.addEventListener('htmx:afterRequest', function(event) {
-    // Check if the request originated from within the modal and was successful
+    // Handle task deletion from delete modal
+    if (event.detail.successful &&
+        event.target.id === 'delete-task-form' &&
+        event.detail.requestConfig.verb === 'post') {
+
+        // Get the task ID that was being deleted
+        const taskId = window.gridManager?.state?.currentTaskId;
+        
+        if (taskId) {
+            // Remove the task element from DOM
+            const taskElement = document.getElementById(`task-${taskId}`);
+            if (taskElement) {
+                // Store current scroll position before removal
+                const gridScrollable = document.querySelector('.grid-table-scrollable');
+                const currentScrollLeft = gridScrollable ? gridScrollable.scrollLeft : 0;
+                
+                // Remove the task with animation
+                taskElement.style.transition = 'all 0.3s ease';
+                taskElement.style.opacity = '0';
+                taskElement.style.transform = 'scale(0.95)';
+                
+                setTimeout(() => {
+                    taskElement.remove();
+                    
+                    // Restore scroll position
+                    if (gridScrollable && currentScrollLeft > 0) {
+                        gridScrollable.scrollLeft = currentScrollLeft;
+                    }
+                    
+                    // Sync row heights after removal, preserving scroll position
+                    if (window.gridManager) {
+                        setTimeout(() => {
+                            window.gridManager.syncRowHeights();
+                            // Ensure scroll position is maintained after height sync
+                            if (gridScrollable && currentScrollLeft > 0) {
+                                gridScrollable.scrollLeft = currentScrollLeft;
+                                // Update grid manager's internal state to match
+                                if (window.gridManager.state.dataColWidth > 0) {
+                                    window.gridManager.state.currentCol = Math.round(currentScrollLeft / window.gridManager.state.dataColWidth);
+                                    window.gridManager.updateScrollButtons();
+                                }
+                            }
+                        }, 10);
+                    }
+                }, 300);
+            }
+        }
+        
+        // Close the delete modal
+        if (window.gridManager) {
+            window.gridManager.hideDeleteModal();
+        }
+        return;
+    }
+
+    // Handle task editing from edit modal
     if (event.detail.successful &&
         event.target.closest('#modal-content') &&
         event.detail.requestConfig.verb === 'post') {

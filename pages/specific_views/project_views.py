@@ -100,30 +100,42 @@ def project_delete_view(request, pk):
 
 
 @login_required
-@cache_control(max_age=60)
 def project_grid_view(request, pk):
-    # Use select_related to reduce database queries
+    """
+    Optimized project grid view with single database query and efficient data processing.
+    Removed caching to focus on pure performance optimizations.
+    """
+    # Single optimized query to load all required data at once
     project = get_object_or_404(
-        Project.objects.select_related('user'), 
+        Project.objects
+        .select_related('user')
+        .prefetch_related(
+            'row_headers',
+            'column_headers', 
+            'tasks__row_header',
+            'tasks__column_header'
+        )
+        .only('id', 'name', 'user__id'), 
         pk=pk, 
         user=request.user
     )
     
-    # Prefetch related data in single queries with proper ordering
-    row_headers = project.row_headers.all().order_by('order')
+    # Access prefetched data - no additional queries
+    row_headers = [rh for rh in project.row_headers.all()]  # Already ordered by Meta
+    all_column_headers = [ch for ch in project.column_headers.all()]  # Already ordered by Meta
+    all_tasks = [task for task in project.tasks.all()]  # Already ordered by Meta
     
-    # Get all column headers, separating the category column from data columns
-    all_column_headers = project.column_headers.all().order_by('order')
-    category_column = all_column_headers.filter(is_category_column=True).first()
-    data_column_headers = list(all_column_headers.filter(is_category_column=False))
-
-    # Use ALL columns for display - no pagination
-    column_headers = ([category_column] if category_column else []) + data_column_headers
+    # Separate category and data columns efficiently
+    category_column = None
+    data_column_headers = []
     
-    # Optimize tasks query with select_related and ordering
-    all_tasks = project.tasks.select_related('row_header', 'column_header').order_by('id')
+    for col in all_column_headers:
+        if col.is_category_column:
+            category_column = col
+        else:
+            data_column_headers.append(col)
     
-    # Create tasks lookup dictionary more efficiently
+    # Efficient task grouping using single pass through tasks
     tasks_by_cell = {}
     tasks_by_row = {}
     for task in all_tasks:
@@ -132,15 +144,13 @@ def project_grid_view(request, pk):
             tasks_by_cell[cell_key] = []
         tasks_by_cell[cell_key].append(task)
 
-        # Group ALL tasks by row (not just visible ones) to find consistent heights
+        # Group tasks by row for height calculations
         if task.row_header_id not in tasks_by_row:
             tasks_by_row[task.row_header_id] = []
         tasks_by_row[task.row_header_id].append(task)
         
-    # Calculate consistent row heights based on ALL tasks in each row across ALL columns
+    # Calculate row heights based on content (optimized but still dynamic)
     row_min_heights = {}
-    
-    # Ensure ALL rows get a height calculation, even if they have no tasks
     for row_header in row_headers:
         row_id = row_header.pk
         if row_id in tasks_by_row and tasks_by_row[row_id]:
@@ -155,19 +165,13 @@ def project_grid_view(request, pk):
                 max_content_height = max(max_content_height, content_height)
             
             # Set minimum height with base padding (form area + margins)
-            # Use a consistent height for seamless scrolling
             calculated_height = max(200, max_content_height + 120)  # 120px for form + padding
             row_min_heights[row_id] = calculated_height
         else:
             # Empty rows still need consistent minimum height
             row_min_heights[row_id] = 200
     
-    # Debug: Print the calculated heights
-    print(f"DEBUG: Row heights calculated: {row_min_heights}")
-
-    # Only get project names for dropdown - don't load full objects
-    user_projects = Project.objects.filter(user=request.user).only('id', 'name').order_by('name')
-
+    # Context with dynamic row heights preserved
     context = {
         'project': project,
         'row_headers': row_headers,
@@ -175,10 +179,14 @@ def project_grid_view(request, pk):
         'data_column_headers': data_column_headers,
         'tasks_by_cell': tasks_by_cell,
         'row_min_heights': row_min_heights,
-        'projects': user_projects,
         'quick_task_form': QuickTaskForm(),
         'total_data_columns': len(data_column_headers),
     }
+    
+    # Lazy load projects for dropdown only when needed (non-HTMX requests)
+    if not request.headers.get('HX-Request'):
+        # Only load when rendering full page, not partial updates
+        context['projects'] = Project.objects.filter(user=request.user).only('id', 'name').order_by('name')
     
     # If the request is from HTMX, only render the grid content partial
     if request.headers.get('HX-Request'):
@@ -316,7 +324,10 @@ def task_delete_view(request, task_pk):
         logger.info(f'User {request.user.username} deleted task: "{task_text}" from project: {task.project.name}')
         task.delete()
         if request.headers.get('HX-Request'):
-            return HttpResponse('', status=200)
+            return JsonResponse({
+                'success': True,
+                'message': 'Task deleted successfully!'
+            })
         messages.success(request, 'Task deleted successfully!')
     
     return redirect('pages:project_grid', pk=project_pk)

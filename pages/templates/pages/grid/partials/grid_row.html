@@ -1,5 +1,4 @@
 {% load custom_filters %}
-<!-- DEBUG: Row {{ row_h.pk }} height: {{ row_min_heights|get_item:row_h.pk }}px -->
 <tr class="{% if not forloop.last %}border-b border-[var(--border-color)]{% endif %}" style="--row-min-height: {{ row_min_heights|get_item:row_h.pk }}px;">
     <!-- Row Header -->
     <td class="row-header p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)] align-top" style="min-height: var(--row-min-height);">
