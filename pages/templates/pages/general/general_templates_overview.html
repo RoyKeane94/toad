@@ -1,174 +1,85 @@
 {% extends 'pages/layout.html' %}
+{% load static %}
 
-{% block title %}Template Gallery - Toad{% endblock %}
+{% block title %}Student Template Gallery - Toad{% endblock %}
 
 {% block content %}
-<div class="max-w-6xl mx-auto">
-    <!-- Page Header -->
-    <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">Template Gallery</h1>
-        <p class="text-lg text-[var(--subtitle-text)] max-w-3xl mx-auto">
-            Jump-start your productivity with our curated collection of ready-to-use project templates. 
-            Each template is designed for specific use cases and comes pre-configured with relevant categories and workflows.
+<div class="max-w-7xl mx-auto">
+    <header class="text-center mb-8 md:mb-12 px-4">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--primary-action-bg)]">Student Template Gallery</h1>
+        <p class="mt-3 md:mt-4 max-w-2xl mx-auto text-base md:text-lg text-[var(--subtitle-text)]">
+            Kickstart your academic and career planning with proven templates designed for students
         </p>
-    </div>
+    </header>
 
-    <!-- Templates Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-        <!-- Student Templates Section -->
-        <div class="bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)] p-6">
-            <div class="flex items-center mb-6">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mr-4">
-                    <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-[var(--title-text)]">Student Templates</h2>
-                    <p class="text-[var(--subtitle-text)]">Templates designed for academic success</p>
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <!-- Student Job Applications Template -->
-                <div class="border border-[var(--border-color)] rounded-lg p-4 hover:bg-[var(--task-hover-bg)] transition-colors duration-200">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">Job Application Tracker</h3>
-                            <p class="text-sm text-[var(--text-secondary)] mb-3">
-                                Track your job applications from research to offer. Organize by application status and time investment.
-                            </p>
-                        </div>
-                        <div class="text-blue-500 ml-4">
-                            <i class="fas fa-briefcase text-xl"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Applications</span>
-                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Status Tracking</span>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">Time Management</span>
-                    </div>
-                    <a href="{% url 'pages:student_jobs_template' %}" 
-                       class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 inline-block">
-                        Use This Template
-                    </a>
-                </div>
-
-                <!-- Student Revision Template -->
-                <div class="border border-[var(--border-color)] rounded-lg p-4 hover:bg-[var(--task-hover-bg)] transition-colors duration-200">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">Revision Planner</h3>
-                            <p class="text-sm text-[var(--text-secondary)] mb-3">
-                                Plan and track your exam revision. Organize topics by priority and study time requirements.
-                            </p>
-                        </div>
-                        <div class="text-blue-500 ml-4">
-                            <i class="fas fa-book-open text-xl"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Study Planning</span>
-                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded">Exam Prep</span>
-                        <span class="bg-red-100 text-red-800 text-xs px-2 py-1 rounded">Priority Management</span>
-                    </div>
-                    <a href="{% url 'pages:student_revision_template' %}" 
-                       class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 inline-block">
-                        Use This Template
-                    </a>
-                </div>
-            </div>
+    <!-- Core Templates Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4">
+        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
+             <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Course Planner</h2>
+             <p class="mt-2 text-sm text-[var(--text-secondary)]">Your high-level command center for the entire semester. Track modules, assignments, and key deadlines.</p>
+             <button class="mt-4 w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200">
+                Use Template
+             </button>
         </div>
-
-        <!-- Professional Templates Section -->
-        <div class="bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)] p-6">
-            <div class="flex items-center mb-6">
-                <div class="w-12 h-12 bg-emerald-100 rounded-lg flex items-center justify-center mr-4">
-                    <i class="fas fa-user-tie text-emerald-600 text-xl"></i>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-[var(--title-text)]">Professional Templates</h2>
-                    <p class="text-[var(--subtitle-text)]">Templates for career advancement</p>
-                </div>
-            </div>
-
-            <div class="space-y-4">
-                <!-- Professional Job Applications Template -->
-                <div class="border border-[var(--border-color)] rounded-lg p-4 hover:bg-[var(--task-hover-bg)] transition-colors duration-200">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">Career Transition Tracker</h3>
-                            <p class="text-sm text-[var(--text-secondary)] mb-3">
-                                Manage your professional job search with networking, applications, and interview tracking.
-                            </p>
-                        </div>
-                        <div class="text-emerald-500 ml-4">
-                            <i class="fas fa-chart-line text-xl"></i>
-                        </div>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span class="bg-emerald-100 text-emerald-800 text-xs px-2 py-1 rounded">Career Growth</span>
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Networking</span>
-                        <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded">Interview Prep</span>
-                    </div>
-                    <a href="{% url 'pages:professionals_jobs_template' %}" 
-                       class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 inline-block">
-                        Use This Template
-                    </a>
-                </div>
-
-                <!-- Placeholder for future professional templates -->
-                <div class="border border-[var(--border-color)] rounded-lg p-4 bg-gray-50 opacity-75">
-                    <div class="flex justify-between items-start mb-3">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-500 mb-2">More Templates Coming Soon</h3>
-                            <p class="text-sm text-gray-400 mb-3">
-                                We're working on additional professional templates including project management, team coordination, and goal tracking.
-                            </p>
-                        </div>
-                        <div class="text-gray-400 ml-4">
-                            <i class="fas fa-plus-circle text-xl"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
+             <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Exam Revision Planner</h2>
+             <p class="mt-2 text-sm text-[var(--text-secondary)]">Break down your revision schedule into manageable, daily tasks to ace your exams and coursework.</p>
+             <button class="mt-4 w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200">
+                Use Template
+             </button>
         </div>
     </div>
 
-    <!-- Getting Started Section -->
-    <div class="bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)] p-8 text-center">
-        <h2 class="text-2xl font-bold text-[var(--title-text)] mb-4">How Templates Work</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div class="text-center">
-                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-mouse-pointer text-blue-600 text-xl"></i>
+    <!-- Divider -->
+    <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
+    <!-- Interactive Job Tracker Section -->
+    <div class="px-4">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 md:gap-8">
+            <!-- Left Column: Template Selection -->
+            <div class="xl:col-span-1">
+                <div class="space-y-4">
+                    <!-- Job Application Tracker Card -->
+                    <div id="job-tracker-card" class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
+                        <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Student Job Application Tracker</h2>
+                        <p class="mt-2 text-sm text-[var(--text-secondary)]">Essential for managing your internship applications, graduate schemes, and part-time job searches.</p>
+                        
+                        <div class="mt-4 md:mt-6">
+                            <p class="text-xs font-semibold text-[var(--subtitle-text)] uppercase tracking-wider mb-2">✨ Choose your career path</p>
+                            <div id="variation-tags-container" class="flex flex-wrap gap-2">
+                                <span class="variation-tag active bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="generic">General</span>
+                                <span class="variation-tag bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="accounting">Accounting</span>
+                                <span class="variation-tag bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="consulting">Consulting</span>
+                                <span class="variation-tag bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="marketing">Marketing</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">1. Choose Template</h3>
-                <p class="text-sm text-[var(--text-secondary)]">Select a template that matches your workflow and goals</p>
             </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-edit text-green-600 text-xl"></i>
+
+            <!-- Right Column: Template Preview -->
+            <div class="xl:col-span-2">
+                <div class="bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
+                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
+                        <div>
+                            <h3 id="preview-title" class="text-lg md:text-xl font-bold text-[var(--text-primary)]"></h3>
+                            <p id="preview-subtitle" class="text-sm text-[var(--subtitle-text)]"></p>
+                        </div>
+                        <button class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200 w-full sm:w-auto">
+                            Use Template
+                        </button>
+                    </div>
+                    
+                    <div id="template-preview-container" class="overflow-x-auto border border-[var(--border-color)] rounded-md">
+                        <!-- Preview Table will be rendered here by JavaScript -->
+                    </div>
+                    
+                    <!-- Mobile scroll hint -->
+                    <div class="mt-2 text-xs text-[var(--text-secondary)] text-center md:hidden">
+                        ← Swipe to explore the grid →
+                    </div>
                 </div>
-                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">2. Customize</h3>
-                <p class="text-sm text-[var(--text-secondary)]">Modify categories, add your own tasks, and personalize the layout</p>
             </div>
-            <div class="text-center">
-                <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i class="fas fa-rocket text-purple-600 text-xl"></i>
-                </div>
-                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">3. Get Productive</h3>
-                <p class="text-sm text-[var(--text-secondary)]">Start tracking progress and achieving your goals immediately</p>
-            </div>
-        </div>
-        
-        <div class="mt-8">
-            <a href="{% url 'pages:project_create' %}" 
-               class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-md font-medium transition-colors duration-200 inline-block mr-4">
-                Create Custom Project
-            </a>
-            <a href="{% url 'pages:project_list' %}" 
-               class="border border-[var(--border-color)] text-[var(--text-primary)] px-6 py-3 rounded-md font-medium hover:bg-[var(--task-hover-bg)] transition-colors duration-200 inline-block">
-                View My Projects
-            </a>
         </div>
     </div>
 </div>

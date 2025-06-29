@@ -300,3 +300,108 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     transform: scale(0.95);
 }
 
+/* Template Gallery Styles */
+.template-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.template-card:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.variation-tag {
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.variation-tag.active {
+    background-color: var(--primary-action-bg);
+    color: var(--primary-action-text);
+    font-weight: 500;
+}
+
+#template-preview-container {
+    transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+/* Mobile-specific optimizations for template gallery */
+@media (max-width: 768px) {
+    .template-card {
+        /* Improve touch targets on mobile */
+    }
+    
+    .variation-tag {
+        /* Better touch targets */
+        min-height: 36px;
+        padding: 8px 12px;
+    }
+    
+    /* Optimize grid preview for mobile */
+    .grid-table-fixed-col {
+        min-width: 120px;
+    }
+    
+    .grid-table-scrollable {
+        /* Smooth scrolling on mobile */
+        -webkit-overflow-scrolling: touch;
+        scroll-behavior: smooth;
+    }
+    
+    /* Ensure mobile grid content is readable */
+    .grid-table-fixed td,
+    .grid-table td {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+    
+    .grid-table-fixed th,
+    .grid-table th {
+        font-size: 12px;
+        font-weight: 600;
+    }
+}
+
+/* Ensure horizontal scrolling works well on all devices */
+.grid-table-scrollable {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+}
+
+.grid-table-scrollable::-webkit-scrollbar {
+    height: 6px;
+}
+
+.grid-table-scrollable::-webkit-scrollbar-track {
+    background: var(--grid-header-bg);
+    border-radius: 3px;
+}
+
+.grid-table-scrollable::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 3px;
+}
+
+.grid-table-scrollable::-webkit-scrollbar-thumb:hover {
+    background-color: #6b7280;
+}
+
+/* Task Completion Styles */
+.checkbox-completed {
+    background-color: var(--primary-action-bg) !important;
+    border-color: var(--primary-action-bg) !important;
+}
+
+.task-completed-strikethrough {
+    text-decoration: line-through;
+    opacity: 0.6;
+    color: var(--text-secondary) !important;
+}
+
