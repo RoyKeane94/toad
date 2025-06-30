@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                disabled
                                class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer ${task.completed ? 'checkbox-completed' : ''}">
                     </div>
-                    <div id="task-text-${taskId}" class="text-sm text-[var(--text-primary)] ${task.completed ? 'task-completed-strikethrough' : ''} leading-relaxed">${task.text}</div>
+                    <div id="task-text-${taskId}" class="text-sm task-text ${task.completed ? 'task-completed-strikethrough' : ''} leading-relaxed">${task.text}</div>
                 </div>
             </div>`;
     }

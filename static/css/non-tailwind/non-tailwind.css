@@ -395,13 +395,27 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Task Completion Styles */
 .checkbox-completed {
-    background-color: var(--primary-action-bg) !important;
-    border-color: var(--primary-action-bg) !important;
+    background-color: #16a34a !important; /* Dark green instead of yellow */
+    border-color: #16a34a !important;
 }
 
 .task-completed-strikethrough {
     text-decoration: line-through;
     opacity: 0.6;
-    color: var(--text-secondary) !important;
+    color: #86efac !important; /* Light pale green */
+}
+
+/* Task text styling */
+.task-text {
+    color: #16a34a !important; /* Dark green */
+}
+
+.task-text.task-completed-strikethrough {
+    color: #86efac !important; /* Light pale green when completed */
+}
+
+/* Checkbox tick color */
+input[type="checkbox"] {
+    accent-color: #16a34a !important; /* Dark green tick */
 }
 
