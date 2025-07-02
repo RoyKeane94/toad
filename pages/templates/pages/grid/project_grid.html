@@ -37,7 +37,7 @@
         <div class="flex items-center space-x-4">
             <!-- Current Grid Display -->
             <div class="flex items-center space-x-2">
-                <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
+                <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
                     <i class="fas fa-project-diagram text-white text-sm"></i>
                 </div>
                 <div>
@@ -67,7 +67,7 @@
                 {% for p in projects %}
                                 <a href="{% url 'pages:project_grid' pk=p.pk %}" 
                                    class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 cursor-pointer {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
-                                    <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br {% if p.pk == project.pk %}from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)]{% else %}from-gray-400 to-gray-500{% endif %} shadow-sm">
+                                    <div class="flex items-center justify-center w-6 h-6 rounded {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]{% else %}bg-gray-500{% endif %} shadow-sm">
                                         <i class="fas fa-project-diagram text-white text-xs"></i>
                                     </div>
                                     <div class="flex-1 min-w-0">
@@ -91,7 +91,7 @@
                     <div class="px-3">
                         <a href="{% url 'pages:project_list' %}" 
                            class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
-                            <div class="flex items-center justify-center w-6 h-6 rounded bg-gradient-to-br from-gray-400 to-gray-500 shadow-sm">
+                            <div class="flex items-center justify-center w-6 h-6 rounded bg-gray-500 shadow-sm">
                                 <i class="fas fa-arrow-left text-white text-xs"></i>
                             </div>
                             <span class="font-medium text-sm">Back to All Grids</span>
@@ -130,7 +130,7 @@
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-sm">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--delete-button-bg)] rounded-lg shadow-sm">
                     <i class="fas fa-exclamation-triangle text-white"></i>
                 </div>
                 <div>
@@ -149,7 +149,7 @@
                 <p class="text-[var(--text-primary)] mb-2">Are you sure you want to delete this task?</p>
                 <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
                     <div class="flex items-start space-x-3">
-                        <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm flex-shrink-0">
+                        <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm flex-shrink-0">
                             <i class="fas fa-tasks text-white text-sm"></i>
                         </div>
                         <div class="flex-1 min-w-0">
@@ -169,13 +169,12 @@
                 <i class="fas fa-times mr-2"></i>Cancel
             </button>
             <form id="delete-task-form" method="post" class="inline"
-                  hx-post=""
                   hx-swap="none"
                   hx-trigger="submit"
                   hx-disabled-elt="this">
                 {% csrf_token %}
                 <button type="submit" 
-                        class="w-32 h-10 flex items-center justify-center bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105">
+                        class="w-32 h-10 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md">
                     <i class="fas fa-trash mr-2"></i>Delete Task
                 </button>
             </form>

@@ -1,7 +1,7 @@
 <!-- Modal Header -->
 <div class="flex items-center p-6 border-b border-[var(--border-color)]">
     <div class="flex items-center space-x-3">
-        <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-red-500 to-red-600 rounded-lg shadow-sm">
+        <div class="flex items-center justify-center w-10 h-10 bg-[var(--delete-button-bg)] rounded-lg shadow-sm">
             <i class="fas fa-exclamation-triangle text-white"></i>
         </div>
         <div>
@@ -17,7 +17,7 @@
         <p class="text-[var(--text-primary)] mb-2">Are you sure you want to delete this column?</p>
         <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
             <div class="flex items-start space-x-3">
-                <div class="flex items-center justify-center w-8 h-8 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm flex-shrink-0">
+                <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm flex-shrink-0">
                     <i class="fas fa-columns text-white text-sm"></i>
                 </div>
                 <div class="flex-1 min-w-0">
@@ -46,7 +46,7 @@
              end">
         {% csrf_token %}
         <button type="submit" 
-                class="px-4 py-2 flex items-center justify-center bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md transform hover:scale-105 cursor-pointer">
+                class="px-4 py-2 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
             <i class="fas fa-trash mr-2"></i>Delete Column
         </button>
     </form>

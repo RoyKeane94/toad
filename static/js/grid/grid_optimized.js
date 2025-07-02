@@ -184,6 +184,27 @@ class GridManager {
         if (!e.target.closest('.add-task-form')) {
             this.collapseAllAddTaskForms();
         }
+
+        // Handle task completion checkbox clicks (fallback for hyperscript issues)
+        const checkbox = e.target.closest('input[type="checkbox"][name="completed"]');
+        if (checkbox) {
+            const form = checkbox.closest('form');
+            if (form && form.hasAttribute('hx-post')) {
+                // Let HTMX handle the request, but apply visual changes immediately
+                const taskId = checkbox.id.replace('checkbox-', '');
+                const taskText = document.getElementById(`task-text-${taskId}`);
+                
+                if (taskText) {
+                    if (checkbox.checked) {
+                        checkbox.classList.add('checkbox-completed');
+                        taskText.classList.add('task-completed-strikethrough');
+                    } else {
+                        checkbox.classList.remove('checkbox-completed');
+                        taskText.classList.remove('task-completed-strikethrough');
+                    }
+                }
+            }
+        }
     }
 
     // Unified keyboard handler
@@ -273,6 +294,8 @@ class GridManager {
         }
         if (this.elements.deleteTaskForm) {
             this.elements.deleteTaskForm.action = deleteUrl;
+            // Set HTMX attribute for proper handling
+            this.elements.deleteTaskForm.setAttribute('hx-post', deleteUrl);
         }
         
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, true);
@@ -633,6 +656,62 @@ class GridManager {
             sessionStorage.setItem('grid-scroll-position', this.elements.scrollable.scrollLeft.toString());
         }
 
+        // Handle task completion toggle errors (revert visual changes)
+        if (!e.detail.successful && e.target.closest('form[hx-post*="toggle"]')) {
+            const form = e.target.closest('form');
+            const checkbox = form.querySelector('input[type="checkbox"][name="completed"]');
+            if (checkbox) {
+                const taskId = checkbox.id.replace('checkbox-', '');
+                const taskText = document.getElementById(`task-text-${taskId}`);
+                
+                // Revert checkbox state
+                checkbox.checked = !checkbox.checked;
+                
+                // Revert visual changes
+                if (taskText) {
+                    if (checkbox.checked) {
+                        checkbox.classList.add('checkbox-completed');
+                        taskText.classList.add('task-completed-strikethrough');
+                    } else {
+                        checkbox.classList.remove('checkbox-completed');
+                        taskText.classList.remove('task-completed-strikethrough');
+                    }
+                }
+            }
+        }
+
+        // Handle task completion toggle success (ensure visual state is correct)
+        if (e.detail.successful && e.target.closest('form[hx-post*="toggle"]')) {
+            // Parse the response to ensure visual state matches server state
+            try {
+                const response = JSON.parse(e.detail.xhr.response);
+                if (response.success && response.hasOwnProperty('completed')) {
+                    const form = e.target.closest('form');
+                    const checkbox = form.querySelector('input[type="checkbox"][name="completed"]');
+                    if (checkbox) {
+                        const taskId = checkbox.id.replace('checkbox-', '');
+                        const taskText = document.getElementById(`task-text-${taskId}`);
+                        
+                        // Ensure checkbox state matches server response
+                        checkbox.checked = response.completed;
+                        
+                        // Ensure visual state matches
+                        if (taskText) {
+                            if (response.completed) {
+                                checkbox.classList.add('checkbox-completed');
+                                taskText.classList.add('task-completed-strikethrough');
+                            } else {
+                                checkbox.classList.remove('checkbox-completed');
+                                taskText.classList.remove('task-completed-strikethrough');
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                // Response is not JSON, ignore
+            }
+        }
+
         // Handle successful form submissions
         if (e.detail.successful) {
             const form = e.target.closest('.task-form');
@@ -696,6 +775,12 @@ class GridManager {
                     textField.setSelectionRange(textField.value.length, textField.value.length);
                 }, 150);
             }
+        }
+        
+        // Re-process hyperscript for new task content
+        const isNewTaskContent = e.detail.target && e.detail.target.closest('[id^="tasks-"]');
+        if (isNewTaskContent && typeof window._hyperscript !== 'undefined') {
+            window._hyperscript.processNode(e.detail.target);
         }
         
         // Only reinitialize if this is a significant change (modal content or full grid updates)
