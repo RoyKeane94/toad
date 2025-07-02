@@ -4450,3 +4450,13 @@ INFO 2025-07-02 20:35:25,968 basehttp 7379 6218903552 "POST /tasks/82/toggle/ HT
 INFO 2025-07-02 20:35:26,755 basehttp 7379 6218903552 "POST /tasks/82/toggle/ HTTP/1.1" 200 79
 INFO 2025-07-02 20:35:27,140 basehttp 7379 6218903552 "POST /tasks/82/toggle/ HTTP/1.1" 200 79
 INFO 2025-07-02 20:35:28,039 basehttp 7379 6218903552 "POST /tasks/82/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-02 20:49:22,591 autoreload 7780 8301223680 Watching for file changes with StatReloader
+INFO 2025-07-02 20:49:50,990 basehttp 7780 6156431360 "GET /projects/1/ HTTP/1.1" 200 12721
+INFO 2025-07-02 20:49:51,008 basehttp 7780 6190084096 "GET /static/js/general/general.min.js HTTP/1.1" 200 10377
+INFO 2025-07-02 20:49:51,009 basehttp 7780 6173257728 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 10556
+INFO 2025-07-02 20:49:51,010 basehttp 7780 6206910464 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 33356
+INFO 2025-07-02 20:49:51,010 basehttp 7780 6156431360 "GET /static/css/output.css HTTP/1.1" 200 60149
+INFO 2025-07-02 20:49:53,865 basehttp 7780 6156431360 "GET /tasks/17/edit/ HTTP/1.1" 200 1075
+INFO 2025-07-02 20:49:57,235 basehttp 7780 6156431360 "GET /projects/1/columns/3/edit/ HTTP/1.1" 200 995
+INFO 2025-07-02 20:50:00,243 basehttp 7780 6156431360 "GET /projects/1/columns/2/edit/ HTTP/1.1" 200 989
+INFO 2025-07-02 20:50:03,147 basehttp 7780 6156431360 "GET /projects/1/rows/2/edit/ HTTP/1.1" 200 1031

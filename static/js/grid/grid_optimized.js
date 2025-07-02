@@ -73,6 +73,8 @@ class GridManager {
             ['document', 'htmx:afterRequest', this.handleHtmxAfterRequest.bind(this)],
             ['document', 'htmx:afterSwap', this.handleHtmxAfterSwap.bind(this)],
             ['document', 'htmx:afterSettle', this.handleHtmxAfterSettle.bind(this)],
+            ['document', 'htmx:responseError', this.handleHtmxError.bind(this)],
+            ['document', 'htmx:sendError', this.handleHtmxError.bind(this)],
             
             // Body level events
             ['body', 'openModal', this.showModal.bind(this)],
@@ -732,6 +734,29 @@ class GridManager {
         }
     }
 
+    handleHtmxError(e) {
+        // Handle HTMX errors when loading modal content
+        if (e.detail.target && e.detail.target.id === 'modal-content') {
+            this.elements.modalContent.innerHTML = `
+                <div class="flex items-center justify-center p-8">
+                    <div class="flex flex-col items-center space-y-3 text-center">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-[var(--text-primary)]">Error Loading Content</h3>
+                            <p class="text-sm text-[var(--text-secondary)] mt-1">Unable to load the requested content. Please try again.</p>
+                        </div>
+                        <button type="button" 
+                                class="close-modal mt-4 px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
     reinitializeComponents() {
         // Store current scroll position before reinitializing
         const currentScrollLeft = this.elements.scrollable ? this.elements.scrollable.scrollLeft : 0;
@@ -771,6 +796,12 @@ class GridManager {
         this.cacheElements();
         this.addEventListeners();
         this.setupGridScrolling();
+        
+        // Configure HTMX to not cache modal content
+        if (typeof htmx !== 'undefined') {
+            htmx.config.disableSelector = '[hx-disable]';
+            htmx.config.useTemplateFragments = false;
+        }
         
         console.log('Grid JavaScript optimized and loaded');
     }
