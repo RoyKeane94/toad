@@ -199,13 +199,16 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     min-width: 0;
     border: 1px solid #f3f4f6;
     border-radius: 8px;
-    overflow: hidden; /* Important: clips the rounded corners */
+    /* overflow: hidden removed to allow sticky headers to work */
 }
 
 /* === Fixed Left Table (Category) === */
 .grid-table-fixed-col {
     flex-shrink: 0; /* Prevent from shrinking */
     border-right: 1px solid #f3f4f6;
+    /* Create a new stacking context */
+    position: relative;
+    z-index: 1;
 }
 
 /* === Scrollable Right Table (Data) === */
@@ -213,6 +216,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     flex: 1; /* Take up remaining space */
     overflow-x: auto;
     scroll-behavior: smooth;
+    /* Create a new stacking context */
+    position: relative;
+    z-index: 1;
 }
 
 /* === General Table Styles (for both tables) === */
@@ -253,11 +259,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* === Header Styles (for both tables) === */
 .grid-table-fixed th, .grid-table th {
-    background-color: var(--grid-header-bg);
+    background-color: var(--container-bg);
     font-weight: 600;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    border-bottom: 2px solid var(--border-color);
 }
 
 /* Scroll Buttons */

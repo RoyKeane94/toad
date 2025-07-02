@@ -14,6 +14,9 @@ class GridManager {
         this.elements = {};
         this.observers = new Map();
         this.eventListeners = new Map();
+        this.stickyThreshold = 0;
+        this.isHeaderSticky = false;
+        this.originalHeaderPositions = new Map();
         
         this.init();
     }
@@ -46,7 +49,11 @@ class GridManager {
             
             // Rows
             fixedRows: '.grid-table-fixed tr',
-            scrollRows: '.grid-table-scrollable .grid-table tr'
+            scrollRows: '.grid-table-scrollable .grid-table tr',
+            
+            // Sticky headers
+            fixedTable: '.grid-table-fixed',
+            dataTable: '.grid-table'
         };
 
         Object.keys(selectors).forEach(key => {
@@ -86,6 +93,8 @@ class GridManager {
             }
             this.eventListeners.get(element).push({ event, handler });
         });
+
+        // Sticky headers are now handled by setupStickyHeaders method
     }
 
     // Unified click handler to reduce event listeners
@@ -469,6 +478,148 @@ class GridManager {
         window.location.reload();
     }
 
+    // Sticky header methods
+    setupStickyHeaders() {
+        // Calculate the threshold - when the header section scrolls out of view
+        const headerSection = document.querySelector('.mb-6');
+        if (headerSection) {
+            const rect = headerSection.getBoundingClientRect();
+            this.stickyThreshold = rect.bottom + window.scrollY;
+        }
+        
+        // Store original positions of headers
+        const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
+        headers.forEach((header, index) => {
+            const rect = header.getBoundingClientRect();
+            this.originalHeaderPositions.set(header, {
+                top: rect.top + window.scrollY,
+                left: rect.left,
+                width: rect.width,
+                height: rect.height
+            });
+            
+            // Apply base styling
+            header.style.backgroundColor = 'var(--container-bg)';
+            header.style.borderBottom = '2px solid var(--border-color)';
+            header.style.zIndex = '1';
+        });
+        
+        // Add scroll listener
+        this.addScrollListener();
+    }
+    
+    addScrollListener() {
+        const scrollHandler = () => {
+            const scrollY = window.pageYOffset;
+            const shouldStick = scrollY > (this.stickyThreshold - 60); // 60px offset for better UX
+            
+            if (shouldStick && !this.isHeaderSticky) {
+                this.makeHeadersSticky();
+            } else if (!shouldStick && this.isHeaderSticky) {
+                this.makeHeadersNormal();
+            }
+            
+            // Update positions if sticky
+            if (this.isHeaderSticky) {
+                this.updateStickyPositions();
+            }
+        };
+        
+        window.addEventListener('scroll', scrollHandler);
+        
+        // Also listen for horizontal scroll to update positions
+        const horizontalScrollHandler = () => {
+            if (this.isHeaderSticky) {
+                this.updateStickyPositions();
+            }
+        };
+        
+        const scrollableContainer = document.querySelector('.grid-table-scrollable');
+        if (scrollableContainer) {
+            scrollableContainer.addEventListener('scroll', horizontalScrollHandler);
+        }
+        
+        // Store listeners for cleanup
+        if (!this.eventListeners.has(window)) {
+            this.eventListeners.set(window, []);
+        }
+        this.eventListeners.get(window).push({ event: 'scroll', handler: scrollHandler });
+        
+        if (scrollableContainer) {
+            if (!this.eventListeners.has(scrollableContainer)) {
+                this.eventListeners.set(scrollableContainer, []);
+            }
+            this.eventListeners.get(scrollableContainer).push({ event: 'scroll', handler: horizontalScrollHandler });
+        }
+    }
+    
+    makeHeadersSticky() {
+        this.isHeaderSticky = true;
+        
+        const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
+        headers.forEach(header => {
+            const originalPos = this.originalHeaderPositions.get(header);
+            if (originalPos) {
+                header.style.position = 'fixed';
+                header.style.top = '0px';
+                header.style.left = originalPos.left + 'px';
+                header.style.width = originalPos.width + 'px';
+                header.style.height = originalPos.height + 'px';
+                header.style.zIndex = '100';
+                header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    }
+    
+    makeHeadersNormal() {
+        this.isHeaderSticky = false;
+        
+        const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
+        headers.forEach(header => {
+            header.style.position = 'static';
+            header.style.top = 'auto';
+            header.style.left = 'auto';
+            header.style.width = 'auto';
+            header.style.height = 'auto';
+            header.style.zIndex = '1';
+            header.style.boxShadow = 'none';
+        });
+    }
+    
+    updateStickyPositions() {
+        if (!this.isHeaderSticky) return;
+        
+        // Update positions based on current layout
+        const gridWrapper = document.querySelector('.grid-container-wrapper');
+        const scrollableContainer = document.querySelector('.grid-table-scrollable');
+        
+        if (gridWrapper && scrollableContainer) {
+            const wrapperRect = gridWrapper.getBoundingClientRect();
+            const scrollLeft = scrollableContainer.scrollLeft;
+            
+            const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
+            headers.forEach(header => {
+                const isInScrollableArea = header.closest('.grid-table-scrollable');
+                
+                if (isInScrollableArea) {
+                    // For headers in scrollable area, adjust for horizontal scroll
+                    const originalPos = this.originalHeaderPositions.get(header);
+                    if (originalPos) {
+                        header.style.left = (originalPos.left - scrollLeft) + 'px';
+                    }
+                } else {
+                    // For fixed column headers, keep original position
+                    const originalPos = this.originalHeaderPositions.get(header);
+                    if (originalPos) {
+                        header.style.left = wrapperRect.left + 'px';
+                    }
+                }
+            });
+        }
+    }
+
+    // Sticky headers are now handled purely by CSS
+
     // Task edit column tracking no longer needed since we update in place
 
     // HTMX event handlers
@@ -701,9 +852,16 @@ class GridManager {
         // Store current scroll position before reinitializing
         const currentScrollLeft = this.elements.scrollable ? this.elements.scrollable.scrollLeft : 0;
         
+        // Reset sticky headers state
+        this.isHeaderSticky = false;
+        this.originalHeaderPositions.clear();
+        
         this.cacheElements();
         // Skip restore during reinit to avoid double scroll position changes
         this.setupGridScrolling(true);
+        
+        // Reinitialize sticky headers with a small delay to ensure layout is ready
+        setTimeout(() => this.setupStickyHeaders(), 50);
         
         // Restore scroll position immediately, no timeout
         if (this.elements.scrollable && currentScrollLeft > 0) {
@@ -718,6 +876,12 @@ class GridManager {
 
     // Cleanup method
     cleanup() {
+        // Reset sticky headers if active
+        if (this.isHeaderSticky) {
+            this.makeHeadersNormal();
+        }
+        this.originalHeaderPositions.clear();
+        
         // Remove event listeners
         this.eventListeners.forEach((listeners, element) => {
             listeners.forEach(({ event, handler }) => {
@@ -736,6 +900,9 @@ class GridManager {
         this.cacheElements();
         this.addEventListeners();
         this.setupGridScrolling();
+        
+        // Setup sticky headers after a short delay to ensure DOM is ready
+        setTimeout(() => this.setupStickyHeaders(), 100);
         
         console.log('Grid JavaScript optimized and loaded');
     }

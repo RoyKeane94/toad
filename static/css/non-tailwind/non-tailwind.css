@@ -199,13 +199,16 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     min-width: 0;
     border: 1px solid #f3f4f6;
     border-radius: 8px;
-    overflow: hidden; /* Important: clips the rounded corners */
+    /* overflow: hidden removed to allow sticky headers to work */
 }
 
 /* === Fixed Left Table (Category) === */
 .grid-table-fixed-col {
     flex-shrink: 0; /* Prevent from shrinking */
     border-right: 1px solid #f3f4f6;
+    /* Create a new stacking context */
+    position: relative;
+    z-index: 1;
 }
 
 /* === Scrollable Right Table (Data) === */
@@ -213,6 +216,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     flex: 1; /* Take up remaining space */
     overflow-x: auto;
     scroll-behavior: smooth;
+    /* Create a new stacking context */
+    position: relative;
+    z-index: 1;
 }
 
 /* === General Table Styles (for both tables) === */
@@ -253,11 +259,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* === Header Styles (for both tables) === */
 .grid-table-fixed th, .grid-table th {
-    background-color: var(--grid-header-bg);
+    background-color: var(--container-bg);
     font-weight: 600;
-    position: sticky;
-    top: 0;
-    z-index: 1;
+    border-bottom: 2px solid var(--border-color);
 }
 
 /* Scroll Buttons */
@@ -385,6 +389,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 .checkbox-completed {
     background-color: #16a34a !important; /* Dark green instead of yellow */
     border-color: #16a34a !important;
+    transition: all 0.2s ease-in-out; /* Smooth checkbox transition */
 }
 
 .task-completed-strikethrough {
@@ -393,19 +398,41 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     text-decoration-skip-ink: none; /* Ensure line goes through everything */
     opacity: 0.6;
     color: #86efac !important; /* Light pale green */
+    transition: all 0.3s ease-in-out; /* Smooth text transition */
+    animation: taskComplete 0.4s ease-out; /* Subtle completion animation */
 }
 
 /* Task text styling */
 .task-text {
     color: #16a34a !important; /* Dark green */
+    transition: all 0.3s ease-in-out; /* Smooth color transitions */
 }
 
 .task-text.task-completed-strikethrough {
     color: #86efac !important; /* Light pale green when completed */
 }
 
-/* Checkbox tick color */
+/* Checkbox tick color and transitions */
 input[type="checkbox"] {
     accent-color: #16a34a !important; /* Dark green tick */
+    transition: all 0.2s ease-in-out; /* Smooth checkbox transitions */
+}
+
+/* Enhanced checkbox styling for better feedback */
+input[type="checkbox"]:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.1);
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+/* Add a subtle animation when task gets completed */
+@keyframes taskComplete {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
 }
 

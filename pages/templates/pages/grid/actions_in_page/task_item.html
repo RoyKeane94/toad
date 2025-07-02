@@ -10,15 +10,29 @@
               hx-swap="none"
               hx-trigger="change throttle:300ms"
               hx-disabled-elt="find input"
-              _="on htmx:afterRequest(detail) 
-                 if detail.successful
-                   set response to JSON.parse(detail.xhr.response)
-                   if response.completed
+              _="on change 
+                   -- Apply visual changes immediately for instant feedback
+                   if target.checked
                      add .task-completed-strikethrough to #task-text-{{ task.id }}
                      add .checkbox-completed to #checkbox-{{ task.id }}
                    else
                      remove .task-completed-strikethrough from #task-text-{{ task.id }}
                      remove .checkbox-completed from #checkbox-{{ task.id }}
+                   end
+                 end
+                 on htmx:afterRequest(detail) 
+                   -- Handle server response errors by reverting changes
+                   if not detail.successful
+                     -- Server request failed, revert visual changes
+                     if target.checked
+                       remove .task-completed-strikethrough from #task-text-{{ task.id }}
+                       remove .checkbox-completed from #checkbox-{{ task.id }}
+                       set target.checked to false
+                     else
+                       add .task-completed-strikethrough to #task-text-{{ task.id }}
+                       add .checkbox-completed to #checkbox-{{ task.id }}
+                       set target.checked to true
+                     end
                    end
                  end">
             {% csrf_token %}

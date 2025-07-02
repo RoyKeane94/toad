@@ -14,6 +14,7 @@ class GridManager {
         this.elements = {};
         this.observers = new Map();
         this.eventListeners = new Map();
+
         
         this.init();
     }
@@ -46,7 +47,11 @@ class GridManager {
             
             // Rows
             fixedRows: '.grid-table-fixed tr',
-            scrollRows: '.grid-table-scrollable .grid-table tr'
+            scrollRows: '.grid-table-scrollable .grid-table tr',
+            
+            // Sticky headers
+            fixedTable: '.grid-table-fixed',
+            dataTable: '.grid-table'
         };
 
         Object.keys(selectors).forEach(key => {
@@ -86,10 +91,19 @@ class GridManager {
             }
             this.eventListeners.get(element).push({ event, handler });
         });
+
+        // Sticky headers are not implemented
     }
 
     // Unified click handler to reduce event listeners
     handleDocumentClick(e) {
+        // Modal triggers - clear content immediately before HTMX loads new content
+        const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
+        if (modalTrigger) {
+            this.clearModalContent();
+            this.showModal();
+        }
+
         // Project switcher
         if (e.target.closest('#project-switcher-btn')) {
             e.stopPropagation();
@@ -277,6 +291,20 @@ class GridManager {
 
     hideModal() {
         this.setModalState(this.elements.modal, this.elements.modalContent, false);
+    }
+
+    clearModalContent() {
+        if (this.elements.modalContent) {
+            // Show loading state instead of previous content
+            this.elements.modalContent.innerHTML = `
+                <div class="flex items-center justify-center p-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="animate-spin w-6 h-6 border-2 border-[var(--primary-action-bg)] border-t-transparent rounded-full"></div>
+                        <span class="text-[var(--text-secondary)]">Loading...</span>
+                    </div>
+                </div>
+            `;
+        }
     }
 
     setModalState(modal, content, isOpen) {
@@ -469,6 +497,10 @@ class GridManager {
         window.location.reload();
     }
 
+
+
+    // No sticky header functionality
+
     // Task edit column tracking no longer needed since we update in place
 
     // HTMX event handlers
@@ -623,6 +655,9 @@ class GridManager {
         // Handle modal content updates
         if (e.detail.target.id === 'modal-content') {
             const modalContent = e.detail.target;
+            
+            // Modal content has loaded successfully, ensure modal is visible
+            this.showModal();
 
             // Find the text field (input or textarea) within the newly swapped content
             const textField = modalContent.querySelector('textarea, input[name="text"]');
