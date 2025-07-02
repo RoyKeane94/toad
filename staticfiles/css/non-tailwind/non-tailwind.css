@@ -372,35 +372,25 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* Ensure horizontal scrolling works well on all devices */
 .grid-table-scrollable {
     scroll-behavior: smooth;
-    scrollbar-width: thin;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
 }
 
+/* Hide scrollbar in Webkit browsers */
 .grid-table-scrollable::-webkit-scrollbar {
-    height: 6px;
-}
-
-.grid-table-scrollable::-webkit-scrollbar-track {
-    background: var(--grid-header-bg);
-    border-radius: 3px;
-}
-
-.grid-table-scrollable::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 3px;
-}
-
-.grid-table-scrollable::-webkit-scrollbar-thumb:hover {
-    background-color: #6b7280;
+    display: none;
 }
 
 /* Task Completion Styles */
 .checkbox-completed {
-    background-color: var(--primary-action-bg) !important;
-    border-color: var(--primary-action-bg) !important;
+    background-color: #16a34a !important; /* Dark green instead of yellow */
+    border-color: #16a34a !important;
 }
 
 .task-completed-strikethrough {
     text-decoration: line-through;
+    text-decoration-thickness: 2px; /* Make strikethrough more visible */
+    text-decoration-skip-ink: none; /* Ensure line goes through everything */
     opacity: 0.6;
     color: #86efac !important; /* Light pale green */
 }
@@ -412,5 +402,10 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 .task-text.task-completed-strikethrough {
     color: #86efac !important; /* Light pale green when completed */
+}
+
+/* Checkbox tick color */
+input[type="checkbox"] {
+    accent-color: #16a34a !important; /* Dark green tick */
 }
 

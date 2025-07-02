@@ -473,6 +473,123 @@ class GridManager {
 
     // HTMX event handlers
     handleHtmxAfterRequest(e) {
+        // Handle task deletion from delete modal
+        if (e.detail.successful &&
+            e.target.id === 'delete-task-form' &&
+            e.detail.requestConfig.verb === 'post') {
+
+            // Get the task ID that was being deleted
+            const taskId = this.state.currentTaskId;
+            
+            if (taskId) {
+                // Remove the task element from DOM
+                const taskElement = document.getElementById(`task-${taskId}`);
+                if (taskElement) {
+                    // Store current scroll position before removal
+                    const gridScrollable = document.querySelector('.grid-table-scrollable');
+                    const currentScrollLeft = gridScrollable ? gridScrollable.scrollLeft : 0;
+                    
+                    // Remove the task with animation
+                    taskElement.style.transition = 'all 0.3s ease';
+                    taskElement.style.opacity = '0';
+                    taskElement.style.transform = 'scale(0.95)';
+                    
+                    setTimeout(() => {
+                        taskElement.remove();
+                        
+                        // Restore scroll position
+                        if (gridScrollable && currentScrollLeft > 0) {
+                            gridScrollable.scrollLeft = currentScrollLeft;
+                        }
+                        
+                        // Sync row heights after removal, preserving scroll position
+                        setTimeout(() => {
+                            this.syncRowHeights();
+                            // Ensure scroll position is maintained after height sync
+                            if (gridScrollable && currentScrollLeft > 0) {
+                                gridScrollable.scrollLeft = currentScrollLeft;
+                                // Update grid manager's internal state to match
+                                if (this.state.dataColWidth > 0) {
+                                    this.state.currentCol = Math.round(currentScrollLeft / this.state.dataColWidth);
+                                    this.updateScrollButtons();
+                                }
+                            }
+                        }, 10);
+                    }, 300);
+                }
+            }
+            
+            // Close the delete modal
+            this.hideDeleteModal();
+            return;
+        }
+
+        // Handle task editing from edit modal
+        if (e.detail.successful &&
+            e.target.closest('#modal-content') &&
+            e.detail.requestConfig.verb === 'post') {
+
+            // Parse the response to get updated task data
+            let updatedTaskData = null;
+            try {
+                updatedTaskData = JSON.parse(e.detail.xhr.response);
+            } catch (e) {
+                // If response isn't JSON, fall back to page reload for safety
+                console.log('Non-JSON response, reloading page');
+                window.location.reload();
+                return;
+            }
+
+            // Close modal with animation
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+
+            modal.classList.add('opacity-0', 'invisible');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+
+            // Update the task in place instead of reloading
+            if (updatedTaskData && updatedTaskData.task_id && updatedTaskData.task_html) {
+                setTimeout(() => {
+                    const taskElement = document.getElementById(`task-${updatedTaskData.task_id}`);
+                    
+                    if (taskElement) {
+                        // Store current scroll position before update
+                        const gridScrollable = document.querySelector('.grid-table-scrollable');
+                        const currentScrollLeft = gridScrollable ? gridScrollable.scrollLeft : 0;
+                        
+                        // Replace the task content with updated HTML
+                        taskElement.outerHTML = updatedTaskData.task_html;
+                        
+                        // Restore scroll position immediately after update
+                        if (gridScrollable && currentScrollLeft > 0) {
+                            gridScrollable.scrollLeft = currentScrollLeft;
+                        }
+                        
+                        // Sync row heights after content change, preserving scroll position
+                        setTimeout(() => {
+                            this.syncRowHeights();
+                            // Ensure scroll position is maintained after height sync
+                            if (gridScrollable && currentScrollLeft > 0) {
+                                gridScrollable.scrollLeft = currentScrollLeft;
+                                // Update grid manager's internal state to match
+                                if (this.state.dataColWidth > 0) {
+                                    this.state.currentCol = Math.round(currentScrollLeft / this.state.dataColWidth);
+                                    this.updateScrollButtons();
+                                }
+                            }
+                        }, 10);
+                    } else {
+                        // Task element not found, reload as fallback
+                        window.location.reload();
+                    }
+                }, 300);
+            } else {
+                // No task data in response, reload as fallback
+                setTimeout(() => window.location.reload(), 300);
+            }
+        }
+
         // Only save scroll position if this might cause a page reload
         const shouldReload = e.detail.requestConfig && 
             (e.detail.requestConfig.verb === 'post' && 
@@ -503,6 +620,47 @@ class GridManager {
     }
 
     handleHtmxAfterSwap(e) {
+        // Handle modal content updates
+        if (e.detail.target.id === 'modal-content') {
+            const modalContent = e.detail.target;
+
+            // Find the text field (input or textarea) within the newly swapped content
+            const textField = modalContent.querySelector('textarea, input[name="text"]');
+
+            if (textField) {
+                // Define the keydown handler
+                const handleKeyDown = (e) => {
+                    if (e.key === 'Enter') {
+                        // If it's a textarea and Shift is held, allow default behavior (new line)
+                        if (textField.tagName.toLowerCase() === 'textarea' && e.shiftKey) {
+                            return;
+                        }
+
+                        // Otherwise, prevent default and submit the form
+                        e.preventDefault();
+                        const form = textField.closest('form');
+                        if (form) {
+                            const submitButton = form.querySelector('button[type="submit"]');
+                            if (submitButton) {
+                                submitButton.click();
+                            } else {
+                                form.submit();
+                            }
+                        }
+                    }
+                };
+
+                // Attach the event listener directly
+                textField.addEventListener('keydown', handleKeyDown);
+
+                // Focus the field and move cursor to the end
+                setTimeout(() => {
+                    textField.focus();
+                    textField.setSelectionRange(textField.value.length, textField.value.length);
+                }, 150);
+            }
+        }
+        
         // Only reinitialize if this is a significant change (modal content or full grid updates)
         const isModalUpdate = e.detail.target && e.detail.target.id === 'modal-content';
         const isGridUpdate = e.detail.target && e.detail.target.closest('#grid-content');
