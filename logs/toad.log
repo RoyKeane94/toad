@@ -4463,3 +4463,45 @@ INFO 2025-07-02 20:50:03,147 basehttp 7780 6156431360 "GET /projects/1/rows/2/ed
 INFO 2025-07-02 20:50:31,732 autoreload 7873 8301223680 Watching for file changes with StatReloader
 INFO 2025-07-02 20:50:35,319 basehttp 7873 6128480256 "GET /tasks/17/edit/ HTTP/1.1" 200 1089
 INFO 2025-07-02 20:50:40,030 basehttp 7873 6128480256 "GET /projects/1/columns/3/edit/ HTTP/1.1" 200 1018
+INFO 2025-07-02 21:11:21,714 autoreload 9005 8301223680 Watching for file changes with StatReloader
+INFO 2025-07-02 21:11:27,790 basehttp 9005 6193655808 "POST /projects/1/ HTTP/1.1" 200 8211
+INFO 2025-07-02 21:11:30,026 basehttp 9005 6193655808 "GET /projects/1/ HTTP/1.1" 200 12698
+INFO 2025-07-02 21:11:30,041 basehttp 9005 6227308544 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-02 21:11:30,041 basehttp 9005 6193655808 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-02 21:11:30,042 basehttp 9005 6210482176 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-02 21:11:30,045 basehttp 9005 6244134912 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 37624
+INFO 2025-07-02 21:11:54,355 autoreload 9214 8301223680 Watching for file changes with StatReloader
+INFO 2025-07-02 21:12:00,658 basehttp 9214 6165819392 "GET /projects/1/ HTTP/1.1" 200 12684
+INFO 2025-07-02 21:12:00,674 basehttp 9214 6182645760 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 10556
+INFO 2025-07-02 21:12:00,675 basehttp 9214 6199472128 "GET /static/js/general/general.min.js HTTP/1.1" 200 10377
+INFO 2025-07-02 21:12:00,675 basehttp 9214 6165819392 "GET /static/css/output.css HTTP/1.1" 200 59687
+INFO 2025-07-02 21:12:00,675 basehttp 9214 6216298496 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 37624
+INFO 2025-07-02 21:17:16,235 autoreload 9784 8301223680 Watching for file changes with StatReloader
+INFO 2025-07-02 21:17:23,943 basehttp 9784 6167670784 "GET /projects/1/ HTTP/1.1" 200 12665
+INFO 2025-07-02 21:17:23,961 basehttp 9784 6201323520 "GET /static/js/general/general.min.js HTTP/1.1" 200 10377
+INFO 2025-07-02 21:17:23,961 basehttp 9784 6184497152 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 10556
+INFO 2025-07-02 21:17:23,962 basehttp 9784 6167670784 "GET /static/css/output.css HTTP/1.1" 200 59637
+INFO 2025-07-02 21:17:23,962 basehttp 9784 6218149888 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 39312
+INFO 2025-07-02 21:17:27,407 project_views 9784 6167670784 User None deleted task: "Need to have instantly move to the right when adding a new column, so that people know where the column is" from project: Toad
+INFO 2025-07-02 21:17:27,411 basehttp 9784 6167670784 "POST /tasks/92/delete/ HTTP/1.1" 200 58
+INFO 2025-07-02 21:17:29,992 basehttp 9784 6167670784 "GET /projects/1/ HTTP/1.1" 200 12540
+INFO 2025-07-02 21:17:30,001 basehttp 9784 6218149888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-02 21:17:30,002 basehttp 9784 6167670784 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-02 21:17:30,003 basehttp 9784 6184497152 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 304 0
+INFO 2025-07-02 21:17:35,309 basehttp 9784 6184497152 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-02 21:17:35,325 log 9784 6184497152 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-02 21:17:35,326 basehttp 9784 6184497152 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1526
+INFO 2025-07-02 21:17:40,832 basehttp 9784 6184497152 "POST /projects/1/tasks/create/2/2/ HTTP/1.1" 200 1245
+INFO 2025-07-02 21:17:49,373 project_views 9784 6184497152 User None deleted task: "Test" from project: Toad
+INFO 2025-07-02 21:17:49,375 basehttp 9784 6184497152 "POST /tasks/142/delete/ HTTP/1.1" 200 58
+INFO 2025-07-02 21:19:48,099 autoreload 10029 8301223680 Watching for file changes with StatReloader
+WARNING 2025-07-02 21:19:53,903 log 10029 6135263232 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-02 21:19:53,904 basehttp 10029 6135263232 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1583
+INFO 2025-07-02 21:20:02,524 basehttp 10029 6135263232 "GET /projects/1/ HTTP/1.1" 200 12490
+INFO 2025-07-02 21:20:02,541 basehttp 10029 6152089600 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-02 21:20:02,544 log 10029 6135263232 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-02 21:20:02,546 basehttp 10029 6135263232 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1561
+INFO 2025-07-02 21:20:02,548 basehttp 10029 6168915968 "GET /static/js/general/general.min.js HTTP/1.1" 200 10377
+INFO 2025-07-02 21:20:02,550 basehttp 10029 6185742336 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 38125
+INFO 2025-07-02 21:20:05,961 project_views 10029 6185742336 User None deleted task: "Sort out error logging" from project: Toad
+INFO 2025-07-02 21:20:05,966 basehttp 10029 6185742336 "POST /tasks/48/delete/ HTTP/1.1" 200 58

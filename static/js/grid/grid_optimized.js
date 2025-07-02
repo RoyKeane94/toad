@@ -69,7 +69,7 @@ class GridManager {
         const listeners = [
             // Document level events
             ['document', 'click', this.handleDocumentClick.bind(this)],
-            ['document', 'keydown', this.handleKeydown.bind(this)],
+                        ['document', 'keydown', this.handleKeydown.bind(this)],
             ['document', 'htmx:afterRequest', this.handleHtmxAfterRequest.bind(this)],
             ['document', 'htmx:afterSwap', this.handleHtmxAfterSwap.bind(this)],
             ['document', 'htmx:afterSettle', this.handleHtmxAfterSettle.bind(this)],
@@ -296,6 +296,11 @@ class GridManager {
             this.elements.deleteTaskForm.action = deleteUrl;
             // Set HTMX attribute for proper handling
             this.elements.deleteTaskForm.setAttribute('hx-post', deleteUrl);
+            
+            // Tell HTMX to process the form with the new attributes
+            if (typeof htmx !== 'undefined') {
+                htmx.process(this.elements.deleteTaskForm);
+            }
         }
         
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, true);
@@ -578,6 +583,15 @@ class GridManager {
             
             // Close the delete modal
             this.hideDeleteModal();
+            return;
+        }
+
+        // Handle task deletion errors
+        if (!e.detail.successful &&
+            e.target.id === 'delete-task-form' &&
+            e.detail.requestConfig.verb === 'post') {
+            
+            alert('Failed to delete task. Please try again.');
             return;
         }
 

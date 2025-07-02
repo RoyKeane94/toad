@@ -14,9 +14,7 @@ class GridManager {
         this.elements = {};
         this.observers = new Map();
         this.eventListeners = new Map();
-        this.stickyThreshold = 0;
-        this.isHeaderSticky = false;
-        this.originalHeaderPositions = new Map();
+
         
         this.init();
     }
@@ -72,9 +70,12 @@ class GridManager {
             // Document level events
             ['document', 'click', this.handleDocumentClick.bind(this)],
             ['document', 'keydown', this.handleKeydown.bind(this)],
+            ['document', 'htmx:beforeRequest', this.handleHtmxBeforeRequest.bind(this)],
             ['document', 'htmx:afterRequest', this.handleHtmxAfterRequest.bind(this)],
             ['document', 'htmx:afterSwap', this.handleHtmxAfterSwap.bind(this)],
             ['document', 'htmx:afterSettle', this.handleHtmxAfterSettle.bind(this)],
+            ['document', 'htmx:responseError', this.handleHtmxError.bind(this)],
+            ['document', 'htmx:sendError', this.handleHtmxError.bind(this)],
             
             // Body level events
             ['body', 'openModal', this.showModal.bind(this)],
@@ -94,11 +95,18 @@ class GridManager {
             this.eventListeners.get(element).push({ event, handler });
         });
 
-        // Sticky headers are now handled by setupStickyHeaders method
+        // Sticky headers are not implemented
     }
 
     // Unified click handler to reduce event listeners
     handleDocumentClick(e) {
+        // Modal triggers - clear content immediately before HTMX loads new content
+        const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
+        if (modalTrigger) {
+            this.clearModalContent();
+            this.showModal();
+        }
+
         // Project switcher
         if (e.target.closest('#project-switcher-btn')) {
             e.stopPropagation();
@@ -128,6 +136,11 @@ class GridManager {
         const deleteBtn = e.target.closest('.delete-task-btn');
         if (deleteBtn) {
             e.preventDefault();
+            console.log('Delete button clicked:', {
+                taskId: deleteBtn.dataset.taskId,
+                taskText: deleteBtn.dataset.taskText,
+                deleteUrl: deleteBtn.dataset.deleteUrl
+            });
             this.showDeleteModal(
                 deleteBtn.dataset.taskId,
                 deleteBtn.dataset.taskText,
@@ -176,6 +189,27 @@ class GridManager {
         // Close add task forms when clicking outside
         if (!e.target.closest('.add-task-form')) {
             this.collapseAllAddTaskForms();
+        }
+
+        // Handle task completion checkbox clicks (fallback for hyperscript issues)
+        const checkbox = e.target.closest('input[type="checkbox"][name="completed"]');
+        if (checkbox) {
+            const form = checkbox.closest('form');
+            if (form && form.hasAttribute('hx-post')) {
+                // Let HTMX handle the request, but apply visual changes immediately
+                const taskId = checkbox.id.replace('checkbox-', '');
+                const taskText = document.getElementById(`task-text-${taskId}`);
+                
+                if (taskText) {
+                    if (checkbox.checked) {
+                        checkbox.classList.add('checkbox-completed');
+                        taskText.classList.add('task-completed-strikethrough');
+                    } else {
+                        checkbox.classList.remove('checkbox-completed');
+                        taskText.classList.remove('task-completed-strikethrough');
+                    }
+                }
+            }
         }
     }
 
@@ -258,6 +292,8 @@ class GridManager {
 
     // Modal methods
     showDeleteModal(taskId, taskText, deleteUrl) {
+        console.log('showDeleteModal called:', { taskId, taskText, deleteUrl });
+        
         this.state.currentTaskId = taskId;
         this.state.currentDeleteUrl = deleteUrl;
         
@@ -266,6 +302,23 @@ class GridManager {
         }
         if (this.elements.deleteTaskForm) {
             this.elements.deleteTaskForm.action = deleteUrl;
+            // Set HTMX attribute for proper handling
+            this.elements.deleteTaskForm.setAttribute('hx-post', deleteUrl);
+            
+            console.log('Form configured:', {
+                action: this.elements.deleteTaskForm.action,
+                hxPost: this.elements.deleteTaskForm.getAttribute('hx-post')
+            });
+            
+            // Tell HTMX to process the form with the new attributes
+            if (typeof htmx !== 'undefined') {
+                htmx.process(this.elements.deleteTaskForm);
+                console.log('HTMX processed form');
+            } else {
+                console.warn('HTMX not available');
+            }
+        } else {
+            console.error('Delete task form not found');
         }
         
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, true);
@@ -286,6 +339,20 @@ class GridManager {
 
     hideModal() {
         this.setModalState(this.elements.modal, this.elements.modalContent, false);
+    }
+
+    clearModalContent() {
+        if (this.elements.modalContent) {
+            // Show loading state instead of previous content
+            this.elements.modalContent.innerHTML = `
+                <div class="flex items-center justify-center p-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="animate-spin w-6 h-6 border-2 border-[var(--primary-action-bg)] border-t-transparent rounded-full"></div>
+                        <span class="text-[var(--text-secondary)]">Loading...</span>
+                    </div>
+                </div>
+            `;
+        }
     }
 
     setModalState(modal, content, isOpen) {
@@ -478,157 +545,28 @@ class GridManager {
         window.location.reload();
     }
 
-    // Sticky header methods
-    setupStickyHeaders() {
-        // Calculate the threshold - when the header section scrolls out of view
-        const headerSection = document.querySelector('.mb-6');
-        if (headerSection) {
-            const rect = headerSection.getBoundingClientRect();
-            this.stickyThreshold = rect.bottom + window.scrollY;
-        }
-        
-        // Store original positions of headers
-        const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
-        headers.forEach((header, index) => {
-            const rect = header.getBoundingClientRect();
-            this.originalHeaderPositions.set(header, {
-                top: rect.top + window.scrollY,
-                left: rect.left,
-                width: rect.width,
-                height: rect.height
-            });
-            
-            // Apply base styling
-            header.style.backgroundColor = 'var(--container-bg)';
-            header.style.borderBottom = '2px solid var(--border-color)';
-            header.style.zIndex = '1';
-        });
-        
-        // Add scroll listener
-        this.addScrollListener();
-    }
-    
-    addScrollListener() {
-        const scrollHandler = () => {
-            const scrollY = window.pageYOffset;
-            const shouldStick = scrollY > (this.stickyThreshold - 60); // 60px offset for better UX
-            
-            if (shouldStick && !this.isHeaderSticky) {
-                this.makeHeadersSticky();
-            } else if (!shouldStick && this.isHeaderSticky) {
-                this.makeHeadersNormal();
-            }
-            
-            // Update positions if sticky
-            if (this.isHeaderSticky) {
-                this.updateStickyPositions();
-            }
-        };
-        
-        window.addEventListener('scroll', scrollHandler);
-        
-        // Also listen for horizontal scroll to update positions
-        const horizontalScrollHandler = () => {
-            if (this.isHeaderSticky) {
-                this.updateStickyPositions();
-            }
-        };
-        
-        const scrollableContainer = document.querySelector('.grid-table-scrollable');
-        if (scrollableContainer) {
-            scrollableContainer.addEventListener('scroll', horizontalScrollHandler);
-        }
-        
-        // Store listeners for cleanup
-        if (!this.eventListeners.has(window)) {
-            this.eventListeners.set(window, []);
-        }
-        this.eventListeners.get(window).push({ event: 'scroll', handler: scrollHandler });
-        
-        if (scrollableContainer) {
-            if (!this.eventListeners.has(scrollableContainer)) {
-                this.eventListeners.set(scrollableContainer, []);
-            }
-            this.eventListeners.get(scrollableContainer).push({ event: 'scroll', handler: horizontalScrollHandler });
-        }
-    }
-    
-    makeHeadersSticky() {
-        this.isHeaderSticky = true;
-        
-        const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
-        headers.forEach(header => {
-            const originalPos = this.originalHeaderPositions.get(header);
-            if (originalPos) {
-                header.style.position = 'fixed';
-                header.style.top = '0px';
-                header.style.left = originalPos.left + 'px';
-                header.style.width = originalPos.width + 'px';
-                header.style.height = originalPos.height + 'px';
-                header.style.zIndex = '100';
-                header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.1)';
-            }
-        });
-    }
-    
-    makeHeadersNormal() {
-        this.isHeaderSticky = false;
-        
-        const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
-        headers.forEach(header => {
-            header.style.position = 'static';
-            header.style.top = 'auto';
-            header.style.left = 'auto';
-            header.style.width = 'auto';
-            header.style.height = 'auto';
-            header.style.zIndex = '1';
-            header.style.boxShadow = 'none';
-        });
-    }
-    
-    updateStickyPositions() {
-        if (!this.isHeaderSticky) return;
-        
-        // Update positions based on current layout
-        const gridWrapper = document.querySelector('.grid-container-wrapper');
-        const scrollableContainer = document.querySelector('.grid-table-scrollable');
-        
-        if (gridWrapper && scrollableContainer) {
-            const wrapperRect = gridWrapper.getBoundingClientRect();
-            const scrollLeft = scrollableContainer.scrollLeft;
-            
-            const headers = document.querySelectorAll('.grid-table-fixed th, .grid-table th');
-            headers.forEach(header => {
-                const isInScrollableArea = header.closest('.grid-table-scrollable');
-                
-                if (isInScrollableArea) {
-                    // For headers in scrollable area, adjust for horizontal scroll
-                    const originalPos = this.originalHeaderPositions.get(header);
-                    if (originalPos) {
-                        header.style.left = (originalPos.left - scrollLeft) + 'px';
-                    }
-                } else {
-                    // For fixed column headers, keep original position
-                    const originalPos = this.originalHeaderPositions.get(header);
-                    if (originalPos) {
-                        header.style.left = wrapperRect.left + 'px';
-                    }
-                }
-            });
-        }
-    }
 
-    // Sticky headers are now handled purely by CSS
+
+    // No sticky header functionality
 
     // Task edit column tracking no longer needed since we update in place
 
     // HTMX event handlers
+    handleHtmxBeforeRequest(e) {
+        if (e.target.id === 'delete-task-form') {
+            console.log('Delete form submitting to:', e.detail.requestConfig.path);
+            console.log('Request details:', e.detail.requestConfig);
+        }
+    }
+
     handleHtmxAfterRequest(e) {
         // Handle task deletion from delete modal
         if (e.detail.successful &&
             e.target.id === 'delete-task-form' &&
             e.detail.requestConfig.verb === 'post') {
 
+            console.log('Task deletion successful');
+            
             // Get the task ID that was being deleted
             const taskId = this.state.currentTaskId;
             
@@ -672,6 +610,16 @@ class GridManager {
             
             // Close the delete modal
             this.hideDeleteModal();
+            return;
+        }
+
+        // Handle task deletion errors
+        if (!e.detail.successful &&
+            e.target.id === 'delete-task-form' &&
+            e.detail.requestConfig.verb === 'post') {
+            
+            console.error('Task deletion failed:', e.detail);
+            alert('Failed to delete task. Please try again.');
             return;
         }
 
@@ -750,6 +698,62 @@ class GridManager {
             sessionStorage.setItem('grid-scroll-position', this.elements.scrollable.scrollLeft.toString());
         }
 
+        // Handle task completion toggle errors (revert visual changes)
+        if (!e.detail.successful && e.target.closest('form[hx-post*="toggle"]')) {
+            const form = e.target.closest('form');
+            const checkbox = form.querySelector('input[type="checkbox"][name="completed"]');
+            if (checkbox) {
+                const taskId = checkbox.id.replace('checkbox-', '');
+                const taskText = document.getElementById(`task-text-${taskId}`);
+                
+                // Revert checkbox state
+                checkbox.checked = !checkbox.checked;
+                
+                // Revert visual changes
+                if (taskText) {
+                    if (checkbox.checked) {
+                        checkbox.classList.add('checkbox-completed');
+                        taskText.classList.add('task-completed-strikethrough');
+                    } else {
+                        checkbox.classList.remove('checkbox-completed');
+                        taskText.classList.remove('task-completed-strikethrough');
+                    }
+                }
+            }
+        }
+
+        // Handle task completion toggle success (ensure visual state is correct)
+        if (e.detail.successful && e.target.closest('form[hx-post*="toggle"]')) {
+            // Parse the response to ensure visual state matches server state
+            try {
+                const response = JSON.parse(e.detail.xhr.response);
+                if (response.success && response.hasOwnProperty('completed')) {
+                    const form = e.target.closest('form');
+                    const checkbox = form.querySelector('input[type="checkbox"][name="completed"]');
+                    if (checkbox) {
+                        const taskId = checkbox.id.replace('checkbox-', '');
+                        const taskText = document.getElementById(`task-text-${taskId}`);
+                        
+                        // Ensure checkbox state matches server response
+                        checkbox.checked = response.completed;
+                        
+                        // Ensure visual state matches
+                        if (taskText) {
+                            if (response.completed) {
+                                checkbox.classList.add('checkbox-completed');
+                                taskText.classList.add('task-completed-strikethrough');
+                            } else {
+                                checkbox.classList.remove('checkbox-completed');
+                                taskText.classList.remove('task-completed-strikethrough');
+                            }
+                        }
+                    }
+                }
+            } catch (e) {
+                // Response is not JSON, ignore
+            }
+        }
+
         // Handle successful form submissions
         if (e.detail.successful) {
             const form = e.target.closest('.task-form');
@@ -774,6 +778,9 @@ class GridManager {
         // Handle modal content updates
         if (e.detail.target.id === 'modal-content') {
             const modalContent = e.detail.target;
+            
+            // Modal content has loaded successfully, ensure modal is visible
+            this.showModal();
 
             // Find the text field (input or textarea) within the newly swapped content
             const textField = modalContent.querySelector('textarea, input[name="text"]');
@@ -812,6 +819,12 @@ class GridManager {
             }
         }
         
+        // Re-process hyperscript for new task content
+        const isNewTaskContent = e.detail.target && e.detail.target.closest('[id^="tasks-"]');
+        if (isNewTaskContent && typeof window._hyperscript !== 'undefined') {
+            window._hyperscript.processNode(e.detail.target);
+        }
+        
         // Only reinitialize if this is a significant change (modal content or full grid updates)
         const isModalUpdate = e.detail.target && e.detail.target.id === 'modal-content';
         const isGridUpdate = e.detail.target && e.detail.target.closest('#grid-content');
@@ -848,20 +861,36 @@ class GridManager {
         }
     }
 
+    handleHtmxError(e) {
+        // Handle HTMX errors when loading modal content
+        if (e.detail.target && e.detail.target.id === 'modal-content') {
+            this.elements.modalContent.innerHTML = `
+                <div class="flex items-center justify-center p-8">
+                    <div class="flex flex-col items-center space-y-3 text-center">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-exclamation-triangle text-red-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium text-[var(--text-primary)]">Error Loading Content</h3>
+                            <p class="text-sm text-[var(--text-secondary)] mt-1">Unable to load the requested content. Please try again.</p>
+                        </div>
+                        <button type="button" 
+                                class="close-modal mt-4 px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-colors">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+    }
+
     reinitializeComponents() {
         // Store current scroll position before reinitializing
         const currentScrollLeft = this.elements.scrollable ? this.elements.scrollable.scrollLeft : 0;
         
-        // Reset sticky headers state
-        this.isHeaderSticky = false;
-        this.originalHeaderPositions.clear();
-        
         this.cacheElements();
         // Skip restore during reinit to avoid double scroll position changes
         this.setupGridScrolling(true);
-        
-        // Reinitialize sticky headers with a small delay to ensure layout is ready
-        setTimeout(() => this.setupStickyHeaders(), 50);
         
         // Restore scroll position immediately, no timeout
         if (this.elements.scrollable && currentScrollLeft > 0) {
@@ -876,12 +905,6 @@ class GridManager {
 
     // Cleanup method
     cleanup() {
-        // Reset sticky headers if active
-        if (this.isHeaderSticky) {
-            this.makeHeadersNormal();
-        }
-        this.originalHeaderPositions.clear();
-        
         // Remove event listeners
         this.eventListeners.forEach((listeners, element) => {
             listeners.forEach(({ event, handler }) => {
@@ -901,8 +924,11 @@ class GridManager {
         this.addEventListeners();
         this.setupGridScrolling();
         
-        // Setup sticky headers after a short delay to ensure DOM is ready
-        setTimeout(() => this.setupStickyHeaders(), 100);
+        // Configure HTMX to not cache modal content
+        if (typeof htmx !== 'undefined') {
+            htmx.config.disableSelector = '[hx-disable]';
+            htmx.config.useTemplateFragments = false;
+        }
         
         console.log('Grid JavaScript optimized and loaded');
     }
