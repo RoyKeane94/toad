@@ -39,11 +39,8 @@
           action="{% url 'pages:column_delete' project_pk=project.pk col_pk=column.pk %}"
           hx-post="{% url 'pages:column_delete' project_pk=project.pk col_pk=column.pk %}"
           hx-swap="none"
-          _="on htmx:afterRequest(detail)
-             if detail.successful
-               trigger closeModal
-               trigger refreshGrid
-             end">
+          hx-trigger="submit throttle:1s"
+          hx-disabled-elt="this">
         {% csrf_token %}
         <button type="submit" 
                 class="px-4 py-2 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">

@@ -21,7 +21,7 @@
                     {% for row_h in row_headers %}
                     <tr>
                         <td>
-                             <div class="flex items-center justify-between">
+                             <div class="flex items-center justify-between" data-row-id="{{ row_h.pk }}">
                                 <span class="text-green-600 font-semibold truncate">{{ row_h.name }}</span>
                                 <div class="relative ml-2">
                                     <button type="button"
@@ -76,7 +76,7 @@
                     <tr>
                         {% for col_h in data_column_headers %}
                             <th class="p-4 font-medium" style="background-color: var(--container-bg) !important;">
-                                <div class="flex items-center justify-between">
+                                <div class="flex items-center justify-between" data-column-id="{{ col_h.pk }}">
                                     <span class="text-green-600 font-semibold truncate">{{ col_h.name }}</span>
                                     <div class="relative ml-2">
                                         <button type="button"

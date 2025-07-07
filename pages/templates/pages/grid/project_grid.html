@@ -103,14 +103,30 @@
         
         <!-- Grid Actions -->
         <div class="flex items-center space-x-3">
-            <a href="{% url 'pages:row_create' project_pk=project.pk %}" 
-               class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+            <button type="button"
+                    class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
+                    hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
+                    hx-target="#modal-content"
+                    hx-trigger="click throttle:500ms"
+                    hx-disabled-elt="this"
+                    hx-indicator="#modal-content"
+                    hx-swap="innerHTML"
+                    hx-headers='{"Cache-Control": "no-cache"}'
+                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                 <i class="fas fa-plus mr-1"></i>Add Row
-            </a>
-            <a href="{% url 'pages:column_create' project_pk=project.pk %}" 
-               class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+            </button>
+            <button type="button"
+                    class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
+                    hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
+                    hx-target="#modal-content"
+                    hx-trigger="click throttle:500ms"
+                    hx-disabled-elt="this"
+                    hx-indicator="#modal-content"
+                    hx-swap="innerHTML"
+                    hx-headers='{"Cache-Control": "no-cache"}'
+                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                 <i class="fas fa-plus mr-1"></i>Add Column
-            </a>
+            </button>
             <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
                class="w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
                 <i class="fas fa-broom mr-1"></i>Clear Completed
@@ -165,7 +181,7 @@
         <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
             <button type="button" 
                     id="cancel-delete-task"
-                    class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium">
+                    class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
                 <i class="fas fa-times mr-2"></i>Cancel
             </button>
             <form id="delete-task-form" method="post" class="inline"
@@ -174,7 +190,7 @@
                   hx-disabled-elt="this">
                 {% csrf_token %}
                 <button type="submit" 
-                        class="w-32 h-10 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md">
+                        class="w-32 h-10 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
                     <i class="fas fa-trash mr-2"></i>Delete Task
                 </button>
             </form>

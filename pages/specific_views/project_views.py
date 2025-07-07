@@ -345,10 +345,25 @@ def row_create_view(request, project_pk):
             row.project = project
             row.order = project.row_headers.count()
             row.save()
+            
+            # For HTMX requests, trigger a page reload
+            if request.headers.get('HX-Request'):
+                response = HttpResponse(status=204)
+                response['HX-Trigger'] = 'refreshGrid'
+                return response
+            
             messages.success(request, f'Row "{row.name}" added successfully!')
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = RowHeaderForm()
+    
+    # This part handles the initial GET request for the form
+    if request.headers.get('HX-Request'):
+        return render(request, 'pages/grid/modals/row_form_content.html', {
+            'form': form,
+            'project': project,
+            'title': 'Add Row'
+        })
     
     return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
         'form': form, 
@@ -374,7 +389,8 @@ def row_edit_view(request, project_pk, row_pk):
             if request.headers.get('HX-Request'):
                 return JsonResponse({
                     'success': True,
-                    'message': f'Row "{row.name}" updated successfully!'
+                    'message': f'Row "{row.name}" updated successfully!',
+                    'row_name': row.name
                 })
             messages.success(request, f'Row "{row.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
@@ -486,7 +502,8 @@ def column_edit_view(request, project_pk, col_pk):
             if request.headers.get('HX-Request'):
                 return JsonResponse({
                     'success': True,
-                    'message': f'Column "{column.name}" updated successfully!'
+                    'message': f'Column "{column.name}" updated successfully!',
+                    'column_name': column.name
                 })
             messages.success(request, f'Column "{column.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
@@ -526,10 +543,10 @@ def column_delete_view(request, project_pk, col_pk):
         column_name = column.name
         column.delete()
         if request.headers.get('HX-Request'):
-            return JsonResponse({
-                'success': True,
-                'message': f'Column "{column_name}" deleted successfully!'
-            })
+            # For HTMX requests, trigger a reset to initial grid state
+            response = HttpResponse(status=204)
+            response['HX-Trigger'] = 'resetGridToInitial'
+            return response
         messages.success(request, f'Column "{column_name}" deleted successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     

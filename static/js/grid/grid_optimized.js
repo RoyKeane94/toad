@@ -70,6 +70,7 @@ class GridManager {
             // Document level events
             ['document', 'click', this.handleDocumentClick.bind(this)],
                         ['document', 'keydown', this.handleKeydown.bind(this)],
+            ['document', 'htmx:beforeRequest', this.handleHtmxBeforeRequest.bind(this)],
             ['document', 'htmx:afterRequest', this.handleHtmxAfterRequest.bind(this)],
             ['document', 'htmx:afterSwap', this.handleHtmxAfterSwap.bind(this)],
             ['document', 'htmx:afterSettle', this.handleHtmxAfterSettle.bind(this)],
@@ -79,8 +80,9 @@ class GridManager {
             // Body level events
             ['body', 'openModal', this.showModal.bind(this)],
             ['body', 'closeModal', this.hideModal.bind(this)],
-            ['body', 'refreshGrid', () => window.location.reload()],
-            ['body', 'scrollToEnd', this.handleScrollToEnd.bind(this)]
+            ['body', 'refreshGrid', this.handleRefreshGrid.bind(this)],
+            ['body', 'scrollToEnd', this.handleScrollToEnd.bind(this)],
+            ['body', 'resetGridToInitial', this.handleResetGridToInitial.bind(this)]
         ];
 
         listeners.forEach(([target, event, handler]) => {
@@ -92,6 +94,28 @@ class GridManager {
                 this.eventListeners.set(element, []);
             }
             this.eventListeners.get(element).push({ event, handler });
+        });
+
+        // Add explicit scrollToEnd listener for HTMX triggers
+        document.addEventListener('scrollToEnd', (e) => {
+            this.handleScrollToEnd();
+        });
+
+        // Also listen for HTMX trigger events (multiple ways HTMX can trigger events)
+        document.addEventListener('htmx:trigger', (e) => {
+            if (e.detail.trigger === 'scrollToEnd') {
+                this.handleScrollToEnd();
+            }
+        });
+
+        // Listen for HTMX header triggers (HX-Trigger header from server)
+        document.body.addEventListener('htmx:afterRequest', (e) => {
+            if (e.detail.xhr && e.detail.xhr.getResponseHeader('HX-Trigger')) {
+                const triggers = e.detail.xhr.getResponseHeader('HX-Trigger');
+                if (triggers && triggers.includes('scrollToEnd')) {
+                    this.handleScrollToEnd();
+                }
+            }
         });
 
         // Sticky headers are not implemented
@@ -400,10 +424,16 @@ class GridManager {
 
     // Grid scrolling methods
     setupGridScrolling(skipRestore = false) {
-        const { scrollable, leftBtn, rightBtn, gridTable, dataCols } = this.elements;
-        if (!scrollable || !leftBtn || !rightBtn || !gridTable || !dataCols.length) return;
+        const { scrollable, leftBtn, rightBtn, gridTable } = this.elements;
+        if (!scrollable || !leftBtn || !rightBtn || !gridTable) return;
 
-        this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || 0;
+        // Always get fresh column count from DOM
+        const dataCols = document.querySelectorAll('.data-column');
+        this.elements.dataCols = dataCols;
+        
+        if (!dataCols.length) return;
+
+        this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || dataCols.length;
         this.state.columnsToShow = Math.min(3, this.state.totalDataColumns);
 
         // Setup scroll buttons (only if not already set)
@@ -496,14 +526,39 @@ class GridManager {
     restoreScrollPosition() {
         const scrollToEnd = sessionStorage.getItem('scrollToEnd');
         const savedPosition = sessionStorage.getItem('grid-scroll-position');
+        const resetToInitial = sessionStorage.getItem('resetToInitial');
         
-        if (scrollToEnd) {
+        if (resetToInitial) {
+            sessionStorage.removeItem('resetToInitial');
+            // Force reset to column 0
+            this.state.currentCol = 0;
+            this.scrollToCol(0, 'auto');
+            return;
+        } else if (scrollToEnd) {
             sessionStorage.removeItem('scrollToEnd');
-            // Use immediate scroll for scroll-to-end, only small delay for DOM stability
+            // Wait a bit longer for DOM to be stable and recalculate
             setTimeout(() => {
-                const lastColIndex = this.state.totalDataColumns - this.state.columnsToShow;
-                this.scrollToCol(lastColIndex, 'auto');
-            }, 10);
+                // Recalculate total columns from actual DOM
+                const dataColumns = document.querySelectorAll('.data-column');
+                const actualColumnCount = dataColumns.length;
+                
+                if (actualColumnCount > 0) {
+                    this.state.totalDataColumns = actualColumnCount;
+                    // Update the grid table data attribute
+                    if (this.elements.gridTable) {
+                        this.elements.gridTable.dataset.totalDataColumns = actualColumnCount;
+                    }
+                    
+                    // Recalculate widths
+                    this.calculateAndApplyWidths();
+                    
+                    // Scroll to the last possible position
+                    const lastColIndex = Math.max(0, this.state.totalDataColumns - this.state.columnsToShow);
+                    this.scrollToCol(lastColIndex, 'smooth');
+                } else {
+                    this.scrollToCol(0, 'auto');
+                }
+            }, 100);
         } else if (savedPosition) {
             sessionStorage.removeItem('grid-scroll-position');
             // Restore saved position immediately for smoother experience
@@ -523,18 +578,179 @@ class GridManager {
     }
 
     handleScrollToEnd() {
+        // For new columns, we need to refresh to get the updated grid structure
         sessionStorage.setItem('scrollToEnd', 'true');
         window.location.reload();
     }
 
+    handleRefreshGrid() {
+        // Save current scroll position before refresh
+        if (this.elements.scrollable) {
+            sessionStorage.setItem('grid-scroll-position', this.elements.scrollable.scrollLeft.toString());
+        }
+        window.location.reload();
+    }
 
+    handleResetGridToInitial() {
+        // Clear any stored scroll position to ensure we start fresh
+        sessionStorage.removeItem('grid-scroll-position');
+        sessionStorage.removeItem('scrollToEnd');
+        
+        // Set flag to explicitly reset to initial state
+        sessionStorage.setItem('resetToInitial', 'true');
+        
+        // Reset the grid state to initial position
+        this.state.currentCol = 0;
+        
+        // Also clear any scroll position on the scrollable element before refresh
+        if (this.elements.scrollable) {
+            this.elements.scrollable.scrollLeft = 0;
+        }
+        
+        // Refresh the grid to reflect the column deletion and reset position
+        window.location.reload();
+    }
+
+    // Handle column/row header updates
+    updateColumnHeader(columnId, newName) {
+        const columnHeaders = document.querySelectorAll(`[data-column-id="${columnId}"]`);
+        columnHeaders.forEach(header => {
+            const nameElement = header.querySelector('span.font-semibold');
+            if (nameElement) {
+                nameElement.textContent = newName;
+            }
+        });
+    }
+
+    updateRowHeader(rowId, newName) {
+        const rowHeaders = document.querySelectorAll(`[data-row-id="${rowId}"]`);
+        rowHeaders.forEach(header => {
+            const nameElement = header.querySelector('span.font-semibold');
+            if (nameElement) {
+                nameElement.textContent = newName;
+            }
+        });
+    }
 
     // No sticky header functionality
 
     // Task edit column tracking no longer needed since we update in place
 
     // HTMX event handlers
+    handleHtmxBeforeRequest(e) {
+        // Method for handling HTMX before request events if needed
+    }
+
     handleHtmxAfterRequest(e) {
+        const url = e.detail.requestConfig?.url || e.target?.getAttribute('hx-post') || e.target?.getAttribute('hx-get') || 'unknown';
+        const method = e.detail.requestConfig?.verb || e.detail.requestConfig?.type || 
+                      (e.target?.getAttribute('hx-post') ? 'post' : 
+                       e.target?.getAttribute('hx-get') ? 'get' : 'unknown');
+        
+        // Check for HX-Trigger header first (for column creation and row creation)
+        if (e.detail.successful && e.detail.xhr) {
+            const triggerHeader = e.detail.xhr.getResponseHeader('HX-Trigger');
+            if (triggerHeader) {
+                if (triggerHeader.includes('scrollToEnd')) {
+                    this.handleScrollToEnd();
+                    return;
+                }
+                if (triggerHeader.includes('refreshGrid')) {
+                    this.handleRefreshGrid();
+                    return;
+                }
+                if (triggerHeader.includes('resetGridToInitial')) {
+                    this.handleResetGridToInitial();
+                    return;
+                }
+            }
+        }
+        
+        // Only handle POST requests for form submissions
+        if (e.detail.successful && (method === 'post' || method === 'POST') && e.detail.xhr.responseText) {
+            // Store scroll position for form submissions
+            const gridScrollable = document.querySelector('.grid-table-scrollable');
+            const currentScrollLeft = gridScrollable ? gridScrollable.scrollLeft : 0;
+            
+            try {
+                const response = JSON.parse(e.detail.xhr.responseText);
+                
+                if (response.success) {
+                    // Check if this is a column update
+                    if ((url.includes('/columns/') && url.includes('/edit/')) || url.match(/\/columns\/\d+\/edit\//)) {
+                        // Extract column ID from URL
+                        let columnId = null;
+                        const urlMatch = url.match(/\/columns\/(\d+)\//);
+                        if (urlMatch) {
+                            columnId = urlMatch[1];
+                        } else {
+                            const urlParts = url.split('/');
+                            const columnIndex = urlParts.indexOf('columns');
+                            if (columnIndex >= 0 && columnIndex + 1 < urlParts.length) {
+                                columnId = urlParts[columnIndex + 1];
+                            }
+                        }
+                        
+                        if (columnId && response.column_name) {
+                            // Update column headers in place
+                            this.updateColumnHeader(columnId, response.column_name);
+                            this.hideModal();
+                            
+                            // Restore scroll position
+                            setTimeout(() => {
+                                if (gridScrollable) {
+                                    gridScrollable.scrollLeft = currentScrollLeft;
+                                    // Update grid manager's internal state to match
+                                    if (this.state.dataColWidth > 0) {
+                                        this.state.currentCol = Math.round(currentScrollLeft / this.state.dataColWidth);
+                                        this.updateScrollButtons();
+                                    }
+                                }
+                            }, 50);
+                            return;
+                        }
+                    }
+                    
+                    // Check if this is a row update
+                    if ((url.includes('/rows/') && url.includes('/edit/')) || url.match(/\/rows\/\d+\/edit\//)) {
+                        // Extract row ID from URL
+                        let rowId = null;
+                        const urlMatch = url.match(/\/rows\/(\d+)\//);
+                        if (urlMatch) {
+                            rowId = urlMatch[1];
+                        } else {
+                            const urlParts = url.split('/');
+                            const rowIndex = urlParts.indexOf('rows');
+                            if (rowIndex >= 0 && rowIndex + 1 < urlParts.length) {
+                                rowId = urlParts[rowIndex + 1];
+                            }
+                        }
+                        
+                        if (rowId && response.row_name) {
+                            // Update row headers in place
+                            this.updateRowHeader(rowId, response.row_name);
+                            this.hideModal();
+                            
+                            // Restore scroll position
+                            setTimeout(() => {
+                                if (gridScrollable) {
+                                    gridScrollable.scrollLeft = currentScrollLeft;
+                                    // Update grid manager's internal state to match
+                                    if (this.state.dataColWidth > 0) {
+                                        this.state.currentCol = Math.round(currentScrollLeft / this.state.dataColWidth);
+                                        this.updateScrollButtons();
+                                    }
+                                }
+                            }, 50);
+                            return;
+                        }
+                    }
+                }
+            } catch (err) {
+                // Not JSON or not a form response - this is normal for GET requests that return HTML
+            }
+        }
+
         // Handle task deletion from delete modal
         if (e.detail.successful &&
             e.target.id === 'delete-task-form' &&
@@ -606,7 +822,6 @@ class GridManager {
                 updatedTaskData = JSON.parse(e.detail.xhr.response);
             } catch (e) {
                 // If response isn't JSON, fall back to page reload for safety
-                console.log('Non-JSON response, reloading page');
                 window.location.reload();
                 return;
             }
@@ -631,6 +846,12 @@ class GridManager {
                         
                         // Replace the task content with updated HTML
                         taskElement.outerHTML = updatedTaskData.task_html;
+                        
+                        // Re-process HTMX on the new element
+                        const newTaskElement = document.getElementById(`task-${updatedTaskData.task_id}`);
+                        if (newTaskElement && typeof htmx !== 'undefined') {
+                            htmx.process(newTaskElement);
+                        }
                         
                         // Restore scroll position immediately after update
                         if (gridScrollable && currentScrollLeft > 0) {
@@ -803,6 +1024,10 @@ class GridManager {
         const isTaskUpdate = e.detail.target && e.detail.target.closest('[id^="task-"]');
         
         if (isModalUpdate) {
+            // Ensure HTMX processes any new elements in the modal
+            if (typeof htmx !== 'undefined') {
+                htmx.process(e.detail.target);
+            }
             // Modal updates need reinitialization
             this.reinitializeComponents();
         } else if (isGridUpdate && !isTaskUpdate) {
@@ -901,8 +1126,6 @@ class GridManager {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
         }
-        
-        console.log('Grid JavaScript optimized and loaded');
     }
 }
 

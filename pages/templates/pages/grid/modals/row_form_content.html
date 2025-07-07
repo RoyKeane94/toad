@@ -2,11 +2,11 @@
 <div class="flex items-center p-6 border-b border-[var(--border-color)]">
     <div class="flex items-center space-x-3">
         <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
-            <i class="fas fa-edit text-white"></i>
+            <i class="fas fa-{% if row %}edit{% else %}plus{% endif %} text-white"></i>
         </div>
         <div>
-            <h3 class="text-lg font-semibold text-[var(--text-primary)]">Edit Row</h3>
-            <p class="text-sm text-[var(--text-secondary)]">Update row details</p>
+            <h3 class="text-lg font-semibold text-[var(--text-primary)]">{% if row %}Edit Row{% else %}Add Row{% endif %}</h3>
+            <p class="text-sm text-[var(--text-secondary)]">{% if row %}Update row details{% else %}Create a new row{% endif %}</p>
         </div>
     </div>
 </div>
@@ -14,16 +14,11 @@
 <!-- Modal Body -->
 <div class="p-6">
     <form method="post" 
-          action="{% url 'pages:row_edit' project_pk=project.pk row_pk=row.pk %}"
-          hx-post="{% url 'pages:row_edit' project_pk=project.pk row_pk=row.pk %}"
+          action="{% if row %}{% url 'pages:row_edit' project_pk=project.pk row_pk=row.pk %}{% else %}{% url 'pages:row_create' project_pk=project.pk %}{% endif %}"
+          hx-post="{% if row %}{% url 'pages:row_edit' project_pk=project.pk row_pk=row.pk %}{% else %}{% url 'pages:row_create' project_pk=project.pk %}{% endif %}"
           hx-swap="none"
           hx-trigger="submit throttle:1s"
-          hx-disabled-elt="this"
-          _="on htmx:afterRequest(detail)
-             if detail.successful
-               trigger closeModal
-               trigger refreshGrid
-             end">
+          hx-disabled-elt="this">
         {% csrf_token %}
         <div class="space-y-4">
             {{ form.as_p }}
@@ -37,7 +32,7 @@
             </button>
             <button type="submit" 
                     class="px-4 py-2 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                <i class="fas fa-save mr-2"></i>Save Changes
+                <i class="fas fa-{% if row %}save{% else %}plus{% endif %} mr-2"></i>{% if row %}Save Changes{% else %}Add Row{% endif %}
             </button>
         </div>
     </form>
