@@ -1,0 +1,363 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}Privacy Policy - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">Privacy Policy</h1>
+        <p class="text-[var(--subtitle-text)] text-lg">Your privacy is important to us. This policy explains how we collect, use, and protect your information.</p>
+        <p class="text-[var(--text-secondary)] text-sm mt-4">Last updated: December 2024</p>
+    </div>
+
+    <!-- Table of Contents -->
+    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8 mb-8">
+        <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">Table of Contents</h2>
+        <nav class="space-y-2">
+            <a href="#information-collection" class="block text-[var(--primary-action-bg)] hover:underline">1. Information We Collect</a>
+            <a href="#how-we-use" class="block text-[var(--primary-action-bg)] hover:underline">2. How We Use Your Information</a>
+            <a href="#information-sharing" class="block text-[var(--primary-action-bg)] hover:underline">3. Information Sharing</a>
+            <a href="#data-security" class="block text-[var(--primary-action-bg)] hover:underline">4. Data Security</a>
+            <a href="#your-rights" class="block text-[var(--primary-action-bg)] hover:underline">5. Your Rights</a>
+            <a href="#cookies" class="block text-[var(--primary-action-bg)] hover:underline">6. Cookies and Tracking</a>
+            <a href="#data-retention" class="block text-[var(--primary-action-bg)] hover:underline">7. Data Retention</a>
+            <a href="#contact-us" class="block text-[var(--primary-action-bg)] hover:underline">8. Contact Us</a>
+        </nav>
+    </div>
+
+    <!-- Privacy Policy Content -->
+    <div class="space-y-8">
+        <!-- Information Collection -->
+        <section id="information-collection" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">1. Information We Collect</h2>
+            
+            <div class="space-y-4">
+                <div>
+                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-2">Personal Information</h3>
+                    <p class="text-[var(--text-primary)] leading-relaxed">When you create an account with Toad, we collect:</p>
+                    <ul class="mt-2 ml-6 space-y-1 text-[var(--text-primary)]">
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>Name (first and last)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>Email address</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>Password (encrypted)</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-2">Usage Information</h3>
+                    <p class="text-[var(--text-primary)] leading-relaxed">We automatically collect information about how you use Toad:</p>
+                    <ul class="mt-2 ml-6 space-y-1 text-[var(--text-primary)]">
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>Task and grid data you create</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>Login times and frequency</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>Browser type and version</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-[var(--primary-action-bg)] mr-2">•</span>
+                            <span>IP address and location (general)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- How We Use Information -->
+        <section id="how-we-use" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">2. How We Use Your Information</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">We use your information to:</p>
+                <ul class="ml-6 space-y-2 text-[var(--text-primary)]">
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Provide and maintain the Toad service</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Authenticate your account and prevent fraud</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Improve our service and develop new features</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Respond to your support requests</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Send important service notifications</span>
+                    </li>
+                </ul>
+                
+                <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4 mt-6">
+                    <p class="text-[var(--text-primary)] font-medium">
+                        <i class="fas fa-info-circle text-[var(--primary-action-bg)] mr-2"></i>
+                        We do not sell, rent, or share your personal information with third parties for marketing purposes.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Information Sharing -->
+        <section id="information-sharing" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">3. Information Sharing</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">We may share your information only in the following circumstances:</p>
+                <ul class="ml-6 space-y-2 text-[var(--text-primary)]">
+                    <li class="flex items-start">
+                        <i class="fas fa-shield-alt text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span><strong>Legal Requirements:</strong> When required by law or to protect our rights</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-tools text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span><strong>Service Providers:</strong> With trusted partners who help us operate Toad (they cannot use your data for other purposes)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-handshake text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span><strong>Business Transfers:</strong> In the event of a merger or acquisition (with prior notice)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-user-check text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span><strong>With Your Consent:</strong> When you explicitly agree to share information</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Data Security -->
+        <section id="data-security" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">4. Data Security</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">We implement industry-standard security measures to protect your information:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-lock text-[var(--primary-action-bg)] mr-3"></i>
+                            <h3 class="font-medium text-[var(--text-primary)]">Encryption</h3>
+                        </div>
+                        <p class="text-[var(--text-secondary)] text-sm">All data is encrypted in transit and at rest using industry-standard protocols.</p>
+                    </div>
+                    <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-server text-[var(--primary-action-bg)] mr-3"></i>
+                            <h3 class="font-medium text-[var(--text-primary)]">Secure Hosting</h3>
+                        </div>
+                        <p class="text-[var(--text-secondary)] text-sm">Our servers are hosted in secure, certified data centers with 24/7 monitoring.</p>
+                    </div>
+                    <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-user-shield text-[var(--primary-action-bg)] mr-3"></i>
+                            <h3 class="font-medium text-[var(--text-primary)]">Access Controls</h3>
+                        </div>
+                        <p class="text-[var(--text-secondary)] text-sm">Strict access controls ensure only authorized personnel can access your data.</p>
+                    </div>
+                    <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-sync-alt text-[var(--primary-action-bg)] mr-3"></i>
+                            <h3 class="font-medium text-[var(--text-primary)]">Regular Backups</h3>
+                        </div>
+                        <p class="text-[var(--text-secondary)] text-sm">Your data is regularly backed up to prevent loss and ensure availability.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Your Rights -->
+        <section id="your-rights" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">5. Your Rights</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">You have the following rights regarding your personal information:</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                    <div class="flex items-start">
+                        <i class="fas fa-eye text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-medium text-[var(--text-primary)]">Access</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Request a copy of your personal information</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-edit text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-medium text-[var(--text-primary)]">Correction</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Update or correct inaccurate information</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-trash-alt text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-medium text-[var(--text-primary)]">Deletion</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Request deletion of your account and data</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-download text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <div>
+                            <h3 class="font-medium text-[var(--text-primary)]">Portability</h3>
+                            <p class="text-[var(--text-secondary)] text-sm">Export your data in a portable format</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4 mt-6">
+                    <p class="text-[var(--text-primary)]">
+                        <i class="fas fa-envelope text-[var(--primary-action-bg)] mr-2"></i>
+                        To exercise these rights, please contact us at 
+                        <a href="mailto:privacy@toad.com" class="text-[var(--primary-action-bg)] hover:underline">privacy@toad.com</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookies and Tracking -->
+        <section id="cookies" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">6. Cookies and Tracking</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">We use cookies and similar technologies to:</p>
+                <ul class="ml-6 space-y-2 text-[var(--text-primary)]">
+                    <li class="flex items-start">
+                        <i class="fas fa-sign-in-alt text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Keep you signed in to your account</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-cog text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Remember your preferences and settings</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-chart-line text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Analyze how you use Toad to improve our service</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-shield-alt text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Protect against fraud and abuse</span>
+                    </li>
+                </ul>
+                
+                <p class="text-[var(--text-primary)] leading-relaxed mt-4">
+                    You can control cookies through your browser settings. However, disabling cookies may affect your ability to use some features of Toad.
+                </p>
+            </div>
+        </section>
+
+        <!-- Data Retention -->
+        <section id="data-retention" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">7. Data Retention</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">We retain your information for as long as necessary to:</p>
+                <ul class="ml-6 space-y-2 text-[var(--text-primary)]">
+                    <li class="flex items-start">
+                        <i class="fas fa-tasks text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Provide you with Toad services</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-gavel text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Comply with legal obligations</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-shield-alt text-[var(--primary-action-bg)] mr-3 mt-1"></i>
+                        <span>Resolve disputes and prevent fraud</span>
+                    </li>
+                </ul>
+                
+                <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4 mt-6">
+                    <p class="text-[var(--text-primary)]">
+                        <i class="fas fa-info-circle text-[var(--primary-action-bg)] mr-2"></i>
+                        When you delete your account, we will delete your personal information within 30 days, except where we are required to retain it by law.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us -->
+        <section id="contact-us" class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">8. Contact Us</h2>
+            
+            <div class="space-y-4">
+                <p class="text-[var(--text-primary)] leading-relaxed">
+                    If you have any questions about this Privacy Policy or how we handle your information, please contact us:
+                </p>
+                
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <i class="fas fa-envelope text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-[var(--text-primary)]">
+                            Email: <a href="mailto:privacy@toad.com" class="text-[var(--primary-action-bg)] hover:underline">privacy@toad.com</a>
+                        </span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-comments text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-[var(--text-primary)]">
+                            Contact Form: <a href="{% url 'pages:contact_us' %}" class="text-[var(--primary-action-bg)] hover:underline">Contact Us</a>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-lg p-4 mt-6">
+                    <p class="text-[var(--text-primary)] text-sm">
+                        <i class="fas fa-clock text-[var(--primary-action-bg)] mr-2"></i>
+                        This Privacy Policy was last updated on December 2024. We will notify you of any material changes by posting the updated policy on this page.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTop" class="fixed bottom-6 right-6 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] w-12 h-12 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Scroll to top button
+    const scrollToTopBtn = document.getElementById('scrollToTop');
+    
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+            scrollToTopBtn.classList.add('opacity-100', 'visible');
+        } else {
+            scrollToTopBtn.classList.add('opacity-0', 'invisible');
+            scrollToTopBtn.classList.remove('opacity-100', 'visible');
+        }
+    });
+    
+    scrollToTopBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

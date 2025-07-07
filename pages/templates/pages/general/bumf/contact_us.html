@@ -1,0 +1,241 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Contact Us - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">Contact Us</h1>
+        <p class="text-[var(--subtitle-text)] text-lg">We'd love to hear from you! Send us a message and we'll get back to you as soon as possible.</p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <!-- Contact Form -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+            <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">Send us a Message</h2>
+            
+            {% if success %}
+                <!-- Success Message -->
+                <div class="success-message bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg mb-6">
+                    <div class="flex items-center">
+                        <i class="fas fa-check-circle mr-3"></i>
+                        <span>{{ message|default:"Thank you for your message! We'll get back to you within 24 hours." }}</span>
+                    </div>
+                </div>
+                
+                <!-- Show a simplified form or just the success state -->
+                <div class="text-center py-8">
+                    <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-paper-plane text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-[var(--title-text)] mb-2">Message Sent!</h3>
+                    <p class="text-[var(--text-secondary)] mb-6">We've received your message and will respond as soon as possible.</p>
+                    <button onclick="location.reload()" class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-2 rounded-lg font-medium transition-colors">
+                        Send Another Message
+                    </button>
+                </div>
+            {% else %}
+                {% if error %}
+                    <!-- Error Message -->
+                    <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6">
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-3"></i>
+                            <span>{{ error }}</span>
+                        </div>
+                    </div>
+                {% endif %}
+                
+                <form method="post" class="space-y-6" hx-post="{% url 'pages:contact_us' %}" hx-swap="outerHTML">
+                    {% csrf_token %}
+                
+                <!-- Name Field -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Full Name *
+                    </label>
+                    <input type="text" 
+                           id="name" 
+                           name="name" 
+                           required 
+                           class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] transition-colors"
+                           placeholder="Enter your full name"
+                           value="{% if form_data.name %}{{ form_data.name }}{% elif user.is_authenticated %}{{ user.get_full_name }}{% endif %}">
+                </div>
+
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Email Address *
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           name="email" 
+                           required 
+                           class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] transition-colors"
+                           placeholder="Enter your email address"
+                           value="{% if form_data.email %}{{ form_data.email }}{% elif user.is_authenticated %}{{ user.email }}{% endif %}">
+                </div>
+
+                <!-- Category Field -->
+                <div>
+                    <label for="category" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Category
+                    </label>
+                    <select id="category" 
+                            name="category" 
+                            class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] transition-colors">
+                        <option value="general" {% if form_data.category == 'general' or not form_data.category %}selected{% endif %}>General Question</option>
+                        <option value="bug_report" {% if form_data.category == 'bug_report' %}selected{% endif %}>Bug Report</option>
+                        <option value="feature_request" {% if form_data.category == 'feature_request' %}selected{% endif %}>Feature Request</option>
+                        <option value="account_help" {% if form_data.category == 'account_help' %}selected{% endif %}>Account Help</option>
+                        <option value="technical_support" {% if form_data.category == 'technical_support' %}selected{% endif %}>Technical Support</option>
+                        <option value="other" {% if form_data.category == 'other' %}selected{% endif %}>Other</option>
+                    </select>
+                </div>
+
+                <!-- Subject Field -->
+                <div>
+                    <label for="subject" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Subject *
+                    </label>
+                    <input type="text" 
+                           id="subject" 
+                           name="subject" 
+                           required 
+                           class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] transition-colors"
+                           placeholder="Brief description of your message"
+                           value="{{ form_data.subject|default:'' }}">
+                </div>
+
+                <!-- Message Field -->
+                <div>
+                    <label for="message" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Message *
+                    </label>
+                    <textarea id="message" 
+                              name="message" 
+                              required 
+                              rows="6" 
+                              class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] transition-colors resize-vertical"
+                              placeholder="Please provide as much detail as possible...">{{ form_data.message|default:'' }}</textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="flex items-center justify-between">
+                    <p class="text-sm text-[var(--text-secondary)]">
+                        <span class="text-red-500">*</span> Required fields
+                    </p>
+                    <button type="submit" 
+                            class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-8 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Send Message
+                    </button>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+
+        <!-- Contact Information -->
+        <div class="space-y-8">
+            <!-- Quick Contact Info -->
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+                <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-6">Get in Touch</h2>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-envelope text-[var(--primary-action-text)]"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[var(--text-secondary)]">Email</p>
+                            <p class="text-[var(--text-primary)] font-medium">support@toad.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-clock text-[var(--primary-action-text)]"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[var(--text-secondary)]">Response Time</p>
+                            <p class="text-[var(--text-primary)] font-medium">Within 24 hours</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mr-4">
+                            <i class="fas fa-question-circle text-[var(--primary-action-text)]"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-[var(--text-secondary)]">Common Questions</p>
+                            <a href="{% url 'pages:faq' %}" class="text-[var(--primary-action-bg)] hover:underline font-medium">
+                                Check our FAQ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Topics -->
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+                <h3 class="text-xl font-semibold text-[var(--title-text)] mb-4">Common Topics</h3>
+                <div class="space-y-3">
+                    <div class="flex items-center">
+                        <i class="fas fa-bug text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-[var(--text-primary)]">Bug Reports</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-lightbulb text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-[var(--text-primary)]">Feature Requests</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-user-cog text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-[var(--text-primary)]">Account Issues</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-question text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-[var(--text-primary)]">General Questions</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips for Better Support -->
+            <div class="bg-[var(--task-bg)] border border-[var(--border-color)] rounded-xl shadow-sm p-8">
+                <h3 class="text-xl font-semibold text-[var(--title-text)] mb-4">Tips for Better Support</h3>
+                <ul class="space-y-2 text-[var(--text-primary)]">
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-2 mt-1 text-sm"></i>
+                        <span>Be specific about the issue you're experiencing</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-2 mt-1 text-sm"></i>
+                        <span>Include steps to reproduce any bugs</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-2 mt-1 text-sm"></i>
+                        <span>Mention your browser and device type</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-2 mt-1 text-sm"></i>
+                        <span>Check our FAQ first for quick answers</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle form submission success
+    document.body.addEventListener('htmx:afterSwap', function(event) {
+        if (event.detail.target.querySelector('.success-message')) {
+            // Scroll to top of form
+            event.detail.target.scrollIntoView({ behavior: 'smooth' });
+        }
+    });
+});
+</script>
+{% endblock %}

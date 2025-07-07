@@ -10,7 +10,10 @@ from .specific_views.general_views import (
     templates_overview_view,
     student_jobs_template_view,
     student_revision_template_view,
-    professionals_jobs_template_view
+    professionals_jobs_template_view,
+    faq_view,
+    contact_us_view,
+    privacy_policy_view
 )
 
 from .specific_views.project_views import (

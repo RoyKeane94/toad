@@ -98,15 +98,12 @@ class GridManager {
 
         // Add explicit scrollToEnd listener for HTMX triggers
         document.addEventListener('scrollToEnd', (e) => {
-            console.log('scrollToEnd event caught!', e);
             this.handleScrollToEnd();
         });
 
         // Also listen for HTMX trigger events (multiple ways HTMX can trigger events)
         document.addEventListener('htmx:trigger', (e) => {
-            console.log('HTMX trigger event:', e.detail);
             if (e.detail.trigger === 'scrollToEnd') {
-                console.log('scrollToEnd trigger detected via htmx:trigger!');
                 this.handleScrollToEnd();
             }
         });
@@ -115,9 +112,7 @@ class GridManager {
         document.body.addEventListener('htmx:afterRequest', (e) => {
             if (e.detail.xhr && e.detail.xhr.getResponseHeader('HX-Trigger')) {
                 const triggers = e.detail.xhr.getResponseHeader('HX-Trigger');
-                console.log('HX-Trigger header found:', triggers);
                 if (triggers && triggers.includes('scrollToEnd')) {
-                    console.log('scrollToEnd trigger detected via HX-Trigger header!');
                     this.handleScrollToEnd();
                 }
             }
@@ -440,8 +435,6 @@ class GridManager {
 
         this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || dataCols.length;
         this.state.columnsToShow = Math.min(3, this.state.totalDataColumns);
-        
-        console.log('Setup grid scrolling - Total columns:', this.state.totalDataColumns);
 
         // Setup scroll buttons (only if not already set)
         if (!leftBtn.onclick) {
@@ -536,21 +529,18 @@ class GridManager {
         const resetToInitial = sessionStorage.getItem('resetToInitial');
         
         if (resetToInitial) {
-            console.log('Resetting to initial state');
             sessionStorage.removeItem('resetToInitial');
             // Force reset to column 0
             this.state.currentCol = 0;
             this.scrollToCol(0, 'auto');
             return;
         } else if (scrollToEnd) {
-            console.log('Restoring scroll to end position');
             sessionStorage.removeItem('scrollToEnd');
             // Wait a bit longer for DOM to be stable and recalculate
             setTimeout(() => {
                 // Recalculate total columns from actual DOM
                 const dataColumns = document.querySelectorAll('.data-column');
                 const actualColumnCount = dataColumns.length;
-                console.log('Actual column count from DOM:', actualColumnCount);
                 
                 if (actualColumnCount > 0) {
                     this.state.totalDataColumns = actualColumnCount;
@@ -564,10 +554,8 @@ class GridManager {
                     
                     // Scroll to the last possible position
                     const lastColIndex = Math.max(0, this.state.totalDataColumns - this.state.columnsToShow);
-                    console.log('Scrolling to column index:', lastColIndex);
                     this.scrollToCol(lastColIndex, 'smooth');
                 } else {
-                    console.log('No data columns found, defaulting to start');
                     this.scrollToCol(0, 'auto');
                 }
             }, 100);
@@ -590,7 +578,6 @@ class GridManager {
     }
 
     handleScrollToEnd() {
-        console.log('ScrollToEnd triggered');
         // For new columns, we need to refresh to get the updated grid structure
         sessionStorage.setItem('scrollToEnd', 'true');
         window.location.reload();
@@ -626,29 +613,21 @@ class GridManager {
 
     // Handle column/row header updates
     updateColumnHeader(columnId, newName) {
-        console.log(`Updating column ${columnId} to ${newName}`);
         const columnHeaders = document.querySelectorAll(`[data-column-id="${columnId}"]`);
-        console.log(`Found ${columnHeaders.length} column headers`);
         columnHeaders.forEach(header => {
             const nameElement = header.querySelector('span.font-semibold');
-            console.log('Name element:', nameElement);
             if (nameElement) {
                 nameElement.textContent = newName;
-                console.log(`Updated column header to: ${newName}`);
             }
         });
     }
 
     updateRowHeader(rowId, newName) {
-        console.log(`Updating row ${rowId} to ${newName}`);
         const rowHeaders = document.querySelectorAll(`[data-row-id="${rowId}"]`);
-        console.log(`Found ${rowHeaders.length} row headers`);
         rowHeaders.forEach(header => {
             const nameElement = header.querySelector('span.font-semibold');
-            console.log('Name element:', nameElement);
             if (nameElement) {
                 nameElement.textContent = newName;
-                console.log(`Updated row header to: ${newName}`);
             }
         });
     }
@@ -659,59 +638,28 @@ class GridManager {
 
     // HTMX event handlers
     handleHtmxBeforeRequest(e) {
-        console.log('HTMX Before Request:', e.detail);
-        const url = e.detail.requestConfig?.url || 'unknown';
-        const method = e.detail.requestConfig?.verb || 'unknown';
-        console.log('About to make request:', method, url);
-        
-        // Check if it's a form submission
-        if (e.target.tagName === 'FORM') {
-            console.log('Form submission detected:', e.target);
-            console.log('Form action:', e.target.action);
-            console.log('Form method:', e.target.method);
-            console.log('Form data:', new FormData(e.target));
-        }
+        // Method for handling HTMX before request events if needed
     }
 
     handleHtmxAfterRequest(e) {
-        // Better debugging of the event structure
-        console.log('Full HTMX event detail:', e.detail);
-        
         const url = e.detail.requestConfig?.url || e.target?.getAttribute('hx-post') || e.target?.getAttribute('hx-get') || 'unknown';
         const method = e.detail.requestConfig?.verb || e.detail.requestConfig?.type || 
                       (e.target?.getAttribute('hx-post') ? 'post' : 
                        e.target?.getAttribute('hx-get') ? 'get' : 'unknown');
         
-        console.log('HTMX After Request:', url, 'Method:', method, 'Success:', e.detail.successful);
-        console.log('Target element:', e.target);
-        console.log('Request config verb:', e.detail.requestConfig?.verb);
-        console.log('Request config type:', e.detail.requestConfig?.type);
-        console.log('Target hx-post:', e.target?.getAttribute('hx-post'));
-        console.log('Target hx-get:', e.target?.getAttribute('hx-get'));
-        
-        // Check if we have response text
-        if (e.detail.xhr && e.detail.xhr.responseText) {
-            console.log('Response text length:', e.detail.xhr.responseText.length);
-            console.log('Response text preview:', e.detail.xhr.responseText.substring(0, 200));
-        }
-        
         // Check for HX-Trigger header first (for column creation and row creation)
         if (e.detail.successful && e.detail.xhr) {
             const triggerHeader = e.detail.xhr.getResponseHeader('HX-Trigger');
             if (triggerHeader) {
-                console.log('HX-Trigger header found:', triggerHeader);
                 if (triggerHeader.includes('scrollToEnd')) {
-                    console.log('scrollToEnd trigger detected via HX-Trigger header!');
                     this.handleScrollToEnd();
                     return;
                 }
                 if (triggerHeader.includes('refreshGrid')) {
-                    console.log('refreshGrid trigger detected via HX-Trigger header!');
                     this.handleRefreshGrid();
                     return;
                 }
                 if (triggerHeader.includes('resetGridToInitial')) {
-                    console.log('resetGridToInitial trigger detected via HX-Trigger header!');
                     this.handleResetGridToInitial();
                     return;
                 }
@@ -719,48 +667,29 @@ class GridManager {
         }
         
         // Only handle POST requests for form submissions
-        console.log('Checking if this is a POST request...');
-        console.log('Method matches post?', method === 'post' || method === 'POST');
-        console.log('Has responseText?', !!e.detail.xhr.responseText);
-        
         if (e.detail.successful && (method === 'post' || method === 'POST') && e.detail.xhr.responseText) {
-            console.log('Processing POST request...');
             // Store scroll position for form submissions
             const gridScrollable = document.querySelector('.grid-table-scrollable');
             const currentScrollLeft = gridScrollable ? gridScrollable.scrollLeft : 0;
             
             try {
                 const response = JSON.parse(e.detail.xhr.responseText);
-                console.log('Parsed JSON response:', response);
-                console.log('Response success:', response.success);
                 
                 if (response.success) {
-                    console.log('Processing successful response...');
-                    console.log('URL to check:', url);
-                    console.log('URL includes /column/?', url.includes('/column/'));
-                    console.log('URL includes /edit/?', url.includes('/edit/'));
-                    console.log('URL regex match:', url.match(/\/column\/\d+\/edit\//));
-                    
                     // Check if this is a column update
                     if ((url.includes('/columns/') && url.includes('/edit/')) || url.match(/\/columns\/\d+\/edit\//)) {
-                        console.log('Column update POST detected!');
-                        
                         // Extract column ID from URL
                         let columnId = null;
                         const urlMatch = url.match(/\/columns\/(\d+)\//);
-                        console.log('URL match result:', urlMatch);
                         if (urlMatch) {
                             columnId = urlMatch[1];
                         } else {
                             const urlParts = url.split('/');
-                            console.log('URL parts:', urlParts);
                             const columnIndex = urlParts.indexOf('columns');
-                            console.log('Column index:', columnIndex);
                             if (columnIndex >= 0 && columnIndex + 1 < urlParts.length) {
                                 columnId = urlParts[columnIndex + 1];
                             }
                         }
-                        console.log('Column ID extracted:', columnId);
                         
                         if (columnId && response.column_name) {
                             // Update column headers in place
@@ -784,8 +713,6 @@ class GridManager {
                     
                     // Check if this is a row update
                     if ((url.includes('/rows/') && url.includes('/edit/')) || url.match(/\/rows\/\d+\/edit\//)) {
-                        console.log('Row update POST detected!');
-                        
                         // Extract row ID from URL
                         let rowId = null;
                         const urlMatch = url.match(/\/rows\/(\d+)\//);
@@ -798,7 +725,6 @@ class GridManager {
                                 rowId = urlParts[rowIndex + 1];
                             }
                         }
-                        console.log('Row ID extracted:', rowId);
                         
                         if (rowId && response.row_name) {
                             // Update row headers in place
@@ -822,9 +748,6 @@ class GridManager {
                 }
             } catch (err) {
                 // Not JSON or not a form response - this is normal for GET requests that return HTML
-                console.log('Response is not JSON (likely HTML form content)');
-                console.log('Error:', err);
-                console.log('Response text:', e.detail.xhr.responseText);
             }
         }
 
@@ -899,7 +822,6 @@ class GridManager {
                 updatedTaskData = JSON.parse(e.detail.xhr.response);
             } catch (e) {
                 // If response isn't JSON, fall back to page reload for safety
-                console.log('Non-JSON response, reloading page');
                 window.location.reload();
                 return;
             }
@@ -1102,11 +1024,9 @@ class GridManager {
         const isTaskUpdate = e.detail.target && e.detail.target.closest('[id^="task-"]');
         
         if (isModalUpdate) {
-            console.log('Modal content swapped, processing HTMX attributes');
             // Ensure HTMX processes any new elements in the modal
             if (typeof htmx !== 'undefined') {
                 htmx.process(e.detail.target);
-                console.log('HTMX processing completed for modal content');
             }
             // Modal updates need reinitialization
             this.reinitializeComponents();
@@ -1206,8 +1126,6 @@ class GridManager {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
         }
-        
-        console.log('Grid JavaScript optimized and loaded');
     }
 }
 

@@ -23,6 +23,11 @@ urlpatterns = [
     path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),
     path('templates/create/<str:template_type>/', views.create_from_template_view, name='create_from_template'),
     
+    # Support Pages
+    path('faq/', views.faq_view, name='faq'),
+    path('contact/', views.contact_us_view, name='contact_us'),
+    path('privacy/', views.privacy_policy_view, name='privacy_policy'),
+    
     # Project URLs
     path('projects/', views.project_list_view, name='project_list'),
     path('projects/create/', views.project_create_view, name='project_create'),

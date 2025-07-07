@@ -5,13 +5,11 @@
 {% block content %}
 
 <!-- Header -->
-<div class="flex items-center justify-between mb-8">
-    <div>
-        <h1 class="text-3xl font-bold text-[var(--title-text)]">My Grids</h1>
-        <p class="text-[var(--subtitle-text)] mt-1">Organize your work into focused task grids</p>
-    </div>
+<div class="text-center mb-12">
+    <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">My Grids</h1>
+    <p class="text-[var(--subtitle-text)] text-lg max-w-2xl mx-auto mb-8">Organize your work into focused task grids</p>
     <a href="{% url 'pages:project_create' %}" 
-       class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md font-medium transition-colors">
+       class="inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md">
         <i class="fas fa-plus mr-2"></i>
         New Grid
     </a>
@@ -19,53 +17,62 @@
 
 <!-- Grids Overview -->
 {% if projects %}
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {% for project in projects %}
-            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div class="p-6">
-                    <div class="flex items-start justify-between mb-4">
-                        <h3 class="text-lg font-semibold text-[var(--title-text)] truncate">
-                            {{ project.name }}
-                        </h3>
-                        <div class="flex space-x-2 ml-2">
-                            <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-                               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors"
-                               title="Edit grid">
-                                <i class="fas fa-edit text-sm"></i>
-                            </a>
-                            <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                               class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors"
-                               title="Delete grid">
-                                <i class="fas fa-trash text-sm"></i>
-                            </a>
+    <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            {% for project in projects %}
+                <div class="w-full max-w-sm bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-105">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
+                                {{ project.name }}
+                            </h3>
+                            <div class="flex space-x-2 flex-shrink-0">
+                                <a href="{% url 'pages:project_edit' pk=project.pk %}" 
+                                   class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)]"
+                                   title="Edit grid">
+                                    <i class="fas fa-edit text-sm"></i>
+                                </a>
+                                <a href="{% url 'pages:project_delete' pk=project.pk %}" 
+                                   class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50"
+                                   title="Delete grid">
+                                    <i class="fas fa-trash text-sm"></i>
+                                </a>
+                            </div>
                         </div>
+                        
+                        <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                <span>Created {{ project.created_at|date:"M d, Y" }}</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-tasks mr-2 text-xs"></i>
+                                <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
+                            </div>
+                        </div>
+                        
+                        <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                           class="block w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-4 rounded-lg font-medium transition-colors shadow-sm">
+                            <i class="fas fa-external-link-alt mr-2"></i>
+                            Open Grid
+                        </a>
                     </div>
-                    
-                    <div class="text-sm text-[var(--subtitle-text)] mb-4">
-                        <p>Created {{ project.created_at|date:"M d, Y" }}</p>
-                        <p>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</p>
-                    </div>
-                    
-                    <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                       class="block w-full text-center bg-[var(--task-bg)] hover:bg-[var(--task-hover-bg)] text-[var(--text-primary)] py-2 px-4 rounded-md font-medium transition-colors">
-        Open Grid
-                    </a>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 {% else %}
     <!-- Empty State -->
-    <div class="text-center py-12">
-        <div class="mb-4">
-            <svg class="w-16 h-16 text-[var(--text-secondary)] mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-            </svg>
+    <div class="text-center py-16 max-w-md mx-auto">
+        <div class="mb-6">
+            <div class="w-20 h-20 bg-[var(--task-bg)] rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-th-large text-2xl text-[var(--text-secondary)]"></i>
+            </div>
         </div>
-        <h3 class="text-xl font-medium text-[var(--title-text)] mb-2">No grids yet</h3>
-        <p class="text-[var(--subtitle-text)] mb-6">Create your first grid to start organizing your tasks</p>
+        <h3 class="text-2xl font-medium text-[var(--title-text)] mb-3">No grids yet</h3>
+        <p class="text-[var(--subtitle-text)] mb-8 text-lg">Create your first grid to start organizing your tasks and boost your productivity</p>
         <a href="{% url 'pages:project_create' %}" 
-           class="inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-md font-medium transition-colors">
+           class="inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-8 py-4 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md">
             <i class="fas fa-plus mr-2"></i>
             Create Your First Grid
         </a>

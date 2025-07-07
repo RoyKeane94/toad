@@ -1,0 +1,214 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}FAQ - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">Frequently Asked Questions</h1>
+        <p class="text-[var(--subtitle-text)] text-lg">Find answers to common questions about Toad</p>
+    </div>
+
+    <!-- FAQ Categories -->
+    <div class="mb-8">
+        <div class="flex flex-wrap justify-center gap-4">
+            <button class="faq-category-btn active" data-category="all">All Questions</button>
+            <button class="faq-category-btn" data-category="general">General</button>
+            <button class="faq-category-btn" data-category="grids">Grids & Tasks</button>
+            <button class="faq-category-btn" data-category="account">Account</button>
+            <button class="faq-category-btn" data-category="technical">Technical</button>
+        </div>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+        <!-- General Questions -->
+        <div class="faq-item" data-category="general">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">What is Toad?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Toad is a task management application that helps you organize your work using customizable grids. You can create projects with rows and columns to categorize your tasks by time, priority, or any other system that works for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item" data-category="general">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Is Toad free to use?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Yes, Toad is currently free to use. You can create unlimited grids and tasks without any cost.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grids & Tasks Questions -->
+        <div class="faq-item" data-category="grids">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">How do I create a new grid?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">To create a new grid, click the "New Grid" button on your dashboard or grids page. Give your grid a name and start adding rows and columns to organize your tasks.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item" data-category="grids">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Can I add or remove columns and rows?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Yes! You can add new columns and rows using the "Add Column" and "Add Row" buttons in your grid. You can also edit or delete existing columns and rows using the action buttons next to each header.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item" data-category="grids">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">How do I mark tasks as complete?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Simply click the checkbox next to any task to mark it as complete. Completed tasks will be crossed out and the checkbox will be highlighted. You can also use the "Clear Completed" button to remove all completed tasks from your grid.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Questions -->
+        <div class="faq-item" data-category="account">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">How do I create an account?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Click the "Sign In" button in the top navigation, then select "Create Account" on the login page. You'll need to provide your name, email, and create a password.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item" data-category="account">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Can I change my password?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Yes, you can change your password by clicking the settings icon in the top navigation and selecting "Account Settings". From there, you can update your password and other account information.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical Questions -->
+        <div class="faq-item" data-category="technical">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">What browsers are supported?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Toad works best on modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your preferred browser for the best experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-item" data-category="technical">
+            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
+                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
+                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Is my data secure?</h3>
+                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
+                </button>
+                <div class="faq-answer hidden px-6 pb-6">
+                    <p class="text-[var(--text-primary)] leading-relaxed">Yes, we take data security seriously. All data is encrypted in transit and at rest. We never share your personal information with third parties. See our Privacy Policy for more details.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="text-center mt-12 p-8 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
+        <h2 class="text-2xl font-semibold text-[var(--title-text)] mb-4">Still have questions?</h2>
+        <p class="text-[var(--text-primary)] mb-6">Can't find the answer you're looking for? We're here to help!</p>
+        <a href="{% url 'pages:contact_us' %}" 
+           class="inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg font-medium transition-colors">
+            <i class="fas fa-envelope mr-2"></i>
+            Contact Us
+        </a>
+    </div>
+</div>
+
+<style>
+.faq-category-btn {
+    @apply px-4 py-2 rounded-lg border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--title-text)] hover:bg-[var(--task-bg)] transition-colors;
+}
+
+.faq-category-btn.active {
+    @apply bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] border-[var(--primary-action-bg)];
+}
+
+.faq-question:hover .fas {
+    @apply text-[var(--primary-action-bg)];
+}
+
+.faq-answer {
+    @apply border-t border-[var(--border-color)];
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // FAQ Category Filtering
+    const categoryButtons = document.querySelectorAll('.faq-category-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // Update active button
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Show/hide FAQ items
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const answer = this.nextElementSibling;
+            const icon = this.querySelector('.fas');
+            
+            // Toggle answer visibility
+            if (answer.classList.contains('hidden')) {
+                answer.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                answer.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        });
+    });
+});
+</script>
+{% endblock %}

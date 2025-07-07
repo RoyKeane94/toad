@@ -131,5 +131,67 @@ class TemplateColumnHeader(models.Model):
 
     def __str__(self):
         return f"{self.template.name} - {self.name}"
+
+
+class FAQ(models.Model):
+    question = models.CharField(max_length=200)
+    answer = models.TextField()
+    category = models.CharField(max_length=50, choices=[
+        ('general', 'General'),
+        ('grids', 'Grids & Tasks'),
+        ('account', 'Account'),
+        ('technical', 'Technical'),
+    ], default='general')
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['category', 'order', 'question']
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
+
+    def __str__(self):
+        return self.question
+
+
+class ContactSubmission(models.Model):
+    STATUS_CHOICES = [
+        ('new', 'New'),
+        ('in_progress', 'In Progress'),
+        ('resolved', 'Resolved'),
+        ('closed', 'Closed'),
+    ]
+    
+    CATEGORY_CHOICES = [
+        ('general', 'General Question'),
+        ('bug_report', 'Bug Report'),
+        ('feature_request', 'Feature Request'),
+        ('account_help', 'Account Help'),
+        ('technical_support', 'Technical Support'),
+        ('other', 'Other'),
+    ]
+    
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='general')
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='new')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, 
+                           help_text="Associated user if they were logged in")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['status', '-created_at']),
+            models.Index(fields=['category', '-created_at']),
+        ]
+
+    def __str__(self):
+        return f"{self.name} - {self.subject}"
     
     

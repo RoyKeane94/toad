@@ -4876,3 +4876,22 @@ INFO 2025-07-07 20:37:03,397 basehttp 5121 6251278336 "GET /static/js/grid/grid_
 INFO 2025-07-07 20:37:03,398 basehttp 5121 6200799232 "GET /static/css/output.css HTTP/1.1" 200 59637
 INFO 2025-07-07 20:37:08,449 basehttp 5121 6200799232 "GET /projects/1/columns/5/edit/ HTTP/1.1" 200 865
 INFO 2025-07-07 20:37:10,310 basehttp 5121 6200799232 "POST /projects/1/columns/5/edit/ HTTP/1.1" 200 100
+INFO 2025-07-07 20:52:15,738 autoreload 5878 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-07 20:52:22,513 basehttp 5878 6160248832 "GET / HTTP/1.1" 200 2787
+INFO 2025-07-07 20:52:22,531 basehttp 5878 6160248832 "GET /static/js/general/general.min.js HTTP/1.1" 200 10377
+INFO 2025-07-07 20:52:23,913 basehttp 5878 6160248832 "GET /projects/ HTTP/1.1" 200 3288
+INFO 2025-07-07 20:52:34,198 basehttp 5878 6160248832 "GET /projects/ HTTP/1.1" 200 3247
+INFO 2025-07-07 20:52:34,213 basehttp 5878 6177075200 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 10556
+INFO 2025-07-07 20:52:34,213 basehttp 5878 6193901568 "GET /static/js/general/general.min.js HTTP/1.1" 200 10377
+INFO 2025-07-07 20:52:34,214 basehttp 5878 6160248832 "GET /static/css/output.css HTTP/1.1" 200 61435
+INFO 2025-07-07 20:52:41,523 basehttp 5878 6160248832 "GET /faq/ HTTP/1.1" 200 4640
+INFO 2025-07-07 20:52:41,535 basehttp 5878 6160248832 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-07 20:52:41,536 basehttp 5878 6193901568 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:52:49,936 basehttp 5878 6193901568 "GET /contact/ HTTP/1.1" 200 4303
+INFO 2025-07-07 20:52:49,949 basehttp 5878 6160248832 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:52:49,949 basehttp 5878 6193901568 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-07 20:52:59,792 basehttp 5878 6193901568 "GET /privacy/ HTTP/1.1" 200 5667
+INFO 2025-07-07 20:52:59,804 basehttp 5878 6193901568 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-07 20:52:59,805 basehttp 5878 6160248832 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:53:12,579 basehttp 5878 6193901568 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-07 20:53:12,579 basehttp 5878 6160248832 "GET /static/css/output.css HTTP/1.1" 304 0
