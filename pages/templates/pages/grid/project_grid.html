@@ -16,7 +16,7 @@
 {% block content %}
 
 <!-- Header -->
-<div class="mb-6 px-4">
+<div class="mb-6 px-4 grid-header-mobile">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
         <div>
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
@@ -25,11 +25,11 @@
         <!-- Grid Actions -->
         <div class="flex items-center space-x-3">
             <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors">
+               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-2 rounded-lg">
                 <i class="fas fa-edit"></i>
             </a>
             <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-               class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors">
+               class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-2 rounded-lg">
                 <i class="fas fa-trash"></i>
             </a>
         </div>
@@ -105,9 +105,9 @@
         </div>
         
         <!-- Grid Actions -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 grid-actions-mobile">
             <button type="button"
-                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
+                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
                     hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
                     hx-target="#modal-content"
                     hx-trigger="click throttle:500ms"
@@ -119,7 +119,7 @@
                 <i class="fas fa-plus mr-1"></i>Add Row
             </button>
             <button type="button"
-                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
+                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
                     hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
                     hx-target="#modal-content"
                     hx-trigger="click throttle:500ms"
@@ -131,7 +131,7 @@
                 <i class="fas fa-plus mr-1"></i>Add Column
             </button>
             <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
-               class="w-full sm:w-40 lg:w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+               class="w-full sm:w-40 lg:w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation">
                 <i class="fas fa-broom mr-1"></i>Clear Completed
             </a>
         </div>            

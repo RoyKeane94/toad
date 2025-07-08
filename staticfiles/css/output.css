@@ -629,6 +629,9 @@
   .cursor-pointer {
     cursor: pointer;
   }
+  .touch-manipulation {
+    touch-action: manipulation;
+  }
   .resize {
     resize: both;
   }
@@ -1520,6 +1523,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--grid-header-bg);
+      }
+    }
+  }
+  .hover\:bg-\[var\(--primary-action-bg\)\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--primary-action-bg);
       }
     }
   }

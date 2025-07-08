@@ -42,7 +42,7 @@
                    {% if task.completed %}checked{% endif %}
                    class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer {% if task.completed %}checkbox-completed{% endif %}">
         </form>
-        <div id="task-text-{{ task.id }}" class="text-sm text-[var(--text-primary)] {% if task.completed %}task-completed-strikethrough{% endif %} leading-relaxed">{{ task.text|linebreaks }}</div>
+        <div id="task-text-{{ task.id }}" class="text-sm text-[var(--text-primary)] {% if task.completed %}task-completed-strikethrough{% endif %} leading-relaxed whitespace-pre-wrap">{{ task.text|linebreaks }}</div>
     </div>
     
     <!-- Actions -->

@@ -77,6 +77,9 @@ class GridManager {
             ['document', 'htmx:responseError', this.handleHtmxError.bind(this)],
             ['document', 'htmx:sendError', this.handleHtmxError.bind(this)],
             
+            // Window level events
+            ['window', 'resize', this.handleWindowResize.bind(this)],
+            
             // Body level events
             ['body', 'openModal', this.showModal.bind(this)],
             ['body', 'closeModal', this.hideModal.bind(this)],
@@ -86,7 +89,8 @@ class GridManager {
         ];
 
         listeners.forEach(([target, event, handler]) => {
-            const element = target === 'document' ? document : document.body;
+            const element = target === 'document' ? document : 
+                           target === 'window' ? window : document.body;
             element.addEventListener(event, handler);
             
             // Store for cleanup
@@ -422,6 +426,19 @@ class GridManager {
         });
     }
 
+    // Determine responsive column count based on screen size
+    getResponsiveColumnCount() {
+        const screenWidth = window.innerWidth;
+        
+        if (screenWidth <= 480) {
+            return 1; // Mobile: 1 column
+        } else if (screenWidth <= 768) {
+            return 2; // Tablet: 2 columns  
+        } else {
+            return 3; // Desktop: 3 columns
+        }
+    }
+
     // Grid scrolling methods
     setupGridScrolling(skipRestore = false) {
         const { scrollable, leftBtn, rightBtn, gridTable } = this.elements;
@@ -434,18 +451,38 @@ class GridManager {
         if (!dataCols.length) return;
 
         this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || dataCols.length;
-        this.state.columnsToShow = Math.min(3, this.state.totalDataColumns);
+        this.state.columnsToShow = Math.min(this.getResponsiveColumnCount(), this.state.totalDataColumns);
 
         // Setup scroll buttons (only if not already set)
         if (!leftBtn.onclick) {
             leftBtn.onclick = () => this.scrollToCol(this.state.currentCol - 1);
             rightBtn.onclick = () => this.scrollToCol(this.state.currentCol + 1);
+            
+            // Add touch support for mobile
+            leftBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.scrollToCol(this.state.currentCol - 1);
+            });
+            rightBtn.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                this.scrollToCol(this.state.currentCol + 1);
+            });
         }
 
         // Setup resize observer (only once)
         if (!this.observers.has('resize')) {
             const resizeObserver = new ResizeObserver(() => {
                 const currentScrollLeft = scrollable.scrollLeft;
+                
+                // Recalculate column count based on new screen size
+                const newColumnCount = this.getResponsiveColumnCount();
+                if (newColumnCount !== this.state.columnsToShow) {
+                    this.state.columnsToShow = Math.min(newColumnCount, this.state.totalDataColumns);
+                    // Adjust current column to stay within bounds
+                    this.state.currentCol = Math.min(this.state.currentCol, 
+                        Math.max(0, this.state.totalDataColumns - this.state.columnsToShow));
+                }
+                
                 this.calculateAndApplyWidths();
                 // Restore exact scroll position after resize
                 scrollable.scrollLeft = currentScrollLeft;
@@ -453,6 +490,23 @@ class GridManager {
             });
             resizeObserver.observe(scrollable);
             this.observers.set('resize', resizeObserver);
+        }
+
+        // Add scroll event listener for mobile touch scrolling
+        if (!this.observers.has('scroll')) {
+            const scrollHandler = () => {
+                if (this.state.dataColWidth > 0) {
+                    const newCurrentCol = Math.round(scrollable.scrollLeft / this.state.dataColWidth);
+                    if (newCurrentCol !== this.state.currentCol) {
+                        this.state.currentCol = newCurrentCol;
+                        this.updateScrollButtons();
+                    }
+                }
+            };
+            
+            // Use passive listeners for better performance on mobile
+            scrollable.addEventListener('scroll', scrollHandler, { passive: true });
+            this.observers.set('scroll', { disconnect: () => scrollable.removeEventListener('scroll', scrollHandler) });
         }
 
         this.calculateAndApplyWidths();
@@ -609,6 +663,27 @@ class GridManager {
         
         // Refresh the grid to reflect the column deletion and reset position
         window.location.reload();
+    }
+
+    handleWindowResize() {
+        // Debounce resize events
+        if (this.resizeTimeout) {
+            clearTimeout(this.resizeTimeout);
+        }
+        
+        this.resizeTimeout = setTimeout(() => {
+            const newColumnCount = this.getResponsiveColumnCount();
+            if (newColumnCount !== this.state.columnsToShow) {
+                this.state.columnsToShow = Math.min(newColumnCount, this.state.totalDataColumns);
+                // Adjust current column to stay within bounds
+                this.state.currentCol = Math.min(this.state.currentCol, 
+                    Math.max(0, this.state.totalDataColumns - this.state.columnsToShow));
+                
+                // Recalculate and apply new widths
+                this.calculateAndApplyWidths();
+                this.updateScrollButtons();
+            }
+        }, 100);
     }
 
     // Handle column/row header updates
@@ -1102,6 +1177,11 @@ class GridManager {
 
     // Cleanup method
     cleanup() {
+        // Clear resize timeout
+        if (this.resizeTimeout) {
+            clearTimeout(this.resizeTimeout);
+        }
+        
         // Remove event listeners
         this.eventListeners.forEach((listeners, element) => {
             listeners.forEach(({ event, handler }) => {
