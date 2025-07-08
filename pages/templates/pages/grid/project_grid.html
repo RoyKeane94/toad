@@ -5,8 +5,12 @@
 {% block title %}{{ project.name }} - Toad{% endblock %}
 
 {% block extra_head %}
-<!-- Grid-specific JavaScript -->
+<!-- Grid-specific JavaScript - conditional loading for production -->
+{% if not debug %}
+    <script src="{% static 'js/grid/grid.min.js' %}"></script>
+{% else %}
     <script src="{% static 'js/grid/grid_optimized.js' %}"></script>
+{% endif %}
 {% endblock %}
 
 {% block content %}

@@ -2,6 +2,24 @@
 
 {% block title %}FAQ - Toad{% endblock %}
 
+{% block extra_head %}
+<style>
+    .faq-category-btn {
+        @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200 cursor-pointer;
+        @apply bg-[var(--grid-header-bg)] text-[var(--text-secondary)] hover:bg-[var(--primary-action-bg)] hover:text-[var(--primary-action-text)];
+    }
+    
+    .faq-category-btn.active {
+        @apply bg-[var(--primary-action-bg)] text-[var(--primary-action-text)];
+    }
+    
+    .fade-out {
+        opacity: 0;
+        transition: opacity 0.15s ease-in-out;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="max-w-4xl mx-auto">
     <!-- Header -->
@@ -148,5 +166,60 @@
     </div>
 </div>
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // FAQ Category Filtering
+    const faqCategoryButtons = document.querySelectorAll('.faq-category-btn');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (faqCategoryButtons.length > 0) {
+        faqCategoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.dataset.category;
+                
+                // Update active button
+                faqCategoryButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Show/hide FAQ items with smooth transition
+                faqItems.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                        // Force reflow for smooth animation
+                        item.offsetHeight;
+                        item.style.opacity = '1';
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 150);
+                    }
+                });
+            });
+        });
+    }
+    
+    // FAQ Accordion functionality
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    
+    if (faqQuestions.length > 0) {
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.fas');
+                
+                // Toggle answer visibility
+                if (answer.classList.contains('hidden')) {
+                    answer.classList.remove('hidden');
+                    icon.style.transform = 'rotate(180deg)';
+                } else {
+                    answer.classList.add('hidden');
+                    icon.style.transform = 'rotate(0deg)';
+                }
+            });
+        });
+    }
+});
+</script>
 
 {% endblock %}

@@ -366,52 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderPreview('generic');
     }
     
-    // === FAQ Page Functionality ===
-    const faqCategoryButtons = document.querySelectorAll('.faq-category-btn');
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    if (faqCategoryButtons.length > 0) {
-        // FAQ Category Filtering
-        faqCategoryButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const category = this.dataset.category;
-                
-                // Update active button
-                faqCategoryButtons.forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Show/hide FAQ items
-                faqItems.forEach(item => {
-                    if (category === 'all' || item.dataset.category === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-    }
-    
-    // FAQ Accordion
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    if (faqQuestions.length > 0) {
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', function() {
-                const answer = this.nextElementSibling;
-                const icon = this.querySelector('.fas');
-                
-                // Toggle answer visibility
-                if (answer.classList.contains('hidden')) {
-                    answer.classList.remove('hidden');
-                    icon.style.transform = 'rotate(180deg)';
-                } else {
-                    answer.classList.add('hidden');
-                    icon.style.transform = 'rotate(0deg)';
-                }
-            });
-        });
-    }
+
     
     // === Contact Page Functionality ===
     // Handle form submission success
