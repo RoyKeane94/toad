@@ -6,7 +6,7 @@
 <div class="max-w-4xl mx-auto">
     <!-- Header -->
     <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">Frequently Asked Questions</h1>
+        <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">Frequently Asked Questions</h1>
         <p class="text-[var(--subtitle-text)] text-lg">Find answers to common questions about Toad</p>
     </div>
 
@@ -148,67 +148,5 @@
     </div>
 </div>
 
-<style>
-.faq-category-btn {
-    @apply px-4 py-2 rounded-lg border border-[var(--border-color)] text-[var(--text-secondary)] hover:text-[var(--title-text)] hover:bg-[var(--task-bg)] transition-colors;
-}
 
-.faq-category-btn.active {
-    @apply bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] border-[var(--primary-action-bg)];
-}
-
-.faq-question:hover .fas {
-    @apply text-[var(--primary-action-bg)];
-}
-
-.faq-answer {
-    @apply border-t border-[var(--border-color)];
-}
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // FAQ Category Filtering
-    const categoryButtons = document.querySelectorAll('.faq-category-btn');
-    const faqItems = document.querySelectorAll('.faq-item');
-
-    categoryButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const category = this.dataset.category;
-            
-            // Update active button
-            categoryButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Show/hide FAQ items
-            faqItems.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // FAQ Accordion
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const icon = this.querySelector('.fas');
-            
-            // Toggle answer visibility
-            if (answer.classList.contains('hidden')) {
-                answer.classList.remove('hidden');
-                icon.style.transform = 'rotate(180deg)';
-            } else {
-                answer.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
-        });
-    });
-});
-</script>
 {% endblock %}

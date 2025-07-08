@@ -7,7 +7,7 @@
 <div class="max-w-4xl mx-auto">
     <!-- Header -->
     <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">Contact Us</h1>
+        <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">Contact Us</h1>
         <p class="text-[var(--subtitle-text)] text-lg">We'd love to hear from you! Send us a message and we'll get back to you as soon as possible.</p>
     </div>
 
@@ -227,15 +227,5 @@
     </div>
 </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle form submission success
-    document.body.addEventListener('htmx:afterSwap', function(event) {
-        if (event.detail.target.querySelector('.success-message')) {
-            // Scroll to top of form
-            event.detail.target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
-});
-</script>
+
 {% endblock %}
