@@ -6,8 +6,8 @@
 
 <!-- Header -->
 <div class="text-center mb-12">
-    <h1 class="text-4xl font-bold text-[var(--title-text)] mb-4">My Grids</h1>
-    <p class="text-[var(--subtitle-text)] text-lg max-w-2xl mx-auto mb-8">Organize your work into focused task grids</p>
+    <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">My Grids</h1>
+    <p class="text-[var(--subtitle-text)] text-lg max-w-2xl mx-auto mb-8">Welcome back. Here's everything you're working on</p>
     <a href="{% url 'pages:project_create' %}" 
        class="inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md">
         <i class="fas fa-plus mr-2"></i>
@@ -17,10 +17,10 @@
 
 <!-- Grids Overview -->
 {% if projects %}
-    <div class="max-w-6xl mx-auto">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-wrap justify-center gap-8">
             {% for project in projects %}
-                <div class="w-full max-w-sm bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 hover:scale-105">
+                <div class="w-full max-w-sm sm:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
                             <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
@@ -43,7 +43,7 @@
                         <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
                             <div class="flex items-center">
                                 <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                <span>Created {{ project.created_at|date:"M d, Y" }}</span>
+                                <span>Created {{ project.created_at|date:"d M Y" }}</span>
                             </div>
                             <div class="flex items-center">
                                 <i class="fas fa-tasks mr-2 text-xs"></i>

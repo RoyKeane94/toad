@@ -4926,3 +4926,44 @@ INFO 2025-07-08 20:04:58,546 autoreload 7911 8801115904 Watching for file change
 INFO 2025-07-08 20:05:01,932 basehttp 7911 6126301184 "GET /faq/ HTTP/1.1" 200 4126
 INFO 2025-07-08 20:05:01,945 basehttp 7911 6126301184 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-07-08 20:05:01,948 basehttp 7911 6143127552 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:07:47,288 autoreload 8250 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:07:55,632 basehttp 8250 6166867968 "GET /projects/ HTTP/1.1" 200 3256
+INFO 2025-07-08 20:07:55,653 basehttp 8250 6200520704 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:07:55,654 basehttp 8250 6183694336 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 11195
+INFO 2025-07-08 20:07:55,655 basehttp 8250 6166867968 "GET /static/css/output.css HTTP/1.1" 200 61378
+INFO 2025-07-08 20:08:00,834 basehttp 8250 6183694336 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:08:00,834 basehttp 8250 6166867968 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:10:30,707 basehttp 8250 6166867968 "GET /projects/1/ HTTP/1.1" 200 12415
+INFO 2025-07-08 20:10:30,724 basehttp 8250 6183694336 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:10:30,724 basehttp 8250 6217347072 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:10:30,724 basehttp 8250 6200520704 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:10:30,725 basehttp 8250 6166867968 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 48583
+INFO 2025-07-08 20:10:41,573 basehttp 8250 6166867968 "POST /tasks/22/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-08 20:10:50,471 project_views 8250 6166867968 User None deleted task: "test" from project: Toad
+INFO 2025-07-08 20:10:50,472 basehttp 8250 6166867968 "POST /tasks/132/delete/ HTTP/1.1" 200 58
+INFO 2025-07-08 20:11:52,419 autoreload 8514 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:11:55,117 basehttp 8514 6121746432 "GET /projects/1/ HTTP/1.1" 200 12323
+INFO 2025-07-08 20:11:55,132 basehttp 8514 6138572800 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:11:55,133 basehttp 8514 6121746432 "GET /static/css/output.css HTTP/1.1" 200 61130
+INFO 2025-07-08 20:11:56,172 basehttp 8514 6121746432 "GET /projects/ HTTP/1.1" 200 3243
+INFO 2025-07-08 20:13:53,364 autoreload 8747 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:13:55,381 basehttp 8747 6164312064 "GET /projects/ HTTP/1.1" 200 3267
+INFO 2025-07-08 20:13:55,397 basehttp 8747 6181138432 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:13:55,401 basehttp 8747 6197964800 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:13:55,402 basehttp 8747 6164312064 "GET /static/css/output.css HTTP/1.1" 200 60990
+INFO 2025-07-08 20:13:57,869 basehttp 8747 6164312064 "GET /projects/create/ HTTP/1.1" 200 3146
+INFO 2025-07-08 20:13:57,880 basehttp 8747 6164312064 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:13:57,880 basehttp 8747 6197964800 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:13:59,612 project_views 8747 6164312064 User None created project: Test
+INFO 2025-07-08 20:13:59,613 basehttp 8747 6164312064 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-07-08 20:13:59,633 basehttp 8747 6164312064 "GET /projects/13/ HTTP/1.1" 200 8275
+INFO 2025-07-08 20:13:59,649 basehttp 8747 6164312064 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:13:59,649 basehttp 8747 6181138432 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:14:01,043 basehttp 8747 6181138432 "GET /projects/ HTTP/1.1" 200 3336
+INFO 2025-07-08 20:14:01,056 basehttp 8747 6181138432 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:14:01,057 basehttp 8747 6164312064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:14:04,489 basehttp 8747 6164312064 "GET /projects/13/delete/ HTTP/1.1" 200 3045
+INFO 2025-07-08 20:14:04,501 basehttp 8747 6164312064 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:14:04,501 basehttp 8747 6181138432 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:14:05,374 basehttp 8747 6164312064 "POST /projects/13/delete/ HTTP/1.1" 302 0
+INFO 2025-07-08 20:14:05,386 basehttp 8747 6164312064 "GET /projects/ HTTP/1.1" 200 3198
