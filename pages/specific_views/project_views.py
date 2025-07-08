@@ -16,6 +16,28 @@ from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from pages.models import Project, RowHeader, ColumnHeader, Task
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
+from pages.specific_views_functions.project_views_functions import (
+    get_user_project_optimized,
+    get_user_task_optimized, 
+    get_user_row_optimized,
+    get_user_column_optimized,
+    process_grid_data_optimized,
+    get_projects_for_dropdown,
+    handle_htmx_response,
+    create_htmx_trigger_response,
+    create_json_response,
+    handle_form_submission,
+    handle_htmx_form_errors,
+    render_task_item,
+    render_modal_content,
+    create_default_project_structure,
+    create_project_from_template_config,
+    get_template_configurations,
+    bulk_delete_completed_tasks,
+    log_user_action,
+    get_next_order,
+    get_next_column_order
+)
 import logging
 
 # Set up logging
@@ -43,23 +65,10 @@ def project_create_view(request):
             project.user = request.user
             project.save()
             
-            # Create default headers for the new project
-            category_col = ColumnHeader.objects.create(
-                project=project, 
-                name='Time / Category', 
-                order=0, 
-                is_category_column=True
-            )
-            ColumnHeader.objects.create(project=project, name='Column 1 (Rename)', order=1)
-            ColumnHeader.objects.create(project=project, name='Column 2 (Rename)', order=2)
-            ColumnHeader.objects.create(project=project, name='Column 3 (Rename)', order=3)
-
-            RowHeader.objects.create(project=project, name='Row 1 (Rename)', order=0)
-            RowHeader.objects.create(project=project, name='Row 2 (Rename)', order=1)
-            RowHeader.objects.create(project=project, name='Row 3 (Rename)', order=2)
-            RowHeader.objects.create(project=project, name='Row 4 (Rename)', order=3)
+            # Use optimized bulk creation
+            create_default_project_structure(project)
             
-            logger.info(f'User {request.user.username} created project: {project.name}')
+            log_user_action(request.user, 'created project', project.name)
             messages.success(request, f'Project "{project.name}" created successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:
@@ -71,7 +80,8 @@ def project_create_view(request):
 
 
 def project_edit_view(request, pk):
-    project = get_object_or_404(Project, pk=pk, user=request.user)
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+    
     if request.method == 'POST':
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
@@ -89,7 +99,8 @@ def project_edit_view(request, pk):
 
 
 def project_delete_view(request, pk):
-    project = get_object_or_404(Project, pk=pk, user=request.user)
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+    
     if request.method == 'POST':
         project_name = project.name
         project.delete()
@@ -103,75 +114,20 @@ def project_delete_view(request, pk):
 def project_grid_view(request, pk):
     """
     Optimized project grid view with single database query and efficient data processing.
-    Removed caching to focus on pure performance optimizations.
     """
     # Single optimized query to load all required data at once
-    project = get_object_or_404(
-        Project.objects
-        .select_related('user')
-        .prefetch_related(
-            'row_headers',
-            'column_headers', 
-            'tasks__row_header',
-            'tasks__column_header'
-        )
-        .only('id', 'name', 'user__id'), 
-        pk=pk, 
-        user=request.user
+    project = get_user_project_optimized(
+        pk, 
+        request.user,
+        select_related=['user'],
+        prefetch_related=['row_headers', 'column_headers', 'tasks__row_header', 'tasks__column_header'],
+        only_fields=['id', 'name', 'user__id']
     )
     
-    # Access prefetched data - no additional queries
-    row_headers = [rh for rh in project.row_headers.all()]  # Already ordered by Meta
-    all_column_headers = [ch for ch in project.column_headers.all()]  # Already ordered by Meta
-    all_tasks = [task for task in project.tasks.all()]  # Already ordered by Meta
+    # Use optimized data processing
+    row_headers, category_column, data_column_headers, tasks_by_cell, row_min_heights = process_grid_data_optimized(project)
     
-    # Separate category and data columns efficiently
-    category_column = None
-    data_column_headers = []
-    
-    for col in all_column_headers:
-        if col.is_category_column:
-            category_column = col
-        else:
-            data_column_headers.append(col)
-    
-    # Efficient task grouping using single pass through tasks
-    tasks_by_cell = {}
-    tasks_by_row = {}
-    for task in all_tasks:
-        cell_key = f"{task.row_header_id}_{task.column_header_id}"
-        if cell_key not in tasks_by_cell:
-            tasks_by_cell[cell_key] = []
-        tasks_by_cell[cell_key].append(task)
-
-        # Group tasks by row for height calculations
-        if task.row_header_id not in tasks_by_row:
-            tasks_by_row[task.row_header_id] = []
-        tasks_by_row[task.row_header_id].append(task)
-        
-    # Calculate row heights based on content (optimized but still dynamic)
-    row_min_heights = {}
-    for row_header in row_headers:
-        row_id = row_header.pk
-        if row_id in tasks_by_row and tasks_by_row[row_id]:
-            # Find the maximum content needed for this row across ALL columns
-            max_content_height = 0
-            for task in tasks_by_row[row_id]:
-                # Estimate height based on text length and line breaks
-                text_lines = len(task.text.split('\n'))
-                char_lines = max(1, len(task.text) // 60)  # ~60 chars per line
-                estimated_lines = max(text_lines, char_lines)
-                content_height = estimated_lines * 25  # ~25px per line
-                max_content_height = max(max_content_height, content_height)
-            
-            # Set minimum height with base padding (form area + margins)
-            calculated_height = max(200, max_content_height + 120)  # 120px for form + padding
-            row_min_heights[row_id] = calculated_height
-        else:
-            # Empty rows still need consistent minimum height
-            row_min_heights[row_id] = 200
-    
-    # Context with dynamic row heights preserved
+    # Context with optimized data
     context = {
         'project': project,
         'row_headers': row_headers,
@@ -185,8 +141,7 @@ def project_grid_view(request, pk):
     
     # Lazy load projects for dropdown only when needed (non-HTMX requests)
     if not request.headers.get('HX-Request'):
-        # Only load when rendering full page, not partial updates
-        context['projects'] = Project.objects.filter(user=request.user).only('id', 'name').order_by('name')
+        context['projects'] = get_projects_for_dropdown(request.user)
     
     # If the request is from HTMX, only render the grid content partial
     if request.headers.get('HX-Request'):
@@ -198,45 +153,55 @@ def project_grid_view(request, pk):
 
 @login_required
 def task_create_view(request, project_pk, row_pk, col_pk):
-    # Optimize by only loading required fields
-    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
-    row_header = get_object_or_404(RowHeader.objects.only('id', 'name', 'project'), pk=row_pk, project=project)
-    column_header = get_object_or_404(ColumnHeader.objects.only('id', 'name', 'project'), pk=col_pk, project=project)
+    # Use optimized queries
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+    row_header = get_user_row_optimized(row_pk, project, only_fields=['id', 'name', 'project'])
+    column_header = get_user_column_optimized(col_pk, project, only_fields=['id', 'name', 'project'])
 
     if request.method == 'POST':
         form = QuickTaskForm(request.POST)
-        if form.is_valid():
-            task = form.save(commit=False)
+        
+        def success_callback(task):
             task.project = project
             task.row_header = row_header
             task.column_header = column_header
-            task.save()
-            
+        
+        def htmx_response(task):
+            return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task})
+        
+        def success_message_callback(task):
+            return f'Task "{task.text}" added successfully!'
+        
+        success, result = handle_form_submission(
+            request, 
+            form, 
+            success_callback=success_callback,
+            htmx_response=htmx_response,
+            success_message_callback=success_message_callback
+        )
+        
+        if success:
+            # For HTMX requests, result is the HTMX response; for regular requests, redirect
             if request.headers.get('HX-Request'):
-                # Return just the new task HTML for HTMX to insert
-                return render(request, 'pages/grid/actions_in_page/task_item.html', {
-                    'task': task,
-                })
-            
-            messages.success(request, f'Task "{task.text}" added successfully!')
-            return redirect('pages:project_grid', pk=project.pk)
+                return result
+            else:
+                return redirect('pages:project_grid', pk=project.pk)
         else:
             logger.warning(f'User {request.user.username} failed to create task - form errors: {form.errors}')
-            if request.headers.get('HX-Request'):
-                errors = form.errors.get('text', ['An error occurred'])
-                return HttpResponse(errors[0], status=422)
-            messages.error(request, 'Please correct the errors below.')
+            error_response = handle_htmx_form_errors(request, form)
+            if error_response:
+                return error_response
             return redirect('pages:project_grid', pk=project.pk)
     
     return redirect('pages:project_grid', pk=project.pk)
 
 
 def task_edit_view(request, task_pk):
-    # Optimize with select_related to avoid additional queries
-    task = get_object_or_404(
-        Task.objects.select_related('project', 'project__user'), 
-        pk=task_pk, 
-        project__user=request.user
+    task = get_user_task_optimized(
+        task_pk, 
+        request.user, 
+        select_related=['project', 'project__user'],
+        only_fields=['id', 'text', 'completed', 'project__id', 'project__user', 'project__name']
     )
     
     if request.method == 'POST':
@@ -244,32 +209,29 @@ def task_edit_view(request, task_pk):
         if form.is_valid():
             updated_task = form.save()
             if request.headers.get('HX-Request'):
-                # Render the updated task HTML
-                from django.template.loader import render_to_string
-                task_html = render_to_string('pages/grid/actions_in_page/task_item.html', {
-                    'task': updated_task
-                }, request=request)
-                
-                return JsonResponse({
-                    'success': True,
-                    'message': 'Task updated successfully!',
-                    'task_id': updated_task.pk,
-                    'task_html': task_html
-                })
+                return create_json_response(
+                    True,
+                    'Task updated successfully!',
+                    task_id=updated_task.pk,
+                    task_html=render_task_item(updated_task, request)
+                )
             messages.success(request, 'Task updated successfully!')
             return redirect('pages:project_grid', pk=task.project.pk)
         else:
-            if request.headers.get('HX-Request'):
-                return JsonResponse({
-                    'success': False,
-                    'errors': form.errors
-                }, status=422)
-            messages.error(request, 'Please correct the errors below.')
+            error_response = handle_htmx_form_errors(request, form)
+            if error_response:
+                return error_response
             return redirect('pages:project_grid', pk=task.project.pk)
     else:
         form = TaskForm(instance=task)
     
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/task_form_content.html', {
+        'form': form,
+        'task': task,
+        'title': 'Edit Task'
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/task_form_content.html', {
             'form': form,
             'task': task,
@@ -285,11 +247,11 @@ def task_edit_view(request, task_pk):
 
 @login_required
 def task_toggle_complete_view(request, task_pk):
-    # Only load fields needed for the operation
-    task = get_object_or_404(
-        Task.objects.select_related('project').only('id', 'completed', 'project__id', 'project__user'), 
-        pk=task_pk, 
-        project__user=request.user
+    task = get_user_task_optimized(
+        task_pk, 
+        request.user,
+        select_related=['project'],
+        only_fields=['id', 'completed', 'project__id', 'project__user']
     )
     
     if request.method == 'POST':
@@ -297,11 +259,11 @@ def task_toggle_complete_view(request, task_pk):
         task.save()
         
         if request.headers.get('HX-Request'):
-            return JsonResponse({
-                'success': True,
-                'completed': task.completed,
-                'message': f'Task {"completed" if task.completed else "reopened"} successfully!'
-            })
+            return create_json_response(
+                True,
+                f'Task {"completed" if task.completed else "reopened"} successfully!',
+                completed=task.completed
+            )
         
         messages.success(request, f'Task {"completed" if task.completed else "reopened"} successfully!')
         return redirect('pages:project_grid', pk=task.project.pk)
@@ -311,23 +273,22 @@ def task_toggle_complete_view(request, task_pk):
 
 @login_required
 def task_delete_view(request, task_pk):
-    # Only load fields needed for deletion
-    task = get_object_or_404(
-        Task.objects.select_related('project').only('id', 'text', 'project__id', 'project__user', 'project__name'), 
-        pk=task_pk, 
-        project__user=request.user
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__name']
     )
     project_pk = task.project.pk
-    task_text = task.text  # Store before deletion
+    task_text = task.text
     
     if request.method == 'POST':
-        logger.info(f'User {request.user.username} deleted task: "{task_text}" from project: {task.project.name}')
+        log_user_action(request.user, 'deleted task', task_text, task.project.name)
         task.delete()
+        
         if request.headers.get('HX-Request'):
-            return JsonResponse({
-                'success': True,
-                'message': 'Task deleted successfully!'
-            })
+            return create_json_response(True, 'Task deleted successfully!')
+        
         messages.success(request, 'Task deleted successfully!')
     
     return redirect('pages:project_grid', pk=project_pk)
@@ -335,30 +296,45 @@ def task_delete_view(request, task_pk):
 # Row CRUD Views
 
 def row_create_view(request, project_pk):
-    # Only load fields needed for row creation
-    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
     
     if request.method == 'POST':
         form = RowHeaderForm(request.POST)
-        if form.is_valid():
-            row = form.save(commit=False)
+        
+        def success_callback(row):
             row.project = project
-            row.order = project.row_headers.count()
-            row.save()
-            
-            # For HTMX requests, trigger a page reload
+            row.order = get_next_order(project.row_headers)
+        
+        def htmx_response(row):
+            return create_htmx_trigger_response('refreshGrid')
+        
+        def success_message_callback(row):
+            return f'Row "{row.name}" added successfully!'
+        
+        success, result = handle_form_submission(
+            request,
+            form,
+            success_callback=success_callback,
+            htmx_response=htmx_response,
+            success_message_callback=success_message_callback
+        )
+        
+        if success:
+            # For HTMX requests, result is the HTMX response; for regular requests, redirect
             if request.headers.get('HX-Request'):
-                response = HttpResponse(status=204)
-                response['HX-Trigger'] = 'refreshGrid'
-                return response
-            
-            messages.success(request, f'Row "{row.name}" added successfully!')
-            return redirect('pages:project_grid', pk=project.pk)
+                return result
+            else:
+                return redirect('pages:project_grid', pk=project.pk)
     else:
         form = RowHeaderForm()
     
-    # This part handles the initial GET request for the form
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/row_form_content.html', {
+        'form': form,
+        'project': project,
+        'title': 'Add Row'
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/row_form_content.html', {
             'form': form,
             'project': project,
@@ -374,12 +350,12 @@ def row_create_view(request, project_pk):
 
 
 def row_edit_view(request, project_pk, row_pk):
-    # Optimize with select_related and only needed fields
-    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=project_pk, user=request.user)
-    row = get_object_or_404(
-        RowHeader.objects.select_related('project').only('id', 'name', 'project__id'), 
-        pk=row_pk, 
-        project=project
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+    row = get_user_row_optimized(
+        row_pk, 
+        project, 
+        select_related=['project'],
+        only_fields=['id', 'name', 'project__id']
     )
     
     if request.method == 'POST':
@@ -387,25 +363,29 @@ def row_edit_view(request, project_pk, row_pk):
         if form.is_valid():
             form.save()
             if request.headers.get('HX-Request'):
-                return JsonResponse({
-                    'success': True,
-                    'message': f'Row "{row.name}" updated successfully!',
-                    'row_name': row.name
-                })
+                return create_json_response(
+                    True,
+                    f'Row "{row.name}" updated successfully!',
+                    row_name=row.name
+                )
             messages.success(request, f'Row "{row.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:
-            if request.headers.get('HX-Request'):
-                return JsonResponse({
-                    'success': False,
-                    'errors': form.errors
-                }, status=422)
-            messages.error(request, 'Please correct the errors below.')
+            error_response = handle_htmx_form_errors(request, form)
+            if error_response:
+                return error_response
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = RowHeaderForm(instance=row)
     
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/row_form_content.html', {
+        'form': form,
+        'project': project,
+        'row': row,
+        'title': 'Edit Row'
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/row_form_content.html', {
             'form': form,
             'project': project,
@@ -423,28 +403,30 @@ def row_edit_view(request, project_pk, row_pk):
 
 
 def row_delete_view(request, project_pk, row_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
-    row = get_object_or_404(RowHeader, pk=row_pk, project=project)
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+    row = get_user_row_optimized(row_pk, project, only_fields=['id', 'name', 'project'])
     
     if request.method == 'POST':
         row_name = row.name
         row.delete()
+        
         if request.headers.get('HX-Request'):
-            return JsonResponse({
-                'success': True,
-                'message': f'Row "{row_name}" deleted successfully!'
-            })
+            return create_json_response(True, f'Row "{row_name}" deleted successfully!')
+        
         messages.success(request, f'Row "{row_name}" deleted successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/row_delete_content.html', {
+        'project': project,
+        'row': row
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/row_delete_content.html', {
             'project': project,
             'row': row
         })
     
-# If HTMX request fails, render the normal page
-
     return render(request, 'pages/grid/actions_new_page/row_confirm_delete.html', {
         'project': project,
         'row': row
@@ -453,36 +435,51 @@ def row_delete_view(request, project_pk, row_pk):
 # Column CRUD Views
 
 def column_create_view(request, project_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
     
     if request.method == 'POST':
         form = ColumnHeaderForm(request.POST)
-        if form.is_valid():
-            column = form.save(commit=False)
+        
+        def success_callback(column):
             column.project = project
-            column.order = project.column_headers.filter(is_category_column=False).count() + 1
-            column.save()
-            
-            # For HTMX requests, trigger a scroll to the end after reload
+            column.order = get_next_column_order(project)
+        
+        def htmx_response(column):
+            return create_htmx_trigger_response('scrollToEnd')
+        
+        def success_message_callback(column):
+            return f'Column "{column.name}" added successfully!'
+        
+        success, result = handle_form_submission(
+            request,
+            form,
+            success_callback=success_callback,
+            htmx_response=htmx_response,
+            success_message_callback=success_message_callback
+        )
+        
+        if success:
+            # For HTMX requests, result is the HTMX response; for regular requests, redirect
             if request.headers.get('HX-Request'):
-                response = HttpResponse(status=204)
-                response['HX-Trigger'] = 'scrollToEnd'
-                return response
-
-            messages.success(request, f'Column "{column.name}" added successfully!')
-            return redirect('pages:project_grid', pk=project.pk)
+                return result
+            else:
+                return redirect('pages:project_grid', pk=project.pk)
     else:
         form = ColumnHeaderForm()
     
-    # This part handles the initial GET request for the form
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/column_form_content.html', {
+        'form': form,
+        'project': project,
+        'title': 'Add Column'
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/column_form_content.html', {
             'form': form,
             'project': project,
             'title': 'Add Column'
         })
     
-    # Fallback for non-HTMX GET requests
     return render(request, 'pages/grid/actions_new_page/grid_item_form.html', {
         'form': form, 
         'project': project, 
@@ -492,33 +489,42 @@ def column_create_view(request, project_pk):
 
 
 def column_edit_view(request, project_pk, col_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
-    column = get_object_or_404(ColumnHeader, pk=col_pk, project=project)
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+    column = get_user_column_optimized(
+        col_pk, 
+        project, 
+        select_related=['project'],
+        only_fields=['id', 'name', 'project__id']
+    )
     
     if request.method == 'POST':
         form = ColumnHeaderForm(request.POST, instance=column)
         if form.is_valid():
             form.save()
             if request.headers.get('HX-Request'):
-                return JsonResponse({
-                    'success': True,
-                    'message': f'Column "{column.name}" updated successfully!',
-                    'column_name': column.name
-                })
+                return create_json_response(
+                    True,
+                    f'Column "{column.name}" updated successfully!',
+                    column_name=column.name
+                )
             messages.success(request, f'Column "{column.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:
-            if request.headers.get('HX-Request'):
-                return JsonResponse({
-                    'success': False,
-                    'errors': form.errors
-                }, status=422)
-            messages.error(request, 'Please correct the errors below.')
+            error_response = handle_htmx_form_errors(request, form)
+            if error_response:
+                return error_response
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = ColumnHeaderForm(instance=column)
     
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/column_form_content.html', {
+        'form': form,
+        'project': project,
+        'column': column,
+        'title': 'Edit Column'
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/column_form_content.html', {
             'form': form,
             'project': project,
@@ -536,28 +542,30 @@ def column_edit_view(request, project_pk, col_pk):
 
 
 def column_delete_view(request, project_pk, col_pk):
-    project = get_object_or_404(Project, pk=project_pk, user=request.user)
-    column = get_object_or_404(ColumnHeader, pk=col_pk, project=project)
+    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+    column = get_user_column_optimized(col_pk, project, only_fields=['id', 'name', 'project'])
     
     if request.method == 'POST':
         column_name = column.name
         column.delete()
+        
         if request.headers.get('HX-Request'):
-            # For HTMX requests, trigger a reset to initial grid state
-            response = HttpResponse(status=204)
-            response['HX-Trigger'] = 'resetGridToInitial'
-            return response
+            return create_htmx_trigger_response('resetGridToInitial')
+        
         messages.success(request, f'Column "{column_name}" deleted successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     
-    if request.headers.get('HX-Request'):
+    modal_content = render_modal_content(request, 'pages/grid/modals/column_delete_content.html', {
+        'project': project,
+        'column': column
+    })
+    
+    if modal_content:
         return render(request, 'pages/grid/modals/column_delete_content.html', {
             'project': project,
             'column': column
         })
-
-# If HTMX request fails, render the normal page
-
+    
     return render(request, 'pages/grid/actions_new_page/column_confirm_delete.html', {
         'project': project,
         'column': column
@@ -565,14 +573,11 @@ def column_delete_view(request, project_pk, col_pk):
 
 @login_required
 def delete_completed_tasks_view(request, pk):
-    project = get_object_or_404(Project.objects.only('id', 'name', 'user'), pk=pk, user=request.user)
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
     
     if request.method == 'POST':
-        # More efficient bulk deletion with direct count
-        completed_tasks = project.tasks.filter(completed=True)
-        count = completed_tasks.count()
-        if count > 0:  # Only delete if there are tasks to delete
-            completed_tasks.delete()
+        count = bulk_delete_completed_tasks(project)
+        if count > 0:
             messages.success(request, f'Successfully deleted {count} completed tasks!')
         else:
             messages.info(request, 'No completed tasks to delete.')
@@ -586,91 +591,16 @@ def delete_completed_tasks_view(request, pk):
 def create_from_template_view(request, template_type):
     """Create a new project from a template"""
     if request.method == 'POST':
-        # Template configurations
-        templates = {
-            'student_jobs': {
-                'name': 'Student Job Applications',
-                'rows': [
-                    'Quick Apply (< 30 min)',
-                    'Standard Apply (30 min - 1 hr)', 
-                    'Detailed Apply (1-3 hrs)',
-                    'Major Investment (3+ hrs)'
-                ],
-                'columns': [
-                    'Research',
-                    'Applied', 
-                    'Interview',
-                    'Final Result'
-                ]
-            },
-            'student_revision': {
-                'name': 'Student Revision Planner',
-                'rows': [
-                    'High Priority (< 1 hour)',
-                    'Medium Priority (1-3 hours)',
-                    'Study Sessions (3-5 hours)',
-                    'Deep Dive (5+ hours)'
-                ],
-                'columns': [
-                    'Not Started',
-                    'In Progress',
-                    'Review Needed',
-                    'Exam Ready'
-                ]
-            },
-            'professionals_jobs': {
-                'name': 'Professional Career Tracker',
-                'rows': [
-                    'Quick Connections (< 30 min)',
-                    'Strategic Outreach (1-2 hrs)',
-                    'Major Opportunity (3+ hrs)'
-                ],
-                'columns': [
-                    'Networking',
-                    'Applications',
-                    'Interviews', 
-                    'Negotiations'
-                ]
-            }
-        }
+        templates = get_template_configurations()
         
         if template_type not in templates:
             messages.error(request, 'Invalid template type.')
             return redirect('pages:templates_overview')
         
         template_config = templates[template_type]
+        project = create_project_from_template_config(request.user, template_config)
         
-        # Create the project
-        project = Project.objects.create(
-            user=request.user,
-            name=template_config['name']
-        )
-        
-        # Create the category column
-        category_col = ColumnHeader.objects.create(
-            project=project,
-            name='Time / Category',
-            order=0,
-            is_category_column=True
-        )
-        
-        # Create columns
-        for i, col_name in enumerate(template_config['columns']):
-            ColumnHeader.objects.create(
-                project=project,
-                name=col_name,
-                order=i + 1
-            )
-        
-        # Create rows
-        for i, row_name in enumerate(template_config['rows']):
-            RowHeader.objects.create(
-                project=project,
-                name=row_name,
-                order=i
-            )
-        
-        logger.info(f'User {request.user.username} created project from template: {template_type}')
+        log_user_action(request.user, f'created project from template: {template_type}', project.name)
         messages.success(request, f'Project "{project.name}" created from template successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     

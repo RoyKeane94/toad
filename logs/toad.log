@@ -5021,3 +5021,213 @@ INFO 2025-07-08 20:26:58,839 basehttp 10028 6212317184 "GET /static/js/general/g
 INFO 2025-07-08 20:27:00,675 basehttp 10028 6212317184 "GET /projects/ HTTP/1.1" 200 3270
 INFO 2025-07-08 20:27:00,690 basehttp 10028 6212317184 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-07-08 20:27:00,690 basehttp 10028 6195490816 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:29:21,342 autoreload 10159 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:29:22,992 basehttp 10159 6200258560 "GET /privacy/ HTTP/1.1" 200 5273
+INFO 2025-07-08 20:29:23,006 basehttp 10159 6217084928 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:29:23,006 basehttp 10159 6200258560 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:29:23,007 basehttp 10159 6233911296 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:29:26,769 basehttp 10159 6233911296 "GET /contact/ HTTP/1.1" 200 4129
+INFO 2025-07-08 20:29:30,567 basehttp 10159 6233911296 "GET /faq/ HTTP/1.1" 200 4161
+INFO 2025-07-08 20:31:46,518 autoreload 10241 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:32:47,764 autoreload 10449 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:32:51,053 basehttp 10449 6170144768 "GET /projects/ HTTP/1.1" 200 3225
+INFO 2025-07-08 20:32:51,064 basehttp 10449 6170144768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:32:51,064 basehttp 10449 6186971136 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:32:51,067 basehttp 10449 6203797504 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:32:52,667 basehttp 10449 6203797504 "GET /projects/1/ HTTP/1.1" 200 12368
+INFO 2025-07-08 20:32:52,680 basehttp 10449 6203797504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:32:54,737 basehttp 10449 6203797504 "POST /tasks/82/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-08 20:32:55,463 basehttp 10449 6203797504 "POST /tasks/82/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-08 20:33:04,107 basehttp 10449 6203797504 "GET /projects/1/columns/5/edit/ HTTP/1.1" 200 896
+INFO 2025-07-08 20:33:06,355 basehttp 10449 6203797504 "POST /projects/1/columns/5/edit/ HTTP/1.1" 200 102
+INFO 2025-07-08 20:33:08,599 basehttp 10449 6203797504 "GET /projects/1/columns/5/edit/ HTTP/1.1" 200 884
+INFO 2025-07-08 20:33:10,733 basehttp 10449 6203797504 "POST /projects/1/columns/5/edit/ HTTP/1.1" 200 100
+INFO 2025-07-08 20:33:12,835 basehttp 10449 6203797504 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3162
+INFO 2025-07-08 20:33:12,848 basehttp 10449 6170144768 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:33:12,848 basehttp 10449 6186971136 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 12939
+INFO 2025-07-08 20:33:12,849 basehttp 10449 6203797504 "GET /static/css/output.css HTTP/1.1" 200 61897
+INFO 2025-07-08 20:33:13,789 basehttp 10449 6203797504 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-07-08 20:33:13,821 basehttp 10449 6203797504 "GET /projects/1/ HTTP/1.1" 200 12149
+INFO 2025-07-08 20:33:13,843 basehttp 10449 6203797504 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 48583
+INFO 2025-07-08 20:33:15,683 basehttp 10449 6203797504 "GET /projects/1/columns/create/ HTTP/1.1" 200 933
+ERROR 2025-07-08 20:33:17,849 log 10449 6203797504 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 441, in column_create_view
+    success_message=f'Column "{form.cleaned_data.get("name", "")}" added successfully!'
+                               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ColumnHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:17,853 basehttp 10449 6203797504 "POST /projects/1/columns/create/ HTTP/1.1" 500 11386
+ERROR 2025-07-08 20:33:19,341 log 10449 6203797504 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 441, in column_create_view
+    success_message=f'Column "{form.cleaned_data.get("name", "")}" added successfully!'
+                               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ColumnHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:19,344 basehttp 10449 6203797504 "POST /projects/1/columns/create/ HTTP/1.1" 500 11364
+ERROR 2025-07-08 20:33:21,282 log 10449 6203797504 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 441, in column_create_view
+    success_message=f'Column "{form.cleaned_data.get("name", "")}" added successfully!'
+                               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ColumnHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:21,286 basehttp 10449 6203797504 "POST /projects/1/columns/create/ HTTP/1.1" 500 11358
+ERROR 2025-07-08 20:33:22,348 log 10449 6203797504 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 441, in column_create_view
+    success_message=f'Column "{form.cleaned_data.get("name", "")}" added successfully!'
+                               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ColumnHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:22,352 basehttp 10449 6203797504 "POST /projects/1/columns/create/ HTTP/1.1" 500 11403
+ERROR 2025-07-08 20:33:23,436 log 10449 6203797504 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 441, in column_create_view
+    success_message=f'Column "{form.cleaned_data.get("name", "")}" added successfully!'
+                               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ColumnHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:23,438 basehttp 10449 6203797504 "POST /projects/1/columns/create/ HTTP/1.1" 500 11385
+INFO 2025-07-08 20:33:26,767 basehttp 10449 6203797504 "GET /projects/1/columns/create/ HTTP/1.1" 200 841
+ERROR 2025-07-08 20:33:29,736 log 10449 6203797504 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 441, in column_create_view
+    success_message=f'Column "{form.cleaned_data.get("name", "")}" added successfully!'
+                               ^^^^^^^^^^^^^^^^^
+AttributeError: 'ColumnHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:29,739 basehttp 10449 6203797504 "POST /projects/1/columns/create/ HTTP/1.1" 500 11328
+INFO 2025-07-08 20:33:32,133 basehttp 10449 6203797504 "GET /projects/1/rows/create/ HTTP/1.1" 200 919
+ERROR 2025-07-08 20:33:34,124 log 10449 6203797504 Internal Server Error: /projects/1/rows/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 309, in row_create_view
+    success_message=f'Row "{form.cleaned_data.get("name", "")}" added successfully!'
+                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'RowHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:34,127 basehttp 10449 6203797504 "POST /projects/1/rows/create/ HTTP/1.1" 500 11340
+ERROR 2025-07-08 20:33:35,213 log 10449 6203797504 Internal Server Error: /projects/1/rows/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 309, in row_create_view
+    success_message=f'Row "{form.cleaned_data.get("name", "")}" added successfully!'
+                            ^^^^^^^^^^^^^^^^^
+AttributeError: 'RowHeaderForm' object has no attribute 'cleaned_data'. Did you mean: 'changed_data'?
+ERROR 2025-07-08 20:33:35,217 basehttp 10449 6203797504 "POST /projects/1/rows/create/ HTTP/1.1" 500 11399
+INFO 2025-07-08 20:34:17,563 autoreload 10449 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-08 20:34:17,843 autoreload 10517 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:34:45,305 autoreload 10517 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-08 20:34:45,558 autoreload 10529 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:35:09,764 autoreload 10676 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:35:14,006 autoreload 10529 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-08 20:35:14,172 autoreload 10689 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:35:17,215 basehttp 10689 6155644928 "GET /projects/1/ HTTP/1.1" 200 12136
+INFO 2025-07-08 20:35:17,230 basehttp 10689 6172471296 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:35:17,230 basehttp 10689 6155644928 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:35:17,230 basehttp 10689 6189297664 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-08 20:35:18,492 basehttp 10689 6155644928 "GET /projects/1/columns/create/ HTTP/1.1" 200 842
+ERROR 2025-07-08 20:35:21,086 log 10689 6155644928 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 445, in column_create_view
+    success, result = handle_form_submission(
+    ^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+ERROR 2025-07-08 20:35:21,089 basehttp 10689 6155644928 "POST /projects/1/columns/create/ HTTP/1.1" 500 11246
+ERROR 2025-07-08 20:35:22,671 log 10689 6155644928 Internal Server Error: /projects/1/columns/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 445, in column_create_view
+    success, result = handle_form_submission(
+    ^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+ERROR 2025-07-08 20:35:22,673 basehttp 10689 6155644928 "POST /projects/1/columns/create/ HTTP/1.1" 500 11315
+INFO 2025-07-08 20:35:59,131 autoreload 10689 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-08 20:35:59,391 autoreload 10714 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:36:30,026 autoreload 10714 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-08 20:36:30,201 autoreload 10719 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:38:48,716 autoreload 10881 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:38:56,825 autoreload 10719 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-08 20:38:57,014 autoreload 10898 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:39:23,150 basehttp 10898 6200061952 "GET /projects/1/ HTTP/1.1" 200 13433
+INFO 2025-07-08 20:39:23,170 basehttp 10898 6216888320 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 12939
+INFO 2025-07-08 20:39:23,171 basehttp 10898 6233714688 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:39:23,172 basehttp 10898 6250541056 "GET /static/js/grid/grid_optimized.js HTTP/1.1" 200 48583
+INFO 2025-07-08 20:39:23,172 basehttp 10898 6200061952 "GET /static/css/output.css HTTP/1.1" 200 61897
+INFO 2025-07-08 20:39:24,395 basehttp 10898 6200061952 "GET /projects/1/columns/create/ HTTP/1.1" 200 887
+INFO 2025-07-08 20:39:26,723 basehttp 10898 6200061952 "POST /projects/1/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-08 20:39:26,771 basehttp 10898 6200061952 "GET /projects/1/ HTTP/1.1" 200 13752
+INFO 2025-07-08 20:39:26,792 basehttp 10898 6250541056 "GET /projects/1/ HTTP/1.1" 200 13812
+INFO 2025-07-08 20:39:26,793 basehttp 10898 6200061952 - Broken pipe from ('127.0.0.1', 58237)
+INFO 2025-07-08 20:39:26,793 basehttp 10898 6250541056 - Broken pipe from ('127.0.0.1', 58240)
+INFO 2025-07-08 20:39:26,794 basehttp 10898 6233714688 "GET /projects/1/ HTTP/1.1" 200 13818
+INFO 2025-07-08 20:39:30,971 basehttp 10898 6233714688 "GET /projects/1/columns/80/delete/ HTTP/1.1" 200 962
+INFO 2025-07-08 20:39:34,851 basehttp 10898 6233714688 "POST /projects/1/columns/80/delete/ HTTP/1.1" 204 0
+INFO 2025-07-08 20:39:34,884 basehttp 10898 6233714688 "GET /projects/1/ HTTP/1.1" 200 13473
+INFO 2025-07-08 20:39:43,157 basehttp 10898 6233714688 "GET /projects/1/rows/3/edit/ HTTP/1.1" 200 923
+INFO 2025-07-08 20:39:45,299 basehttp 10898 6233714688 "POST /projects/1/rows/3/edit/ HTTP/1.1" 200 118
+INFO 2025-07-08 20:39:48,918 basehttp 10898 6233714688 "GET /projects/1/columns/82/delete/ HTTP/1.1" 200 1002
+INFO 2025-07-08 20:39:49,903 basehttp 10898 6233714688 "POST /projects/1/columns/82/delete/ HTTP/1.1" 204 0
+INFO 2025-07-08 20:39:49,941 basehttp 10898 6233714688 "GET /projects/1/ HTTP/1.1" 200 12442
+INFO 2025-07-08 20:39:52,772 basehttp 10898 6233714688 "GET /projects/1/columns/4/edit/ HTTP/1.1" 200 942
+INFO 2025-07-08 20:39:54,309 basehttp 10898 6233714688 "POST /projects/1/columns/4/edit/ HTTP/1.1" 200 100
+INFO 2025-07-08 20:42:06,468 autoreload 10898 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-08 20:42:06,744 autoreload 10971 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:43:01,602 autoreload 10971 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-08 20:43:01,867 autoreload 11000 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:43:21,192 autoreload 11000 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/error_views.py changed, reloading.
+INFO 2025-07-08 20:43:21,444 autoreload 11012 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:43:34,665 autoreload 11012 8801115904 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/error_views.py changed, reloading.
+INFO 2025-07-08 20:43:34,915 autoreload 11031 8801115904 Watching for file changes with StatReloader
