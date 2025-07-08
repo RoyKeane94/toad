@@ -737,6 +737,25 @@ input[type="checkbox"]:focus {
     100% { transform: scale(1); }
 }
 
+/* Landing Page Styles */
+.value-prop-card {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.value-prop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.cta-button {
+    transition: all 0.2s ease-in-out;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
+}
+
 /* FAQ Page Styles */
 .faq-category-btn {
     padding: 8px 16px;
