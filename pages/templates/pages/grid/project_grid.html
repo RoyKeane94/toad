@@ -12,10 +12,10 @@
 {% block content %}
 
 <!-- Header -->
-<div class="mb-6">
-    <div class="flex items-center justify-between mb-4">
+<div class="mb-6 px-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
         <div>
-            <h1 class="text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
         </div>
         
         <!-- Grid Actions -->
@@ -32,8 +32,8 @@
     </div>
     
     <!-- Grid Switcher -->
-    <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-4">
+    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
             <!-- Current Grid Display -->
             <div class="flex items-center space-x-2">
                 <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
@@ -57,7 +57,7 @@
                 
                 <!-- Dropdown Menu -->
                 <div id="project-switcher-dropdown" 
-                     class="absolute top-full left-0 mt-2 w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
+                     class="absolute top-full left-0 mt-2 w-80 max-w-[90vw] bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
                     
                     <!-- Grids List -->
                     <div class="px-3 py-2">
@@ -101,9 +101,9 @@
         </div>
         
         <!-- Grid Actions -->
-        <div class="flex items-center space-x-3">
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <button type="button"
-                    class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
+                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
                     hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
                     hx-target="#modal-content"
                     hx-trigger="click throttle:500ms"
@@ -115,7 +115,7 @@
                 <i class="fas fa-plus mr-1"></i>Add Row
             </button>
             <button type="button"
-                    class="w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
+                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center"
                     hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
                     hx-target="#modal-content"
                     hx-trigger="click throttle:500ms"
@@ -127,7 +127,7 @@
                 <i class="fas fa-plus mr-1"></i>Add Column
             </button>
             <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
-               class="w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
+               class="w-full sm:w-40 lg:w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center">
                 <i class="fas fa-broom mr-1"></i>Clear Completed
             </a>
         </div>            

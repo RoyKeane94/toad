@@ -17,10 +17,10 @@
 
 <!-- Grids Overview -->
 {% if projects %}
-    <div class="max-w-7xl mx-auto">
-        <div class="flex flex-wrap justify-center gap-8">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
             {% for project in projects %}
-                <div class="w-full max-w-sm sm:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
+                <div class="w-full max-w-sm bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
                             <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
@@ -63,7 +63,7 @@
     </div>
 {% else %}
     <!-- Empty State -->
-    <div class="text-center py-16 max-w-md mx-auto">
+    <div class="text-center py-16 max-w-md mx-auto px-4">
         <div class="mb-6">
             <div class="w-20 h-20 bg-[var(--task-bg)] rounded-full flex items-center justify-center mx-auto mb-4">
                 <i class="fas fa-th-large text-2xl text-[var(--text-secondary)]"></i>
