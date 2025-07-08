@@ -5013,3 +5013,11 @@ INFO 2025-07-08 20:24:44,063 basehttp 9107 6202077184 "GET /static/css/output.cs
 INFO 2025-07-08 20:24:44,063 basehttp 9107 6252556288 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 WARNING 2025-07-08 20:24:44,078 log 9107 6252556288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-08 20:24:44,079 basehttp 9107 6252556288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1625
+INFO 2025-07-08 20:26:52,644 autoreload 10028 8801115904 Watching for file changes with StatReloader
+INFO 2025-07-08 20:26:58,810 basehttp 10028 6195490816 "GET / HTTP/1.1" 200 2757
+INFO 2025-07-08 20:26:58,835 basehttp 10028 6212317184 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:26:58,838 basehttp 10028 6195490816 "GET /static/css/output.css HTTP/1.1" 200 61897
+INFO 2025-07-08 20:26:58,839 basehttp 10028 6212317184 "GET /static/js/general/general.min.js HTTP/1.1" 200 11832
+INFO 2025-07-08 20:27:00,675 basehttp 10028 6212317184 "GET /projects/ HTTP/1.1" 200 3270
+INFO 2025-07-08 20:27:00,690 basehttp 10028 6212317184 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-08 20:27:00,690 basehttp 10028 6195490816 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

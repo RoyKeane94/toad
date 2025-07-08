@@ -18,9 +18,9 @@
 <!-- Grids Overview -->
 {% if projects %}
     <div class="max-w-7xl mx-auto px-4">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+        <div class="flex flex-wrap justify-center gap-6">
             {% for project in projects %}
-                <div class="w-full max-w-sm bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
+                <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
                     <div class="p-6">
                         <div class="flex items-start justify-between mb-4">
                             <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
