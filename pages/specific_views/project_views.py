@@ -110,10 +110,22 @@ def project_delete_view(request, pk):
     return render(request, 'pages/grid/actions_new_page/project_confirm_delete.html', {'project': project})
 
 
+def is_mobile_device(request):
+    """
+    Detect if the request is from a mobile device
+    """
+    user_agent = request.META.get('HTTP_USER_AGENT', '').lower()
+    mobile_agents = [
+        'mobile', 'android', 'iphone', 'ipad', 'ipod', 'blackberry', 
+        'windows phone', 'opera mini', 'palm', 'symbian'
+    ]
+    return any(agent in user_agent for agent in mobile_agents)
+
 @login_required
 def project_grid_view(request, pk):
     """
     Optimized project grid view with single database query and efficient data processing.
+    Serves different templates for mobile and desktop.
     """
     # Single optimized query to load all required data at once
     project = get_user_project_optimized(
@@ -147,7 +159,11 @@ def project_grid_view(request, pk):
     if request.headers.get('HX-Request'):
         return render(request, 'pages/grid/partials/grid_content.html', context)
     
-    return render(request, 'pages/grid/project_grid.html', context)
+    # Detect mobile device and serve appropriate template
+    if is_mobile_device(request):
+        return render(request, 'pages/grid/project_grid_mobile.html', context)
+    else:
+        return render(request, 'pages/grid/project_grid.html', context)
 
 # Task CRUD Views
 

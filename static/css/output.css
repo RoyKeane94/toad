@@ -92,7 +92,6 @@
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
-    --radius-2xl: 1rem;
     --animate-spin: spin 1s linear infinite;
     --blur-sm: 8px;
     --default-transition-duration: 150ms;
@@ -521,8 +520,8 @@
   .max-h-60 {
     max-height: calc(var(--spacing) * 60);
   }
-  .min-h-\[70vh\] {
-    min-height: 70vh;
+  .min-h-\[80vh\] {
+    min-height: 80vh;
   }
   .min-h-full {
     min-height: 100%;
@@ -559,6 +558,9 @@
   }
   .w-48 {
     width: calc(var(--spacing) * 48);
+  }
+  .w-72 {
+    width: calc(var(--spacing) * 72);
   }
   .w-80 {
     width: calc(var(--spacing) * 80);
@@ -610,6 +612,9 @@
   }
   .origin-bottom-right {
     transform-origin: bottom right;
+  }
+  .origin-top {
+    transform-origin: top;
   }
   .origin-top-left {
     transform-origin: top left;
@@ -796,9 +801,6 @@
   .rounded {
     border-radius: 0.25rem;
   }
-  .rounded-2xl {
-    border-radius: var(--radius-2xl);
-  }
   .rounded-full {
     border-radius: calc(infinity * 1px);
   }
@@ -860,12 +862,6 @@
   }
   .border-\[var\(--primary-action-bg\)\] {
     border-color: var(--primary-action-bg);
-  }
-  .border-\[var\(--primary-action-bg\)\]\/20 {
-    border-color: var(--primary-action-bg);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--primary-action-bg) 20%, transparent);
-    }
   }
   .border-blue-200 {
     border-color: var(--color-blue-200);
@@ -997,13 +993,6 @@
     --tw-gradient-from: var(--primary-action-bg);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
-  .from-\[var\(--primary-action-bg\)\]\/10 {
-    --tw-gradient-from: var(--primary-action-bg);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-gradient-from: color-mix(in oklab, var(--primary-action-bg) 10%, transparent);
-    }
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
   .from-blue-500 {
     --tw-gradient-from: var(--color-blue-500);
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
@@ -1045,13 +1034,6 @@
   }
   .to-\[var\(--clear-button-hover-bg\)\] {
     --tw-gradient-to: var(--clear-button-hover-bg);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-  }
-  .to-\[var\(--primary-action-bg\)\]\/5 {
-    --tw-gradient-to: var(--primary-action-bg);
-    @supports (color: color-mix(in lab, red, red)) {
-      --tw-gradient-to: color-mix(in oklab, var(--primary-action-bg) 5%, transparent);
-    }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-\[var\(--primary-action-hover-bg\)\] {
@@ -1696,14 +1678,6 @@
     &:hover {
       @media (hover: hover) {
         --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-      }
-    }
-  }
-  .hover\:shadow-xl {
-    &:hover {
-      @media (hover: hover) {
-        --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }
