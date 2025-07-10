@@ -5,58 +5,47 @@
 {% block title %}{{ project.name }} - Toad{% endblock %}
 
 {% block extra_head %}
-<!-- Mobile Grid-specific JavaScript -->
-<script src="{% static 'js/grid/grid_mobile.js' %}"></script>
+<!-- Grid-specific JavaScript - conditional loading for production -->
+{% if not debug %}
+    <script src="{% static 'js/grid/grid_mobile.js' %}"></script>
+{% else %}
+    <script src="{% static 'js/grid/grid_mobile.js' %}"></script>
+{% endif %}
 {% endblock %}
 
 {% block content %}
 
-<!-- Mobile Header -->
-<div class="mb-6 px-4">
-    <div class="flex flex-col gap-4">
-        <div class="flex items-center justify-between">
-            <h1 class="text-2xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
-            <div class="flex items-center space-x-3">
-                <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-                   class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-2 rounded-lg">
-                    <i class="fas fa-edit"></i>
-                </a>
-                <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                   class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-2 rounded-lg">
-                    <i class="fas fa-trash"></i>
-                </a>
-            </div>
+<!-- Header -->
+<div class="mb-6 px-4 grid-header-mobile">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+        <div>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
         </div>
         
-        <!-- Mobile Grid Switcher -->
-        <div class="flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-project-diagram text-white text-sm"></i>
-                </div>
-                <div>
-                    <div class="text-sm font-medium text-[var(--text-primary)]">{{ project.name }}</div>
-                    <div class="text-xs text-[var(--text-secondary)]">Current Grid</div>
-                </div>
-            </div>
+    </div>
+    
+    <!-- Grid Switcher and Actions -->
+    <div class="flex items-stretch gap-3">
+        <!-- Grid Switcher Dropdown -->
+        <div class="relative flex-1" id="project-switcher-container">
+            <button type="button" 
+                    id="project-switcher-btn"
+                    class="w-full h-full group flex items-center justify-between space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
+                <span class="flex items-center space-x-2">
+                    <i class="fas fa-exchange-alt text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
+                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch Grid</span>
+                </span>
+                <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="switcher-chevron"></i>
+            </button>
             
-            <!-- Mobile Grid Switcher Dropdown -->
-            <div class="relative" id="mobile-project-switcher-container">
-                <button type="button" 
-                        id="mobile-project-switcher-btn"
-                        class="flex items-center space-x-2 px-3 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 cursor-pointer">
-                    <i class="fas fa-exchange-alt text-[var(--text-secondary)] text-sm"></i>
-                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch</span>
-                    <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] transition-all duration-200" id="mobile-switcher-chevron"></i>
-                </button>
-                
-                <div id="mobile-project-switcher-dropdown" 
-                     class="absolute top-full right-0 mt-2 w-72 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
-                    
-                    <div class="px-3 py-2">
-                        <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Grids</div>
-                        <div class="space-y-1 max-h-60 overflow-y-auto">
-                            {% for p in projects %}
+            <!-- Dropdown Menu -->
+            <div id="project-switcher-dropdown" 
+                 class="absolute top-full left-0 mt-2 w-full bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
+                <!-- Grids List -->
+                <div class="px-3 py-2">
+                    <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Grids</div>
+                    <div class="space-y-1 max-h-60 overflow-y-auto">
+            {% for p in projects %}
                             <a href="{% url 'pages:project_grid' pk=p.pk %}" 
                                class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 cursor-pointer {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
                                 <div class="flex items-center justify-center w-6 h-6 rounded {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]{% else %}bg-gray-500{% endif %} shadow-sm">
@@ -72,214 +61,64 @@
                                     <i class="fas fa-check text-xs"></i>
                                 {% endif %}
                             </a>
-                            {% endfor %}
+            {% endfor %}
+                    </div>
+                </div>
+                
+                <!-- Divider -->
+                <div class="border-t border-[var(--border-color)] my-2"></div>
+                
+                <!-- Back to Grids -->
+                <div class="px-3">
+                    <a href="{% url 'pages:project_list' %}" 
+                       class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
+                        <div class="flex items-center justify-center w-6 h-6 rounded bg-gray-500 shadow-sm">
+                            <i class="fas fa-arrow-left text-white text-xs"></i>
                         </div>
-                    </div>
-                    
-                    <div class="border-t border-[var(--border-color)] my-2"></div>
-                    
-                    <div class="px-3">
-                        <a href="{% url 'pages:project_list' %}" 
-                           class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
-                            <div class="flex items-center justify-center w-6 h-6 rounded bg-gray-500 shadow-sm">
-                                <i class="fas fa-arrow-left text-white text-xs"></i>
-                            </div>
-                            <span class="font-medium text-sm">Back to All Grids</span>
-                        </a>
-                    </div>
+                        <span class="font-medium text-sm">Back to All Grids</span>
+                    </a>
                 </div>
             </div>
         </div>
         
-        <!-- Mobile Actions Dropdown -->
-        <div class="relative" id="mobile-actions-container">
-            <button type="button" 
-                    id="mobile-actions-btn"
-                    class="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-lg shadow-sm transition-all duration-200 cursor-pointer">
-                <i class="fas fa-plus text-sm"></i>
-                <span class="text-sm font-medium">Actions</span>
-                <i class="fas fa-chevron-down text-xs transition-all duration-200" id="mobile-actions-chevron"></i>
+        <!-- Actions Dropdown -->
+        <div class="relative flex-1" id="actions-menu-container">
+            <button type="button" id="actions-menu-btn" class="w-full h-full group flex items-center justify-between space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
+                <span class="flex items-center space-x-2">
+                    <i class="fas fa-cog text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
+                    <span class="text-sm text-[var(--text-primary)] font-medium">Actions</span>
+                </span>
+                <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="actions-chevron"></i>
             </button>
-            
-            <div id="mobile-actions-dropdown" 
-                 class="absolute top-full left-0 right-0 mt-2 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top">
-                
-                <button type="button"
-                        class="w-full flex items-center space-x-3 px-4 py-3 hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer"
+            <div id="actions-menu-dropdown" class="absolute top-full right-0 mt-2 w-full bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
+                <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
                         hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
-                        hx-target="#modal-content"
-                        hx-trigger="click throttle:500ms"
-                        hx-disabled-elt="this"
-                        hx-indicator="#modal-content"
-                        hx-swap="innerHTML"
-                        hx-headers='{"Cache-Control": "no-cache"}'
+                        hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
                         onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                    <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
-                        <i class="fas fa-plus text-white text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="font-medium text-sm">Add Row</div>
-                        <div class="text-xs text-[var(--text-secondary)]">Create a new row</div>
-                    </div>
+                    <i class="fas fa-plus text-xs w-4 text-center"></i>
+                    <span>Add Row</span>
                 </button>
-                
-                <button type="button"
-                        class="w-full flex items-center space-x-3 px-4 py-3 hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer"
+                <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
                         hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
-                        hx-target="#modal-content"
-                        hx-trigger="click throttle:500ms"
-                        hx-disabled-elt="this"
-                        hx-indicator="#modal-content"
-                        hx-swap="innerHTML"
-                        hx-headers='{"Cache-Control": "no-cache"}'
+                        hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
                         onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                    <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
-                        <i class="fas fa-plus text-white text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="font-medium text-sm">Add Column</div>
-                        <div class="text-xs text-[var(--text-secondary)]">Create a new column</div>
-                    </div>
+                    <i class="fas fa-plus text-xs w-4 text-center"></i>
+                    <span>Add Column</span>
                 </button>
-                
-                <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
-                   class="w-full flex items-center space-x-3 px-4 py-3 hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
-                    <div class="flex items-center justify-center w-8 h-8 bg-[var(--clear-button-bg)] rounded-lg shadow-sm">
-                        <i class="fas fa-broom text-white text-sm"></i>
-                    </div>
-                    <div>
-                        <div class="font-medium text-sm">Clear Completed</div>
-                        <div class="text-xs text-[var(--text-secondary)]">Remove completed tasks</div>
-                    </div>
+                <div class="border-t border-[var(--border-color)] my-2"></div>
+                <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
+                    <i class="fas fa-broom text-xs w-4 text-center text-[var(--clear-button-bg)]"></i>
+                    <span class="text-[var(--clear-button-bg)]">Clear Completed</span>
                 </a>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Mobile Grid Layout -->
-<div class="mobile-grid-container" id="mobile-grid" style="display: flex;">
-    <!-- Mobile Column Navigation -->
-    <div class="mobile-column-navigation">
-        <button class="mobile-column-btn mobile-column-prev" id="mobile-prev-btn">
-            <i class="fas fa-chevron-left"></i>
-        </button>
-        <div class="mobile-column-indicator">
-            <span id="mobile-current-column">1</span>
-            <span class="mobile-column-separator">of</span>
-            <span id="mobile-total-columns">{{ data_column_headers|length }}</span>
-        </div>
-        <button class="mobile-column-btn mobile-column-next" id="mobile-next-btn">
-            <i class="fas fa-chevron-right"></i>
-        </button>
-    </div>
-    
-    <!-- Mobile Column Name -->
-    <div class="mobile-column-header" id="mobile-column-header">
-        <h3 class="mobile-column-title" id="mobile-column-title">{% if data_column_headers %}{{ data_column_headers.0.name }}{% else %}Column{% endif %}</h3>
-        <div class="mobile-column-actions">
-            <button type="button" class="mobile-column-action-btn" id="mobile-column-edit-btn" data-column-id="{% if data_column_headers %}{{ data_column_headers.0.pk }}{% endif %}">
-                <i class="fas fa-edit"></i>
-            </button>
-            <button type="button" class="mobile-column-action-btn" id="mobile-column-delete-btn" data-column-id="{% if data_column_headers %}{{ data_column_headers.0.pk }}{% endif %}">
-                <i class="fas fa-trash"></i>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Mobile Column Content -->
-    <div class="mobile-column-content" id="mobile-column-content">
-        {% for col_h in data_column_headers %}
-        <div class="mobile-column-panel" data-column-id="{{ col_h.pk }}" {% if not forloop.first %}style="display: none;"{% endif %}>
-            {% for row_h in row_headers %}
-            <div class="mobile-task-section" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}">
-                <!-- Row Header as Title -->
-                <div class="mobile-row-header">
-                    <h4 class="mobile-row-title">{{ row_h.name }}</h4>
-                    <div class="mobile-row-actions">
-                        <button type="button" class="mobile-row-action-btn" data-row-id="{{ row_h.pk }}">
-                            <i class="fas fa-ellipsis-v"></i>
-                        </button>
-                        <div class="mobile-row-actions-dropdown" data-row-id="{{ row_h.pk }}">
-                            <button type="button" class="mobile-dropdown-item"
-                                    hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
-                                    hx-target="#modal-content"
-                                    hx-trigger="click throttle:500ms"
-                                    hx-disabled-elt="this"
-                                    hx-indicator="#modal-content"
-                                    hx-swap="innerHTML"
-                                    hx-headers='{"Cache-Control": "no-cache"}'
-                                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                                <i class="fas fa-edit"></i>Edit
-                            </button>
-                            <button type="button" class="mobile-dropdown-item"
-                                    hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
-                                    hx-target="#modal-content"
-                                    hx-trigger="click throttle:500ms"
-                                    hx-disabled-elt="this"
-                                    hx-indicator="#modal-content"
-                                    hx-swap="innerHTML"
-                                    hx-headers='{"Cache-Control": "no-cache"}'
-                                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                                <i class="fas fa-trash"></i>Delete
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Tasks -->
-                <div class="mobile-tasks-container" id="mobile-tasks-{{ row_h.pk }}-{{ col_h.pk }}">
-                    {% with key=row_h.pk|cell_key:col_h.pk %}
-                        {% for task in tasks_by_cell|get_item:key %}
-                            {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
-                        {% endfor %}
-                    {% endwith %}
-                </div>
-                
-                <!-- Add Task Form -->
-                <div class="mobile-add-task-container">
-                    <form method="post" 
-                          action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
-                          class="task-form add-task-form mobile-add-task-form"
-                          novalidate
-                          hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
-                          hx-swap="beforeend"
-                          hx-target="#mobile-tasks-{{ row_h.pk }}-{{ col_h.pk }}"
-                          hx-trigger="submit throttle:500ms"
-                          hx-disabled-elt="this"
-                          onsubmit="return validateTaskForm(this)">
-                        {% csrf_token %}
-                        
-                        <!-- Collapsed state -->
-                        <div class="add-task-collapsed">
-                            <button type="button" class="add-task-trigger mobile-add-task-trigger">
-                                <i class="fas fa-plus"></i>Add task...
-                            </button>
-                        </div>
-                        
-                        <!-- Expanded state -->
-                        <div class="add-task-expanded hidden">
-                            <div class="mobile-add-task-inputs">
-                                {{ quick_task_form.text }}
-                                <div class="mobile-add-task-buttons">
-                                    <button type="submit" class="mobile-add-task-submit">
-                                        <i class="fas fa-check"></i>
-                                    </button>
-                                    <button type="button" class="add-task-cancel mobile-add-task-cancel">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="error-message"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        {% endfor %}
-    </div>
-</div>
+
+
+<!-- Task Grid -->
+{% include 'pages/grid/partials/mobile_grid_content.html' %}
 
 <!-- Task Deletion Modal -->
 <div id="delete-task-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -346,4 +185,5 @@
     </div>
 </div>
 
-{% endblock %} 
+
+{% endblock %}

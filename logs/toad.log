@@ -5548,3 +5548,737 @@ INFO 2025-07-09 22:00:06,128 basehttp 13113 6200602624 "GET /static/css/output.c
 WARNING 2025-07-09 22:00:06,129 basehttp 13113 6267908096 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1600
 INFO 2025-07-09 22:00:13,368 basehttp 13113 6200602624 "GET /projects/1/ HTTP/1.1" 200 13045
 INFO 2025-07-09 22:00:13,382 basehttp 13113 6200602624 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+INFO 2025-07-10 05:14:03,580 autoreload 2342 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:14:11,651 basehttp 2342 6158594048 "GET /projects/1/ HTTP/1.1" 200 13093
+INFO 2025-07-10 05:14:11,663 basehttp 2342 6158594048 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:14:11,664 basehttp 2342 6175420416 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:14:11,665 basehttp 2342 6192246784 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:14:11,665 basehttp 2342 6209073152 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-07-10 05:14:14,279 log 2342 6209073152 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:14:14,280 basehttp 2342 6209073152 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1563
+INFO 2025-07-10 05:14:17,081 basehttp 2342 6209073152 "GET /projects/1/ HTTP/1.1" 200 12416
+INFO 2025-07-10 05:14:17,105 basehttp 2342 6192246784 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 05:14:17,106 log 2342 6209073152 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:14:17,107 basehttp 2342 6209073152 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1609
+INFO 2025-07-10 05:14:26,540 basehttp 2342 6209073152 "GET /projects/1/rows/create/ HTTP/1.1" 200 858
+INFO 2025-07-10 05:14:29,489 basehttp 2342 6209073152 "GET /projects/1/columns/2/edit/ HTTP/1.1" 200 903
+INFO 2025-07-10 05:23:32,129 autoreload 3030 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:23:36,347 basehttp 3030 6136606720 "GET / HTTP/1.1" 200 3838
+WARNING 2025-07-10 05:23:39,571 log 3030 6136606720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:23:39,571 basehttp 3030 6136606720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1575
+INFO 2025-07-10 05:23:41,313 basehttp 3030 6136606720 "GET / HTTP/1.1" 200 3862
+WARNING 2025-07-10 05:23:41,336 log 3030 6136606720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:23:41,336 basehttp 3030 6136606720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1570
+INFO 2025-07-10 05:23:42,980 basehttp 3030 6136606720 "GET /projects/ HTTP/1.1" 200 3268
+WARNING 2025-07-10 05:23:43,009 log 3030 6136606720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:23:43,010 basehttp 3030 6136606720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1591
+INFO 2025-07-10 05:23:45,009 basehttp 3030 6136606720 "GET /projects/1/ HTTP/1.1" 200 12770
+WARNING 2025-07-10 05:23:45,039 log 3030 6136606720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:23:45,041 basehttp 3030 6136606720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1589
+INFO 2025-07-10 05:23:54,743 basehttp 3030 6136606720 "GET /projects/1/ HTTP/1.1" 200 12729
+WARNING 2025-07-10 05:23:54,764 log 3030 6203912192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:23:54,764 basehttp 3030 6203912192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1587
+INFO 2025-07-10 05:23:54,771 basehttp 3030 6170259456 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 05:23:54,772 basehttp 3030 6187085824 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 23294
+INFO 2025-07-10 05:23:54,773 basehttp 3030 6153433088 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 30503
+INFO 2025-07-10 05:23:54,773 basehttp 3030 6136606720 "GET /static/css/output.css HTTP/1.1" 200 62987
+INFO 2025-07-10 05:37:21,730 autoreload 3660 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:37:26,829 basehttp 3660 6205140992 "GET /projects/1/ HTTP/1.1" 200 12761
+INFO 2025-07-10 05:37:26,859 basehttp 3660 6238793728 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 05:37:26,861 basehttp 3660 6255620096 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 24016
+WARNING 2025-07-10 05:37:26,861 log 3660 6272446464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-10 05:37:26,861 basehttp 3660 6221967360 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32871
+WARNING 2025-07-10 05:37:26,862 basehttp 3660 6272446464 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1568
+INFO 2025-07-10 05:37:26,863 basehttp 3660 6205140992 "GET /static/css/output.css HTTP/1.1" 200 63144
+INFO 2025-07-10 05:37:42,004 basehttp 3660 6205140992 "GET /projects/1/ HTTP/1.1" 200 12789
+WARNING 2025-07-10 05:37:42,026 log 3660 6238793728 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:37:42,028 basehttp 3660 6238793728 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1561
+INFO 2025-07-10 05:37:42,029 basehttp 3660 6221967360 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 05:37:42,029 basehttp 3660 6272446464 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32871
+INFO 2025-07-10 05:37:42,030 basehttp 3660 6255620096 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 24016
+INFO 2025-07-10 05:37:42,031 basehttp 3660 6205140992 "GET /static/css/output.css HTTP/1.1" 200 63144
+INFO 2025-07-10 05:37:45,521 basehttp 3660 6205140992 "GET /projects/1/columns/2/edit/ HTTP/1.1" 200 949
+INFO 2025-07-10 05:38:54,701 basehttp 3660 6205140992 "GET /projects/1/ HTTP/1.1" 200 12510
+INFO 2025-07-10 05:38:54,722 basehttp 3660 6272446464 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:38:54,723 basehttp 3660 6205140992 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:38:54,725 basehttp 3660 6255620096 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:38:54,725 basehttp 3660 6221967360 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 05:38:54,729 log 3660 6272446464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:38:54,729 basehttp 3660 6272446464 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1591
+INFO 2025-07-10 05:45:10,698 autoreload 3660 8812158720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-10 05:45:10,972 autoreload 3750 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:45:50,660 autoreload 3750 8812158720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/templatetags/custom_filters.py changed, reloading.
+INFO 2025-07-10 05:45:50,920 autoreload 3776 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:47:03,230 autoreload 4223 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:47:07,790 basehttp 4223 6128381952 "GET /projects/1/ HTTP/1.1" 200 12798
+INFO 2025-07-10 05:47:07,812 basehttp 4223 6162034688 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:47:07,812 basehttp 4223 6178861056 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:47:07,820 basehttp 4223 6145208320 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-10 05:47:07,821 log 4223 6178861056 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:47:07,822 basehttp 4223 6178861056 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1646
+INFO 2025-07-10 05:47:07,822 basehttp 4223 6128381952 "GET /static/css/output.css HTTP/1.1" 200 62940
+INFO 2025-07-10 05:47:26,968 basehttp 4223 6128381952 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3210
+WARNING 2025-07-10 05:47:27,001 log 4223 6128381952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-10 05:47:27,002 basehttp 4223 6145208320 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:47:27,002 basehttp 4223 6178861056 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-10 05:47:27,003 basehttp 4223 6128381952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1647
+INFO 2025-07-10 05:47:29,054 basehttp 4223 6128381952 "GET /projects/1/ HTTP/1.1" 200 12767
+WARNING 2025-07-10 05:47:29,081 log 4223 6128381952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:47:29,081 basehttp 4223 6128381952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1645
+INFO 2025-07-10 05:48:37,798 basehttp 4223 6128381952 "GET /projects/ HTTP/1.1" 200 3244
+WARNING 2025-07-10 05:48:37,831 log 4223 6128381952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-10 05:48:37,831 basehttp 4223 6178861056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:48:37,831 basehttp 4223 6145208320 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:48:37,832 basehttp 4223 6162034688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-10 05:48:37,832 basehttp 4223 6128381952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1641
+INFO 2025-07-10 05:48:40,048 basehttp 4223 6128381952 "GET /projects/1/ HTTP/1.1" 200 12753
+WARNING 2025-07-10 05:48:40,072 log 4223 6128381952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-10 05:48:40,073 basehttp 4223 6162034688 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 05:48:40,074 basehttp 4223 6128381952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1559
+INFO 2025-07-10 05:51:28,039 basehttp 4223 6128381952 "GET /projects/1/ HTTP/1.1" 200 12701
+INFO 2025-07-10 05:51:28,060 basehttp 4223 6128381952 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:51:28,060 basehttp 4223 6145208320 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:51:28,061 basehttp 4223 6178861056 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:51:28,061 basehttp 4223 6162034688 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-10 05:51:28,067 log 4223 6195687424 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:51:28,068 basehttp 4223 6195687424 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1632
+INFO 2025-07-10 05:52:27,657 basehttp 4223 6195687424 "GET /projects/1/ HTTP/1.1" 200 13110
+INFO 2025-07-10 05:52:27,669 basehttp 4223 6195687424 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+INFO 2025-07-10 05:52:27,672 basehttp 4223 6145208320 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:52:27,672 basehttp 4223 6178861056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:52:33,627 basehttp 4223 6178861056 "GET /projects/1/clear-completed/ HTTP/1.1" 200 3160
+INFO 2025-07-10 05:52:34,512 basehttp 4223 6178861056 "POST /projects/1/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-07-10 05:52:34,546 basehttp 4223 6178861056 "GET /projects/1/ HTTP/1.1" 200 12859
+INFO 2025-07-10 05:57:35,858 autoreload 4781 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 05:57:46,232 basehttp 4781 6160904192 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 05:57:46,236 basehttp 4781 6160904192 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-10 05:57:46,253 log 4781 6160904192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:57:46,253 basehttp 4781 6160904192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1640
+INFO 2025-07-10 05:57:54,561 basehttp 4781 6160904192 "GET /projects/1/ HTTP/1.1" 200 12339
+WARNING 2025-07-10 05:57:54,586 log 4781 6160904192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:57:54,587 basehttp 4781 6160904192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1625
+INFO 2025-07-10 05:57:54,587 basehttp 4781 6194556928 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-10 05:57:54,590 basehttp 4781 6177730560 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-10 05:57:59,179 log 4781 6177730560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:57:59,180 basehttp 4781 6177730560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1583
+WARNING 2025-07-10 05:57:59,197 log 4781 6177730560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:57:59,198 basehttp 4781 6177730560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1619
+WARNING 2025-07-10 05:58:01,130 log 4781 6177730560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:58:01,131 basehttp 4781 6177730560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1637
+WARNING 2025-07-10 05:58:01,148 log 4781 6177730560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 05:58:01,148 basehttp 4781 6177730560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1638
+INFO 2025-07-10 06:07:03,881 autoreload 5309 8812158720 Watching for file changes with StatReloader
+ERROR 2025-07-10 06:07:07,551 log 5309 6155251712 Internal Server Error: /projects/1/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 162, in project_grid_view
+    return render(request, 'pages/grid/project_grid_mobile.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 1531, in do_with
+    extra_context = token_kwargs(remaining_bits, parser, support_legacy=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1127, in token_kwargs
+    kwargs[key] = parser.compile_filter(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'cell_key'
+ERROR 2025-07-10 06:07:07,557 basehttp 5309 6155251712 "GET /projects/1/ HTTP/1.1" 500 27594
+WARNING 2025-07-10 06:07:07,581 log 5309 6155251712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 06:07:07,581 basehttp 5309 6155251712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1631
+INFO 2025-07-10 06:07:07,641 basehttp 5309 6155251712 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-07-10 06:07:07,645 basehttp 5309 6155251712 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+ERROR 2025-07-10 06:07:19,210 log 5309 6155251712 Internal Server Error: /projects/1/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 162, in project_grid_view
+    return render(request, 'pages/grid/project_grid_mobile.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 1531, in do_with
+    extra_context = token_kwargs(remaining_bits, parser, support_legacy=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1127, in token_kwargs
+    kwargs[key] = parser.compile_filter(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 705, in __init__
+    filter_func = parser.find_filter(filter_name)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 615, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'cell_key'
+ERROR 2025-07-10 06:07:19,215 basehttp 5309 6155251712 "GET /projects/1/ HTTP/1.1" 500 27610
+WARNING 2025-07-10 06:07:19,233 log 5309 6155251712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 06:07:19,233 basehttp 5309 6155251712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1610
+INFO 2025-07-10 06:08:16,668 basehttp 5309 6155251712 "GET /projects/1/ HTTP/1.1" 200 12290
+WARNING 2025-07-10 06:08:16,694 log 5309 6155251712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-10 06:08:16,696 basehttp 5309 6172078080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 06:08:16,696 basehttp 5309 6188904448 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-10 06:08:16,697 basehttp 5309 6155251712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1596
+INFO 2025-07-10 06:08:16,700 basehttp 5309 6205730816 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 06:08:16,702 basehttp 5309 6222557184 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 24769
+INFO 2025-07-10 06:08:58,882 autoreload 5309 8812158720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/templatetags/custom_filters.py changed, reloading.
+INFO 2025-07-10 06:08:59,168 autoreload 5349 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 06:09:14,921 basehttp 5349 6159822848 "GET /projects/1/ HTTP/1.1" 200 8317
+INFO 2025-07-10 06:09:14,937 basehttp 5349 6159822848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 06:09:14,940 basehttp 5349 6176649216 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 06:09:14,967 log 5349 6193475584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 06:09:14,968 basehttp 5349 6193475584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1655
+INFO 2025-07-10 06:09:45,785 autoreload 5792 8812158720 Watching for file changes with StatReloader
+INFO 2025-07-10 06:09:52,571 basehttp 5792 6204321792 "GET /projects/1/ HTTP/1.1" 200 8275
+WARNING 2025-07-10 06:09:52,631 log 5792 6271627264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-10 06:09:52,634 basehttp 5792 6237974528 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-10 06:09:52,636 basehttp 5792 6271627264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1642
+INFO 2025-07-10 06:09:52,637 basehttp 5792 6254800896 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 24769
+INFO 2025-07-10 06:09:52,638 basehttp 5792 6221148160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32871
+INFO 2025-07-10 06:09:52,638 basehttp 5792 6204321792 "GET /static/css/output.css HTTP/1.1" 200 62940
+INFO 2025-07-10 06:24:18,555 basehttp 5792 6204321792 "GET /projects/1/ HTTP/1.1" 200 8285
+INFO 2025-07-10 06:24:18,576 basehttp 5792 6204321792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 06:24:18,577 basehttp 5792 6221148160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 06:24:18,577 basehttp 5792 6237974528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 06:24:18,578 basehttp 5792 6254800896 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 06:24:18,591 log 5792 6254800896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 06:24:18,592 basehttp 5792 6254800896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1577
+INFO 2025-07-10 18:17:50,815 autoreload 2915 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:17:54,963 basehttp 2915 6132838400 "GET / HTTP/1.1" 200 3870
+INFO 2025-07-10 18:17:54,980 basehttp 2915 6149664768 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:17:54,982 basehttp 2915 6166491136 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 18:17:54,982 basehttp 2915 6132838400 "GET /static/css/output.css HTTP/1.1" 200 64900
+INFO 2025-07-10 18:17:57,927 basehttp 2915 6132838400 "GET /projects/ HTTP/1.1" 200 3276
+INFO 2025-07-10 18:17:57,945 basehttp 2915 6166491136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:17:57,945 basehttp 2915 6132838400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:17:59,618 basehttp 2915 6132838400 "GET /projects/1/ HTTP/1.1" 200 6522
+INFO 2025-07-10 18:17:59,631 basehttp 2915 6149664768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:17:59,632 basehttp 2915 6166491136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:17:59,633 basehttp 2915 6132838400 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+INFO 2025-07-10 18:18:06,731 basehttp 2915 6132838400 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-10 18:18:06,752 log 2915 6132838400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 18:18:06,752 basehttp 2915 6132838400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1559
+INFO 2025-07-10 18:18:09,174 basehttp 2915 6132838400 "GET /projects/1/ HTTP/1.1" 200 10531
+INFO 2025-07-10 18:18:09,190 basehttp 2915 6132838400 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:18:09,193 basehttp 2915 6149664768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:18:09,201 basehttp 2915 6132838400 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 22168
+WARNING 2025-07-10 18:18:09,202 log 2915 6166491136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 18:18:09,202 basehttp 2915 6166491136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1576
+INFO 2025-07-10 18:20:16,942 basehttp 2915 6166491136 "GET /projects/1/edit/ HTTP/1.1" 200 3076
+INFO 2025-07-10 18:20:16,973 basehttp 2915 6149664768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:20:16,974 basehttp 2915 6132838400 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-10 18:20:16,976 log 2915 6166491136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 18:20:16,976 basehttp 2915 6166491136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1569
+INFO 2025-07-10 18:20:18,321 basehttp 2915 6166491136 "GET /projects/1/ HTTP/1.1" 200 10569
+INFO 2025-07-10 18:20:18,346 basehttp 2915 6132838400 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 18:20:18,349 log 2915 6166491136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 18:20:18,349 basehttp 2915 6166491136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1569
+INFO 2025-07-10 18:21:39,881 autoreload 2915 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-10 18:21:40,140 autoreload 2965 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:27:56,898 autoreload 3102 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:28:02,767 basehttp 3102 6205091840 "GET /projects/1/ HTTP/1.1" 200 9625
+INFO 2025-07-10 18:28:02,785 basehttp 3102 6205091840 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:28:02,786 basehttp 3102 6221918208 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:28:02,786 basehttp 3102 6238744576 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:28:45,805 autoreload 3102 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-10 18:28:45,994 autoreload 3119 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:29:08,145 basehttp 3119 6200881152 "GET /projects/1/ HTTP/1.1" 200 9563
+INFO 2025-07-10 18:29:08,155 basehttp 3119 6200881152 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:29:08,156 basehttp 3119 6234533888 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:29:08,156 basehttp 3119 6217707520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:29:16,474 autoreload 3230 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:29:18,508 basehttp 3230 6198439936 "GET /projects/1/ HTTP/1.1" 200 9544
+INFO 2025-07-10 18:29:57,227 autoreload 3230 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-10 18:29:57,417 autoreload 3242 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:30:10,712 autoreload 3242 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-10 18:30:10,901 autoreload 3263 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 18:30:34,042 basehttp 3263 6126940160 "GET /projects/1/ HTTP/1.1" 200 9542
+INFO 2025-07-10 18:30:34,053 basehttp 3263 6143766528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 18:30:34,054 basehttp 3263 6126940160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 18:30:34,054 basehttp 3263 6160592896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 19:39:19,271 basehttp 3263 6126940160 "GET /projects/1/ HTTP/1.1" 200 9543
+INFO 2025-07-10 19:39:19,294 basehttp 3263 6143766528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 19:39:19,295 basehttp 3263 6126940160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 19:39:19,296 basehttp 3263 6160592896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 19:39:19,296 basehttp 3263 6177419264 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 19:41:56,110 autoreload 3263 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-10 19:41:56,422 autoreload 3364 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 19:42:11,720 autoreload 3364 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-10 19:42:11,989 autoreload 3386 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 19:42:34,381 autoreload 3386 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-10 19:42:34,636 autoreload 3400 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 19:43:20,396 basehttp 3400 6138097664 "GET /projects/1/ HTTP/1.1" 200 9623
+INFO 2025-07-10 19:43:50,898 autoreload 3815 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 19:43:53,534 basehttp 3815 6138277888 "GET /projects/3/ HTTP/1.1" 200 8815
+INFO 2025-07-10 19:43:59,255 basehttp 3815 6138277888 "POST /projects/3/tasks/create/10/83/ HTTP/1.1" 200 1365
+INFO 2025-07-10 19:44:01,038 basehttp 3815 6138277888 "POST /tasks/145/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 19:44:01,869 basehttp 3815 6138277888 "POST /tasks/145/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 19:44:04,583 basehttp 3815 6138277888 "GET /projects/1/ HTTP/1.1" 200 9602
+INFO 2025-07-10 19:44:07,055 basehttp 3815 6138277888 "GET /projects/3/ HTTP/1.1" 200 8800
+INFO 2025-07-10 19:44:09,260 basehttp 3815 6138277888 "GET /projects/1/ HTTP/1.1" 200 9585
+INFO 2025-07-10 19:44:10,629 basehttp 3815 6138277888 "GET /projects/1/ HTTP/1.1" 200 9631
+ERROR 2025-07-10 19:45:59,670 log 3815 6138277888 Internal Server Error: /projects/1/
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 23, in _wrapper_view
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 184, in project_grid_view
+    return render(request, template_name, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/backends/django.py", line 61, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 1000, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 961, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    return parser.parse()
+           ^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 861, in do_for
+    nodelist_loop = parser.parse(
+                    ^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    raise self.error(token, e)
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 508, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/defaulttags.py", line 1490, in do_with
+    extra_context = token_kwargs(remaining_bits, parser, support_legacy=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 1111, in token_kwargs
+    kwargs[key] = parser.compile_filter(value)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 597, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/template/base.py", line 670, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse some characters: |(row_h.pk||stringformat:"s")|add:"_"|add:(col_h.pk|stringformat:"s")
+ERROR 2025-07-10 19:45:59,675 basehttp 3815 6138277888 "GET /projects/1/ HTTP/1.1" 500 27653
+INFO 2025-07-10 19:45:59,721 basehttp 3815 6138277888 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-07-10 19:45:59,726 basehttp 3815 6138277888 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-07-10 19:46:43,759 autoreload 3815 8709922560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/templatetags/custom_filters.py changed, reloading.
+INFO 2025-07-10 19:46:44,046 autoreload 3873 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 19:47:01,424 basehttp 3873 6127284224 "GET /projects/1/ HTTP/1.1" 200 12828
+INFO 2025-07-10 19:47:08,926 basehttp 3873 6127284224 "POST /projects/1/tasks/create/2/4/ HTTP/1.1" 200 1342
+INFO 2025-07-10 19:47:11,408 basehttp 3873 6127284224 "GET /projects/1/ HTTP/1.1" 200 13044
+INFO 2025-07-10 19:47:14,801 project_views_functions 3873 6127284224 User None deleted task: "Test" from project: Toad
+INFO 2025-07-10 19:47:14,805 basehttp 3873 6127284224 "POST /tasks/146/delete/ HTTP/1.1" 200 58
+INFO 2025-07-10 19:47:28,139 basehttp 3873 6127284224 "GET /projects/1/columns/81/delete/ HTTP/1.1" 200 977
+INFO 2025-07-10 19:47:29,520 basehttp 3873 6127284224 "POST /projects/1/columns/81/delete/ HTTP/1.1" 204 0
+INFO 2025-07-10 19:47:29,553 basehttp 3873 6127284224 "GET /projects/1/ HTTP/1.1" 200 12473
+INFO 2025-07-10 19:47:29,564 basehttp 3873 6127284224 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 19:47:29,568 basehttp 3873 6144110592 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 19:47:29,568 basehttp 3873 6160936960 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+INFO 2025-07-10 20:13:36,061 basehttp 3873 6127284224 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-10 20:13:36,077 log 3873 6127284224 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:13:36,078 basehttp 3873 6127284224 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1534
+INFO 2025-07-10 20:13:38,532 basehttp 3873 6127284224 "GET /projects/1/ HTTP/1.1" 200 10215
+INFO 2025-07-10 20:13:38,553 basehttp 3873 6144110592 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 20:13:38,554 basehttp 3873 6160936960 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 20:13:38,558 log 3873 6127284224 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:13:38,559 basehttp 3873 6127284224 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1511
+INFO 2025-07-10 20:14:54,689 autoreload 4102 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 20:17:39,694 basehttp 4102 6170685440 "GET /projects/1/ HTTP/1.1" 200 12369
+INFO 2025-07-10 20:17:39,712 basehttp 4102 6221164544 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+INFO 2025-07-10 20:17:39,712 basehttp 4102 6204338176 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:17:39,714 basehttp 4102 6187511808 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32871
+INFO 2025-07-10 20:17:39,715 basehttp 4102 6170685440 "GET /static/css/output.css HTTP/1.1" 200 64900
+INFO 2025-07-10 20:18:04,716 basehttp 4102 6170685440 "GET /projects/1/ HTTP/1.1" 200 12403
+INFO 2025-07-10 20:18:09,672 basehttp 4102 6170685440 "GET /projects/ HTTP/1.1" 200 3293
+INFO 2025-07-10 20:18:11,557 basehttp 4102 6170685440 "GET /projects/1/ HTTP/1.1" 200 12332
+INFO 2025-07-10 20:25:25,660 autoreload 4641 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 20:25:29,273 basehttp 4641 6155841536 "GET /projects/1/ HTTP/1.1" 200 12338
+INFO 2025-07-10 20:25:29,291 basehttp 4641 6172667904 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:25:29,292 basehttp 4641 6155841536 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+INFO 2025-07-10 20:25:55,618 basehttp 4641 6172667904 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32819
+INFO 2025-07-10 20:25:55,619 basehttp 4641 6155841536 "GET /static/css/output.css HTTP/1.1" 200 64900
+WARNING 2025-07-10 20:25:55,637 log 4641 6155841536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:25:55,638 basehttp 4641 6155841536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1595
+INFO 2025-07-10 20:26:17,387 basehttp 4641 6155841536 "GET /projects/1/ HTTP/1.1" 200 12278
+INFO 2025-07-10 20:26:17,408 basehttp 4641 6155841536 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:26:17,408 basehttp 4641 6189494272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 20:26:17,412 basehttp 4641 6172667904 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22733
+WARNING 2025-07-10 20:26:17,414 log 4641 6206320640 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:26:17,414 basehttp 4641 6206320640 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1543
+INFO 2025-07-10 20:26:31,647 basehttp 4641 6206320640 "GET /projects/1/ HTTP/1.1" 200 12360
+INFO 2025-07-10 20:26:31,664 basehttp 4641 6155841536 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 20:26:31,668 basehttp 4641 6206320640 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-10 20:26:31,674 log 4641 6172667904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:26:31,675 basehttp 4641 6172667904 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1583
+INFO 2025-07-10 20:26:54,150 basehttp 4641 6172667904 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-10 20:26:54,176 log 4641 6172667904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:26:54,176 basehttp 4641 6172667904 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1518
+INFO 2025-07-10 20:27:00,141 basehttp 4641 6172667904 "GET /projects/1/ HTTP/1.1" 200 10170
+INFO 2025-07-10 20:27:00,169 basehttp 4641 6155841536 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 20:27:00,175 basehttp 4641 6206320640 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 22168
+WARNING 2025-07-10 20:27:00,176 log 4641 6172667904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:27:00,176 basehttp 4641 6172667904 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1530
+INFO 2025-07-10 20:27:05,286 basehttp 4641 6172667904 "POST /tasks/34/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 20:27:06,169 basehttp 4641 6172667904 "POST /tasks/34/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 20:27:06,811 basehttp 4641 6172667904 "POST /tasks/34/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 20:27:07,480 basehttp 4641 6172667904 "POST /tasks/34/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 20:37:08,271 autoreload 5171 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 20:37:13,359 basehttp 5171 6164918272 "GET /projects/1/ HTTP/1.1" 200 10249
+INFO 2025-07-10 20:37:13,390 basehttp 5171 6181744640 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:37:13,392 basehttp 5171 6164918272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32005
+WARNING 2025-07-10 20:37:13,395 log 5171 6198571008 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:37:13,395 basehttp 5171 6198571008 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1520
+INFO 2025-07-10 20:37:20,898 basehttp 5171 6198571008 "GET /projects/1/ HTTP/1.1" 200 10229
+INFO 2025-07-10 20:37:20,918 basehttp 5171 6181744640 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:37:20,923 basehttp 5171 6164918272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32005
+INFO 2025-07-10 20:37:20,925 basehttp 5171 6215397376 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 23174
+INFO 2025-07-10 20:37:20,927 basehttp 5171 6198571008 "GET /static/css/output.css HTTP/1.1" 200 64952
+WARNING 2025-07-10 20:37:20,928 log 5171 6232223744 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:37:20,928 basehttp 5171 6232223744 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1519
+INFO 2025-07-10 20:40:35,161 autoreload 5659 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 20:40:38,285 basehttp 5659 6135984128 "GET /projects/1/ HTTP/1.1" 200 10884
+INFO 2025-07-10 20:40:38,304 basehttp 5659 6169636864 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-10 20:40:38,315 basehttp 5659 6152810496 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:40:38,317 basehttp 5659 6186463232 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32019
+INFO 2025-07-10 20:40:38,320 basehttp 5659 6135984128 "GET /static/css/output.css HTTP/1.1" 200 64867
+WARNING 2025-07-10 20:40:38,323 log 5659 6169636864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:40:38,323 basehttp 5659 6169636864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1551
+INFO 2025-07-10 20:40:48,884 basehttp 5659 6169636864 "GET /projects/1/ HTTP/1.1" 200 10888
+INFO 2025-07-10 20:40:48,908 basehttp 5659 6186463232 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:40:48,909 basehttp 5659 6152810496 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 23174
+INFO 2025-07-10 20:40:48,910 basehttp 5659 6135984128 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32019
+INFO 2025-07-10 20:40:48,913 basehttp 5659 6169636864 "GET /static/css/output.css HTTP/1.1" 200 64867
+WARNING 2025-07-10 20:40:48,913 log 5659 6203289600 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:40:48,914 basehttp 5659 6203289600 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1564
+INFO 2025-07-10 20:41:28,065 basehttp 5659 6203289600 "POST /tasks/34/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 20:41:28,674 basehttp 5659 6203289600 "POST /tasks/34/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-10 20:41:29,732 basehttp 5659 6203289600 "GET /tasks/34/edit/ HTTP/1.1" 200 1089
+INFO 2025-07-10 20:41:35,672 basehttp 5659 6203289600 "GET /projects/1/ HTTP/1.1" 200 10930
+INFO 2025-07-10 20:41:35,694 basehttp 5659 6135984128 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 20:41:35,695 basehttp 5659 6169636864 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 20:41:35,695 basehttp 5659 6203289600 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-10 20:41:35,703 log 5659 6152810496 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:41:35,703 basehttp 5659 6152810496 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1576
+INFO 2025-07-10 20:41:45,669 basehttp 5659 6152810496 "GET /projects/1/ HTTP/1.1" 200 10835
+INFO 2025-07-10 20:41:45,688 basehttp 5659 6152810496 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 20:41:45,688 basehttp 5659 6169636864 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-10 20:41:45,696 log 5659 6203289600 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:41:45,696 basehttp 5659 6203289600 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1583
+INFO 2025-07-10 20:44:19,520 autoreload 6120 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 20:44:21,710 basehttp 6120 6165622784 "GET /projects/1/ HTTP/1.1" 200 10897
+INFO 2025-07-10 20:44:21,740 basehttp 6120 6199275520 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 20:44:21,742 basehttp 6120 6216101888 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 22931
+INFO 2025-07-10 20:44:21,743 basehttp 6120 6182449152 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32610
+INFO 2025-07-10 20:44:21,743 basehttp 6120 6165622784 "GET /static/css/output.css HTTP/1.1" 200 64819
+WARNING 2025-07-10 20:44:21,747 log 6120 6232928256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:44:21,748 basehttp 6120 6232928256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1573
+INFO 2025-07-10 20:44:32,064 basehttp 6120 6232928256 "GET /tasks/34/edit/ HTTP/1.1" 200 1040
+INFO 2025-07-10 20:48:29,303 basehttp 6120 6232928256 "GET /projects/1/ HTTP/1.1" 200 10792
+INFO 2025-07-10 20:48:29,328 basehttp 6120 6232928256 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 20:48:29,329 basehttp 6120 6165622784 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-10 20:48:29,329 basehttp 6120 6182449152 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 20:48:29,329 basehttp 6120 6216101888 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-10 20:48:29,336 log 6120 6216101888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 20:48:29,336 basehttp 6120 6216101888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1535
+INFO 2025-07-10 21:08:21,267 autoreload 6698 8709922560 Watching for file changes with StatReloader
+INFO 2025-07-10 21:08:33,111 basehttp 6698 6128185344 "GET /projects/1/ HTTP/1.1" 200 12351
+INFO 2025-07-10 21:08:33,131 basehttp 6698 6161838080 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-10 21:08:33,133 basehttp 6698 6178664448 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 22888
+INFO 2025-07-10 21:08:33,133 basehttp 6698 6145011712 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32610
+INFO 2025-07-10 21:08:33,134 basehttp 6698 6128185344 "GET /static/css/output.css HTTP/1.1" 200 64767
+INFO 2025-07-10 21:08:35,431 basehttp 6698 6128185344 "GET /projects/1/ HTTP/1.1" 200 12279
+INFO 2025-07-10 21:08:38,187 basehttp 6698 6128185344 "GET /projects/1/columns/create/ HTTP/1.1" 200 856
+INFO 2025-07-10 21:08:41,606 basehttp 6698 6128185344 "POST /projects/1/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-10 21:08:41,670 basehttp 6698 6128185344 - Broken pipe from ('127.0.0.1', 61812)
+INFO 2025-07-10 21:08:41,679 basehttp 6698 6145011712 - Broken pipe from ('127.0.0.1', 61813)
+INFO 2025-07-10 21:08:41,680 basehttp 6698 6178664448 "GET /projects/1/ HTTP/1.1" 200 12672
+INFO 2025-07-10 21:08:41,689 basehttp 6698 6178664448 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 21:08:41,690 basehttp 6698 6161838080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 21:08:41,690 basehttp 6698 6128185344 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 21:08:45,129 basehttp 6698 6128185344 "GET /projects/1/columns/84/delete/ HTTP/1.1" 200 923
+INFO 2025-07-10 21:08:46,126 basehttp 6698 6128185344 "POST /projects/1/columns/84/delete/ HTTP/1.1" 204 0
+INFO 2025-07-10 21:08:46,167 basehttp 6698 6128185344 "GET /projects/1/ HTTP/1.1" 200 12283
+INFO 2025-07-10 21:08:46,178 basehttp 6698 6161838080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 21:08:46,179 basehttp 6698 6128185344 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-10 21:08:46,179 basehttp 6698 6178664448 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 21:08:52,734 basehttp 6698 6178664448 "POST /projects/1/tasks/create/2/5/ HTTP/1.1" 200 1313
+INFO 2025-07-10 21:08:55,890 project_views_functions 6698 6178664448 User None deleted task: "Test" from project: Toad
+INFO 2025-07-10 21:08:55,894 basehttp 6698 6178664448 "POST /tasks/147/delete/ HTTP/1.1" 200 58
+INFO 2025-07-10 21:08:57,977 basehttp 6698 6178664448 "GET /projects/1/columns/5/edit/ HTTP/1.1" 200 921
+INFO 2025-07-10 21:08:59,393 basehttp 6698 6178664448 "POST /projects/1/columns/5/edit/ HTTP/1.1" 200 102
+INFO 2025-07-10 21:09:01,696 basehttp 6698 6178664448 "GET /projects/1/columns/5/edit/ HTTP/1.1" 200 890
+INFO 2025-07-10 21:09:03,676 basehttp 6698 6178664448 "POST /projects/1/columns/5/edit/ HTTP/1.1" 200 100
+INFO 2025-07-10 21:09:32,331 basehttp 6698 6178664448 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-10 21:09:32,349 log 6698 6178664448 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 21:09:32,351 basehttp 6698 6178664448 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1575
+INFO 2025-07-10 21:09:34,305 basehttp 6698 6178664448 "GET /projects/1/ HTTP/1.1" 200 10797
+INFO 2025-07-10 21:09:34,327 basehttp 6698 6161838080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-10 21:09:34,331 basehttp 6698 6178664448 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 22367
+WARNING 2025-07-10 21:09:34,332 log 6698 6128185344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-10 21:09:34,335 basehttp 6698 6128185344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1516

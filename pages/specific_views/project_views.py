@@ -39,6 +39,7 @@ from pages.specific_views_functions.project_views_functions import (
     get_next_column_order
 )
 import logging
+from collections import defaultdict
 
 # Set up logging
 logger = logging.getLogger(__name__)
@@ -133,37 +134,54 @@ def project_grid_view(request, pk):
         request.user,
         select_related=['user'],
         prefetch_related=['row_headers', 'column_headers', 'tasks__row_header', 'tasks__column_header'],
-        only_fields=['id', 'name', 'user__id']
     )
-    
-    # Use optimized data processing
-    row_headers, category_column, data_column_headers, tasks_by_cell, row_min_heights = process_grid_data_optimized(project)
-    
-    # Context with optimized data
-    context = {
-        'project': project,
-        'row_headers': row_headers,
-        'category_column': category_column,
-        'data_column_headers': data_column_headers,
-        'tasks_by_cell': tasks_by_cell,
-        'row_min_heights': row_min_heights,
-        'quick_task_form': QuickTaskForm(),
-        'total_data_columns': len(data_column_headers),
-    }
-    
-    # Lazy load projects for dropdown only when needed (non-HTMX requests)
+
+    is_mobile = is_mobile_device(request)
+
+    if is_mobile:
+        # --- Mobile-specific data processing ---
+        rows = list(project.row_headers.all().order_by('order'))
+        columns = list(project.column_headers.all().order_by('order'))
+        tasks = list(project.tasks.all())
+
+        tasks_by_row_col = defaultdict(lambda: defaultdict(list))
+        for task in tasks:
+            tasks_by_row_col[task.row_header_id][task.column_header_id].append(task)
+
+        context = {
+            'project': project,
+            'rows': rows,
+            'columns': [c for c in columns if not c.is_category_column],
+            'tasks_by_row_col': {k: dict(v) for k, v in tasks_by_row_col.items()},
+            'quick_task_form': QuickTaskForm(),
+        }
+        
+        template_name = 'pages/grid/project_grid_mobile.html'
+        if request.headers.get('HX-Request'):
+            template_name = 'pages/grid/partials/mobile_grid_content.html'
+    else:
+        # --- Desktop-specific data processing ---
+        row_headers, category_column, data_column_headers, tasks_by_cell, row_min_heights = process_grid_data_optimized(project)
+        
+        context = {
+            'project': project,
+            'row_headers': row_headers,
+            'category_column': category_column,
+            'data_column_headers': data_column_headers,
+            'tasks_by_cell': tasks_by_cell,
+            'row_min_heights': row_min_heights,
+            'quick_task_form': QuickTaskForm(),
+            'total_data_columns': len(data_column_headers),
+        }
+        template_name = 'pages/grid/project_grid.html'
+        if request.headers.get('HX-Request'):
+            template_name = 'pages/grid/partials/grid_content.html'
+
+    # Lazy load projects for dropdown only when needed (non-HTMX, full page loads)
     if not request.headers.get('HX-Request'):
         context['projects'] = get_projects_for_dropdown(request.user)
     
-    # If the request is from HTMX, only render the grid content partial
-    if request.headers.get('HX-Request'):
-        return render(request, 'pages/grid/partials/grid_content.html', context)
-    
-    # Detect mobile device and serve appropriate template
-    if is_mobile_device(request):
-        return render(request, 'pages/grid/project_grid_mobile.html', context)
-    else:
-        return render(request, 'pages/grid/project_grid.html', context)
+    return render(request, template_name, context)
 
 # Task CRUD Views
 

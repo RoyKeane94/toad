@@ -516,6 +516,11 @@ class GridManager {
         if (!skipRestore) {
             this.restoreScrollPosition();
         }
+
+        // Make table visible after setup to prevent FOUC
+        if (this.elements.gridTable) {
+            this.elements.gridTable.style.visibility = 'visible';
+        }
     }
 
     calculateAndApplyWidths() {
@@ -612,7 +617,7 @@ class GridManager {
                 } else {
                     this.scrollToCol(0, 'auto');
                 }
-            }, 100);
+            }, 200); // Increased timeout
         } else if (savedPosition) {
             sessionStorage.removeItem('grid-scroll-position');
             // Restore saved position immediately for smoother experience
@@ -1198,6 +1203,10 @@ class GridManager {
     // Initialize everything
     init() {
         this.cacheElements();
+        // Hide the grid table initially to prevent FOUC
+        if (this.elements.gridTable) {
+            this.elements.gridTable.style.visibility = 'hidden';
+        }
         this.addEventListeners();
         this.setupGridScrolling();
         

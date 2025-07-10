@@ -5,7 +5,7 @@
             title="Previous columns">
         <i class="fas fa-chevron-left"></i>
     </button>
-    <div class="grid-container-wrapper" style="display: flex;">
+    <div class="grid-container-wrapper flex">
         <!-- Fixed Category Column -->
         <div class="grid-table-fixed-col">
             <table class="grid-table-fixed">
@@ -65,7 +65,7 @@
             </table>
         </div>
         <!-- Scrollable Data Columns -->
-        <div class="grid-table-scrollable" style="overflow-x: auto; width: calc(3 * var(--data-col-width, 300px));">
+        <div class="grid-table-scrollable" style="overflow-x: auto;">
             <table class="grid-table" data-total-data-columns="{{ total_data_columns }}">
                 <colgroup>
                     {% for col_h in data_column_headers %}
