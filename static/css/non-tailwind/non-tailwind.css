@@ -261,12 +261,12 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 .grid-table-scrollable {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch; /* for smooth scrolling on mobile */
-    width: calc(3 * var(--data-col-width));
+    flex: 1 1 0;
+    min-width: 0; /* Prevents flex item from overflowing its container */
 }
 
 @media screen and (max-width: 1280px) {
     .grid-table-scrollable {
-        width: calc(2 * var(--data-col-width));
     }
 }
 

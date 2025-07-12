@@ -6291,3 +6291,16 @@ INFO 2025-07-12 20:47:24,902 basehttp 2962 6125826048 "GET /projects/ HTTP/1.1" 
 INFO 2025-07-12 20:47:26,585 basehttp 2962 6125826048 "GET /projects/1/ HTTP/1.1" 200 12326
 INFO 2025-07-12 20:47:26,595 basehttp 2962 6142652416 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-07-12 20:47:26,596 basehttp 2962 6125826048 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-12 20:47:50,084 autoreload 3022 8602689280 Watching for file changes with StatReloader
+INFO 2025-07-12 20:47:51,646 basehttp 3022 6189527040 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-12 20:47:52,758 basehttp 3022 6189527040 "GET /projects/3/ HTTP/1.1" 200 9450
+INFO 2025-07-12 20:47:57,866 basehttp 3022 6189527040 "GET /projects/3/columns/83/delete/ HTTP/1.1" 200 948
+INFO 2025-07-12 20:47:58,902 basehttp 3022 6189527040 "POST /projects/3/columns/83/delete/ HTTP/1.1" 204 0
+INFO 2025-07-12 20:47:58,928 basehttp 3022 6189527040 "GET /projects/3/ HTTP/1.1" 200 8288
+INFO 2025-07-12 20:47:58,937 basehttp 3022 6189527040 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-12 20:51:55,765 autoreload 3187 8602689280 Watching for file changes with StatReloader
+INFO 2025-07-12 20:51:58,685 basehttp 3187 6132199424 "GET /projects/3/ HTTP/1.1" 200 8302
+INFO 2025-07-12 20:51:58,700 basehttp 3187 6132199424 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 32694
+INFO 2025-07-12 20:52:02,024 basehttp 3187 6132199424 "GET /projects/3/columns/46/delete/ HTTP/1.1" 200 1001
+INFO 2025-07-12 20:52:02,953 basehttp 3187 6132199424 "POST /projects/3/columns/46/delete/ HTTP/1.1" 204 0
+INFO 2025-07-12 20:52:02,978 basehttp 3187 6132199424 "GET /projects/3/ HTTP/1.1" 200 7955
