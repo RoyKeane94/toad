@@ -30,51 +30,53 @@
                     <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)]">
                         <div class="p-3 sm:p-4">
                             <h3 class="font-bold text-[var(--primary-action-bg)] mb-3 text-base sm:text-lg">{{ row.name }}</h3>
-                            {% with task_list=tasks_by_row_col|get_item:row.pk|get_item:column.pk %}
-                                <div id="tasks-{{ row.pk }}-{{ column.pk }}" class="task-list space-y-2">
-                                    {% if task_list %}
-                                        {% for task in task_list %}
-                                            {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
-                                        {% endfor %}
-                                    {% endif %}
-                                </div>
+                            {% with row_tasks=tasks_by_row_col|get_item:row.pk %}
+                                {% with task_list=row_tasks|get_item:column.pk %}
+                                    <div id="tasks-{{ row.pk }}-{{ column.pk }}" class="task-list space-y-2">
+                                        {% if task_list %}
+                                            {% for task in task_list %}
+                                                {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
 
-                                <!-- Add Task Form -->
-                                <div class="mt-2">
-                                    <form method="post"
-                                          action="{% url 'pages:task_create' project_pk=project.pk row_pk=row.pk col_pk=column.pk %}"
-                                          class="task-form add-task-form w-full"
-                                          novalidate
-                                          hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row.pk col_pk=column.pk %}"
-                                          hx-swap="beforeend"
-                                          hx-target="#tasks-{{ row.pk }}-{{ column.pk }}"
-                                          hx-trigger="submit throttle:500ms"
-                                          hx-disabled-elt="this"
-                                          onsubmit="return validateTaskForm(this)">
-                                        {% csrf_token %}
-                                        
-                                        <!-- Collapsed state -->
-                                        <div class="add-task-collapsed w-full">
-                                            <button type="button" class="add-task-trigger w-full text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] transition-all duration-200 text-sm cursor-pointer rounded-md">
-                                                <i class="fas fa-plus text-xs mr-2"></i>Add task...
-                                            </button>
-                                        </div>
-                                        
-                                        <!-- Expanded state -->
-                                        <div class="add-task-expanded hidden w-full">
-                                            <div class="flex space-x-2 items-center">
-                                                {{ quick_task_form.text }}
-                                                <button type="submit" class="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-[var(--primary-action-bg)] text-white hover:bg-[var(--primary-action-hover-bg)] transition-colors rounded-md">
-                                                    <i class="fas fa-check text-xs"></i>
-                                                </button>
-                                                <button type="button" class="add-task-cancel w-9 h-9 flex-shrink-0 flex items-center justify-center text-[var(--text-secondary)] hover:bg-[var(--grid-header-bg)] transition-colors rounded-md">
-                                                    <i class="fas fa-times text-xs"></i>
+                                    <!-- Add Task Form -->
+                                    <div class="mt-2">
+                                        <form method="post"
+                                              action="{% url 'pages:task_create' project_pk=project.pk row_pk=row.pk col_pk=column.pk %}"
+                                              class="task-form add-task-form w-full"
+                                              novalidate
+                                              hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row.pk col_pk=column.pk %}"
+                                              hx-swap="beforeend"
+                                              hx-target="#tasks-{{ row.pk }}-{{ column.pk }}"
+                                              hx-trigger="submit throttle:500ms"
+                                              hx-disabled-elt="this"
+                                              onsubmit="return validateTaskForm(this)">
+                                            {% csrf_token %}
+                                            
+                                            <!-- Collapsed state -->
+                                            <div class="add-task-collapsed w-full">
+                                                <button type="button" class="add-task-trigger w-full text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] transition-all duration-200 text-sm cursor-pointer rounded-md">
+                                                    <i class="fas fa-plus text-xs mr-2"></i>Add task...
                                                 </button>
                                             </div>
-                                            <div class="error-message text-xs mt-1"></div>
-                                        </div>
-                                    </form>
-                                </div>
+                                            
+                                            <!-- Expanded state -->
+                                            <div class="add-task-expanded hidden w-full">
+                                                <div class="flex space-x-2 items-center">
+                                                    {{ quick_task_form.text }}
+                                                    <button type="submit" class="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-[var(--primary-action-bg)] text-white hover:bg-[var(--primary-action-hover-bg)] transition-colors rounded-md">
+                                                        <i class="fas fa-check text-xs"></i>
+                                                    </button>
+                                                    <button type="button" class="add-task-cancel w-9 h-9 flex-shrink-0 flex items-center justify-center text-[var(--text-secondary)] hover:bg-[var(--grid-header-bg)] transition-colors rounded-md">
+                                                        <i class="fas fa-times text-xs"></i>
+                                                    </button>
+                                                </div>
+                                                <div class="error-message text-xs mt-1"></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                {% endwith %}
                             {% endwith %}
                         </div>
                     </div>

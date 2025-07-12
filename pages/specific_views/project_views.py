@@ -144,15 +144,24 @@ def project_grid_view(request, pk):
         columns = list(project.column_headers.all().order_by('order'))
         tasks = list(project.tasks.all())
 
-        tasks_by_row_col = defaultdict(lambda: defaultdict(list))
+        # Create a proper nested dictionary structure
+        tasks_by_row_col = {}
+        for row in rows:
+            tasks_by_row_col[row.pk] = {}
+            for column in columns:
+                if not column.is_category_column:
+                    tasks_by_row_col[row.pk][column.pk] = []
+        
+        # Populate with actual tasks
         for task in tasks:
-            tasks_by_row_col[task.row_header_id][task.column_header_id].append(task)
+            if task.row_header_id in tasks_by_row_col and task.column_header_id in tasks_by_row_col[task.row_header_id]:
+                tasks_by_row_col[task.row_header_id][task.column_header_id].append(task)
 
         context = {
             'project': project,
             'rows': rows,
             'columns': [c for c in columns if not c.is_category_column],
-            'tasks_by_row_col': {k: dict(v) for k, v in tasks_by_row_col.items()},
+            'tasks_by_row_col': tasks_by_row_col,
             'quick_task_form': QuickTaskForm(),
         }
         
