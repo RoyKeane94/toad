@@ -311,6 +311,11 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border-bottom: 2px solid var(--border-color);
 }
 
+.grid-table-fixed td,
+.grid-table td {
+    background-color: var(--container-bg);
+}
+
 /* Scroll Buttons */
 .external-scroll-btn {
     width: 48px;
