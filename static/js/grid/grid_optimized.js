@@ -303,6 +303,12 @@ class GridManager {
         });
     }
 
+    // Function to close all dropdowns - called from inline onclick handlers
+    closeAllDropdowns() {
+        this.closeProjectSwitcher();
+        this.closeAllActionDropdowns();
+    }
+
     setDropdownState(dropdown, isOpen) {
         const classes = isOpen 
             ? { remove: ['opacity-0', 'invisible', 'scale-95'], add: ['opacity-100', 'visible', 'scale-100'] }
@@ -1241,6 +1247,13 @@ function validateTaskForm(form) {
 document.addEventListener('DOMContentLoaded', function() {
     window.gridManager = new GridManager();
 });
+
+// Global function to close all dropdowns - called from inline onclick handlers
+window.closeAllDropdowns = function() {
+    if (window.gridManager) {
+        window.gridManager.closeAllDropdowns();
+    }
+};
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', function() {

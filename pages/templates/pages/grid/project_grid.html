@@ -104,7 +104,7 @@
                     hx-indicator="#modal-content"
                     hx-swap="innerHTML"
                     hx-headers='{"Cache-Control": "no-cache"}'
-                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                    onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                 <i class="fas fa-plus mr-1"></i>Add Row
             </button>
             <button type="button"
@@ -116,7 +116,7 @@
                     hx-indicator="#modal-content"
                     hx-swap="innerHTML"
                     hx-headers='{"Cache-Control": "no-cache"}'
-                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                    onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                 <i class="fas fa-plus mr-1"></i>Add Column
             </button>
             <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 

@@ -145,6 +145,13 @@ class MobileGridManager {
         if (addTaskCancel) { e.preventDefault(); this.collapseAddTaskForm(addTaskCancel.closest('.add-task-form')); return; }
         if (!e.target.closest('.add-task-form')) this.collapseAllAddTaskForms();
     }
+
+    // Function to close all dropdowns - called from inline onclick handlers
+    closeAllDropdowns() {
+        this.closeDropdown('projectSwitcher');
+        this.closeDropdown('actionsMenu');
+        this.closeAllActionDropdowns();
+    }
     
     // Mobile Grid setup
     setupMobileGrid() {
@@ -558,6 +565,13 @@ function validateTaskForm(form) {
 document.addEventListener('DOMContentLoaded', function() {
     window.mobileGridManager = new MobileGridManager();
 });
+
+// Global function to close all dropdowns - called from inline onclick handlers
+window.closeAllDropdowns = function() {
+    if (window.mobileGridManager) {
+        window.mobileGridManager.closeAllDropdowns();
+    }
+};
 
 window.addEventListener('beforeunload', function() {
     if (window.mobileGridManager) {

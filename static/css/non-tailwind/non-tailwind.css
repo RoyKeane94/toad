@@ -1427,14 +1427,17 @@ input[type="checkbox"]:focus {
     overflow-y: auto;
     transition: transform 0.3s ease-in-out;
     background-color: var(--container-bg);
-}
-
-.mobile-column:not(.active) {
-    transform: translateX(100%);
+    transform: translateX(100%); /* Default: hidden */
     z-index: 1;
 }
 
 .mobile-column.active {
+    transform: translateX(0); /* Active: visible */
+    z-index: 10;
+}
+
+/* Ensure first column is visible by default */
+.mobile-column:first-child {
     transform: translateX(0);
     z-index: 10;
 }

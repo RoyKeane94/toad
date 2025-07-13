@@ -94,14 +94,14 @@
                 <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
                         hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
                         hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                     <i class="fas fa-plus text-xs w-4 text-center"></i>
                     <span>Add Row</span>
                 </button>
                 <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
                         hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
                         hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                     <i class="fas fa-plus text-xs w-4 text-center"></i>
                     <span>Add Column</span>
                 </button>
