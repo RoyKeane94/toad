@@ -6807,3 +6807,61 @@ INFO 2025-07-13 17:41:55,851 basehttp 9212 6189527040 "GET /static/js/general/ge
 INFO 2025-07-13 17:41:55,852 basehttp 9212 6172700672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-07-13 17:41:55,856 basehttp 9212 6155874304 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 23063
 INFO 2025-07-13 17:41:57,206 basehttp 9212 6155874304 "GET /projects/1/ HTTP/1.1" 200 12392
+INFO 2025-07-13 18:34:26,650 autoreload 10362 8347377408 Watching for file changes with StatReloader
+INFO 2025-07-13 18:34:35,668 basehttp 10362 6191624192 "GET /projects/1/ HTTP/1.1" 200 12407
+INFO 2025-07-13 18:34:35,685 basehttp 10362 6225276928 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-13 18:34:35,686 basehttp 10362 6208450560 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 35823
+INFO 2025-07-13 18:34:35,687 basehttp 10362 6242103296 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 23259
+INFO 2025-07-13 18:34:35,688 basehttp 10362 6191624192 "GET /static/css/output.css HTTP/1.1" 200 64866
+WARNING 2025-07-13 18:34:45,799 log 10362 6191624192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-13 18:34:45,799 basehttp 10362 6191624192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1579
+INFO 2025-07-13 18:34:47,363 basehttp 10362 6191624192 "GET /projects/1/ HTTP/1.1" 200 11207
+INFO 2025-07-13 18:34:47,387 basehttp 10362 6208450560 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-13 18:34:47,392 basehttp 10362 6191624192 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 24923
+WARNING 2025-07-13 18:34:47,394 log 10362 6242103296 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-13 18:34:47,395 basehttp 10362 6242103296 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1589
+INFO 2025-07-13 18:34:52,780 basehttp 10362 6242103296 "POST /projects/1/tasks/create/4/2/ HTTP/1.1" 200 1323
+INFO 2025-07-13 18:34:56,944 basehttp 10362 6242103296 "POST /tasks/148/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-13 18:35:00,482 project_views_functions 10362 6242103296 User None deleted task: "Test" from project: Toad
+INFO 2025-07-13 18:35:00,487 basehttp 10362 6242103296 "POST /tasks/148/delete/ HTTP/1.1" 200 58
+WARNING 2025-07-13 18:35:01,983 log 10362 6242103296 Not Found: /tasks/148/delete/
+WARNING 2025-07-13 18:35:01,983 basehttp 10362 6242103296 "POST /tasks/148/delete/ HTTP/1.1" 404 1490
+WARNING 2025-07-13 18:35:02,989 log 10362 6242103296 Not Found: /tasks/148/delete/
+WARNING 2025-07-13 18:35:02,990 basehttp 10362 6242103296 "POST /tasks/148/delete/ HTTP/1.1" 404 1518
+WARNING 2025-07-13 18:35:03,754 log 10362 6242103296 Not Found: /tasks/148/delete/
+WARNING 2025-07-13 18:35:03,755 basehttp 10362 6242103296 "POST /tasks/148/delete/ HTTP/1.1" 404 1457
+WARNING 2025-07-13 18:35:06,067 log 10362 6242103296 Not Found: /tasks/148/edit/
+WARNING 2025-07-13 18:35:06,067 basehttp 10362 6242103296 "GET /tasks/148/edit/ HTTP/1.1" 404 1434
+WARNING 2025-07-13 18:35:09,406 log 10362 6242103296 Not Found: /tasks/148/toggle/
+WARNING 2025-07-13 18:35:09,407 basehttp 10362 6242103296 "POST /tasks/148/toggle/ HTTP/1.1" 404 1511
+INFO 2025-07-13 18:35:11,754 basehttp 10362 6242103296 "GET /projects/1/ HTTP/1.1" 200 11196
+INFO 2025-07-13 18:35:11,769 basehttp 10362 6242103296 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-13 18:35:11,780 log 10362 6242103296 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-13 18:35:11,780 basehttp 10362 6242103296 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1581
+INFO 2025-07-13 18:35:15,228 basehttp 10362 6242103296 "POST /projects/1/tasks/create/4/2/ HTTP/1.1" 200 1302
+INFO 2025-07-13 18:35:16,650 basehttp 10362 6242103296 "GET /projects/1/ HTTP/1.1" 200 11359
+WARNING 2025-07-13 18:35:16,671 log 10362 6242103296 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-13 18:35:16,671 basehttp 10362 6242103296 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1523
+INFO 2025-07-13 18:35:19,071 basehttp 10362 6242103296 "GET /tasks/149/edit/ HTTP/1.1" 200 998
+INFO 2025-07-13 18:35:22,169 basehttp 10362 6242103296 "POST /tasks/149/edit/ HTTP/1.1" 200 1401
+INFO 2025-07-13 18:37:42,219 basehttp 10362 6242103296 "GET /projects/1/ HTTP/1.1" 200 11342
+INFO 2025-07-13 18:37:42,250 basehttp 10362 6191624192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-13 18:37:42,254 basehttp 10362 6208450560 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 25685
+INFO 2025-07-13 18:37:42,254 basehttp 10362 6242103296 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 36188
+WARNING 2025-07-13 18:37:42,266 log 10362 6242103296 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-13 18:37:42,267 basehttp 10362 6242103296 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1565
+INFO 2025-07-13 18:37:46,541 basehttp 10362 6242103296 "GET /tasks/34/edit/ HTTP/1.1" 200 1108
+INFO 2025-07-13 18:37:50,746 basehttp 10362 6242103296 "POST /tasks/34/edit/ HTTP/1.1" 200 1460
+INFO 2025-07-13 18:37:53,392 basehttp 10362 6242103296 "GET /tasks/34/edit/ HTTP/1.1" 200 1090
+INFO 2025-07-13 18:37:55,906 basehttp 10362 6242103296 "POST /tasks/34/edit/ HTTP/1.1" 200 1413
+INFO 2025-07-13 18:37:57,901 basehttp 10362 6242103296 "GET /tasks/149/edit/ HTTP/1.1" 200 1000
+INFO 2025-07-13 18:38:00,557 basehttp 10362 6242103296 "POST /tasks/149/edit/ HTTP/1.1" 200 1379
+INFO 2025-07-13 18:38:03,044 basehttp 10362 6242103296 "GET /projects/1/ HTTP/1.1" 200 11329
+INFO 2025-07-13 18:38:03,066 basehttp 10362 6208450560 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-13 18:38:03,067 basehttp 10362 6191624192 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-13 18:38:03,070 log 10362 6242103296 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-13 18:38:03,071 basehttp 10362 6242103296 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1511
+INFO 2025-07-13 18:38:07,972 project_views_functions 10362 6242103296 User None deleted task: "Test" from project: Toad
+INFO 2025-07-13 18:38:07,976 basehttp 10362 6242103296 "POST /tasks/149/delete/ HTTP/1.1" 200 58
+WARNING 2025-07-13 18:38:09,201 log 10362 6242103296 Not Found: /tasks/149/delete/
+WARNING 2025-07-13 18:38:09,202 basehttp 10362 6242103296 "POST /tasks/149/delete/ HTTP/1.1" 404 1479

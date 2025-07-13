@@ -525,7 +525,7 @@ class GridManager {
 
         // Make table visible after setup to prevent FOUC
         if (this.elements.gridTable) {
-            this.elements.gridTable.style.visibility = 'visible';
+            this.elements.gridTable.classList.add('initialized');
         }
     }
 
@@ -637,8 +637,18 @@ class GridManager {
                 this.updateScrollButtons();
             }
         } else {
-            // Default to start, no delay needed
-            this.scrollToCol(0, 'auto');
+            // Default to start, ensure first column is fully visible
+            this.state.currentCol = 0;
+            if (this.elements.scrollable) {
+                this.elements.scrollable.scrollLeft = 0;
+                // Add a small delay to ensure the scroll position is properly set
+                setTimeout(() => {
+                    if (this.elements.scrollable.scrollLeft !== 0) {
+                        this.elements.scrollable.scrollLeft = 0;
+                    }
+                }, 10);
+            }
+            this.updateScrollButtons();
         }
     }
 
@@ -1209,9 +1219,9 @@ class GridManager {
     // Initialize everything
     init() {
         this.cacheElements();
-        // Hide the grid table initially to prevent FOUC
+        // Ensure the grid table starts hidden to prevent FOUC
         if (this.elements.gridTable) {
-            this.elements.gridTable.style.visibility = 'hidden';
+            this.elements.gridTable.classList.remove('initialized');
         }
         this.addEventListeners();
         this.setupGridScrolling();

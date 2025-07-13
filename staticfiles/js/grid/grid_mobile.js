@@ -421,7 +421,18 @@ class MobileGridManager {
     }
 
     // HTMX handlers...
-    handleHtmxBeforeRequest(e) {}
+    handleHtmxBeforeRequest(e) {
+        // Show loading indicator for task forms
+        if (e.target.classList.contains('task-form')) {
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const spinner = submitBtn.querySelector('.htmx-indicator-spinner');
+                if (spinner) {
+                    spinner.style.opacity = '1';
+                }
+            }
+        }
+    }
 
     handleHtmxAfterRequest(e) {
         // Hide loading indicator when request completes
@@ -429,6 +440,41 @@ class MobileGridManager {
             const loadingIndicator = e.target.querySelector('.htmx-indicator');
             if (loadingIndicator) {
                 loadingIndicator.style.display = 'none';
+            }
+        }
+        
+        // Handle task form submission
+        if (e.target.classList.contains('task-form')) {
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const spinner = submitBtn.querySelector('.htmx-indicator-spinner');
+                if (spinner) {
+                    spinner.style.opacity = '0';
+                }
+            }
+            
+            // If successful, clear the form and collapse it
+            if (e.detail.successful) {
+                const input = e.target.querySelector('input[name="text"]');
+                if (input) {
+                    input.value = '';
+                }
+                this.collapseAddTaskForm(e.target);
+            } else {
+                // Show error message if there was an error
+                const errorDiv = e.target.querySelector('.error-message');
+                if (errorDiv && e.detail.xhr && e.detail.xhr.responseText) {
+                    try {
+                        const response = JSON.parse(e.detail.xhr.responseText);
+                        if (response.errors && response.errors.text) {
+                            errorDiv.innerHTML = response.errors.text.join(', ');
+                        } else {
+                            errorDiv.innerHTML = 'An error occurred. Please try again.';
+                        }
+                    } catch (e) {
+                        errorDiv.innerHTML = 'An error occurred. Please try again.';
+                    }
+                }
             }
         }
         
@@ -549,6 +595,9 @@ class MobileGridManager {
 function validateTaskForm(form) {
     const textInput = form.querySelector('input[name="text"]');
     const errorDiv = form.querySelector('.error-message');
+    
+    if (!textInput || !errorDiv) return true;
+    
     if (!textInput.value.trim()) {
         errorDiv.innerHTML = 'Please enter a task description';
         textInput.classList.remove('border-[var(--inline-input-border)]');

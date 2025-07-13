@@ -167,6 +167,44 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     scroll-behavior: smooth;
 }
 
+/* Ensure first data column is properly positioned and not cut off */
+.grid-table-scrollable {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* for smooth scrolling on mobile */
+    flex: 1 1 0;
+    min-width: 0; /* Prevents flex item from overflowing its container */
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+}
+
+/* Hide grid table initially to prevent flash of all columns */
+.grid-table {
+    visibility: hidden;
+}
+
+/* Show grid table once JavaScript has initialized it */
+.grid-table.initialized {
+    visibility: visible;
+}
+
+
+
+/* Fix for production environment where first column might be cut off */
+.grid-table-scrollable .grid-table {
+    min-width: max-content; /* Ensure table doesn't shrink below content width */
+}
+
+/* Ensure first data column has proper positioning */
+.grid-table col.data-column:first-child {
+    min-width: 0; /* Allow proper sizing */
+}
+
+/* Hide scrollbar in Webkit browsers */
+.grid-table-scrollable::-webkit-scrollbar {
+    display: none;
+}
+
 /* Mobile Touch Improvements */
 @media (max-width: 768px) {
     /* Improve touch scrolling */
@@ -258,12 +296,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border-right: 1px solid var(--border-color);
 }
 
-.grid-table-scrollable {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* for smooth scrolling on mobile */
-    flex: 1 1 0;
-    min-width: 0; /* Prevents flex item from overflowing its container */
-}
+
 
 @media screen and (max-width: 1280px) {
     .grid-table-scrollable {
@@ -707,17 +740,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     }
 }
 
-/* Ensure horizontal scrolling works well on all devices */
-.grid-table-scrollable {
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Hide scrollbar in Firefox */
-    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
-}
 
-/* Hide scrollbar in Webkit browsers */
-.grid-table-scrollable::-webkit-scrollbar {
-    display: none;
-}
 
 /* Task Completion Styles */
 .checkbox-completed {
@@ -1446,13 +1469,26 @@ input[type="checkbox"]:focus {
 .htmx-indicator {
     display: none;
 }
-
 .htmx-request .htmx-indicator {
-    display: flex !important;
+    display: block;
+}
+.htmx-request.htmx-indicator {
+    display: block;
 }
 
-.htmx-request.htmx-indicator {
-    display: flex !important;
+/* Task form loading spinner */
+.htmx-indicator-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid transparent;
+    border-top: 2px solid currentColor;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Modal loading indicator */
@@ -1511,16 +1547,18 @@ input[type="checkbox"]:focus {
     #modal > div {
         max-width: 95vw;
         margin: 0 auto;
-        max-height: 85vh;
     }
     
-    /* Fix modal positioning on mobile */
-    #modal.visible {
-        display: flex !important;
-    }
-    
-    #modal.visible > div {
-        transform: scale(1) !important;
+    /* Prevent zoom on input focus */
+    input[type="text"], 
+    input[type="email"], 
+    input[type="password"], 
+    input[type="search"], 
+    input[type="tel"], 
+    input[type="url"], 
+    textarea, 
+    select {
+        font-size: 16px !important;
     }
 }
 
