@@ -19,12 +19,13 @@
             </div>
         </div>
         
-        <!-- Mobile Grid Slider -->
-        <div id="mobile-grid-slider" class="flex transition-transform duration-300 ease-in-out bg-gray-50 dark:bg-gray-800/50">
+        <!-- Mobile Grid Container - Single Column View -->
+        <div id="mobile-grid-slider" class="relative overflow-hidden bg-gray-50 dark:bg-gray-800/50">
             {% for column in columns %}
-            <div class="mobile-column flex-shrink-0 w-full overflow-y-auto" 
+            <div class="mobile-column absolute inset-0 w-full overflow-y-auto transition-transform duration-300 ease-in-out {% if forloop.first %}active{% endif %}" 
                  data-column-id="{{ column.pk }}" 
-                 data-column-name="{{ column.name }}">
+                 data-column-name="{{ column.name }}"
+                 data-column-index="{{ forloop.counter0 }}">
                 <div class="p-2 sm:p-4 space-y-3 sm:space-y-4">
                     {% for row in rows %}
                     <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)]">
@@ -65,8 +66,9 @@
                                             <div class="add-task-expanded hidden w-full">
                                                 <div class="flex space-x-2 items-center">
                                                     {{ quick_task_form.text }}
-                                                    <button type="submit" class="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-[var(--primary-action-bg)] text-white hover:bg-[var(--primary-action-hover-bg)] transition-colors rounded-md">
+                                                    <button type="submit" class="w-9 h-9 flex-shrink-0 flex items-center justify-center bg-[var(--primary-action-bg)] text-white hover:bg-[var(--primary-action-hover-bg)] transition-colors rounded-md relative">
                                                         <i class="fas fa-check text-xs"></i>
+                                                        <div class="htmx-indicator-spinner absolute inset-0 m-auto opacity-0 transition-opacity duration-200"></div>
                                                     </button>
                                                     <button type="button" class="add-task-cancel w-9 h-9 flex-shrink-0 flex items-center justify-center text-[var(--text-secondary)] hover:bg-[var(--grid-header-bg)] transition-colors rounded-md">
                                                         <i class="fas fa-times text-xs"></i>

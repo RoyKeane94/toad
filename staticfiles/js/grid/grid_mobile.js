@@ -106,12 +106,6 @@ class MobileGridManager {
 
     // Unified click handler
     handleDocumentClick(e) {
-        const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
-        if (modalTrigger) {
-            this.clearModalContent();
-            this.showModal();
-        }
-
         if (e.target.closest('#project-switcher-btn')) {
             e.stopPropagation(); this.toggleDropdown('projectSwitcher'); return;
         }
@@ -161,15 +155,37 @@ class MobileGridManager {
         if (this.elements.leftBtn) this.elements.leftBtn.onclick = () => this.scrollToCol(this.state.currentCol - 1);
         if (this.elements.rightBtn) this.elements.rightBtn.onclick = () => this.scrollToCol(this.state.currentCol + 1);
 
+        // Initialize the first column as active
+        this.elements.columns.forEach((col, index) => {
+            if (index === 0) {
+                col.classList.add('active');
+                col.style.transform = 'translateX(0)';
+                col.style.zIndex = '10';
+            } else {
+                col.classList.remove('active');
+                col.style.transform = 'translateX(100%)';
+                col.style.zIndex = '1';
+            }
+        });
+
         this.scrollToCol(this.state.currentCol, 'auto');
     }
 
     scrollToCol(colIdx, behavior = 'smooth') {
         this.state.currentCol = Math.max(0, Math.min(colIdx, this.state.totalColumns - 1));
         
-        const newTransform = `translateX(-${this.state.currentCol * 100}%)`;
-        this.elements.gridSlider.style.transition = behavior === 'smooth' ? 'transform 0.3s ease-in-out' : 'none';
-        this.elements.gridSlider.style.transform = newTransform;
+        // Update column visibility and active states
+        this.elements.columns.forEach((col, index) => {
+            if (index === this.state.currentCol) {
+                col.style.transform = 'translateX(0)';
+                col.style.zIndex = '10';
+                col.classList.add('active');
+            } else {
+                col.style.transform = 'translateX(100%)';
+                col.style.zIndex = '1';
+                col.classList.remove('active');
+            }
+        });
         
         this.updateUI();
     }
@@ -314,27 +330,50 @@ class MobileGridManager {
         this.state.currentDeleteUrl = null;
     }
 
-    showModal() { this.setModalState(this.elements.modal, this.elements.modalContent, true); }
+    showModal() { 
+        this.setModalState(this.elements.modal, this.elements.modalContent, true); 
+    }
     hideModal() { this.setModalState(this.elements.modal, this.elements.modalContent, false); }
     
     clearModalContent() {
-        if (this.elements.modalContent) this.elements.modalContent.innerHTML = '';
+        if (this.elements.modalContent) {
+            // Keep the loading indicator but clear other content
+            const loadingIndicator = this.elements.modalContent.querySelector('.htmx-indicator');
+            this.elements.modalContent.innerHTML = '';
+            if (loadingIndicator) {
+                this.elements.modalContent.appendChild(loadingIndicator);
+                loadingIndicator.style.display = 'flex';
+            }
+        }
     }
 
     setModalState(modal, content, isOpen) {
-        if (!modal || !content) return;
-    
-        // Add a class to the modal for CSS transitions
-        modal.classList.toggle('visible', isOpen);
-
         if (isOpen) {
             modal.classList.remove('opacity-0', 'invisible');
             content.classList.remove('scale-95');
             content.classList.add('scale-100');
+            
+            // Show loading indicator initially
+            const loadingIndicator = content.querySelector('.htmx-indicator');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'flex';
+            }
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
         } else {
-            modal.classList.add('opacity-0');
+            modal.classList.add('opacity-0', 'invisible');
+            content.classList.remove('scale-100');
             content.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('invisible'), 300); // Wait for transition
+            
+            // Hide loading indicator
+            const loadingIndicator = content.querySelector('.htmx-indicator');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
         }
     }
 
@@ -377,71 +416,54 @@ class MobileGridManager {
     handleHtmxBeforeRequest(e) {}
 
     handleHtmxAfterRequest(e) {
-        // Handle server-sent triggers
-        if (e.detail.successful && e.detail.xhr) {
-            const triggerHeader = e.detail.xhr.getResponseHeader('HX-Trigger');
-            if (triggerHeader) {
-                if (triggerHeader.includes('scrollToEnd')) { this.handleScrollToEnd(); return; }
-                if (triggerHeader.includes('refreshGrid')) { this.handleRefreshGrid(); return; }
-                if (triggerHeader.includes('resetGridToInitial')) { this.handleResetGridToInitial(); return; }
+        // Hide loading indicator when request completes
+        if (e.target.id === 'modal-content') {
+            const loadingIndicator = e.target.querySelector('.htmx-indicator');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
             }
         }
         
-        // Handle successful task deletion
-        if (e.detail.successful && e.target.id === 'delete-task-form' && e.detail.requestConfig.verb === 'post') {
-            const taskId = this.state.currentTaskId;
-            if (taskId) {
-                const taskElement = document.getElementById(`task-${taskId}`);
-                if (taskElement) {
-                    const parentCard = taskElement.closest('.task-list'); // In mobile view, this is the container
-                    taskElement.style.transition = 'all 0.3s ease';
-                    taskElement.style.opacity = '0';
-                    taskElement.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        // Instead of removing the task, we might get new content for an empty task placeholder
-                        // We rely on htmx to swap in the new content if provided, or we just need to handle the visual removal
-                    }, 300);
-                }
-            }
-            this.hideDeleteModal();
-            return;
-        }
-
-        // Handle other successful POSTs that might return JSON
-        if (e.detail.successful && e.detail.requestConfig.verb === 'post') {
-            try {
-                const response = JSON.parse(e.detail.xhr.responseText);
-                if(response.success) this.hideModal();
-            } catch (err) {
-                // Not a JSON response, likely HTML swap, which htmx handles
-            }
-        }
-    }
-    
-    handleHtmxAfterSwap(e) {
-        if (e.detail.target.id === 'modal-content') {
-            this.showModal();
-            const textField = e.detail.target.querySelector('textarea, input[name="text"]');
-            if (textField) {
-                const handleKeyDown = (evt) => {
-                    if (evt.key === 'Enter' && !(textField.tagName.toLowerCase() === 'textarea' && evt.shiftKey)) {
-                        evt.preventDefault();
-                        const form = textField.closest('form');
-                        if (form) (form.querySelector('button[type="submit"]') || form).click();
-                    }
-                };
-                textField.addEventListener('keydown', handleKeyDown);
-                setTimeout(() => {
-                    textField.focus();
-                    textField.setSelectionRange(textField.value.length, textField.value.length);
-                }, 150);
-            }
-        }
-        // Re-process htmx for any new content
-        if (typeof htmx !== 'undefined') htmx.process(e.detail.target);
-
-        // After a swap, especially for tasks, we might need to re-init
+        // Restore scroll position for mobile grid
+        this.restoreScrollPosition();
+        
+        // Reinitialize components that might have been replaced
         this.reinitializeComponents();
+    }
+
+    handleHtmxAfterSwap(e) {
+        // Hide loading indicator when content is swapped
+        if (e.target.id === 'modal-content') {
+            const loadingIndicator = e.target.querySelector('.htmx-indicator');
+            if (loadingIndicator) {
+                loadingIndicator.style.display = 'none';
+            }
+            
+            // Ensure modal is visible and centered
+            this.showModal();
+        }
+        
+        // Handle focus management for new content
+        if (e.target.id === 'modal-content') {
+            const firstInput = e.target.querySelector('input, textarea, select, button');
+            if (firstInput) {
+                setTimeout(() => {
+                    firstInput.focus();
+                }, 100);
+            }
+            
+            // Add escape key handler for new modal content
+            const handleKeyDown = (evt) => {
+                if (evt.key === 'Escape') {
+                    this.hideModal();
+                    document.removeEventListener('keydown', handleKeyDown);
+                }
+            };
+            document.addEventListener('keydown', handleKeyDown);
+        }
+        
+        // Restore scroll position
+        this.restoreScrollPosition();
     }
     
     handleHtmxError(e) {
