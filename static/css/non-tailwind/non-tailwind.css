@@ -311,7 +311,10 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* === Column Widths === */
 .grid-table-fixed col.category-column {
     width: var(--category-col-width);
+    max-width: var(--category-col-width);
+    min-width: var(--category-col-width);
 }
+
 .grid-table col.data-column {
     width: auto; /* Fallback */
 }
@@ -326,6 +329,19 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     white-space: normal;
     height: 100%; /* For row height sync */
 }
+
+/* Ensure category column cells wrap text and don't expand */
+.grid-table-fixed td.category-column,
+.grid-table-fixed th.category-column {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: var(--category-col-width);
+    width: var(--category-col-width);
+    box-sizing: border-box;
+}
+
 .grid-table-fixed tr:last-child td,
 .grid-table tr:last-child td {
     border-bottom: none;

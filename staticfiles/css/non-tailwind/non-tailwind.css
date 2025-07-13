@@ -311,7 +311,10 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* === Column Widths === */
 .grid-table-fixed col.category-column {
     width: var(--category-col-width);
+    max-width: var(--category-col-width);
+    min-width: var(--category-col-width);
 }
+
 .grid-table col.data-column {
     width: auto; /* Fallback */
 }
@@ -326,6 +329,19 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     white-space: normal;
     height: 100%; /* For row height sync */
 }
+
+/* Ensure category column cells wrap text and don't expand */
+.grid-table-fixed td.category-column,
+.grid-table-fixed th.category-column {
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    max-width: var(--category-col-width);
+    width: var(--category-col-width);
+    box-sizing: border-box;
+}
+
 .grid-table-fixed tr:last-child td,
 .grid-table tr:last-child td {
     border-bottom: none;
@@ -1521,6 +1537,28 @@ input[type="checkbox"]:focus {
 }
 
 #modal > div {
+    max-height: 90vh;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
+}
+
+/* Delete task modal */
+#delete-task-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+}
+
+#delete-task-modal > div {
     max-height: 90vh;
     overflow-y: auto;
     width: 100%;

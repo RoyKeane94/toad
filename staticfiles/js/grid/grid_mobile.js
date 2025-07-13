@@ -109,6 +109,7 @@ class MobileGridManager {
         // Modal triggers - clear content immediately before HTMX loads new content
         const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
         if (modalTrigger) {
+            console.log('Modal trigger detected:', modalTrigger);
             this.clearModalContent();
             this.showModal();
         }
@@ -131,6 +132,7 @@ class MobileGridManager {
 
         const deleteBtn = e.target.closest('.delete-task-btn');
         if (deleteBtn) {
+            console.log('Delete button clicked:', deleteBtn.dataset);
             e.preventDefault();
             this.showDeleteModal(deleteBtn.dataset.taskId, deleteBtn.dataset.taskText, deleteBtn.dataset.deleteUrl);
             return;
@@ -138,6 +140,7 @@ class MobileGridManager {
 
         const closeModalBtn = e.target.closest('.close-modal, #close-delete-modal, #cancel-delete-task');
         if (closeModalBtn) {
+            console.log('Close modal button clicked:', closeModalBtn.id);
             if (closeModalBtn.id === 'close-delete-modal' || closeModalBtn.id === 'cancel-delete-task') this.hideDeleteModal();
             else if (closeModalBtn.classList.contains('close-modal')) this.hideModal();
             return;
@@ -326,12 +329,16 @@ class MobileGridManager {
 
     // Modal methods
     showDeleteModal(taskId, taskText, deleteUrl) {
+        console.log('Showing delete modal:', { taskId, taskText, deleteUrl });
         this.state.currentTaskId = taskId;
         this.state.currentDeleteUrl = deleteUrl;
         if (this.elements.taskToDelete) this.elements.taskToDelete.textContent = taskText;
         if (this.elements.deleteTaskForm) {
             this.elements.deleteTaskForm.action = deleteUrl;
             this.elements.deleteTaskForm.setAttribute('hx-post', deleteUrl);
+            this.elements.deleteTaskForm.setAttribute('hx-swap', 'none');
+            this.elements.deleteTaskForm.setAttribute('hx-trigger', 'submit');
+            this.elements.deleteTaskForm.setAttribute('hx-disabled-elt', 'this');
             if (typeof htmx !== 'undefined') htmx.process(this.elements.deleteTaskForm);
         }
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, true);
@@ -339,15 +346,20 @@ class MobileGridManager {
     }
 
     hideDeleteModal() {
+        console.log('Hiding delete modal');
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, false);
         this.state.currentTaskId = null;
         this.state.currentDeleteUrl = null;
     }
 
     showModal() { 
+        console.log('Showing modal');
         this.setModalState(this.elements.modal, this.elements.modalContent, true); 
     }
-    hideModal() { this.setModalState(this.elements.modal, this.elements.modalContent, false); }
+    hideModal() { 
+        console.log('Hiding modal');
+        this.setModalState(this.elements.modal, this.elements.modalContent, false); 
+    }
     
     clearModalContent() {
         if (this.elements.modalContent) {
@@ -364,7 +376,10 @@ class MobileGridManager {
     }
 
     setModalState(modal, content, isOpen) {
-        if (!modal || !content) return;
+        if (!modal || !content) {
+            console.warn('Modal or content element not found:', { modal, content });
+            return;
+        }
         
         if (isOpen) {
             modal.classList.remove('opacity-0', 'invisible');
@@ -478,6 +493,45 @@ class MobileGridManager {
             }
         }
         
+        // Handle task toggle completion
+        if (e.target.matches('input[type="checkbox"]') && e.target.closest('form')) {
+            if (e.detail.successful && e.detail.xhr && e.detail.xhr.responseText) {
+                try {
+                    const response = JSON.parse(e.detail.xhr.responseText);
+                    if (response.success !== undefined) {
+                        // The visual changes are already applied by the hyperscript in the template
+                        // This just ensures the server response is handled properly
+                    }
+                } catch (e) {
+                    // Not a JSON response, continue with normal handling
+                }
+            }
+        }
+        
+        // Handle delete task form submission
+        if (e.target.id === 'delete-task-form') {
+            console.log('Delete task form submitted:', e.detail);
+            if (e.detail.successful) {
+                console.log('Delete task successful, hiding modal and removing task');
+                // Hide the delete modal
+                this.hideDeleteModal();
+                
+                // Remove the task from the DOM
+                const taskId = this.state.currentTaskId;
+                if (taskId) {
+                    const taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
+                    if (taskElement) {
+                        taskElement.remove();
+                        console.log('Task element removed from DOM');
+                    } else {
+                        console.warn('Task element not found in DOM:', taskId);
+                    }
+                }
+            } else {
+                console.error('Delete task failed:', e.detail);
+            }
+        }
+        
         // Restore scroll position for mobile grid
         this.restoreScrollPosition();
         
@@ -495,6 +549,33 @@ class MobileGridManager {
             
             // Ensure modal is visible and centered
             this.showModal();
+        }
+        
+        // Handle edit task form submission response
+        if (e.target.id === 'modal-content' && e.detail.xhr && e.detail.xhr.responseText) {
+            try {
+                const response = JSON.parse(e.detail.xhr.responseText);
+                if (response.success && response.task_id && response.task_html) {
+                    // Update the task in place
+                    const taskElement = document.querySelector(`[data-task-id="${response.task_id}"]`);
+                    if (taskElement) {
+                        // Create a temporary container to parse the HTML
+                        const tempContainer = document.createElement('div');
+                        tempContainer.innerHTML = response.task_html;
+                        const newTaskElement = tempContainer.firstElementChild;
+                        
+                        if (newTaskElement) {
+                            // Replace the old task with the new one
+                            taskElement.replaceWith(newTaskElement);
+                        }
+                    }
+                    
+                    // Hide the modal
+                    this.hideModal();
+                }
+            } catch (e) {
+                // Not a JSON response, continue with normal modal handling
+            }
         }
         
         // Handle focus management for new content
@@ -581,6 +662,11 @@ class MobileGridManager {
 
     init() {
         this.cacheElements();
+        console.log('Mobile Grid Manager initialized. Modal elements:', {
+            deleteModal: this.elements.deleteModal,
+            modal: this.elements.modal,
+            modalContent: this.elements.modalContent
+        });
         this.addEventListeners();
         this.setupMobileGrid();
         this.restoreScrollPosition();
