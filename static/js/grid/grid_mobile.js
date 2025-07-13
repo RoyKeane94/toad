@@ -106,6 +106,13 @@ class MobileGridManager {
 
     // Unified click handler
     handleDocumentClick(e) {
+        // Modal triggers - clear content immediately before HTMX loads new content
+        const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
+        if (modalTrigger) {
+            this.clearModalContent();
+            this.showModal();
+        }
+
         if (e.target.closest('#project-switcher-btn')) {
             e.stopPropagation(); this.toggleDropdown('projectSwitcher'); return;
         }
