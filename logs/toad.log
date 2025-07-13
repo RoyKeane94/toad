@@ -6801,3 +6801,9 @@ WARNING 2025-07-13 17:40:03,164 log 8794 6228586496 Not Found: /.well-known/apps
 INFO 2025-07-13 17:40:03,165 basehttp 8794 6178107392 "GET /static/css/output.css HTTP/1.1" 200 64866
 WARNING 2025-07-13 17:40:03,166 basehttp 8794 6228586496 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1602
 INFO 2025-07-13 17:40:04,818 basehttp 8794 6228586496 "GET /tasks/34/edit/ HTTP/1.1" 200 1099
+INFO 2025-07-13 17:41:54,643 autoreload 9212 8347377408 Watching for file changes with StatReloader
+INFO 2025-07-13 17:41:55,839 basehttp 9212 6155874304 "GET /projects/1/ HTTP/1.1" 200 12420
+INFO 2025-07-13 17:41:55,851 basehttp 9212 6189527040 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-13 17:41:55,852 basehttp 9212 6172700672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-13 17:41:55,856 basehttp 9212 6155874304 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 23063
+INFO 2025-07-13 17:41:57,206 basehttp 9212 6155874304 "GET /projects/1/ HTTP/1.1" 200 12392
