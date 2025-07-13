@@ -1476,11 +1476,20 @@ input[type="checkbox"]:focus {
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
 }
 
 #modal > div {
     max-height: 90vh;
     overflow-y: auto;
+    width: 100%;
+    max-width: 28rem;
+    margin: 0 auto;
 }
 
 /* Mobile touch improvements for single column view */
@@ -1494,10 +1503,24 @@ input[type="checkbox"]:focus {
         overscroll-behavior-y: contain;
     }
     
-    /* Ensure modal is properly sized on mobile */
+    /* Ensure modal is properly sized and positioned on mobile */
+    #modal {
+        padding: 0.5rem;
+    }
+    
     #modal > div {
         max-width: 95vw;
-        margin: 0 1rem;
+        margin: 0 auto;
+        max-height: 85vh;
+    }
+    
+    /* Fix modal positioning on mobile */
+    #modal.visible {
+        display: flex !important;
+    }
+    
+    #modal.visible > div {
+        transform: scale(1) !important;
     }
 }
 

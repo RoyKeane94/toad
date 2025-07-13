@@ -24,8 +24,8 @@ class MobileGridManager {
         const selectors = {
             // Project switcher
             switcherBtn: '#project-switcher-btn',
-            switcherDropdown: '#project-switcher-dropdown',
-            switcherChevron: '#switcher-chevron',
+            projectSwitcherDropdown: '#project-switcher-dropdown',
+            projectSwitcherChevron: '#switcher-chevron',
             switcherContainer: '#project-switcher-container',
 
             // Actions menu
@@ -351,40 +351,34 @@ class MobileGridManager {
     
     clearModalContent() {
         if (this.elements.modalContent) {
-            // Keep the loading indicator but clear other content
-            const loadingIndicator = this.elements.modalContent.querySelector('.htmx-indicator');
-            this.elements.modalContent.innerHTML = '';
-            if (loadingIndicator) {
-                this.elements.modalContent.appendChild(loadingIndicator);
-                loadingIndicator.style.display = 'flex';
-            }
+            // Show loading indicator
+            this.elements.modalContent.innerHTML = `
+                <div class="htmx-indicator flex items-center justify-center p-8">
+                    <div class="flex items-center space-x-3">
+                        <div class="animate-spin w-6 h-6 border-2 border-[var(--primary-action-bg)] border-t-transparent rounded-full"></div>
+                        <span class="text-[var(--text-secondary)]">Loading...</span>
+                    </div>
+                </div>
+            `;
         }
     }
 
     setModalState(modal, content, isOpen) {
+        if (!modal || !content) return;
+        
         if (isOpen) {
             modal.classList.remove('opacity-0', 'invisible');
+            modal.classList.add('opacity-100', 'visible');
             content.classList.remove('scale-95');
             content.classList.add('scale-100');
-            
-            // Show loading indicator initially
-            const loadingIndicator = content.querySelector('.htmx-indicator');
-            if (loadingIndicator) {
-                loadingIndicator.style.display = 'flex';
-            }
             
             // Prevent body scroll
             document.body.style.overflow = 'hidden';
         } else {
             modal.classList.add('opacity-0', 'invisible');
+            modal.classList.remove('opacity-100', 'visible');
             content.classList.remove('scale-100');
             content.classList.add('scale-95');
-            
-            // Hide loading indicator
-            const loadingIndicator = content.querySelector('.htmx-indicator');
-            if (loadingIndicator) {
-                loadingIndicator.style.display = 'none';
-            }
             
             // Restore body scroll
             document.body.style.overflow = '';
