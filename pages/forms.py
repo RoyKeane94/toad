@@ -39,7 +39,7 @@ class QuickTaskForm(forms.ModelForm):
                 'placeholder': 'Add task',
                 'required': True,
                 'name': 'text',
-                'style': 'border: 0 !important; border-bottom: 2px solid #10b981 !important; border-radius: 0 !important; box-shadow: none !important; outline: none !important; background: transparent !important; height: 36px; font-size: 16px !important;',
+                'style': 'border: 0 !important; border-bottom: 2px solid #10b981 !important; border-radius: 0 !important; box-shadow: none !important; outline: none !important; background: transparent !important; height: 36px; font-size: 14px !important;',
                 'onfocus': 'this.style.borderBottomColor="#059669"; this.style.boxShadow="none";',
                 'onblur': 'this.style.borderBottomColor="#10b981"; this.style.boxShadow="none";',
             }),

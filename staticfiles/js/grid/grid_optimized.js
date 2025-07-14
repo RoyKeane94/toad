@@ -1,6 +1,12 @@
 // Grid JavaScript - Optimized Version
 class GridManager {
     constructor() {
+        // Only initialize on desktop - don't interfere with mobile
+        if (window.innerWidth < 769) {
+            console.log('GridManager: Skipping initialization on mobile device');
+            return;
+        }
+        
         this.state = {
             currentCol: 0,
             dataColWidth: 0,
@@ -441,20 +447,31 @@ class GridManager {
         } else if (screenWidth <= 768) {
             return 2; // Tablet: 2 columns  
         } else {
-            return 3; // Desktop: 3 columns
+            return 3; // Desktop: Maximum 3 columns
         }
     }
 
     // Grid scrolling methods
     setupGridScrolling(skipRestore = false) {
         const { scrollable, leftBtn, rightBtn, gridTable } = this.elements;
-        if (!scrollable || !leftBtn || !rightBtn || !gridTable) return;
+        if (!scrollable || !leftBtn || !rightBtn || !gridTable) {
+            console.warn('Grid elements not found, retrying...');
+            // Retry after a short delay
+            setTimeout(() => {
+                this.cacheElements();
+                this.setupGridScrolling(skipRestore);
+            }, 100);
+            return;
+        }
 
         // Always get fresh column count from DOM
         const dataCols = document.querySelectorAll('.data-column');
         this.elements.dataCols = dataCols;
         
-        if (!dataCols.length) return;
+        if (!dataCols.length) {
+            console.warn('No data columns found');
+            return;
+        }
 
         this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || dataCols.length;
         this.state.columnsToShow = Math.min(this.getResponsiveColumnCount(), this.state.totalDataColumns);
@@ -515,6 +532,7 @@ class GridManager {
             this.observers.set('scroll', { disconnect: () => scrollable.removeEventListener('scroll', scrollHandler) });
         }
 
+        // Calculate widths and update UI without causing flash
         this.calculateAndApplyWidths();
         this.updateScrollButtons();
         
@@ -629,12 +647,15 @@ class GridManager {
             // Restore saved position immediately for smoother experience
             const savedScrollLeft = parseFloat(savedPosition);
             if (this.elements.scrollable && savedScrollLeft > 0) {
-                this.elements.scrollable.scrollLeft = savedScrollLeft;
-                // Update current column state to match restored position
-                this.state.currentCol = this.state.dataColWidth > 0 
-                    ? Math.round(savedScrollLeft / this.state.dataColWidth) 
-                    : 0;
-                this.updateScrollButtons();
+                // Ensure the grid is properly initialized before restoring position
+                setTimeout(() => {
+                    this.elements.scrollable.scrollLeft = savedScrollLeft;
+                    // Update current column state to match restored position
+                    this.state.currentCol = this.state.dataColWidth > 0 
+                        ? Math.round(savedScrollLeft / this.state.dataColWidth) 
+                        : 0;
+                    this.updateScrollButtons();
+                }, 50);
             }
         } else {
             // Default to start, ensure first column is fully visible
@@ -1219,6 +1240,10 @@ class GridManager {
     // Initialize everything
     init() {
         this.cacheElements();
+        
+        // Set initial column visibility immediately to prevent flash
+        this.setInitialColumnVisibility();
+        
         // Ensure the grid table starts hidden to prevent FOUC
         if (this.elements.gridTable) {
             this.elements.gridTable.classList.remove('initialized');
@@ -1231,6 +1256,41 @@ class GridManager {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
         }
+        
+        // Fallback: Ensure grid is visible after a timeout in case of JS issues
+        setTimeout(() => {
+            if (this.elements.gridTable && !this.elements.gridTable.classList.contains('initialized')) {
+                console.warn('Grid initialization timeout - forcing visibility');
+                this.elements.gridTable.classList.add('initialized');
+                this.calculateAndApplyWidths();
+            }
+        }, 2000);
+    }
+
+    // Set initial column visibility to prevent flash
+    setInitialColumnVisibility() {
+        const dataCols = document.querySelectorAll('.data-column');
+        if (!dataCols.length) return;
+
+        // Calculate initial column count based on screen size
+        const initialColumnCount = this.getResponsiveColumnCount();
+        
+        // Hide all columns initially
+        dataCols.forEach((col, index) => {
+            if (index < initialColumnCount) {
+                // Show only the initial number of columns
+                col.style.width = '200px'; // Default width
+                col.style.minWidth = '200px';
+                col.style.maxWidth = 'none';
+                col.style.overflow = 'visible';
+            } else {
+                // Hide remaining columns
+                col.style.width = '0';
+                col.style.minWidth = '0';
+                col.style.maxWidth = '0';
+                col.style.overflow = 'hidden';
+            }
+        });
     }
 }
 

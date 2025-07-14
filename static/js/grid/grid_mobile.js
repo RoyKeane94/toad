@@ -1,6 +1,12 @@
 // Grid JavaScript - Mobile Version
 class MobileGridManager {
     constructor() {
+        // Only initialize on mobile - don't interfere with desktop
+        if (window.innerWidth >= 769) {
+            console.log('MobileGridManager: Skipping initialization on desktop device');
+            return;
+        }
+        
         this.state = {
             currentCol: 0,
             totalColumns: 0,

@@ -188,6 +188,13 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     visibility: visible;
 }
 
+/* Ensure desktop grid table is visible */
+@media (min-width: 769px) {
+    .grid-table {
+        visibility: visible;
+    }
+}
+
 
 
 /* Fix for production environment where first column might be cut off */
@@ -868,6 +875,43 @@ input[type="checkbox"]:focus {
     background-color: var(--main-bg);
 }
 
+/* Ensure mobile grid is completely isolated from desktop grid styles */
+.mobile-grid-container * {
+    /* Override any desktop grid styles that might interfere */
+    box-sizing: border-box;
+}
+
+/* Mobile grid should never be affected by desktop grid table styles */
+.mobile-grid-container .grid-table {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.mobile-grid-container .grid-table-scrollable {
+    overflow: visible !important;
+    -webkit-overflow-scrolling: auto !important;
+    scroll-behavior: auto !important;
+}
+
+/* Ensure mobile columns are always visible and properly sized */
+.mobile-grid-container .mobile-column {
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    transform: none !important;
+}
+
+/* Mobile grid should not be affected by desktop column width rules */
+.mobile-grid-container col.data-column {
+    width: auto !important;
+    min-width: auto !important;
+    max-width: none !important;
+    overflow: visible !important;
+}
+
 .desktop-grid-container {
     display: flex;
     flex-direction: row;
@@ -1316,7 +1360,7 @@ input[type="checkbox"]:focus {
     }
     
     .desktop-grid-container {
-        display: none;
+        display: none !important;
     }
     
     /* Hide the main desktop actions buttons */
