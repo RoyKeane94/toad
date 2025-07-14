@@ -120,12 +120,8 @@ class MobileGridManager {
         const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
         if (modalTrigger) {
             console.log('Modal trigger detected:', modalTrigger);
-            // Only handle modal triggers that don't have inline onclick handlers
-            // to avoid conflicts with the existing onclick logic
-            if (!modalTrigger.hasAttribute('onclick')) {
-                this.clearModalContent();
-                this.showModal();
-            }
+            this.clearModalContent(); // Always show loading spinner
+            this.showModal();
             return;
         }
 
