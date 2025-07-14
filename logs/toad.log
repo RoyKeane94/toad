@@ -6983,3 +6983,116 @@ INFO 2025-07-14 20:01:31,392 basehttp 5298 6202142720 "GET /projects/1/ HTTP/1.1
 INFO 2025-07-14 20:01:31,407 basehttp 5298 6218969088 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-07-14 20:01:31,407 basehttp 5298 6202142720 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-07-14 20:01:31,408 basehttp 5298 6235795456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:03:41,235 autoreload 5681 8718982912 Watching for file changes with StatReloader
+INFO 2025-07-14 20:03:42,156 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11204
+INFO 2025-07-14 20:03:42,173 basehttp 5681 6153023488 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-14 20:03:42,178 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-14 20:03:42,179 basehttp 5681 6169849856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-14 20:03:42,180 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1524
+INFO 2025-07-14 20:03:44,121 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11176
+WARNING 2025-07-14 20:03:44,145 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:03:44,145 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1541
+INFO 2025-07-14 20:05:41,755 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11225
+INFO 2025-07-14 20:05:41,772 basehttp 5681 6136197120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-14 20:05:41,772 basehttp 5681 6169849856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-14 20:05:41,782 log 5681 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:05:41,782 basehttp 5681 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1593
+INFO 2025-07-14 20:05:45,712 basehttp 5681 6169849856 "GET /tasks/34/edit/ HTTP/1.1" 200 1072
+INFO 2025-07-14 20:05:50,280 basehttp 5681 6169849856 "POST /tasks/34/edit/ HTTP/1.1" 200 1492
+INFO 2025-07-14 20:05:55,937 basehttp 5681 6169849856 "GET /projects/1/ HTTP/1.1" 200 11147
+WARNING 2025-07-14 20:05:55,961 log 5681 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:05:55,961 basehttp 5681 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1567
+INFO 2025-07-14 20:06:00,343 basehttp 5681 6169849856 "GET /tasks/34/edit/ HTTP/1.1" 200 1082
+INFO 2025-07-14 20:06:03,393 basehttp 5681 6169849856 "POST /tasks/34/edit/ HTTP/1.1" 200 1493
+INFO 2025-07-14 20:10:34,842 basehttp 5681 6169849856 "GET /projects/1/ HTTP/1.1" 200 11157
+INFO 2025-07-14 20:10:34,861 basehttp 5681 6136197120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:10:34,861 basehttp 5681 6169849856 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-14 20:10:34,871 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:10:34,872 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1536
+INFO 2025-07-14 20:10:36,513 basehttp 5681 6136197120 "GET /tasks/34/edit/ HTTP/1.1" 200 1076
+INFO 2025-07-14 20:10:39,684 basehttp 5681 6136197120 "POST /tasks/34/edit/ HTTP/1.1" 200 1468
+INFO 2025-07-14 20:10:42,854 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11158
+WARNING 2025-07-14 20:10:42,876 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:10:42,876 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1531
+INFO 2025-07-14 20:10:51,644 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11154
+WARNING 2025-07-14 20:10:51,665 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:10:51,671 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1517
+INFO 2025-07-14 20:10:51,672 basehttp 5681 6136197120 - Broken pipe from ('127.0.0.1', 55039)
+INFO 2025-07-14 20:10:51,673 basehttp 5681 6186676224 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-14 20:10:51,675 basehttp 5681 6203502592 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 32882
+INFO 2025-07-14 20:10:51,675 basehttp 5681 6153023488 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 37880
+INFO 2025-07-14 20:10:51,676 basehttp 5681 6169849856 "GET /static/css/output.css HTTP/1.1" 200 64866
+INFO 2025-07-14 20:10:53,082 basehttp 5681 6169849856 "GET /tasks/34/edit/ HTTP/1.1" 200 1081
+INFO 2025-07-14 20:10:55,843 basehttp 5681 6169849856 "POST /tasks/34/edit/ HTTP/1.1" 200 1459
+INFO 2025-07-14 20:11:03,375 basehttp 5681 6169849856 "GET /projects/1/ HTTP/1.1" 200 11204
+INFO 2025-07-14 20:11:03,395 basehttp 5681 6203502592 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-14 20:11:03,399 log 5681 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:11:03,399 basehttp 5681 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1543
+INFO 2025-07-14 20:11:13,472 basehttp 5681 6169849856 "POST /projects/1/tasks/create/3/2/ HTTP/1.1" 200 1351
+INFO 2025-07-14 20:11:16,110 project_views_functions 5681 6169849856 User None deleted task: "Test" from project: Toad
+INFO 2025-07-14 20:11:16,114 basehttp 5681 6169849856 "POST /tasks/150/delete/ HTTP/1.1" 200 58
+INFO 2025-07-14 20:13:13,667 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11176
+INFO 2025-07-14 20:13:13,692 basehttp 5681 6169849856 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-14 20:13:13,693 basehttp 5681 6186676224 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 33928
+INFO 2025-07-14 20:13:13,697 basehttp 5681 6136197120 "GET /static/css/output.css HTTP/1.1" 200 64866
+INFO 2025-07-14 20:13:13,698 basehttp 5681 6153023488 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 37880
+WARNING 2025-07-14 20:13:13,698 log 5681 6203502592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:13:13,699 basehttp 5681 6203502592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1607
+INFO 2025-07-14 20:13:17,154 basehttp 5681 6203502592 "POST /projects/1/tasks/create/3/2/ HTTP/1.1" 200 1384
+INFO 2025-07-14 20:13:20,646 project_views_functions 5681 6203502592 User None deleted task: "Test" from project: Toad
+INFO 2025-07-14 20:13:20,651 basehttp 5681 6203502592 "POST /tasks/151/delete/ HTTP/1.1" 200 58
+INFO 2025-07-14 20:16:31,357 basehttp 5681 6203502592 "GET /projects/1/ HTTP/1.1" 200 11148
+INFO 2025-07-14 20:16:31,382 basehttp 5681 6186676224 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-14 20:16:31,385 basehttp 5681 6169849856 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 34130
+WARNING 2025-07-14 20:16:31,385 log 5681 6203502592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-14 20:16:31,387 basehttp 5681 6153023488 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 37880
+INFO 2025-07-14 20:16:31,387 basehttp 5681 6136197120 "GET /static/css/output.css HTTP/1.1" 200 64866
+WARNING 2025-07-14 20:16:31,388 basehttp 5681 6203502592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1547
+INFO 2025-07-14 20:16:31,389 basehttp 5681 6203502592 - Broken pipe from ('127.0.0.1', 57662)
+INFO 2025-07-14 20:16:36,007 basehttp 5681 6136197120 "POST /projects/1/tasks/create/3/2/ HTTP/1.1" 200 1290
+INFO 2025-07-14 20:16:38,617 project_views_functions 5681 6136197120 User None deleted task: "Test" from project: Toad
+INFO 2025-07-14 20:16:38,621 basehttp 5681 6136197120 "POST /tasks/152/delete/ HTTP/1.1" 200 58
+INFO 2025-07-14 20:16:43,982 basehttp 5681 6136197120 "POST /projects/1/tasks/create/3/2/ HTTP/1.1" 200 1359
+INFO 2025-07-14 20:16:45,301 basehttp 5681 6136197120 "GET /tasks/153/edit/ HTTP/1.1" 200 984
+INFO 2025-07-14 20:16:47,353 basehttp 5681 6136197120 "POST /tasks/153/edit/ HTTP/1.1" 200 1438
+INFO 2025-07-14 20:18:37,812 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11380
+INFO 2025-07-14 20:18:37,834 basehttp 5681 6136197120 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 37569
+WARNING 2025-07-14 20:18:37,842 log 5681 6153023488 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:18:37,843 basehttp 5681 6153023488 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1525
+INFO 2025-07-14 20:18:39,304 basehttp 5681 6153023488 "GET /tasks/153/edit/ HTTP/1.1" 200 1028
+INFO 2025-07-14 20:18:43,457 basehttp 5681 6153023488 "POST /tasks/153/edit/ HTTP/1.1" 200 1360
+INFO 2025-07-14 20:20:23,985 basehttp 5681 6153023488 "GET /projects/1/ HTTP/1.1" 200 11392
+INFO 2025-07-14 20:20:24,006 basehttp 5681 6186676224 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-14 20:20:24,010 log 5681 6153023488 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-14 20:20:24,011 basehttp 5681 6203502592 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 41691
+WARNING 2025-07-14 20:20:24,012 basehttp 5681 6153023488 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1551
+INFO 2025-07-14 20:20:24,012 basehttp 5681 6169849856 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 37880
+INFO 2025-07-14 20:20:24,013 basehttp 5681 6136197120 "GET /static/css/output.css HTTP/1.1" 200 64866
+INFO 2025-07-14 20:20:25,757 basehttp 5681 6136197120 "GET /tasks/153/edit/ HTTP/1.1" 200 985
+INFO 2025-07-14 20:20:27,909 basehttp 5681 6136197120 "POST /tasks/153/edit/ HTTP/1.1" 200 1396
+INFO 2025-07-14 20:20:57,846 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 12510
+INFO 2025-07-14 20:20:57,859 basehttp 5681 6136197120 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24184
+INFO 2025-07-14 20:21:01,772 basehttp 5681 6136197120 "GET /tasks/55/edit/ HTTP/1.1" 200 1012
+INFO 2025-07-14 20:21:03,811 basehttp 5681 6136197120 "POST /tasks/55/edit/ HTTP/1.1" 200 1427
+INFO 2025-07-14 20:21:05,971 basehttp 5681 6136197120 "GET /tasks/55/edit/ HTTP/1.1" 200 1013
+INFO 2025-07-14 20:21:08,389 basehttp 5681 6136197120 "POST /tasks/55/edit/ HTTP/1.1" 200 1432
+INFO 2025-07-14 20:21:11,401 basehttp 5681 6136197120 "GET /tasks/55/edit/ HTTP/1.1" 200 1067
+INFO 2025-07-14 20:21:13,050 basehttp 5681 6136197120 "POST /tasks/55/edit/ HTTP/1.1" 200 1394
+INFO 2025-07-14 20:21:14,768 basehttp 5681 6136197120 "GET /tasks/55/edit/ HTTP/1.1" 200 1011
+INFO 2025-07-14 20:21:17,239 basehttp 5681 6136197120 "POST /tasks/55/edit/ HTTP/1.1" 200 1452
+WARNING 2025-07-14 20:21:21,362 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:21:21,363 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1544
+INFO 2025-07-14 20:21:23,306 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11343
+INFO 2025-07-14 20:21:23,328 basehttp 5681 6136197120 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-14 20:21:23,335 log 5681 6136197120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:21:23,336 basehttp 5681 6136197120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1527
+INFO 2025-07-14 20:23:20,807 basehttp 5681 6136197120 "GET /projects/1/ HTTP/1.1" 200 11303
+INFO 2025-07-14 20:23:20,822 basehttp 5681 6136197120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-14 20:23:20,823 basehttp 5681 6169849856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:23:20,824 basehttp 5681 6153023488 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 43112
+WARNING 2025-07-14 20:23:20,831 log 5681 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:23:20,832 basehttp 5681 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1534
+INFO 2025-07-14 20:23:22,574 basehttp 5681 6169849856 "GET /tasks/153/edit/ HTTP/1.1" 200 982
+INFO 2025-07-14 20:23:25,329 basehttp 5681 6169849856 "POST /tasks/153/edit/ HTTP/1.1" 200 1430
+INFO 2025-07-14 20:23:26,521 basehttp 5681 6169849856 "GET /tasks/153/edit/ HTTP/1.1" 200 984
+INFO 2025-07-14 20:23:29,693 basehttp 5681 6169849856 "POST /tasks/153/edit/ HTTP/1.1" 200 1405
