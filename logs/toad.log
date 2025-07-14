@@ -7140,3 +7140,30 @@ INFO 2025-07-14 20:41:54,619 basehttp 7105 6238253056 "POST /tasks/154/toggle/ H
 INFO 2025-07-14 20:41:55,667 basehttp 7105 6238253056 "POST /tasks/154/toggle/ HTTP/1.1" 200 79
 INFO 2025-07-14 20:42:13,347 autoreload 7105 8718982912 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
 INFO 2025-07-14 20:42:13,637 autoreload 7156 8718982912 Watching for file changes with StatReloader
+INFO 2025-07-14 20:44:14,591 autoreload 7460 8718982912 Watching for file changes with StatReloader
+INFO 2025-07-14 20:44:20,490 basehttp 7460 6160674816 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-14 20:44:20,509 log 7460 6160674816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:44:20,510 basehttp 7460 6160674816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1582
+INFO 2025-07-14 20:44:21,824 basehttp 7460 6160674816 "GET /projects/14/ HTTP/1.1" 200 7254
+INFO 2025-07-14 20:44:21,842 basehttp 7460 6177501184 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-14 20:44:21,846 log 7460 6160674816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:44:21,847 basehttp 7460 6160674816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1520
+INFO 2025-07-14 20:44:25,082 basehttp 7460 6160674816 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 921
+INFO 2025-07-14 20:44:28,691 basehttp 7460 6160674816 "GET /projects/14/columns/86/edit/ HTTP/1.1" 200 874
+INFO 2025-07-14 20:44:30,661 basehttp 7460 6160674816 "POST /projects/14/columns/86/edit/ HTTP/1.1" 200 98
+INFO 2025-07-14 20:44:32,507 basehttp 7460 6160674816 "POST /projects/14/columns/86/edit/ HTTP/1.1" 200 98
+INFO 2025-07-14 20:44:33,521 basehttp 7460 6160674816 "POST /projects/14/columns/86/edit/ HTTP/1.1" 200 98
+INFO 2025-07-14 20:44:37,807 basehttp 7460 6160674816 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 900
+INFO 2025-07-14 20:44:39,952 basehttp 7460 6160674816 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 106
+INFO 2025-07-14 20:51:03,392 basehttp 7460 6160674816 "GET / HTTP/1.1" 200 4122
+INFO 2025-07-14 20:51:03,409 basehttp 7460 6177501184 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:51:03,409 basehttp 7460 6160674816 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-14 20:53:00,314 basehttp 7460 6160674816 "GET / HTTP/1.1" 200 3842
+INFO 2025-07-14 20:54:00,318 basehttp 7460 6160674816 "GET / HTTP/1.1" 200 3868
+INFO 2025-07-14 20:54:00,329 basehttp 7460 6160674816 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-14 20:55:43,387 basehttp 7460 6160674816 "GET / HTTP/1.1" 200 3898
+INFO 2025-07-14 20:55:48,036 basehttp 7460 6160674816 "GET / HTTP/1.1" 200 3950
+INFO 2025-07-14 20:55:59,018 basehttp 7460 6160674816 "GET / HTTP/1.1" 200 3928
+INFO 2025-07-14 20:55:59,040 basehttp 7460 6194327552 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-14 20:55:59,041 basehttp 7460 6177501184 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 37880
+INFO 2025-07-14 20:55:59,042 basehttp 7460 6160674816 "GET /static/css/output.css HTTP/1.1" 200 64866
