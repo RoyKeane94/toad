@@ -187,8 +187,8 @@ def render_modal_content(request, template_name, context):
 # Project Creation Helpers
 
 def create_default_project_structure(project):
-    """Create default headers for new project"""
-    # Create default headers
+    """Create minimal grid structure for new project"""
+    # Create category column
     ColumnHeader.objects.create(
         project=project, 
         name='Time / Category', 
@@ -196,22 +196,27 @@ def create_default_project_structure(project):
         is_category_column=True
     )
     
-    # Bulk create columns
-    columns = [
-        ColumnHeader(project=project, name='Column 1 (Rename)', order=1),
-        ColumnHeader(project=project, name='Column 2 (Rename)', order=2),
-        ColumnHeader(project=project, name='Column 3 (Rename)', order=3),
-    ]
-    ColumnHeader.objects.bulk_create(columns)
+    # Create single data column with project name
+    data_column = ColumnHeader.objects.create(
+        project=project, 
+        name=project.name, 
+        order=1
+    )
     
-    # Bulk create rows
-    rows = [
-        RowHeader(project=project, name='Row 1 (Rename)', order=0),
-        RowHeader(project=project, name='Row 2 (Rename)', order=1),
-        RowHeader(project=project, name='Row 3 (Rename)', order=2),
-        RowHeader(project=project, name='Row 4 (Rename)', order=3),
-    ]
-    RowHeader.objects.bulk_create(rows)
+    # Create single row
+    row = RowHeader.objects.create(
+        project=project, 
+        name='Quick Actions', 
+        order=0
+    )
+    
+    # Create single task
+    Task.objects.create(
+        project=project,
+        row_header=row,
+        column_header=data_column,
+        text='Begin by decluttering your mind'
+    )
 
 def create_project_from_template_config(user, template_config):
     """Create project from template configuration"""

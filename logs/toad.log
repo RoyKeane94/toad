@@ -7108,3 +7108,35 @@ INFO 2025-07-14 20:32:07,567 basehttp 6724 6258110464 "GET /tasks/153/edit/ HTTP
 INFO 2025-07-14 20:32:13,095 basehttp 6724 6258110464 "GET /projects/1/ HTTP/1.1" 200 12530
 INFO 2025-07-14 20:32:13,107 basehttp 6724 6190804992 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-07-14 20:32:13,107 basehttp 6724 6258110464 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24184
+INFO 2025-07-14 20:34:34,058 autoreload 7064 8718982912 Watching for file changes with StatReloader
+INFO 2025-07-14 20:34:36,027 basehttp 7064 6189346816 "GET /projects/1/ HTTP/1.1" 200 11360
+INFO 2025-07-14 20:34:36,046 basehttp 7064 6222999552 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:34:36,046 basehttp 7064 6206173184 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-14 20:34:36,063 log 7064 6189346816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-14 20:34:36,064 basehttp 7064 6189346816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1581
+INFO 2025-07-14 20:40:26,152 autoreload 7064 8718982912 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-14 20:40:26,450 autoreload 7105 8718982912 Watching for file changes with StatReloader
+INFO 2025-07-14 20:41:19,882 basehttp 7105 6204600320 "GET /projects/1/ HTTP/1.1" 200 12571
+INFO 2025-07-14 20:41:19,894 basehttp 7105 6221426688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:41:19,894 basehttp 7105 6204600320 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-14 20:41:19,895 basehttp 7105 6238253056 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-14 20:41:23,916 basehttp 7105 6238253056 "GET /projects/ HTTP/1.1" 200 3273
+INFO 2025-07-14 20:41:24,925 basehttp 7105 6238253056 "GET /projects/create/ HTTP/1.1" 200 3070
+INFO 2025-07-14 20:41:27,839 project_views_functions 7105 6238253056 User None created project: Loving
+INFO 2025-07-14 20:41:27,840 basehttp 7105 6238253056 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-07-14 20:41:27,855 basehttp 7105 6238253056 "GET /projects/14/ HTTP/1.1" 200 7653
+INFO 2025-07-14 20:41:41,245 basehttp 7105 6238253056 "GET /projects/14/columns/create/ HTTP/1.1" 200 847
+INFO 2025-07-14 20:41:43,838 basehttp 7105 6238253056 "POST /projects/14/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-14 20:41:43,882 basehttp 7105 6221426688 "GET /projects/14/ HTTP/1.1" 200 7877
+INFO 2025-07-14 20:41:43,883 basehttp 7105 6238253056 - Broken pipe from ('127.0.0.1', 64734)
+INFO 2025-07-14 20:41:43,885 basehttp 7105 6204600320 - Broken pipe from ('127.0.0.1', 64732)
+INFO 2025-07-14 20:41:45,454 basehttp 7105 6221426688 "GET /projects/14/columns/create/ HTTP/1.1" 200 940
+INFO 2025-07-14 20:41:48,039 basehttp 7105 6221426688 "POST /projects/14/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-14 20:41:48,078 basehttp 7105 6221426688 "GET /projects/14/ HTTP/1.1" 200 8074
+INFO 2025-07-14 20:41:48,082 basehttp 7105 6204600320 - Broken pipe from ('127.0.0.1', 64737)
+INFO 2025-07-14 20:41:48,082 basehttp 7105 6221426688 - Broken pipe from ('127.0.0.1', 64733)
+INFO 2025-07-14 20:41:48,083 basehttp 7105 6238253056 "GET /projects/14/ HTTP/1.1" 200 8024
+INFO 2025-07-14 20:41:54,619 basehttp 7105 6238253056 "POST /tasks/154/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-14 20:41:55,667 basehttp 7105 6238253056 "POST /tasks/154/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-14 20:42:13,347 autoreload 7105 8718982912 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-07-14 20:42:13,637 autoreload 7156 8718982912 Watching for file changes with StatReloader
