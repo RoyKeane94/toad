@@ -541,10 +541,8 @@ class GridManager {
             this.restoreScrollPosition();
         }
 
-        // Make table visible after setup to prevent FOUC
-        if (this.elements.gridTable) {
-            this.elements.gridTable.classList.add('initialized');
-        }
+        // Don't make table visible here - let the init() method handle it
+        // This prevents premature visibility during setup
     }
 
     calculateAndApplyWidths() {
@@ -555,8 +553,24 @@ class GridManager {
             const containerWidth = scrollable.clientWidth;
             this.state.dataColWidth = containerWidth / this.state.columnsToShow;
             
-            dataCols.forEach(col => {
-                col.style.width = `${this.state.dataColWidth}px`;
+            dataCols.forEach((col, index) => {
+                if (index < this.state.columnsToShow) {
+                    // Set equal width for visible columns
+                    col.style.width = `${this.state.dataColWidth}px`;
+                    col.style.minWidth = `${this.state.dataColWidth}px`;
+                    col.style.maxWidth = `${this.state.dataColWidth}px`;
+                    col.style.overflow = 'visible';
+                    col.style.opacity = '1';
+                    col.style.visibility = 'visible';
+                } else {
+                    // Hide remaining columns
+                    col.style.width = '0';
+                    col.style.minWidth = '0';
+                    col.style.maxWidth = '0';
+                    col.style.overflow = 'hidden';
+                    col.style.opacity = '0';
+                    col.style.visibility = 'hidden';
+                }
             });
 
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
@@ -1239,15 +1253,19 @@ class GridManager {
 
     // Initialize everything
     init() {
+        // Immediately hide the grid table to prevent flash
+        const gridTable = document.querySelector('.grid-table');
+        if (gridTable) {
+            gridTable.classList.remove('initialized');
+            gridTable.style.visibility = 'hidden';
+            gridTable.style.opacity = '0';
+        }
+        
         this.cacheElements();
         
         // Set initial column visibility immediately to prevent flash
         this.setInitialColumnVisibility();
         
-        // Ensure the grid table starts hidden to prevent FOUC
-        if (this.elements.gridTable) {
-            this.elements.gridTable.classList.remove('initialized');
-        }
         this.addEventListeners();
         this.setupGridScrolling();
         
@@ -1257,11 +1275,22 @@ class GridManager {
             htmx.config.useTemplateFragments = false;
         }
         
+        // Show the grid table after everything is properly initialized
+        setTimeout(() => {
+            if (this.elements.gridTable) {
+                this.elements.gridTable.classList.add('initialized');
+                this.elements.gridTable.style.visibility = 'visible';
+                this.elements.gridTable.style.opacity = '1';
+            }
+        }, 100);
+        
         // Fallback: Ensure grid is visible after a timeout in case of JS issues
         setTimeout(() => {
             if (this.elements.gridTable && !this.elements.gridTable.classList.contains('initialized')) {
                 console.warn('Grid initialization timeout - forcing visibility');
                 this.elements.gridTable.classList.add('initialized');
+                this.elements.gridTable.style.visibility = 'visible';
+                this.elements.gridTable.style.opacity = '1';
                 this.calculateAndApplyWidths();
             }
         }, 2000);
@@ -1275,20 +1304,29 @@ class GridManager {
         // Calculate initial column count based on screen size
         const initialColumnCount = this.getResponsiveColumnCount();
         
-        // Hide all columns initially
+        // Get container width to calculate proper column width
+        const scrollable = document.querySelector('.grid-table-scrollable');
+        const containerWidth = scrollable ? scrollable.clientWidth : window.innerWidth;
+        const columnWidth = containerWidth / initialColumnCount;
+        
+        // Immediately hide all columns to prevent flash
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Show only the initial number of columns
-                col.style.width = '200px'; // Default width
-                col.style.minWidth = '200px';
-                col.style.maxWidth = 'none';
+                // Show only the initial number of columns with equal width
+                col.style.width = `${columnWidth}px`;
+                col.style.minWidth = `${columnWidth}px`;
+                col.style.maxWidth = `${columnWidth}px`;
                 col.style.overflow = 'visible';
+                col.style.opacity = '1';
+                col.style.visibility = 'visible';
             } else {
-                // Hide remaining columns
+                // Completely hide remaining columns
                 col.style.width = '0';
                 col.style.minWidth = '0';
                 col.style.maxWidth = '0';
                 col.style.overflow = 'hidden';
+                col.style.opacity = '0';
+                col.style.visibility = 'hidden';
             }
         });
     }
