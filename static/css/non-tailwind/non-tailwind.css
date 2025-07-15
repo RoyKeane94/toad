@@ -207,26 +207,50 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     min-width: max-content; /* Ensure table doesn't shrink below content width */
 }
 
-/* Production fix: Ensure proper spacing for first data column */
+/* Mac-specific fix: Ensure first data column is not cut off */
 .grid-table-scrollable {
-    margin-left: 0; /* Ensure no unexpected margin */
-    padding-left: 0; /* Ensure no unexpected padding */
+    margin-left: 0;
+    padding-left: 0;
+    /* Mac-specific: Ensure proper container sizing */
+    box-sizing: border-box;
+    /* Mac-specific: Ensure proper overflow behavior */
+    overflow-x: auto;
+    overflow-y: visible;
 }
 
-/* Production fix: Ensure first data column is not cut off */
+/* Mac-specific: Ensure the grid table itself doesn't have unexpected padding */
+.grid-table {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+/* Mac-specific: Ensure first data column cell has no unexpected padding */
+.grid-table th:first-child,
+.grid-table td:first-child {
+    padding-left: 1rem; /* Standard padding */
+    padding-right: 1rem;
+}
+
+/* Mac-specific fix: Ensure first data column has proper positioning */
 .grid-table col.data-column:first-child {
-    min-width: 0; /* Allow proper sizing */
-    position: relative; /* Ensure proper positioning */
+    min-width: 0;
+    position: relative;
+    /* Mac-specific: Ensure proper left positioning */
+    left: 0;
 }
 
-/* Production fix: Ensure grid container wrapper doesn't cause layout issues */
+/* Mac-specific fix: Ensure grid container wrapper doesn't cause layout issues */
 .grid-container-wrapper {
     display: flex;
     flex: 1;
     min-width: 0;
     border: 1px solid #f3f4f6;
     border-radius: 8px;
-    overflow: visible; /* Allow content to be visible */
+    overflow: visible;
+    /* Mac-specific: Ensure proper flex behavior */
+    box-sizing: border-box;
 }
 
 /* Ensure first data column has proper positioning */
