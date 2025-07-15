@@ -562,6 +562,13 @@ class GridManager {
                     col.style.overflow = 'visible';
                     col.style.opacity = '1';
                     col.style.visibility = 'visible';
+                    
+                    // Production fix: Ensure first column is not cut off
+                    if (index === 0) {
+                        col.style.position = 'relative';
+                        col.style.left = '0';
+                        col.style.zIndex = '1';
+                    }
                 } else {
                     // Hide remaining columns
                     col.style.width = '0';
@@ -575,6 +582,14 @@ class GridManager {
 
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
             gridTable.style.width = `${totalTableWidth}px`;
+            
+            // Production fix: Ensure scrollable container is properly positioned
+            if (scrollable) {
+                scrollable.style.position = 'relative';
+                scrollable.style.left = '0';
+                scrollable.style.marginLeft = '0';
+                scrollable.style.paddingLeft = '0';
+            }
         }
         
         this.syncRowHeights();
@@ -1281,6 +1296,15 @@ class GridManager {
                 this.elements.gridTable.classList.add('initialized');
                 this.elements.gridTable.style.visibility = 'visible';
                 this.elements.gridTable.style.opacity = '1';
+                
+                // Production fix: Ensure proper layout after initialization
+                this.calculateAndApplyWidths();
+                
+                // Additional production fix: Force a reflow to ensure proper rendering
+                if (this.elements.scrollable) {
+                    this.elements.scrollable.offsetHeight; // Force reflow
+                    this.elements.scrollable.scrollLeft = 0; // Ensure we start at the beginning
+                }
             }
         }, 100);
         

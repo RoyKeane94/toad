@@ -165,6 +165,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     -webkit-overflow-scrolling: touch;
     position: relative;
     scroll-behavior: smooth;
+    min-height: 200px; /* Prevent layout shift during initialization */
 }
 
 /* Ensure first data column is properly positioned and not cut off */
@@ -181,17 +182,21 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* Hide grid table initially to prevent flash of all columns */
 .grid-table {
     visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s ease-out;
 }
 
 /* Show grid table once JavaScript has initialized it */
 .grid-table.initialized {
     visibility: visible;
+    opacity: 1;
 }
 
-/* Ensure desktop grid table is visible */
+/* Ensure desktop grid table is visible only after initialization */
 @media (min-width: 769px) {
-    .grid-table {
-        visibility: visible;
+    .grid-table:not(.initialized) {
+        visibility: hidden;
+        opacity: 0;
     }
 }
 
@@ -202,9 +207,41 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     min-width: max-content; /* Ensure table doesn't shrink below content width */
 }
 
+/* Production fix: Ensure proper spacing for first data column */
+.grid-table-scrollable {
+    margin-left: 0; /* Ensure no unexpected margin */
+    padding-left: 0; /* Ensure no unexpected padding */
+}
+
+/* Production fix: Ensure first data column is not cut off */
+.grid-table col.data-column:first-child {
+    min-width: 0; /* Allow proper sizing */
+    position: relative; /* Ensure proper positioning */
+}
+
+/* Production fix: Ensure grid container wrapper doesn't cause layout issues */
+.grid-container-wrapper {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    border: 1px solid #f3f4f6;
+    border-radius: 8px;
+    overflow: visible; /* Allow content to be visible */
+}
+
 /* Ensure first data column has proper positioning */
 .grid-table col.data-column:first-child {
     min-width: 0; /* Allow proper sizing */
+}
+
+/* Hide data columns initially to prevent flash */
+.grid-table:not(.initialized) col.data-column {
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    overflow: hidden !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 /* Hide scrollbar in Webkit browsers */
@@ -291,6 +328,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border: 1px solid #f3f4f6;
     border-radius: 8px;
     /* overflow: hidden removed to allow sticky headers to work */
+    position: relative; /* Ensure proper positioning context */
 }
 
 .grid-table-fixed-col {
