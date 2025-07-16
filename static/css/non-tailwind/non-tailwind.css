@@ -178,9 +178,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
 }
 
-/* Hide grid table initially to prevent flash of all columns */
+/* Grid table visibility - always visible by default */
 .grid-table {
-    /* visibility: hidden; */
+    visibility: visible;
 }
 
 /* Show grid table once JavaScript has initialized it */
@@ -205,12 +205,12 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Ensure data columns have minimum width to prevent text cutoff */
 .grid-table col.data-column {
-    min-width: 200px; /* Minimum width to prevent header text cutoff */
+    min-width: 250px; /* Minimum width to prevent header text cutoff */
 }
 
 /* Ensure first data column has proper positioning */
 .grid-table col.data-column:first-child {
-    min-width: 200px; /* Ensure minimum width for header text */
+    min-width: 300px; /* Extra width for first column to prevent cutoff */
 }
 
 /* Hide scrollbar in Webkit browsers */

@@ -1259,9 +1259,9 @@ class GridManager {
         // Set initial column visibility immediately to prevent flash
         this.setInitialColumnVisibility();
         
-        // Ensure the grid table starts hidden to prevent FOUC
+        // Ensure proper initialization - don't hide the table initially
         if (this.elements.gridTable) {
-            this.elements.gridTable.classList.remove('initialized');
+            this.elements.gridTable.classList.add('initialized');
         }
         this.addEventListeners();
         this.setupGridScrolling();
@@ -1272,14 +1272,17 @@ class GridManager {
             htmx.config.useTemplateFragments = false;
         }
         
-        // Fallback: Ensure grid is visible after a timeout in case of JS issues
+        // Force width calculation immediately and after a short delay to ensure proper sizing
+        this.calculateAndApplyWidths();
         setTimeout(() => {
-            if (this.elements.gridTable && !this.elements.gridTable.classList.contains('initialized')) {
-                console.warn('Grid initialization timeout - forcing visibility');
-                this.elements.gridTable.classList.add('initialized');
-                this.calculateAndApplyWidths();
-            }
-        }, 1000); // Reduced timeout for faster fallback
+            this.calculateAndApplyWidths();
+        }, 100);
+        
+        // Additional safety check for production environments
+        setTimeout(() => {
+            this.calculateAndApplyWidths();
+            this.syncRowHeights();
+        }, 500);
     }
 
     // Set initial column visibility to prevent flash
@@ -1294,8 +1297,9 @@ class GridManager {
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
                 // Show only the initial number of columns with minimum width
-                col.style.width = '250px'; // Increased default width for better text display
-                col.style.minWidth = '250px';
+                const minWidth = index === 0 ? '300px' : '250px'; // Extra width for first column
+                col.style.width = minWidth;
+                col.style.minWidth = minWidth;
                 col.style.maxWidth = 'none';
                 col.style.overflow = 'visible';
             } else {
@@ -1306,6 +1310,11 @@ class GridManager {
                 col.style.overflow = 'hidden';
             }
         });
+        
+        // Force a layout recalculation to ensure proper sizing
+        if (this.elements.scrollable) {
+            this.elements.scrollable.offsetHeight; // Force reflow
+        }
     }
 }
 

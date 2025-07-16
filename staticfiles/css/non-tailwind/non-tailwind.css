@@ -178,9 +178,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
 }
 
-/* Hide grid table initially to prevent flash of all columns */
+/* Grid table visibility - always visible by default */
 .grid-table {
-    visibility: hidden;
+    visibility: visible;
 }
 
 /* Show grid table once JavaScript has initialized it */
@@ -195,40 +195,8 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     }
 }
 
-/* Fallback: Ensure grid is visible after a delay to prevent permanent hiding */
-@media (min-width: 769px) {
-    .grid-table {
-        animation: ensureVisibility 3s forwards;
-    }
-}
-
-@keyframes ensureVisibility {
-    0% { visibility: hidden; }
-    90% { visibility: hidden; }
-    100% { visibility: visible; }
-}
-
-/* Production fallback: Force visibility after longer delay */
-@media (min-width: 769px) {
-    .grid-table {
-        animation: ensureVisibility 5s forwards;
-    }
-}
-
-/* Additional fallback for production environments */
-@media (min-width: 769px) {
-    .grid-table:not(.initialized) {
-        animation: forceVisibility 8s forwards;
-    }
-}
-
-@keyframes forceVisibility {
-    0% { visibility: hidden; }
-    95% { visibility: hidden; }
-    100% { visibility: visible !important; }
-}
-
-
+/* Remove all fallback animation-based visibility rules */
+/* (Removed ensureVisibility and forceVisibility animations) */
 
 /* Fix for production environment where first column might be cut off */
 .grid-table-scrollable .grid-table {
@@ -237,12 +205,12 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Ensure data columns have minimum width to prevent text cutoff */
 .grid-table col.data-column {
-    min-width: 200px; /* Minimum width to prevent header text cutoff */
+    min-width: 250px; /* Minimum width to prevent header text cutoff */
 }
 
 /* Ensure first data column has proper positioning */
 .grid-table col.data-column:first-child {
-    min-width: 200px; /* Ensure minimum width for header text */
+    min-width: 300px; /* Extra width for first column to prevent cutoff */
 }
 
 /* Hide scrollbar in Webkit browsers */
