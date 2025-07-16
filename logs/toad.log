@@ -7261,3 +7261,42 @@ INFO 2025-07-15 20:02:57,044 basehttp 6331 6135541760 "GET /projects/1/ HTTP/1.1
 INFO 2025-07-15 20:02:57,058 basehttp 6331 6152368128 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-07-15 20:02:57,059 basehttp 6331 6135541760 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-07-15 20:02:57,059 basehttp 6331 6169194496 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 18:59:38,223 autoreload 3714 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-16 18:59:43,383 basehttp 3714 6204764160 "GET / HTTP/1.1" 200 3900
+INFO 2025-07-16 18:59:43,415 basehttp 3714 6204764160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-16 18:59:43,420 basehttp 3714 6221590528 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-16 18:59:43,421 basehttp 3714 6204764160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 23446
+INFO 2025-07-16 18:59:58,253 basehttp 3714 6204764160 "GET /projects/ HTTP/1.1" 200 3344
+INFO 2025-07-16 18:59:58,265 basehttp 3714 6238416896 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-16 18:59:58,266 basehttp 3714 6221590528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 23446
+INFO 2025-07-16 18:59:58,267 basehttp 3714 6204764160 "GET /static/css/output.css HTTP/1.1" 200 65486
+INFO 2025-07-16 18:59:59,955 basehttp 3714 6204764160 "GET /projects/1/ HTTP/1.1" 200 12558
+INFO 2025-07-16 18:59:59,968 basehttp 3714 6204764160 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24184
+WARNING 2025-07-16 19:00:04,905 log 3714 6204764160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 19:00:04,906 basehttp 3714 6204764160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1566
+INFO 2025-07-16 19:00:06,668 basehttp 3714 6204764160 "GET /projects/1/ HTTP/1.1" 200 11439
+INFO 2025-07-16 19:00:06,688 basehttp 3714 6238416896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-16 19:00:06,694 log 3714 6221590528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-16 19:00:06,694 basehttp 3714 6204764160 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 42916
+WARNING 2025-07-16 19:00:06,695 basehttp 3714 6221590528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1578
+INFO 2025-07-16 19:01:13,334 basehttp 3714 6221590528 "GET /projects/1/ HTTP/1.1" 200 11394
+INFO 2025-07-16 19:01:13,349 basehttp 3714 6204764160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 19:01:13,350 basehttp 3714 6221590528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 37878
+WARNING 2025-07-16 19:01:13,358 log 3714 6221590528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 19:01:13,359 basehttp 3714 6221590528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1574
+INFO 2025-07-16 19:01:22,514 basehttp 3714 6221590528 "GET /projects/1/ HTTP/1.1" 200 12581
+INFO 2025-07-16 19:01:22,529 basehttp 3714 6221590528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-16 19:01:22,529 basehttp 3714 6204764160 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 19:06:20,946 autoreload 4464 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-16 19:06:25,488 basehttp 4464 6171258880 "GET /projects/1/ HTTP/1.1" 200 12567
+INFO 2025-07-16 19:06:25,509 basehttp 4464 6171258880 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-16 19:06:25,510 basehttp 4464 6188085248 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24285
+INFO 2025-07-16 19:06:25,510 basehttp 4464 6204911616 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39512
+INFO 2025-07-16 19:07:08,409 basehttp 4464 6204911616 "GET /projects/1/ HTTP/1.1" 200 12569
+INFO 2025-07-16 19:07:08,420 basehttp 4464 6204911616 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-16 19:07:08,420 basehttp 4464 6188085248 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 19:07:08,420 basehttp 4464 6171258880 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 19:08:46,779 basehttp 4464 6171258880 "GET /projects/1/ HTTP/1.1" 200 12554
+INFO 2025-07-16 19:08:46,792 basehttp 4464 6204911616 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 19:08:46,792 basehttp 4464 6188085248 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 19:08:46,794 basehttp 4464 6171258880 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 38843

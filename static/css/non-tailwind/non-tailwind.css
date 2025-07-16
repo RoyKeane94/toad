@@ -180,7 +180,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Hide grid table initially to prevent flash of all columns */
 .grid-table {
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 /* Show grid table once JavaScript has initialized it */
@@ -195,16 +195,22 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     }
 }
 
-
+/* Remove all fallback animation-based visibility rules */
+/* (Removed ensureVisibility and forceVisibility animations) */
 
 /* Fix for production environment where first column might be cut off */
 .grid-table-scrollable .grid-table {
     min-width: max-content; /* Ensure table doesn't shrink below content width */
 }
 
+/* Ensure data columns have minimum width to prevent text cutoff */
+.grid-table col.data-column {
+    min-width: 200px; /* Minimum width to prevent header text cutoff */
+}
+
 /* Ensure first data column has proper positioning */
 .grid-table col.data-column:first-child {
-    min-width: 0; /* Allow proper sizing */
+    min-width: 200px; /* Ensure minimum width for header text */
 }
 
 /* Hide scrollbar in Webkit browsers */
@@ -335,6 +341,29 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     text-align: left;
     white-space: normal;
     height: 100%; /* For row height sync */
+}
+
+/* Ensure column headers have enough space and don't get cut off */
+.grid-table th {
+    min-width: 250px; /* Minimum width for header text */
+    overflow: visible; /* Allow text to be visible */
+}
+
+.grid-table th .truncate {
+    overflow: visible; /* Override truncate for headers */
+    text-overflow: clip;
+    white-space: normal; /* Allow text to wrap if needed */
+}
+
+/* Special handling for first column header to prevent cutoff */
+.grid-table th:first-child {
+    min-width: 300px; /* Extra width for first column */
+}
+
+.grid-table th:first-child .truncate {
+    overflow: visible;
+    text-overflow: clip;
+    white-space: normal;
 }
 
 /* Ensure category column cells wrap text and don't expand */

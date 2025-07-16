@@ -553,10 +553,25 @@ class GridManager {
 
         if (this.state.columnsToShow > 0) {
             const containerWidth = scrollable.clientWidth;
-            this.state.dataColWidth = containerWidth / this.state.columnsToShow;
+            let columnWidth = containerWidth / this.state.columnsToShow;
             
-            dataCols.forEach(col => {
-                col.style.width = `${this.state.dataColWidth}px`;
+            // Ensure minimum width for columns to prevent text cutoff
+            const minColumnWidth = 250;
+            if (columnWidth < minColumnWidth) {
+                columnWidth = minColumnWidth;
+            }
+            
+            this.state.dataColWidth = columnWidth;
+            
+            dataCols.forEach((col, index) => {
+                // Ensure first column has enough width for header text
+                if (index === 0) {
+                    col.style.width = `${Math.max(columnWidth, 300)}px`;
+                    col.style.minWidth = '300px';
+                } else {
+                    col.style.width = `${columnWidth}px`;
+                    col.style.minWidth = `${minColumnWidth}px`;
+                }
             });
 
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
@@ -1264,7 +1279,7 @@ class GridManager {
                 this.elements.gridTable.classList.add('initialized');
                 this.calculateAndApplyWidths();
             }
-        }, 2000);
+        }, 1000); // Reduced timeout for faster fallback
     }
 
     // Set initial column visibility to prevent flash
@@ -1275,12 +1290,12 @@ class GridManager {
         // Calculate initial column count based on screen size
         const initialColumnCount = this.getResponsiveColumnCount();
         
-        // Hide all columns initially
+        // Set minimum width for all visible columns to prevent text cutoff
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Show only the initial number of columns
-                col.style.width = '200px'; // Default width
-                col.style.minWidth = '200px';
+                // Show only the initial number of columns with minimum width
+                col.style.width = '250px'; // Increased default width for better text display
+                col.style.minWidth = '250px';
                 col.style.maxWidth = 'none';
                 col.style.overflow = 'visible';
             } else {
