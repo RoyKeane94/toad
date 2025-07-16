@@ -564,14 +564,11 @@ class GridManager {
             this.state.dataColWidth = columnWidth;
             
             dataCols.forEach((col, index) => {
-                // Ensure first column has enough width for header text
-                if (index === 0) {
-                    col.style.width = `${Math.max(columnWidth, 300)}px`;
-                    col.style.minWidth = '300px';
-                } else {
-                    col.style.width = `${columnWidth}px`;
-                    col.style.minWidth = `${minColumnWidth}px`;
-                }
+                const finalWidth = index === 0 ? Math.max(columnWidth, 300) : columnWidth;
+                const finalMinWidth = index === 0 ? '300px' : `${minColumnWidth}px`;
+                
+                col.style.width = `${finalWidth}px`;
+                col.style.minWidth = finalMinWidth;
             });
 
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
