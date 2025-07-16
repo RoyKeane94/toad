@@ -27,12 +27,12 @@
         <form method="post" class="flex space-x-3">
             {% csrf_token %}
             <button type="submit" 
-                    class="bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                    class="bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">
                 <i class="fas fa-trash mr-1"></i>
                 Delete Project
             </button>
             <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-               class="bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] px-4 py-2 rounded-md text-sm font-medium transition-colors">
+               class="bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer">
                 Cancel
             </a>
         </form>
