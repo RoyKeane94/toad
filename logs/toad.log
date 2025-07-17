@@ -7755,3 +7755,17 @@ INFO 2025-07-17 19:56:10,219 basehttp 6928 6155055104 "GET /static/css/output.cs
 INFO 2025-07-17 19:56:10,219 basehttp 6928 6138228736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 WARNING 2025-07-17 19:56:10,231 log 6928 6138228736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-17 19:56:10,231 basehttp 6928 6138228736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1628
+INFO 2025-07-17 19:58:54,400 autoreload 7705 8495357696 Watching for file changes with StatReloader
+INFO 2025-07-17 19:58:56,740 basehttp 7705 6133805056 "GET /accounts/login/ HTTP/1.1" 200 3952
+INFO 2025-07-17 19:58:56,756 basehttp 7705 6150631424 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 19:58:56,757 basehttp 7705 6133805056 "GET /static/css/output.css HTTP/1.1" 200 66364
+INFO 2025-07-17 19:59:06,433 basehttp 7705 6133805056 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-07-17 19:59:06,443 basehttp 7705 6133805056 "GET /projects/ HTTP/1.1" 200 3286
+INFO 2025-07-17 19:59:06,459 basehttp 7705 6133805056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 19:59:06,460 basehttp 7705 6150631424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 19:59:09,993 basehttp 7705 6150631424 "GET / HTTP/1.1" 200 4203
+INFO 2025-07-17 19:59:10,006 basehttp 7705 6133805056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 19:59:10,006 basehttp 7705 6150631424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 19:59:12,293 basehttp 7705 6150631424 "GET /templates/ HTTP/1.1" 200 3779
+INFO 2025-07-17 19:59:12,308 basehttp 7705 6150631424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 19:59:12,968 basehttp 7705 6150631424 "GET /static/css/output.css HTTP/1.1" 304 0
