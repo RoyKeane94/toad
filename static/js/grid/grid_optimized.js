@@ -40,6 +40,7 @@ class GridManager {
             rightBtn: '.right-scroll-btn',
             gridTable: '.grid-table',
             dataCols: 'col.data-column',
+            gridContent: '#grid-content',
             
             // Modals
             deleteModal: '#delete-task-modal',
@@ -1279,6 +1280,11 @@ class GridManager {
         setTimeout(() => {
             this.calculateAndApplyWidths();
             this.syncRowHeights();
+            
+            // Add grid-ready class to fade in the grid content
+            if (this.elements.gridContent) {
+                this.elements.gridContent.classList.add('grid-ready');
+            }
         }, 500);
     }
 

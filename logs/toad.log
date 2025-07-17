@@ -7815,3 +7815,33 @@ WARNING 2025-07-17 20:05:57,421 basehttp 9070 6166294528 "GET /.well-known/appsp
 INFO 2025-07-17 20:06:04,877 basehttp 9070 6166294528 "GET /static/css/output.css HTTP/1.1" 304 0
 WARNING 2025-07-17 20:06:04,889 log 9070 6166294528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-17 20:06:04,890 basehttp 9070 6166294528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1648
+INFO 2025-07-17 20:08:51,181 autoreload 9522 8495357696 Watching for file changes with StatReloader
+INFO 2025-07-17 20:08:58,474 basehttp 9522 6155841536 "GET /projects/7/ HTTP/1.1" 200 9202
+INFO 2025-07-17 20:08:58,489 basehttp 9522 6172667904 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:08:58,490 basehttp 9522 6155841536 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:08:58,493 basehttp 9522 6189494272 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24248
+INFO 2025-07-17 20:09:19,947 basehttp 9522 6189494272 "GET /projects/7/ HTTP/1.1" 200 9219
+INFO 2025-07-17 20:09:28,349 basehttp 9522 6189494272 "GET /projects/7/ HTTP/1.1" 200 9170
+INFO 2025-07-17 20:09:28,366 basehttp 9522 6155841536 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 20:09:28,366 basehttp 9522 6172667904 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39575
+INFO 2025-07-17 20:09:28,367 basehttp 9522 6206320640 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24248
+INFO 2025-07-17 20:09:28,368 basehttp 9522 6189494272 "GET /static/css/output.css HTTP/1.1" 200 66441
+INFO 2025-07-17 20:10:18,390 basehttp 9522 6189494272 "GET /projects/7/ HTTP/1.1" 200 9083
+INFO 2025-07-17 20:10:18,404 basehttp 9522 6189494272 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:10:18,404 basehttp 9522 6172667904 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:10:18,405 basehttp 9522 6155841536 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:10:18,405 basehttp 9522 6206320640 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:10:29,930 autoreload 9940 8495357696 Watching for file changes with StatReloader
+INFO 2025-07-17 20:10:32,445 basehttp 9940 6190608384 "GET /projects/7/ HTTP/1.1" 200 9170
+INFO 2025-07-17 20:10:32,455 basehttp 9940 6190608384 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:12:03,429 basehttp 9940 6190608384 "GET /projects/7/ HTTP/1.1" 200 9117
+INFO 2025-07-17 20:12:03,445 basehttp 9940 6190608384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:12:03,452 basehttp 9940 6224261120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 20:12:03,454 basehttp 9940 6207434752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39418
+INFO 2025-07-17 20:12:03,454 basehttp 9940 6241087488 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-17 20:12:06,415 basehttp 9940 6241087488 "GET /projects/7/columns/create/ HTTP/1.1" 200 895
+INFO 2025-07-17 20:12:08,854 basehttp 9940 6241087488 "POST /projects/7/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-17 20:12:08,893 basehttp 9940 6241087488 - Broken pipe from ('127.0.0.1', 55418)
+INFO 2025-07-17 20:12:08,900 basehttp 9940 6207434752 - Broken pipe from ('127.0.0.1', 55416)
+INFO 2025-07-17 20:12:08,901 basehttp 9940 6224261120 "GET /projects/7/ HTTP/1.1" 200 9525
+INFO 2025-07-17 20:12:08,909 basehttp 9940 6224261120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
