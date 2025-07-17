@@ -384,6 +384,9 @@
   .my-8 {
     margin-block: calc(var(--spacing) * 8);
   }
+  .mt-0 {
+    margin-top: calc(var(--spacing) * 0);
+  }
   .mt-0\.5 {
     margin-top: calc(var(--spacing) * 0.5);
   }
@@ -1145,6 +1148,9 @@
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
+  .pt-1 {
+    padding-top: calc(var(--spacing) * 1);
+  }
   .pt-2 {
     padding-top: calc(var(--spacing) * 2);
   }
@@ -1156,9 +1162,6 @@
   }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
-  }
-  .pt-8 {
-    padding-top: calc(var(--spacing) * 8);
   }
   .pr-2 {
     padding-right: calc(var(--spacing) * 2);
@@ -1308,9 +1311,6 @@
   }
   .text-\[var\(--title-text\)\] {
     color: var(--title-text);
-  }
-  .text-\[var\(--waitlist-text-color\)\] {
-    color: var(--waitlist-text-color);
   }
   .text-black {
     color: var(--color-black);
@@ -2149,6 +2149,7 @@
   --primary-action-bg: #10B981;
   --primary-action-hover-bg: #059669;
   --primary-action-text: #FFFFFF;
+  --tertiary-action-bg: #ff714c;
   --text-primary: #1F2937;
   --text-secondary: #4B5563;
   --border-color: #E5E7EB;

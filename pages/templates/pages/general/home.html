@@ -2,9 +2,34 @@
 
 {% block title %}Toad - For when your brain has too many tabs open{% endblock %}
 
+{% block extra_head %}
+<style>
+    /* Override layout padding for home page */
+    #app {
+        padding: 0 !important;
+    }
+    
+    /* Mobile-specific text wrapping */
+    @media (max-width: 767px) {
+        #typewriter-text {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+            overflow-wrap: break-word !important;
+            width: auto !important;
+            overflow: visible !important;
+        }
+        
+        #headline-container h1 {
+            white-space: normal !important;
+            word-wrap: break-word !important;
+        }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Hero Section -->
-<div class="min-h-[80vh] flex items-center justify-center px-4 pt-8">
+<div class="min-h-[80vh] flex items-start justify-center px-4 pt-1">
     <div class="text-center max-w-4xl mx-auto">
         <!-- Big Toad Logo -->
         <div class="mb-4 opacity-0" id="logo-container" style="transform: scale(0.3) translateY(50px);">
@@ -18,32 +43,24 @@
         <!-- Main Headline -->
         <div class="mb-12 opacity-0" id="headline-container" style="transform: scale(0.3) translateY(50px);">
             <h1 class="text-4xl sm:text-6xl font-extrabold text-[var(--title-text)] mb-6 leading-tight">
-                For when your brain has<br>
+                For when your<br class="sm:hidden"> brain has<br class="hidden sm:block">
                 <span class="text-[var(--primary-action-bg)]">too many tabs open</span>
             </h1>
-            <p class="text-xl sm:text-2xl text-black max-w-3xl mx-auto leading-relaxed" id="typewriter-text">
+            <p class="text-xl sm:text-2xl text-black max-w-3xl mx-auto leading-relaxed opacity-0" id="typewriter-text">
                 One simple grid to organise your work, your projects, and your life.
             </p>
         </div>
 
         <!-- Waitlist Form Section -->
-        <div class="max-w-lg mx-auto mt-12 opacity-0" id="waitlist-form">
-            <form method="post" class="space-y-4">
-                {% csrf_token %}
-                <div class="text-center mb-6">
-                    <p class="text-lg text-[var(--waitlist-text-color)] mb-2">Join the waitlist and be the first to know when Toad launches</p>
-                </div>
-                <div class="flex items-center space-x-3">
-                    {{ form.email }}
-                    <button type="submit" 
-                            class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer">
-                        Join
-                    </button>
-                </div>
-                {% if form.email.errors %}
-                    <div class="text-red-600 text-sm text-center">{{ form.email.errors.0 }}</div>
-                {% endif %}
-            </form>
+        <div class="max-w-lg mx-auto mt-0 opacity-0" id="waitlist-form">
+            <div class="text-center">
+                <a href="{% url 'accounts:register' %}"
+                   class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-[var(--primary-action-text)]"
+                   style="background: var(--tertiary-action-bg);"
+                   onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
+                    Try Toad today for free
+                </a>
+            </div>
         </div>
 
         
@@ -64,46 +81,82 @@
             logoContainer.style.opacity = '0';
             headlineContainer.style.opacity = '0';
             
-            // Logo animation
-            setTimeout(() => {
-                logoContainer.style.opacity = '1';
-                logoContainer.style.transform = 'scale(1) translateY(0)';
-                logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-            }, 100);
-
-            // Headline animation
-            setTimeout(() => {
-                headlineContainer.style.opacity = '1';
-                headlineContainer.style.transform = 'scale(1) translateY(0)';
-                headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-            }, 700);
-
-            // Typewriter effect
-            const text = typewriterText.textContent;
-            typewriterText.textContent = '';
-            typewriterText.style.width = '0';
-            typewriterText.style.overflow = 'hidden';
-            typewriterText.style.whiteSpace = 'nowrap';
+            // Check if we're on mobile (small screen)
+            const isMobile = window.innerWidth < 768;
             
-            setTimeout(() => {
-                let i = 0;
-                const typeInterval = setInterval(() => {
-                    if (i < text.length) {
-                        typewriterText.textContent += text.charAt(i);
-                        i++;
-                    } else {
-                        clearInterval(typeInterval);
-                        // Show waitlist form after typewriter completes
-                        const waitlistForm = document.getElementById('waitlist-form');
-                        if (waitlistForm) {
-                            setTimeout(() => {
-                                waitlistForm.style.opacity = '1';
-                                waitlistForm.style.transition = 'opacity 0.8s ease-out';
-                            }, 500);
-                        }
+            if (isMobile) {
+                // Mobile: Sequential animation
+                // Logo animation
+                setTimeout(() => {
+                    logoContainer.style.opacity = '1';
+                    logoContainer.style.transform = 'scale(1) translateY(0)';
+                    logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+                }, 100);
+
+                // Headline animation after logo completes
+                setTimeout(() => {
+                    headlineContainer.style.opacity = '1';
+                    headlineContainer.style.transform = 'scale(1) translateY(0)';
+                    headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+                }, 1500);
+
+                // Typewriter text after headline completes
+                setTimeout(() => {
+                    typewriterText.style.opacity = '1';
+                    typewriterText.style.transition = 'opacity 1.2s ease-out';
+                }, 2800);
+
+                // Button after typewriter text
+                setTimeout(() => {
+                    const waitlistForm = document.getElementById('waitlist-form');
+                    if (waitlistForm) {
+                        waitlistForm.style.opacity = '1';
+                        waitlistForm.style.transition = 'opacity 0.8s ease-out';
                     }
-                }, 30);
-            }, 1200);
+                }, 4000);
+            } else {
+                // Desktop: Original animation
+                // Logo animation
+                setTimeout(() => {
+                    logoContainer.style.opacity = '1';
+                    logoContainer.style.transform = 'scale(1) translateY(0)';
+                    logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+                }, 100);
+
+                // Headline animation
+                setTimeout(() => {
+                    headlineContainer.style.opacity = '1';
+                    headlineContainer.style.transform = 'scale(1) translateY(0)';
+                    headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+                }, 700);
+
+                // Typewriter effect
+                const text = typewriterText.textContent;
+                typewriterText.textContent = '';
+                typewriterText.style.width = '0';
+                typewriterText.style.overflow = 'hidden';
+                typewriterText.style.whiteSpace = 'nowrap';
+                
+                setTimeout(() => {
+                    let i = 0;
+                    const typeInterval = setInterval(() => {
+                        if (i < text.length) {
+                            typewriterText.textContent += text.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(typeInterval);
+                            // Show waitlist form after typewriter completes
+                            const waitlistForm = document.getElementById('waitlist-form');
+                            if (waitlistForm) {
+                                setTimeout(() => {
+                                    waitlistForm.style.opacity = '1';
+                                    waitlistForm.style.transition = 'opacity 0.8s ease-out';
+                                }, 600);
+                            }
+                        }
+                    }, 30);
+                }, 1200);
+            }
         }
     });
 </script>
