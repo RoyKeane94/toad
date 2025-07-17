@@ -7769,3 +7769,49 @@ INFO 2025-07-17 19:59:10,006 basehttp 7705 6150631424 "GET /static/js/general/ge
 INFO 2025-07-17 19:59:12,293 basehttp 7705 6150631424 "GET /templates/ HTTP/1.1" 200 3779
 INFO 2025-07-17 19:59:12,308 basehttp 7705 6150631424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-07-17 19:59:12,968 basehttp 7705 6150631424 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:00:37,976 autoreload 8104 8495357696 Watching for file changes with StatReloader
+INFO 2025-07-17 20:00:40,802 basehttp 8104 6133100544 "GET /projects/7/ HTTP/1.1" 200 8387
+INFO 2025-07-17 20:00:40,813 basehttp 8104 6149926912 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:00:40,814 basehttp 8104 6166753280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:00:40,816 basehttp 8104 6133100544 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24248
+INFO 2025-07-17 20:00:42,868 basehttp 8104 6133100544 "GET /projects/ HTTP/1.1" 200 3310
+INFO 2025-07-17 20:02:10,267 basehttp 8104 6133100544 "GET /projects/7/ HTTP/1.1" 200 8380
+INFO 2025-07-17 20:02:10,287 basehttp 8104 6149926912 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:02:10,288 basehttp 8104 6133100544 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:02:10,288 basehttp 8104 6166753280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:02:13,993 basehttp 8104 6166753280 "POST /projects/7/tasks/create/28/33/ HTTP/1.1" 200 1371
+INFO 2025-07-17 20:02:15,223 basehttp 8104 6166753280 "POST /tasks/155/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-17 20:02:17,970 basehttp 8104 6166753280 "POST /tasks/155/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-17 20:02:18,435 basehttp 8104 6166753280 "POST /tasks/155/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-17 20:02:20,988 basehttp 8104 6166753280 "POST /tasks/155/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-17 20:02:31,357 basehttp 8104 6166753280 "GET /projects/ HTTP/1.1" 200 3340
+INFO 2025-07-17 20:02:31,368 basehttp 8104 6133100544 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:02:31,368 basehttp 8104 6166753280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:02:58,782 basehttp 8104 6166753280 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-17 20:02:58,798 log 8104 6166753280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 20:02:58,799 basehttp 8104 6166753280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1653
+INFO 2025-07-17 20:03:13,245 basehttp 8104 6166753280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:03:38,372 autoreload 8589 8495357696 Watching for file changes with StatReloader
+INFO 2025-07-17 20:03:40,323 basehttp 8589 6201421824 "GET /projects/ HTTP/1.1" 200 3296
+INFO 2025-07-17 20:03:40,334 basehttp 8589 6201421824 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:03:40,336 basehttp 8589 6218248192 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-07-17 20:03:46,032 log 8589 6218248192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 20:03:46,033 basehttp 8589 6218248192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1647
+INFO 2025-07-17 20:04:31,523 basehttp 8589 6201421824 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 20:04:31,523 basehttp 8589 6218248192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-17 20:04:31,532 log 8589 6235074560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 20:04:31,532 basehttp 8589 6235074560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1650
+INFO 2025-07-17 20:04:52,153 autoreload 9070 8495357696 Watching for file changes with StatReloader
+INFO 2025-07-17 20:04:54,207 basehttp 9070 6166294528 "GET /projects/ HTTP/1.1" 200 3365
+INFO 2025-07-17 20:04:54,223 basehttp 9070 6166294528 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 20:05:06,146 basehttp 9070 6166294528 "GET /static/css/output.css HTTP/1.1" 200 66441
+WARNING 2025-07-17 20:05:06,162 log 9070 6166294528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 20:05:06,163 basehttp 9070 6166294528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1634
+INFO 2025-07-17 20:05:57,397 basehttp 9070 6166294528 "GET /projects/ HTTP/1.1" 200 3399
+INFO 2025-07-17 20:05:57,412 basehttp 9070 6183120896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 20:05:57,413 basehttp 9070 6166294528 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-17 20:05:57,420 log 9070 6166294528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 20:05:57,421 basehttp 9070 6166294528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1587
+INFO 2025-07-17 20:06:04,877 basehttp 9070 6166294528 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-17 20:06:04,889 log 9070 6166294528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 20:06:04,890 basehttp 9070 6166294528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1648
