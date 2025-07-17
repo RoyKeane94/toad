@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError
-from .models import User
+from .models import User, BetaTester
 
 class EmailAuthenticationForm(AuthenticationForm):
     """
@@ -195,3 +195,34 @@ class AccountDeletionForm(forms.Form):
         if not self.user.check_password(password):
             raise ValidationError('Incorrect password.')
         return password
+
+
+class BetaTesterForm(forms.ModelForm):
+    """
+    Form for beta tester waitlist signup
+    """
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={
+            'class': 'w-full bg-transparent border-b-2 border-[var(--border-color)] px-2 py-3 text-[var(--text-primary)] text-lg placeholder-[var(--text-secondary)] focus:outline-none focus:border-[var(--primary-action-bg)] hover:border-[var(--primary-action-hover-bg)] transition-colors duration-200 cursor-text',
+            'placeholder': 'Enter your email address',
+        }),
+        label='',
+        help_text=''
+    )
+
+    class Meta:
+        model = BetaTester
+        fields = ('email',)
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if BetaTester.objects.filter(email=email).exists():
+            raise forms.ValidationError('You\'re already on the waitlist! We\'ll notify you when it\'s your turn.')
+        return email
+
+    def save(self, commit=True):
+        beta_tester = super().save(commit=False)
+        beta_tester.email = self.cleaned_data['email']
+        if commit:
+            beta_tester.save()
+        return beta_tester

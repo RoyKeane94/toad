@@ -101,3 +101,10 @@ class User(AbstractUser):
             self.account_locked_until = timezone.now() + timedelta(minutes=30)
         
         self.save(update_fields=['failed_login_attempts', 'account_locked_until'])
+
+class BetaTester(models.Model):
+    email = models.EmailField(unique=True, help_text='Required. Enter a valid email address.')
+    date_requested = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

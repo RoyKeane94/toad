@@ -7356,3 +7356,173 @@ INFO 2025-07-16 21:26:37,278 basehttp 8937 6214496256 "GET /static/js/general/ge
 INFO 2025-07-16 21:28:01,205 basehttp 8937 6214496256 "GET / HTTP/1.1" 200 3928
 INFO 2025-07-16 21:28:01,216 basehttp 8937 6214496256 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-07-16 21:28:01,216 basehttp 8937 6197669888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 21:33:09,445 autoreload 9521 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-16 21:33:11,560 basehttp 9521 6193819648 "GET /projects/ HTTP/1.1" 200 3323
+INFO 2025-07-16 21:33:11,583 basehttp 9521 6227472384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-16 21:33:11,585 basehttp 9521 6210646016 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 38840
+WARNING 2025-07-16 21:33:11,589 log 9521 6193819648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:33:11,590 basehttp 9521 6193819648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1570
+INFO 2025-07-16 21:33:13,592 basehttp 9521 6193819648 "GET /projects/14/ HTTP/1.1" 200 7720
+WARNING 2025-07-16 21:33:13,620 log 9521 6193819648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:33:13,620 basehttp 9521 6193819648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1600
+INFO 2025-07-16 21:33:13,621 basehttp 9521 6210646016 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 42916
+INFO 2025-07-16 21:33:18,860 basehttp 9521 6210646016 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 884
+INFO 2025-07-16 21:33:20,969 basehttp 9521 6210646016 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 104
+INFO 2025-07-16 21:33:22,672 basehttp 9521 6210646016 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 104
+INFO 2025-07-16 21:36:27,715 autoreload 10225 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-16 21:36:31,646 basehttp 10225 6165491712 "GET /projects/14/ HTTP/1.1" 200 7763
+INFO 2025-07-16 21:36:31,661 basehttp 10225 6165491712 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-16 21:36:31,665 basehttp 10225 6182318080 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-16 21:36:31,675 log 10225 6182318080 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:36:31,676 basehttp 10225 6182318080 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1602
+INFO 2025-07-16 21:36:35,575 basehttp 10225 6182318080 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 938
+INFO 2025-07-16 21:36:37,249 basehttp 10225 6182318080 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 106
+INFO 2025-07-16 21:36:39,204 basehttp 10225 6182318080 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 106
+INFO 2025-07-16 21:36:41,541 basehttp 10225 6182318080 "GET /projects/14/ HTTP/1.1" 200 7787
+INFO 2025-07-16 21:36:41,558 basehttp 10225 6182318080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-16 21:36:41,565 log 10225 6165491712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:36:41,566 basehttp 10225 6165491712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1514
+INFO 2025-07-16 21:37:11,136 basehttp 10225 6165491712 "GET /tasks/154/edit/ HTTP/1.1" 200 1012
+INFO 2025-07-16 21:37:12,819 basehttp 10225 6165491712 "POST /tasks/154/edit/ HTTP/1.1" 200 1426
+INFO 2025-07-16 21:37:24,790 basehttp 10225 6165491712 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 941
+INFO 2025-07-16 21:39:10,223 autoreload 10837 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-16 21:39:12,422 basehttp 10837 6125334528 "GET /projects/14/ HTTP/1.1" 200 7718
+INFO 2025-07-16 21:39:12,433 basehttp 10837 6125334528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-16 21:39:12,435 basehttp 10837 6142160896 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-16 21:39:12,447 log 10837 6142160896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:39:12,447 basehttp 10837 6142160896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1515
+INFO 2025-07-16 21:39:17,402 basehttp 10837 6125334528 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 1025
+INFO 2025-07-16 21:39:19,115 basehttp 10837 6125334528 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 104
+INFO 2025-07-16 21:39:19,144 basehttp 10837 6125334528 "GET /projects/14/ HTTP/1.1" 200 7723
+INFO 2025-07-16 21:39:19,160 basehttp 10837 6125334528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-16 21:39:19,164 log 10837 6142160896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:39:19,164 basehttp 10837 6142160896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1541
+INFO 2025-07-16 21:39:27,202 basehttp 10837 6125334528 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 1025
+INFO 2025-07-16 21:39:28,706 basehttp 10837 6125334528 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 106
+INFO 2025-07-16 21:39:28,726 basehttp 10837 6125334528 "GET /projects/14/ HTTP/1.1" 200 7744
+INFO 2025-07-16 21:39:28,738 basehttp 10837 6142160896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-16 21:39:28,743 log 10837 6125334528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:39:28,744 basehttp 10837 6125334528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1523
+INFO 2025-07-16 21:41:25,855 autoreload 11292 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-16 21:41:27,787 basehttp 11292 6126481408 "GET /projects/14/ HTTP/1.1" 200 7732
+INFO 2025-07-16 21:41:27,802 basehttp 11292 6143307776 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-16 21:41:27,809 basehttp 11292 6160134144 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+WARNING 2025-07-16 21:41:27,809 log 11292 6126481408 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-16 21:41:27,810 basehttp 11292 6126481408 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1567
+INFO 2025-07-16 21:41:31,194 basehttp 11292 6126481408 "GET /projects/14/rows/52/edit/ HTTP/1.1" 200 1072
+INFO 2025-07-16 21:41:33,121 basehttp 11292 6126481408 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 104
+INFO 2025-07-16 21:41:34,653 basehttp 11292 6126481408 "POST /projects/14/rows/52/edit/ HTTP/1.1" 200 104
+INFO 2025-07-17 04:52:36,254 autoreload 12671 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 04:52:40,274 basehttp 12671 6165409792 "GET / HTTP/1.1" 200 3802
+INFO 2025-07-17 04:52:40,288 basehttp 12671 6182236160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 04:52:40,289 basehttp 12671 6199062528 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-17 04:52:40,290 basehttp 12671 6165409792 "GET /static/css/output.css HTTP/1.1" 200 65681
+INFO 2025-07-17 04:53:31,454 basehttp 12671 6165409792 "GET / HTTP/1.1" 200 3781
+INFO 2025-07-17 04:53:31,465 basehttp 12671 6165409792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 04:53:31,465 basehttp 12671 6199062528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 04:55:23,776 basehttp 12671 6199062528 "GET / HTTP/1.1" 200 3729
+INFO 2025-07-17 04:55:23,788 basehttp 12671 6199062528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 04:55:23,789 basehttp 12671 6165409792 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 04:55:34,260 basehttp 12671 6165409792 "GET / HTTP/1.1" 200 3798
+INFO 2025-07-17 04:57:15,341 basehttp 12671 6165409792 "GET / HTTP/1.1" 200 3781
+INFO 2025-07-17 04:57:15,350 basehttp 12671 6165409792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 04:57:15,350 basehttp 12671 6199062528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 04:58:15,926 autoreload 12671 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-07-17 04:58:16,220 autoreload 12742 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 04:58:49,529 basehttp 12742 6155988992 "GET / HTTP/1.1" 200 3258
+INFO 2025-07-17 04:58:49,541 basehttp 12742 6172815360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 04:58:49,541 basehttp 12742 6155988992 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 04:59:01,688 basehttp 12742 6172815360 "GET / HTTP/1.1" 200 3241
+INFO 2025-07-17 05:00:17,916 basehttp 12742 6172815360 "GET / HTTP/1.1" 200 3227
+INFO 2025-07-17 05:00:17,928 basehttp 12742 6155988992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:00:17,928 basehttp 12742 6172815360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:00:29,701 basehttp 12742 6172815360 "GET / HTTP/1.1" 200 3200
+INFO 2025-07-17 05:00:29,722 basehttp 12742 6189641728 "GET /static/js/general/general.min.js HTTP/1.1" 200 11131
+INFO 2025-07-17 05:00:29,724 basehttp 12742 6155988992 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39416
+INFO 2025-07-17 05:00:29,724 basehttp 12742 6172815360 "GET /static/css/output.css HTTP/1.1" 200 65681
+INFO 2025-07-17 05:03:45,698 autoreload 13309 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:03:51,587 basehttp 13309 6192902144 "GET / HTTP/1.1" 200 3264
+INFO 2025-07-17 05:03:51,603 basehttp 13309 6209728512 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:03:51,604 basehttp 13309 6226554880 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:03:51,604 basehttp 13309 6192902144 "GET /static/css/output.css HTTP/1.1" 200 65653
+INFO 2025-07-17 05:03:58,133 basehttp 13309 6192902144 "GET / HTTP/1.1" 200 3212
+INFO 2025-07-17 05:03:58,147 basehttp 13309 6209728512 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:03:58,148 basehttp 13309 6192902144 "GET /static/css/output.css HTTP/1.1" 200 65653
+INFO 2025-07-17 05:03:58,148 basehttp 13309 6226554880 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39416
+WARNING 2025-07-17 05:04:00,523 log 13309 6192902144 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-17 05:04:00,523 basehttp 13309 6192902144 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1595
+INFO 2025-07-17 05:05:24,149 basehttp 13309 6192902144 "GET / HTTP/1.1" 200 3741
+INFO 2025-07-17 05:05:24,161 basehttp 13309 6226554880 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:05:24,161 basehttp 13309 6192902144 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:05:24,161 basehttp 13309 6209728512 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:07:03,892 autoreload 13309 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-07-17 05:07:04,181 autoreload 13381 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:07:08,260 autoreload 13381 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-07-17 05:07:08,447 autoreload 13394 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:07:47,056 autoreload 13394 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-17 05:07:47,328 autoreload 13411 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:07:53,509 autoreload 13411 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-17 05:07:53,727 autoreload 13426 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:09:14,353 basehttp 13426 6203043840 "GET / HTTP/1.1" 200 4249
+INFO 2025-07-17 05:09:14,363 basehttp 13426 6203043840 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:09:14,363 basehttp 13426 6219870208 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:09:14,366 basehttp 13426 6219870208 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:11:02,990 autoreload 13426 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-07-17 05:11:03,290 autoreload 13476 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:20:43,512 basehttp 13476 6168293376 "GET / HTTP/1.1" 200 4010
+INFO 2025-07-17 05:20:43,523 basehttp 13476 6168293376 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:20:43,526 basehttp 13476 6168293376 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:20:43,526 basehttp 13476 6185119744 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:21:06,339 basehttp 13476 6185119744 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-07-17 05:21:06,360 basehttp 13476 6185119744 "GET /projects/ HTTP/1.1" 200 3331
+INFO 2025-07-17 05:21:08,327 basehttp 13476 6185119744 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-07-17 05:21:11,411 basehttp 13476 6185119744 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-07-17 05:21:11,417 basehttp 13476 6185119744 "GET / HTTP/1.1" 200 3946
+INFO 2025-07-17 05:21:19,295 basehttp 13476 6185119744 "GET /accounts/login/ HTTP/1.1" 200 3932
+INFO 2025-07-17 05:22:47,277 basehttp 13476 6185119744 "GET / HTTP/1.1" 200 3791
+INFO 2025-07-17 05:22:47,289 basehttp 13476 6185119744 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:22:47,289 basehttp 13476 6168293376 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:26:48,182 autoreload 13476 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-07-17 05:26:48,523 autoreload 13638 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:27:31,396 autoreload 13955 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:27:33,207 basehttp 13955 6162903040 "GET / HTTP/1.1" 200 3794
+INFO 2025-07-17 05:27:33,219 basehttp 13955 6196555776 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:27:33,223 basehttp 13955 6179729408 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:27:33,224 basehttp 13955 6162903040 "GET /static/css/output.css HTTP/1.1" 200 66291
+INFO 2025-07-17 05:28:49,838 autoreload 13955 8751210240 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-07-17 05:28:50,070 autoreload 13983 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:29:30,021 autoreload 14315 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:29:31,660 basehttp 14315 6137737216 "GET / HTTP/1.1" 200 3743
+INFO 2025-07-17 05:29:31,678 basehttp 14315 6154563584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:29:31,678 basehttp 14315 6137737216 "GET /static/css/output.css HTTP/1.1" 200 66144
+INFO 2025-07-17 05:34:03,729 autoreload 14833 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:34:05,612 basehttp 14833 6170144768 "GET / HTTP/1.1" 200 3784
+INFO 2025-07-17 05:34:05,626 basehttp 14833 6186971136 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:34:05,629 basehttp 14833 6203797504 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:34:05,630 basehttp 14833 6170144768 "GET /static/css/output.css HTTP/1.1" 200 66043
+INFO 2025-07-17 05:34:49,638 basehttp 14833 6170144768 "GET / HTTP/1.1" 200 3813
+INFO 2025-07-17 05:34:49,651 basehttp 14833 6186971136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:34:49,651 basehttp 14833 6170144768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:35:08,719 autoreload 15206 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:35:10,808 basehttp 15206 6133575680 "GET / HTTP/1.1" 200 3748
+INFO 2025-07-17 05:35:10,821 basehttp 15206 6150402048 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:35:10,821 basehttp 15206 6133575680 "GET /static/css/output.css HTTP/1.1" 200 66043
+INFO 2025-07-17 05:37:57,879 autoreload 15599 8751210240 Watching for file changes with StatReloader
+INFO 2025-07-17 05:38:00,525 basehttp 15599 6205075456 "GET / HTTP/1.1" 200 3802
+INFO 2025-07-17 05:38:00,539 basehttp 15599 6221901824 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:38:00,543 basehttp 15599 6238728192 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-17 05:38:00,543 basehttp 15599 6205075456 "GET /static/css/output.css HTTP/1.1" 200 66100
+INFO 2025-07-17 05:38:24,568 basehttp 15599 6205075456 "GET /templates/ HTTP/1.1" 200 3537
+INFO 2025-07-17 05:38:24,582 basehttp 15599 6205075456 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:38:24,582 basehttp 15599 6238728192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:38:52,553 basehttp 15599 6238728192 "GET /accounts/login/ HTTP/1.1" 200 3941
+INFO 2025-07-17 05:38:52,566 basehttp 15599 6238728192 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:38:52,566 basehttp 15599 6205075456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:39:00,009 basehttp 15599 6205075456 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-07-17 05:39:00,019 basehttp 15599 6205075456 "GET /projects/ HTTP/1.1" 200 3188
+INFO 2025-07-17 05:39:00,035 basehttp 15599 6205075456 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:39:00,036 basehttp 15599 6238728192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-17 05:40:06,570 basehttp 15599 6238728192 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-07-17 05:40:06,581 basehttp 15599 6238728192 "GET / HTTP/1.1" 200 3698
+INFO 2025-07-17 05:40:06,595 basehttp 15599 6238728192 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-17 05:40:06,595 basehttp 15599 6205075456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

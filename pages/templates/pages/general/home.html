@@ -4,10 +4,10 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="min-h-[80vh] flex items-center justify-center px-4 py-16">
+<div class="min-h-[80vh] flex items-center justify-center px-4 pt-8">
     <div class="text-center max-w-4xl mx-auto">
         <!-- Big Toad Logo -->
-        <div class="mb-8">
+        <div class="mb-4 opacity-0" id="logo-container" style="transform: scale(0.3) translateY(50px);">
             <div class="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto mb-6">
                 <svg class="w-full h-full text-[var(--primary-action-bg)]" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                     <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
@@ -16,115 +16,96 @@
         </div>
         
         <!-- Main Headline -->
-        <div class="mb-12">
+        <div class="mb-12 opacity-0" id="headline-container" style="transform: scale(0.3) translateY(50px);">
             <h1 class="text-4xl sm:text-6xl font-extrabold text-[var(--title-text)] mb-6 leading-tight">
                 For when your brain has<br>
                 <span class="text-[var(--primary-action-bg)]">too many tabs open</span>
             </h1>
-            <p class="text-xl sm:text-2xl text-[var(--subtitle-text)] max-w-3xl mx-auto leading-relaxed">
-                Ditch the scattered notes and complex apps. Toad gives you the clarity of a simple grid to help you stay on top of everything.
+            <p class="text-xl sm:text-2xl text-black max-w-3xl mx-auto leading-relaxed" id="typewriter-text">
+                One simple grid to organise your work, your projects, and your life.
             </p>
         </div>
 
-        <!-- CTA Section -->
-        <div class="space-y-4">
-            {% if user.is_authenticated %}
-                <a href="{% url 'pages:project_list' %}" 
-                   class="cta-button inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-8 py-4 rounded-xl text-xl font-semibold shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-                    Continue to My Projects
-                </a>
-            {% else %}
-                <a href="{% url 'accounts:register' %}" 
-                   class="cta-button inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-8 py-4 rounded-xl text-xl font-semibold shadow-lg">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                    Join the Free Beta
-                </a>
-                <div class="text-[var(--text-secondary)] text-sm">
-                    Already have an account? 
-                    <a href="{% url 'accounts:login' %}" class="text-[var(--primary-action-bg)] hover:underline font-medium">
-                        Sign in
-                    </a>
+        <!-- Waitlist Form Section -->
+        <div class="max-w-lg mx-auto mt-12 opacity-0" id="waitlist-form">
+            <form method="post" class="space-y-4">
+                {% csrf_token %}
+                <div class="text-center mb-6">
+                    <p class="text-lg text-[var(--waitlist-text-color)] mb-2">Join the waitlist and be the first to know when Toad launches</p>
                 </div>
-            {% endif %}
+                <div class="flex items-center space-x-3">
+                    {{ form.email }}
+                    <button type="submit" 
+                            class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer">
+                        Join
+                    </button>
+                </div>
+                {% if form.email.errors %}
+                    <div class="text-red-600 text-sm text-center">{{ form.email.errors.0 }}</div>
+                {% endif %}
+            </form>
         </div>
+
+        
     </div>
 </div>
 
-<!-- Core Value Propositions -->
-<div class="py-16 bg-[var(--grid-header-bg)] px-4">
-    <div class="max-w-5xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="value-prop-card text-center p-6 rounded-xl bg-[var(--container-bg)] border border-[var(--border-color)]">
-                <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-                </div>
-                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">Purposefully Simple</h3>
-                <p class="text-[var(--text-secondary)]">The only frills that matter. Start doing, not configuring.</p>
-            </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Home page animations
+        const logoContainer = document.getElementById('logo-container');
+        const headlineContainer = document.getElementById('headline-container');
+        const typewriterText = document.getElementById('typewriter-text');
+        
+        if (logoContainer && headlineContainer && typewriterText) {
+            console.log('Home page animations found, starting...');
             
-            <div class="value-prop-card text-center p-6 rounded-xl bg-[var(--container-bg)] border border-[var(--border-color)]">
-                <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">What we leave out</h3>
-                <p class="text-[var(--text-secondary)]">Is our best feature. Less distraction, more focus.</p>
-            </div>
+            // Reset initial states
+            logoContainer.style.opacity = '0';
+            headlineContainer.style.opacity = '0';
             
-            <div class="value-prop-card text-center p-6 rounded-xl bg-[var(--container-bg)] border border-[var(--border-color)]">
-                <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mx-auto mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                </div>
-                <h3 class="text-lg font-semibold text-[var(--title-text)] mb-2">Relentless Refinement</h3>
-                <p class="text-[var(--text-secondary)]">Not feature creep. Every element serves a purpose.</p>
-            </div>
-        </div>
-    </div>
-</div>
+            // Logo animation
+            setTimeout(() => {
+                logoContainer.style.opacity = '1';
+                logoContainer.style.transform = 'scale(1) translateY(0)';
+                logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+            }, 100);
 
-<!-- Templates Section -->
-<div class="py-16 px-4">
-    <div class="max-w-3xl mx-auto text-center">
-        <h2 class="text-2xl sm:text-3xl font-bold text-[var(--title-text)] mb-4">
-            Start with a solution, not a blank page.
-        </h2>
-        <p class="text-lg text-[var(--subtitle-text)] mb-6">
-            Pre-built templates for common workflows. No more staring at empty grids wondering where to begin.
-        </p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <span class="px-4 py-2 bg-[var(--container-bg)] rounded-full text-sm font-medium text-[var(--text-primary)] border border-[var(--border-color)]">
-                <span class="mr-2">🎓</span>Student Planning
-            </span>
-            <span class="px-4 py-2 bg-[var(--container-bg)] rounded-full text-sm font-medium text-[var(--text-primary)] border border-[var(--border-color)]">
-                <span class="mr-2">💼</span>Project Management
-            </span>
-            <span class="px-4 py-2 bg-[var(--container-bg)] rounded-full text-sm font-medium text-[var(--text-primary)] border border-[var(--border-color)]">
-                <span class="mr-2">🏠</span>Personal Tasks
-            </span>
-        </div>
-    </div>
-</div>
+            // Headline animation
+            setTimeout(() => {
+                headlineContainer.style.opacity = '1';
+                headlineContainer.style.transform = 'scale(1) translateY(0)';
+                headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+            }, 700);
 
-<!-- Social Proof Section -->
-<div class="py-16 px-4 bg-[var(--grid-header-bg)]">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl font-bold text-[var(--title-text)] mb-8">
-            Join others who've simplified their workflow
-        </h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="text-center">
-                <div class="text-3xl font-bold text-[var(--primary-action-bg)] mb-2">∞</div>
-                <p class="text-[var(--text-secondary)]">No feature limits</p>
-            </div>
-            <div class="text-center">
-                <div class="text-3xl font-bold text-[var(--primary-action-bg)] mb-2">⚡</div>
-                <p class="text-[var(--text-secondary)]">Lightning fast</p>
-            </div>
-            <div class="text-center">
-                <div class="text-3xl font-bold text-[var(--primary-action-bg)] mb-2">🎯</div>
-                <p class="text-[var(--text-secondary)]">Purposefully simple</p>
-            </div>
-        </div>
-    </div>
-</div>
+            // Typewriter effect
+            const text = typewriterText.textContent;
+            typewriterText.textContent = '';
+            typewriterText.style.width = '0';
+            typewriterText.style.overflow = 'hidden';
+            typewriterText.style.whiteSpace = 'nowrap';
+            
+            setTimeout(() => {
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    if (i < text.length) {
+                        typewriterText.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeInterval);
+                        // Show waitlist form after typewriter completes
+                        const waitlistForm = document.getElementById('waitlist-form');
+                        if (waitlistForm) {
+                            setTimeout(() => {
+                                waitlistForm.style.opacity = '1';
+                                waitlistForm.style.transition = 'opacity 0.8s ease-out';
+                            }, 500);
+                        }
+                    }
+                }, 30);
+            }, 1200);
+        }
+    });
+</script>
+
 {% endblock %} 

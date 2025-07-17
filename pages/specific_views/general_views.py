@@ -1,8 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
+from accounts.forms import BetaTesterForm
 from ..models import FAQ, ContactSubmission
 from ..specific_views_functions.general_views_functions import (
     get_active_faqs,
@@ -15,8 +16,24 @@ import logging
 # Set up logging
 logger = logging.getLogger(__name__)
 
+@require_http_methods(["GET", "POST"])
 def home(request):
-    return render_simple_template(request, 'pages/general/home.html')
+    """Handle the home page with beta tester waitlist form"""
+    if request.method == 'POST':
+        form = BetaTesterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Thanks for joining the waitlist! We\'ll notify you when it\'s your turn to try Toad.')
+            return redirect('pages:home')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = BetaTesterForm()
+    
+    context = {
+        'form': form,
+    }
+    return render(request, 'pages/general/home.html', context)
 
 @login_required
 def first_grid_tutorial_view(request):

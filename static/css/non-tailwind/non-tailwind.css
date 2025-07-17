@@ -866,6 +866,38 @@ input[type="checkbox"]:focus {
     box-shadow: 0 10px 20px -5px rgba(16, 185, 129, 0.4);
 }
 
+/* Home Page Animations */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.3) translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.animate-zoom-in {
+    animation: zoomIn 1.2s ease-out forwards;
+}
+
+.animate-zoom-in-delayed {
+    animation: zoomIn 1.2s ease-out 0.6s forwards;
+}
+
+#typewriter-text {
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0 auto;
+    animation: typing 3s steps(60, end) 1.8s forwards;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
 /* FAQ Page Styles */
 .faq-category-btn {
     padding: 8px 16px;

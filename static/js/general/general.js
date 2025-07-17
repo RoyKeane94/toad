@@ -407,4 +407,51 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+    
+    // === Home Page Animations ===
+    // Only run home page animations if we're on the home page
+    const logoContainer = document.getElementById('logo-container');
+    const headlineContainer = document.getElementById('headline-container');
+    const typewriterText = document.getElementById('typewriter-text');
+    
+    if (logoContainer && headlineContainer && typewriterText) {
+        console.log('Home page animations found, starting...');
+        
+        // Reset initial states
+        logoContainer.style.opacity = '0';
+        headlineContainer.style.opacity = '0';
+        
+        // Logo animation
+        setTimeout(() => {
+            logoContainer.style.opacity = '1';
+            logoContainer.style.transform = 'scale(1) translateY(0)';
+            logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+        }, 100);
+
+        // Headline animation
+        setTimeout(() => {
+            headlineContainer.style.opacity = '1';
+            headlineContainer.style.transform = 'scale(1) translateY(0)';
+            headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+        }, 700);
+
+        // Typewriter effect
+        const text = typewriterText.textContent;
+        typewriterText.textContent = '';
+        typewriterText.style.width = '0';
+        typewriterText.style.overflow = 'hidden';
+        typewriterText.style.whiteSpace = 'nowrap';
+        
+        setTimeout(() => {
+            let i = 0;
+            const typeInterval = setInterval(() => {
+                if (i < text.length) {
+                    typewriterText.textContent += text.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typeInterval);
+                }
+            }, 50);
+        }, 1400);
+    }
 });
