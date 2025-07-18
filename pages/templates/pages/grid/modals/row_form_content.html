@@ -21,7 +21,11 @@
           hx-disabled-elt="this"
           _="on htmx:afterRequest(detail)
              if detail.successful
-               set sessionStorage.mobileGridCol to window.mobileGridManager?.state?.currentCol
+               if window.mobileGridManager and window.mobileGridManager.state
+                 set sessionStorage.mobileGridCol to window.mobileGridManager.state.currentCol
+               else
+                 set sessionStorage.mobileGridCol to 0
+               end
                trigger closeModal
                trigger refreshGrid
              end">

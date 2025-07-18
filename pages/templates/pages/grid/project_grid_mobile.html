@@ -120,6 +120,64 @@
 <!-- Task Grid -->
 {% include 'pages/grid/partials/mobile_grid_content.html' %}
 
+<!-- Row Deletion Modal -->
+<div id="delete-row-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="delete-row-modal-content">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--delete-button-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-exclamation-triangle text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Delete Row</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">This action cannot be undone</p>
+                </div>
+            </div>
+            <button type="button" id="close-delete-row-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-[var(--text-primary)] mb-2">Are you sure you want to delete this row?</p>
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm flex-shrink-0">
+                            <i class="fas fa-list text-white text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-medium text-[var(--text-primary)] text-sm" id="row-to-delete">Row Name</p>
+                            <p class="text-xs text-[var(--text-secondary)] mt-1">This row and all its tasks will be permanently removed from your grid</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <button type="button" 
+                    id="cancel-delete-row"
+                    class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <form id="delete-row-form" method="post" class="inline"
+                  hx-swap="none"
+                  hx-trigger="submit"
+                  hx-disabled-elt="this">
+                {% csrf_token %}
+                <button type="submit" 
+                        class="w-32 h-10 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-trash mr-2"></i>Delete Row
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!-- Task Deletion Modal -->
 <div id="delete-task-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="delete-modal-content">

@@ -30,7 +30,34 @@
                     {% for row in rows %}
                     <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)]">
                         <div class="p-3 sm:p-4">
-                            <h3 class="font-bold text-[var(--primary-action-bg)] mb-3 text-base sm:text-lg">{{ row.name }}</h3>
+                            <!-- Row Header with Actions -->
+                            <div class="flex items-center justify-between mb-3">
+                                <h3 class="font-bold text-[var(--primary-action-bg)] text-base sm:text-lg">{{ row.name }}</h3>
+                                <!-- Row Actions -->
+                                <div class="flex space-x-1">
+                                    <button type="button"
+                                            class="p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                                            title="Edit row"
+                                            hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row.pk %}"
+                                            hx-target="#modal-content"
+                                            hx-trigger="click throttle:500ms"
+                                            hx-disabled-elt="this"
+                                            hx-indicator="#modal-content"
+                                            hx-swap="innerHTML"
+                                            hx-headers='{"Cache-Control": "no-cache"}'
+                                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                                        <i class="fas fa-edit text-sm text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
+                                    </button>
+                                    <button type="button"
+                                            class="delete-row-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                                            title="Delete row"
+                                            data-row-id="{{ row.pk }}"
+                                            data-row-name="{{ row.name }}"
+                                            data-delete-url="{% url 'pages:row_delete' project_pk=project.pk row_pk=row.pk %}">
+                                        <i class="fas fa-trash text-sm text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
+                                    </button>
+                                </div>
+                            </div>
                             {% with row_tasks=tasks_by_row_col|get_item:row.pk %}
                                 {% with task_list=row_tasks|get_item:column.pk %}
                                     <div id="tasks-{{ row.pk }}-{{ column.pk }}" class="task-list space-y-2">
