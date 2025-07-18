@@ -494,17 +494,25 @@ class MobileGridManager {
             } else {
                 // Show error message if there was an error
                 const errorDiv = e.target.querySelector('.error-message');
-                if (errorDiv && e.detail.xhr && e.detail.xhr.responseText) {
-                    try {
-                        const response = JSON.parse(e.detail.xhr.responseText);
-                        if (response.errors && response.errors.text) {
-                            errorDiv.innerHTML = response.errors.text.join(', ');
-                        } else {
+                if (errorDiv) {
+                    if (e.detail.xhr && e.detail.xhr.status === 0) {
+                        // Connection refused or network error
+                        errorDiv.innerHTML = 'Network error: Unable to connect to server. Please check your connection and try again.';
+                    } else if (e.detail.xhr && e.detail.xhr.responseText) {
+                        try {
+                            const response = JSON.parse(e.detail.xhr.responseText);
+                            if (response.errors && response.errors.text) {
+                                errorDiv.innerHTML = response.errors.text.join(', ');
+                            } else {
+                                errorDiv.innerHTML = 'An error occurred. Please try again.';
+                            }
+                        } catch (e) {
                             errorDiv.innerHTML = 'An error occurred. Please try again.';
                         }
-                    } catch (e) {
+                    } else {
                         errorDiv.innerHTML = 'An error occurred. Please try again.';
                     }
+                    errorDiv.style.display = 'block';
                 }
             }
         }
@@ -822,8 +830,41 @@ class MobileGridManager {
     }
     
     handleHtmxError(e) {
+        console.error('Mobile Grid: HTMX Error:', e.detail);
+        
+        // Handle modal content errors
         if (e.detail.target && e.detail.target.id === 'modal-content') {
             this.elements.modalContent.innerHTML = `<div class="flex items-center justify-center p-8"><div class="flex flex-col items-center space-y-3 text-center"><div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-500 text-xl"></i></div><div><h3 class="text-lg font-medium text-[var(--text-primary)]">Error Loading Content</h3><p class="text-sm text-[var(--text-secondary)] mt-1">Unable to load the requested content. Please try again.</p></div><button type="button" class="close-modal mt-4 px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-colors">Close</button></div></div>`;
+        }
+        
+        // Handle task form submission errors
+        if (e.detail.target && e.detail.target.classList.contains('task-form')) {
+            const errorDiv = e.detail.target.querySelector('.error-message');
+            if (errorDiv) {
+                if (e.detail.xhr && e.detail.xhr.status === 0) {
+                    // Connection refused or network error
+                    errorDiv.innerHTML = 'Network error: Unable to connect to server. Please check your connection and try again.';
+                } else if (e.detail.xhr && e.detail.xhr.status >= 500) {
+                    // Server error
+                    errorDiv.innerHTML = 'Server error: Please try again later.';
+                } else if (e.detail.xhr && e.detail.xhr.status >= 400) {
+                    // Client error
+                    errorDiv.innerHTML = 'Request error: Please check your input and try again.';
+                } else {
+                    // Generic error
+                    errorDiv.innerHTML = 'An error occurred. Please try again.';
+                }
+                errorDiv.style.display = 'block';
+            }
+            
+            // Reset form state
+            const submitBtn = e.detail.target.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                const spinner = submitBtn.querySelector('.htmx-indicator-spinner');
+                if (spinner) {
+                    spinner.style.opacity = '0';
+                }
+            }
         }
     }
 
