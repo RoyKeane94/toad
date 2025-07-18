@@ -94,31 +94,16 @@
                 <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
                         hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
                         hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                     <i class="fas fa-plus text-xs w-4 text-center"></i>
                     <span>Add Row</span>
                 </button>
                 <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
                         hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
                         hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                     <i class="fas fa-plus text-xs w-4 text-center"></i>
                     <span>Add Column</span>
-                </button>
-                <div class="border-t border-[var(--border-color)] my-2"></div>
-                <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
-                        hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=rows.0.pk %}"
-                        hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                    <i class="fas fa-edit text-xs w-4 text-center"></i>
-                    <span>Edit Row</span>
-                </button>
-                <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
-                        hx-get="{% url 'pages:column_edit' project_pk=project.pk col_pk=columns.0.pk %}"
-                        hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                    <i class="fas fa-edit text-xs w-4 text-center"></i>
-                    <span>Edit Column</span>
                 </button>
                 <div class="border-t border-[var(--border-color)] my-2"></div>
                 <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
@@ -138,14 +123,6 @@
 <!-- Task Deletion Modal -->
 <div id="delete-task-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
     <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="delete-modal-content">
-        <!-- Loading indicator -->
-        <div class="htmx-indicator flex items-center justify-center p-8">
-            <div class="flex items-center space-x-3">
-                <div class="animate-spin rounded-full h-6 w-6 border-b-2 border-[var(--primary-action-bg)]"></div>
-                <span class="text-[var(--text-secondary)]">Loading...</span>
-            </div>
-        </div>
-        
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">

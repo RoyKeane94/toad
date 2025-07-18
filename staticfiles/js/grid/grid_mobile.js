@@ -197,13 +197,6 @@ class MobileGridManager {
             }
         });
 
-        // Restore column after reload if set
-        const savedCol = Number(sessionStorage.mobileGridCol);
-        if (!isNaN(savedCol) && savedCol >= 0 && savedCol < this.state.totalColumns) {
-            this.state.currentCol = savedCol;
-            sessionStorage.removeItem('mobileGridCol');
-        }
-
         this.scrollToCol(this.state.currentCol, 'auto');
     }
 

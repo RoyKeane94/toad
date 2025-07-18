@@ -7845,3 +7845,50 @@ INFO 2025-07-17 20:12:08,893 basehttp 9940 6241087488 - Broken pipe from ('127.0
 INFO 2025-07-17 20:12:08,900 basehttp 9940 6207434752 - Broken pipe from ('127.0.0.1', 55416)
 INFO 2025-07-17 20:12:08,901 basehttp 9940 6224261120 "GET /projects/7/ HTTP/1.1" 200 9525
 INFO 2025-07-17 20:12:08,909 basehttp 9940 6224261120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-18 05:39:25,669 autoreload 2301 8554831616 Watching for file changes with StatReloader
+INFO 2025-07-18 05:39:35,464 basehttp 2301 6196998144 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-18 05:39:35,465 basehttp 2301 6213824512 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-07-18 05:39:35,487 log 2301 6180171776 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 05:39:35,490 basehttp 2301 6180171776 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1586
+INFO 2025-07-18 05:39:35,517 basehttp 2301 6163345408 "GET /projects/7/ HTTP/1.1" 200 9505
+INFO 2025-07-18 05:39:36,871 basehttp 2301 6163345408 "GET /projects/7/ HTTP/1.1" 200 9685
+WARNING 2025-07-18 05:39:36,890 log 2301 6163345408 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-18 05:39:36,890 basehttp 2301 6213824512 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-18 05:39:36,894 basehttp 2301 6163345408 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1579
+INFO 2025-07-18 05:39:36,897 basehttp 2301 6163345408 - Broken pipe from ('127.0.0.1', 49407)
+INFO 2025-07-18 05:39:36,902 basehttp 2301 6180171776 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 43225
+INFO 2025-07-18 05:41:10,537 basehttp 2301 6163345408 "GET /tasks/155/edit/ HTTP/1.1" 200 991
+WARNING 2025-07-18 05:41:26,010 log 2301 6163345408 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 05:41:26,011 basehttp 2301 6163345408 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1651
+INFO 2025-07-18 05:41:28,791 basehttp 2301 6163345408 "GET /projects/7/ HTTP/1.1" 200 9640
+WARNING 2025-07-18 05:41:28,815 log 2301 6163345408 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 05:41:28,815 basehttp 2301 6163345408 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1637
+INFO 2025-07-18 05:47:38,118 basehttp 2301 6163345408 "GET /projects/7/ HTTP/1.1" 200 9652
+WARNING 2025-07-18 05:47:38,149 log 2301 6163345408 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 05:47:38,149 basehttp 2301 6163345408 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1583
+INFO 2025-07-18 05:47:46,540 basehttp 2301 6163345408 "GET /projects/7/ HTTP/1.1" 200 9663
+INFO 2025-07-18 05:47:46,557 basehttp 2301 6196998144 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-07-18 05:47:46,560 log 2301 6230650880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-18 05:47:46,561 basehttp 2301 6180171776 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39418
+INFO 2025-07-18 05:47:46,562 basehttp 2301 6213824512 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 42915
+INFO 2025-07-18 05:47:46,562 basehttp 2301 6163345408 "GET /static/css/output.css HTTP/1.1" 200 66441
+WARNING 2025-07-18 05:47:46,563 basehttp 2301 6230650880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1567
+INFO 2025-07-18 05:48:02,761 basehttp 2301 6230650880 "GET /tasks/155/edit/ HTTP/1.1" 200 1003
+INFO 2025-07-18 05:48:15,567 basehttp 2301 6230650880 "GET /projects/7/ HTTP/1.1" 200 9719
+INFO 2025-07-18 05:48:15,585 basehttp 2301 6230650880 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-18 05:48:15,586 log 2301 6163345408 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 05:48:15,586 basehttp 2301 6163345408 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1598
+INFO 2025-07-18 05:51:10,874 autoreload 3164 8554831616 Watching for file changes with StatReloader
+INFO 2025-07-18 05:51:14,101 basehttp 3164 6193950720 "GET /projects/7/ HTTP/1.1" 200 8217
+INFO 2025-07-18 05:51:14,113 basehttp 3164 6193950720 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-18 05:51:14,123 log 3164 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 05:51:14,123 basehttp 3164 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1569
+INFO 2025-07-18 05:51:20,815 basehttp 3164 6193950720 "POST /tasks/155/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-18 05:51:24,376 basehttp 3164 6193950720 "POST /tasks/155/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-18 05:51:25,549 basehttp 3164 6193950720 "GET /tasks/155/edit/ HTTP/1.1" 200 971
+INFO 2025-07-18 05:51:30,412 basehttp 3164 6193950720 "GET /tasks/155/edit/ HTTP/1.1" 200 1045
+INFO 2025-07-18 05:51:33,002 basehttp 3164 6193950720 "POST /tasks/155/edit/ HTTP/1.1" 200 1378
+INFO 2025-07-18 05:51:34,777 basehttp 3164 6193950720 "GET /tasks/155/edit/ HTTP/1.1" 200 1011
+INFO 2025-07-18 05:51:37,522 basehttp 3164 6193950720 "POST /tasks/155/edit/ HTTP/1.1" 200 1359
+INFO 2025-07-18 05:51:43,242 project_views_functions 3164 6193950720 User None deleted task: "Test" from project: Test
+INFO 2025-07-18 05:51:43,247 basehttp 3164 6193950720 "POST /tasks/155/delete/ HTTP/1.1" 200 58
