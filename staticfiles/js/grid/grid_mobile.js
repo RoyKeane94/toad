@@ -228,10 +228,20 @@ class MobileGridManager {
                 col.style.transform = 'translateX(0)';
                 col.style.zIndex = '10';
                 col.classList.add('active');
+                col.classList.add('relative');
+                col.classList.remove('absolute');
+                // Make active column relative and auto height
+                col.style.position = 'relative';
+                col.style.height = 'auto';
             } else {
                 col.style.transform = 'translateX(100%)';
                 col.style.zIndex = '1';
                 col.classList.remove('active');
+                col.classList.remove('relative');
+                col.classList.add('absolute');
+                // Make inactive columns absolute and 100% height
+                col.style.position = 'absolute';
+                col.style.height = '100%';
             }
         });
         
@@ -700,14 +710,15 @@ class MobileGridManager {
             console.log('Mobile Grid: Form action:', e.target.action);
             console.log('Mobile Grid: Form method:', e.target.method);
             
-            // Check if this is an edit task form
+            // Check if this is an edit form (task or row)
             if (e.target.action && e.target.action.includes('/edit/')) {
-                console.log('Mobile Grid: Edit task form detected');
                 try {
                     const response = JSON.parse(e.detail.xhr.responseText);
-                    console.log('Mobile Grid: Edit task response (form):', response);
+                    console.log('Mobile Grid: Edit form response:', response);
                     
+                    // Check if this is a task edit
                     if (response.success && response.task_id && response.task_html) {
+                        console.log('Mobile Grid: Edit task form detected');
                         console.log('Mobile Grid: Updating task in place (form):', response.task_id);
                         
                         // Try multiple selectors to find the task element
@@ -741,27 +752,75 @@ class MobileGridManager {
                             }
                         } else {
                             console.warn('Mobile Grid: Task element not found in DOM for edit (form):', response.task_id);
-                            // Log all task elements to debug
-                            const allTaskElements = document.querySelectorAll('[data-task-id], [id^="task-"]');
-                            console.log('Mobile Grid: All task elements found for edit (form):', allTaskElements);
-                            allTaskElements.forEach(el => {
-                                console.log('Mobile Grid: Task element for edit (form):', {
-                                    dataTaskId: el.getAttribute('data-task-id'),
-                                    id: el.id,
-                                    text: el.textContent?.substring(0, 50)
-                                });
+                        }
+                        
+                        // Hide the modal
+                        this.hideModal();
+                    }
+                    // Check if this is a row edit
+                    else if (response.success && response.row_name) {
+                        console.log('Mobile Grid: Edit row form detected');
+                        console.log('Mobile Grid: Row updated successfully:', response.row_name);
+                        
+                        // Update the row name in the UI
+                        // Find the row that was edited by looking for the form that was submitted
+                        const formAction = e.target.action;
+                        const rowIdMatch = formAction.match(/\/rows\/(\d+)\/edit\//);
+                        if (rowIdMatch) {
+                            const rowId = rowIdMatch[1];
+                            console.log('Mobile Grid: Looking for row with ID:', rowId);
+                            
+                            // Find the row container and update its name
+                            const rowContainers = document.querySelectorAll('.bg-[var(--container-bg)]');
+                            rowContainers.forEach(container => {
+                                const rowNameElement = container.querySelector('h3');
+                                if (rowNameElement) {
+                                    // Check if this row contains the edited row ID in its task containers
+                                    const taskContainers = container.querySelectorAll('[id^="tasks-"]');
+                                    taskContainers.forEach(taskContainer => {
+                                        if (taskContainer.id.includes(`-${rowId}-`)) {
+                                            rowNameElement.textContent = response.row_name;
+                                            console.log('Mobile Grid: Updated row name in UI:', response.row_name);
+                                        }
+                                    });
+                                }
                             });
                         }
                         
                         // Hide the modal
                         this.hideModal();
                     } else {
-                        console.log('Mobile Grid: Edit response does not contain task update data (form)');
+                        console.log('Mobile Grid: Edit response does not contain expected update data (form)');
                     }
                 } catch (e) {
                     console.log('Mobile Grid: Edit response is not JSON (form), continuing with normal modal handling');
                     // Not a JSON response, continue with normal modal handling
                 }
+            }
+        }
+        
+        // Handle row deletion form submission
+        if (e.target.id === 'delete-row-form' && e.detail.successful) {
+            console.log('Mobile Grid: Row deletion form submitted successfully');
+            try {
+                const response = JSON.parse(e.detail.xhr.responseText);
+                console.log('Mobile Grid: Row deletion response:', response);
+                
+                if (response.success) {
+                    console.log('Mobile Grid: Row deleted successfully, refreshing page');
+                    // Hide the delete modal
+                    this.hideDeleteRowModal();
+                    // Refresh the page to show updated grid
+                    window.location.reload();
+                } else {
+                    console.error('Mobile Grid: Row deletion failed:', response.message);
+                }
+            } catch (e) {
+                console.log('Mobile Grid: Row deletion response is not JSON, refreshing page');
+                // Hide the delete modal
+                this.hideDeleteRowModal();
+                // Refresh the page to show updated grid
+                window.location.reload();
             }
         }
         

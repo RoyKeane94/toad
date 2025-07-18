@@ -22,8 +22,8 @@
         <!-- Mobile Grid Container - Single Column View -->
         <div id="mobile-grid-slider" class="relative overflow-hidden bg-gray-50 dark:bg-gray-800/50">
             {% for column in columns %}
-            <div class="mobile-column absolute inset-0 w-full overflow-y-auto transition-transform duration-300 ease-in-out {% if forloop.first %}active{% endif %}" 
-                 data-column-id="{{ column.pk }}" 
+            <div class="mobile-column {% if forloop.first %}active relative{% else %}absolute{% endif %} inset-0 w-full overflow-y-auto transition-transform duration-300 ease-in-out"
+                 data-column-id="{{ column.pk }}"
                  data-column-name="{{ column.name }}"
                  data-column-index="{{ forloop.counter0 }}">
                 <div class="p-2 sm:p-4 space-y-3 sm:space-y-4">
