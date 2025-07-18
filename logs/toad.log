@@ -7892,3 +7892,84 @@ INFO 2025-07-18 05:51:34,777 basehttp 3164 6193950720 "GET /tasks/155/edit/ HTTP
 INFO 2025-07-18 05:51:37,522 basehttp 3164 6193950720 "POST /tasks/155/edit/ HTTP/1.1" 200 1359
 INFO 2025-07-18 05:51:43,242 project_views_functions 3164 6193950720 User None deleted task: "Test" from project: Test
 INFO 2025-07-18 05:51:43,247 basehttp 3164 6193950720 "POST /tasks/155/delete/ HTTP/1.1" 200 58
+INFO 2025-07-18 05:55:37,846 autoreload 4585 8554831616 Watching for file changes with StatReloader
+WARNING 2025-07-18 05:55:47,402 log 4585 6191935488 Method Not Allowed (HEAD): /
+WARNING 2025-07-18 05:55:47,403 basehttp 4585 6191935488 "HEAD / HTTP/1.1" 405 0
+INFO 2025-07-18 05:55:55,512 basehttp 4585 6191935488 "HEAD /projects/7/tasks/create/28/33/ HTTP/1.1" 302 0
+INFO 2025-07-18 06:02:30,067 autoreload 5278 8554831616 Watching for file changes with StatReloader
+INFO 2025-07-18 06:02:35,230 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 7757
+INFO 2025-07-18 06:02:35,258 basehttp 5278 6133280768 "GET /static/css/non-tailwind/shared.css HTTP/1.1" 200 7701
+WARNING 2025-07-18 06:02:35,259 log 5278 6166933504 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:02:35,260 basehttp 5278 6166933504 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1574
+INFO 2025-07-18 06:02:35,260 basehttp 5278 6150107136 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 45041
+INFO 2025-07-18 06:02:35,262 basehttp 5278 6133280768 "GET /static/css/non-tailwind/mobile.css HTTP/1.1" 200 23135
+INFO 2025-07-18 06:02:41,013 basehttp 5278 6133280768 "POST /projects/7/tasks/create/28/33/ HTTP/1.1" 200 1292
+INFO 2025-07-18 06:02:47,617 basehttp 5278 6133280768 "POST /projects/7/tasks/create/28/34/ HTTP/1.1" 200 1357
+INFO 2025-07-18 06:02:52,726 basehttp 5278 6133280768 "GET /projects/ HTTP/1.1" 200 3694
+INFO 2025-07-18 06:02:52,756 basehttp 5278 6133280768 "GET /static/css/non-tailwind/desktop.css HTTP/1.1" 200 9674
+INFO 2025-07-18 06:02:53,974 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 9971
+INFO 2025-07-18 06:02:53,997 basehttp 5278 6150107136 "GET /static/css/non-tailwind/shared.css HTTP/1.1" 304 0
+INFO 2025-07-18 06:02:53,998 basehttp 5278 6133280768 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-18 06:03:23,694 basehttp 5278 6133280768 "GET /projects/7/rows/create/ HTTP/1.1" 200 1000
+INFO 2025-07-18 06:03:26,220 basehttp 5278 6133280768 "GET /projects/7/rows/create/ HTTP/1.1" 200 977
+INFO 2025-07-18 06:03:26,749 basehttp 5278 6133280768 "GET /projects/7/rows/create/ HTTP/1.1" 200 1034
+INFO 2025-07-18 06:03:31,373 basehttp 5278 6133280768 "GET /projects/7/columns/create/ HTTP/1.1" 200 928
+INFO 2025-07-18 06:03:42,104 basehttp 5278 6133280768 "GET /tasks/156/edit/ HTTP/1.1" 200 1043
+INFO 2025-07-18 06:03:42,896 basehttp 5278 6133280768 "GET /tasks/156/edit/ HTTP/1.1" 200 1057
+WARNING 2025-07-18 06:05:06,348 log 5278 6150107136 Method Not Allowed (HEAD): /
+WARNING 2025-07-18 06:05:06,349 basehttp 5278 6150107136 "HEAD / HTTP/1.1" 405 0
+INFO 2025-07-18 06:05:13,779 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 9951
+INFO 2025-07-18 06:05:13,796 basehttp 5278 6150107136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-18 06:05:13,797 basehttp 5278 6133280768 "GET /static/css/non-tailwind/shared.css HTTP/1.1" 304 0
+INFO 2025-07-18 06:05:13,801 basehttp 5278 6133280768 "GET /static/css/non-tailwind/desktop.css HTTP/1.1" 200 10367
+INFO 2025-07-18 06:08:26,195 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 9664
+INFO 2025-07-18 06:08:26,206 basehttp 5278 6133280768 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-18 06:08:28,577 basehttp 5278 6133280768 "GET /projects/7/rows/create/ HTTP/1.1" 200 1053
+WARNING 2025-07-18 06:10:37,643 log 5278 6133280768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:10:37,644 basehttp 5278 6133280768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1605
+INFO 2025-07-18 06:10:38,947 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 8418
+INFO 2025-07-18 06:10:38,961 basehttp 5278 6133280768 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-18 06:10:38,969 log 5278 6133280768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:10:38,969 basehttp 5278 6133280768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1580
+INFO 2025-07-18 06:10:42,644 basehttp 5278 6133280768 "GET /tasks/157/edit/ HTTP/1.1" 200 970
+INFO 2025-07-18 06:10:48,614 basehttp 5278 6133280768 "POST /tasks/157/edit/ HTTP/1.1" 200 1399
+INFO 2025-07-18 06:16:11,489 basehttp 5278 6133280768 "GET /projects/ HTTP/1.1" 200 3451
+INFO 2025-07-18 06:16:12,538 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 9703
+INFO 2025-07-18 06:16:12,548 basehttp 5278 6133280768 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-18 06:16:15,859 project_views_functions 5278 6133280768 User None deleted task: "Test" from project: Test
+INFO 2025-07-18 06:16:15,864 basehttp 5278 6133280768 "POST /tasks/156/delete/ HTTP/1.1" 200 58
+WARNING 2025-07-18 06:17:14,125 log 5278 6133280768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:17:14,126 basehttp 5278 6133280768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1629
+INFO 2025-07-18 06:17:15,400 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 8332
+WARNING 2025-07-18 06:17:15,428 log 5278 6133280768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:17:15,429 basehttp 5278 6133280768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1652
+INFO 2025-07-18 06:17:15,429 basehttp 5278 6150107136 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-18 06:18:17,303 basehttp 5278 6133280768 "GET /projects/7/rows/create/ HTTP/1.1" 200 981
+INFO 2025-07-18 06:18:21,845 basehttp 5278 6133280768 "POST /projects/7/rows/create/ HTTP/1.1" 204 0
+INFO 2025-07-18 06:18:21,877 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 8558
+WARNING 2025-07-18 06:18:21,902 log 5278 6133280768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:18:21,902 basehttp 5278 6133280768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1628
+INFO 2025-07-18 06:18:58,361 basehttp 5278 6133280768 "GET /projects/7/ HTTP/1.1" 200 8554
+WARNING 2025-07-18 06:18:58,383 log 5278 6133280768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:18:58,383 basehttp 5278 6133280768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1641
+INFO 2025-07-18 06:19:16,581 autoreload 5971 8554831616 Watching for file changes with StatReloader
+INFO 2025-07-18 06:19:26,182 basehttp 5971 6137327616 "GET /projects/7/ HTTP/1.1" 200 8559
+INFO 2025-07-18 06:19:26,207 basehttp 5971 6170980352 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-18 06:19:26,238 basehttp 5971 6154153984 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39857
+WARNING 2025-07-18 06:19:26,240 log 5971 6204633088 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-18 06:19:26,240 basehttp 5971 6187806720 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 45041
+WARNING 2025-07-18 06:19:26,241 basehttp 5971 6204633088 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1609
+INFO 2025-07-18 06:19:26,242 basehttp 5971 6137327616 "GET /static/css/output.css HTTP/1.1" 200 66384
+INFO 2025-07-18 06:19:39,267 basehttp 5971 6137327616 "GET /projects/7/ HTTP/1.1" 200 9883
+INFO 2025-07-18 06:19:39,279 basehttp 5971 6187806720 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-18 06:19:39,279 basehttp 5971 6204633088 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-18 06:19:39,280 basehttp 5971 6137327616 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-18 06:19:44,013 project_views_functions 5971 6137327616 User None deleted task: "Test 2" from project: Test
+INFO 2025-07-18 06:19:44,018 basehttp 5971 6137327616 "POST /tasks/157/delete/ HTTP/1.1" 200 58
+WARNING 2025-07-18 06:21:44,110 log 5971 6137327616 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-18 06:21:44,111 basehttp 5971 6187806720 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 39931
+WARNING 2025-07-18 06:21:44,111 basehttp 5971 6137327616 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1610
+INFO 2025-07-18 06:21:44,889 basehttp 5971 6137327616 "GET /projects/7/ HTTP/1.1" 200 7695
+INFO 2025-07-18 06:21:44,904 basehttp 5971 6137327616 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-18 06:21:44,912 log 5971 6137327616 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-18 06:21:44,913 basehttp 5971 6137327616 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1651
