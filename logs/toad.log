@@ -8913,3 +8913,127 @@ INFO 2025-07-23 19:30:17,631 basehttp 12902 6161199104 "GET /static/css/non-tail
 WARNING 2025-07-23 19:30:17,634 basehttp 12902 6228504576 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1606
 INFO 2025-07-23 19:30:17,635 basehttp 12902 6211678208 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 55075
 INFO 2025-07-23 19:30:17,635 basehttp 12902 6178025472 "GET /static/css/output.css HTTP/1.1" 200 68167
+INFO 2025-07-23 19:30:56,883 autoreload 12990 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 19:30:58,962 basehttp 12990 6131625984 "GET /projects/7/ HTTP/1.1" 200 11600
+INFO 2025-07-23 19:30:58,972 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:30:58,975 basehttp 12990 6131625984 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-23 19:31:02,838 basehttp 12990 6131625984 "GET /projects/7/columns/90/edit/ HTTP/1.1" 200 1043
+INFO 2025-07-23 19:31:04,795 basehttp 12990 6131625984 "POST /projects/7/columns/90/edit/ HTTP/1.1" 200 89
+INFO 2025-07-23 19:31:05,146 basehttp 12990 6131625984 "GET /projects/7/ HTTP/1.1" 200 11631
+INFO 2025-07-23 19:31:05,158 basehttp 12990 6148452352 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:31:05,158 basehttp 12990 6131625984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:31:11,832 basehttp 12990 6148452352 "GET /tasks/164/edit/ HTTP/1.1" 200 1050
+INFO 2025-07-23 19:31:13,212 basehttp 12990 6148452352 "POST /tasks/164/edit/ HTTP/1.1" 200 1381
+INFO 2025-07-23 19:31:44,035 basehttp 12990 6148452352 "GET /projects/7/edit/ HTTP/1.1" 200 3195
+INFO 2025-07-23 19:31:44,047 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:31:48,905 basehttp 12990 6148452352 "GET /projects/7/ HTTP/1.1" 200 11669
+INFO 2025-07-23 19:31:48,919 basehttp 12990 6148452352 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:31:55,349 basehttp 12990 6148452352 "GET / HTTP/1.1" 200 5716
+INFO 2025-07-23 19:31:55,361 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:32:05,487 basehttp 12990 6148452352 "GET /projects/ HTTP/1.1" 200 3418
+INFO 2025-07-23 19:32:10,148 basehttp 12990 6148452352 "GET /projects/7/delete/ HTTP/1.1" 200 3140
+INFO 2025-07-23 19:32:10,161 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:32:11,356 basehttp 12990 6148452352 "POST /projects/7/delete/ HTTP/1.1" 302 0
+INFO 2025-07-23 19:32:11,365 basehttp 12990 6148452352 "GET /projects/ HTTP/1.1" 200 3190
+INFO 2025-07-23 19:32:14,509 basehttp 12990 6148452352 "GET /projects/create/ HTTP/1.1" 200 3213
+INFO 2025-07-23 19:32:23,730 project_views_functions 12990 6148452352 User None created project: Student Template
+INFO 2025-07-23 19:32:23,731 basehttp 12990 6148452352 "POST /projects/create/ HTTP/1.1" 302 0
+INFO 2025-07-23 19:32:23,747 basehttp 12990 6148452352 "GET /projects/15/ HTTP/1.1" 200 7642
+INFO 2025-07-23 19:32:23,765 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:32:23,765 basehttp 12990 6131625984 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:32:27,049 basehttp 12990 6148452352 "GET /projects/15/columns/create/ HTTP/1.1" 200 1059
+INFO 2025-07-23 19:32:59,152 basehttp 12990 6148452352 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-23 19:32:59,193 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 7844
+INFO 2025-07-23 19:32:59,193 basehttp 12990 6148452352 - Broken pipe from ('127.0.0.1', 56120)
+INFO 2025-07-23 19:32:59,194 basehttp 12990 6131625984 - Broken pipe from ('127.0.0.1', 56119)
+INFO 2025-07-23 19:32:59,194 basehttp 12990 6165278720 "GET /projects/15/ HTTP/1.1" 200 7915
+INFO 2025-07-23 19:32:59,205 basehttp 12990 6165278720 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:32:59,206 basehttp 12990 6131625984 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:33:02,033 basehttp 12990 6131625984 "GET /projects/15/columns/92/edit/ HTTP/1.1" 200 1004
+INFO 2025-07-23 19:33:07,682 basehttp 12990 6131625984 "POST /projects/15/columns/92/edit/ HTTP/1.1" 200 121
+INFO 2025-07-23 19:33:08,015 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 7899
+INFO 2025-07-23 19:33:10,397 basehttp 12990 6131625984 "GET /projects/15/columns/create/ HTTP/1.1" 200 1012
+INFO 2025-07-23 19:33:21,906 basehttp 12990 6131625984 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-23 19:33:21,944 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 8154
+INFO 2025-07-23 19:33:21,949 basehttp 12990 6165278720 "GET /projects/15/ HTTP/1.1" 200 8137
+INFO 2025-07-23 19:33:21,951 basehttp 12990 6131625984 - Broken pipe from ('127.0.0.1', 56172)
+INFO 2025-07-23 19:33:21,951 basehttp 12990 6165278720 - Broken pipe from ('127.0.0.1', 56171)
+INFO 2025-07-23 19:33:21,951 basehttp 12990 6148452352 "GET /projects/15/ HTTP/1.1" 200 8135
+INFO 2025-07-23 19:33:21,960 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:33:21,961 basehttp 12990 6131625984 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:33:25,287 basehttp 12990 6131625984 "GET /projects/15/rows/create/ HTTP/1.1" 200 975
+INFO 2025-07-23 19:33:31,456 basehttp 12990 6131625984 "POST /projects/15/rows/create/ HTTP/1.1" 204 0
+INFO 2025-07-23 19:33:31,484 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 8554
+INFO 2025-07-23 19:33:34,051 basehttp 12990 6131625984 "GET /projects/15/rows/57/edit/ HTTP/1.1" 200 1067
+INFO 2025-07-23 19:33:39,720 basehttp 12990 6131625984 "POST /projects/15/rows/57/edit/ HTTP/1.1" 200 90
+INFO 2025-07-23 19:33:41,548 basehttp 12990 6131625984 "GET /projects/15/rows/create/ HTTP/1.1" 200 1063
+INFO 2025-07-23 19:33:45,786 basehttp 12990 6131625984 "POST /projects/15/rows/create/ HTTP/1.1" 204 0
+INFO 2025-07-23 19:33:45,817 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 8880
+INFO 2025-07-23 19:33:45,829 basehttp 12990 6148452352 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:33:45,829 basehttp 12990 6131625984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:33:49,867 basehttp 12990 6131625984 "GET /projects/15/rows/create/ HTTP/1.1" 200 977
+INFO 2025-07-23 19:33:52,935 basehttp 12990 6131625984 "POST /projects/15/rows/create/ HTTP/1.1" 204 0
+INFO 2025-07-23 19:33:52,961 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 9199
+INFO 2025-07-23 19:36:00,363 basehttp 12990 6131625984 "GET /projects/15/rows/57/edit/ HTTP/1.1" 200 1069
+INFO 2025-07-23 19:36:07,440 basehttp 12990 6131625984 "POST /projects/15/rows/57/edit/ HTTP/1.1" 200 122
+INFO 2025-07-23 19:36:18,335 basehttp 12990 6131625984 "GET /projects/15/rows/58/edit/ HTTP/1.1" 200 1026
+INFO 2025-07-23 19:36:24,681 basehttp 12990 6131625984 "POST /projects/15/rows/58/edit/ HTTP/1.1" 200 126
+INFO 2025-07-23 19:36:33,970 basehttp 12990 6131625984 "GET /projects/15/rows/59/edit/ HTTP/1.1" 200 993
+INFO 2025-07-23 19:36:37,553 basehttp 12990 6131625984 "POST /projects/15/rows/59/edit/ HTTP/1.1" 200 96
+INFO 2025-07-23 19:36:41,869 basehttp 12990 6131625984 "GET /projects/15/rows/60/delete/ HTTP/1.1" 200 1011
+INFO 2025-07-23 19:36:42,801 basehttp 12990 6131625984 "POST /projects/15/rows/60/delete/ HTTP/1.1" 200 67
+INFO 2025-07-23 19:36:42,830 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 8948
+INFO 2025-07-23 19:36:42,844 basehttp 12990 6148452352 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:36:42,845 basehttp 12990 6131625984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:36:59,381 basehttp 12990 6131625984 "GET /projects/15/rows/create/ HTTP/1.1" 200 1000
+INFO 2025-07-23 19:37:11,109 basehttp 12990 6131625984 "POST /projects/15/rows/create/ HTTP/1.1" 204 0
+INFO 2025-07-23 19:37:11,141 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 9220
+INFO 2025-07-23 19:37:14,569 basehttp 12990 6131625984 "GET /projects/15/rows/57/edit/ HTTP/1.1" 200 1081
+INFO 2025-07-23 19:37:17,935 basehttp 12990 6131625984 "POST /projects/15/rows/57/edit/ HTTP/1.1" 200 88
+INFO 2025-07-23 19:37:20,236 basehttp 12990 6131625984 "GET /projects/15/rows/58/edit/ HTTP/1.1" 200 1098
+INFO 2025-07-23 19:37:23,636 basehttp 12990 6131625984 "POST /projects/15/rows/58/edit/ HTTP/1.1" 200 122
+INFO 2025-07-23 19:37:26,453 basehttp 12990 6131625984 "GET /projects/15/rows/59/edit/ HTTP/1.1" 200 998
+INFO 2025-07-23 19:37:31,949 basehttp 12990 6131625984 "POST /projects/15/rows/59/edit/ HTTP/1.1" 200 126
+INFO 2025-07-23 19:37:34,752 basehttp 12990 6131625984 "GET /projects/15/rows/61/edit/ HTTP/1.1" 200 996
+INFO 2025-07-23 19:37:38,296 basehttp 12990 6131625984 "POST /projects/15/rows/61/edit/ HTTP/1.1" 200 96
+INFO 2025-07-23 19:39:27,765 basehttp 12990 6131625984 "GET /tasks/165/edit/ HTTP/1.1" 200 1031
+INFO 2025-07-23 19:39:57,858 basehttp 12990 6131625984 "POST /tasks/165/edit/ HTTP/1.1" 200 1471
+INFO 2025-07-23 19:40:11,911 basehttp 12990 6131625984 "POST /projects/15/tasks/create/58/92/ HTTP/1.1" 200 1376
+INFO 2025-07-23 19:40:25,137 basehttp 12990 6131625984 "POST /projects/15/tasks/create/58/92/ HTTP/1.1" 200 1350
+INFO 2025-07-23 19:40:27,337 basehttp 12990 6131625984 "GET /tasks/167/edit/ HTTP/1.1" 200 989
+INFO 2025-07-23 19:40:30,200 basehttp 12990 6131625984 "POST /tasks/167/edit/ HTTP/1.1" 200 1369
+INFO 2025-07-23 19:40:35,488 basehttp 12990 6131625984 "GET /tasks/166/edit/ HTTP/1.1" 200 1071
+INFO 2025-07-23 19:40:41,737 basehttp 12990 6131625984 "POST /tasks/166/edit/ HTTP/1.1" 200 1412
+INFO 2025-07-23 19:41:14,113 basehttp 12990 6131625984 "POST /projects/15/tasks/create/59/92/ HTTP/1.1" 200 1406
+INFO 2025-07-23 19:41:32,174 basehttp 12990 6131625984 "GET /tasks/166/edit/ HTTP/1.1" 200 1047
+INFO 2025-07-23 19:41:35,051 basehttp 12990 6131625984 "POST /tasks/166/edit/ HTTP/1.1" 200 1430
+INFO 2025-07-23 19:41:54,917 basehttp 12990 6131625984 "POST /projects/15/tasks/create/59/92/ HTTP/1.1" 200 1409
+INFO 2025-07-23 19:42:02,342 basehttp 12990 6131625984 "POST /projects/15/tasks/create/61/92/ HTTP/1.1" 200 1391
+INFO 2025-07-23 19:42:21,878 basehttp 12990 6131625984 "POST /projects/15/tasks/create/57/93/ HTTP/1.1" 200 1334
+INFO 2025-07-23 19:42:42,314 basehttp 12990 6131625984 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1340
+INFO 2025-07-23 19:42:55,824 basehttp 12990 6131625984 "POST /projects/15/tasks/create/61/93/ HTTP/1.1" 200 1321
+INFO 2025-07-23 19:43:00,686 basehttp 12990 6131625984 "POST /projects/15/tasks/create/61/93/ HTTP/1.1" 200 1354
+WARNING 2025-07-23 19:45:16,109 log 12990 6131625984 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 19:45:16,110 basehttp 12990 6131625984 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1608
+INFO 2025-07-23 19:45:17,012 basehttp 12990 6131625984 "GET /projects/15/ HTTP/1.1" 200 10920
+WARNING 2025-07-23 19:45:17,038 log 12990 6131625984 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-23 19:45:17,038 basehttp 12990 6165278720 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:45:17,039 basehttp 12990 6148452352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-23 19:45:17,039 basehttp 12990 6131625984 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1633
+INFO 2025-07-23 19:53:27,719 autoreload 13731 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 19:53:31,591 basehttp 13731 6196981760 "GET /projects/15/ HTTP/1.1" 200 10887
+INFO 2025-07-23 19:53:31,629 basehttp 13731 6213808128 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-23 19:53:31,630 log 13731 6196981760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 19:53:31,631 basehttp 13731 6196981760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1649
+INFO 2025-07-23 19:53:31,631 basehttp 13731 6247460864 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:53:31,637 basehttp 13731 6230634496 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 19:55:44,463 basehttp 13731 6196981760 "GET /projects/15/ HTTP/1.1" 200 10977
+INFO 2025-07-23 19:55:44,478 basehttp 13731 6196981760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-23 19:55:44,493 log 13731 6196981760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 19:55:44,494 basehttp 13731 6196981760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1644
+INFO 2025-07-23 19:56:53,688 basehttp 13731 6196981760 "POST /tasks/165/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-23 19:59:06,535 basehttp 13731 6196981760 "GET /projects/15/ HTTP/1.1" 200 10973
+INFO 2025-07-23 19:59:06,549 basehttp 13731 6213808128 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-07-23 19:59:06,550 basehttp 13731 6196981760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-23 19:59:06,565 log 13731 6196981760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 19:59:06,565 basehttp 13731 6196981760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1642
