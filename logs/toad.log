@@ -8375,3 +8375,33 @@ INFO 2025-07-23 16:12:36,434 basehttp 5972 6169505792 "POST /accounts/login/ HTT
 INFO 2025-07-23 16:12:36,443 basehttp 5972 6169505792 "GET /projects/ HTTP/1.1" 200 3361
 WARNING 2025-07-23 16:12:36,473 log 5972 6169505792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-23 16:12:36,473 basehttp 5972 6169505792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1614
+INFO 2025-07-23 16:15:45,858 autoreload 6147 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 16:15:47,951 basehttp 6147 6192394240 "GET / HTTP/1.1" 200 5081
+INFO 2025-07-23 16:15:47,998 basehttp 6147 6209220608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-07-23 16:15:47,999 log 6147 6192394240 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 16:15:48,000 basehttp 6147 6192394240 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1616
+INFO 2025-07-23 16:18:19,483 autoreload 6387 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 16:18:22,185 basehttp 6387 6132576256 "GET / HTTP/1.1" 200 5384
+INFO 2025-07-23 16:18:22,203 basehttp 6387 6132576256 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 16:21:59,621 autoreload 6610 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 16:22:03,103 basehttp 6610 6167769088 "GET / HTTP/1.1" 200 5515
+INFO 2025-07-23 16:22:03,121 basehttp 6610 6167769088 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 16:27:00,607 autoreload 6870 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 16:27:02,909 basehttp 6870 6198095872 "GET / HTTP/1.1" 200 5649
+INFO 2025-07-23 16:27:02,930 basehttp 6870 6198095872 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 16:27:21,280 basehttp 6870 6198095872 "GET / HTTP/1.1" 200 5633
+INFO 2025-07-23 16:27:21,292 basehttp 6870 6231748608 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 16:27:21,293 basehttp 6870 6214922240 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40436
+INFO 2025-07-23 16:27:21,293 basehttp 6870 6198095872 "GET /static/css/output.css HTTP/1.1" 200 68109
+INFO 2025-07-23 16:32:42,581 autoreload 7176 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 16:32:47,581 basehttp 7176 6165819392 "GET / HTTP/1.1" 200 5664
+INFO 2025-07-23 16:32:47,602 basehttp 7176 6182645760 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 16:32:47,603 basehttp 7176 6165819392 "GET /static/css/output.css HTTP/1.1" 200 68167
+INFO 2025-07-23 16:37:15,987 basehttp 7176 6165819392 "GET / HTTP/1.1" 200 5730
+INFO 2025-07-23 16:37:16,005 basehttp 7176 6182645760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 16:37:16,006 basehttp 7176 6165819392 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-23 16:37:26,019 log 7176 6165819392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 16:37:26,020 basehttp 7176 6165819392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1652
+INFO 2025-07-23 16:37:27,925 basehttp 7176 6165819392 "GET / HTTP/1.1" 200 5728
+WARNING 2025-07-23 16:37:27,956 log 7176 6165819392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 16:37:27,957 basehttp 7176 6165819392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1654

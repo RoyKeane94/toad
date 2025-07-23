@@ -62,10 +62,55 @@
                 </a>
             </div>
         </div>
-
-        
     </div>
 </div>
+
+<!-- Interactive Use Case Section -->
+<section id="use-case-section" class="py-16 sm:py-24 mt-24 mb-24 opacity-0 translate-y-8 transition-all duration-700" style="background: var(--primary-action-bg);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h2 class="text-3xl sm:text-4xl font-bold" style="color: #fff;">One simple grid for every part of your life.</h2>
+            <div class="mt-6 mb-10 max-w-3xl mx-auto">
+                <p class="text-lg" style="color: var(--container-bg);">
+                    From planning your degree to launching your business, Toad is the simple organizer that helps you get it done. Start with a template and make it your own.
+                </p>
+            </div>
+        </div>
+        <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
+            <!-- Left Column: Text Triggers -->
+            <div class="lg:col-span-1 space-y-6">
+                <div id="persona-students" class="persona-trigger active cursor-pointer p-4 rounded-lg border persona-box" style="border-color: var(--border-color); background: var(--container-bg); transition: box-shadow 0.2s, border-left-width 0.2s, border-left-color 0.2s; border-left-width: 6px; border-left-color: transparent;">
+                    <h3 class="text-lg font-semibold persona-title" style="color: var(--text-primary); transition: color 0.2s;">For Students</h3>
+                    <ul class="text-sm mt-2 space-y-2" style="color: var(--text-secondary); list-style: none; padding: 0;">
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Track job applications and internships</li>
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Plan revision and manage deadlines</li>
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Organise group projects and coursework</li>
+                    </ul>
+                </div>
+                <div id="persona-professionals" class="persona-trigger cursor-pointer p-4 rounded-lg border persona-box" style="border-color: var(--border-color); background: var(--container-bg); transition: box-shadow 0.2s, border-left-width 0.2s, border-left-color 0.2s; border-left-width: 6px; border-left-color: transparent;">
+                    <h3 class="text-lg font-semibold persona-title" style="color: var(--text-primary); transition: color 0.2s;">For Professionals</h3>
+                    <ul class="text-sm mt-2 space-y-2" style="color: var(--text-secondary); list-style: none; padding: 0;">
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Manage client projects and deliverables</li>
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Track personal goals and habits</li>
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Plan your week without corporate clutter</li>
+                    </ul>
+                </div>
+                <div id="persona-entrepreneurs" class="persona-trigger cursor-pointer p-4 rounded-lg border persona-box" style="border-color: var(--border-color); background: var(--container-bg); transition: box-shadow 0.2s, border-left-width 0.2s, border-left-color 0.2s; border-left-width: 6px; border-left-color: transparent;">
+                    <h3 class="text-lg font-semibold persona-title" style="color: var(--text-primary); transition: color 0.2s;">For Entrepreneurs</h3>
+                    <ul class="text-sm mt-2 space-y-2" style="color: var(--text-secondary); list-style: none; padding: 0;">
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Validate your business idea</li>
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Create a launch plan and roadmap</li>
+                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Manage marketing and growth tasks</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- Right Column: Image Showcase -->
+            <div id="showcase-image-container" class="lg:col-span-2 mt-10 lg:mt-0 flex justify-center">
+                <img id="showcase-image" src="https://storage.googleapis.com/gemini-prod-us-west1-assets/image_b9f7c3.png" alt="A screenshot of a Toad grid for students" class="rounded-xl shadow-2xl ring-1 ring-black/5 max-w-full h-auto" style="box-shadow: 0 8px 32px 0 rgba(16,185,129,0.15); border: 2px solid var(--primary-action-bg);">
+            </div>
+        </div>
+    </div>
+</section>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -126,6 +171,79 @@
             }, isMobile ? 2800 : 1200);
         }
     });
+</script>
+
+<script>
+// Interactive Use Case Section JS
+(function() {
+    const personas = [
+        {
+            id: 'persona-students',
+            img: 'https://storage.googleapis.com/gemini-prod-us-west1-assets/image_b9f7c3.png',
+            alt: 'A screenshot of a Toad grid for students',
+        },
+        {
+            id: 'persona-professionals',
+            img: 'https://storage.googleapis.com/gemini-prod-us-west1-assets/image_2b1e7c.png',
+            alt: 'A screenshot of a Toad grid for professionals',
+        },
+        {
+            id: 'persona-entrepreneurs',
+            img: 'https://storage.googleapis.com/gemini-prod-us-west1-assets/image_7c2e1a.png',
+            alt: 'A screenshot of a Toad grid for entrepreneurs',
+        },
+    ];
+    const triggers = document.querySelectorAll('.persona-trigger');
+    const showcaseImg = document.getElementById('showcase-image');
+    // Always pre-select Students persona on load
+    function setActivePersona(personaId) {
+        triggers.forEach(t => {
+            t.classList.remove('active');
+            t.style.borderLeftColor = 'transparent';
+            t.style.borderLeftWidth = '6px';
+            const title = t.querySelector('.persona-title');
+            if (title) title.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
+        });
+        const active = document.getElementById(personaId);
+        if (active) {
+            active.classList.add('active');
+            active.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--tertiary-action-bg');
+            active.style.borderLeftWidth = '8px';
+            const title = active.querySelector('.persona-title');
+            if (title) title.style.color = getComputedStyle(document.documentElement).getPropertyValue('--tertiary-action-bg');
+            active.style.boxShadow = '0 4px 16px 0 rgba(16,185,129,0.10)';
+            const persona = personas.find(p => p.id === personaId);
+            if (persona && showcaseImg) {
+                showcaseImg.src = persona.img;
+                showcaseImg.alt = persona.alt;
+            }
+        }
+    }
+    setActivePersona('persona-students');
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            setActivePersona(this.id);
+        });
+        trigger.addEventListener('blur', function() {
+            this.style.boxShadow = '';
+        });
+    });
+
+    // Intersection Observer for fade-in
+    const useCaseSection = document.getElementById('use-case-section');
+    if (useCaseSection) {
+        const observer = new window.IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    useCaseSection.classList.remove('opacity-0', 'translate-y-8');
+                    useCaseSection.classList.add('opacity-100', 'translate-y-0');
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.2 });
+        observer.observe(useCaseSection);
+    }
+})();
 </script>
 
 {% endblock %} 
