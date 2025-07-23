@@ -1,4 +1,5 @@
 {% extends "pages/layout.html" %}
+{% load static %}
 
 {% block title %}Toad - For when your brain has too many tabs open{% endblock %}
 
@@ -179,7 +180,10 @@
     const personas = [
         {
             id: 'persona-students',
-            img: 'https://storage.googleapis.com/gemini-prod-us-west1-assets/image_b9f7c3.png',
+            img: {
+                desktop: '{% static "img/Desktop - Student Grid.png" %}',
+                mobile: '{% static "img/Mobile - Student Grid.png" %}'
+            },
             alt: 'A screenshot of a Toad grid for students',
         },
         {
@@ -214,7 +218,11 @@
             active.style.boxShadow = '0 4px 16px 0 rgba(16,185,129,0.10)';
             const persona = personas.find(p => p.id === personaId);
             if (persona && showcaseImg) {
-                showcaseImg.src = persona.img;
+                if (persona.id === 'persona-students') {
+                    showcaseImg.src = window.innerWidth < 768 ? persona.img.mobile : persona.img.desktop;
+                } else {
+                    showcaseImg.src = persona.img;
+                }
                 showcaseImg.alt = persona.alt;
             }
         }
