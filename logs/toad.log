@@ -8197,3 +8197,21 @@ WARNING 2025-07-23 15:48:42,809 basehttp 4893 6197440512 "GET /.well-known/appsp
 WARNING 2025-07-23 15:48:44,559 log 4893 6197440512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-23 15:48:44,560 basehttp 4893 6197440512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1616
 INFO 2025-07-23 15:48:59,766 autoreload 4939 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 15:50:59,929 autoreload 5071 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 15:51:01,663 basehttp 5071 6156447744 "GET /projects/7/edit/ HTTP/1.1" 200 3206
+INFO 2025-07-23 15:51:57,013 basehttp 5071 6156447744 "GET /projects/ HTTP/1.1" 200 3439
+INFO 2025-07-23 15:52:14,348 basehttp 5071 6156447744 "GET /projects/7/edit/ HTTP/1.1" 200 3174
+INFO 2025-07-23 15:54:00,116 basehttp 5071 6156447744 "GET /projects/7/edit/ HTTP/1.1" 200 3231
+INFO 2025-07-23 15:54:23,537 autoreload 5300 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 15:54:25,480 basehttp 5300 6165622784 "GET /projects/7/edit/ HTTP/1.1" 200 3239
+INFO 2025-07-23 15:54:36,259 basehttp 5300 6165622784 "GET /projects/7/edit/ HTTP/1.1" 200 3225
+INFO 2025-07-23 15:54:36,278 basehttp 5300 6199275520 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-23 15:54:36,279 basehttp 5300 6182449152 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40436
+INFO 2025-07-23 15:54:36,280 basehttp 5300 6165622784 "GET /static/css/output.css HTTP/1.1" 200 66384
+INFO 2025-07-23 15:55:10,160 basehttp 5300 6165622784 "GET /projects/7/edit/ HTTP/1.1" 200 3160
+INFO 2025-07-23 15:55:10,171 basehttp 5300 6165622784 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 15:55:11,828 basehttp 5300 6165622784 "GET /projects/ HTTP/1.1" 200 3435
+INFO 2025-07-23 15:55:14,233 basehttp 5300 6165622784 "GET /projects/7/edit/ HTTP/1.1" 200 3201
+INFO 2025-07-23 15:55:15,262 basehttp 5300 6165622784 "GET /projects/7/ HTTP/1.1" 200 11800
+INFO 2025-07-23 15:55:15,272 basehttp 5300 6165622784 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-23 15:55:19,056 basehttp 5300 6165622784 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
