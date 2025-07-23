@@ -406,12 +406,11 @@ def row_edit_view(request, project_pk, row_pk):
         if form.is_valid():
             form.save()
             if request.headers.get('HX-Request'):
-                if is_mobile_device(request):
-                    return create_json_response(
-                        True,
-                        f'Row "{row.name}" updated successfully!',
-                        row_name=row.name
-                    )
+                return create_json_response(
+                    True,
+                    f'Row "{row.name}" updated successfully!',
+                    row_name=row.name
+                )
             messages.success(request, f'Row "{row.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:
@@ -546,13 +545,11 @@ def column_edit_view(request, project_pk, col_pk):
         if form.is_valid():
             form.save()
             if request.headers.get('HX-Request'):
-                if is_mobile_device(request):
-                    return create_json_response(
-                        True,
-                        f'Column "{column.name}" updated successfully!',
-                        col_name=column.name
-                    )
-                # Desktop HTMX: keep current behavior (could be extended if needed)
+                return create_json_response(
+                    True,
+                    f'Column "{column.name}" updated successfully!',
+                    col_name=column.name
+                )
             messages.success(request, f'Column "{column.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:

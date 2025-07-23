@@ -780,27 +780,15 @@ class MobileGridManager {
                         console.log('Mobile Grid: Edit row form detected');
                         console.log('Mobile Grid: Row updated successfully:', response.row_name);
                         
-                        // Update the row name in the UI
-                        // Find the row that was edited by looking for the form that was submitted
+                        // Update all row headers with the matching data-row-id
                         const formAction = e.target.action;
                         const rowIdMatch = formAction.match(/\/rows\/(\d+)\/edit\//);
                         if (rowIdMatch) {
                             const rowId = rowIdMatch[1];
-                            console.log('Mobile Grid: Looking for row with ID:', rowId);
-                            // Find the row container and update its name
-                            const rowContainers = document.querySelectorAll('.bg-[var(--container-bg)]');
-                            rowContainers.forEach(container => {
-                                const rowNameElement = container.querySelector('h3');
-                                if (rowNameElement) {
-                                    // Check if this row contains the edited row ID in its task containers
-                                    const taskContainers = container.querySelectorAll('[id^="tasks-"]');
-                                    taskContainers.forEach(taskContainer => {
-                                        if (taskContainer.id.includes(`-${rowId}-`)) {
-                                            rowNameElement.textContent = response.row_name;
-                                            console.log('Mobile Grid: Updated row name in UI:', response.row_name);
-                                        }
-                                    });
-                                }
+                            const rowHeaders = document.querySelectorAll(`h3[data-row-id='${rowId}']`);
+                            rowHeaders.forEach(header => {
+                                header.textContent = response.row_name;
+                                console.log('Mobile Grid: Updated row name in UI:', response.row_name);
                             });
                         }
                         // Hide the modal (do not reload the page)
