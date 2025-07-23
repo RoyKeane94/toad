@@ -42,5 +42,5 @@ RUN python3 manage.py collectstatic --no-input --clear --ignore input.css --igno
 # 12. Expose the port. Railway will set the $PORT environment variable.
 EXPOSE $PORT
 
-# 13. The command to run the application, binding to the dynamic port.
-CMD ["sh", "-c", "gunicorn toad.wsgi --bind 0.0.0.0:$PORT --log-file -"]
+# 13. The command to run the application, binding to the dynamic port, and run migrations first.
+CMD ["sh", "-c", "python manage.py migrate --noinput && gunicorn toad.wsgi --bind 0.0.0.0:$PORT --log-file -"]
