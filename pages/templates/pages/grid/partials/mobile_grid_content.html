@@ -25,7 +25,9 @@
             <div class="mobile-column {% if forloop.first %}active relative{% else %}absolute{% endif %} inset-0 w-full overflow-y-auto transition-transform duration-300 ease-in-out"
                  data-column-id="{{ column.pk }}"
                  data-column-name="{{ column.name }}"
-                 data-column-index="{{ forloop.counter0 }}">
+                 data-column-index="{{ forloop.counter0 }}"
+                 data-edit-url="{% url 'pages:column_edit' project_pk=project.pk col_pk=column.pk %}"
+                 data-delete-url="{% url 'pages:column_delete' project_pk=project.pk col_pk=column.pk %}">
                 <div class="p-2 sm:p-4 space-y-3 sm:space-y-4">
                     {% for row in rows %}
                     <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)]">

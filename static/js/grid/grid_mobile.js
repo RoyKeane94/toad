@@ -244,8 +244,25 @@ class MobileGridManager {
                 col.style.height = '100%';
             }
         });
-        
+
+        // Update the column header UI first
         this.updateUI();
+
+        // Dynamically update Edit/Delete Column actions for the current column (do not touch column header)
+        const editColBtn = document.getElementById('edit-column-btn');
+        const deleteColBtn = document.getElementById('delete-column-btn');
+        if (editColBtn && deleteColBtn && this.elements.columns[this.state.currentCol]) {
+            const colPk = this.elements.columns[this.state.currentCol].getAttribute('data-column-id');
+            const projectPk = editColBtn.getAttribute('data-project-pk');
+            if (colPk && projectPk) {
+                editColBtn.setAttribute('data-col-pk', colPk);
+                deleteColBtn.setAttribute('data-col-pk', colPk);
+                // Update hx-get URLs using Django's expected pattern
+                editColBtn.setAttribute('hx-get', `/pages/columns/${colPk}/edit/?project_pk=${projectPk}`);
+                deleteColBtn.setAttribute('hx-get', `/pages/columns/${colPk}/delete/?project_pk=${projectPk}`);
+            }
+        }
+
         this.setContainerHeightToActiveColumn();
     }
 
@@ -711,7 +728,7 @@ class MobileGridManager {
             console.log('Mobile Grid: Form action:', e.target.action);
             console.log('Mobile Grid: Form method:', e.target.method);
             
-            // Check if this is an edit form (task or row)
+            // Check if this is an edit form (task or row or column)
             if (e.target.action && e.target.action.includes('/edit/')) {
                 try {
                     const response = JSON.parse(e.detail.xhr.responseText);
@@ -790,7 +807,24 @@ class MobileGridManager {
                         this.hideModal();
                         // Do not reload or refresh the column
                         return;
-                    } else {
+                    }
+                    // Check if this is a column edit
+                    else if (response.success && response.col_name) {
+                        console.log('Mobile Grid: Edit column form detected');
+                        // Update the column header UI
+                        if (this.elements.columnHeader) {
+                            this.elements.columnHeader.textContent = response.col_name;
+                            this.elements.columnHeader.dataset.columnName = response.col_name;
+                        }
+                        // Update the current column's data attribute
+                        const colEl = this.elements.columns[this.state.currentCol];
+                        if (colEl) {
+                            colEl.setAttribute('data-column-name', response.col_name);
+                        }
+                        this.hideModal();
+                        return;
+                    }
+                    else {
                         console.log('Mobile Grid: Edit response does not contain expected update data (form)');
                     }
                 } catch (e) {
@@ -829,12 +863,20 @@ class MobileGridManager {
         this.restoreScrollPosition();
         
         // Reinitialize components that might have been replaced
-        this.reinitializeComponents();
+        // Only reinitialize if the grid content itself was swapped, not the modal or anything else
+        if (e.target && e.target.id === 'grid-content') {
+            console.log('HTMX swap target is grid-content, reinitializing grid.');
+            this.reinitializeComponents();
+        } else {
+            console.log('HTMX swap target is NOT grid-content, skipping grid reinit. Target id:', e.target && e.target.id);
+        }
         // Set container height after content changes
         this.setContainerHeightToActiveColumn();
     }
 
     handleHtmxAfterSwap(e) {
+        console.log('HTMX afterSwap event:', e);
+        console.log('HTMX afterSwap target:', e.target, 'id:', e.target && e.target.id);
         console.log('Mobile Grid: HTMX afterSwap event:', e.detail);
         
         // Hide loading indicator when content is swapped
@@ -1061,12 +1103,39 @@ class MobileGridManager {
         this.setupMobileGrid();
         this.restoreScrollPosition();
 
+        // Update Edit/Delete Column actions when Actions menu is opened
+        const actionsMenuBtn = document.getElementById('actions-menu-btn');
+        if (actionsMenuBtn) {
+            actionsMenuBtn.addEventListener('click', () => {
+                const editColBtn = document.getElementById('edit-column-btn');
+                const deleteColBtn = document.getElementById('delete-column-btn');
+                const colEl = this.elements.columns[this.state.currentCol];
+                if (editColBtn && deleteColBtn && colEl) {
+                    const colPk = colEl.getAttribute('data-column-id');
+                    const projectPk = editColBtn.getAttribute('data-project-pk');
+                    const editUrl = colEl.getAttribute('data-edit-url');
+                    const deleteUrl = colEl.getAttribute('data-delete-url');
+                    if (colPk && projectPk && editUrl && deleteUrl) {
+                        editColBtn.setAttribute('data-col-pk', colPk);
+                        deleteColBtn.setAttribute('data-col-pk', colPk);
+                        editColBtn.setAttribute('hx-get', editUrl);
+                        deleteColBtn.setAttribute('hx-get', deleteUrl);
+                        editColBtn.disabled = false;
+                        deleteColBtn.disabled = false;
+                        if (typeof htmx !== 'undefined') {
+                            htmx.process(editColBtn);
+                            htmx.process(deleteColBtn);
+                        }
+                    }
+                }
+            });
+        }
+
         if (typeof htmx !== 'undefined') {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
             console.log('Mobile Grid Manager: HTMX configuration applied');
         }
-        
         // Test if HTMX events are being captured
         console.log('Mobile Grid Manager: Event listeners added, testing HTMX event capture');
     }
