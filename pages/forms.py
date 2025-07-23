@@ -35,7 +35,7 @@ class QuickTaskForm(forms.ModelForm):
         fields = ['text']
         widgets = {
             'text': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 text-sm placeholder-[var(--text-secondary)] text-[var(--text-primary)] transition-colors duration-200',
+                'class': 'w-full px-3 py-2 text-sm placeholder-[var(--text-secondary)] text-[var(--text-primary)] transition-colors duration-200 mobile-task-input',
                 'placeholder': 'Add task',
                 'required': True,
                 'name': 'text',
