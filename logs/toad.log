@@ -8405,3 +8405,21 @@ WARNING 2025-07-23 16:37:26,020 basehttp 7176 6165819392 "GET /.well-known/appsp
 INFO 2025-07-23 16:37:27,925 basehttp 7176 6165819392 "GET / HTTP/1.1" 200 5728
 WARNING 2025-07-23 16:37:27,956 log 7176 6165819392 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-23 16:37:27,957 basehttp 7176 6165819392 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1654
+INFO 2025-07-23 18:21:17,926 autoreload 7549 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 18:21:19,807 basehttp 7549 6125383680 "GET /projects/ HTTP/1.1" 200 3439
+INFO 2025-07-23 18:21:19,825 basehttp 7549 6142210048 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-23 18:21:19,825 basehttp 7549 6125383680 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-23 18:21:21,045 basehttp 7549 6125383680 "GET /projects/7/ HTTP/1.1" 200 11802
+INFO 2025-07-23 18:21:21,063 basehttp 7549 6125383680 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-23 18:26:16,930 autoreload 7811 8396349184 Watching for file changes with StatReloader
+WARNING 2025-07-23 18:26:21,735 log 7811 6158741504 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 18:26:21,735 basehttp 7811 6158741504 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1572
+INFO 2025-07-23 18:26:22,632 basehttp 7811 6158741504 "GET /projects/7/ HTTP/1.1" 200 11183
+WARNING 2025-07-23 18:26:22,661 log 7811 6175567872 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 18:26:22,662 basehttp 7811 6175567872 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1653
+INFO 2025-07-23 18:26:22,663 basehttp 7811 6158741504 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51901
+INFO 2025-07-23 18:26:25,538 basehttp 7811 6158741504 "GET /projects/7/rows/29/edit/ HTTP/1.1" 200 1056
+INFO 2025-07-23 18:26:28,381 basehttp 7811 6158741504 "POST /projects/7/rows/29/edit/ HTTP/1.1" 200 106
+INFO 2025-07-23 18:26:28,426 basehttp 7811 6158741504 "GET /projects/7/ HTTP/1.1" 200 11100
+WARNING 2025-07-23 18:26:28,444 log 7811 6158741504 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 18:26:28,445 basehttp 7811 6158741504 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1568

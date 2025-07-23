@@ -770,7 +770,6 @@ class MobileGridManager {
                         if (rowIdMatch) {
                             const rowId = rowIdMatch[1];
                             console.log('Mobile Grid: Looking for row with ID:', rowId);
-                            
                             // Find the row container and update its name
                             const rowContainers = document.querySelectorAll('.bg-[var(--container-bg)]');
                             rowContainers.forEach(container => {
@@ -787,9 +786,10 @@ class MobileGridManager {
                                 }
                             });
                         }
-                        
-                        // Hide the modal
+                        // Hide the modal (do not reload the page)
                         this.hideModal();
+                        // Do not reload or refresh the column
+                        return;
                     } else {
                         console.log('Mobile Grid: Edit response does not contain expected update data (form)');
                     }
