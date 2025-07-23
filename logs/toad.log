@@ -8184,3 +8184,16 @@ WARNING 2025-07-23 15:45:15,560 basehttp 4789 6166867968 "GET /.well-known/appsp
 INFO 2025-07-23 15:45:17,202 basehttp 4789 6166867968 "GET / HTTP/1.1" 200 4081
 WARNING 2025-07-23 15:45:17,226 log 4789 6166867968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-23 15:45:17,227 basehttp 4789 6166867968 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1655
+INFO 2025-07-23 15:47:47,543 autoreload 4893 8396349184 Watching for file changes with StatReloader
+INFO 2025-07-23 15:48:12,647 basehttp 4893 6197440512 "GET /projects/ HTTP/1.1" 200 3420
+WARNING 2025-07-23 15:48:12,670 log 4893 6197440512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 15:48:12,671 basehttp 4893 6197440512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1607
+WARNING 2025-07-23 15:48:18,918 log 4893 6197440512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 15:48:18,918 basehttp 4893 6197440512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1610
+WARNING 2025-07-23 15:48:23,541 log 4893 6197440512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 15:48:23,542 basehttp 4893 6197440512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1624
+WARNING 2025-07-23 15:48:42,808 log 4893 6197440512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 15:48:42,809 basehttp 4893 6197440512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1600
+WARNING 2025-07-23 15:48:44,559 log 4893 6197440512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-23 15:48:44,560 basehttp 4893 6197440512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1616
+INFO 2025-07-23 15:48:59,766 autoreload 4939 8396349184 Watching for file changes with StatReloader
