@@ -246,6 +246,7 @@ class MobileGridManager {
         });
         
         this.updateUI();
+        this.setContainerHeightToActiveColumn();
     }
 
     updateUI() {
@@ -829,6 +830,8 @@ class MobileGridManager {
         
         // Reinitialize components that might have been replaced
         this.reinitializeComponents();
+        // Set container height after content changes
+        this.setContainerHeightToActiveColumn();
     }
 
     handleHtmxAfterSwap(e) {
@@ -931,6 +934,8 @@ class MobileGridManager {
         
         // Restore scroll position
         this.restoreScrollPosition();
+        // Set container height after content changes
+        this.setContainerHeightToActiveColumn();
     }
     
     handleHtmxError(e) {
@@ -1003,6 +1008,25 @@ class MobileGridManager {
             if (columns.length > 0) {
                 this.state.totalColumns = columns.length;
                 this.scrollToCol(this.state.totalColumns - 1, 'auto');
+            }
+        }
+    }
+
+    setContainerHeightToActiveColumn() {
+        // Find the active column
+        const activeCol = Array.from(this.elements.columns).find(col => col.classList.contains('active'));
+        if (activeCol) {
+            // Get the height of the active column's content
+            const contentHeight = activeCol.scrollHeight;
+            const marginOfError = 75; // Add extra space to avoid cut-off
+            const totalHeight = contentHeight + marginOfError;
+            // Set the container's height to match
+            if (this.elements.gridContainer) {
+                this.elements.gridContainer.style.height = totalHeight + 'px';
+            }
+            // Optionally, also set the slider's height
+            if (this.elements.gridSlider) {
+                this.elements.gridSlider.style.height = totalHeight + 'px';
             }
         }
     }

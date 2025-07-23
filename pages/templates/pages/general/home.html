@@ -73,90 +73,57 @@
         const logoContainer = document.getElementById('logo-container');
         const headlineContainer = document.getElementById('headline-container');
         const typewriterText = document.getElementById('typewriter-text');
+        const waitlistForm = document.getElementById('waitlist-form');
         
         if (logoContainer && headlineContainer && typewriterText) {
-            console.log('Home page animations found, starting...');
-            
             // Reset initial states
             logoContainer.style.opacity = '0';
             headlineContainer.style.opacity = '0';
+            typewriterText.style.opacity = '0';
+            if (waitlistForm) waitlistForm.style.opacity = '0';
             
             // Check if we're on mobile (small screen)
             const isMobile = window.innerWidth < 768;
             
-            if (isMobile) {
-                // Mobile: Sequential animation
-                // Logo animation
-                setTimeout(() => {
-                    logoContainer.style.opacity = '1';
-                    logoContainer.style.transform = 'scale(1) translateY(0)';
-                    logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-                }, 100);
+            // Logo animation
+            setTimeout(() => {
+                logoContainer.style.opacity = '1';
+                logoContainer.style.transform = 'scale(1) translateY(0)';
+                logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+            }, 100);
 
-                // Headline animation after logo completes
-                setTimeout(() => {
-                    headlineContainer.style.opacity = '1';
-                    headlineContainer.style.transform = 'scale(1) translateY(0)';
-                    headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-                }, 1500);
+            // Headline animation
+            setTimeout(() => {
+                headlineContainer.style.opacity = '1';
+                headlineContainer.style.transform = 'scale(1) translateY(0)';
+                headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
+            }, isMobile ? 1500 : 700);
 
-                // Typewriter text after headline completes
-                setTimeout(() => {
-                    typewriterText.style.opacity = '1';
-                    typewriterText.style.transition = 'opacity 1.2s ease-out';
-                }, 2800);
-
-                // Button after typewriter text
-                setTimeout(() => {
-                    const waitlistForm = document.getElementById('waitlist-form');
-                    if (waitlistForm) {
-                        waitlistForm.style.opacity = '1';
-                        waitlistForm.style.transition = 'opacity 0.8s ease-out';
-                    }
-                }, 4000);
-            } else {
-                // Desktop: Original animation
-                // Logo animation
-                setTimeout(() => {
-                    logoContainer.style.opacity = '1';
-                    logoContainer.style.transform = 'scale(1) translateY(0)';
-                    logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-                }, 100);
-
-                // Headline animation
-                setTimeout(() => {
-                    headlineContainer.style.opacity = '1';
-                    headlineContainer.style.transform = 'scale(1) translateY(0)';
-                    headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-                }, 700);
-
-                // Typewriter effect
-                const text = typewriterText.textContent;
-                typewriterText.textContent = '';
-                typewriterText.style.width = '0';
-                typewriterText.style.overflow = 'hidden';
-                typewriterText.style.whiteSpace = 'nowrap';
-                
-                setTimeout(() => {
-                    let i = 0;
-                    const typeInterval = setInterval(() => {
-                        if (i < text.length) {
-                            typewriterText.textContent += text.charAt(i);
-                            i++;
-                        } else {
-                            clearInterval(typeInterval);
-                            // Show waitlist form after typewriter completes
-                            const waitlistForm = document.getElementById('waitlist-form');
-                            if (waitlistForm) {
-                                setTimeout(() => {
-                                    waitlistForm.style.opacity = '1';
-                                    waitlistForm.style.transition = 'opacity 0.8s ease-out';
-                                }, 600);
-                            }
+            // Typewriter effect (both desktop and mobile)
+            const text = typewriterText.textContent;
+            typewriterText.textContent = '';
+            typewriterText.style.width = '0';
+            typewriterText.style.overflow = 'hidden';
+            typewriterText.style.whiteSpace = isMobile ? 'normal' : 'nowrap';
+            setTimeout(() => {
+                typewriterText.style.opacity = '1';
+                let i = 0;
+                const typeInterval = setInterval(() => {
+                    if (i < text.length) {
+                        typewriterText.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeInterval);
+                        // Show waitlist form after typewriter completes
+                        if (waitlistForm) {
+                            setTimeout(() => {
+                                waitlistForm.style.opacity = '1';
+                                waitlistForm.style.transition = 'opacity 0.8s ease-out';
+                            }, isMobile ? 600 : 600);
                         }
-                    }, 30);
-                }, 1200);
-            }
+                    }
+                }, isMobile ? 30 : 30);
+            }, isMobile ? 2800 : 1200);
         }
     });
 </script>
