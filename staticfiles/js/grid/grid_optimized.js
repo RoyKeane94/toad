@@ -1281,10 +1281,10 @@ class GridManager {
             this.calculateAndApplyWidths();
             this.syncRowHeights();
             
-            // Add grid-ready class to fade in the grid content
-            if (this.elements.gridContent) {
-                this.elements.gridContent.classList.add('grid-ready');
-            }
+                    // Add grid-ready class to fade in the grid content
+        if (this.elements.gridContent) {
+            this.elements.gridContent.classList.add('grid-ready');
+        }
         }, 500);
     }
 
