@@ -9220,3 +9220,24 @@ WARNING 2025-07-27 16:34:31,888 basehttp 4150 6202650624 "GET /.well-known/appsp
 INFO 2025-07-27 16:34:52,596 basehttp 4150 6202650624 "GET / HTTP/1.1" 200 6203
 WARNING 2025-07-27 16:34:52,618 log 4150 6202650624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-27 16:34:52,618 basehttp 4150 6202650624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1569
+INFO 2025-07-27 16:36:53,633 autoreload 4494 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-27 16:36:55,380 basehttp 4494 6169849856 "GET / HTTP/1.1" 200 6177
+WARNING 2025-07-27 16:36:55,399 log 4494 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:36:55,400 basehttp 4494 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1603
+INFO 2025-07-27 16:37:38,657 basehttp 4494 6169849856 "GET / HTTP/1.1" 200 6183
+WARNING 2025-07-27 16:37:38,681 log 4494 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:37:38,681 basehttp 4494 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1587
+INFO 2025-07-27 16:38:14,022 basehttp 4494 6169849856 "GET / HTTP/1.1" 200 6188
+WARNING 2025-07-27 16:38:14,059 log 4494 6169849856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:38:14,060 basehttp 4494 6169849856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1565
+INFO 2025-07-27 16:38:48,762 autoreload 4950 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-27 16:38:50,368 basehttp 4950 6122532864 "GET / HTTP/1.1" 200 6239
+WARNING 2025-07-27 16:38:50,391 log 4950 6122532864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:38:50,391 basehttp 4950 6122532864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1584
+INFO 2025-07-27 16:39:12,687 basehttp 4950 6122532864 "GET / HTTP/1.1" 200 6172
+WARNING 2025-07-27 16:39:12,705 log 4950 6173011968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:39:12,711 basehttp 4950 6173011968 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1637
+INFO 2025-07-27 16:39:12,714 basehttp 4950 6156185600 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-27 16:39:12,715 basehttp 4950 6139359232 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40436
+INFO 2025-07-27 16:39:12,716 basehttp 4950 6122532864 "GET /static/css/output.css HTTP/1.1" 200 68481
+INFO 2025-07-27 16:39:12,787 basehttp 4950 6122532864 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
