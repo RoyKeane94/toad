@@ -9145,3 +9145,25 @@ INFO 2025-07-23 20:39:02,759 basehttp 14946 6159167488 "GET / HTTP/1.1" 200 6203
 INFO 2025-07-23 20:39:02,776 basehttp 14946 6159167488 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
 INFO 2025-07-23 20:40:00,611 basehttp 14946 6159167488 "GET / HTTP/1.1" 200 6171
 INFO 2025-07-23 20:40:00,627 basehttp 14946 6159167488 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-27 16:12:56,805 autoreload 2721 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-27 16:12:58,651 basehttp 2721 6188806144 "GET / HTTP/1.1" 200 6140
+INFO 2025-07-27 16:12:58,667 basehttp 2721 6205632512 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-27 16:12:58,668 basehttp 2721 6222458880 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-27 16:12:58,672 basehttp 2721 6188806144 "GET /static/css/output.css HTTP/1.1" 200 68530
+INFO 2025-07-27 16:12:58,691 basehttp 2721 6188806144 "GET /static/img/Desktop%20-%20Student%20Grid.png HTTP/1.1" 304 0
+INFO 2025-07-27 16:13:01,319 basehttp 2721 6188806144 "GET /projects/ HTTP/1.1" 200 3514
+WARNING 2025-07-27 16:13:04,673 log 2721 6188806144 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:13:04,674 basehttp 2721 6188806144 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1568
+INFO 2025-07-27 16:13:06,806 basehttp 2721 6188806144 "GET /projects/17/ HTTP/1.1" 200 9106
+WARNING 2025-07-27 16:13:06,834 log 2721 6188806144 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-27 16:13:06,835 basehttp 2721 6222458880 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-07-27 16:13:06,835 basehttp 2721 6188806144 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1594
+INFO 2025-07-27 16:14:16,290 basehttp 2721 6188806144 "GET /projects/17/ HTTP/1.1" 200 9141
+WARNING 2025-07-27 16:14:16,314 log 2721 6188806144 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:14:16,315 basehttp 2721 6188806144 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1584
+INFO 2025-07-27 16:14:45,810 basehttp 2721 6188806144 "GET /projects/17/ HTTP/1.1" 200 9111
+WARNING 2025-07-27 16:14:45,834 log 2721 6188806144 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:14:45,835 basehttp 2721 6188806144 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1619
+INFO 2025-07-27 16:15:10,298 basehttp 2721 6188806144 "GET /projects/17/ HTTP/1.1" 200 9090
+WARNING 2025-07-27 16:15:10,325 log 2721 6188806144 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-27 16:15:10,326 basehttp 2721 6188806144 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1592
