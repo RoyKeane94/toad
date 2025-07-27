@@ -17,6 +17,11 @@
         opacity: 0;
         transition: opacity 0.15s ease-in-out;
     }
+    
+    /* Make all buttons show hand cursor on hover */
+    button {
+        cursor: pointer;
+    }
 </style>
 {% endblock %}
 
@@ -33,7 +38,7 @@
         <div class="flex flex-wrap justify-center gap-4">
             <button class="faq-category-btn active" data-category="all">All Questions</button>
             <button class="faq-category-btn" data-category="general">General</button>
-            <button class="faq-category-btn" data-category="grids">Grids & Tasks</button>
+            
             <button class="faq-category-btn" data-category="account">Account</button>
             <button class="faq-category-btn" data-category="technical">Technical</button>
         </div>
@@ -45,85 +50,33 @@
         <div class="faq-item" data-category="general">
             <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
                 <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">What is Toad?</h3>
+                    <h3 class="text-lg font-semibold text-[var(--primary-action-bg)] pr-4">What is Toad?</h3>
                     <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
                 </button>
                 <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Toad is a task management application that helps you organize your work using customizable grids. You can create projects with rows and columns to categorize your tasks by time, priority, or any other system that works for you.</p>
+                    <p class="text-[var(--subtitle-text)] leading-relaxed mt-4">Toad is a tool designed to help you find focus. It's for when your brain has too many tabs open and you need a simple way to see everything in one place. It uses a flexible grid that you can tailor to any project, from planning your revision to launching a business.</p>
                 </div>
             </div>
         </div>
 
-        <div class="faq-item" data-category="general">
-            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
-                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Is Toad free to use?</h3>
-                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Yes, Toad is currently free to use. You can create unlimited grids and tasks without any cost.</p>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Grids & Tasks Questions -->
-        <div class="faq-item" data-category="grids">
-            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
-                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">How do I create a new grid?</h3>
-                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">To create a new grid, click the "New Grid" button on your dashboard or grids page. Give your grid a name and start adding rows and columns to organize your tasks.</p>
-                </div>
-            </div>
-        </div>
+        
 
-        <div class="faq-item" data-category="grids">
-            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
-                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Can I add or remove columns and rows?</h3>
-                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Yes! You can add new columns and rows using the "Add Column" and "Add Row" buttons in your grid. You can also edit or delete existing columns and rows using the action buttons next to each header.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="faq-item" data-category="grids">
-            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
-                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">How do I mark tasks as complete?</h3>
-                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Simply click the checkbox next to any task to mark it as complete. Completed tasks will be crossed out and the checkbox will be highlighted. You can also use the "Clear Completed" button to remove all completed tasks from your grid.</p>
-                </div>
-            </div>
-        </div>
+        
 
         <!-- Account Questions -->
-        <div class="faq-item" data-category="account">
-            <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
-                <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">How do I create an account?</h3>
-                    <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
-                </button>
-                <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Click the "Sign In" button in the top navigation, then select "Create Account" on the login page. You'll need to provide your name, email, and create a password.</p>
-                </div>
-            </div>
-        </div>
+        
 
         <div class="faq-item" data-category="account">
             <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
                 <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Can I change my password?</h3>
+                    <h3 class="text-lg font-semibold text-[var(--primary-action-bg)] pr-4">Can I change my password?</h3>
                     <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
                 </button>
                 <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Yes, you can change your password by clicking the settings icon in the top navigation and selecting "Account Settings". From there, you can update your password and other account information.</p>
+                    <p class="text-[var(--subtitle-text)] leading-relaxed mt-4">Yes, you can change your password by clicking the settings icon in the top navigation and selecting "Account Settings". From there, you can update your password and other account information.</p>
                 </div>
             </div>
         </div>
@@ -132,11 +85,11 @@
         <div class="faq-item" data-category="technical">
             <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
                 <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">What browsers are supported?</h3>
+                    <h3 class="text-lg font-semibold text-[var(--primary-action-bg)] pr-4">What browsers are supported?</h3>
                     <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
                 </button>
                 <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Toad works best on modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your preferred browser for the best experience.</p>
+                    <p class="text-[var(--subtitle-text)] leading-relaxed mt-4">Toad works best on modern browsers including Chrome, Firefox, Safari, and Edge. We recommend using the latest version of your preferred browser for the best experience.</p>
                 </div>
             </div>
         </div>
@@ -144,11 +97,11 @@
         <div class="faq-item" data-category="technical">
             <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-sm">
                 <button class="faq-question w-full text-left p-6 flex items-center justify-between hover:bg-[var(--task-bg)] transition-colors">
-                    <h3 class="text-lg font-semibold text-[var(--title-text)] pr-4">Is my data secure?</h3>
+                    <h3 class="text-lg font-semibold text-[var(--primary-action-bg)] pr-4">Is my data secure?</h3>
                     <i class="fas fa-chevron-down text-[var(--text-secondary)] transform transition-transform"></i>
                 </button>
                 <div class="faq-answer hidden px-6 pb-6">
-                    <p class="text-[var(--text-primary)] leading-relaxed">Yes, we take data security seriously. All data is encrypted in transit and at rest. We never share your personal information with third parties. See our Privacy Policy for more details.</p>
+                    <p class="text-[var(--subtitle-text)] leading-relaxed mt-4">Yes, we take data security seriously. All data is encrypted in transit and at rest. We never share your personal information with third parties. See our Privacy Policy for more details.</p>
                 </div>
             </div>
         </div>

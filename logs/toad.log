@@ -9277,3 +9277,12 @@ INFO 2025-07-27 16:47:56,960 basehttp 6081 6134788096 "GET /projects/17/ HTTP/1.
 INFO 2025-07-27 16:47:56,979 basehttp 6081 6134788096 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
 INFO 2025-07-27 16:48:03,883 basehttp 6081 6134788096 "GET /projects/16/ HTTP/1.1" 200 7745
 INFO 2025-07-27 16:48:08,007 basehttp 6081 6134788096 "GET /projects/17/ HTTP/1.1" 200 9716
+INFO 2025-07-27 16:48:41,328 autoreload 6402 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-27 16:52:57,476 autoreload 6911 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-27 16:53:03,828 basehttp 6911 6203535360 "GET /faq/ HTTP/1.1" 200 4903
+INFO 2025-07-27 16:53:03,847 basehttp 6911 6220361728 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-27 16:53:03,848 basehttp 6911 6203535360 "GET /static/css/output.css HTTP/1.1" 200 68565
+INFO 2025-07-27 16:59:07,857 basehttp 6911 6203535360 "GET /faq/ HTTP/1.1" 200 4477
+INFO 2025-07-27 16:59:07,871 basehttp 6911 6203535360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-27 16:59:07,872 basehttp 6911 6220361728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-27 16:59:34,542 basehttp 6911 6203535360 "GET /projects/ HTTP/1.1" 200 3549
