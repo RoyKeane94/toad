@@ -10,6 +10,7 @@ from ..specific_views_functions.general_views_functions import (
     render_simple_template,
     get_contact_form_context
 )
+from ..signals import create_course_planner_grid, create_revision_guide_grid
 import logging
 
 # Set up logging
@@ -38,6 +39,36 @@ def student_jobs_template_view(request):
 def student_revision_template_view(request):
     """Display the student revision template"""
     return render_simple_template(request, 'pages/general/specific_templates/students/student_revision.html')
+
+@login_required
+def course_planner_template_view(request):
+    """Create a Course Planner grid for the current user and redirect to it"""
+    try:
+        # Create the course planner grid
+        project = create_course_planner_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating course planner grid: {e}")
+        messages.error(request, "There was an error creating your Course Planner. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def revision_guide_template_view(request):
+    """Create a Revision Guide grid for the current user and redirect to it"""
+    try:
+        # Create the revision guide grid
+        project = create_revision_guide_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating revision guide grid: {e}")
+        messages.error(request, "There was an error creating your Revision Guide. Please try again.")
+        return redirect('pages:templates_overview')
 
 def professionals_jobs_template_view(request):
     """Display the professional job application template"""

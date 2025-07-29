@@ -13,20 +13,20 @@
     </header>
 
     <!-- Core Templates Section -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4">
-        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
-             <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Course Planner</h2>
-             <p class="mt-2 text-sm text-[var(--text-secondary)]">Your high-level command center for the entire semester. Track modules, assignments, and key deadlines.</p>
-             <button class="mt-4 w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-4xl mx-auto">
+        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)]">
+             <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)]">Course Planner</h2>
+             <p class="mt-2 text-sm text-[var(--text-secondary)]">Your easy way to plan your course. Track modules, manage assignments, and ensure you never miss a key deadline.</p>
+             <a href="{% url 'pages:course_planner_template' %}" class="mt-4 w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                 Use Template
-             </button>
+             </a>
         </div>
-        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
-             <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Exam Revision Planner</h2>
-             <p class="mt-2 text-sm text-[var(--text-secondary)]">Break down your revision schedule into manageable, daily tasks to ace your exams and coursework.</p>
-             <button class="mt-4 w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200">
+        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)]">
+             <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)]">Exam Revision Planner</h2>
+             <p class="mt-2 text-sm text-[var(--text-secondary)]">Your easy way to plan your revision with what works for you. Tailor you revision plan to your needs and ace your exams.</p>
+             <a href="{% url 'pages:revision_guide_template' %}" class="mt-4 w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                 Use Template
-             </button>
+             </a>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
             <div class="xl:col-span-1">
                 <div class="space-y-4">
                     <!-- Job Application Tracker Card -->
-                    <div id="job-tracker-card" class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
+                    <div id="job-tracker-card" class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)]">
                         <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Student Job Application Tracker</h2>
                         <p class="mt-2 text-sm text-[var(--text-secondary)]">Essential for managing your internship applications, graduate schemes, and part-time job searches.</p>
                         
@@ -59,13 +59,13 @@
 
             <!-- Right Column: Template Preview -->
             <div class="xl:col-span-2">
-                <div class="bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] shadow-sm">
+                <div class="bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)]">
                     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
                         <div>
                             <h3 id="preview-title" class="text-lg md:text-xl font-bold text-[var(--text-primary)]"></h3>
                             <p id="preview-subtitle" class="text-sm text-[var(--subtitle-text)]"></p>
                         </div>
-                        <button class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200 w-full sm:w-auto">
+                        <button class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200 w-full sm:w-auto cursor-pointer">
                             Use Template
                         </button>
                     </div>

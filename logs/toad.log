@@ -9286,3 +9286,221 @@ INFO 2025-07-27 16:59:07,857 basehttp 6911 6203535360 "GET /faq/ HTTP/1.1" 200 4
 INFO 2025-07-27 16:59:07,871 basehttp 6911 6203535360 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-07-27 16:59:07,872 basehttp 6911 6220361728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-07-27 16:59:34,542 basehttp 6911 6203535360 "GET /projects/ HTTP/1.1" 200 3549
+INFO 2025-07-28 10:06:09,461 autoreload 10244 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-28 10:06:10,928 basehttp 10244 6157332480 "GET / HTTP/1.1" 200 6181
+INFO 2025-07-28 10:06:10,946 basehttp 10244 6190985216 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-28 10:06:10,948 basehttp 10244 6157332480 "GET /static/css/output.css HTTP/1.1" 200 68565
+INFO 2025-07-28 10:06:10,948 basehttp 10244 6174158848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40436
+INFO 2025-07-28 10:06:10,966 basehttp 10244 6174158848 "GET /static/img/Desktop%20-%20Student%20Grid.png HTTP/1.1" 200 237315
+INFO 2025-07-28 10:06:23,866 basehttp 10244 6174158848 "GET /projects/ HTTP/1.1" 200 3547
+INFO 2025-07-28 10:06:33,935 basehttp 10244 6174158848 "GET /projects/16/ HTTP/1.1" 200 7787
+INFO 2025-07-28 10:06:33,948 basehttp 10244 6174158848 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-28 10:06:39,769 basehttp 10244 6174158848 "GET / HTTP/1.1" 200 6195
+INFO 2025-07-28 10:06:41,157 basehttp 10244 6174158848 "GET /templates/ HTTP/1.1" 200 3833
+INFO 2025-07-28 10:07:18,875 basehttp 10244 6174158848 "GET /projects/16/ HTTP/1.1" 200 7775
+INFO 2025-07-28 10:07:29,061 basehttp 10244 6174158848 "GET /projects/ HTTP/1.1" 200 3520
+INFO 2025-07-28 10:07:30,119 basehttp 10244 6174158848 "GET /projects/16/ HTTP/1.1" 200 7699
+INFO 2025-07-28 19:27:15,162 autoreload 11396 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-28 19:27:18,390 basehttp 11396 6203158528 "GET /projects/16/ HTTP/1.1" 200 7744
+INFO 2025-07-28 19:27:18,412 basehttp 11396 6203158528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-28 19:27:18,412 basehttp 11396 6219984896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-28 19:27:18,413 basehttp 11396 6203158528 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-28 19:27:21,336 basehttp 11396 6203158528 "GET /projects/16/rows/62/edit/ HTTP/1.1" 200 1075
+INFO 2025-07-28 19:27:24,563 basehttp 11396 6203158528 "GET /projects/16/columns/96/edit/ HTTP/1.1" 200 1060
+INFO 2025-07-28 19:27:26,912 basehttp 11396 6203158528 "GET /projects/16/rows/create/ HTTP/1.1" 200 1052
+INFO 2025-07-28 19:39:36,442 basehttp 11396 6203158528 "GET /projects/ HTTP/1.1" 200 3576
+INFO 2025-07-28 19:39:36,956 basehttp 11396 6203158528 "GET /templates/ HTTP/1.1" 200 3810
+INFO 2025-07-28 20:13:44,290 basehttp 11396 6203158528 "GET /projects/ HTTP/1.1" 200 3504
+INFO 2025-07-28 20:13:47,250 basehttp 11396 6203158528 "GET /projects/15/ HTTP/1.1" 200 10810
+INFO 2025-07-28 20:13:55,957 basehttp 11396 6203158528 "GET /projects/15/ HTTP/1.1" 200 10785
+INFO 2025-07-28 20:14:06,441 basehttp 11396 6203158528 "GET /tasks/171/edit/ HTTP/1.1" 200 1005
+INFO 2025-07-28 20:14:14,068 basehttp 11396 6203158528 "GET /tasks/171/edit/ HTTP/1.1" 200 995
+INFO 2025-07-28 20:15:43,380 basehttp 11396 6203158528 "GET /tasks/171/edit/ HTTP/1.1" 200 985
+INFO 2025-07-28 20:15:47,599 basehttp 11396 6203158528 "POST /tasks/171/edit/ HTTP/1.1" 200 1396
+INFO 2025-07-28 20:15:51,670 basehttp 11396 6203158528 "POST /tasks/172/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-28 20:17:06,367 basehttp 11396 6203158528 "POST /projects/15/tasks/create/61/94/ HTTP/1.1" 200 1409
+INFO 2025-07-28 20:17:08,635 basehttp 11396 6203158528 "POST /tasks/179/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-28 20:17:15,611 basehttp 11396 6203158528 "POST /projects/15/tasks/create/61/94/ HTTP/1.1" 200 1403
+INFO 2025-07-28 20:17:23,249 basehttp 11396 6203158528 "GET /tasks/171/edit/ HTTP/1.1" 200 1058
+INFO 2025-07-28 20:17:32,899 project_views_functions 11396 6203158528 User None deleted task: "Download reading list" from project: Student Template
+INFO 2025-07-28 20:17:32,903 basehttp 11396 6203158528 "POST /tasks/171/delete/ HTTP/1.1" 200 58
+INFO 2025-07-28 20:17:43,062 basehttp 11396 6203158528 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1384
+INFO 2025-07-28 20:17:55,130 basehttp 11396 6203158528 "POST /projects/15/tasks/create/59/94/ HTTP/1.1" 200 1406
+INFO 2025-07-28 20:18:17,549 basehttp 11396 6203158528 "POST /projects/15/tasks/create/59/93/ HTTP/1.1" 200 1380
+INFO 2025-07-28 20:18:35,724 basehttp 11396 6203158528 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1366
+INFO 2025-07-28 20:18:40,732 project_views_functions 11396 6203158528 User None deleted task: "Download reading list for the semester" from project: Student Template
+INFO 2025-07-28 20:18:40,735 basehttp 11396 6203158528 "POST /tasks/181/delete/ HTTP/1.1" 200 58
+INFO 2025-07-28 20:18:49,506 basehttp 11396 6203158528 "POST /projects/15/tasks/create/58/94/ HTTP/1.1" 200 1399
+INFO 2025-07-28 20:19:36,669 basehttp 11396 6203158528 "POST /projects/15/tasks/create/59/94/ HTTP/1.1" 200 1361
+INFO 2025-07-29 06:40:43,011 autoreload 13245 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 06:40:48,645 basehttp 13245 6192148480 "GET /projects/15/ HTTP/1.1" 200 11801
+INFO 2025-07-29 06:40:48,662 basehttp 13245 6192148480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 06:40:48,662 basehttp 13245 6208974848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 06:40:48,663 basehttp 13245 6225801216 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 06:40:51,438 project_views_functions 13245 6225801216 User None deleted task: "Complete week 3 seminar questions" from project: Student Template
+INFO 2025-07-29 06:40:51,443 basehttp 13245 6225801216 "POST /tasks/184/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:42:38,020 basehttp 13245 6225801216 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1344
+INFO 2025-07-29 06:42:41,250 basehttp 13245 6225801216 "GET /projects/15/columns/create/ HTTP/1.1" 200 999
+INFO 2025-07-29 06:42:48,604 basehttp 13245 6225801216 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:42:48,675 basehttp 13245 6208974848 "GET /projects/15/ HTTP/1.1" 200 12269
+INFO 2025-07-29 06:42:48,675 basehttp 13245 6225801216 - Broken pipe from ('127.0.0.1', 59689)
+INFO 2025-07-29 06:42:48,675 basehttp 13245 6208974848 - Broken pipe from ('127.0.0.1', 59688)
+INFO 2025-07-29 06:42:48,676 basehttp 13245 6192148480 "GET /projects/15/ HTTP/1.1" 200 12240
+INFO 2025-07-29 06:43:09,919 project_views_functions 13245 6192148480 User None deleted task: "Prepare seminar questions for Tuesday at 16:00" from project: Student Template
+INFO 2025-07-29 06:43:09,923 basehttp 13245 6192148480 "POST /tasks/187/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:43:24,841 basehttp 13245 6192148480 "GET /projects/15/columns/103/delete/ HTTP/1.1" 200 940
+INFO 2025-07-29 06:43:25,930 basehttp 13245 6192148480 "POST /projects/15/columns/103/delete/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:43:25,953 basehttp 13245 6192148480 "GET /projects/15/ HTTP/1.1" 200 11629
+INFO 2025-07-29 06:44:50,491 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:45:09,387 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:45:22,621 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:45:35,867 basehttp 13245 6192148480 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1435
+INFO 2025-07-29 06:45:38,658 basehttp 13245 6192148480 "GET /projects/15/columns/create/ HTTP/1.1" 200 983
+INFO 2025-07-29 06:45:47,425 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:45:56,085 project_views_functions 13245 6192148480 User None deleted task: "Prepare week 3 seminar questions for Thursday at 16:00" from project: Student Template
+INFO 2025-07-29 06:45:56,089 basehttp 13245 6192148480 "POST /tasks/188/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:46:06,741 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:46:19,867 basehttp 13245 6192148480 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1407
+INFO 2025-07-29 06:46:21,473 basehttp 13245 6192148480 "GET /projects/15/columns/create/ HTTP/1.1" 200 1000
+INFO 2025-07-29 06:46:28,716 basehttp 13245 6192148480 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:46:28,778 basehttp 13245 6192148480 - Broken pipe from ('127.0.0.1', 59687)
+INFO 2025-07-29 06:46:28,787 basehttp 13245 6208974848 - Broken pipe from ('127.0.0.1', 59708)
+INFO 2025-07-29 06:46:28,788 basehttp 13245 6225801216 "GET /projects/15/ HTTP/1.1" 200 12180
+INFO 2025-07-29 06:46:41,415 basehttp 13245 6225801216 "POST /projects/15/tasks/create/58/104/ HTTP/1.1" 200 1376
+INFO 2025-07-29 06:46:57,387 project_views_functions 13245 6225801216 User None deleted task: "Complete Seminar work for week 3" from project: Student Template
+INFO 2025-07-29 06:46:57,391 basehttp 13245 6225801216 "POST /tasks/190/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:47:12,839 basehttp 13245 6225801216 "POST /tasks/172/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:47:15,525 basehttp 13245 6225801216 "GET /projects/15/columns/104/delete/ HTTP/1.1" 200 1002
+INFO 2025-07-29 06:47:16,521 basehttp 13245 6225801216 "POST /projects/15/columns/104/delete/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:47:16,556 basehttp 13245 6225801216 "GET /projects/15/ HTTP/1.1" 200 11740
+INFO 2025-07-29 06:47:19,203 project_views_functions 13245 6225801216 User None deleted task: "Prepare week 3 seminar questions for Thursday at 16:00" from project: Student Template
+INFO 2025-07-29 06:47:19,207 basehttp 13245 6225801216 "POST /tasks/189/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:47:20,990 basehttp 13245 6225801216 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:47:43,175 basehttp 13245 6225801216 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:47:56,393 basehttp 13245 6225801216 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1371
+INFO 2025-07-29 06:47:59,242 basehttp 13245 6225801216 "GET /projects/15/columns/create/ HTTP/1.1" 200 1026
+INFO 2025-07-29 06:48:05,682 basehttp 13245 6225801216 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:48:05,741 basehttp 13245 6225801216 - Broken pipe from ('127.0.0.1', 59709)
+INFO 2025-07-29 06:48:05,750 basehttp 13245 6192148480 - Broken pipe from ('127.0.0.1', 59711)
+INFO 2025-07-29 06:48:05,751 basehttp 13245 6208974848 "GET /projects/15/ HTTP/1.1" 200 12205
+INFO 2025-07-29 06:48:21,936 basehttp 13245 6208974848 "POST /projects/15/tasks/create/58/105/ HTTP/1.1" 200 1372
+INFO 2025-07-29 06:48:34,368 basehttp 13245 6208974848 "POST /projects/15/tasks/create/58/105/ HTTP/1.1" 200 1322
+INFO 2025-07-29 06:49:07,192 basehttp 13245 6208974848 "GET /projects/15/columns/105/delete/ HTTP/1.1" 200 991
+INFO 2025-07-29 06:49:08,268 basehttp 13245 6208974848 "POST /projects/15/columns/105/delete/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:49:08,287 basehttp 13245 6208974848 "GET /projects/15/ HTTP/1.1" 200 11799
+INFO 2025-07-29 06:49:11,355 project_views_functions 13245 6208974848 User None deleted task: "Prepare week 3 seminar questions for Thursday at 16:00" from project: Student Template
+INFO 2025-07-29 06:49:11,358 basehttp 13245 6208974848 "POST /tasks/191/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:49:12,756 basehttp 13245 6208974848 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:49:33,972 basehttp 13245 6208974848 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:49:49,785 basehttp 13245 6208974848 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1372
+INFO 2025-07-29 06:49:52,825 basehttp 13245 6208974848 "GET /projects/15/columns/create/ HTTP/1.1" 200 1030
+INFO 2025-07-29 06:49:58,698 basehttp 13245 6208974848 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:49:58,757 basehttp 13245 6208974848 - Broken pipe from ('127.0.0.1', 59713)
+INFO 2025-07-29 06:49:58,766 basehttp 13245 6192148480 - Broken pipe from ('127.0.0.1', 59715)
+INFO 2025-07-29 06:49:58,768 basehttp 13245 6225801216 "GET /projects/15/ HTTP/1.1" 200 12273
+INFO 2025-07-29 06:50:15,678 basehttp 13245 6225801216 "GET /projects/15/columns/106/delete/ HTTP/1.1" 200 1002
+INFO 2025-07-29 06:50:16,591 basehttp 13245 6225801216 "POST /projects/15/columns/106/delete/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:50:16,623 basehttp 13245 6225801216 "GET /projects/15/ HTTP/1.1" 200 11835
+INFO 2025-07-29 06:50:19,006 basehttp 13245 6225801216 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:50:21,586 project_views_functions 13245 6225801216 User None deleted task: "Prepare week 3 seminar questions for Thursday at 16:00" from project: Student Template
+INFO 2025-07-29 06:50:21,590 basehttp 13245 6225801216 "POST /tasks/194/delete/ HTTP/1.1" 200 58
+INFO 2025-07-29 06:50:28,607 basehttp 13245 6225801216 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:50:42,343 basehttp 13245 6225801216 "POST /projects/15/tasks/create/58/93/ HTTP/1.1" 200 1360
+INFO 2025-07-29 06:50:43,807 basehttp 13245 6225801216 "GET /projects/15/columns/create/ HTTP/1.1" 200 1015
+INFO 2025-07-29 06:50:50,493 basehttp 13245 6225801216 "POST /projects/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-07-29 06:50:50,533 basehttp 13245 6225801216 "GET /projects/15/ HTTP/1.1" 200 12225
+INFO 2025-07-29 06:50:50,544 basehttp 13245 6225801216 - Broken pipe from ('127.0.0.1', 59717)
+INFO 2025-07-29 06:50:50,549 basehttp 13245 6192148480 "GET /projects/15/ HTTP/1.1" 200 12246
+INFO 2025-07-29 06:50:50,557 basehttp 13245 6192148480 - Broken pipe from ('127.0.0.1', 59719)
+INFO 2025-07-29 06:50:50,558 basehttp 13245 6208974848 "GET /projects/15/ HTTP/1.1" 200 12264
+INFO 2025-07-29 06:51:07,690 basehttp 13245 6208974848 "POST /projects/15/tasks/create/58/107/ HTTP/1.1" 200 1396
+WARNING 2025-07-29 06:57:59,598 log 13245 6192148480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-29 06:57:59,599 basehttp 13245 6192148480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1652
+INFO 2025-07-29 06:58:01,278 basehttp 13245 6192148480 "GET /projects/15/ HTTP/1.1" 200 13036
+WARNING 2025-07-29 06:58:01,305 log 13245 6208974848 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-29 06:58:01,306 basehttp 13245 6208974848 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1619
+INFO 2025-07-29 06:58:01,310 basehttp 13245 6192148480 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 55075
+INFO 2025-07-29 06:58:27,251 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:58:28,292 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:58:29,178 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:58:30,042 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:58:31,160 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 06:58:33,463 basehttp 13245 6192148480 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-29 07:01:25,836 basehttp 13245 6192148480 "GET /projects/15/ HTTP/1.1" 200 12434
+INFO 2025-07-29 07:01:38,080 basehttp 13245 6192148480 "GET /templates/ HTTP/1.1" 200 3785
+INFO 2025-07-29 07:09:53,201 basehttp 13245 6192148480 "GET /templates/ HTTP/1.1" 200 3796
+INFO 2025-07-29 07:10:39,551 basehttp 13245 6192148480 "GET /templates/ HTTP/1.1" 200 3792
+INFO 2025-07-29 07:11:59,658 basehttp 13245 6192148480 "GET /templates/ HTTP/1.1" 200 3838
+INFO 2025-07-29 07:12:54,886 basehttp 13245 6192148480 "GET /templates/ HTTP/1.1" 200 3773
+INFO 2025-07-29 07:13:11,909 basehttp 13245 6192148480 "GET /templates/ HTTP/1.1" 200 3808
+INFO 2025-07-29 07:13:11,921 basehttp 13245 6225801216 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-29 07:13:11,922 basehttp 13245 6208974848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40436
+INFO 2025-07-29 07:13:11,922 basehttp 13245 6192148480 "GET /static/css/output.css HTTP/1.1" 200 68565
+INFO 2025-07-29 07:13:35,161 autoreload 14508 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:13:37,199 basehttp 14508 6126727168 "GET /templates/ HTTP/1.1" 200 3804
+INFO 2025-07-29 07:15:04,662 basehttp 14508 6126727168 "GET /templates/ HTTP/1.1" 200 3856
+INFO 2025-07-29 07:15:04,687 basehttp 14508 6160379904 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-29 07:15:04,688 basehttp 14508 6143553536 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40386
+INFO 2025-07-29 07:15:04,689 basehttp 14508 6126727168 "GET /static/css/output.css HTTP/1.1" 200 68514
+INFO 2025-07-29 07:17:22,913 basehttp 14508 6126727168 "GET /projects/ HTTP/1.1" 200 3521
+INFO 2025-07-29 07:17:22,931 basehttp 14508 6143553536 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:17:22,931 basehttp 14508 6160379904 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:17:22,931 basehttp 14508 6126727168 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:17:25,033 basehttp 14508 6126727168 "GET /projects/15/ HTTP/1.1" 200 12401
+INFO 2025-07-29 07:17:25,052 basehttp 14508 6126727168 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-29 07:18:44,611 autoreload 14508 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-07-29 07:18:44,887 autoreload 14560 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:19:03,258 autoreload 14560 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-29 07:19:03,445 autoreload 14576 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:19:12,687 autoreload 14576 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-29 07:19:12,866 autoreload 14589 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:19:20,062 autoreload 14589 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-07-29 07:19:20,245 autoreload 14598 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:19:31,501 autoreload 14598 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-07-29 07:19:31,693 autoreload 14612 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:19:57,713 basehttp 14612 6129922048 "GET /templates/ HTTP/1.1" 200 3799
+INFO 2025-07-29 07:19:57,727 basehttp 14612 6146748416 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:19:57,728 basehttp 14612 6129922048 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:19:57,728 basehttp 14612 6163574784 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:20:00,124 basehttp 14612 6163574784 "GET /templates/course-planner/ HTTP/1.1" 302 0
+INFO 2025-07-29 07:20:00,148 basehttp 14612 6163574784 "GET /projects/18/ HTTP/1.1" 200 10111
+INFO 2025-07-29 07:20:00,165 basehttp 14612 6163574784 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:20:03,625 basehttp 14612 6163574784 "GET /projects/ HTTP/1.1" 200 3596
+INFO 2025-07-29 07:20:34,825 autoreload 14612 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-07-29 07:20:35,112 autoreload 14647 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:21:27,227 basehttp 14647 6203584512 "GET /templates/ HTTP/1.1" 200 3833
+INFO 2025-07-29 07:21:27,242 basehttp 14647 6203584512 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:21:27,242 basehttp 14647 6237237248 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:21:27,242 basehttp 14647 6220410880 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:21:30,820 basehttp 14647 6220410880 "GET /templates/course-planner/ HTTP/1.1" 302 0
+INFO 2025-07-29 07:21:30,845 basehttp 14647 6220410880 "GET /projects/19/ HTTP/1.1" 200 10183
+INFO 2025-07-29 07:21:30,860 basehttp 14647 6220410880 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:21:33,693 basehttp 14647 6220410880 "GET /projects/ HTTP/1.1" 200 3680
+INFO 2025-07-29 07:21:35,601 basehttp 14647 6220410880 "GET /projects/19/delete/ HTTP/1.1" 200 3172
+INFO 2025-07-29 07:21:36,487 basehttp 14647 6220410880 "POST /projects/19/delete/ HTTP/1.1" 302 0
+INFO 2025-07-29 07:21:36,502 basehttp 14647 6220410880 "GET /projects/ HTTP/1.1" 200 3570
+INFO 2025-07-29 07:21:37,832 basehttp 14647 6220410880 "GET /projects/18/delete/ HTTP/1.1" 200 3162
+INFO 2025-07-29 07:21:38,775 basehttp 14647 6220410880 "POST /projects/18/delete/ HTTP/1.1" 302 0
+INFO 2025-07-29 07:21:38,789 basehttp 14647 6220410880 "GET /projects/ HTTP/1.1" 200 3543
+INFO 2025-07-29 07:21:40,566 basehttp 14647 6220410880 "GET /templates/ HTTP/1.1" 200 3879
+INFO 2025-07-29 07:30:15,842 autoreload 14647 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-07-29 07:30:16,132 autoreload 14728 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:30:22,313 autoreload 14728 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-29 07:30:22,498 autoreload 14740 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:30:33,754 autoreload 14740 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-07-29 07:30:34,012 autoreload 14754 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:30:39,173 autoreload 14754 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-07-29 07:30:39,362 autoreload 14761 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:30:48,558 autoreload 14761 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-07-29 07:30:48,739 autoreload 14770 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 07:33:39,535 basehttp 14770 6170341376 "GET /templates/ HTTP/1.1" 200 3805
+INFO 2025-07-29 07:33:39,549 basehttp 14770 6170341376 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:33:39,550 basehttp 14770 6187167744 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-29 07:33:39,550 basehttp 14770 6203994112 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:33:40,837 basehttp 14770 6203994112 "GET /templates/revision-guide/ HTTP/1.1" 302 0
+INFO 2025-07-29 07:33:40,863 basehttp 14770 6203994112 "GET /projects/20/ HTTP/1.1" 200 9552
+INFO 2025-07-29 07:33:40,875 basehttp 14770 6203994112 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 07:33:47,881 basehttp 14770 6203994112 "GET /projects/ HTTP/1.1" 200 3652
+INFO 2025-07-29 07:33:50,022 basehttp 14770 6203994112 "GET /projects/20/delete/ HTTP/1.1" 200 3191
+INFO 2025-07-29 07:33:50,913 basehttp 14770 6203994112 "POST /projects/20/delete/ HTTP/1.1" 302 0
+INFO 2025-07-29 07:33:50,927 basehttp 14770 6203994112 "GET /projects/ HTTP/1.1" 200 3528

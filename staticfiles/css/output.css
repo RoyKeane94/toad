@@ -549,8 +549,8 @@
   .max-h-60 {
     max-height: calc(var(--spacing) * 60);
   }
-  .min-h-\[70vh\] {
-    min-height: 70vh;
+  .min-h-\[80vh\] {
+    min-height: 80vh;
   }
   .min-h-full {
     min-height: 100%;
@@ -593,6 +593,9 @@
   }
   .w-80 {
     width: calc(var(--spacing) * 80);
+  }
+  .w-auto {
+    width: auto;
   }
   .w-full {
     width: 100%;
@@ -1328,9 +1331,6 @@
   }
   .text-\[var\(--task-completed-text\)\] {
     color: var(--task-completed-text);
-  }
-  .text-\[var\(--tertiary-action-bg\)\] {
-    color: var(--tertiary-action-bg);
   }
   .text-\[var\(--text-primary\)\] {
     color: var(--text-primary);
