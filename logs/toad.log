@@ -9531,3 +9531,41 @@ INFO 2025-07-29 20:23:40,291 basehttp 17199 6135787520 "GET /projects/ HTTP/1.1"
 INFO 2025-07-29 20:23:40,301 basehttp 17199 6169440256 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
 INFO 2025-07-29 20:23:40,302 basehttp 17199 6152613888 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40386
 INFO 2025-07-29 20:23:40,303 basehttp 17199 6135787520 "GET /static/css/output.css HTTP/1.1" 200 68388
+INFO 2025-07-29 20:25:31,539 autoreload 17513 8767266560 Watching for file changes with StatReloader
+WARNING 2025-07-29 20:25:35,541 log 17513 6193754112 Not Found: /projects/create/
+WARNING 2025-07-29 20:25:35,541 basehttp 17513 6193754112 "GET /projects/create/ HTTP/1.1" 404 1608
+INFO 2025-07-29 20:25:35,565 basehttp 17513 6193754112 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-07-29 20:25:35,569 basehttp 17513 6193754112 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+WARNING 2025-07-29 20:25:38,472 log 17513 6193754112 Not Found: /projects/create/
+WARNING 2025-07-29 20:25:38,472 basehttp 17513 6193754112 "GET /projects/create/ HTTP/1.1" 404 1644
+WARNING 2025-07-29 20:25:41,530 log 17513 6193754112 Not Found: /projects/
+WARNING 2025-07-29 20:25:41,531 basehttp 17513 6193754112 "GET /projects/ HTTP/1.1" 404 1627
+INFO 2025-07-29 20:25:47,187 basehttp 17513 6193754112 "GET / HTTP/1.1" 200 6227
+INFO 2025-07-29 20:25:47,202 basehttp 17513 6210580480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 20:25:47,203 basehttp 17513 6193754112 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 20:25:47,215 basehttp 17513 6193754112 "GET /static/img/Desktop%20-%20Student%20Grid.png HTTP/1.1" 200 237315
+INFO 2025-07-29 20:25:49,488 basehttp 17513 6193754112 "GET /grids/ HTTP/1.1" 200 3554
+INFO 2025-07-29 20:25:50,543 basehttp 17513 6193754112 "GET /grids/create/ HTTP/1.1" 200 3346
+INFO 2025-07-29 20:53:55,610 basehttp 17513 6193754112 "GET /grids/create/ HTTP/1.1" 200 3310
+INFO 2025-07-29 20:53:55,626 basehttp 17513 6210580480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-29 20:53:55,626 basehttp 17513 6193754112 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 20:55:17,305 autoreload 18042 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:55:22,140 basehttp 18042 6194802688 "GET /grids/create/ HTTP/1.1" 200 3336
+INFO 2025-07-29 20:55:52,171 basehttp 18042 6194802688 "GET /grids/create/ HTTP/1.1" 200 3357
+INFO 2025-07-29 20:56:19,453 basehttp 18042 6194802688 "GET /grids/create/ HTTP/1.1" 200 3320
+INFO 2025-07-29 20:57:07,271 autoreload 18042 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/forms.py changed, reloading.
+INFO 2025-07-29 20:57:07,553 autoreload 18074 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:57:14,775 autoreload 18074 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-29 20:57:14,941 autoreload 18081 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:57:20,093 autoreload 18081 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-29 20:57:20,295 autoreload 18084 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:57:26,482 autoreload 18084 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-29 20:57:26,652 autoreload 18087 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:57:31,805 autoreload 18087 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-07-29 20:57:31,986 autoreload 18098 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:57:49,518 basehttp 18098 6189133824 "GET /grids/create/ HTTP/1.1" 200 3318
+INFO 2025-07-29 20:57:49,531 basehttp 18098 6189133824 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-29 20:57:49,534 basehttp 18098 6205960192 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-29 20:58:01,571 autoreload 18098 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/forms.py changed, reloading.
+INFO 2025-07-29 20:58:01,870 autoreload 18114 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-29 20:58:03,196 basehttp 18114 6189133824 "GET /grids/create/ HTTP/1.1" 200 3341

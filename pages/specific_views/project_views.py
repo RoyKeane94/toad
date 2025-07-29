@@ -70,7 +70,7 @@ def project_create_view(request):
             create_default_project_structure(project)
             
             log_user_action(request.user, 'created project', project.name)
-            messages.success(request, f'Project "{project.name}" created successfully!')
+            messages.success(request, f'Grid "{project.name}" created successfully!')
             return redirect('pages:project_grid', pk=project.pk)
         else:
             logger.warning(f'User {request.user.username} failed to create project - form errors: {form.errors}')
@@ -87,7 +87,7 @@ def project_edit_view(request, pk):
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
-            messages.success(request, f'Project "{project.name}" updated successfully!')
+            messages.success(request, f'Grid "{project.name}" updated successfully!')
             return redirect('pages:project_grid', pk=project.pk)
     else:
         form = ProjectForm(instance=project)
@@ -105,7 +105,7 @@ def project_delete_view(request, pk):
     if request.method == 'POST':
         project_name = project.name
         project.delete()
-        messages.success(request, f'Project "{project_name}" deleted successfully!')
+        messages.success(request, f'Grid "{project_name}" deleted successfully!')
         return redirect('pages:project_list')
     
     return render(request, 'pages/grid/actions_new_page/project_confirm_delete.html', {'project': project})
@@ -644,7 +644,7 @@ def create_from_template_view(request, template_type):
         project = create_project_from_template_config(request.user, template_config)
         
         log_user_action(request.user, f'created project from template: {template_type}', project.name)
-        messages.success(request, f'Project "{project.name}" created from template successfully!')
+        messages.success(request, f'Grid "{project.name}" created from template successfully!')
         return redirect('pages:project_grid', pk=project.pk)
     
     return redirect('pages:templates_overview')

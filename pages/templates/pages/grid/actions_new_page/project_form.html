@@ -6,12 +6,12 @@
 <div class="max-w-md mx-auto">
     <!-- Header -->
     <div class="text-center mb-8">
-        <h1 class="text-2xl font-bold text-[var(--title-text)] mb-2">
-            {% if project %}Edit Project Name{% else %}{{ title }}{% endif %}
+        <h1 class="text-2xl font-bold text-[var(--primary-action-bg)] mb-2"> 
+            {% if project %}Edit Grid Name{% else %}Create New Grid{% endif %}
         </h1>
         {% if not project %}
         <p class="text-[var(--subtitle-text)]">
-            Create a new project to organize your tasks
+            Create a new grid to organise your tasks
         </p>
         {% endif %}
     </div>
@@ -23,7 +23,7 @@
             
             <div class="mb-6">
                 <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                    Project Name
+                    Grid Name
                 </label>
                 {{ form.name }}
                 {% if form.name.errors %}
@@ -40,12 +40,12 @@
 
             <div class="flex space-x-3">
                 <button type="submit" 
-                        class="flex-1 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-2 px-4 rounded-md font-medium transition-colors"
-                        title="Save your new project name">
+                        class="flex-1 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-2 px-4 rounded-md font-medium transition-colors cursor-pointer"
+                        title="Save your new grid name">
                     {% if project %}
                         <i class="fas fa-save mr-2"></i>Update Name
                     {% else %}
-                        <i class="fas fa-plus mr-2"></i>Create Project
+                        <i class="fas fa-plus mr-2"></i>Create Grid
                     {% endif %}
                 </button>
                 

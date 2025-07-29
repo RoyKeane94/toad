@@ -30,27 +30,27 @@ urlpatterns = [
     path('contact/', views.contact_us_view, name='contact_us'),
     path('privacy/', views.privacy_policy_view, name='privacy_policy'),
     
-    # Project URLs
-    path('projects/', views.project_list_view, name='project_list'),
-    path('projects/create/', views.project_create_view, name='project_create'),
-    path('projects/<int:pk>/', views.project_grid_view, name='project_grid'),
-    path('projects/<int:pk>/edit/', views.project_edit_view, name='project_edit'),
-    path('projects/<int:pk>/delete/', views.project_delete_view, name='project_delete'),
-    path('projects/<int:pk>/clear-completed/', views.delete_completed_tasks_view, name='delete_completed_tasks'),
+    # Grid URLs
+    path('grids/', views.project_list_view, name='project_list'),
+    path('grids/create/', views.project_create_view, name='project_create'),
+    path('grids/<int:pk>/', views.project_grid_view, name='project_grid'),
+    path('grids/<int:pk>/edit/', views.project_edit_view, name='project_edit'),
+    path('grids/<int:pk>/delete/', views.project_delete_view, name='project_delete'),
+    path('grids/<int:pk>/clear-completed/', views.delete_completed_tasks_view, name='delete_completed_tasks'),
     
     # Task URLs
-    path('projects/<int:project_pk>/tasks/create/<int:row_pk>/<int:col_pk>/', views.task_create_view, name='task_create'),
+    path('grids/<int:project_pk>/tasks/create/<int:row_pk>/<int:col_pk>/', views.task_create_view, name='task_create'),
     path('tasks/<int:task_pk>/edit/', views.task_edit_view, name='task_edit'),
     path('tasks/<int:task_pk>/toggle/', views.task_toggle_complete_view, name='task_toggle_complete'),
     path('tasks/<int:task_pk>/delete/', views.task_delete_view, name='task_delete'),
     
     # Row URLs
-    path('projects/<int:project_pk>/rows/create/', views.row_create_view, name='row_create'),
-    path('projects/<int:project_pk>/rows/<int:row_pk>/edit/', views.row_edit_view, name='row_edit'),
-    path('projects/<int:project_pk>/rows/<int:row_pk>/delete/', views.row_delete_view, name='row_delete'),
+    path('grids/<int:project_pk>/rows/create/', views.row_create_view, name='row_create'),
+    path('grids/<int:project_pk>/rows/<int:row_pk>/edit/', views.row_edit_view, name='row_edit'),
+    path('grids/<int:project_pk>/rows/<int:row_pk>/delete/', views.row_delete_view, name='row_delete'),
     
     # Column URLs
-    path('projects/<int:project_pk>/columns/create/', views.column_create_view, name='column_create'),
-    path('projects/<int:project_pk>/columns/<int:col_pk>/edit/', views.column_edit_view, name='column_edit'),
-    path('projects/<int:project_pk>/columns/<int:col_pk>/delete/', views.column_delete_view, name='column_delete'),
+    path('grids/<int:project_pk>/columns/create/', views.column_create_view, name='column_create'),
+    path('grids/<int:project_pk>/columns/<int:col_pk>/edit/', views.column_edit_view, name='column_edit'),
+    path('grids/<int:project_pk>/columns/<int:col_pk>/delete/', views.column_delete_view, name='column_delete'),
 ]
