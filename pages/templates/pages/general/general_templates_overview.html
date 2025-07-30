@@ -91,29 +91,31 @@
 
     <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
 
-    <!-- Exam Revision Planner Row -->
+    <!-- Job Application Tracker Row -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
-        <!-- Exam Revision Planner GIF -->
+        <!-- Job Application Tracker GIF -->
         <div class="flex items-center justify-center">
-            <img src="{% static 'gif/Revision Planner GIF.gif' %}" alt="Exam Revision Planner Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <img src="{% static 'gif/Job Application Tracker GIF.gif' %}" alt="Job Application Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
             <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
                 <div class="text-center">
-                    <p class="text-gray-500 text-sm mb-2">Exam Revision Planner Preview</p>
-                    <p class="text-gray-400 text-xs">Add Revision Planner GIF.gif to static/gif/</p>
+                    <p class="text-gray-500 text-sm mb-2">Job Application Tracker Preview</p>
+                    <p class="text-gray-400 text-xs">Add Job Application Tracker GIF.gif to static/gif/</p>
                 </div>
             </div>
         </div>
-        <!-- Exam Revision Planner Card -->
+        <!-- Job Application Tracker Card -->
         <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
              <div class="text-center">
-                 <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Exam Revision Planner</h2>
-                 <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Your easy way to plan your revision with what works for you. Tailor you revision plan to your needs and ace your exams.</p>
-                 <a href="{% url 'pages:revision_guide_template' %}" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                 <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Job Application Tracker</h2>
+                 <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Track your job applications systematically. Organize research, applications, and follow-ups to maximize your chances of success.</p>
+                 <a href="{% url 'pages:course_planner_template' %}" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                     Use Template
                  </a>
              </div>
         </div>
     </div>
+
+
 
 </div>
 {% endblock %}
