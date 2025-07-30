@@ -37,6 +37,8 @@
         </div>
     </div>
 
+    <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
     <!-- Exam Revision Planner Row -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
         <!-- Exam Revision Planner GIF -->
@@ -64,54 +66,54 @@
     <!-- Divider -->
     <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
 
-    <!-- Interactive Job Tracker Section -->
-    <div class="px-4">
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 md:gap-8">
-            <!-- Left Column: Template Selection -->
-            <div class="xl:col-span-1">
-                <div class="space-y-4">
-                    <!-- Job Application Tracker Card -->
-                    <div id="job-tracker-card" class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)]">
-                        <h2 class="text-lg md:text-xl font-bold text-[var(--text-primary)]">Student Job Application Tracker</h2>
-                        <p class="mt-2 text-sm text-[var(--text-secondary)]">Essential for managing your internship applications, graduate schemes, and part-time job searches.</p>
-                        
-                        <div class="mt-4 md:mt-6">
-                            <p class="text-xs font-semibold text-[var(--subtitle-text)] uppercase tracking-wider mb-2">✨ Choose your career path</p>
-                            <div id="variation-tags-container" class="flex flex-wrap gap-2">
-                                <span class="variation-tag active bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="generic">General</span>
-                                <span class="variation-tag bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="accounting">Accounting</span>
-                                <span class="variation-tag bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="consulting">Consulting</span>
-                                <span class="variation-tag bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-xs font-medium px-3 py-1.5 md:py-1 rounded-full" data-template="marketing">Marketing</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Right Column: Template Preview -->
-            <div class="xl:col-span-2">
-                <div class="bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)]">
-                    <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
-                        <div>
-                            <h3 id="preview-title" class="text-lg md:text-xl font-bold text-[var(--text-primary)]"></h3>
-                            <p id="preview-subtitle" class="text-sm text-[var(--subtitle-text)]"></p>
-                        </div>
-                        <button class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 px-4 rounded-md text-sm transition-colors duration-200 w-full sm:w-auto cursor-pointer">
-                            Use Template
-                        </button>
-                    </div>
-                    
-                    <div id="template-preview-container" class="overflow-x-auto border border-[var(--border-color)] rounded-md">
-                        <!-- Preview Table will be rendered here by JavaScript -->
-                    </div>
-                    
-                    <!-- Mobile scroll hint -->
-                    <div class="mt-2 text-xs text-[var(--text-secondary)] text-center md:hidden">
-                        ← Swipe to explore the grid →
-                    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+        <!-- Essay Planner Card -->
+        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+             <div class="text-center">
+                 <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Essay Planner</h2>
+                 <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Structure your essays with a proven framework. Break down research, outlining, writing, and editing into manageable tasks.</p>
+                 <a href="{% url 'pages:course_planner_template' %}" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                    Use Template
+                 </a>
+             </div>
+        </div>
+        <!-- Essay Planner GIF -->
+        <div class="flex items-center justify-center">
+            <img src="{% static 'gif/Essay Planner GIF.gif' %}" alt="Essay Planner Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                <div class="text-center">
+                    <p class="text-gray-500 text-sm mb-2">Essay Planner Preview</p>
+                    <p class="text-gray-400 text-xs">Add Essay Planner GIF.gif to static/gif/</p>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
+    <!-- Exam Revision Planner Row -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+        <!-- Exam Revision Planner GIF -->
+        <div class="flex items-center justify-center">
+            <img src="{% static 'gif/Revision Planner GIF.gif' %}" alt="Exam Revision Planner Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                <div class="text-center">
+                    <p class="text-gray-500 text-sm mb-2">Exam Revision Planner Preview</p>
+                    <p class="text-gray-400 text-xs">Add Revision Planner GIF.gif to static/gif/</p>
+                </div>
+            </div>
+        </div>
+        <!-- Exam Revision Planner Card -->
+        <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+             <div class="text-center">
+                 <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Exam Revision Planner</h2>
+                 <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Your easy way to plan your revision with what works for you. Tailor you revision plan to your needs and ace your exams.</p>
+                 <a href="{% url 'pages:revision_guide_template' %}" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                    Use Template
+                 </a>
+             </div>
+        </div>
+    </div>
+
 </div>
 {% endblock %}
