@@ -466,7 +466,7 @@ class GridManager {
         }
 
         // Always get fresh column count from DOM
-        const dataCols = document.querySelectorAll('.data-column');
+        const dataCols = document.querySelectorAll('col.data-column');
         this.elements.dataCols = dataCols;
         
         if (!dataCols.length) {
@@ -554,22 +554,13 @@ class GridManager {
 
         if (this.state.columnsToShow > 0) {
             const containerWidth = scrollable.clientWidth;
-            let columnWidth = containerWidth / this.state.columnsToShow;
-            
-            // Ensure minimum width for columns to prevent text cutoff
-            const minColumnWidth = 250;
-            if (columnWidth < minColumnWidth) {
-                columnWidth = minColumnWidth;
-            }
+            const columnWidth = containerWidth / this.state.columnsToShow;
             
             this.state.dataColWidth = columnWidth;
             
             dataCols.forEach((col, index) => {
-                const finalWidth = index === 0 ? Math.max(columnWidth, 300) : columnWidth;
-                const finalMinWidth = index === 0 ? '300px' : `${minColumnWidth}px`;
-                
-                col.style.width = `${finalWidth}px`;
-                col.style.minWidth = finalMinWidth;
+                col.style.width = `${columnWidth}px`;
+                col.style.minWidth = '0';
             });
 
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
@@ -635,7 +626,7 @@ class GridManager {
             // Wait a bit longer for DOM to be stable and recalculate
             setTimeout(() => {
                 // Recalculate total columns from actual DOM
-                const dataColumns = document.querySelectorAll('.data-column');
+                const dataColumns = document.querySelectorAll('col.data-column');
                 const actualColumnCount = dataColumns.length;
                 
                 if (actualColumnCount > 0) {
@@ -1290,19 +1281,22 @@ class GridManager {
 
     // Set initial column visibility to prevent flash
     setInitialColumnVisibility() {
-        const dataCols = document.querySelectorAll('.data-column');
+        const dataCols = document.querySelectorAll('col.data-column');
         if (!dataCols.length) return;
 
         // Calculate initial column count based on screen size
         const initialColumnCount = this.getResponsiveColumnCount();
         
-        // Set minimum width for all visible columns to prevent text cutoff
+        // Get container width for equal distribution
+        const containerWidth = this.elements.scrollable ? this.elements.scrollable.clientWidth : window.innerWidth;
+        
+        // Set equal widths for all visible columns
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Show only the initial number of columns with minimum width
-                const minWidth = index === 0 ? '300px' : '250px'; // Extra width for first column
-                col.style.width = minWidth;
-                col.style.minWidth = minWidth;
+                // Show only the initial number of columns with equal widths
+                const equalWidth = Math.floor(containerWidth / initialColumnCount);
+                col.style.width = `${equalWidth}px`;
+                col.style.minWidth = '0';
                 col.style.maxWidth = 'none';
                 col.style.overflow = 'visible';
             } else {

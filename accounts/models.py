@@ -52,6 +52,8 @@ class User(AbstractUser):
     
     # Security and tracking fields
     email_verified = models.BooleanField(default=False, help_text='Whether the user has verified their email address.')
+    email_verification_token = models.CharField(max_length=100, null=True, blank=True, help_text='Token for email verification.')
+    email_verification_sent_at = models.DateTimeField(null=True, blank=True, help_text='When the verification email was sent.')
     last_login_ip = models.GenericIPAddressField(null=True, blank=True, help_text='IP address of last login.')
     failed_login_attempts = models.PositiveIntegerField(default=0, help_text='Number of consecutive failed login attempts.')
     account_locked_until = models.DateTimeField(null=True, blank=True, help_text='Account locked until this time.')
@@ -108,6 +110,44 @@ class User(AbstractUser):
             self.account_locked_until = timezone.now() + timedelta(minutes=30)
         
         self.save(update_fields=['failed_login_attempts', 'account_locked_until'])
+    
+    def generate_email_verification_token(self):
+        """
+        Generate a secure token for email verification.
+        """
+        import secrets
+        import string
+        from django.utils import timezone
+        
+        # Generate a 32-character random token
+        alphabet = string.ascii_letters + string.digits
+        token = ''.join(secrets.choice(alphabet) for _ in range(32))
+        
+        self.email_verification_token = token
+        self.email_verification_sent_at = timezone.now()
+        self.save(update_fields=['email_verification_token', 'email_verification_sent_at'])
+        
+        return token
+    
+    def verify_email_token(self, token):
+        """
+        Verify the email verification token and mark email as verified.
+        """
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        # Check if token matches and is not expired (24 hours)
+        if (self.email_verification_token == token and 
+            self.email_verification_sent_at and 
+            timezone.now() < self.email_verification_sent_at + timedelta(hours=24)):
+            
+            self.email_verified = True
+            self.email_verification_token = None
+            self.email_verification_sent_at = None
+            self.save(update_fields=['email_verified', 'email_verification_token', 'email_verification_sent_at'])
+            return True
+        
+        return False
 
 class BetaTester(models.Model):
     email = models.EmailField(unique=True, help_text='Required. Enter a valid email address.')

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email - Toad</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background-color: #f9fafb;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+        
+        /* Content */
+        .content {
+            padding: 40px 30px;
+        }
+        
+        .greeting {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #4B5563;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        /* Button */
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .verify-button {
+            display: inline-block;
+            background-color: #10B981;
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .verify-button:hover {
+            background-color: #059669;
+        }
+        
+        /* Alternative link */
+        .alternative-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .alternative-link a {
+            color: #10B981;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .alternative-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .footer p {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .footer .small {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+        
+        /* Security notice */
+        .security-notice {
+            background-color: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+        
+        .security-notice p {
+            color: #92400e;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header, .content, .footer {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
+                </svg>
+            </div>
+            <h1>Welcome to Toad!</h1>
+            <p>Let's verify your email address</p>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="greeting">Hi {{ user.first_name }},</div>
+            
+            <div class="message">
+                Welcome to Toad! We're excited to have you on board. To get started with your task management journey, please verify your email address by clicking the button below.
+            </div>
+            
+            <div class="button-container">
+                <a href="{{ verification_url }}" class="verify-button">
+                    Verify Email Address
+                </a>
+            </div>
+            
+            <div class="alternative-link">
+                <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
+                <a href="{{ verification_url }}">{{ verification_url }}</a>
+            </div>
+            
+            <div class="security-notice">
+                <p><strong>Security Notice:</strong> This verification link will expire in 24 hours for your security. If you didn't create a Toad account, you can safely ignore this email.</p>
+            </div>
+            
+            <div class="message">
+                Once verified, you'll have full access to create grids, organize tasks, and boost your productivity with Toad's powerful task management tools.
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thanks for choosing Toad!</p>
+            <p class="small">
+                This email was sent to {{ user.email }}. If you have any questions, please contact our support team.
+            </p>
+            <p class="small">
+                © 2024 Toad. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html> 

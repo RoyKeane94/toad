@@ -92,9 +92,21 @@
                                 <h3 class="font-medium text-[var(--text-primary)]">Email</h3>
                                 <p class="text-sm text-[var(--text-secondary)]">{{ user.email }}</p>
                             </div>
-                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
-                                Verified
-                            </span>
+                            {% if user.email_verified %}
+                                <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">
+                                    Verified
+                                </span>
+                            {% else %}
+                                <div class="flex items-center space-x-2">
+                                    <span class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">
+                                        Unverified
+                                    </span>
+                                    <a href="{% url 'accounts:resend_verification' %}" 
+                                       class="px-3 py-1 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-xs font-medium transition-colors">
+                                        Resend
+                                    </a>
+                                </div>
+                            {% endif %}
                         </div>
                         
                         <div class="flex items-center justify-between p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">

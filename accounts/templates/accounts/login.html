@@ -46,6 +46,17 @@
                     Please sign in to your account
                 </p>
             </div>
+            
+            <!-- Email Verification Notice -->
+            <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    <div>
+                        <p class="font-medium">Email verification required</p>
+                        <p class="text-blue-600">Please check your email and click the verification link before logging in.</p>
+                    </div>
+                </div>
+            </div>
 
             <!-- Login Form -->
             <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
@@ -125,6 +136,16 @@
                             </span>
                             Sign in
                         </button>
+                    </div>
+                    
+                    <!-- Resend Verification Link -->
+                    <div class="text-center">
+                        <p class="text-sm text-[var(--text-secondary)]">
+                            Didn't receive the verification email? 
+                            <a href="{% url 'accounts:resend_verification' %}" class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] font-medium">
+                                Resend verification email
+                            </a>
+                        </p>
                     </div>
 
                     <!-- Sign Up Link -->

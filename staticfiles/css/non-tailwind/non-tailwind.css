@@ -205,12 +205,12 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Ensure data columns have minimum width to prevent text cutoff */
 .grid-table col.data-column {
-    min-width: 250px; /* Minimum width to prevent header text cutoff */
+    min-width: 120px; /* Reduced minimum width to allow better responsive behavior */
 }
 
 /* Ensure first data column has proper positioning */
 .grid-table col.data-column:first-child {
-    min-width: 300px; /* Extra width for first column to prevent cutoff */
+    min-width: 150px; /* Reduced minimum width for first column */
 }
 
 /* Hide scrollbar in Webkit browsers */

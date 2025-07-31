@@ -445,7 +445,7 @@ class GridManager {
         if (!scrollable || !leftBtn || !rightBtn || !gridTable) return;
 
         // Always get fresh column count from DOM
-        const dataCols = document.querySelectorAll('.data-column');
+        const dataCols = document.querySelectorAll('col.data-column');
         this.elements.dataCols = dataCols;
         
         if (!dataCols.length) return;
@@ -593,7 +593,7 @@ class GridManager {
             // Wait a bit longer for DOM to be stable and recalculate
             setTimeout(() => {
                 // Recalculate total columns from actual DOM
-                const dataColumns = document.querySelectorAll('.data-column');
+                const dataColumns = document.querySelectorAll('col.data-column');
                 const actualColumnCount = dataColumns.length;
                 
                 if (actualColumnCount > 0) {

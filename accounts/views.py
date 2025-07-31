@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, update_session_auth_hash, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -6,6 +6,8 @@ from django.views.generic import FormView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db import transaction
+from django.http import Http404
+from .models import User
 from .forms import (
     EmailAuthenticationForm, 
     CustomUserCreationForm, 
@@ -13,6 +15,7 @@ from .forms import (
     CustomPasswordChangeForm, 
     AccountDeletionForm
 )
+from .email_utils import send_verification_email
 
 # Create your views here.
 
@@ -26,8 +29,15 @@ class LoginView(FormView):
     
     def form_valid(self, form):
         """Login the user and redirect to success URL"""
-        login(self.request, form.get_user())
-        messages.success(self.request, f'Welcome back, {form.get_user().get_short_name()}!')
+        user = form.get_user()
+        
+        # Check if email is verified
+        if not user.email_verified:
+            messages.error(self.request, 'Please verify your email address before logging in. Check your inbox for the verification link.')
+            return redirect('accounts:login')
+        
+        login(self.request, user)
+        messages.success(self.request, f'Welcome back, {user.get_short_name()}!')
         return super().form_valid(form)
     
     def form_invalid(self, form):
@@ -49,26 +59,17 @@ class RegisterView(FormView):
     form_class = CustomUserCreationForm
     
     def form_valid(self, form):
-        """Create the user and log them in automatically"""
+        """Create the user and send verification email"""
         user = form.save()
-        login(self.request, user)
         
-        # Get the "[FirstName]'s First Grid" project that was created by the signal
-        from pages.models import Project
-        try:
-            grid_name = f"{user.first_name}'s First Grid"
-            first_grid = Project.objects.filter(user=user, name=grid_name).first()
-            if first_grid:
-                messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Let\'s start with your first grid.')
-                return redirect('pages:project_grid', pk=first_grid.pk)
-            else:
-                # Fallback if grid wasn't created for some reason
-                messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account has been created.')
-                return redirect('pages:project_list')
-        except Exception:
-            # Fallback in case of any errors
-            messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account has been created.')
-            return redirect('pages:project_list')
+        # Send verification email
+        if send_verification_email(user, self.request):
+            messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad.')
+        else:
+            messages.warning(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
+        
+        # Redirect to login page instead of auto-login
+        return redirect('accounts:login')
     
     def form_invalid(self, form):
         """Handle invalid form submission"""
@@ -212,3 +213,62 @@ def account_overview_view(request):
         'recent_projects': recent_projects,
     }
     return render(request, 'accounts/account_overview.html', context)
+
+
+def verify_email_view(request, token):
+    """
+    Verify user's email address using the provided token.
+    """
+    # Find user with this token
+    try:
+        user = User.objects.get(email_verification_token=token)
+    except User.DoesNotExist:
+        messages.error(request, 'Invalid or expired verification link. Please request a new verification email.')
+        return redirect('pages:home')
+    
+    # Verify the token
+    if user.verify_email_token(token):
+        messages.success(request, f'Email verified successfully! Welcome to Toad, {user.get_short_name()}!')
+        
+        # Log the user in if they're not already
+        if not request.user.is_authenticated:
+            login(request, user)
+        
+        # Redirect to their first grid or project list
+        from pages.models import Project
+        try:
+            grid_name = f"{user.first_name}'s First Grid"
+            first_grid = Project.objects.filter(user=user, name=grid_name).first()
+            if first_grid:
+                return redirect('pages:project_grid', pk=first_grid.pk)
+            else:
+                return redirect('pages:project_list')
+        except Exception:
+            return redirect('pages:project_list')
+    else:
+        messages.error(request, 'Invalid or expired verification link. Please request a new verification email.')
+        return redirect('pages:home')
+
+
+def resend_verification_email_view(request):
+    """
+    Resend verification email to the user.
+    """
+    if not request.user.is_authenticated:
+        messages.error(request, 'Please log in to request a verification email.')
+        return redirect('accounts:login')
+    
+    user = request.user
+    
+    # Check if email is already verified
+    if user.email_verified:
+        messages.info(request, 'Your email is already verified.')
+        return redirect('pages:project_list')
+    
+    # Send verification email
+    if send_verification_email(user, request):
+        messages.success(request, 'Verification email sent! Please check your inbox.')
+    else:
+        messages.error(request, 'Failed to send verification email. Please try again later or contact support.')
+    
+    return redirect('accounts:account_settings')

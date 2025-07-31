@@ -203,14 +203,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     min-width: max-content; /* Ensure table doesn't shrink below content width */
 }
 
-/* Ensure data columns have minimum width to prevent text cutoff */
+/* Ensure data columns have equal widths controlled by JavaScript */
 .grid-table col.data-column {
-    min-width: 250px; /* Minimum width to prevent header text cutoff */
-}
-
-/* Ensure first data column has proper positioning */
-.grid-table col.data-column:first-child {
-    min-width: 300px; /* Extra width for first column to prevent cutoff */
+    min-width: 0; /* Allow JavaScript to control all column widths */
 }
 
 /* Hide scrollbar in Webkit browsers */
