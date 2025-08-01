@@ -10405,3 +10405,12 @@ WARNING 2025-08-01 07:06:00,708 basehttp 36212 6191034368 "GET /.well-known/apps
 INFO 2025-08-01 07:07:18,864 basehttp 36212 6191034368 "GET / HTTP/1.1" 200 6360
 WARNING 2025-08-01 07:07:18,892 log 36212 6191034368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-01 07:07:18,893 basehttp 36212 6191034368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1665
+INFO 2025-08-01 07:26:01,546 autoreload 37333 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 07:26:06,016 basehttp 37333 6126202880 "GET / HTTP/1.1" 200 6346
+WARNING 2025-08-01 07:26:06,051 log 37333 6126202880 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:26:06,051 basehttp 37333 6126202880 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1684
+INFO 2025-08-01 07:26:13,254 basehttp 37333 6126202880 "GET / HTTP/1.1" 200 6374
+INFO 2025-08-01 07:26:15,606 basehttp 37333 6126202880 "GET /static/gif/Entrepreneurs%20GIF.gif HTTP/1.1" 200 2155430
+INFO 2025-08-01 07:26:49,484 basehttp 37333 6126202880 "GET /accounts/register/ HTTP/1.1" 302 0
+INFO 2025-08-01 07:26:49,515 basehttp 37333 6126202880 "GET /grids/ HTTP/1.1" 200 3778
+INFO 2025-08-01 07:26:54,636 basehttp 37333 6126202880 "GET /templates/ HTTP/1.1" 200 3877

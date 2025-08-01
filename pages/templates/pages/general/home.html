@@ -250,7 +250,10 @@
         },
         {
             id: 'persona-entrepreneurs',
-            img: 'https://storage.googleapis.com/gemini-prod-us-west1-assets/image_7c2e1a.png',
+            img: {
+                desktop: '{% static "gif/Entrepreneurs GIF.gif" %}',
+                mobile: '{% static "img/Mobile - Entrepreneurs Grid.png" %}'
+            },
             alt: 'A screenshot of a Toad grid for entrepreneurs',
         },
     ];
@@ -275,7 +278,7 @@
             active.style.boxShadow = '0 4px 16px 0 rgba(16,185,129,0.10)';
             const persona = personas.find(p => p.id === personaId);
             if (persona && showcaseImg) {
-                if (persona.id === 'persona-students' || persona.id === 'persona-professionals') {
+                if (persona.id === 'persona-students' || persona.id === 'persona-professionals' || persona.id === 'persona-entrepreneurs') {
                     showcaseImg.src = window.innerWidth < 768 ? persona.img.mobile : persona.img.desktop;
                 } else {
                     showcaseImg.src = persona.img;
