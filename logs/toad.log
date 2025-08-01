@@ -10440,3 +10440,16 @@ INFO 2025-08-01 07:31:37,031 basehttp 38408 6171635712 "GET / HTTP/1.1" 200 6334
 WARNING 2025-08-01 07:31:37,072 log 38408 6171635712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-01 07:31:37,073 basehttp 38408 6171635712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1643
 INFO 2025-08-01 07:31:39,136 basehttp 38408 6171635712 "GET /static/img/Mobile%20-%20Entrepeneurs%20Grid.png HTTP/1.1" 200 158181
+INFO 2025-08-01 07:34:27,246 autoreload 39226 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 07:34:32,189 basehttp 39226 6190411776 "GET / HTTP/1.1" 200 6357
+INFO 2025-08-01 07:34:32,219 basehttp 39226 6207238144 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-01 07:34:32,221 basehttp 39226 6190411776 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-01 07:34:32,233 log 39226 6190411776 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:34:32,234 basehttp 39226 6190411776 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1692
+INFO 2025-08-01 07:34:34,332 basehttp 39226 6190411776 "GET /templates/ HTTP/1.1" 200 3796
+WARNING 2025-08-01 07:34:34,383 log 39226 6190411776 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:34:34,393 basehttp 39226 6190411776 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1616
+INFO 2025-08-01 07:34:34,441 basehttp 39226 6257717248 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-01 07:34:34,451 basehttp 39226 6240890880 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-01 07:34:34,455 basehttp 39226 6224064512 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-01 07:34:34,457 basehttp 39226 6207238144 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
