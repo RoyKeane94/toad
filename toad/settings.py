@@ -239,18 +239,25 @@ if IS_PRODUCTION:
 
 # Email settings
 if IS_PRODUCTION:
-    # Production email settings (configure with your email provider)
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    # Production email settings - using Microsoft Office 365 SMTP
+    EMAIL_BACKEND = 'accounts.email_backend.Office365EmailBackend'
     EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.office365.com')
     EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
     EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
     EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@meettoad.co.uk')
 else:
-    # Development email settings (console backend for testing)
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    DEFAULT_FROM_EMAIL = 'noreply@meettoad.co.uk'
+    # Development email settings - using Microsoft Office 365 SMTP
+    EMAIL_BACKEND = 'accounts.email_backend.Office365EmailBackend'
+    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.office365.com')
+    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+    EMAIL_USE_TLS = True
+    EMAIL_USE_SSL = False
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'accounts@meettoad.co.uk')
 
 # Site URL for email links
 SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')

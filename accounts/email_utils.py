@@ -52,6 +52,11 @@ This email was sent to {user.email}. If you have any questions, please contact o
     
     # Send email
     try:
+        # Log email attempt
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Attempting to send verification email to {user.email}")
+        
         send_mail(
             subject='Verify Your Email - Welcome to Toad!',
             message=text_message,
@@ -60,6 +65,8 @@ This email was sent to {user.email}. If you have any questions, please contact o
             html_message=html_message,
             fail_silently=False,
         )
+        
+        logger.info(f"Successfully sent verification email to {user.email}")
         return True
     except Exception as e:
         # Log the error

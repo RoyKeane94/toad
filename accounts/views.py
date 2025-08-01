@@ -62,8 +62,16 @@ class RegisterView(FormView):
         """Create the user and send verification email"""
         user = form.save()
         
+        # Log registration attempt
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"New user registration: {user.email} ({user.get_short_name()})")
+        
         # Send verification email
-        if send_verification_email(user, self.request):
+        email_sent = send_verification_email(user, self.request)
+        logger.info(f"Verification email sent: {email_sent} for {user.email}")
+        
+        if email_sent:
             messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad.')
         else:
             messages.warning(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
