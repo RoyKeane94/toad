@@ -73,7 +73,7 @@
             <h2 class="text-3xl sm:text-4xl font-bold" style="color: #fff;">One simple grid for every part of your life.</h2>
             <div class="mt-6 mb-10 max-w-3xl mx-auto">
                 <p class="text-lg" style="color: var(--container-bg);">
-                    From planning your degree to launching your business, Toad is the simple organiser that helps you get it done
+                    From planning your degree to launching your business, Toad is the simple organiser that helps you get it done. <span style="color: var(--container-bg); font-weight: 700; font-size: 1.1em;">Choose from our template selection or create your own grid from scratch.</span>
                 </p>
             </div>
         </div>
@@ -106,8 +106,16 @@
                 </div>
             </div>
             <!-- Right Column: Image Showcase -->
-            <div id="showcase-image-container" class="lg:col-span-2 mt-10 lg:mt-0 flex justify-center">
+            <div id="showcase-image-container" class="lg:col-span-2 mt-10 lg:mt-0 flex flex-col items-center">
                 <img id="showcase-image" src="https://storage.googleapis.com/gemini-prod-us-west1-assets/image_b9f7c3.png" alt="A screenshot of a Toad grid for students" class="rounded-xl shadow-2xl ring-1 ring-black/5 max-w-full h-auto" style="box-shadow: 0 8px 32px 0 rgba(16,185,129,0.15); border: 2px solid var(--primary-action-bg);">
+                <div class="mt-6 text-center">
+                    <a href="{% url 'pages:templates_overview' %}" 
+                       class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white"
+                       style="background-color: var(--tertiary-action-bg);"
+                       onmouseover="this.style.backgroundColor='#e65c36'" onmouseout="this.style.backgroundColor='var(--tertiary-action-bg)'">
+                        Browse Templates
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -227,14 +235,17 @@
         {
             id: 'persona-students',
             img: {
-                desktop: '{% static "img/Desktop - Student Grid.png" %}',
+                desktop: '{% static "gif/Course Planner GIF.gif" %}',
                 mobile: '{% static "img/Mobile - Student Grid.png" %}'
             },
             alt: 'A screenshot of a Toad grid for students',
         },
         {
             id: 'persona-professionals',
-            img: 'https://storage.googleapis.com/gemini-prod-us-west1-assets/image_2b1e7c.png',
+            img: {
+                desktop: '{% static "gif/Professionals GIF.gif" %}',
+                mobile: '{% static "img/Mobile - Professionals Grid.png" %}'
+            },
             alt: 'A screenshot of a Toad grid for professionals',
         },
         {
@@ -264,7 +275,7 @@
             active.style.boxShadow = '0 4px 16px 0 rgba(16,185,129,0.10)';
             const persona = personas.find(p => p.id === personaId);
             if (persona && showcaseImg) {
-                if (persona.id === 'persona-students') {
+                if (persona.id === 'persona-students' || persona.id === 'persona-professionals') {
                     showcaseImg.src = window.innerWidth < 768 ? persona.img.mobile : persona.img.desktop;
                 } else {
                     showcaseImg.src = persona.img;

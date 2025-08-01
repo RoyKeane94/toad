@@ -10220,3 +10220,188 @@ INFO 2025-07-31 20:56:26,822 basehttp 31894 6211203072 "GET /grids/21/ HTTP/1.1"
 INFO 2025-07-31 20:56:26,840 basehttp 31894 6194376704 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 WARNING 2025-07-31 20:56:26,847 log 31894 6211203072 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-07-31 20:56:26,847 basehttp 31894 6211203072 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1628
+INFO 2025-07-31 20:57:05,755 autoreload 32396 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-31 20:57:07,282 basehttp 32396 6195245056 "GET /grids/21/ HTTP/1.1" 200 15216
+INFO 2025-07-31 20:57:07,301 basehttp 32396 6245724160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 20:57:07,302 basehttp 32396 6228897792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 20:57:07,303 basehttp 32396 6262550528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 20:57:07,310 basehttp 32396 6212071424 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 55075
+WARNING 2025-07-31 20:57:07,311 log 32396 6195245056 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-31 20:57:07,311 basehttp 32396 6195245056 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1675
+INFO 2025-07-31 20:57:59,239 basehttp 32396 6195245056 "GET /grids/21/ HTTP/1.1" 200 14610
+WARNING 2025-07-31 20:57:59,281 log 32396 6195245056 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-07-31 20:57:59,281 basehttp 32396 6228897792 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 20:57:59,282 basehttp 32396 6245724160 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 20:57:59,282 basehttp 32396 6262550528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 20:57:59,282 basehttp 32396 6212071424 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-07-31 20:57:59,282 basehttp 32396 6195245056 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1687
+INFO 2025-07-31 20:58:20,965 basehttp 32396 6195245056 "GET /grids/21/ HTTP/1.1" 200 15238
+WARNING 2025-07-31 20:58:20,993 log 32396 6195245056 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-31 20:58:20,993 basehttp 32396 6195245056 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1639
+INFO 2025-07-31 20:58:30,588 basehttp 32396 6195245056 "GET /grids/21/ HTTP/1.1" 200 14622
+INFO 2025-07-31 20:58:30,604 basehttp 32396 6195245056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 20:58:30,605 basehttp 32396 6262550528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 20:58:30,606 basehttp 32396 6245724160 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-07-31 20:58:30,618 log 32396 6245724160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-31 20:58:30,618 basehttp 32396 6245724160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1686
+INFO 2025-07-31 20:58:41,089 basehttp 32396 6245724160 "GET /grids/21/ HTTP/1.1" 200 14673
+INFO 2025-07-31 20:58:41,104 basehttp 32396 6245724160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:02:46,413 basehttp 32396 6195245056 "GET /templates/ HTTP/1.1" 200 3873
+INFO 2025-07-31 21:02:46,430 basehttp 32396 6245724160 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:02:46,430 basehttp 32396 6262550528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 21:02:46,432 basehttp 32396 6228897792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:02:46,440 basehttp 32396 6195245056 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 667447
+INFO 2025-07-31 21:02:46,452 basehttp 32396 6262550528 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-07-31 21:02:46,453 basehttp 32396 6212071424 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-07-31 21:02:46,454 basehttp 32396 6228897792 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+WARNING 2025-07-31 21:06:30,688 log 32396 6195245056 Forbidden (CSRF token from POST incorrect.): /accounts/login/
+WARNING 2025-07-31 21:06:30,689 basehttp 32396 6195245056 "POST /accounts/login/ HTTP/1.1" 403 1289
+INFO 2025-07-31 21:06:30,714 basehttp 32396 6195245056 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-07-31 21:06:30,716 basehttp 32396 6195245056 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-07-31 21:06:34,813 basehttp 32396 6195245056 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-07-31 21:06:34,839 basehttp 32396 6195245056 "GET /grids/ HTTP/1.1" 200 3850
+INFO 2025-07-31 21:06:44,521 autoreload 32906 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-31 21:06:51,696 basehttp 32906 6125531136 "GET /grids/15/ HTTP/1.1" 200 12618
+INFO 2025-07-31 21:06:51,716 basehttp 32906 6125531136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:06:51,716 basehttp 32906 6142357504 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:06:51,716 basehttp 32906 6159183872 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 21:06:51,717 basehttp 32906 6176010240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 21:07:11,724 basehttp 32906 6125531136 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-31 21:07:14,244 project_views_functions 32906 6125531136 User None deleted task: "Read Chapter 5 on Fiscal Policy" from project: Student Planner
+INFO 2025-07-31 21:07:14,248 basehttp 32906 6125531136 "POST /tasks/258/delete/ HTTP/1.1" 200 58
+INFO 2025-07-31 21:07:53,276 basehttp 32906 6125531136 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-07-31 21:08:04,016 basehttp 32906 6125531136 "POST /grids/15/tasks/create/58/92/ HTTP/1.1" 200 1437
+INFO 2025-07-31 21:08:11,967 basehttp 32906 6125531136 "GET /tasks/196/edit/ HTTP/1.1" 200 1095
+INFO 2025-07-31 21:08:15,948 basehttp 32906 6125531136 "POST /tasks/196/edit/ HTTP/1.1" 200 1486
+INFO 2025-07-31 21:20:30,019 autoreload 33464 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-31 21:20:31,797 basehttp 33464 6169243648 "GET / HTTP/1.1" 200 6266
+INFO 2025-07-31 21:20:31,810 basehttp 33464 6202896384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 21:20:31,810 basehttp 33464 6186070016 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:20:31,810 basehttp 33464 6169243648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:20:33,065 basehttp 33464 6169243648 "GET /grids/ HTTP/1.1" 200 3879
+INFO 2025-07-31 21:20:34,128 basehttp 33464 6169243648 "GET / HTTP/1.1" 200 6258
+INFO 2025-07-31 21:20:56,117 basehttp 33464 6169243648 "GET / HTTP/1.1" 200 6296
+INFO 2025-07-31 21:20:56,142 basehttp 33464 6202896384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-07-31 21:20:56,143 basehttp 33464 6186070016 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40211
+INFO 2025-07-31 21:20:56,144 basehttp 33464 6169243648 "GET /static/css/output.css HTTP/1.1" 200 68354
+INFO 2025-07-31 21:20:56,324 basehttp 33464 6169243648 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-07-31 21:29:29,139 basehttp 33464 6169243648 "GET /templates/ HTTP/1.1" 200 3931
+INFO 2025-07-31 21:29:29,153 basehttp 33464 6186070016 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:29:29,155 basehttp 33464 6202896384 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:29:29,156 basehttp 33464 6236549120 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-07-31 21:29:29,156 basehttp 33464 6219722752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 21:29:29,168 basehttp 33464 6169243648 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-07-31 21:29:29,171 basehttp 33464 6236549120 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-07-31 21:29:29,172 basehttp 33464 6219722752 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-07-31 21:29:30,825 basehttp 33464 6219722752 "GET /grids/ HTTP/1.1" 200 3868
+INFO 2025-07-31 21:29:34,901 basehttp 33464 6169243648 "GET /grids/16/ HTTP/1.1" 200 7965
+INFO 2025-07-31 21:29:34,913 basehttp 33464 6169243648 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-07-31 21:44:43,469 autoreload 34514 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-31 21:44:59,414 autoreload 34708 8767266560 Watching for file changes with StatReloader
+INFO 2025-07-31 21:45:08,155 basehttp 34708 6194425856 "GET / HTTP/1.1" 200 6291
+INFO 2025-07-31 21:45:08,190 basehttp 34708 6211252224 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:45:08,191 basehttp 34708 6228078592 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-07-31 21:45:08,191 basehttp 34708 6194425856 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-07-31 21:45:08,211 basehttp 34708 6228078592 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-07-31 21:45:10,658 basehttp 34708 6228078592 "GET /static/gif/Professionals%20GIF.gif HTTP/1.1" 200 2655508
+WARNING 2025-07-31 21:45:33,517 log 34708 6194425856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-31 21:45:33,518 basehttp 34708 6194425856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1681
+INFO 2025-07-31 21:45:34,325 basehttp 34708 6194425856 "GET / HTTP/1.1" 200 6329
+WARNING 2025-07-31 21:45:34,348 log 34708 6194425856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-07-31 21:45:34,349 basehttp 34708 6194425856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1640
+INFO 2025-07-31 21:45:34,360 basehttp 34708 6194425856 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
+INFO 2025-07-31 21:45:37,329 basehttp 34708 6194425856 "GET /static/img/Mobile%20-%20Professionals%20Grid.png HTTP/1.1" 200 179808
+INFO 2025-08-01 06:48:14,825 autoreload 35386 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 06:48:17,526 basehttp 35386 6136983552 "GET / HTTP/1.1" 200 6332
+INFO 2025-08-01 06:48:17,547 basehttp 35386 6136983552 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-01 06:48:17,548 basehttp 35386 6153809920 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-01 06:48:17,548 basehttp 35386 6170636288 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-01 06:48:17,562 basehttp 35386 6170636288 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-01 06:48:23,857 basehttp 35386 6136983552 "GET /static/gif/Professionals%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-01 06:58:07,812 autoreload 35834 8767266560 Watching for file changes with StatReloader
+ERROR 2025-08-01 06:58:10,998 log 35834 6204551168 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 22, in home
+    return render(request, 'pages/general/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'general_templates_overview' not found. 'general_templates_overview' is not a valid view function or pattern name.
+ERROR 2025-08-01 06:58:11,003 basehttp 35834 6204551168 "GET / HTTP/1.1" 500 18864
+INFO 2025-08-01 06:58:11,073 basehttp 35834 6204551168 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-08-01 06:58:11,076 basehttp 35834 6204551168 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-08-01 06:59:12,455 basehttp 35834 6204551168 "GET / HTTP/1.1" 200 6379
+INFO 2025-08-01 07:02:38,838 basehttp 35834 6204551168 "GET / HTTP/1.1" 200 6410
+INFO 2025-08-01 07:02:55,102 autoreload 36212 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 07:02:56,948 basehttp 36212 6191034368 "GET / HTTP/1.1" 200 6389
+INFO 2025-08-01 07:03:12,654 basehttp 36212 6191034368 "GET /templates/ HTTP/1.1" 200 3876
+INFO 2025-08-01 07:03:12,672 basehttp 36212 6191034368 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-01 07:03:12,672 basehttp 36212 6207860736 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-01 07:03:12,677 basehttp 36212 6207860736 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-01 07:04:38,109 basehttp 36212 6191034368 "GET / HTTP/1.1" 200 6354
+INFO 2025-08-01 07:05:26,346 basehttp 36212 6191034368 "GET / HTTP/1.1" 200 6383
+WARNING 2025-08-01 07:05:59,652 log 36212 6191034368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:05:59,653 basehttp 36212 6191034368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1636
+INFO 2025-08-01 07:06:00,682 basehttp 36212 6191034368 "GET / HTTP/1.1" 200 6446
+WARNING 2025-08-01 07:06:00,708 log 36212 6191034368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:06:00,708 basehttp 36212 6191034368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1644
+INFO 2025-08-01 07:07:18,864 basehttp 36212 6191034368 "GET / HTTP/1.1" 200 6360
+WARNING 2025-08-01 07:07:18,892 log 36212 6191034368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:07:18,893 basehttp 36212 6191034368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1665
