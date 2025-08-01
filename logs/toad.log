@@ -10414,3 +10414,29 @@ INFO 2025-08-01 07:26:15,606 basehttp 37333 6126202880 "GET /static/gif/Entrepre
 INFO 2025-08-01 07:26:49,484 basehttp 37333 6126202880 "GET /accounts/register/ HTTP/1.1" 302 0
 INFO 2025-08-01 07:26:49,515 basehttp 37333 6126202880 "GET /grids/ HTTP/1.1" 200 3778
 INFO 2025-08-01 07:26:54,636 basehttp 37333 6126202880 "GET /templates/ HTTP/1.1" 200 3877
+INFO 2025-08-01 07:28:57,889 autoreload 37746 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 07:28:59,540 basehttp 37746 6128431104 "GET /templates/ HTTP/1.1" 200 3796
+WARNING 2025-08-01 07:28:59,570 log 37746 6128431104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:28:59,570 basehttp 37746 6128431104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1629
+INFO 2025-08-01 07:29:11,891 basehttp 37746 6128431104 "GET / HTTP/1.1" 200 6361
+WARNING 2025-08-01 07:29:11,922 log 37746 6128431104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:29:11,922 basehttp 37746 6128431104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1647
+WARNING 2025-08-01 07:29:26,439 basehttp 37746 6128431104 "GET /static/img/Mobile%20-%20Entrepreneurs%20Grid.png HTTP/1.1" 404 2038
+INFO 2025-08-01 07:29:34,174 basehttp 37746 6145257472 "GET / HTTP/1.1" 200 6414
+INFO 2025-08-01 07:29:34,202 basehttp 37746 6162083840 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-01 07:29:34,202 log 37746 6178910208 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:29:34,203 basehttp 37746 6178910208 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1598
+INFO 2025-08-01 07:29:34,204 basehttp 37746 6128431104 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40211
+INFO 2025-08-01 07:29:34,204 basehttp 37746 6145257472 "GET /static/css/output.css HTTP/1.1" 200 68572
+INFO 2025-08-01 07:29:34,390 basehttp 37746 6145257472 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
+WARNING 2025-08-01 07:29:36,537 basehttp 37746 6145257472 "GET /static/img/Mobile%20-%20Entrepreneurs%20Grid.png HTTP/1.1" 404 2038
+INFO 2025-08-01 07:29:57,114 autoreload 37973 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 07:29:59,191 basehttp 37973 6162264064 "GET / HTTP/1.1" 200 6398
+WARNING 2025-08-01 07:29:59,220 log 37973 6162264064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:29:59,220 basehttp 37973 6162264064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1627
+WARNING 2025-08-01 07:30:01,553 basehttp 37973 6162264064 "GET /static/img/Mobile%20-%20Entrepreneurs%20Grid.png HTTP/1.1" 404 2038
+INFO 2025-08-01 07:31:34,745 autoreload 38408 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-01 07:31:37,031 basehttp 38408 6171635712 "GET / HTTP/1.1" 200 6334
+WARNING 2025-08-01 07:31:37,072 log 38408 6171635712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-01 07:31:37,073 basehttp 38408 6171635712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1643
+INFO 2025-08-01 07:31:39,136 basehttp 38408 6171635712 "GET /static/img/Mobile%20-%20Entrepeneurs%20Grid.png HTTP/1.1" 200 158181
