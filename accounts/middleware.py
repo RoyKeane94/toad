@@ -17,7 +17,12 @@ class EmailVerificationMiddleware:
             not request.user.email_verified and
             not request.path.startswith('/accounts/') and  # Allow access to account pages
             not request.path.startswith('/admin/') and     # Allow admin access
-            request.path != '/'):                          # Allow home page
+            request.path != '/' and                        # Allow home page
+            not request.path.startswith('/grids/') and    # Allow access to grids
+            not request.path.startswith('/templates/') and # Allow access to templates
+            not request.path.startswith('/faq/') and       # Allow access to FAQ
+            not request.path.startswith('/contact/') and   # Allow access to contact
+            not request.path.startswith('/privacy/')):     # Allow access to privacy policy
             
             messages.warning(request, 'Please verify your email address to access all features.')
             return redirect('accounts:account_settings')
