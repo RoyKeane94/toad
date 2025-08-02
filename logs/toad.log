@@ -10867,3 +10867,96 @@ WARNING 2025-08-02 15:55:49,554 basehttp 3848 6193950720 "GET /.well-known/appsp
 INFO 2025-08-02 15:55:58,558 basehttp 3848 6193950720 "GET /accounts/login/ HTTP/1.1" 200 4078
 WARNING 2025-08-02 15:55:58,586 log 3848 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-02 15:55:58,586 basehttp 3848 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1656
+INFO 2025-08-02 16:01:56,832 autoreload 4029 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:02:03,716 basehttp 4029 6189166592 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-02 16:02:03,731 basehttp 4029 6189166592 "GET /grids/ HTTP/1.1" 200 3916
+WARNING 2025-08-02 16:02:03,767 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:03,767 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1662
+INFO 2025-08-02 16:02:06,348 basehttp 4029 6189166592 "GET /grids/33/delete/ HTTP/1.1" 200 3231
+WARNING 2025-08-02 16:02:06,378 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:06,379 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1606
+INFO 2025-08-02 16:02:07,222 basehttp 4029 6189166592 "POST /grids/33/delete/ HTTP/1.1" 302 0
+INFO 2025-08-02 16:02:07,240 basehttp 4029 6189166592 "GET /grids/ HTTP/1.1" 200 3822
+WARNING 2025-08-02 16:02:07,295 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:07,295 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1594
+INFO 2025-08-02 16:02:10,809 basehttp 4029 6189166592 "GET /grids/25/delete/ HTTP/1.1" 200 3264
+WARNING 2025-08-02 16:02:10,838 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:10,839 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1680
+INFO 2025-08-02 16:02:11,752 basehttp 4029 6189166592 "POST /grids/25/delete/ HTTP/1.1" 302 0
+INFO 2025-08-02 16:02:11,772 basehttp 4029 6189166592 "GET /grids/ HTTP/1.1" 200 3727
+WARNING 2025-08-02 16:02:11,805 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:11,805 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1641
+INFO 2025-08-02 16:02:13,379 basehttp 4029 6189166592 "GET /grids/24/delete/ HTTP/1.1" 200 3225
+WARNING 2025-08-02 16:02:13,410 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:13,410 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1629
+INFO 2025-08-02 16:02:14,169 basehttp 4029 6189166592 "POST /grids/24/delete/ HTTP/1.1" 302 0
+INFO 2025-08-02 16:02:14,187 basehttp 4029 6189166592 "GET /grids/ HTTP/1.1" 200 3709
+WARNING 2025-08-02 16:02:14,223 log 4029 6189166592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 16:02:14,224 basehttp 4029 6189166592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1661
+INFO 2025-08-02 16:02:18,178 basehttp 4029 6189166592 "GET /grids/23/ HTTP/1.1" 200 12624
+INFO 2025-08-02 16:02:18,199 basehttp 4029 6189166592 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24685
+INFO 2025-08-02 16:02:23,846 basehttp 4029 6189166592 "POST /tasks/285/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:02:24,577 basehttp 4029 6189166592 "POST /tasks/286/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:02:25,462 basehttp 4029 6189166592 "POST /tasks/287/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:02:27,027 basehttp 4029 6189166592 "POST /tasks/293/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:02:27,978 basehttp 4029 6189166592 "POST /tasks/297/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:07:49,086 autoreload 4029 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:07:49,355 autoreload 4106 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:07:58,606 autoreload 4106 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:07:58,789 autoreload 4120 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:08:08,042 autoreload 4120 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-02 16:08:08,226 autoreload 4127 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:08:25,552 autoreload 4127 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:08:25,727 autoreload 4148 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:08:39,022 autoreload 4148 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:08:39,187 autoreload 4162 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:09:09,779 autoreload 4162 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-02 16:09:09,966 autoreload 4172 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:09:21,250 autoreload 4172 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-02 16:09:21,423 autoreload 4185 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:10:10,608 basehttp 4185 6164901888 "GET /templates/ HTTP/1.1" 200 3875
+INFO 2025-08-02 16:10:10,653 basehttp 4185 6198554624 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-02 16:10:10,654 basehttp 4185 6164901888 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-02 16:10:10,655 basehttp 4185 6181728256 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-02 16:10:14,139 basehttp 4185 6181728256 "GET /templates/essay-planner/ HTTP/1.1" 302 0
+INFO 2025-08-02 16:10:14,170 basehttp 4185 6181728256 "GET /grids/34/ HTTP/1.1" 200 11861
+INFO 2025-08-02 16:10:39,601 basehttp 4185 6181728256 "GET /grids/ HTTP/1.1" 200 3756
+INFO 2025-08-02 16:10:41,044 basehttp 4185 6181728256 "GET /grids/23/ HTTP/1.1" 200 12582
+INFO 2025-08-02 16:10:52,293 basehttp 4185 6181728256 "GET /grids/23/ HTTP/1.1" 200 12589
+INFO 2025-08-02 16:13:04,629 autoreload 4185 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:13:04,904 autoreload 4247 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:14:53,920 autoreload 4247 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:14:54,208 autoreload 4269 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:19:21,506 basehttp 4269 6168408064 "GET /grids/ HTTP/1.1" 200 3797
+INFO 2025-08-02 16:19:21,521 basehttp 4269 6185234432 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 16:19:21,522 basehttp 4269 6168408064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 16:19:23,503 basehttp 4269 6168408064 "GET /templates/ HTTP/1.1" 200 3860
+INFO 2025-08-02 16:19:38,503 autoreload 4269 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:19:38,784 autoreload 4304 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:21:00,521 basehttp 4304 6133002240 "GET /grids/ HTTP/1.1" 200 3823
+INFO 2025-08-02 16:21:13,219 basehttp 4304 6133002240 "GET /grids/34/delete/ HTTP/1.1" 200 3255
+INFO 2025-08-02 16:21:14,318 basehttp 4304 6133002240 "POST /grids/34/delete/ HTTP/1.1" 302 0
+INFO 2025-08-02 16:21:14,328 basehttp 4304 6133002240 "GET /grids/ HTTP/1.1" 200 3680
+INFO 2025-08-02 16:21:43,473 basehttp 4304 6133002240 "GET /grids/15/ HTTP/1.1" 200 12524
+INFO 2025-08-02 16:21:43,488 basehttp 4304 6133002240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 16:21:49,551 basehttp 4304 6133002240 "GET /grids/15/ HTTP/1.1" 200 12479
+INFO 2025-08-02 16:21:55,606 basehttp 4304 6133002240 "POST /tasks/165/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:21:56,686 basehttp 4304 6133002240 "POST /tasks/166/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:21:58,517 basehttp 4304 6133002240 "POST /tasks/170/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:21:59,968 basehttp 4304 6133002240 "POST /tasks/179/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-02 16:26:04,823 autoreload 4304 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:26:05,111 autoreload 4383 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:26:10,280 autoreload 4383 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:26:10,467 autoreload 4390 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:26:21,750 autoreload 4390 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:26:21,937 autoreload 4399 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:26:32,174 autoreload 4399 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:26:32,355 autoreload 4409 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:26:42,591 autoreload 4409 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-02 16:26:42,872 autoreload 4418 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:27:20,618 autoreload 4418 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:27:20,945 autoreload 4428 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:27:42,405 autoreload 4428 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:27:42,673 autoreload 4437 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 16:28:12,240 autoreload 4437 8602279680 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-02 16:28:12,512 autoreload 4447 8602279680 Watching for file changes with StatReloader
