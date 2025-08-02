@@ -31,7 +31,7 @@ def send_verification_email(user, request=None):
             image_data = base64.b64encode(f.read()).decode('utf-8')
     
     # Render email template
-    html_message = render_to_string('accounts/email_verification.html', {
+    html_message = render_to_string('accounts/email/email_verification.html', {
         'user': user,
         'verification_url': verification_url,
         'toad_image_data': image_data,
@@ -110,7 +110,7 @@ def send_password_reset_email(user, request=None):
             image_data = base64.b64encode(f.read()).decode('utf-8')
     
     # Render email template
-    html_message = render_to_string('accounts/password_reset_email.html', {
+    html_message = render_to_string('accounts/email/password_reset_email.html', {
         'user': user,
         'reset_url': reset_url,
         'toad_image_data': image_data,

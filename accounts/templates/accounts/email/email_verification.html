@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reset Your Password - Toad</title>
+    <title>Verify Your Email - Toad</title>
     <style>
         /* Reset and base styles */
         * {
@@ -90,7 +90,7 @@
             margin: 30px 0;
         }
         
-        .reset-button {
+        .verify-button {
             display: inline-block;
             background-color: #10B981;
             color: white;
@@ -102,7 +102,7 @@
             transition: background-color 0.2s ease;
         }
         
-        .reset-button:hover {
+        .verify-button:hover {
             background-color: #059669;
         }
         
@@ -184,13 +184,8 @@
         
         <!-- Header -->
         <div class="header">
-            <div class="logo">
-                <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                    <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
-                </svg>
-            </div>
-            <h1>Reset Your Password</h1>
-            <p>Let's get you back into your account</p>
+            <h1>Welcome to Toad!</h1>
+            <p>Let's verify your email address</p>
         </div>
         
         <!-- Content -->
@@ -198,32 +193,32 @@
             <div class="greeting">Hi {{ user.first_name }},</div>
             
             <div class="message">
-                You requested a password reset for your Toad account. To reset your password, please click the button below.
+                Welcome to Toad! We're excited to have you on board. To get started with your task management journey, please verify your email address by clicking the button below.
             </div>
             
             <div class="button-container">
-                <a href="{{ reset_url }}" class="reset-button">
-                    Reset Password
+                <a href="{{ verification_url }}" class="verify-button">
+                    Verify Email Address
                 </a>
             </div>
             
             <div class="alternative-link">
                 <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
-                <a href="{{ reset_url }}">{{ reset_url }}</a>
+                <a href="{{ verification_url }}">{{ verification_url }}</a>
             </div>
             
             <div class="security-notice">
-                <p><strong>Security Notice:</strong> This password reset link will expire in 1 hour for your security. If you didn't request a password reset, you can safely ignore this email.</p>
+                <p><strong>Security Notice:</strong> This verification link will expire in 24 hours for your security. If you didn't create a Toad account, you can safely ignore this email.</p>
             </div>
             
             <div class="message">
-                If you have any questions or need assistance, please contact our support team.
+                Once verified, you'll have full access to create grids, organise tasks, and boost your productivity with Toad's powerful task management tools.
             </div>
         </div>
         
         <!-- Footer -->
         <div class="footer">
-            <p>Thanks for using Toad!</p>
+            <p>Thanks for choosing Toad!</p>
             <p class="small">
                 This email was sent to {{ user.email }}. If you have any questions, please contact our support team.
             </p>
