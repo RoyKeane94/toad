@@ -553,45 +553,41 @@ class GridManager {
         if (!scrollable || !dataCols.length) return;
 
         if (this.state.columnsToShow > 0) {
-            // Calculate 90% of page width for the entire grid, minus 25px for overlap
-            const pageWidth = window.innerWidth;
-            const maxGridWidth = (pageWidth * 0.9) - 25;
+            // Get the total grid container width (including category column)
+            const gridContainer = scrollable.closest('.grid-container-wrapper');
+            const totalGridWidth = gridContainer ? gridContainer.clientWidth : scrollable.clientWidth;
             
-            // Get the category column width
+            // Get the category column width based on screen size
             const getCategoryColumnWidth = () => {
                 const screenWidth = window.innerWidth;
-                if (screenWidth <= 480) {
-                    return 175; // Mobile: match CSS --category-col-width: 175px
-                } else if (screenWidth <= 768) {
-                    return 200; // Tablet: match CSS --category-col-width: 200px  
-                } else {
-                    return 225; // Desktop: match CSS --category-col-width: 225px
-                }
+                if (screenWidth <= 480) return 175;
+                if (screenWidth <= 768) return 200;
+                return 225; // Desktop
             };
             
             const categoryColumnWidth = getCategoryColumnWidth();
-            const availableWidth = maxGridWidth - categoryColumnWidth;
-            let columnWidth = availableWidth / this.state.columnsToShow;
             
-            // Ensure minimum width for columns to prevent text cutoff
-            const minColumnWidth = 250;
-            if (columnWidth < minColumnWidth) {
-                columnWidth = minColumnWidth;
-            }
+            // Calculate available width for data columns (total width minus category column)
+            const availableWidth = totalGridWidth - categoryColumnWidth;
             
-            this.state.dataColWidth = columnWidth;
+            // Ensure we have the correct number of columns visible based on screen size
+            const minColumnsToShow = this.getResponsiveColumnCount();
+            this.state.columnsToShow = Math.min(minColumnsToShow, this.state.totalDataColumns);
             
-            dataCols.forEach((col, index) => {
-                // All columns should use the same calculated width
-                const finalWidth = columnWidth;
-                const finalMinWidth = `${minColumnWidth}px`;
-                
-                col.style.width = `${finalWidth}px`;
-                col.style.minWidth = finalMinWidth;
+            // Calculate equal width for each data column
+            this.state.dataColWidth = availableWidth / this.state.columnsToShow;
+            
+            // Apply the same width to all data columns to ensure they're equal
+            dataCols.forEach(col => {
+                col.style.width = `${this.state.dataColWidth}px`;
+                col.style.minWidth = `${this.state.dataColWidth}px`;
+                col.style.maxWidth = `${this.state.dataColWidth}px`;
             });
 
+            // Set the total table width to accommodate all columns
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
             gridTable.style.width = `${totalTableWidth}px`;
+            gridTable.style.minWidth = `${totalTableWidth}px`;
         }
         
         this.syncRowHeights();
@@ -696,6 +692,10 @@ class GridManager {
                 // Add a small delay to ensure the scroll position is properly set
                 setTimeout(() => {
                     if (this.elements.scrollable.scrollLeft !== 0) {
+                        this.elements.scrollable.scrollLeft = 0;
+                    }
+                    // Ensure the first column is fully visible by checking scroll position
+                    if (this.elements.scrollable.scrollLeft > 0) {
                         this.elements.scrollable.scrollLeft = 0;
                     }
                 }, 10);
@@ -1314,14 +1314,14 @@ class GridManager {
         // Calculate initial column count based on screen size
         const initialColumnCount = this.getResponsiveColumnCount();
         
-        // Set minimum width for all visible columns to prevent text cutoff
+        // Set equal width for all visible columns to prevent text cutoff
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Show only the initial number of columns with consistent width
-                const minWidth = '250px'; // Use consistent width for all columns
-                col.style.width = minWidth;
-                col.style.minWidth = minWidth;
-                col.style.maxWidth = 'none';
+                // Show only the initial number of columns with equal width
+                const equalWidth = '300px'; // Use consistent width for all columns
+                col.style.width = equalWidth;
+                col.style.minWidth = equalWidth;
+                col.style.maxWidth = equalWidth;
                 col.style.overflow = 'visible';
             } else {
                 // Hide remaining columns

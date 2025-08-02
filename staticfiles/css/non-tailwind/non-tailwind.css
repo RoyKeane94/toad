@@ -176,11 +176,21 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     scroll-behavior: smooth;
     scrollbar-width: none; /* Hide scrollbar in Firefox */
     -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    /* Ensure proper width calculation - take remaining space after category column */
+    width: calc(100% - var(--category-col-width));
+    /* Ensure the container can properly calculate available width */
+    box-sizing: border-box;
 }
 
 /* Grid table visibility - always visible by default */
 .grid-table {
     visibility: visible;
+    /* Ensure table takes full width of its container */
+    width: 100%;
+    table-layout: fixed; /* Force equal column widths */
+    /* Ensure proper border collapse for consistent spacing */
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 /* Show grid table once JavaScript has initialized it */
@@ -206,6 +216,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* Ensure data columns have equal widths controlled by JavaScript */
 .grid-table col.data-column {
     min-width: 0; /* Allow JavaScript to control all column widths */
+    width: auto; /* Let JavaScript set the width */
+    /* Ensure consistent sizing */
+    box-sizing: border-box;
 }
 
 /* Hide scrollbar in Webkit browsers */
@@ -322,6 +335,8 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border: 1px solid #f3f4f6;
     border-radius: 8px;
     /* overflow: hidden removed to allow sticky headers to work */
+    /* Ensure proper box sizing for width calculations */
+    box-sizing: border-box;
 }
 
 .grid-table-fixed-col {
