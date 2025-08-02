@@ -41,11 +41,18 @@
         .max-w-md {
             max-width: 100%;
             padding: 0 1rem;
+            margin-bottom: 2rem; /* Add bottom margin to prevent navbar overlap */
         }
         
         /* Add more space between elements on mobile */
         .space-y-8 > * + * {
             margin-top: 2rem;
+        }
+        
+        /* Messages container styling */
+        .messages-container {
+            min-height: 0;
+            flex-shrink: 0;
         }
     }
 </style>
@@ -66,35 +73,38 @@
                 </p>
             </div>
             
-            <!-- Email Verification Notice - Only show when user just registered -->
-            {% if show_verification_message %}
-            <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm mb-6">
-                <div class="flex items-start">
-                    <i class="fas fa-info-circle mr-2 mt-0.5 flex-shrink-0"></i>
-                    <div>
-                        <p class="font-medium mb-1">Email verification required</p>
-                        <p class="text-blue-600 text-xs leading-relaxed">Please check your email and spam folder, then click the verification link before logging in.</p>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
-
-            <!-- Error Messages -->
-            {% if messages %}
-                {% for message in messages %}
-                    {% if message.tags == 'error' %}
-                    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm mb-6">
-                        <div class="flex items-start">
-                            <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
-                            <div>
-                                <p class="font-medium mb-1">Login Failed</p>
-                                <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
-                            </div>
+            <!-- Messages Container - Fixed position to push form down -->
+            <div class="messages-container">
+                <!-- Email Verification Notice - Only show when user just registered -->
+                {% if show_verification_message %}
+                <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm mb-6">
+                    <div class="flex items-start">
+                        <i class="fas fa-info-circle mr-2 mt-0.5 flex-shrink-0"></i>
+                        <div>
+                            <p class="font-medium mb-1">Email verification required</p>
+                            <p class="text-blue-600 text-xs leading-relaxed">Please check your email and spam folder, then click the verification link before logging in.</p>
                         </div>
                     </div>
-                    {% endif %}
-                {% endfor %}
-            {% endif %}
+                </div>
+                {% endif %}
+
+                <!-- Error Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm mb-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-medium mb-1">Login Failed</p>
+                                    <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
 
             <!-- Login Form -->
             <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">

@@ -41,6 +41,7 @@
         .max-w-md {
             max-width: 100%;
             padding: 0 1rem;
+            margin-bottom: 2rem; /* Add bottom margin to prevent navbar overlap */
         }
         
         /* Add more space between elements on mobile */
@@ -52,6 +53,12 @@
         .py-8 {
             padding-top: 1.5rem;
             padding-bottom: 1.5rem;
+        }
+        
+        /* Messages container styling */
+        .messages-container {
+            min-height: 0;
+            flex-shrink: 0;
         }
     }
 </style>
@@ -70,6 +77,26 @@
                 <p class="mt-2 text-sm text-[var(--subtitle-text)]">
                     Create your account to start organising for free
                 </p>
+            </div>
+            
+            <!-- Messages Container - Fixed position to push form down -->
+            <div class="messages-container">
+                <!-- Error Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm mb-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-medium mb-1">Registration Failed</p>
+                                    <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
 
             <!-- Registration Form -->
