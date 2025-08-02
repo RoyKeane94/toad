@@ -3,6 +3,8 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
+import os
+import base64
 
 
 def send_verification_email(user, request=None):
@@ -21,10 +23,18 @@ def send_verification_email(user, request=None):
         # Fallback for when request is not available
         verification_url = f"{settings.SITE_URL}/accounts/verify-email/{token}/"
     
+    # Read and encode the image
+    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
+    image_data = ""
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+    
     # Render email template
     html_message = render_to_string('accounts/email_verification.html', {
         'user': user,
         'verification_url': verification_url,
+        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -92,10 +102,18 @@ def send_password_reset_email(user, request=None):
         # Fallback for when request is not available
         reset_url = f"{settings.SITE_URL}/accounts/reset-password/{token}/"
     
+    # Read and encode the image
+    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
+    image_data = ""
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+    
     # Render email template
     html_message = render_to_string('accounts/password_reset_email.html', {
         'user': user,
         'reset_url': reset_url,
+        'toad_image_data': image_data,
     })
     
     # Plain text version

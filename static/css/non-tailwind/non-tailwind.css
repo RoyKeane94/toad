@@ -366,7 +366,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Ensure column headers have enough space and don't get cut off */
 .grid-table th {
-    min-width: 200px; /* Reduced minimum width for better fit */
+    min-width: 180px; /* Further reduced minimum width for better fit */
     overflow: visible; /* Allow text to be visible */
     word-wrap: break-word;
     word-break: break-word;

@@ -553,11 +553,24 @@ class GridManager {
         if (!scrollable || !dataCols.length) return;
 
         if (this.state.columnsToShow > 0) {
-            const containerWidth = scrollable.clientWidth;
-            let columnWidth = containerWidth / this.state.columnsToShow;
+            // Get the category column width to account for it in calculations
+            const getCategoryColumnWidth = () => {
+                const screenWidth = window.innerWidth;
+                if (screenWidth <= 480) {
+                    return 175; // Mobile: match CSS --category-col-width: 175px
+                } else if (screenWidth <= 768) {
+                    return 200; // Tablet: match CSS --category-col-width: 200px  
+                } else {
+                    return 225; // Desktop: match CSS --category-col-width: 225px
+                }
+            };
+            
+            const categoryColumnWidth = getCategoryColumnWidth();
+            const availableWidth = scrollable.clientWidth - categoryColumnWidth;
+            let columnWidth = availableWidth / this.state.columnsToShow;
             
             // Ensure minimum width for columns to prevent text cutoff
-            const minColumnWidth = 250;
+            const minColumnWidth = 200; // Reduced from 250 to give more flexibility
             if (columnWidth < minColumnWidth) {
                 columnWidth = minColumnWidth;
             }
@@ -1325,7 +1338,7 @@ class GridManager {
                 };
                 
                 // Show only the initial number of columns with responsive minimum width
-                const minWidth = index === 0 ? getResponsiveMinWidth() : '250px';
+                const minWidth = index === 0 ? getResponsiveMinWidth() : '200px'; // Reduced from 250px
                 col.style.width = minWidth;
                 col.style.minWidth = minWidth;
                 col.style.maxWidth = 'none';
