@@ -13,9 +13,10 @@ from .forms import (
     CustomUserCreationForm, 
     ProfileUpdateForm, 
     CustomPasswordChangeForm, 
-    AccountDeletionForm
+    AccountDeletionForm,
+    ForgotPasswordForm
 )
-from .email_utils import send_verification_email
+from .email_utils import send_verification_email, send_password_reset_email
 
 # Create your views here.
 
@@ -26,6 +27,18 @@ class LoginView(FormView):
     template_name = 'accounts/login.html'
     form_class = EmailAuthenticationForm
     success_url = reverse_lazy('pages:project_list')  # Updated to project list
+    
+    def get_context_data(self, **kwargs):
+        """Add context for verification messages"""
+        context = super().get_context_data(**kwargs)
+        
+        # Check if user just registered and needs verification
+        if self.request.session.get('show_verification_message'):
+            context['show_verification_message'] = True
+            # Remove the flag so it only shows once
+            del self.request.session['show_verification_message']
+        
+        return context
     
     def form_valid(self, form):
         """Login the user and redirect to success URL"""
@@ -67,16 +80,30 @@ class RegisterView(FormView):
         logger = logging.getLogger(__name__)
         logger.info(f"New user registration: {user.email} ({user.get_short_name()})")
         
-        # Send verification email
-        email_sent = send_verification_email(user, self.request)
-        logger.info(f"Verification email sent: {email_sent} for {user.email}")
+        # Add session flag immediately for better UX
+        self.request.session['show_verification_message'] = True
         
-        if email_sent:
+        # Send verification email asynchronously to improve performance
+        try:
+            import threading
+            def send_email_async():
+                try:
+                    email_sent = send_verification_email(user, self.request)
+                    logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                except Exception as e:
+                    logger.error(f"Failed to send verification email to {user.email}: {e}")
+            
+            # Start email sending in background thread
+            email_thread = threading.Thread(target=send_email_async)
+            email_thread.daemon = True
+            email_thread.start()
+            
             messages.success(self.request, f'Welcome to Toad, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad.')
-        else:
+        except Exception as e:
+            logger.error(f"Failed to start email sending: {e}")
             messages.warning(self.request, f'Welcome to Toad, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
         
-        # Redirect to login page instead of auto-login
+        # Redirect to login page immediately
         return redirect('accounts:login')
     
     def form_invalid(self, form):
@@ -223,6 +250,78 @@ def account_overview_view(request):
     return render(request, 'accounts/account_overview.html', context)
 
 
+def forgot_password_view(request):
+    """
+    Forgot password view
+    """
+    if request.method == 'POST':
+        form = ForgotPasswordForm(request.POST)
+        if form.is_valid():
+            email = form.cleaned_data['email']
+            try:
+                user = User.objects.get(email=email)
+                
+                # Send password reset email
+                if send_password_reset_email(user, request):
+                    messages.success(request, f'Password reset email sent to {email}. Please check your inbox and follow the instructions.')
+                else:
+                    messages.error(request, 'Failed to send password reset email. Please try again later.')
+                
+                return redirect('accounts:login')
+            except User.DoesNotExist:
+                # Don't reveal if user exists or not for security
+                messages.success(request, f'If an account with {email} exists, a password reset email has been sent.')
+                return redirect('accounts:login')
+    else:
+        form = ForgotPasswordForm()
+    
+    context = {
+        'form': form,
+    }
+    return render(request, 'accounts/forgot_password.html', context)
+
+
+def reset_password_view(request, token):
+    """
+    Password reset view
+    """
+    # Find user with this token
+    try:
+        user = User.objects.get(email_verification_token=token)
+    except User.DoesNotExist:
+        messages.error(request, 'Invalid or expired password reset link.')
+        return redirect('accounts:login')
+    
+    # Verify the token
+    if not user.verify_password_reset_token(token):
+        messages.error(request, 'Invalid or expired password reset link.')
+        return redirect('accounts:login')
+    
+    if request.method == 'POST':
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+        
+        if not password1 or not password2:
+            messages.error(request, 'Please fill in both password fields.')
+        elif password1 != password2:
+            messages.error(request, 'Passwords do not match.')
+        elif len(password1) < 8:
+            messages.error(request, 'Password must be at least 8 characters long.')
+        else:
+            # Set new password
+            user.set_password(password1)
+            user.clear_password_reset_token()
+            user.save()
+            
+            messages.success(request, 'Your password has been reset successfully! You can now log in with your new password.')
+            return redirect('accounts:login')
+    
+    context = {
+        'token': token,
+    }
+    return render(request, 'accounts/reset_password.html', context)
+
+
 def verify_email_view(request, token):
     """
     Verify user's email address using the provided token.
@@ -262,21 +361,28 @@ def resend_verification_email_view(request):
     """
     Resend verification email to the user.
     """
-    if not request.user.is_authenticated:
-        messages.error(request, 'Please log in to request a verification email.')
-        return redirect('accounts:login')
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        if email:
+            try:
+                user = User.objects.get(email=email)
+                
+                # Check if email is already verified
+                if user.email_verified:
+                    messages.info(request, 'Your email is already verified.')
+                    return redirect('accounts:login')
+                
+                # Send verification email
+                if send_verification_email(user, request):
+                    messages.success(request, f'Verification email sent to {email}! Please check your inbox.')
+                else:
+                    messages.error(request, 'Failed to send verification email. Please try again later or contact support.')
+                
+                return redirect('accounts:login')
+            except User.DoesNotExist:
+                # Don't reveal if user exists or not for security
+                messages.success(request, f'If an account with {email} exists, a verification email has been sent.')
+                return redirect('accounts:login')
     
-    user = request.user
-    
-    # Check if email is already verified
-    if user.email_verified:
-        messages.info(request, 'Your email is already verified.')
-        return redirect('pages:project_list')
-    
-    # Send verification email
-    if send_verification_email(user, request):
-        messages.success(request, 'Verification email sent! Please check your inbox.')
-    else:
-        messages.error(request, 'Failed to send verification email. Please try again later or contact support.')
-    
-    return redirect('accounts:account_settings')
+    # Show resend verification form
+    return render(request, 'accounts/resend_verification.html')

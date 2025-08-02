@@ -283,7 +283,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 }
 
 :root {
-    --category-col-width: 300px;
+    --category-col-width: 225px;
     --border-color: #e5e7eb; /* Example */
     --container-bg: #ffffff; /* Example */
     --grid-header-bg: #f9fafb; /* Example */
@@ -291,12 +291,12 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 @media (max-width: 1024px) {
     :root {
-        --category-col-width: 250px;
+        --category-col-width: 200px;
     }
 }
 @media (max-width: 768px) {
     :root {
-        --category-col-width: 200px;
+        --category-col-width: 175px;
     }
 }
 

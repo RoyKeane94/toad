@@ -143,11 +143,15 @@
 
                     <!-- Submit Button -->
                     <div>
-                        <button type="submit" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200 cursor-pointer">
+                        <button type="submit" id="register-btn" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200 cursor-pointer">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-                                <i class="fas fa-user-plus text-[var(--primary-action-text)] opacity-75 group-hover:opacity-100"></i>
+                                <i class="fas fa-user-plus text-[var(--primary-action-text)] opacity-75 group-hover:opacity-100" id="register-icon"></i>
                             </span>
-                            Create Account
+                            <span id="register-text">Create Account</span>
+                            <span id="register-loading" class="hidden">
+                                <i class="fas fa-spinner fa-spin mr-2"></i>
+                                Creating Account...
+                            </span>
                         </button>
                     </div>
 
@@ -194,4 +198,26 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const registerBtn = document.getElementById('register-btn');
+    const registerText = document.getElementById('register-text');
+    const registerLoading = document.getElementById('register-loading');
+    const registerIcon = document.getElementById('register-icon');
+    
+    form.addEventListener('submit', function() {
+        // Show loading state
+        registerBtn.disabled = true;
+        registerText.classList.add('hidden');
+        registerLoading.classList.remove('hidden');
+        registerIcon.classList.add('hidden');
+        
+        // Change button appearance
+        registerBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        registerBtn.classList.remove('hover:bg-[var(--primary-action-hover-bg)]');
+    });
+});
+</script>
 {% endblock %}

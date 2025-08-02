@@ -148,6 +148,48 @@ class User(AbstractUser):
             return True
         
         return False
+    
+    def generate_password_reset_token(self):
+        """
+        Generate a secure token for password reset.
+        """
+        import secrets
+        import string
+        from django.utils import timezone
+        
+        # Generate a 32-character random token
+        alphabet = string.ascii_letters + string.digits
+        token = ''.join(secrets.choice(alphabet) for _ in range(32))
+        
+        self.email_verification_token = token  # Reuse the same field
+        self.email_verification_sent_at = timezone.now()
+        self.save(update_fields=['email_verification_token', 'email_verification_sent_at'])
+        
+        return token
+    
+    def verify_password_reset_token(self, token):
+        """
+        Verify the password reset token.
+        """
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        # Check if token matches and is not expired (1 hour)
+        if (self.email_verification_token == token and 
+            self.email_verification_sent_at and 
+            timezone.now() < self.email_verification_sent_at + timedelta(hours=1)):
+            
+            return True
+        
+        return False
+    
+    def clear_password_reset_token(self):
+        """
+        Clear the password reset token after use.
+        """
+        self.email_verification_token = None
+        self.email_verification_sent_at = None
+        self.save(update_fields=['email_verification_token', 'email_verification_sent_at'])
 
 class BetaTester(models.Model):
     email = models.EmailField(unique=True, help_text='Required. Enter a valid email address.')

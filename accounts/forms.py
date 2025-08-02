@@ -226,3 +226,22 @@ class BetaTesterForm(forms.ModelForm):
         if commit:
             beta_tester.save()
         return beta_tester
+
+class ForgotPasswordForm(forms.Form):
+    """
+    Form for requesting password reset
+    """
+    email = forms.EmailField(
+        widget=forms.EmailInput(attrs={
+            'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
+            'placeholder': 'Enter your email address',
+        }),
+        label='Email Address',
+        help_text='Enter the email address associated with your account.'
+    )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError('No account found with this email address.')
+        return email

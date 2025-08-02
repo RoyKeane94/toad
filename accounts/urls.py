@@ -8,7 +8,9 @@ from .views import (
     delete_account_view,
     account_overview_view,
     verify_email_view,
-    resend_verification_email_view
+    resend_verification_email_view,
+    forgot_password_view,
+    reset_password_view
 )
 
 app_name = 'accounts'
@@ -28,4 +30,8 @@ urlpatterns = [
     # Email Verification
     path('verify-email/<str:token>/', verify_email_view, name='verify_email'),
     path('resend-verification/', resend_verification_email_view, name='resend_verification'),
+    
+    # Password Reset
+    path('forgot-password/', forgot_password_view, name='forgot_password'),
+    path('reset-password/<str:token>/', reset_password_view, name='reset_password'),
 ]
