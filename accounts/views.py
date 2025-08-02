@@ -329,20 +329,32 @@ def verify_email_view(request, token):
     """
     Verify user's email address using the provided token.
     """
+    import logging
+    logger = logging.getLogger(__name__)
+    
     # Find user with this token
     try:
         user = User.objects.get(email_verification_token=token)
+        logger.info(f"Found user for verification token: {user.email}")
     except User.DoesNotExist:
+        logger.warning(f"Invalid verification token attempted: {token}")
         messages.error(request, 'Invalid or expired verification link. Please request a new verification email.')
         return redirect('pages:home')
     
     # Verify the token
     if user.verify_email_token(token):
+        logger.info(f"Email verification successful for user: {user.email}")
         messages.success(request, f'Email verified successfully! Welcome to Toad, {user.get_short_name()}!')
         
         # Log the user in if they're not already
         if not request.user.is_authenticated:
             login(request, user)
+            logger.info(f"User logged in after email verification: {user.email}")
+        
+        # Ensure user is logged in (double-check for mobile)
+        if not request.user.is_authenticated:
+            login(request, user)
+            logger.info(f"Re-logged in user after email verification: {user.email}")
         
         # Redirect to their first grid or project list
         from pages.models import Project
@@ -350,12 +362,20 @@ def verify_email_view(request, token):
             grid_name = f"{user.first_name}'s First Grid"
             first_grid = Project.objects.filter(user=user, name=grid_name).first()
             if first_grid:
+                logger.info(f"Redirecting to first grid: {first_grid.pk}")
                 return redirect('pages:project_grid', pk=first_grid.pk)
             else:
+                logger.info(f"Redirecting to project list for user: {user.email}")
                 return redirect('pages:project_list')
-        except Exception:
+        except Exception as e:
+            logger.error(f"Error during redirect after email verification: {e}")
             return redirect('pages:project_list')
+        
+        # Fallback redirect in case the above doesn't work
+        logger.info(f"Fallback redirect to project list for user: {user.email}")
+        return redirect('pages:project_list')
     else:
+        logger.warning(f"Email verification failed for user: {user.email}")
         messages.error(request, 'Invalid or expired verification link. Please request a new verification email.')
         return redirect('pages:home')
 
