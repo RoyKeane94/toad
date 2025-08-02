@@ -46,7 +46,10 @@ class LoginView(FormView):
         
         # Check if email is verified
         if not user.email_verified:
-            messages.error(self.request, 'Please verify your email address before logging in. Check your inbox for the verification link.')
+            messages.error(
+                self.request, 
+                'Please verify your email address before logging in. Check your inbox and spam folder for the verification link. If you haven\'t received it, you can request a new verification email below.'
+            )
             return redirect('accounts:login')
         
         login(self.request, user)
