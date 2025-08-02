@@ -293,6 +293,16 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     :root {
         --category-col-width: 200px;
     }
+    
+    .grid-table th {
+        min-width: 200px; /* Match tablet category column width */
+    }
+    
+    .grid-table th .truncate {
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
 }
 @media (max-width: 768px) {
     :root {
@@ -356,25 +366,34 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Ensure column headers have enough space and don't get cut off */
 .grid-table th {
-    min-width: 250px; /* Minimum width for header text */
+    min-width: 200px; /* Reduced minimum width for better fit */
     overflow: visible; /* Allow text to be visible */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 .grid-table th .truncate {
     overflow: visible; /* Override truncate for headers */
     text-overflow: clip;
     white-space: normal; /* Allow text to wrap if needed */
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Special handling for first column header to prevent cutoff */
 .grid-table th:first-child {
-    min-width: 300px; /* Extra width for first column */
+    min-width: 225px; /* Match the category column width */
 }
 
 .grid-table th:first-child .truncate {
     overflow: visible;
     text-overflow: clip;
     white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 /* Ensure category column cells wrap text and don't expand */
@@ -518,6 +537,15 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     .grid-table th {
         font-size: 12px;
         font-weight: 600;
+        min-width: 175px; /* Match mobile category column width */
+    }
+    
+    .grid-table th .truncate {
+        font-size: 12px;
+        line-height: 1.2;
+        word-wrap: break-word;
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
 }
 
