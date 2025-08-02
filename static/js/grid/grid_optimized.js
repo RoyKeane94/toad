@@ -565,8 +565,21 @@ class GridManager {
             this.state.dataColWidth = columnWidth;
             
             dataCols.forEach((col, index) => {
-                const finalWidth = index === 0 ? Math.max(columnWidth, 300) : columnWidth;
-                const finalMinWidth = index === 0 ? '300px' : `${minColumnWidth}px`;
+                // Get responsive minimum width based on screen size
+                const getResponsiveMinWidth = () => {
+                    const screenWidth = window.innerWidth;
+                    if (screenWidth <= 480) {
+                        return 175; // Mobile: match CSS --category-col-width: 175px
+                    } else if (screenWidth <= 768) {
+                        return 200; // Tablet: match CSS --category-col-width: 200px  
+                    } else {
+                        return 225; // Desktop: match CSS --category-col-width: 225px
+                    }
+                };
+                
+                const responsiveMinWidth = getResponsiveMinWidth();
+                const finalWidth = index === 0 ? Math.max(columnWidth, responsiveMinWidth) : columnWidth;
+                const finalMinWidth = index === 0 ? `${responsiveMinWidth}px` : `${minColumnWidth}px`;
                 
                 col.style.width = `${finalWidth}px`;
                 col.style.minWidth = finalMinWidth;
@@ -1299,8 +1312,20 @@ class GridManager {
         // Set minimum width for all visible columns to prevent text cutoff
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Show only the initial number of columns with minimum width
-                const minWidth = index === 0 ? '300px' : '250px'; // Extra width for first column
+                // Get responsive minimum width based on screen size
+                const getResponsiveMinWidth = () => {
+                    const screenWidth = window.innerWidth;
+                    if (screenWidth <= 480) {
+                        return '175px'; // Mobile: match CSS --category-col-width: 175px
+                    } else if (screenWidth <= 768) {
+                        return '200px'; // Tablet: match CSS --category-col-width: 200px  
+                    } else {
+                        return '225px'; // Desktop: match CSS --category-col-width: 225px
+                    }
+                };
+                
+                // Show only the initial number of columns with responsive minimum width
+                const minWidth = index === 0 ? getResponsiveMinWidth() : '250px';
                 col.style.width = minWidth;
                 col.style.minWidth = minWidth;
                 col.style.maxWidth = 'none';
