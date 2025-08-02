@@ -11,7 +11,7 @@ from ..specific_views_functions.general_views_functions import (
     get_contact_form_context
 )
 from ..signals import create_course_planner_grid, create_revision_guide_grid
-from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid
+from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid
 import logging
 
 # Set up logging
@@ -43,17 +43,17 @@ def student_revision_template_view(request):
 
 @login_required
 def revision_guide_template_view(request):
-    """Create a Revision Guide grid for the current user and redirect to it"""
+    """Create an Exam Revision Planner grid for the current user and redirect to it"""
     try:
-        # Create the revision guide grid
-        project = create_revision_guide_grid(request.user)
+        # Create the exam revision planner grid
+        project = create_exam_revision_planner_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
         
     except Exception as e:
-        logger.error(f"Error creating revision guide grid: {e}")
-        messages.error(request, "There was an error creating your Revision Guide. Please try again.")
+        logger.error(f"Error creating exam revision planner grid: {e}")
+        messages.error(request, "There was an error creating your Exam Revision Planner. Please try again.")
         return redirect('pages:templates_overview')
 
 @login_required
@@ -84,6 +84,21 @@ def course_planner_template_view(request):
     except Exception as e:
         logger.error(f"Error creating course planner template grid: {e}")
         messages.error(request, "There was an error creating your Course Planner. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def job_application_tracker_template_view(request):
+    """Create a Job Application Tracker grid for the current user and redirect to it"""
+    try:
+        # Create the job application tracker grid
+        project = create_job_application_tracker_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating job application tracker grid: {e}")
+        messages.error(request, "There was an error creating your Job Application Tracker. Please try again.")
         return redirect('pages:templates_overview')
 
 def professionals_jobs_template_view(request):

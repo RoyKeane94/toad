@@ -13,6 +13,7 @@ from .specific_views.general_views import (
     course_planner_template_view,
     revision_guide_template_view,
     essay_planner_template_view,
+    job_application_tracker_template_view,
     professionals_jobs_template_view,
     faq_view,
     contact_us_view,
