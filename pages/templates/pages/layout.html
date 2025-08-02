@@ -113,6 +113,16 @@
                     <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         Grids
                     </a>
+                    {% else %}
+                    <a href="{% url 'pages:templates_overview' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                        Templates
+                    </a>
+                    <a href="{% url 'pages:faq' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                        FAQ
+                    </a>
+                    <a href="{% url 'pages:contact_us' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                        Contact Us
+                    </a>
                     {% endif %}
                 </div>
             </div>

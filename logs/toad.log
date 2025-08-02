@@ -11293,3 +11293,49 @@ INFO 2025-08-02 17:35:16,849 basehttp 6807 6191558656 "GET /grids/46/ HTTP/1.1" 
 INFO 2025-08-02 17:35:16,863 basehttp 6807 6225211392 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-08-02 17:35:16,863 basehttp 6807 6208385024 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-08-02 17:35:16,864 basehttp 6807 6191558656 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-02 20:50:34,071 autoreload 7678 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 20:50:35,267 basehttp 7678 6203961344 "GET / HTTP/1.1" 200 6338
+INFO 2025-08-02 20:50:35,304 basehttp 7678 6203961344 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-02 20:50:35,305 basehttp 7678 6220787712 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 20:50:35,305 basehttp 7678 6237614080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-02 20:50:38,265 log 7678 6220787712 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:50:38,266 basehttp 7678 6220787712 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1702
+INFO 2025-08-02 20:50:39,673 basehttp 7678 6203961344 "GET / HTTP/1.1" 200 6330
+WARNING 2025-08-02 20:50:39,692 log 7678 6203961344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:50:39,693 basehttp 7678 6203961344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1692
+INFO 2025-08-02 20:50:39,702 basehttp 7678 6203961344 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
+INFO 2025-08-02 20:50:45,374 basehttp 7678 6203961344 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-02 20:50:45,380 basehttp 7678 6203961344 "GET / HTTP/1.1" 200 6099
+WARNING 2025-08-02 20:50:45,401 log 7678 6203961344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:50:45,402 basehttp 7678 6203961344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1656
+INFO 2025-08-02 20:50:46,445 basehttp 7678 6203961344 "GET /accounts/login/ HTTP/1.1" 200 4589
+WARNING 2025-08-02 20:50:46,473 log 7678 6203961344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:50:46,474 basehttp 7678 6203961344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1651
+INFO 2025-08-02 20:51:35,367 autoreload 7895 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 20:51:37,955 basehttp 7895 6124335104 "GET /accounts/login/ HTTP/1.1" 200 4432
+WARNING 2025-08-02 20:51:37,984 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:51:37,984 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1724
+INFO 2025-08-02 20:51:49,240 basehttp 7895 6124335104 "GET / HTTP/1.1" 200 6094
+WARNING 2025-08-02 20:51:49,272 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:51:49,273 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1673
+INFO 2025-08-02 20:51:56,084 basehttp 7895 6124335104 "GET /accounts/login/ HTTP/1.1" 200 4413
+WARNING 2025-08-02 20:51:56,116 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:51:56,116 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1683
+INFO 2025-08-02 20:51:57,808 basehttp 7895 6124335104 "GET /accounts/register/ HTTP/1.1" 200 4610
+WARNING 2025-08-02 20:51:57,837 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:51:57,838 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1715
+INFO 2025-08-02 20:54:12,434 basehttp 7895 6124335104 "GET /accounts/register/ HTTP/1.1" 200 4668
+WARNING 2025-08-02 20:54:12,464 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:54:12,464 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1730
+INFO 2025-08-02 20:54:15,638 basehttp 7895 6124335104 "GET /templates/ HTTP/1.1" 200 3594
+WARNING 2025-08-02 20:54:15,665 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:54:15,666 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1685
+INFO 2025-08-02 20:54:18,292 basehttp 7895 6124335104 "GET /faq/ HTTP/1.1" 200 4294
+WARNING 2025-08-02 20:54:18,322 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:54:18,323 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1720
+INFO 2025-08-02 20:54:20,940 basehttp 7895 6124335104 "GET /contact/ HTTP/1.1" 200 3998
+WARNING 2025-08-02 20:54:20,971 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:54:20,971 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1671
+INFO 2025-08-02 20:54:29,706 basehttp 7895 6124335104 "GET / HTTP/1.1" 200 6213
+WARNING 2025-08-02 20:54:29,734 log 7895 6124335104 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 20:54:29,735 basehttp 7895 6124335104 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1639
