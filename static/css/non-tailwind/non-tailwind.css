@@ -280,6 +280,8 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     gap: 12px;
     height: 100%;
     flex: 1;
+    max-width: 90vw; /* Limit to 90% of viewport width */
+    margin: 0 auto; /* Center the grid */
 }
 
 :root {
@@ -315,6 +317,8 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     display: flex;
     flex: 1; /* Take up remaining space */
     min-width: 0;
+    max-width: 90vw; /* Limit to 90% of viewport width */
+    margin: 0 auto; /* Center the container */
     border: 1px solid #f3f4f6;
     border-radius: 8px;
     /* overflow: hidden removed to allow sticky headers to work */
@@ -366,7 +370,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 /* Ensure column headers have enough space and don't get cut off */
 .grid-table th {
-    min-width: 180px; /* Further reduced minimum width for better fit */
+    min-width: 200px; /* Reduced minimum width for better fit */
     overflow: visible; /* Allow text to be visible */
     word-wrap: break-word;
     word-break: break-word;

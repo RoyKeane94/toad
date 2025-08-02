@@ -685,6 +685,9 @@
   .animate-spin {
     animation: var(--animate-spin);
   }
+  .cursor-not-allowed {
+    cursor: not-allowed;
+  }
   .cursor-pointer {
     cursor: pointer;
   }
@@ -983,9 +986,6 @@
   }
   .bg-\[var\(--task-completed-bg\)\] {
     background-color: var(--task-completed-bg);
-  }
-  .bg-\[var\(--tertiary-action-bg\)\] {
-    background-color: var(--tertiary-action-bg);
   }
   .bg-black\/50 {
     background-color: color-mix(in srgb, #000 50%, transparent);
@@ -1630,13 +1630,6 @@
     &:hover {
       @media (hover: hover) {
         border-color: var(--primary-action-hover-bg);
-      }
-    }
-  }
-  .hover\:bg-\[\#e65c36\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: #e65c36;
       }
     }
   }

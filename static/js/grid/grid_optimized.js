@@ -448,7 +448,7 @@ class GridManager {
         } else if (screenWidth <= 768) {
             return 2; // Tablet: 2 columns  
         } else {
-            return 3; // Desktop: Maximum 3 columns
+            return 3; // Desktop: Maximum 3 columns (never more than 3)
         }
     }
 
@@ -553,7 +553,11 @@ class GridManager {
         if (!scrollable || !dataCols.length) return;
 
         if (this.state.columnsToShow > 0) {
-            // Get the category column width to account for it in calculations
+            // Calculate 90% of page width for the entire grid, minus 25px for overlap
+            const pageWidth = window.innerWidth;
+            const maxGridWidth = (pageWidth * 0.9) - 25;
+            
+            // Get the category column width
             const getCategoryColumnWidth = () => {
                 const screenWidth = window.innerWidth;
                 if (screenWidth <= 480) {
@@ -566,11 +570,11 @@ class GridManager {
             };
             
             const categoryColumnWidth = getCategoryColumnWidth();
-            const availableWidth = scrollable.clientWidth - categoryColumnWidth;
+            const availableWidth = maxGridWidth - categoryColumnWidth;
             let columnWidth = availableWidth / this.state.columnsToShow;
             
             // Ensure minimum width for columns to prevent text cutoff
-            const minColumnWidth = 180; // Further reduced to give more flexibility
+            const minColumnWidth = 250;
             if (columnWidth < minColumnWidth) {
                 columnWidth = minColumnWidth;
             }
@@ -578,21 +582,9 @@ class GridManager {
             this.state.dataColWidth = columnWidth;
             
             dataCols.forEach((col, index) => {
-                // Get responsive minimum width based on screen size
-                const getResponsiveMinWidth = () => {
-                    const screenWidth = window.innerWidth;
-                    if (screenWidth <= 480) {
-                        return 175; // Mobile: match CSS --category-col-width: 175px
-                    } else if (screenWidth <= 768) {
-                        return 200; // Tablet: match CSS --category-col-width: 200px  
-                    } else {
-                        return 225; // Desktop: match CSS --category-col-width: 225px
-                    }
-                };
-                
-                const responsiveMinWidth = getResponsiveMinWidth();
-                const finalWidth = index === 0 ? Math.max(columnWidth, responsiveMinWidth) : columnWidth;
-                const finalMinWidth = index === 0 ? `${responsiveMinWidth}px` : `${minColumnWidth}px`;
+                // All columns should use the same calculated width
+                const finalWidth = columnWidth;
+                const finalMinWidth = `${minColumnWidth}px`;
                 
                 col.style.width = `${finalWidth}px`;
                 col.style.minWidth = finalMinWidth;
@@ -1325,20 +1317,8 @@ class GridManager {
         // Set minimum width for all visible columns to prevent text cutoff
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Get responsive minimum width based on screen size
-                const getResponsiveMinWidth = () => {
-                    const screenWidth = window.innerWidth;
-                    if (screenWidth <= 480) {
-                        return '175px'; // Mobile: match CSS --category-col-width: 175px
-                    } else if (screenWidth <= 768) {
-                        return '200px'; // Tablet: match CSS --category-col-width: 200px  
-                    } else {
-                        return '225px'; // Desktop: match CSS --category-col-width: 225px
-                    }
-                };
-                
-                // Show only the initial number of columns with responsive minimum width
-                const minWidth = index === 0 ? getResponsiveMinWidth() : '180px'; // Further reduced
+                // Show only the initial number of columns with consistent width
+                const minWidth = '250px'; // Use consistent width for all columns
                 col.style.width = minWidth;
                 col.style.minWidth = minWidth;
                 col.style.maxWidth = 'none';

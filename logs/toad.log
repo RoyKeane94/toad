@@ -10735,3 +10735,58 @@ INFO 2025-08-02 08:51:57,113 basehttp 52041 6204338176 - Broken pipe from ('127.
 INFO 2025-08-02 08:51:57,115 basehttp 52041 6237990912 "GET /grids/25/ HTTP/1.1" 200 11516
 INFO 2025-08-02 08:52:01,162 basehttp 52041 6237990912 "GET /grids/25/ HTTP/1.1" 200 11587
 INFO 2025-08-02 08:52:01,177 basehttp 52041 6237990912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 08:57:21,314 autoreload 54444 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 08:57:32,222 autoreload 54826 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 08:57:42,889 autoreload 55198 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 08:58:41,588 basehttp 55198 6138359808 "GET /grids/25/ HTTP/1.1" 200 11568
+INFO 2025-08-02 08:58:41,608 basehttp 55198 6172012544 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 08:58:41,609 basehttp 55198 6155186176 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41092
+INFO 2025-08-02 08:58:41,610 basehttp 55198 6188838912 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-08-02 08:58:41,610 basehttp 55198 6138359808 "GET /static/css/output.css HTTP/1.1" 200 68572
+INFO 2025-08-02 08:59:05,631 basehttp 55198 6138359808 "GET /grids/25/ HTTP/1.1" 200 11544
+INFO 2025-08-02 08:59:05,647 basehttp 55198 6155186176 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 08:59:05,648 basehttp 55198 6172012544 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-08-02 08:59:05,649 basehttp 55198 6188838912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41092
+INFO 2025-08-02 08:59:05,650 basehttp 55198 6138359808 "GET /static/css/output.css HTTP/1.1" 200 68572
+INFO 2025-08-02 09:02:14,924 autoreload 55786 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 09:02:25,749 basehttp 55198 6138359808 "GET /grids/25/ HTTP/1.1" 200 11561
+INFO 2025-08-02 09:02:25,761 basehttp 55198 6138359808 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41181
+INFO 2025-08-02 09:02:34,299 basehttp 55198 6138359808 "GET /grids/25/ HTTP/1.1" 200 11513
+INFO 2025-08-02 09:02:34,315 basehttp 55198 6172012544 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 09:02:34,317 basehttp 55198 6188838912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41181
+INFO 2025-08-02 09:02:34,318 basehttp 55198 6155186176 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-08-02 09:02:34,318 basehttp 55198 6138359808 "GET /static/css/output.css HTTP/1.1" 200 68572
+INFO 2025-08-02 09:03:29,337 autoreload 56300 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 09:03:31,488 basehttp 56300 6162591744 "GET /grids/25/ HTTP/1.1" 200 11551
+INFO 2025-08-02 09:03:31,498 basehttp 56300 6162591744 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 09:06:52,248 basehttp 56300 6162591744 "GET /grids/25/ HTTP/1.1" 200 11569
+INFO 2025-08-02 09:06:52,258 basehttp 56300 6162591744 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 09:07:19,080 autoreload 56746 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 09:07:25,403 basehttp 56746 6171406336 "GET /grids/25/ HTTP/1.1" 200 11546
+INFO 2025-08-02 09:07:25,420 basehttp 56746 6205059072 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 09:07:25,421 basehttp 56746 6221885440 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24388
+INFO 2025-08-02 09:07:25,422 basehttp 56746 6188232704 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41181
+INFO 2025-08-02 09:07:25,422 basehttp 56746 6171406336 "GET /static/css/output.css HTTP/1.1" 200 68407
+INFO 2025-08-02 09:09:30,619 basehttp 56746 6171406336 "GET /grids/25/ HTTP/1.1" 200 11538
+INFO 2025-08-02 09:09:30,633 basehttp 56746 6205059072 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:09:30,633 basehttp 56746 6188232704 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 09:09:30,633 basehttp 56746 6221885440 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:09:30,634 basehttp 56746 6171406336 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:01,303 autoreload 57208 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 09:10:04,691 basehttp 57208 6199111680 "GET /grids/25/ HTTP/1.1" 200 11526
+INFO 2025-08-02 09:10:04,710 basehttp 57208 6249590784 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24388
+INFO 2025-08-02 09:10:04,711 basehttp 57208 6232764416 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 09:10:04,712 basehttp 57208 6215938048 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41181
+INFO 2025-08-02 09:10:04,712 basehttp 57208 6199111680 "GET /static/css/output.css HTTP/1.1" 200 68407
+INFO 2025-08-02 09:10:27,266 basehttp 57208 6199111680 "GET /grids/ HTTP/1.1" 200 3804
+INFO 2025-08-02 09:10:27,280 basehttp 57208 6199111680 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:30,212 basehttp 57208 6199111680 "GET /grids/23/ HTTP/1.1" 200 12642
+INFO 2025-08-02 09:10:30,229 basehttp 57208 6199111680 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:40,931 basehttp 57208 6199111680 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:42,368 basehttp 57208 6199111680 "GET /grids/21/ HTTP/1.1" 200 14572
+INFO 2025-08-02 09:10:42,383 basehttp 57208 6199111680 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:50,462 basehttp 57208 6232764416 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:50,462 basehttp 57208 6199111680 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:50,462 basehttp 57208 6215938048 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 09:10:51,830 basehttp 57208 6199111680 "GET /grids/15/ HTTP/1.1" 200 12561
+INFO 2025-08-02 09:10:51,848 basehttp 57208 6199111680 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0

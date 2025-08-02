@@ -448,7 +448,7 @@ class GridManager {
         } else if (screenWidth <= 768) {
             return 2; // Tablet: 2 columns  
         } else {
-            return 3; // Desktop: Maximum 3 columns
+            return 3; // Desktop: Maximum 3 columns (never more than 3)
         }
     }
 
@@ -466,7 +466,7 @@ class GridManager {
         }
 
         // Always get fresh column count from DOM
-        const dataCols = document.querySelectorAll('col.data-column');
+        const dataCols = document.querySelectorAll('.data-column');
         this.elements.dataCols = dataCols;
         
         if (!dataCols.length) {
@@ -553,14 +553,41 @@ class GridManager {
         if (!scrollable || !dataCols.length) return;
 
         if (this.state.columnsToShow > 0) {
-            const containerWidth = scrollable.clientWidth;
-            const columnWidth = containerWidth / this.state.columnsToShow;
+            // Calculate 90% of page width for the entire grid, minus 25px for overlap
+            const pageWidth = window.innerWidth;
+            const maxGridWidth = (pageWidth * 0.9) - 25;
+            
+            // Get the category column width
+            const getCategoryColumnWidth = () => {
+                const screenWidth = window.innerWidth;
+                if (screenWidth <= 480) {
+                    return 175; // Mobile: match CSS --category-col-width: 175px
+                } else if (screenWidth <= 768) {
+                    return 200; // Tablet: match CSS --category-col-width: 200px  
+                } else {
+                    return 225; // Desktop: match CSS --category-col-width: 225px
+                }
+            };
+            
+            const categoryColumnWidth = getCategoryColumnWidth();
+            const availableWidth = maxGridWidth - categoryColumnWidth;
+            let columnWidth = availableWidth / this.state.columnsToShow;
+            
+            // Ensure minimum width for columns to prevent text cutoff
+            const minColumnWidth = 250;
+            if (columnWidth < minColumnWidth) {
+                columnWidth = minColumnWidth;
+            }
             
             this.state.dataColWidth = columnWidth;
             
             dataCols.forEach((col, index) => {
-                col.style.width = `${columnWidth}px`;
-                col.style.minWidth = '0';
+                // All columns should use the same calculated width
+                const finalWidth = columnWidth;
+                const finalMinWidth = `${minColumnWidth}px`;
+                
+                col.style.width = `${finalWidth}px`;
+                col.style.minWidth = finalMinWidth;
             });
 
             const totalTableWidth = this.state.dataColWidth * this.state.totalDataColumns;
@@ -626,7 +653,7 @@ class GridManager {
             // Wait a bit longer for DOM to be stable and recalculate
             setTimeout(() => {
                 // Recalculate total columns from actual DOM
-                const dataColumns = document.querySelectorAll('col.data-column');
+                const dataColumns = document.querySelectorAll('.data-column');
                 const actualColumnCount = dataColumns.length;
                 
                 if (actualColumnCount > 0) {
@@ -1281,22 +1308,19 @@ class GridManager {
 
     // Set initial column visibility to prevent flash
     setInitialColumnVisibility() {
-        const dataCols = document.querySelectorAll('col.data-column');
+        const dataCols = document.querySelectorAll('.data-column');
         if (!dataCols.length) return;
 
         // Calculate initial column count based on screen size
         const initialColumnCount = this.getResponsiveColumnCount();
         
-        // Get container width for equal distribution
-        const containerWidth = this.elements.scrollable ? this.elements.scrollable.clientWidth : window.innerWidth;
-        
-        // Set equal widths for all visible columns
+        // Set minimum width for all visible columns to prevent text cutoff
         dataCols.forEach((col, index) => {
             if (index < initialColumnCount) {
-                // Show only the initial number of columns with equal widths
-                const equalWidth = Math.floor(containerWidth / initialColumnCount);
-                col.style.width = `${equalWidth}px`;
-                col.style.minWidth = '0';
+                // Show only the initial number of columns with consistent width
+                const minWidth = '250px'; // Use consistent width for all columns
+                col.style.width = minWidth;
+                col.style.minWidth = minWidth;
                 col.style.maxWidth = 'none';
                 col.style.overflow = 'visible';
             } else {
