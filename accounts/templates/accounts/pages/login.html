@@ -29,6 +29,25 @@
         min-height: calc(100vh - 4rem - 200px); /* Full height minus navbar and footer */
         height: calc(100vh - 4rem - 200px);
     }
+    
+    /* Mobile-specific adjustments for verification notice */
+    @media (max-width: 768px) {
+        .login-split {
+            min-height: calc(100vh - 4rem - 100px); /* More space on mobile */
+            height: calc(100vh - 4rem - 100px);
+        }
+        
+        /* Ensure form container has proper spacing */
+        .max-w-md {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        /* Add more space between elements on mobile */
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -49,12 +68,12 @@
             
             <!-- Email Verification Notice - Only show when user just registered -->
             {% if show_verification_message %}
-            <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm">
-                <div class="flex items-center">
-                    <i class="fas fa-info-circle mr-2"></i>
+            <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm mb-6">
+                <div class="flex items-start">
+                    <i class="fas fa-info-circle mr-2 mt-0.5 flex-shrink-0"></i>
                     <div>
-                        <p class="font-medium">Email verification required</p>
-                        <p class="text-blue-600">Please check your email and click the verification link before logging in.</p>
+                        <p class="font-medium mb-1">Email verification required</p>
+                        <p class="text-blue-600 text-xs leading-relaxed">Please check your email and click the verification link before logging in.</p>
                     </div>
                 </div>
             </div>

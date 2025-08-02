@@ -29,6 +29,31 @@
         min-height: calc(100vh - 4rem); /* Full height minus navbar and footer */
         height: calc(100vh - 4rem);
     }
+    
+    /* Mobile-specific adjustments for better spacing */
+    @media (max-width: 768px) {
+        .register-split {
+            min-height: calc(100vh - 4rem - 50px); /* More space on mobile */
+            height: calc(100vh - 4rem - 50px);
+        }
+        
+        /* Ensure form container has proper spacing */
+        .max-w-md {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        /* Add more space between elements on mobile */
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
+        
+        /* Ensure form has proper padding on mobile */
+        .py-8 {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+    }
 </style>
 {% endblock %}
 

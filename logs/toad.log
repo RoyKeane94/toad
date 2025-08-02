@@ -10845,3 +10845,25 @@ INFO 2025-08-02 13:21:58,493 basehttp 2321 6197768192 - Broken pipe from ('127.0
 INFO 2025-08-02 13:21:58,493 basehttp 2321 6231420928 "GET /grids/33/ HTTP/1.1" 200 8184
 INFO 2025-08-02 13:21:58,502 basehttp 2321 6231420928 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-08-02 13:21:58,502 basehttp 2321 6197768192 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-02 15:55:36,088 autoreload 3848 8602279680 Watching for file changes with StatReloader
+INFO 2025-08-02 15:55:38,793 basehttp 3848 6193950720 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-02 15:55:38,802 basehttp 3848 6193950720 "GET / HTTP/1.1" 200 6171
+INFO 2025-08-02 15:55:38,818 basehttp 3848 6227603456 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 15:55:38,819 basehttp 3848 6210777088 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 41866
+INFO 2025-08-02 15:55:38,820 basehttp 3848 6193950720 "GET /static/css/output.css HTTP/1.1" 200 68407
+INFO 2025-08-02 15:55:39,074 basehttp 3848 6193950720 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+WARNING 2025-08-02 15:55:42,767 log 3848 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 15:55:42,768 basehttp 3848 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1675
+INFO 2025-08-02 15:55:44,128 basehttp 3848 6193950720 "GET / HTTP/1.1" 200 6176
+WARNING 2025-08-02 15:55:44,148 log 3848 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 15:55:44,148 basehttp 3848 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1621
+INFO 2025-08-02 15:55:44,162 basehttp 3848 6193950720 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
+INFO 2025-08-02 15:55:46,231 basehttp 3848 6193950720 "GET /accounts/login/ HTTP/1.1" 200 4021
+WARNING 2025-08-02 15:55:46,256 log 3848 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 15:55:46,257 basehttp 3848 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1674
+INFO 2025-08-02 15:55:49,529 basehttp 3848 6193950720 "GET /accounts/register/ HTTP/1.1" 200 4293
+WARNING 2025-08-02 15:55:49,554 log 3848 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 15:55:49,554 basehttp 3848 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1664
+INFO 2025-08-02 15:55:58,558 basehttp 3848 6193950720 "GET /accounts/login/ HTTP/1.1" 200 4078
+WARNING 2025-08-02 15:55:58,586 log 3848 6193950720 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-02 15:55:58,586 basehttp 3848 6193950720 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1656
