@@ -570,7 +570,7 @@ class GridManager {
             let columnWidth = availableWidth / this.state.columnsToShow;
             
             // Ensure minimum width for columns to prevent text cutoff
-            const minColumnWidth = 200; // Reduced from 250 to give more flexibility
+            const minColumnWidth = 180; // Further reduced to give more flexibility
             if (columnWidth < minColumnWidth) {
                 columnWidth = minColumnWidth;
             }
@@ -1338,7 +1338,7 @@ class GridManager {
                 };
                 
                 // Show only the initial number of columns with responsive minimum width
-                const minWidth = index === 0 ? getResponsiveMinWidth() : '200px'; // Reduced from 250px
+                const minWidth = index === 0 ? getResponsiveMinWidth() : '180px'; // Further reduced
                 col.style.width = minWidth;
                 col.style.minWidth = minWidth;
                 col.style.maxWidth = 'none';

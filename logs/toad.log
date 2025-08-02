@@ -10698,3 +10698,40 @@ INFO 2025-08-02 08:48:06,107 autoreload 52034 8767266560 Watching for file chang
 INFO 2025-08-02 08:48:18,435 autoreload 52034 8767266560 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
 INFO 2025-08-02 08:48:18,619 autoreload 52041 8767266560 Watching for file changes with StatReloader
 INFO 2025-08-02 08:48:47,779 autoreload 52594 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 08:51:04,682 autoreload 53445 8767266560 Watching for file changes with StatReloader
+INFO 2025-08-02 08:51:12,969 basehttp 52041 6204338176 "GET / HTTP/1.1" 200 6328
+INFO 2025-08-02 08:51:12,985 basehttp 52041 6237990912 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-02 08:51:12,985 basehttp 52041 6221164544 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 40984
+INFO 2025-08-02 08:51:12,987 basehttp 52041 6204338176 "GET /static/css/output.css HTTP/1.1" 200 68572
+INFO 2025-08-02 08:51:13,078 basehttp 52041 6204338176 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-02 08:51:14,432 basehttp 52041 6204338176 "GET /grids/ HTTP/1.1" 200 3780
+INFO 2025-08-02 08:51:15,669 basehttp 52041 6204338176 "GET /grids/25/ HTTP/1.1" 200 10261
+INFO 2025-08-02 08:51:15,679 basehttp 52041 6221164544 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 08:51:15,680 basehttp 52041 6204338176 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 24357
+INFO 2025-08-02 08:51:20,532 basehttp 52041 6204338176 "GET /grids/24/ HTTP/1.1" 200 10247
+INFO 2025-08-02 08:51:20,545 basehttp 52041 6204338176 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 08:51:22,279 basehttp 52041 6204338176 "GET /grids/21/ HTTP/1.1" 200 14599
+INFO 2025-08-02 08:51:37,659 basehttp 52041 6204338176 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 08:51:39,084 basehttp 52041 6204338176 "GET /grids/25/ HTTP/1.1" 200 10250
+INFO 2025-08-02 08:51:44,489 basehttp 52041 6204338176 "GET /grids/25/columns/create/ HTTP/1.1" 200 996
+INFO 2025-08-02 08:51:46,370 basehttp 52041 6204338176 "POST /grids/25/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-02 08:51:46,431 basehttp 52041 6221164544 - Broken pipe from ('127.0.0.1', 64086)
+INFO 2025-08-02 08:51:46,431 basehttp 52041 6204338176 - Broken pipe from ('127.0.0.1', 64085)
+INFO 2025-08-02 08:51:46,432 basehttp 52041 6237990912 "GET /grids/25/ HTTP/1.1" 200 10679
+INFO 2025-08-02 08:51:46,441 basehttp 52041 6237990912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 08:51:48,824 basehttp 52041 6237990912 "GET /grids/25/columns/create/ HTTP/1.1" 200 1013
+INFO 2025-08-02 08:51:50,666 basehttp 52041 6237990912 "POST /grids/25/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-02 08:51:50,729 basehttp 52041 6204338176 "GET /grids/25/ HTTP/1.1" 200 11015
+INFO 2025-08-02 08:51:50,729 basehttp 52041 6237990912 - Broken pipe from ('127.0.0.1', 64087)
+INFO 2025-08-02 08:51:50,729 basehttp 52041 6204338176 - Broken pipe from ('127.0.0.1', 64090)
+INFO 2025-08-02 08:51:50,730 basehttp 52041 6221164544 "GET /grids/25/ HTTP/1.1" 200 11104
+INFO 2025-08-02 08:51:52,914 basehttp 52041 6221164544 "GET /grids/25/ HTTP/1.1" 200 11065
+INFO 2025-08-02 08:51:52,924 basehttp 52041 6221164544 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-02 08:51:55,164 basehttp 52041 6221164544 "GET /grids/25/columns/create/ HTTP/1.1" 200 986
+INFO 2025-08-02 08:51:57,048 basehttp 52041 6221164544 "POST /grids/25/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-02 08:51:57,095 basehttp 52041 6221164544 "GET /grids/25/ HTTP/1.1" 200 11566
+INFO 2025-08-02 08:51:57,105 basehttp 52041 6221164544 - Broken pipe from ('127.0.0.1', 64091)
+INFO 2025-08-02 08:51:57,113 basehttp 52041 6204338176 - Broken pipe from ('127.0.0.1', 64092)
+INFO 2025-08-02 08:51:57,115 basehttp 52041 6237990912 "GET /grids/25/ HTTP/1.1" 200 11516
+INFO 2025-08-02 08:52:01,162 basehttp 52041 6237990912 "GET /grids/25/ HTTP/1.1" 200 11587
+INFO 2025-08-02 08:52:01,177 basehttp 52041 6237990912 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
