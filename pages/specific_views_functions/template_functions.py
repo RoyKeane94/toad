@@ -119,8 +119,7 @@ def create_course_planner_template_grid(user):
     column_headers = [
         "Macroeconomic Policy",
         "Microeconomic Policy",
-        "Economic History",
-        "Statistical Methods for Economics"
+        "Economic History"
     ]
     
     col_objects = []
@@ -147,7 +146,7 @@ def create_course_planner_template_grid(user):
         (1, 1, "Prepare for office hours on Wednesday at 16:00", False),  # Microeconomic Policy
         (1, 1, "Prepare week 3 seminar questions for Thursday at 16:00", False),  # Microeconomic Policy
         (1, 2, "Download reading list for the semester", False),  # Economic History
-        (1, 3, "Download seminar questions for week 3", False),  # Statistical Methods for Economics
+        
         
         # Assignments & Coursework row
         (2, 0, "Need to choose essay title by week 5 to submit on first Monday of week 8", False),  # Macroeconomic Policy
@@ -162,8 +161,6 @@ def create_course_planner_template_grid(user):
         (3, 1, "Go over flashcards for week 1", False),  # Microeconomic Policy
         (3, 2, "Create flashcards for week 2", False),  # Economic History
         (3, 2, "Go over flashcards for week 2", False),  # Economic History
-        (3, 3, "Create flashcards for week 3", False),  # Statistical Methods for Economics
-        (3, 3, "Create flashcards for week 3", False),  # Statistical Methods for Economics
     ]
     
     # Create all tasks

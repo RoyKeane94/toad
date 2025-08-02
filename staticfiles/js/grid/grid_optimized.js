@@ -474,7 +474,9 @@ class GridManager {
             return;
         }
 
-        this.state.totalDataColumns = parseInt(gridTable.dataset.totalDataColumns) || dataCols.length;
+        const dataTotalColumns = parseInt(gridTable.dataset.totalDataColumns);
+        const dataColsLength = dataCols.length;
+        this.state.totalDataColumns = dataTotalColumns || dataColsLength;
         this.state.columnsToShow = Math.min(this.getResponsiveColumnCount(), this.state.totalDataColumns);
 
         // Setup scroll buttons (only if not already set)
@@ -557,12 +559,26 @@ class GridManager {
             const gridContainer = scrollable.closest('.grid-container-wrapper');
             const totalGridWidth = gridContainer ? gridContainer.clientWidth : scrollable.clientWidth;
             
-            // Get the category column width based on screen size
+            // Get the category column width from CSS custom property
             const getCategoryColumnWidth = () => {
-                const screenWidth = window.innerWidth;
-                if (screenWidth <= 480) return 175;
-                if (screenWidth <= 768) return 200;
-                return 225; // Desktop
+                // Try to get from grid container first, then fallback to document root
+                const gridContainer = scrollable.closest('.grid-container-wrapper');
+                let computedStyle, categoryColWidth;
+                
+                if (gridContainer) {
+                    computedStyle = getComputedStyle(gridContainer);
+                    categoryColWidth = computedStyle.getPropertyValue('--category-col-width');
+                }
+                
+                // Fallback to document root if not found in grid container
+                if (!categoryColWidth) {
+                    computedStyle = getComputedStyle(document.documentElement);
+                    categoryColWidth = computedStyle.getPropertyValue('--category-col-width');
+                }
+                
+                // Parse the CSS value (e.g., "225px" -> 225)
+                const parsedWidth = parseInt(categoryColWidth) || 225;
+                return parsedWidth; // Fallback to 225 if parsing fails
             };
             
             const categoryColumnWidth = getCategoryColumnWidth();
@@ -574,11 +590,17 @@ class GridManager {
             const minColumnsToShow = this.getResponsiveColumnCount();
             this.state.columnsToShow = Math.min(minColumnsToShow, this.state.totalDataColumns);
             
-            // Calculate equal width for each data column
-            this.state.dataColWidth = availableWidth / this.state.columnsToShow;
+            // If all columns are visible (no scrolling needed), distribute width evenly
+            if (this.state.totalDataColumns <= this.state.columnsToShow) {
+                // All columns are visible, distribute available width evenly
+                this.state.dataColWidth = availableWidth / this.state.totalDataColumns;
+            } else {
+                // Only some columns are visible, calculate width for visible columns
+                this.state.dataColWidth = availableWidth / this.state.columnsToShow;
+            }
             
             // Apply the same width to all data columns to ensure they're equal
-            dataCols.forEach(col => {
+            dataCols.forEach((col, index) => {
                 col.style.width = `${this.state.dataColWidth}px`;
                 col.style.minWidth = `${this.state.dataColWidth}px`;
                 col.style.maxWidth = `${this.state.dataColWidth}px`;
