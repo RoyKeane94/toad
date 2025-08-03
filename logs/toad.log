@@ -11408,3 +11408,30 @@ WARNING 2025-08-03 06:52:45,578 basehttp 2043 6158282752 "GET /.well-known/appsp
 INFO 2025-08-03 06:52:49,897 basehttp 2043 6158282752 "GET /accounts/login/ HTTP/1.1" 200 4420
 WARNING 2025-08-03 06:52:49,924 log 2043 6158282752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-03 06:52:49,925 basehttp 2043 6158282752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1729
+INFO 2025-08-03 06:55:21,878 autoreload 2197 8798707456 Watching for file changes with StatReloader
+INFO 2025-08-03 06:55:25,515 basehttp 2197 6131265536 "GET /accounts/forgot-password/ HTTP/1.1" 200 3887
+INFO 2025-08-03 06:55:25,535 basehttp 2197 6148091904 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-03 06:55:25,536 basehttp 2197 6164918272 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-03 06:55:25,537 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:55:25,538 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1726
+WARNING 2025-08-03 06:56:08,961 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:56:08,962 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1686
+WARNING 2025-08-03 06:56:08,972 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:56:08,972 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1715
+INFO 2025-08-03 06:58:37,568 basehttp 2197 6131265536 "GET /accounts/register/ HTTP/1.1" 200 4600
+INFO 2025-08-03 06:58:37,597 basehttp 2197 6164918272 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-03 06:58:37,598 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-03 06:58:37,599 basehttp 2197 6164918272 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-03 06:58:37,599 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1709
+INFO 2025-08-03 06:58:39,245 basehttp 2197 6131265536 "GET /accounts/login/ HTTP/1.1" 200 4361
+WARNING 2025-08-03 06:58:39,277 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:58:39,278 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1714
+INFO 2025-08-03 06:58:40,727 basehttp 2197 6131265536 "GET /accounts/resend-verification/ HTTP/1.1" 200 3934
+WARNING 2025-08-03 06:58:40,756 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:58:40,757 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1726
+INFO 2025-08-03 06:58:42,243 basehttp 2197 6131265536 "GET /accounts/login/ HTTP/1.1" 200 4395
+WARNING 2025-08-03 06:58:42,272 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:58:42,273 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1635
+INFO 2025-08-03 06:58:45,626 basehttp 2197 6131265536 "GET /accounts/forgot-password/ HTTP/1.1" 200 4093
+WARNING 2025-08-03 06:58:45,653 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-03 06:58:45,653 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1640

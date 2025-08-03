@@ -9,10 +9,9 @@
         padding-left: 2.5rem !important;
     }
     
-    /* Override layout to remove padding for full-width design */
+    /* Override layout padding for full-width design */
     #app {
         padding: 0 !important;
-        height: 100% !important;
     }
     
     /* Make main take remaining height after navbar */
@@ -24,10 +23,22 @@
     
     /* Resend verification specific styles */
     .resend-verification-split {
-        flex: 1;
         display: flex;
-        min-height: calc(100vh - 4rem);
-        height: calc(100vh - 4rem);
+        min-height: 0; /* Allow content to determine height */
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+        /* Ensure form container has proper spacing */
+        .max-w-md {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        /* Add more space between elements on mobile */
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
     }
 </style>
 {% endblock %}
@@ -35,7 +46,7 @@
 {% block content %}
 <div class="resend-verification-split">
     <!-- Left Side - Resend Verification Form -->
-    <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)]">
+    <div class="flex-1 flex items-start justify-center px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)] py-8">
         <div class="max-w-md w-full space-y-8">
             <!-- Header -->
             <div class="text-center">
@@ -92,7 +103,7 @@
         </div>
     </div>
 
-    <!-- Right Side - Green Background with Toad Logo -->
+    <!-- Right Side - Green Background with Toad Logo (Hidden on mobile) -->
     <div class="hidden lg:flex lg:flex-1 bg-[var(--primary-action-bg)] items-center justify-center h-full">
         <div class="text-center">
             <!-- Large Toad Logo -->
