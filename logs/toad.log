@@ -11435,3 +11435,15 @@ WARNING 2025-08-03 06:58:42,273 basehttp 2197 6131265536 "GET /.well-known/appsp
 INFO 2025-08-03 06:58:45,626 basehttp 2197 6131265536 "GET /accounts/forgot-password/ HTTP/1.1" 200 4093
 WARNING 2025-08-03 06:58:45,653 log 2197 6131265536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-03 06:58:45,653 basehttp 2197 6131265536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1640
+INFO 2025-08-03 07:00:40,164 autoreload 2304 8798707456 Watching for file changes with StatReloader
+INFO 2025-08-03 07:00:54,323 basehttp 2304 6204616704 "GET /accounts/login/ HTTP/1.1" 200 4362
+INFO 2025-08-03 07:00:54,337 basehttp 2304 6204616704 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-03 07:00:54,338 basehttp 2304 6221443072 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-03 07:00:57,529 basehttp 2304 6221443072 "GET /accounts/register/ HTTP/1.1" 200 4554
+INFO 2025-08-03 07:05:22,529 basehttp 2304 6221443072 "GET /accounts/register/ HTTP/1.1" 200 4321
+INFO 2025-08-03 07:05:22,542 basehttp 2304 6221443072 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-03 07:05:22,542 basehttp 2304 6204616704 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-03 07:05:24,819 basehttp 2304 6204616704 "GET /accounts/login/ HTTP/1.1" 200 4128
+INFO 2025-08-03 07:05:26,278 basehttp 2304 6204616704 "GET /accounts/resend-verification/ HTTP/1.1" 200 3702
+INFO 2025-08-03 07:05:28,276 basehttp 2304 6204616704 "GET /accounts/login/ HTTP/1.1" 200 4106
+INFO 2025-08-03 07:05:29,678 basehttp 2304 6204616704 "GET /accounts/forgot-password/ HTTP/1.1" 200 3708
