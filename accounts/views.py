@@ -409,3 +409,43 @@ def resend_verification_email_view(request):
     
     # Show resend verification form
     return render(request, 'accounts/pages/resend_verification.html')
+
+
+def preview_email_templates(request):
+    """Test view to preview email templates"""
+    from django.template.loader import render_to_string
+    from django.contrib.auth import get_user_model
+    
+    User = get_user_model()
+    
+    # Create a test user
+    test_user, created = User.objects.get_or_create(
+        email='test@example.com',
+        defaults={
+            'first_name': 'Test',
+            'last_name': 'User',
+            'username': 'test@example.com'
+        }
+    )
+    
+    # Test URLs
+    verification_url = 'https://example.com/verify/abc123'
+    reset_url = 'https://example.com/reset/xyz789'
+    
+    # Render email templates
+    email_verification_html = render_to_string('accounts/email/email_verification.html', {
+        'user': test_user,
+        'verification_url': verification_url,
+        'toad_image_data': None  # Set to None for now
+    })
+    
+    password_reset_html = render_to_string('accounts/email/password_reset_email.html', {
+        'user': test_user,
+        'reset_url': reset_url,
+        'toad_image_data': None  # Set to None for now
+    })
+    
+    return render(request, 'accounts/email_preview.html', {
+        'email_verification_html': email_verification_html,
+        'password_reset_html': password_reset_html
+    })

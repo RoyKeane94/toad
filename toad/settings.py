@@ -238,6 +238,8 @@ if IS_PRODUCTION:
 # ---
 
 # Email settings
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development - prints emails to console
+# EMAIL_BACKEND = 'accounts.email_backend.CustomEmailBackend'  # For production
 if IS_PRODUCTION:
     # Production email settings - using Microsoft Office 365 SMTP
     EMAIL_BACKEND = 'accounts.email_backend.Office365EmailBackend'

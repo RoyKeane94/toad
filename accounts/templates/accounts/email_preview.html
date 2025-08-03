@@ -1,0 +1,35 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Email Template Preview - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold text-[var(--title-text)] mb-8">Email Template Preview</h1>
+    
+    <!-- Email Verification Template -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Email Verification Template</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ email_verification_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Password Reset Template -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Password Reset Template</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ password_reset_html|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
