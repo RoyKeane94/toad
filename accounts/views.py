@@ -381,41 +381,29 @@ def resend_verification_email_view(request):
     """
     Resend verification email to the user.
     """
-    import logging
-    logger = logging.getLogger(__name__)
-    
     if request.method == 'POST':
         email = request.POST.get('email')
         if email:
-            logger.info(f"Resend verification requested for email: {email}")
-            
             try:
                 user = User.objects.get(email=email)
-                logger.info(f"Found user: {user.email}, verified: {user.email_verified}")
                 
                 # Check if email is already verified
                 if user.email_verified:
-                    logger.info(f"User {user.email} is already verified, showing message and redirecting")
                     messages.warning(request, f'Your email ({email}) is already verified. You can sign in directly.')
                     return redirect('accounts:login')
                 
                 # Send verification email
-                logger.info(f"Sending verification email to {user.email}")
                 if send_verification_email(user, request):
-                    logger.info(f"Successfully sent verification email to {user.email}")
                     messages.success(request, f'Verification email sent to {email}! Please check your inbox.')
                 else:
-                    logger.error(f"Failed to send verification email to {user.email}")
                     messages.error(request, 'Failed to send verification email. Please try again later or contact support.')
                 
                 return redirect('accounts:login')
             except User.DoesNotExist:
-                logger.warning(f"Resend verification attempted for non-existent email: {email}")
                 # Don't reveal if user exists or not for security
                 messages.success(request, f'If an account with {email} exists, a verification email has been sent.')
                 return redirect('accounts:login')
             except Exception as e:
-                logger.error(f"Unexpected error in resend verification for {email}: {e}")
                 messages.error(request, 'An error occurred while processing your request. Please try again later.')
                 return redirect('accounts:login')
     
