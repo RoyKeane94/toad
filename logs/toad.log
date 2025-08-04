@@ -11493,3 +11493,18 @@ INFO 2025-08-03 15:03:34,363 basehttp 2137 6124400640 "GET /grids/16/ HTTP/1.1" 
 INFO 2025-08-03 15:03:34,377 basehttp 2137 6158053376 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-08-03 15:03:34,377 basehttp 2137 6141227008 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-08-03 15:03:34,378 basehttp 2137 6124400640 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-03 18:44:26,500 autoreload 5073 8439815936 Watching for file changes with StatReloader
+INFO 2025-08-03 18:44:28,138 basehttp 5073 6162395136 "GET / HTTP/1.1" 200 6318
+INFO 2025-08-03 18:44:28,203 basehttp 5073 6162395136 "GET /static/css/output.css HTTP/1.1" 200 68448
+INFO 2025-08-03 18:44:28,205 basehttp 5073 6162395136 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-03 18:44:28,207 basehttp 5073 6162395136 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-03 18:44:28,315 basehttp 5073 6162395136 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-03 18:44:30,751 basehttp 5073 6162395136 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-03 18:44:30,757 basehttp 5073 6162395136 "GET / HTTP/1.1" 200 6110
+INFO 2025-08-03 18:44:31,587 basehttp 5073 6162395136 "GET /accounts/login/ HTTP/1.1" 200 4167
+INFO 2025-08-03 18:44:33,530 basehttp 5073 6162395136 "GET /accounts/resend-verification/ HTTP/1.1" 200 3676
+INFO 2025-08-03 18:44:38,694 views 5073 6162395136 Resend verification requested for email: thomasbarratt@yahoo.com
+INFO 2025-08-03 18:44:38,697 views 5073 6162395136 Found user: thomasbarratt@yahoo.com, verified: True
+INFO 2025-08-03 18:44:38,697 views 5073 6162395136 User thomasbarratt@yahoo.com is already verified, showing message and redirecting
+INFO 2025-08-03 18:44:38,698 basehttp 5073 6162395136 "POST /accounts/resend-verification/ HTTP/1.1" 302 0
+INFO 2025-08-03 18:44:38,705 basehttp 5073 6162395136 "GET /accounts/login/ HTTP/1.1" 200 4103

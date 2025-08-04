@@ -238,8 +238,6 @@ if IS_PRODUCTION:
 # ---
 
 # Email settings
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # For development - prints emails to console
-# EMAIL_BACKEND = 'accounts.email_backend.CustomEmailBackend'  # For production
 if IS_PRODUCTION:
     # Production email settings - using Microsoft Office 365 SMTP
     EMAIL_BACKEND = 'accounts.email_backend.Office365EmailBackend'
@@ -251,15 +249,18 @@ if IS_PRODUCTION:
     EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
     DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'noreply@meettoad.co.uk')
 else:
-    # Development email settings - using Microsoft Office 365 SMTP
-    EMAIL_BACKEND = 'accounts.email_backend.Office365EmailBackend'
-    EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.office365.com')
-    EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
-    EMAIL_USE_TLS = True
-    EMAIL_USE_SSL = False
-    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-    DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'accounts@meettoad.co.uk')
+    # Development email settings - use console backend for easier debugging
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    # Fallback to Office365 if credentials are provided
+    if os.environ.get('EMAIL_HOST_USER') and os.environ.get('EMAIL_HOST_PASSWORD'):
+        EMAIL_BACKEND = 'accounts.email_backend.Office365EmailBackend'
+        EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.office365.com')
+        EMAIL_PORT = int(os.environ.get('EMAIL_PORT', 587))
+        EMAIL_USE_TLS = True
+        EMAIL_USE_SSL = False
+        EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+        EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+        DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'accounts@meettoad.co.uk')
 
 # Site URL for email links
 SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')
