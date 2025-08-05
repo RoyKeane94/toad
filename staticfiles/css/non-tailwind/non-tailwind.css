@@ -456,12 +456,14 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     box-sizing: border-box;
 }
 
-/* Ensure row text in category column doesn't exceed "Weekly Tasks & Reading" length */
+/* Ensure row text in category column wraps and doesn't exceed "Weekly Tasks & Reading" length */
 .grid-table-fixed td .truncate {
     max-width: 140px; /* Approximate width of "Weekly Tasks & Reading" */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    line-height: 1.2;
     display: block;
 }
 
@@ -469,22 +471,21 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 @media (max-width: 768px) {
     .grid-table-fixed td .truncate {
         max-width: 120px;
-        white-space: normal;
-        word-wrap: break-word;
-        word-break: break-word;
-        overflow-wrap: break-word;
+        line-height: 1.1;
     }
 }
 
 @media (max-width: 640px) {
     .grid-table-fixed td .truncate {
         max-width: 100px;
+        line-height: 1.0;
     }
 }
 
 @media (max-width: 480px) {
     .grid-table-fixed td .truncate {
         max-width: 80px;
+        line-height: 1.0;
     }
 }
 

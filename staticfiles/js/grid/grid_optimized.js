@@ -1380,8 +1380,65 @@ function validateTaskForm(form) {
     }
 }
 
+// Grid loading handler
+function handleGridLoading() {
+    // Wait for all resources to load
+    window.addEventListener('load', function() {
+        // Hide loading overlay
+        const loadingOverlay = document.getElementById('grid-loading-overlay');
+        if (loadingOverlay) {
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 300);
+        }
+        
+        // Show grid content
+        const gridHeader = document.getElementById('grid-header');
+        const gridContent = document.getElementById('grid-content-wrapper');
+        
+        if (gridHeader) {
+            gridHeader.classList.remove('grid-content-hidden');
+            gridHeader.classList.add('grid-content-visible');
+        }
+        
+        if (gridContent) {
+            gridContent.classList.remove('grid-content-hidden');
+            gridContent.classList.add('grid-content-visible');
+        }
+    });
+    
+    // Fallback: if load event doesn't fire within 3 seconds, show content anyway
+    setTimeout(function() {
+        const loadingOverlay = document.getElementById('grid-loading-overlay');
+        const gridHeader = document.getElementById('grid-header');
+        const gridContent = document.getElementById('grid-content-wrapper');
+        
+        if (loadingOverlay && loadingOverlay.style.display !== 'none') {
+            loadingOverlay.style.opacity = '0';
+            setTimeout(() => {
+                loadingOverlay.style.display = 'none';
+            }, 300);
+        }
+        
+        if (gridHeader && gridHeader.classList.contains('grid-content-hidden')) {
+            gridHeader.classList.remove('grid-content-hidden');
+            gridHeader.classList.add('grid-content-visible');
+        }
+        
+        if (gridContent && gridContent.classList.contains('grid-content-hidden')) {
+            gridContent.classList.remove('grid-content-hidden');
+            gridContent.classList.add('grid-content-visible');
+        }
+    }, 3000);
+}
+
 // Initialize when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
+    // Handle grid loading first
+    handleGridLoading();
+    
+    // Then initialize the grid manager
     window.gridManager = new GridManager();
 });
 

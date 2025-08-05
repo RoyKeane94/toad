@@ -11575,3 +11575,17 @@ INFO 2025-08-05 19:40:33,962 basehttp 4453 6194540544 "GET /dashboard/ HTTP/1.1"
 INFO 2025-08-05 19:41:21,114 autoreload 4453 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
 INFO 2025-08-05 19:41:21,391 autoreload 4463 8574164736 Watching for file changes with StatReloader
 INFO 2025-08-05 19:41:34,659 basehttp 4463 6193131520 "GET /dashboard/ HTTP/1.1" 200 3453
+INFO 2025-08-05 19:49:45,582 autoreload 4990 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:49:53,524 basehttp 4990 6169292800 "GET /dashboard/ HTTP/1.1" 200 3443
+INFO 2025-08-05 19:50:01,001 basehttp 4990 6169292800 "GET / HTTP/1.1" 200 6480
+INFO 2025-08-05 19:50:06,325 basehttp 4990 6169292800 "GET /dashboard/ HTTP/1.1" 200 3498
+WARNING 2025-08-05 19:50:08,566 log 4990 6169292800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-05 19:50:08,567 basehttp 4990 6169292800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1696
+INFO 2025-08-05 19:50:10,366 basehttp 4990 6169292800 "GET /dashboard/ HTTP/1.1" 200 3438
+WARNING 2025-08-05 19:50:10,390 log 4990 6169292800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-05 19:50:10,390 basehttp 4990 6169292800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1658
+INFO 2025-08-05 19:50:13,989 basehttp 4990 6169292800 "GET / HTTP/1.1" 200 6420
+WARNING 2025-08-05 19:50:14,017 log 4990 6169292800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-05 19:50:14,018 basehttp 4990 6169292800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1656
+INFO 2025-08-05 19:50:14,034 basehttp 4990 6169292800 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
+INFO 2025-08-05 19:50:16,827 basehttp 4990 6169292800 "GET /static/img/Mobile%20-%20Entrepreneurs%20Grid.png HTTP/1.1" 200 153018
