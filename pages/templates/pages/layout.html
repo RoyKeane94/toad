@@ -167,8 +167,11 @@
                         <li><a href="{% url 'pages:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Home</a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Grids</a></li>
+                        <li><a href="{% url 'accounts:account_settings' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Account</a></li>
+                        {% else %}
+                        <li><a href="{% url 'accounts:register' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Sign Up</a></li>
+                        <li><a href="{% url 'accounts:login' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Sign In</a></li>
                         {% endif %}
-                        <li><a href="{% url 'accounts:login' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">{% if user.is_authenticated %}Account{% else %}Sign In{% endif %}</a></li>
                     </ul>
                 </div>
 
