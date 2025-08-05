@@ -11508,3 +11508,12 @@ INFO 2025-08-03 18:44:38,697 views 5073 6162395136 Found user: thomasbarratt@yah
 INFO 2025-08-03 18:44:38,697 views 5073 6162395136 User thomasbarratt@yahoo.com is already verified, showing message and redirecting
 INFO 2025-08-03 18:44:38,698 basehttp 5073 6162395136 "POST /accounts/resend-verification/ HTTP/1.1" 302 0
 INFO 2025-08-03 18:44:38,705 basehttp 5073 6162395136 "GET /accounts/login/ HTTP/1.1" 200 4103
+INFO 2025-08-05 19:10:53,485 autoreload 2490 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:10:54,913 basehttp 2490 6190837760 "GET / HTTP/1.1" 200 6253
+INFO 2025-08-05 19:10:54,972 basehttp 2490 6190837760 "GET /static/css/output.css HTTP/1.1" 200 68448
+INFO 2025-08-05 19:10:54,975 basehttp 2490 6190837760 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-05 19:10:54,976 basehttp 2490 6190837760 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-05 19:10:56,128 basehttp 2490 6190837760 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-05 19:11:01,161 basehttp 2490 6190837760 "GET /accounts/login/ HTTP/1.1" 200 4222
+INFO 2025-08-05 19:11:08,455 basehttp 2490 6190837760 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-05 19:11:08,461 basehttp 2490 6190837760 "GET /accounts/login/ HTTP/1.1" 200 4434
