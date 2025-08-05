@@ -11601,3 +11601,8 @@ INFO 2025-08-05 20:36:59,229 basehttp 6984 6126989312 "GET /accounts/register/ H
 INFO 2025-08-05 20:36:59,254 basehttp 6984 6160642048 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
 INFO 2025-08-05 20:36:59,256 basehttp 6984 6143815680 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
 INFO 2025-08-05 20:36:59,256 basehttp 6984 6126989312 "GET /static/css/output.css HTTP/1.1" 200 68046
+INFO 2025-08-05 20:41:18,491 autoreload 7442 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 20:41:19,086 basehttp 7442 6159265792 "GET / HTTP/1.1" 200 6292
+INFO 2025-08-05 20:41:19,100 basehttp 7442 6159265792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-05 20:41:19,101 basehttp 7442 6176092160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-05 20:41:19,132 basehttp 7442 6176092160 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
