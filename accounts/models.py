@@ -32,23 +32,21 @@ class CustomUserManager(BaseUserManager):
             raise ValueError('Superuser must have is_superuser=True.')
 
         return self.create_user(email, password, **extra_fields)
-    
-class UserTier(models.Model):
-    name = models.CharField(max_length=35)
-
-    def __str__(self):
-        return self.name
 
 class User(AbstractUser):
-    """
-    Custom User model that uses email as the unique identifier
-    and includes first_name as a required field for registration.
-    """
+    
+    TIER_CHOICES = [
+        ('free', 'Free'),
+        ('personal', 'Personal'),
+        ('pro', 'Pro'),
+        ('beta', 'Beta'),
+    ]
+    
     username = None  # Remove username field
     email = models.EmailField(unique=True, help_text='Required. Enter a valid email address.')
     first_name = models.CharField(max_length=30, help_text='Required. Enter your first name.')
     last_name = models.CharField(max_length=30, blank=True, help_text='Optional. Enter your last name.')
-    tier = models.ForeignKey(UserTier, on_delete=models.SET_NULL, null=True, blank=True)
+    tier = models.CharField(max_length=35, choices=TIER_CHOICES, default='beta',blank=True)
     
     # Security and tracking fields
     email_verified = models.BooleanField(default=False, help_text='Whether the user has verified their email address.')
