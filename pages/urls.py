@@ -8,6 +8,9 @@ urlpatterns = [
     # Home
     path('', views.home, name='home'),
     
+    # Superuser Dashboard
+    path('dashboard/', views.dashboard_view, name='dashboard'),
+    
     # User tutorial
     path('first-grid/', views.first_grid_tutorial_view, name='first_grid_tutorial'),
     

@@ -11518,3 +11518,60 @@ INFO 2025-08-05 19:11:01,161 basehttp 2490 6190837760 "GET /accounts/login/ HTTP
 INFO 2025-08-05 19:11:08,455 basehttp 2490 6190837760 "POST /accounts/login/ HTTP/1.1" 302 0
 INFO 2025-08-05 19:11:08,461 basehttp 2490 6190837760 "GET /accounts/login/ HTTP/1.1" 200 4434
 INFO 2025-08-05 19:24:07,236 autoreload 3916 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:36:52,580 autoreload 4353 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:37:00,378 basehttp 4353 6137999360 "GET / HTTP/1.1" 200 6192
+INFO 2025-08-05 19:37:02,166 basehttp 4353 6137999360 "GET /accounts/login/ HTTP/1.1" 200 4209
+INFO 2025-08-05 19:37:08,220 basehttp 4353 6137999360 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-05 19:37:08,232 basehttp 4353 6137999360 "GET /grids/ HTTP/1.1" 200 3964
+INFO 2025-08-05 19:37:16,975 basehttp 4353 6137999360 "GET /dashboard/ HTTP/1.1" 200 3816
+INFO 2025-08-05 19:38:38,470 basehttp 4353 6137999360 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-05 19:38:38,493 basehttp 4353 6137999360 "GET /admin/ HTTP/1.1" 200 2711
+INFO 2025-08-05 19:38:38,506 basehttp 4353 6154825728 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-05 19:38:38,506 basehttp 4353 6171652096 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-08-05 19:38:38,506 basehttp 4353 6137999360 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-05 19:38:38,508 basehttp 4353 6171652096 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-05 19:38:38,508 basehttp 4353 6137999360 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-05 19:38:38,509 basehttp 4353 6154825728 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-05 19:38:38,510 basehttp 4353 6137999360 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-05 19:38:38,512 basehttp 4353 6154825728 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-05 19:38:38,512 basehttp 4353 6137999360 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-05 19:38:38,512 basehttp 4353 6171652096 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-05 19:38:38,514 basehttp 4353 6137999360 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-05 19:38:39,175 basehttp 4353 6137999360 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-08-05 19:38:39,177 basehttp 4353 6137999360 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-08-05 19:38:40,764 basehttp 4353 6137999360 "GET /admin/accounts/user/ HTTP/1.1" 200 3066
+INFO 2025-08-05 19:38:40,776 basehttp 4353 6205304832 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-08-05 19:38:40,778 basehttp 4353 6188478464 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-05 19:38:40,778 basehttp 4353 6137999360 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-08-05 19:38:40,781 basehttp 4353 6205304832 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-08-05 19:38:40,783 basehttp 4353 6222131200 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-08-05 19:38:40,784 basehttp 4353 6188478464 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-05 19:38:40,786 basehttp 4353 6137999360 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-05 19:38:40,786 basehttp 4353 6154825728 "GET /admin/jsi18n/ HTTP/1.1" 200 1011
+INFO 2025-08-05 19:38:40,791 basehttp 4353 6171652096 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-08-05 19:38:40,794 basehttp 4353 6171652096 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-05 19:38:40,795 basehttp 4353 6205304832 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-08-05 19:38:40,804 basehttp 4353 6205304832 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-05 19:38:46,005 basehttp 4353 6205304832 "POST /admin/accounts/user/ HTTP/1.1" 200 3265
+INFO 2025-08-05 19:38:46,015 basehttp 4353 6205304832 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-08-05 19:38:47,653 basehttp 4353 6205304832 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-08-05 19:38:47,664 basehttp 4353 6205304832 "GET /admin/accounts/user/ HTTP/1.1" 200 3119
+INFO 2025-08-05 19:38:47,676 basehttp 4353 6205304832 "GET /admin/jsi18n/ HTTP/1.1" 200 983
+INFO 2025-08-05 19:38:54,577 basehttp 4353 6205304832 "GET /dashboard/ HTTP/1.1" 200 3777
+INFO 2025-08-05 19:39:23,515 autoreload 4353 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-08-05 19:39:23,779 autoreload 4410 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:39:36,010 autoreload 4410 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-05 19:39:36,190 autoreload 4421 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:39:40,325 autoreload 4421 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-08-05 19:39:40,504 autoreload 4428 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:39:43,094 basehttp 4428 6136377344 "GET /dashboard/ HTTP/1.1" 200 3406
+INFO 2025-08-05 19:39:43,675 autoreload 4428 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-08-05 19:39:43,921 autoreload 4431 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:40:28,660 autoreload 4431 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-08-05 19:40:28,889 autoreload 4446 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:40:32,028 autoreload 4446 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-08-05 19:40:32,203 autoreload 4453 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:40:33,962 basehttp 4453 6194540544 "GET /dashboard/ HTTP/1.1" 200 3359
+INFO 2025-08-05 19:41:21,114 autoreload 4453 8574164736 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-08-05 19:41:21,391 autoreload 4463 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 19:41:34,659 basehttp 4463 6193131520 "GET /dashboard/ HTTP/1.1" 200 3453

@@ -1,0 +1,181 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Admin Dashboard - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mb-8">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg shadow-sm">
+                <i class="fas fa-chart-line text-white text-xl"></i>
+            </div>
+            <div>
+                <h1 class="text-2xl font-bold text-[var(--title-text)]">Admin Dashboard</h1>
+                <p class="text-sm text-[var(--text-secondary)] mt-1">Analytics and user insights for Toad</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <!-- Total Users -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-users text-blue-600"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Total Users</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ total_users }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Active Users -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-calendar-week text-green-600"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Weekly Active</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ weekly_active_users }}</p>
+                    <p class="text-sm text-green-600">{{ weekly_active_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Monthly Active Users -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-calendar-alt text-purple-600"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Monthly Active</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ monthly_active_users }}</p>
+                    <p class="text-sm text-purple-600">{{ monthly_active_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inactive Users -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-user-clock text-red-600"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Inactive Users</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ inactive_users }}</p>
+                    <p class="text-sm text-red-600">{{ inactive_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Users by Grid Count -->
+    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+        <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Users by Grid Count</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <!-- 1 Grid -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_1_grid }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">1 grid</p>
+                </div>
+            </div>
+            
+            <!-- 2 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_2_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">2 grids</p>
+                </div>
+            </div>
+            
+            <!-- 3 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_3_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">3 grids</p>
+                </div>
+            </div>
+            
+            <!-- 4 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_4_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">4 grids</p>
+                </div>
+            </div>
+            
+            <!-- 5 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_5_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">5 grids</p>
+                </div>
+            </div>
+            
+            <!-- 6 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_6_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">6 grids</p>
+                </div>
+            </div>
+            
+            <!-- 7 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_7_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">7 grids</p>
+                </div>
+            </div>
+            
+            <!-- 8 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_8_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">8 grids</p>
+                </div>
+            </div>
+            
+            <!-- 9 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_9_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">9 grids</p>
+                </div>
+            </div>
+            
+            <!-- 10 Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_10_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">10 grids</p>
+                </div>
+            </div>
+            
+            <!-- 11+ Grids -->
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <div class="text-center">
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_11_plus_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">11+ grids</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

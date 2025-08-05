@@ -1,3 +1,5 @@
+from django.shortcuts import render
+
 # Import all views from specific modules
 from .specific_views.error_views import (
     handler404, handler500, handler403,
@@ -39,6 +41,24 @@ from .specific_views.project_views import (
     delete_completed_tasks_view,
     create_from_template_view
 )
+
+# Import analytics functions
+from .specific_views_functions.analytics_views_functions import get_dashboard_analytics
+
+
+def dashboard_view(request):
+    """
+    Superuser dashboard with analytics
+    """
+    if not request.user.is_superuser:
+        from django.http import Http404
+        raise Http404("Dashboard not found")
+    
+    analytics = get_dashboard_analytics()
+    
+    context = analytics
+    
+    return render(request, 'pages/dashboard/dashboard.html', context)
 
 
 
