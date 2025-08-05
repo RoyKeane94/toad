@@ -11589,3 +11589,15 @@ WARNING 2025-08-05 19:50:14,017 log 4990 6169292800 Not Found: /.well-known/apps
 WARNING 2025-08-05 19:50:14,018 basehttp 4990 6169292800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1656
 INFO 2025-08-05 19:50:14,034 basehttp 4990 6169292800 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 183902
 INFO 2025-08-05 19:50:16,827 basehttp 4990 6169292800 "GET /static/img/Mobile%20-%20Entrepreneurs%20Grid.png HTTP/1.1" 200 153018
+INFO 2025-08-05 20:35:27,880 autoreload 6519 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 20:35:37,376 basehttp 6519 6205075456 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-05 20:35:37,387 basehttp 6519 6205075456 "GET / HTTP/1.1" 200 6272
+INFO 2025-08-05 20:35:38,234 basehttp 6519 6205075456 "GET /accounts/login/ HTTP/1.1" 200 4296
+INFO 2025-08-05 20:35:39,807 basehttp 6519 6205075456 "GET /accounts/register/ HTTP/1.1" 200 4449
+INFO 2025-08-05 20:36:28,786 basehttp 6519 6205075456 "GET /accounts/register/ HTTP/1.1" 200 4484
+INFO 2025-08-05 20:36:49,205 autoreload 6984 8574164736 Watching for file changes with StatReloader
+INFO 2025-08-05 20:36:50,921 basehttp 6984 6126989312 "GET /accounts/register/ HTTP/1.1" 200 4490
+INFO 2025-08-05 20:36:59,229 basehttp 6984 6126989312 "GET /accounts/register/ HTTP/1.1" 200 4490
+INFO 2025-08-05 20:36:59,254 basehttp 6984 6160642048 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-05 20:36:59,256 basehttp 6984 6143815680 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-05 20:36:59,256 basehttp 6984 6126989312 "GET /static/css/output.css HTTP/1.1" 200 68046
