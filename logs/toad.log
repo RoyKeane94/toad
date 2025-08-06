@@ -11689,3 +11689,26 @@ INFO 2025-08-06 19:04:30,086 basehttp 2252 6163378176 "GET /static/js/general/ge
 INFO 2025-08-06 19:04:30,087 basehttp 2252 6197030912 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-08-06 19:04:32,400 basehttp 2252 6197030912 "GET /grids/47/columns/193/edit/ HTTP/1.1" 200 1041
 INFO 2025-08-06 19:04:34,152 basehttp 2252 6197030912 "POST /grids/47/columns/193/edit/ HTTP/1.1" 200 91
+INFO 2025-08-06 19:08:00,048 autoreload 2532 8448237312 Watching for file changes with StatReloader
+INFO 2025-08-06 19:09:59,464 basehttp 2532 6137737216 "GET /grids/47/ HTTP/1.1" 200 13732
+INFO 2025-08-06 19:09:59,480 basehttp 2532 6154563584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-06 19:09:59,481 basehttp 2532 6137737216 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 26055
+INFO 2025-08-06 19:10:09,277 basehttp 2532 6137737216 "POST /grids/47/tasks/create/174/185/ HTTP/1.1" 200 1316
+INFO 2025-08-06 19:10:12,502 basehttp 2532 6137737216 "POST /grids/47/tasks/create/174/185/ HTTP/1.1" 200 1360
+INFO 2025-08-06 19:10:14,601 project_views_functions 2532 6137737216 User None deleted task: "Test" from project: Tom's Exam Revision Planner
+INFO 2025-08-06 19:10:14,605 basehttp 2532 6137737216 "POST /tasks/665/delete/ HTTP/1.1" 200 58
+INFO 2025-08-06 19:10:16,396 project_views_functions 2532 6137737216 User None deleted task: "Test" from project: Tom's Exam Revision Planner
+INFO 2025-08-06 19:10:16,399 basehttp 2532 6137737216 "POST /tasks/666/delete/ HTTP/1.1" 200 58
+WARNING 2025-08-06 19:10:20,605 log 2532 6137737216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-06 19:10:20,605 basehttp 2532 6137737216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1710
+INFO 2025-08-06 19:10:21,555 basehttp 2532 6137737216 "GET /grids/47/ HTTP/1.1" 200 13839
+INFO 2025-08-06 19:10:21,573 basehttp 2532 6137737216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-06 19:10:21,577 basehttp 2532 6154563584 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 48670
+WARNING 2025-08-06 19:10:21,591 log 2532 6154563584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-06 19:10:21,591 basehttp 2532 6154563584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1719
+INFO 2025-08-06 19:10:28,389 basehttp 2532 6154563584 "POST /grids/47/tasks/create/175/184/ HTTP/1.1" 200 1388
+INFO 2025-08-06 19:10:31,121 project_views_functions 2532 6154563584 User None deleted task: "Test" from project: Tom's Exam Revision Planner
+INFO 2025-08-06 19:10:31,127 basehttp 2532 6154563584 "POST /tasks/667/delete/ HTTP/1.1" 200 58
+INFO 2025-08-06 19:10:37,856 basehttp 2532 6154563584 "GET /grids/47/ HTTP/1.1" 200 13701
+INFO 2025-08-06 19:10:37,870 basehttp 2532 6137737216 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-06 19:10:37,870 basehttp 2532 6154563584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

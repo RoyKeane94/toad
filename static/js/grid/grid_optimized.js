@@ -398,6 +398,9 @@ class GridManager {
     expandAddTaskForm(form) {
         if (!form) return;
         
+        // First, collapse all other add task forms
+        this.collapseAllAddTaskForms();
+        
         const collapsed = form.querySelector('.add-task-collapsed');
         const expanded = form.querySelector('.add-task-expanded');
         const input = form.querySelector('input[name="text"]');
