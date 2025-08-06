@@ -861,9 +861,9 @@ class GridManager {
                             }
                         }
                         
-                        if (columnId && response.column_name) {
+                        if (columnId && response.col_name) {
                             // Update column headers in place
-                            this.updateColumnHeader(columnId, response.column_name);
+                            this.updateColumnHeader(columnId, response.col_name);
                             this.hideModal();
                             
                             // Restore scroll position
