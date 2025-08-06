@@ -140,9 +140,9 @@
                                       hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"
                                       hx-swap="beforeend"
                                       hx-target="#tasks-{{ row_h.pk }}-{{ col_h.pk }}"
-                                      hx-trigger="submit throttle:500ms"
+                                      hx-trigger="submit throttle:200ms"
                                       hx-disabled-elt="this"
-                                      onsubmit="return validateTaskForm(this)"
+                                      onsubmit="if(validateTaskForm(this)) { if(window.gridManager) window.gridManager.createOptimisticTask(this); } return true;"
                                       style="height: 36px; display: flex; align-items: center;">
                                     {% csrf_token %}
                                     

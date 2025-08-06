@@ -11815,3 +11815,44 @@ INFO 2025-08-06 20:48:58,039 basehttp 3516 6136475648 "GET /templates/entreprene
 INFO 2025-08-06 20:49:03,962 basehttp 3516 6136475648 "GET /templates/professionals/ HTTP/1.1" 200 3677
 INFO 2025-08-06 20:49:05,360 basehttp 3516 6136475648 "GET /templates/students/ HTTP/1.1" 200 4291
 INFO 2025-08-06 20:49:07,879 basehttp 3516 6136475648 "GET /templates/professionals/ HTTP/1.1" 200 3664
+INFO 2025-08-06 20:58:33,325 autoreload 4204 8448237312 Watching for file changes with StatReloader
+INFO 2025-08-06 20:58:56,913 autoreload 4416 8448237312 Watching for file changes with StatReloader
+INFO 2025-08-06 20:59:04,032 basehttp 4416 6198521856 "GET /grids/ HTTP/1.1" 200 3976
+INFO 2025-08-06 20:59:04,049 basehttp 4416 6198521856 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-06 20:59:05,437 basehttp 4416 6198521856 "GET /grids/48/ HTTP/1.1" 200 9151
+INFO 2025-08-06 20:59:05,449 basehttp 4416 6198521856 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 28248
+WARNING 2025-08-06 20:59:08,486 project_views 4416 6198521856 User None failed to create task - form errors: <ul class="errorlist"><li>text<ul class="errorlist" id="id_text_error"><li>This field is required.</li><li>Task text cannot be empty.</li></ul></li></ul>
+WARNING 2025-08-06 20:59:08,488 log 4416 6198521856 Unprocessable Entity: /grids/48/tasks/create/179/189/
+WARNING 2025-08-06 20:59:08,488 basehttp 4416 6198521856 "POST /grids/48/tasks/create/179/189/ HTTP/1.1" 422 97
+INFO 2025-08-06 20:59:50,583 autoreload 4645 8448237312 Watching for file changes with StatReloader
+INFO 2025-08-06 20:59:52,996 basehttp 4645 6196277248 "GET /grids/48/ HTTP/1.1" 200 9205
+INFO 2025-08-06 20:59:53,011 basehttp 4645 6196277248 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-06 20:59:53,011 basehttp 4645 6213103616 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 26055
+INFO 2025-08-06 20:59:55,798 basehttp 4645 6196277248 "POST /grids/48/tasks/create/179/189/ HTTP/1.1" 200 1383
+INFO 2025-08-06 21:00:00,072 basehttp 4645 6196277248 "POST /grids/48/tasks/create/179/189/ HTTP/1.1" 200 1334
+INFO 2025-08-06 21:00:02,656 project_views_functions 4645 6196277248 User None deleted task: "Test" from project: Tester
+INFO 2025-08-06 21:00:02,659 basehttp 4645 6196277248 "POST /tasks/668/delete/ HTTP/1.1" 200 58
+INFO 2025-08-06 21:00:05,575 project_views_functions 4645 6196277248 User None deleted task: "Tester" from project: Tester
+INFO 2025-08-06 21:00:05,579 basehttp 4645 6196277248 "POST /tasks/669/delete/ HTTP/1.1" 200 58
+INFO 2025-08-06 21:02:14,967 basehttp 4645 6196277248 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-06 21:02:14,981 basehttp 4645 6196277248 "GET /templates/students/ HTTP/1.1" 200 4295
+INFO 2025-08-06 21:02:14,998 basehttp 4645 6229929984 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-06 21:02:15,000 basehttp 4645 6213103616 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-06 21:02:15,001 basehttp 4645 6196277248 "GET /static/css/output.css HTTP/1.1" 200 67570
+INFO 2025-08-06 21:02:15,013 basehttp 4645 6263582720 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-06 21:02:15,014 basehttp 4645 6246756352 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-06 21:02:15,024 basehttp 4645 6246756352 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-06 21:02:15,024 basehttp 4645 6263582720 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-06 21:02:16,274 basehttp 4645 6263582720 "GET /templates/entrepreneurs/ HTTP/1.1" 200 3650
+INFO 2025-08-06 21:02:24,799 basehttp 4645 6263582720 "GET /templates/professionals/ HTTP/1.1" 200 3688
+INFO 2025-08-06 21:02:25,432 basehttp 4645 6263582720 "GET /templates/students/ HTTP/1.1" 200 4252
+INFO 2025-08-06 21:02:26,078 basehttp 4645 6263582720 "GET /templates/professionals/ HTTP/1.1" 200 3647
+INFO 2025-08-06 21:02:26,831 basehttp 4645 6263582720 "GET /templates/entrepreneurs/ HTTP/1.1" 200 3673
+INFO 2025-08-06 21:02:28,313 basehttp 4645 6263582720 "GET /templates/professionals/ HTTP/1.1" 200 3686
+INFO 2025-08-06 21:02:29,126 basehttp 4645 6263582720 "GET /templates/students/ HTTP/1.1" 200 4278
+INFO 2025-08-06 21:02:29,137 basehttp 4645 6263582720 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-06 21:02:32,851 basehttp 4645 6263582720 "GET /templates/professionals/ HTTP/1.1" 200 3590
+INFO 2025-08-06 21:02:33,981 basehttp 4645 6263582720 "GET /templates/students/ HTTP/1.1" 200 4317
+INFO 2025-08-06 21:02:35,500 basehttp 4645 6263582720 "GET /templates/professionals/ HTTP/1.1" 200 3596
+INFO 2025-08-06 21:02:35,516 basehttp 4645 6263582720 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-06 21:02:37,395 basehttp 4645 6263582720 "GET /templates/entrepreneurs/ HTTP/1.1" 200 3659
