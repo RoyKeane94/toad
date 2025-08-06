@@ -10,6 +10,7 @@ from .specific_views.general_views import (
     home,
     first_grid_tutorial_view,
     templates_overview_view,
+    students_templates_view,
     student_jobs_template_view,
     student_revision_template_view,
     course_planner_template_view,
@@ -17,6 +18,8 @@ from .specific_views.general_views import (
     essay_planner_template_view,
     job_application_tracker_template_view,
     professionals_jobs_template_view,
+    professionals_templates_view,
+    entrepreneurs_templates_view,
     faq_view,
     contact_us_view,
     privacy_policy_view

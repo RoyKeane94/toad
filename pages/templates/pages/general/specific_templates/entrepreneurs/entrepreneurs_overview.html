@@ -1,0 +1,74 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Entrepreneur Templates - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto">
+    <!-- Header Section with Navigation Tabs -->
+    <header class="text-center mb-8 md:mb-12 px-4">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--primary-action-bg)]">The hardest part is starting, so we've done it for you.</h1>
+        <p class="mt-3 md:mt-4 max-w-2xl mx-auto text-base md:text-lg text-[var(--subtitle-text)]">
+            Explore our pre-built grids and turn a blank page into a clear plan. It's the simplest way to get organised instantly.
+        </p>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <div class="border-t border-[var(--border-color)]">
+        <div class="max-w-6xl mx-auto px-4">
+            <nav class="flex space-x-8 justify-center">
+                <a href="{% url 'pages:students_templates' %}" 
+                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
+                    For Students
+                </a>
+                <a href="{% url 'pages:professionals_templates' %}" 
+                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
+                    For Professionals
+                </a>
+                <a href="{% url 'pages:entrepreneurs_templates' %}" 
+                   class="py-4 px-1 border-b-2 border-[var(--primary-action-bg)] text-[var(--text-primary)] font-medium text-sm">
+                    For Entrepreneurs
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Entrepreneurs Section -->
+    <div class="mt-8 md:mt-12">
+        <header class="text-center mb-8 md:mb-12 px-4">
+            <h2 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">Entrepreneur's Toolkit</h2>
+            <p class="mt-3 md:mt-4 max-w-2xl mx-auto text-base md:text-lg text-[var(--subtitle-text)]">
+                From brilliant idea to launch day without the chaos
+            </p>
+        </header>
+
+        <!-- Coming Soon Section -->
+        <div class="text-center px-4 max-w-4xl mx-auto">
+            <div class="bg-[var(--container-bg)] p-8 md:p-12 rounded-lg border border-[var(--border-color)]">
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">Entrepreneur Templates Coming Soon</h3>
+                <p class="text-[var(--text-secondary)] mb-6">
+                    We're building templates specifically for entrepreneurs including:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-center max-w-4xl mx-auto mb-6">
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-rocket text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Product Launch Tracker</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-share-alt text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Content and Social Media Tracker</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-cogs text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Product Development Tracker</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-chart-line text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Sales and Marketing Tracker</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

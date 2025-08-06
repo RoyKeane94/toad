@@ -398,6 +398,9 @@ class GridManager {
     expandAddTaskForm(form) {
         if (!form) return;
         
+        // First, collapse all other add task forms
+        this.collapseAllAddTaskForms();
+        
         const collapsed = form.querySelector('.add-task-collapsed');
         const expanded = form.querySelector('.add-task-expanded');
         const input = form.querySelector('input[name="text"]');
@@ -861,9 +864,9 @@ class GridManager {
                             }
                         }
                         
-                        if (columnId && response.column_name) {
+                        if (columnId && response.col_name) {
                             // Update column headers in place
-                            this.updateColumnHeader(columnId, response.column_name);
+                            this.updateColumnHeader(columnId, response.col_name);
                             this.hideModal();
                             
                             // Restore scroll position

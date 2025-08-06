@@ -21,6 +21,7 @@ urlpatterns = [
     
     # Template URLs
     path('templates/', views.templates_overview_view, name='templates_overview'),
+    path('templates/students/', views.students_templates_view, name='students_templates'),
     path('templates/course-planner/', views.course_planner_template_view, name='course_planner_template'),
     path('templates/revision-guide/', views.revision_guide_template_view, name='revision_guide_template'),
     path('templates/essay-planner/', views.essay_planner_template_view, name='essay_planner_template'),
@@ -28,6 +29,8 @@ urlpatterns = [
     path('templates/student-jobs/', views.student_jobs_template_view, name='student_jobs_template'),
     path('templates/student-revision/', views.student_revision_template_view, name='student_revision_template'),
     path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),
+    path('templates/professionals/', views.professionals_templates_view, name='professionals_templates'),
+    path('templates/entrepreneurs/', views.entrepreneurs_templates_view, name='entrepreneurs_templates'),
     path('templates/create/<str:template_type>/', views.create_from_template_view, name='create_from_template'),
     
     # Support Pages

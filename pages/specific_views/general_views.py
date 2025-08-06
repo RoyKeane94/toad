@@ -30,8 +30,13 @@ def first_grid_tutorial_view(request):
 # Template Views
 
 def templates_overview_view(request):
-    """Display the templates overview page"""
-    return render_simple_template(request, 'pages/general/general_templates_overview.html')
+    """Display the templates overview page - redirect to students templates"""
+    from django.shortcuts import redirect
+    return redirect('pages:students_templates')
+
+def students_templates_view(request):
+    """Display the students templates overview page"""
+    return render_simple_template(request, 'pages/general/specific_templates/students/students_overview.html')
 
 def student_jobs_template_view(request):
     """Display the student job application template"""
@@ -104,6 +109,14 @@ def job_application_tracker_template_view(request):
 def professionals_jobs_template_view(request):
     """Display the professional job application template"""
     return render_simple_template(request, 'pages/general/specific_templates/professionals/professionals_jobs.html')
+
+def professionals_templates_view(request):
+    """Display the professionals templates overview page"""
+    return render_simple_template(request, 'pages/general/specific_templates/professionals/professionals_overview.html')
+
+def entrepreneurs_templates_view(request):
+    """Display the entrepreneurs templates overview page"""
+    return render_simple_template(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
 
 # Support Pages
 

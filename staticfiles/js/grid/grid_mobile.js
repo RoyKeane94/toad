@@ -495,6 +495,10 @@ class MobileGridManager {
     // Add task form methods
     expandAddTaskForm(form) {
         if (!form) return;
+        
+        // First, collapse all other add task forms
+        this.collapseAllAddTaskForms();
+        
         const collapsed = form.querySelector('.add-task-collapsed');
         const expanded = form.querySelector('.add-task-expanded');
         const input = form.querySelector('input[name="text"]');
@@ -570,11 +574,14 @@ class MobileGridManager {
                 
                 // Re-process HTMX for any new task elements that were added
                 setTimeout(() => {
-                    const newTaskElements = e.target.closest('.task-list').querySelectorAll('[data-task-id]');
-                    if (typeof htmx !== 'undefined') {
-                        newTaskElements.forEach(element => {
-                            htmx.process(element);
-                        });
+                    const taskList = e.target.closest('.task-list');
+                    if (taskList) {
+                        const newTaskElements = taskList.querySelectorAll('[data-task-id]');
+                        if (typeof htmx !== 'undefined') {
+                            newTaskElements.forEach(element => {
+                                htmx.process(element);
+                            });
+                        }
                     }
                 }, 100);
             } else {
