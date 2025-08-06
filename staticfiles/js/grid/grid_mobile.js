@@ -1,15 +1,10 @@
 // Grid JavaScript - Mobile Version
 class MobileGridManager {
     constructor() {
-        console.log('MobileGridManager: Constructor called, window width:', window.innerWidth);
-        
         // Only initialize on mobile - don't interfere with desktop
         if (window.innerWidth >= 769) {
-            console.log('MobileGridManager: Skipping initialization on desktop device');
             return;
         }
-        
-        console.log('MobileGridManager: Initializing on mobile device');
         
         this.state = {
             currentCol: 0,
@@ -127,10 +122,19 @@ class MobileGridManager {
         // Modal triggers - clear content immediately before HTMX loads new content
         const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
         if (modalTrigger) {
-            console.log('Modal trigger detected:', modalTrigger);
             this.clearModalContent(); // Always show loading spinner
             this.showModal();
             return;
+        }
+
+        // Handle modal triggers that use onclick handlers (fallback for mobile)
+        if (e.target.closest('[onclick*="modal"]') || e.target.closest('[onclick*="Modal"]')) {
+            const trigger = e.target.closest('[onclick*="modal"]') || e.target.closest('[onclick*="Modal"]');
+            if (trigger) {
+                this.clearModalContent();
+                this.showModal();
+                return;
+            }
         }
 
         if (e.target.closest('#project-switcher-btn')) {
@@ -151,8 +155,6 @@ class MobileGridManager {
 
         const deleteTaskBtn = e.target.closest('.delete-task-btn');
         if (deleteTaskBtn) {
-            console.log('Delete task button clicked:', deleteTaskBtn.dataset);
-            console.log('Mobile Grid: Task ID from dataset:', deleteTaskBtn.dataset.taskId);
             e.preventDefault();
             this.showDeleteModal(deleteTaskBtn.dataset.taskId, deleteTaskBtn.dataset.taskText, deleteTaskBtn.dataset.deleteUrl);
             return;
@@ -160,8 +162,6 @@ class MobileGridManager {
 
         const deleteRowBtn = e.target.closest('.delete-row-btn');
         if (deleteRowBtn) {
-            console.log('Delete row button clicked:', deleteRowBtn.dataset);
-            console.log('Mobile Grid: Row ID from dataset:', deleteRowBtn.dataset.rowId);
             e.preventDefault();
             this.showDeleteRowModal(deleteRowBtn.dataset.rowId, deleteRowBtn.dataset.rowName, deleteRowBtn.dataset.deleteUrl);
             return;
@@ -169,7 +169,6 @@ class MobileGridManager {
 
         const closeModalBtn = e.target.closest('.close-modal, #close-delete-modal, #cancel-delete-task, #close-delete-row-modal, #cancel-delete-row');
         if (closeModalBtn) {
-            console.log('Close modal button clicked:', closeModalBtn.id);
             if (closeModalBtn.id === 'close-delete-modal' || closeModalBtn.id === 'cancel-delete-task') this.hideDeleteModal();
             else if (closeModalBtn.id === 'close-delete-row-modal' || closeModalBtn.id === 'cancel-delete-row') this.hideDeleteRowModal();
             else if (closeModalBtn.classList.contains('close-modal')) this.hideModal();
@@ -389,8 +388,6 @@ class MobileGridManager {
 
     // Modal methods
     showDeleteModal(taskId, taskText, deleteUrl) {
-        console.log('Showing delete modal:', { taskId, taskText, deleteUrl });
-        console.log('Mobile Grid: Storing task ID in state:', taskId);
         this.state.currentTaskId = taskId;
         this.state.currentDeleteUrl = deleteUrl;
         if (this.elements.taskToDelete) this.elements.taskToDelete.textContent = taskText;
@@ -407,15 +404,12 @@ class MobileGridManager {
     }
 
     hideDeleteModal() {
-        console.log('Hiding delete modal');
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, false);
         this.state.currentTaskId = null;
         this.state.currentDeleteUrl = null;
     }
 
     showDeleteRowModal(rowId, rowName, deleteUrl) {
-        console.log('Showing delete row modal:', { rowId, rowName, deleteUrl });
-        console.log('Mobile Grid: Storing row ID in state:', rowId);
         this.state.currentRowId = rowId;
         this.state.currentRowDeleteUrl = deleteUrl;
         if (this.elements.rowToDelete) this.elements.rowToDelete.textContent = rowName;
@@ -432,18 +426,21 @@ class MobileGridManager {
     }
 
     hideDeleteRowModal() {
-        console.log('Hiding delete row modal');
         this.setModalState(this.elements.deleteRowModal, this.elements.deleteRowModalContent, false);
         this.state.currentRowId = null;
         this.state.currentRowDeleteUrl = null;
     }
 
     showModal() { 
-        console.log('Showing modal');
         this.setModalState(this.elements.modal, this.elements.modalContent, true); 
+        // Ensure modal is properly positioned on mobile
+        if (this.elements.modal) {
+            this.elements.modal.style.display = 'flex';
+            this.elements.modal.style.alignItems = 'center';
+            this.elements.modal.style.justifyContent = 'center';
+        }
     }
     hideModal() { 
-        console.log('Hiding modal');
         this.setModalState(this.elements.modal, this.elements.modalContent, false); 
     }
     
@@ -463,7 +460,6 @@ class MobileGridManager {
 
     setModalState(modal, content, isOpen) {
         if (!modal || !content) {
-            console.warn('Modal or content element not found:', { modal, content });
             return;
         }
         
@@ -475,6 +471,16 @@ class MobileGridManager {
             
             // Prevent body scroll
             document.body.style.overflow = 'hidden';
+            
+            // Mobile-specific modal positioning
+            if (window.innerWidth <= 768) {
+                modal.style.position = 'fixed';
+                modal.style.top = '0';
+                modal.style.left = '0';
+                modal.style.right = '0';
+                modal.style.bottom = '0';
+                modal.style.zIndex = '9999';
+            }
         } else {
             modal.classList.add('opacity-0', 'invisible');
             modal.classList.remove('opacity-100', 'visible');
@@ -536,8 +542,6 @@ class MobileGridManager {
     }
 
     handleHtmxAfterRequest(e) {
-        console.log('Mobile Grid: HTMX afterRequest event:', e.detail);
-        
         // Hide loading indicator when request completes
         if (e.target.id === 'modal-content') {
             const loadingIndicator = e.target.querySelector('.htmx-indicator');
@@ -548,7 +552,6 @@ class MobileGridManager {
         
         // Handle task form submission
         if (e.target.classList.contains('task-form')) {
-            console.log('Mobile Grid: Task form submission detected');
             const submitBtn = e.target.querySelector('button[type="submit"]');
             if (submitBtn) {
                 const spinner = submitBtn.querySelector('.htmx-indicator-spinner');
@@ -564,6 +567,16 @@ class MobileGridManager {
                     input.value = '';
                 }
                 this.collapseAddTaskForm(e.target);
+                
+                // Re-process HTMX for any new task elements that were added
+                setTimeout(() => {
+                    const newTaskElements = e.target.closest('.task-list').querySelectorAll('[data-task-id]');
+                    if (typeof htmx !== 'undefined') {
+                        newTaskElements.forEach(element => {
+                            htmx.process(element);
+                        });
+                    }
+                }, 100);
             } else {
                 // Show error message if there was an error
                 const errorDiv = e.target.querySelector('.error-message');
@@ -592,14 +605,12 @@ class MobileGridManager {
         
         // Handle task toggle completion
         if (e.target.matches('input[type="checkbox"]') && e.target.closest('form')) {
-            console.log('Mobile Grid: Task toggle completion detected');
             if (e.detail.successful && e.detail.xhr && e.detail.xhr.responseText) {
                 try {
                     const response = JSON.parse(e.detail.xhr.responseText);
                     if (response.success !== undefined) {
                         // The visual changes are already applied by the hyperscript in the template
                         // This just ensures the server response is handled properly
-                        console.log('Mobile Grid: Task toggle response:', response);
                     }
                 } catch (e) {
                     // Not a JSON response, continue with normal handling
@@ -609,19 +620,14 @@ class MobileGridManager {
         
         // Handle delete task form submission
         if (e.target.id === 'delete-task-form') {
-            console.log('Mobile Grid: Delete task form submitted:', e.detail);
             if (e.detail.successful) {
-                console.log('Mobile Grid: Delete task successful, hiding modal and removing task');
-                
                 // Store the task ID before hiding the modal (which clears it)
                 const taskId = this.state.currentTaskId;
-                console.log('Mobile Grid: Stored task ID before hiding modal:', taskId);
                 
                 // Hide the delete modal
                 this.hideDeleteModal();
                 
                 // Remove the task from the DOM
-                console.log('Mobile Grid: Attempting to remove task with ID:', taskId);
                 if (taskId) {
                     // Try multiple selectors to find the task element
                     let taskElement = document.querySelector(`[data-task-id="${taskId}"]`);
@@ -634,40 +640,18 @@ class MobileGridManager {
                     }
                     
                     if (taskElement) {
-                        console.log('Mobile Grid: Found task element:', taskElement);
                         taskElement.remove();
-                        console.log('Mobile Grid: Task element removed from DOM');
-                    } else {
-                        console.warn('Mobile Grid: Task element not found in DOM:', taskId);
-                        // Log all task elements to debug
-                        const allTaskElements = document.querySelectorAll('[data-task-id], [id^="task-"]');
-                        console.log('Mobile Grid: All task elements found:', allTaskElements);
-                        allTaskElements.forEach(el => {
-                            console.log('Mobile Grid: Task element:', {
-                                dataTaskId: el.getAttribute('data-task-id'),
-                                id: el.id,
-                                text: el.textContent?.substring(0, 50)
-                            });
-                        });
                     }
-                } else {
-                    console.error('Mobile Grid: No task ID stored in state');
                 }
-            } else {
-                console.error('Mobile Grid: Delete task failed:', e.detail);
             }
         }
         
         // Handle edit task form submission response
         if (e.target.id === 'modal-content' && e.detail.successful && e.detail.xhr && e.detail.xhr.responseText) {
-            console.log('Mobile Grid: Edit task form submitted (modal-content):', e.detail);
             try {
                 const response = JSON.parse(e.detail.xhr.responseText);
-                console.log('Mobile Grid: Edit task response:', response);
                 
                 if (response.success && response.task_id && response.task_html) {
-                    console.log('Mobile Grid: Updating task in place:', response.task_id);
-                    
                     // Try multiple selectors to find the task element
                     let taskElement = document.querySelector(`[data-task-id="${response.task_id}"]`);
                     if (!taskElement) {
@@ -679,7 +663,6 @@ class MobileGridManager {
                     }
                     
                     if (taskElement) {
-                        console.log('Mobile Grid: Found task element for edit, replacing with new HTML');
                         // Create a temporary container to parse the HTML
                         const tempContainer = document.createElement('div');
                         tempContainer.innerHTML = response.task_html;
@@ -688,57 +671,30 @@ class MobileGridManager {
                         if (newTaskElement) {
                             // Replace the old task with the new one
                             taskElement.replaceWith(newTaskElement);
-                            console.log('Mobile Grid: Task element successfully replaced');
                             // Re-process HTMX for the new element so edit button works
                             if (typeof htmx !== 'undefined') {
                                 htmx.process(newTaskElement);
-                                console.log('Mobile Grid: HTMX reprocessed for new task element');
                             }
-                        } else {
-                            console.warn('Mobile Grid: No new task element found in response HTML');
                         }
-                    } else {
-                        console.warn('Mobile Grid: Task element not found in DOM for edit:', response.task_id);
-                        // Log all task elements to debug
-                        const allTaskElements = document.querySelectorAll('[data-task-id], [id^="task-"]');
-                        console.log('Mobile Grid: All task elements found for edit:', allTaskElements);
-                        allTaskElements.forEach(el => {
-                            console.log('Mobile Grid: Task element for edit:', {
-                                dataTaskId: el.getAttribute('data-task-id'),
-                                id: el.id,
-                                text: el.textContent?.substring(0, 50)
-                            });
-                        });
                     }
                     
                     // Hide the modal
                     this.hideModal();
-                } else {
-                    console.log('Mobile Grid: Edit response does not contain task update data');
                 }
             } catch (e) {
-                console.log('Mobile Grid: Edit response is not JSON, continuing with normal modal handling');
                 // Not a JSON response, continue with normal modal handling
             }
         }
         
         // Handle edit task form submission response (alternative detection)
         if (e.target.tagName === 'FORM' && e.detail.successful && e.detail.xhr && e.detail.xhr.responseText) {
-            console.log('Mobile Grid: Form submission detected:', e.target);
-            console.log('Mobile Grid: Form action:', e.target.action);
-            console.log('Mobile Grid: Form method:', e.target.method);
-            
             // Check if this is an edit form (task or row or column)
             if (e.target.action && e.target.action.includes('/edit/')) {
                 try {
                     const response = JSON.parse(e.detail.xhr.responseText);
-                    console.log('Mobile Grid: Edit form response:', response);
                     
                     // Check if this is a task edit
                     if (response.success && response.task_id && response.task_html) {
-                        console.log('Mobile Grid: Edit task form detected');
-                        console.log('Mobile Grid: Updating task in place (form):', response.task_id);
-                        
                         // Try multiple selectors to find the task element
                         let taskElement = document.querySelector(`[data-task-id="${response.task_id}"]`);
                         if (!taskElement) {
@@ -750,7 +706,6 @@ class MobileGridManager {
                         }
                         
                         if (taskElement) {
-                            console.log('Mobile Grid: Found task element for edit (form), replacing with new HTML');
                             // Create a temporary container to parse the HTML
                             const tempContainer = document.createElement('div');
                             tempContainer.innerHTML = response.task_html;
@@ -759,17 +714,11 @@ class MobileGridManager {
                             if (newTaskElement) {
                                 // Replace the old task with the new one
                                 taskElement.replaceWith(newTaskElement);
-                                console.log('Mobile Grid: Task element successfully replaced (form)');
                                 // Re-process HTMX for the new element so edit button works
                                 if (typeof htmx !== 'undefined') {
                                     htmx.process(newTaskElement);
-                                    console.log('Mobile Grid: HTMX reprocessed for new task element (form)');
                                 }
-                            } else {
-                                console.warn('Mobile Grid: No new task element found in response HTML (form)');
                             }
-                        } else {
-                            console.warn('Mobile Grid: Task element not found in DOM for edit (form):', response.task_id);
                         }
                         
                         // Hide the modal
@@ -777,9 +726,6 @@ class MobileGridManager {
                     }
                     // Check if this is a row edit
                     else if (response.success && response.row_name) {
-                        console.log('Mobile Grid: Edit row form detected');
-                        console.log('Mobile Grid: Row updated successfully:', response.row_name);
-                        
                         // Update all row headers with the matching data-row-id
                         const formAction = e.target.action;
                         const rowIdMatch = formAction.match(/\/rows\/(\d+)\/edit\//);
@@ -788,7 +734,6 @@ class MobileGridManager {
                             const rowHeaders = document.querySelectorAll(`h3[data-row-id='${rowId}']`);
                             rowHeaders.forEach(header => {
                                 header.textContent = response.row_name;
-                                console.log('Mobile Grid: Updated row name in UI:', response.row_name);
                             });
                         }
                         // Hide the modal (do not reload the page)
@@ -798,7 +743,6 @@ class MobileGridManager {
                     }
                     // Check if this is a column edit
                     else if (response.success && response.col_name) {
-                        console.log('Mobile Grid: Edit column form detected');
                         // Update the column header UI
                         if (this.elements.columnHeader) {
                             this.elements.columnHeader.textContent = response.col_name;
@@ -812,11 +756,7 @@ class MobileGridManager {
                         this.hideModal();
                         return;
                     }
-                    else {
-                        console.log('Mobile Grid: Edit response does not contain expected update data (form)');
-                    }
                 } catch (e) {
-                    console.log('Mobile Grid: Edit response is not JSON (form), continuing with normal modal handling');
                     // Not a JSON response, continue with normal modal handling
                 }
             }
@@ -824,22 +764,16 @@ class MobileGridManager {
         
         // Handle row deletion form submission
         if (e.target.id === 'delete-row-form' && e.detail.successful) {
-            console.log('Mobile Grid: Row deletion form submitted successfully');
             try {
                 const response = JSON.parse(e.detail.xhr.responseText);
-                console.log('Mobile Grid: Row deletion response:', response);
                 
                 if (response.success) {
-                    console.log('Mobile Grid: Row deleted successfully, refreshing page');
                     // Hide the delete modal
                     this.hideDeleteRowModal();
                     // Refresh the page to show updated grid
                     window.location.reload();
-                } else {
-                    console.error('Mobile Grid: Row deletion failed:', response.message);
                 }
             } catch (e) {
-                console.log('Mobile Grid: Row deletion response is not JSON, refreshing page');
                 // Hide the delete modal
                 this.hideDeleteRowModal();
                 // Refresh the page to show updated grid
@@ -853,20 +787,13 @@ class MobileGridManager {
         // Reinitialize components that might have been replaced
         // Only reinitialize if the grid content itself was swapped, not the modal or anything else
         if (e.target && e.target.id === 'grid-content') {
-            console.log('HTMX swap target is grid-content, reinitializing grid.');
             this.reinitializeComponents();
-        } else {
-            console.log('HTMX swap target is NOT grid-content, skipping grid reinit. Target id:', e.target && e.target.id);
         }
         // Set container height after content changes
         this.setContainerHeightToActiveColumn();
     }
 
     handleHtmxAfterSwap(e) {
-        console.log('HTMX afterSwap event:', e);
-        console.log('HTMX afterSwap target:', e.target, 'id:', e.target && e.target.id);
-        console.log('Mobile Grid: HTMX afterSwap event:', e.detail);
-        
         // Hide loading indicator when content is swapped
         if (e.target.id === 'modal-content') {
             const loadingIndicator = e.target.querySelector('.htmx-indicator');
@@ -878,19 +805,26 @@ class MobileGridManager {
             this.showModal();
         }
         
+        // Handle task list updates (new tasks added)
+        if (e.target.classList.contains('task-list')) {
+            // Re-process HTMX for any new task elements
+            const newTaskElements = e.target.querySelectorAll('[data-task-id]');
+            if (typeof htmx !== 'undefined') {
+                newTaskElements.forEach(element => {
+                    htmx.process(element);
+                });
+            }
+        }
+        
         // Handle edit task form submission response
         if (e.target.id === 'modal-content' && e.detail.xhr && e.detail.xhr.responseText) {
-            console.log('Mobile Grid: Processing modal content response');
             try {
                 const response = JSON.parse(e.detail.xhr.responseText);
-                console.log('Mobile Grid: Parsed response:', response);
                 
                 if (response.success && response.task_id && response.task_html) {
-                    console.log('Mobile Grid: Updating task in place:', response.task_id);
                     // Update the task in place
                     const taskElement = document.querySelector(`[data-task-id="${response.task_id}"]`);
                     if (taskElement) {
-                        console.log('Mobile Grid: Found task element, replacing with new HTML');
                         // Create a temporary container to parse the HTML
                         const tempContainer = document.createElement('div');
                         tempContainer.innerHTML = response.task_html;
@@ -899,46 +833,33 @@ class MobileGridManager {
                         if (newTaskElement) {
                             // Replace the old task with the new one
                             taskElement.replaceWith(newTaskElement);
-                            console.log('Mobile Grid: Task element successfully replaced');
                             // Re-process HTMX for the new element so edit button works
                             if (typeof htmx !== 'undefined') {
                                 htmx.process(newTaskElement);
-                                console.log('Mobile Grid: HTMX reprocessed for new task element');
                             }
-                        } else {
-                            console.warn('Mobile Grid: No new task element found in response HTML');
                         }
                     } else {
-                        console.warn('Mobile Grid: Task element not found in DOM:', response.task_id);
                         // Try to find by ID as fallback
                         const taskElementById = document.getElementById(`task-${response.task_id}`);
                         if (taskElementById) {
-                            console.log('Mobile Grid: Found task element by ID, replacing');
                             const tempContainer = document.createElement('div');
                             tempContainer.innerHTML = response.task_html;
                             const newTaskElement = tempContainer.firstElementChild;
                             
                             if (newTaskElement) {
                                 taskElementById.replaceWith(newTaskElement);
-                                console.log('Mobile Grid: Task element successfully replaced by ID');
                                 // Re-process HTMX for the new element so edit button works
                                 if (typeof htmx !== 'undefined') {
                                     htmx.process(newTaskElement);
-                                    console.log('Mobile Grid: HTMX reprocessed for new task element by ID');
                                 }
                             }
-                        } else {
-                            console.error('Mobile Grid: Task element not found by ID either:', response.task_id);
                         }
                     }
                     
                     // Hide the modal
                     this.hideModal();
-                } else {
-                    console.log('Mobile Grid: Response does not contain task update data');
                 }
             } catch (e) {
-                console.log('Mobile Grid: Not a JSON response, continuing with normal modal handling');
                 // Not a JSON response, continue with normal modal handling
             }
         }
@@ -969,8 +890,6 @@ class MobileGridManager {
     }
     
     handleHtmxError(e) {
-        console.error('Mobile Grid: HTMX Error:', e.detail);
-        
         // Handle modal content errors
         if (e.detail.target && e.detail.target.id === 'modal-content') {
             this.elements.modalContent.innerHTML = `<div class="flex items-center justify-center p-8"><div class="flex flex-col items-center space-y-3 text-center"><div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center"><i class="fas fa-exclamation-triangle text-red-500 text-xl"></i></div><div><h3 class="text-lg font-medium text-[var(--text-primary)]">Error Loading Content</h3><p class="text-sm text-[var(--text-secondary)] mt-1">Unable to load the requested content. Please try again.</p></div><button type="button" class="close-modal mt-4 px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-colors">Close</button></div></div>`;
@@ -1081,15 +1000,20 @@ class MobileGridManager {
 
     init() {
         this.cacheElements();
-        console.log('Mobile Grid Manager initialized. Modal elements:', {
-            deleteModal: this.elements.deleteModal,
-            modal: this.elements.modal,
-            modalContent: this.elements.modalContent
-        });
-        console.log('Mobile Grid Manager: HTMX available:', typeof htmx !== 'undefined');
         this.addEventListeners();
         this.setupMobileGrid();
         this.restoreScrollPosition();
+        
+        // Mobile-specific form handling - let HTMX handle task forms
+        if (window.innerWidth <= 768) {
+            document.addEventListener('submit', (e) => {
+                const form = e.target;
+                if (form.classList.contains('task-form') && form.hasAttribute('hx-post')) {
+                    // Let HTMX handle the submission naturally
+                    // Don't prevent default - let HTMX do its job
+                }
+            }, true);
+        }
 
         // Update Edit/Delete Column actions when Actions menu is opened
         const actionsMenuBtn = document.getElementById('actions-menu-btn');
@@ -1122,10 +1046,17 @@ class MobileGridManager {
         if (typeof htmx !== 'undefined') {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
-            console.log('Mobile Grid Manager: HTMX configuration applied');
+            
+            // Mobile-specific HTMX configuration
+            htmx.config.timeout = 30000; // 30 second timeout for mobile
+            htmx.config.requestClass = 'htmx-request';
+            htmx.config.settlingClass = 'htmx-settling';
+            htmx.config.swappingClass = 'htmx-swapping';
+            
+            // Ensure proper event handling on mobile
+            htmx.config.allowEval = false;
+            htmx.config.includeIndicatorStyles = false;
         }
-        // Test if HTMX events are being captured
-        console.log('Mobile Grid Manager: Event listeners added, testing HTMX event capture');
     }
 }
 
