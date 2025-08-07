@@ -12458,3 +12458,10 @@ INFO 2025-08-07 20:02:14,340 basehttp 13761 6195589120 "GET /static/js/general/g
 INFO 2025-08-07 20:02:14,341 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 WARNING 2025-08-07 20:02:14,350 log 13761 6178762752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-07 20:02:14,351 basehttp 13761 6178762752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1770
+INFO 2025-08-07 20:12:56,801 autoreload 16002 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 20:13:08,091 basehttp 16002 6163574784 "GET / HTTP/1.1" 200 6427
+INFO 2025-08-07 20:13:08,100 basehttp 16002 6163574784 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 20:13:08,103 basehttp 16002 6163574784 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:13:08,142 basehttp 16002 6163574784 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-07 20:13:11,784 basehttp 16002 6163574784 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-08-07 20:13:11,790 basehttp 16002 6180401152 "GET /lilypad/ HTTP/1.1" 200 3571

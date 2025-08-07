@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     # Your Apps
     'accounts',
     'pages',
+    'CRM',
 
     # Third-party apps
     'tailwind',

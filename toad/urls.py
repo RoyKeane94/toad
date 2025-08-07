@@ -31,6 +31,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
     path('accounts/', include('accounts.urls')),
+    path('lilypad/', include('CRM.urls')),
     path('favicon.svg', favicon_view, name='favicon'),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg', permanent=True)),
 ]
@@ -38,7 +39,7 @@ urlpatterns = [
 # Custom error handlers
 handler404 = 'pages.views.handler404'
 handler500 = 'pages.views.handler500'
-handler403 = 'pages.views.handler403'
+handler403 = 'CRM.views.crm_403_error'
 
 # Serve static files when DEBUG = False (for development/testing)
 # This manually serves static files using Django's serve view

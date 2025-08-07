@@ -1,0 +1,63 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">CRM Dashboard</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage your customer relationships</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span class="text-sm text-[var(--text-secondary)]">Welcome, {{ user.get_full_name|default:user.username }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="text-center py-12">
+                <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-[var(--primary-action-bg)] mb-4">
+                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-medium text-[var(--text-primary)] mb-2">CRM Module</h3>
+                <p class="text-[var(--text-secondary)] mb-6">This is where your CRM functionality will be implemented.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-[var(--bg-secondary)] rounded-lg p-4 border border-[var(--border-color)]">
+                        <h4 class="font-medium text-[var(--text-primary)] mb-2">Customers</h4>
+                        <p class="text-sm text-[var(--text-secondary)]">Manage customer information and relationships</p>
+                    </div>
+                    
+                    <div class="bg-[var(--bg-secondary)] rounded-lg p-4 border border-[var(--border-color)]">
+                        <h4 class="font-medium text-[var(--text-primary)] mb-2">Leads</h4>
+                        <p class="text-sm text-[var(--text-secondary)]">Track and manage potential customers</p>
+                    </div>
+                    
+                    <div class="bg-[var(--bg-secondary)] rounded-lg p-4 border border-[var(--border-color)]">
+                        <h4 class="font-medium text-[var(--text-primary)] mb-2">Deals</h4>
+                        <p class="text-sm text-[var(--text-secondary)]">Monitor sales opportunities and deals</p>
+                    </div>
+                </div>
+                
+                <div class="mt-8">
+                    <a href="{% url 'pages:home' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <svg class="-ml-1 mr-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        Back to Main App
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
