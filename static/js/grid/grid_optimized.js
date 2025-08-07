@@ -3,7 +3,6 @@ class GridManager {
     constructor() {
         // Only initialize on desktop - don't interfere with mobile
         if (window.innerWidth < 769) {
-            console.log('GridManager: Skipping initialization on mobile device');
             return;
         }
         
@@ -14,7 +13,24 @@ class GridManager {
             columnsToShow: 3,
             isDropdownOpen: false,
             currentTaskId: null,
-            currentDeleteUrl: null
+            currentDeleteUrl: null,
+            // Drag and drop state
+            isDragging: false,
+            draggedElement: null,
+            dragStartY: 0,
+            dragStartX: 0,
+            originalOrder: [],
+            dragPlaceholder: null,
+            aboutToDrag: false,
+            dragStartElement: null,
+            targetTask: null,
+            dropAfter: null,
+            originalLeft: 0,
+            originalTop: 0,
+            originalWidth: 0,
+            originalHeight: 0,
+            dragClone: null,
+            lastLiveReorder: null
         };
         
         this.elements = {};
@@ -58,12 +74,16 @@ class GridManager {
             
             // Sticky headers
             fixedTable: '.grid-table-fixed',
-            dataTable: '.grid-table'
+            dataTable: '.grid-table',
+            
+            // Drag and drop
+            draggableTasks: '[draggable="true"]',
+            taskContainers: '[data-row][data-col]'
         };
 
         Object.keys(selectors).forEach(key => {
             const selector = selectors[key];
-            if (selector.includes('All') || key.includes('Rows') || key === 'dataCols') {
+            if (selector.includes('All') || key.includes('Rows') || key === 'dataCols' || key === 'draggableTasks' || key === 'taskContainers') {
                 this.elements[key] = document.querySelectorAll(selector);
             } else {
                 this.elements[key] = document.querySelector(selector);
@@ -76,7 +96,7 @@ class GridManager {
         const listeners = [
             // Document level events
             ['document', 'click', this.handleDocumentClick.bind(this)],
-                        ['document', 'keydown', this.handleKeydown.bind(this)],
+            ['document', 'keydown', this.handleKeydown.bind(this)],
             ['document', 'htmx:beforeRequest', this.handleHtmxBeforeRequest.bind(this)],
             ['document', 'htmx:afterRequest', this.handleHtmxAfterRequest.bind(this)],
             ['document', 'htmx:afterSwap', this.handleHtmxAfterSwap.bind(this)],
@@ -129,8 +149,560 @@ class GridManager {
             }
         });
 
-        // Sticky headers are not implemented
+        // Add drag and drop event listeners
+        this.setupDragAndDrop();
     }
+
+    // Setup drag and drop functionality
+    setupDragAndDrop() {
+        // Only enable drag and drop on desktop
+        if (window.innerWidth < 769) {
+            return;
+        }
+        
+        // Initialize SortableJS on all task containers
+        this.initializeSortable();
+    }
+
+    // Drag and drop event handlers (disabled for manual drag)
+    // handleDragStart(e) {
+    //     console.log('GridManager: Drag start event triggered', e.target);
+    //     
+    //     // Check if we started dragging from a drag handle
+    //     if (!this.state.aboutToDrag || !this.state.dragStartElement) {
+    //         console.log('GridManager: Not dragging from drag handle, preventing');
+    //         e.preventDefault();
+    //         return;
+    //     }
+    // 
+    //     console.log('GridManager: Dragging from drag handle');
+    // 
+    //     const taskElement = this.state.dragStartElement;
+    //     console.log('GridManager: Found task element', taskElement.dataset.taskId);
+    // 
+    //     // Store the task element for later use
+    //     this.state.isDragging = true;
+    //     this.state.draggedElement = taskElement;
+    //     this.state.dragStartY = e.clientY;
+    // 
+    //     // Store original order
+    //     this.state.originalOrder = this.getTaskOrder();
+    // 
+    //     // Add dragging class to the task element
+    //     taskElement.classList.add('dragging');
+    //     taskElement.style.opacity = '0.5';
+    //     taskElement.style.transform = 'rotate(2deg)';
+    // 
+    //     // Set drag data - this is crucial for the drag to continue
+    //     e.dataTransfer.effectAllowed = 'move';
+    //     e.dataTransfer.setData('text/plain', taskElement.dataset.taskId);
+    //     e.dataTransfer.setData('text/html', taskElement.outerHTML);
+    //     e.dataTransfer.setData('application/json', JSON.stringify({
+    //         taskId: taskElement.dataset.taskId,
+    //         taskRow: taskElement.dataset.taskRow,
+    //         taskCol: taskElement.dataset.taskCol,
+    //         taskOrder: taskElement.dataset.taskOrder
+    //     }));
+    // 
+    //     // Create placeholder
+    //     this.createDragPlaceholder(taskElement);
+    //     
+    //     console.log('GridManager: Drag start completed successfully');
+    // }
+
+    // Initialize SortableJS on all task containers
+    initializeSortable() {
+        // Find all task containers
+        const taskContainers = document.querySelectorAll('[data-row][data-col]');
+        
+        taskContainers.forEach(container => {
+            new Sortable(container, {
+                // Only allow dragging from the drag handle
+                handle: '.drag-handle',
+                
+                // Animation duration for smooth reordering
+                animation: 150,
+                
+                // Ghost class for the placeholder
+                ghostClass: 'sortable-ghost',
+                
+                // Drag class for the item being dragged
+                dragClass: 'sortable-drag',
+                
+                // Only allow sorting within the same container
+                group: false,
+                
+                // Callback when sorting ends
+                onEnd: (evt) => {
+                    // Get the new order
+                    const newOrder = this.getTaskOrder();
+                    
+                    // Save to server
+                    this.saveTaskOrder(newOrder);
+                }
+            });
+        });
+    }
+
+    // Mouse move handler for manual drag
+    handleMouseMove(e) {
+        if (!this.state.isDragging) return;
+
+        const dragClone = this.state.dragClone;
+        if (!dragClone) return;
+
+        // Make the clone follow the cursor smoothly
+        const offsetX = e.clientX - this.state.dragStartX;
+        const offsetY = e.clientY - this.state.dragStartY;
+        
+        // Calculate new position relative to original position
+        const newLeft = this.state.originalLeft + offsetX;
+        const newTop = this.state.originalTop + offsetY;
+        
+        // Move clone directly without requestAnimationFrame for immediate response
+        dragClone.style.left = newLeft + 'px';
+        dragClone.style.top = newTop + 'px';
+        
+        // Temporarily hide the drag clone to find elements underneath
+        const originalDisplay = dragClone.style.display;
+        dragClone.style.display = 'none';
+        
+        // Find the task container under the mouse (ignore the drag clone)
+        const elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
+        const taskContainer = elementAtPoint?.closest('[data-row][data-col]');
+        
+        // Restore the drag clone
+        dragClone.style.display = originalDisplay;
+        
+        if (!taskContainer) {
+            return;
+        }
+
+        // Check if we're in the same container
+        const draggedElement = this.state.draggedElement;
+        
+        // Get the dragged element's container (it might have moved during drag)
+        const draggedContainer = draggedElement.closest('[data-row][data-col]');
+        const draggedRow = draggedContainer?.dataset.row || draggedElement.dataset.taskRow;
+        const draggedCol = draggedContainer?.dataset.col || draggedElement.dataset.taskCol;
+        const containerRow = taskContainer.dataset.row;
+        const containerCol = taskContainer.dataset.col;
+
+        if (draggedRow !== containerRow || draggedCol !== containerCol) {
+            return;
+        }
+
+        // Find the target position by getting all tasks in the container and finding which one is under the mouse
+        const tasksInContainer = taskContainer.querySelectorAll('[data-task-id]');
+        let targetTask = null;
+        let dropAfter = false;
+        
+        for (const task of tasksInContainer) {
+            if (task === draggedElement) {
+                continue; // Skip the dragged element
+            }
+            
+            const rect = task.getBoundingClientRect();
+            
+            if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+                // Mouse is over this task
+                dropAfter = e.clientY > rect.top + rect.height / 2;
+                targetTask = task;
+                break;
+            }
+        }
+        
+        if (!targetTask) {
+            return;
+        }
+
+        // Store the target for when we drop
+        this.state.targetTask = targetTask;
+        this.state.dropAfter = dropAfter;
+        
+        // Live reorder - move tasks in real-time
+        if (targetTask && targetTask !== draggedElement) {
+            this.liveReorderTasks(draggedElement, targetTask, dropAfter);
+        }
+    }
+
+    // Mouse up handler for manual drag
+    handleMouseUp(e) {
+        if (!this.state.isDragging) return;
+
+        const draggedElement = this.state.draggedElement;
+        if (!draggedElement) return;
+
+        // Use stored target from mousemove
+        if (this.state.targetTask && this.state.targetTask !== draggedElement) {
+            // Final reorder and save to server
+            this.reorderTasks(draggedElement, this.state.targetTask, this.state.dropAfter);
+        } else {
+            // If no target, just save current order
+            const newOrder = this.getTaskOrder();
+            this.saveTaskOrder(newOrder);
+        }
+
+        // End the drag
+        this.state.isDragging = false;
+        
+        // Remove drag clone
+        if (this.state.dragClone) {
+            this.state.dragClone.remove();
+            this.state.dragClone = null;
+        }
+        
+        // Restore original task
+        if (draggedElement) {
+            draggedElement.style.opacity = '';
+        }
+
+        // Clear target state
+        this.state.targetTask = null;
+        this.state.dropAfter = null;
+        this.state.lastLiveReorder = null;
+
+        // Clear drag state
+        this.state.draggedElement = null;
+        this.state.dragStartY = 0;
+        this.state.dragStartX = 0;
+    }
+
+    // handleDragEnd(e) {
+    //     if (!this.state.isDragging) return;
+
+    //     console.log('GridManager: Drag end event triggered');
+
+    //     this.state.isDragging = false;
+        
+    //     if (this.state.draggedElement) {
+    //         this.state.draggedElement.classList.remove('dragging');
+    //         this.state.draggedElement.style.opacity = '';
+    //         this.state.draggedElement.style.transform = '';
+    //     }
+
+    //     // Remove placeholder
+    //     this.removeDragPlaceholder();
+
+    //     // Clear drag state
+    //     this.state.draggedElement = null;
+    //     this.state.dragStartY = 0;
+    //     this.state.aboutToDrag = false;
+    //     this.state.dragStartElement = null;
+        
+    //     console.log('GridManager: Drag end completed');
+    // }
+
+    // handleDragOver(e) {
+    //     if (!this.state.isDragging) return;
+
+    //     console.log('GridManager: Drag over event triggered');
+
+    //     e.preventDefault();
+    //     e.dataTransfer.dropEffect = 'move';
+
+    //     const taskContainer = e.target.closest('[data-row][data-col]');
+    //     if (!taskContainer) {
+    //         console.log('GridManager: No task container found');
+    //         return;
+    //     }
+
+    //     const draggedElement = this.state.draggedElement;
+    //     if (!draggedElement) {
+    //         console.log('GridManager: No dragged element found');
+    //         return;
+    //     }
+
+    //     // Check if we're in the same container
+    //     const draggedRow = draggedElement.dataset.taskRow;
+    //     const draggedCol = draggedElement.dataset.taskCol;
+    //     const containerRow = taskContainer.dataset.row;
+    //     const containerCol = taskContainer.dataset.col;
+
+    //     if (draggedRow !== containerRow || draggedCol !== containerCol) {
+    //         console.log('GridManager: Different container, ignoring');
+    //         return;
+    //     }
+
+    //     // Find the target position - look for task elements, not drag handles
+    //     const targetTask = e.target.closest('[data-task-id]');
+        
+    //     if (!targetTask || targetTask === draggedElement) {
+    //         console.log('GridManager: No valid target task found');
+    //         return;
+    //     }
+
+    //     // Calculate drop position
+    //     const rect = targetTask.getBoundingClientRect();
+    //     const dropAfter = e.clientY > rect.top + rect.height / 2;
+
+    //     console.log('GridManager: Updating placeholder position');
+
+    //     // Update placeholder position
+    //     this.updateDragPlaceholder(targetTask, dropAfter);
+    // }
+
+    // handleDrop(e) {
+    //     if (!this.state.isDragging) return;
+
+    //     console.log('GridManager: Drop event triggered');
+
+    //     e.preventDefault();
+
+    //     const taskContainer = e.target.closest('[data-row][data-col]');
+    //     if (!taskContainer) {
+    //         console.log('GridManager: No task container found for drop');
+    //         return;
+    //     }
+
+    //     const draggedElement = this.state.draggedElement;
+    //     if (!draggedElement) {
+    //         console.log('GridManager: No dragged element found for drop');
+    //         return;
+    //     }
+
+    //     // Check if we're in the same container
+    //     const draggedRow = draggedElement.dataset.taskRow;
+    //     const draggedCol = draggedElement.dataset.taskCol;
+    //     const containerRow = taskContainer.dataset.row;
+    //     const containerCol = taskContainer.dataset.col;
+
+    //     if (draggedRow !== containerRow || draggedCol !== containerCol) {
+    //         console.log('GridManager: Different container for drop, ignoring');
+    //         return;
+    //     }
+
+    //     // Find the target position - look for task elements, not drag handles
+    //     const targetTask = e.target.closest('[data-task-id]');
+        
+    //     if (!targetTask || targetTask === draggedElement) {
+    //         console.log('GridManager: No valid target task found for drop');
+    //         return;
+    //     }
+
+    //     // Calculate drop position
+    //     const rect = targetTask.getBoundingClientRect();
+    //     const dropAfter = e.clientY > rect.top + rect.height / 2;
+
+    //     console.log('GridManager: Reordering tasks');
+
+    //     // Reorder tasks
+    //     this.reorderTasks(draggedElement, targetTask, dropAfter);
+    // }
+
+    handleDragEnter(e) {
+        if (!this.state.isDragging) return;
+
+        const taskContainer = e.target.closest('[data-row][data-col]');
+        if (taskContainer) {
+            taskContainer.classList.add('drag-over');
+        }
+    }
+
+    handleDragLeave(e) {
+        if (!this.state.isDragging) return;
+
+        const taskContainer = e.target.closest('[data-row][data-col]');
+        if (taskContainer && !taskContainer.contains(e.relatedTarget)) {
+            taskContainer.classList.remove('drag-over');
+        }
+    }
+
+    // Create drag placeholder
+    createDragPlaceholder(originalElement) {
+        this.state.dragPlaceholder = originalElement.cloneNode(true);
+        this.state.dragPlaceholder.classList.add('drag-placeholder');
+        this.state.dragPlaceholder.style.opacity = '0.5';
+        this.state.dragPlaceholder.style.border = '2px dashed var(--primary-action-bg)';
+        this.state.dragPlaceholder.style.backgroundColor = 'var(--grid-header-bg)';
+        this.state.dragPlaceholder.style.minHeight = '40px';
+        this.state.dragPlaceholder.style.margin = '4px 0';
+        this.state.dragPlaceholder.removeAttribute('draggable');
+        
+        // Remove interactive elements from placeholder
+        const interactiveElements = this.state.dragPlaceholder.querySelectorAll('button, input, form, .drag-handle');
+        interactiveElements.forEach(el => el.remove());
+
+        originalElement.parentNode.insertBefore(this.state.dragPlaceholder, originalElement);
+    }
+
+    // Update drag placeholder position
+    updateDragPlaceholder(targetTask, dropAfter) {
+        if (!this.state.dragPlaceholder) return;
+
+        if (dropAfter) {
+            targetTask.parentNode.insertBefore(this.state.dragPlaceholder, targetTask.nextSibling);
+        } else {
+            targetTask.parentNode.insertBefore(this.state.dragPlaceholder, targetTask);
+        }
+    }
+
+    // Remove drag placeholder
+    removeDragPlaceholder() {
+        if (this.state.dragPlaceholder) {
+            this.state.dragPlaceholder.remove();
+            this.state.dragPlaceholder = null;
+        }
+
+        // Remove drag-over classes
+        document.querySelectorAll('.drag-over').forEach(el => {
+            el.classList.remove('drag-over');
+        });
+    }
+
+    // Live reorder tasks in real-time during drag
+    liveReorderTasks(draggedElement, targetTask, dropAfter) {
+        // Only reorder if we haven't already done this exact move
+        if (this.state.lastLiveReorder && 
+            this.state.lastLiveReorder.draggedId === draggedElement.dataset.taskId &&
+            this.state.lastLiveReorder.targetId === targetTask.dataset.taskId &&
+            this.state.lastLiveReorder.dropAfter === dropAfter) {
+            return; // Already did this move
+        }
+        
+        // Store this move to prevent duplicate reorders
+        this.state.lastLiveReorder = {
+            draggedId: draggedElement.dataset.taskId,
+            targetId: targetTask.dataset.taskId,
+            dropAfter: dropAfter
+        };
+        
+        // Insert at new position
+        if (dropAfter) {
+            targetTask.parentNode.insertBefore(draggedElement, targetTask.nextSibling);
+        } else {
+            targetTask.parentNode.insertBefore(draggedElement, targetTask);
+        }
+    }
+
+    // Get task position in its container
+    getTaskPosition(taskElement) {
+        const container = taskElement.parentNode;
+        const tasks = Array.from(container.querySelectorAll('[data-task-id]'));
+        return tasks.indexOf(taskElement);
+    }
+
+    // Reorder tasks in DOM and save to server
+    reorderTasks(draggedElement, targetTask, dropAfter) {
+        // Insert at new position
+        if (dropAfter) {
+            targetTask.parentNode.insertBefore(draggedElement, targetTask.nextSibling);
+        } else {
+            targetTask.parentNode.insertBefore(draggedElement, targetTask);
+        }
+
+        // Get new order
+        const newOrder = this.getTaskOrder();
+        
+        // Save to server
+        this.saveTaskOrder(newOrder);
+    }
+
+    // Get current task order
+    getTaskOrder() {
+        const order = [];
+        document.querySelectorAll('[data-task-id]').forEach(task => {
+            order.push({
+                id: task.dataset.taskId,
+                row: task.dataset.taskRow,
+                col: task.dataset.taskCol,
+                order: parseInt(task.dataset.taskOrder) || 0
+            });
+        });
+        return order;
+    }
+
+    // Save task order to server
+    saveTaskOrder(newOrder) {
+        const projectId = this.getProjectId();
+        if (!projectId) return;
+
+        // Create the request data
+        const requestData = {
+            task_order: newOrder
+        };
+
+        // Send request to server
+        fetch(`/pages/grids/${projectId}/tasks/reorder/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to save task order');
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.success) {
+                // Update task order attributes
+                this.updateTaskOrderAttributes(newOrder);
+            } else {
+                // Revert to original order
+                this.revertToOriginalOrder();
+            }
+        })
+        .catch(error => {
+            // Revert to original order
+            this.revertToOriginalOrder();
+        });
+    }
+
+    // Get project ID from URL
+    getProjectId() {
+        const urlParts = window.location.pathname.split('/');
+        const projectIndex = urlParts.indexOf('projects');
+        if (projectIndex >= 0 && projectIndex + 1 < urlParts.length) {
+            return urlParts[projectIndex + 1];
+        }
+        return null;
+    }
+
+    // Get CSRF token
+    getCSRFToken() {
+        const token = document.querySelector('[name=csrfmiddlewaretoken]');
+        return token ? token.value : '';
+    }
+
+    // Update task order attributes
+    updateTaskOrderAttributes(newOrder) {
+        newOrder.forEach((task, index) => {
+            const taskElement = document.querySelector(`[data-task-id="${task.id}"]`);
+            if (taskElement) {
+                taskElement.dataset.taskOrder = index.toString();
+            }
+        });
+    }
+
+    // Revert to original order
+    revertToOriginalOrder() {
+        if (!this.state.originalOrder.length) return;
+
+        // This is a simplified revert - in a real implementation,
+        // you might want to reload the page or implement a more sophisticated revert
+        // For now, just show an error message
+        this.showReorderError();
+    }
+
+    // Show reorder error
+    showReorderError() {
+        // Create a temporary error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'fixed top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+        errorDiv.textContent = 'Failed to save task order. Please try again.';
+        
+        document.body.appendChild(errorDiv);
+        
+        setTimeout(() => {
+            errorDiv.remove();
+        }, 3000);
+    }
+
+
 
     // Unified click handler to reduce event listeners
     handleDocumentClick(e) {
@@ -1436,14 +2008,14 @@ function handleGridLoading() {
     }, 3000);
 }
 
-// Initialize when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    // Handle grid loading first
-    handleGridLoading();
-    
-    // Then initialize the grid manager
-    window.gridManager = new GridManager();
-});
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle grid loading first
+        handleGridLoading();
+        
+        // Then initialize the grid manager
+        window.gridManager = new GridManager();
+    });
 
 // Global function to close all dropdowns - called from inline onclick handlers
 window.closeAllDropdowns = function() {

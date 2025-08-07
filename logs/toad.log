@@ -12133,3 +12133,328 @@ INFO 2025-08-07 06:21:56,186 basehttp 2770 6162231296 "GET /grids/ HTTP/1.1" 200
 INFO 2025-08-07 06:21:57,611 basehttp 2770 6162231296 "GET /grids/50/delete/ HTTP/1.1" 200 3392
 INFO 2025-08-07 06:21:58,297 basehttp 2770 6162231296 "POST /grids/50/delete/ HTTP/1.1" 302 0
 INFO 2025-08-07 06:21:58,313 basehttp 2770 6162231296 "GET /grids/ HTTP/1.1" 200 3873
+INFO 2025-08-07 18:26:03,185 autoreload 3148 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:26:37,689 autoreload 3487 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:26:41,816 basehttp 3487 6160674816 "GET /grids/47/ HTTP/1.1" 200 14507
+INFO 2025-08-07 18:26:41,847 basehttp 3487 6177501184 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:26:41,854 basehttp 3487 6194327552 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:26:41,855 basehttp 3487 6211153920 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33167
+INFO 2025-08-07 18:26:41,856 basehttp 3487 6160674816 "GET /static/css/output.css HTTP/1.1" 200 67529
+INFO 2025-08-07 18:27:15,551 autoreload 3695 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:27:18,881 basehttp 3695 6200963072 "GET /grids/47/ HTTP/1.1" 200 14460
+INFO 2025-08-07 18:27:18,891 basehttp 3695 6200963072 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:27:18,891 basehttp 3695 6217789440 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:27:18,891 basehttp 3695 6234615808 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:27:21,354 log 3695 6234615808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:27:21,355 basehttp 3695 6234615808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1816
+INFO 2025-08-07 18:27:26,326 basehttp 3695 6234615808 "GET /grids/47/ HTTP/1.1" 200 14245
+INFO 2025-08-07 18:27:26,346 basehttp 3695 6200963072 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:27:26,350 basehttp 3695 6251442176 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:27:26,356 log 3695 6234615808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:27:26,357 basehttp 3695 6234615808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1768
+INFO 2025-08-07 18:27:26,357 basehttp 3695 6217789440 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 48670
+INFO 2025-08-07 18:28:16,894 autoreload 3805 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:28:18,921 basehttp 3805 6195933184 "GET /grids/47/ HTTP/1.1" 200 14428
+INFO 2025-08-07 18:28:18,932 basehttp 3805 6195933184 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:28:18,933 basehttp 3805 6212759552 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:28:18,933 basehttp 3805 6229585920 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:28:29,617 basehttp 3805 6229585920 "POST /tasks/633/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-07 18:28:30,410 basehttp 3805 6229585920 "POST /tasks/633/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-07 18:28:31,593 basehttp 3805 6229585920 "POST /tasks/632/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-07 18:28:32,426 basehttp 3805 6229585920 "POST /tasks/632/toggle/ HTTP/1.1" 200 79
+INFO 2025-08-07 18:28:34,116 basehttp 3805 6229585920 "GET /tasks/633/edit/ HTTP/1.1" 200 1062
+INFO 2025-08-07 18:28:39,287 basehttp 3805 6229585920 "GET /grids/47/columns/193/edit/ HTTP/1.1" 200 1021
+INFO 2025-08-07 18:28:43,638 basehttp 3805 6229585920 "POST /grids/47/columns/193/edit/ HTTP/1.1" 200 89
+INFO 2025-08-07 18:32:26,210 autoreload 4804 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:32:35,885 autoreload 4893 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:32:40,268 basehttp 4893 6138277888 "GET /grids/47/ HTTP/1.1" 200 14325
+INFO 2025-08-07 18:32:40,287 basehttp 4893 6155104256 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:32:40,288 basehttp 4893 6171930624 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31709
+INFO 2025-08-07 18:32:40,289 basehttp 4893 6138277888 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 18:33:21,583 autoreload 5321 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:33:23,683 basehttp 5321 6127120384 "GET /grids/47/ HTTP/1.1" 200 14280
+INFO 2025-08-07 18:33:23,694 basehttp 5321 6127120384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:33:23,697 basehttp 5321 6143946752 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:33:23,697 basehttp 5321 6160773120 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31709
+INFO 2025-08-07 18:33:30,299 basehttp 5321 6127120384 "GET /grids/47/ HTTP/1.1" 200 14362
+INFO 2025-08-07 18:33:30,311 basehttp 5321 6160773120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:33:30,312 basehttp 5321 6177599488 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31709
+INFO 2025-08-07 18:33:30,313 basehttp 5321 6143946752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 18:33:30,313 basehttp 5321 6127120384 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 18:36:48,450 autoreload 5778 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:36:51,669 basehttp 5778 6131068928 "GET /grids/47/ HTTP/1.1" 200 14312
+INFO 2025-08-07 18:36:51,682 basehttp 5778 6131068928 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:36:51,685 basehttp 5778 6147895296 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:36:51,686 basehttp 5778 6164721664 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31682
+INFO 2025-08-07 18:39:12,020 autoreload 6244 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:39:15,246 basehttp 6244 6155874304 "GET /grids/47/ HTTP/1.1" 200 14293
+INFO 2025-08-07 18:39:15,260 basehttp 6244 6155874304 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:39:15,263 basehttp 6244 6172700672 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:39:15,264 basehttp 6244 6189527040 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31611
+INFO 2025-08-07 18:39:29,026 basehttp 6244 6172700672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 18:39:29,027 basehttp 6244 6155874304 "GET /static/css/output.css HTTP/1.1" 200 67478
+WARNING 2025-08-07 18:39:29,038 log 6244 6189527040 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:39:29,038 basehttp 6244 6189527040 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1755
+INFO 2025-08-07 18:43:21,155 autoreload 7210 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:43:25,913 basehttp 7210 6192984064 "GET /grids/47/ HTTP/1.1" 200 14280
+INFO 2025-08-07 18:43:25,926 basehttp 7210 6226636800 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:43:25,929 basehttp 7210 6192984064 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:43:25,930 basehttp 7210 6209810432 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32487
+WARNING 2025-08-07 18:43:30,654 log 7210 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:43:30,654 basehttp 7210 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1750
+INFO 2025-08-07 18:43:37,021 basehttp 7210 6192984064 "GET /grids/47/ HTTP/1.1" 200 14303
+INFO 2025-08-07 18:43:37,042 basehttp 7210 6192984064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:43:37,043 basehttp 7210 6209810432 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:43:37,051 log 7210 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:43:37,052 basehttp 7210 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1773
+INFO 2025-08-07 18:43:43,727 basehttp 7210 6192984064 "GET /grids/47/ HTTP/1.1" 200 14274
+INFO 2025-08-07 18:43:43,747 basehttp 7210 6226636800 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:43:43,747 basehttp 7210 6192984064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:43:43,755 log 7210 6209810432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:43:43,755 basehttp 7210 6209810432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1807
+INFO 2025-08-07 18:44:18,451 basehttp 7210 6192984064 "GET /grids/47/ HTTP/1.1" 200 14278
+INFO 2025-08-07 18:44:18,467 basehttp 7210 6209810432 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:44:18,467 basehttp 7210 6192984064 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:44:18,473 log 7210 6226636800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:44:18,473 basehttp 7210 6226636800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1764
+INFO 2025-08-07 18:46:10,529 autoreload 7676 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:46:29,507 basehttp 7676 6128758784 "GET /grids/47/ HTTP/1.1" 200 14225
+INFO 2025-08-07 18:46:29,525 basehttp 7676 6128758784 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:46:29,536 basehttp 7676 6145585152 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:46:29,544 basehttp 7676 6162411520 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32540
+WARNING 2025-08-07 18:46:29,545 log 7676 6128758784 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:46:29,545 basehttp 7676 6128758784 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1807
+INFO 2025-08-07 18:47:44,660 basehttp 7676 6128758784 "GET /grids/47/ HTTP/1.1" 200 14268
+INFO 2025-08-07 18:47:44,673 basehttp 7676 6162411520 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:47:44,674 basehttp 7676 6179237888 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32540
+INFO 2025-08-07 18:47:44,675 basehttp 7676 6145585152 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 18:47:44,675 basehttp 7676 6128758784 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 18:49:40,727 autoreload 8149 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:49:48,475 basehttp 8149 6127742976 "GET /grids/47/ HTTP/1.1" 200 14287
+INFO 2025-08-07 18:49:48,494 basehttp 8149 6161395712 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:49:48,495 basehttp 8149 6144569344 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 18:49:48,495 basehttp 8149 6178222080 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33358
+INFO 2025-08-07 18:49:48,496 basehttp 8149 6127742976 "GET /static/css/output.css HTTP/1.1" 200 67478
+WARNING 2025-08-07 18:49:55,400 log 8149 6127742976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:49:55,400 basehttp 8149 6127742976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1735
+INFO 2025-08-07 18:50:02,671 basehttp 8149 6127742976 "GET /grids/47/ HTTP/1.1" 200 14240
+INFO 2025-08-07 18:50:02,685 basehttp 8149 6144569344 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:50:02,689 basehttp 8149 6127742976 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:50:02,695 log 8149 6144569344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:50:02,695 basehttp 8149 6144569344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1818
+INFO 2025-08-07 18:54:05,310 autoreload 8623 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:54:07,826 basehttp 8623 6132248576 "GET /grids/47/ HTTP/1.1" 200 14324
+INFO 2025-08-07 18:54:07,843 basehttp 8623 6132248576 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:54:07,847 basehttp 8623 6149074944 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:54:07,849 basehttp 8623 6165901312 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33308
+WARNING 2025-08-07 18:54:07,863 log 8623 6165901312 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:54:07,863 basehttp 8623 6165901312 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1740
+INFO 2025-08-07 18:54:21,671 basehttp 8623 6132248576 "GET /grids/47/ HTTP/1.1" 200 14295
+INFO 2025-08-07 18:54:21,694 basehttp 8623 6182727680 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33308
+INFO 2025-08-07 18:54:21,711 basehttp 8623 6165901312 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:54:21,712 basehttp 8623 6149074944 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+WARNING 2025-08-07 18:54:21,712 log 8623 6199554048 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-07 18:54:21,713 basehttp 8623 6132248576 "GET /static/css/output.css HTTP/1.1" 200 67478
+WARNING 2025-08-07 18:54:21,714 basehttp 8623 6199554048 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1754
+INFO 2025-08-07 18:57:44,662 autoreload 9096 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 18:57:47,110 basehttp 9096 6160674816 "GET /grids/47/ HTTP/1.1" 200 14350
+INFO 2025-08-07 18:57:47,127 basehttp 9096 6160674816 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 18:57:47,140 basehttp 9096 6177501184 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 18:57:47,144 basehttp 9096 6194327552 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33602
+WARNING 2025-08-07 18:57:47,145 log 9096 6160674816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:57:47,145 basehttp 9096 6160674816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1756
+INFO 2025-08-07 18:57:56,970 basehttp 9096 6160674816 "GET /grids/47/ HTTP/1.1" 200 14312
+INFO 2025-08-07 18:57:56,985 basehttp 9096 6177501184 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:57:56,985 basehttp 9096 6160674816 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:58:05,282 log 9096 6160674816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:58:05,284 basehttp 9096 6160674816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1758
+INFO 2025-08-07 18:58:06,686 basehttp 9096 6160674816 "GET /grids/47/ HTTP/1.1" 200 14345
+INFO 2025-08-07 18:58:06,695 basehttp 9096 6177501184 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 18:58:06,695 basehttp 9096 6160674816 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 18:58:06,707 log 9096 6160674816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 18:58:06,707 basehttp 9096 6160674816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1810
+INFO 2025-08-07 19:00:49,377 autoreload 9466 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 19:00:53,476 basehttp 9466 6190919680 "GET /grids/ HTTP/1.1" 200 3931
+INFO 2025-08-07 19:00:53,493 basehttp 9466 6190919680 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:00:53,497 basehttp 9466 6207746048 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-07 19:00:53,509 log 9466 6207746048 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:00:53,509 basehttp 9466 6207746048 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1753
+INFO 2025-08-07 19:00:56,060 basehttp 9466 6190919680 "GET /grids/47/ HTTP/1.1" 200 14287
+INFO 2025-08-07 19:00:56,080 basehttp 9466 6207746048 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:00:56,087 basehttp 9466 6224572416 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33660
+WARNING 2025-08-07 19:00:56,088 log 9466 6190919680 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:00:56,088 basehttp 9466 6190919680 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+INFO 2025-08-07 19:01:38,954 autoreload 9793 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 19:01:44,620 basehttp 9793 6165147648 "GET /grids/47/ HTTP/1.1" 200 14248
+INFO 2025-08-07 19:01:44,645 basehttp 9793 6198800384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:01:44,648 basehttp 9793 6215626752 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33660
+INFO 2025-08-07 19:01:44,648 basehttp 9793 6181974016 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:01:44,649 basehttp 9793 6165147648 "GET /static/css/output.css HTTP/1.1" 200 67478
+WARNING 2025-08-07 19:01:44,654 log 9793 6232453120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:01:44,654 basehttp 9793 6232453120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1755
+INFO 2025-08-07 19:04:54,840 basehttp 9793 6165147648 "GET /grids/47/ HTTP/1.1" 200 14370
+INFO 2025-08-07 19:04:54,860 basehttp 9793 6165147648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:04:54,865 basehttp 9793 6181974016 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:04:54,868 basehttp 9793 6198800384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 35199
+WARNING 2025-08-07 19:04:54,872 log 9793 6165147648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:04:54,872 basehttp 9793 6165147648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1801
+INFO 2025-08-07 19:05:12,026 basehttp 9793 6165147648 "GET /grids/47/ HTTP/1.1" 200 14274
+INFO 2025-08-07 19:05:12,038 basehttp 9793 6181974016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:05:12,038 basehttp 9793 6165147648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:13:45,708 basehttp 9793 6165147648 "GET /grids/47/ HTTP/1.1" 200 14303
+INFO 2025-08-07 19:13:45,720 basehttp 9793 6165147648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:13:45,721 basehttp 9793 6181974016 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:13:45,722 basehttp 9793 6198800384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 35547
+INFO 2025-08-07 19:14:07,150 basehttp 9793 6165147648 "GET /grids/47/ HTTP/1.1" 200 14298
+INFO 2025-08-07 19:14:07,157 basehttp 9793 6198800384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:14:07,159 basehttp 9793 6215626752 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 35547
+INFO 2025-08-07 19:14:07,160 basehttp 9793 6181974016 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:14:07,161 basehttp 9793 6165147648 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:19:28,989 autoreload 10942 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 19:20:51,753 basehttp 10942 6163460096 "GET /grids/47/ HTTP/1.1" 200 14278
+INFO 2025-08-07 19:20:51,768 basehttp 10942 6163460096 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:20:51,772 basehttp 10942 6180286464 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:20:51,773 basehttp 10942 6197112832 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33855
+INFO 2025-08-07 19:21:07,735 basehttp 10942 6163460096 "GET /grids/47/ HTTP/1.1" 200 14333
+INFO 2025-08-07 19:21:07,748 basehttp 10942 6197112832 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:21:07,749 basehttp 10942 6213939200 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33855
+INFO 2025-08-07 19:21:07,750 basehttp 10942 6180286464 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:21:07,750 basehttp 10942 6163460096 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:22:58,614 basehttp 10942 6163460096 "GET /grids/47/ HTTP/1.1" 200 14274
+INFO 2025-08-07 19:22:58,630 basehttp 10942 6180286464 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:22:58,630 basehttp 10942 6163460096 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:27:22,816 basehttp 10942 6163460096 "GET /grids/47/ HTTP/1.1" 200 14321
+INFO 2025-08-07 19:27:22,830 basehttp 10942 6163460096 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:27:22,831 basehttp 10942 6180286464 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:27:22,832 basehttp 10942 6197112832 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34221
+INFO 2025-08-07 19:27:55,268 basehttp 10942 6197112832 "GET /grids/47/ HTTP/1.1" 200 14326
+INFO 2025-08-07 19:27:55,282 basehttp 10942 6163460096 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:27:55,284 basehttp 10942 6180286464 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:27:55,285 basehttp 10942 6213939200 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34221
+INFO 2025-08-07 19:27:55,285 basehttp 10942 6197112832 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:30:01,846 basehttp 10942 6197112832 "GET /grids/47/ HTTP/1.1" 200 14364
+INFO 2025-08-07 19:30:01,857 basehttp 10942 6213939200 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33133
+INFO 2025-08-07 19:30:01,858 basehttp 10942 6197112832 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:34:05,737 basehttp 10942 6197112832 "GET /grids/47/ HTTP/1.1" 200 14283
+INFO 2025-08-07 19:34:05,754 basehttp 10942 6197112832 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:34:05,755 basehttp 10942 6213939200 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:34:05,755 basehttp 10942 6163460096 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32566
+INFO 2025-08-07 19:34:43,421 basehttp 10942 6163460096 "GET /grids/47/ HTTP/1.1" 200 14281
+INFO 2025-08-07 19:34:43,434 basehttp 10942 6197112832 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:34:43,435 basehttp 10942 6180286464 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32566
+INFO 2025-08-07 19:34:43,436 basehttp 10942 6213939200 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:34:43,437 basehttp 10942 6163460096 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:35:07,487 autoreload 12223 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 19:35:14,522 basehttp 12223 6204977152 "GET /grids/47/ HTTP/1.1" 200 14282
+INFO 2025-08-07 19:35:14,541 basehttp 12223 6238629888 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:35:14,542 basehttp 12223 6255456256 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32566
+INFO 2025-08-07 19:35:14,542 basehttp 12223 6221803520 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:35:14,543 basehttp 12223 6204977152 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:37:43,804 basehttp 12223 6204977152 "GET /grids/47/ HTTP/1.1" 200 14324
+INFO 2025-08-07 19:37:43,817 basehttp 12223 6204977152 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:37:43,818 basehttp 12223 6221803520 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 32706
+INFO 2025-08-07 19:42:40,327 autoreload 13098 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 19:42:42,251 basehttp 13098 6190460928 "GET /grids/47/ HTTP/1.1" 200 14340
+INFO 2025-08-07 19:42:42,265 basehttp 13098 6190460928 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 19:42:42,269 basehttp 13098 6207287296 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:42:42,269 basehttp 13098 6224113664 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33442
+INFO 2025-08-07 19:45:12,182 basehttp 13098 6190460928 "GET /grids/47/ HTTP/1.1" 200 14282
+INFO 2025-08-07 19:45:12,197 basehttp 13098 6224113664 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:45:12,198 basehttp 13098 6240940032 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33442
+INFO 2025-08-07 19:45:12,198 basehttp 13098 6207287296 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:45:12,199 basehttp 13098 6190460928 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:46:53,984 basehttp 13098 6190460928 "GET /grids/47/ HTTP/1.1" 200 14341
+INFO 2025-08-07 19:46:54,002 basehttp 13098 6190460928 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:46:54,003 basehttp 13098 6207287296 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33605
+INFO 2025-08-07 19:47:26,788 autoreload 13761 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 19:48:48,854 basehttp 13761 6178762752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 19:48:48,858 basehttp 13761 6161936384 "GET /static/css/output.css HTTP/1.1" 200 67478
+WARNING 2025-08-07 19:48:48,869 log 13761 6195589120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:48:48,870 basehttp 13761 6195589120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1809
+INFO 2025-08-07 19:48:49,757 basehttp 13761 6195589120 "GET /grids/47/ HTTP/1.1" 200 14345
+INFO 2025-08-07 19:48:49,771 basehttp 13761 6195589120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:48:49,773 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34140
+WARNING 2025-08-07 19:48:49,779 log 13761 6178762752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:48:49,779 basehttp 13761 6178762752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1775
+INFO 2025-08-07 19:49:04,484 basehttp 13761 6178762752 "GET /grids/47/ HTTP/1.1" 200 14375
+INFO 2025-08-07 19:49:04,508 basehttp 13761 6195589120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:49:04,509 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 19:49:04,515 log 13761 6178762752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:49:04,515 basehttp 13761 6178762752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1745
+INFO 2025-08-07 19:50:15,827 basehttp 13761 6178762752 "GET /grids/47/ HTTP/1.1" 200 14333
+INFO 2025-08-07 19:50:15,841 basehttp 13761 6178762752 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:50:15,842 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34276
+WARNING 2025-08-07 19:50:15,858 log 13761 6161936384 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:50:15,859 basehttp 13761 6161936384 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1799
+INFO 2025-08-07 19:50:26,547 basehttp 13761 6161936384 "GET /grids/47/ HTTP/1.1" 200 14348
+INFO 2025-08-07 19:50:26,564 basehttp 13761 6178762752 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:50:26,565 basehttp 13761 6161936384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 19:50:26,578 log 13761 6161936384 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:50:26,578 basehttp 13761 6161936384 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1733
+INFO 2025-08-07 19:50:32,745 basehttp 13761 6161936384 "GET /grids/47/ HTTP/1.1" 200 14361
+INFO 2025-08-07 19:50:32,765 basehttp 13761 6195589120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:50:32,768 basehttp 13761 6212415488 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34276
+INFO 2025-08-07 19:50:32,772 basehttp 13761 6161936384 "GET /static/css/output.css HTTP/1.1" 200 67478
+INFO 2025-08-07 19:50:32,773 basehttp 13761 6178762752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+WARNING 2025-08-07 19:50:32,773 log 13761 6229241856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:50:32,773 basehttp 13761 6229241856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1743
+INFO 2025-08-07 19:52:00,020 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14366
+INFO 2025-08-07 19:52:00,036 basehttp 13761 6161936384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:52:00,037 basehttp 13761 6229241856 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34613
+WARNING 2025-08-07 19:52:05,818 log 13761 6229241856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:52:05,819 basehttp 13761 6229241856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1777
+INFO 2025-08-07 19:52:08,812 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14304
+INFO 2025-08-07 19:52:08,826 basehttp 13761 6229241856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:52:08,826 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 19:52:08,841 log 13761 6161936384 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:52:08,842 basehttp 13761 6161936384 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1784
+INFO 2025-08-07 19:52:21,135 basehttp 13761 6161936384 "GET /grids/47/ HTTP/1.1" 200 14348
+INFO 2025-08-07 19:52:21,151 basehttp 13761 6229241856 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:52:21,151 basehttp 13761 6161936384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 19:52:21,163 log 13761 6161936384 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:52:21,163 basehttp 13761 6161936384 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1814
+INFO 2025-08-07 19:54:00,069 basehttp 13761 6161936384 "GET /grids/47/ HTTP/1.1" 200 14332
+INFO 2025-08-07 19:54:00,084 basehttp 13761 6161936384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:54:00,085 basehttp 13761 6229241856 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34681
+WARNING 2025-08-07 19:54:00,104 log 13761 6229241856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:54:00,104 basehttp 13761 6229241856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1777
+INFO 2025-08-07 19:54:17,961 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14300
+INFO 2025-08-07 19:54:17,974 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:54:17,974 basehttp 13761 6229241856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:54:26,491 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14324
+INFO 2025-08-07 19:54:26,502 basehttp 13761 6229241856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:54:26,502 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:56:36,659 basehttp 13761 6161936384 "GET /grids/47/ HTTP/1.1" 200 14389
+INFO 2025-08-07 19:56:36,673 basehttp 13761 6161936384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 19:56:36,674 basehttp 13761 6229241856 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33623
+INFO 2025-08-07 19:56:47,338 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14411
+INFO 2025-08-07 19:56:47,349 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:56:47,350 basehttp 13761 6229241856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:57:10,795 basehttp 13761 6229241856 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-08-07 19:57:10,796 basehttp 13761 6229241856 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+WARNING 2025-08-07 19:57:17,527 log 13761 6229241856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:57:17,528 basehttp 13761 6229241856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1766
+INFO 2025-08-07 19:57:20,482 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14399
+INFO 2025-08-07 19:57:20,497 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:57:20,497 basehttp 13761 6229241856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 19:57:20,510 log 13761 6229241856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:57:20,510 basehttp 13761 6229241856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1767
+INFO 2025-08-07 19:57:46,501 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14223
+INFO 2025-08-07 19:57:46,528 basehttp 13761 6178762752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:57:46,531 basehttp 13761 6161936384 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 48670
+WARNING 2025-08-07 19:57:46,534 log 13761 6229241856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 19:57:46,535 basehttp 13761 6229241856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1780
+INFO 2025-08-07 19:58:03,063 basehttp 13761 6229241856 "GET /grids/47/ HTTP/1.1" 200 14357
+INFO 2025-08-07 19:58:03,079 basehttp 13761 6229241856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 19:58:03,079 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:02:00,885 basehttp 13761 6161936384 "GET /grids/47/ HTTP/1.1" 200 14416
+INFO 2025-08-07 20:02:00,896 basehttp 13761 6161936384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 20:02:00,897 basehttp 13761 6195589120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 20:02:00,898 basehttp 13761 6178762752 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31543
+WARNING 2025-08-07 20:02:06,821 log 13761 6178762752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:02:06,824 basehttp 13761 6178762752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1733
+INFO 2025-08-07 20:02:14,319 basehttp 13761 6178762752 "GET /grids/47/ HTTP/1.1" 200 14411
+INFO 2025-08-07 20:02:14,340 basehttp 13761 6195589120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:02:14,341 basehttp 13761 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-07 20:02:14,350 log 13761 6178762752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:02:14,351 basehttp 13761 6178762752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1770

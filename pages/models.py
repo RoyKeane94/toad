@@ -60,6 +60,7 @@ class Task(models.Model):
     column_header = models.ForeignKey(ColumnHeader, on_delete=models.CASCADE, related_name='tasks')
     text = models.TextField(blank=False, null=False, help_text='Enter the task description')
     completed = models.BooleanField(default=False)
+    order = models.PositiveIntegerField(default=0)  # For maintaining task order within cells
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -72,11 +73,12 @@ class Task(models.Model):
             raise ValidationError({'text': 'Task text cannot be empty.'})
 
     class Meta:
-        ordering = ['created_at']
+        ordering = ['order', 'created_at']
         indexes = [
             models.Index(fields=['project', 'row_header', 'column_header']),  # For cell-based task queries
             models.Index(fields=['project', 'completed']),  # For completed task filtering
-            models.Index(fields=['project', 'created_at']),  # For task ordering
+            models.Index(fields=['project', 'order']),  # For task ordering
+            models.Index(fields=['project', 'row_header', 'column_header', 'order']),  # For ordered task queries
         ]
 
 class Template(models.Model):

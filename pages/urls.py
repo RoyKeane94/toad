@@ -53,6 +53,7 @@ urlpatterns = [
     path('tasks/<int:task_pk>/edit/', views.task_edit_view, name='task_edit'),
     path('tasks/<int:task_pk>/toggle/', views.task_toggle_complete_view, name='task_toggle_complete'),
     path('tasks/<int:task_pk>/delete/', views.task_delete_view, name='task_delete'),
+    path('grids/<int:project_pk>/tasks/reorder/', views.task_reorder_view, name='task_reorder'),
     
     # Row URLs
     path('grids/<int:project_pk>/rows/create/', views.row_create_view, name='row_create'),

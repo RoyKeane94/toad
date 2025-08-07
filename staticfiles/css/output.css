@@ -19,7 +19,6 @@
     --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-orange-600: oklch(64.6% 0.222 41.116);
     --color-yellow-100: oklch(97.3% 0.071 103.193);
-    --color-yellow-400: oklch(85.2% 0.199 91.936);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
     --color-yellow-700: oklch(55.4% 0.135 66.442);
     --color-green-50: oklch(98.2% 0.018 155.826);
@@ -691,6 +690,9 @@
   .animate-spin {
     animation: var(--animate-spin);
   }
+  .cursor-grab {
+    cursor: grab;
+  }
   .cursor-not-allowed {
     cursor: not-allowed;
   }
@@ -948,9 +950,6 @@
   .border-transparent {
     border-color: transparent;
   }
-  .border-yellow-400 {
-    border-color: var(--color-yellow-400);
-  }
   .border-t-transparent {
     border-top-color: transparent;
   }
@@ -1031,6 +1030,9 @@
   }
   .bg-red-100 {
     background-color: var(--color-red-100);
+  }
+  .bg-red-500 {
+    background-color: var(--color-red-500);
   }
   .bg-red-600 {
     background-color: var(--color-red-600);
@@ -1661,13 +1663,6 @@
       }
     }
   }
-  .hover\:bg-\[var\(--task-hover-bg\)\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--task-hover-bg);
-      }
-    }
-  }
   .hover\:bg-gray-300 {
     &:hover {
       @media (hover: hover) {
@@ -1814,6 +1809,11 @@
     &:focus {
       --tw-outline-style: none;
       outline-style: none;
+    }
+  }
+  .active\:cursor-grabbing {
+    &:active {
+      cursor: grabbing;
     }
   }
   .disabled\:opacity-30 {

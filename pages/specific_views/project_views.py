@@ -1,3 +1,4 @@
+import json
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -14,6 +15,7 @@ from django.db.models.functions import Coalesce
 from django.db.models.functions import Greatest
 from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
+from django.views.decorators.csrf import csrf_exempt
 from pages.models import Project, RowHeader, ColumnHeader, Task
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
 from pages.specific_views_functions.project_views_functions import (
@@ -208,6 +210,13 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             task.project = project
             task.row_header = row_header
             task.column_header = column_header
+            # Set the order to be the next order in this cell
+            existing_tasks = Task.objects.filter(
+                project=project,
+                row_header=row_header,
+                column_header=column_header
+            )
+            task.order = get_next_order(existing_tasks)
         
         def htmx_response(task):
             return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task})
@@ -648,3 +657,44 @@ def create_from_template_view(request, template_type):
         return redirect('pages:project_grid', pk=project.pk)
     
     return redirect('pages:templates_overview')
+
+@login_required
+def task_reorder_view(request, project_pk):
+    """Handle task reordering via AJAX"""
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            task_order = data.get('task_order', [])
+
+            if not task_order:
+                return JsonResponse({'success': False, 'error': 'No task order provided'}, status=400)
+
+            # Verify project exists and user has access
+            project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+            if not project:
+                return JsonResponse({'success': False, 'error': 'Project not found'}, status=404)
+
+            # Update task order in the database
+            for index, task_data in enumerate(task_order):
+                task_id = task_data.get('id')
+                if not task_id:
+                    continue
+                
+                try:
+                    task = Task.objects.get(id=task_id, project=project)
+                    task.order = index
+                    task.save(update_fields=['order'])
+                except Task.DoesNotExist:
+                    logger.warning(f"Task {task_id} not found for project {project_pk}")
+                    continue
+
+            log_user_action(request.user, 'reordered tasks', f'in project {project.name}')
+            return JsonResponse({'success': True, 'message': 'Task order updated successfully'})
+            
+        except json.JSONDecodeError:
+            return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+        except Exception as e:
+            logger.error(f"Error reordering tasks for project {project_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to reorder tasks'}, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)

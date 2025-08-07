@@ -51,6 +51,40 @@
     .grid-content-visible {
         opacity: 1;
     }
+    
+    /* SortableJS styles */
+    .sortable-drag {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        cursor: grabbing;
+        background-color: white;
+        opacity: 0.8;
+        transform: rotate(2deg);
+    }
+
+    .sortable-ghost {
+        opacity: 0.5;
+        border: 2px dashed var(--primary-action-bg);
+        background-color: var(--grid-header-bg);
+    }
+    
+    .sortable-ghost > * {
+        opacity: 0;
+    }
+    
+    .drag-handle {
+        cursor: grab;
+    }
+    
+    .drag-handle:active {
+        cursor: grabbing;
+    }
+    
+    /* Hide drag handle on mobile */
+    @media (max-width: 768px) {
+        .drag-handle {
+            display: none;
+        }
+    }
 </style>
 {% endblock %}
 

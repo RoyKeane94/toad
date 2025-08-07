@@ -1,8 +1,17 @@
 {% load static %}
 <div class="group flex items-center justify-between w-full p-2 rounded-lg hover:bg-[var(--grid-header-bg)] transition-all duration-200"
      data-task-id="{{ task.id }}"
-     id="task-{{ task.id }}">
+     id="task-{{ task.id }}"
+     data-task-order="{{ task.order|default:0 }}"
+     data-task-row="{{ task.row.pk }}"
+     data-task-col="{{ task.column.pk }}">
     <div class="flex items-center space-x-3 min-w-0 flex-1">
+            <!-- Drag Handle (Desktop Only) -->
+    <div class="drag-handle flex-shrink-0 cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2"
+         title="Drag to reorder">
+        <i class="fas fa-grip-vertical text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
+    </div>
+        
         <form method="POST" 
               action="{% url 'pages:task_toggle_complete' task.pk %}" 
               class="flex-shrink-0"

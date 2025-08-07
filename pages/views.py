@@ -37,6 +37,7 @@ from .specific_views.project_views import (
     task_edit_view,
     task_toggle_complete_view,
     task_delete_view,
+    task_reorder_view,
     row_create_view,
     row_edit_view,
     row_delete_view,
