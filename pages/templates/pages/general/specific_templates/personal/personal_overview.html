@@ -1,7 +1,7 @@
 {% extends 'pages/layout.html' %}
 {% load static %}
 
-{% block title %}Professional Templates - Toad{% endblock %}
+{% block title %}Personal Templates - Toad{% endblock %}
 
 {% block content %}
 <div class="max-w-7xl mx-auto">
@@ -14,7 +14,7 @@
     </header>
 
     <!-- Navigation Tabs -->
-    <div class="border-t border-[var(--border-color)] ">
+    <div class="border-t border-[var(--border-color)]">
         <div class="max-w-6xl mx-auto px-4">
             <nav class="flex space-x-8 justify-center">
                 <a href="{% url 'pages:students_templates' %}" 
@@ -22,7 +22,7 @@
                     Students
                 </a>
                 <a href="{% url 'pages:professionals_templates' %}" 
-                   class="py-4 px-1 border-b-2 border-[var(--primary-action-bg)] text-[var(--text-primary)] font-medium text-sm">
+                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
                     Professionals
                 </a>
                 <a href="{% url 'pages:entrepreneurs_templates' %}" 
@@ -30,42 +30,54 @@
                     Entrepreneurs
                 </a>
                 <a href="{% url 'pages:personal_templates' %}" 
-                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
+                   class="py-4 px-1 border-b-2 border-[var(--primary-action-bg)] text-[var(--text-primary)] font-medium text-sm">
                     Personal
                 </a>
             </nav>
         </div>
     </div>
 
-    <!-- Professionals Section -->
+    <!-- Personal Section -->
     <div class="mt-8 md:mt-12">
         <header class="text-center mb-8 md:mb-12 px-4">
-            <h2 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">Professional's Toolkit</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">Personal Toolkit</h2>
             <p class="mt-3 md:mt-4 max-w-2xl mx-auto text-base md:text-lg text-[var(--subtitle-text)]">
-                The simple way to take control of your work week
+                Get your life admin under control
             </p>
         </header>
 
         <!-- Coming Soon Section -->
         <div class="text-center px-4 max-w-4xl mx-auto">
             <div class="bg-[var(--container-bg)] p-8 md:p-12 rounded-lg border border-[var(--border-color)]">
-                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">Professional Templates Coming Soon</h3>
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">Personal Templates Coming Soon</h3>
                 <p class="text-[var(--text-secondary)] mb-6">
-                    We're working on additional templates for professionals including:
+                    We're building templates for personal organization including:
                 </p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center max-w-4xl mx-auto mb-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-center max-w-4xl mx-auto mb-6">
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-home text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Weekly Planner</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-heart text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Health & Fitness Tracker</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-book text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Reading List Tracker</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-plane text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Travel Planner</span>
+                    </div>
+                    <div class="flex flex-col items-center space-y-2">
+                        <i class="fas fa-gift text-[var(--primary-action-bg)] text-lg"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Gift Shopping Tracker</span>
+                    </div>
                     <div class="flex flex-col items-center space-y-2">
                         <i class="fas fa-tasks text-[var(--primary-action-bg)] text-lg"></i>
-                        <span class="text-sm text-[var(--text-secondary)]">Project Tracker</span>
+                        <span class="text-sm text-[var(--text-secondary)]">Daily Habit Tracker</span>
                     </div>
-                    <div class="flex flex-col items-center space-y-2">
-                        <i class="fas fa-calendar-week text-[var(--primary-action-bg)] text-lg"></i>
-                        <span class="text-sm text-[var(--text-secondary)]">Weekly Action Planner</span>
-                    </div>
-                    <div class="flex flex-col items-center space-y-2">
-                        <i class="fas fa-graduation-cap text-[var(--primary-action-bg)] text-lg"></i>
-                        <span class="text-sm text-[var(--text-secondary)]">Career Development Tracker</span>
-                    </div>                    
                 </div>
                 <p class="text-sm text-[var(--text-secondary)] text-center">
                     Please email <a href="mailto:tom@meettoad.co.uk" class="text-[var(--primary-action-bg)] hover:underline">tom@meettoad.co.uk</a> if you have any templates you'd like to see.
@@ -74,4 +86,4 @@
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

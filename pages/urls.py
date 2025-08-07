@@ -31,6 +31,7 @@ urlpatterns = [
     path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),
     path('templates/professionals/', views.professionals_templates_view, name='professionals_templates'),
     path('templates/entrepreneurs/', views.entrepreneurs_templates_view, name='entrepreneurs_templates'),
+    path('templates/personal/', views.personal_templates_view, name='personal_templates'),
     path('templates/create/<str:template_type>/', views.create_from_template_view, name='create_from_template'),
     
     # Support Pages

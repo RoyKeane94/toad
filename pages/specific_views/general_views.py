@@ -118,6 +118,10 @@ def entrepreneurs_templates_view(request):
     """Display the entrepreneurs templates overview page"""
     return render_simple_template(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
 
+def personal_templates_view(request):
+    """Display the personal templates overview page"""
+    return render_simple_template(request, 'pages/general/specific_templates/personal/personal_overview.html')
+
 # Support Pages
 
 def faq_view(request):
