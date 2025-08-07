@@ -16,21 +16,21 @@
     <!-- Navigation Tabs -->
     <div class="border-t border-[var(--border-color)] ">
         <div class="max-w-6xl mx-auto px-4">
-            <nav class="flex space-x-8 justify-center">
+            <nav class="flex flex-col sm:flex-row sm:space-x-8 justify-center space-y-2 sm:space-y-0">
                 <a href="{% url 'pages:students_templates' %}" 
-                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
+                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors text-center sm:text-center">
                     Students
                 </a>
                 <a href="{% url 'pages:professionals_templates' %}" 
-                   class="py-4 px-1 border-b-2 border-[var(--primary-action-bg)] text-[var(--text-primary)] font-medium text-sm">
+                   class="py-4 px-1 border-b-2 border-[var(--primary-action-bg)] text-[var(--text-primary)] font-medium text-sm text-center sm:text-center">
                     Professionals
                 </a>
                 <a href="{% url 'pages:entrepreneurs_templates' %}" 
-                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
+                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors text-center sm:text-center">
                     Entrepreneurs
                 </a>
                 <a href="{% url 'pages:personal_templates' %}" 
-                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors">
+                   class="py-4 px-1 border-b-2 border-transparent text-[var(--text-secondary)] hover:text-[var(--text-primary)] font-medium text-sm transition-colors text-center sm:text-center">
                     Personal
                 </a>
             </nav>

@@ -12465,3 +12465,50 @@ INFO 2025-08-07 20:13:08,103 basehttp 16002 6163574784 "GET /static/js/general/g
 INFO 2025-08-07 20:13:08,142 basehttp 16002 6163574784 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
 INFO 2025-08-07 20:13:11,784 basehttp 16002 6163574784 "GET /lilypad HTTP/1.1" 301 0
 INFO 2025-08-07 20:13:11,790 basehttp 16002 6180401152 "GET /lilypad/ HTTP/1.1" 200 3571
+INFO 2025-08-07 20:19:36,637 autoreload 16647 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 20:19:42,099 basehttp 16647 6127054848 "GET /grids/ HTTP/1.1" 200 3956
+INFO 2025-08-07 20:19:42,114 basehttp 16647 6127054848 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 20:19:54,034 basehttp 16647 6127054848 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-07 20:19:54,044 basehttp 16647 6127054848 "GET /templates/students/ HTTP/1.1" 200 4378
+INFO 2025-08-07 20:19:54,062 basehttp 16647 6143881216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:19:54,082 basehttp 16647 6127054848 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-07 20:19:54,085 basehttp 16647 6160707584 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-07 20:19:54,086 basehttp 16647 6143881216 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+WARNING 2025-08-07 20:19:58,523 log 16647 6143881216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:19:58,523 basehttp 16647 6143881216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1829
+INFO 2025-08-07 20:20:04,727 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4322
+INFO 2025-08-07 20:20:04,740 basehttp 16647 6143881216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:22:54,160 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4375
+INFO 2025-08-07 20:22:54,173 basehttp 16647 6143881216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:22:59,414 basehttp 16647 6143881216 "GET /templates/professionals/ HTTP/1.1" 200 4225
+INFO 2025-08-07 20:22:59,423 basehttp 16647 6143881216 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 200 330329
+INFO 2025-08-07 20:23:01,099 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4319
+INFO 2025-08-07 20:24:14,051 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4333
+INFO 2025-08-07 20:24:14,063 basehttp 16647 6160707584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:24:14,065 basehttp 16647 6143881216 "GET /static/css/output.css HTTP/1.1" 200 68789
+INFO 2025-08-07 20:24:16,835 basehttp 16647 6143881216 "GET /templates/professionals/ HTTP/1.1" 200 4209
+INFO 2025-08-07 20:24:17,984 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4367
+INFO 2025-08-07 20:27:47,052 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4344
+INFO 2025-08-07 20:27:47,066 basehttp 16647 6160707584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:27:47,066 basehttp 16647 6143881216 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-07 20:27:50,846 log 16647 6143881216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:27:50,846 basehttp 16647 6143881216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1800
+INFO 2025-08-07 20:27:52,830 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4306
+WARNING 2025-08-07 20:27:52,858 log 16647 6143881216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:27:52,859 basehttp 16647 6143881216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1805
+INFO 2025-08-07 20:27:55,038 basehttp 16647 6143881216 "GET /templates/professionals/ HTTP/1.1" 200 4207
+WARNING 2025-08-07 20:27:55,067 log 16647 6143881216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:27:55,068 basehttp 16647 6143881216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1820
+WARNING 2025-08-07 20:27:56,891 log 16647 6143881216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:27:56,891 basehttp 16647 6143881216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1814
+WARNING 2025-08-07 20:27:56,910 log 16647 6143881216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 20:27:56,910 basehttp 16647 6143881216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1829
+INFO 2025-08-07 20:29:12,602 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4379
+INFO 2025-08-07 20:29:12,615 basehttp 16647 6143881216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 20:29:12,617 basehttp 16647 6143881216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 20:29:13,851 basehttp 16647 6143881216 "GET /templates/professionals/ HTTP/1.1" 200 4203
+INFO 2025-08-07 20:29:14,549 basehttp 16647 6143881216 "GET /templates/entrepreneurs/ HTTP/1.1" 200 3766
+INFO 2025-08-07 20:29:15,132 basehttp 16647 6143881216 "GET /templates/personal/ HTTP/1.1" 200 3688
+INFO 2025-08-07 20:29:15,680 basehttp 16647 6143881216 "GET /templates/entrepreneurs/ HTTP/1.1" 200 3716
+INFO 2025-08-07 20:29:16,184 basehttp 16647 6143881216 "GET /templates/professionals/ HTTP/1.1" 200 4215
+INFO 2025-08-07 20:29:16,717 basehttp 16647 6143881216 "GET /templates/students/ HTTP/1.1" 200 4307
