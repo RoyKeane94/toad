@@ -1,0 +1,44 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Shooting Template - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-8">
+                <div class="text-center">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-[var(--primary-action-bg)] mb-2">Shooting Template</h1>
+                    <p class="text-lg text-[var(--subtitle-text)] mb-6">Organise your shooting schedule and tasks</p>
+                    <a href="{% url 'pages:shooting_template_create' %}" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Create Grid
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Template Preview -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <h2 class="text-xl font-semibold text-[var(--primary-action-bg)] mb-4">Ed's Shooting Practice Template</h2>
+            <p class="text-[var(--subtitle-text)] mb-6">This template helps you organise your shooting activities with daily tasks for admin, equipment, and practice.</p>
+            
+            <img src="{% static 'img/Other_templates/Ed Shooting.png' %}" alt="Shooting Template" class="w-full h-auto rounded-lg shadow-sm">
+
+        <!-- Call to Action -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-8 text-center">
+            <h2 class="text-2xl font-bold text-[var(--primary-action-bg)] mb-4">Ready to organise your shooting schedule?</h2>
+            <p class="text-[var(--subtitle-text)] mb-6">Create your own shooting grid and start tracking your progress today.</p>
+            <a href="{% url 'pages:shooting_template_create' %}" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                <i class="fas fa-plus mr-2"></i>
+                Create Shooting Grid
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

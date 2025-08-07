@@ -3,7 +3,6 @@ class GridManager {
     constructor() {
         // Only initialize on desktop - don't interfere with mobile
         if (window.innerWidth < 769) {
-            console.log('GridManager: Skipping initialization on mobile device');
             return;
         }
         
@@ -158,26 +157,11 @@ class GridManager {
     setupDragAndDrop() {
         // Only enable drag and drop on desktop
         if (window.innerWidth < 769) {
-            console.log('GridManager: Skipping drag and drop setup on mobile device');
             return;
         }
         
-        console.log('GridManager: Setting up drag and drop functionality');
-        
-        // Use event delegation for dynamically added tasks (disabled for manual drag)
-        // document.addEventListener('dragstart', this.handleDragStart.bind(this));
-        // document.addEventListener('dragend', this.handleDragEnd.bind(this));
-        // document.addEventListener('dragover', this.handleDragOver.bind(this));
-        // document.addEventListener('drop', this.handleDrop.bind(this));
-        // document.addEventListener('dragenter', this.handleDragEnter.bind(this));
-        // document.addEventListener('dragleave', this.handleDragLeave.bind(this));
-        
-        // Add mouse events for manual drag
-        document.addEventListener('mousedown', this.handleMouseDown.bind(this));
-        document.addEventListener('mousemove', this.handleMouseMove.bind(this));
-        document.addEventListener('mouseup', this.handleMouseUp.bind(this));
-        
-        console.log('GridManager: Drag and drop event listeners added');
+        // Initialize SortableJS on all task containers
+        this.initializeSortable();
     }
 
     // Drag and drop event handlers (disabled for manual drag)
@@ -226,67 +210,38 @@ class GridManager {
     //     console.log('GridManager: Drag start completed successfully');
     // }
 
-    // Mouse down handler to start manual drag
-    handleMouseDown(e) {
-        const dragHandle = e.target.closest('.drag-handle');
-        if (!dragHandle) return;
-
-        console.log('GridManager: Mouse down on drag handle');
+    // Initialize SortableJS on all task containers
+    initializeSortable() {
+        // Find all task containers
+        const taskContainers = document.querySelectorAll('[data-row][data-col]');
         
-        // Prevent default to avoid text selection
-        e.preventDefault();
-        
-        const taskElement = dragHandle.closest('[data-task-id]');
-        if (!taskElement) return;
-
-        // Start manual drag
-        this.state.isDragging = true;
-        this.state.draggedElement = taskElement;
-        this.state.dragStartY = e.clientY;
-        this.state.dragStartX = e.clientX;
-
-        // Store original order
-        this.state.originalOrder = this.getTaskOrder();
-
-        // Create a clone for dragging
-        const dragClone = taskElement.cloneNode(true);
-        dragClone.classList.add('drag-clone');
-        dragClone.style.position = 'fixed';
-        dragClone.style.zIndex = '10000';
-        dragClone.style.pointerEvents = 'none';
-        dragClone.style.opacity = '0.8';
-        dragClone.style.border = '2px dashed var(--primary-action-bg)';
-        dragClone.style.backgroundColor = 'rgba(34, 197, 94, 0.1)';
-        dragClone.style.transform = 'none';
-        dragClone.style.transition = 'none';
-        dragClone.style.margin = '0';
-        dragClone.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
-        
-        // Remove interactive elements from clone
-        const interactiveElements = dragClone.querySelectorAll('button, input, form, .drag-handle');
-        interactiveElements.forEach(el => el.remove());
-        
-        // Add clone to body
-        document.body.appendChild(dragClone);
-        this.state.dragClone = dragClone;
-        
-        // Store original position
-        const rect = taskElement.getBoundingClientRect();
-        this.state.originalLeft = rect.left;
-        this.state.originalTop = rect.top;
-        this.state.originalWidth = rect.width;
-        this.state.originalHeight = rect.height;
-        
-        // Position clone at original location
-        dragClone.style.width = this.state.originalWidth + 'px';
-        dragClone.style.height = this.state.originalHeight + 'px';
-        dragClone.style.left = this.state.originalLeft + 'px';
-        dragClone.style.top = this.state.originalTop + 'px';
-        
-        // Hide original task
-        taskElement.style.opacity = '0.3';
-        
-        console.log('GridManager: Manual drag started');
+        taskContainers.forEach(container => {
+            new Sortable(container, {
+                // Only allow dragging from the drag handle
+                handle: '.drag-handle',
+                
+                // Animation duration for smooth reordering
+                animation: 150,
+                
+                // Ghost class for the placeholder
+                ghostClass: 'sortable-ghost',
+                
+                // Drag class for the item being dragged
+                dragClass: 'sortable-drag',
+                
+                // Only allow sorting within the same container
+                group: false,
+                
+                // Callback when sorting ends
+                onEnd: (evt) => {
+                    // Get the new order
+                    const newOrder = this.getTaskOrder();
+                    
+                    // Save to server
+                    this.saveTaskOrder(newOrder);
+                }
+            });
+        });
     }
 
     // Mouse move handler for manual drag
@@ -307,21 +262,35 @@ class GridManager {
         // Move clone directly without requestAnimationFrame for immediate response
         dragClone.style.left = newLeft + 'px';
         dragClone.style.top = newTop + 'px';
-
+        
+        // Temporarily hide the drag clone to find elements underneath
+        const originalDisplay = dragClone.style.display;
+        dragClone.style.display = 'none';
+        
         // Find the task container under the mouse (ignore the drag clone)
         const elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
         const taskContainer = elementAtPoint?.closest('[data-row][data-col]');
         
-        if (!taskContainer) return;
+        // Restore the drag clone
+        dragClone.style.display = originalDisplay;
+        
+        if (!taskContainer) {
+            return;
+        }
 
         // Check if we're in the same container
         const draggedElement = this.state.draggedElement;
-        const draggedRow = draggedElement.dataset.taskRow;
-        const draggedCol = draggedElement.dataset.taskCol;
+        
+        // Get the dragged element's container (it might have moved during drag)
+        const draggedContainer = draggedElement.closest('[data-row][data-col]');
+        const draggedRow = draggedContainer?.dataset.row || draggedElement.dataset.taskRow;
+        const draggedCol = draggedContainer?.dataset.col || draggedElement.dataset.taskCol;
         const containerRow = taskContainer.dataset.row;
         const containerCol = taskContainer.dataset.col;
 
-        if (draggedRow !== containerRow || draggedCol !== containerCol) return;
+        if (draggedRow !== containerRow || draggedCol !== containerCol) {
+            return;
+        }
 
         // Find the target position by getting all tasks in the container and finding which one is under the mouse
         const tasksInContainer = taskContainer.querySelectorAll('[data-task-id]');
@@ -329,9 +298,12 @@ class GridManager {
         let dropAfter = false;
         
         for (const task of tasksInContainer) {
-            if (task === draggedElement) continue; // Skip the dragged element
+            if (task === draggedElement) {
+                continue; // Skip the dragged element
+            }
             
             const rect = task.getBoundingClientRect();
+            
             if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
                 // Mouse is over this task
                 dropAfter = e.clientY > rect.top + rect.height / 2;
@@ -340,7 +312,9 @@ class GridManager {
             }
         }
         
-        if (!targetTask) return;
+        if (!targetTask) {
+            return;
+        }
 
         // Store the target for when we drop
         this.state.targetTask = targetTask;
@@ -348,7 +322,6 @@ class GridManager {
         
         // Live reorder - move tasks in real-time
         if (targetTask && targetTask !== draggedElement) {
-            console.log('GridManager: Live reordering', targetTask.dataset.taskId, dropAfter);
             this.liveReorderTasks(draggedElement, targetTask, dropAfter);
         }
     }
@@ -356,8 +329,6 @@ class GridManager {
     // Mouse up handler for manual drag
     handleMouseUp(e) {
         if (!this.state.isDragging) return;
-
-        console.log('GridManager: Mouse up - ending drag');
 
         const draggedElement = this.state.draggedElement;
         if (!draggedElement) return;
@@ -395,8 +366,6 @@ class GridManager {
         this.state.draggedElement = null;
         this.state.dragStartY = 0;
         this.state.dragStartX = 0;
-        
-        console.log('GridManager: Manual drag ended');
     }
 
     // handleDragEnd(e) {
@@ -584,9 +553,6 @@ class GridManager {
     // Live reorder tasks in real-time during drag
     liveReorderTasks(draggedElement, targetTask, dropAfter) {
         // Only reorder if we haven't already done this exact move
-        const currentPosition = this.getTaskPosition(draggedElement);
-        const targetPosition = this.getTaskPosition(targetTask);
-        
         if (this.state.lastLiveReorder && 
             this.state.lastLiveReorder.draggedId === draggedElement.dataset.taskId &&
             this.state.lastLiveReorder.targetId === targetTask.dataset.taskId &&
@@ -607,8 +573,6 @@ class GridManager {
         } else {
             targetTask.parentNode.insertBefore(draggedElement, targetTask);
         }
-        
-        console.log('GridManager: Live reorder completed');
     }
 
     // Get task position in its container
@@ -677,15 +641,12 @@ class GridManager {
             if (data.success) {
                 // Update task order attributes
                 this.updateTaskOrderAttributes(newOrder);
-                console.log('Task order saved successfully');
             } else {
-                console.error('Failed to save task order:', data.error);
                 // Revert to original order
                 this.revertToOriginalOrder();
             }
         })
         .catch(error => {
-            console.error('Error saving task order:', error);
             // Revert to original order
             this.revertToOriginalOrder();
         });
@@ -723,7 +684,6 @@ class GridManager {
 
         // This is a simplified revert - in a real implementation,
         // you might want to reload the page or implement a more sophisticated revert
-        console.log('Reverting to original order');
         // For now, just show an error message
         this.showReorderError();
     }
@@ -2055,19 +2015,6 @@ function handleGridLoading() {
         
         // Then initialize the grid manager
         window.gridManager = new GridManager();
-        
-        // Debug: Check if drag handles exist
-        setTimeout(() => {
-            const dragHandles = document.querySelectorAll('.drag-handle');
-            console.log('GridManager: Found drag handles:', dragHandles.length);
-            dragHandles.forEach((handle, index) => {
-                console.log(`GridManager: Drag handle ${index}:`, handle);
-                // Add click test
-                handle.addEventListener('click', () => {
-                    console.log(`GridManager: Drag handle ${index} clicked!`);
-                });
-            });
-        }, 1000);
     });
 
 // Global function to close all dropdowns - called from inline onclick handlers

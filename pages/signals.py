@@ -157,6 +157,84 @@ def create_course_planner_grid(user):
     return project
 
 
+def create_shooting_grid(user):
+    """
+    Create a Shooting grid with predefined rows and columns for the given user.
+    Based on the shooting template structure with days of the week and Admin/Equipment/Practice rows.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Shooting Schedule"
+    )
+    
+    # Create row headers (shooting categories)
+    row_headers = [
+        "Admin",
+        "Equipment", 
+        "Practice"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (days of the week)
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the shooting template
+    tasks_data = [
+        # Admin row
+        (0, 0, "Book in for Thimbleby tomorrow", False),  # Monday
+        (0, 1, "Check Guns on Pegs for the Yearsley Shoot address for Saturday", False),  # Tuesday
+        
+        # Equipment row
+        (1, 0, "Clean guns post weekend", False),  # Monday
+        (1, 2, "Buy 200 cartridges for the weekend", False),  # Wednesday
+        
+        # Practice row
+        (2, 0, "At home - 50 DTL high shots", False),  # Monday
+        (2, 1, "Thimbleby Shooting", False),  # Tuesday
+        (2, 2, "At home - 50 DTL low shots", False),  # Wednesday
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
 def create_line_manager_grid_signal(user):
     """
     Create a Line Manager grid with predefined rows and columns for the given user.

@@ -12540,3 +12540,305 @@ INFO 2025-08-07 20:45:46,339 autoreload 17840 8693374720 Watching for file chang
 INFO 2025-08-07 20:45:48,496 autoreload 17840 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
 INFO 2025-08-07 20:45:48,676 autoreload 17860 8693374720 Watching for file changes with StatReloader
 INFO 2025-08-07 20:46:31,817 autoreload 17878 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:00:09,295 autoreload 18387 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:00:12,685 basehttp 18387 6137327616 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-08-07 21:00:12,701 basehttp 18387 6154153984 "GET /lilypad/ HTTP/1.1" 200 3496
+INFO 2025-08-07 21:00:12,713 basehttp 18387 6154153984 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 21:00:12,715 basehttp 18387 6154153984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 21:00:15,525 basehttp 18387 6154153984 "GET /lilypad/leads/create/ HTTP/1.1" 200 3700
+INFO 2025-08-07 21:00:19,467 basehttp 18387 6154153984 "GET /lilypad/leads/ HTTP/1.1" 200 3607
+INFO 2025-08-07 21:00:25,686 autoreload 18387 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-07 21:00:25,951 autoreload 18400 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:00:54,555 basehttp 18400 6200340480 "GET /lilypad/leads/create/ HTTP/1.1" 200 3705
+INFO 2025-08-07 21:00:57,304 basehttp 18400 6200340480 "GET /lilypad/leads/ HTTP/1.1" 200 3573
+INFO 2025-08-07 21:01:29,976 autoreload 18400 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-07 21:01:30,253 autoreload 18428 8693374720 Watching for file changes with StatReloader
+WARNING 2025-08-07 21:01:38,509 log 18428 6162444288 Not Found: /shooting
+WARNING 2025-08-07 21:01:38,510 basehttp 18428 6162444288 "GET /shooting HTTP/1.1" 404 1802
+INFO 2025-08-07 21:01:40,679 autoreload 18428 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-07 21:01:40,993 autoreload 18442 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:01:47,211 basehttp 18442 6127202304 "GET /templates/shooting HTTP/1.1" 301 0
+INFO 2025-08-07 21:01:47,240 basehttp 18442 6144028672 "GET /templates/shooting/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:01:47,268 basehttp 18442 6144028672 "GET /grids/52/ HTTP/1.1" 200 13182
+INFO 2025-08-07 21:01:47,291 basehttp 18442 6144028672 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31543
+INFO 2025-08-07 21:01:53,269 basehttp 18442 6144028672 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:01:53,277 basehttp 18442 6144028672 "GET / HTTP/1.1" 200 6275
+INFO 2025-08-07 21:01:58,777 basehttp 18442 6144028672 "GET /templates/shooting HTTP/1.1" 301 0
+INFO 2025-08-07 21:01:58,780 basehttp 18442 6127202304 "GET /templates/shooting/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:01:58,789 basehttp 18442 6127202304 "GET /accounts/login/?next=/templates/shooting/ HTTP/1.1" 200 4302
+INFO 2025-08-07 21:03:07,686 basehttp 18442 6127202304 "POST /accounts/login/?next=/templates/shooting/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:03:07,690 basehttp 18442 6127202304 "GET /accounts/login/ HTTP/1.1" 200 4504
+INFO 2025-08-07 21:03:20,482 basehttp 18442 6127202304 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:03:20,495 basehttp 18442 6127202304 "GET /grids/ HTTP/1.1" 200 4018
+INFO 2025-08-07 21:03:22,935 autoreload 18442 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-07 21:03:23,213 autoreload 18485 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:03:35,437 autoreload 18485 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-07 21:03:35,699 autoreload 18500 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:03:58,053 autoreload 18500 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-07 21:03:58,349 autoreload 18514 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:05:22,468 autoreload 18514 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-07 21:05:22,761 autoreload 18541 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:05:30,007 autoreload 18541 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-07 21:05:30,255 autoreload 18562 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:05:41,507 basehttp 18562 6129381376 "GET /templates/shooting HTTP/1.1" 301 0
+ERROR 2025-08-07 21:05:41,538 log 18562 6146207744 Internal Server Error: /templates/shooting/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 126, in shooting_template_landing_view
+    return render_simple_template(request, 'pages/user_templates/shooting.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/general_views_functions.py", line 130, in render_simple_template
+    return render(request, template_name, context or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-07 21:05:41,543 basehttp 18562 6146207744 "GET /templates/shooting/ HTTP/1.1" 500 20941
+INFO 2025-08-07 21:06:21,905 autoreload 18609 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-07 21:06:24,133 basehttp 18609 6124826624 "GET /templates/shooting/ HTTP/1.1" 200 4236
+INFO 2025-08-07 21:06:24,146 basehttp 18609 6141652992 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 21:06:24,146 basehttp 18609 6158479360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 21:06:24,150 basehttp 18609 6124826624 "GET /static/img/Other_templates/Ed%20Shooting.png HTTP/1.1" 200 246020
+ERROR 2025-08-07 21:07:21,959 log 18609 6124826624 Internal Server Error: /templates/shooting/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 126, in shooting_template_landing_view
+    return render_simple_template(request, 'pages/user_templates/shooting.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/general_views_functions.py", line 130, in render_simple_template
+    return render(request, template_name, context or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-07 21:07:21,964 basehttp 18609 6124826624 "GET /templates/shooting/ HTTP/1.1" 500 21019
+ERROR 2025-08-07 21:08:10,550 log 18609 6124826624 Internal Server Error: /templates/shooting/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 126, in shooting_template_landing_view
+    return render_simple_template(request, 'pages/user_templates/shooting.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/general_views_functions.py", line 130, in render_simple_template
+    return render(request, template_name, context or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 12: 'static', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-08-07 21:08:10,554 basehttp 18609 6124826624 "GET /templates/shooting/ HTTP/1.1" 500 21040
+INFO 2025-08-07 21:08:47,387 basehttp 18609 6124826624 "GET /templates/shooting/ HTTP/1.1" 200 3695
+INFO 2025-08-07 21:08:47,399 basehttp 18609 6124826624 "GET /static/img/Other_templates/Ed%20Shooting.png HTTP/1.1" 304 0
+INFO 2025-08-07 21:09:04,477 basehttp 18609 6124826624 "GET /templates/shooting/create/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:09:04,504 basehttp 18609 6124826624 "GET /grids/53/ HTTP/1.1" 200 13273
+INFO 2025-08-07 21:09:04,522 basehttp 18609 6124826624 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 21:09:08,842 basehttp 18609 6124826624 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:09:08,848 basehttp 18609 6124826624 "GET / HTTP/1.1" 200 6324
+INFO 2025-08-07 21:09:13,574 basehttp 18609 6124826624 "GET /templates/shooting HTTP/1.1" 301 0
+INFO 2025-08-07 21:09:13,578 basehttp 18609 6158479360 "GET /templates/shooting/ HTTP/1.1" 200 3552
+INFO 2025-08-07 21:09:15,319 basehttp 18609 6158479360 "GET /templates/shooting/create/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:09:15,332 basehttp 18609 6158479360 "GET /accounts/login/?next=/templates/shooting/create/ HTTP/1.1" 200 4313
+WARNING 2025-08-07 21:09:27,124 log 18609 6158479360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 21:09:27,125 basehttp 18609 6158479360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1786
+INFO 2025-08-07 21:09:28,489 basehttp 18609 6158479360 "GET /templates/shooting/ HTTP/1.1" 200 3526
+WARNING 2025-08-07 21:09:28,519 log 18609 6158479360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 21:09:28,520 basehttp 18609 6158479360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1832
+INFO 2025-08-07 21:09:40,558 basehttp 18609 6158479360 "GET /templates/shooting/ HTTP/1.1" 200 3504
+INFO 2025-08-07 21:09:58,786 basehttp 18609 6158479360 "GET /templates/shooting/ HTTP/1.1" 200 3542
+INFO 2025-08-07 21:10:58,643 basehttp 18609 6158479360 "GET /templates/shooting/ HTTP/1.1" 200 3204
+INFO 2025-08-07 21:10:58,657 basehttp 18609 6158479360 "GET /static/img/Other_templates/Ed%20Shooting.png HTTP/1.1" 304 0
+INFO 2025-08-07 21:11:09,185 basehttp 18609 6158479360 "GET /templates/shooting/ HTTP/1.1" 200 3247
+INFO 2025-08-07 21:11:09,199 basehttp 18609 6158479360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-07 21:11:09,199 basehttp 18609 6141652992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-07 21:15:32,577 basehttp 18609 6124826624 "GET /templates/shooting/ HTTP/1.1" 200 3192
+INFO 2025-08-07 21:15:32,591 basehttp 18609 6124826624 "GET /static/img/Other_templates/Ed%20Shooting.png HTTP/1.1" 304 0
+WARNING 2025-08-07 21:15:40,310 log 18609 6124826624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 21:15:40,312 basehttp 18609 6124826624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1824
+INFO 2025-08-07 21:15:41,748 basehttp 18609 6124826624 "GET /templates/shooting/ HTTP/1.1" 200 3238
+WARNING 2025-08-07 21:15:41,777 log 18609 6124826624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 21:15:41,777 basehttp 18609 6124826624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1814
+INFO 2025-08-07 21:15:52,409 basehttp 18609 6124826624 "GET /templates/shooting/create/ HTTP/1.1" 302 0
+INFO 2025-08-07 21:15:52,423 basehttp 18609 6124826624 "GET /accounts/login/?next=/templates/shooting/create/ HTTP/1.1" 200 4298
+WARNING 2025-08-07 21:15:52,449 log 18609 6124826624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-07 21:15:52,449 basehttp 18609 6124826624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1804
