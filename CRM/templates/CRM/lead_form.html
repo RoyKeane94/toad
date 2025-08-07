@@ -1,0 +1,103 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        {% if lead %}Update lead information{% else %}Add a new lead to your CRM{% endif %}
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Leads
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Name Field -->
+                <div>
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Lead Name *
+                    </label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.name.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Lead Focus Field -->
+                <div>
+                    <label for="{{ form.lead_focus.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Focus Area *
+                    </label>
+                    {{ form.lead_focus }}
+                    {% if form.lead_focus.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.lead_focus.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a focus area or <a href="{% url 'crm:lead_focus_create' %}" class="text-[var(--primary-action-bg)] hover:underline">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- Contact Method Field -->
+                <div>
+                    <label for="{{ form.contact_method.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Contact Method *
+                    </label>
+                    {{ form.contact_method }}
+                    {% if form.contact_method.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.contact_method.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a contact method or <a href="{% url 'crm:contact_method_create' %}" class="text-[var(--primary-action-bg)] hover:underline">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t border-[var(--border-color)]">
+                    <a href="{% url 'crm:lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        Cancel
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        {% if lead %}
+                        <i class="fas fa-save mr-2"></i>
+                        Update Lead
+                        {% else %}
+                        <i class="fas fa-plus mr-2"></i>
+                        Create Lead
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

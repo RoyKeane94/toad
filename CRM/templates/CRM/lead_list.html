@@ -1,0 +1,124 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Leads - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">Leads</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage your leads and prospects</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Lead
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Search and Filters -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <form method="get" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label for="search" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Search</label>
+                    <input type="text" name="search" id="search" value="{{ search_query }}" 
+                           class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent"
+                           placeholder="Search by name...">
+                </div>
+                
+                <div>
+                    <label for="focus" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Focus Area</label>
+                    <select name="focus" id="focus" 
+                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                        <option value="">All Focus Areas</option>
+                        {% for focus in focus_areas %}
+                        <option value="{{ focus.name }}" {% if focus_filter == focus.name %}selected{% endif %}>{{ focus.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="flex items-end">
+                    <button type="submit" class="w-full px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-search mr-2"></i>
+                        Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Leads Table -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)]">
+            <div class="px-6 py-4 border-b border-[var(--border-color)]">
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">All Leads ({{ leads.count }})</h2>
+            </div>
+            
+            {% if leads %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-[var(--border-color)]">
+                    <thead class="bg-[var(--grid-header-bg)]">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Focus</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Created</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-[var(--border-color)]">
+                        {% for lead in leads %}
+                        <tr class="hover:bg-[var(--bg-secondary)]">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
+                                <a href="{% url 'crm:lead_detail' lead.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ lead.name }}</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--task-bg)] text-[var(--text-primary)]">
+                                    {{ lead.lead_focus.name }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.contact_method.name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {% if lead.messages.count > 0 %}bg-[var(--primary-action-bg)] text-white{% else %}bg-[var(--text-secondary)] text-white{% endif %}">
+                                    {{ lead.messages.count }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.created_at|date:"M d, Y" }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="{% url 'crm:lead_detail' lead.pk %}" class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] mr-3">View</a>
+                                <a href="{% url 'crm:lead_update' lead.pk %}" class="text-[var(--tertiary-action-bg)] hover:text-[var(--tertiary-action-bg)] mr-3">Edit</a>
+                                <a href="{% url 'crm:lead_delete' lead.pk %}" class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-hover-bg)]">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-12">
+                <i class="fas fa-users text-[var(--text-secondary)] text-4xl mb-4"></i>
+                <h3 class="text-lg font-medium text-[var(--text-primary)] mb-2">No leads found</h3>
+                <p class="text-[var(--text-secondary)] mb-6">
+                    {% if search_query or focus_filter or contact_filter %}
+                        No leads match your current filters. <a href="{% url 'crm:lead_list' %}" class="text-[var(--primary-action-bg)] hover:underline">Clear filters</a>
+                    {% else %}
+                        Get started by adding your first lead.
+                    {% endif %}
+                </p>
+                <a href="{% url 'crm:lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Add Lead
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

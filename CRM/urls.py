@@ -5,5 +5,12 @@ app_name = 'crm'
 
 urlpatterns = [
     path('', views.crm_home, name='home'),
-    # Add more CRM-specific URLs here as needed
+    path('leads/', views.lead_list, name='lead_list'),
+    path('leads/create/', views.lead_create, name='lead_create'),
+    path('leads/<int:pk>/', views.lead_detail, name='lead_detail'),
+    path('leads/<int:pk>/update/', views.lead_update, name='lead_update'),
+    path('leads/<int:pk>/delete/', views.lead_delete, name='lead_delete'),
+    path('leads/<int:lead_pk>/messages/create/', views.lead_message_create, name='lead_message_create'),
+    path('focus/create/', views.lead_focus_create, name='lead_focus_create'),
+    path('contact-methods/create/', views.contact_method_create, name='contact_method_create'),
 ]

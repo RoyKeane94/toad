@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import HttpResponseForbidden
+from django.http import HttpResponseForbidden, JsonResponse
+from django.contrib import messages
+from django.urls import reverse
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage
+from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm
 
 # Create your views here.
 
@@ -16,11 +20,200 @@ def crm_home(request):
     """
     CRM home page view - only accessible by superusers.
     """
+    # Get summary statistics
+    total_leads = Lead.objects.count()
+    recent_leads = Lead.objects.order_by('-created_at')[:5]
+    
     context = {
         'title': 'CRM Dashboard',
         'user': request.user,
+        'total_leads': total_leads,
+        'recent_leads': recent_leads,
     }
     return render(request, 'CRM/crm_home.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_list(request):
+    """
+    List all leads with filtering and search.
+    """
+    leads = Lead.objects.select_related('lead_focus', 'contact_method').order_by('-created_at')
+    
+    # Search functionality
+    search_query = request.GET.get('search', '')
+    if search_query:
+        leads = leads.filter(name__icontains=search_query)
+    
+    # Filter by focus area
+    focus_filter = request.GET.get('focus', '')
+    if focus_filter:
+        leads = leads.filter(lead_focus__name=focus_filter)
+    
+    # Filter by contact method
+    contact_filter = request.GET.get('contact', '')
+    if contact_filter:
+        leads = leads.filter(contact_method__name=contact_filter)
+    
+    # Get filter options
+    focus_areas = LeadFocus.objects.all()
+    contact_methods = ContactMethod.objects.all()
+    
+    context = {
+        'leads': leads,
+        'focus_areas': focus_areas,
+        'contact_methods': contact_methods,
+        'search_query': search_query,
+        'focus_filter': focus_filter,
+        'contact_filter': contact_filter,
+    }
+    return render(request, 'CRM/lead_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_create(request):
+    """
+    Create a new lead.
+    """
+    if request.method == 'POST':
+        form = LeadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Lead created successfully!')
+            return redirect('crm:lead_list')
+    else:
+        form = LeadForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New Lead',
+    }
+    return render(request, 'CRM/lead_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_update(request, pk):
+    """
+    Update an existing lead.
+    """
+    lead = get_object_or_404(Lead, pk=pk)
+    
+    if request.method == 'POST':
+        form = LeadForm(request.POST, instance=lead)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Lead updated successfully!')
+            return redirect('crm:lead_list')
+    else:
+        form = LeadForm(instance=lead)
+    
+    context = {
+        'form': form,
+        'lead': lead,
+        'title': 'Update Lead',
+    }
+    return render(request, 'CRM/lead_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_delete(request, pk):
+    """
+    Delete a lead.
+    """
+    lead = get_object_or_404(Lead, pk=pk)
+    
+    if request.method == 'POST':
+        lead.delete()
+        messages.success(request, 'Lead deleted successfully!')
+        return redirect('crm:lead_list')
+    
+    context = {
+        'lead': lead,
+        'title': 'Delete Lead',
+    }
+    return render(request, 'CRM/lead_confirm_delete.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_detail(request, pk):
+    """
+    View lead details.
+    """
+    lead = get_object_or_404(Lead, pk=pk)
+    
+    context = {
+        'lead': lead,
+        'title': f'Lead: {lead.name}',
+    }
+    return render(request, 'CRM/lead_detail.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_message_create(request, lead_pk):
+    """
+    Create a new message for a specific lead.
+    """
+    lead = get_object_or_404(Lead, pk=lead_pk)
+    
+    if request.method == 'POST':
+        form = LeadMessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.lead = lead
+            message.save()
+            messages.success(request, 'Message added successfully!')
+            return redirect('crm:lead_detail', pk=lead_pk)
+    else:
+        form = LeadMessageForm()
+    
+    context = {
+        'form': form,
+        'lead': lead,
+        'title': 'Add Message',
+    }
+    return render(request, 'CRM/lead_message_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_focus_create(request):
+    """
+    Create a new lead focus area.
+    """
+    if request.method == 'POST':
+        form = LeadFocusForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Focus area created successfully!')
+            return redirect('crm:lead_list')
+    else:
+        form = LeadFocusForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New Focus Area',
+    }
+    return render(request, 'CRM/lead_focus_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def contact_method_create(request):
+    """
+    Create a new contact method.
+    """
+    if request.method == 'POST':
+        form = ContactMethodForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Contact method created successfully!')
+            return redirect('crm:lead_list')
+    else:
+        form = ContactMethodForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New Contact Method',
+    }
+    return render(request, 'CRM/contact_method_form.html', context)
 
 def crm_403_error(request, exception=None):
     """

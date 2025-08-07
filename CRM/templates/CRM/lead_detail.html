@@ -1,0 +1,126 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">Lead details and messages</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:lead_message_create' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Message
+                    </a>
+                    <a href="{% url 'crm:lead_update' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-edit mr-2"></i>
+                        Edit
+                    </a>
+                    <a href="{% url 'crm:lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Leads
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Lead Information -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                    <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Lead Information</h2>
+                    <dl class="space-y-4">
+                        <div>
+                            <dt class="text-sm font-medium text-[var(--text-secondary)]">Name</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1">{{ lead.name }}</dd>
+                        </div>
+                        
+                        <div>
+                            <dt class="text-sm font-medium text-[var(--text-secondary)]">Focus Area</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--task-bg)] text-[var(--text-primary)]">
+                                    {{ lead.lead_focus.name }}
+                                </span>
+                            </dd>
+                        </div>
+                        
+                        <div>
+                            <dt class="text-sm font-medium text-[var(--text-secondary)]">Contact Method</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1">{{ lead.contact_method.name }}</dd>
+                        </div>
+                        
+                        <div>
+                            <dt class="text-sm font-medium text-[var(--text-secondary)]">Created</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1">{{ lead.created_at|date:"F d, Y \a\t g:i A" }}</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-lg font-semibold text-[var(--text-primary)]">Messages ({{ lead.messages.count }})</h2>
+                        <a href="{% url 'crm:lead_message_create' lead.pk %}" class="inline-flex items-center px-3 py-1.5 border border-[var(--primary-action-bg)] rounded-md text-sm font-medium text-[var(--primary-action-bg)] bg-white hover:bg-[var(--primary-action-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                            <i class="fas fa-plus mr-1"></i>
+                            Add Message
+                        </a>
+                    </div>
+                    
+                    {% if lead.messages.all %}
+                    <div class="space-y-4">
+                        {% for message in lead.messages.all %}
+                        <div class="border border-[var(--border-color)] rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-2">
+                                <span class="text-xs text-[var(--text-secondary)]">{{ message.created_at|date:"M d, Y \a\t g:i A" }}</span>
+                            </div>
+                            <p class="text-sm text-[var(--text-primary)] whitespace-pre-wrap">{{ message.message }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="text-center py-8">
+                        <i class="fas fa-comment text-[var(--text-secondary)] text-4xl mb-4"></i>
+                        <p class="text-[var(--text-secondary)] mb-4">No messages yet for this lead.</p>
+                        <a href="{% url 'crm:lead_message_create' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                            <i class="fas fa-plus mr-2"></i>
+                            Add First Message
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-8">
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex justify-between items-center">
+                    <div class="flex space-x-4">
+                        <a href="{% url 'crm:lead_update' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                            <i class="fas fa-edit mr-2"></i>
+                            Edit Lead
+                        </a>
+                        <a href="{% url 'crm:lead_delete' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-[var(--delete-button-bg)] rounded-md shadow-sm text-sm font-medium text-[var(--delete-button-bg)] bg-white hover:bg-[var(--delete-button-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--delete-button-bg)] transition-colors">
+                            <i class="fas fa-trash mr-2"></i>
+                            Delete Lead
+                        </a>
+                    </div>
+                    <a href="{% url 'crm:lead_list' %}" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
+                        ← Back to all leads
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
