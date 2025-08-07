@@ -26,6 +26,7 @@ urlpatterns = [
     path('templates/revision-guide/', views.revision_guide_template_view, name='revision_guide_template'),
     path('templates/essay-planner/', views.essay_planner_template_view, name='essay_planner_template'),
     path('templates/job-application-tracker/', views.job_application_tracker_template_view, name='job_application_tracker_template'),
+    path('templates/line-manager/', views.line_manager_template_view, name='line_manager_template'),
     path('templates/student-jobs/', views.student_jobs_template_view, name='student_jobs_template'),
     path('templates/student-revision/', views.student_revision_template_view, name='student_revision_template'),
     path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),

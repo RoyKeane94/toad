@@ -46,10 +46,37 @@
             </p>
         </header>
 
+        <!-- Line Manager Template Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Line Manager Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Team Management Grid</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage your team's tasks and projects efficiently. Track assignments across team members and keep everyone aligned on priorities.</p>
+                     <a href="{% url 'pages:line_manager_template' %}" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </a>
+                 </div>
+            </div>
+            <!-- Line Manager Preview -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Professionals/Line Manager Picture.png' %}" alt="Team Management Grid Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Team Management Grid Preview</p>
+                        <p class="text-gray-400 text-xs">Add Line Manager Picture.png to static/img/Professionals/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
         <!-- Coming Soon Section -->
         <div class="text-center px-4 max-w-4xl mx-auto">
             <div class="bg-[var(--container-bg)] p-8 md:p-12 rounded-lg border border-[var(--border-color)]">
-                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">Professional Templates Coming Soon</h3>
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">More Professional Templates Coming Soon</h3>
                 <p class="text-[var(--text-secondary)] mb-6">
                     We're working on additional templates for professionals including:
                 </p>

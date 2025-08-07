@@ -12081,3 +12081,55 @@ INFO 2025-08-07 05:56:53,427 basehttp 1951 6159265792 "POST /tasks/702/delete/ H
 INFO 2025-08-07 05:57:09,844 basehttp 1951 6159265792 "POST /grids/50/tasks/create/191/195/ HTTP/1.1" 200 1336
 INFO 2025-08-07 05:57:25,739 basehttp 1951 6159265792 "POST /grids/50/tasks/create/191/196/ HTTP/1.1" 200 1400
 INFO 2025-08-07 05:57:38,446 basehttp 1951 6159265792 "POST /grids/50/tasks/create/191/198/ HTTP/1.1" 200 1354
+INFO 2025-08-07 06:12:05,287 autoreload 2528 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:12:08,370 basehttp 2528 6130397184 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-07 06:12:08,380 basehttp 2528 6130397184 "GET /templates/students/ HTTP/1.1" 200 4320
+INFO 2025-08-07 06:12:09,896 basehttp 2528 6130397184 "GET /templates/professionals/ HTTP/1.1" 200 4033
+INFO 2025-08-07 06:12:34,746 basehttp 2528 6130397184 "GET /templates/students/ HTTP/1.1" 200 4259
+INFO 2025-08-07 06:12:36,028 basehttp 2528 6130397184 "GET /templates/professionals/ HTTP/1.1" 200 4076
+INFO 2025-08-07 06:13:42,834 autoreload 2590 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:13:44,457 basehttp 2590 6128136192 "GET /templates/professionals/ HTTP/1.1" 200 4119
+INFO 2025-08-07 06:14:21,606 basehttp 2590 6128136192 "GET /templates/professionals/ HTTP/1.1" 200 4220
+WARNING 2025-08-07 06:14:21,621 basehttp 2590 6128136192 "GET /static/img/Line%20Manager%20Picture.png HTTP/1.1" 404 2015
+INFO 2025-08-07 06:14:42,276 autoreload 2636 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:14:44,464 basehttp 2636 6200635392 "GET /templates/professionals/ HTTP/1.1" 200 4157
+WARNING 2025-08-07 06:14:44,480 basehttp 2636 6200635392 "GET /static/img/Line%20Manager%20Picture.png HTTP/1.1" 404 2015
+INFO 2025-08-07 06:14:51,670 basehttp 2636 6217461760 "GET /templates/professionals/ HTTP/1.1" 200 4156
+WARNING 2025-08-07 06:14:51,689 basehttp 2636 6251114496 "GET /static/img/Line%20Manager%20Picture.png HTTP/1.1" 404 2015
+INFO 2025-08-07 06:14:51,700 basehttp 2636 6234288128 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-07 06:14:51,701 basehttp 2636 6200635392 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-07 06:14:51,702 basehttp 2636 6217461760 "GET /static/css/output.css HTTP/1.1" 200 67570
+INFO 2025-08-07 06:15:23,591 basehttp 2636 6217461760 "GET /templates/professionals/ HTTP/1.1" 200 4184
+INFO 2025-08-07 06:15:23,602 basehttp 2636 6217461760 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 200 330329
+INFO 2025-08-07 06:16:09,920 autoreload 2636 8377638656 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-07 06:16:10,198 autoreload 2678 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:16:48,928 autoreload 2678 8377638656 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-07 06:16:49,106 autoreload 2691 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:19:08,747 autoreload 2691 8377638656 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-07 06:19:09,018 autoreload 2716 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:19:35,658 basehttp 2716 6194311168 "GET /grids/ HTTP/1.1" 200 3926
+INFO 2025-08-07 06:19:36,656 basehttp 2716 6194311168 "GET /grids/50/ HTTP/1.1" 200 12766
+INFO 2025-08-07 06:19:36,670 basehttp 2716 6194311168 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 26055
+INFO 2025-08-07 06:20:37,728 autoreload 2716 8377638656 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-07 06:20:38,026 autoreload 2747 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:21:09,671 autoreload 2747 8377638656 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-07 06:21:09,885 autoreload 2761 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:21:22,149 autoreload 2761 8377638656 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-07 06:21:22,405 autoreload 2770 8377638656 Watching for file changes with StatReloader
+INFO 2025-08-07 06:21:43,061 basehttp 2770 6162231296 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-07 06:21:43,074 basehttp 2770 6162231296 "GET /templates/students/ HTTP/1.1" 200 4302
+INFO 2025-08-07 06:21:43,126 basehttp 2770 6212710400 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-07 06:21:43,135 basehttp 2770 6179057664 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-07 06:21:43,136 basehttp 2770 6195884032 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-07 06:21:43,137 basehttp 2770 6162231296 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-07 06:21:44,206 basehttp 2770 6162231296 "GET /templates/professionals/ HTTP/1.1" 200 4173
+INFO 2025-08-07 06:21:44,220 basehttp 2770 6162231296 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 304 0
+INFO 2025-08-07 06:21:45,917 basehttp 2770 6162231296 "GET /templates/line-manager/ HTTP/1.1" 302 0
+INFO 2025-08-07 06:21:45,945 basehttp 2770 6162231296 "GET /grids/51/ HTTP/1.1" 200 11820
+INFO 2025-08-07 06:21:52,131 basehttp 2770 6162231296 "GET /grids/ HTTP/1.1" 200 3994
+INFO 2025-08-07 06:21:55,365 basehttp 2770 6162231296 "GET /grids/51/delete/ HTTP/1.1" 200 3324
+INFO 2025-08-07 06:21:56,168 basehttp 2770 6162231296 "POST /grids/51/delete/ HTTP/1.1" 302 0
+INFO 2025-08-07 06:21:56,186 basehttp 2770 6162231296 "GET /grids/ HTTP/1.1" 200 3922
+INFO 2025-08-07 06:21:57,611 basehttp 2770 6162231296 "GET /grids/50/delete/ HTTP/1.1" 200 3392
+INFO 2025-08-07 06:21:58,297 basehttp 2770 6162231296 "POST /grids/50/delete/ HTTP/1.1" 302 0
+INFO 2025-08-07 06:21:58,313 basehttp 2770 6162231296 "GET /grids/ HTTP/1.1" 200 3873

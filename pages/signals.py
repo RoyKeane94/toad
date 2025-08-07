@@ -157,6 +157,88 @@ def create_course_planner_grid(user):
     return project
 
 
+def create_line_manager_grid_signal(user):
+    """
+    Create a Line Manager grid with predefined rows and columns for the given user.
+    Based on the Line Manager Picture.png structure.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Team Management Grid"
+    )
+    
+    # Create row headers (project categories)
+    row_headers = [
+        "Admin",
+        "Catch Ups", 
+        "Project Thames",
+        "Project Sun"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (team members)
+    column_headers = [
+        "Team",
+        "Jake",
+        "Lauren"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the image provided
+    tasks_data = [
+        # Admin row
+        (0, 0, "Organise summer drinks", False),  # Team
+        (0, 1, "Sit down to give feedback on Project Jupiter", False),  # Jake
+        (0, 2, "Approve annual leave", True),  # Lauren (completed)
+        
+        # Catch Ups row
+        (1, 0, "Schedule September all team in-person catch up", False),  # Team
+        (1, 1, "Schedule weekly catch up for w/c 18th August", False),  # Jake
+        (1, 2, "Schedule weekly catch up for w/c 18th August", False),  # Lauren
+        
+        # Project Thames row
+        (2, 0, "Final report deadline is 30th August", False),  # Team
+        (2, 1, "Sit down to discuss team roles", True),  # Jake (completed)
+        (2, 1, "Numbers to be agreed by 11th July", True),  # Jake (completed)
+        (2, 1, "Touch base with Jake to ensure that he can still provide the final draft by 24th August", False),  # Jake
+        (2, 2, "Prep agenda for internal stakeholder comms meeting", False),  # Lauren
+        
+        # Project Sun row
+        (3, 0, "Check on team capacity for Project Sun", False),  # Team
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
 def create_revision_guide_grid(user):
     """
     Create a Revision Guide grid with predefined rows and columns for the given user.

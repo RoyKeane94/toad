@@ -268,6 +268,15 @@ def create_exam_revision_planner_grid(user):
     return project
 
 
+def create_line_manager_grid(user):
+    """
+    Create a Line Manager grid with predefined rows and columns for team management.
+    Uses the signal function for consistent template creation.
+    """
+    from ..signals import create_line_manager_grid_signal
+    return create_line_manager_grid_signal(user)
+
+
 def create_job_application_tracker_grid(user):
     """
     Create a Job Application Tracker grid with predefined rows and columns for the given user.
