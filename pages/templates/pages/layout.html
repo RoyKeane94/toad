@@ -47,7 +47,7 @@
                 <div class="hidden md:flex items-center ml-12">
                     {% if user.is_authenticated %}
                     <div class="flex items-center space-x-8">
-                        <a href="{% url 'pages:project_create' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
+                        <a href="{% url 'pages:project_create' %}" onclick="plausible('grid_created', {props: {source: 'blank'}});" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
                             New Grid
                         </a>
                         <a href="{% url 'pages:templates_overview' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
