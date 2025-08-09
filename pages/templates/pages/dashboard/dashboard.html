@@ -35,6 +35,38 @@
             </div>
         </div>
 
+        <!-- Used in last day -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-bolt text-green-600"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Used in last day</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ last_day_active_users }}</p>
+                    <p class="text-sm text-green-600">{{ last_day_active_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Used in last 3 days -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-clock text-emerald-600"></i>
+                    </div>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm font-medium text-[var(--text-secondary)]">Used in last 3 days</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ last_3_days_active_users }}</p>
+                    <p class="text-sm text-emerald-600">{{ last_3_days_active_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Weekly Active Users -->
         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
             <div class="flex items-center">
@@ -168,11 +200,11 @@
                 </div>
             </div>
             
-            <!-- 11+ Grids -->
+            <!-- 10+ Grids -->
             <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
                 <div class="text-center">
-                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_11_plus_grids }}</p>
-                    <p class="text-sm text-[var(--text-secondary)]">11+ grids</p>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ users_with_10_plus_grids }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">10+ grids</p>
                 </div>
             </div>
         </div>
