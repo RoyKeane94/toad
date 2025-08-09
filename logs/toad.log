@@ -12858,3 +12858,157 @@ INFO 2025-08-09 12:50:24,272 basehttp 20768 6198865920 "GET /accounts/login/ HTT
 INFO 2025-08-09 12:50:35,203 basehttp 20768 6198865920 "POST /accounts/login/ HTTP/1.1" 302 0
 INFO 2025-08-09 12:50:35,215 basehttp 20768 6198865920 "GET /grids/ HTTP/1.1" 200 4076
 INFO 2025-08-09 12:50:39,209 basehttp 20768 6198865920 "GET /dashboard/ HTTP/1.1" 200 3541
+INFO 2025-08-09 13:08:41,712 autoreload 21212 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-09 13:08:49,324 basehttp 21212 6170832896 "GET /grids/ HTTP/1.1" 200 4048
+INFO 2025-08-09 13:08:51,491 basehttp 21212 6170832896 "GET /grids/53/ HTTP/1.1" 200 13213
+INFO 2025-08-09 13:08:51,506 basehttp 21212 6170832896 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31543
+WARNING 2025-08-09 13:09:08,694 log 21212 6170832896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:09:08,694 basehttp 21212 6170832896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+INFO 2025-08-09 13:09:09,779 basehttp 21212 6170832896 "GET /grids/53/ HTTP/1.1" 200 12142
+INFO 2025-08-09 13:09:09,801 basehttp 21212 6170832896 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51035
+WARNING 2025-08-09 13:09:09,807 log 21212 6187659264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:09:09,808 basehttp 21212 6187659264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1797
+WARNING 2025-08-09 13:09:12,854 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:12,855 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1751
+WARNING 2025-08-09 13:09:18,727 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:18,728 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1819
+INFO 2025-08-09 13:09:26,107 basehttp 21212 6187659264 "POST /grids/53/tasks/create/200/209/ HTTP/1.1" 200 1448
+WARNING 2025-08-09 13:09:30,509 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:30,509 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1790
+WARNING 2025-08-09 13:09:33,108 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:33,109 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1754
+WARNING 2025-08-09 13:09:35,508 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:35,508 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1801
+WARNING 2025-08-09 13:09:37,161 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:37,162 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1799
+INFO 2025-08-09 13:09:43,947 basehttp 21212 6187659264 "GET /grids/53/ HTTP/1.1" 200 12339
+WARNING 2025-08-09 13:09:43,975 log 21212 6187659264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:09:43,976 basehttp 21212 6187659264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1829
+WARNING 2025-08-09 13:09:47,020 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:47,020 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1743
+INFO 2025-08-09 13:09:48,744 basehttp 21212 6187659264 "GET /grids/53/ HTTP/1.1" 200 12391
+WARNING 2025-08-09 13:09:48,773 log 21212 6187659264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:09:48,774 basehttp 21212 6187659264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1762
+WARNING 2025-08-09 13:09:54,440 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:09:54,440 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1751
+INFO 2025-08-09 13:10:19,267 basehttp 21212 6187659264 "GET /grids/53/ HTTP/1.1" 200 13375
+INFO 2025-08-09 13:10:19,279 basehttp 21212 6187659264 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-09 13:10:24,867 log 21212 6187659264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:10:24,869 basehttp 21212 6187659264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1778
+INFO 2025-08-09 13:10:26,031 basehttp 21212 6187659264 "GET /grids/53/ HTTP/1.1" 200 12299
+WARNING 2025-08-09 13:10:26,063 log 21212 6187659264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:10:26,063 basehttp 21212 6187659264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1763
+INFO 2025-08-09 13:10:30,727 basehttp 21212 6187659264 "POST /grids/53/tasks/create/200/209/ HTTP/1.1" 200 1464
+WARNING 2025-08-09 13:10:34,429 log 21212 6187659264 Not Found: /pages/grids/53/tasks/reorder/
+WARNING 2025-08-09 13:10:34,430 basehttp 21212 6187659264 "POST /pages/grids/53/tasks/reorder/ HTTP/1.1" 404 1791
+INFO 2025-08-09 13:14:11,916 basehttp 21212 6187659264 "GET /grids/53/ HTTP/1.1" 200 13590
+INFO 2025-08-09 13:14:11,934 basehttp 21212 6187659264 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:14:15,360 basehttp 21212 6187659264 "GET /grids/53/ HTTP/1.1" 200 13506
+INFO 2025-08-09 13:17:00,947 autoreload 21597 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-09 13:17:12,532 basehttp 21597 6137589760 "GET /grids/53/ HTTP/1.1" 200 13500
+INFO 2025-08-09 13:17:12,553 basehttp 21597 6171242496 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-09 13:17:12,554 basehttp 21597 6188068864 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31534
+INFO 2025-08-09 13:17:12,555 basehttp 21597 6154416128 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-09 13:17:12,555 basehttp 21597 6137589760 "GET /static/css/output.css HTTP/1.1" 200 70896
+INFO 2025-08-09 13:17:15,290 project_views_functions 21597 6137589760 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:15,291 basehttp 21597 6137589760 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:17:16,700 basehttp 21597 6137589760 "GET /grids/53/ HTTP/1.1" 200 13606
+INFO 2025-08-09 13:17:16,711 basehttp 21597 6137589760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:17:16,712 basehttp 21597 6154416128 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-09 13:17:19,699 log 21597 6154416128 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:17:19,700 basehttp 21597 6154416128 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1816
+INFO 2025-08-09 13:17:22,567 basehttp 21597 6154416128 "GET /grids/53/ HTTP/1.1" 200 12497
+INFO 2025-08-09 13:17:22,584 basehttp 21597 6137589760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:17:22,585 basehttp 21597 6154416128 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51029
+WARNING 2025-08-09 13:17:22,595 log 21597 6137589760 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:17:22,596 basehttp 21597 6137589760 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1793
+INFO 2025-08-09 13:17:27,508 project_views_functions 21597 6137589760 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:27,508 basehttp 21597 6137589760 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:17:32,692 project_views_functions 21597 6137589760 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:32,692 basehttp 21597 6137589760 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:17:34,884 project_views_functions 21597 6137589760 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:34,885 basehttp 21597 6137589760 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:17:38,489 project_views_functions 21597 6137589760 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:38,489 basehttp 21597 6137589760 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:17:42,715 project_views_functions 21597 6137589760 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:42,716 basehttp 21597 6137589760 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:17:48,314 basehttp 21597 6137589760 "GET /grids/53/ HTTP/1.1" 200 13570
+INFO 2025-08-09 13:17:48,330 basehttp 21597 6154416128 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:17:48,330 basehttp 21597 6137589760 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:17:58,847 project_views_functions 21597 6154416128 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:17:58,847 basehttp 21597 6154416128 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:18:45,136 project_views_functions 21597 6154416128 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:18:45,137 basehttp 21597 6154416128 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:18:47,899 basehttp 21597 6154416128 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-09 13:18:47,912 log 21597 6154416128 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:18:47,912 basehttp 21597 6154416128 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1769
+INFO 2025-08-09 13:18:48,872 basehttp 21597 6154416128 "GET /grids/53/ HTTP/1.1" 200 12477
+INFO 2025-08-09 13:18:48,898 basehttp 21597 6137589760 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:18:48,898 basehttp 21597 6154416128 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-09 13:18:48,905 log 21597 6188068864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:18:48,905 basehttp 21597 6188068864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1845
+INFO 2025-08-09 13:18:56,898 project_views_functions 21597 6188068864 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:18:56,898 basehttp 21597 6188068864 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:19,740 autoreload 21951 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-09 13:22:25,194 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 12558
+INFO 2025-08-09 13:22:25,213 basehttp 21951 6202830848 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-09 13:22:25,219 basehttp 21951 6236483584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-09 13:22:25,223 basehttp 21951 6219657216 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51303
+WARNING 2025-08-09 13:22:25,231 log 21951 6236483584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:22:25,232 basehttp 21951 6236483584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1773
+INFO 2025-08-09 13:22:28,068 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:28,069 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:32,775 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:32,776 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:38,100 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 12564
+INFO 2025-08-09 13:22:38,117 basehttp 21951 6236483584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-09 13:22:38,119 basehttp 21951 6219657216 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-09 13:22:38,123 basehttp 21951 6253309952 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51303
+INFO 2025-08-09 13:22:38,124 basehttp 21951 6202830848 "GET /static/css/output.css HTTP/1.1" 200 70896
+WARNING 2025-08-09 13:22:38,127 log 21951 6270136320 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:22:38,127 basehttp 21951 6270136320 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1847
+INFO 2025-08-09 13:22:41,182 project_views_functions 21951 6270136320 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:41,183 basehttp 21951 6270136320 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:44,319 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:44,319 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:46,317 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:46,318 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:49,399 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:49,400 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:51,895 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:51,895 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:22:53,525 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 12553
+INFO 2025-08-09 13:22:53,543 basehttp 21951 6202830848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:22:53,543 basehttp 21951 6219657216 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-08-09 13:22:53,555 log 21951 6219657216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:22:53,555 basehttp 21951 6219657216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1847
+INFO 2025-08-09 13:22:56,512 project_views_functions 21951 6219657216 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:22:56,512 basehttp 21951 6219657216 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:23:00,746 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:23:00,746 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:25:26,834 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 12568
+INFO 2025-08-09 13:25:26,852 basehttp 21951 6202830848 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-09 13:25:26,852 basehttp 21951 6236483584 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:25:26,852 basehttp 21951 6219657216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-09 13:25:26,867 log 21951 6219657216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:25:26,868 basehttp 21951 6219657216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1819
+INFO 2025-08-09 13:25:30,506 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 13559
+INFO 2025-08-09 13:25:30,516 basehttp 21951 6202830848 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31534
+WARNING 2025-08-09 13:25:34,337 log 21951 6202830848 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:25:34,338 basehttp 21951 6202830848 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1830
+INFO 2025-08-09 13:25:35,223 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 12616
+WARNING 2025-08-09 13:25:35,256 log 21951 6202830848 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:25:35,256 basehttp 21951 6202830848 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1832
+INFO 2025-08-09 13:25:37,468 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:25:37,469 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:25:40,124 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:25:40,124 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:26:42,197 basehttp 21951 6202830848 "GET /grids/53/ HTTP/1.1" 200 12576
+INFO 2025-08-09 13:26:42,212 basehttp 21951 6202830848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:26:42,212 basehttp 21951 6219657216 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-08-09 13:26:42,225 log 21951 6219657216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-09 13:26:42,225 basehttp 21951 6219657216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1816
+INFO 2025-08-09 13:26:44,690 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:26:44,691 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:26:46,052 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:26:46,052 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63

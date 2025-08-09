@@ -62,7 +62,7 @@
                             </div>
                             {% with row_tasks=tasks_by_row_col|get_item:row.pk %}
                                 {% with task_list=row_tasks|get_item:column.pk %}
-                                    <div id="tasks-{{ row.pk }}-{{ column.pk }}" class="task-list space-y-2">
+                                    <div id="tasks-{{ row.pk }}-{{ column.pk }}" class="task-list space-y-2" data-row="{{ row.pk }}" data-col="{{ column.pk }}">
                                         {% if task_list %}
                                             {% for task in task_list %}
                                                 {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}

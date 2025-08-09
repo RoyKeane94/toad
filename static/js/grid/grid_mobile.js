@@ -109,6 +109,81 @@ class MobileGridManager {
             this.elements.gridSlider.addEventListener('touchend', this.handleTouchEnd.bind(this));
         }
     }
+
+    // Initialize SortableJS for mobile task lists (clone-on-drag for smooth touch UX)
+    initializeSortable() {
+        // Ensure Sortable is available and we are on mobile
+        if (typeof Sortable === 'undefined' || window.innerWidth >= 769) {
+            return;
+        }
+
+        // Find all task containers (each cell task list)
+        const taskContainers = document.querySelectorAll('[data-row][data-col]');
+        taskContainers.forEach(container => {
+            new Sortable(container, {
+                handle: '.drag-handle',
+                animation: 150,
+                ghostClass: 'sortable-ghost',
+                dragClass: 'sortable-drag',
+                chosenClass: 'sortable-chosen',
+                group: false,
+                // On mobile we force fallback so a clone follows the finger
+                forceFallback: true,
+                fallbackOnBody: true,
+                fallbackTolerance: 3,
+                onEnd: () => {
+                    const order = this.getTaskOrder();
+                    this.saveTaskOrder(order);
+                }
+            });
+        });
+    }
+
+    // Collect current order for all tasks similar to desktop
+    getTaskOrder() {
+        const order = [];
+        document.querySelectorAll('[data-task-id]').forEach(task => {
+            order.push({
+                id: task.dataset.taskId,
+                row: task.dataset.taskRow,
+                col: task.dataset.taskCol,
+                order: parseInt(task.dataset.taskOrder) || 0
+            });
+        });
+        return order;
+    }
+
+    // Save order to server (reuse endpoints)
+    saveTaskOrder(newOrder) {
+        const projectId = this.getProjectId();
+        if (!projectId) return;
+        fetch(`/grids/${projectId}/tasks/reorder/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({ task_order: newOrder })
+        }).then(() => {
+            // no-op on success; UI already reflects order
+        }).catch(() => {
+            // ignore for now on mobile
+        });
+    }
+
+    getProjectId() {
+        const urlParts = window.location.pathname.split('/');
+        const gridsIdx = urlParts.indexOf('grids');
+        if (gridsIdx >= 0 && gridsIdx + 1 < urlParts.length) {
+            return urlParts[gridsIdx + 1];
+        }
+        return null;
+    }
+
+    getCSRFToken() {
+        const token = document.querySelector('[name=csrfmiddlewaretoken]');
+        return token ? token.value : '';
+    }
     
     getEventListenersFor(element) {
         if (!this.eventListeners.has(element)) {
@@ -1010,6 +1085,7 @@ class MobileGridManager {
         this.addEventListeners();
         this.setupMobileGrid();
         this.restoreScrollPosition();
+        this.initializeSortable();
         
         // Mobile-specific form handling - let HTMX handle task forms
         if (window.innerWidth <= 768) {

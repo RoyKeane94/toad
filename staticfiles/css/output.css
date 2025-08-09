@@ -29,6 +29,8 @@
     --color-green-700: oklch(52.7% 0.154 150.069);
     --color-green-800: oklch(44.8% 0.119 151.328);
     --color-emerald-50: oklch(97.9% 0.021 166.113);
+    --color-emerald-100: oklch(95% 0.052 163.051);
+    --color-emerald-600: oklch(59.6% 0.145 163.225);
     --color-blue-50: oklch(97% 0.014 254.604);
     --color-blue-100: oklch(93.2% 0.032 255.585);
     --color-blue-200: oklch(88.2% 0.059 254.128);
@@ -84,6 +86,7 @@
     --font-weight-extrabold: 800;
     --tracking-normal: 0em;
     --tracking-wide: 0.025em;
+    --tracking-wider: 0.05em;
     --leading-tight: 1.25;
     --leading-normal: 1.5;
     --leading-relaxed: 1.625;
@@ -649,6 +652,9 @@
   .min-w-\[70px\] {
     min-width: 70px;
   }
+  .min-w-full {
+    min-width: 100%;
+  }
   .flex-1 {
     flex: 1;
   }
@@ -737,6 +743,9 @@
   }
   .items-center {
     align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
   }
   .items-start {
     align-items: flex-start;
@@ -848,6 +857,20 @@
       margin-inline-end: calc(calc(var(--spacing) * 8) * calc(1 - var(--tw-space-x-reverse)));
     }
   }
+  .divide-y {
+    :where(& > :not(:last-child)) {
+      --tw-divide-y-reverse: 0;
+      border-bottom-style: var(--tw-border-style);
+      border-top-style: var(--tw-border-style);
+      border-top-width: calc(1px * var(--tw-divide-y-reverse));
+      border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+    }
+  }
+  .divide-\[var\(--border-color\)\] {
+    :where(& > :not(:last-child)) {
+      border-color: var(--border-color);
+    }
+  }
   .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -855,6 +878,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .overflow-x-auto {
+    overflow-x: auto;
   }
   .overflow-y-auto {
     overflow-y: auto;
@@ -925,6 +951,9 @@
   }
   .border-\[var\(--clear-button-bg\)\] {
     border-color: var(--clear-button-bg);
+  }
+  .border-\[var\(--delete-button-bg\)\] {
+    border-color: var(--delete-button-bg);
   }
   .border-\[var\(--inline-input-border\)\] {
     border-color: var(--inline-input-border);
@@ -1001,6 +1030,12 @@
   .bg-\[var\(--task-bg\)\] {
     background-color: var(--task-bg);
   }
+  .bg-\[var\(--tertiary-action-bg\)\] {
+    background-color: var(--tertiary-action-bg);
+  }
+  .bg-\[var\(--text-secondary\)\] {
+    background-color: var(--text-secondary);
+  }
   .bg-black\/50 {
     background-color: color-mix(in srgb, #000 50%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
@@ -1012,6 +1047,9 @@
   }
   .bg-blue-100 {
     background-color: var(--color-blue-100);
+  }
+  .bg-emerald-100 {
+    background-color: var(--color-emerald-100);
   }
   .bg-gray-50 {
     background-color: var(--color-gray-50);
@@ -1161,6 +1199,9 @@
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
+  .px-2\.5 {
+    padding-inline: calc(var(--spacing) * 2.5);
+  }
   .px-3 {
     padding-inline: calc(var(--spacing) * 3);
   }
@@ -1172,6 +1213,9 @@
   }
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
+  }
+  .py-0\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
@@ -1327,6 +1371,10 @@
     --tw-tracking: var(--tracking-wide);
     letter-spacing: var(--tracking-wide);
   }
+  .tracking-wider {
+    --tw-tracking: var(--tracking-wider);
+    letter-spacing: var(--tracking-wider);
+  }
   .whitespace-nowrap {
     white-space: nowrap;
   }
@@ -1374,6 +1422,9 @@
   }
   .text-blue-800 {
     color: var(--color-blue-800);
+  }
+  .text-emerald-600 {
+    color: var(--color-emerald-600);
   }
   .text-gray-400 {
     color: var(--color-gray-400);
@@ -1640,6 +1691,13 @@
       }
     }
   }
+  .hover\:bg-\[var\(--delete-button-bg\)\] {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--delete-button-bg);
+      }
+    }
+  }
   .hover\:bg-\[var\(--delete-button-hover-bg\)\] {
     &:hover {
       @media (hover: hover) {
@@ -1745,6 +1803,13 @@
       }
     }
   }
+  .hover\:text-\[var\(--delete-button-hover-bg\)\] {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--delete-button-hover-bg);
+      }
+    }
+  }
   .hover\:text-\[var\(--primary-action-bg\)\] {
     &:hover {
       @media (hover: hover) {
@@ -1759,6 +1824,13 @@
       }
     }
   }
+  .hover\:text-\[var\(--tertiary-action-bg\)\] {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--tertiary-action-bg);
+      }
+    }
+  }
   .hover\:text-\[var\(--text-primary\)\] {
     &:hover {
       @media (hover: hover) {
@@ -1770,6 +1842,13 @@
     &:hover {
       @media (hover: hover) {
         color: var(--title-text);
+      }
+    }
+  }
+  .hover\:text-white {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-white);
       }
     }
   }
@@ -1809,6 +1888,11 @@
     &:focus {
       --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
       box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+    }
+  }
+  .focus\:ring-\[var\(--delete-button-bg\)\] {
+    &:focus {
+      --tw-ring-color: var(--delete-button-bg);
     }
   }
   .focus\:ring-\[var\(--primary-action-bg\)\] {
@@ -1917,11 +2001,6 @@
       justify-content: space-between;
     }
   }
-  .sm\:justify-center {
-    @media (width >= 40rem) {
-      justify-content: center;
-    }
-  }
   .sm\:space-y-0 {
     @media (width >= 40rem) {
       :where(& > :not(:last-child)) {
@@ -1974,9 +2053,9 @@
       padding-bottom: calc(var(--spacing) * 24);
     }
   }
-  .sm\:text-left {
+  .sm\:text-center {
     @media (width >= 40rem) {
-      text-align: left;
+      text-align: center;
     }
   }
   .sm\:text-2xl {
@@ -2379,6 +2458,11 @@
   inherits: false;
   initial-value: 0;
 }
+@property --tw-divide-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -2626,6 +2710,7 @@
       --tw-skew-y: initial;
       --tw-space-y-reverse: 0;
       --tw-space-x-reverse: 0;
+      --tw-divide-y-reverse: 0;
       --tw-border-style: solid;
       --tw-gradient-position: initial;
       --tw-gradient-from: #0000;

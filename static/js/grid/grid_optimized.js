@@ -96,7 +96,7 @@ class GridManager {
         const listeners = [
             // Document level events
             ['document', 'click', this.handleDocumentClick.bind(this)],
-            ['document', 'keydown', this.handleKeydown.bind(this)],
+                        ['document', 'keydown', this.handleKeydown.bind(this)],
             ['document', 'htmx:beforeRequest', this.handleHtmxBeforeRequest.bind(this)],
             ['document', 'htmx:afterRequest', this.handleHtmxAfterRequest.bind(this)],
             ['document', 'htmx:afterSwap', this.handleHtmxAfterSwap.bind(this)],
@@ -623,7 +623,7 @@ class GridManager {
         };
 
         // Send request to server
-        fetch(`/pages/grids/${projectId}/tasks/reorder/`, {
+        fetch(`/grids/${projectId}/tasks/reorder/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -655,9 +655,9 @@ class GridManager {
     // Get project ID from URL
     getProjectId() {
         const urlParts = window.location.pathname.split('/');
-        const projectIndex = urlParts.indexOf('projects');
-        if (projectIndex >= 0 && projectIndex + 1 < urlParts.length) {
-            return urlParts[projectIndex + 1];
+        const gridsIndex = urlParts.indexOf('grids');
+        if (gridsIndex >= 0 && gridsIndex + 1 < urlParts.length) {
+            return urlParts[gridsIndex + 1];
         }
         return null;
     }
@@ -2008,14 +2008,14 @@ function handleGridLoading() {
     }, 3000);
 }
 
-    // Initialize when DOM is ready
-    document.addEventListener('DOMContentLoaded', function() {
-        // Handle grid loading first
-        handleGridLoading();
-        
-        // Then initialize the grid manager
-        window.gridManager = new GridManager();
-    });
+// Initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Handle grid loading first
+    handleGridLoading();
+    
+    // Then initialize the grid manager
+    window.gridManager = new GridManager();
+});
 
 // Global function to close all dropdowns - called from inline onclick handlers
 window.closeAllDropdowns = function() {
