@@ -46,7 +46,7 @@
                 <div class="ml-4">
                     <p class="text-sm font-medium text-[var(--text-secondary)]">Used in last day</p>
                     <p class="text-2xl font-bold text-[var(--title-text)]">{{ last_day_active_users }}</p>
-                    <p class="text-sm text-green-600">{{ last_day_active_percentage }}%</p>
+                    <p class="text-sm text-green-600">Used in last day %: {{ last_day_active_percentage }}%</p>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                 <div class="ml-4">
                     <p class="text-sm font-medium text-[var(--text-secondary)]">Used in last 3 days</p>
                     <p class="text-2xl font-bold text-[var(--title-text)]">{{ last_3_days_active_users }}</p>
-                    <p class="text-sm text-emerald-600">{{ last_3_days_active_percentage }}%</p>
+                    <p class="text-sm text-emerald-600">Used in last 3 days %: {{ last_3_days_active_percentage }}%</p>
                 </div>
             </div>
         </div>
@@ -209,5 +209,54 @@
             </div>
         </div>
     </div>
+
+    <!-- Tasks per User Distribution -->
+    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6 mt-8">
+        <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Tasks per User (Distribution)</h2>
+        <div class="relative w-full h-64">
+            <canvas id="tasksPerUserChart"></canvas>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{# Safely embed JSON data for the chart #}
+{{ task_distribution_labels|json_script:"task-dist-labels" }}
+{{ task_distribution_counts|json_script:"task-dist-counts" }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const canvasEl = document.getElementById('tasksPerUserChart');
+  const labelsEl = document.getElementById('task-dist-labels');
+  const countsEl = document.getElementById('task-dist-counts');
+  if (!canvasEl || !labelsEl || !countsEl || typeof Chart === 'undefined') return;
+  const labels = JSON.parse(labelsEl.textContent);
+  const dataCounts = JSON.parse(countsEl.textContent);
+  const ctx = canvasEl.getContext('2d');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Users',
+        data: dataCounts,
+        backgroundColor: 'rgba(16, 185, 129, 0.5)',
+        borderColor: 'rgba(16, 185, 129, 1)',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: { beginAtZero: true, ticks: { precision:0 } }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+});
+</script>
 {% endblock %}

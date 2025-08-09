@@ -104,6 +104,34 @@ def get_dashboard_analytics():
     monthly_active_percentage = round((monthly_active_users / total_users * 100), 1) if total_users > 0 else 0
     inactive_percentage = round((inactive_users / total_users * 100), 1) if total_users > 0 else 0
     
+    # Tasks per user distribution (for bar chart)
+    # Buckets: 0, 1-5, 6-10, 11-20, 21-50, 51+
+    task_counts = list(
+        User.objects.annotate(task_count=Count('toad_projects__tasks')).values_list('task_count', flat=True)
+    )
+    bucket_labels = [
+        '0',
+        '1-5',
+        '6-10',
+        '11-20',
+        '21-50',
+        '51+'
+    ]
+    bucket_counts = [0, 0, 0, 0, 0, 0]
+    for count in task_counts:
+        if count == 0:
+            bucket_counts[0] += 1
+        elif 1 <= count <= 5:
+            bucket_counts[1] += 1
+        elif 6 <= count <= 10:
+            bucket_counts[2] += 1
+        elif 11 <= count <= 20:
+            bucket_counts[3] += 1
+        elif 21 <= count <= 50:
+            bucket_counts[4] += 1
+        else:
+            bucket_counts[5] += 1
+    
     return {
         'total_users': total_users,
         'last_day_active_users': last_day_active_users,
@@ -127,4 +155,7 @@ def get_dashboard_analytics():
         'users_with_9_grids': users_with_9_grids,
         'users_with_10_grids': users_with_10_grids,
         'users_with_10_plus_grids': users_with_10_plus_grids,
+        # Chart data
+        'task_distribution_labels': bucket_labels,
+        'task_distribution_counts': bucket_counts,
     }

@@ -13012,3 +13012,15 @@ INFO 2025-08-09 13:26:44,690 project_views_functions 21951 6202830848 User None 
 INFO 2025-08-09 13:26:44,691 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
 INFO 2025-08-09 13:26:46,052 project_views_functions 21951 6202830848 User None reordered tasks: in project Tom's Shooting Schedule
 INFO 2025-08-09 13:26:46,052 basehttp 21951 6202830848 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:51:13,690 autoreload 23714 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-09 13:51:27,097 basehttp 23714 6188953600 "GET /grids/53/ HTTP/1.1" 200 13529
+INFO 2025-08-09 13:51:27,111 basehttp 23714 6222606336 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:51:27,111 basehttp 23714 6205779968 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-09 13:51:27,113 basehttp 23714 6188953600 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-09 13:51:31,437 project_views_functions 23714 6188953600 User None reordered tasks: in project Tom's Shooting Schedule
+INFO 2025-08-09 13:51:31,438 basehttp 23714 6188953600 "POST /grids/53/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-09 13:51:32,868 basehttp 23714 6188953600 "GET /grids/53/ HTTP/1.1" 200 13587
+INFO 2025-08-09 13:51:34,329 basehttp 23714 6188953600 "GET / HTTP/1.1" 200 6465
+INFO 2025-08-09 13:51:34,598 basehttp 23714 6188953600 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-09 13:51:35,325 basehttp 23714 6188953600 "GET /dashboard/ HTTP/1.1" 200 4066
+INFO 2025-08-09 13:53:42,332 basehttp 23714 6188953600 "GET /dashboard/ HTTP/1.1" 200 4108
