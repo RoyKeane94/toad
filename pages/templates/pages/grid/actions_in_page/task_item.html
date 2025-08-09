@@ -14,6 +14,7 @@
         
         <form method="POST" 
               action="{% url 'pages:task_toggle_complete' task.pk %}" 
+              onsubmit="plausible('task_completed');"
               class="flex-shrink-0"
               hx-post="{% url 'pages:task_toggle_complete' task.pk %}"
               hx-swap="none"

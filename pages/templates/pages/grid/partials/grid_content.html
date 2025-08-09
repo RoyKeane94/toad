@@ -135,6 +135,7 @@
                             <div class="absolute bottom-3 left-3 right-3 pt-3 border-t border-[var(--border-color)]/30 bg-[var(--container-bg)]" style="height: 60px; display: flex; align-items: center;">
                                 <form method="post" 
                                       action="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}" 
+                                      onsubmit="plausible('task_created');"
                                       class="task-form add-task-form w-full"
                                       novalidate
                                       hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row_h.pk col_pk=col_h.pk %}"

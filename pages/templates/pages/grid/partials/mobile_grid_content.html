@@ -74,6 +74,7 @@
                                     <div class="mt-2">
                                         <form method="post"
                                               action="{% url 'pages:task_create' project_pk=project.pk row_pk=row.pk col_pk=column.pk %}"
+                                              onsubmit="plausible('task_created');"
                                               class="task-form add-task-form w-full"
                                               novalidate
                                               hx-post="{% url 'pages:task_create' project_pk=project.pk row_pk=row.pk col_pk=column.pk %}"
