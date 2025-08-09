@@ -16,7 +16,7 @@ from .forms import (
     AccountDeletionForm,
     ForgotPasswordForm
 )
-from .email_utils import send_verification_email, send_password_reset_email
+from .email_utils import send_verification_email, send_password_reset_email, send_joining_email
 
 # Create your views here.
 
@@ -352,6 +352,16 @@ def verify_email_view(request, token):
         
         messages.success(request, f'Email verified successfully! Welcome to Toad, {user.get_short_name()}! You are now signed in.')
         
+        # Send joining email in background (best-effort)
+        try:
+            import threading
+            from django.conf import settings
+            base_url = getattr(settings, 'SITE_URL', '').rstrip('/')
+            cta_url = f"{base_url}/pages/projects/" if base_url else None
+            threading.Thread(target=lambda: send_joining_email(user, request, cta_url)).start()
+        except Exception as e:
+            logger.error(f"Failed to queue joining email for {user.email}: {e}")
+
         # Redirect to their first grid or project list
         from pages.models import Project
         try:

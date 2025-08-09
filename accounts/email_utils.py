@@ -161,3 +161,60 @@ This email was sent to {user.email}.
         logger = logging.getLogger(__name__)
         logger.error(f"Failed to send password reset email to {user.email}: {e}")
         return False 
+
+
+def send_joining_email(user, request=None, cta_url=None):
+    """
+    Send the post-verification welcome email with hero image.
+    """
+    # Build a default CTA if not provided
+    if not cta_url:
+        # Try to send them to their first project or project list
+        base_url = settings.SITE_URL.rstrip('/')
+        cta_url = f"{base_url}/projects/"  # generic fallback
+
+    # Read and encode the image
+    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
+    image_data = ""
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+
+    html_message = render_to_string('accounts/email/joining_email.html', {
+        'user': user,
+        'toad_image_data': image_data,
+        'cta_url': cta_url,
+    })
+
+    text_message = f"""
+Hi {user.first_name or user.get_short_name()},
+
+Welcome to Toad! Your email is verified and you’re all set.
+
+Your first grid is ready and waiting. Head here to get started:
+{cta_url}
+
+Thanks for joining the private beta. If you have any feedback, reply to this email—I read every message.
+
+— Tom, Founder of Toad
+"""
+
+    try:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"Attempting to send joining email to {user.email}")
+        send_mail(
+            subject='Welcome to Toad — You’re all set!',
+            message=text_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        logger.info(f"Successfully sent joining email to {user.email}")
+        return True
+    except Exception as e:
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.error(f"Failed to send joining email to {user.email}: {e}")
+        return False
