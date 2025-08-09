@@ -12,23 +12,9 @@
     <script src="{% static 'js/grid/grid_mobile.js' %}"></script>
 {% endif %}
 <style>
-/* SortableJS styles for mobile */
-.sortable-drag {
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    cursor: grabbing;
-    background-color: white;
-    opacity: 0.9;
-}
-.sortable-ghost {
-    opacity: 0.5;
-    border: 2px dashed var(--primary-action-bg);
-    background-color: var(--grid-header-bg);
-}
-/* Selected item in list */
-.sortable-chosen { opacity: 1; }
-/* Ensure drag handle is visible on mobile (no hover) */
-.drag-handle { opacity: 1 !important; cursor: grab; }
-.drag-handle:active { cursor: grabbing; }
+/* Hide drag handle and any Sortable styles on mobile (drag disabled) */
+.drag-handle { display: none !important; }
+.sortable-drag, .sortable-ghost, .sortable-chosen { }
 </style>
 {% endblock %}
 
