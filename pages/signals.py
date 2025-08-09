@@ -55,6 +55,7 @@ def create_first_grid(sender, instance, created, **kwargs):
             (0, 0, "This is a task. You can check it off", False),
             (0, 0, "Easily add a new task by clicking 'Add Task'", False),
             (0, 0, "Tidy your grid by clicking 'Clear Completed' to remove all completed tasks", False),
+            (0, 0, "If you're on desktop, you can drag and drop tasks to reorder them", False),
             
             # Make It Your Own row
             (1, 0, "Make your grid your own by adding your own columns and rows", False),
