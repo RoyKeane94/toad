@@ -53,7 +53,7 @@
                  <div class="text-center">
                      <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Team Management Grid</h2>
                      <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage your team's tasks and projects efficiently. Track assignments across team members and keep everyone aligned on priorities.</p>
-                     <a href="{% url 'pages:line_manager_template' %}" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <a href="{% url 'pages:line_manager_template' %}" onclick="plausible('grid_created', {props: {source: 'template', template_name: 'Team Management Grid'}});" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
                      </a>
                  </div>
