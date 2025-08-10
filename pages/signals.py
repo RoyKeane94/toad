@@ -391,3 +391,94 @@ def create_revision_guide_grid(user):
         )
     
     return project
+
+
+def create_product_development_tracker_grid(user):
+    """
+    Create a Product Development Tracker grid with predefined rows and columns for the given user.
+    Based on the Product Development Tracker structure with phases and development areas.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Product Development Tracker"
+    )
+    
+    # Create row headers (phases)
+    row_headers = [
+        "Phase 1: Planning and Design",
+        "Phase 2: Core Build", 
+        "Phase 3: Pre-Launch Polish",
+        "Phase 4: Launch and Feedback"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (development areas)
+    column_headers = [
+        "Product and Design",
+        "Development (Frontend)",
+        "Development (Backend)",
+        "Marketing and User Outreach"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Product Development Tracker image
+    tasks_data = [
+        # Phase 1: Planning and Design
+        (0, 0, "Create user flow diagram", False),  # Product and Design
+        (0, 0, "Design the main grid", False),  # Product and Design
+        (0, 0, "Design the pricing page", False),  # Product and Design
+        (0, 1, "Set up the basic Django project structure", False),  # Development (Frontend)
+        (0, 2, "Design the initial database schema", False),  # Development (Backend)
+        (0, 2, "Set up the database on Railway", False),  # Development (Backend)
+        
+        # Phase 2: Core Build
+        (1, 0, "Finalise the 'Welcome Grid' content", False),  # Product and Design
+        (1, 1, "Build the main grid view", False),  # Development (Frontend)
+        (1, 1, "Ensure all buttons are consistently styled with Tailwind", False),  # Development (Frontend)
+        (1, 2, "Build the user registration flow", False),  # Development (Backend)
+        (1, 2, "Separate specific Django views into new files to improve readability", False),  # Development (Backend)
+        (1, 2, "Add the template grids into Signals", False),  # Development (Backend)
+        
+        # Phase 3: Pre-Launch Polish
+        (2, 0, "Review the FAQ Page", False),  # Product and Design
+        (2, 0, "Look at adding a third column to make it more vibrant", False),  # Product and Design
+        (2, 1, "Review JavaScript to ensure fully optimised", False),  # Development (Frontend)
+        (2, 1, "Minify CSS and Javascript", False),  # Development (Frontend)
+        (2, 2, "Integrate stripe for payments", False),  # Development (Backend)
+        (2, 2, "Run Lighthouse on Chrome and implement feedback", False),  # Development (Backend)
+        
+        # Phase 4: Launch and Feedback
+        (3, 0, "Pull together a list of user comments to review", False),  # Product and Design
+        (3, 1, "Once reviewed, implement select user feedback", False),  # Development (Frontend)
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project

@@ -1085,7 +1085,7 @@ class MobileGridManager {
         this.addEventListeners();
         this.setupMobileGrid();
         this.restoreScrollPosition();
-        this.initializeSortable();
+        // Drag-and-drop disabled on mobile
         
         // Mobile-specific form handling - let HTMX handle task forms
         if (window.innerWidth <= 768) {

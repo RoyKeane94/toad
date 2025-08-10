@@ -10,7 +10,7 @@ from ..specific_views_functions.general_views_functions import (
     render_simple_template,
     get_contact_form_context
 )
-from ..signals import create_course_planner_grid, create_revision_guide_grid, create_shooting_grid
+from ..signals import create_course_planner_grid, create_revision_guide_grid, create_shooting_grid, create_product_development_tracker_grid
 from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid, create_line_manager_grid
 import logging
 
@@ -138,6 +138,21 @@ def shooting_template_create_view(request):
     except Exception as e:
         logger.error(f"Error creating shooting grid: {e}")
         messages.error(request, "There was an error creating your Shooting Schedule. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def product_development_tracker_template_view(request):
+    """Create a Product Development Tracker grid for the current user and redirect to it"""
+    try:
+        # Create the product development tracker grid
+        project = create_product_development_tracker_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating product development tracker grid: {e}")
+        messages.error(request, "There was an error creating your Product Development Tracker. Please try again.")
         return redirect('pages:templates_overview')
 
 def professionals_jobs_template_view(request):

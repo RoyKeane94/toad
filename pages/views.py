@@ -24,6 +24,7 @@ from .specific_views.general_views import (
     personal_templates_view,
     shooting_template_landing_view,
     shooting_template_create_view,
+    product_development_tracker_template_view,
     faq_view,
     contact_us_view,
     privacy_policy_view

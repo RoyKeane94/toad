@@ -13059,3 +13059,271 @@ INFO 2025-08-09 14:54:41,359 email_utils 24930 6234009600 Attempting to send joi
 INFO 2025-08-09 14:54:41,372 basehttp 24930 6200356864 "GET /grids/54/ HTTP/1.1" 200 10596
 INFO 2025-08-09 14:54:41,386 basehttp 24930 6200356864 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-08-09 14:54:41,882 email_utils 24930 6234009600 Successfully sent joining email to tom_barratt@hotmail.co.uk
+INFO 2025-08-10 11:14:26,549 autoreload 32875 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:14:29,018 basehttp 32875 6130528256 "GET / HTTP/1.1" 200 6259
+INFO 2025-08-10 11:14:29,102 basehttp 32875 6130528256 "GET /static/css/output.css HTTP/1.1" 200 70896
+INFO 2025-08-10 11:14:29,104 basehttp 32875 6130528256 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-10 11:14:29,127 basehttp 32875 6130528256 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-10 11:14:29,197 basehttp 32875 6130528256 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-10 11:14:33,536 basehttp 32875 6130528256 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:14:33,544 basehttp 32875 6130528256 "GET /templates/students/ HTTP/1.1" 200 4235
+INFO 2025-08-10 11:14:33,581 basehttp 32875 6147354624 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-10 11:14:33,585 basehttp 32875 6164180992 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-10 11:14:33,587 basehttp 32875 6130528256 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+ERROR 2025-08-10 11:14:35,636 log 32875 6130528256 Internal Server Error: /templates/entrepreneurs/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 153, in entrepreneurs_templates_view
+    return render_simple_template(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/general_views_functions.py", line 130, in render_simple_template
+    return render(request, template_name, context or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'product_development_tracker_template' not found. 'product_development_tracker_template' is not a valid view function or pattern name.
+ERROR 2025-08-10 11:14:35,642 basehttp 32875 6130528256 "GET /templates/entrepreneurs/ HTTP/1.1" 500 19281
+INFO 2025-08-10 11:14:35,687 basehttp 32875 6130528256 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-08-10 11:14:35,689 basehttp 32875 6130528256 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+ERROR 2025-08-10 11:15:10,539 log 32875 6130528256 Internal Server Error: /templates/entrepreneurs/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 153, in entrepreneurs_templates_view
+    return render_simple_template(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/general_views_functions.py", line 130, in render_simple_template
+    return render(request, template_name, context or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'product_development_tracker_template' not found. 'product_development_tracker_template' is not a valid view function or pattern name.
+ERROR 2025-08-10 11:15:10,545 basehttp 32875 6130528256 "GET /templates/entrepreneurs/ HTTP/1.1" 500 19251
+ERROR 2025-08-10 11:15:25,115 log 32875 6130528256 Internal Server Error: /templates/entrepreneurs/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 153, in entrepreneurs_templates_view
+    return render_simple_template(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/general_views_functions.py", line 130, in render_simple_template
+    return render(request, template_name, context or {})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'product_development_tracker_template' not found. 'product_development_tracker_template' is not a valid view function or pattern name.
+ERROR 2025-08-10 11:15:25,120 basehttp 32875 6130528256 "GET /templates/entrepreneurs/ HTTP/1.1" 500 19256
+INFO 2025-08-10 11:22:30,706 autoreload 32875 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-10 11:22:31,051 autoreload 32959 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:22:42,307 autoreload 32959 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-10 11:22:42,542 autoreload 32975 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:22:52,817 autoreload 32975 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-10 11:22:53,006 autoreload 32981 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:23:03,232 autoreload 32981 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-10 11:23:03,566 autoreload 32986 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:23:23,991 autoreload 32986 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-10 11:23:24,263 autoreload 33039 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:23:40,689 autoreload 33151 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:24:02,123 autoreload 33151 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-10 11:24:02,462 autoreload 33162 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:24:09,679 autoreload 33162 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-10 11:24:09,916 autoreload 33177 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:24:18,444 basehttp 33177 6136852480 "GET /templates/entrepreneurs/ HTTP/1.1" 200 4112
+WARNING 2025-08-10 11:24:18,487 basehttp 33177 6136852480 "GET /static/img/Product%20Development%20Tracker.png HTTP/1.1" 404 2036
+INFO 2025-08-10 11:24:37,389 autoreload 33383 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:24:39,610 basehttp 33383 6159380480 "GET /templates/entrepreneurs/ HTTP/1.1" 200 4097
+WARNING 2025-08-10 11:24:39,625 basehttp 33383 6159380480 "GET /static/img/Product%20Development%20Tracker.png HTTP/1.1" 404 2036
+INFO 2025-08-10 11:24:47,999 basehttp 33383 6159380480 "GET /templates/entrepreneurs/ HTTP/1.1" 200 4056
+WARNING 2025-08-10 11:24:48,018 basehttp 33383 6209859584 "GET /static/img/Product%20Development%20Tracker.png HTTP/1.1" 404 2036
+INFO 2025-08-10 11:24:48,029 basehttp 33383 6193033216 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-10 11:24:48,029 basehttp 33383 6176206848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-10 11:24:48,030 basehttp 33383 6159380480 "GET /static/css/output.css HTTP/1.1" 200 70896
+INFO 2025-08-10 11:25:50,967 autoreload 33600 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-10 11:25:52,940 basehttp 33600 6135525376 "GET /templates/entrepreneurs/ HTTP/1.1" 200 4112
+INFO 2025-08-10 11:25:52,959 basehttp 33600 6135525376 "GET /static/img/Entrepreneurs/Product%20Development%20Tracker.png HTTP/1.1" 200 455674
+INFO 2025-08-10 11:26:03,326 basehttp 33600 6135525376 "GET /templates/product-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:03,346 basehttp 33600 6135525376 "GET /accounts/login/?next=/templates/product-development-tracker/ HTTP/1.1" 200 4290
+INFO 2025-08-10 11:26:11,996 basehttp 33600 6135525376 "POST /accounts/login/?next=/templates/product-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:12,007 basehttp 33600 6135525376 "GET /grids/ HTTP/1.1" 200 4052
+INFO 2025-08-10 11:26:15,168 basehttp 33600 6135525376 "GET /grids/53/delete/ HTTP/1.1" 200 3478
+INFO 2025-08-10 11:26:15,970 basehttp 33600 6135525376 "POST /grids/53/delete/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:15,987 basehttp 33600 6135525376 "GET /grids/ HTTP/1.1" 200 4065
+INFO 2025-08-10 11:26:17,744 basehttp 33600 6135525376 "GET /grids/52/delete/ HTTP/1.1" 200 3477
+INFO 2025-08-10 11:26:18,520 basehttp 33600 6135525376 "POST /grids/52/delete/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:18,537 basehttp 33600 6135525376 "GET /grids/ HTTP/1.1" 200 4003
+INFO 2025-08-10 11:26:19,899 basehttp 33600 6135525376 "GET /grids/47/delete/ HTTP/1.1" 200 3395
+INFO 2025-08-10 11:26:21,037 basehttp 33600 6135525376 "POST /grids/47/delete/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:21,053 basehttp 33600 6135525376 "GET /grids/ HTTP/1.1" 200 3984
+INFO 2025-08-10 11:26:21,982 basehttp 33600 6135525376 "GET /grids/46/delete/ HTTP/1.1" 200 3467
+INFO 2025-08-10 11:26:22,871 basehttp 33600 6135525376 "POST /grids/46/delete/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:22,885 basehttp 33600 6135525376 "GET /grids/ HTTP/1.1" 200 3918
+INFO 2025-08-10 11:26:24,393 basehttp 33600 6135525376 "GET /grids/22/delete/ HTTP/1.1" 200 3404
+INFO 2025-08-10 11:26:25,029 basehttp 33600 6135525376 "POST /grids/22/delete/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:25,037 basehttp 33600 6135525376 "GET /grids/ HTTP/1.1" 200 3779
+INFO 2025-08-10 11:26:28,230 basehttp 33600 6135525376 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:28,241 basehttp 33600 6135525376 "GET /templates/students/ HTTP/1.1" 200 4420
+INFO 2025-08-10 11:26:28,294 basehttp 33600 6186004480 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-10 11:26:28,296 basehttp 33600 6152351744 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-10 11:26:28,297 basehttp 33600 6135525376 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-10 11:26:28,298 basehttp 33600 6169178112 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-10 11:26:29,489 basehttp 33600 6169178112 "GET /templates/entrepreneurs/ HTTP/1.1" 200 4306
+INFO 2025-08-10 11:26:31,395 basehttp 33600 6169178112 "GET /templates/product-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-10 11:26:31,424 basehttp 33600 6169178112 "GET /grids/55/ HTTP/1.1" 200 14115
+INFO 2025-08-10 11:26:31,436 basehttp 33600 6169178112 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31534

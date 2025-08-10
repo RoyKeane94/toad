@@ -29,6 +29,7 @@ urlpatterns = [
     path('templates/line-manager/', views.line_manager_template_view, name='line_manager_template'),
     path('templates/shooting/', views.shooting_template_landing_view, name='shooting_template'),
     path('templates/shooting/create/', views.shooting_template_create_view, name='shooting_template_create'),
+    path('templates/product-development-tracker/', views.product_development_tracker_template_view, name='product_development_tracker_template'),
     path('templates/student-jobs/', views.student_jobs_template_view, name='student_jobs_template'),
     path('templates/student-revision/', views.student_revision_template_view, name='student_revision_template'),
     path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),
