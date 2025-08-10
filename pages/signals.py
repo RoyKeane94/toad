@@ -567,3 +567,104 @@ def create_weekly_planner_grid(user):
         )
     
     return project
+
+
+def create_sell_side_project_grid(user):
+    """
+    Create a Sell Side Project grid with predefined rows and columns for the given user.
+    Based on the Sell-Side Deal Grid structure.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Sell Side Project"
+    )
+    
+    # Create row headers (project phases)
+    row_headers = [
+        "Initial Pitch & Analysis",
+        "Marketing & Due Diligence",
+        "Exclusivity & Legals"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (functional areas)
+    column_headers = [
+        "Project Management & Comms",
+        "Preparation & Marketing",
+        "Financial Modelling & Valuation",
+        "Due Diligence & Legal"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Sell-Side Deal Grid image
+    tasks_data = [
+        # Row 1: Initial Pitch & Analysis
+        (0, 0, "Set up internal deal team folder", False),  # Project Management & Comms
+        (0, 0, "Schedule internal kick off call", False),  # Project Management & Comms
+        (0, 0, "Pull together timeline", False),  # Project Management & Comms
+        (0, 1, "Conduct preliminary buyer market research", False),  # Preparation & Marketing
+        (0, 1, "Prepare initial pitch book for client", False),  # Preparation & Marketing
+        (0, 1, "Identify buyer long list", False),  # Preparation & Marketing
+        (0, 2, "Build initial financial model of the target company", False),  # Financial Modelling & Valuation
+        (0, 2, "Perform a preliminary valuation (DCF, Comps, LBO)", False),  # Financial Modelling & Valuation
+        (0, 3, "Client onboarding", False),  # Due Diligence & Legal
+        (0, 3, "Draft engagement letter for the client", False),  # Due Diligence & Legal
+        (0, 3, "Sign engagement letter with the client", False),  # Due Diligence & Legal
+        (0, 3, "Get quotes from due diligence providers", False),  # Due Diligence & Legal
+        (0, 3, "Choose due diligence providers across legal, commercial and financial", False),  # Due Diligence & Legal
+        
+        # Row 2: Marketing & Due Diligence
+        (1, 0, "Schedule weekly client calls", False),  # Project Management & Comms
+        (1, 0, "Track weekly progress against timeline", False),  # Project Management & Comms
+        (1, 0, "Set up Q&A process", False),  # Project Management & Comms
+        (1, 1, "Draft the teaser", False),  # Preparation & Marketing
+        (1, 1, "Draft the IM", False),  # Preparation & Marketing
+        (1, 1, "Contact potential buyers with the teaser", False),  # Preparation & Marketing
+        (1, 1, "Share the IM with those buyers who have signed an NDA", False),  # Preparation & Marketing
+        (1, 2, "Refine the financial model with new data", False),  # Financial Modelling & Valuation
+        (1, 2, "Prepare a detailed valuation analysis", False),  # Financial Modelling & Valuation
+        (1, 2, "Update the valuation based on first-round bids", False),  # Financial Modelling & Valuation
+        (1, 3, "Finalise NDAs with potential buyers", False),  # Due Diligence & Legal
+        (1, 3, "Populate VDR with initial diligence documents", False),  # Due Diligence & Legal
+        (1, 3, "Facilitate legal, commercial and financial due diligence", False),  # Due Diligence & Legal
+        
+        # Row 3: Exclusivity & Legals
+        (2, 0, "Set up weekly all parties calls if relevant", False),  # Project Management & Comms
+        (2, 2, "Update model for latest trading", False),  # Financial Modelling & Valuation
+        (2, 2, "Share trading update", False),  # Financial Modelling & Valuation
+        (2, 3, "Instruct lawyers to draft the SPA", False),  # Due Diligence & Legal
+        (2, 3, "Set up weekly legal calls", False),  # Due Diligence & Legal
+        (2, 3, "Finalise SPA", False),  # Due Diligence & Legal
+        (2, 3, "W&I", False),  # Due Diligence & Legal
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
