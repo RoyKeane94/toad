@@ -20,6 +20,7 @@ from .specific_views.general_views import (
     line_manager_template_view,
     weekly_planner_template_view,
     sell_side_project_template_view,
+    origination_director_template_view,
     professionals_jobs_template_view,
     professionals_templates_view,
     entrepreneurs_templates_view,

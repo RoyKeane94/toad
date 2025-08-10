@@ -668,3 +668,103 @@ def create_sell_side_project_grid(user):
         )
     
     return project
+
+
+def create_origination_director_grid(user):
+    """
+    Create an Origination Director grid with predefined rows and columns for the given user.
+    Based on the Origination Grid structure with days of the week and Admin/Meetings/Tasks/Pitches rows.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Origination Director"
+    )
+    
+    # Create row headers (origination categories)
+    row_headers = [
+        "Admin",
+        "Meetings", 
+        "Tasks",
+        "Pitches"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (days of the week)
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create sample tasks for each row
+    tasks_data = [
+        # Admin row
+        (0, 0, "Review weekly origination pipeline", False),  # Monday
+        (0, 1, "Update deal tracking spreadsheet", False),  # Tuesday
+        (0, 2, "Prepare weekly origination report", False),  # Wednesday
+        (0, 3, "Schedule team origination meeting", False),  # Thursday
+        (0, 4, "Review weekend deal opportunities", False),  # Friday
+        
+        # Meetings row
+        (1, 0, "09:00 - Weekly origination team standup", False),  # Monday
+        (1, 0, "14:00 - Client pitch meeting - Project Alpha", False),  # Monday
+        (1, 1, "10:00 - Sector team origination review", False),  # Tuesday
+        (1, 1, "15:00 - External advisor catch-up", False),  # Tuesday
+        (1, 2, "11:00 - Deal flow review with partners", False),  # Wednesday
+        (1, 3, "13:00 - Origination strategy planning", False),  # Thursday
+        (1, 4, "16:00 - Friday wrap-up call", False),  # Friday
+        
+        # Tasks row
+        (2, 0, "Research new market opportunities", False),  # Monday
+        (2, 0, "Draft initial pitch materials", False),  # Monday
+        (2, 1, "Follow up on previous week's leads", False),  # Tuesday
+        (2, 1, "Prepare sector analysis for meetings", False),  # Tuesday
+        (2, 2, "Update deal pipeline database", False),  # Wednesday
+        (2, 2, "Review competitor activity", False),  # Wednesday
+        (2, 3, "Prepare origination metrics", False),  # Thursday
+        (2, 3, "Coordinate with legal team on NDAs", False),  # Thursday
+        (2, 4, "Plan next week's origination focus", False),  # Friday
+        
+        # Pitches row
+        (3, 0, "Finalize Project Alpha pitch deck", False),  # Monday
+        (3, 1, "Prepare Project Beta initial approach", False),  # Tuesday
+        (3, 2, "Review Project Gamma pitch materials", False),  # Wednesday
+        (3, 3, "Update Project Delta pitch strategy", False),  # Thursday
+        (3, 4, "Plan Project Echo pitch approach", False),  # Friday
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
