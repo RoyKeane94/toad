@@ -18,6 +18,7 @@ from .specific_views.general_views import (
     essay_planner_template_view,
     job_application_tracker_template_view,
     line_manager_template_view,
+    weekly_planner_template_view,
     professionals_jobs_template_view,
     professionals_templates_view,
     entrepreneurs_templates_view,

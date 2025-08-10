@@ -482,3 +482,88 @@ def create_product_development_tracker_grid(user):
         )
     
     return project
+
+
+def create_weekly_planner_grid(user):
+    """
+    Create a Weekly Planner grid with predefined rows and columns for the given user.
+    Based on the Weekly Planner Grid structure with days of the week and Admin/Meetings/Tasks rows.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Weekly Planner"
+    )
+    
+    # Create row headers (weekly categories)
+    row_headers = [
+        "Admin",
+        "Meetings", 
+        "Tasks"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (days of the week)
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Weekly Planner Grid image
+    tasks_data = [
+        # Admin row
+        (0, 0, "Submit expenses for June", False),  # Monday
+        (0, 0, "Book travel and hotel for trip to Doncaster next week", False),  # Monday
+        (0, 1, "Ring dentist", False),  # Tuesday
+        
+        # Meetings row
+        (1, 0, "10:00 - Catch up with James re Project Pearl", False),  # Monday
+        (1, 0, "14:00 - Discuss external comms on Project Soft with Susie", False),  # Monday
+        (1, 0, "16:30 - Intro call with diligence providers on Project Pearl", False),  # Monday
+        (1, 1, "12:30 - Lunch with Olivia", False),  # Tuesday
+        (1, 1, "14:00 - Management meeting on Project Coral", False),  # Tuesday
+        (1, 2, "9:30 - Project Coral team meeting to discuss thoughts", False),  # Wednesday
+        
+        # Tasks row
+        (2, 0, "Write up notes on Project Pearl and circulate", False),  # Monday
+        (2, 0, "Draft external comms for Project Soft", False),  # Monday
+        (2, 1, "Prepare Project Coral thoughts", False),  # Tuesday
+        (2, 2, "Get final sign off on Project Soft comms", False),  # Wednesday
+        (2, 2, "Share Project Soft comms to LinkedIn", False),  # Wednesday
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
