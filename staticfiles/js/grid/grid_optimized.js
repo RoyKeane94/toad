@@ -1886,6 +1886,7 @@ class GridManager {
         }
         this.addEventListeners();
         this.setupGridScrolling();
+        this.setupInlineEditing();
         
         // Configure HTMX to not cache modal content
         if (typeof htmx !== 'undefined') {
@@ -1909,6 +1910,169 @@ class GridManager {
                 this.elements.gridContent.classList.add('grid-ready');
             }
         }, 500);
+    }
+
+    // Setup inline editing functionality
+    setupInlineEditing() {
+        // Only enable inline editing on desktop
+        if (window.innerWidth < 769) {
+            return;
+        }
+        
+        // Store bound function references to avoid binding issues
+        this.boundTaskTextClick = this.handleTaskTextClick.bind(this);
+        this.boundTaskTextBlur = this.handleTaskTextBlur.bind(this);
+        this.boundTaskTextKeydown = this.handleTaskTextKeydown.bind(this);
+        
+        // Add event listeners to all task text elements
+        this.addInlineEditingListeners();
+        
+        // Listen for new tasks being added (HTMX updates)
+        document.addEventListener('htmx:afterSwap', (e) => {
+            if (e.detail.target && e.detail.target.closest('[id^="tasks-"]')) {
+                this.addInlineEditingListeners();
+            }
+        });
+    }
+
+    // Add inline editing event listeners to task text elements
+    addInlineEditingListeners() {
+        const taskTextElements = document.querySelectorAll('.task-text-editable');
+        
+        taskTextElements.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundTaskTextClick);
+            element.removeEventListener('blur', this.boundTaskTextBlur);
+            element.removeEventListener('keydown', this.boundTaskTextKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundTaskTextClick);
+            element.addEventListener('blur', this.boundTaskTextBlur);
+            element.addEventListener('keydown', this.boundTaskTextKeydown);
+        });
+    }
+
+    // Handle task text click for inline editing
+    handleTaskTextClick(e) {
+        if (window.innerWidth < 769) return; // Only on desktop
+        
+        const element = e.target;
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+    }
+
+    // Handle task text blur (save on blur)
+    handleTaskTextBlur(e) {
+        const element = e.target;
+        // Only save if we're still in edit mode and not already saving
+        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            console.log('Blur event, saving task...'); // Debug
+            element.classList.add('saving'); // Prevent double saves
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveTaskEdit(element);
+        }
+    }
+
+    // Handle task text keydown (Enter to save, Escape to cancel)
+    handleTaskTextKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveTaskEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Save task edit to server
+    saveTaskEdit(element) {
+        let taskId = element.dataset.taskId;
+        
+        // If task ID is not found on the current element, try to get it from the parent
+        if (!taskId) {
+            const parentTaskElement = element.closest('[data-task-id]');
+            if (parentTaskElement) {
+                taskId = parentTaskElement.dataset.taskId;
+            }
+        }
+        
+        // If still no task ID, try to get it from the element's ID attribute
+        if (!taskId && element.id) {
+            const idMatch = element.id.match(/task-text-(\d+)/);
+            if (idMatch) {
+                taskId = idMatch[1];
+            }
+        }
+        
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid task ID
+        if (!taskId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Send update to server - use a relative URL that works from any project grid page
+        fetch(`/tasks/${taskId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                text: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
     }
 
     // Set initial column visibility to prevent flash

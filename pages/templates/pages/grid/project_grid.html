@@ -85,10 +85,41 @@
             display: none;
         }
     }
+    
+    /* Inline editing styles */
+    .editing {
+        background-color: var(--container-bg) !important;
+        border: 2px dashed var(--tertiary-action-bg) !important;
+        border-radius: 6px !important;
+        padding: 4px 8px !important;
+        outline: none !important;
+        min-height: 24px !important;
+        box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+        position: relative !important;
+    }
+    
+    .editing:focus {
+        box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
+        border-color: var(--tertiary-action-bg) !important;
+    }
+    
+    /* Task text hover state for desktop */
+    @media (min-width: 769px) {
+        .task-text-editable:hover {
+            background-color: var(--grid-header-bg) !important;
+            border-radius: 6px !important;
+            padding: 4px 8px !important;
+            cursor: text !important;
+            transition: all 0.2s ease !important;
+        }
+    }
 </style>
 {% endblock %}
 
 {% block content %}
+
+<!-- CSRF Token for inline editing -->
+{% csrf_token %}
 
 <!-- Loading Overlay -->
 <div id="grid-loading-overlay" class="grid-loading-overlay">

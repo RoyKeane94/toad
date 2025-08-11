@@ -13481,3 +13481,247 @@ INFO 2025-08-11 18:29:39,742 project_views_functions 41688 6163542016 User None 
 INFO 2025-08-11 18:29:39,743 basehttp 41688 6163542016 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
 INFO 2025-08-11 18:29:41,457 project_views_functions 41688 6163542016 User None reordered tasks: in project Tom's Origination Director
 INFO 2025-08-11 18:29:41,457 basehttp 41688 6163542016 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 19:42:52,640 autoreload 42331 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 19:42:54,647 basehttp 42331 6170980352 "GET /grids/58/ HTTP/1.1" 200 17409
+INFO 2025-08-11 19:42:54,663 basehttp 42331 6187806720 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:42:54,663 basehttp 42331 6170980352 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:43:00,872 basehttp 42331 6170980352 "POST /tasks/756/edit/ HTTP/1.1" 200 122
+INFO 2025-08-11 19:43:03,058 basehttp 42331 6170980352 "GET /grids/58/ HTTP/1.1" 200 17459
+INFO 2025-08-11 19:43:08,103 basehttp 42331 6170980352 "POST /tasks/756/edit/ HTTP/1.1" 200 120
+INFO 2025-08-11 19:50:29,582 autoreload 42896 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 19:50:31,891 basehttp 42896 6136541184 "GET /grids/58/ HTTP/1.1" 200 16489
+INFO 2025-08-11 19:50:31,912 basehttp 42896 6136541184 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 19:50:31,913 basehttp 42896 6153367552 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33536
+INFO 2025-08-11 19:50:44,357 basehttp 42896 6153367552 "GET /grids/58/ HTTP/1.1" 200 16453
+INFO 2025-08-11 19:50:44,368 basehttp 42896 6153367552 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:50:44,368 basehttp 42896 6136541184 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:51:01,333 basehttp 42896 6136541184 "GET /grids/58/ HTTP/1.1" 200 16535
+INFO 2025-08-11 19:51:01,342 basehttp 42896 6136541184 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:51:01,342 basehttp 42896 6153367552 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 19:51:06,507 log 42896 6153367552 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 19:51:06,508 basehttp 42896 6153367552 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+INFO 2025-08-11 19:51:18,010 basehttp 42896 6153367552 "GET /grids/58/ HTTP/1.1" 200 16536
+INFO 2025-08-11 19:51:18,021 basehttp 42896 6153367552 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:51:18,021 basehttp 42896 6136541184 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:06,722 autoreload 43297 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 19:54:11,829 basehttp 43297 6191525888 "GET /grids/58/ HTTP/1.1" 200 16485
+INFO 2025-08-11 19:54:11,847 basehttp 43297 6191525888 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 19:54:11,847 basehttp 43297 6208352256 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33595
+INFO 2025-08-11 19:54:27,139 basehttp 43297 6208352256 "GET /grids/58/ HTTP/1.1" 200 16498
+INFO 2025-08-11 19:54:27,151 basehttp 43297 6225178624 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 19:54:27,153 basehttp 43297 6191525888 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-11 19:54:27,153 basehttp 43297 6242004992 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33595
+INFO 2025-08-11 19:54:27,154 basehttp 43297 6208352256 "GET /static/css/output.css HTTP/1.1" 200 71010
+INFO 2025-08-11 19:54:32,761 basehttp 43297 6208352256 "GET /grids/58/ HTTP/1.1" 200 16480
+INFO 2025-08-11 19:54:32,775 basehttp 43297 6208352256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:32,775 basehttp 43297 6242004992 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:34,885 project_views_functions 43297 6242004992 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 19:54:34,885 basehttp 43297 6242004992 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 19:54:36,019 basehttp 43297 6242004992 "GET /grids/58/ HTTP/1.1" 200 16515
+INFO 2025-08-11 19:54:36,030 basehttp 43297 6208352256 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:36,030 basehttp 43297 6242004992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:38,872 project_views_functions 43297 6242004992 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 19:54:38,872 basehttp 43297 6242004992 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 19:54:40,216 basehttp 43297 6242004992 "GET /grids/58/ HTTP/1.1" 200 16497
+INFO 2025-08-11 19:54:40,232 basehttp 43297 6242004992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:40,232 basehttp 43297 6208352256 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:43,551 project_views_functions 43297 6208352256 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 19:54:43,552 basehttp 43297 6208352256 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 19:54:46,482 basehttp 43297 6208352256 "GET /grids/58/ HTTP/1.1" 200 16542
+INFO 2025-08-11 19:54:46,497 basehttp 43297 6208352256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:54:46,497 basehttp 43297 6242004992 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:57:58,710 autoreload 43791 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 19:58:04,588 basehttp 43791 6163083264 "GET /grids/58/ HTTP/1.1" 200 16496
+INFO 2025-08-11 19:58:04,602 basehttp 43791 6163083264 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-11 19:58:04,607 basehttp 43791 6179909632 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 19:58:04,607 basehttp 43791 6196736000 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 33991
+WARNING 2025-08-11 19:58:07,141 log 43791 6196736000 Not Found: /tasks/undefined/edit/
+WARNING 2025-08-11 19:58:07,141 basehttp 43791 6196736000 "POST /tasks/undefined/edit/ HTTP/1.1" 404 1887
+INFO 2025-08-11 19:58:12,317 basehttp 43791 6196736000 "GET /grids/58/ HTTP/1.1" 200 16567
+INFO 2025-08-11 19:58:12,330 basehttp 43791 6196736000 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:58:12,330 basehttp 43791 6179909632 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 19:58:14,618 log 43791 6179909632 Not Found: /tasks/undefined/edit/
+WARNING 2025-08-11 19:58:14,619 basehttp 43791 6179909632 "POST /tasks/undefined/edit/ HTTP/1.1" 404 1889
+INFO 2025-08-11 19:58:17,463 basehttp 43791 6179909632 "GET /grids/58/ HTTP/1.1" 200 16490
+INFO 2025-08-11 19:58:17,474 basehttp 43791 6196736000 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:58:17,474 basehttp 43791 6179909632 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 19:58:22,944 log 43791 6179909632 Not Found: /tasks/undefined/edit/
+WARNING 2025-08-11 19:58:22,944 basehttp 43791 6179909632 "POST /tasks/undefined/edit/ HTTP/1.1" 404 1873
+WARNING 2025-08-11 19:58:29,363 log 43791 6179909632 Not Found: /tasks/undefined/edit/
+WARNING 2025-08-11 19:58:29,364 basehttp 43791 6179909632 "POST /tasks/undefined/edit/ HTTP/1.1" 404 1819
+INFO 2025-08-11 19:58:47,171 project_views_functions 43791 6179909632 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 19:58:47,171 basehttp 43791 6179909632 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 19:58:48,341 basehttp 43791 6179909632 "GET /grids/58/ HTTP/1.1" 200 16537
+INFO 2025-08-11 19:58:48,352 basehttp 43791 6196736000 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:58:48,352 basehttp 43791 6179909632 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 19:58:50,443 project_views_functions 43791 6179909632 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 19:58:50,443 basehttp 43791 6179909632 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:00:58,921 autoreload 44265 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:01:02,005 basehttp 44265 6201438208 "GET /grids/58/ HTTP/1.1" 200 16472
+INFO 2025-08-11 20:01:02,020 basehttp 44265 6201438208 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-11 20:01:02,024 basehttp 44265 6218264576 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 20:01:02,025 basehttp 44265 6235090944 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34743
+INFO 2025-08-11 20:01:06,106 basehttp 44265 6235090944 "GET /grids/58/ HTTP/1.1" 200 16546
+INFO 2025-08-11 20:01:06,122 basehttp 44265 6235090944 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:01:06,122 basehttp 44265 6218264576 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:01:14,892 project_views_functions 44265 6218264576 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:01:14,893 basehttp 44265 6218264576 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:01:17,145 project_views_functions 44265 6218264576 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:01:17,146 basehttp 44265 6218264576 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:01:18,608 basehttp 44265 6218264576 "GET /grids/58/ HTTP/1.1" 200 16530
+INFO 2025-08-11 20:01:18,621 basehttp 44265 6218264576 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:01:18,621 basehttp 44265 6235090944 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:01:21,927 project_views_functions 44265 6235090944 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:01:21,927 basehttp 44265 6235090944 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:01:24,109 project_views_functions 44265 6235090944 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:01:24,109 basehttp 44265 6235090944 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:01:55,079 autoreload 44265 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 20:01:55,360 autoreload 44295 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:02:32,083 autoreload 44295 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 20:02:32,350 autoreload 44303 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:03:16,237 autoreload 44303 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 20:03:16,505 autoreload 44313 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:03:31,880 autoreload 44313 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 20:03:32,212 autoreload 44318 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:04:04,556 autoreload 44751 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:04:06,498 basehttp 44751 6204534784 "GET /grids/58/ HTTP/1.1" 200 16558
+INFO 2025-08-11 20:04:06,511 basehttp 44751 6204534784 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-11 20:04:06,515 basehttp 44751 6221361152 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 20:04:06,516 basehttp 44751 6238187520 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34743
+INFO 2025-08-11 20:04:12,222 basehttp 44751 6238187520 "GET /grids/58/ HTTP/1.1" 200 16480
+INFO 2025-08-11 20:04:12,235 basehttp 44751 6238187520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:04:12,236 basehttp 44751 6221361152 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:04:18,438 basehttp 44751 6238187520 "GET /grids/58/ HTTP/1.1" 200 16507
+INFO 2025-08-11 20:04:18,453 basehttp 44751 6204534784 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 20:04:18,454 basehttp 44751 6255013888 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34743
+INFO 2025-08-11 20:04:18,455 basehttp 44751 6221361152 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-11 20:04:18,455 basehttp 44751 6238187520 "GET /static/css/output.css HTTP/1.1" 200 71010
+INFO 2025-08-11 20:04:22,132 basehttp 44751 6238187520 "GET /grids/58/ HTTP/1.1" 200 16552
+INFO 2025-08-11 20:04:22,145 basehttp 44751 6221361152 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:04:22,145 basehttp 44751 6238187520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:04:28,629 log 44751 6238187520 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:04:28,631 basehttp 44751 6238187520 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1921
+INFO 2025-08-11 20:04:31,170 basehttp 44751 6238187520 "GET /grids/58/ HTTP/1.1" 200 16505
+INFO 2025-08-11 20:04:31,185 basehttp 44751 6221361152 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:04:31,186 basehttp 44751 6255013888 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:04:31,192 log 44751 6238187520 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:04:31,192 basehttp 44751 6238187520 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1931
+INFO 2025-08-11 20:04:43,084 basehttp 44751 6238187520 "GET /grids/58/ HTTP/1.1" 200 16496
+INFO 2025-08-11 20:04:43,105 basehttp 44751 6255013888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:04:43,106 basehttp 44751 6221361152 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:04:43,111 log 44751 6238187520 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:04:43,112 basehttp 44751 6238187520 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1886
+INFO 2025-08-11 20:09:53,195 autoreload 45320 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:10:00,389 basehttp 45320 6192508928 "GET /grids/58/ HTTP/1.1" 200 16649
+INFO 2025-08-11 20:10:00,413 basehttp 45320 6192508928 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-11 20:10:00,427 basehttp 45320 6209335296 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 20:10:00,428 basehttp 45320 6226161664 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 35254
+WARNING 2025-08-11 20:10:00,429 log 45320 6192508928 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:10:00,429 basehttp 45320 6192508928 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1841
+WARNING 2025-08-11 20:10:02,716 log 45320 6192508928 Not Found: /pages/tasks/757/edit/
+WARNING 2025-08-11 20:10:02,717 basehttp 45320 6192508928 "POST /pages/tasks/757/edit/ HTTP/1.1" 404 1866
+WARNING 2025-08-11 20:10:08,662 log 45320 6192508928 Not Found: /pages/tasks/757/edit/
+WARNING 2025-08-11 20:10:08,662 basehttp 45320 6192508928 "POST /pages/tasks/757/edit/ HTTP/1.1" 404 1890
+INFO 2025-08-11 20:10:10,842 basehttp 45320 6192508928 "GET /grids/58/ HTTP/1.1" 200 16647
+INFO 2025-08-11 20:10:10,860 basehttp 45320 6226161664 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:10:10,860 basehttp 45320 6209335296 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:10:10,875 log 45320 6192508928 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:10:10,875 basehttp 45320 6192508928 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1922
+INFO 2025-08-11 20:10:15,689 basehttp 45320 6192508928 "GET /grids/58/ HTTP/1.1" 200 16672
+INFO 2025-08-11 20:10:15,711 basehttp 45320 6242988032 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 20:10:15,717 basehttp 45320 6259814400 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 35254
+WARNING 2025-08-11 20:10:15,717 log 45320 6192508928 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:10:15,718 basehttp 45320 6192508928 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1854
+INFO 2025-08-11 20:10:15,719 basehttp 45320 6226161664 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-11 20:10:15,720 basehttp 45320 6209335296 "GET /static/css/output.css HTTP/1.1" 200 71010
+WARNING 2025-08-11 20:10:18,155 log 45320 6209335296 Not Found: /pages/tasks/757/edit/
+WARNING 2025-08-11 20:10:18,156 basehttp 45320 6209335296 "POST /pages/tasks/757/edit/ HTTP/1.1" 404 1869
+INFO 2025-08-11 20:11:59,959 autoreload 45694 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:12:04,925 basehttp 45694 6190739456 "GET /grids/58/ HTTP/1.1" 200 16612
+INFO 2025-08-11 20:12:04,954 basehttp 45694 6190739456 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 20:12:04,958 basehttp 45694 6224392192 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 35248
+WARNING 2025-08-11 20:12:04,959 log 45694 6207565824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:12:04,960 basehttp 45694 6207565824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1876
+INFO 2025-08-11 20:12:08,374 project_views 45694 6207565824 JSON request received for task 757: Update deal tracng spreadsheet
+INFO 2025-08-11 20:12:08,374 project_views 45694 6207565824 Task 757 current text: 'Update deal tracking spreadsheet' -> new text: 'Update deal tracng spreadsheet'
+INFO 2025-08-11 20:12:08,377 project_views 45694 6207565824 Task 757 saved successfully. Old: 'Update deal tracking spreadsheet' -> New: 'Update deal tracng spreadsheet'
+INFO 2025-08-11 20:12:08,378 project_views 45694 6207565824 Task 757 after refresh: 'Update deal tracng spreadsheet'
+INFO 2025-08-11 20:12:08,379 project_views 45694 6207565824 Task 757 in database: 'Update deal tracng spreadsheet'
+INFO 2025-08-11 20:12:08,379 basehttp 45694 6207565824 "POST /tasks/757/edit/ HTTP/1.1" 200 116
+INFO 2025-08-11 20:12:13,725 basehttp 45694 6207565824 "GET /grids/58/ HTTP/1.1" 200 16666
+INFO 2025-08-11 20:12:13,744 basehttp 45694 6190739456 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:13,744 basehttp 45694 6224392192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:12:13,751 log 45694 6207565824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:12:13,751 basehttp 45694 6207565824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1898
+INFO 2025-08-11 20:12:17,358 project_views 45694 6207565824 JSON request received for task 757: Update deal tracking spreadsheet
+INFO 2025-08-11 20:12:17,359 project_views 45694 6207565824 Task 757 current text: 'Update deal tracng spreadsheet' -> new text: 'Update deal tracking spreadsheet'
+INFO 2025-08-11 20:12:17,361 project_views 45694 6207565824 Task 757 saved successfully. Old: 'Update deal tracng spreadsheet' -> New: 'Update deal tracking spreadsheet'
+INFO 2025-08-11 20:12:17,362 project_views 45694 6207565824 Task 757 after refresh: 'Update deal tracking spreadsheet'
+INFO 2025-08-11 20:12:17,362 project_views 45694 6207565824 Task 757 in database: 'Update deal tracking spreadsheet'
+INFO 2025-08-11 20:12:17,363 basehttp 45694 6207565824 "POST /tasks/757/edit/ HTTP/1.1" 200 118
+INFO 2025-08-11 20:12:20,204 project_views_functions 45694 6207565824 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:12:20,204 basehttp 45694 6207565824 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:12:21,293 basehttp 45694 6207565824 "GET /grids/58/ HTTP/1.1" 200 16655
+INFO 2025-08-11 20:12:21,317 basehttp 45694 6224392192 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:21,317 basehttp 45694 6241218560 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:21,317 basehttp 45694 6190739456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:12:21,323 log 45694 6207565824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:12:21,323 basehttp 45694 6207565824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1882
+INFO 2025-08-11 20:12:24,507 project_views_functions 45694 6207565824 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:12:24,507 basehttp 45694 6207565824 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:12:26,014 basehttp 45694 6207565824 "GET /grids/58/ HTTP/1.1" 200 16637
+INFO 2025-08-11 20:12:26,031 basehttp 45694 6241218560 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:26,032 basehttp 45694 6190739456 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 20:12:26,040 log 45694 6207565824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 20:12:26,040 basehttp 45694 6207565824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1917
+INFO 2025-08-11 20:12:28,961 project_views 45694 6207565824 JSON request received for task 762: 14:00 - Client pitch mting - Project Alpha
+INFO 2025-08-11 20:12:28,961 project_views 45694 6207565824 Task 762 current text: '14:00 - Client pitch meeting - Project Alpha' -> new text: '14:00 - Client pitch mting - Project Alpha'
+INFO 2025-08-11 20:12:28,963 project_views 45694 6207565824 Task 762 saved successfully. Old: '14:00 - Client pitch meeting - Project Alpha' -> New: '14:00 - Client pitch mting - Project Alpha'
+INFO 2025-08-11 20:12:28,964 project_views 45694 6207565824 Task 762 after refresh: '14:00 - Client pitch mting - Project Alpha'
+INFO 2025-08-11 20:12:28,964 project_views 45694 6207565824 Task 762 in database: '14:00 - Client pitch mting - Project Alpha'
+INFO 2025-08-11 20:12:28,965 basehttp 45694 6207565824 "POST /tasks/762/edit/ HTTP/1.1" 200 128
+INFO 2025-08-11 20:12:36,873 project_views 45694 6207565824 JSON request received for task 762: 14:00 - Client pitch meeting - Project Alpha
+INFO 2025-08-11 20:12:36,873 project_views 45694 6207565824 Task 762 current text: '14:00 - Client pitch mting - Project Alpha' -> new text: '14:00 - Client pitch meeting - Project Alpha'
+INFO 2025-08-11 20:12:36,875 project_views 45694 6207565824 Task 762 saved successfully. Old: '14:00 - Client pitch mting - Project Alpha' -> New: '14:00 - Client pitch meeting - Project Alpha'
+INFO 2025-08-11 20:12:36,875 project_views 45694 6207565824 Task 762 after refresh: '14:00 - Client pitch meeting - Project Alpha'
+INFO 2025-08-11 20:12:36,875 project_views 45694 6207565824 Task 762 in database: '14:00 - Client pitch meeting - Project Alpha'
+INFO 2025-08-11 20:12:36,876 basehttp 45694 6207565824 "POST /tasks/762/edit/ HTTP/1.1" 200 130
+INFO 2025-08-11 20:12:40,262 basehttp 45694 6207565824 "GET /grids/58/ HTTP/1.1" 200 16656
+INFO 2025-08-11 20:12:40,273 basehttp 45694 6207565824 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:40,273 basehttp 45694 6190739456 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:42,895 project_views 45694 6190739456 JSON request received for task 768: Research market opportunities
+INFO 2025-08-11 20:12:42,896 project_views 45694 6190739456 Task 768 current text: 'Research new market opportunities' -> new text: 'Research market opportunities'
+INFO 2025-08-11 20:12:42,898 project_views 45694 6190739456 Task 768 saved successfully. Old: 'Research new market opportunities' -> New: 'Research market opportunities'
+INFO 2025-08-11 20:12:42,898 project_views 45694 6190739456 Task 768 after refresh: 'Research market opportunities'
+INFO 2025-08-11 20:12:42,899 project_views 45694 6190739456 Task 768 in database: 'Research market opportunities'
+INFO 2025-08-11 20:12:42,899 basehttp 45694 6190739456 "POST /tasks/768/edit/ HTTP/1.1" 200 115
+INFO 2025-08-11 20:12:44,382 basehttp 45694 6190739456 "GET /grids/58/ HTTP/1.1" 200 16628
+INFO 2025-08-11 20:12:46,808 project_views 45694 6190739456 JSON request received for task 768: Research new market opportunities
+INFO 2025-08-11 20:12:46,809 project_views 45694 6190739456 Task 768 current text: 'Research market opportunities' -> new text: 'Research new market opportunities'
+INFO 2025-08-11 20:12:46,811 project_views 45694 6190739456 Task 768 saved successfully. Old: 'Research market opportunities' -> New: 'Research new market opportunities'
+INFO 2025-08-11 20:12:46,812 project_views 45694 6190739456 Task 768 after refresh: 'Research new market opportunities'
+INFO 2025-08-11 20:12:46,812 project_views 45694 6190739456 Task 768 in database: 'Research new market opportunities'
+INFO 2025-08-11 20:12:46,813 basehttp 45694 6190739456 "POST /tasks/768/edit/ HTTP/1.1" 200 119
+INFO 2025-08-11 20:12:50,778 project_views_functions 45694 6190739456 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:12:50,778 basehttp 45694 6190739456 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:12:52,967 project_views 45694 6190739456 JSON request received for task 768: Research market opportunities
+INFO 2025-08-11 20:12:52,967 project_views 45694 6190739456 Task 768 current text: 'Research new market opportunities' -> new text: 'Research market opportunities'
+INFO 2025-08-11 20:12:52,968 project_views 45694 6190739456 Task 768 saved successfully. Old: 'Research new market opportunities' -> New: 'Research market opportunities'
+INFO 2025-08-11 20:12:52,969 project_views 45694 6190739456 Task 768 after refresh: 'Research market opportunities'
+INFO 2025-08-11 20:12:52,969 project_views 45694 6190739456 Task 768 in database: 'Research market opportunities'
+INFO 2025-08-11 20:12:52,969 basehttp 45694 6190739456 "POST /tasks/768/edit/ HTTP/1.1" 200 115
+INFO 2025-08-11 20:12:55,262 basehttp 45694 6190739456 "GET /grids/58/ HTTP/1.1" 200 16685
+INFO 2025-08-11 20:12:55,274 basehttp 45694 6207565824 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:55,275 basehttp 45694 6190739456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 20:12:58,618 project_views_functions 45694 6190739456 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 20:12:58,619 basehttp 45694 6190739456 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 20:13:00,786 project_views 45694 6190739456 JSON request received for task 768: Research new market opportunities
+INFO 2025-08-11 20:13:00,787 project_views 45694 6190739456 Task 768 current text: 'Research market opportunities' -> new text: 'Research new market opportunities'
+INFO 2025-08-11 20:13:00,789 project_views 45694 6190739456 Task 768 saved successfully. Old: 'Research market opportunities' -> New: 'Research new market opportunities'
+INFO 2025-08-11 20:13:00,790 project_views 45694 6190739456 Task 768 after refresh: 'Research new market opportunities'
+INFO 2025-08-11 20:13:00,790 project_views 45694 6190739456 Task 768 in database: 'Research new market opportunities'
+INFO 2025-08-11 20:13:00,791 basehttp 45694 6190739456 "POST /tasks/768/edit/ HTTP/1.1" 200 119
+INFO 2025-08-11 20:14:14,445 autoreload 45694 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 20:14:14,746 autoreload 45769 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 20:14:24,005 autoreload 45769 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 20:14:24,261 autoreload 45783 8693374720 Watching for file changes with StatReloader

@@ -1646,6 +1646,13 @@
       }
     }
   }
+  .hover\:rounded {
+    &:hover {
+      @media (hover: hover) {
+        border-radius: 0.25rem;
+      }
+    }
+  }
   .hover\:border-\[var\(--border-color\)\] {
     &:hover {
       @media (hover: hover) {

@@ -248,15 +248,67 @@ def task_create_view(request, project_pk, row_pk, col_pk):
     return redirect('pages:project_grid', pk=project.pk)
 
 
+@login_required
 def task_edit_view(request, task_pk):
-    task = get_user_task_optimized(
-        task_pk, 
-        request.user, 
-        select_related=['project', 'project__user'],
-        only_fields=['id', 'text', 'completed', 'project__id', 'project__user', 'project__name']
-    )
+    # For JSON requests, load the full task to ensure proper saving
+    if request.method == 'POST' and request.headers.get('Content-Type') == 'application/json':
+        task = get_user_task_optimized(
+            task_pk, 
+            request.user, 
+            select_related=['project', 'project__user']
+            # Don't restrict fields for JSON updates to ensure proper saving
+        )
+    else:
+        # For regular form requests, use optimized loading
+        task = get_user_task_optimized(
+            task_pk, 
+            request.user, 
+            select_related=['project', 'project__user'],
+            only_fields=['id', 'text', 'completed', 'project__id', 'project__user', 'project__name']
+        )
     
     if request.method == 'POST':
+        # Check if this is a JSON request for inline editing
+        if request.headers.get('Content-Type') == 'application/json':
+            try:
+                import json
+                data = json.loads(request.body)
+                new_text = data.get('text', '').strip()
+                
+                if not new_text:
+                    return JsonResponse({'success': False, 'error': 'Task text cannot be empty'}, status=400)
+                
+                # Update the task
+                old_text = task.text
+                task.text = new_text
+                
+                # Try to save and log the result
+                try:
+                    # Force a database save
+                    task.save(update_fields=['text', 'updated_at'])
+                    
+                    # Verify the save worked by refreshing from database
+                    task.refresh_from_db()
+                    
+                    return JsonResponse({
+                        'success': True, 
+                        'message': 'Task updated successfully!',
+                        'task_id': task.pk,
+                        'text': task.text
+                    })
+                    
+                except Exception as save_error:
+                    logger.error(f"Error saving task {task_pk}: {save_error}")
+                    return JsonResponse({'success': False, 'error': f'Save failed: {str(save_error)}'}, status=500)
+                
+            except json.JSONDecodeError as json_error:
+                logger.error(f"JSON decode error for task {task_pk}: {json_error}")
+                return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
+            except Exception as e:
+                logger.error(f"Error updating task {task_pk}: {e}")
+                return JsonResponse({'success': False, 'error': 'Failed to update task'}, status=500)
+        
+        # Handle regular form submission
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             updated_task = form.save()
