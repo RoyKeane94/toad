@@ -13406,3 +13406,78 @@ INFO 2025-08-10 16:19:51,095 basehttp 38505 6158364672 "GET /grids/58/ HTTP/1.1"
 INFO 2025-08-10 16:19:52,256 basehttp 38505 6158364672 "GET /templates/ HTTP/1.1" 302 0
 INFO 2025-08-10 16:19:52,267 basehttp 38505 6158364672 "GET /templates/students/ HTTP/1.1" 200 4469
 INFO 2025-08-10 16:19:53,330 basehttp 38505 6158364672 "GET /templates/professionals/ HTTP/1.1" 200 4721
+INFO 2025-08-11 18:26:06,076 autoreload 40986 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 18:26:07,738 basehttp 40986 6161428480 "GET / HTTP/1.1" 200 6489
+INFO 2025-08-11 18:26:07,757 basehttp 40986 6161428480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:07,759 basehttp 40986 6161428480 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:07,768 basehttp 40986 6161428480 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 18:26:07,799 basehttp 40986 6161428480 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:16,312 basehttp 40986 6161428480 "GET /grids/ HTTP/1.1" 200 3966
+INFO 2025-08-11 18:26:16,324 basehttp 40986 6195081216 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 18:26:16,325 basehttp 40986 6178254848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-11 18:26:16,326 basehttp 40986 6161428480 "GET /static/css/output.css HTTP/1.1" 200 70896
+INFO 2025-08-11 18:26:18,065 basehttp 40986 6161428480 "GET /grids/58/ HTTP/1.1" 200 16121
+INFO 2025-08-11 18:26:18,077 basehttp 40986 6161428480 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31669
+INFO 2025-08-11 18:26:23,520 project_views_functions 40986 6161428480 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:26:23,521 basehttp 40986 6161428480 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-11 18:26:25,527 basehttp 40986 6161428480 "GET /grids/58/ HTTP/1.1" 200 16247
+INFO 2025-08-11 18:26:25,539 basehttp 40986 6161428480 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:25,540 basehttp 40986 6178254848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:30,293 project_views_functions 40986 6178254848 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:26:30,293 basehttp 40986 6178254848 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-11 18:26:32,398 basehttp 40986 6178254848 "GET /grids/58/ HTTP/1.1" 200 16259
+INFO 2025-08-11 18:26:32,408 basehttp 40986 6178254848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:32,409 basehttp 40986 6161428480 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:34,706 project_views_functions 40986 6161428480 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:26:34,706 basehttp 40986 6161428480 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-11 18:26:36,071 basehttp 40986 6161428480 "GET /grids/58/ HTTP/1.1" 200 16261
+INFO 2025-08-11 18:26:36,082 basehttp 40986 6178254848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:36,082 basehttp 40986 6161428480 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:26:38,723 project_views_functions 40986 6178254848 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:26:38,723 basehttp 40986 6178254848 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 63
+INFO 2025-08-11 18:27:20,665 autoreload 40986 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 18:27:20,939 autoreload 41044 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 18:27:47,498 autoreload 41044 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 18:27:47,763 autoreload 41052 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 18:28:01,078 autoreload 41052 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-11 18:28:01,346 autoreload 41071 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 18:28:23,691 autoreload 41486 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 18:28:26,337 basehttp 41486 6198980608 "GET /grids/58/ HTTP/1.1" 200 16212
+INFO 2025-08-11 18:28:26,357 basehttp 41486 6215806976 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 31669
+INFO 2025-08-11 18:28:26,358 basehttp 41486 6198980608 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-11 18:28:29,382 project_views_functions 41486 6198980608 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:28:29,382 basehttp 41486 6198980608 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:28:30,476 basehttp 41486 6198980608 "GET /grids/58/ HTTP/1.1" 200 16148
+INFO 2025-08-11 18:28:30,491 basehttp 41486 6215806976 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:30,492 basehttp 41486 6198980608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:33,431 project_views_functions 41486 6198980608 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:28:33,431 basehttp 41486 6198980608 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:28:34,898 basehttp 41486 6198980608 "GET /grids/58/ HTTP/1.1" 200 16122
+INFO 2025-08-11 18:28:34,910 basehttp 41486 6215806976 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:34,911 basehttp 41486 6198980608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:37,745 project_views_functions 41486 6198980608 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:28:37,745 basehttp 41486 6198980608 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:28:39,152 basehttp 41486 6198980608 "GET /grids/58/ HTTP/1.1" 200 16152
+INFO 2025-08-11 18:28:39,161 basehttp 41486 6198980608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:39,162 basehttp 41486 6215806976 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:41,882 project_views_functions 41486 6215806976 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:28:41,882 basehttp 41486 6215806976 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:28:43,155 basehttp 41486 6215806976 "GET /grids/58/ HTTP/1.1" 200 16222
+INFO 2025-08-11 18:28:43,166 basehttp 41486 6215806976 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:43,166 basehttp 41486 6198980608 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:28:48,870 project_views_functions 41486 6215806976 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:28:48,870 basehttp 41486 6215806976 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:28:52,013 project_views_functions 41486 6215806976 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:28:52,013 basehttp 41486 6215806976 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:29:06,045 project_views_functions 41486 6215806976 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:29:06,045 basehttp 41486 6215806976 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:29:35,798 autoreload 41688 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 18:29:37,485 basehttp 41688 6163542016 "GET /grids/58/ HTTP/1.1" 200 16203
+INFO 2025-08-11 18:29:37,502 basehttp 41688 6197194752 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-11 18:29:37,503 basehttp 41688 6180368384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-11 18:29:37,508 log 41688 6163542016 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 18:29:37,508 basehttp 41688 6163542016 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1906
+INFO 2025-08-11 18:29:39,742 project_views_functions 41688 6163542016 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:29:39,743 basehttp 41688 6163542016 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-11 18:29:41,457 project_views_functions 41688 6163542016 User None reordered tasks: in project Tom's Origination Director
+INFO 2025-08-11 18:29:41,457 basehttp 41688 6163542016 "POST /grids/58/tasks/reorder/ HTTP/1.1" 200 76

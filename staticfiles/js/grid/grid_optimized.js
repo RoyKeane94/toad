@@ -229,12 +229,12 @@ class GridManager {
                 // Drag class for the item being dragged
                 dragClass: 'sortable-drag',
                 
-                // Only allow sorting within the same container
-                group: false,
+                // Allow dragging between all containers (rows and columns)
+                group: 'tasks',
                 
                 // Callback when sorting ends
                 onEnd: (evt) => {
-                    // Get the new order
+                    // Get the new order across all containers
                     const newOrder = this.getTaskOrder();
                     
                     // Save to server
@@ -602,10 +602,15 @@ class GridManager {
     getTaskOrder() {
         const order = [];
         document.querySelectorAll('[data-task-id]').forEach(task => {
+            // Find the current container (row and column) where the task is located
+            const currentContainer = task.closest('[data-row][data-col]');
+            const currentRow = currentContainer ? currentContainer.dataset.row : task.dataset.taskRow;
+            const currentCol = currentContainer ? currentContainer.dataset.col : task.dataset.taskCol;
+            
             order.push({
                 id: task.dataset.taskId,
-                row: task.dataset.taskRow,
-                col: task.dataset.taskCol,
+                row: currentRow,
+                col: currentCol,
                 order: parseInt(task.dataset.taskOrder) || 0
             });
         });
@@ -639,7 +644,7 @@ class GridManager {
         })
         .then(data => {
             if (data.success) {
-                // Update task order attributes
+                // Update task order attributes and row/column data
                 this.updateTaskOrderAttributes(newOrder);
             } else {
                 // Revert to original order
@@ -674,6 +679,9 @@ class GridManager {
             const taskElement = document.querySelector(`[data-task-id="${task.id}"]`);
             if (taskElement) {
                 taskElement.dataset.taskOrder = index.toString();
+                // Update row and column data attributes to reflect new position
+                taskElement.dataset.taskRow = task.row;
+                taskElement.dataset.taskCol = task.col;
             }
         });
     }

@@ -674,22 +674,61 @@ def task_reorder_view(request, project_pk):
             if not project:
                 return JsonResponse({'success': False, 'error': 'Project not found'}, status=404)
 
-            # Update task order in the database
+            # Group tasks by their new container (row, col) to handle order properly
+            container_tasks = {}
             for index, task_data in enumerate(task_order):
                 task_id = task_data.get('id')
-                if not task_id:
+                new_row = task_data.get('row')
+                new_col = task_data.get('col')
+                
+                if not task_id or not new_row or not new_col:
                     continue
                 
-                try:
-                    task = Task.objects.get(id=task_id, project=project)
-                    task.order = index
-                    task.save(update_fields=['order'])
-                except Task.DoesNotExist:
-                    logger.warning(f"Task {task_id} not found for project {project_pk}")
-                    continue
+                container_key = f"{new_row}_{new_col}"
+                if container_key not in container_tasks:
+                    container_tasks[container_key] = []
+                container_tasks[container_key].append((task_id, index))
+
+            # Update tasks in each container with proper ordering
+            for container_key, tasks_in_container in container_tasks.items():
+                # Sort by the original index to maintain the order within this container
+                tasks_in_container.sort(key=lambda x: x[1])
+                
+                for container_order, (task_id, _) in enumerate(tasks_in_container):
+                    try:
+                        task = Task.objects.get(id=task_id, project=project)
+                        
+                        # Update order within the container
+                        task.order = container_order
+                        
+                        # Update row and column if they've changed (cross-container move)
+                        new_row, new_col = container_key.split('_')
+                        
+                        if new_row != str(task.row_header.pk):
+                            try:
+                                new_row_header = RowHeader.objects.get(id=new_row, project=project)
+                                task.row_header = new_row_header
+                            except RowHeader.DoesNotExist:
+                                logger.warning(f"Row header {new_row} not found for project {project_pk}")
+                                continue
+                        
+                        if new_col != str(task.column_header.pk):
+                            try:
+                                new_column_header = ColumnHeader.objects.get(id=new_col, project=project)
+                                task.column_header = new_column_header
+                            except ColumnHeader.DoesNotExist:
+                                logger.warning(f"Column header {new_col} not found for project {project_pk}")
+                                continue
+                        
+                        # Save all changes
+                        task.save()
+                        
+                    except Task.DoesNotExist:
+                        logger.warning(f"Task {task_id} not found for project {project_pk}")
+                        continue
 
             log_user_action(request.user, 'reordered tasks', f'in project {project.name}')
-            return JsonResponse({'success': True, 'message': 'Task order updated successfully'})
+            return JsonResponse({'success': True, 'message': 'Task order and position updated successfully'})
             
         except json.JSONDecodeError:
             return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
