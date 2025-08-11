@@ -10,7 +10,16 @@ from ..specific_views_functions.general_views_functions import (
     render_simple_template,
     get_contact_form_context
 )
-from ..signals import create_course_planner_grid, create_revision_guide_grid, create_shooting_grid, create_product_development_tracker_grid, create_weekly_planner_grid, create_sell_side_project_grid, create_origination_director_grid
+from ..signals import (
+    create_course_planner_grid, create_revision_guide_grid, create_shooting_grid, 
+    create_product_development_tracker_grid, create_weekly_planner_grid, 
+    create_sell_side_project_grid, create_origination_director_grid,
+    create_course_planner_grid_structure_only, create_revision_guide_grid_structure_only,
+    create_essay_planner_grid_structure_only, create_job_application_tracker_grid_structure_only,
+    create_weekly_planner_grid_structure_only, create_line_manager_grid_structure_only,
+    create_sell_side_project_grid_structure_only, create_origination_director_grid_structure_only,
+    create_product_development_tracker_grid_structure_only
+)
 from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid, create_line_manager_grid
 import logging
 
@@ -50,8 +59,15 @@ def student_revision_template_view(request):
 def revision_guide_template_view(request):
     """Create an Exam Revision Planner grid for the current user and redirect to it"""
     try:
-        # Create the exam revision planner grid
-        project = create_exam_revision_planner_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the exam revision planner grid structure only
+            project = create_revision_guide_grid_structure_only(request.user)
+        else:
+            # Create the exam revision planner grid with pre-populated tasks
+            project = create_exam_revision_planner_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -65,8 +81,15 @@ def revision_guide_template_view(request):
 def essay_planner_template_view(request):
     """Create an Essay Planner grid for the current user and redirect to it"""
     try:
-        # Create the essay planner grid
-        project = create_essay_planner_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the essay planner grid structure only
+            project = create_essay_planner_grid_structure_only(request.user)
+        else:
+            # Create the essay planner grid with pre-populated tasks
+            project = create_essay_planner_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -80,8 +103,15 @@ def essay_planner_template_view(request):
 def course_planner_template_view(request):
     """Create a Course Planner template grid for the current user and redirect to it"""
     try:
-        # Create the course planner template grid
-        project = create_course_planner_template_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the course planner grid structure only
+            project = create_course_planner_grid_structure_only(request.user)
+        else:
+            # Create the course planner template grid with pre-populated tasks
+            project = create_course_planner_template_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -95,8 +125,15 @@ def course_planner_template_view(request):
 def job_application_tracker_template_view(request):
     """Create a Job Application Tracker grid for the current user and redirect to it"""
     try:
-        # Create the job application tracker grid
-        project = create_job_application_tracker_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the job application tracker grid structure only
+            project = create_job_application_tracker_grid_structure_only(request.user)
+        else:
+            # Create the job application tracker grid with pre-populated tasks
+            project = create_job_application_tracker_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -110,23 +147,37 @@ def job_application_tracker_template_view(request):
 def line_manager_template_view(request):
     """Create a Line Manager grid for the current user and redirect to it"""
     try:
-        # Create the line manager grid
-        project = create_line_manager_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the line manager grid structure only
+            project = create_line_manager_grid_structure_only(request.user)
+        else:
+            # Create the line manager grid with pre-populated tasks
+            project = create_line_manager_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
         
     except Exception as e:
         logger.error(f"Error creating line manager grid: {e}")
-        messages.error(request, "There was an error creating your Line Manager Grid. Please try again.")
+        messages.error(request, "There was an error creating your Team Management Grid. Please try again.")
         return redirect('pages:templates_overview')
 
 @login_required
 def weekly_planner_template_view(request):
     """Create a Weekly Planner grid for the current user and redirect to it"""
     try:
-        # Create the weekly planner grid
-        project = create_weekly_planner_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the weekly planner grid structure only
+            project = create_weekly_planner_grid_structure_only(request.user)
+        else:
+            # Create the weekly planner grid with pre-populated tasks
+            project = create_weekly_planner_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -140,8 +191,15 @@ def weekly_planner_template_view(request):
 def sell_side_project_template_view(request):
     """Create a Sell Side Project grid for the current user and redirect to it"""
     try:
-        # Create the sell side project grid
-        project = create_sell_side_project_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the sell side project grid structure only
+            project = create_sell_side_project_grid_structure_only(request.user)
+        else:
+            # Create the sell side project grid with pre-populated tasks
+            project = create_sell_side_project_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -155,8 +213,15 @@ def sell_side_project_template_view(request):
 def origination_director_template_view(request):
     """Create an Origination Director grid for the current user and redirect to it"""
     try:
-        # Create the origination director grid
-        project = create_origination_director_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the origination director grid structure only
+            project = create_origination_director_grid_structure_only(request.user)
+        else:
+            # Create the origination director grid with pre-populated tasks
+            project = create_origination_director_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)
@@ -189,8 +254,15 @@ def shooting_template_create_view(request):
 def product_development_tracker_template_view(request):
     """Create a Product Development Tracker grid for the current user and redirect to it"""
     try:
-        # Create the product development tracker grid
-        project = create_product_development_tracker_grid(request.user)
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the product development tracker grid structure only
+            project = create_product_development_tracker_grid_structure_only(request.user)
+        else:
+            # Create the product development tracker grid with pre-populated tasks
+            project = create_product_development_tracker_grid(request.user)
         
         # Redirect to the newly created grid
         return redirect('pages:project_grid', pk=project.pk)

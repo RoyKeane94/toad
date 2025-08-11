@@ -768,3 +768,404 @@ def create_origination_director_grid(user):
         )
     
     return project
+
+
+def create_course_planner_grid_structure_only(user):
+    """
+    Create a Course Planner grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Course Planner"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Weekly Tasks and Reading", 
+        "Assignments and Coursework",
+        "Exam Prep"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Module 1",
+        "Module 2",
+        "Module 3",
+        "Module 4"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_revision_guide_grid_structure_only(user):
+    """
+    Create a Revision Guide grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Revision Guide"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Review and Consolidate",
+        "Active Recall and Memorisation", 
+        "Practice and Application",
+        "Final Review"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Module 1",
+        "Module 2",
+        "Module 3",
+        "Module 4"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_essay_planner_grid_structure_only(user):
+    """
+    Create an Essay Planner grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Essay Planner"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Research",
+        "Planning", 
+        "Writing",
+        "Review"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Core Tasks",
+        "Sources & Reading",
+        "Key Arguments",
+        "Admin & Deadlines"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_job_application_tracker_grid_structure_only(user):
+    """
+    Create a Job Application Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Job Application Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Research",
+        "Application", 
+        "Follow-up",
+        "Interview Prep"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Company",
+        "Company 2",
+        "Company 3",
+        "Company 4"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_weekly_planner_grid_structure_only(user):
+    """
+    Create a Weekly Planner grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Weekly Planner"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Meetings", 
+        "Tasks"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_line_manager_grid_structure_only(user):
+    """
+    Create a Line Manager grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Team Management Grid"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Catch Ups", 
+        "Project Thames",
+        "Project Sun"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Team",
+        "Employee 1",
+        "Employee 2",
+        "Employee 3",
+        "Employee 4"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_sell_side_project_grid_structure_only(user):
+    """
+    Create a Sell Side Project grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Sell Side Project"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Initial Pitch & Analysis",
+        "Marketing & Due Diligence",
+        "Exclusivity & Legals"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Project Management & Comms",
+        "Preparation & Marketing",
+        "Financial Modelling & Valuation",
+        "Due Diligence & Legal"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_origination_director_grid_structure_only(user):
+    """
+    Create an Origination Director grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Origination Director"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Meetings", 
+        "Tasks",
+        "Pitches"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_product_development_tracker_grid_structure_only(user):
+    """
+    Create a Product Development Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Product Development Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Phase 1: Planning and Design",
+        "Phase 2: Core Build", 
+        "Phase 3: Pre-Launch Polish",
+        "Phase 4: Launch and Feedback"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all columns like the full template
+    column_headers = [
+        "Product and Design",
+        "Development (Frontend)",
+        "Development (Backend)",
+        "Marketing and User Outreach"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project

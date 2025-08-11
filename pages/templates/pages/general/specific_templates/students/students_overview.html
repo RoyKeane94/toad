@@ -54,9 +54,9 @@
                  <div class="text-center">
                      <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Course Planner</h2>
                      <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Your easy way to plan your course. Track modules, manage assignments, and ensure you never miss a key deadline.</p>
-                     <a href="{% url 'pages:course_planner_template' %}" onclick="plausible('grid_created', {props: {source: 'template', template_name: 'Course Planner'}});" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <button onclick="showTemplateModal('course_planner', 'Course Planner')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
-                     </a>
+                     </button>
                  </div>
             </div>
             <!-- Course Planner GIF -->
@@ -90,9 +90,9 @@
                  <div class="text-center">
                      <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Exam Revision Planner</h2>
                      <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Your easy way to plan your revision with what works for you. Tailor you revision plan to your needs and ace your exams.</p>
-                     <a href="{% url 'pages:revision_guide_template' %}" onclick="plausible('grid_created', {props: {source: 'template', template_name: 'Revision Planner'}});" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <button onclick="showTemplateModal('revision_guide', 'Revision Planner')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
-                     </a>
+                     </button>
                  </div>
             </div>
         </div>
@@ -106,9 +106,9 @@
                  <div class="text-center">
                      <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Essay Planner</h2>
                      <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Structure your essays with a proven framework. Break down research, outlining, writing, and editing into manageable tasks.</p>
-                     <a href="{% url 'pages:essay_planner_template' %}" onclick="plausible('grid_created', {props: {source: 'template', template_name: 'Essay Planner'}});" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <button onclick="showTemplateModal('essay_planner', 'Essay Planner')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
-                     </a>
+                     </button>
                  </div>
             </div>
             <!-- Essay Planner GIF -->
@@ -142,12 +142,141 @@
                  <div class="text-center">
                      <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Job Application Tracker</h2>
                      <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Track your job applications systematically. Organize research, applications, and follow-ups to maximize your chances of success.</p>
-                     <a href="{% url 'pages:job_application_tracker_template' %}" onclick="plausible('grid_created', {props: {source: 'template', template_name: 'Job Application Tracker'}});" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <button onclick="showTemplateModal('job_application_tracker', 'Job Application Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
-                     </a>
+                     </button>
                  </div>
             </div>
         </div>
     </div>
 </div>
+
+<!-- Template Choice Modal -->
+<div id="template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
+        <!-- Modal Header -->
+        <div class="flex items-center p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-th-large text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]" id="modal-title">Choose Your Template Style</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">How would you like to start with your <span id="template-name" class="font-medium text-[var(--text-primary)]"></span>?</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="space-y-4">
+                <!-- Option 1: Pre-populated -->
+                <button id="pre-populated-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--primary-action-bg)] transition-all duration-200 group cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
+                            <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full group-hover:border-[var(--primary-action-bg)] group-hover:bg-[var(--primary-action-bg)] transition-all duration-200 flex items-center justify-center">
+                                <div class="w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--primary-action-bg)] transition-colors duration-200 mb-1">Start with example tasks</h4>
+                            <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Get a head start with pre-filled tasks that show you how to use the template effectively.</p>
+                        </div>
+                    </div>
+                </button>
+                
+                <!-- Option 2: Structure only -->
+                <button id="structure-only-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--primary-action-bg)] transition-all duration-200 group cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
+                            <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full group-hover:border-[var(--primary-action-bg)] group-hover:bg-[var(--primary-action-bg)] transition-all duration-200 flex items-center justify-center">
+                                <div class="w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--primary-action-bg)] transition-colors duration-200 mb-1">Start with a clean structure</h4>
+                            <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Begin with just the rows and columns, ready for you to add your own tasks.</p>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="hideTemplateModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentTemplate = '';
+let currentTemplateName = '';
+
+function showTemplateModal(template, templateName) {
+    currentTemplate = template;
+    currentTemplateName = templateName;
+    document.getElementById('modal-title').textContent = `Choose Your ${templateName} Style`;
+    document.getElementById('template-name').textContent = templateName;
+    document.getElementById('template-modal').classList.remove('hidden');
+    
+    // Add event listeners for the options
+    document.getElementById('pre-populated-btn').onclick = () => createTemplateWithTasks(template);
+    document.getElementById('structure-only-btn').onclick = () => createTemplateStructureOnly(template);
+}
+
+function hideTemplateModal() {
+    document.getElementById('template-modal').classList.add('hidden');
+}
+
+function createTemplateWithTasks(template) {
+    // Create template with pre-populated tasks
+    const urls = {
+        'course_planner': '{% url "pages:course_planner_template" %}',
+        'revision_guide': '{% url "pages:revision_guide_template" %}',
+        'essay_planner': '{% url "pages:essay_planner_template" %}',
+        'job_application_tracker': '{% url "pages:job_application_tracker_template" %}'
+    };
+    
+    if (urls[template]) {
+        // Track template creation with Plausible
+        plausible('grid_created', {props: {source: 'template', template_name: currentTemplateName, style: 'pre_populated'}});
+        window.location.href = urls[template];
+    }
+    hideTemplateModal();
+}
+
+function createTemplateStructureOnly(template) {
+    // Create template with structure only (no tasks)
+    const urls = {
+        'course_planner': '{% url "pages:course_planner_template" %}?structure_only=true',
+        'revision_guide': '{% url "pages:revision_guide_template" %}?structure_only=true',
+        'essay_planner': '{% url "pages:essay_planner_template" %}?structure_only=true',
+        'job_application_tracker': '{% url "pages:job_application_tracker_template" %}?structure_only=true'
+    };
+    
+    if (urls[template]) {
+        // Track template creation with Plausible
+        plausible('grid_created', {props: {source: 'template', template_name: currentTemplateName, style: 'structure_only'}});
+        window.location.href = urls[template];
+    }
+    hideTemplateModal();
+}
+
+// Close modal when clicking outside
+document.getElementById('template-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        hideTemplateModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        hideTemplateModal();
+    }
+});
+</script>
 {% endblock %} 
