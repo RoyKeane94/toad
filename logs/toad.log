@@ -14124,3 +14124,28 @@ INFO 2025-08-11 21:05:14,639 basehttp 49166 6201618432 "GET /templates/personal/
 INFO 2025-08-11 21:05:15,504 basehttp 49166 6201618432 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5445
 INFO 2025-08-11 21:05:16,637 basehttp 49166 6201618432 "GET /templates/professionals/ HTTP/1.1" 200 5972
 INFO 2025-08-11 21:05:17,149 basehttp 49166 6201618432 "GET /templates/students/ HTTP/1.1" 200 5651
+INFO 2025-08-11 21:05:39,627 autoreload 49599 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-11 21:05:41,182 basehttp 49599 6130610176 "GET /templates/students/ HTTP/1.1" 200 5635
+WARNING 2025-08-11 21:05:41,219 log 49599 6130610176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:05:41,220 basehttp 49599 6130610176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1875
+INFO 2025-08-11 21:05:45,175 basehttp 49599 6130610176 "GET /templates/course-planner/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-08-11 21:05:45,202 basehttp 49599 6130610176 "GET /grids/89/ HTTP/1.1" 200 9134
+WARNING 2025-08-11 21:05:45,237 log 49599 6130610176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:05:45,237 basehttp 49599 6130610176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1864
+INFO 2025-08-11 21:05:45,238 basehttp 49599 6147436544 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51312
+WARNING 2025-08-11 21:05:52,819 log 49599 6147436544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:05:52,820 basehttp 49599 6147436544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1933
+INFO 2025-08-11 21:06:02,453 basehttp 49599 6147436544 "GET /grids/58/delete/ HTTP/1.1" 200 3400
+WARNING 2025-08-11 21:06:02,490 log 49599 6147436544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:06:02,491 basehttp 49599 6147436544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1902
+INFO 2025-08-11 21:06:04,229 basehttp 49599 6147436544 "POST /grids/58/delete/ HTTP/1.1" 302 0
+INFO 2025-08-11 21:06:04,247 basehttp 49599 6147436544 "GET /grids/ HTTP/1.1" 200 3984
+WARNING 2025-08-11 21:06:04,280 log 49599 6147436544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:06:04,281 basehttp 49599 6147436544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1925
+INFO 2025-08-11 21:06:06,255 basehttp 49599 6147436544 "GET /grids/89/delete/ HTTP/1.1" 200 3405
+WARNING 2025-08-11 21:06:06,292 log 49599 6147436544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:06:06,293 basehttp 49599 6147436544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1929
+INFO 2025-08-11 21:06:06,975 basehttp 49599 6147436544 "POST /grids/89/delete/ HTTP/1.1" 302 0
+INFO 2025-08-11 21:06:06,992 basehttp 49599 6147436544 "GET /grids/ HTTP/1.1" 200 3887
+WARNING 2025-08-11 21:06:07,030 log 49599 6147436544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-11 21:06:07,030 basehttp 49599 6147436544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1924
