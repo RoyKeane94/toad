@@ -14339,3 +14339,15 @@ INFO 2025-08-12 20:31:52,551 basehttp 62149 6195998720 "GET /templates/personal/
 INFO 2025-08-12 20:31:55,082 basehttp 62149 6195998720 "GET /grids/ HTTP/1.1" 200 3871
 INFO 2025-08-12 20:31:55,094 basehttp 62149 6195998720 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 WARNING 2025-08-12 20:31:58,857 basehttp 62149 6195998720 "GET /static/js/general/template_modal.js HTTP/1.1" 404 2011
+INFO 2025-08-12 20:34:51,293 autoreload 62735 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-12 20:35:03,862 basehttp 62735 6178779136 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-12 20:35:03,880 log 62735 6161952768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-12 20:35:03,881 basehttp 62735 6161952768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1840
+INFO 2025-08-12 20:35:05,223 basehttp 62735 6161952768 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-12 20:35:05,239 basehttp 62735 6161952768 "GET /grids/ HTTP/1.1" 200 3913
+INFO 2025-08-12 20:35:05,256 basehttp 62735 6178779136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-12 20:35:05,264 log 62735 6161952768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-12 20:35:05,264 basehttp 62735 6161952768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1928
+INFO 2025-08-12 20:35:08,140 basehttp 62735 6161952768 "GET /accounts/settings/ HTTP/1.1" 200 4170
+WARNING 2025-08-12 20:35:08,177 log 62735 6161952768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-12 20:35:08,177 basehttp 62735 6161952768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1846
