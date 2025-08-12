@@ -500,6 +500,7 @@ def create_weekly_planner_grid(user):
         "Admin",
         "Meetings", 
         "Tasks"
+        "Waiting On / Follow Up"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -554,6 +555,11 @@ def create_weekly_planner_grid(user):
         (2, 1, "Prepare Project Coral thoughts", False),  # Tuesday
         (2, 2, "Get final sign off on Project Soft comms", False),  # Wednesday
         (2, 2, "Share Project Soft comms to LinkedIn", False),  # Wednesday
+
+        # Waiting On / Follow Up row
+        (3, 0, "Trading update from Project Coral", False),  # Monday
+        (3, 1, "Olivia sharing team overview page", False),  # Tuesday
+        
     ]
     
     # Create all tasks
@@ -960,7 +966,8 @@ def create_weekly_planner_grid_structure_only(user):
     row_headers = [
         "Admin",
         "Meetings", 
-        "Tasks"
+        "Tasks",
+        "Waiting On / Follow Up",
     ]
     
     for order, row_name in enumerate(row_headers):
