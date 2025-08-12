@@ -14149,3 +14149,74 @@ INFO 2025-08-11 21:06:06,975 basehttp 49599 6147436544 "POST /grids/89/delete/ H
 INFO 2025-08-11 21:06:06,992 basehttp 49599 6147436544 "GET /grids/ HTTP/1.1" 200 3887
 WARNING 2025-08-11 21:06:07,030 log 49599 6147436544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-11 21:06:07,030 basehttp 49599 6147436544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1924
+INFO 2025-08-12 20:08:00,390 autoreload 59561 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-12 20:08:04,346 basehttp 59561 6129479680 "GET / HTTP/1.1" 200 6318
+INFO 2025-08-12 20:08:04,399 basehttp 59561 6129479680 "GET /static/css/output.css HTTP/1.1" 200 72899
+INFO 2025-08-12 20:08:04,401 basehttp 59561 6129479680 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-12 20:08:04,424 basehttp 59561 6129479680 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-12 20:08:04,556 basehttp 59561 6129479680 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-12 20:08:07,333 basehttp 59561 6129479680 "GET /accounts/login/ HTTP/1.1" 200 4370
+INFO 2025-08-12 20:08:07,353 basehttp 59561 6146306048 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:07,354 basehttp 59561 6129479680 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:15,327 basehttp 59561 6129479680 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-12 20:08:15,337 basehttp 59561 6129479680 "GET /grids/ HTTP/1.1" 200 3862
+INFO 2025-08-12 20:08:15,357 basehttp 59561 6129479680 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:15,358 basehttp 59561 6146306048 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:18,814 basehttp 59561 6129479680 "GET /grids/56/ HTTP/1.1" 200 14806
+INFO 2025-08-12 20:08:18,833 basehttp 59561 6146306048 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:18,834 basehttp 59561 6163132416 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:18,835 basehttp 59561 6129479680 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34754
+INFO 2025-08-12 20:08:35,744 basehttp 59561 6129479680 "GET /grids/56/ HTTP/1.1" 200 14775
+INFO 2025-08-12 20:08:35,759 basehttp 59561 6146306048 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-12 20:08:35,760 basehttp 59561 12901707776 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 34754
+INFO 2025-08-12 20:08:35,761 basehttp 59561 6163132416 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-12 20:08:35,761 basehttp 59561 6129479680 "GET /static/css/output.css HTTP/1.1" 200 72899
+INFO 2025-08-12 20:08:45,986 basehttp 59561 6129479680 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-12 20:08:45,998 log 59561 6163132416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-12 20:08:45,998 basehttp 59561 6163132416 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1928
+INFO 2025-08-12 20:08:52,386 basehttp 59561 6163132416 "GET /grids/56/ HTTP/1.1" 200 14834
+INFO 2025-08-12 20:08:52,412 basehttp 59561 6129479680 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:52,412 basehttp 59561 6146306048 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:08:52,413 basehttp 59561 12901707776 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-12 20:08:52,420 log 59561 6163132416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-12 20:08:52,421 basehttp 59561 6163132416 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1881
+INFO 2025-08-12 20:09:56,706 basehttp 59561 6163132416 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-12 20:09:56,711 basehttp 59561 6163132416 "GET / HTTP/1.1" 200 6263
+INFO 2025-08-12 20:09:56,738 basehttp 59561 6129479680 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-12 20:09:56,739 log 59561 6163132416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-12 20:09:56,739 basehttp 59561 12901707776 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-12 20:09:56,740 basehttp 59561 6163132416 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1901
+INFO 2025-08-12 20:09:56,756 basehttp 59561 6163132416 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-12 20:11:09,386 autoreload 59965 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-12 20:11:14,025 basehttp 59965 6202257408 "GET / HTTP/1.1" 200 6293
+INFO 2025-08-12 20:11:14,044 basehttp 59965 6219083776 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-12 20:11:14,044 basehttp 59965 6202257408 "GET /static/css/output.css HTTP/1.1" 200 72698
+INFO 2025-08-12 20:11:18,002 basehttp 59965 6202257408 "GET /accounts/register/ HTTP/1.1" 200 4566
+INFO 2025-08-12 20:11:18,013 basehttp 59965 6219083776 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:18,014 basehttp 59965 6202257408 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:27,998 basehttp 59965 6202257408 "GET /accounts/login/ HTTP/1.1" 200 4324
+INFO 2025-08-12 20:11:28,016 basehttp 59965 6202257408 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:28,017 basehttp 59965 6219083776 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:34,259 basehttp 59965 6219083776 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-08-12 20:11:34,270 basehttp 59965 6219083776 "GET /grids/ HTTP/1.1" 200 3867
+INFO 2025-08-12 20:11:34,286 basehttp 59965 6219083776 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:34,286 basehttp 59965 6202257408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:37,948 basehttp 59965 6202257408 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-08-12 20:11:37,954 basehttp 59965 6202257408 "GET / HTTP/1.1" 200 6318
+INFO 2025-08-12 20:11:37,972 basehttp 59965 6202257408 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:11:37,972 basehttp 59965 6219083776 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:13:40,701 basehttp 59965 6286389248 "GET /favicon.ico HTTP/1.1" 301 0
+WARNING 2025-08-12 20:13:40,702 log 59965 6269562880 Not Found: /apple-touch-icon.png
+WARNING 2025-08-12 20:13:40,702 log 59965 6252736512 Not Found: /apple-touch-icon-precomposed.png
+WARNING 2025-08-12 20:13:40,703 basehttp 59965 6252736512 "GET /apple-touch-icon-precomposed.png HTTP/1.1" 404 1826
+WARNING 2025-08-12 20:13:40,703 basehttp 59965 6269562880 "GET /apple-touch-icon.png HTTP/1.1" 404 1830
+INFO 2025-08-12 20:13:40,704 basehttp 59965 6286389248 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-08-12 20:13:40,926 basehttp 59965 6235910144 "GET / HTTP/1.1" 200 6382
+INFO 2025-08-12 20:13:56,002 basehttp 59965 6219083776 "GET /contact/ HTTP/1.1" 200 4224
+INFO 2025-08-12 20:13:56,018 basehttp 59965 6202257408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-12 20:13:56,018 basehttp 59965 6219083776 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:14:10,836 general_views_functions 59965 6202257408 New contact submission from tom_barratt@hotmail.ci.uk: Test
+INFO 2025-08-12 20:14:10,840 basehttp 59965 6202257408 "POST /contact/ HTTP/1.1" 200 3627
+INFO 2025-08-12 20:14:25,730 basehttp 59965 6202257408 "GET /contact/ HTTP/1.1" 200 4233
+INFO 2025-08-12 20:14:25,742 basehttp 59965 6202257408 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-12 20:14:25,742 basehttp 59965 6219083776 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

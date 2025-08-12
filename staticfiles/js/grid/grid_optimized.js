@@ -1970,14 +1970,35 @@ class GridManager {
     // Handle task text blur (save on blur)
     handleTaskTextBlur(e) {
         const element = e.target;
-        // Only save if we're still in edit mode and not already saving
-        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
-            console.log('Blur event, saving task...'); // Debug
-            element.classList.add('saving'); // Prevent double saves
-            element.contentEditable = false;
-            element.classList.remove('editing');
-            this.saveTaskEdit(element);
-        }
+        console.log('Blur event triggered on:', element); // Debug
+        console.log('Element has editing class:', element.classList.contains('editing')); // Debug
+        console.log('Element has saving class:', element.classList.contains('saving')); // Debug
+        console.log('Element contentEditable:', element.contentEditable); // Debug
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            // Check if we're in edit mode by looking at the editing class
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                console.log('Blur event, saving task...'); // Debug
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveTaskEdit(element);
+            } else if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+                // Fallback: if contentEditable is still true but editing class is missing
+                console.log('Fallback blur save triggered...'); // Debug
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                this.saveTaskEdit(element);
+            } else if (element.classList.contains('editing')) {
+                // Another fallback: if we have the editing class but contentEditable was changed
+                console.log('Final fallback blur save triggered...'); // Debug
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveTaskEdit(element);
+            }
+        }, 10); // Small timeout to ensure proper event handling
     }
 
     // Handle task text keydown (Enter to save, Escape to cancel)
