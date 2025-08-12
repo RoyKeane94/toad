@@ -282,7 +282,7 @@ def professionals_templates_view(request):
 
 def entrepreneurs_templates_view(request):
     """Display the entrepreneurs templates overview page"""
-    return render_simple_template(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
+    return render(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')
 
 def personal_templates_view(request):
     """Display the personal templates overview page"""

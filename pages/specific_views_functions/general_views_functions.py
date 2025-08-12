@@ -127,7 +127,14 @@ def process_contact_form_submission(request):
 
 def render_simple_template(request, template_name, context=None):
     """Render a simple template with optional context"""
-    return render(request, template_name, context or {})
+    if context is None:
+        context = {}
+    
+    # Ensure user is always in context for authentication checks
+    if 'user' not in context:
+        context['user'] = request.user
+    
+    return render(request, template_name, context)
 
 def get_contact_form_context():
     """Get default context for contact form"""
