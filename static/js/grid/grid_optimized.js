@@ -1957,6 +1957,16 @@ class GridManager {
         if (window.innerWidth < 769) return; // Only on desktop
         
         const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing task first
+        this.closeAllEditingTasks();
+        
+        // Now open this task for editing
         element.contentEditable = true;
         element.focus();
         element.classList.add('editing');
@@ -1965,40 +1975,78 @@ class GridManager {
         if (!element.getAttribute('data-original-text')) {
             element.setAttribute('data-original-text', element.textContent);
         }
+        
+        // Add a one-time click handler to close this task when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideClick.bind(this, element), { once: true });
+        }, 0);
     }
 
     // Handle task text blur (save on blur)
     handleTaskTextBlur(e) {
         const element = e.target;
-        console.log('Blur event triggered on:', element); // Debug
-        console.log('Element has editing class:', element.classList.contains('editing')); // Debug
-        console.log('Element has saving class:', element.classList.contains('saving')); // Debug
-        console.log('Element contentEditable:', element.contentEditable); // Debug
         
         // Use a small timeout to ensure the blur event is fully processed
         setTimeout(() => {
             // Check if we're in edit mode by looking at the editing class
             if (element.classList.contains('editing') && !element.classList.contains('saving')) {
-                console.log('Blur event, saving task...'); // Debug
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 this.saveTaskEdit(element);
             } else if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
                 // Fallback: if contentEditable is still true but editing class is missing
-                console.log('Fallback blur save triggered...'); // Debug
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 this.saveTaskEdit(element);
             } else if (element.classList.contains('editing')) {
                 // Another fallback: if we have the editing class but contentEditable was changed
-                console.log('Final fallback blur save triggered...'); // Debug
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 this.saveTaskEdit(element);
             }
         }, 10); // Small timeout to ensure proper event handling
+    }
+
+    // Handle clicking outside of a specific editing task
+    handleOutsideClick(editingElement, e) {
+        // If the click is not on the editing element or its children, close it
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingTask(editingElement);
+        }
+    }
+
+    // Close a specific editing task
+    closeEditingTask(element) {
+        if (!element.classList.contains('editing')) return;
+        
+        // If the element has changes, save them
+        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            const currentText = element.textContent.trim();
+            
+            if (currentText !== originalText && currentText !== '') {
+                // Save the changes
+                element.classList.add('saving');
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveTaskEdit(element);
+            } else {
+                // No changes, just close editing
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                element.classList.remove('saving');
+            }
+        }
+    }
+
+    // Close all currently editing tasks
+    closeAllEditingTasks() {
+        const editingElements = document.querySelectorAll('.task-text-editable.editing');
+        editingElements.forEach(element => {
+            this.closeEditingTask(element);
+        });
     }
 
     // Handle task text keydown (Enter to save, Escape to cancel)
