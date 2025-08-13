@@ -733,17 +733,12 @@ class GridManager {
             this.closeProjectSwitcher();
         }
 
-        // Action dropdowns
-        const actionBtn = e.target.closest('.column-actions-btn, .row-actions-btn');
-        if (actionBtn) {
+        // Delete buttons for rows and columns
+        const deleteBtn = e.target.closest('.delete-row-btn, .delete-column-btn');
+        if (deleteBtn) {
             e.stopPropagation();
-            this.toggleActionDropdown(actionBtn);
+            // The delete buttons already have HTMX attributes, so no need to handle them here
             return;
-        }
-
-        // Close action dropdowns if clicking outside
-        if (!e.target.closest('.column-actions-dropdown, .row-actions-dropdown')) {
-            this.closeAllActionDropdowns();
         }
 
         // Task deletion
@@ -826,7 +821,6 @@ class GridManager {
     handleKeydown(e) {
         if (e.key === 'Escape') {
             this.closeProjectSwitcher();
-            this.closeAllActionDropdowns();
             this.hideDeleteModal();
             this.hideModal();
             this.collapseAllAddTaskForms();
@@ -869,40 +863,9 @@ class GridManager {
         }
     }
 
-    // Action dropdown methods
-    toggleActionDropdown(btn) {
-        const dropdown = btn.nextElementSibling;
-        if (!dropdown) return;
-
-        // Close all other dropdowns first
-        this.closeAllActionDropdowns(dropdown);
-
-        // Toggle current dropdown
-        const isOpen = !dropdown.classList.contains('opacity-0');
-        this.setDropdownState(dropdown, !isOpen);
-    }
-
-    closeAllActionDropdowns(except = null) {
-        document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
-            if (dropdown !== except) {
-                this.setDropdownState(dropdown, false);
-            }
-        });
-    }
-
     // Function to close all dropdowns - called from inline onclick handlers
     closeAllDropdowns() {
         this.closeProjectSwitcher();
-        this.closeAllActionDropdowns();
-    }
-
-    setDropdownState(dropdown, isOpen) {
-        const classes = isOpen 
-            ? { remove: ['opacity-0', 'invisible', 'scale-95'], add: ['opacity-100', 'visible', 'scale-100'] }
-            : { remove: ['opacity-100', 'visible', 'scale-100'], add: ['opacity-0', 'invisible', 'scale-95'] };
-
-        dropdown.classList.remove(...classes.remove);
-        dropdown.classList.add(...classes.add);
     }
 
     // Modal methods
