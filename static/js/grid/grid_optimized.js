@@ -30,7 +30,9 @@ class GridManager {
             originalWidth: 0,
             originalHeight: 0,
             dragClone: null,
-            lastLiveReorder: null
+            lastLiveReorder: null,
+            // Scroll state
+            isScrollingToEnd: false
         };
         
         this.elements = {};
@@ -246,7 +248,7 @@ class GridManager {
 
     // Mouse move handler for manual drag
     handleMouseMove(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const dragClone = this.state.dragClone;
         if (!dragClone) return;
@@ -328,7 +330,7 @@ class GridManager {
 
     // Mouse up handler for manual drag
     handleMouseUp(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const draggedElement = this.state.draggedElement;
         if (!draggedElement) return;
@@ -491,7 +493,7 @@ class GridManager {
     // }
 
     handleDragEnter(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const taskContainer = e.target.closest('[data-row][data-col]');
         if (taskContainer) {
@@ -500,7 +502,7 @@ class GridManager {
     }
 
     handleDragLeave(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const taskContainer = e.target.closest('[data-row][data-col]');
         if (taskContainer && !taskContainer.contains(e.relatedTarget)) {
@@ -733,22 +735,27 @@ class GridManager {
             this.closeProjectSwitcher();
         }
 
-        // Delete buttons for rows and columns
-        const deleteBtn = e.target.closest('.delete-row-btn, .delete-column-btn');
-        if (deleteBtn) {
+        // Action dropdowns
+        const actionBtn = e.target.closest('.column-actions-btn, .row-actions-btn');
+        if (actionBtn) {
             e.stopPropagation();
-            // The delete buttons already have HTMX attributes, so no need to handle them here
+            this.toggleActionDropdown(actionBtn);
             return;
         }
 
+        // Close action dropdowns if clicking outside
+        if (!e.target.closest('.column-actions-dropdown, .row-actions-dropdown')) {
+            this.closeAllActionDropdowns();
+        }
+
         // Task deletion
-        const deleteBtn = e.target.closest('.delete-task-btn');
-        if (deleteBtn) {
+        const taskDeleteBtn = e.target.closest('.delete-task-btn');
+        if (taskDeleteBtn) {
             e.preventDefault();
             this.showDeleteModal(
-                deleteBtn.dataset.taskId,
-                deleteBtn.dataset.taskText,
-                deleteBtn.dataset.deleteUrl
+                taskDeleteBtn.dataset.taskId,
+                taskDeleteBtn.dataset.taskText,
+                taskDeleteBtn.dataset.deleteUrl
             );
             return;
         }
@@ -821,6 +828,7 @@ class GridManager {
     handleKeydown(e) {
         if (e.key === 'Escape') {
             this.closeProjectSwitcher();
+            this.closeAllActionDropdowns();
             this.hideDeleteModal();
             this.hideModal();
             this.collapseAllAddTaskForms();
@@ -863,9 +871,40 @@ class GridManager {
         }
     }
 
+    // Action dropdown methods
+    toggleActionDropdown(btn) {
+        const dropdown = btn.nextElementSibling;
+        if (!dropdown) return;
+
+        // Close all other dropdowns first
+        this.closeAllActionDropdowns(dropdown);
+
+        // Toggle current dropdown
+        const isOpen = !dropdown.classList.contains('opacity-0');
+        this.setDropdownState(dropdown, !isOpen);
+    }
+
+    closeAllActionDropdowns(except = null) {
+        document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
+            if (dropdown !== except) {
+                this.setDropdownState(dropdown, false);
+            }
+        });
+    }
+
     // Function to close all dropdowns - called from inline onclick handlers
     closeAllDropdowns() {
         this.closeProjectSwitcher();
+        this.closeAllActionDropdowns();
+    }
+
+    setDropdownState(dropdown, isOpen) {
+        const classes = isOpen 
+            ? { remove: ['opacity-0', 'invisible', 'scale-95'], add: ['opacity-100', 'visible', 'scale-100'] }
+            : { remove: ['opacity-100', 'visible', 'scale-100'], add: ['opacity-0', 'invisible', 'scale-95'] };
+
+        dropdown.classList.remove(...classes.remove);
+        dropdown.classList.add(...classes.add);
     }
 
     // Modal methods
@@ -1067,6 +1106,9 @@ class GridManager {
         // Add scroll event listener for mobile touch scrolling
         if (!this.observers.has('scroll')) {
             const scrollHandler = () => {
+                // Don't update scroll state if we're programmatically scrolling to end
+                if (this.state.isScrollingToEnd) return;
+                
                 if (this.state.dataColWidth > 0) {
                     const newCurrentCol = Math.round(scrollable.scrollLeft / this.state.dataColWidth);
                     if (newCurrentCol !== this.state.currentCol) {
@@ -1165,10 +1207,32 @@ class GridManager {
         const { scrollable } = this.elements;
         if (!scrollable) return;
 
-        this.state.currentCol = Math.max(0, Math.min(colIdx, this.state.totalDataColumns - this.state.columnsToShow));
+        // Ensure we have valid column data
+        if (this.state.totalDataColumns <= 0 || this.state.dataColWidth <= 0) {
+            // Recalculate if needed
+            this.calculateAndApplyWidths();
+        }
+
+        // Calculate the target column index, ensuring it's within bounds
+        const maxCol = Math.max(0, this.state.totalDataColumns - 1);
+        this.state.currentCol = Math.max(0, Math.min(colIdx, maxCol));
+        
+        // Calculate scroll position
         const scrollLeft = this.state.currentCol * this.state.dataColWidth;
+        
+        // Perform the scroll
         scrollable.scrollTo({ left: scrollLeft, behavior });
+        
+        // Update scroll buttons
         this.updateScrollButtons();
+        
+        // Verify scroll position was set correctly
+        setTimeout(() => {
+            if (Math.abs(scrollable.scrollLeft - scrollLeft) > 5) {
+                // Force scroll if it didn't work properly
+                scrollable.scrollLeft = scrollLeft;
+            }
+        }, 50);
     }
 
     updateScrollButtons() {
@@ -1214,11 +1278,16 @@ class GridManager {
             return;
         } else if (scrollToEnd) {
             sessionStorage.removeItem('scrollToEnd');
-            // Wait a bit longer for DOM to be stable and recalculate
+            // Set flag to prevent mouse interference
+            this.state.isScrollingToEnd = true;
+            
+            // Wait for DOM to be stable and recalculate
             setTimeout(() => {
                 // Recalculate total columns from actual DOM
                 const dataColumns = document.querySelectorAll('.data-column');
                 const actualColumnCount = dataColumns.length;
+                
+                console.log('ScrollToEnd: Found', actualColumnCount, 'columns');
                 
                 if (actualColumnCount > 0) {
                     this.state.totalDataColumns = actualColumnCount;
@@ -1227,16 +1296,66 @@ class GridManager {
                         this.elements.gridTable.dataset.totalDataColumns = actualColumnCount;
                     }
                     
-                    // Recalculate widths
+                    // Recalculate widths to ensure proper column sizing
                     this.calculateAndApplyWidths();
                     
-                    // Scroll to the last possible position
-                    const lastColIndex = Math.max(0, this.state.totalDataColumns - this.state.columnsToShow);
-                    this.scrollToCol(lastColIndex, 'smooth');
+                    // Force a small delay to ensure widths are properly applied
+                    setTimeout(() => {
+                        // Scroll to show the very last column
+                        const lastColIndex = Math.max(0, this.state.totalDataColumns - 1);
+                        console.log('ScrollToEnd: Scrolling to column', lastColIndex, 'of', this.state.totalDataColumns);
+                        
+                        this.state.currentCol = lastColIndex;
+                        
+                        // Calculate exact scroll position to show the last column
+                        const scrollLeft = lastColIndex * this.state.dataColWidth;
+                        console.log('ScrollToEnd: Calculated scroll position:', scrollLeft, 'px (column width:', this.state.dataColWidth, 'px)');
+                        
+                        // Apply the scroll with multiple attempts to ensure it works
+                        if (this.elements.scrollable) {
+                            // First attempt: smooth scroll
+                            this.elements.scrollable.scrollTo({ left: scrollLeft, behavior: 'auto' });
+                            
+                            // Second attempt: force scroll after a short delay
+                            setTimeout(() => {
+                                if (this.elements.scrollable) {
+                                    this.elements.scrollable.scrollLeft = scrollLeft;
+                                    console.log('ScrollToEnd: Forced scroll position:', this.elements.scrollable.scrollLeft, 'px');
+                                }
+                            }, 50);
+                            
+                            // Third attempt: final verification and correction
+                            setTimeout(() => {
+                                if (this.elements.scrollable) {
+                                    const currentScroll = this.elements.scrollable.scrollLeft;
+                                    const expectedScroll = lastColIndex * this.state.dataColWidth;
+                                    
+                                    console.log('ScrollToEnd: Final verification - Current scroll:', currentScroll, 'px, Expected:', expectedScroll, 'px');
+                                    
+                                    // If scroll position is still off, force it one more time
+                                    if (Math.abs(currentScroll - expectedScroll) > 5) {
+                                        console.log('ScrollToEnd: Final scroll position correction');
+                                        this.elements.scrollable.scrollLeft = expectedScroll;
+                                        
+                                        // Update the current column state to match
+                                        this.state.currentCol = lastColIndex;
+                                    }
+                                    
+                                    // Clear the scrolling flag
+                                    this.state.isScrollingToEnd = false;
+                                }
+                            }, 150);
+                        }
+                        
+                        // Update scroll buttons
+                        this.updateScrollButtons();
+                    }, 100);
                 } else {
                     this.scrollToCol(0, 'auto');
+                    // Clear the scrolling flag
+                    this.state.isScrollingToEnd = false;
                 }
-            }, 200); // Increased timeout
+            }, 300); // Increased timeout to ensure DOM is fully ready
         } else if (savedPosition) {
             sessionStorage.removeItem('grid-scroll-position');
             // Restore saved position immediately for smoother experience
@@ -1275,6 +1394,9 @@ class GridManager {
     handleScrollToEnd() {
         // For new columns, we need to refresh to get the updated grid structure
         sessionStorage.setItem('scrollToEnd', 'true');
+        
+        // Force a reload to get the updated grid structure
+        // This ensures we have the correct column count and can scroll properly
         window.location.reload();
     }
 
