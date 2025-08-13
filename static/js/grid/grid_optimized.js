@@ -1372,6 +1372,13 @@ class GridManager {
             if (nameElement) {
                 nameElement.textContent = newName;
             }
+            
+            // Also update any inline editable column headers
+            const editableHeader = header.querySelector('.column-header-editable');
+            if (editableHeader) {
+                editableHeader.textContent = newName;
+                editableHeader.setAttribute('data-original-text', newName);
+            }
         });
     }
 
@@ -1381,6 +1388,13 @@ class GridManager {
             const nameElement = header.querySelector('span.font-semibold');
             if (nameElement) {
                 nameElement.textContent = newName;
+            }
+            
+            // Also update any inline editable row headers
+            const editableHeader = header.querySelector('.row-header-editable');
+            if (editableHeader) {
+                editableHeader.textContent = newName;
+                editableHeader.setAttribute('data-original-text', newName);
             }
         });
     }
@@ -1842,6 +1856,9 @@ class GridManager {
         // Skip restore during reinit to avoid double scroll position changes
         this.setupGridScrolling(true);
         
+        // Reinitialize inline editing for headers
+        this.addHeaderInlineEditingListeners();
+        
         // Restore scroll position immediately, no timeout
         if (this.elements.scrollable && currentScrollLeft > 0) {
             this.elements.scrollable.scrollLeft = currentScrollLeft;
@@ -1871,6 +1888,34 @@ class GridManager {
         // Disconnect observers
         this.observers.forEach(observer => observer.disconnect());
         this.observers.clear();
+        
+        // Remove inline editing listeners
+        this.removeInlineEditingListeners();
+    }
+
+    // Remove inline editing event listeners
+    removeInlineEditingListeners() {
+        const taskTextElements = document.querySelectorAll('.task-text-editable');
+        const rowHeaders = document.querySelectorAll('.row-header-editable');
+        const columnHeaders = document.querySelectorAll('.column-header-editable');
+        
+        taskTextElements.forEach(element => {
+            element.removeEventListener('click', this.boundTaskTextClick);
+            element.removeEventListener('blur', this.boundTaskTextBlur);
+            element.removeEventListener('keydown', this.boundTaskTextKeydown);
+        });
+        
+        rowHeaders.forEach(element => {
+            element.removeEventListener('click', this.boundRowHeaderClick);
+            element.removeEventListener('blur', this.boundRowHeaderBlur);
+            element.removeEventListener('keydown', this.boundRowHeaderKeydown);
+        });
+        
+        columnHeaders.forEach(element => {
+            element.removeEventListener('click', this.boundColumnHeaderClick);
+            element.removeEventListener('blur', this.boundColumnHeaderBlur);
+            element.removeEventListener('keydown', this.boundColumnHeaderKeydown);
+        });
     }
 
     // Initialize everything
@@ -1924,13 +1969,31 @@ class GridManager {
         this.boundTaskTextBlur = this.handleTaskTextBlur.bind(this);
         this.boundTaskTextKeydown = this.handleTaskTextKeydown.bind(this);
         
+        // Row and column header inline editing
+        this.boundRowHeaderClick = this.handleRowHeaderClick.bind(this);
+        this.boundRowHeaderBlur = this.handleRowHeaderBlur.bind(this);
+        this.boundRowHeaderKeydown = this.handleRowHeaderKeydown.bind(this);
+        this.boundColumnHeaderClick = this.handleColumnHeaderClick.bind(this);
+        this.boundColumnHeaderBlur = this.handleColumnHeaderBlur.bind(this);
+        this.boundColumnHeaderKeydown = this.handleColumnHeaderKeydown.bind(this);
+        
         // Add event listeners to all task text elements
         this.addInlineEditingListeners();
+        
+        // Add event listeners to row and column headers
+        this.addHeaderInlineEditingListeners();
         
         // Listen for new tasks being added (HTMX updates)
         document.addEventListener('htmx:afterSwap', (e) => {
             if (e.detail.target && e.detail.target.closest('[id^="tasks-"]')) {
                 this.addInlineEditingListeners();
+            }
+        });
+        
+        // Listen for grid structure updates (new rows/columns)
+        document.addEventListener('htmx:afterSwap', (e) => {
+            if (e.detail.target && e.detail.target.closest('#grid-content')) {
+                this.addHeaderInlineEditingListeners();
             }
         });
     }
@@ -1949,6 +2012,36 @@ class GridManager {
             element.addEventListener('click', this.boundTaskTextClick);
             element.addEventListener('blur', this.boundTaskTextBlur);
             element.addEventListener('keydown', this.boundTaskTextKeydown);
+        });
+    }
+
+    // Add inline editing event listeners to row and column headers
+    addHeaderInlineEditingListeners() {
+        const rowHeaders = document.querySelectorAll('.row-header-editable');
+        const columnHeaders = document.querySelectorAll('.column-header-editable');
+        
+        rowHeaders.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundRowHeaderClick);
+            element.removeEventListener('blur', this.boundRowHeaderBlur);
+            element.removeEventListener('keydown', this.boundRowHeaderKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundRowHeaderClick);
+            element.addEventListener('blur', this.boundRowHeaderBlur);
+            element.addEventListener('keydown', this.boundRowHeaderKeydown);
+        });
+        
+        columnHeaders.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundColumnHeaderClick);
+            element.removeEventListener('blur', this.boundColumnHeaderBlur);
+            element.removeEventListener('keydown', this.boundColumnHeaderKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundColumnHeaderClick);
+            element.addEventListener('blur', this.boundColumnHeaderBlur);
+            element.addEventListener('keydown', this.boundColumnHeaderKeydown);
         });
     }
 
@@ -2131,6 +2224,305 @@ class GridManager {
             if (data.success) {
                 // Update was successful
                 element.setAttribute('data-original-text', newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
+    // Row header inline editing methods
+    handleRowHeaderClick(e) {
+        if (window.innerWidth < 769) return; // Only on desktop
+        
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing header first
+        this.closeAllEditingHeaders();
+        
+        // Now open this header for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this header when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideHeaderClick.bind(this, element), { once: true });
+        }, 0);
+    }
+
+    handleRowHeaderBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveRowHeaderEdit(element);
+            }
+        }, 10);
+    }
+
+    handleRowHeaderKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveRowHeaderEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Column header inline editing methods
+    handleColumnHeaderClick(e) {
+        if (window.innerWidth < 769) return; // Only on desktop
+        
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing header first
+        this.closeAllEditingHeaders();
+        
+        // Now open this header for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this header when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideHeaderClick.bind(this, element), { once: true });
+        }, 0);
+        
+        // Prevent the click from bubbling up to avoid conflicts
+        e.stopPropagation();
+    }
+
+    handleColumnHeaderBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveColumnHeaderEdit(element);
+            }
+        }, 10);
+    }
+
+    handleColumnHeaderKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveColumnHeaderEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Close all editing headers
+    closeAllEditingHeaders() {
+        const editingHeaders = document.querySelectorAll('.row-header-editable.editing, .column-header-editable.editing');
+        editingHeaders.forEach(element => {
+            this.closeEditingHeader(element);
+        });
+    }
+
+    // Close a single editing header
+    closeEditingHeader(element) {
+        if (element.classList.contains('editing')) {
+            element.classList.add('saving');
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            
+            // Determine if it's a row or column header and save accordingly
+            if (element.classList.contains('row-header-editable')) {
+                this.saveRowHeaderEdit(element);
+            } else if (element.classList.contains('column-header-editable')) {
+                this.saveColumnHeaderEdit(element);
+            }
+        }
+    }
+
+    // Handle clicks outside editing headers
+    handleOutsideHeaderClick(editingElement, e) {
+        // Check if the click target is outside the editing element
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingHeader(editingElement);
+        }
+    }
+
+    // Save row header edit to server
+    saveRowHeaderEdit(element) {
+        const rowId = element.dataset.rowId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid row ID
+        if (!rowId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Get project ID from current page
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('No project ID found');
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Send update to server using correct URL format
+        fetch(`/grids/${projectId}/rows/${rowId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                row_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+                // Update all instances of this row header in the grid
+                this.updateRowHeader(rowId, newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
+    // Save column header edit to server
+    saveColumnHeaderEdit(element) {
+        const columnId = element.dataset.columnId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid column ID
+        if (!columnId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Get project ID from current page
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('No project ID found');
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Send update to server using correct URL format
+        fetch(`/grids/${projectId}/columns/${columnId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                col_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+                // Update all instances of this column header in the grid
+                this.updateColumnHeader(columnId, newText);
             } else {
                 // Revert on error
                 element.textContent = originalText;

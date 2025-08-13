@@ -463,6 +463,25 @@ def row_edit_view(request, project_pk, row_pk):
     )
     
     if request.method == 'POST':
+        # Check if this is a JSON request for inline editing
+        if request.headers.get('Content-Type') == 'application/json':
+            try:
+                data = json.loads(request.body)
+                row_name = data.get('row_name', '').strip()
+                if row_name:
+                    row.name = row_name
+                    row.save()
+                    return create_json_response(
+                        True,
+                        f'Row "{row.name}" updated successfully!',
+                        row_name=row.name
+                    )
+                else:
+                    return create_json_response(False, 'Row name cannot be empty')
+            except json.JSONDecodeError:
+                return create_json_response(False, 'Invalid JSON data')
+        
+        # Handle regular form submission
         form = RowHeaderForm(request.POST, instance=row)
         if form.is_valid():
             form.save()
@@ -602,6 +621,25 @@ def column_edit_view(request, project_pk, col_pk):
     )
     
     if request.method == 'POST':
+        # Check if this is a JSON request for inline editing
+        if request.headers.get('Content-Type') == 'application/json':
+            try:
+                data = json.loads(request.body)
+                col_name = data.get('col_name', '').strip()
+                if col_name:
+                    column.name = col_name
+                    column.save()
+                    return create_json_response(
+                        True,
+                        f'Column "{column.name}" updated successfully!',
+                        col_name=column.name
+                    )
+                else:
+                    return create_json_response(False, 'Column name cannot be empty')
+            except json.JSONDecodeError:
+                return create_json_response(False, 'Invalid JSON data')
+        
+        # Handle regular form submission
         form = ColumnHeaderForm(request.POST, instance=column)
         if form.is_valid():
             form.save()
