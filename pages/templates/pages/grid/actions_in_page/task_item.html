@@ -66,7 +66,7 @@
                 data-task-id="{{ task.pk }}"
                 data-task-text="{{ task.text }}"
                 data-delete-url="{% url 'pages:task_delete' task_pk=task.pk %}">
-            <i class="fas fa-trash text-xs text-[var(--delete-button-bg)]"></i>
+            <i class="fas fa-trash text-xs text-gray-400 hover:text-[var(--delete-button-bg)] transition-colors"></i>
         </button>
     </div>
     
@@ -91,7 +91,7 @@
                 data-task-id="{{ task.pk }}"
                 data-task-text="{{ task.text }}"
                 data-delete-url="{% url 'pages:task_delete' task_pk=task.pk %}">
-            <i class="fas fa-trash text-sm text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
+            <i class="fas fa-trash text-sm text-gray-400 hover:text-[var(--delete-button-bg)] transition-colors"></i>
         </button>
     </div>
 </div> 

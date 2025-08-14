@@ -38,25 +38,12 @@
                                 <!-- Row Actions -->
                                 <div class="flex flex-row justify-end items-center space-x-1 min-w-[70px] mr-2">
                                     <button type="button"
-                                            class="p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                                            title="Edit row"
-                                            hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row.pk %}"
-                                            hx-target="#modal-content"
-                                            hx-trigger="click throttle:500ms"
-                                            hx-disabled-elt="this"
-                                            hx-indicator="#modal-content"
-                                            hx-swap="innerHTML"
-                                            hx-headers='{"Cache-Control": "no-cache"}'
-                                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                                        <i class="fas fa-edit text-sm text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
-                                    </button>
-                                    <button type="button"
                                             class="delete-row-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                                             title="Delete row"
                                             data-row-id="{{ row.pk }}"
                                             data-row-name="{{ row.name }}"
                                             data-delete-url="{% url 'pages:row_delete' project_pk=project.pk row_pk=row.pk %}">
-                                        <i class="fas fa-trash text-sm text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)]"></i>
+                                        <i class="fas fa-trash text-sm text-gray-400 hover:text-[var(--delete-button-bg)] transition-colors"></i>
                                     </button>
                                 </div>
                             </div>

@@ -30,7 +30,9 @@ class GridManager {
             originalWidth: 0,
             originalHeight: 0,
             dragClone: null,
-            lastLiveReorder: null
+            lastLiveReorder: null,
+            // Scroll state
+            isScrollingToEnd: false
         };
         
         this.elements = {};
@@ -145,6 +147,15 @@ class GridManager {
                 const triggers = e.detail.xhr.getResponseHeader('HX-Trigger');
                 if (triggers && triggers.includes('scrollToEnd')) {
                     this.handleScrollToEnd();
+                    return;
+                }
+                if (triggers && triggers.includes('refreshGrid')) {
+                    this.handleRefreshGrid();
+                    return;
+                }
+                if (triggers && triggers.includes('resetGridToInitial')) {
+                    this.handleResetGridToInitial();
+                    return;
                 }
             }
         });
@@ -246,7 +257,7 @@ class GridManager {
 
     // Mouse move handler for manual drag
     handleMouseMove(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const dragClone = this.state.dragClone;
         if (!dragClone) return;
@@ -328,7 +339,7 @@ class GridManager {
 
     // Mouse up handler for manual drag
     handleMouseUp(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const draggedElement = this.state.draggedElement;
         if (!draggedElement) return;
@@ -491,7 +502,7 @@ class GridManager {
     // }
 
     handleDragEnter(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const taskContainer = e.target.closest('[data-row][data-col]');
         if (taskContainer) {
@@ -500,7 +511,7 @@ class GridManager {
     }
 
     handleDragLeave(e) {
-        if (!this.state.isDragging) return;
+        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
         const taskContainer = e.target.closest('[data-row][data-col]');
         if (taskContainer && !taskContainer.contains(e.relatedTarget)) {
@@ -733,27 +744,14 @@ class GridManager {
             this.closeProjectSwitcher();
         }
 
-        // Action dropdowns
-        const actionBtn = e.target.closest('.column-actions-btn, .row-actions-btn');
-        if (actionBtn) {
-            e.stopPropagation();
-            this.toggleActionDropdown(actionBtn);
-            return;
-        }
-
-        // Close action dropdowns if clicking outside
-        if (!e.target.closest('.column-actions-dropdown, .row-actions-dropdown')) {
-            this.closeAllActionDropdowns();
-        }
-
         // Task deletion
-        const deleteBtn = e.target.closest('.delete-task-btn');
-        if (deleteBtn) {
+        const taskDeleteBtn = e.target.closest('.delete-task-btn');
+        if (taskDeleteBtn) {
             e.preventDefault();
             this.showDeleteModal(
-                deleteBtn.dataset.taskId,
-                deleteBtn.dataset.taskText,
-                deleteBtn.dataset.deleteUrl
+                taskDeleteBtn.dataset.taskId,
+                taskDeleteBtn.dataset.taskText,
+                taskDeleteBtn.dataset.deleteUrl
             );
             return;
         }
@@ -826,7 +824,6 @@ class GridManager {
     handleKeydown(e) {
         if (e.key === 'Escape') {
             this.closeProjectSwitcher();
-            this.closeAllActionDropdowns();
             this.hideDeleteModal();
             this.hideModal();
             this.collapseAllAddTaskForms();
@@ -869,40 +866,9 @@ class GridManager {
         }
     }
 
-    // Action dropdown methods
-    toggleActionDropdown(btn) {
-        const dropdown = btn.nextElementSibling;
-        if (!dropdown) return;
-
-        // Close all other dropdowns first
-        this.closeAllActionDropdowns(dropdown);
-
-        // Toggle current dropdown
-        const isOpen = !dropdown.classList.contains('opacity-0');
-        this.setDropdownState(dropdown, !isOpen);
-    }
-
-    closeAllActionDropdowns(except = null) {
-        document.querySelectorAll('.column-actions-dropdown, .row-actions-dropdown').forEach(dropdown => {
-            if (dropdown !== except) {
-                this.setDropdownState(dropdown, false);
-            }
-        });
-    }
-
     // Function to close all dropdowns - called from inline onclick handlers
     closeAllDropdowns() {
         this.closeProjectSwitcher();
-        this.closeAllActionDropdowns();
-    }
-
-    setDropdownState(dropdown, isOpen) {
-        const classes = isOpen 
-            ? { remove: ['opacity-0', 'invisible', 'scale-95'], add: ['opacity-100', 'visible', 'scale-100'] }
-            : { remove: ['opacity-100', 'visible', 'scale-100'], add: ['opacity-0', 'invisible', 'scale-95'] };
-
-        dropdown.classList.remove(...classes.remove);
-        dropdown.classList.add(...classes.add);
     }
 
     // Modal methods
@@ -1064,17 +1030,25 @@ class GridManager {
 
         // Setup scroll buttons (only if not already set)
         if (!leftBtn.onclick) {
-            leftBtn.onclick = () => this.scrollToCol(this.state.currentCol - 1);
-            rightBtn.onclick = () => this.scrollToCol(this.state.currentCol + 1);
+            leftBtn.onclick = (e) => {
+                e.preventDefault();
+                // Use instant scrolling for button clicks for better responsiveness
+                this.scrollToCol(this.state.currentCol - 1, 'auto');
+            };
+            rightBtn.onclick = (e) => {
+                e.preventDefault();
+                // Use instant scrolling for button clicks for better responsiveness
+                this.scrollToCol(this.state.currentCol + 1, 'auto');
+            };
             
             // Add touch support for mobile
             leftBtn.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                this.scrollToCol(this.state.currentCol - 1);
+                this.scrollToCol(this.state.currentCol - 1, 'auto');
             });
             rightBtn.addEventListener('touchstart', (e) => {
                 e.preventDefault();
-                this.scrollToCol(this.state.currentCol + 1);
+                this.scrollToCol(this.state.currentCol + 1, 'auto');
             });
         }
 
@@ -1103,19 +1077,40 @@ class GridManager {
 
         // Add scroll event listener for mobile touch scrolling
         if (!this.observers.has('scroll')) {
+            let scrollTimeout;
+            let isScrolling = false;
+            
             const scrollHandler = () => {
-                if (this.state.dataColWidth > 0) {
-                    const newCurrentCol = Math.round(scrollable.scrollLeft / this.state.dataColWidth);
-                    if (newCurrentCol !== this.state.currentCol) {
-                        this.state.currentCol = newCurrentCol;
-                        this.updateScrollButtons();
-                    }
+                // Don't update scroll state if we're programmatically scrolling to end
+                if (this.state.isScrollingToEnd) return;
+                
+                // Set scrolling flag to prevent multiple updates
+                if (!isScrolling) {
+                    isScrolling = true;
                 }
+                
+                // Debounce scroll events for better performance
+                clearTimeout(scrollTimeout);
+                scrollTimeout = setTimeout(() => {
+                    if (this.state.dataColWidth > 0) {
+                        const newCurrentCol = Math.round(scrollable.scrollLeft / this.state.dataColWidth);
+                        if (newCurrentCol !== this.state.currentCol) {
+                            this.state.currentCol = newCurrentCol;
+                            this.updateScrollButtons();
+                        }
+                    }
+                    isScrolling = false;
+                }, 16); // ~60fps debouncing
             };
             
             // Use passive listeners for better performance on mobile
             scrollable.addEventListener('scroll', scrollHandler, { passive: true });
-            this.observers.set('scroll', { disconnect: () => scrollable.removeEventListener('scroll', scrollHandler) });
+            this.observers.set('scroll', { 
+                disconnect: () => {
+                    clearTimeout(scrollTimeout);
+                    scrollable.removeEventListener('scroll', scrollHandler);
+                } 
+            });
         }
 
         // Calculate widths and update UI without causing flash
@@ -1202,23 +1197,75 @@ class GridManager {
         const { scrollable } = this.elements;
         if (!scrollable) return;
 
-        this.state.currentCol = Math.max(0, Math.min(colIdx, this.state.totalDataColumns - this.state.columnsToShow));
-        const scrollLeft = this.state.currentCol * this.state.dataColWidth;
-        scrollable.scrollTo({ left: scrollLeft, behavior });
+        // Ensure we have valid column data
+        if (this.state.totalDataColumns <= 0 || this.state.dataColWidth <= 0) {
+            // Recalculate if needed
+            this.calculateAndApplyWidths();
+        }
+
+        // Calculate the target column index, ensuring it's within bounds
+        const maxCol = Math.max(0, this.state.totalDataColumns - 1);
+        const targetCol = Math.max(0, Math.min(colIdx, maxCol));
+        
+        // Don't scroll if we're already at the target column
+        if (targetCol === this.state.currentCol) return;
+        
+        // Update state immediately for responsive UI
+        this.state.currentCol = targetCol;
+        
+        // Calculate scroll position
+        const scrollLeft = targetCol * this.state.dataColWidth;
+        
+        // Perform the scroll with optimized behavior
+        if (behavior === 'smooth') {
+            // Use smooth scrolling for better UX
+            scrollable.scrollTo({ left: scrollLeft, behavior: 'smooth' });
+        } else {
+            // Use instant scrolling for immediate response
+            scrollable.scrollLeft = scrollLeft;
+        }
+        
+        // Update scroll buttons immediately
         this.updateScrollButtons();
+        
+        // Only verify scroll position for smooth scrolling
+        if (behavior === 'smooth') {
+            setTimeout(() => {
+                if (Math.abs(scrollable.scrollLeft - scrollLeft) > 5) {
+                    // Force scroll if it didn't work properly
+                    scrollable.scrollLeft = scrollLeft;
+                }
+            }, 100); // Increased timeout for smooth scrolling
+        }
     }
 
     updateScrollButtons() {
         const { leftBtn, rightBtn } = this.elements;
         if (!leftBtn || !rightBtn) return;
 
-        if (this.state.totalDataColumns <= this.state.columnsToShow) {
-            leftBtn.disabled = rightBtn.disabled = true;
-            leftBtn.style.display = rightBtn.style.display = 'none';
+        // Cache current state to avoid unnecessary updates
+        const shouldHideButtons = this.state.totalDataColumns <= this.state.columnsToShow;
+        const leftDisabled = this.state.currentCol === 0;
+        const rightDisabled = this.state.currentCol >= this.state.totalDataColumns - this.state.columnsToShow;
+        
+        // Only update if there are actual changes
+        if (shouldHideButtons) {
+            if (leftBtn.style.display !== 'none') {
+                leftBtn.style.display = rightBtn.style.display = 'none';
+                leftBtn.disabled = rightBtn.disabled = true;
+            }
         } else {
-            leftBtn.style.display = rightBtn.style.display = 'flex';
-            leftBtn.disabled = this.state.currentCol === 0;
-            rightBtn.disabled = this.state.currentCol >= this.state.totalDataColumns - this.state.columnsToShow;
+            if (leftBtn.style.display !== 'flex') {
+                leftBtn.style.display = rightBtn.style.display = 'flex';
+            }
+            
+            // Only update disabled state if it changed
+            if (leftBtn.disabled !== leftDisabled) {
+                leftBtn.disabled = leftDisabled;
+            }
+            if (rightBtn.disabled !== rightDisabled) {
+                rightBtn.disabled = rightDisabled;
+            }
         }
     }
 
@@ -1251,29 +1298,11 @@ class GridManager {
             return;
         } else if (scrollToEnd) {
             sessionStorage.removeItem('scrollToEnd');
-            // Wait a bit longer for DOM to be stable and recalculate
-            setTimeout(() => {
-                // Recalculate total columns from actual DOM
-                const dataColumns = document.querySelectorAll('.data-column');
-                const actualColumnCount = dataColumns.length;
-                
-                if (actualColumnCount > 0) {
-                    this.state.totalDataColumns = actualColumnCount;
-                    // Update the grid table data attribute
-                    if (this.elements.gridTable) {
-                        this.elements.gridTable.dataset.totalDataColumns = actualColumnCount;
-                    }
-                    
-                    // Recalculate widths
-                    this.calculateAndApplyWidths();
-                    
-                    // Scroll to the last possible position
-                    const lastColIndex = Math.max(0, this.state.totalDataColumns - this.state.columnsToShow);
-                    this.scrollToCol(lastColIndex, 'smooth');
-                } else {
-                    this.scrollToCol(0, 'auto');
-                }
-            }, 200); // Increased timeout
+            // Set flag to prevent mouse interference
+            this.state.isScrollingToEnd = true;
+            
+            // Use a more robust approach with multiple attempts
+            this.performScrollToEnd();
         } else if (savedPosition) {
             sessionStorage.removeItem('grid-scroll-position');
             // Restore saved position immediately for smoother experience
@@ -1309,9 +1338,94 @@ class GridManager {
         }
     }
 
+    // Separate method for performing scroll to end with multiple attempts
+    performScrollToEnd() {
+        // Set a higher priority flag to ensure this takes precedence
+        this.state.isScrollingToEnd = true;
+        
+        // Wait for DOM to be stable and recalculate
+        setTimeout(() => {
+            // Recalculate total columns from actual DOM
+            const dataColumns = document.querySelectorAll('.data-column');
+            const actualColumnCount = dataColumns.length;
+            
+            console.log('ScrollToEnd: Found', actualColumnCount, 'columns');
+            
+            if (actualColumnCount > 0) {
+                this.state.totalDataColumns = actualColumnCount;
+                // Update the grid table data attribute
+                if (this.elements.gridTable) {
+                    this.elements.gridTable.dataset.totalDataColumns = actualColumnCount;
+                }
+                
+                // Recalculate widths to ensure proper column sizing
+                this.calculateAndApplyWidths();
+                
+                // Force a small delay to ensure widths are properly applied
+                setTimeout(() => {
+                    // Scroll to show the very last column
+                    const lastColIndex = Math.max(0, this.state.totalDataColumns - 1);
+                    console.log('ScrollToEnd: Scrolling to column', lastColIndex, 'of', this.state.totalDataColumns);
+                    
+                    this.state.currentCol = lastColIndex;
+                    
+                    // Calculate exact scroll position to show the last column
+                    const scrollLeft = lastColIndex * this.state.dataColWidth;
+                    console.log('ScrollToEnd: Calculated scroll position:', scrollLeft, 'px (column width:', this.state.dataColWidth, 'px)');
+                    
+                    // Apply the scroll with multiple attempts to ensure it works
+                    if (this.elements.scrollable) {
+                        // First attempt: instant scroll
+                        this.elements.scrollable.scrollLeft = scrollLeft;
+                        
+                        // Second attempt: force scroll after a short delay
+                        setTimeout(() => {
+                            if (this.elements.scrollable && this.state.isScrollingToEnd) {
+                                this.elements.scrollable.scrollLeft = scrollLeft;
+                                console.log('ScrollToEnd: Forced scroll position:', this.elements.scrollable.scrollLeft, 'px');
+                            }
+                        }, 50);
+                        
+                        // Third attempt: final verification and correction
+                        setTimeout(() => {
+                            if (this.elements.scrollable && this.state.isScrollingToEnd) {
+                                const currentScroll = this.elements.scrollable.scrollLeft;
+                                const expectedScroll = lastColIndex * this.state.dataColWidth;
+                                
+                                console.log('ScrollToEnd: Final verification - Current scroll:', currentScroll, 'px, Expected:', expectedScroll, 'px');
+                                
+                                // If scroll position is still off, force it one more time
+                                if (Math.abs(currentScroll - expectedScroll) > 5) {
+                                    console.log('ScrollToEnd: Final scroll position correction');
+                                    this.elements.scrollable.scrollLeft = expectedScroll;
+                                    
+                                    // Update the current column state to match
+                                    this.state.currentCol = lastColIndex;
+                                }
+                            }
+                            
+                            // Clear the scrolling flag only after all attempts
+                            this.state.isScrollingToEnd = false;
+                        }, 200);
+                    }
+                    
+                    // Update scroll buttons
+                    this.updateScrollButtons();
+                }, 100);
+            } else {
+                this.scrollToCol(0, 'auto');
+                // Clear the scrolling flag
+                this.state.isScrollingToEnd = false;
+            }
+        }, 300); // Increased timeout to ensure DOM is fully ready
+    }
+
     handleScrollToEnd() {
         // For new columns, we need to refresh to get the updated grid structure
         sessionStorage.setItem('scrollToEnd', 'true');
+        
+        // Force a reload to get the updated grid structure
+        // This ensures we have the correct column count and can scroll properly
         window.location.reload();
     }
 
@@ -1336,7 +1450,7 @@ class GridManager {
         
         // Also clear any scroll position on the scrollable element before refresh
         if (this.elements.scrollable) {
-            this.elements.scrollable.scrollLeft = 0;
+            this.elements.scrollLeft = 0;
         }
         
         // Refresh the grid to reflect the column deletion and reset position
@@ -1372,6 +1486,13 @@ class GridManager {
             if (nameElement) {
                 nameElement.textContent = newName;
             }
+            
+            // Also update any inline editable column headers
+            const editableHeader = header.querySelector('.column-header-editable');
+            if (editableHeader) {
+                editableHeader.textContent = newName;
+                editableHeader.setAttribute('data-original-text', newName);
+            }
         });
     }
 
@@ -1381,6 +1502,13 @@ class GridManager {
             const nameElement = header.querySelector('span.font-semibold');
             if (nameElement) {
                 nameElement.textContent = newName;
+            }
+            
+            // Also update any inline editable row headers
+            const editableHeader = header.querySelector('.row-header-editable');
+            if (editableHeader) {
+                editableHeader.textContent = newName;
+                editableHeader.setAttribute('data-original-text', newName);
             }
         });
     }
@@ -1417,6 +1545,19 @@ class GridManager {
                     return;
                 }
             }
+        }
+        
+        // Check for column creation specifically
+        if (e.detail.successful && method === 'post' && url.includes('/columns/create/')) {
+            // When a new column is created, we need to scroll to the end
+            // Temporarily disable interactions to prevent interruption
+            this.disableInteractionsDuringScroll();
+            
+            // Use a small delay to ensure the DOM is updated
+            setTimeout(() => {
+                this.forceScrollToEnd();
+            }, 100);
+            return;
         }
         
         // Only handle POST requests for form submissions
@@ -1842,6 +1983,9 @@ class GridManager {
         // Skip restore during reinit to avoid double scroll position changes
         this.setupGridScrolling(true);
         
+        // Reinitialize inline editing for headers
+        this.addHeaderInlineEditingListeners();
+        
         // Restore scroll position immediately, no timeout
         if (this.elements.scrollable && currentScrollLeft > 0) {
             this.elements.scrollable.scrollLeft = currentScrollLeft;
@@ -1871,6 +2015,34 @@ class GridManager {
         // Disconnect observers
         this.observers.forEach(observer => observer.disconnect());
         this.observers.clear();
+        
+        // Remove inline editing listeners
+        this.removeInlineEditingListeners();
+    }
+
+    // Remove inline editing event listeners
+    removeInlineEditingListeners() {
+        const taskTextElements = document.querySelectorAll('.task-text-editable');
+        const rowHeaders = document.querySelectorAll('.row-header-editable');
+        const columnHeaders = document.querySelectorAll('.column-header-editable');
+        
+        taskTextElements.forEach(element => {
+            element.removeEventListener('click', this.boundTaskTextClick);
+            element.removeEventListener('blur', this.boundTaskTextBlur);
+            element.removeEventListener('keydown', this.boundTaskTextKeydown);
+        });
+        
+        rowHeaders.forEach(element => {
+            element.removeEventListener('click', this.boundRowHeaderClick);
+            element.removeEventListener('blur', this.boundRowHeaderBlur);
+            element.removeEventListener('keydown', this.boundRowHeaderKeydown);
+        });
+        
+        columnHeaders.forEach(element => {
+            element.removeEventListener('click', this.boundColumnHeaderClick);
+            element.removeEventListener('blur', this.boundColumnHeaderBlur);
+            element.removeEventListener('keydown', this.boundColumnHeaderKeydown);
+        });
     }
 
     // Initialize everything
@@ -1924,13 +2096,31 @@ class GridManager {
         this.boundTaskTextBlur = this.handleTaskTextBlur.bind(this);
         this.boundTaskTextKeydown = this.handleTaskTextKeydown.bind(this);
         
+        // Row and column header inline editing
+        this.boundRowHeaderClick = this.handleRowHeaderClick.bind(this);
+        this.boundRowHeaderBlur = this.handleRowHeaderBlur.bind(this);
+        this.boundRowHeaderKeydown = this.handleRowHeaderKeydown.bind(this);
+        this.boundColumnHeaderClick = this.handleColumnHeaderClick.bind(this);
+        this.boundColumnHeaderBlur = this.handleColumnHeaderBlur.bind(this);
+        this.boundColumnHeaderKeydown = this.handleColumnHeaderKeydown.bind(this);
+        
         // Add event listeners to all task text elements
         this.addInlineEditingListeners();
+        
+        // Add event listeners to row and column headers
+        this.addHeaderInlineEditingListeners();
         
         // Listen for new tasks being added (HTMX updates)
         document.addEventListener('htmx:afterSwap', (e) => {
             if (e.detail.target && e.detail.target.closest('[id^="tasks-"]')) {
                 this.addInlineEditingListeners();
+            }
+        });
+        
+        // Listen for grid structure updates (new rows/columns)
+        document.addEventListener('htmx:afterSwap', (e) => {
+            if (e.detail.target && e.detail.target.closest('#grid-content')) {
+                this.addHeaderInlineEditingListeners();
             }
         });
     }
@@ -1952,11 +2142,51 @@ class GridManager {
         });
     }
 
+    // Add inline editing event listeners to row and column headers
+    addHeaderInlineEditingListeners() {
+        const rowHeaders = document.querySelectorAll('.row-header-editable');
+        const columnHeaders = document.querySelectorAll('.column-header-editable');
+        
+        rowHeaders.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundRowHeaderClick);
+            element.removeEventListener('blur', this.boundRowHeaderBlur);
+            element.removeEventListener('keydown', this.boundRowHeaderKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundRowHeaderClick);
+            element.addEventListener('blur', this.boundRowHeaderBlur);
+            element.addEventListener('keydown', this.boundRowHeaderKeydown);
+        });
+        
+        columnHeaders.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundColumnHeaderClick);
+            element.removeEventListener('blur', this.boundColumnHeaderBlur);
+            element.removeEventListener('keydown', this.boundColumnHeaderKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundColumnHeaderClick);
+            element.addEventListener('blur', this.boundColumnHeaderBlur);
+            element.addEventListener('keydown', this.boundColumnHeaderKeydown);
+        });
+    }
+
     // Handle task text click for inline editing
     handleTaskTextClick(e) {
         if (window.innerWidth < 769) return; // Only on desktop
         
         const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing task first
+        this.closeAllEditingTasks();
+        
+        // Now open this task for editing
         element.contentEditable = true;
         element.focus();
         element.classList.add('editing');
@@ -1965,40 +2195,78 @@ class GridManager {
         if (!element.getAttribute('data-original-text')) {
             element.setAttribute('data-original-text', element.textContent);
         }
+        
+        // Add a one-time click handler to close this task when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideClick.bind(this, element), { once: true });
+        }, 0);
     }
 
     // Handle task text blur (save on blur)
     handleTaskTextBlur(e) {
         const element = e.target;
-        console.log('Blur event triggered on:', element); // Debug
-        console.log('Element has editing class:', element.classList.contains('editing')); // Debug
-        console.log('Element has saving class:', element.classList.contains('saving')); // Debug
-        console.log('Element contentEditable:', element.contentEditable); // Debug
         
         // Use a small timeout to ensure the blur event is fully processed
         setTimeout(() => {
             // Check if we're in edit mode by looking at the editing class
             if (element.classList.contains('editing') && !element.classList.contains('saving')) {
-                console.log('Blur event, saving task...'); // Debug
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 this.saveTaskEdit(element);
             } else if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
                 // Fallback: if contentEditable is still true but editing class is missing
-                console.log('Fallback blur save triggered...'); // Debug
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 this.saveTaskEdit(element);
             } else if (element.classList.contains('editing')) {
                 // Another fallback: if we have the editing class but contentEditable was changed
-                console.log('Final fallback blur save triggered...'); // Debug
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 this.saveTaskEdit(element);
             }
         }, 10); // Small timeout to ensure proper event handling
+    }
+
+    // Handle clicking outside of a specific editing task
+    handleOutsideClick(editingElement, e) {
+        // If the click is not on the editing element or its children, close it
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingTask(editingElement);
+        }
+    }
+
+    // Close a specific editing task
+    closeEditingTask(element) {
+        if (!element.classList.contains('editing')) return;
+        
+        // If the element has changes, save them
+        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            const currentText = element.textContent.trim();
+            
+            if (currentText !== originalText && currentText !== '') {
+                // Save the changes
+                element.classList.add('saving');
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveTaskEdit(element);
+            } else {
+                // No changes, just close editing
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                element.classList.remove('saving');
+            }
+        }
+    }
+
+    // Close all currently editing tasks
+    closeAllEditingTasks() {
+        const editingElements = document.querySelectorAll('.task-text-editable.editing');
+        editingElements.forEach(element => {
+            this.closeEditingTask(element);
+        });
     }
 
     // Handle task text keydown (Enter to save, Escape to cancel)
@@ -2096,6 +2364,305 @@ class GridManager {
         });
     }
 
+    // Row header inline editing methods
+    handleRowHeaderClick(e) {
+        if (window.innerWidth < 769) return; // Only on desktop
+        
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing header first
+        this.closeAllEditingHeaders();
+        
+        // Now open this header for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this header when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideHeaderClick.bind(this, element), { once: true });
+        }, 0);
+    }
+
+    handleRowHeaderBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveRowHeaderEdit(element);
+            }
+        }, 10);
+    }
+
+    handleRowHeaderKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveRowHeaderEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Column header inline editing methods
+    handleColumnHeaderClick(e) {
+        if (window.innerWidth < 769) return; // Only on desktop
+        
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing header first
+        this.closeAllEditingHeaders();
+        
+        // Now open this header for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this header when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideHeaderClick.bind(this, element), { once: true });
+        }, 0);
+        
+        // Prevent the click from bubbling up to avoid conflicts
+        e.stopPropagation();
+    }
+
+    handleColumnHeaderBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveColumnHeaderEdit(element);
+            }
+        }, 10);
+    }
+
+    handleColumnHeaderKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveColumnHeaderEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Close all editing headers
+    closeAllEditingHeaders() {
+        const editingHeaders = document.querySelectorAll('.row-header-editable.editing, .column-header-editable.editing');
+        editingHeaders.forEach(element => {
+            this.closeEditingHeader(element);
+        });
+    }
+
+    // Close a single editing header
+    closeEditingHeader(element) {
+        if (element.classList.contains('editing')) {
+            element.classList.add('saving');
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            
+            // Determine if it's a row or column header and save accordingly
+            if (element.classList.contains('row-header-editable')) {
+                this.saveRowHeaderEdit(element);
+            } else if (element.classList.contains('column-header-editable')) {
+                this.saveColumnHeaderEdit(element);
+            }
+        }
+    }
+
+    // Handle clicks outside editing headers
+    handleOutsideHeaderClick(editingElement, e) {
+        // Check if the click target is outside the editing element
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingHeader(editingElement);
+        }
+    }
+
+    // Save row header edit to server
+    saveRowHeaderEdit(element) {
+        const rowId = element.dataset.rowId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid row ID
+        if (!rowId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Get project ID from current page
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('No project ID found');
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Send update to server using correct URL format
+        fetch(`/grids/${projectId}/rows/${rowId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                row_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+                // Update all instances of this row header in the grid
+                this.updateRowHeader(rowId, newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
+    // Save column header edit to server
+    saveColumnHeaderEdit(element) {
+        const columnId = element.dataset.columnId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid column ID
+        if (!columnId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Get project ID from current page
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('No project ID found');
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Send update to server using correct URL format
+        fetch(`/grids/${projectId}/columns/${columnId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                col_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+                // Update all instances of this column header in the grid
+                this.updateColumnHeader(columnId, newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
     // Set initial column visibility to prevent flash
     setInitialColumnVisibility() {
         const dataCols = document.querySelectorAll('.data-column');
@@ -2126,6 +2693,35 @@ class GridManager {
         if (this.elements.scrollable) {
             this.elements.scrollable.offsetHeight; // Force reflow
         }
+    }
+
+    // Force scroll to end even if interrupted
+    forceScrollToEnd() {
+        // Clear any existing scroll-to-end attempts
+        if (this.state.isScrollingToEnd) {
+            this.state.isScrollingToEnd = false;
+        }
+        
+        // Set the flag and perform scroll to end
+        this.state.isScrollingToEnd = true;
+        this.performScrollToEnd();
+    }
+
+    // Temporarily disable interactions during scroll to end
+    disableInteractionsDuringScroll() {
+        // Store original state
+        const originalDragging = this.state.isDragging;
+        const originalScrollingToEnd = this.state.isScrollingToEnd;
+        
+        // Disable dragging and set scrolling flag
+        this.state.isDragging = false;
+        this.state.isScrollingToEnd = true;
+        
+        // Re-enable after scroll completes
+        setTimeout(() => {
+            this.state.isDragging = originalDragging;
+            this.state.isScrollingToEnd = originalScrollingToEnd;
+        }, 1000); // Give enough time for scroll to complete
     }
 }
 

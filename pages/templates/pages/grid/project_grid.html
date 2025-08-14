@@ -103,6 +103,80 @@
         border-color: var(--tertiary-action-bg) !important;
     }
     
+    /* Smooth scrolling optimizations */
+    .grid-table-scrollable {
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: var(--border-color) transparent;
+    }
+    
+    .grid-table-scrollable::-webkit-scrollbar {
+        height: 8px;
+    }
+    
+    .grid-table-scrollable::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    .grid-table-scrollable::-webkit-scrollbar-thumb {
+        background-color: var(--border-color);
+        border-radius: 4px;
+    }
+    
+    .grid-table-scrollable::-webkit-scrollbar-thumb:hover {
+        background-color: var(--text-secondary);
+    }
+    
+    /* Optimize scroll button interactions */
+    .external-scroll-btn {
+        transition: all 0.15s ease-out;
+        will-change: transform, opacity;
+    }
+    
+    .external-scroll-btn:hover {
+        transform: scale(1.05);
+    }
+    
+    .external-scroll-btn:active {
+        transform: scale(0.95);
+    }
+    
+    .external-scroll-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    /* Delete button styling */
+    .row-delete-btn,
+    .column-delete-btn,
+    .delete-task-btn {
+        transition: all 0.2s ease-out;
+        will-change: opacity, transform;
+    }
+    
+    .row-delete-btn:hover,
+    .column-delete-btn:hover,
+    .delete-task-btn:hover {
+        transform: scale(1.1);
+    }
+    
+    .row-delete-btn:active,
+    .column-delete-btn:active,
+    .delete-task-btn:active {
+        transform: scale(0.95);
+    }
+    
+    /* Ensure smooth opacity transitions for delete buttons */
+    .opacity-0 {
+        opacity: 0 !important;
+    }
+    
+    .group:hover .opacity-0 {
+        opacity: 1 !important;
+    }
+    
     /* Task text hover state for desktop */
     @media (min-width: 769px) {
         .task-text-editable:hover {

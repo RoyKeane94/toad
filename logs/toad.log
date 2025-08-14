@@ -14727,3 +14727,160 @@ INFO 2025-08-13 22:50:33,038 basehttp 71990 6135263232 "GET /static/js/general/g
 INFO 2025-08-13 22:50:37,061 basehttp 71990 6135263232 "GET /grids/15/columns/393/delete/ HTTP/1.1" 200 926
 INFO 2025-08-13 22:50:38,046 basehttp 71990 6135263232 "POST /grids/15/columns/393/delete/ HTTP/1.1" 204 0
 INFO 2025-08-13 22:50:38,084 basehttp 71990 6135263232 "GET /grids/15/ HTTP/1.1" 200 14109
+INFO 2025-08-14 19:53:21,615 autoreload 74344 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-14 19:53:30,548 basehttp 74344 6136131584 "GET /grids/15/ HTTP/1.1" 200 13375
+INFO 2025-08-14 19:53:30,566 basehttp 74344 6152957952 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-14 19:53:30,567 basehttp 74344 6169784320 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42443
+INFO 2025-08-14 19:53:30,567 basehttp 74344 6136131584 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-14 19:53:35,804 basehttp 74344 6136131584 "GET /grids/15/columns/92/delete/ HTTP/1.1" 200 946
+INFO 2025-08-14 19:53:51,909 basehttp 74344 6136131584 "GET /grids/15/columns/create/ HTTP/1.1" 200 978
+INFO 2025-08-14 19:53:53,996 basehttp 74344 6136131584 "POST /grids/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-14 19:53:54,068 basehttp 74344 6136131584 - Broken pipe from ('127.0.0.1', 49919)
+INFO 2025-08-14 19:53:54,069 basehttp 74344 6169784320 - Broken pipe from ('127.0.0.1', 49922)
+INFO 2025-08-14 19:53:54,070 basehttp 74344 6152957952 "GET /grids/15/ HTTP/1.1" 200 13856
+INFO 2025-08-14 19:53:54,080 basehttp 74344 6152957952 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-14 19:53:54,081 basehttp 74344 6136131584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:53:54,081 basehttp 74344 6169784320 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:54:02,493 project_views_functions 74344 6169784320 User None reordered tasks: in project Student Planner
+INFO 2025-08-14 19:54:02,493 basehttp 74344 6169784320 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-14 19:55:38,771 basehttp 74344 6169784320 "POST /grids/15/columns/94/edit/ HTTP/1.1" 200 111
+INFO 2025-08-14 19:55:41,323 basehttp 74344 6169784320 "GET /grids/15/ HTTP/1.1" 200 13889
+INFO 2025-08-14 19:55:41,341 basehttp 74344 6169784320 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-14 19:55:41,341 basehttp 74344 6152957952 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:55:41,342 basehttp 74344 6136131584 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:55:47,971 basehttp 74344 6152957952 "POST /grids/15/columns/94/edit/ HTTP/1.1" 200 113
+INFO 2025-08-14 19:55:50,507 project_views_functions 74344 6136131584 User None reordered tasks: in project Student Planner
+INFO 2025-08-14 19:55:50,507 basehttp 74344 6136131584 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-14 19:55:53,933 project_views_functions 74344 6136131584 User None reordered tasks: in project Student Planner
+INFO 2025-08-14 19:55:53,934 basehttp 74344 6136131584 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-14 19:55:55,349 basehttp 74344 6136131584 "GET /grids/15/ HTTP/1.1" 200 13800
+INFO 2025-08-14 19:55:59,701 project_views_functions 74344 6136131584 User None reordered tasks: in project Student Planner
+INFO 2025-08-14 19:55:59,701 basehttp 74344 6136131584 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-14 19:57:01,349 autoreload 74866 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-14 19:57:04,752 basehttp 74866 6198095872 "GET /grids/15/ HTTP/1.1" 200 14057
+INFO 2025-08-14 19:57:04,765 basehttp 74866 6198095872 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:04,769 basehttp 74866 6214922240 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-14 19:57:04,769 basehttp 74866 6231748608 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42781
+INFO 2025-08-14 19:57:16,863 basehttp 74866 6231748608 "POST /grids/15/columns/107/edit/ HTTP/1.1" 200 147
+INFO 2025-08-14 19:57:21,785 basehttp 74866 6231748608 "GET /grids/15/ HTTP/1.1" 200 14105
+INFO 2025-08-14 19:57:21,797 basehttp 74866 6214922240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:21,797 basehttp 74866 6231748608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:27,042 basehttp 74866 6231748608 "GET /grids/15/ HTTP/1.1" 200 14046
+INFO 2025-08-14 19:57:27,055 basehttp 74866 6198095872 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-14 19:57:27,056 basehttp 74866 6214922240 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-14 19:57:27,056 basehttp 74866 6248574976 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42781
+INFO 2025-08-14 19:57:27,057 basehttp 74866 6231748608 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-14 19:57:28,509 basehttp 74866 6231748608 "GET /grids/15/columns/create/ HTTP/1.1" 200 1036
+INFO 2025-08-14 19:57:30,539 basehttp 74866 6231748608 "POST /grids/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-14 19:57:30,615 basehttp 74866 6214922240 "GET /grids/15/ HTTP/1.1" 200 15345
+INFO 2025-08-14 19:57:30,615 basehttp 74866 6231748608 - Broken pipe from ('127.0.0.1', 50068)
+INFO 2025-08-14 19:57:30,617 basehttp 74866 6248574976 - Broken pipe from ('127.0.0.1', 50070)
+INFO 2025-08-14 19:57:35,335 basehttp 74866 6214922240 "GET /grids/15/ HTTP/1.1" 200 15346
+INFO 2025-08-14 19:57:35,346 basehttp 74866 6198095872 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:35,346 basehttp 74866 6214922240 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:36,501 basehttp 74866 6214922240 "GET /grids/15/columns/create/ HTTP/1.1" 200 1016
+INFO 2025-08-14 19:57:40,251 basehttp 74866 6214922240 "POST /grids/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-14 19:57:40,309 basehttp 74866 6214922240 - Broken pipe from ('127.0.0.1', 50066)
+INFO 2025-08-14 19:57:40,320 basehttp 74866 6198095872 - Broken pipe from ('127.0.0.1', 50065)
+INFO 2025-08-14 19:57:40,322 basehttp 74866 6231748608 "GET /grids/15/ HTTP/1.1" 200 15884
+INFO 2025-08-14 19:57:40,333 basehttp 74866 6231748608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:40,333 basehttp 74866 6198095872 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:43,265 basehttp 74866 6198095872 "GET /grids/15/columns/396/delete/ HTTP/1.1" 200 944
+INFO 2025-08-14 19:57:44,182 basehttp 74866 6198095872 "POST /grids/15/columns/396/delete/ HTTP/1.1" 204 0
+INFO 2025-08-14 19:57:44,239 basehttp 74866 6198095872 - Broken pipe from ('127.0.0.1', 50072)
+INFO 2025-08-14 19:57:44,241 basehttp 74866 6231748608 "GET /grids/15/ HTTP/1.1" 200 15403
+INFO 2025-08-14 19:57:48,666 basehttp 74866 6231748608 "GET /grids/15/columns/395/delete/ HTTP/1.1" 200 944
+INFO 2025-08-14 19:57:49,579 basehttp 74866 6231748608 "POST /grids/15/columns/395/delete/ HTTP/1.1" 204 0
+INFO 2025-08-14 19:57:49,636 basehttp 74866 6231748608 - Broken pipe from ('127.0.0.1', 50071)
+INFO 2025-08-14 19:57:49,638 basehttp 74866 6198095872 "GET /grids/15/ HTTP/1.1" 200 14103
+INFO 2025-08-14 19:57:49,648 basehttp 74866 6198095872 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:57:49,648 basehttp 74866 6214922240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:58:09,642 basehttp 74866 6214922240 "GET /grids/15/columns/394/delete/ HTTP/1.1" 200 958
+INFO 2025-08-14 19:58:10,659 basehttp 74866 6214922240 "POST /grids/15/columns/394/delete/ HTTP/1.1" 204 0
+INFO 2025-08-14 19:58:10,690 basehttp 74866 6214922240 "GET /grids/15/ HTTP/1.1" 200 13664
+INFO 2025-08-14 19:58:10,700 basehttp 74866 6214922240 - Broken pipe from ('127.0.0.1', 50076)
+INFO 2025-08-14 19:58:10,701 basehttp 74866 6198095872 "GET /grids/15/ HTTP/1.1" 200 13604
+INFO 2025-08-14 19:58:10,714 basehttp 74866 6198095872 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-14 19:58:10,714 basehttp 74866 6214922240 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 19:58:10,715 basehttp 74866 6231748608 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:01:44,848 autoreload 75366 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-14 20:01:58,173 basehttp 75366 6202896384 "GET /grids/15/ HTTP/1.1" 200 13676
+INFO 2025-08-14 20:01:58,190 basehttp 75366 6236549120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-14 20:01:58,191 basehttp 75366 6253375488 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 43411
+INFO 2025-08-14 20:01:58,192 basehttp 75366 6219722752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-14 20:01:58,192 basehttp 75366 6202896384 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-14 20:02:03,207 basehttp 75366 6202896384 "GET /grids/15/columns/create/ HTTP/1.1" 200 1000
+INFO 2025-08-14 20:02:05,470 basehttp 75366 6202896384 "POST /grids/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-14 20:02:05,543 basehttp 75366 6202896384 - Broken pipe from ('127.0.0.1', 50785)
+INFO 2025-08-14 20:02:05,543 basehttp 75366 6219722752 - Broken pipe from ('127.0.0.1', 50786)
+INFO 2025-08-14 20:02:05,544 basehttp 75366 6253375488 "GET /grids/15/ HTTP/1.1" 200 14106
+INFO 2025-08-14 20:02:05,555 basehttp 75366 6253375488 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:02:05,555 basehttp 75366 6236549120 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:02:12,263 project_views_functions 75366 6236549120 User None reordered tasks: in project Student Planner
+INFO 2025-08-14 20:02:12,264 basehttp 75366 6236549120 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-14 20:02:13,820 basehttp 75366 6236549120 "GET /grids/15/ HTTP/1.1" 200 14086
+INFO 2025-08-14 20:02:13,833 basehttp 75366 6236549120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:02:13,833 basehttp 75366 6253375488 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:02:17,793 project_views_functions 75366 6253375488 User None reordered tasks: in project Student Planner
+INFO 2025-08-14 20:02:17,793 basehttp 75366 6253375488 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-14 20:02:20,486 basehttp 75366 6253375488 "POST /grids/15/columns/397/edit/ HTTP/1.1" 200 91
+INFO 2025-08-14 20:02:26,299 basehttp 75366 6253375488 "POST /tasks/185/edit/ HTTP/1.1" 200 125
+INFO 2025-08-14 20:03:29,492 basehttp 75366 6202896384 "POST /grids/15/rows/57/edit/ HTTP/1.1" 200 90
+INFO 2025-08-14 20:03:32,519 basehttp 75366 6202896384 "POST /grids/15/rows/58/edit/ HTTP/1.1" 200 124
+INFO 2025-08-14 20:03:34,147 basehttp 75366 6202896384 "POST /grids/15/rows/58/edit/ HTTP/1.1" 200 122
+INFO 2025-08-14 20:03:37,002 basehttp 75366 6202896384 "POST /grids/15/rows/57/edit/ HTTP/1.1" 200 88
+INFO 2025-08-14 20:08:12,068 autoreload 76240 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-14 20:08:16,377 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 14464
+INFO 2025-08-14 20:08:16,396 basehttp 76240 6167965696 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:16,402 basehttp 76240 6134312960 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-14 20:08:16,403 basehttp 76240 6151139328 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 43411
+INFO 2025-08-14 20:08:31,808 basehttp 76240 6134312960 "GET /grids/15/columns/create/ HTTP/1.1" 200 1055
+INFO 2025-08-14 20:08:34,254 basehttp 76240 6134312960 "POST /grids/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-14 20:08:34,301 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 15840
+INFO 2025-08-14 20:08:34,314 basehttp 76240 6134312960 - Broken pipe from ('127.0.0.1', 51259)
+INFO 2025-08-14 20:08:34,326 basehttp 76240 6167965696 "GET /grids/15/ HTTP/1.1" 200 15822
+INFO 2025-08-14 20:08:34,328 basehttp 76240 6151139328 "GET /grids/15/ HTTP/1.1" 200 15807
+INFO 2025-08-14 20:08:34,329 basehttp 76240 6151139328 - Broken pipe from ('127.0.0.1', 51260)
+INFO 2025-08-14 20:08:34,336 basehttp 76240 6134312960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:34,336 basehttp 76240 6167965696 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:37,499 basehttp 76240 6134312960 "GET /grids/15/columns/397/delete/ HTTP/1.1" 200 972
+INFO 2025-08-14 20:08:38,516 basehttp 76240 6134312960 "POST /grids/15/columns/397/delete/ HTTP/1.1" 204 0
+INFO 2025-08-14 20:08:38,573 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 14481
+INFO 2025-08-14 20:08:38,573 basehttp 76240 6134312960 - Broken pipe from ('127.0.0.1', 51263)
+INFO 2025-08-14 20:08:38,575 basehttp 76240 6151139328 "GET /grids/15/ HTTP/1.1" 200 14539
+INFO 2025-08-14 20:08:38,585 basehttp 76240 6134312960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:38,586 basehttp 76240 6151139328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:43,851 basehttp 76240 6134312960 "GET /grids/15/columns/398/delete/ HTTP/1.1" 200 980
+INFO 2025-08-14 20:08:44,864 basehttp 76240 6134312960 "POST /grids/15/columns/398/delete/ HTTP/1.1" 204 0
+INFO 2025-08-14 20:08:44,918 basehttp 76240 6134312960 - Broken pipe from ('127.0.0.1', 51266)
+INFO 2025-08-14 20:08:44,919 basehttp 76240 6151139328 "GET /grids/15/ HTTP/1.1" 200 13929
+INFO 2025-08-14 20:08:44,927 basehttp 76240 6151139328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:44,928 basehttp 76240 6134312960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:48,318 basehttp 76240 6134312960 "GET /grids/15/rows/create/ HTTP/1.1" 200 1054
+INFO 2025-08-14 20:08:50,958 basehttp 76240 6134312960 "POST /grids/15/rows/create/ HTTP/1.1" 204 0
+INFO 2025-08-14 20:08:51,014 basehttp 76240 6134312960 - Broken pipe from ('127.0.0.1', 51277)
+INFO 2025-08-14 20:08:51,016 basehttp 76240 6151139328 "GET /grids/15/ HTTP/1.1" 200 14579
+INFO 2025-08-14 20:08:51,026 basehttp 76240 6151139328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:51,027 basehttp 76240 6134312960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:08:53,832 basehttp 76240 6134312960 "GET /grids/15/rows/339/delete/ HTTP/1.1" 200 978
+INFO 2025-08-14 20:08:54,928 basehttp 76240 6134312960 "POST /grids/15/rows/339/delete/ HTTP/1.1" 200 66
+INFO 2025-08-14 20:08:54,968 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 13949
+WARNING 2025-08-14 20:08:58,544 log 76240 6134312960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-14 20:08:58,544 basehttp 76240 6134312960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+INFO 2025-08-14 20:09:02,011 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 13467
+INFO 2025-08-14 20:09:02,032 basehttp 76240 6151139328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-14 20:09:02,033 basehttp 76240 6134312960 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51312
+WARNING 2025-08-14 20:09:02,045 log 76240 6151139328 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-14 20:09:02,045 basehttp 76240 6151139328 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1934
+INFO 2025-08-14 20:09:06,778 basehttp 76240 6134312960 "POST /grids/15/rows/57/delete/ HTTP/1.1" 200 67
+INFO 2025-08-14 20:09:06,812 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 12746
+WARNING 2025-08-14 20:09:06,830 log 76240 6134312960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-14 20:09:06,831 basehttp 76240 6134312960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1918
+INFO 2025-08-14 20:09:14,833 basehttp 76240 6134312960 "GET /grids/15/columns/92/delete/ HTTP/1.1" 200 1003
+INFO 2025-08-14 20:09:15,830 basehttp 76240 6134312960 "POST /grids/15/columns/92/delete/ HTTP/1.1" 204 0
+INFO 2025-08-14 20:09:15,860 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 11276
+INFO 2025-08-14 20:09:15,875 basehttp 76240 6151139328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-14 20:09:15,881 log 76240 6134312960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-14 20:09:15,882 basehttp 76240 6134312960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1878
+INFO 2025-08-14 20:09:21,928 basehttp 76240 6134312960 "GET /grids/15/ HTTP/1.1" 200 12202
+INFO 2025-08-14 20:09:21,944 basehttp 76240 6134312960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0

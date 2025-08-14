@@ -2,41 +2,23 @@
 <tr class="{% if not forloop.last %}border-b border-[var(--border-color)]{% endif %}" style="--row-min-height: {{ row_min_heights|get_item:row_h.pk }}px;">
     <!-- Row Header -->
     <td class="row-header p-4 border-r border-[var(--border-color)] font-medium text-[var(--text-primary)] align-top" style="min-height: var(--row-min-height);">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between group">
             <span class="text-green-600 font-semibold truncate">{{ row_h.name }}</span>
             <div class="relative ml-2">
                 <button type="button"
-                        class="row-actions-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                        title="Row actions"
-                        data-row-id="{{ row_h.pk }}">
-                    <i class="fas fa-ellipsis-v text-xs text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"></i>
+                        class="row-delete-btn p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer opacity-0 group-hover:opacity-100" 
+                        title="Delete row"
+                        data-row-id="{{ row_h.pk }}"
+                        hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
+                        hx-target="#modal-content"
+                        hx-trigger="click throttle:500ms"
+                        hx-disabled-elt="this"
+                        hx-indicator="#modal-content"
+                        hx-swap="innerHTML"
+                        hx-headers='{"Cache-Control": "no-cache"}'
+                        onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                    <i class="fas fa-trash text-xs text-gray-400 hover:text-[var(--delete-button-bg)] transition-colors"></i>
                 </button>
-                <div class="row-actions-dropdown absolute top-full right-0 mt-1 w-32 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-1 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
-                    <button type="button"
-                            class="w-full px-3 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors flex items-center cursor-pointer"
-                            hx-get="{% url 'pages:row_edit' project_pk=project.pk row_pk=row_h.pk %}"
-                            hx-target="#modal-content"
-                            hx-trigger="click throttle:500ms"
-                            hx-disabled-elt="this"
-                            hx-indicator="#modal-content"
-                            hx-swap="innerHTML"
-                            hx-headers='{"Cache-Control": "no-cache"}'
-                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-edit text-xs mr-2 text-[var(--primary-action-bg)]"></i>Edit
-                    </button>
-                    <button type="button"
-                            class="w-full px-3 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors flex items-center cursor-pointer"
-                            hx-get="{% url 'pages:row_delete' project_pk=project.pk row_pk=row_h.pk %}"
-                            hx-target="#modal-content"
-                            hx-trigger="click throttle:500ms"
-                            hx-disabled-elt="this"
-                            hx-indicator="#modal-content"
-                            hx-swap="innerHTML"
-                            hx-headers='{"Cache-Control": "no-cache"}'
-                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-trash text-xs mr-2 text-[var(--delete-button-bg)]"></i>Delete
-                    </button>
-                </div>
             </div>
         </div>
     </td>
