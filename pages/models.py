@@ -73,7 +73,7 @@ class Task(models.Model):
             raise ValidationError({'text': 'Task text cannot be empty.'})
 
     class Meta:
-        ordering = ['order', 'created_at']
+        ordering = ['-created_at', 'order']  # Most recent first, then by order
         indexes = [
             models.Index(fields=['project', 'row_header', 'column_header']),  # For cell-based task queries
             models.Index(fields=['project', 'completed']),  # For completed task filtering
