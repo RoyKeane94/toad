@@ -1,0 +1,78 @@
+<!-- Modal Header -->
+<div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+    <div class="flex items-center space-x-3">
+        <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+            <i class="fas fa-edit text-white"></i>
+        </div>
+        <div>
+            <h3 class="text-lg font-semibold text-[var(--text-primary)]">
+                {% if project %}Edit Grid Name{% else %}Create New Grid{% endif %}
+            </h3>
+            {% if not project %}
+            <p class="text-sm text-[var(--text-secondary)]">Create a new grid to organise your tasks</p>
+            {% endif %}
+        </div>
+    </div>
+    <button type="button" onclick="closeModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+
+<!-- Modal Body -->
+<div class="p-6">
+    <form id="project-form" method="post" action="{% if project %}{% url 'pages:project_edit' pk=project.pk %}{% else %}{% url 'pages:project_create' %}{% endif %}">
+        {% csrf_token %}
+        
+        <div class="mb-6">
+            <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                Grid Name
+            </label>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class="mt-1 text-sm text-[var(--delete-button-bg)] bg-red-50 border border-red-200 rounded-md px-3 py-2">
+                    {% for error in form.name.errors %}
+                        <div class="flex items-center">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            <p>{{ error }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+<!-- Modal Footer -->
+<div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+    <button type="button" 
+            onclick="closeModal()"
+            class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+        <i class="fas fa-times mr-2"></i>Cancel
+    </button>
+    <button type="submit" 
+            form="project-form"
+            class="w-32 h-10 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+        {% if project %}
+            <i class="fas fa-save mr-2"></i>Update
+        {% else %}
+            <i class="fas fa-plus mr-2"></i>Create
+        {% endif %}
+    </button>
+</div>
+
+<script>
+// Close modal function
+function closeModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('#modal-content');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+
+</script>

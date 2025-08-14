@@ -94,7 +94,13 @@ def project_edit_view(request, pk):
     else:
         form = ProjectForm(instance=project)
     
-    return render(request, 'pages/grid/actions_new_page/project_form.html', {
+    # Check if this is an HTMX request (modal) or regular page request
+    if request.headers.get('HX-Request'):
+        template_name = 'pages/grid/actions_new_page/project_form_modal.html'
+    else:
+        template_name = 'pages/grid/actions_new_page/project_form.html'
+    
+    return render(request, template_name, {
         'form': form, 
         'project': project, 
         'title': 'Edit Project'
@@ -110,7 +116,13 @@ def project_delete_view(request, pk):
         messages.success(request, f'Grid "{project_name}" deleted successfully!')
         return redirect('pages:project_list')
     
-    return render(request, 'pages/grid/actions_new_page/project_confirm_delete.html', {'project': project})
+    # Check if this is an HTMX request (modal) or regular page request
+    if request.headers.get('HX-Request'):
+        template_name = 'pages/grid/actions_new_page/project_confirm_delete_modal.html'
+    else:
+        template_name = 'pages/grid/actions_new_page/project_confirm_delete.html'
+    
+    return render(request, template_name, {'project': project})
 
 
 def is_mobile_device(request):

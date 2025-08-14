@@ -215,6 +215,8 @@
             border-color: var(--tertiary-action-bg) !important;
         }
     }
+    
+
 </style>
 {% endblock %}
 
@@ -231,8 +233,55 @@
 <!-- Header -->
 <div class="mb-6 px-4 grid-header-mobile grid-content-hidden" id="grid-header">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-        <div>
+        <div class="flex items-center space-x-3">
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
+            
+            <!-- Grid Name Actions Dropdown -->
+            <div class="relative" id="grid-name-actions-container">
+                <button type="button" 
+                        id="grid-name-actions-btn"
+                        class="group flex items-center justify-center w-8 h-8 text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] rounded-lg transition-all duration-200 cursor-pointer">
+                    <i class="fas fa-ellipsis-h text-sm"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div id="grid-name-actions-dropdown" 
+                     class="absolute top-full left-0 mt-2 w-48 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
+                    
+                    <!-- Edit Grid Name -->
+                    <button type="button"
+                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            hx-get="{% url 'pages:project_edit' pk=project.pk %}"
+                            hx-target="#modal-content"
+                            hx-trigger="click throttle:500ms"
+                            hx-disabled-elt="this"
+                            hx-indicator="#modal-content"
+                            hx-swap="innerHTML"
+                            hx-headers='{"Cache-Control": "no-cache"}"
+                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        <i class="fas fa-edit text-xs w-4 text-center"></i>
+                        <span>Edit Name</span>
+                    </button>
+                    
+                    <!-- Divider -->
+                    <div class="border-t border-[var(--border-color)] my-2"></div>
+                    
+                    <!-- Delete Grid -->
+                    <button type="button"
+                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--delete-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            hx-get="{% url 'pages:project_delete' pk=project.pk %}"
+                            hx-target="#modal-content"
+                            hx-trigger="click throttle:500ms"
+                            hx-disabled-elt="this"
+                            hx-indicator="#modal-content"
+                            hx-swap="innerHTML"
+                            hx-headers='{"Cache-Control": "no-cache"}"
+                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        <i class="fas fa-trash text-xs w-4 text-center"></i>
+                        <span>Delete Grid</span>
+                    </button>
+                </div>
+            </div>
         </div>
         
         <!-- Grid Actions -->
@@ -398,8 +447,8 @@
                 {% csrf_token %}
                 <button type="submit" 
                         class="w-32 h-10 flex items-center justify-center bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                    <i class="fas fa-trash mr-2"></i>Delete Task
-                </button>
+                                            <i class="fas fa-trash mr-2"></i>Delete Task
+                 </button>
             </form>
         </div>
     </div>
@@ -412,6 +461,78 @@
     </div>
 </div>
 
+<script>
+// Grid Name Actions Dropdown functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const gridNameActionsBtn = document.getElementById('grid-name-actions-btn');
+    const gridNameActionsDropdown = document.getElementById('grid-name-actions-dropdown');
+    
+    if (gridNameActionsBtn && gridNameActionsDropdown) {
+        // Toggle dropdown
+        gridNameActionsBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isVisible = !gridNameActionsDropdown.classList.contains('invisible');
+            
+            if (isVisible) {
+                // Close dropdown
+                gridNameActionsDropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                gridNameActionsDropdown.classList.remove('scale-100');
+            } else {
+                // Open dropdown
+                gridNameActionsDropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+                gridNameActionsDropdown.classList.add('scale-100');
+            }
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!gridNameActionsBtn.contains(e.target) && !gridNameActionsDropdown.contains(e.target)) {
+                gridNameActionsDropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                gridNameActionsDropdown.classList.remove('scale-100');
+            }
+        });
+        
+        // Close dropdown when pressing Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                gridNameActionsDropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+                gridNameActionsDropdown.classList.remove('scale-100');
+            }
+        });
+    }
+});
 
+
+
+// Modal functions
+function closeModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('#modal-content');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+// Extend the existing closeAllDropdowns function to include the new dropdown
+const originalCloseAllDropdowns = window.closeAllDropdowns;
+window.closeAllDropdowns = function() {
+    if (originalCloseAllDropdowns) {
+        originalCloseAllDropdowns();
+    }
+    
+    // Close the grid name actions dropdown
+    const gridNameActionsDropdown = document.getElementById('grid-name-actions-dropdown');
+    if (gridNameActionsDropdown) {
+        gridNameActionsDropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+        gridNameActionsDropdown.classList.remove('scale-100');
+    }
+};
+
+
+</script>
 
 {% endblock %} 

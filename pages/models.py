@@ -65,7 +65,7 @@ class Task(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.text[:50] if self.text else 'Empty Task'
+        return f"{self.text[:50]} - {self.created_at} - project: {self.project.name} - user: {self.project.user}" if self.text else 'Empty Task'
     
     def clean(self):
         if not self.text or not self.text.strip():
@@ -80,6 +80,7 @@ class Task(models.Model):
             models.Index(fields=['project', 'order']),  # For task ordering
             models.Index(fields=['project', 'row_header', 'column_header', 'order']),  # For ordered task queries
         ]
+
 
 class Template(models.Model):
     CATEGORY_CHOICES = [
