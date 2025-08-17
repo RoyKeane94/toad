@@ -15079,3 +15079,1192 @@ INFO 2025-08-14 20:36:26,709 autoreload 78560 8693374720 /Users/tombarratt/Deskt
 INFO 2025-08-14 20:36:26,964 autoreload 78584 8693374720 Watching for file changes with StatReloader
 INFO 2025-08-14 20:36:28,081 autoreload 78584 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
 INFO 2025-08-14 20:36:28,252 autoreload 78586 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:27:12,137 autoreload 81937 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:27:15,037 basehttp 81937 6196244480 "GET /grids/15/ HTTP/1.1" 200 13788
+INFO 2025-08-17 14:27:15,054 basehttp 81937 6229897216 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:15,059 basehttp 81937 6246723584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:27:15,060 basehttp 81937 6196244480 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 43802
+INFO 2025-08-17 14:27:15,060 basehttp 81937 6213070848 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-17 14:27:18,431 project_views_functions 81937 6213070848 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:27:18,431 basehttp 81937 6213070848 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:27:21,587 basehttp 81937 6213070848 "GET /grids/15/ HTTP/1.1" 200 13780
+INFO 2025-08-17 14:27:21,600 basehttp 81937 6196244480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:21,600 basehttp 81937 6213070848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:21,600 basehttp 81937 6246723584 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:23,937 project_views_functions 81937 6246723584 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:27:23,938 basehttp 81937 6246723584 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:27:25,152 basehttp 81937 6246723584 "GET /grids/15/ HTTP/1.1" 200 13796
+INFO 2025-08-17 14:27:25,165 basehttp 81937 6213070848 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:25,166 basehttp 81937 6196244480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:25,166 basehttp 81937 6246723584 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:41,477 basehttp 81937 6246723584 "GET /grids/15/ HTTP/1.1" 200 13761
+INFO 2025-08-17 14:27:41,490 basehttp 81937 6213070848 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:27:41,492 basehttp 81937 6229897216 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 43802
+INFO 2025-08-17 14:27:41,493 basehttp 81937 6246723584 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-17 14:27:41,493 basehttp 81937 6196244480 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 14:27:43,958 project_views_functions 81937 6196244480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:27:43,959 basehttp 81937 6196244480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:27:46,043 basehttp 81937 6196244480 "GET /grids/15/ HTTP/1.1" 200 13780
+INFO 2025-08-17 14:27:46,055 basehttp 81937 6246723584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:46,056 basehttp 81937 6229897216 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:27:46,056 basehttp 81937 6196244480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:29:35,142 basehttp 81937 6196244480 "GET /grids/15/ HTTP/1.1" 200 13754
+INFO 2025-08-17 14:29:35,156 basehttp 81937 6213070848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:29:35,156 basehttp 81937 6196244480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:29:35,157 basehttp 81937 6229897216 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:29:37,317 log 81937 6229897216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:29:37,317 basehttp 81937 6229897216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1925
+INFO 2025-08-17 14:29:42,689 basehttp 81937 6229897216 "GET /grids/15/ HTTP/1.1" 200 13779
+WARNING 2025-08-17 14:29:42,720 log 81937 6229897216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:29:42,720 basehttp 81937 6229897216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1919
+INFO 2025-08-17 14:29:45,565 project_views_functions 81937 6229897216 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:29:45,566 basehttp 81937 6229897216 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:30:15,509 autoreload 82522 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:30:25,077 basehttp 82522 6201028608 "GET /grids/15/ HTTP/1.1" 200 13814
+INFO 2025-08-17 14:30:25,097 basehttp 82522 6234681344 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:30:25,098 basehttp 82522 6251507712 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 44818
+INFO 2025-08-17 14:30:25,099 basehttp 82522 6201028608 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-17 14:30:25,099 basehttp 82522 6217854976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+WARNING 2025-08-17 14:30:27,482 log 82522 6217854976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:30:27,483 basehttp 82522 6217854976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1886
+INFO 2025-08-17 14:30:30,187 basehttp 82522 6217854976 "GET /grids/15/ HTTP/1.1" 200 13823
+INFO 2025-08-17 14:30:30,203 basehttp 82522 6251507712 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:30:30,203 basehttp 82522 6201028608 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:30:30,208 log 82522 6217854976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:30:30,208 basehttp 82522 6217854976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1901
+INFO 2025-08-17 14:30:32,775 project_views_functions 82522 6217854976 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:30:32,775 basehttp 82522 6217854976 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:30:36,863 basehttp 82522 6217854976 "GET /grids/15/ HTTP/1.1" 200 13750
+INFO 2025-08-17 14:30:36,879 basehttp 82522 6251507712 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:30:36,879 basehttp 82522 6217854976 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:30:36,891 log 82522 6217854976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:30:36,891 basehttp 82522 6217854976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1911
+INFO 2025-08-17 14:30:40,427 project_views_functions 82522 6217854976 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:30:40,427 basehttp 82522 6217854976 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:32:46,246 autoreload 83072 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:32:55,083 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13796
+INFO 2025-08-17 14:32:55,102 basehttp 83072 6230503424 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:32:55,107 basehttp 83072 6196850688 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:32:55,109 basehttp 83072 6213677056 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 46032
+WARNING 2025-08-17 14:32:55,119 log 83072 6213677056 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:32:55,120 basehttp 83072 6213677056 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1897
+INFO 2025-08-17 14:32:57,466 project_views_functions 83072 6213677056 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:32:57,467 basehttp 83072 6213677056 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:32:59,928 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13826
+INFO 2025-08-17 14:32:59,947 basehttp 83072 6213677056 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:32:59,950 basehttp 83072 6196850688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:32:59,958 log 83072 6230503424 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:32:59,958 basehttp 83072 6230503424 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1867
+INFO 2025-08-17 14:33:09,104 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13780
+INFO 2025-08-17 14:33:09,130 basehttp 83072 6247329792 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-17 14:33:09,131 log 83072 6196850688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:33:09,133 basehttp 83072 6196850688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1906
+INFO 2025-08-17 14:33:09,134 basehttp 83072 6264156160 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 46032
+INFO 2025-08-17 14:33:09,135 basehttp 83072 6230503424 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 14:33:09,135 basehttp 83072 6213677056 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-17 14:33:12,492 project_views_functions 83072 6213677056 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:12,492 basehttp 83072 6213677056 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:33:21,618 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13786
+INFO 2025-08-17 14:33:21,639 basehttp 83072 6196850688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:33:21,641 basehttp 83072 6230503424 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:33:21,647 log 83072 6213677056 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:33:21,647 basehttp 83072 6213677056 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1899
+INFO 2025-08-17 14:33:24,589 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:24,590 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:33:37,377 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13814
+INFO 2025-08-17 14:33:37,397 basehttp 83072 6213677056 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:33:37,398 basehttp 83072 6196850688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:33:37,405 log 83072 6230503424 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:33:37,407 basehttp 83072 6230503424 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1894
+INFO 2025-08-17 14:33:39,518 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:39,519 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:33:41,694 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13823
+WARNING 2025-08-17 14:33:41,721 log 83072 6196850688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:33:41,721 basehttp 83072 6196850688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1897
+INFO 2025-08-17 14:33:45,196 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:45,197 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:33:46,654 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13867
+INFO 2025-08-17 14:33:46,670 basehttp 83072 6196850688 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:33:46,671 basehttp 83072 6213677056 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:33:46,673 basehttp 83072 6247329792 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:33:46,679 log 83072 6230503424 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:33:46,680 basehttp 83072 6230503424 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1883
+INFO 2025-08-17 14:33:48,970 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:48,970 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:33:49,997 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13779
+WARNING 2025-08-17 14:33:50,023 log 83072 6196850688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:33:50,023 basehttp 83072 6196850688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1883
+INFO 2025-08-17 14:33:52,134 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:52,134 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:33:54,848 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:33:54,848 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:34:10,554 basehttp 83072 6196850688 "GET /grids/15/ HTTP/1.1" 200 13791
+INFO 2025-08-17 14:34:10,572 basehttp 83072 6213677056 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:34:10,573 basehttp 83072 6196850688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:34:10,590 log 83072 6196850688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:34:10,590 basehttp 83072 6196850688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1912
+INFO 2025-08-17 14:34:13,152 project_views_functions 83072 6196850688 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:34:13,153 basehttp 83072 6196850688 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:39:12,161 autoreload 83643 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:39:25,770 basehttp 83643 6194507776 "GET /grids/15/ HTTP/1.1" 200 13737
+INFO 2025-08-17 14:39:25,788 basehttp 83643 6194507776 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:39:25,793 basehttp 83643 6211334144 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:39:25,794 basehttp 83643 6228160512 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 46802
+WARNING 2025-08-17 14:39:25,810 log 83643 6228160512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:39:25,810 basehttp 83643 6228160512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1916
+INFO 2025-08-17 14:39:38,406 basehttp 83643 6194507776 "GET /grids/15/ HTTP/1.1" 200 13749
+INFO 2025-08-17 14:39:38,426 basehttp 83643 6211334144 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:39:38,427 basehttp 83643 6228160512 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:39:38,434 log 83643 6194507776 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:39:38,435 basehttp 83643 6194507776 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1892
+INFO 2025-08-17 14:42:52,096 autoreload 84038 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:42:54,128 basehttp 84038 6192984064 "GET /grids/15/ HTTP/1.1" 200 13759
+INFO 2025-08-17 14:42:54,149 basehttp 84038 6209810432 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:42:54,157 basehttp 84038 6226636800 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-17 14:42:54,159 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:42:54,159 basehttp 84038 6243463168 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47974
+WARNING 2025-08-17 14:42:54,159 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1923
+INFO 2025-08-17 14:43:03,366 basehttp 84038 6192984064 "GET /grids/15/ HTTP/1.1" 200 13772
+INFO 2025-08-17 14:43:03,383 basehttp 84038 6209810432 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:43:03,384 basehttp 84038 6226636800 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:43:03,392 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:43:03,392 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1860
+INFO 2025-08-17 14:43:08,355 basehttp 84038 6192984064 "GET /grids/15/ HTTP/1.1" 200 13799
+INFO 2025-08-17 14:43:08,374 basehttp 84038 6226636800 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:43:08,376 basehttp 84038 6209810432 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:43:08,381 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:43:08,381 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1899
+INFO 2025-08-17 14:46:46,199 basehttp 84038 6192984064 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-17 14:46:46,206 basehttp 84038 6192984064 "GET /templates/students/ HTTP/1.1" 200 5672
+INFO 2025-08-17 14:46:46,224 basehttp 84038 6243463168 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:46:46,225 basehttp 84038 6260289536 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:46:46,232 log 84038 6226636800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:46:46,232 basehttp 84038 6226636800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1895
+INFO 2025-08-17 14:46:46,278 basehttp 84038 6260289536 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-17 14:46:46,280 basehttp 84038 6209810432 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-17 14:46:46,282 basehttp 84038 6192984064 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-17 14:46:46,285 basehttp 84038 6226636800 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-17 14:46:48,055 basehttp 84038 6192984064 "GET /grids/ HTTP/1.1" 200 3847
+WARNING 2025-08-17 14:46:48,082 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:46:48,082 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1851
+INFO 2025-08-17 14:46:50,769 basehttp 84038 6192984064 "GET /grids/17/delete/ HTTP/1.1" 200 3458
+WARNING 2025-08-17 14:46:50,793 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:46:50,793 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1843
+INFO 2025-08-17 14:46:51,812 basehttp 84038 6192984064 "POST /grids/17/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 14:46:51,824 basehttp 84038 6192984064 "GET /grids/ HTTP/1.1" 200 3743
+WARNING 2025-08-17 14:46:51,855 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:46:51,856 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1898
+INFO 2025-08-17 14:46:58,473 basehttp 84038 6192984064 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-17 14:46:58,508 basehttp 84038 6209810432 "GET /admin/ HTTP/1.1" 200 2757
+INFO 2025-08-17 14:46:58,531 basehttp 84038 6226636800 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-08-17 14:46:58,531 basehttp 84038 6243463168 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-08-17 14:46:58,533 basehttp 84038 6260289536 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-08-17 14:46:58,534 basehttp 84038 6192984064 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-08-17 14:46:58,534 basehttp 84038 6277115904 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-08-17 14:46:58,539 basehttp 84038 6226636800 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+WARNING 2025-08-17 14:46:58,539 log 84038 6209810432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:46:58,541 basehttp 84038 6209810432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1891
+INFO 2025-08-17 14:46:58,541 basehttp 84038 6277115904 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-08-17 14:46:58,562 basehttp 84038 6226636800 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-08-17 14:46:58,563 basehttp 84038 6277115904 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-08-17 14:46:58,563 basehttp 84038 6209810432 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-08-17 14:46:58,563 basehttp 84038 6192984064 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-08-17 14:46:58,575 basehttp 84038 6192984064 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-08-17 14:46:58,577 basehttp 84038 6192984064 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-08-17 14:47:01,724 basehttp 84038 6192984064 "GET /admin/pages/task/ HTTP/1.1" 200 5498
+INFO 2025-08-17 14:47:01,750 basehttp 84038 6260289536 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-08-17 14:47:01,751 basehttp 84038 6277115904 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-08-17 14:47:01,751 basehttp 84038 6243463168 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+WARNING 2025-08-17 14:47:01,758 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:01,759 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+INFO 2025-08-17 14:47:01,759 basehttp 84038 6260289536 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-08-17 14:47:01,760 basehttp 84038 6277115904 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-08-17 14:47:01,761 basehttp 84038 6243463168 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-08-17 14:47:01,762 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 1019
+INFO 2025-08-17 14:47:01,763 basehttp 84038 6192984064 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-08-17 14:47:01,766 basehttp 84038 6226636800 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-08-17 14:47:01,766 basehttp 84038 6260289536 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-08-17 14:47:01,768 basehttp 84038 6260289536 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-08-17 14:47:01,788 basehttp 84038 6260289536 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-08-17 14:47:05,712 basehttp 84038 6192984064 "GET /admin/ HTTP/1.1" 200 2583
+WARNING 2025-08-17 14:47:05,737 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:05,737 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1900
+INFO 2025-08-17 14:47:07,281 basehttp 84038 6192984064 "GET /admin/pages/task/ HTTP/1.1" 200 5518
+WARNING 2025-08-17 14:47:07,304 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:07,304 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1894
+INFO 2025-08-17 14:47:11,715 basehttp 84038 6192984064 "GET /admin/pages/project/ HTTP/1.1" 200 3090
+WARNING 2025-08-17 14:47:11,741 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:47:11,742 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 1055
+WARNING 2025-08-17 14:47:11,742 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1889
+INFO 2025-08-17 14:47:21,449 basehttp 84038 6192984064 "GET /admin/accounts/user/ HTTP/1.1" 200 3096
+WARNING 2025-08-17 14:47:21,480 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:47:21,480 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 1058
+WARNING 2025-08-17 14:47:21,481 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1933
+INFO 2025-08-17 14:47:24,131 basehttp 84038 6192984064 "GET /admin/pages/project/ HTTP/1.1" 200 3101
+WARNING 2025-08-17 14:47:24,157 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:47:24,158 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 1010
+WARNING 2025-08-17 14:47:24,158 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1872
+INFO 2025-08-17 14:47:27,750 basehttp 84038 6192984064 "POST /admin/pages/project/ HTTP/1.1" 200 3508
+INFO 2025-08-17 14:47:27,774 basehttp 84038 6209810432 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+WARNING 2025-08-17 14:47:27,780 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:27,780 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1892
+INFO 2025-08-17 14:47:29,766 basehttp 84038 6192984064 "POST /admin/pages/project/ HTTP/1.1" 302 0
+INFO 2025-08-17 14:47:29,777 basehttp 84038 6192984064 "GET /admin/pages/project/ HTTP/1.1" 200 3162
+WARNING 2025-08-17 14:47:29,798 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:47:29,798 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 1033
+WARNING 2025-08-17 14:47:29,798 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1925
+INFO 2025-08-17 14:47:31,615 basehttp 84038 6192984064 "GET /admin/pages/task/ HTTP/1.1" 200 4778
+WARNING 2025-08-17 14:47:31,643 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:47:31,643 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 974
+WARNING 2025-08-17 14:47:31,644 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1897
+INFO 2025-08-17 14:47:34,350 basehttp 84038 6192984064 "GET /admin/pages/template/ HTTP/1.1" 200 3029
+WARNING 2025-08-17 14:47:34,376 log 84038 6192984064 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:34,376 basehttp 84038 6192984064 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1892
+INFO 2025-08-17 14:47:34,376 basehttp 84038 6209810432 "GET /admin/jsi18n/ HTTP/1.1" 200 961
+INFO 2025-08-17 14:47:35,343 basehttp 84038 6209810432 "GET /admin/pages/task/ HTTP/1.1" 200 4704
+WARNING 2025-08-17 14:47:35,373 log 84038 6209810432 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:35,374 basehttp 84038 6209810432 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1910
+INFO 2025-08-17 14:47:35,374 basehttp 84038 6192984064 "GET /admin/jsi18n/ HTTP/1.1" 200 966
+INFO 2025-08-17 14:47:57,812 autoreload 84452 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:47:59,580 basehttp 84452 6156972032 "GET / HTTP/1.1" 200 6509
+INFO 2025-08-17 14:47:59,619 basehttp 84452 6173798400 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-17 14:47:59,624 log 84452 6156972032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:47:59,625 basehttp 84452 6156972032 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1904
+INFO 2025-08-17 14:48:00,612 basehttp 84452 6156972032 "GET /grids/ HTTP/1.1" 200 3808
+INFO 2025-08-17 14:48:00,633 basehttp 84452 6173798400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:48:00,641 log 84452 6156972032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:48:00,642 basehttp 84452 6156972032 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1927
+INFO 2025-08-17 14:48:02,229 basehttp 84452 6156972032 "GET /grids/15/ HTTP/1.1" 200 13746
+INFO 2025-08-17 14:48:02,250 basehttp 84452 6173798400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:48:02,252 basehttp 84452 6190624768 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49302
+WARNING 2025-08-17 14:48:02,259 log 84452 6156972032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:48:02,259 basehttp 84452 6156972032 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1913
+INFO 2025-08-17 14:48:08,688 project_views_functions 84452 6156972032 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:48:08,688 basehttp 84452 6156972032 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:48:12,714 basehttp 84452 6156972032 "GET /grids/15/ HTTP/1.1" 200 13752
+INFO 2025-08-17 14:48:12,733 basehttp 84452 6156972032 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:48:12,733 basehttp 84452 6173798400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:48:12,744 log 84452 6190624768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:48:12,744 basehttp 84452 6190624768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1885
+INFO 2025-08-17 14:48:15,331 basehttp 84452 6156972032 "GET /grids/15/ HTTP/1.1" 200 13723
+INFO 2025-08-17 14:48:15,352 basehttp 84452 6173798400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 14:48:15,352 basehttp 84452 6190624768 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 14:48:15,360 log 84452 6156972032 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:48:15,361 basehttp 84452 6156972032 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1921
+INFO 2025-08-17 14:48:17,887 project_views_functions 84452 6156972032 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:48:17,888 basehttp 84452 6156972032 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:55:13,980 autoreload 85033 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 14:58:04,993 basehttp 85033 6171668480 "GET /grids/15/ HTTP/1.1" 200 13768
+INFO 2025-08-17 14:58:05,028 basehttp 85033 6171668480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 14:58:05,037 basehttp 85033 6188494848 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:58:05,043 basehttp 85033 6205321216 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49377
+WARNING 2025-08-17 14:58:05,043 log 85033 6171668480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:58:05,043 basehttp 85033 6171668480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1847
+INFO 2025-08-17 14:58:08,224 project_views_functions 85033 6171668480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:58:08,225 basehttp 85033 6171668480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:58:11,813 basehttp 85033 6171668480 "GET /grids/15/ HTTP/1.1" 200 13736
+WARNING 2025-08-17 14:58:11,843 log 85033 6171668480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:58:11,844 basehttp 85033 6171668480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1837
+INFO 2025-08-17 14:58:31,852 basehttp 85033 6171668480 "GET /grids/15/ HTTP/1.1" 200 13723
+INFO 2025-08-17 14:58:31,872 basehttp 85033 6205321216 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 14:58:31,881 basehttp 85033 6222147584 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49377
+INFO 2025-08-17 14:58:31,881 basehttp 85033 6188494848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+WARNING 2025-08-17 14:58:31,882 log 85033 6238973952 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 14:58:31,884 basehttp 85033 6171668480 "GET /static/css/output.css HTTP/1.1" 200 72607
+WARNING 2025-08-17 14:58:31,884 basehttp 85033 6238973952 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1869
+INFO 2025-08-17 14:58:34,391 project_views_functions 85033 6171668480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:58:34,392 basehttp 85033 6171668480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:58:46,107 basehttp 85033 6171668480 "GET /grids/15/ HTTP/1.1" 200 13792
+WARNING 2025-08-17 14:58:46,130 log 85033 6171668480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:58:46,130 basehttp 85033 6171668480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1857
+INFO 2025-08-17 14:58:48,742 project_views_functions 85033 6171668480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 14:58:48,743 basehttp 85033 6171668480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 14:58:50,284 basehttp 85033 6171668480 "GET /grids/15/ HTTP/1.1" 200 13756
+WARNING 2025-08-17 14:58:50,310 log 85033 6171668480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 14:58:50,311 basehttp 85033 6171668480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1917
+INFO 2025-08-17 15:00:39,820 autoreload 85534 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:00:42,435 basehttp 85534 6196441088 "GET /grids/15/ HTTP/1.1" 200 13765
+INFO 2025-08-17 15:00:42,462 basehttp 85534 6213267456 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:00:42,466 basehttp 85534 6230093824 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49482
+WARNING 2025-08-17 15:00:42,468 log 85534 6196441088 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:00:42,468 basehttp 85534 6196441088 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1856
+INFO 2025-08-17 15:00:46,387 project_views_functions 85534 6196441088 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:00:46,388 basehttp 85534 6196441088 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:00:47,977 basehttp 85534 6196441088 "GET /grids/15/ HTTP/1.1" 200 13762
+INFO 2025-08-17 15:00:47,995 basehttp 85534 6213267456 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:00:47,996 basehttp 85534 6230093824 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:00:48,004 log 85534 6196441088 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:00:48,004 basehttp 85534 6196441088 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1928
+INFO 2025-08-17 15:00:51,301 project_views_functions 85534 6196441088 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:00:51,302 basehttp 85534 6196441088 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:00:53,181 basehttp 85534 6196441088 "GET /grids/15/ HTTP/1.1" 200 13747
+INFO 2025-08-17 15:00:53,204 basehttp 85534 6196441088 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:00:53,204 basehttp 85534 6213267456 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:00:53,214 log 85534 6230093824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:00:53,214 basehttp 85534 6230093824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1934
+INFO 2025-08-17 15:01:04,759 basehttp 85534 6196441088 "GET /grids/15/ HTTP/1.1" 200 13797
+INFO 2025-08-17 15:01:04,778 basehttp 85534 6230093824 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:01:04,781 basehttp 85534 6213267456 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 15:01:04,782 basehttp 85534 6246920192 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49482
+INFO 2025-08-17 15:01:04,788 basehttp 85534 6196441088 "GET /static/css/output.css HTTP/1.1" 200 72607
+WARNING 2025-08-17 15:01:04,788 log 85534 6263746560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:01:04,788 basehttp 85534 6263746560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1927
+INFO 2025-08-17 15:01:07,289 project_views_functions 85534 6263746560 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:01:07,290 basehttp 85534 6263746560 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:01:17,634 basehttp 85534 6196441088 "GET /grids/15/ HTTP/1.1" 200 13800
+INFO 2025-08-17 15:01:17,653 basehttp 85534 6196441088 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:01:17,655 basehttp 85534 6213267456 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:01:17,682 log 85534 6230093824 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:01:17,683 basehttp 85534 6230093824 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1873
+INFO 2025-08-17 15:01:20,054 project_views_functions 85534 6196441088 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:01:20,059 basehttp 85534 6196441088 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:01:21,459 basehttp 85534 6196441088 "GET /grids/15/ HTTP/1.1" 200 13789
+WARNING 2025-08-17 15:01:21,484 log 85534 6196441088 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:01:21,484 basehttp 85534 6196441088 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1930
+INFO 2025-08-17 15:03:55,747 autoreload 85930 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:03:57,753 basehttp 85930 6123499520 "GET /grids/15/ HTTP/1.1" 200 13802
+INFO 2025-08-17 15:03:57,774 basehttp 85930 6123499520 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:03:57,778 basehttp 85930 6140325888 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49680
+WARNING 2025-08-17 15:03:57,786 log 85930 6157152256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:03:57,786 basehttp 85930 6157152256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1891
+INFO 2025-08-17 15:04:00,495 project_views_functions 85930 6123499520 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:04:00,496 basehttp 85930 6123499520 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:04:02,133 basehttp 85930 6123499520 "GET /grids/15/ HTTP/1.1" 200 13808
+INFO 2025-08-17 15:04:02,154 basehttp 85930 6123499520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:04:02,154 basehttp 85930 6157152256 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:04:02,163 log 85930 6140325888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:04:02,163 basehttp 85930 6140325888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1838
+INFO 2025-08-17 15:04:06,397 project_views_functions 85930 6123499520 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:04:06,398 basehttp 85930 6123499520 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:04:16,236 basehttp 85930 6123499520 "GET /grids/15/ HTTP/1.1" 200 13743
+INFO 2025-08-17 15:04:16,255 basehttp 85930 6123499520 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:04:16,255 basehttp 85930 6140325888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:04:16,264 log 85930 6157152256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:04:16,264 basehttp 85930 6157152256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+INFO 2025-08-17 15:04:29,600 basehttp 85930 6123499520 "GET /grids/15/ HTTP/1.1" 200 13736
+INFO 2025-08-17 15:04:29,619 basehttp 85930 6157152256 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:04:29,628 basehttp 85930 6140325888 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+WARNING 2025-08-17 15:04:29,628 log 85930 6190804992 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 15:04:29,629 basehttp 85930 6173978624 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 49680
+WARNING 2025-08-17 15:04:29,629 basehttp 85930 6190804992 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1920
+INFO 2025-08-17 15:04:29,630 basehttp 85930 6123499520 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-17 15:04:38,061 project_views_functions 85930 6123499520 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:04:38,061 basehttp 85930 6123499520 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:04:47,320 basehttp 85930 6123499520 "GET /grids/15/ HTTP/1.1" 200 13793
+INFO 2025-08-17 15:04:47,339 basehttp 85930 6123499520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:04:47,340 basehttp 85930 6140325888 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:04:47,348 log 85930 6157152256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:04:47,348 basehttp 85930 6157152256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1910
+INFO 2025-08-17 15:07:17,054 autoreload 86321 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:07:19,304 basehttp 86321 6131036160 "GET /grids/15/ HTTP/1.1" 200 13753
+INFO 2025-08-17 15:07:19,332 basehttp 86321 6131036160 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:07:19,334 basehttp 86321 6147862528 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47403
+WARNING 2025-08-17 15:07:19,339 log 86321 6164688896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:07:19,340 basehttp 86321 6164688896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1858
+INFO 2025-08-17 15:07:22,123 project_views_functions 86321 6131036160 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:07:22,123 basehttp 86321 6131036160 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:07:23,577 basehttp 86321 6131036160 "GET /grids/15/ HTTP/1.1" 200 13780
+INFO 2025-08-17 15:07:23,592 basehttp 86321 6131036160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:07:23,593 basehttp 86321 6147862528 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:07:23,604 log 86321 6147862528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:07:23,605 basehttp 86321 6147862528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1845
+INFO 2025-08-17 15:07:32,008 basehttp 86321 6131036160 "GET /grids/15/ HTTP/1.1" 200 13737
+INFO 2025-08-17 15:07:32,030 basehttp 86321 6164688896 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:07:32,033 basehttp 86321 6181515264 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47403
+INFO 2025-08-17 15:07:32,038 basehttp 86321 6147862528 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+WARNING 2025-08-17 15:07:32,039 log 86321 6198341632 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-17 15:07:32,039 basehttp 86321 6131036160 "GET /static/css/output.css HTTP/1.1" 200 72607
+WARNING 2025-08-17 15:07:32,039 basehttp 86321 6198341632 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1905
+INFO 2025-08-17 15:07:36,071 project_views_functions 86321 6131036160 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:07:36,071 basehttp 86321 6131036160 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:07:47,635 basehttp 86321 6131036160 "GET /grids/15/ HTTP/1.1" 200 13805
+INFO 2025-08-17 15:07:47,656 basehttp 86321 6131036160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:07:47,656 basehttp 86321 6164688896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:07:47,665 log 86321 6147862528 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:07:47,665 basehttp 86321 6147862528 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1903
+INFO 2025-08-17 15:07:52,936 project_views_functions 86321 6131036160 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:07:52,937 basehttp 86321 6131036160 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:07:59,853 basehttp 86321 6131036160 "GET /grids/15/ HTTP/1.1" 200 13792
+INFO 2025-08-17 15:07:59,871 basehttp 86321 6131036160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:07:59,872 basehttp 86321 6147862528 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:07:59,882 log 86321 6164688896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:07:59,882 basehttp 86321 6164688896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+INFO 2025-08-17 15:26:54,253 autoreload 86834 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:26:58,081 basehttp 86834 6199701504 "GET /grids/15/ HTTP/1.1" 200 13808
+INFO 2025-08-17 15:26:58,120 basehttp 86834 6216527872 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-17 15:26:58,132 log 86834 6199701504 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:26:58,133 basehttp 86834 6199701504 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1915
+INFO 2025-08-17 15:26:58,133 basehttp 86834 6233354240 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:26:58,134 basehttp 86834 6216527872 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47425
+INFO 2025-08-17 15:27:01,330 project_views_functions 86834 6199701504 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:27:01,330 basehttp 86834 6199701504 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:27:03,334 basehttp 86834 6199701504 "GET /grids/15/ HTTP/1.1" 200 13769
+INFO 2025-08-17 15:27:03,354 basehttp 86834 6216527872 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:27:03,358 basehttp 86834 6233354240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:27:03,362 log 86834 6199701504 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:27:03,362 basehttp 86834 6199701504 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1929
+INFO 2025-08-17 15:27:21,329 project_views_functions 86834 6199701504 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:27:21,330 basehttp 86834 6199701504 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:27:28,869 basehttp 86834 6199701504 "GET /grids/15/ HTTP/1.1" 200 13751
+INFO 2025-08-17 15:27:28,893 basehttp 86834 6233354240 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:27:28,894 basehttp 86834 6250180608 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47425
+INFO 2025-08-17 15:27:28,895 basehttp 86834 6216527872 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 15:27:28,896 basehttp 86834 6199701504 "GET /static/css/output.css HTTP/1.1" 200 72607
+WARNING 2025-08-17 15:27:28,900 log 86834 6267006976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:27:28,900 basehttp 86834 6267006976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1912
+INFO 2025-08-17 15:27:32,407 project_views_functions 86834 6199701504 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:27:32,407 basehttp 86834 6199701504 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:28:51,263 autoreload 87268 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:28:55,820 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13781
+INFO 2025-08-17 15:28:55,849 basehttp 87268 6181531648 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:28:55,854 basehttp 87268 6198358016 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47853
+WARNING 2025-08-17 15:28:55,855 log 87268 6164705280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:28:55,855 basehttp 87268 6164705280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1844
+INFO 2025-08-17 15:28:59,540 project_views_functions 87268 6164705280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:28:59,540 basehttp 87268 6164705280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:30:07,092 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13794
+INFO 2025-08-17 15:30:07,114 basehttp 87268 6164705280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:30:07,115 basehttp 87268 6198358016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:30:07,121 log 87268 6181531648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:30:07,122 basehttp 87268 6181531648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1859
+INFO 2025-08-17 15:30:10,521 project_views_functions 87268 6164705280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:30:10,522 basehttp 87268 6164705280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:30:13,188 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13773
+WARNING 2025-08-17 15:30:13,211 log 87268 6164705280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:30:13,212 basehttp 87268 6164705280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1861
+INFO 2025-08-17 15:30:23,625 project_views_functions 87268 6164705280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:30:23,626 basehttp 87268 6164705280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:30:32,691 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13723
+INFO 2025-08-17 15:30:32,712 basehttp 87268 6164705280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:30:32,713 basehttp 87268 6181531648 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:30:32,721 log 87268 6198358016 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:30:32,721 basehttp 87268 6198358016 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1892
+INFO 2025-08-17 15:32:58,957 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13807
+INFO 2025-08-17 15:32:58,974 basehttp 87268 6164705280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:32:58,974 basehttp 87268 6181531648 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:32:58,988 log 87268 6181531648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:32:58,989 basehttp 87268 6181531648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1840
+INFO 2025-08-17 15:33:03,947 project_views_functions 87268 6164705280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:33:03,948 basehttp 87268 6164705280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:33:16,888 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13727
+INFO 2025-08-17 15:33:16,910 basehttp 87268 6198358016 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:33:16,912 basehttp 87268 6181531648 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 15:33:16,916 basehttp 87268 6215184384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47853
+INFO 2025-08-17 15:33:16,916 basehttp 87268 6164705280 "GET /static/css/output.css HTTP/1.1" 200 72607
+WARNING 2025-08-17 15:33:16,921 log 87268 6232010752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:33:16,921 basehttp 87268 6232010752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1928
+INFO 2025-08-17 15:33:20,810 project_views_functions 87268 6164705280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:33:20,811 basehttp 87268 6164705280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:33:40,254 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13746
+WARNING 2025-08-17 15:33:40,286 log 87268 6164705280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:33:40,287 basehttp 87268 6164705280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1883
+INFO 2025-08-17 15:33:52,413 project_views_functions 87268 6164705280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:33:52,414 basehttp 87268 6164705280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:33:54,202 basehttp 87268 6164705280 "GET /grids/15/ HTTP/1.1" 200 13775
+INFO 2025-08-17 15:33:54,221 basehttp 87268 6181531648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:33:54,222 basehttp 87268 6198358016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:33:54,229 log 87268 6164705280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:33:54,229 basehttp 87268 6164705280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1903
+INFO 2025-08-17 15:34:36,969 autoreload 87268 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:34:37,309 autoreload 87360 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:34:47,612 autoreload 87360 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:34:48,033 autoreload 87374 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:35:34,208 basehttp 87374 6162395136 "GET /grids/15/ HTTP/1.1" 200 13801
+INFO 2025-08-17 15:35:34,233 basehttp 87374 6179221504 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:35:34,233 basehttp 87374 6162395136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:35:34,247 log 87374 6162395136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:35:34,247 basehttp 87374 6162395136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1911
+INFO 2025-08-17 15:35:36,210 project_views_functions 87374 6162395136 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:35:36,211 basehttp 87374 6162395136 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:35:37,579 basehttp 87374 6162395136 "GET /grids/15/ HTTP/1.1" 200 13765
+WARNING 2025-08-17 15:35:37,604 log 87374 6162395136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:35:37,605 basehttp 87374 6162395136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1872
+INFO 2025-08-17 15:36:00,337 autoreload 87730 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:36:02,534 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13759
+WARNING 2025-08-17 15:36:02,571 log 87730 6163296256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:36:02,571 basehttp 87730 6163296256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1868
+INFO 2025-08-17 15:36:05,966 project_views_functions 87730 6163296256 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:36:05,967 basehttp 87730 6163296256 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:36:25,865 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13829
+WARNING 2025-08-17 15:36:25,901 log 87730 6163296256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:36:25,902 basehttp 87730 6163296256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1921
+INFO 2025-08-17 15:36:25,903 basehttp 87730 6180122624 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:36:25,904 basehttp 87730 6196948992 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47853
+INFO 2025-08-17 15:36:32,222 project_views_functions 87730 6163296256 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:36:32,222 basehttp 87730 6163296256 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:36:33,859 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13789
+INFO 2025-08-17 15:36:33,881 basehttp 87730 6163296256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:36:33,881 basehttp 87730 6196948992 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:36:33,890 log 87730 6180122624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:36:33,890 basehttp 87730 6180122624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1873
+INFO 2025-08-17 15:36:37,944 project_views_functions 87730 6163296256 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:36:37,945 basehttp 87730 6163296256 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:36:39,294 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13785
+INFO 2025-08-17 15:36:39,314 basehttp 87730 6163296256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:36:39,314 basehttp 87730 6180122624 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:36:39,323 log 87730 6196948992 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:36:39,323 basehttp 87730 6196948992 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1906
+INFO 2025-08-17 15:37:10,001 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13790
+INFO 2025-08-17 15:37:10,019 basehttp 87730 6163296256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:37:10,019 basehttp 87730 6180122624 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:37:10,031 log 87730 6180122624 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:37:10,031 basehttp 87730 6180122624 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1855
+INFO 2025-08-17 15:37:13,002 project_views_functions 87730 6163296256 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:37:13,002 basehttp 87730 6163296256 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:37:14,376 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13778
+WARNING 2025-08-17 15:37:14,403 log 87730 6163296256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:37:14,403 basehttp 87730 6163296256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1876
+INFO 2025-08-17 15:37:18,746 project_views_functions 87730 6163296256 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:37:18,747 basehttp 87730 6163296256 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:37:20,295 basehttp 87730 6163296256 "GET /grids/15/ HTTP/1.1" 200 13723
+INFO 2025-08-17 15:37:20,315 basehttp 87730 6196948992 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:37:20,316 basehttp 87730 6180122624 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:37:20,322 log 87730 6163296256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:37:20,323 basehttp 87730 6163296256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1846
+INFO 2025-08-17 15:42:12,284 autoreload 88145 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:42:23,808 basehttp 88145 6157856768 "GET /grids/15/ HTTP/1.1" 200 13765
+INFO 2025-08-17 15:42:23,839 basehttp 88145 6191509504 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:42:23,843 basehttp 88145 6174683136 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 15:42:23,848 basehttp 88145 6157856768 "GET /static/css/output.css HTTP/1.1" 200 72607
+INFO 2025-08-17 15:42:23,848 basehttp 88145 6208335872 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47485
+WARNING 2025-08-17 15:42:23,850 log 88145 6225162240 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:42:23,850 basehttp 88145 6225162240 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1890
+INFO 2025-08-17 15:42:33,077 project_views_functions 88145 6157856768 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:42:33,077 basehttp 88145 6157856768 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:42:35,515 basehttp 88145 6157856768 "GET /grids/15/ HTTP/1.1" 200 13792
+INFO 2025-08-17 15:42:35,537 basehttp 88145 6191509504 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:42:35,538 basehttp 88145 6174683136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:42:35,546 log 88145 6157856768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:42:35,546 basehttp 88145 6157856768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1878
+INFO 2025-08-17 15:42:38,339 project_views_functions 88145 6157856768 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:42:38,339 basehttp 88145 6157856768 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:42:39,913 basehttp 88145 6157856768 "GET /grids/15/ HTTP/1.1" 200 13769
+INFO 2025-08-17 15:42:39,929 basehttp 88145 6157856768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:42:39,929 basehttp 88145 6174683136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:42:39,939 log 88145 6157856768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:42:39,939 basehttp 88145 6157856768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1873
+INFO 2025-08-17 15:42:46,726 project_views_functions 88145 6157856768 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:42:46,727 basehttp 88145 6157856768 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:42:48,827 basehttp 88145 6157856768 "GET /grids/15/ HTTP/1.1" 200 13794
+INFO 2025-08-17 15:42:48,847 basehttp 88145 6174683136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:42:48,848 basehttp 88145 6157856768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:42:48,856 log 88145 6191509504 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:42:48,856 basehttp 88145 6191509504 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1881
+INFO 2025-08-17 15:42:56,655 project_views_functions 88145 6157856768 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:42:56,656 basehttp 88145 6157856768 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:42:59,034 basehttp 88145 6157856768 "GET /grids/15/ HTTP/1.1" 200 13767
+INFO 2025-08-17 15:42:59,056 basehttp 88145 6191509504 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:42:59,056 basehttp 88145 6174683136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:42:59,064 log 88145 6157856768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:42:59,064 basehttp 88145 6157856768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1867
+INFO 2025-08-17 15:43:03,659 project_views_functions 88145 6157856768 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:43:03,659 basehttp 88145 6157856768 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:43:30,152 basehttp 88145 6157856768 "GET /grids/15/ HTTP/1.1" 200 13794
+INFO 2025-08-17 15:43:30,174 basehttp 88145 6174683136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:43:30,174 basehttp 88145 6157856768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:43:30,192 log 88145 6174683136 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:43:30,192 basehttp 88145 6174683136 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1921
+INFO 2025-08-17 15:43:59,433 autoreload 88145 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:43:59,729 autoreload 88196 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:44:06,947 autoreload 88196 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:44:07,190 autoreload 88209 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:44:26,141 basehttp 88209 6204436480 "GET /grids/15/ HTTP/1.1" 200 13779
+INFO 2025-08-17 15:44:26,161 basehttp 88209 6204436480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:44:26,161 basehttp 88209 6221262848 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:44:26,177 log 88209 6221262848 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:44:26,178 basehttp 88209 6221262848 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1854
+INFO 2025-08-17 15:44:29,863 project_views 88209 6204436480 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '94', 'order': 1}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:44:29,864 project_views 88209 6204436480 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:44:29,864 project_views 88209 6204436480 Processing task 172: row=58, col=94, order=1
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 185: row=58, col=94, order=2
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Container tasks grouped: {'58_93': [('195', 0)], '58_94': [('172', 1), ('185', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:44:29,865 project_views 88209 6204436480 Processing container 58_93 with tasks: [('195', 0)]
+INFO 2025-08-17 15:44:29,866 project_views 88209 6204436480 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,873 project_views 88209 6204436480 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:44:29,873 project_views 88209 6204436480 Processing container 58_94 with tasks: [('172', 1), ('185', 2)]
+INFO 2025-08-17 15:44:29,874 project_views 88209 6204436480 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,876 project_views 88209 6204436480 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:44:29,876 project_views 88209 6204436480 Updating task 185: old_order=1, new_order=1
+INFO 2025-08-17 15:44:29,878 project_views 88209 6204436480 Successfully saved task 185: order=1, row=58, col=94
+INFO 2025-08-17 15:44:29,878 project_views 88209 6204436480 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:44:29,879 project_views 88209 6204436480 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,881 project_views 88209 6204436480 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:44:29,881 project_views 88209 6204436480 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:44:29,882 project_views 88209 6204436480 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,883 project_views 88209 6204436480 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:44:29,883 project_views 88209 6204436480 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:44:29,884 project_views 88209 6204436480 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,885 project_views 88209 6204436480 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:44:29,885 project_views 88209 6204436480 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:44:29,887 project_views 88209 6204436480 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:44:29,887 project_views 88209 6204436480 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:44:29,887 project_views 88209 6204436480 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,889 project_views 88209 6204436480 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:44:29,889 project_views 88209 6204436480 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:44:29,891 project_views 88209 6204436480 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:44:29,891 project_views 88209 6204436480 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:44:29,892 project_views 88209 6204436480 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:44:29,893 project_views 88209 6204436480 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:44:29,893 project_views 88209 6204436480 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:44:29,895 project_views 88209 6204436480 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:44:29,895 project_views_functions 88209 6204436480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:44:29,895 project_views 88209 6204436480 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:44:29,896 basehttp 88209 6204436480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:44:38,782 basehttp 88209 6204436480 "GET /grids/15/ HTTP/1.1" 200 13748
+WARNING 2025-08-17 15:44:38,810 log 88209 6204436480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:44:38,811 basehttp 88209 6204436480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1893
+INFO 2025-08-17 15:44:47,243 project_views 88209 6204436480 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '94', 'order': 1}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:44:47,244 project_views 88209 6204436480 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:44:47,244 project_views 88209 6204436480 Processing task 172: row=58, col=94, order=1
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 185: row=58, col=94, order=2
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Container tasks grouped: {'58_93': [('195', 0)], '58_94': [('172', 1), ('185', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:44:47,245 project_views 88209 6204436480 Processing container 58_93 with tasks: [('195', 0)]
+INFO 2025-08-17 15:44:47,248 project_views 88209 6204436480 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,260 project_views 88209 6204436480 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:44:47,260 project_views 88209 6204436480 Processing container 58_94 with tasks: [('172', 1), ('185', 2)]
+INFO 2025-08-17 15:44:47,262 project_views 88209 6204436480 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,266 project_views 88209 6204436480 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:44:47,267 project_views 88209 6204436480 Updating task 185: old_order=1, new_order=1
+INFO 2025-08-17 15:44:47,269 project_views 88209 6204436480 Successfully saved task 185: order=1, row=58, col=94
+INFO 2025-08-17 15:44:47,269 project_views 88209 6204436480 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:44:47,269 project_views 88209 6204436480 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,271 project_views 88209 6204436480 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:44:47,271 project_views 88209 6204436480 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:44:47,271 project_views 88209 6204436480 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,272 project_views 88209 6204436480 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:44:47,272 project_views 88209 6204436480 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:44:47,275 project_views 88209 6204436480 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,278 project_views 88209 6204436480 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:44:47,280 project_views 88209 6204436480 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:44:47,281 project_views 88209 6204436480 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:44:47,281 project_views 88209 6204436480 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:44:47,282 project_views 88209 6204436480 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,283 project_views 88209 6204436480 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:44:47,284 project_views 88209 6204436480 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:44:47,285 project_views 88209 6204436480 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:44:47,285 project_views 88209 6204436480 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:44:47,286 project_views 88209 6204436480 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:44:47,287 project_views 88209 6204436480 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:44:47,287 project_views 88209 6204436480 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:44:47,288 project_views 88209 6204436480 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:44:47,288 project_views_functions 88209 6204436480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:44:47,288 project_views 88209 6204436480 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:44:47,288 basehttp 88209 6204436480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:45:14,132 autoreload 88551 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:45:16,524 basehttp 88551 6128283648 "GET /grids/15/ HTTP/1.1" 200 13770
+INFO 2025-08-17 15:45:16,555 basehttp 88551 6128283648 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:45:16,559 basehttp 88551 6145110016 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47485
+WARNING 2025-08-17 15:45:16,560 log 88551 6161936384 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:45:16,560 basehttp 88551 6161936384 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1853
+INFO 2025-08-17 15:45:19,409 project_views 88551 6128283648 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '94', 'order': 1}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 172: row=58, col=94, order=1
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 185: row=58, col=94, order=2
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Container tasks grouped: {'58_93': [('195', 0)], '58_94': [('172', 1), ('185', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:45:19,410 project_views 88551 6128283648 Processing container 58_93 with tasks: [('195', 0)]
+INFO 2025-08-17 15:45:19,411 project_views 88551 6128283648 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,417 project_views 88551 6128283648 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:45:19,417 project_views 88551 6128283648 Processing container 58_94 with tasks: [('172', 1), ('185', 2)]
+INFO 2025-08-17 15:45:19,418 project_views 88551 6128283648 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,420 project_views 88551 6128283648 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:45:19,421 project_views 88551 6128283648 Updating task 185: old_order=1, new_order=1
+INFO 2025-08-17 15:45:19,422 project_views 88551 6128283648 Successfully saved task 185: order=1, row=58, col=94
+INFO 2025-08-17 15:45:19,422 project_views 88551 6128283648 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:45:19,423 project_views 88551 6128283648 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,424 project_views 88551 6128283648 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:45:19,425 project_views 88551 6128283648 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:45:19,425 project_views 88551 6128283648 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,427 project_views 88551 6128283648 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:45:19,427 project_views 88551 6128283648 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:45:19,427 project_views 88551 6128283648 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,429 project_views 88551 6128283648 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:45:19,430 project_views 88551 6128283648 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:45:19,431 project_views 88551 6128283648 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:45:19,431 project_views 88551 6128283648 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:45:19,432 project_views 88551 6128283648 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,433 project_views 88551 6128283648 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:45:19,433 project_views 88551 6128283648 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:45:19,435 project_views 88551 6128283648 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:45:19,435 project_views 88551 6128283648 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:45:19,435 project_views 88551 6128283648 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:45:19,436 project_views 88551 6128283648 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:45:19,437 project_views 88551 6128283648 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:45:19,438 project_views 88551 6128283648 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:45:19,438 project_views_functions 88551 6128283648 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:45:19,438 project_views 88551 6128283648 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:45:19,439 basehttp 88551 6128283648 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:45:54,513 basehttp 88551 6128283648 "GET /grids/15/ HTTP/1.1" 200 13773
+INFO 2025-08-17 15:45:54,539 basehttp 88551 6161936384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:45:54,539 basehttp 88551 6145110016 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:45:54,547 log 88551 6128283648 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:45:54,548 basehttp 88551 6128283648 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1897
+INFO 2025-08-17 15:49:42,635 autoreload 88955 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:49:45,527 basehttp 88955 6200668160 "GET /grids/15/ HTTP/1.1" 200 13709
+INFO 2025-08-17 15:49:45,554 basehttp 88955 6200668160 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 15:49:45,556 basehttp 88955 6217494528 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 47942
+WARNING 2025-08-17 15:49:45,563 log 88955 6234320896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:49:45,563 basehttp 88955 6234320896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1931
+INFO 2025-08-17 15:49:48,803 project_views 88955 6234320896 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '94', 'order': 1}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:49:48,804 project_views 88955 6234320896 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:49:48,804 project_views 88955 6234320896 Processing task 172: row=58, col=94, order=1
+INFO 2025-08-17 15:49:48,804 project_views 88955 6234320896 Processing task 185: row=58, col=94, order=2
+INFO 2025-08-17 15:49:48,804 project_views 88955 6234320896 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:49:48,804 project_views 88955 6234320896 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Container tasks grouped: {'58_93': [('195', 0)], '58_94': [('172', 1), ('185', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:49:48,805 project_views 88955 6234320896 Processing container 58_93 with tasks: [('195', 0)]
+INFO 2025-08-17 15:49:48,806 project_views 88955 6234320896 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,811 project_views 88955 6234320896 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:49:48,811 project_views 88955 6234320896 Processing container 58_94 with tasks: [('172', 1), ('185', 2)]
+INFO 2025-08-17 15:49:48,812 project_views 88955 6234320896 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,814 project_views 88955 6234320896 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:49:48,815 project_views 88955 6234320896 Updating task 185: old_order=1, new_order=1
+INFO 2025-08-17 15:49:48,816 project_views 88955 6234320896 Successfully saved task 185: order=1, row=58, col=94
+INFO 2025-08-17 15:49:48,817 project_views 88955 6234320896 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:49:48,817 project_views 88955 6234320896 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,818 project_views 88955 6234320896 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:49:48,819 project_views 88955 6234320896 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:49:48,819 project_views 88955 6234320896 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,821 project_views 88955 6234320896 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:49:48,821 project_views 88955 6234320896 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:49:48,822 project_views 88955 6234320896 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,824 project_views 88955 6234320896 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:49:48,824 project_views 88955 6234320896 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:49:48,826 project_views 88955 6234320896 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:49:48,826 project_views 88955 6234320896 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:49:48,826 project_views 88955 6234320896 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,828 project_views 88955 6234320896 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:49:48,829 project_views 88955 6234320896 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:49:48,830 project_views 88955 6234320896 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:49:48,830 project_views 88955 6234320896 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:49:48,831 project_views 88955 6234320896 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:49:48,832 project_views 88955 6234320896 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:49:48,833 project_views 88955 6234320896 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:49:48,835 project_views 88955 6234320896 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:49:48,835 project_views_functions 88955 6234320896 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:49:48,835 project_views 88955 6234320896 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:49:48,836 basehttp 88955 6234320896 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:49:50,559 basehttp 88955 6200668160 "GET /grids/15/ HTTP/1.1" 200 13806
+INFO 2025-08-17 15:49:50,580 basehttp 88955 6217494528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:49:50,581 basehttp 88955 6234320896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:49:50,588 log 88955 6200668160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:49:50,588 basehttp 88955 6200668160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1841
+INFO 2025-08-17 15:49:55,721 project_views 88955 6200668160 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '93', 'order': 1}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 185: row=58, col=93, order=1
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 172: row=58, col=94, order=2
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:49:55,723 project_views 88955 6200668160 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:49:55,724 project_views 88955 6200668160 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:49:55,724 project_views 88955 6200668160 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:49:55,724 project_views 88955 6200668160 Container tasks grouped: {'58_93': [('195', 0), ('185', 1)], '58_94': [('172', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:49:55,724 project_views 88955 6200668160 Processing container 58_93 with tasks: [('195', 0), ('185', 1)]
+INFO 2025-08-17 15:49:55,725 project_views 88955 6200668160 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,729 project_views 88955 6200668160 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:49:55,731 project_views 88955 6200668160 Updating task 185: old_order=1, new_order=1
+INFO 2025-08-17 15:49:55,733 project_views 88955 6200668160 Moving task 185 from column 94 to column 93
+INFO 2025-08-17 15:49:55,734 project_views 88955 6200668160 Successfully saved task 185: order=1, row=58, col=93
+INFO 2025-08-17 15:49:55,734 project_views 88955 6200668160 Processing container 58_94 with tasks: [('172', 2)]
+INFO 2025-08-17 15:49:55,735 project_views 88955 6200668160 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,737 project_views 88955 6200668160 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:49:55,737 project_views 88955 6200668160 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:49:55,737 project_views 88955 6200668160 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,739 project_views 88955 6200668160 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:49:55,739 project_views 88955 6200668160 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:49:55,740 project_views 88955 6200668160 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,741 project_views 88955 6200668160 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:49:55,742 project_views 88955 6200668160 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:49:55,742 project_views 88955 6200668160 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,744 project_views 88955 6200668160 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:49:55,744 project_views 88955 6200668160 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:49:55,746 project_views 88955 6200668160 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:49:55,746 project_views 88955 6200668160 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:49:55,746 project_views 88955 6200668160 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,747 project_views 88955 6200668160 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:49:55,748 project_views 88955 6200668160 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:49:55,750 project_views 88955 6200668160 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:49:55,750 project_views 88955 6200668160 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:49:55,750 project_views 88955 6200668160 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:49:55,752 project_views 88955 6200668160 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:49:55,753 project_views 88955 6200668160 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:49:55,754 project_views 88955 6200668160 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:49:55,754 project_views_functions 88955 6200668160 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:49:55,754 project_views 88955 6200668160 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:49:55,754 basehttp 88955 6200668160 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:49:57,184 basehttp 88955 6200668160 "GET /grids/15/ HTTP/1.1" 200 13751
+INFO 2025-08-17 15:49:57,202 basehttp 88955 6200668160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 15:49:57,207 basehttp 88955 6217494528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:49:57,207 basehttp 88955 6234320896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:49:57,214 log 88955 6200668160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:49:57,214 basehttp 88955 6200668160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1904
+INFO 2025-08-17 15:49:59,899 project_views 88955 6200668160 Task reorder request for project 15: [{'task_id': '185', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 1}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 185: row=58, col=93, order=0
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 195: row=58, col=93, order=1
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 172: row=58, col=94, order=2
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:49:59,901 project_views 88955 6200668160 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:49:59,902 project_views 88955 6200668160 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:49:59,902 project_views 88955 6200668160 Container tasks grouped: {'58_93': [('185', 0), ('195', 1)], '58_94': [('172', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:49:59,902 project_views 88955 6200668160 Processing container 58_93 with tasks: [('185', 0), ('195', 1)]
+INFO 2025-08-17 15:49:59,903 project_views 88955 6200668160 Updating task 185: old_order=1, new_order=0
+INFO 2025-08-17 15:49:59,905 project_views 88955 6200668160 Successfully saved task 185: order=0, row=58, col=93
+INFO 2025-08-17 15:49:59,907 project_views 88955 6200668160 Updating task 195: old_order=0, new_order=1
+INFO 2025-08-17 15:49:59,909 project_views 88955 6200668160 Successfully saved task 195: order=1, row=58, col=93
+INFO 2025-08-17 15:49:59,909 project_views 88955 6200668160 Processing container 58_94 with tasks: [('172', 2)]
+INFO 2025-08-17 15:49:59,910 project_views 88955 6200668160 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:49:59,912 project_views 88955 6200668160 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:49:59,912 project_views 88955 6200668160 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:49:59,912 project_views 88955 6200668160 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:49:59,914 project_views 88955 6200668160 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:49:59,914 project_views 88955 6200668160 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:49:59,915 project_views 88955 6200668160 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:49:59,916 project_views 88955 6200668160 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:49:59,916 project_views 88955 6200668160 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:49:59,917 project_views 88955 6200668160 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:49:59,918 project_views 88955 6200668160 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:49:59,919 project_views 88955 6200668160 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:49:59,921 project_views 88955 6200668160 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:49:59,921 project_views 88955 6200668160 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:49:59,921 project_views 88955 6200668160 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:49:59,923 project_views 88955 6200668160 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:49:59,923 project_views 88955 6200668160 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:49:59,924 project_views 88955 6200668160 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:49:59,924 project_views 88955 6200668160 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:49:59,925 project_views 88955 6200668160 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:49:59,926 project_views 88955 6200668160 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:49:59,926 project_views 88955 6200668160 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:49:59,928 project_views 88955 6200668160 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:49:59,928 project_views_functions 88955 6200668160 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:49:59,928 project_views 88955 6200668160 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:49:59,928 basehttp 88955 6200668160 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:50:02,218 basehttp 88955 6200668160 "GET /grids/15/ HTTP/1.1" 200 13770
+INFO 2025-08-17 15:50:02,241 basehttp 88955 6217494528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:50:02,242 basehttp 88955 6234320896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:50:02,247 log 88955 6200668160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:50:02,247 basehttp 88955 6200668160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1852
+INFO 2025-08-17 15:50:11,385 project_views 88955 6200668160 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '94', 'order': 1}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:50:11,386 project_views 88955 6200668160 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:50:11,386 project_views 88955 6200668160 Processing task 172: row=58, col=94, order=1
+INFO 2025-08-17 15:50:11,386 project_views 88955 6200668160 Processing task 185: row=58, col=94, order=2
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Container tasks grouped: {'58_93': [('195', 0)], '58_94': [('172', 1), ('185', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:50:11,387 project_views 88955 6200668160 Processing container 58_93 with tasks: [('195', 0)]
+INFO 2025-08-17 15:50:11,388 project_views 88955 6200668160 Updating task 195: old_order=1, new_order=0
+INFO 2025-08-17 15:50:11,392 project_views 88955 6200668160 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:50:11,392 project_views 88955 6200668160 Processing container 58_94 with tasks: [('172', 1), ('185', 2)]
+INFO 2025-08-17 15:50:11,392 project_views 88955 6200668160 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:50:11,394 project_views 88955 6200668160 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:50:11,395 project_views 88955 6200668160 Updating task 185: old_order=0, new_order=1
+INFO 2025-08-17 15:50:11,396 project_views 88955 6200668160 Moving task 185 from column 93 to column 94
+INFO 2025-08-17 15:50:11,397 project_views 88955 6200668160 Successfully saved task 185: order=1, row=58, col=94
+INFO 2025-08-17 15:50:11,397 project_views 88955 6200668160 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:50:11,398 project_views 88955 6200668160 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:50:11,399 project_views 88955 6200668160 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:50:11,399 project_views 88955 6200668160 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:50:11,400 project_views 88955 6200668160 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:50:11,403 project_views 88955 6200668160 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:50:11,403 project_views 88955 6200668160 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:50:11,403 project_views 88955 6200668160 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:50:11,405 project_views 88955 6200668160 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:50:11,406 project_views 88955 6200668160 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:50:11,407 project_views 88955 6200668160 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:50:11,407 project_views 88955 6200668160 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:50:11,408 project_views 88955 6200668160 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:50:11,409 project_views 88955 6200668160 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:50:11,410 project_views 88955 6200668160 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:50:11,411 project_views 88955 6200668160 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:50:11,411 project_views 88955 6200668160 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:50:11,412 project_views 88955 6200668160 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:50:11,413 project_views 88955 6200668160 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:50:11,413 project_views 88955 6200668160 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:50:11,415 project_views 88955 6200668160 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:50:11,415 project_views_functions 88955 6200668160 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:50:11,415 project_views 88955 6200668160 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:50:11,415 basehttp 88955 6200668160 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:51:26,706 autoreload 88955 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-08-17 15:51:27,002 autoreload 88992 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:51:39,297 autoreload 88992 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-08-17 15:51:39,553 autoreload 89017 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:52:14,266 basehttp 89017 6200340480 "GET /grids/15/ HTTP/1.1" 200 13766
+INFO 2025-08-17 15:52:14,292 basehttp 89017 6217166848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 15:52:14,292 basehttp 89017 6233993216 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 15:52:14,298 log 89017 6200340480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:52:14,299 basehttp 89017 6200340480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1843
+INFO 2025-08-17 15:52:16,493 project_views 89017 6200340480 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 1}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:52:16,494 project_views 89017 6200340480 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 185: row=58, col=94, order=1
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 172: row=58, col=94, order=2
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:52:16,495 project_views 89017 6200340480 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:52:16,496 project_views 89017 6200340480 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:52:16,496 project_views 89017 6200340480 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:52:16,496 project_views 89017 6200340480 Container tasks grouped: {'58_93': [('195', 0)], '58_94': [('185', 1), ('172', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:52:16,496 project_views 89017 6200340480 Processing container 58_93 with tasks: [('195', 0)]
+INFO 2025-08-17 15:52:16,497 project_views 89017 6200340480 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:52:16,502 project_views 89017 6200340480 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:52:16,503 project_views 89017 6200340480 Processing container 58_94 with tasks: [('185', 1), ('172', 2)]
+INFO 2025-08-17 15:52:16,503 project_views 89017 6200340480 Updating task 185: old_order=1, new_order=0
+INFO 2025-08-17 15:52:16,506 project_views 89017 6200340480 Successfully saved task 185: order=0, row=58, col=94
+INFO 2025-08-17 15:52:16,506 project_views 89017 6200340480 Updating task 172: old_order=0, new_order=1
+INFO 2025-08-17 15:52:16,509 project_views 89017 6200340480 Successfully saved task 172: order=1, row=58, col=94
+INFO 2025-08-17 15:52:16,509 project_views 89017 6200340480 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:52:16,509 project_views 89017 6200340480 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:52:16,511 project_views 89017 6200340480 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:52:16,511 project_views 89017 6200340480 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:52:16,511 project_views 89017 6200340480 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:52:16,514 project_views 89017 6200340480 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:52:16,514 project_views 89017 6200340480 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:52:16,514 project_views 89017 6200340480 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:52:16,516 project_views 89017 6200340480 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:52:16,516 project_views 89017 6200340480 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:52:16,518 project_views 89017 6200340480 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:52:16,518 project_views 89017 6200340480 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:52:16,518 project_views 89017 6200340480 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:52:16,520 project_views 89017 6200340480 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:52:16,521 project_views 89017 6200340480 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:52:16,522 project_views 89017 6200340480 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:52:16,523 project_views 89017 6200340480 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:52:16,523 project_views 89017 6200340480 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:52:16,524 project_views 89017 6200340480 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:52:16,525 project_views 89017 6200340480 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:52:16,526 project_views 89017 6200340480 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:52:16,526 project_views_functions 89017 6200340480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:52:16,526 project_views 89017 6200340480 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:52:16,527 basehttp 89017 6200340480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:52:18,385 basehttp 89017 6200340480 "GET /grids/15/ HTTP/1.1" 200 13740
+WARNING 2025-08-17 15:52:18,412 log 89017 6200340480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:52:18,413 basehttp 89017 6200340480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1923
+INFO 2025-08-17 15:52:22,763 project_views 89017 6200340480 Task reorder request for project 15: [{'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '185', 'row_header': '58', 'column_header': '93', 'order': 1}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 195: row=58, col=93, order=0
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 185: row=58, col=93, order=1
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 172: row=58, col=94, order=2
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:52:22,764 project_views 89017 6200340480 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:52:22,765 project_views 89017 6200340480 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:52:22,765 project_views 89017 6200340480 Container tasks grouped: {'58_93': [('195', 0), ('185', 1)], '58_94': [('172', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:52:22,765 project_views 89017 6200340480 Processing container 58_93 with tasks: [('195', 0), ('185', 1)]
+INFO 2025-08-17 15:52:22,765 project_views 89017 6200340480 Updating task 195: old_order=0, new_order=0
+INFO 2025-08-17 15:52:22,768 project_views 89017 6200340480 Successfully saved task 195: order=0, row=58, col=93
+INFO 2025-08-17 15:52:22,769 project_views 89017 6200340480 Updating task 185: old_order=0, new_order=1
+INFO 2025-08-17 15:52:22,770 project_views 89017 6200340480 Moving task 185 from column 94 to column 93
+INFO 2025-08-17 15:52:22,772 project_views 89017 6200340480 Successfully saved task 185: order=1, row=58, col=93
+INFO 2025-08-17 15:52:22,772 project_views 89017 6200340480 Processing container 58_94 with tasks: [('172', 2)]
+INFO 2025-08-17 15:52:22,773 project_views 89017 6200340480 Updating task 172: old_order=1, new_order=0
+INFO 2025-08-17 15:52:22,776 project_views 89017 6200340480 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:52:22,777 project_views 89017 6200340480 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:52:22,777 project_views 89017 6200340480 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:52:22,779 project_views 89017 6200340480 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:52:22,779 project_views 89017 6200340480 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:52:22,780 project_views 89017 6200340480 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:52:22,782 project_views 89017 6200340480 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:52:22,782 project_views 89017 6200340480 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:52:22,783 project_views 89017 6200340480 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:52:22,784 project_views 89017 6200340480 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:52:22,785 project_views 89017 6200340480 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:52:22,787 project_views 89017 6200340480 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:52:22,787 project_views 89017 6200340480 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:52:22,787 project_views 89017 6200340480 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:52:22,789 project_views 89017 6200340480 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:52:22,789 project_views 89017 6200340480 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:52:22,791 project_views 89017 6200340480 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:52:22,791 project_views 89017 6200340480 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:52:22,791 project_views 89017 6200340480 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:52:22,793 project_views 89017 6200340480 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:52:22,793 project_views 89017 6200340480 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:52:22,795 project_views 89017 6200340480 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:52:22,795 project_views_functions 89017 6200340480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:52:22,795 project_views 89017 6200340480 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:52:22,795 basehttp 89017 6200340480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:52:26,460 project_views 89017 6200340480 Task reorder request for project 15: [{'task_id': '185', 'row_header': '58', 'column_header': '93', 'order': 0}, {'task_id': '195', 'row_header': '58', 'column_header': '93', 'order': 1}, {'task_id': '172', 'row_header': '58', 'column_header': '94', 'order': 0}, {'task_id': '196', 'row_header': '58', 'column_header': '107', 'order': 0}, {'task_id': '183', 'row_header': '59', 'column_header': '93', 'order': 0}, {'task_id': '186', 'row_header': '59', 'column_header': '94', 'order': 0}, {'task_id': '182', 'row_header': '59', 'column_header': '94', 'order': 1}, {'task_id': '174', 'row_header': '61', 'column_header': '93', 'order': 0}, {'task_id': '173', 'row_header': '61', 'column_header': '93', 'order': 1}, {'task_id': '180', 'row_header': '61', 'column_header': '94', 'order': 0}, {'task_id': '179', 'row_header': '61', 'column_header': '94', 'order': 1}]
+INFO 2025-08-17 15:52:26,461 project_views 89017 6200340480 Processing task 185: row=58, col=93, order=0
+INFO 2025-08-17 15:52:26,461 project_views 89017 6200340480 Processing task 195: row=58, col=93, order=1
+INFO 2025-08-17 15:52:26,461 project_views 89017 6200340480 Processing task 172: row=58, col=94, order=2
+INFO 2025-08-17 15:52:26,461 project_views 89017 6200340480 Processing task 196: row=58, col=107, order=3
+INFO 2025-08-17 15:52:26,461 project_views 89017 6200340480 Processing task 183: row=59, col=93, order=4
+INFO 2025-08-17 15:52:26,461 project_views 89017 6200340480 Processing task 186: row=59, col=94, order=5
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Processing task 182: row=59, col=94, order=6
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Processing task 174: row=61, col=93, order=7
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Processing task 173: row=61, col=93, order=8
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Processing task 180: row=61, col=94, order=9
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Processing task 179: row=61, col=94, order=10
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Container tasks grouped: {'58_93': [('185', 0), ('195', 1)], '58_94': [('172', 2)], '58_107': [('196', 3)], '59_93': [('183', 4)], '59_94': [('186', 5), ('182', 6)], '61_93': [('174', 7), ('173', 8)], '61_94': [('180', 9), ('179', 10)]}
+INFO 2025-08-17 15:52:26,462 project_views 89017 6200340480 Processing container 58_93 with tasks: [('185', 0), ('195', 1)]
+INFO 2025-08-17 15:52:26,464 project_views 89017 6200340480 Updating task 185: old_order=1, new_order=0
+INFO 2025-08-17 15:52:26,467 project_views 89017 6200340480 Successfully saved task 185: order=0, row=58, col=93
+INFO 2025-08-17 15:52:26,468 project_views 89017 6200340480 Updating task 195: old_order=0, new_order=1
+INFO 2025-08-17 15:52:26,470 project_views 89017 6200340480 Successfully saved task 195: order=1, row=58, col=93
+INFO 2025-08-17 15:52:26,470 project_views 89017 6200340480 Processing container 58_94 with tasks: [('172', 2)]
+INFO 2025-08-17 15:52:26,471 project_views 89017 6200340480 Updating task 172: old_order=0, new_order=0
+INFO 2025-08-17 15:52:26,472 project_views 89017 6200340480 Successfully saved task 172: order=0, row=58, col=94
+INFO 2025-08-17 15:52:26,472 project_views 89017 6200340480 Processing container 58_107 with tasks: [('196', 3)]
+INFO 2025-08-17 15:52:26,473 project_views 89017 6200340480 Updating task 196: old_order=0, new_order=0
+INFO 2025-08-17 15:52:26,475 project_views 89017 6200340480 Successfully saved task 196: order=0, row=58, col=107
+INFO 2025-08-17 15:52:26,475 project_views 89017 6200340480 Processing container 59_93 with tasks: [('183', 4)]
+INFO 2025-08-17 15:52:26,475 project_views 89017 6200340480 Updating task 183: old_order=0, new_order=0
+INFO 2025-08-17 15:52:26,477 project_views 89017 6200340480 Successfully saved task 183: order=0, row=59, col=93
+INFO 2025-08-17 15:52:26,477 project_views 89017 6200340480 Processing container 59_94 with tasks: [('186', 5), ('182', 6)]
+INFO 2025-08-17 15:52:26,478 project_views 89017 6200340480 Updating task 186: old_order=0, new_order=0
+INFO 2025-08-17 15:52:26,480 project_views 89017 6200340480 Successfully saved task 186: order=0, row=59, col=94
+INFO 2025-08-17 15:52:26,480 project_views 89017 6200340480 Updating task 182: old_order=1, new_order=1
+INFO 2025-08-17 15:52:26,482 project_views 89017 6200340480 Successfully saved task 182: order=1, row=59, col=94
+INFO 2025-08-17 15:52:26,482 project_views 89017 6200340480 Processing container 61_93 with tasks: [('174', 7), ('173', 8)]
+INFO 2025-08-17 15:52:26,483 project_views 89017 6200340480 Updating task 174: old_order=0, new_order=0
+INFO 2025-08-17 15:52:26,484 project_views 89017 6200340480 Successfully saved task 174: order=0, row=61, col=93
+INFO 2025-08-17 15:52:26,484 project_views 89017 6200340480 Updating task 173: old_order=1, new_order=1
+INFO 2025-08-17 15:52:26,486 project_views 89017 6200340480 Successfully saved task 173: order=1, row=61, col=93
+INFO 2025-08-17 15:52:26,486 project_views 89017 6200340480 Processing container 61_94 with tasks: [('180', 9), ('179', 10)]
+INFO 2025-08-17 15:52:26,487 project_views 89017 6200340480 Updating task 180: old_order=0, new_order=0
+INFO 2025-08-17 15:52:26,488 project_views 89017 6200340480 Successfully saved task 180: order=0, row=61, col=94
+INFO 2025-08-17 15:52:26,489 project_views 89017 6200340480 Updating task 179: old_order=1, new_order=1
+INFO 2025-08-17 15:52:26,490 project_views 89017 6200340480 Successfully saved task 179: order=1, row=61, col=94
+INFO 2025-08-17 15:52:26,490 project_views_functions 89017 6200340480 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 15:52:26,490 project_views 89017 6200340480 Task reorder completed successfully for project 15
+INFO 2025-08-17 15:52:26,491 basehttp 89017 6200340480 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 15:52:28,149 basehttp 89017 6200340480 "GET /grids/15/ HTTP/1.1" 200 13795
+WARNING 2025-08-17 15:52:28,177 log 89017 6200340480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 15:52:28,177 basehttp 89017 6200340480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1875
+INFO 2025-08-17 15:54:42,801 autoreload 89017 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:54:43,097 autoreload 89076 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:54:52,349 autoreload 89076 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:54:52,617 autoreload 89088 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 15:55:01,850 autoreload 89088 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 15:55:02,272 autoreload 89095 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 16:12:39,954 autoreload 89441 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 16:12:43,008 basehttp 89441 6131937280 "GET /grids/15/ HTTP/1.1" 200 13838
+INFO 2025-08-17 16:12:43,030 basehttp 89441 6131937280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 16:12:43,038 basehttp 89441 6148763648 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 16:12:43,039 basehttp 89441 6165590016 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45645
+WARNING 2025-08-17 16:12:43,046 log 89441 6131937280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:12:43,046 basehttp 89441 6131937280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1927
+INFO 2025-08-17 16:12:53,574 basehttp 89441 6131937280 "GET /grids/15/ HTTP/1.1" 200 13834
+INFO 2025-08-17 16:12:53,598 basehttp 89441 6165590016 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 16:12:53,600 basehttp 89441 6148763648 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 16:12:53,603 basehttp 89441 6182416384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45645
+INFO 2025-08-17 16:12:53,604 basehttp 89441 6131937280 "GET /static/css/output.css HTTP/1.1" 200 72607
+WARNING 2025-08-17 16:12:53,608 log 89441 6199242752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:12:53,608 basehttp 89441 6199242752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1842
+INFO 2025-08-17 16:13:23,671 project_views_functions 89441 6131937280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:13:23,671 basehttp 89441 6131937280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:13:25,081 basehttp 89441 6131937280 "GET /grids/15/ HTTP/1.1" 200 13745
+INFO 2025-08-17 16:13:25,104 basehttp 89441 6165590016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:13:25,104 basehttp 89441 6148763648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 16:13:25,112 log 89441 6131937280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:13:25,112 basehttp 89441 6131937280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1869
+INFO 2025-08-17 16:13:27,514 project_views_functions 89441 6131937280 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:13:27,514 basehttp 89441 6131937280 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:13:28,839 basehttp 89441 6131937280 "GET /grids/15/ HTTP/1.1" 200 13781
+WARNING 2025-08-17 16:13:28,861 log 89441 6131937280 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:13:28,862 basehttp 89441 6131937280 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1841
+INFO 2025-08-17 16:24:09,559 autoreload 89831 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 16:24:14,920 basehttp 89831 6201913344 "GET /grids/15/ HTTP/1.1" 200 13763
+INFO 2025-08-17 16:24:14,941 basehttp 89831 6201913344 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:14,949 basehttp 89831 6218739712 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 16:24:14,950 basehttp 89831 6235566080 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42752
+WARNING 2025-08-17 16:24:14,955 log 89831 6201913344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:24:14,955 basehttp 89831 6201913344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1901
+INFO 2025-08-17 16:24:18,475 project_views_functions 89831 6201913344 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:24:18,475 basehttp 89831 6201913344 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:24:19,986 basehttp 89831 6201913344 "GET /grids/15/ HTTP/1.1" 200 13726
+INFO 2025-08-17 16:24:20,005 basehttp 89831 6218739712 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:20,006 basehttp 89831 6235566080 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 16:24:20,012 log 89831 6201913344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:24:20,012 basehttp 89831 6201913344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1910
+INFO 2025-08-17 16:24:22,020 project_views_functions 89831 6201913344 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:24:22,021 basehttp 89831 6201913344 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:24:23,505 basehttp 89831 6201913344 "GET /grids/15/ HTTP/1.1" 200 13770
+INFO 2025-08-17 16:24:23,524 basehttp 89831 6235566080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:23,525 basehttp 89831 6218739712 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 16:24:23,534 log 89831 6201913344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:24:23,534 basehttp 89831 6201913344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1889
+INFO 2025-08-17 16:24:25,802 project_views_functions 89831 6201913344 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:24:25,802 basehttp 89831 6201913344 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:24:27,021 basehttp 89831 6201913344 "GET /grids/15/ HTTP/1.1" 200 13789
+INFO 2025-08-17 16:24:27,039 basehttp 89831 6218739712 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:27,040 basehttp 89831 6235566080 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-17 16:24:27,045 log 89831 6201913344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-17 16:24:27,045 basehttp 89831 6201913344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1898
+INFO 2025-08-17 16:24:30,072 basehttp 89831 6201913344 "GET /grids/15/ HTTP/1.1" 200 13749
+INFO 2025-08-17 16:24:30,086 basehttp 89831 6218739712 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:30,086 basehttp 89831 6201913344 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:32,903 basehttp 89831 6201913344 "GET /grids/15/columns/create/ HTTP/1.1" 200 1050
+INFO 2025-08-17 16:24:35,525 basehttp 89831 6201913344 "POST /grids/15/columns/create/ HTTP/1.1" 204 0
+INFO 2025-08-17 16:24:35,583 basehttp 89831 6201913344 - Broken pipe from ('127.0.0.1', 59628)
+INFO 2025-08-17 16:24:35,593 basehttp 89831 6218739712 - Broken pipe from ('127.0.0.1', 59629)
+INFO 2025-08-17 16:24:35,594 basehttp 89831 6235566080 "GET /grids/15/ HTTP/1.1" 200 14138
+INFO 2025-08-17 16:24:35,607 basehttp 89831 6235566080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:24:35,607 basehttp 89831 6201913344 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:26:07,894 autoreload 90199 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 16:27:11,448 basehttp 90199 6137425920 "GET /grids/15/ HTTP/1.1" 200 14117
+INFO 2025-08-17 16:27:11,470 basehttp 90199 6137425920 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 16:27:11,471 basehttp 90199 6154252288 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-17 16:27:14,336 basehttp 90199 6154252288 "POST /tasks/185/edit/ HTTP/1.1" 200 131
+INFO 2025-08-17 16:27:17,213 basehttp 90199 6154252288 "POST /tasks/185/edit/ HTTP/1.1" 200 125
+INFO 2025-08-17 16:27:20,812 basehttp 90199 6154252288 "POST /grids/15/columns/93/edit/ HTTP/1.1" 200 123
+INFO 2025-08-17 16:27:22,832 basehttp 90199 6154252288 "POST /grids/15/rows/58/edit/ HTTP/1.1" 200 124
+INFO 2025-08-17 16:27:24,362 basehttp 90199 6154252288 "GET /grids/15/ HTTP/1.1" 200 14200
+INFO 2025-08-17 16:27:24,377 basehttp 90199 6137425920 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:27:24,377 basehttp 90199 6154252288 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:27:27,960 project_views_functions 90199 6154252288 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:27:27,961 basehttp 90199 6154252288 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:27:30,876 basehttp 90199 6154252288 "POST /tasks/185/edit/ HTTP/1.1" 200 125
+INFO 2025-08-17 16:27:32,397 basehttp 90199 6154252288 "GET /grids/15/ HTTP/1.1" 200 14139
+INFO 2025-08-17 16:27:32,409 basehttp 90199 6137425920 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:27:32,410 basehttp 90199 6154252288 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 16:28:12,148 basehttp 90199 6154252288 "POST /grids/15/columns/93/edit/ HTTP/1.1" 200 121
+INFO 2025-08-17 16:28:15,537 project_views_functions 90199 6154252288 User None reordered tasks: in project Student Planner
+INFO 2025-08-17 16:28:15,538 basehttp 90199 6154252288 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-17 16:28:18,718 basehttp 90199 6154252288 "POST /tasks/185/edit/ HTTP/1.1" 200 124

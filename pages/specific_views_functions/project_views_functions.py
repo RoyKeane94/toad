@@ -88,6 +88,10 @@ def process_grid_data_optimized(project):
         tasks_by_cell[cell_key].append(task)
         tasks_by_row[task.row_header_id].append(task)
     
+    # Sort tasks by order field within each cell to respect database ordering
+    for cell_key in tasks_by_cell:
+        tasks_by_cell[cell_key].sort(key=lambda task: task.order)
+    
     # Optimized row height calculation with vectorized operations
     row_min_heights = {}
     for row_header in row_headers:

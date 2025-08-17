@@ -779,9 +779,9 @@ def task_reorder_view(request, project_pk):
             # Group tasks by their new container (row, col) to handle order properly
             container_tasks = {}
             for index, task_data in enumerate(task_order):
-                task_id = task_data.get('id')
-                new_row = task_data.get('row')
-                new_col = task_data.get('col')
+                task_id = task_data.get('task_id')  # Changed from 'id' to 'task_id'
+                new_row = task_data.get('row_header')  # Changed from 'row' to 'row_header'
+                new_col = task_data.get('column_header')  # Changed from 'col' to 'column_header'
                 
                 if not task_id or not new_row or not new_col:
                     continue
