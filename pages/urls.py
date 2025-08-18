@@ -49,7 +49,7 @@ urlpatterns = [
     # Grid URLs
     path('grids/', views.project_list_view, name='project_list'),
     path('grids/create/', views.project_create_view, name='project_create'),
-    path('grids/group/create/', views.project_group_create_view, name='project_group_create'),
+
     path('grids/<int:pk>/', views.project_grid_view, name='project_grid'),
     path('grids/<int:pk>/edit/', views.project_edit_view, name='project_edit'),
     path('grids/<int:pk>/delete/', views.project_delete_view, name='project_delete'),

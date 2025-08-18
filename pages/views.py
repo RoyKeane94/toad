@@ -56,7 +56,7 @@ from .specific_views.project_views import (
     use_template_view,
     template_edit_view,
     template_delete_view,
-    project_group_create_view
+
 )
 
 # Import analytics functions

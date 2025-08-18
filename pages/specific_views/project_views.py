@@ -16,8 +16,8 @@ from django.db.models.functions import Greatest
 from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
-from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask, ProjectGroup
-from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm, ProjectGroupForm, ProjectGroupAssignmentForm
+from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask
+from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
 from pages.specific_views_functions.project_views_functions import (
     get_user_project_optimized,
     get_user_task_optimized, 
@@ -828,8 +828,16 @@ def save_as_template_view(request, pk):
             
             # If "Save with example tasks" is selected, create template tasks
             if template_style == 'with_tasks':
-                tasks = project.tasks.all()
+                # Order tasks by their visual position: row order, column order, then task order within cell
+                tasks = project.tasks.all().order_by('row_header__order', 'column_header__order', 'order')
                 logger.info(f"Saving template with {tasks.count()} tasks from project {project.name}")
+                
+                # Debug: Log the order of tasks being saved
+                logger.info("=== TASK ORDERING DEBUG ===")
+                for idx, task in enumerate(tasks):
+                    logger.info(f"Task {idx}: '{task.text[:30]}...' in Row {task.row_header.order} ({task.row_header.name}) x Col {task.column_header.order} ({task.column_header.name}) with order {task.order}")
+                logger.info("=== END DEBUG ===")
+                
                 # Include tasks from all columns (including category column) when saving as template
                 
                 # Save tasks in the exact order they appear in the grid
@@ -892,18 +900,18 @@ def use_template_view(request, pk):
             
             # Create row headers from template
             template_rows = template.row_headers.all().order_by('order')
-            row_mapping = {}
+            row_objects = []
             for i, template_row in enumerate(template_rows):
                 row = RowHeader.objects.create(
                     project=project,
                     name=template_row.name,
                     order=i
                 )
-                row_mapping[template_row.id] = row
+                row_objects.append(row)
             
             # Create column headers from template (including category column)
             template_columns = template.column_headers.all().order_by('order')
-            col_mapping = {}
+            col_objects = []
             for i, template_column in enumerate(template_columns):
                 # Check if this was originally a category column
                 is_category = template_column.name == 'Time / Category'
@@ -913,32 +921,41 @@ def use_template_view(request, pk):
                     order=i,
                     is_category_column=is_category
                 )
-                col_mapping[template_column.id] = column
+                col_objects.append(column)
             
             # Create tasks from template if they exist
             template_tasks = TemplateTask.objects.filter(
                 template_row_header__template=template
-            ).select_related('template_row_header', 'template_column_header')
+            ).select_related('template_row_header', 'template_column_header').order_by('order')
             
             logger.info(f"Creating project from template with {template_tasks.count()} template tasks")
             
+            # Debug: Log the order of template tasks being used
+            logger.info("=== TEMPLATE TASK ORDERING DEBUG ===")
+            for idx, template_task in enumerate(template_tasks):
+                logger.info(f"Template Task {idx}: '{template_task.text[:30]}...' in Row {template_task.template_row_header.order} ({template_task.template_row_header.name}) x Col {template_task.template_column_header.order} ({template_task.template_column_header.name}) with order {template_task.order}")
+            logger.info("=== END DEBUG ===")
+            
+            # Create tasks using the same logic as signals - use list indices
             for template_task in template_tasks:
-                row = row_mapping.get(template_task.template_row_header.id)
-                column = col_mapping.get(template_task.template_column_header.id)
+                # Get the row and column indices from the template
+                row_idx = template_task.template_row_header.order
+                col_idx = template_task.template_column_header.order
                 
-                if row and column:
-                    # Create task with the actual text from the template
-                    Task.objects.create(
-                        project=project,
-                        row_header=row,
-                        column_header=column,
-                        text=template_task.text,  # Use the actual task text from template
-                        completed=False,  # Always start as incomplete
-                        order=template_task.order
-                    )
-                    logger.info(f"Created task: {template_task.text[:50]} in {row.name} x {column.name}")
-                else:
-                    logger.warning(f"Could not create task '{template_task.text[:50]}' - Row: {template_task.template_row_header.name} -> {row}, Col: {template_task.template_column_header.name} -> {column}")
+                # Use the list indices to get the correct row and column objects
+                row = row_objects[row_idx]
+                column = col_objects[col_idx]
+                
+                # Create task with the actual text from the template
+                Task.objects.create(
+                    project=project,
+                    row_header=row,
+                    column_header=column,
+                    text=template_task.text,  # Use the actual task text from template
+                    completed=False,  # Always start as incomplete
+                    order=template_task.order  # Use the exact same order from the template
+                )
+                logger.info(f"Created task: {template_task.text[:50]} in {row.name} x {column.name} with order {template_task.order}")
             
             # Log summary of task creation
             created_tasks = Task.objects.filter(project=project).count()
@@ -1086,38 +1103,3 @@ def task_reorder_view(request, project_pk):
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
 
-@login_required
-def project_group_create_view(request):
-    """Create a new project group and optionally assign projects to it"""
-    if request.method == 'POST':
-        form = ProjectGroupForm(request.POST)
-        if form.is_valid():
-            group = form.save(commit=False)
-            group.save()
-            
-            # Get selected projects and assign them to the group
-            selected_project_ids = request.POST.getlist('projects')
-            if selected_project_ids:
-                projects = Project.objects.filter(id__in=selected_project_ids, user=request.user)
-                for project in projects:
-                    project.project_group = group
-                    project.save()
-            
-            log_user_action(request.user, f'created project group: {group.name}', 'N/A')
-            messages.success(request, f'Group "{group.name}" created successfully!')
-            return redirect('pages:project_list')
-        else:
-            logger.warning(f'User {request.user.username} failed to create project group - form errors: {form.errors}')
-    else:
-        form = ProjectGroupForm()
-    
-    # Get all user's projects for the form
-    projects = Project.objects.filter(user=request.user).order_by('name')
-    
-    context = {
-        'form': form,
-        'projects': projects,
-        'title': 'Create Project Group'
-    }
-    
-    return render(request, 'pages/grid/actions_new_page/project_group_form.html', context)

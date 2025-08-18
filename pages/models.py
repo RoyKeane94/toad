@@ -2,18 +2,14 @@ from django.db import models
 from accounts.models import User  # Use our custom User model
 from django.urls import reverse
 
-class ProjectGroup(models.Model):
-    name = models.CharField(max_length=100)
 
-    def __str__(self):
-        return self.name
     
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
+    
 
     def __str__(self):
         return self.name
@@ -80,7 +76,7 @@ class Task(models.Model):
             raise ValidationError({'text': 'Task text cannot be empty.'})
 
     class Meta:
-        ordering = ['-created_at', 'order']  # Most recent first, then by order
+        ordering = ['order', 'created_at']  # Order first, then by creation time
         indexes = [
             models.Index(fields=['project', 'row_header', 'column_header']),  # For cell-based task queries
             models.Index(fields=['project', 'completed']),  # For completed task filtering

@@ -17614,3 +17614,953 @@ INFO 2025-08-18 20:02:21,947 basehttp 13180 6158872576 "GET /grids/123/ HTTP/1.1
 INFO 2025-08-18 20:02:30,750 basehttp 13180 6158872576 "GET /grids/21/ HTTP/1.1" 200 17857
 INFO 2025-08-18 20:02:34,582 basehttp 13180 6158872576 "GET /grids/123/ HTTP/1.1" 200 17888
 INFO 2025-08-18 20:17:04,415 autoreload 14752 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:17:33,458 autoreload 15204 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:17:38,008 basehttp 15204 6168244224 "GET /grids/ HTTP/1.1" 200 5651
+INFO 2025-08-18 20:17:38,028 basehttp 15204 6185070592 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 20:17:38,030 basehttp 15204 6168244224 "GET /static/css/output.css HTTP/1.1" 200 74222
+ERROR 2025-08-18 20:17:48,133 log 15204 6168244224 Internal Server Error: /grids/group/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such table: pages_projectgroup
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 1096, in project_group_create_view
+    group.save()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such table: pages_projectgroup
+ERROR 2025-08-18 20:17:48,139 basehttp 15204 6168244224 "POST /grids/group/create/ HTTP/1.1" 500 18865
+INFO 2025-08-18 20:17:48,195 basehttp 15204 6168244224 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-08-18 20:17:48,196 basehttp 15204 6168244224 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-08-18 20:27:30,462 autoreload 16238 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:27:35,464 basehttp 16238 6168834048 "GET / HTTP/1.1" 200 6473
+INFO 2025-08-18 20:27:35,476 basehttp 16238 6168834048 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 20:27:35,480 basehttp 16238 6168834048 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:27:36,955 basehttp 16238 6168834048 "GET /grids/ HTTP/1.1" 200 4797
+INFO 2025-08-18 20:27:39,350 basehttp 16238 6168834048 "GET /templates/22/delete/ HTTP/1.1" 200 1126
+INFO 2025-08-18 20:27:40,000 project_views_functions 16238 6168834048 User None deleted template: Test Accounting - 18th August 2025: N/A
+INFO 2025-08-18 20:27:40,001 basehttp 16238 6168834048 "POST /templates/22/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:27:40,007 basehttp 16238 6168834048 "GET /grids/ HTTP/1.1" 200 4341
+INFO 2025-08-18 20:27:40,958 basehttp 16238 6168834048 "GET /grids/123/ HTTP/1.1" 200 17960
+INFO 2025-08-18 20:27:40,981 basehttp 16238 6168834048 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 20:27:45,912 project_views 16238 6168834048 Saving template with 24 tasks from project Test Accounting - 18th August 2025
+INFO 2025-08-18 20:27:45,916 project_views 16238 6168834048 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:27:45,917 project_views 16238 6168834048 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:27:45,919 project_views 16238 6168834048 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 2
+INFO 2025-08-18 20:27:45,921 project_views 16238 6168834048 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 3
+INFO 2025-08-18 20:27:45,923 project_views 16238 6168834048 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 4
+INFO 2025-08-18 20:27:45,925 project_views 16238 6168834048 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 5
+INFO 2025-08-18 20:27:45,926 project_views 16238 6168834048 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 6
+INFO 2025-08-18 20:27:45,928 project_views 16238 6168834048 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 7
+INFO 2025-08-18 20:27:45,929 project_views 16238 6168834048 Created template task: Research their values in EY x Research and Networking with order 8
+INFO 2025-08-18 20:27:45,930 project_views 16238 6168834048 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 9
+INFO 2025-08-18 20:27:45,931 project_views 16238 6168834048 Created template task: Find out application deadline in PwC x Application Preparation with order 10
+INFO 2025-08-18 20:27:45,933 project_views 16238 6168834048 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 11
+INFO 2025-08-18 20:27:45,934 project_views 16238 6168834048 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 12
+INFO 2025-08-18 20:27:45,935 project_views 16238 6168834048 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 13
+INFO 2025-08-18 20:27:45,937 project_views 16238 6168834048 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 14
+INFO 2025-08-18 20:27:45,938 project_views 16238 6168834048 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 15
+INFO 2025-08-18 20:27:45,939 project_views 16238 6168834048 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 16
+INFO 2025-08-18 20:27:45,940 project_views 16238 6168834048 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 17
+INFO 2025-08-18 20:27:45,941 project_views 16238 6168834048 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 18
+INFO 2025-08-18 20:27:45,942 project_views 16238 6168834048 Created template task: Find out when applications open in BDO x Research and Networking with order 19
+INFO 2025-08-18 20:27:45,943 project_views 16238 6168834048 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 20
+INFO 2025-08-18 20:27:45,944 project_views 16238 6168834048 Created template task: Prepare "Why PwC?" in PwC x Interview with order 21
+INFO 2025-08-18 20:27:45,945 project_views 16238 6168834048 Created template task: Prepare "Why Deals?" in PwC x Interview with order 22
+INFO 2025-08-18 20:27:45,946 project_views 16238 6168834048 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 23
+INFO 2025-08-18 20:27:45,946 project_views 16238 6168834048 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:27:45,946 project_views_functions 16238 6168834048 User None saved project as template: Test - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 20:27:45,947 basehttp 16238 6168834048 "POST /grids/123/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:27:45,955 basehttp 16238 6168834048 "GET /grids/ HTTP/1.1" 200 4786
+INFO 2025-08-18 20:27:47,994 project_views 16238 6168834048 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:27:47,997 project_views 16238 6168834048 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 20:27:47,998 project_views 16238 6168834048 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 20:27:47,998 project_views 16238 6168834048 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 20:27:47,999 project_views 16238 6168834048 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 20:27:48,000 project_views 16238 6168834048 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 20:27:48,001 project_views 16238 6168834048 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 20:27:48,002 project_views 16238 6168834048 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 20:27:48,002 project_views 16238 6168834048 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 20:27:48,003 project_views 16238 6168834048 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 20:27:48,004 project_views 16238 6168834048 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 20:27:48,004 project_views 16238 6168834048 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 20:27:48,005 project_views 16238 6168834048 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 20:27:48,006 project_views 16238 6168834048 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 20:27:48,007 project_views 16238 6168834048 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 20:27:48,007 project_views 16238 6168834048 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 20:27:48,008 project_views 16238 6168834048 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 20:27:48,009 project_views 16238 6168834048 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 20:27:48,009 project_views 16238 6168834048 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 20:27:48,010 project_views 16238 6168834048 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 20:27:48,011 project_views 16238 6168834048 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 20:27:48,011 project_views 16238 6168834048 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 20:27:48,012 project_views 16238 6168834048 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 20:27:48,013 project_views 16238 6168834048 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 20:27:48,013 project_views 16238 6168834048 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 20:27:48,014 project_views 16238 6168834048 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:27:48,014 project_views_functions 16238 6168834048 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 20:27:48,015 basehttp 16238 6168834048 "POST /templates/23/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:27:48,037 basehttp 16238 6168834048 "GET /grids/124/ HTTP/1.1" 200 18020
+INFO 2025-08-18 20:27:55,692 basehttp 16238 6168834048 "GET /grids/15/ HTTP/1.1" 200 15597
+INFO 2025-08-18 20:27:58,818 basehttp 16238 6168834048 "GET /grids/21/ HTTP/1.1" 200 17869
+INFO 2025-08-18 20:28:01,904 basehttp 16238 6168834048 "GET /grids/124/ HTTP/1.1" 200 18041
+INFO 2025-08-18 20:28:52,133 autoreload 16238 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:28:52,443 autoreload 16287 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:29:07,798 autoreload 16287 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:29:08,058 autoreload 16300 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:29:17,293 autoreload 16300 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:29:17,569 autoreload 16311 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:36:44,351 basehttp 16311 6166048768 "GET /grids/124/delete/ HTTP/1.1" 200 1090
+INFO 2025-08-18 20:36:45,417 basehttp 16311 6166048768 "POST /grids/124/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:36:45,440 basehttp 16311 6166048768 "GET /grids/ HTTP/1.1" 200 4802
+INFO 2025-08-18 20:36:45,475 basehttp 16311 6182875136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:36:45,475 basehttp 16311 6166048768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 20:36:48,908 project_views 16311 6166048768 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:36:48,912 project_views 16311 6166048768 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:36:48,913 project_views 16311 6166048768 Created task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:36:48,915 project_views 16311 6166048768 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 0
+INFO 2025-08-18 20:36:48,917 project_views 16311 6166048768 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 0
+INFO 2025-08-18 20:36:48,918 project_views 16311 6166048768 Created task: Complete online assessment in Deloitte x Assessments & Tests with order 1
+INFO 2025-08-18 20:36:48,919 project_views 16311 6166048768 Created task: Research a recent deal PwC advised on in PwC x Research and Networking with order 0
+INFO 2025-08-18 20:36:48,920 project_views 16311 6166048768 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 1
+INFO 2025-08-18 20:36:48,921 project_views 16311 6166048768 Created task: Find out application deadline in PwC x Application Preparation with order 0
+INFO 2025-08-18 20:36:48,922 project_views 16311 6166048768 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 1
+INFO 2025-08-18 20:36:48,923 project_views 16311 6166048768 Created task: Practise numerical tests online in PwC x Assessments & Tests with order 0
+INFO 2025-08-18 20:36:48,924 project_views 16311 6166048768 Created task: Practise situational judgement tests online in PwC x Assessments & Tests with order 1
+INFO 2025-08-18 20:36:48,925 project_views 16311 6166048768 Created task: Prepare "Why PwC?" in PwC x Interview with order 0
+INFO 2025-08-18 20:36:48,926 project_views 16311 6166048768 Created task: Prepare "Why Deals?" in PwC x Interview with order 1
+INFO 2025-08-18 20:36:48,927 project_views 16311 6166048768 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 0
+INFO 2025-08-18 20:36:48,928 project_views 16311 6166048768 Created task: Research their values in EY x Research and Networking with order 1
+INFO 2025-08-18 20:36:48,929 project_views 16311 6166048768 Created task: Draft responses for the online application with an in EY x Application Preparation with order 0
+INFO 2025-08-18 20:36:48,931 project_views 16311 6166048768 Created task: Find a virtual event to attend in KPMG x Research and Networking with order 0
+INFO 2025-08-18 20:36:48,931 project_views 16311 6166048768 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 1
+INFO 2025-08-18 20:36:48,932 project_views 16311 6166048768 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 0
+INFO 2025-08-18 20:36:48,933 project_views 16311 6166048768 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 0
+INFO 2025-08-18 20:36:48,934 project_views 16311 6166048768 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 0
+INFO 2025-08-18 20:36:48,935 project_views 16311 6166048768 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 0
+INFO 2025-08-18 20:36:48,937 project_views 16311 6166048768 Created task: Complete online assessments in Grant Thornton x Assessments & Tests with order 0
+INFO 2025-08-18 20:36:48,938 project_views 16311 6166048768 Created task: Find out when applications open in BDO x Research and Networking with order 0
+INFO 2025-08-18 20:36:48,938 project_views 16311 6166048768 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:36:48,938 project_views_functions 16311 6166048768 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 20:36:48,939 basehttp 16311 6166048768 "POST /templates/23/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:36:48,964 basehttp 16311 6166048768 "GET /grids/125/ HTTP/1.1" 200 17831
+INFO 2025-08-18 20:36:48,978 basehttp 16311 6166048768 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:36:52,794 basehttp 16311 6166048768 "GET /grids/21/ HTTP/1.1" 200 17828
+INFO 2025-08-18 20:36:55,744 basehttp 16311 6166048768 "GET /grids/125/ HTTP/1.1" 200 17808
+INFO 2025-08-18 20:36:58,740 basehttp 16311 6166048768 "GET /grids/125/delete/ HTTP/1.1" 200 1133
+INFO 2025-08-18 20:36:59,803 basehttp 16311 6166048768 "POST /grids/125/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:36:59,821 basehttp 16311 6166048768 "GET /grids/ HTTP/1.1" 200 4776
+INFO 2025-08-18 20:37:00,909 basehttp 16311 6166048768 "GET /templates/23/delete/ HTTP/1.1" 200 1164
+INFO 2025-08-18 20:37:01,581 project_views_functions 16311 6166048768 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 20:37:01,584 basehttp 16311 6166048768 "POST /templates/23/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:37:01,599 basehttp 16311 6166048768 "GET /grids/ HTTP/1.1" 200 4290
+INFO 2025-08-18 20:37:02,677 basehttp 16311 6166048768 "GET /grids/123/ HTTP/1.1" 200 17924
+INFO 2025-08-18 20:37:08,234 project_views 16311 6166048768 Saving template with 24 tasks from project Test Accounting - 18th August 2025
+INFO 2025-08-18 20:37:08,238 project_views 16311 6166048768 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:37:08,240 project_views 16311 6166048768 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:37:08,242 project_views 16311 6166048768 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 2
+INFO 2025-08-18 20:37:08,244 project_views 16311 6166048768 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 3
+INFO 2025-08-18 20:37:08,246 project_views 16311 6166048768 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 4
+INFO 2025-08-18 20:37:08,248 project_views 16311 6166048768 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 5
+INFO 2025-08-18 20:37:08,249 project_views 16311 6166048768 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 6
+INFO 2025-08-18 20:37:08,251 project_views 16311 6166048768 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 7
+INFO 2025-08-18 20:37:08,252 project_views 16311 6166048768 Created template task: Research their values in EY x Research and Networking with order 8
+INFO 2025-08-18 20:37:08,254 project_views 16311 6166048768 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 9
+INFO 2025-08-18 20:37:08,255 project_views 16311 6166048768 Created template task: Find out application deadline in PwC x Application Preparation with order 10
+INFO 2025-08-18 20:37:08,256 project_views 16311 6166048768 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 11
+INFO 2025-08-18 20:37:08,257 project_views 16311 6166048768 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 12
+INFO 2025-08-18 20:37:08,258 project_views 16311 6166048768 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 13
+INFO 2025-08-18 20:37:08,259 project_views 16311 6166048768 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 14
+INFO 2025-08-18 20:37:08,260 project_views 16311 6166048768 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 15
+INFO 2025-08-18 20:37:08,261 project_views 16311 6166048768 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 16
+INFO 2025-08-18 20:37:08,262 project_views 16311 6166048768 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 17
+INFO 2025-08-18 20:37:08,263 project_views 16311 6166048768 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 18
+INFO 2025-08-18 20:37:08,264 project_views 16311 6166048768 Created template task: Find out when applications open in BDO x Research and Networking with order 19
+INFO 2025-08-18 20:37:08,265 project_views 16311 6166048768 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 20
+INFO 2025-08-18 20:37:08,266 project_views 16311 6166048768 Created template task: Prepare "Why PwC?" in PwC x Interview with order 21
+INFO 2025-08-18 20:37:08,267 project_views 16311 6166048768 Created template task: Prepare "Why Deals?" in PwC x Interview with order 22
+INFO 2025-08-18 20:37:08,268 project_views 16311 6166048768 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 23
+INFO 2025-08-18 20:37:08,268 project_views 16311 6166048768 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:37:08,268 project_views_functions 16311 6166048768 User None saved project as template: t - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 20:37:08,269 basehttp 16311 6166048768 "POST /grids/123/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:37:08,277 basehttp 16311 6166048768 "GET /grids/ HTTP/1.1" 200 4843
+INFO 2025-08-18 20:37:09,932 project_views 16311 6166048768 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:37:09,937 project_views 16311 6166048768 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:37:09,938 project_views 16311 6166048768 Created task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:37:09,940 project_views 16311 6166048768 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 0
+INFO 2025-08-18 20:37:09,942 project_views 16311 6166048768 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 0
+INFO 2025-08-18 20:37:09,943 project_views 16311 6166048768 Created task: Complete online assessment in Deloitte x Assessments & Tests with order 1
+INFO 2025-08-18 20:37:09,944 project_views 16311 6166048768 Created task: Research a recent deal PwC advised on in PwC x Research and Networking with order 0
+INFO 2025-08-18 20:37:09,945 project_views 16311 6166048768 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 1
+INFO 2025-08-18 20:37:09,947 project_views 16311 6166048768 Created task: Find out application deadline in PwC x Application Preparation with order 0
+INFO 2025-08-18 20:37:09,949 project_views 16311 6166048768 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 1
+INFO 2025-08-18 20:37:09,950 project_views 16311 6166048768 Created task: Practise numerical tests online in PwC x Assessments & Tests with order 0
+INFO 2025-08-18 20:37:09,951 project_views 16311 6166048768 Created task: Practise situational judgement tests online in PwC x Assessments & Tests with order 1
+INFO 2025-08-18 20:37:09,952 project_views 16311 6166048768 Created task: Prepare "Why PwC?" in PwC x Interview with order 0
+INFO 2025-08-18 20:37:09,953 project_views 16311 6166048768 Created task: Prepare "Why Deals?" in PwC x Interview with order 1
+INFO 2025-08-18 20:37:09,955 project_views 16311 6166048768 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 0
+INFO 2025-08-18 20:37:09,955 project_views 16311 6166048768 Created task: Research their values in EY x Research and Networking with order 1
+INFO 2025-08-18 20:37:09,957 project_views 16311 6166048768 Created task: Draft responses for the online application with an in EY x Application Preparation with order 0
+INFO 2025-08-18 20:37:09,958 project_views 16311 6166048768 Created task: Find a virtual event to attend in KPMG x Research and Networking with order 0
+INFO 2025-08-18 20:37:09,958 project_views 16311 6166048768 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 1
+INFO 2025-08-18 20:37:09,960 project_views 16311 6166048768 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 0
+INFO 2025-08-18 20:37:09,961 project_views 16311 6166048768 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 0
+INFO 2025-08-18 20:37:09,962 project_views 16311 6166048768 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 0
+INFO 2025-08-18 20:37:09,963 project_views 16311 6166048768 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 0
+INFO 2025-08-18 20:37:09,964 project_views 16311 6166048768 Created task: Complete online assessments in Grant Thornton x Assessments & Tests with order 0
+INFO 2025-08-18 20:37:09,965 project_views 16311 6166048768 Created task: Find out when applications open in BDO x Research and Networking with order 0
+INFO 2025-08-18 20:37:09,966 project_views 16311 6166048768 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:37:09,966 project_views_functions 16311 6166048768 User None created project from template: t - 18th August 2025: t - 18th August 2025
+INFO 2025-08-18 20:37:09,967 basehttp 16311 6166048768 "POST /templates/24/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:37:09,988 basehttp 16311 6166048768 "GET /grids/126/ HTTP/1.1" 200 17870
+INFO 2025-08-18 20:37:13,262 basehttp 16311 6166048768 "GET /grids/21/ HTTP/1.1" 200 17936
+INFO 2025-08-18 20:37:58,137 autoreload 16311 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:37:58,420 autoreload 16456 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:38:08,713 autoreload 16456 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:38:08,999 autoreload 16465 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:38:44,539 basehttp 16465 6160035840 "GET /grids/ HTTP/1.1" 200 4870
+INFO 2025-08-18 20:38:46,010 basehttp 16465 6160035840 "GET /templates/24/delete/ HTTP/1.1" 200 1090
+INFO 2025-08-18 20:38:46,801 project_views_functions 16465 6160035840 User None deleted template: t - 18th August 2025: N/A
+INFO 2025-08-18 20:38:46,804 basehttp 16465 6160035840 "POST /templates/24/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:38:46,819 basehttp 16465 6160035840 "GET /grids/ HTTP/1.1" 200 4331
+INFO 2025-08-18 20:38:47,829 basehttp 16465 6160035840 "GET /grids/126/delete/ HTTP/1.1" 200 3427
+INFO 2025-08-18 20:38:48,605 basehttp 16465 6160035840 "POST /grids/126/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:38:48,619 basehttp 16465 6160035840 "GET /grids/ HTTP/1.1" 200 4282
+INFO 2025-08-18 20:38:49,725 basehttp 16465 6160035840 "GET /grids/123/delete/ HTTP/1.1" 200 3440
+INFO 2025-08-18 20:38:50,466 basehttp 16465 6160035840 "POST /grids/123/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:38:50,478 basehttp 16465 6160035840 "GET /grids/ HTTP/1.1" 200 4205
+INFO 2025-08-18 20:38:51,595 basehttp 16465 6160035840 "GET /grids/15/ HTTP/1.1" 200 15444
+INFO 2025-08-18 20:38:58,913 project_views 16465 6160035840 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 20:38:58,917 project_views 16465 6160035840 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 0
+INFO 2025-08-18 20:38:58,919 project_views 16465 6160035840 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:38:58,921 project_views 16465 6160035840 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 2
+INFO 2025-08-18 20:38:58,923 project_views 16465 6160035840 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 3
+INFO 2025-08-18 20:38:58,924 project_views 16465 6160035840 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 4
+INFO 2025-08-18 20:38:58,926 project_views 16465 6160035840 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 5
+INFO 2025-08-18 20:38:58,927 project_views 16465 6160035840 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:38:58,928 project_views 16465 6160035840 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:38:58,930 project_views 16465 6160035840 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 8
+INFO 2025-08-18 20:38:58,931 project_views 16465 6160035840 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 9
+INFO 2025-08-18 20:38:58,933 project_views 16465 6160035840 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:38:58,934 project_views 16465 6160035840 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 11
+INFO 2025-08-18 20:38:58,935 project_views 16465 6160035840 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 12
+INFO 2025-08-18 20:38:58,936 project_views 16465 6160035840 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 20:38:58,936 project_views_functions 16465 6160035840 User None saved project as template: Test Student Planner - 18th August 2025: Student Planner
+INFO 2025-08-18 20:38:58,937 basehttp 16465 6160035840 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:38:58,945 basehttp 16465 6160035840 "GET /grids/ HTTP/1.1" 200 4708
+INFO 2025-08-18 20:39:00,617 project_views 16465 6160035840 Creating project from template with 13 template tasks
+INFO 2025-08-18 20:39:00,618 project_views 16465 6160035840 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 0
+INFO 2025-08-18 20:39:00,619 project_views 16465 6160035840 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:39:00,620 project_views 16465 6160035840 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 2
+INFO 2025-08-18 20:39:00,620 project_views 16465 6160035840 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 3
+INFO 2025-08-18 20:39:00,621 project_views 16465 6160035840 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 4
+INFO 2025-08-18 20:39:00,621 project_views 16465 6160035840 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 5
+INFO 2025-08-18 20:39:00,622 project_views 16465 6160035840 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:39:00,623 project_views 16465 6160035840 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:39:00,623 project_views 16465 6160035840 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 8
+INFO 2025-08-18 20:39:00,624 project_views 16465 6160035840 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 9
+INFO 2025-08-18 20:39:00,624 project_views 16465 6160035840 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:39:00,625 project_views 16465 6160035840 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 11
+INFO 2025-08-18 20:39:00,626 project_views 16465 6160035840 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 12
+INFO 2025-08-18 20:39:00,626 project_views 16465 6160035840 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 20:39:00,626 project_views_functions 16465 6160035840 User None created project from template: Test Student Planner - 18th August 2025: Test Student Planner - 18th August 2025
+INFO 2025-08-18 20:39:00,627 basehttp 16465 6160035840 "POST /templates/25/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:39:00,643 basehttp 16465 6160035840 "GET /grids/127/ HTTP/1.1" 200 15536
+INFO 2025-08-18 20:39:57,135 autoreload 16465 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:39:57,426 autoreload 16533 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:40:14,873 autoreload 16533 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:40:15,113 autoreload 16546 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:40:26,407 autoreload 16546 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:40:26,680 autoreload 16591 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:42:08,750 basehttp 16591 6200602624 "GET /grids/127/delete/ HTTP/1.1" 200 1094
+INFO 2025-08-18 20:42:09,636 basehttp 16591 6200602624 "POST /grids/127/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:42:09,657 basehttp 16591 6200602624 "GET /grids/ HTTP/1.1" 200 4801
+INFO 2025-08-18 20:42:09,671 basehttp 16591 6217428992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:42:09,672 basehttp 16591 6200602624 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 20:42:11,513 basehttp 16591 6200602624 "GET /templates/25/delete/ HTTP/1.1" 200 1129
+INFO 2025-08-18 20:42:12,235 project_views_functions 16591 6200602624 User None deleted template: Test Student Planner - 18th August 2025: N/A
+INFO 2025-08-18 20:42:12,238 basehttp 16591 6200602624 "POST /templates/25/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:42:12,252 basehttp 16591 6200602624 "GET /grids/ HTTP/1.1" 200 4247
+INFO 2025-08-18 20:42:13,131 basehttp 16591 6200602624 "GET /grids/15/ HTTP/1.1" 200 15498
+INFO 2025-08-18 20:42:13,146 basehttp 16591 6200602624 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:42:22,301 project_views 16591 6200602624 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 20:42:22,305 project_views 16591 6200602624 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 0
+INFO 2025-08-18 20:42:22,307 project_views 16591 6200602624 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:42:22,309 project_views 16591 6200602624 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 2
+INFO 2025-08-18 20:42:22,310 project_views 16591 6200602624 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 3
+INFO 2025-08-18 20:42:22,312 project_views 16591 6200602624 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 4
+INFO 2025-08-18 20:42:22,313 project_views 16591 6200602624 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 5
+INFO 2025-08-18 20:42:22,315 project_views 16591 6200602624 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:42:22,316 project_views 16591 6200602624 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:42:22,318 project_views 16591 6200602624 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 8
+INFO 2025-08-18 20:42:22,319 project_views 16591 6200602624 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 9
+INFO 2025-08-18 20:42:22,320 project_views 16591 6200602624 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:42:22,321 project_views 16591 6200602624 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 11
+INFO 2025-08-18 20:42:22,322 project_views 16591 6200602624 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 12
+INFO 2025-08-18 20:42:22,323 project_views 16591 6200602624 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 20:42:22,323 project_views_functions 16591 6200602624 User None saved project as template: Test Student - 18th August 2025: Student Planner
+INFO 2025-08-18 20:42:22,324 basehttp 16591 6200602624 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:42:22,332 basehttp 16591 6200602624 "GET /grids/ HTTP/1.1" 200 4790
+INFO 2025-08-18 20:42:24,447 project_views 16591 6200602624 Creating project from template with 13 template tasks
+INFO 2025-08-18 20:42:24,450 project_views 16591 6200602624 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 0
+INFO 2025-08-18 20:42:24,451 project_views 16591 6200602624 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:42:24,452 project_views 16591 6200602624 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 2
+INFO 2025-08-18 20:42:24,453 project_views 16591 6200602624 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 3
+INFO 2025-08-18 20:42:24,454 project_views 16591 6200602624 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 4
+INFO 2025-08-18 20:42:24,455 project_views 16591 6200602624 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 5
+INFO 2025-08-18 20:42:24,456 project_views 16591 6200602624 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:42:24,457 project_views 16591 6200602624 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:42:24,458 project_views 16591 6200602624 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 8
+INFO 2025-08-18 20:42:24,459 project_views 16591 6200602624 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 9
+INFO 2025-08-18 20:42:24,460 project_views 16591 6200602624 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:42:24,461 project_views 16591 6200602624 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 11
+INFO 2025-08-18 20:42:24,461 project_views 16591 6200602624 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 12
+INFO 2025-08-18 20:42:24,462 project_views 16591 6200602624 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 20:42:24,462 project_views_functions 16591 6200602624 User None created project from template: Test Student - 18th August 2025: Test Student - 18th August 2025
+INFO 2025-08-18 20:42:24,463 basehttp 16591 6200602624 "POST /templates/26/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:42:24,484 basehttp 16591 6200602624 "GET /grids/128/ HTTP/1.1" 200 15502
+INFO 2025-08-18 20:42:46,496 autoreload 16591 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:42:46,787 autoreload 16754 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:42:55,090 autoreload 16754 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:42:55,361 autoreload 16765 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:43:00,296 basehttp 16765 6156185600 "GET /grids/128/delete/ HTTP/1.1" 200 1129
+INFO 2025-08-18 20:43:01,314 basehttp 16765 6156185600 "POST /grids/128/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:01,337 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4768
+INFO 2025-08-18 20:43:02,278 basehttp 16765 6156185600 "GET /templates/26/delete/ HTTP/1.1" 200 1164
+INFO 2025-08-18 20:43:03,016 project_views_functions 16765 6156185600 User None deleted template: Test Student - 18th August 2025: N/A
+INFO 2025-08-18 20:43:03,019 basehttp 16765 6156185600 "POST /templates/26/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:03,031 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4237
+INFO 2025-08-18 20:43:04,415 basehttp 16765 6156185600 "GET /grids/15/ HTTP/1.1" 200 15516
+INFO 2025-08-18 20:43:08,790 project_views 16765 6156185600 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 20:43:08,793 project_views 16765 6156185600 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:43:08,795 project_views 16765 6156185600 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:43:08,797 project_views 16765 6156185600 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:43:08,799 project_views 16765 6156185600 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:43:08,800 project_views 16765 6156185600 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:43:08,802 project_views 16765 6156185600 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:43:08,803 project_views 16765 6156185600 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:43:08,805 project_views 16765 6156185600 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:43:08,806 project_views 16765 6156185600 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:43:08,807 project_views 16765 6156185600 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:43:08,808 project_views 16765 6156185600 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:43:08,809 project_views 16765 6156185600 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:43:08,811 project_views 16765 6156185600 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:43:08,811 project_views 16765 6156185600 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 20:43:08,811 project_views_functions 16765 6156185600 User None saved project as template: Test - 18th August 2025: Student Planner
+INFO 2025-08-18 20:43:08,812 basehttp 16765 6156185600 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:08,820 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4738
+INFO 2025-08-18 20:43:10,063 project_views 16765 6156185600 Creating project from template with 13 template tasks
+INFO 2025-08-18 20:43:10,067 project_views 16765 6156185600 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:43:10,068 project_views 16765 6156185600 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:43:10,069 project_views 16765 6156185600 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:43:10,070 project_views 16765 6156185600 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:43:10,071 project_views 16765 6156185600 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:43:10,073 project_views 16765 6156185600 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:43:10,073 project_views 16765 6156185600 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:43:10,074 project_views 16765 6156185600 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:43:10,075 project_views 16765 6156185600 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:43:10,076 project_views 16765 6156185600 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:43:10,077 project_views 16765 6156185600 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:43:10,078 project_views 16765 6156185600 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:43:10,079 project_views 16765 6156185600 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:43:10,079 project_views 16765 6156185600 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 20:43:10,079 project_views_functions 16765 6156185600 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 20:43:10,080 basehttp 16765 6156185600 "POST /templates/27/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:10,101 basehttp 16765 6156185600 "GET /grids/129/ HTTP/1.1" 200 15434
+INFO 2025-08-18 20:43:14,727 basehttp 16765 6156185600 "GET /grids/129/delete/ HTTP/1.1" 200 1092
+INFO 2025-08-18 20:43:15,673 basehttp 16765 6156185600 "POST /grids/129/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:15,686 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4757
+INFO 2025-08-18 20:43:17,365 basehttp 16765 6156185600 "GET /grids/21/ HTTP/1.1" 200 17790
+INFO 2025-08-18 20:43:23,013 project_views 16765 6156185600 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 20:43:23,017 project_views 16765 6156185600 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:43:23,019 project_views 16765 6156185600 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:43:23,021 project_views 16765 6156185600 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:43:23,023 project_views 16765 6156185600 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:43:23,024 project_views 16765 6156185600 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:43:23,026 project_views 16765 6156185600 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:43:23,028 project_views 16765 6156185600 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:43:23,029 project_views 16765 6156185600 Created template task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:43:23,030 project_views 16765 6156185600 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:43:23,032 project_views 16765 6156185600 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:43:23,034 project_views 16765 6156185600 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:43:23,035 project_views 16765 6156185600 Created template task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:43:23,036 project_views 16765 6156185600 Created template task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:43:23,037 project_views 16765 6156185600 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:43:23,038 project_views 16765 6156185600 Created template task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:43:23,040 project_views 16765 6156185600 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:43:23,041 project_views 16765 6156185600 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:43:23,042 project_views 16765 6156185600 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:43:23,043 project_views 16765 6156185600 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:43:23,044 project_views 16765 6156185600 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:43:23,045 project_views 16765 6156185600 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:43:23,046 project_views 16765 6156185600 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:43:23,047 project_views 16765 6156185600 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:43:23,048 project_views 16765 6156185600 Created template task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:43:23,048 project_views 16765 6156185600 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:43:23,048 project_views_functions 16765 6156185600 User None saved project as template: Test - 18th August 2025: Accounting
+INFO 2025-08-18 20:43:23,049 basehttp 16765 6156185600 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:23,056 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4800
+INFO 2025-08-18 20:43:24,766 project_views 16765 6156185600 Creating project from template with 13 template tasks
+INFO 2025-08-18 20:43:24,770 project_views 16765 6156185600 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:43:24,772 project_views 16765 6156185600 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:43:24,773 project_views 16765 6156185600 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:43:24,774 project_views 16765 6156185600 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:43:24,775 project_views 16765 6156185600 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:43:24,775 project_views 16765 6156185600 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:43:24,776 project_views 16765 6156185600 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:43:24,777 project_views 16765 6156185600 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:43:24,778 project_views 16765 6156185600 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:43:24,779 project_views 16765 6156185600 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:43:24,780 project_views 16765 6156185600 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:43:24,780 project_views 16765 6156185600 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:43:24,781 project_views 16765 6156185600 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:43:24,782 project_views 16765 6156185600 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 20:43:24,782 project_views_functions 16765 6156185600 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 20:43:24,783 basehttp 16765 6156185600 "POST /templates/27/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:24,803 basehttp 16765 6156185600 "GET /grids/130/ HTTP/1.1" 200 15540
+INFO 2025-08-18 20:43:28,599 project_views 16765 6156185600 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:43:28,602 project_views 16765 6156185600 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:43:28,603 project_views 16765 6156185600 Created task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:43:28,604 project_views 16765 6156185600 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:43:28,605 project_views 16765 6156185600 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:43:28,606 project_views 16765 6156185600 Created task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:43:28,607 project_views 16765 6156185600 Created task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:43:28,608 project_views 16765 6156185600 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:43:28,609 project_views 16765 6156185600 Created task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:43:28,610 project_views 16765 6156185600 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:43:28,611 project_views 16765 6156185600 Created task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:43:28,612 project_views 16765 6156185600 Created task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:43:28,612 project_views 16765 6156185600 Created task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:43:28,613 project_views 16765 6156185600 Created task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:43:28,614 project_views 16765 6156185600 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:43:28,615 project_views 16765 6156185600 Created task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:43:28,616 project_views 16765 6156185600 Created task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:43:28,617 project_views 16765 6156185600 Created task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:43:28,617 project_views 16765 6156185600 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:43:28,618 project_views 16765 6156185600 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:43:28,619 project_views 16765 6156185600 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:43:28,619 project_views 16765 6156185600 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:43:28,620 project_views 16765 6156185600 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:43:28,621 project_views 16765 6156185600 Created task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:43:28,622 project_views 16765 6156185600 Created task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:43:28,622 project_views 16765 6156185600 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:43:28,622 project_views_functions 16765 6156185600 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 20:43:28,623 basehttp 16765 6156185600 "POST /templates/28/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:28,647 basehttp 16765 6156185600 "GET /grids/131/ HTTP/1.1" 200 17996
+INFO 2025-08-18 20:43:35,387 basehttp 16765 6156185600 "GET /grids/21/ HTTP/1.1" 200 17876
+INFO 2025-08-18 20:43:44,393 basehttp 16765 6156185600 "GET /grids/15/ HTTP/1.1" 200 15511
+INFO 2025-08-18 20:43:46,770 basehttp 16765 6156185600 "GET /grids/131/ HTTP/1.1" 200 17971
+INFO 2025-08-18 20:43:49,493 basehttp 16765 6156185600 "GET /grids/130/ HTTP/1.1" 200 15465
+INFO 2025-08-18 20:43:53,132 basehttp 16765 6156185600 "GET /grids/21/ HTTP/1.1" 200 17848
+INFO 2025-08-18 20:43:56,110 basehttp 16765 6156185600 "GET /grids/130/ HTTP/1.1" 200 15477
+INFO 2025-08-18 20:43:57,642 basehttp 16765 6156185600 "GET /grids/130/delete/ HTTP/1.1" 200 1180
+INFO 2025-08-18 20:43:58,653 basehttp 16765 6156185600 "POST /grids/130/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:43:58,670 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4866
+INFO 2025-08-18 20:44:00,471 basehttp 16765 6156185600 "GET /templates/27/delete/ HTTP/1.1" 200 1178
+INFO 2025-08-18 20:44:01,119 project_views_functions 16765 6156185600 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 20:44:01,121 basehttp 16765 6156185600 "POST /templates/27/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:01,133 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4854
+INFO 2025-08-18 20:44:01,811 basehttp 16765 6156185600 "GET /templates/28/delete/ HTTP/1.1" 200 1105
+INFO 2025-08-18 20:44:02,933 project_views_functions 16765 6156185600 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 20:44:02,935 basehttp 16765 6156185600 "POST /templates/28/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:02,948 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4269
+INFO 2025-08-18 20:44:04,182 basehttp 16765 6156185600 "GET /grids/131/delete/ HTTP/1.1" 200 3386
+INFO 2025-08-18 20:44:05,024 basehttp 16765 6156185600 "POST /grids/131/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:05,037 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4205
+INFO 2025-08-18 20:44:07,525 basehttp 16765 6156185600 "GET /grids/15/ HTTP/1.1" 200 15465
+INFO 2025-08-18 20:44:13,696 project_views 16765 6156185600 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 20:44:13,699 project_views 16765 6156185600 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:44:13,702 project_views 16765 6156185600 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:44:13,703 project_views 16765 6156185600 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:44:13,705 project_views 16765 6156185600 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:44:13,707 project_views 16765 6156185600 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:44:13,708 project_views 16765 6156185600 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:44:13,709 project_views 16765 6156185600 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:44:13,711 project_views 16765 6156185600 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:44:13,712 project_views 16765 6156185600 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:44:13,715 project_views 16765 6156185600 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:44:13,716 project_views 16765 6156185600 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:44:13,717 project_views 16765 6156185600 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:44:13,718 project_views 16765 6156185600 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:44:13,719 project_views 16765 6156185600 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 20:44:13,719 project_views_functions 16765 6156185600 User None saved project as template: Test - Student - 18th August 2025: Student Planner
+INFO 2025-08-18 20:44:13,720 basehttp 16765 6156185600 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:13,728 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4778
+INFO 2025-08-18 20:44:16,100 project_views 16765 6156185600 Creating project from template with 13 template tasks
+INFO 2025-08-18 20:44:16,104 project_views 16765 6156185600 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:44:16,105 project_views 16765 6156185600 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:44:16,106 project_views 16765 6156185600 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:44:16,107 project_views 16765 6156185600 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:44:16,108 project_views 16765 6156185600 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:44:16,109 project_views 16765 6156185600 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:44:16,110 project_views 16765 6156185600 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:44:16,111 project_views 16765 6156185600 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:44:16,111 project_views 16765 6156185600 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:44:16,112 project_views 16765 6156185600 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:44:16,113 project_views 16765 6156185600 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:44:16,114 project_views 16765 6156185600 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:44:16,115 project_views 16765 6156185600 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:44:16,115 project_views 16765 6156185600 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 20:44:16,115 project_views_functions 16765 6156185600 User None created project from template: Test - Student - 18th August 2025: Test - Student - 18th August 2025
+INFO 2025-08-18 20:44:16,117 basehttp 16765 6156185600 "POST /templates/29/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:16,137 basehttp 16765 6156185600 "GET /grids/132/ HTTP/1.1" 200 15492
+INFO 2025-08-18 20:44:21,243 basehttp 16765 6156185600 "GET /grids/15/ HTTP/1.1" 200 15536
+INFO 2025-08-18 20:44:24,141 basehttp 16765 6156185600 "GET /grids/132/ HTTP/1.1" 200 15500
+INFO 2025-08-18 20:44:26,660 basehttp 16765 6156185600 "GET /grids/15/ HTTP/1.1" 200 15547
+INFO 2025-08-18 20:44:28,276 basehttp 16765 6156185600 "GET /grids/132/ HTTP/1.1" 200 15481
+INFO 2025-08-18 20:44:30,518 basehttp 16765 6156185600 "GET /grids/132/delete/ HTTP/1.1" 200 1166
+INFO 2025-08-18 20:44:31,537 basehttp 16765 6156185600 "POST /grids/132/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:31,552 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4765
+INFO 2025-08-18 20:44:33,495 basehttp 16765 6156185600 "GET /templates/29/delete/ HTTP/1.1" 200 1145
+INFO 2025-08-18 20:44:34,204 project_views_functions 16765 6156185600 User None deleted template: Test - Student - 18th August 2025: N/A
+INFO 2025-08-18 20:44:34,206 basehttp 16765 6156185600 "POST /templates/29/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:34,217 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4205
+INFO 2025-08-18 20:44:35,064 basehttp 16765 6156185600 "GET /grids/21/ HTTP/1.1" 200 17843
+INFO 2025-08-18 20:44:40,981 project_views 16765 6156185600 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 20:44:40,986 project_views 16765 6156185600 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:44:40,987 project_views 16765 6156185600 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:44:40,990 project_views 16765 6156185600 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:44:40,991 project_views 16765 6156185600 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:44:40,993 project_views 16765 6156185600 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:44:40,994 project_views 16765 6156185600 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:44:40,996 project_views 16765 6156185600 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:44:40,997 project_views 16765 6156185600 Created template task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:44:40,998 project_views 16765 6156185600 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:44:40,999 project_views 16765 6156185600 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:44:41,001 project_views 16765 6156185600 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:44:41,002 project_views 16765 6156185600 Created template task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:44:41,004 project_views 16765 6156185600 Created template task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:44:41,005 project_views 16765 6156185600 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:44:41,006 project_views 16765 6156185600 Created template task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:44:41,007 project_views 16765 6156185600 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:44:41,008 project_views 16765 6156185600 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:44:41,009 project_views 16765 6156185600 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:44:41,010 project_views 16765 6156185600 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:44:41,011 project_views 16765 6156185600 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:44:41,012 project_views 16765 6156185600 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:44:41,013 project_views 16765 6156185600 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:44:41,014 project_views 16765 6156185600 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:44:41,015 project_views 16765 6156185600 Created template task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:44:41,015 project_views 16765 6156185600 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:44:41,016 project_views_functions 16765 6156185600 User None saved project as template: Test Accountant - 18th August 2025: Accounting
+INFO 2025-08-18 20:44:41,017 basehttp 16765 6156185600 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:41,024 basehttp 16765 6156185600 "GET /grids/ HTTP/1.1" 200 4709
+INFO 2025-08-18 20:44:42,883 project_views 16765 6156185600 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:44:42,886 project_views 16765 6156185600 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:44:42,887 project_views 16765 6156185600 Created task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:44:42,888 project_views 16765 6156185600 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:44:42,890 project_views 16765 6156185600 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:44:42,891 project_views 16765 6156185600 Created task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:44:42,892 project_views 16765 6156185600 Created task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:44:42,893 project_views 16765 6156185600 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:44:42,894 project_views 16765 6156185600 Created task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:44:42,895 project_views 16765 6156185600 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:44:42,896 project_views 16765 6156185600 Created task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:44:42,897 project_views 16765 6156185600 Created task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:44:42,898 project_views 16765 6156185600 Created task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:44:42,899 project_views 16765 6156185600 Created task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:44:42,900 project_views 16765 6156185600 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:44:42,901 project_views 16765 6156185600 Created task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:44:42,901 project_views 16765 6156185600 Created task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:44:42,902 project_views 16765 6156185600 Created task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:44:42,903 project_views 16765 6156185600 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:44:42,904 project_views 16765 6156185600 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:44:42,904 project_views 16765 6156185600 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:44:42,905 project_views 16765 6156185600 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:44:42,906 project_views 16765 6156185600 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:44:42,907 project_views 16765 6156185600 Created task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:44:42,908 project_views 16765 6156185600 Created task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:44:42,908 project_views 16765 6156185600 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:44:42,908 project_views_functions 16765 6156185600 User None created project from template: Test Accountant - 18th August 2025: Test Accountant - 18th August 2025
+INFO 2025-08-18 20:44:42,909 basehttp 16765 6156185600 "POST /templates/30/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:44:42,934 basehttp 16765 6156185600 "GET /grids/133/ HTTP/1.1" 200 17962
+INFO 2025-08-18 20:44:47,147 basehttp 16765 6156185600 "GET /grids/21/ HTTP/1.1" 200 17851
+INFO 2025-08-18 20:44:50,901 basehttp 16765 6156185600 "GET /grids/133/ HTTP/1.1" 200 17946
+INFO 2025-08-18 20:45:21,462 autoreload 16765 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:45:21,752 autoreload 16986 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:45:33,032 autoreload 16986 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:45:33,455 autoreload 17002 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:45:41,674 autoreload 17002 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:45:41,938 autoreload 17012 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:47:00,940 basehttp 17012 6192279552 "GET /grids/133/delete/ HTTP/1.1" 200 1118
+INFO 2025-08-18 20:47:01,976 basehttp 17012 6192279552 "POST /grids/133/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:01,994 basehttp 17012 6192279552 "GET /grids/ HTTP/1.1" 200 4760
+INFO 2025-08-18 20:47:02,006 basehttp 17012 6192279552 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 20:47:02,006 basehttp 17012 6209105920 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:47:03,814 basehttp 17012 6209105920 "GET /templates/30/delete/ HTTP/1.1" 200 1140
+INFO 2025-08-18 20:47:04,503 project_views_functions 17012 6209105920 User None deleted template: Test Accountant - 18th August 2025: N/A
+INFO 2025-08-18 20:47:04,506 basehttp 17012 6209105920 "POST /templates/30/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:04,518 basehttp 17012 6209105920 "GET /grids/ HTTP/1.1" 200 4244
+INFO 2025-08-18 20:47:06,189 basehttp 17012 6209105920 "GET /grids/15/ HTTP/1.1" 200 15456
+INFO 2025-08-18 20:47:06,202 basehttp 17012 6209105920 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:47:11,460 project_views 17012 6209105920 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 20:47:11,460 project_views 17012 6209105920 === TASK ORDERING DEBUG ===
+INFO 2025-08-18 20:47:11,462 project_views 17012 6209105920 Task 0: 'Prepare week 3 seminar questio...' in Row 1 (Weekly Tasks & Readi2ng) x Col 2 (Microeconomic Policy) with order 0
+INFO 2025-08-18 20:47:11,463 project_views 17012 6209105920 Task 1: 'Download reading list for the ...' in Row 1 (Weekly Tasks & Readi2ng) x Col 2 (Microeconomic Policy) with order 1
+INFO 2025-08-18 20:47:11,464 project_views 17012 6209105920 Task 2: 'Test...' in Row 1 (Weekly Tasks & Readi2ng) x Col 2 (Microeconomic Policy) with order 2
+INFO 2025-08-18 20:47:11,465 project_views 17012 6209105920 Task 3: 'Prepare for office hours on We...' in Row 1 (Weekly Tasks & Readi2ng) x Col 3 (Economic History) with order 0
+INFO 2025-08-18 20:47:11,465 project_views 17012 6209105920 Task 4: 'Dog...' in Row 1 (Weekly Tasks & Readi2ng) x Col 3 (Economic History) with order 1
+INFO 2025-08-18 20:47:11,466 project_views 17012 6209105920 Task 5: 'Download and run through week ...' in Row 1 (Weekly Tasks & Readi2ng) x Col 4 (Statistical Methods for Economics) with order 0
+INFO 2025-08-18 20:47:11,466 project_views 17012 6209105920 Task 6: 'Pull together outline of draft...' in Row 2 (Assignments & Coursework) x Col 2 (Microeconomic Policy) with order 0
+INFO 2025-08-18 20:47:11,467 project_views 17012 6209105920 Task 7: 'Group coursework due by end of...' in Row 2 (Assignments & Coursework) x Col 3 (Economic History) with order 0
+INFO 2025-08-18 20:47:11,468 project_views 17012 6209105920 Task 8: 'Think of who best to work with...' in Row 2 (Assignments & Coursework) x Col 3 (Economic History) with order 1
+INFO 2025-08-18 20:47:11,469 project_views 17012 6209105920 Task 9: 'Go over flashcards for week 1...' in Row 3 (Exam Prep) x Col 2 (Microeconomic Policy) with order 0
+INFO 2025-08-18 20:47:11,470 project_views 17012 6209105920 Task 10: 'Create flashcards for week 2...' in Row 3 (Exam Prep) x Col 2 (Microeconomic Policy) with order 1
+INFO 2025-08-18 20:47:11,470 project_views 17012 6209105920 Task 11: 'Go over flashcards for week 2...' in Row 3 (Exam Prep) x Col 3 (Economic History) with order 0
+INFO 2025-08-18 20:47:11,471 project_views 17012 6209105920 Task 12: 'Create flashcards for week 2...' in Row 3 (Exam Prep) x Col 3 (Economic History) with order 1
+INFO 2025-08-18 20:47:11,471 project_views 17012 6209105920 === END DEBUG ===
+INFO 2025-08-18 20:47:11,473 project_views 17012 6209105920 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:47:11,473 project_views 17012 6209105920 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:47:11,474 project_views 17012 6209105920 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:47:11,475 project_views 17012 6209105920 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:47:11,476 project_views 17012 6209105920 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:47:11,477 project_views 17012 6209105920 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:47:11,478 project_views 17012 6209105920 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:47:11,479 project_views 17012 6209105920 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:47:11,479 project_views 17012 6209105920 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:47:11,480 project_views 17012 6209105920 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:47:11,481 project_views 17012 6209105920 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:47:11,482 project_views 17012 6209105920 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:47:11,482 project_views 17012 6209105920 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:47:11,483 project_views 17012 6209105920 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 20:47:11,483 project_views_functions 17012 6209105920 User None saved project as template: Test Student - 18th August 2025: Student Planner
+INFO 2025-08-18 20:47:11,484 basehttp 17012 6209105920 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:11,492 basehttp 17012 6209105920 "GET /grids/ HTTP/1.1" 200 4757
+INFO 2025-08-18 20:47:14,293 project_views 17012 6209105920 Creating project from template with 13 template tasks
+INFO 2025-08-18 20:47:14,293 project_views 17012 6209105920 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 0: 'Prepare week 3 seminar questio...' in Row 0 (Weekly Tasks & Readi2ng) x Col 1 (Microeconomic Policy) with order 0
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 1: 'Download reading list for the ...' in Row 0 (Weekly Tasks & Readi2ng) x Col 1 (Microeconomic Policy) with order 1
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 2: 'Test...' in Row 0 (Weekly Tasks & Readi2ng) x Col 1 (Microeconomic Policy) with order 2
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 3: 'Prepare for office hours on We...' in Row 0 (Weekly Tasks & Readi2ng) x Col 2 (Economic History) with order 3
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 4: 'Dog...' in Row 0 (Weekly Tasks & Readi2ng) x Col 2 (Economic History) with order 4
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 5: 'Download and run through week ...' in Row 0 (Weekly Tasks & Readi2ng) x Col 3 (Statistical Methods for Economics) with order 5
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 6: 'Pull together outline of draft...' in Row 1 (Assignments & Coursework) x Col 1 (Microeconomic Policy) with order 6
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 7: 'Group coursework due by end of...' in Row 1 (Assignments & Coursework) x Col 2 (Economic History) with order 7
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 8: 'Think of who best to work with...' in Row 1 (Assignments & Coursework) x Col 2 (Economic History) with order 8
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 9: 'Go over flashcards for week 1...' in Row 2 (Exam Prep) x Col 1 (Microeconomic Policy) with order 9
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 10: 'Create flashcards for week 2...' in Row 2 (Exam Prep) x Col 1 (Microeconomic Policy) with order 10
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 11: 'Go over flashcards for week 2...' in Row 2 (Exam Prep) x Col 2 (Economic History) with order 11
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 Template Task 12: 'Create flashcards for week 2...' in Row 2 (Exam Prep) x Col 2 (Economic History) with order 12
+INFO 2025-08-18 20:47:14,294 project_views 17012 6209105920 === END DEBUG ===
+INFO 2025-08-18 20:47:14,295 project_views 17012 6209105920 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 20:47:14,295 project_views 17012 6209105920 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 20:47:14,296 project_views 17012 6209105920 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 20:47:14,296 project_views 17012 6209105920 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-18 20:47:14,297 project_views 17012 6209105920 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-18 20:47:14,298 project_views 17012 6209105920 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 5
+INFO 2025-08-18 20:47:14,299 project_views 17012 6209105920 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-18 20:47:14,299 project_views 17012 6209105920 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-18 20:47:14,300 project_views 17012 6209105920 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-18 20:47:14,301 project_views 17012 6209105920 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-18 20:47:14,301 project_views 17012 6209105920 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-18 20:47:14,302 project_views 17012 6209105920 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-18 20:47:14,302 project_views 17012 6209105920 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-18 20:47:14,303 project_views 17012 6209105920 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 20:47:14,303 project_views_functions 17012 6209105920 User None created project from template: Test Student - 18th August 2025: Test Student - 18th August 2025
+INFO 2025-08-18 20:47:14,303 basehttp 17012 6209105920 "POST /templates/31/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:14,319 basehttp 17012 6209105920 "GET /grids/134/ HTTP/1.1" 200 15457
+INFO 2025-08-18 20:47:18,262 basehttp 17012 6209105920 "GET /grids/15/ HTTP/1.1" 200 15493
+INFO 2025-08-18 20:47:21,891 basehttp 17012 6209105920 "GET /grids/134/ HTTP/1.1" 200 15531
+INFO 2025-08-18 20:47:44,500 basehttp 17012 6209105920 "GET /grids/134/delete/ HTTP/1.1" 200 1101
+INFO 2025-08-18 20:47:45,494 basehttp 17012 6209105920 "POST /grids/134/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:45,510 basehttp 17012 6209105920 "GET /grids/ HTTP/1.1" 200 4712
+INFO 2025-08-18 20:47:46,880 basehttp 17012 6209105920 "GET /templates/31/delete/ HTTP/1.1" 200 1156
+INFO 2025-08-18 20:47:47,705 project_views_functions 17012 6209105920 User None deleted template: Test Student - 18th August 2025: N/A
+INFO 2025-08-18 20:47:47,708 basehttp 17012 6209105920 "POST /templates/31/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:47,721 basehttp 17012 6209105920 "GET /grids/ HTTP/1.1" 200 4250
+INFO 2025-08-18 20:47:48,834 basehttp 17012 6209105920 "GET /grids/21/ HTTP/1.1" 200 17854
+INFO 2025-08-18 20:47:54,335 project_views 17012 6209105920 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 20:47:54,337 project_views 17012 6209105920 === TASK ORDERING DEBUG ===
+INFO 2025-08-18 20:47:54,339 project_views 17012 6209105920 Task 0: 'Research the difference betwee...' in Row 0 (Deloitte) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,343 project_views 17012 6209105920 Task 1: 'Find a campus networking event...' in Row 0 (Deloitte) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,343 project_views 17012 6209105920 Task 2: 'Tailor your CV to highlight an...' in Row 0 (Deloitte) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:47:54,346 project_views 17012 6209105920 Task 3: 'Check online for hints about o...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:47:54,349 project_views 17012 6209105920 Task 4: 'Complete online assessment...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:47:54,350 project_views 17012 6209105920 Task 5: 'Research a recent deal PwC adv...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,351 project_views 17012 6209105920 Task 6: 'Reach out to a Deal Advisory g...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,352 project_views 17012 6209105920 Task 7: 'Find out application deadline...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:47:54,353 project_views 17012 6209105920 Task 8: 'Update CV to emphasise interes...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:47:54,353 project_views 17012 6209105920 Task 9: 'Practise numerical tests onlin...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:47:54,354 project_views 17012 6209105920 Task 10: 'Practise situational judgement...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:47:54,354 project_views 17012 6209105920 Task 11: 'Prepare "Why PwC?"...' in Row 1 (PwC) x Col 4 (Interview) with order 0
+INFO 2025-08-18 20:47:54,355 project_views 17012 6209105920 Task 12: 'Prepare "Why Deals?"...' in Row 1 (PwC) x Col 4 (Interview) with order 0
+INFO 2025-08-18 20:47:54,356 project_views 17012 6209105920 Task 13: 'Understand the CIMA vs. ACA qu...' in Row 2 (EY) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,357 project_views 17012 6209105920 Task 14: 'Research their values...' in Row 2 (EY) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,358 project_views 17012 6209105920 Task 15: 'Draft responses for the online...' in Row 2 (EY) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:47:54,358 project_views 17012 6209105920 Task 16: 'Find a virtual event to attend...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,359 project_views 17012 6209105920 Task 17: 'Decide which scheme (e.g., For...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,359 project_views 17012 6209105920 Task 18: 'Tailor CV and cover letter for...' in Row 3 (KPMG) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:47:54,360 project_views 17012 6209105920 Task 19: 'Prepare for the Launchpad asse...' in Row 3 (KPMG) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:47:54,361 project_views 17012 6209105920 Task 20: 'Research their focus on mid-ma...' in Row 4 (Grant Thornton) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,361 project_views 17012 6209105920 Task 21: 'Write a cover letter that refl...' in Row 4 (Grant Thornton) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:47:54,362 project_views 17012 6209105920 Task 22: 'Complete online assessments...' in Row 4 (Grant Thornton) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:47:54,362 project_views 17012 6209105920 Task 23: 'Find out when applications ope...' in Row 5 (BDO) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:54,362 project_views 17012 6209105920 === END DEBUG ===
+INFO 2025-08-18 20:47:54,364 project_views 17012 6209105920 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:47:54,364 project_views 17012 6209105920 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:47:54,365 project_views 17012 6209105920 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:47:54,366 project_views 17012 6209105920 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:47:54,367 project_views 17012 6209105920 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:47:54,368 project_views 17012 6209105920 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:47:54,369 project_views 17012 6209105920 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:47:54,370 project_views 17012 6209105920 Created template task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:47:54,370 project_views 17012 6209105920 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:47:54,371 project_views 17012 6209105920 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:47:54,372 project_views 17012 6209105920 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:47:54,373 project_views 17012 6209105920 Created template task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:47:54,374 project_views 17012 6209105920 Created template task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:47:54,374 project_views 17012 6209105920 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:47:54,375 project_views 17012 6209105920 Created template task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:47:54,376 project_views 17012 6209105920 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:47:54,376 project_views 17012 6209105920 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:47:54,377 project_views 17012 6209105920 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:47:54,378 project_views 17012 6209105920 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:47:54,378 project_views 17012 6209105920 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:47:54,379 project_views 17012 6209105920 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:47:54,380 project_views 17012 6209105920 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:47:54,380 project_views 17012 6209105920 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:47:54,381 project_views 17012 6209105920 Created template task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:47:54,381 project_views 17012 6209105920 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:47:54,381 project_views_functions 17012 6209105920 User None saved project as template: Test Accounting - 18th August 2025: Accounting
+INFO 2025-08-18 20:47:54,382 basehttp 17012 6209105920 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:54,390 basehttp 17012 6209105920 "GET /grids/ HTTP/1.1" 200 4736
+INFO 2025-08-18 20:47:56,795 project_views 17012 6209105920 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:47:56,795 project_views 17012 6209105920 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 0: 'Research the difference betwee...' in Row 0 (Deloitte) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 1: 'Find a campus networking event...' in Row 0 (Deloitte) x Col 1 (Research and Networking) with order 1
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 2: 'Tailor your CV to highlight an...' in Row 0 (Deloitte) x Col 2 (Application Preparation) with order 2
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 3: 'Check online for hints about o...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 3
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 4: 'Complete online assessment...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 4
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 5: 'Research a recent deal PwC adv...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 5
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 6: 'Reach out to a Deal Advisory g...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 6
+INFO 2025-08-18 20:47:56,797 project_views 17012 6209105920 Template Task 7: 'Find out application deadline...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 7
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 8: 'Update CV to emphasise interes...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 8
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 9: 'Practise numerical tests onlin...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 9
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 10: 'Practise situational judgement...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 10
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 11: 'Prepare "Why PwC?"...' in Row 1 (PwC) x Col 4 (Interview) with order 11
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 12: 'Prepare "Why Deals?"...' in Row 1 (PwC) x Col 4 (Interview) with order 12
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 13: 'Understand the CIMA vs. ACA qu...' in Row 2 (EY) x Col 1 (Research and Networking) with order 13
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 14: 'Research their values...' in Row 2 (EY) x Col 1 (Research and Networking) with order 14
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 15: 'Draft responses for the online...' in Row 2 (EY) x Col 2 (Application Preparation) with order 15
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 16: 'Find a virtual event to attend...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 16
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 17: 'Decide which scheme (e.g., For...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 17
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 18: 'Tailor CV and cover letter for...' in Row 3 (KPMG) x Col 2 (Application Preparation) with order 18
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 19: 'Prepare for the Launchpad asse...' in Row 3 (KPMG) x Col 3 (Assessments & Tests) with order 19
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 20: 'Research their focus on mid-ma...' in Row 4 (Grant Thornton) x Col 1 (Research and Networking) with order 20
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 21: 'Write a cover letter that refl...' in Row 4 (Grant Thornton) x Col 2 (Application Preparation) with order 21
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 22: 'Complete online assessments...' in Row 4 (Grant Thornton) x Col 3 (Assessments & Tests) with order 22
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 Template Task 23: 'Find out when applications ope...' in Row 5 (BDO) x Col 1 (Research and Networking) with order 23
+INFO 2025-08-18 20:47:56,798 project_views 17012 6209105920 === END DEBUG ===
+INFO 2025-08-18 20:47:56,800 project_views 17012 6209105920 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:47:56,801 project_views 17012 6209105920 Created task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 20:47:56,803 project_views 17012 6209105920 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:47:56,804 project_views 17012 6209105920 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:47:56,806 project_views 17012 6209105920 Created task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:47:56,807 project_views 17012 6209105920 Created task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:47:56,808 project_views 17012 6209105920 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:47:56,809 project_views 17012 6209105920 Created task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:47:56,810 project_views 17012 6209105920 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:47:56,811 project_views 17012 6209105920 Created task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:47:56,812 project_views 17012 6209105920 Created task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:47:56,813 project_views 17012 6209105920 Created task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:47:56,813 project_views 17012 6209105920 Created task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:47:56,814 project_views 17012 6209105920 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:47:56,815 project_views 17012 6209105920 Created task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:47:56,816 project_views 17012 6209105920 Created task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:47:56,817 project_views 17012 6209105920 Created task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:47:56,818 project_views 17012 6209105920 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:47:56,819 project_views 17012 6209105920 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:47:56,820 project_views 17012 6209105920 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:47:56,821 project_views 17012 6209105920 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:47:56,822 project_views 17012 6209105920 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:47:56,823 project_views 17012 6209105920 Created task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:47:56,824 project_views 17012 6209105920 Created task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:47:56,824 project_views 17012 6209105920 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:47:56,824 project_views_functions 17012 6209105920 User None created project from template: Test Accounting - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 20:47:56,825 basehttp 17012 6209105920 "POST /templates/32/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:47:56,848 basehttp 17012 6209105920 "GET /grids/135/ HTTP/1.1" 200 17861
+INFO 2025-08-18 20:48:00,087 basehttp 17012 6209105920 "GET /grids/21/ HTTP/1.1" 200 17882
+INFO 2025-08-18 20:48:30,229 autoreload 17012 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-18 20:48:30,517 autoreload 17080 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:48:38,754 autoreload 17080 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-18 20:48:39,003 autoreload 17089 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:48:51,323 autoreload 17089 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-18 20:48:51,595 autoreload 17096 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:50:22,049 autoreload 17482 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:50:33,065 basehttp 17482 6193197056 "GET /grids/21/ HTTP/1.1" 200 17806
+INFO 2025-08-18 20:50:33,082 basehttp 17482 6193197056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 20:50:33,082 basehttp 17482 6210023424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:50:37,933 basehttp 17482 6193197056 "GET /grids/135/ HTTP/1.1" 200 17856
+INFO 2025-08-18 20:50:37,960 basehttp 17482 6193197056 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:50:40,466 basehttp 17482 6193197056 "GET /grids/21/ HTTP/1.1" 200 17790
+INFO 2025-08-18 20:50:44,065 project_views_functions 17482 6193197056 User None reordered tasks: in project Accounting
+INFO 2025-08-18 20:50:44,065 basehttp 17482 6193197056 "POST /grids/21/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-18 20:50:49,258 project_views 17482 6193197056 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 20:50:49,258 project_views 17482 6193197056 === TASK ORDERING DEBUG ===
+INFO 2025-08-18 20:50:49,260 project_views 17482 6193197056 Task 0: 'Find a campus networking event...' in Row 0 (Deloitte) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:49,260 project_views 17482 6193197056 Task 1: 'Tailor your CV to highlight an...' in Row 0 (Deloitte) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:50:49,261 project_views 17482 6193197056 Task 2: 'Research the difference betwee...' in Row 0 (Deloitte) x Col 2 (Application Preparation) with order 1
+INFO 2025-08-18 20:50:49,261 project_views 17482 6193197056 Task 3: 'Check online for hints about o...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:50:49,262 project_views 17482 6193197056 Task 4: 'Complete online assessment...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 1
+INFO 2025-08-18 20:50:49,262 project_views 17482 6193197056 Task 5: 'Research a recent deal PwC adv...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:49,263 project_views 17482 6193197056 Task 6: 'Reach out to a Deal Advisory g...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 1
+INFO 2025-08-18 20:50:49,263 project_views 17482 6193197056 Task 7: 'Find out application deadline...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:50:49,264 project_views 17482 6193197056 Task 8: 'Update CV to emphasise interes...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 1
+INFO 2025-08-18 20:50:49,264 project_views 17482 6193197056 Task 9: 'Practise numerical tests onlin...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:50:49,265 project_views 17482 6193197056 Task 10: 'Practise situational judgement...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 1
+INFO 2025-08-18 20:50:49,265 project_views 17482 6193197056 Task 11: 'Prepare "Why PwC?"...' in Row 1 (PwC) x Col 4 (Interview) with order 0
+INFO 2025-08-18 20:50:49,266 project_views 17482 6193197056 Task 12: 'Prepare "Why Deals?"...' in Row 1 (PwC) x Col 4 (Interview) with order 1
+INFO 2025-08-18 20:50:49,266 project_views 17482 6193197056 Task 13: 'Understand the CIMA vs. ACA qu...' in Row 2 (EY) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:49,267 project_views 17482 6193197056 Task 14: 'Research their values...' in Row 2 (EY) x Col 1 (Research and Networking) with order 1
+INFO 2025-08-18 20:50:49,267 project_views 17482 6193197056 Task 15: 'Draft responses for the online...' in Row 2 (EY) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:50:49,268 project_views 17482 6193197056 Task 16: 'Find a virtual event to attend...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:49,268 project_views 17482 6193197056 Task 17: 'Decide which scheme (e.g., For...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 1
+INFO 2025-08-18 20:50:49,269 project_views 17482 6193197056 Task 18: 'Tailor CV and cover letter for...' in Row 3 (KPMG) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:50:49,270 project_views 17482 6193197056 Task 19: 'Prepare for the Launchpad asse...' in Row 3 (KPMG) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:50:49,270 project_views 17482 6193197056 Task 20: 'Research their focus on mid-ma...' in Row 4 (Grant Thornton) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:49,271 project_views 17482 6193197056 Task 21: 'Write a cover letter that refl...' in Row 4 (Grant Thornton) x Col 2 (Application Preparation) with order 0
+INFO 2025-08-18 20:50:49,271 project_views 17482 6193197056 Task 22: 'Complete online assessments...' in Row 4 (Grant Thornton) x Col 3 (Assessments & Tests) with order 0
+INFO 2025-08-18 20:50:49,271 project_views 17482 6193197056 Task 23: 'Find out when applications ope...' in Row 5 (BDO) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:49,271 project_views 17482 6193197056 === END DEBUG ===
+INFO 2025-08-18 20:50:49,273 project_views 17482 6193197056 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:50:49,274 project_views 17482 6193197056 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 1
+INFO 2025-08-18 20:50:49,275 project_views 17482 6193197056 Created template task: Research the difference between Audit and Tax sche in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:50:49,276 project_views 17482 6193197056 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:50:49,276 project_views 17482 6193197056 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:50:49,277 project_views 17482 6193197056 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:50:49,278 project_views 17482 6193197056 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:50:49,278 project_views 17482 6193197056 Created template task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:50:49,279 project_views 17482 6193197056 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:50:49,280 project_views 17482 6193197056 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:50:49,280 project_views 17482 6193197056 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:50:49,281 project_views 17482 6193197056 Created template task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:50:49,282 project_views 17482 6193197056 Created template task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:50:49,282 project_views 17482 6193197056 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:50:49,283 project_views 17482 6193197056 Created template task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:50:49,284 project_views 17482 6193197056 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:50:49,284 project_views 17482 6193197056 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:50:49,285 project_views 17482 6193197056 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:50:49,285 project_views 17482 6193197056 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:50:49,286 project_views 17482 6193197056 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:50:49,287 project_views 17482 6193197056 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:50:49,287 project_views 17482 6193197056 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:50:49,288 project_views 17482 6193197056 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:50:49,288 project_views 17482 6193197056 Created template task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:50:49,289 project_views 17482 6193197056 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:50:49,289 project_views_functions 17482 6193197056 User None saved project as template: Second Accounting - 18th August 2025: Accounting
+INFO 2025-08-18 20:50:49,290 basehttp 17482 6193197056 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:50:49,300 basehttp 17482 6193197056 "GET /grids/ HTTP/1.1" 200 4861
+INFO 2025-08-18 20:50:51,086 project_views 17482 6193197056 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:50:51,086 project_views 17482 6193197056 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-08-18 20:50:51,088 project_views 17482 6193197056 Template Task 0: 'Find a campus networking event...' in Row 0 (Deloitte) x Col 1 (Research and Networking) with order 0
+INFO 2025-08-18 20:50:51,088 project_views 17482 6193197056 Template Task 1: 'Tailor your CV to highlight an...' in Row 0 (Deloitte) x Col 2 (Application Preparation) with order 1
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 2: 'Research the difference betwee...' in Row 0 (Deloitte) x Col 2 (Application Preparation) with order 2
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 3: 'Check online for hints about o...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 3
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 4: 'Complete online assessment...' in Row 0 (Deloitte) x Col 3 (Assessments & Tests) with order 4
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 5: 'Research a recent deal PwC adv...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 5
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 6: 'Reach out to a Deal Advisory g...' in Row 1 (PwC) x Col 1 (Research and Networking) with order 6
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 7: 'Find out application deadline...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 7
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 8: 'Update CV to emphasise interes...' in Row 1 (PwC) x Col 2 (Application Preparation) with order 8
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 9: 'Practise numerical tests onlin...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 9
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 10: 'Practise situational judgement...' in Row 1 (PwC) x Col 3 (Assessments & Tests) with order 10
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 11: 'Prepare "Why PwC?"...' in Row 1 (PwC) x Col 4 (Interview) with order 11
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 12: 'Prepare "Why Deals?"...' in Row 1 (PwC) x Col 4 (Interview) with order 12
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 13: 'Understand the CIMA vs. ACA qu...' in Row 2 (EY) x Col 1 (Research and Networking) with order 13
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 14: 'Research their values...' in Row 2 (EY) x Col 1 (Research and Networking) with order 14
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 15: 'Draft responses for the online...' in Row 2 (EY) x Col 2 (Application Preparation) with order 15
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 16: 'Find a virtual event to attend...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 16
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 17: 'Decide which scheme (e.g., For...' in Row 3 (KPMG) x Col 1 (Research and Networking) with order 17
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 18: 'Tailor CV and cover letter for...' in Row 3 (KPMG) x Col 2 (Application Preparation) with order 18
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 19: 'Prepare for the Launchpad asse...' in Row 3 (KPMG) x Col 3 (Assessments & Tests) with order 19
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 20: 'Research their focus on mid-ma...' in Row 4 (Grant Thornton) x Col 1 (Research and Networking) with order 20
+INFO 2025-08-18 20:50:51,089 project_views 17482 6193197056 Template Task 21: 'Write a cover letter that refl...' in Row 4 (Grant Thornton) x Col 2 (Application Preparation) with order 21
+INFO 2025-08-18 20:50:51,090 project_views 17482 6193197056 Template Task 22: 'Complete online assessments...' in Row 4 (Grant Thornton) x Col 3 (Assessments & Tests) with order 22
+INFO 2025-08-18 20:50:51,090 project_views 17482 6193197056 Template Task 23: 'Find out when applications ope...' in Row 5 (BDO) x Col 1 (Research and Networking) with order 23
+INFO 2025-08-18 20:50:51,090 project_views 17482 6193197056 === END DEBUG ===
+INFO 2025-08-18 20:50:51,091 project_views 17482 6193197056 Created task: Find a campus networking event in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 20:50:51,092 project_views 17482 6193197056 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 1
+INFO 2025-08-18 20:50:51,093 project_views 17482 6193197056 Created task: Research the difference between Audit and Tax sche in Deloitte x Application Preparation with order 2
+INFO 2025-08-18 20:50:51,094 project_views 17482 6193197056 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:50:51,095 project_views 17482 6193197056 Created task: Complete online assessment in Deloitte x Assessments & Tests with order 4
+INFO 2025-08-18 20:50:51,096 project_views 17482 6193197056 Created task: Research a recent deal PwC advised on in PwC x Research and Networking with order 5
+INFO 2025-08-18 20:50:51,097 project_views 17482 6193197056 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 6
+INFO 2025-08-18 20:50:51,098 project_views 17482 6193197056 Created task: Find out application deadline in PwC x Application Preparation with order 7
+INFO 2025-08-18 20:50:51,099 project_views 17482 6193197056 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 8
+INFO 2025-08-18 20:50:51,100 project_views 17482 6193197056 Created task: Practise numerical tests online in PwC x Assessments & Tests with order 9
+INFO 2025-08-18 20:50:51,101 project_views 17482 6193197056 Created task: Practise situational judgement tests online in PwC x Assessments & Tests with order 10
+INFO 2025-08-18 20:50:51,101 project_views 17482 6193197056 Created task: Prepare "Why PwC?" in PwC x Interview with order 11
+INFO 2025-08-18 20:50:51,102 project_views 17482 6193197056 Created task: Prepare "Why Deals?" in PwC x Interview with order 12
+INFO 2025-08-18 20:50:51,103 project_views 17482 6193197056 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 13
+INFO 2025-08-18 20:50:51,104 project_views 17482 6193197056 Created task: Research their values in EY x Research and Networking with order 14
+INFO 2025-08-18 20:50:51,104 project_views 17482 6193197056 Created task: Draft responses for the online application with an in EY x Application Preparation with order 15
+INFO 2025-08-18 20:50:51,105 project_views 17482 6193197056 Created task: Find a virtual event to attend in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:50:51,106 project_views 17482 6193197056 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 17
+INFO 2025-08-18 20:50:51,107 project_views 17482 6193197056 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 18
+INFO 2025-08-18 20:50:51,107 project_views 17482 6193197056 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 19
+INFO 2025-08-18 20:50:51,108 project_views 17482 6193197056 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 20
+INFO 2025-08-18 20:50:51,109 project_views 17482 6193197056 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 21
+INFO 2025-08-18 20:50:51,109 project_views 17482 6193197056 Created task: Complete online assessments in Grant Thornton x Assessments & Tests with order 22
+INFO 2025-08-18 20:50:51,110 project_views 17482 6193197056 Created task: Find out when applications open in BDO x Research and Networking with order 23
+INFO 2025-08-18 20:50:51,111 project_views 17482 6193197056 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:50:51,111 project_views_functions 17482 6193197056 User None created project from template: Second Accounting - 18th August 2025: Second Accounting - 18th August 2025
+INFO 2025-08-18 20:50:51,112 basehttp 17482 6193197056 "POST /templates/33/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:50:51,135 basehttp 17482 6193197056 "GET /grids/136/ HTTP/1.1" 200 17970
+INFO 2025-08-18 20:50:54,197 basehttp 17482 6193197056 "GET /grids/21/ HTTP/1.1" 200 17822
+INFO 2025-08-18 20:50:57,620 basehttp 17482 6193197056 "GET /grids/136/ HTTP/1.1" 200 17936
+INFO 2025-08-18 20:50:59,432 basehttp 17482 6193197056 "GET /grids/136/delete/ HTTP/1.1" 200 1108
+INFO 2025-08-18 20:51:00,523 basehttp 17482 6193197056 "POST /grids/136/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:51:00,540 basehttp 17482 6193197056 "GET /grids/ HTTP/1.1" 200 4875
+INFO 2025-08-18 20:51:29,459 autoreload 17482 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/migrations/0009_alter_task_options_personaltemplate_and_more.py changed, reloading.
+INFO 2025-08-18 20:51:29,756 autoreload 17526 8693374720 Watching for file changes with StatReloader
