@@ -1,0 +1,59 @@
+<!-- Template Edit Modal -->
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                <i class="fas fa-edit text-white"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-[var(--text-primary)]">Edit Template</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Update your template name</p>
+            </div>
+        </div>
+        <button type="button" onclick="closeModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <!-- Modal Body -->
+    <div class="p-6">
+        <form method="post" action="{% url 'pages:template_edit' pk=template.pk %}">
+            {% csrf_token %}
+            
+            <!-- Template Name Field -->
+            <div class="mb-6">
+                <label for="template_name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Template Name</label>
+                <input type="text" 
+                       id="template_name" 
+                       name="template_name" 
+                       value="{{ template.name }}"
+                       required
+                       class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]"
+                       placeholder="Enter template name">
+            </div>
+            
+            <!-- Form Actions -->
+            <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+                <button type="button" onclick="closeModal()" class="w-36 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <button type="submit" class="w-40 h-10 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-save mr-2"></i>Save Changes
+                </button>
+            </div>
+        </form>
+    </div>
+
+<script>
+function closeModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('#modal-content');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+</script>

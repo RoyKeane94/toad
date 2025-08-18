@@ -51,7 +51,11 @@ from .specific_views.project_views import (
     column_edit_view,
     column_delete_view,
     delete_completed_tasks_view,
-    create_from_template_view
+    create_from_template_view,
+    save_as_template_view,
+    use_template_view,
+    template_edit_view,
+    template_delete_view
 )
 
 # Import analytics functions

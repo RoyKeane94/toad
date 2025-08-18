@@ -37,12 +37,12 @@
                             </h3>
                             <div class="flex space-x-2 flex-shrink-0">
                                 <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-                                   class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)]"
+                                   class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
                                    title="Edit grid">
                                     <i class="fas fa-edit text-sm"></i>
                                 </a>
                                 <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                                   class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50"
+                                   class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
                                    title="Delete grid">
                                     <i class="fas fa-trash text-sm"></i>
                                 </a>
@@ -86,7 +86,71 @@
     <div class="max-w-7xl mx-auto px-4 mt-16">
         <div class="text-center mb-8">
             <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">My Templates</h2>
-            <p class="text-[var(--subtitle-text)] text-lg">Coming soon for Toad Personal and Pro users</p>
+            {% if personal_templates %}
+                <p class="text-[var(--subtitle-text)] text-lg mb-8">Stop reinvesting the wheel. Save any grid as a template and turn your best work into your new starting point</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    {% for template in personal_templates %}
+                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
+                                        {{ template.name }}
+                                    </h3>
+                                    <div class="flex space-x-2 flex-shrink-0">
+                                        <button type="button"
+                                                class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                                title="Edit template"
+                                                hx-get="{% url 'pages:template_edit' pk=template.pk %}"
+                                                hx-target="#modal-content"
+                                                hx-trigger="click throttle:500ms"
+                                                hx-disabled-elt="this"
+                                                hx-indicator="#modal-content"
+                                                hx-swap="innerHTML"
+                                                hx-headers='{"Cache-Control": "no-cache"}'
+                                                onclick="openModal();">
+                                            <i class="fas fa-edit text-sm"></i>
+                                        </button>
+                                        <button type="button"
+                                                class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
+                                                title="Delete template"
+                                                hx-get="{% url 'pages:template_delete' pk=template.pk %}"
+                                                hx-target="#modal-content"
+                                                hx-trigger="click throttle:500ms"
+                                                hx-disabled-elt="this"
+                                                hx-indicator="#modal-content"
+                                                hx-swap="innerHTML"
+                                                hx-headers='{"Cache-Control": "no-cache"}'
+                                                onclick="openModal();">
+                                            <i class="fas fa-trash text-sm"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                        <span>Created {{ template.created_at|date:"d M Y" }}</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-th-large mr-2 text-xs"></i>
+                                        <span>{{ template.row_headers.count }} rows, {{ template.column_headers.count }} columns</span>
+                                    </div>
+                                </div>
+                                
+                                <form method="post" action="{% url 'pages:use_template' pk=template.pk %}" class="inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="block w-full text-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] py-3 px-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
+                                        <i class="fas fa-copy mr-2"></i>
+                                        Use Template
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-[var(--subtitle-text)] text-lg">No templates saved yet. Create your first template from any grid!</p>
+            {% endif %}
         </div>
     </div>
 {% else %}
@@ -106,4 +170,53 @@
         </a>
     </div>
 {% endif %}
+
+<!-- Modal Container -->
+<div id="modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="modal-content">
+        <!-- Modal content will be loaded here -->
+    </div>
+</div>
+
+<script>
+// Modal functions
+function openModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('#modal-content');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+    }
+}
+
+function closeModal() {
+    const modal = document.getElementById('modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('#modal-content');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('modal');
+    if (modal && e.target === modal) {
+        closeModal();
+    }
+});
+
+// Close modal when pressing Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+</script>
 {% endblock %} 

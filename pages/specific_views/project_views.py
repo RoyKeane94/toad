@@ -16,7 +16,7 @@ from django.db.models.functions import Greatest
 from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
-from pages.models import Project, RowHeader, ColumnHeader, Task
+from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
 from pages.specific_views_functions.project_views_functions import (
     get_user_project_optimized,
@@ -56,7 +56,15 @@ def project_list_view(request):
         completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
     ).only('id', 'name', 'created_at').order_by('-created_at')
     
-    return render(request, 'pages/grid/overview/project_list.html', {'projects': projects})
+    # Get user's personal templates
+    personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
+    
+    context = {
+        'projects': projects,
+        'personal_templates': personal_templates
+    }
+    
+    return render(request, 'pages/grid/overview/project_list.html', context)
 
 
 @login_required
@@ -759,6 +767,243 @@ def create_from_template_view(request, template_type):
         return redirect('pages:project_grid', pk=project.pk)
     
     return redirect('pages:templates_overview')
+
+@login_required
+def save_as_template_view(request, pk):
+    """Save the current project as a personal template"""
+    if request.method == 'POST':
+        project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+        
+        template_name = request.POST.get('template_name', '').strip()
+        template_style = request.POST.get('template_style', '')
+        
+        if not template_name:
+            messages.error(request, 'Template name is required.')
+            return redirect('pages:project_grid', pk=project.pk)
+        
+        if not template_style:
+            messages.error(request, 'Please select a template style.')
+            return redirect('pages:project_grid', pk=project.pk)
+        
+        try:
+            # Format template name with date
+            from datetime import datetime
+            current_date = datetime.now()
+            day_suffix = "th" if 10 <= current_date.day <= 20 else {1: "st", 2: "nd", 3: "rd"}.get(current_date.day % 10, "th")
+            formatted_date = f"{current_date.day}{day_suffix} {current_date.strftime('%B %Y')}"
+            
+            # Create the personal template with formatted name
+            template = PersonalTemplate.objects.create(
+                user=request.user,
+                name=f"{template_name} - {formatted_date}"
+            )
+            
+            # Get all rows and columns from the project (including category column for template)
+            rows = project.row_headers.all().order_by('order')
+            columns = project.column_headers.all().order_by('order')
+            
+            # Create template row headers with sequential order
+            template_rows = []
+            for i, row in enumerate(rows):
+                template_row = TemplateRowHeader.objects.create(
+                    template=template,
+                    name=row.name,
+                    order=i  # Use sequential order instead of copying from project
+                )
+                template_rows.append(template_row)
+            
+            # Create template column headers with sequential order
+            template_columns = []
+            for i, column in enumerate(columns):
+                template_column = TemplateColumnHeader.objects.create(
+                    template=template,
+                    name=column.name,
+                    order=i  # Use sequential order instead of copying from project
+                )
+                template_columns.append(template_column)
+            
+            # Create a mapping for quick lookup using names (more reliable than IDs)
+            row_mapping = {row.name: template_row for row, template_row in zip(rows, template_rows)}
+            col_mapping = {column.name: template_column for column, template_column in zip(columns, template_columns)}
+            
+            # If "Save with example tasks" is selected, create template tasks
+            if template_style == 'with_tasks':
+                tasks = project.tasks.all()
+                logger.info(f"Saving template with {tasks.count()} tasks from project {project.name}")
+                # Include tasks from all columns (including category column) when saving as template
+                
+                # Save tasks in the exact order they appear in the grid
+                for i, task in enumerate(tasks):
+                    # Find the corresponding template row and column using names
+                    template_row = row_mapping.get(task.row_header.name)
+                    template_column = col_mapping.get(task.column_header.name)
+                    
+                    if template_row and template_column:
+                        TemplateTask.objects.create(
+                            template_row_header=template_row,
+                            template_column_header=template_column,
+                            text=task.text,
+                            completed=task.completed,
+                            order=i  # Just use the loop index - simple sequential order
+                        )
+                        logger.info(f"Created template task: {task.text[:50]} in {template_row.name} x {template_column.name} with order {i}")
+                    else:
+                        # Debug logging for missing mappings
+                        logger.warning(f"Task '{task.text[:50]}' could not be mapped - Row: {task.row_header.name} -> {template_row}, Col: {task.column_header.name} -> {template_column}")
+                
+                # Log summary of template creation
+                if template_style == 'with_tasks':
+                    created_tasks = TemplateTask.objects.filter(template_row_header__template=template).count()
+                    logger.info(f"Template created with {created_tasks} tasks out of {tasks.count()} original tasks")
+            
+            log_user_action(request.user, f'saved project as template: {template.name}', project.name)
+            messages.success(request, f'Template "{template.name}" saved successfully!')
+            
+        except Exception as e:
+            logger.error(f"Error saving template for project {pk}: {e}")
+            messages.error(request, 'Failed to save template. Please try again.')
+        
+        return redirect('pages:project_list')
+    
+    return redirect('pages:project_list')
+
+
+@login_required
+def use_template_view(request, pk):
+    """Create a new project from a personal template"""
+    if request.method == 'POST':
+        try:
+            # Get the template
+            template = PersonalTemplate.objects.get(id=pk, user=request.user)
+            
+            # Create a new project with just the template name
+            project = Project.objects.create(
+                user=request.user,
+                name=template.name
+            )
+            
+            # Create the category column (always first)
+            ColumnHeader.objects.create(
+                project=project,
+                name='Time / Category',
+                order=0,
+                is_category_column=True
+            )
+            
+            # Create row headers from template
+            template_rows = template.row_headers.all().order_by('order')
+            row_mapping = {}
+            for i, template_row in enumerate(template_rows):
+                row = RowHeader.objects.create(
+                    project=project,
+                    name=template_row.name,
+                    order=i
+                )
+                row_mapping[template_row.id] = row
+            
+            # Create column headers from template (including category column)
+            template_columns = template.column_headers.all().order_by('order')
+            col_mapping = {}
+            for i, template_column in enumerate(template_columns):
+                # Check if this was originally a category column
+                is_category = template_column.name == 'Time / Category'
+                column = ColumnHeader.objects.create(
+                    project=project,
+                    name=template_column.name,
+                    order=i,
+                    is_category_column=is_category
+                )
+                col_mapping[template_column.id] = column
+            
+            # Create tasks from template if they exist
+            template_tasks = TemplateTask.objects.filter(
+                template_row_header__template=template
+            ).select_related('template_row_header', 'template_column_header')
+            
+            logger.info(f"Creating project from template with {template_tasks.count()} template tasks")
+            
+            for template_task in template_tasks:
+                row = row_mapping.get(template_task.template_row_header.id)
+                column = col_mapping.get(template_task.template_column_header.id)
+                
+                if row and column:
+                    # Create task with the actual text from the template
+                    Task.objects.create(
+                        project=project,
+                        row_header=row,
+                        column_header=column,
+                        text=template_task.text,  # Use the actual task text from template
+                        completed=False,  # Always start as incomplete
+                        order=template_task.order
+                    )
+                    logger.info(f"Created task: {template_task.text[:50]} in {row.name} x {column.name}")
+                else:
+                    logger.warning(f"Could not create task '{template_task.text[:50]}' - Row: {template_task.template_row_header.name} -> {row}, Col: {template_task.template_column_header.name} -> {column}")
+            
+            # Log summary of task creation
+            created_tasks = Task.objects.filter(project=project).count()
+            logger.info(f"Project created with {created_tasks} tasks out of {template_tasks.count()} template tasks")
+            
+            log_user_action(request.user, f'created project from template: {template.name}', project.name)
+            messages.success(request, f'Grid "{project.name}" created from template successfully!')
+            
+            return redirect('pages:project_grid', pk=project.pk)
+            
+        except PersonalTemplate.DoesNotExist:
+            messages.error(request, 'Template not found.')
+        except Exception as e:
+            logger.error(f"Error using template {pk}: {e}")
+            messages.error(request, 'Failed to create grid from template. Please try again.')
+    
+    return redirect('pages:project_list')
+
+
+@login_required
+def template_edit_view(request, pk):
+    """Edit a personal template"""
+    try:
+        template = PersonalTemplate.objects.get(id=pk, user=request.user)
+    except PersonalTemplate.DoesNotExist:
+        messages.error(request, 'Template not found.')
+        return redirect('pages:project_list')
+    
+    if request.method == 'POST':
+        template_name = request.POST.get('template_name', '').strip()
+        if not template_name:
+            messages.error(request, 'Template name is required.')
+            return redirect('pages:template_edit', pk=pk)
+        
+        template.name = template_name
+        template.save()
+        
+        log_user_action(request.user, f'edited template: {template_name}', template.name)
+        messages.success(request, f'Template "{template_name}" updated successfully!')
+        return redirect('pages:project_list')
+    
+    context = {'template': template}
+    return render(request, 'pages/grid/actions_new_page/template_edit_modal.html', context)
+
+
+@login_required
+def template_delete_view(request, pk):
+    """Delete a personal template"""
+    try:
+        template = PersonalTemplate.objects.get(id=pk, user=request.user)
+    except PersonalTemplate.DoesNotExist:
+        messages.error(request, 'Template not found.')
+        return redirect('pages:project_list')
+    
+    if request.method == 'POST':
+        template_name = template.name
+        template.delete()
+        
+        log_user_action(request.user, f'deleted template: {template_name}', 'N/A')
+        messages.success(request, f'Template "{template_name}" deleted successfully!')
+        return redirect('pages:project_list')
+    
+    context = {'template': template}
+    return render(request, 'pages/grid/actions_new_page/template_confirm_delete_modal.html', context)
+
 
 @login_required
 def task_reorder_view(request, project_pk):

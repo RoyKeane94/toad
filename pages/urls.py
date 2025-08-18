@@ -53,6 +53,10 @@ urlpatterns = [
     path('grids/<int:pk>/edit/', views.project_edit_view, name='project_edit'),
     path('grids/<int:pk>/delete/', views.project_delete_view, name='project_delete'),
     path('grids/<int:pk>/clear-completed/', views.delete_completed_tasks_view, name='delete_completed_tasks'),
+    path('grids/<int:pk>/save-template/', views.save_as_template_view, name='save_as_template'),
+    path('templates/<int:pk>/use/', views.use_template_view, name='use_template'),
+    path('templates/<int:pk>/edit/', views.template_edit_view, name='template_edit'),
+    path('templates/<int:pk>/delete/', views.template_delete_view, name='template_delete'),
     
     # Task URLs
     path('grids/<int:project_pk>/tasks/create/<int:row_pk>/<int:col_pk>/', views.task_create_view, name='task_create'),

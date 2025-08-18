@@ -16284,3 +16284,1332 @@ INFO 2025-08-17 16:30:51,011 basehttp 90554 6159921152 "GET /grids/15/ HTTP/1.1"
 INFO 2025-08-17 16:30:53,488 basehttp 90554 6159921152 "GET /grids/15/edit/ HTTP/1.1" 200 1039
 INFO 2025-08-17 16:30:54,842 basehttp 90554 6159921152 "POST /grids/15/edit/ HTTP/1.1" 302 0
 INFO 2025-08-17 16:30:54,874 basehttp 90554 6159921152 "GET /grids/15/ HTTP/1.1" 200 14457
+INFO 2025-08-17 17:00:08,819 autoreload 93752 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:00:13,352 basehttp 93752 6159609856 "GET /grids/15/ HTTP/1.1" 200 15547
+INFO 2025-08-17 17:00:13,385 basehttp 93752 6159609856 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 17:00:13,386 basehttp 93752 6176436224 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 17:00:13,386 basehttp 93752 6193262592 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 17:00:17,076 autoreload 93752 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/migrations/0009_cleanup_old_templates_first.py changed, reloading.
+INFO 2025-08-17 17:00:17,324 autoreload 93776 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:02:35,009 autoreload 95931 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:02:51,278 basehttp 95931 6130610176 "GET /grids/15/ HTTP/1.1" 302 0
+INFO 2025-08-17 17:03:23,824 autoreload 95931 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-17 17:03:24,084 autoreload 97054 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:03:24,265 autoreload 93776 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-17 17:03:24,445 autoreload 97055 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:48:45,663 autoreload 203 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:49:00,659 basehttp 203 6204829696 "GET /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-17 17:49:00,692 basehttp 203 6204829696 "GET /grids/15/ HTTP/1.1" 200 15534
+INFO 2025-08-17 17:49:00,707 basehttp 203 6204829696 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 17:49:00,707 basehttp 203 6221656064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 17:49:00,707 basehttp 203 6238482432 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+ERROR 2025-08-17 17:49:08,570 project_views 203 6204829696 Error saving template for project 15: UNIQUE constraint failed: pages_templaterowheader.template_id, pages_templaterowheader.order
+INFO 2025-08-17 17:49:08,571 basehttp 203 6204829696 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-17 17:49:08,602 basehttp 203 6204829696 "GET /grids/15/ HTTP/1.1" 200 15499
+INFO 2025-08-17 17:49:11,039 basehttp 203 6204829696 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-17 17:49:11,052 basehttp 203 6204829696 "GET /templates/students/ HTTP/1.1" 200 5703
+INFO 2025-08-17 17:49:11,105 basehttp 203 6255308800 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-17 17:49:11,109 basehttp 203 6221656064 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-17 17:49:11,111 basehttp 203 6238482432 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-17 17:49:11,113 basehttp 203 6204829696 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-17 17:49:12,808 basehttp 203 6204829696 "GET /grids/ HTTP/1.1" 200 3777
+INFO 2025-08-17 17:49:57,043 autoreload 203 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 17:49:57,355 autoreload 807 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:50:18,852 autoreload 807 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 17:50:19,278 autoreload 835 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:50:59,069 autoreload 835 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 17:50:59,528 autoreload 1400 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:51:13,246 basehttp 1400 6138097664 "GET /grids/ HTTP/1.1" 200 4000
+INFO 2025-08-17 17:51:56,050 basehttp 1400 6138097664 "GET /grids/15/ HTTP/1.1" 200 15504
+INFO 2025-08-17 17:52:05,721 project_views_functions 1400 6138097664 User None saved project as template: Student Planner Mine: Student Planner
+INFO 2025-08-17 17:52:05,723 basehttp 1400 6138097664 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-17 17:52:05,743 basehttp 1400 6138097664 "GET /grids/15/ HTTP/1.1" 200 15477
+INFO 2025-08-17 17:52:07,986 basehttp 1400 6138097664 "GET /grids/ HTTP/1.1" 200 4077
+INFO 2025-08-17 17:53:15,293 autoreload 1400 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-17 17:53:15,938 autoreload 1562 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:53:35,356 autoreload 1562 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 17:53:35,661 autoreload 1570 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:53:46,932 autoreload 1570 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-17 17:53:47,208 autoreload 1581 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:57:45,677 autoreload 1581 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-17 17:57:46,149 autoreload 2509 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:58:17,859 autoreload 2509 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 17:58:18,181 autoreload 2559 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 17:58:30,494 autoreload 2559 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 17:58:30,905 autoreload 2593 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:00:08,891 autoreload 3029 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:00:15,487 autoreload 3118 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:00:21,544 basehttp 3118 6193459200 "GET /grids/ HTTP/1.1" 200 4213
+INFO 2025-08-17 18:00:21,561 basehttp 3118 6193459200 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 18:00:28,614 project_views_functions 3118 6193459200 User None created project from template: Test: Test - 2025-08-17 18:00
+INFO 2025-08-17 18:00:28,615 basehttp 3118 6193459200 "POST /templates/1/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:00:28,631 basehttp 3118 6193459200 "GET /grids/92/ HTTP/1.1" 200 9134
+INFO 2025-08-17 18:00:28,656 basehttp 3118 6193459200 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:00:28,658 basehttp 3118 6210285568 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-17 18:00:36,991 basehttp 3118 6193459200 "GET /grids/ HTTP/1.1" 200 4299
+INFO 2025-08-17 18:00:37,005 basehttp 3118 6193459200 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:00:41,832 project_views_functions 3118 6193459200 User None created project from template: Student Planner Mine: Student Planner Mine - 2025-08-17 18:00
+INFO 2025-08-17 18:00:41,833 basehttp 3118 6193459200 "POST /templates/2/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:00:41,859 basehttp 3118 6193459200 "GET /grids/93/ HTTP/1.1" 200 15929
+INFO 2025-08-17 18:00:41,885 basehttp 3118 6193459200 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:00:41,886 basehttp 3118 6210285568 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:00:54,633 basehttp 3118 6193459200 "GET /grids/ HTTP/1.1" 200 4374
+INFO 2025-08-17 18:00:54,645 basehttp 3118 6193459200 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:00:56,863 basehttp 3118 6193459200 "GET /grids/93/delete/ HTTP/1.1" 200 3389
+INFO 2025-08-17 18:00:57,687 basehttp 3118 6193459200 "POST /grids/93/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:00:57,704 basehttp 3118 6193459200 "GET /grids/ HTTP/1.1" 200 4357
+INFO 2025-08-17 18:00:59,297 basehttp 3118 6193459200 "GET /grids/92/delete/ HTTP/1.1" 200 3476
+INFO 2025-08-17 18:01:00,025 basehttp 3118 6193459200 "POST /grids/92/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:01:00,035 basehttp 3118 6193459200 "GET /grids/ HTTP/1.1" 200 4212
+INFO 2025-08-17 18:01:00,043 basehttp 3118 6193459200 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:05:57,138 autoreload 3118 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:05:57,445 autoreload 3225 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:06:05,656 autoreload 3225 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:06:05,900 autoreload 3233 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:06:28,367 autoreload 3233 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:06:28,657 autoreload 3643 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:06:34,682 basehttp 3643 6163918848 "GET /grids/15/ HTTP/1.1" 200 15535
+INFO 2025-08-17 18:06:34,696 basehttp 3643 6180745216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:06:34,696 basehttp 3643 6163918848 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:06:41,711 project_views_functions 3643 6163918848 User None saved project as template: My Saved Tasks: Student Planner
+INFO 2025-08-17 18:06:41,712 basehttp 3643 6163918848 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:06:41,725 basehttp 3643 6163918848 "GET /grids/ HTTP/1.1" 200 4275
+INFO 2025-08-17 18:06:45,652 project_views_functions 3643 6163918848 User None created project from template: My Saved Tasks: My Saved Tasks - 2025-08-17 18:06
+INFO 2025-08-17 18:06:45,652 basehttp 3643 6163918848 "POST /templates/3/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:06:45,675 basehttp 3643 6163918848 "GET /grids/94/ HTTP/1.1" 200 15513
+INFO 2025-08-17 18:06:51,905 basehttp 3643 6163918848 "GET /grids/94/columns/419/delete/ HTTP/1.1" 200 1011
+INFO 2025-08-17 18:06:52,850 basehttp 3643 6163918848 "POST /grids/94/columns/419/delete/ HTTP/1.1" 204 0
+INFO 2025-08-17 18:06:52,900 basehttp 3643 6163918848 "GET /grids/94/ HTTP/1.1" 200 15198
+INFO 2025-08-17 18:06:52,901 basehttp 3643 6163918848 - Broken pipe from ('127.0.0.1', 62430)
+INFO 2025-08-17 18:06:52,902 basehttp 3643 6180745216 "GET /grids/94/ HTTP/1.1" 200 15134
+INFO 2025-08-17 18:06:56,102 basehttp 3643 6163918848 "GET /grids/94/columns/418/delete/ HTTP/1.1" 200 965
+INFO 2025-08-17 18:06:57,216 basehttp 3643 6163918848 "POST /grids/94/columns/418/delete/ HTTP/1.1" 204 0
+INFO 2025-08-17 18:06:57,267 basehttp 3643 6163918848 - Broken pipe from ('127.0.0.1', 62432)
+INFO 2025-08-17 18:06:57,268 basehttp 3643 6180745216 "GET /grids/94/ HTTP/1.1" 200 14635
+INFO 2025-08-17 18:06:59,647 basehttp 3643 6180745216 "GET /grids/94/delete/ HTTP/1.1" 200 1141
+INFO 2025-08-17 18:07:00,726 basehttp 3643 6163918848 "POST /grids/94/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:07:00,744 basehttp 3643 6163918848 "GET /grids/ HTTP/1.1" 200 4279
+INFO 2025-08-17 18:09:28,225 autoreload 3643 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-17 18:09:28,522 autoreload 3714 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:09:37,908 autoreload 3714 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:09:38,169 autoreload 3734 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:09:43,330 autoreload 3734 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-17 18:09:43,514 autoreload 3741 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:12:16,341 autoreload 3741 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:12:16,584 autoreload 4126 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:12:29,190 autoreload 4462 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:12:34,148 basehttp 4462 6166474752 "GET /grids/ HTTP/1.1" 200 4849
+INFO 2025-08-17 18:12:34,178 basehttp 4462 6183301120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 18:12:34,179 basehttp 4462 6166474752 "GET /static/css/output.css HTTP/1.1" 200 74103
+INFO 2025-08-17 18:12:37,385 basehttp 4462 6166474752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:12:50,921 basehttp 4462 6166474752 "GET /grids/ HTTP/1.1" 200 4861
+INFO 2025-08-17 18:12:50,936 basehttp 4462 6200127488 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 18:12:50,936 basehttp 4462 6183301120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 18:12:50,937 basehttp 4462 6166474752 "GET /static/css/output.css HTTP/1.1" 200 74103
+INFO 2025-08-17 18:13:13,992 autoreload 4917 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:13:17,058 basehttp 4917 6128070656 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+ERROR 2025-08-17 18:13:29,548 log 4917 6128070656 Internal Server Error: /templates/3/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 942, in template_edit_view
+    template = PersonalTemplate.objects.get(id=pk, user=request.user)
+               ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 943, in template_edit_view
+    except PersonalTemplate.DoesNotExist:
+           ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+ERROR 2025-08-17 18:13:29,559 basehttp 4917 6128070656 "GET /templates/3/edit/ HTTP/1.1" 500 11980
+ERROR 2025-08-17 18:13:32,670 log 4917 6128070656 Internal Server Error: /templates/3/delete/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 968, in template_delete_view
+    template = PersonalTemplate.objects.get(id=pk, user=request.user)
+               ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 969, in template_delete_view
+    except PersonalTemplate.DoesNotExist:
+           ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+ERROR 2025-08-17 18:13:32,684 basehttp 4917 6128070656 "GET /templates/3/delete/ HTTP/1.1" 500 11997
+INFO 2025-08-17 18:13:35,011 basehttp 4917 6128070656 "GET /grids/21/edit/ HTTP/1.1" 200 3418
+INFO 2025-08-17 18:13:35,025 basehttp 4917 6128070656 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:13:36,193 basehttp 4917 6128070656 "GET /grids/21/ HTTP/1.1" 200 17865
+INFO 2025-08-17 18:13:36,220 basehttp 4917 6128070656 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-17 18:13:40,035 basehttp 4917 6128070656 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:13:42,291 basehttp 4917 6128070656 "GET /grids/21/edit/ HTTP/1.1" 200 3466
+INFO 2025-08-17 18:13:43,123 basehttp 4917 6128070656 "GET /grids/21/ HTTP/1.1" 200 17809
+INFO 2025-08-17 18:13:43,134 basehttp 4917 6128070656 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:13:44,996 basehttp 4917 6128070656 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:13:47,191 basehttp 4917 6128070656 "GET /grids/21/delete/ HTTP/1.1" 200 3455
+INFO 2025-08-17 18:13:48,607 basehttp 4917 6128070656 "GET /grids/21/ HTTP/1.1" 200 17851
+INFO 2025-08-17 18:13:48,629 basehttp 4917 6128070656 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:13:48,629 basehttp 4917 6144897024 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:14:53,107 project_views_functions 4917 6128070656 User None created project from template: My Saved Tasks: My Saved Tasks - 2025-08-17 18:14
+INFO 2025-08-17 18:14:53,108 basehttp 4917 6128070656 "POST /templates/3/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:14:53,127 basehttp 4917 6128070656 "GET /grids/95/ HTTP/1.1" 200 15484
+INFO 2025-08-17 18:14:53,153 basehttp 4917 6144897024 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:14:53,153 basehttp 4917 6128070656 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 18:14:53,154 basehttp 4917 6161723392 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:17:27,878 autoreload 4917 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:17:28,208 autoreload 5161 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:17:41,512 autoreload 5161 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:17:41,872 autoreload 5175 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:41:04,742 autoreload 5175 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:41:05,076 autoreload 5264 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:41:37,208 autoreload 5701 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:41:41,646 basehttp 5701 6167605248 "GET /grids/ HTTP/1.1" 200 4867
+INFO 2025-08-17 18:41:41,675 basehttp 5701 6167605248 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 18:41:41,679 basehttp 5701 6184431616 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+ERROR 2025-08-17 18:41:46,960 log 5701 6184431616 Internal Server Error: /templates/3/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 949, in template_edit_view
+    template = PersonalTemplate.objects.get(id=pk, user=request.user)
+               ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 950, in template_edit_view
+    except PersonalTemplate.DoesNotExist:
+           ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+ERROR 2025-08-17 18:41:46,974 basehttp 5701 6184431616 "GET /templates/3/edit/ HTTP/1.1" 500 12014
+INFO 2025-08-17 18:41:50,614 project_views_functions 5701 6184431616 User None created project from template: My Saved Tasks: My Saved Tasks - 2025-08-17 18:41
+INFO 2025-08-17 18:41:50,615 basehttp 5701 6184431616 "POST /templates/3/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:41:50,645 basehttp 5701 6184431616 "GET /grids/96/ HTTP/1.1" 200 15178
+INFO 2025-08-17 18:41:50,666 basehttp 5701 6184431616 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:41:50,667 basehttp 5701 6167605248 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-17 18:47:40,633 autoreload 6227 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:48:24,530 basehttp 6227 6122516480 "GET /grids/ HTTP/1.1" 200 5293
+INFO 2025-08-17 18:48:24,560 basehttp 6227 6122516480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 18:48:24,564 basehttp 6227 6139342848 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 18:48:49,072 autoreload 6442 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:48:51,229 basehttp 6442 6165147648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:49:14,521 project_views_functions 6442 6165147648 User None created project from template: Test: Test - 2025-08-17 18:49
+INFO 2025-08-17 18:49:14,531 basehttp 6442 6165147648 "POST /templates/1/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:49:14,549 basehttp 6442 6165147648 "GET /grids/97/ HTTP/1.1" 200 9184
+INFO 2025-08-17 18:49:14,563 basehttp 6442 6165147648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:49:14,567 basehttp 6442 6181974016 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-17 18:49:20,603 basehttp 6442 6165147648 "GET /grids/97/delete/ HTTP/1.1" 200 1104
+INFO 2025-08-17 18:49:22,153 basehttp 6442 6165147648 "POST /grids/97/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:49:22,176 basehttp 6442 6165147648 "GET /grids/ HTTP/1.1" 200 5313
+INFO 2025-08-17 18:49:24,238 project_views_functions 6442 6165147648 User None created project from template: Student Planner Mine: Student Planner Mine - 2025-08-17 18:49
+INFO 2025-08-17 18:49:24,239 basehttp 6442 6165147648 "POST /templates/2/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:49:24,266 basehttp 6442 6165147648 "GET /grids/98/ HTTP/1.1" 200 15575
+INFO 2025-08-17 18:49:24,278 basehttp 6442 6165147648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:49:24,278 basehttp 6442 6181974016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:49:29,271 basehttp 6442 6165147648 "GET /grids/98/delete/ HTTP/1.1" 200 1123
+INFO 2025-08-17 18:49:30,351 basehttp 6442 6165147648 "POST /grids/98/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:49:30,368 basehttp 6442 6165147648 "GET /grids/ HTTP/1.1" 200 5293
+INFO 2025-08-17 18:49:32,542 project_views_functions 6442 6165147648 User None created project from template: My Saved Tasks: My Saved Tasks - 2025-08-17 18:49
+INFO 2025-08-17 18:49:32,543 basehttp 6442 6165147648 "POST /templates/3/use/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:49:32,566 basehttp 6442 6165147648 "GET /grids/99/ HTTP/1.1" 200 15237
+INFO 2025-08-17 18:49:35,667 basehttp 6442 6165147648 "GET /grids/99/delete/ HTTP/1.1" 200 1129
+INFO 2025-08-17 18:49:36,916 basehttp 6442 6165147648 "POST /grids/99/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:49:36,934 basehttp 6442 6165147648 "GET /grids/ HTTP/1.1" 200 5309
+INFO 2025-08-17 18:49:36,953 basehttp 6442 6165147648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+ERROR 2025-08-17 18:49:41,611 log 6442 6165147648 Internal Server Error: /templates/2/delete/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 975, in template_delete_view
+    template = PersonalTemplate.objects.get(id=pk, user=request.user)
+               ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 976, in template_delete_view
+    except PersonalTemplate.DoesNotExist:
+           ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+ERROR 2025-08-17 18:49:41,626 basehttp 6442 6165147648 "GET /templates/2/delete/ HTTP/1.1" 500 12055
+INFO 2025-08-17 18:49:56,771 basehttp 6442 6165147648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+ERROR 2025-08-17 18:50:04,933 log 6442 6165147648 Internal Server Error: /templates/2/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 949, in template_edit_view
+    template = PersonalTemplate.objects.get(id=pk, user=request.user)
+               ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 950, in template_edit_view
+    except PersonalTemplate.DoesNotExist:
+           ^^^^^^^^^^^^^^^^
+NameError: name 'PersonalTemplate' is not defined
+ERROR 2025-08-17 18:50:04,949 basehttp 6442 6165147648 "GET /templates/2/edit/ HTTP/1.1" 500 12031
+INFO 2025-08-17 18:52:44,783 autoreload 6442 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:52:45,097 autoreload 6519 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:52:51,297 autoreload 6519 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:52:51,559 autoreload 6531 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:52:58,787 autoreload 6531 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:52:59,061 autoreload 6538 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:53:18,473 autoreload 6538 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:53:18,764 autoreload 6545 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:53:24,977 autoreload 6545 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-17 18:53:25,243 autoreload 6556 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:56:29,943 basehttp 6556 6124122112 "GET /grids/ HTTP/1.1" 200 5290
+INFO 2025-08-17 18:56:29,977 basehttp 6556 6124122112 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 18:56:29,977 basehttp 6556 6140948480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:56:33,207 basehttp 6556 6140948480 "GET /templates/3/edit/ HTTP/1.1" 200 1075
+INFO 2025-08-17 18:56:39,260 basehttp 6556 6140948480 "GET /grids/15/edit/ HTTP/1.1" 200 3482
+INFO 2025-08-17 18:56:40,582 basehttp 6556 6140948480 "GET /grids/15/ HTTP/1.1" 200 15583
+INFO 2025-08-17 18:56:40,606 basehttp 6556 6140948480 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:56:44,249 basehttp 6556 6140948480 "GET /templates/3/delete/ HTTP/1.1" 200 1096
+INFO 2025-08-17 18:57:21,275 basehttp 6556 6140948480 "GET /templates/3/edit/ HTTP/1.1" 200 1115
+INFO 2025-08-17 18:57:23,276 project_views_functions 6556 6140948480 User None edited template: My Saved Tasks1: My Saved Tasks1
+INFO 2025-08-17 18:57:23,278 basehttp 6556 6140948480 "POST /templates/3/edit/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:57:23,297 basehttp 6556 6140948480 "GET /grids/ HTTP/1.1" 200 5302
+INFO 2025-08-17 18:57:23,310 basehttp 6556 6140948480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 18:57:28,731 basehttp 6556 6140948480 "GET /templates/2/delete/ HTTP/1.1" 200 1148
+INFO 2025-08-17 18:57:29,410 project_views_functions 6556 6140948480 User None deleted template: Student Planner Mine: N/A
+INFO 2025-08-17 18:57:29,411 basehttp 6556 6140948480 "POST /templates/2/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:57:29,428 basehttp 6556 6140948480 "GET /grids/ HTTP/1.1" 200 4828
+INFO 2025-08-17 18:57:31,231 basehttp 6556 6140948480 "GET /templates/1/delete/ HTTP/1.1" 200 1119
+INFO 2025-08-17 18:57:31,908 project_views_functions 6556 6140948480 User None deleted template: Test: N/A
+INFO 2025-08-17 18:57:31,910 basehttp 6556 6140948480 "POST /templates/1/delete/ HTTP/1.1" 302 0
+INFO 2025-08-17 18:57:31,928 basehttp 6556 6140948480 "GET /grids/ HTTP/1.1" 200 4812
+INFO 2025-08-17 18:58:41,999 autoreload 7185 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 18:58:51,844 basehttp 7185 6137999360 "GET /grids/ HTTP/1.1" 200 4829
+INFO 2025-08-17 18:58:51,860 basehttp 7185 6171652096 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-17 18:58:51,861 basehttp 7185 6154825728 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-17 18:58:51,861 basehttp 7185 6137999360 "GET /static/css/output.css HTTP/1.1" 200 74103
+INFO 2025-08-17 19:05:38,590 basehttp 7185 6137999360 "GET /grids/ HTTP/1.1" 200 4741
+INFO 2025-08-17 19:05:38,610 basehttp 7185 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 19:05:38,610 basehttp 7185 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 19:09:53,410 basehttp 7185 6137999360 "GET /grids/ HTTP/1.1" 200 4765
+INFO 2025-08-17 19:09:53,426 basehttp 7185 6137999360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 19:11:06,815 basehttp 7185 6137999360 "GET /grids/ HTTP/1.1" 200 4823
+INFO 2025-08-17 19:11:06,830 basehttp 7185 6137999360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 19:11:17,953 basehttp 7185 6137999360 "GET /templates/3/edit/ HTTP/1.1" 200 1143
+INFO 2025-08-17 19:11:21,311 basehttp 7185 6137999360 "GET /grids/95/edit/ HTTP/1.1" 200 3491
+INFO 2025-08-17 19:11:22,716 basehttp 7185 6137999360 "GET /grids/95/delete/ HTTP/1.1" 200 3420
+INFO 2025-08-17 19:11:33,847 basehttp 7185 6137999360 "GET /templates/3/edit/ HTTP/1.1" 200 1145
+INFO 2025-08-17 19:11:35,491 project_views_functions 7185 6137999360 User None edited template: My Saved Tasks: My Saved Tasks
+INFO 2025-08-17 19:11:35,492 basehttp 7185 6137999360 "POST /templates/3/edit/ HTTP/1.1" 302 0
+INFO 2025-08-17 19:11:35,509 basehttp 7185 6137999360 "GET /grids/ HTTP/1.1" 200 4813
+INFO 2025-08-17 19:12:38,126 basehttp 7185 6137999360 "GET /grids/95/ HTTP/1.1" 200 15479
+INFO 2025-08-17 19:12:38,141 basehttp 7185 6171652096 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 19:12:38,142 basehttp 7185 6154825728 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-17 19:12:38,142 basehttp 7185 6137999360 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-17 19:15:11,727 basehttp 7185 6137999360 "GET /grids/95/ HTTP/1.1" 200 15501
+INFO 2025-08-17 19:15:11,745 basehttp 7185 6137999360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 19:15:11,746 basehttp 7185 6154825728 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-17 19:15:35,383 autoreload 8080 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-17 19:15:37,113 basehttp 8080 6199013376 "GET /grids/95/ HTTP/1.1" 200 15492
+INFO 2025-08-18 18:24:55,906 autoreload 9444 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:24:58,225 basehttp 9444 6136295424 "GET /grids/ HTTP/1.1" 200 4836
+INFO 2025-08-18 18:24:58,262 basehttp 9444 6153121792 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 18:24:58,263 basehttp 9444 6136295424 "GET /static/css/output.css HTTP/1.1" 200 74523
+INFO 2025-08-18 18:25:03,238 basehttp 9444 6136295424 "GET /grids/96/ HTTP/1.1" 200 15259
+INFO 2025-08-18 18:25:03,259 basehttp 9444 6136295424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:25:03,261 basehttp 9444 6136295424 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 18:25:40,923 basehttp 9444 6136295424 "GET /grids/96/delete/ HTTP/1.1" 200 1165
+INFO 2025-08-18 18:25:41,912 basehttp 9444 6136295424 "POST /grids/96/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:25:41,927 basehttp 9444 6136295424 "GET /grids/ HTTP/1.1" 200 4823
+INFO 2025-08-18 18:25:41,940 basehttp 9444 6136295424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:25:44,629 basehttp 9444 6136295424 "GET /grids/95/delete/ HTTP/1.1" 200 3467
+INFO 2025-08-18 18:25:45,615 basehttp 9444 6136295424 "POST /grids/95/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:25:45,629 basehttp 9444 6136295424 "GET /grids/ HTTP/1.1" 200 4703
+INFO 2025-08-18 18:25:46,838 project_views_functions 9444 6136295424 User None created project from template: My Saved Tasks: My Saved Tasks - 2025-08-18 18:25
+INFO 2025-08-18 18:25:46,838 basehttp 9444 6136295424 "POST /templates/3/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:25:46,859 basehttp 9444 6136295424 "GET /grids/100/ HTTP/1.1" 200 15216
+INFO 2025-08-18 18:25:46,881 basehttp 9444 6153121792 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:25:46,881 basehttp 9444 6136295424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:26:45,460 basehttp 9444 6136295424 "GET /grids/100/ HTTP/1.1" 200 15239
+INFO 2025-08-18 18:26:45,476 basehttp 9444 6136295424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:26:45,476 basehttp 9444 6153121792 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:09,160 autoreload 9919 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:27:11,249 basehttp 9919 6205403136 "GET /grids/100/ HTTP/1.1" 200 15200
+INFO 2025-08-18 18:27:11,267 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 18:27:11,268 basehttp 9919 6205403136 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 18:27:21,302 basehttp 9919 6205403136 "GET /grids/100/ HTTP/1.1" 200 15247
+INFO 2025-08-18 18:27:21,316 basehttp 9919 6239055872 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 18:27:21,318 basehttp 9919 6255882240 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 18:27:21,319 basehttp 9919 6222229504 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-18 18:27:21,319 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 200 74511
+INFO 2025-08-18 18:27:29,095 basehttp 9919 6205403136 "GET /grids/100/delete/ HTTP/1.1" 200 1086
+INFO 2025-08-18 18:27:30,085 basehttp 9919 6205403136 "POST /grids/100/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:27:30,103 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4678
+INFO 2025-08-18 18:27:30,115 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:30,115 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:33,260 basehttp 9919 6205403136 "GET /templates/3/delete/ HTTP/1.1" 200 1087
+INFO 2025-08-18 18:27:34,181 project_views_functions 9919 6205403136 User None deleted template: My Saved Tasks: N/A
+INFO 2025-08-18 18:27:34,183 basehttp 9919 6205403136 "POST /templates/3/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:27:34,196 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4194
+INFO 2025-08-18 18:27:34,215 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:34,215 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:36,461 basehttp 9919 6205403136 "GET /grids/21/ HTTP/1.1" 200 17830
+INFO 2025-08-18 18:27:36,475 basehttp 9919 6205403136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:43,677 project_views_functions 9919 6205403136 User None saved project as template: Accounting Test: Accounting
+INFO 2025-08-18 18:27:43,679 basehttp 9919 6205403136 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:27:43,690 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4671
+INFO 2025-08-18 18:27:43,712 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:43,713 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:45,294 project_views_functions 9919 6205403136 User None created project from template: Accounting Test: Accounting Test - 2025-08-18 18:27
+INFO 2025-08-18 18:27:45,296 basehttp 9919 6205403136 "POST /templates/4/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:27:45,318 basehttp 9919 6205403136 "GET /grids/101/ HTTP/1.1" 200 12729
+INFO 2025-08-18 18:27:45,329 basehttp 9919 6205403136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:49,357 basehttp 9919 6205403136 "GET /grids/101/delete/ HTTP/1.1" 200 1136
+INFO 2025-08-18 18:27:50,298 basehttp 9919 6205403136 "POST /grids/101/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:27:50,312 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4740
+INFO 2025-08-18 18:27:50,335 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:50,335 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:27:51,995 basehttp 9919 6205403136 "GET /grids/21/ HTTP/1.1" 200 17845
+INFO 2025-08-18 18:27:52,008 basehttp 9919 6205403136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+ERROR 2025-08-18 18:28:03,216 project_views 9919 6205403136 Error saving template for project 21: UNIQUE constraint failed: pages_templatetask.template_row_header_id, pages_templatetask.template_column_header_id, pages_templatetask.order
+INFO 2025-08-18 18:28:03,217 basehttp 9919 6205403136 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:03,228 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4831
+INFO 2025-08-18 18:28:03,243 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:03,243 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:06,281 project_views_functions 9919 6205403136 User None created project from template: Accounting Test: Accounting Test - 2025-08-18 18:28
+INFO 2025-08-18 18:28:06,282 basehttp 9919 6205403136 "POST /templates/4/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:06,302 basehttp 9919 6205403136 "GET /grids/102/ HTTP/1.1" 200 12721
+INFO 2025-08-18 18:28:06,314 basehttp 9919 6205403136 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:09,404 basehttp 9919 6205403136 "GET /grids/102/delete/ HTTP/1.1" 200 1159
+INFO 2025-08-18 18:28:11,670 basehttp 9919 6205403136 "POST /grids/102/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:11,685 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4752
+INFO 2025-08-18 18:28:11,705 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:11,705 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:12,831 project_views_functions 9919 6222229504 User None created project from template: Accounting Test: Accounting Test - 2025-08-18 18:28
+INFO 2025-08-18 18:28:12,832 basehttp 9919 6222229504 "POST /templates/5/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:12,854 basehttp 9919 6222229504 "GET /grids/103/ HTTP/1.1" 200 13868
+INFO 2025-08-18 18:28:18,690 basehttp 9919 6205403136 "GET /grids/103/delete/ HTTP/1.1" 200 1172
+INFO 2025-08-18 18:28:19,666 basehttp 9919 6205403136 "POST /grids/103/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:19,679 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4762
+INFO 2025-08-18 18:28:19,700 basehttp 9919 6222229504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:19,701 basehttp 9919 6205403136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:28:22,018 basehttp 9919 6205403136 "GET /templates/4/delete/ HTTP/1.1" 200 1173
+INFO 2025-08-18 18:28:22,917 project_views_functions 9919 6205403136 User None deleted template: Accounting Test: N/A
+INFO 2025-08-18 18:28:22,919 basehttp 9919 6205403136 "POST /templates/4/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:22,934 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4735
+INFO 2025-08-18 18:28:23,841 basehttp 9919 6205403136 "GET /templates/5/delete/ HTTP/1.1" 200 1168
+INFO 2025-08-18 18:28:24,897 project_views_functions 9919 6205403136 User None deleted template: Accounting Test: N/A
+INFO 2025-08-18 18:28:24,898 basehttp 9919 6205403136 "POST /templates/5/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:28:24,908 basehttp 9919 6205403136 "GET /grids/ HTTP/1.1" 200 4194
+INFO 2025-08-18 18:29:31,960 autoreload 9919 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:29:32,259 autoreload 10039 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:30:02,863 autoreload 10039 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:30:03,164 autoreload 10096 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:30:22,559 autoreload 10096 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:30:22,890 autoreload 10107 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:30:36,212 autoreload 10107 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:30:36,474 autoreload 10119 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:48:29,227 autoreload 10119 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:48:29,526 autoreload 10160 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:48:38,951 basehttp 10160 6165524480 "GET /grids/ HTTP/1.1" 200 4163
+INFO 2025-08-18 18:48:38,983 basehttp 10160 6165524480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 18:48:38,983 basehttp 10160 6182350848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:48:40,229 basehttp 10160 6165524480 "GET /grids/15/ HTTP/1.1" 200 15567
+INFO 2025-08-18 18:48:40,245 basehttp 10160 6165524480 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 18:48:48,873 project_views 10160 6165524480 Template save request - Name: 'Test', Style: 'with_tasks'
+INFO 2025-08-18 18:48:48,890 project_views 10160 6165524480 Created 4 template rows and 5 template columns
+INFO 2025-08-18 18:48:48,890 project_views 10160 6165524480 Row mapping keys: [58, 59, 61, 340]
+INFO 2025-08-18 18:48:48,890 project_views 10160 6165524480 Column mapping keys: [93, 94, 107, 399, 405]
+INFO 2025-08-18 18:48:48,891 project_views 10160 6165524480 Creating template with 13 tasks
+INFO 2025-08-18 18:48:48,894 project_views 10160 6165524480 Task: Dog - Row: 58 -> 24, Col: 94 -> 21
+INFO 2025-08-18 18:48:48,895 project_views 10160 6165524480 Created template task: Dog
+INFO 2025-08-18 18:48:48,896 project_views 10160 6165524480 Task: Test - Row: 58 -> 24, Col: 93 -> 20
+INFO 2025-08-18 18:48:48,898 project_views 10160 6165524480 Created template task: Test
+INFO 2025-08-18 18:48:48,898 project_views 10160 6165524480 Task: Download and run through week 3's seminar question - Row: 58 -> 24, Col: 107 -> 22
+INFO 2025-08-18 18:48:48,900 project_views 10160 6165524480 Created template task: Download and run through week 3's seminar question
+INFO 2025-08-18 18:48:48,901 project_views 10160 6165524480 Task: Prepare week 3 seminar questions for Thursday at 1 - Row: 58 -> 24, Col: 93 -> 20
+INFO 2025-08-18 18:48:48,902 project_views 10160 6165524480 Created template task: Prepare week 3 seminar questions for Thursday at 1
+INFO 2025-08-18 18:48:48,902 project_views 10160 6165524480 Task: Group coursework due by end of week 7 - Row: 59 -> 25, Col: 94 -> 21
+INFO 2025-08-18 18:48:48,903 project_views 10160 6165524480 Created template task: Group coursework due by end of week 7
+INFO 2025-08-18 18:48:48,904 project_views 10160 6165524480 Task: Download reading list for the semester - Row: 58 -> 24, Col: 93 -> 20
+INFO 2025-08-18 18:48:48,904 project_views 10160 6165524480 Created template task: Download reading list for the semester
+INFO 2025-08-18 18:48:48,905 project_views 10160 6165524480 Task: Pull together outline of draft essay using Toad by - Row: 59 -> 25, Col: 93 -> 20
+INFO 2025-08-18 18:48:48,906 project_views 10160 6165524480 Created template task: Pull together outline of draft essay using Toad by
+INFO 2025-08-18 18:48:48,906 project_views 10160 6165524480 Task: Think of who best to work with on group coursework - Row: 59 -> 25, Col: 94 -> 21
+INFO 2025-08-18 18:48:48,907 project_views 10160 6165524480 Created template task: Think of who best to work with on group coursework
+INFO 2025-08-18 18:48:48,907 project_views 10160 6165524480 Task: Go over flashcards for week 2 - Row: 61 -> 26, Col: 94 -> 21
+INFO 2025-08-18 18:48:48,908 project_views 10160 6165524480 Created template task: Go over flashcards for week 2
+INFO 2025-08-18 18:48:48,909 project_views 10160 6165524480 Task: Create flashcards for week 2 - Row: 61 -> 26, Col: 94 -> 21
+INFO 2025-08-18 18:48:48,910 project_views 10160 6165524480 Created template task: Create flashcards for week 2
+INFO 2025-08-18 18:48:48,910 project_views 10160 6165524480 Task: Go over flashcards for week 1 - Row: 61 -> 26, Col: 93 -> 20
+INFO 2025-08-18 18:48:48,911 project_views 10160 6165524480 Created template task: Go over flashcards for week 1
+INFO 2025-08-18 18:48:48,911 project_views 10160 6165524480 Task: Create flashcards for week 2 - Row: 61 -> 26, Col: 93 -> 20
+INFO 2025-08-18 18:48:48,912 project_views 10160 6165524480 Created template task: Create flashcards for week 2
+INFO 2025-08-18 18:48:48,912 project_views 10160 6165524480 Task: Prepare for office hours on Wednesday at 16:00 - Row: 58 -> 24, Col: 94 -> 21
+INFO 2025-08-18 18:48:48,913 project_views 10160 6165524480 Created template task: Prepare for office hours on Wednesday at 16:00
+INFO 2025-08-18 18:48:48,913 project_views_functions 10160 6165524480 User None saved project as template: Test: Student Planner
+INFO 2025-08-18 18:48:48,914 basehttp 10160 6165524480 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:48:48,923 basehttp 10160 6165524480 "GET /grids/ HTTP/1.1" 200 4762
+INFO 2025-08-18 18:48:51,041 project_views_functions 10160 6165524480 User None created project from template: Test: Test - 2025-08-18 18:48
+INFO 2025-08-18 18:48:51,042 basehttp 10160 6165524480 "POST /templates/6/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 18:48:51,064 basehttp 10160 6165524480 "GET /grids/104/ HTTP/1.1" 200 15210
+INFO 2025-08-18 18:51:01,602 autoreload 10160 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:51:01,921 autoreload 10253 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:51:10,150 autoreload 10253 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:51:10,472 autoreload 10263 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:51:18,722 autoreload 10263 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:51:19,028 autoreload 10272 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:51:27,297 autoreload 10272 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:51:27,554 autoreload 10285 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:51:36,820 autoreload 10285 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:51:37,089 autoreload 10292 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 18:52:04,706 autoreload 10292 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 18:52:04,975 autoreload 10312 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:28:35,232 basehttp 10312 6132822016 "GET /grids/ HTTP/1.1" 200 4798
+INFO 2025-08-18 19:28:35,243 basehttp 10312 6149648384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:28:35,243 basehttp 10312 6132822016 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:28:37,673 project_views_functions 10312 6132822016 User None created project from template: Test: Test - 2025-08-18 19:28
+INFO 2025-08-18 19:28:37,673 basehttp 10312 6132822016 "POST /templates/6/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:28:37,708 basehttp 10312 6132822016 "GET /grids/105/ HTTP/1.1" 200 15485
+INFO 2025-08-18 19:28:37,733 basehttp 10312 6132822016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:30:48,501 project_views_functions 10312 6132822016 User None saved project as template: Test: Test - 2025-08-18 19:28
+INFO 2025-08-18 19:30:48,503 basehttp 10312 6132822016 "POST /grids/105/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:30:48,517 basehttp 10312 6132822016 "GET /grids/ HTTP/1.1" 200 4874
+INFO 2025-08-18 19:32:54,304 autoreload 10312 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:32:54,685 autoreload 10634 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:33:03,957 autoreload 10634 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:33:04,217 autoreload 10640 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:33:18,606 autoreload 10640 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:33:19,031 autoreload 10646 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:33:46,455 autoreload 10974 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:33:49,392 basehttp 10974 6191509504 "GET /grids/ HTTP/1.1" 200 4861
+INFO 2025-08-18 19:33:50,998 basehttp 10974 6191509504 "GET /grids/105/delete/ HTTP/1.1" 200 3432
+INFO 2025-08-18 19:33:51,708 basehttp 10974 6191509504 "POST /grids/105/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:33:51,723 basehttp 10974 6191509504 "GET /grids/ HTTP/1.1" 200 4889
+INFO 2025-08-18 19:33:52,513 basehttp 10974 6191509504 "GET /grids/104/delete/ HTTP/1.1" 200 3456
+INFO 2025-08-18 19:33:53,587 basehttp 10974 6191509504 "POST /grids/104/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:33:53,605 basehttp 10974 6191509504 "GET /grids/ HTTP/1.1" 200 4808
+INFO 2025-08-18 19:33:55,715 basehttp 10974 6191509504 "GET /templates/6/delete/ HTTP/1.1" 200 1078
+INFO 2025-08-18 19:33:56,517 project_views_functions 10974 6191509504 User None deleted template: Test: N/A
+INFO 2025-08-18 19:33:56,519 basehttp 10974 6191509504 "POST /templates/6/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:33:56,532 basehttp 10974 6191509504 "GET /grids/ HTTP/1.1" 200 4703
+INFO 2025-08-18 19:33:57,459 basehttp 10974 6191509504 "GET /templates/7/delete/ HTTP/1.1" 200 1132
+INFO 2025-08-18 19:34:00,198 project_views_functions 10974 6191509504 User None deleted template: Test: N/A
+INFO 2025-08-18 19:34:00,200 basehttp 10974 6191509504 "POST /templates/7/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:34:00,214 basehttp 10974 6191509504 "GET /grids/ HTTP/1.1" 200 4201
+INFO 2025-08-18 19:34:01,913 basehttp 10974 6191509504 "GET /grids/15/ HTTP/1.1" 200 15567
+INFO 2025-08-18 19:34:21,481 basehttp 10974 6191509504 "GET /grids/15/ HTTP/1.1" 200 15529
+INFO 2025-08-18 19:34:21,502 basehttp 10974 6225162240 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 19:34:21,504 basehttp 10974 6208335872 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-18 19:34:21,504 basehttp 10974 6241988608 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 19:34:21,505 basehttp 10974 6191509504 "GET /static/css/output.css HTTP/1.1" 200 74303
+INFO 2025-08-18 19:34:27,492 project_views_functions 10974 6191509504 User None saved project as template: Test - 18th August 25: Student Planner
+INFO 2025-08-18 19:34:27,493 basehttp 10974 6191509504 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:34:27,503 basehttp 10974 6191509504 "GET /grids/ HTTP/1.1" 200 4687
+INFO 2025-08-18 19:34:27,512 basehttp 10974 6191509504 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:34:27,512 basehttp 10974 6208335872 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:34:37,948 project_views_functions 10974 6191509504 User None created project from template: Test - 18th August 25: Test - 18th August 25 - 2025-08-18 19:34
+INFO 2025-08-18 19:34:37,949 basehttp 10974 6191509504 "POST /templates/8/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:34:37,968 basehttp 10974 6191509504 "GET /grids/106/ HTTP/1.1" 200 12470
+INFO 2025-08-18 19:34:37,989 basehttp 10974 6208335872 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:34:37,989 basehttp 10974 6225162240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:34:37,989 basehttp 10974 6191509504 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:36:43,071 autoreload 10974 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:36:43,395 autoreload 11042 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:37:24,312 autoreload 11042 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:37:24,586 autoreload 11059 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:37:37,939 autoreload 11059 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:37:38,291 autoreload 11064 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:38:12,876 autoreload 11489 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:38:27,475 basehttp 11489 6123401216 "GET / HTTP/1.1" 200 6492
+INFO 2025-08-18 19:38:27,499 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 200 73925
+INFO 2025-08-18 19:38:27,501 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 19:38:27,527 basehttp 11489 6140227584 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-18 19:38:28,872 basehttp 11489 6140227584 "GET /grids/ HTTP/1.1" 200 4744
+INFO 2025-08-18 19:38:32,970 project_views_functions 11489 6123401216 User None created project from template: Test - 18th August 25: Test - 18th August 25
+INFO 2025-08-18 19:38:32,972 basehttp 11489 6123401216 "POST /templates/8/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:38:32,995 basehttp 11489 6123401216 "GET /grids/107/ HTTP/1.1" 200 12492
+INFO 2025-08-18 19:38:33,016 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:33,016 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:33,018 basehttp 11489 6157053952 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 19:38:37,764 basehttp 11489 6123401216 "GET /grids/107/delete/ HTTP/1.1" 200 1154
+INFO 2025-08-18 19:38:39,205 basehttp 11489 6123401216 "POST /grids/107/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:38:39,220 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4755
+INFO 2025-08-18 19:38:39,230 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:39,231 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:41,126 basehttp 11489 6123401216 "GET /templates/8/delete/ HTTP/1.1" 200 1158
+INFO 2025-08-18 19:38:42,289 project_views_functions 11489 6123401216 User None deleted template: Test - 18th August 25: N/A
+INFO 2025-08-18 19:38:42,291 basehttp 11489 6123401216 "POST /templates/8/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:38:42,307 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4292
+INFO 2025-08-18 19:38:43,689 basehttp 11489 6123401216 "GET /grids/21/ HTTP/1.1" 200 17945
+INFO 2025-08-18 19:38:43,697 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:43,698 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:43,699 basehttp 11489 6157053952 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+ERROR 2025-08-18 19:38:57,367 project_views 11489 6123401216 Error saving template for project 21: UNIQUE constraint failed: pages_templatetask.template_row_header_id, pages_templatetask.template_column_header_id, pages_templatetask.order
+INFO 2025-08-18 19:38:57,369 basehttp 11489 6123401216 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:38:57,379 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4831
+INFO 2025-08-18 19:38:57,400 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:57,401 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:38:59,545 project_views_functions 11489 6140227584 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 19:38:59,547 basehttp 11489 6140227584 "POST /templates/9/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:38:59,570 basehttp 11489 6140227584 "GET /grids/108/ HTTP/1.1" 200 13863
+INFO 2025-08-18 19:38:59,580 basehttp 11489 6140227584 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:10,005 basehttp 11489 6123401216 "GET /grids/108/delete/ HTTP/1.1" 200 1130
+INFO 2025-08-18 19:39:11,022 basehttp 11489 6123401216 "POST /grids/108/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:39:11,037 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4748
+INFO 2025-08-18 19:39:11,059 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:11,060 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:14,698 basehttp 11489 6140227584 "GET /grids/106/delete/ HTTP/1.1" 200 3410
+INFO 2025-08-18 19:39:15,423 basehttp 11489 6140227584 "POST /grids/106/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:39:15,429 basehttp 11489 6140227584 "GET /grids/ HTTP/1.1" 200 4744
+INFO 2025-08-18 19:39:16,332 basehttp 11489 6123401216 "GET /grids/21/ HTTP/1.1" 200 17834
+INFO 2025-08-18 19:39:16,342 basehttp 11489 6123401216 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+ERROR 2025-08-18 19:39:21,643 project_views 11489 6123401216 Error saving template for project 21: UNIQUE constraint failed: pages_templatetask.template_row_header_id, pages_templatetask.template_column_header_id, pages_templatetask.order
+INFO 2025-08-18 19:39:21,644 basehttp 11489 6123401216 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:39:21,654 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4766
+INFO 2025-08-18 19:39:21,675 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:21,676 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:25,277 project_views_functions 11489 6140227584 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 19:39:25,279 basehttp 11489 6140227584 "POST /templates/9/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:39:25,321 basehttp 11489 6140227584 "GET /grids/109/ HTTP/1.1" 200 13825
+INFO 2025-08-18 19:39:25,328 basehttp 11489 6140227584 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:30,425 basehttp 11489 6123401216 "GET /grids/109/delete/ HTTP/1.1" 200 1108
+INFO 2025-08-18 19:39:31,720 basehttp 11489 6123401216 "POST /grids/109/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:39:31,735 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4766
+INFO 2025-08-18 19:39:31,756 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:39:31,757 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:40:45,095 basehttp 11489 6123401216 "GET /templates/10/edit/ HTTP/1.1" 200 1086
+INFO 2025-08-18 19:41:07,877 project_views_functions 11489 6123401216 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 19:41:07,878 basehttp 11489 6123401216 "POST /templates/10/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:41:07,898 basehttp 11489 6123401216 "GET /grids/110/ HTTP/1.1" 200 13813
+INFO 2025-08-18 19:41:07,912 basehttp 11489 6140227584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:41:07,912 basehttp 11489 6123401216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:41:07,912 basehttp 11489 6157053952 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:41:10,975 basehttp 11489 6123401216 "GET /grids/110/delete/ HTTP/1.1" 200 1176
+INFO 2025-08-18 19:41:12,184 basehttp 11489 6123401216 "POST /grids/110/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:41:12,199 basehttp 11489 6123401216 "GET /grids/ HTTP/1.1" 200 4794
+INFO 2025-08-18 19:41:13,279 basehttp 11489 6123401216 "GET /templates/10/delete/ HTTP/1.1" 200 1116
+INFO 2025-08-18 19:42:07,567 autoreload 11489 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:42:07,856 autoreload 11609 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:42:16,099 autoreload 11609 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:42:16,361 autoreload 11622 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:42:25,620 autoreload 11622 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:42:25,863 autoreload 11633 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:43:14,734 autoreload 11633 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:43:15,156 autoreload 11667 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:44:32,292 autoreload 12108 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:44:40,288 basehttp 12108 6192558080 "GET /grids/ HTTP/1.1" 200 4791
+INFO 2025-08-18 19:44:40,306 basehttp 12108 6209384448 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 19:44:40,307 basehttp 12108 6192558080 "GET /static/css/output.css HTTP/1.1" 200 73837
+INFO 2025-08-18 19:44:42,905 project_views_functions 12108 6192558080 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 19:44:42,907 basehttp 12108 6192558080 "POST /templates/10/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:44:42,933 basehttp 12108 6192558080 "GET /grids/111/ HTTP/1.1" 200 13851
+INFO 2025-08-18 19:44:42,946 basehttp 12108 6192558080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:44:42,946 basehttp 12108 6209384448 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:44:42,947 basehttp 12108 6226210816 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 19:44:57,808 basehttp 12108 6192558080 "GET /grids/111/delete/ HTTP/1.1" 200 1162
+INFO 2025-08-18 19:44:58,771 basehttp 12108 6192558080 "POST /grids/111/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:44:58,785 basehttp 12108 6192558080 "GET /grids/ HTTP/1.1" 200 4813
+INFO 2025-08-18 19:44:58,809 basehttp 12108 6209384448 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:44:58,809 basehttp 12108 6192558080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:00,613 basehttp 12108 6192558080 "GET /templates/9/delete/ HTTP/1.1" 200 1110
+INFO 2025-08-18 19:45:01,583 project_views_functions 12108 6192558080 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 19:45:01,584 basehttp 12108 6192558080 "POST /templates/9/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:45:01,599 basehttp 12108 6192558080 "GET /grids/ HTTP/1.1" 200 4725
+INFO 2025-08-18 19:45:02,544 basehttp 12108 6192558080 "GET /templates/10/delete/ HTTP/1.1" 200 1112
+INFO 2025-08-18 19:45:03,399 project_views_functions 12108 6192558080 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 19:45:03,401 basehttp 12108 6192558080 "POST /templates/10/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:45:03,414 basehttp 12108 6192558080 "GET /grids/ HTTP/1.1" 200 4142
+INFO 2025-08-18 19:45:03,436 basehttp 12108 6209384448 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:03,436 basehttp 12108 6192558080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:04,582 basehttp 12108 6192558080 "GET /grids/21/ HTTP/1.1" 200 17774
+INFO 2025-08-18 19:45:04,595 basehttp 12108 6192558080 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+ERROR 2025-08-18 19:45:09,345 project_views 12108 6192558080 Error saving template for project 21: UNIQUE constraint failed: pages_templatetask.template_row_header_id, pages_templatetask.template_column_header_id, pages_templatetask.order
+INFO 2025-08-18 19:45:09,347 basehttp 12108 6192558080 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:45:09,358 basehttp 12108 6192558080 "GET /grids/ HTTP/1.1" 200 4704
+INFO 2025-08-18 19:45:09,381 basehttp 12108 6192558080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:09,381 basehttp 12108 6209384448 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:10,867 project_views_functions 12108 6209384448 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 19:45:10,868 basehttp 12108 6209384448 "POST /templates/11/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:45:10,890 basehttp 12108 6209384448 "GET /grids/112/ HTTP/1.1" 200 13829
+INFO 2025-08-18 19:45:10,903 basehttp 12108 6209384448 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:22,802 basehttp 12108 6192558080 "GET /grids/112/delete/ HTTP/1.1" 200 1167
+INFO 2025-08-18 19:45:24,171 basehttp 12108 6192558080 "POST /grids/112/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:45:24,184 basehttp 12108 6192558080 "GET /grids/ HTTP/1.1" 200 4682
+INFO 2025-08-18 19:45:24,206 basehttp 12108 6209384448 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:24,206 basehttp 12108 6192558080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:45:25,752 basehttp 12108 6192558080 "GET /templates/11/delete/ HTTP/1.1" 200 1114
+INFO 2025-08-18 19:45:28,296 basehttp 12108 6192558080 "GET /templates/11/edit/ HTTP/1.1" 200 1107
+INFO 2025-08-18 19:47:09,401 autoreload 12108 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:47:09,705 autoreload 12189 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:47:29,151 autoreload 12189 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:47:29,392 autoreload 12198 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:47:42,743 autoreload 12198 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:47:42,919 autoreload 12205 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:47:53,184 autoreload 12205 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:47:53,472 autoreload 12214 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:48:08,866 autoreload 12214 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:48:09,157 autoreload 12260 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:48:22,495 autoreload 12260 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:48:22,753 autoreload 12268 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:48:38,100 autoreload 12268 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:48:38,301 autoreload 12277 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:49:56,473 autoreload 12610 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:49:59,752 basehttp 12610 6194130944 "GET /grids/ HTTP/1.1" 200 4730
+INFO 2025-08-18 19:49:59,768 basehttp 12610 6194130944 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:49:59,771 basehttp 12610 6210957312 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-18 19:50:04,363 basehttp 12610 6210957312 "GET /templates/11/delete/ HTTP/1.1" 200 1103
+INFO 2025-08-18 19:50:05,038 project_views_functions 12610 6210957312 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 19:50:05,041 basehttp 12610 6210957312 "POST /templates/11/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:50:05,055 basehttp 12610 6210957312 "GET /grids/ HTTP/1.1" 200 4192
+INFO 2025-08-18 19:50:05,066 basehttp 12610 6210957312 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:50:05,724 basehttp 12610 6210957312 "GET /grids/21/ HTTP/1.1" 200 17809
+INFO 2025-08-18 19:50:05,742 basehttp 12610 6210957312 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-18 19:50:11,888 project_views 12610 6210957312 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:50:11,892 project_views 12610 6210957312 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:50:11,894 project_views 12610 6210957312 Created template task: Prepare "Why Deals?" in PwC x Interview
+ERROR 2025-08-18 19:50:11,895 project_views 12610 6210957312 Error saving template for project 21: UNIQUE constraint failed: pages_templatetask.template_row_header_id, pages_templatetask.template_column_header_id, pages_templatetask.order
+INFO 2025-08-18 19:50:11,897 basehttp 12610 6210957312 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:50:11,908 basehttp 12610 6210957312 "GET /grids/ HTTP/1.1" 200 4689
+INFO 2025-08-18 19:50:11,917 basehttp 12610 6210957312 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:50:13,781 project_views_functions 12610 6210957312 User None created project from template: Accounts - 18th August 2025: Accounts - 18th August 2025
+INFO 2025-08-18 19:50:13,782 basehttp 12610 6210957312 "POST /templates/12/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:50:13,803 basehttp 12610 6210957312 "GET /grids/113/ HTTP/1.1" 200 13846
+INFO 2025-08-18 19:50:13,825 basehttp 12610 6194130944 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:50:13,825 basehttp 12610 6210957312 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:50:37,973 basehttp 12610 6210957312 "GET /grids/113/delete/ HTTP/1.1" 200 1106
+INFO 2025-08-18 19:50:39,050 basehttp 12610 6210957312 "POST /grids/113/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:50:39,059 basehttp 12610 6210957312 "GET /grids/ HTTP/1.1" 200 4720
+INFO 2025-08-18 19:50:39,071 basehttp 12610 6210957312 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:50:39,072 basehttp 12610 6194130944 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:50:40,562 basehttp 12610 6194130944 "GET /templates/12/delete/ HTTP/1.1" 200 1108
+INFO 2025-08-18 19:50:41,270 project_views_functions 12610 6194130944 User None deleted template: Accounts - 18th August 2025: N/A
+INFO 2025-08-18 19:50:41,271 basehttp 12610 6194130944 "POST /templates/12/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:50:41,281 basehttp 12610 6194130944 "GET /grids/ HTTP/1.1" 200 4138
+INFO 2025-08-18 19:51:06,859 autoreload 12610 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:51:07,155 autoreload 12648 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:51:20,474 autoreload 12648 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:51:20,739 autoreload 12666 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:51:39,170 autoreload 12666 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:51:39,512 autoreload 12674 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:52:01,793 basehttp 12674 6170800128 "GET /grids/21/ HTTP/1.1" 200 17796
+INFO 2025-08-18 19:52:01,808 basehttp 12674 6204452864 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:52:01,808 basehttp 12674 6170800128 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:52:01,808 basehttp 12674 6187626496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:52:06,460 project_views 12674 6187626496 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:52:06,464 project_views 12674 6187626496 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:52:06,466 project_views 12674 6187626496 Created template task: Prepare "Why Deals?" in PwC x Interview
+ERROR 2025-08-18 19:52:06,467 project_views 12674 6187626496 Error saving template for project 21: UNIQUE constraint failed: pages_templatetask.template_row_header_id, pages_templatetask.template_column_header_id, pages_templatetask.order
+INFO 2025-08-18 19:52:06,468 basehttp 12674 6187626496 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:52:06,479 basehttp 12674 6187626496 "GET /grids/ HTTP/1.1" 200 4728
+INFO 2025-08-18 19:52:31,142 project_views 12674 6187626496 Creating project from template with 2 template tasks
+INFO 2025-08-18 19:52:31,144 project_views 12674 6187626496 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:52:31,144 project_views 12674 6187626496 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 19:52:31,144 project_views 12674 6187626496 Project created with 2 tasks out of 2 template tasks
+INFO 2025-08-18 19:52:31,145 project_views_functions 12674 6187626496 User None created project from template: Accounts - 18th August 2025: Accounts - 18th August 2025
+INFO 2025-08-18 19:52:31,145 basehttp 12674 6187626496 "POST /templates/13/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:52:31,161 basehttp 12674 6187626496 "GET /grids/114/ HTTP/1.1" 200 13797
+INFO 2025-08-18 19:52:31,174 basehttp 12674 6170800128 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:52:31,174 basehttp 12674 6187626496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:52:51,958 autoreload 12674 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:52:52,251 autoreload 12727 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:53:08,617 autoreload 12727 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:53:08,869 autoreload 12750 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:53:14,405 basehttp 12750 6190493696 "GET /grids/114/delete/ HTTP/1.1" 200 1133
+INFO 2025-08-18 19:53:15,378 basehttp 12750 6190493696 "POST /grids/114/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:15,398 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4731
+INFO 2025-08-18 19:53:15,423 basehttp 12750 6190493696 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:53:15,423 basehttp 12750 6207320064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:53:16,580 basehttp 12750 6207320064 "GET /templates/13/delete/ HTTP/1.1" 200 1100
+INFO 2025-08-18 19:53:17,214 project_views_functions 12750 6207320064 User None deleted template: Accounts - 18th August 2025: N/A
+INFO 2025-08-18 19:53:17,215 basehttp 12750 6207320064 "POST /templates/13/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:17,222 basehttp 12750 6207320064 "GET /grids/ HTTP/1.1" 200 4213
+INFO 2025-08-18 19:53:18,104 basehttp 12750 6207320064 "GET /grids/21/ HTTP/1.1" 200 17846
+INFO 2025-08-18 19:53:18,126 basehttp 12750 6207320064 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:53:23,131 project_views 12750 6207320064 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:53:23,135 project_views 12750 6207320064 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 0
+INFO 2025-08-18 19:53:23,137 project_views 12750 6207320064 Created template task: Prepare "Why Deals?" in PwC x Interview with order 0
+INFO 2025-08-18 19:53:23,138 project_views 12750 6207320064 Created template task: Prepare "Why PwC?" in PwC x Interview with order 1
+INFO 2025-08-18 19:53:23,140 project_views 12750 6207320064 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 0
+INFO 2025-08-18 19:53:23,141 project_views 12750 6207320064 Created template task: Find out when applications open in BDO x Research and Networking with order 0
+INFO 2025-08-18 19:53:23,143 project_views 12750 6207320064 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 0
+INFO 2025-08-18 19:53:23,144 project_views 12750 6207320064 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 0
+INFO 2025-08-18 19:53:23,145 project_views 12750 6207320064 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 0
+INFO 2025-08-18 19:53:23,146 project_views 12750 6207320064 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 1
+INFO 2025-08-18 19:53:23,147 project_views 12750 6207320064 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 1
+INFO 2025-08-18 19:53:23,149 project_views 12750 6207320064 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 0
+INFO 2025-08-18 19:53:23,150 project_views 12750 6207320064 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 0
+INFO 2025-08-18 19:53:23,151 project_views 12750 6207320064 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 0
+INFO 2025-08-18 19:53:23,152 project_views 12750 6207320064 Created template task: Find out application deadline in PwC x Application Preparation with order 1
+INFO 2025-08-18 19:53:23,153 project_views 12750 6207320064 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 0
+INFO 2025-08-18 19:53:23,154 project_views 12750 6207320064 Created template task: Research their values in EY x Research and Networking with order 0
+INFO 2025-08-18 19:53:23,155 project_views 12750 6207320064 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 0
+INFO 2025-08-18 19:53:23,156 project_views 12750 6207320064 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 0
+INFO 2025-08-18 19:53:23,157 project_views 12750 6207320064 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 1
+INFO 2025-08-18 19:53:23,158 project_views 12750 6207320064 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 1
+INFO 2025-08-18 19:53:23,159 project_views 12750 6207320064 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 0
+INFO 2025-08-18 19:53:23,160 project_views 12750 6207320064 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 1
+INFO 2025-08-18 19:53:23,161 project_views 12750 6207320064 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 19:53:23,162 project_views 12750 6207320064 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 19:53:23,162 project_views 12750 6207320064 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 19:53:23,162 project_views_functions 12750 6207320064 User None saved project as template: Accounts - 18th August 2025: Accounting
+INFO 2025-08-18 19:53:23,163 basehttp 12750 6207320064 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:23,170 basehttp 12750 6207320064 "GET /grids/ HTTP/1.1" 200 4675
+INFO 2025-08-18 19:53:25,068 project_views 12750 6207320064 Creating project from template with 24 template tasks
+INFO 2025-08-18 19:53:25,071 project_views 12750 6207320064 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:53:25,072 project_views 12750 6207320064 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 19:53:25,073 project_views 12750 6207320064 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:53:25,074 project_views 12750 6207320064 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 19:53:25,075 project_views 12750 6207320064 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 19:53:25,076 project_views 12750 6207320064 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 19:53:25,077 project_views 12750 6207320064 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:53:25,078 project_views 12750 6207320064 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 19:53:25,078 project_views 12750 6207320064 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 19:53:25,079 project_views 12750 6207320064 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 19:53:25,080 project_views 12750 6207320064 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 19:53:25,081 project_views 12750 6207320064 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 19:53:25,082 project_views 12750 6207320064 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 19:53:25,083 project_views 12750 6207320064 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 19:53:25,084 project_views 12750 6207320064 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 19:53:25,085 project_views 12750 6207320064 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 19:53:25,085 project_views 12750 6207320064 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 19:53:25,086 project_views 12750 6207320064 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:53:25,087 project_views 12750 6207320064 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:53:25,088 project_views 12750 6207320064 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 19:53:25,089 project_views 12750 6207320064 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 19:53:25,089 project_views 12750 6207320064 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 19:53:25,090 project_views 12750 6207320064 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 19:53:25,091 project_views 12750 6207320064 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 19:53:25,091 project_views 12750 6207320064 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 19:53:25,091 project_views_functions 12750 6207320064 User None created project from template: Accounts - 18th August 2025: Accounts - 18th August 2025
+INFO 2025-08-18 19:53:25,092 basehttp 12750 6207320064 "POST /templates/14/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:25,116 basehttp 12750 6207320064 "GET /grids/115/ HTTP/1.1" 200 17888
+INFO 2025-08-18 19:53:32,844 basehttp 12750 6190493696 "GET /grids/115/delete/ HTTP/1.1" 200 1108
+INFO 2025-08-18 19:53:34,016 basehttp 12750 6190493696 "POST /grids/115/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:34,030 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4675
+INFO 2025-08-18 19:53:36,310 basehttp 12750 6190493696 "GET /templates/14/delete/ HTTP/1.1" 200 1168
+INFO 2025-08-18 19:53:37,052 project_views_functions 12750 6190493696 User None deleted template: Accounts - 18th August 2025: N/A
+INFO 2025-08-18 19:53:37,054 basehttp 12750 6190493696 "POST /templates/14/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:37,067 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4161
+INFO 2025-08-18 19:53:37,096 basehttp 12750 6190493696 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:53:38,758 basehttp 12750 6190493696 "GET /grids/15/ HTTP/1.1" 200 15516
+INFO 2025-08-18 19:53:38,772 basehttp 12750 6190493696 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:53:43,457 project_views_functions 12750 6190493696 User None saved project as template: Test - 18th August 2025: Student Planner
+INFO 2025-08-18 19:53:43,459 basehttp 12750 6190493696 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:43,471 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4725
+INFO 2025-08-18 19:53:44,701 project_views 12750 6190493696 Creating project from template with 0 template tasks
+INFO 2025-08-18 19:53:44,702 project_views 12750 6190493696 Project created with 0 tasks out of 0 template tasks
+INFO 2025-08-18 19:53:44,702 project_views_functions 12750 6190493696 User None created project from template: Test - 18th August 2025: Test - 18th August 2025
+INFO 2025-08-18 19:53:44,703 basehttp 12750 6190493696 "POST /templates/15/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:44,716 basehttp 12750 6190493696 "GET /grids/116/ HTTP/1.1" 200 12413
+INFO 2025-08-18 19:53:47,658 basehttp 12750 6190493696 "GET /grids/116/delete/ HTTP/1.1" 200 1105
+INFO 2025-08-18 19:53:49,049 basehttp 12750 6190493696 "POST /grids/116/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:49,063 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4708
+INFO 2025-08-18 19:53:50,678 basehttp 12750 6190493696 "GET /templates/15/delete/ HTTP/1.1" 200 1168
+INFO 2025-08-18 19:53:51,399 project_views_functions 12750 6190493696 User None deleted template: Test - 18th August 2025: N/A
+INFO 2025-08-18 19:53:51,401 basehttp 12750 6190493696 "POST /templates/15/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:51,414 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4150
+INFO 2025-08-18 19:53:52,908 basehttp 12750 6190493696 "GET /grids/15/ HTTP/1.1" 200 15444
+INFO 2025-08-18 19:53:57,786 project_views 12750 6190493696 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 19:53:57,789 project_views 12750 6190493696 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 0
+INFO 2025-08-18 19:53:57,790 project_views 12750 6190493696 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 19:53:57,791 project_views 12750 6190493696 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 0
+INFO 2025-08-18 19:53:57,793 project_views 12750 6190493696 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 19:53:57,794 project_views 12750 6190493696 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 0
+INFO 2025-08-18 19:53:57,795 project_views 12750 6190493696 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 19:53:57,796 project_views 12750 6190493696 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 0
+INFO 2025-08-18 19:53:57,797 project_views 12750 6190493696 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 1
+INFO 2025-08-18 19:53:57,799 project_views 12750 6190493696 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 0
+INFO 2025-08-18 19:53:57,801 project_views 12750 6190493696 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 1
+INFO 2025-08-18 19:53:57,802 project_views 12750 6190493696 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 0
+INFO 2025-08-18 19:53:57,804 project_views 12750 6190493696 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 1
+INFO 2025-08-18 19:53:57,805 project_views 12750 6190493696 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 1
+INFO 2025-08-18 19:53:57,805 project_views 12750 6190493696 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 19:53:57,805 project_views_functions 12750 6190493696 User None saved project as template: Tester - 18th August 2025: Student Planner
+INFO 2025-08-18 19:53:57,806 basehttp 12750 6190493696 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:57,819 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4723
+INFO 2025-08-18 19:53:59,733 project_views 12750 6190493696 Creating project from template with 13 template tasks
+INFO 2025-08-18 19:53:59,735 project_views 12750 6190493696 Created task: Dog in Weekly Tasks & Readi2ng x Economic History
+INFO 2025-08-18 19:53:59,736 project_views 12750 6190493696 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy
+INFO 2025-08-18 19:53:59,737 project_views 12750 6190493696 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics
+INFO 2025-08-18 19:53:59,737 project_views 12750 6190493696 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History
+INFO 2025-08-18 19:53:59,738 project_views 12750 6190493696 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy
+INFO 2025-08-18 19:53:59,739 project_views 12750 6190493696 Created task: Go over flashcards for week 2 in Exam Prep x Economic History
+INFO 2025-08-18 19:53:59,740 project_views 12750 6190493696 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy
+INFO 2025-08-18 19:53:59,740 project_views 12750 6190493696 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy
+INFO 2025-08-18 19:53:59,741 project_views 12750 6190493696 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History
+INFO 2025-08-18 19:53:59,742 project_views 12750 6190493696 Created task: Create flashcards for week 2 in Exam Prep x Economic History
+INFO 2025-08-18 19:53:59,742 project_views 12750 6190493696 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy
+INFO 2025-08-18 19:53:59,743 project_views 12750 6190493696 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History
+INFO 2025-08-18 19:53:59,743 project_views 12750 6190493696 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy
+INFO 2025-08-18 19:53:59,744 project_views 12750 6190493696 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 19:53:59,744 project_views_functions 12750 6190493696 User None created project from template: Tester - 18th August 2025: Tester - 18th August 2025
+INFO 2025-08-18 19:53:59,745 basehttp 12750 6190493696 "POST /templates/16/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:53:59,762 basehttp 12750 6190493696 "GET /grids/117/ HTTP/1.1" 200 15515
+INFO 2025-08-18 19:53:59,779 basehttp 12750 6190493696 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:54:04,510 basehttp 12750 6190493696 "GET /grids/117/delete/ HTTP/1.1" 200 1103
+INFO 2025-08-18 19:54:05,607 basehttp 12750 6190493696 "POST /grids/117/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:54:05,620 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4759
+INFO 2025-08-18 19:54:07,959 basehttp 12750 6190493696 "GET /grids/15/ HTTP/1.1" 200 15447
+INFO 2025-08-18 19:54:07,980 basehttp 12750 6190493696 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:54:27,240 project_views 12750 6190493696 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-18 19:54:27,244 project_views 12750 6190493696 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 0
+INFO 2025-08-18 19:54:27,246 project_views 12750 6190493696 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-18 19:54:27,248 project_views 12750 6190493696 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics with order 0
+INFO 2025-08-18 19:54:27,250 project_views 12750 6190493696 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-18 19:54:27,252 project_views 12750 6190493696 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 0
+INFO 2025-08-18 19:54:27,253 project_views 12750 6190493696 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-18 19:54:27,254 project_views 12750 6190493696 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 0
+INFO 2025-08-18 19:54:27,256 project_views 12750 6190493696 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 1
+INFO 2025-08-18 19:54:27,257 project_views 12750 6190493696 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 0
+INFO 2025-08-18 19:54:27,258 project_views 12750 6190493696 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 1
+INFO 2025-08-18 19:54:27,259 project_views 12750 6190493696 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 0
+INFO 2025-08-18 19:54:27,261 project_views 12750 6190493696 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 1
+INFO 2025-08-18 19:54:27,262 project_views 12750 6190493696 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 1
+INFO 2025-08-18 19:54:27,262 project_views 12750 6190493696 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-18 19:54:27,262 project_views_functions 12750 6190493696 User None saved project as template: Student Planner Test - 18th August 2025: Student Planner
+INFO 2025-08-18 19:54:27,263 basehttp 12750 6190493696 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:54:27,272 basehttp 12750 6190493696 "GET /grids/ HTTP/1.1" 200 4821
+INFO 2025-08-18 19:54:27,283 basehttp 12750 6207320064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:54:27,284 basehttp 12750 6190493696 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:54:29,645 project_views 12750 6190493696 Creating project from template with 13 template tasks
+INFO 2025-08-18 19:54:29,648 project_views 12750 6190493696 Created task: Dog in Weekly Tasks & Readi2ng x Economic History
+INFO 2025-08-18 19:54:29,648 project_views 12750 6190493696 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy
+INFO 2025-08-18 19:54:29,649 project_views 12750 6190493696 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Statistical Methods for Economics
+INFO 2025-08-18 19:54:29,650 project_views 12750 6190493696 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History
+INFO 2025-08-18 19:54:29,651 project_views 12750 6190493696 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy
+INFO 2025-08-18 19:54:29,652 project_views 12750 6190493696 Created task: Go over flashcards for week 2 in Exam Prep x Economic History
+INFO 2025-08-18 19:54:29,653 project_views 12750 6190493696 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy
+INFO 2025-08-18 19:54:29,654 project_views 12750 6190493696 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy
+INFO 2025-08-18 19:54:29,655 project_views 12750 6190493696 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History
+INFO 2025-08-18 19:54:29,655 project_views 12750 6190493696 Created task: Create flashcards for week 2 in Exam Prep x Economic History
+INFO 2025-08-18 19:54:29,656 project_views 12750 6190493696 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy
+INFO 2025-08-18 19:54:29,657 project_views 12750 6190493696 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History
+INFO 2025-08-18 19:54:29,658 project_views 12750 6190493696 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy
+INFO 2025-08-18 19:54:29,658 project_views 12750 6190493696 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-18 19:54:29,658 project_views_functions 12750 6190493696 User None created project from template: Student Planner Test - 18th August 2025: Student Planner Test - 18th August 2025
+INFO 2025-08-18 19:54:29,659 basehttp 12750 6190493696 "POST /templates/17/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:54:29,680 basehttp 12750 6190493696 "GET /grids/118/ HTTP/1.1" 200 15455
+INFO 2025-08-18 19:54:49,325 basehttp 12750 6190493696 "GET /grids/15/ HTTP/1.1" 200 15502
+INFO 2025-08-18 19:54:49,343 basehttp 12750 6190493696 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:54:54,658 basehttp 12750 6190493696 "GET /grids/118/ HTTP/1.1" 200 15427
+INFO 2025-08-18 19:54:54,682 basehttp 12750 6190493696 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:54:58,376 basehttp 12750 6190493696 "GET /grids/15/ HTTP/1.1" 200 15561
+INFO 2025-08-18 19:55:01,236 autoreload 12750 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:55:01,623 autoreload 12908 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:55:04,791 autoreload 12908 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:55:04,994 autoreload 12918 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:55:18,677 basehttp 12918 6135050240 "GET /grids/21/ HTTP/1.1" 200 17895
+INFO 2025-08-18 19:55:24,834 project_views 12918 6135050240 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:55:24,837 project_views 12918 6135050240 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 19:55:24,839 project_views 12918 6135050240 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 19:55:24,840 project_views 12918 6135050240 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 0
+INFO 2025-08-18 19:55:24,842 project_views 12918 6135050240 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 1
+INFO 2025-08-18 19:55:24,843 project_views 12918 6135050240 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 0
+INFO 2025-08-18 19:55:24,844 project_views 12918 6135050240 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 0
+INFO 2025-08-18 19:55:24,846 project_views 12918 6135050240 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 0
+INFO 2025-08-18 19:55:24,847 project_views 12918 6135050240 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 1
+INFO 2025-08-18 19:55:24,848 project_views 12918 6135050240 Created template task: Research their values in EY x Research and Networking with order 1
+INFO 2025-08-18 19:55:24,850 project_views 12918 6135050240 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 0
+INFO 2025-08-18 19:55:24,851 project_views 12918 6135050240 Created template task: Find out application deadline in PwC x Application Preparation with order 0
+INFO 2025-08-18 19:55:24,852 project_views 12918 6135050240 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 0
+INFO 2025-08-18 19:55:24,854 project_views 12918 6135050240 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 0
+INFO 2025-08-18 19:55:24,855 project_views 12918 6135050240 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 0
+INFO 2025-08-18 19:55:24,856 project_views 12918 6135050240 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 0
+INFO 2025-08-18 19:55:24,857 project_views 12918 6135050240 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 0
+INFO 2025-08-18 19:55:24,858 project_views 12918 6135050240 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 1
+INFO 2025-08-18 19:55:24,859 project_views 12918 6135050240 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 0
+INFO 2025-08-18 19:55:24,860 project_views 12918 6135050240 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 0
+INFO 2025-08-18 19:55:24,861 project_views 12918 6135050240 Created template task: Find out when applications open in BDO x Research and Networking with order 0
+INFO 2025-08-18 19:55:24,862 project_views 12918 6135050240 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 1
+INFO 2025-08-18 19:55:24,863 project_views 12918 6135050240 Created template task: Prepare "Why PwC?" in PwC x Interview with order 0
+INFO 2025-08-18 19:55:24,864 project_views 12918 6135050240 Created template task: Prepare "Why Deals?" in PwC x Interview with order 1
+INFO 2025-08-18 19:55:24,865 project_views 12918 6135050240 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 1
+INFO 2025-08-18 19:55:24,866 project_views 12918 6135050240 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 19:55:24,866 project_views_functions 12918 6135050240 User None saved project as template: Accounting Test - 18th August 2025: Accounting
+INFO 2025-08-18 19:55:24,866 basehttp 12918 6135050240 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:55:24,876 basehttp 12918 6135050240 "GET /grids/ HTTP/1.1" 200 4941
+INFO 2025-08-18 19:55:24,888 basehttp 12918 6135050240 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:55:26,614 project_views 12918 6135050240 Creating project from template with 24 template tasks
+INFO 2025-08-18 19:55:26,618 project_views 12918 6135050240 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 19:55:26,619 project_views 12918 6135050240 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 19:55:26,620 project_views 12918 6135050240 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 19:55:26,621 project_views 12918 6135050240 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 19:55:26,622 project_views 12918 6135050240 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 19:55:26,623 project_views 12918 6135050240 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 19:55:26,624 project_views 12918 6135050240 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 19:55:26,625 project_views 12918 6135050240 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 19:55:26,625 project_views 12918 6135050240 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 19:55:26,626 project_views 12918 6135050240 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 19:55:26,627 project_views 12918 6135050240 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:55:26,628 project_views 12918 6135050240 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:55:26,628 project_views 12918 6135050240 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 19:55:26,629 project_views 12918 6135050240 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 19:55:26,630 project_views 12918 6135050240 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 19:55:26,631 project_views 12918 6135050240 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 19:55:26,632 project_views 12918 6135050240 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 19:55:26,633 project_views 12918 6135050240 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 19:55:26,633 project_views 12918 6135050240 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 19:55:26,634 project_views 12918 6135050240 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 19:55:26,635 project_views 12918 6135050240 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:55:26,635 project_views 12918 6135050240 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:55:26,636 project_views 12918 6135050240 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 19:55:26,637 project_views 12918 6135050240 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:55:26,637 project_views 12918 6135050240 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 19:55:26,637 project_views_functions 12918 6135050240 User None created project from template: Accounting Test - 18th August 2025: Accounting Test - 18th August 2025
+INFO 2025-08-18 19:55:26,638 basehttp 12918 6135050240 "POST /templates/18/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:55:26,662 basehttp 12918 6135050240 "GET /grids/119/ HTTP/1.1" 200 18005
+INFO 2025-08-18 19:55:26,686 basehttp 12918 6135050240 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:55:31,506 basehttp 12918 6135050240 "GET /grids/21/ HTTP/1.1" 200 17903
+INFO 2025-08-18 19:55:31,518 basehttp 12918 6135050240 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:55:54,053 autoreload 12918 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:55:54,346 autoreload 12946 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:56:04,632 autoreload 12946 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:56:04,889 autoreload 12957 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:56:39,619 autoreload 12957 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:56:39,908 autoreload 12972 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:56:56,276 autoreload 12972 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:56:56,536 autoreload 13003 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:57:12,488 project_views 13003 6124072960 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:57:12,500 project_views 13003 6124072960 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 19:57:12,501 project_views 13003 6124072960 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 19:57:12,503 project_views 13003 6124072960 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 0
+INFO 2025-08-18 19:57:12,504 project_views 13003 6124072960 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 1
+INFO 2025-08-18 19:57:12,504 project_views 13003 6124072960 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 0
+INFO 2025-08-18 19:57:12,505 project_views 13003 6124072960 Created template task: Research their values in EY x Research and Networking with order 1
+INFO 2025-08-18 19:57:12,506 project_views 13003 6124072960 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 0
+INFO 2025-08-18 19:57:12,506 project_views 13003 6124072960 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 1
+INFO 2025-08-18 19:57:12,507 project_views 13003 6124072960 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 0
+INFO 2025-08-18 19:57:12,508 project_views 13003 6124072960 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 0
+INFO 2025-08-18 19:57:12,508 project_views 13003 6124072960 Created template task: Find out application deadline in PwC x Application Preparation with order 0
+INFO 2025-08-18 19:57:12,509 project_views 13003 6124072960 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 1
+INFO 2025-08-18 19:57:12,509 project_views 13003 6124072960 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 0
+INFO 2025-08-18 19:57:12,510 project_views 13003 6124072960 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 0
+INFO 2025-08-18 19:57:12,511 project_views 13003 6124072960 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 0
+INFO 2025-08-18 19:57:12,511 project_views 13003 6124072960 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:12,512 project_views 13003 6124072960 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 1
+INFO 2025-08-18 19:57:12,512 project_views 13003 6124072960 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:12,513 project_views 13003 6124072960 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 1
+INFO 2025-08-18 19:57:12,513 project_views 13003 6124072960 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:12,514 project_views 13003 6124072960 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:12,514 project_views 13003 6124072960 Created template task: Find out when applications open in BDO x Research and Networking with order 0
+INFO 2025-08-18 19:57:12,515 project_views 13003 6124072960 Created template task: Prepare "Why PwC?" in PwC x Interview with order 0
+INFO 2025-08-18 19:57:12,516 project_views 13003 6124072960 Created template task: Prepare "Why Deals?" in PwC x Interview with order 1
+INFO 2025-08-18 19:57:12,517 project_views 13003 6124072960 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 19:57:12,517 project_views_functions 13003 6124072960 User None saved project as template: Accounting test - 18th August 2025: Accounting
+INFO 2025-08-18 19:57:12,522 basehttp 13003 6124072960 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:12,537 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 5519
+INFO 2025-08-18 19:57:12,566 basehttp 13003 6140899328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:57:12,566 basehttp 13003 6124072960 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:57:17,031 basehttp 13003 6124072960 "GET /templates/18/delete/ HTTP/1.1" 200 1124
+INFO 2025-08-18 19:57:18,153 project_views_functions 13003 6124072960 User None deleted template: Accounting Test - 18th August 2025: N/A
+INFO 2025-08-18 19:57:18,155 basehttp 13003 6124072960 "POST /templates/18/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:18,171 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 5429
+INFO 2025-08-18 19:57:20,191 basehttp 13003 6124072960 "GET /templates/19/delete/ HTTP/1.1" 200 1193
+INFO 2025-08-18 19:57:20,885 project_views_functions 13003 6124072960 User None deleted template: Accounting test - 18th August 2025: N/A
+INFO 2025-08-18 19:57:20,888 basehttp 13003 6124072960 "POST /templates/19/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:20,905 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4931
+INFO 2025-08-18 19:57:22,545 basehttp 13003 6124072960 "GET /templates/17/delete/ HTTP/1.1" 200 1165
+INFO 2025-08-18 19:57:23,248 project_views_functions 13003 6124072960 User None deleted template: Student Planner Test - 18th August 2025: N/A
+INFO 2025-08-18 19:57:23,249 basehttp 13003 6124072960 "POST /templates/17/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:23,265 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4790
+INFO 2025-08-18 19:57:24,544 basehttp 13003 6124072960 "GET /templates/16/delete/ HTTP/1.1" 200 1088
+INFO 2025-08-18 19:57:25,535 project_views_functions 13003 6124072960 User None deleted template: Tester - 18th August 2025: N/A
+INFO 2025-08-18 19:57:25,537 basehttp 13003 6124072960 "POST /templates/16/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:25,554 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4323
+INFO 2025-08-18 19:57:26,589 basehttp 13003 6124072960 "GET /grids/21/ HTTP/1.1" 200 17835
+INFO 2025-08-18 19:57:26,602 basehttp 13003 6124072960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:57:33,905 project_views 13003 6124072960 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:57:33,921 project_views 13003 6124072960 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 0
+INFO 2025-08-18 19:57:33,922 project_views 13003 6124072960 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 1
+INFO 2025-08-18 19:57:33,923 project_views 13003 6124072960 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 0
+INFO 2025-08-18 19:57:33,923 project_views 13003 6124072960 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 1
+INFO 2025-08-18 19:57:33,924 project_views 13003 6124072960 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 0
+INFO 2025-08-18 19:57:33,925 project_views 13003 6124072960 Created template task: Research their values in EY x Research and Networking with order 1
+INFO 2025-08-18 19:57:33,926 project_views 13003 6124072960 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 0
+INFO 2025-08-18 19:57:33,926 project_views 13003 6124072960 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 1
+INFO 2025-08-18 19:57:33,927 project_views 13003 6124072960 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 0
+INFO 2025-08-18 19:57:33,928 project_views 13003 6124072960 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 0
+INFO 2025-08-18 19:57:33,929 project_views 13003 6124072960 Created template task: Find out application deadline in PwC x Application Preparation with order 0
+INFO 2025-08-18 19:57:33,929 project_views 13003 6124072960 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 1
+INFO 2025-08-18 19:57:33,930 project_views 13003 6124072960 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 0
+INFO 2025-08-18 19:57:33,930 project_views 13003 6124072960 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 0
+INFO 2025-08-18 19:57:33,931 project_views 13003 6124072960 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 0
+INFO 2025-08-18 19:57:33,932 project_views 13003 6124072960 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:33,932 project_views 13003 6124072960 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 1
+INFO 2025-08-18 19:57:33,933 project_views 13003 6124072960 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:33,934 project_views 13003 6124072960 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 1
+INFO 2025-08-18 19:57:33,934 project_views 13003 6124072960 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:33,935 project_views 13003 6124072960 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 0
+INFO 2025-08-18 19:57:33,935 project_views 13003 6124072960 Created template task: Find out when applications open in BDO x Research and Networking with order 0
+INFO 2025-08-18 19:57:33,936 project_views 13003 6124072960 Created template task: Prepare "Why PwC?" in PwC x Interview with order 0
+INFO 2025-08-18 19:57:33,937 project_views 13003 6124072960 Created template task: Prepare "Why Deals?" in PwC x Interview with order 1
+INFO 2025-08-18 19:57:33,937 project_views 13003 6124072960 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 19:57:33,937 project_views_functions 13003 6124072960 User None saved project as template: Test Accounting - 18th August 2025: Accounting
+INFO 2025-08-18 19:57:33,938 basehttp 13003 6124072960 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:33,946 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4873
+INFO 2025-08-18 19:57:36,382 project_views 13003 6124072960 Creating project from template with 24 template tasks
+INFO 2025-08-18 19:57:36,386 project_views 13003 6124072960 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 19:57:36,387 project_views 13003 6124072960 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 19:57:36,388 project_views 13003 6124072960 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 19:57:36,389 project_views 13003 6124072960 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 19:57:36,390 project_views 13003 6124072960 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 19:57:36,391 project_views 13003 6124072960 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 19:57:36,392 project_views 13003 6124072960 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 19:57:36,393 project_views 13003 6124072960 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 19:57:36,394 project_views 13003 6124072960 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 19:57:36,395 project_views 13003 6124072960 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 19:57:36,395 project_views 13003 6124072960 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:57:36,396 project_views 13003 6124072960 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:57:36,397 project_views 13003 6124072960 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 19:57:36,398 project_views 13003 6124072960 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 19:57:36,399 project_views 13003 6124072960 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 19:57:36,399 project_views 13003 6124072960 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 19:57:36,401 project_views 13003 6124072960 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 19:57:36,401 project_views 13003 6124072960 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 19:57:36,402 project_views 13003 6124072960 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 19:57:36,403 project_views 13003 6124072960 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 19:57:36,404 project_views 13003 6124072960 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:57:36,404 project_views 13003 6124072960 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:57:36,405 project_views 13003 6124072960 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:57:36,406 project_views 13003 6124072960 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 19:57:36,406 project_views 13003 6124072960 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 19:57:36,406 project_views_functions 13003 6124072960 User None created project from template: Test Accounting - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 19:57:36,407 basehttp 13003 6124072960 "POST /templates/20/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:36,431 basehttp 13003 6124072960 "GET /grids/120/ HTTP/1.1" 200 17941
+INFO 2025-08-18 19:57:41,379 basehttp 13003 6124072960 "GET /grids/21/ HTTP/1.1" 200 17911
+INFO 2025-08-18 19:57:45,950 basehttp 13003 6124072960 "GET /grids/120/ HTTP/1.1" 200 17919
+INFO 2025-08-18 19:57:53,048 basehttp 13003 6124072960 "GET /grids/119/ HTTP/1.1" 200 17984
+INFO 2025-08-18 19:57:56,591 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4911
+INFO 2025-08-18 19:57:56,608 basehttp 13003 6124072960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:57:57,996 basehttp 13003 6124072960 "GET /grids/120/delete/ HTTP/1.1" 200 3410
+INFO 2025-08-18 19:57:58,775 basehttp 13003 6124072960 "POST /grids/120/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:57:58,790 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4862
+INFO 2025-08-18 19:58:00,480 basehttp 13003 6124072960 "GET /grids/119/delete/ HTTP/1.1" 200 3413
+INFO 2025-08-18 19:58:01,189 basehttp 13003 6124072960 "POST /grids/119/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:58:01,204 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4805
+INFO 2025-08-18 19:58:02,747 basehttp 13003 6124072960 "GET /grids/118/delete/ HTTP/1.1" 200 3451
+INFO 2025-08-18 19:58:03,519 basehttp 13003 6124072960 "POST /grids/118/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:58:03,535 basehttp 13003 6124072960 "GET /grids/ HTTP/1.1" 200 4702
+INFO 2025-08-18 19:58:05,484 project_views 13003 6124072960 Creating project from template with 24 template tasks
+INFO 2025-08-18 19:58:05,488 project_views 13003 6124072960 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 19:58:05,489 project_views 13003 6124072960 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 19:58:05,490 project_views 13003 6124072960 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 19:58:05,491 project_views 13003 6124072960 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 19:58:05,492 project_views 13003 6124072960 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 19:58:05,492 project_views 13003 6124072960 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 19:58:05,493 project_views 13003 6124072960 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 19:58:05,494 project_views 13003 6124072960 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 19:58:05,495 project_views 13003 6124072960 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 19:58:05,496 project_views 13003 6124072960 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 19:58:05,497 project_views 13003 6124072960 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:58:05,498 project_views 13003 6124072960 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:58:05,498 project_views 13003 6124072960 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 19:58:05,499 project_views 13003 6124072960 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 19:58:05,500 project_views 13003 6124072960 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 19:58:05,501 project_views 13003 6124072960 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 19:58:05,502 project_views 13003 6124072960 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 19:58:05,502 project_views 13003 6124072960 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 19:58:05,503 project_views 13003 6124072960 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 19:58:05,504 project_views 13003 6124072960 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 19:58:05,505 project_views 13003 6124072960 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:58:05,505 project_views 13003 6124072960 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:58:05,506 project_views 13003 6124072960 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:58:05,507 project_views 13003 6124072960 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 19:58:05,507 project_views 13003 6124072960 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 19:58:05,507 project_views_functions 13003 6124072960 User None created project from template: Test Accounting - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 19:58:05,508 basehttp 13003 6124072960 "POST /templates/20/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:58:05,531 basehttp 13003 6124072960 "GET /grids/121/ HTTP/1.1" 200 17995
+INFO 2025-08-18 19:58:12,343 basehttp 13003 6124072960 "GET /grids/21/ HTTP/1.1" 200 17810
+INFO 2025-08-18 19:58:12,365 basehttp 13003 6124072960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:58:58,035 autoreload 13003 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:58:58,332 autoreload 13120 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:59:12,697 autoreload 13120 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 19:59:13,047 autoreload 13133 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 19:59:26,221 basehttp 13133 6168080384 "GET /grids/ HTTP/1.1" 200 4752
+INFO 2025-08-18 19:59:26,246 basehttp 13133 6168080384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 19:59:26,247 basehttp 13133 6184906752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:59:28,250 basehttp 13133 6184906752 "GET /templates/20/delete/ HTTP/1.1" 200 1098
+INFO 2025-08-18 19:59:28,888 project_views_functions 13133 6184906752 User None deleted template: Test Accounting - 18th August 2025: N/A
+INFO 2025-08-18 19:59:28,890 basehttp 13133 6184906752 "POST /templates/20/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:59:28,904 basehttp 13133 6184906752 "GET /grids/ HTTP/1.1" 200 4277
+INFO 2025-08-18 19:59:29,982 basehttp 13133 6184906752 "GET /grids/121/delete/ HTTP/1.1" 200 3456
+INFO 2025-08-18 19:59:30,589 basehttp 13133 6184906752 "POST /grids/121/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:59:30,600 basehttp 13133 6184906752 "GET /grids/ HTTP/1.1" 200 4198
+INFO 2025-08-18 19:59:32,434 basehttp 13133 6184906752 "GET /grids/21/ HTTP/1.1" 200 17856
+INFO 2025-08-18 19:59:32,457 basehttp 13133 6184906752 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 19:59:40,590 project_views 13133 6184906752 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 19:59:40,594 project_views 13133 6184906752 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,596 project_views 13133 6184906752 Created template task: Find a campus networking event in Deloitte x Research and Networking with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,598 project_views 13133 6184906752 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,599 project_views 13133 6184906752 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,601 project_views 13133 6184906752 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,603 project_views 13133 6184906752 Created template task: Find a virtual event to attend in KPMG x Research and Networking with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,604 project_views 13133 6184906752 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,605 project_views 13133 6184906752 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,606 project_views 13133 6184906752 Created template task: Research their values in EY x Research and Networking with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,608 project_views 13133 6184906752 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,609 project_views 13133 6184906752 Created template task: Find out application deadline in PwC x Application Preparation with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,610 project_views 13133 6184906752 Created template task: Draft responses for the online application with an in EY x Application Preparation with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,611 project_views 13133 6184906752 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,613 project_views 13133 6184906752 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,614 project_views 13133 6184906752 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,615 project_views 13133 6184906752 Created template task: Practise numerical tests online in PwC x Assessments & Tests with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,616 project_views 13133 6184906752 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,617 project_views 13133 6184906752 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,618 project_views 13133 6184906752 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,620 project_views 13133 6184906752 Created template task: Find out when applications open in BDO x Research and Networking with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,621 project_views 13133 6184906752 Created template task: Complete online assessment in Deloitte x Assessments & Tests with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,622 project_views 13133 6184906752 Created template task: Prepare "Why PwC?" in PwC x Interview with original order 0, unique order 0
+INFO 2025-08-18 19:59:40,623 project_views 13133 6184906752 Created template task: Prepare "Why Deals?" in PwC x Interview with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,624 project_views 13133 6184906752 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with original order 0, unique order 1000
+INFO 2025-08-18 19:59:40,624 project_views 13133 6184906752 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 19:59:40,624 project_views_functions 13133 6184906752 User None saved project as template: Test Accounting - 18th August 2025: Accounting
+INFO 2025-08-18 19:59:40,625 basehttp 13133 6184906752 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:59:40,632 basehttp 13133 6184906752 "GET /grids/ HTTP/1.1" 200 4690
+INFO 2025-08-18 19:59:42,191 project_views 13133 6184906752 Creating project from template with 24 template tasks
+INFO 2025-08-18 19:59:42,194 project_views 13133 6184906752 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 19:59:42,195 project_views 13133 6184906752 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 19:59:42,195 project_views 13133 6184906752 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 19:59:42,196 project_views 13133 6184906752 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 19:59:42,197 project_views 13133 6184906752 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 19:59:42,198 project_views 13133 6184906752 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 19:59:42,198 project_views 13133 6184906752 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 19:59:42,199 project_views 13133 6184906752 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 19:59:42,200 project_views 13133 6184906752 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 19:59:42,201 project_views 13133 6184906752 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 19:59:42,201 project_views 13133 6184906752 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:59:42,202 project_views 13133 6184906752 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:59:42,203 project_views 13133 6184906752 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 19:59:42,203 project_views 13133 6184906752 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 19:59:42,204 project_views 13133 6184906752 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 19:59:42,204 project_views 13133 6184906752 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 19:59:42,205 project_views 13133 6184906752 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 19:59:42,206 project_views 13133 6184906752 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 19:59:42,206 project_views 13133 6184906752 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 19:59:42,207 project_views 13133 6184906752 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 19:59:42,208 project_views 13133 6184906752 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 19:59:42,208 project_views 13133 6184906752 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 19:59:42,209 project_views 13133 6184906752 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 19:59:42,210 project_views 13133 6184906752 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 19:59:42,210 project_views 13133 6184906752 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 19:59:42,210 project_views_functions 13133 6184906752 User None created project from template: Test Accounting - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 19:59:42,211 basehttp 13133 6184906752 "POST /templates/21/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 19:59:42,232 basehttp 13133 6184906752 "GET /grids/122/ HTTP/1.1" 200 17926
+INFO 2025-08-18 19:59:46,031 basehttp 13133 6184906752 "GET /grids/21/ HTTP/1.1" 200 17858
+INFO 2025-08-18 20:00:20,450 autoreload 13133 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:00:20,751 autoreload 13174 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:00:33,083 autoreload 13174 8693374720 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-18 20:00:33,312 autoreload 13180 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-18 20:02:00,262 basehttp 13180 6125219840 "GET /grids/122/ HTTP/1.1" 200 17943
+INFO 2025-08-18 20:02:00,291 basehttp 13180 6142046208 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-18 20:02:00,291 basehttp 13180 6158872576 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:02:00,292 basehttp 13180 6125219840 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-18 20:02:02,562 basehttp 13180 6158872576 "GET /grids/122/delete/ HTTP/1.1" 200 1097
+INFO 2025-08-18 20:02:03,807 basehttp 13180 6158872576 "POST /grids/122/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:02:03,824 basehttp 13180 6158872576 "GET /grids/ HTTP/1.1" 200 4755
+INFO 2025-08-18 20:02:10,430 basehttp 13180 6158872576 "GET /templates/21/delete/ HTTP/1.1" 200 1133
+INFO 2025-08-18 20:02:11,199 project_views_functions 13180 6158872576 User None deleted template: Test Accounting - 18th August 2025: N/A
+INFO 2025-08-18 20:02:11,201 basehttp 13180 6158872576 "POST /templates/21/delete/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:02:11,212 basehttp 13180 6158872576 "GET /grids/ HTTP/1.1" 200 4152
+INFO 2025-08-18 20:02:12,599 basehttp 13180 6158872576 "GET /grids/21/ HTTP/1.1" 200 17823
+INFO 2025-08-18 20:02:19,262 project_views 13180 6158872576 Saving template with 24 tasks from project Accounting
+INFO 2025-08-18 20:02:19,266 project_views 13180 6158872576 Created template task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation with order 0
+INFO 2025-08-18 20:02:19,268 project_views 13180 6158872576 Created template task: Prepare "Why Deals?" in PwC x Interview with order 1
+INFO 2025-08-18 20:02:19,270 project_views 13180 6158872576 Created template task: Prepare "Why PwC?" in PwC x Interview with order 2
+INFO 2025-08-18 20:02:19,271 project_views 13180 6158872576 Created template task: Complete online assessment in Deloitte x Assessments & Tests with order 3
+INFO 2025-08-18 20:02:19,273 project_views 13180 6158872576 Created template task: Find out when applications open in BDO x Research and Networking with order 4
+INFO 2025-08-18 20:02:19,274 project_views 13180 6158872576 Created template task: Complete online assessments in Grant Thornton x Assessments & Tests with order 5
+INFO 2025-08-18 20:02:19,276 project_views 13180 6158872576 Created template task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests with order 6
+INFO 2025-08-18 20:02:19,277 project_views 13180 6158872576 Created template task: Practise situational judgement tests online in PwC x Assessments & Tests with order 7
+INFO 2025-08-18 20:02:19,278 project_views 13180 6158872576 Created template task: Practise numerical tests online in PwC x Assessments & Tests with order 8
+INFO 2025-08-18 20:02:19,279 project_views 13180 6158872576 Created template task: Check online for hints about online assessment in Deloitte x Assessments & Tests with order 9
+INFO 2025-08-18 20:02:19,281 project_views 13180 6158872576 Created template task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation with order 10
+INFO 2025-08-18 20:02:19,282 project_views 13180 6158872576 Created template task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation with order 11
+INFO 2025-08-18 20:02:19,283 project_views 13180 6158872576 Created template task: Draft responses for the online application with an in EY x Application Preparation with order 12
+INFO 2025-08-18 20:02:19,284 project_views 13180 6158872576 Created template task: Find out application deadline in PwC x Application Preparation with order 13
+INFO 2025-08-18 20:02:19,285 project_views 13180 6158872576 Created template task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation with order 14
+INFO 2025-08-18 20:02:19,286 project_views 13180 6158872576 Created template task: Research their values in EY x Research and Networking with order 15
+INFO 2025-08-18 20:02:19,287 project_views 13180 6158872576 Created template task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking with order 16
+INFO 2025-08-18 20:02:19,288 project_views 13180 6158872576 Created template task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking with order 17
+INFO 2025-08-18 20:02:19,289 project_views 13180 6158872576 Created template task: Find a virtual event to attend in KPMG x Research and Networking with order 18
+INFO 2025-08-18 20:02:19,290 project_views 13180 6158872576 Created template task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking with order 19
+INFO 2025-08-18 20:02:19,291 project_views 13180 6158872576 Created template task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking with order 20
+INFO 2025-08-18 20:02:19,292 project_views 13180 6158872576 Created template task: Research a recent deal PwC advised on in PwC x Research and Networking with order 21
+INFO 2025-08-18 20:02:19,293 project_views 13180 6158872576 Created template task: Find a campus networking event in Deloitte x Research and Networking with order 22
+INFO 2025-08-18 20:02:19,294 project_views 13180 6158872576 Created template task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking with order 23
+INFO 2025-08-18 20:02:19,295 project_views 13180 6158872576 Template created with 24 tasks out of 24 original tasks
+INFO 2025-08-18 20:02:19,295 project_views_functions 13180 6158872576 User None saved project as template: Test Accounting - 18th August 2025: Accounting
+INFO 2025-08-18 20:02:19,296 basehttp 13180 6158872576 "POST /grids/21/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:02:19,303 basehttp 13180 6158872576 "GET /grids/ HTTP/1.1" 200 4754
+INFO 2025-08-18 20:02:21,897 project_views 13180 6158872576 Creating project from template with 24 template tasks
+INFO 2025-08-18 20:02:21,902 project_views 13180 6158872576 Created task: Update CV to emphasise interest in Deal Advisory in PwC x Application Preparation
+INFO 2025-08-18 20:02:21,903 project_views 13180 6158872576 Created task: Prepare "Why Deals?" in PwC x Interview
+INFO 2025-08-18 20:02:21,904 project_views 13180 6158872576 Created task: Prepare "Why PwC?" in PwC x Interview
+INFO 2025-08-18 20:02:21,905 project_views 13180 6158872576 Created task: Complete online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 20:02:21,906 project_views 13180 6158872576 Created task: Find out when applications open in BDO x Research and Networking
+INFO 2025-08-18 20:02:21,907 project_views 13180 6158872576 Created task: Complete online assessments in Grant Thornton x Assessments & Tests
+INFO 2025-08-18 20:02:21,908 project_views 13180 6158872576 Created task: Prepare for the Launchpad assessment day in KPMG x Assessments & Tests
+INFO 2025-08-18 20:02:21,909 project_views 13180 6158872576 Created task: Practise situational judgement tests online in PwC x Assessments & Tests
+INFO 2025-08-18 20:02:21,910 project_views 13180 6158872576 Created task: Practise numerical tests online in PwC x Assessments & Tests
+INFO 2025-08-18 20:02:21,911 project_views 13180 6158872576 Created task: Check online for hints about online assessment in Deloitte x Assessments & Tests
+INFO 2025-08-18 20:02:21,911 project_views 13180 6158872576 Created task: Write a cover letter that reflects their company c in Grant Thornton x Application Preparation
+INFO 2025-08-18 20:02:21,912 project_views 13180 6158872576 Created task: Tailor CV and cover letter for Tax or Forensics on in KPMG x Application Preparation
+INFO 2025-08-18 20:02:21,913 project_views 13180 6158872576 Created task: Draft responses for the online application with an in EY x Application Preparation
+INFO 2025-08-18 20:02:21,914 project_views 13180 6158872576 Created task: Find out application deadline in PwC x Application Preparation
+INFO 2025-08-18 20:02:21,915 project_views 13180 6158872576 Created task: Tailor your CV to highlight analytical and teamwor in Deloitte x Application Preparation
+INFO 2025-08-18 20:02:21,916 project_views 13180 6158872576 Created task: Research their values in EY x Research and Networking
+INFO 2025-08-18 20:02:21,917 project_views 13180 6158872576 Created task: Decide which scheme (e.g., Forensics or Tax) is th in KPMG x Research and Networking
+INFO 2025-08-18 20:02:21,918 project_views 13180 6158872576 Created task: Research their focus on mid-market and public sect in Grant Thornton x Research and Networking
+INFO 2025-08-18 20:02:21,918 project_views 13180 6158872576 Created task: Find a virtual event to attend in KPMG x Research and Networking
+INFO 2025-08-18 20:02:21,919 project_views 13180 6158872576 Created task: Understand the CIMA vs. ACA qualification paths in EY x Research and Networking
+INFO 2025-08-18 20:02:21,920 project_views 13180 6158872576 Created task: Reach out to a Deal Advisory graduate on LinkedIn in PwC x Research and Networking
+INFO 2025-08-18 20:02:21,921 project_views 13180 6158872576 Created task: Research a recent deal PwC advised on in PwC x Research and Networking
+INFO 2025-08-18 20:02:21,922 project_views 13180 6158872576 Created task: Find a campus networking event in Deloitte x Research and Networking
+INFO 2025-08-18 20:02:21,923 project_views 13180 6158872576 Created task: Research the difference between Audit and Tax sche in Deloitte x Research and Networking
+INFO 2025-08-18 20:02:21,923 project_views 13180 6158872576 Project created with 24 tasks out of 24 template tasks
+INFO 2025-08-18 20:02:21,923 project_views_functions 13180 6158872576 User None created project from template: Test Accounting - 18th August 2025: Test Accounting - 18th August 2025
+INFO 2025-08-18 20:02:21,924 basehttp 13180 6158872576 "POST /templates/22/use/ HTTP/1.1" 302 0
+INFO 2025-08-18 20:02:21,947 basehttp 13180 6158872576 "GET /grids/123/ HTTP/1.1" 200 17945
+INFO 2025-08-18 20:02:30,750 basehttp 13180 6158872576 "GET /grids/21/ HTTP/1.1" 200 17857
+INFO 2025-08-18 20:02:34,582 basehttp 13180 6158872576 "GET /grids/123/ HTTP/1.1" 200 17888

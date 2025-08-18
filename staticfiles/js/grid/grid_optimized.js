@@ -175,67 +175,22 @@ class GridManager {
         this.initializeSortable();
     }
 
-    // Drag and drop event handlers (disabled for manual drag)
-    // handleDragStart(e) {
-    //     console.log('GridManager: Drag start event triggered', e.target);
-    //     
-    //     // Check if we started dragging from a drag handle
-    //     if (!this.state.aboutToDrag || !this.state.dragStartElement) {
-    //         console.log('GridManager: Not dragging from drag handle, preventing');
-    //         e.preventDefault();
-    //         return;
-    //     }
-    // 
-    //     console.log('GridManager: Dragging from drag handle');
-    // 
-    //     const taskElement = this.state.dragStartElement;
-    //     console.log('GridManager: Found task element', taskElement.dataset.taskId);
-    // 
-    //     // Store the task element for later use
-    //     this.state.isDragging = true;
-    //     this.state.draggedElement = taskElement;
-    //     this.state.dragStartY = e.clientY;
-    // 
-    //     // Store original order
-    //     this.state.originalOrder = this.getTaskOrder();
-    // 
-    //     // Add dragging class to the task element
-    //     taskElement.classList.add('dragging');
-    //     taskElement.style.opacity = '0.5';
-    //     taskElement.style.transform = 'rotate(2deg)';
-    // 
-    //     // Set drag data - this is crucial for the drag to continue
-    //     e.dataTransfer.effectAllowed = 'move';
-    //     e.dataTransfer.setData('text/plain', taskElement.dataset.taskId);
-    //     e.dataTransfer.setData('text/html', taskElement.outerHTML);
-    //     e.dataTransfer.setData('application/json', JSON.stringify({
-    //         taskId: taskElement.dataset.taskId,
-    //         taskRow: taskElement.dataset.taskRow,
-    //         taskCol: taskElement.dataset.taskCol,
-    //         taskOrder: taskElement.dataset.taskOrder
-    //     }));
-    // 
-    //     // Create placeholder
-    //     this.createDragPlaceholder(taskElement);
-    //     
-    //     console.log('GridManager: Drag start completed successfully');
-    // }
-
     // Initialize SortableJS on all task containers
     initializeSortable() {
         // Find all task containers
         const taskContainers = document.querySelectorAll('[data-row][data-col]');
         
         taskContainers.forEach(container => {
+            // Initialize SortableJS for drag and drop
             new Sortable(container, {
                 // Only allow dragging from the drag handle
                 handle: '.drag-handle',
                 
-                // Animation duration for smooth reordering
-                animation: 150,
+                // Enable drag and drop
+                sort: true,
                 
-                // Ghost class for the placeholder
-                ghostClass: 'sortable-ghost',
+                // Animation duration
+                animation: 150,
                 
                 // Drag class for the item being dragged
                 dragClass: 'sortable-drag',
@@ -245,11 +200,6 @@ class GridManager {
                 
                 // Callback when sorting ends
                 onEnd: (evt) => {
-                    // Update order attributes in the container that was modified
-                    if (evt.to) {
-                        this.updateTaskOrderAttributesInContainer(evt.to);
-                    }
-                    
                     // Get the new order across all containers
                     const newOrder = this.getTaskOrder();
                     
@@ -260,129 +210,7 @@ class GridManager {
         });
     }
 
-    // Mouse move handler for manual drag
-    handleMouseMove(e) {
-        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
 
-        const dragClone = this.state.dragClone;
-        if (!dragClone) return;
-
-        // Make the clone follow the cursor smoothly
-        const offsetX = e.clientX - this.state.dragStartX;
-        const offsetY = e.clientY - this.state.dragStartY;
-        
-        // Calculate new position relative to original position
-        const newLeft = this.state.originalLeft + offsetX;
-        const newTop = this.state.originalTop + offsetY;
-        
-        // Move clone directly without requestAnimationFrame for immediate response
-        dragClone.style.left = newLeft + 'px';
-        dragClone.style.top = newTop + 'px';
-        
-        // Temporarily hide the drag clone to find elements underneath
-        const originalDisplay = dragClone.style.display;
-        dragClone.style.display = 'none';
-        
-        // Find the task container under the mouse (ignore the drag clone)
-        const elementAtPoint = document.elementFromPoint(e.clientX, e.clientY);
-        const taskContainer = elementAtPoint?.closest('[data-row][data-col]');
-        
-        // Restore the drag clone
-        dragClone.style.display = originalDisplay;
-        
-        if (!taskContainer) {
-            return;
-        }
-
-        // Check if we're in the same container
-        const draggedElement = this.state.draggedElement;
-        
-        // Get the dragged element's container (it might have moved during drag)
-        const draggedContainer = draggedElement.closest('[data-row][data-col]');
-        const draggedRow = draggedContainer?.dataset.row || draggedElement.dataset.taskRow;
-        const draggedCol = draggedContainer?.dataset.col || draggedElement.dataset.taskCol;
-        const containerRow = taskContainer.dataset.row;
-        const containerCol = taskContainer.dataset.col;
-
-        if (draggedRow !== containerRow || draggedCol !== containerCol) {
-            return;
-        }
-
-        // Find the target position by getting all tasks in the container and finding which one is under the mouse
-        const tasksInContainer = taskContainer.querySelectorAll('[data-task-id]');
-        let targetTask = null;
-        let dropAfter = false;
-        
-        for (const task of tasksInContainer) {
-            if (task === draggedElement) {
-                continue; // Skip the dragged element
-            }
-            
-            const rect = task.getBoundingClientRect();
-            
-            if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-                // Mouse is over this task
-                dropAfter = e.clientY > rect.top + rect.height / 2;
-                targetTask = task;
-                break;
-            }
-        }
-        
-        if (!targetTask) {
-            return;
-        }
-
-        // Store the target for when we drop
-        this.state.targetTask = targetTask;
-        this.state.dropAfter = dropAfter;
-        
-        // Live reorder - move tasks in real-time
-        if (targetTask && targetTask !== draggedElement) {
-            this.liveReorderTasks(draggedElement, targetTask, dropAfter);
-        }
-    }
-
-    // Mouse up handler for manual drag
-    handleMouseUp(e) {
-        if (!this.state.isDragging || this.state.isScrollingToEnd) return;
-
-        const draggedElement = this.state.draggedElement;
-        if (!draggedElement) return;
-
-        // Use stored target from mousemove
-        if (this.state.targetTask && this.state.targetTask !== draggedElement) {
-            // Final reorder and save to server
-            this.reorderTasks(draggedElement, this.state.targetTask, this.state.dropAfter);
-        } else {
-            // If no target, just save current order
-            const newOrder = this.getTaskOrder();
-            this.saveTaskOrder(newOrder);
-        }
-
-        // End the drag
-        this.state.isDragging = false;
-        
-        // Remove drag clone
-        if (this.state.dragClone) {
-            this.state.dragClone.remove();
-            this.state.dragClone = null;
-        }
-        
-        // Restore original task
-        if (draggedElement) {
-            draggedElement.style.opacity = '';
-        }
-
-        // Clear target state
-        this.state.targetTask = null;
-        this.state.dropAfter = null;
-        this.state.lastLiveReorder = null;
-
-        // Clear drag state
-        this.state.draggedElement = null;
-        this.state.dragStartY = 0;
-        this.state.dragStartX = 0;
-    }
 
     // handleDragEnd(e) {
     //     if (!this.state.isDragging) return;
@@ -566,66 +394,15 @@ class GridManager {
         });
     }
 
-    // Live reorder tasks in real-time during drag
-    liveReorderTasks(draggedElement, targetTask, dropAfter) {
-        // Only reorder if we haven't already done this exact move
-        if (this.state.lastLiveReorder && 
-            this.state.lastLiveReorder.draggedId === draggedElement.dataset.taskId &&
-            this.state.lastLiveReorder.targetId === targetTask.dataset.taskId &&
-            this.state.lastLiveReorder.dropAfter === dropAfter) {
-            return; // Already did this move
-        }
-        
-        // Store this move to prevent duplicate reorders
-        this.state.lastLiveReorder = {
-            draggedId: draggedElement.dataset.taskId,
-            targetId: targetTask.dataset.taskId,
-            dropAfter: dropAfter
-        };
-        
-        // Insert at new position
-        if (dropAfter) {
-            targetTask.parentNode.insertBefore(draggedElement, targetTask.nextSibling);
-        } else {
-            targetTask.parentNode.insertBefore(draggedElement, targetTask);
-        }
 
-        // Update the order attributes to reflect the new positions
-        this.updateTaskOrderAttributesInContainer(draggedElement.parentNode);
-    }
-
-    // Get task position in its container
-    getTaskPosition(taskElement) {
-        const container = taskElement.parentNode;
-        const tasks = Array.from(container.querySelectorAll('[data-task-id]'));
-        return tasks.indexOf(taskElement);
-    }
-
-    // Reorder tasks in DOM and save to server
-    reorderTasks(draggedElement, targetTask, dropAfter) {
-        // Insert at new position
-        if (dropAfter) {
-            targetTask.parentNode.insertBefore(draggedElement, targetTask.nextSibling);
-        } else {
-            targetTask.parentNode.insertBefore(draggedElement, targetTask);
-        }
-
-        // Update the order attributes on all tasks in this container to reflect their new positions
-        this.updateTaskOrderAttributesInContainer(draggedElement.parentNode);
-
-        // Get new order
-        const newOrder = this.getTaskOrder();
-        
-        // Save to server
-        this.saveTaskOrder(newOrder);
-    }
 
     // Get current task order
     getTaskOrder() {
-        console.log('GridManager: getTaskOrder() called');
+        const order = [];
         
-        let allTasks = document.querySelectorAll('[data-task-id]');
-        console.log(`GridManager: Found ${allTasks.length} elements with data-task-id`);
+        // Query all task elements in their current DOM order. This order reflects
+        // the result of the drag-and-drop action performed by SortableJS.
+        const allTasks = document.querySelectorAll('[data-task-id]');
         
         // Filter to only include the main task container elements (not text, buttons, etc.)
         const mainTaskContainers = Array.from(allTasks).filter(task => {
@@ -633,47 +410,65 @@ class GridManager {
             return task.classList.contains('group') && 
                    task.classList.contains('flex') && 
                    task.classList.contains('items-center') && 
-                   task.classList.contains('justify-between') &&
-                   task.classList.contains('w-full') &&
-                   task.classList.contains('p-2') &&
+                   task.classList.contains('justify-between') && 
+                   task.classList.contains('w-full') && 
+                   task.classList.contains('p-2') && 
                    task.classList.contains('rounded-lg');
         });
         
-        console.log(`GridManager: Filtered to ${mainTaskContainers.length} main task containers`);
+        // First pass: group tasks by container
+        const tasksByContainer = {};
+        mainTaskContainers.forEach(task => {
+            const currentContainer = task.closest('[data-row][data-col]');
+            if (!currentContainer) {
+                return; 
+            }
+
+            const currentRow = currentContainer.dataset.row;
+            const currentCol = currentContainer.dataset.col;
+            const containerKey = `${currentRow}-${currentCol}`;
+            
+            if (!tasksByContainer[containerKey]) {
+                tasksByContainer[containerKey] = [];
+            }
+            tasksByContainer[containerKey].push(task);
+        });
         
-        const taskOrder = [];
-        
-        mainTaskContainers.forEach((task, index) => {
-            const taskId = task.dataset.taskId;
-            const container = task.closest('[data-row][data-col]');
-            const row = container ? container.dataset.row : null;
-            const col = container ? container.dataset.col : null;
+        // Second pass: process each container separately to get correct order
+        Object.keys(tasksByContainer).forEach(containerKey => {
+            const [row, col] = containerKey.split('-');
+            const containerTasks = tasksByContainer[containerKey];
             
-            // Calculate actual order based on DOM position within the container
-            const currentContainer = task.parentNode;
-            const containerTasks = Array.from(currentContainer.children).filter(child => 
-                child.classList.contains('group') && 
-                child.classList.contains('flex') && 
-                child.classList.contains('items-center') && 
-                child.classList.contains('justify-between') &&
-                child.classList.contains('w-full') &&
-                child.classList.contains('p-2') &&
-                child.classList.contains('rounded-lg')
-            );
-            const actualOrder = containerTasks.indexOf(task);
+            // Sort tasks by their actual DOM position within the container
+            containerTasks.sort((a, b) => {
+                const container = a.closest('[data-row][data-col]');
+                const allTasksInContainer = Array.from(container.querySelectorAll('[data-task-id]')).filter(child => 
+                    child.classList.contains('group') && 
+                    child.classList.contains('flex') && 
+                    child.classList.contains('items-center') && 
+                    child.classList.contains('justify-between') &&
+                    child.classList.contains('w-full') &&
+                    child.classList.contains('p-2') &&
+                    child.classList.contains('rounded-lg')
+                );
+                return allTasksInContainer.indexOf(a) - allTasksInContainer.indexOf(b);
+            });
             
-            console.log(`GridManager: Task ${taskId} - Container: ${row}-${col}, Order: ${actualOrder}, DOM Position: ${index}`);
-            
-            taskOrder.push({
-                task_id: taskId,
-                row_header: row,
-                column_header: col,
-                order: actualOrder
+            // Add tasks with their correct order within the container
+            containerTasks.forEach((task, containerIndex) => {
+                const taskId = task.dataset.taskId;
+                const actualOrder = containerIndex;
+                
+                order.push({
+                    task_id: taskId,
+                    row_header: row,
+                    column_header: col,
+                    order: actualOrder
+                });
             });
         });
         
-        console.log('GridManager: Final task order array:', taskOrder);
-        return taskOrder;
+        return order;
     }
 
     // Save task order to server
@@ -681,15 +476,10 @@ class GridManager {
         const projectId = this.getProjectId();
         if (!projectId) return;
 
-        console.log('GridManager: Saving task order:', newOrder);
-        console.log('GridManager: Project ID:', projectId);
-
         // Create the request data
         const requestData = {
             task_order: newOrder
         };
-
-        console.log('GridManager: Request data:', requestData);
 
         // Send request to server
         fetch(`/grids/${projectId}/tasks/reorder/`, {
@@ -701,35 +491,21 @@ class GridManager {
             body: JSON.stringify(requestData)
         })
         .then(response => {
-            console.log('GridManager: Response status:', response.status);
             if (!response.ok) {
-                throw new Error(`Failed to save task order: ${response.status}`);
+                throw new Error('Failed to save task order');
             }
             return response.json();
         })
         .then(data => {
-            console.log('GridManager: Response data:', data);
             if (data.success) {
-                console.log('GridManager: Task order saved successfully');
                 // Update task order attributes and row/column data
                 this.updateTaskOrderAttributes(newOrder);
-                
-                // Debug: Check if DOM order matches saved order
-                console.log('GridManager: Checking DOM order after save...');
-                const domOrder = this.getTaskOrder();
-                console.log('GridManager: DOM order after save:', domOrder);
-                
-                // Verify the order is correct
-                const isOrderCorrect = this.verifyOrder(newOrder, domOrder);
-                console.log('GridManager: Order verification result:', isOrderCorrect);
             } else {
-                console.error('GridManager: Server returned error:', data.error);
                 // Revert to original order
                 this.revertToOriginalOrder();
             }
         })
         .catch(error => {
-            console.error('GridManager: Error saving task order:', error);
             // Revert to original order
             this.revertToOriginalOrder();
         });
@@ -739,31 +515,20 @@ class GridManager {
     getProjectId() {
         const urlParts = window.location.pathname.split('/');
         const gridsIndex = urlParts.indexOf('grids');
-        console.log('GridManager: URL parts:', urlParts);
-        console.log('GridManager: Grids index:', gridsIndex);
-        
         if (gridsIndex >= 0 && gridsIndex + 1 < urlParts.length) {
-            const projectId = urlParts[gridsIndex + 1];
-            console.log('GridManager: Extracted project ID:', projectId);
-            return projectId;
+            return urlParts[gridsIndex + 1];
         }
-        
-        console.error('GridManager: Could not extract project ID from URL');
         return null;
     }
 
     // Get CSRF token
     getCSRFToken() {
         const token = document.querySelector('[name=csrfmiddlewaretoken]');
-        const tokenValue = token ? token.value : '';
-        console.log('GridManager: CSRF token found:', !!token, 'Value length:', tokenValue.length);
-        return tokenValue;
+        return token ? token.value : '';
     }
 
     // Update task order attributes
     updateTaskOrderAttributes(newOrder) {
-        console.log('GridManager: Updating task order attributes for', newOrder.length, 'tasks');
-        
         newOrder.forEach((task, index) => {
             const taskElement = document.querySelector(`[data-task-id="${task.task_id}"]`);
             if (taskElement) {
@@ -775,14 +540,8 @@ class GridManager {
                 // Update row and column data attributes to reflect new position
                 taskElement.dataset.taskRow = task.row_header;
                 taskElement.dataset.taskCol = task.column_header;
-                
-                console.log(`GridManager: Updated task ${task.task_id}: order ${oldOrder}→${task.order}, row ${oldRow}→${task.row_header}, col ${oldCol}→${task.column_header}`);
-            } else {
-                console.error('GridManager: Could not find task element for ID:', task.task_id);
             }
         });
-        
-        console.log('GridManager: Finished updating task order attributes');
     }
 
     // Update task order attributes in a specific container based on DOM position
@@ -837,122 +596,7 @@ class GridManager {
         return true;
     }
 
-    // Log duplicate information without cleaning up
-    logDuplicateInfo() {
-        const allTasks = document.querySelectorAll('[data-task-id]');
-        const taskIds = Array.from(allTasks).map(task => task.dataset.taskId);
-        const duplicateIds = taskIds.filter((id, index) => taskIds.indexOf(id) !== index);
-        
-        if (duplicateIds.length > 0) {
-            console.warn('GridManager: Found', duplicateIds.length, 'duplicate task IDs:', [...new Set(duplicateIds)]);
-            console.warn('GridManager: Total task elements:', allTasks.length, 'Unique task IDs:', new Set(taskIds).size);
-            
-            // Log details about each duplicate
-            duplicateIds.forEach(taskId => {
-                const taskElements = document.querySelectorAll(`[data-task-id="${taskId}"]`);
-                console.log(`GridManager: Task ID ${taskId} appears ${taskElements.length} times:`, 
-                    Array.from(taskElements).map((el, index) => {
-                        const container = el.closest('[data-row][data-col]');
-                        const parent = el.parentElement;
-                        const grandParent = parent ? parent.parentElement : null;
-                        
-                        return {
-                            index: index,
-                            container: container ? `${container.dataset.row}_${container.dataset.col}` : 'none',
-                            inContainer: !!container,
-                            parentTag: parent ? parent.tagName : 'none',
-                            parentId: parent ? parent.id : 'none',
-                            grandParentTag: grandParent ? grandParent.tagName : 'none',
-                            grandParentId: grandParent ? grandParent.id : 'none',
-                            isVisible: el.offsetParent !== null,
-                            display: getComputedStyle(el).display,
-                            opacity: getComputedStyle(el).opacity
-                        };
-                    })
-                );
-            });
-        } else {
-            console.log('GridManager: No duplicate task IDs found');
-        }
-    }
 
-    // Inspect DOM structure for duplicates
-    inspectDuplicateTasks() {
-        const allTasks = document.querySelectorAll('[data-task-id]');
-        const taskIds = Array.from(allTasks).map(task => task.dataset.taskId);
-        const duplicateIds = taskIds.filter((id, index) => taskIds.indexOf(id) !== index);
-        
-        if (duplicateIds.length > 0) {
-            console.log('GridManager: === DUPLICATE TASK INSPECTION ===');
-            
-            duplicateIds.forEach(taskId => {
-                const taskElements = document.querySelectorAll(`[data-task-id="${taskId}"]`);
-                console.log(`\nGridManager: Task ID ${taskId} appears ${taskElements.length} times:`);
-                
-                taskElements.forEach((el, index) => {
-                    console.log(`  Copy ${index + 1}:`);
-                    console.log(`    Element:`, el);
-                    console.log(`    Parent:`, el.parentElement);
-                    console.log(`    Grandparent:`, el.parentElement?.parentElement);
-                    console.log(`    Container:`, el.closest('[data-row][data-col]'));
-                    console.log(`    Is visible:`, el.offsetParent !== null);
-                    console.log(`    Display:`, getComputedStyle(el).display);
-                    console.log(`    Opacity:`, getComputedStyle(el).opacity);
-                    console.log(`    Position:`, el.getBoundingClientRect());
-                });
-            });
-            
-            console.log('GridManager: === END INSPECTION ===');
-        } else {
-            console.log('GridManager: No duplicate tasks found');
-        }
-    }
-
-    // Clean up duplicate DOM elements
-    cleanupDuplicateTasks() {
-        const allTasks = document.querySelectorAll('[data-task-id]');
-        const taskIds = Array.from(allTasks).map(task => task.dataset.taskId);
-        const duplicateIds = taskIds.filter((id, index) => taskIds.indexOf(id) !== index);
-        
-        if (duplicateIds.length > 0) {
-            console.warn('GridManager: Cleaning up duplicate task elements');
-            
-            duplicateIds.forEach(taskId => {
-                const taskElements = document.querySelectorAll(`[data-task-id="${taskId}"]`);
-                if (taskElements.length > 1) {
-                    // Find the element that's actually in a valid container (has data-row and data-col)
-                    let validElement = null;
-                    let elementsToRemove = [];
-                    
-                    taskElements.forEach((element, index) => {
-                        const container = element.closest('[data-row][data-col]');
-                        if (container && container.dataset.row && container.dataset.col) {
-                            if (!validElement) {
-                                validElement = element;
-                                console.log('GridManager: Keeping task element for ID:', taskId, 'in container:', container.dataset.row, container.dataset.col);
-                            } else {
-                                elementsToRemove.push(element);
-                                console.log('GridManager: Marking duplicate task element for removal, ID:', taskId);
-                            }
-                        } else {
-                            // Element not in a valid container, mark for removal
-                            elementsToRemove.push(element);
-                            console.log('GridManager: Marking orphaned task element for removal, ID:', taskId);
-                        }
-                    });
-                    
-                    // Remove the duplicate/orphaned elements
-                    elementsToRemove.forEach(element => {
-                        element.remove();
-                    });
-                    
-                    console.log('GridManager: Removed', elementsToRemove.length, 'duplicate/orphaned elements for task ID:', taskId);
-                }
-            });
-            
-            console.log('GridManager: Duplicate cleanup completed');
-        }
-    }
 
 
 
@@ -2162,11 +1806,7 @@ class GridManager {
             // But skip if it's a task update (handled separately)
             setTimeout(() => this.syncRowHeights(), 10);
         }
-        
-        // Log duplicate info after any HTMX update (but don't clean up automatically)
-        setTimeout(() => {
-            this.logDuplicateInfo();
-        }, 100);
+        // Task additions/updates and individual task edits don't need any reinitialization
     }
 
     handleHtmxAfterSettle(e) {
@@ -2313,9 +1953,6 @@ class GridManager {
         setTimeout(() => {
             this.calculateAndApplyWidths();
             this.syncRowHeights();
-            
-            // Log duplicate information but don't clean up during initialization
-            this.logDuplicateInfo();
             
             // Add grid-ready class to fade in the grid content
             if (this.elements.gridContent) {

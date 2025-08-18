@@ -3,8 +3,8 @@ from django.contrib import admin
 # Register your models here.
 
 from .models import (
-    Project, RowHeader, ColumnHeader, Task, Template, 
-    TemplateRowHeader, TemplateColumnHeader, FAQ, ContactSubmission
+    Project, RowHeader, ColumnHeader, Task, PersonalTemplate, 
+    TemplateRowHeader, TemplateColumnHeader, TemplateTask, FAQ, ContactSubmission
 )
 
 # Basic admin registration for existing models
@@ -12,9 +12,10 @@ admin.site.register(Project)
 admin.site.register(RowHeader)
 admin.site.register(ColumnHeader)
 admin.site.register(Task)
-admin.site.register(Template)
+admin.site.register(PersonalTemplate)
 admin.site.register(TemplateRowHeader)
 admin.site.register(TemplateColumnHeader)
+admin.site.register(TemplateTask)
 
 # Enhanced admin for FAQ
 @admin.register(FAQ)

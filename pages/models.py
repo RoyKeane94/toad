@@ -82,20 +82,9 @@ class Task(models.Model):
         ]
 
 
-class Template(models.Model):
-    CATEGORY_CHOICES = [
-        ('student', 'Student'),
-        ('professional', 'Professional'),
-        ('personal', 'Personal'),
-        ('event', 'Event'),
-        ('everyday', 'Everyday'),
-        ('other', 'Other'),
-    ]
-    
+class PersonalTemplate(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='personal_templates')
     name = models.CharField(max_length=100)
-    description = models.TextField(blank=True, null=True)
-    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='other')
-    is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -103,11 +92,11 @@ class Template(models.Model):
         return self.name
     
     class Meta:
-        ordering = ['category', 'name']
+        ordering = ['name']
 
 
 class TemplateRowHeader(models.Model):
-    template = models.ForeignKey(Template, on_delete=models.CASCADE, related_name='row_headers')
+    template = models.ForeignKey(PersonalTemplate, on_delete=models.CASCADE, related_name='row_headers')
     name = models.CharField(max_length=100)
     order = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -122,7 +111,7 @@ class TemplateRowHeader(models.Model):
 
 
 class TemplateColumnHeader(models.Model):
-    template = models.ForeignKey(Template, on_delete=models.CASCADE, related_name='column_headers')
+    template = models.ForeignKey(PersonalTemplate, on_delete=models.CASCADE, related_name='column_headers')
     name = models.CharField(max_length=100)
     order = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -134,7 +123,27 @@ class TemplateColumnHeader(models.Model):
 
     def __str__(self):
         return f"{self.template.name} - {self.name}"
+    
+class TemplateTask(models.Model):
+    template_row_header = models.ForeignKey(TemplateRowHeader, on_delete=models.CASCADE, related_name='tasks')
+    template_column_header = models.ForeignKey(TemplateColumnHeader, on_delete=models.CASCADE, related_name='tasks')
+    text = models.TextField(blank=False, null=False, help_text='Enter the task description')
+    completed = models.BooleanField(default=False)
+    order = models.PositiveIntegerField(default=0)  # For maintaining task order within cells
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ['order', 'created_at']
+        unique_together = ['template_row_header', 'template_column_header', 'order']
+
+    def __str__(self):
+        return f"{self.text[:50]} - {self.created_at} - template: {self.template_row_header.template.name} - user: {self.template_row_header.template.user}" if self.text else 'Empty Task'
+    
+    def clean(self):
+        if not self.text or not self.text.strip():
+            from django.core.exceptions import ValidationError
+            raise ValidationError({'text': 'Task text cannot be empty.'})
 
 class FAQ(models.Model):
     question = models.CharField(max_length=200)
