@@ -16,8 +16,8 @@ from django.db.models.functions import Greatest
 from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
-from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask
-from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm
+from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask, ProjectGroup
+from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm, ProjectGroupForm, ProjectGroupAssignmentForm
 from pages.specific_views_functions.project_views_functions import (
     get_user_project_optimized,
     get_user_task_optimized, 
@@ -1084,3 +1084,40 @@ def task_reorder_view(request, project_pk):
             return JsonResponse({'success': False, 'error': 'Failed to reorder tasks'}, status=500)
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
+@login_required
+def project_group_create_view(request):
+    """Create a new project group and optionally assign projects to it"""
+    if request.method == 'POST':
+        form = ProjectGroupForm(request.POST)
+        if form.is_valid():
+            group = form.save(commit=False)
+            group.save()
+            
+            # Get selected projects and assign them to the group
+            selected_project_ids = request.POST.getlist('projects')
+            if selected_project_ids:
+                projects = Project.objects.filter(id__in=selected_project_ids, user=request.user)
+                for project in projects:
+                    project.project_group = group
+                    project.save()
+            
+            log_user_action(request.user, f'created project group: {group.name}', 'N/A')
+            messages.success(request, f'Group "{group.name}" created successfully!')
+            return redirect('pages:project_list')
+        else:
+            logger.warning(f'User {request.user.username} failed to create project group - form errors: {form.errors}')
+    else:
+        form = ProjectGroupForm()
+    
+    # Get all user's projects for the form
+    projects = Project.objects.filter(user=request.user).order_by('name')
+    
+    context = {
+        'form': form,
+        'projects': projects,
+        'title': 'Create Project Group'
+    }
+    
+    return render(request, 'pages/grid/actions_new_page/project_group_form.html', context)

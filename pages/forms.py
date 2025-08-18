@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, RowHeader, ColumnHeader, Task
+from .models import Project, RowHeader, ColumnHeader, Task, ProjectGroup
 
 class ProjectForm(forms.ModelForm):
     class Meta:
@@ -80,3 +80,31 @@ class ColumnHeaderForm(forms.ModelForm):
                 'required': True,
             }),
         }
+
+class ProjectGroupForm(forms.ModelForm):
+    class Meta:
+        model = ProjectGroup
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
+                'placeholder': 'Enter group name...',
+                'required': True,
+            }),
+        }
+
+class ProjectGroupAssignmentForm(forms.Form):
+    projects = forms.ModelMultipleChoiceField(
+        queryset=Project.objects.none(),  # Will be set in __init__
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'space-y-2'
+        }),
+        required=False,
+        help_text='Select projects to add to this group'
+    )
+    
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if user:
+            self.fields['projects'].queryset = user.toad_projects.all()

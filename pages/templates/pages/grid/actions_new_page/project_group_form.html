@@ -1,0 +1,59 @@
+<!-- Project Group Creation Form -->
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+        <div class="flex items-center space-x-3">
+            <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                <i class="fas fa-folder-plus text-white"></i>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-[var(--text-primary)]">Create New Group</h3>
+                <p class="text-sm text-[var(--text-secondary)]">Organize your grids into groups</p>
+            </div>
+        </div>
+        <button type="button" onclick="closeModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    
+    <!-- Modal Body -->
+    <div class="p-6">
+        <form method="post" action="{% url 'pages:project_group_create' %}">
+            {% csrf_token %}
+            
+            <!-- Group Name Field -->
+            <div class="mb-6">
+                <label for="id_name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Group Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                    <div class="text-red-500 text-sm mt-1">{{ form.name.errors.0 }}</div>
+                {% endif %}
+            </div>
+            
+            <!-- Project Selection -->
+            <div class="mb-6">
+                <label class="block text-sm font-medium text-[var(--text-primary)] mb-3">Select Projects (Optional)</label>
+                <div class="max-h-48 overflow-y-auto border border-[var(--border-color)] rounded-md p-3 bg-[var(--grid-header-bg)]">
+                    {% for project in projects %}
+                        <label class="flex items-center space-x-3 py-2 hover:bg-[var(--container-bg)] rounded px-2 cursor-pointer">
+                            <input type="checkbox" 
+                                   name="projects" 
+                                   value="{{ project.pk }}"
+                                   class="h-4 w-4 rounded border-[var(--border-color)] text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)]">
+                            <span class="text-sm text-[var(--text-primary)]">{{ project.name }}</span>
+                        </label>
+                    {% endfor %}
+                </div>
+                <p class="text-xs text-[var(--text-secondary)] mt-2">You can add projects to groups later or leave them ungrouped</p>
+            </div>
+            
+            <!-- Form Actions -->
+            <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+                <button type="button" onclick="closeModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <button type="submit" class="px-4 py-2 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-save mr-2"></i>Create Group
+                </button>
+            </div>
+        </form>
+    </div>
