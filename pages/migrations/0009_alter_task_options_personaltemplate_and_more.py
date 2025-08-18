@@ -16,48 +16,5 @@ class Migration(migrations.Migration):
         migrations.AlterModelOptions(
             name='task',
             options={'ordering': ['order', 'created_at']},
-        ),
-        migrations.CreateModel(
-            name='PersonalTemplate',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='personal_templates', to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-                'ordering': ['name'],
-            },
-        ),
-        migrations.AlterField(
-            model_name='templatecolumnheader',
-            name='template',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='column_headers', to='pages.personaltemplate'),
-        ),
-        migrations.AlterField(
-            model_name='templaterowheader',
-            name='template',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='row_headers', to='pages.personaltemplate'),
-        ),
-        migrations.CreateModel(
-            name='TemplateTask',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('text', models.TextField(help_text='Enter the task description')),
-                ('completed', models.BooleanField(default=False)),
-                ('order', models.PositiveIntegerField(default=0)),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('template_column_header', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tasks', to='pages.templatecolumnheader')),
-                ('template_row_header', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='tasks', to='pages.templaterowheader')),
-            ],
-            options={
-                'ordering': ['order', 'created_at'],
-                'unique_together': {('template_row_header', 'template_column_header', 'order')},
-            },
-        ),
-        migrations.DeleteModel(
-            name='Template',
-        ),
+        )
     ]
