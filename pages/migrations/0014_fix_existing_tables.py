@@ -6,10 +6,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        # This migration is designed to handle existing tables in production
-        # It will be applied as a no-op since the tables already exist
+        # This migration handles existing tables in production
+        # It will work on both SQLite and PostgreSQL
         migrations.RunSQL(
-            sql="SELECT 1;",  # No-op SQL that works on all databases
+            sql="SELECT 1;",  # No-op for SQLite
             reverse_sql="SELECT 1;",
         ),
     ]
