@@ -19048,3 +19048,117 @@ INFO 2025-08-19 22:11:08,356 basehttp 38361 6216445952 "GET /admin/pages/task/?o
 INFO 2025-08-19 22:11:08,370 basehttp 38361 6216445952 "GET /admin/jsi18n/ HTTP/1.1" 200 981
 INFO 2025-08-19 22:11:09,273 basehttp 38361 6216445952 "GET /admin/pages/task/?o=-6 HTTP/1.1" 200 7211
 INFO 2025-08-19 22:11:09,288 basehttp 38361 6216445952 "GET /admin/jsi18n/ HTTP/1.1" 200 1040
+INFO 2025-08-19 22:14:15,711 autoreload 38741 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-19 22:14:16,845 basehttp 38741 6165524480 "GET /grids/15/ HTTP/1.1" 200 15455
+INFO 2025-08-19 22:14:16,861 basehttp 38741 6165524480 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-19 22:14:23,606 project_views_functions 38741 6165524480 User None saved project as template: Student Template 1: Student Planner
+INFO 2025-08-19 22:14:23,607 basehttp 38741 6165524480 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:23,623 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 5712
+INFO 2025-08-19 22:14:26,651 project_views 38741 6165524480 Creating project from template with 0 template tasks
+INFO 2025-08-19 22:14:26,652 project_views 38741 6165524480 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-08-19 22:14:26,653 project_views 38741 6165524480 === END DEBUG ===
+INFO 2025-08-19 22:14:26,654 project_views 38741 6165524480 Project created with 0 tasks out of 0 template tasks
+INFO 2025-08-19 22:14:26,654 project_views_functions 38741 6165524480 User None created project from template: Student Template 1: Student Template 1
+INFO 2025-08-19 22:14:26,654 basehttp 38741 6165524480 "POST /templates/2/use/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:26,674 basehttp 38741 6165524480 "GET /grids/138/ HTTP/1.1" 200 12397
+INFO 2025-08-19 22:14:31,047 basehttp 38741 6165524480 "GET /grids/138/delete/ HTTP/1.1" 200 1098
+INFO 2025-08-19 22:14:32,471 basehttp 38741 6165524480 "POST /grids/138/delete/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:32,487 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 5745
+INFO 2025-08-19 22:14:37,964 basehttp 38741 6165524480 "GET /grids/15/ HTTP/1.1" 200 15436
+INFO 2025-08-19 22:14:43,954 project_views 38741 6165524480 Saving template with 13 tasks from project Student Planner
+INFO 2025-08-19 22:14:43,954 project_views 38741 6165524480 === TASK ORDERING DEBUG ===
+INFO 2025-08-19 22:14:43,956 project_views 38741 6165524480 Task 0: 'Prepare week 3 seminar questio...' in Row 1 (Weekly Tasks & Readi2ng) x Col 2 (Microeconomic Policy) with order 0
+INFO 2025-08-19 22:14:43,957 project_views 38741 6165524480 Task 1: 'Download reading list for the ...' in Row 1 (Weekly Tasks & Readi2ng) x Col 2 (Microeconomic Policy) with order 1
+INFO 2025-08-19 22:14:43,957 project_views 38741 6165524480 Task 2: 'Test...' in Row 1 (Weekly Tasks & Readi2ng) x Col 2 (Microeconomic Policy) with order 2
+INFO 2025-08-19 22:14:43,958 project_views 38741 6165524480 Task 3: 'Prepare for office hours on We...' in Row 1 (Weekly Tasks & Readi2ng) x Col 3 (Economic History) with order 0
+INFO 2025-08-19 22:14:43,959 project_views 38741 6165524480 Task 4: 'Dog...' in Row 1 (Weekly Tasks & Readi2ng) x Col 3 (Economic History) with order 1
+INFO 2025-08-19 22:14:43,959 project_views 38741 6165524480 Task 5: 'Download and run through week ...' in Row 1 (Weekly Tasks & Readi2ng) x Col 3 (Economic History) with order 2
+INFO 2025-08-19 22:14:43,960 project_views 38741 6165524480 Task 6: 'Pull together outline of draft...' in Row 2 (Assignments & Coursework) x Col 2 (Microeconomic Policy) with order 0
+INFO 2025-08-19 22:14:43,961 project_views 38741 6165524480 Task 7: 'Group coursework due by end of...' in Row 2 (Assignments & Coursework) x Col 3 (Economic History) with order 0
+INFO 2025-08-19 22:14:43,961 project_views 38741 6165524480 Task 8: 'Think of who best to work with...' in Row 2 (Assignments & Coursework) x Col 3 (Economic History) with order 1
+INFO 2025-08-19 22:14:43,962 project_views 38741 6165524480 Task 9: 'Go over flashcards for week 1...' in Row 3 (Exam Prep) x Col 2 (Microeconomic Policy) with order 0
+INFO 2025-08-19 22:14:43,962 project_views 38741 6165524480 Task 10: 'Create flashcards for week 2...' in Row 3 (Exam Prep) x Col 2 (Microeconomic Policy) with order 1
+INFO 2025-08-19 22:14:43,963 project_views 38741 6165524480 Task 11: 'Go over flashcards for week 2...' in Row 3 (Exam Prep) x Col 3 (Economic History) with order 0
+INFO 2025-08-19 22:14:43,963 project_views 38741 6165524480 Task 12: 'Create flashcards for week 2...' in Row 3 (Exam Prep) x Col 3 (Economic History) with order 1
+INFO 2025-08-19 22:14:43,964 project_views 38741 6165524480 === END DEBUG ===
+INFO 2025-08-19 22:14:43,965 project_views 38741 6165524480 Created template task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-19 22:14:43,966 project_views 38741 6165524480 Created template task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-19 22:14:43,967 project_views 38741 6165524480 Created template task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-19 22:14:43,968 project_views 38741 6165524480 Created template task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-19 22:14:43,969 project_views 38741 6165524480 Created template task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-19 22:14:43,970 project_views 38741 6165524480 Created template task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Economic History with order 5
+INFO 2025-08-19 22:14:43,971 project_views 38741 6165524480 Created template task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-19 22:14:43,971 project_views 38741 6165524480 Created template task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-19 22:14:43,972 project_views 38741 6165524480 Created template task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-19 22:14:43,973 project_views 38741 6165524480 Created template task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-19 22:14:43,974 project_views 38741 6165524480 Created template task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-19 22:14:43,974 project_views 38741 6165524480 Created template task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-19 22:14:43,975 project_views 38741 6165524480 Created template task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-19 22:14:43,975 project_views 38741 6165524480 Template created with 13 tasks out of 13 original tasks
+INFO 2025-08-19 22:14:43,976 project_views_functions 38741 6165524480 User None saved project as template: Student Template 1: Student Planner
+INFO 2025-08-19 22:14:43,976 basehttp 38741 6165524480 "POST /grids/15/save-template/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:43,986 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 6150
+INFO 2025-08-19 22:14:47,247 project_views 38741 6165524480 Creating project from template with 0 template tasks
+INFO 2025-08-19 22:14:47,247 project_views 38741 6165524480 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-08-19 22:14:47,248 project_views 38741 6165524480 === END DEBUG ===
+INFO 2025-08-19 22:14:47,248 project_views 38741 6165524480 Project created with 0 tasks out of 0 template tasks
+INFO 2025-08-19 22:14:47,248 project_views_functions 38741 6165524480 User None created project from template: Student Template 1: Student Template 1
+INFO 2025-08-19 22:14:47,249 basehttp 38741 6165524480 "POST /templates/2/use/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:47,268 basehttp 38741 6165524480 "GET /grids/139/ HTTP/1.1" 200 12414
+INFO 2025-08-19 22:14:48,916 project_views 38741 6165524480 Creating project from template with 13 template tasks
+INFO 2025-08-19 22:14:48,917 project_views 38741 6165524480 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-08-19 22:14:48,918 project_views 38741 6165524480 Template Task 0: 'Prepare week 3 seminar questio...' in Row 0 (Weekly Tasks & Readi2ng) x Col 1 (Microeconomic Policy) with order 0
+INFO 2025-08-19 22:14:48,918 project_views 38741 6165524480 Template Task 1: 'Download reading list for the ...' in Row 0 (Weekly Tasks & Readi2ng) x Col 1 (Microeconomic Policy) with order 1
+INFO 2025-08-19 22:14:48,918 project_views 38741 6165524480 Template Task 2: 'Test...' in Row 0 (Weekly Tasks & Readi2ng) x Col 1 (Microeconomic Policy) with order 2
+INFO 2025-08-19 22:14:48,918 project_views 38741 6165524480 Template Task 3: 'Prepare for office hours on We...' in Row 0 (Weekly Tasks & Readi2ng) x Col 2 (Economic History) with order 3
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 4: 'Dog...' in Row 0 (Weekly Tasks & Readi2ng) x Col 2 (Economic History) with order 4
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 5: 'Download and run through week ...' in Row 0 (Weekly Tasks & Readi2ng) x Col 2 (Economic History) with order 5
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 6: 'Pull together outline of draft...' in Row 1 (Assignments & Coursework) x Col 1 (Microeconomic Policy) with order 6
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 7: 'Group coursework due by end of...' in Row 1 (Assignments & Coursework) x Col 2 (Economic History) with order 7
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 8: 'Think of who best to work with...' in Row 1 (Assignments & Coursework) x Col 2 (Economic History) with order 8
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 9: 'Go over flashcards for week 1...' in Row 2 (Exam Prep) x Col 1 (Microeconomic Policy) with order 9
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 10: 'Create flashcards for week 2...' in Row 2 (Exam Prep) x Col 1 (Microeconomic Policy) with order 10
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 11: 'Go over flashcards for week 2...' in Row 2 (Exam Prep) x Col 2 (Economic History) with order 11
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 Template Task 12: 'Create flashcards for week 2...' in Row 2 (Exam Prep) x Col 2 (Economic History) with order 12
+INFO 2025-08-19 22:14:48,919 project_views 38741 6165524480 === END DEBUG ===
+INFO 2025-08-19 22:14:48,921 project_views 38741 6165524480 Created task: Prepare week 3 seminar questions for Thursday at 1 in Weekly Tasks & Readi2ng x Microeconomic Policy with order 0
+INFO 2025-08-19 22:14:48,922 project_views 38741 6165524480 Created task: Download reading list for the semester in Weekly Tasks & Readi2ng x Microeconomic Policy with order 1
+INFO 2025-08-19 22:14:48,923 project_views 38741 6165524480 Created task: Test in Weekly Tasks & Readi2ng x Microeconomic Policy with order 2
+INFO 2025-08-19 22:14:48,924 project_views 38741 6165524480 Created task: Prepare for office hours on Wednesday at 16:00 in Weekly Tasks & Readi2ng x Economic History with order 3
+INFO 2025-08-19 22:14:48,925 project_views 38741 6165524480 Created task: Dog in Weekly Tasks & Readi2ng x Economic History with order 4
+INFO 2025-08-19 22:14:48,927 project_views 38741 6165524480 Created task: Download and run through week 3's seminar question in Weekly Tasks & Readi2ng x Economic History with order 5
+INFO 2025-08-19 22:14:48,927 project_views 38741 6165524480 Created task: Pull together outline of draft essay using Toad by in Assignments & Coursework x Microeconomic Policy with order 6
+INFO 2025-08-19 22:14:48,928 project_views 38741 6165524480 Created task: Group coursework due by end of week 7 in Assignments & Coursework x Economic History with order 7
+INFO 2025-08-19 22:14:48,929 project_views 38741 6165524480 Created task: Think of who best to work with on group coursework in Assignments & Coursework x Economic History with order 8
+INFO 2025-08-19 22:14:48,930 project_views 38741 6165524480 Created task: Go over flashcards for week 1 in Exam Prep x Microeconomic Policy with order 9
+INFO 2025-08-19 22:14:48,931 project_views 38741 6165524480 Created task: Create flashcards for week 2 in Exam Prep x Microeconomic Policy with order 10
+INFO 2025-08-19 22:14:48,932 project_views 38741 6165524480 Created task: Go over flashcards for week 2 in Exam Prep x Economic History with order 11
+INFO 2025-08-19 22:14:48,933 project_views 38741 6165524480 Created task: Create flashcards for week 2 in Exam Prep x Economic History with order 12
+INFO 2025-08-19 22:14:48,933 project_views 38741 6165524480 Project created with 13 tasks out of 13 template tasks
+INFO 2025-08-19 22:14:48,933 project_views_functions 38741 6165524480 User None created project from template: Student Template 1: Student Template 1
+INFO 2025-08-19 22:14:48,934 basehttp 38741 6165524480 "POST /templates/3/use/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:48,955 basehttp 38741 6165524480 "GET /grids/140/ HTTP/1.1" 200 15528
+INFO 2025-08-19 22:14:52,608 basehttp 38741 6165524480 "GET /grids/140/delete/ HTTP/1.1" 200 1138
+INFO 2025-08-19 22:14:53,720 basehttp 38741 6165524480 "POST /grids/140/delete/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:14:53,737 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 6257
+INFO 2025-08-19 22:15:01,584 basehttp 38741 6165524480 "GET /grids/139/delete/ HTTP/1.1" 200 3445
+INFO 2025-08-19 22:15:02,614 basehttp 38741 6165524480 "POST /grids/139/delete/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:15:02,625 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 6217
+INFO 2025-08-19 22:15:04,815 basehttp 38741 6165524480 "GET /templates/2/delete/ HTTP/1.1" 200 1090
+INFO 2025-08-19 22:15:05,802 project_views_functions 38741 6165524480 User None deleted template: Student Template 1: N/A
+INFO 2025-08-19 22:15:05,804 basehttp 38741 6165524480 "POST /templates/2/delete/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:15:05,820 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 5742
+INFO 2025-08-19 22:15:07,992 basehttp 38741 6165524480 "GET /templates/3/delete/ HTTP/1.1" 200 1171
+INFO 2025-08-19 22:15:09,138 project_views_functions 38741 6165524480 User None deleted template: Student Template 1: N/A
+INFO 2025-08-19 22:15:09,139 basehttp 38741 6165524480 "POST /templates/3/delete/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:15:09,156 basehttp 38741 6165524480 "GET /grids/ HTTP/1.1" 200 5354
+INFO 2025-08-19 22:17:25,182 autoreload 39023 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-19 22:17:29,430 basehttp 39023 6159347712 "GET /grids/ HTTP/1.1" 200 5281
+INFO 2025-08-19 22:19:44,125 basehttp 39023 6159347712 "GET /grids/ HTTP/1.1" 200 5292
+INFO 2025-08-19 22:19:46,723 basehttp 39023 6159347712 "GET /grids/create/ HTTP/1.1" 200 3446
+INFO 2025-08-19 22:19:48,562 project_views_functions 39023 6159347712 User None created project: Test
+INFO 2025-08-19 22:19:48,563 basehttp 39023 6159347712 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-19 22:19:48,584 basehttp 39023 6159347712 "GET /grids/141/ HTTP/1.1" 200 10862
+INFO 2025-08-19 22:19:50,459 basehttp 39023 6159347712 "GET /grids/ HTTP/1.1" 200 5415
+INFO 2025-08-19 22:21:27,312 basehttp 39023 6159347712 "GET /grids/ HTTP/1.1" 200 5435
+INFO 2025-08-19 22:21:42,403 autoreload 39472 8693374720 Watching for file changes with StatReloader

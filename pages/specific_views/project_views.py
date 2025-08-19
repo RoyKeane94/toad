@@ -786,16 +786,10 @@ def save_as_template_view(request, pk):
             return redirect('pages:project_grid', pk=project.pk)
         
         try:
-            # Format template name with date
-            from datetime import datetime
-            current_date = datetime.now()
-            day_suffix = "th" if 10 <= current_date.day <= 20 else {1: "st", 2: "nd", 3: "rd"}.get(current_date.day % 10, "th")
-            formatted_date = f"{current_date.day}{day_suffix} {current_date.strftime('%B %Y')}"
-            
-            # Create the personal template with formatted name
+            # Create the personal template with the user-provided name
             template = PersonalTemplate.objects.create(
                 user=request.user,
-                name=f"{template_name} - {formatted_date}"
+                name=template_name
             )
             
             # Get all rows and columns from the project (including category column for template)
