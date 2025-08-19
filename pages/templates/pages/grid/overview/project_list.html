@@ -16,12 +16,20 @@
         <div class="flex space-x-3">
             <a href="{% url 'pages:project_create' %}" 
                 onclick="plausible('grid_created', {props: {source: 'blank'}});"
-               class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white"
+               class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
                style="background: var(--tertiary-action-bg);"
                onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
+            <button type="button"
+                    onclick="openNewGroupModal()"
+                    class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
+                    style="background: var(--primary-action-bg);"
+                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
+                <i class="fas fa-folder-plus mr-2"></i>
+                New Group
+            </button>
         </div>
     </div>
 </div>
@@ -29,60 +37,131 @@
 <!-- Grids Overview -->
 {% if projects %}
     <div class="max-w-7xl mx-auto px-4">
-        <div class="flex flex-wrap justify-center gap-6">
-            {% for project in projects %}
-                <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
-                    <div class="p-6">
-                        <div class="flex items-start justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
-                                {{ project.name }}
-                            </h3>
-                            <div class="flex space-x-2 flex-shrink-0">
-                                <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-                                   class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
-                                   title="Edit grid">
-                                    <i class="fas fa-edit text-sm"></i>
-                                </a>
-                                <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                                   class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
-                                   title="Delete grid">
-                                    <i class="fas fa-trash text-sm"></i>
-                                </a>
+        <!-- Group projects by their groups -->
+        {% regroup projects by project_group as grouped_projects %}
+        
+        <!-- Ungrouped projects first -->
+        {% for group in grouped_projects %}
+            {% if group.grouper is None %}
+                <div class="mb-8">
+                    <div class="flex flex-wrap justify-center gap-6">
+                        {% for project in group.list %}
+                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
+                                <div class="p-6">
+                                    <div class="flex items-start justify-between mb-4">
+                                        <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
+                                            {{ project.name }}
+                                        </h3>
+                                        <div class="flex space-x-2 flex-shrink-0">
+                                            <a href="{% url 'pages:project_edit' pk=project.pk %}" 
+                                               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                               title="Edit grid">
+                                                <i class="fas fa-edit text-sm"></i>
+                                            </a>
+                                            <a href="{% url 'pages:project_delete' pk=project.pk %}" 
+                                               class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
+                                               title="Delete grid">
+                                                <i class="fas fa-trash text-sm"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                            <span>Created {{ project.created_at|date:"d M Y" }}</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-tasks mr-2 text-xs"></i>
+                                            <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                       class="block w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-4 rounded-lg font-medium transition-colors shadow-sm">
+                                        <i class="fas fa-external-link-alt mr-2"></i>
+                                        Open Grid
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                            <div class="flex items-center">
-                                <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                <span>Created {{ project.created_at|date:"d M Y" }}</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-tasks mr-2 text-xs"></i>
-                                <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
-                            </div>
-                        </div>
-                        
-                        <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                           class="block w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-4 rounded-lg font-medium transition-colors shadow-sm">
-                            <i class="fas fa-external-link-alt mr-2"></i>
-                            Open Grid
-                        </a>
+                        {% endfor %}
                     </div>
                 </div>
-            {% endfor %}
-        </div>
+            {% endif %}
+        {% endfor %}
+        
+        <!-- Grouped projects -->
+        {% for group in grouped_projects %}
+            {% if group.grouper is not None %}
+                <div class="mb-8">
+                    <div class="flex items-center justify-center mb-6">
+                        <h3 class="text-xl font-semibold text-[var(--primary-action-bg)]">{{ group.grouper.name }}</h3>
+                    </div>
+                    <div class="flex flex-wrap justify-center gap-6">
+                        {% for project in group.list %}
+                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
+                                <div class="p-6">
+                                    <div class="flex items-start justify-between mb-4">
+                                        <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
+                                            {{ project.name }}
+                                        </h3>
+                                        <div class="flex space-x-2 flex-shrink-0">
+                                            <a href="{% url 'pages:project_edit' pk=project.pk %}" 
+                                               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                               title="Edit grid">
+                                                <i class="fas fa-edit text-sm"></i>
+                                            </a>
+                                            <a href="{% url 'pages:project_delete' pk=project.pk %}" 
+                                               class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
+                                               title="Delete grid">
+                                                <i class="fas fa-trash text-sm"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
+                                        <div class="flex items-center">
+                                            <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                            <span>Created {{ project.created_at|date:"d M Y" }}</span>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-tasks mr-2 text-xs"></i>
+                                            <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                       class="block w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-4 rounded-lg font-medium transition-colors shadow-sm">
+                                        <i class="fas fa-external-link-alt mr-2"></i>
+                                        Open Grid
+                                    </a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
     
-    <!-- Mobile New Grid Button -->
+    <!-- Mobile New Grid and Group Buttons -->
     <div class="text-center mt-12 md:hidden">
         <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
             <a href="{% url 'pages:project_create' %}" 
-               class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white"
+               class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
                style="background: var(--tertiary-action-bg);"
                onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
+            <button type="button"
+                    onclick="openNewGroupModal()"
+                    class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
+                    style="background: var(--primary-action-bg);"
+                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
+                <i class="fas fa-folder-plus mr-2"></i>
+                New Group
+            </button>
         </div>
     </div>
     
@@ -182,6 +261,72 @@
     </div>
 </div>
 
+<!-- New Group Modal -->
+<div id="new-group-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-lg w-full mx-4 transform scale-95 transition-all duration-300">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-folder-plus text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Create New Group</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Organize your grids into groups</p>
+                </div>
+            </div>
+            <button type="button" onclick="closeNewGroupModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <form id="new-group-form" method="post" action="{% url 'pages:project_group_create' %}">
+                {% csrf_token %}
+                
+                <!-- Group Name Field -->
+                <div class="mb-6">
+                    <label for="group_name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Group Name</label>
+                    <input type="text" 
+                           id="group_name" 
+                           name="name" 
+                           required
+                           class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]"
+                           placeholder="Enter group name">
+                </div>
+                
+                <!-- Project Selection -->
+                <div class="mb-6">
+                    <label class="block text-sm font-medium text-[var(--text-primary)] mb-3">Select Projects (Optional)</label>
+                    <div class="max-h-48 overflow-y-auto border border-[var(--border-color)] rounded-md p-3 bg-[var(--grid-header-bg)]">
+                        {% for project in projects %}
+                            <label class="flex items-center space-x-3 py-2 hover:bg-[var(--container-bg)] rounded px-2 cursor-pointer">
+                                <input type="checkbox" 
+                                       name="projects" 
+                                       value="{{ project.pk }}"
+                                       class="h-4 w-4 rounded border-[var(--border-color)] text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)]">
+                                <span class="text-sm text-[var(--text-primary)]">{{ project.name }}</span>
+                            </label>
+                        {% endfor %}
+                    </div>
+                    <p class="text-xs text-[var(--text-secondary)] mt-2">You can add projects to groups later or leave them ungrouped</p>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="closeNewGroupModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="submit" form="new-group-form" class="px-4 py-2 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                <i class="fas fa-save mr-2"></i>Create Group
+            </button>
+        </div>
+    </div>
+</div>
+
 
 
 <script>
@@ -222,6 +367,32 @@ document.addEventListener('click', function(e) {
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeModal();
+        closeNewGroupModal();
+    }
+});
+
+// New Group Modal functions
+function openNewGroupModal() {
+    const modal = document.getElementById('new-group-modal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('scale-100');
+    }
+}
+
+function closeNewGroupModal() {
+    const modal = document.getElementById('new-group-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        modal.classList.remove('scale-100');
+    }
+}
+
+// Close new group modal when clicking outside
+document.addEventListener('click', function(e) {
+    const newGroupModal = document.getElementById('new-group-modal');
+    if (newGroupModal && e.target === newGroupModal) {
+        closeNewGroupModal();
     }
 });
 </script>

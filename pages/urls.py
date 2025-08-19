@@ -75,4 +75,7 @@ urlpatterns = [
     path('grids/<int:project_pk>/columns/create/', views.column_create_view, name='column_create'),
     path('grids/<int:project_pk>/columns/<int:col_pk>/edit/', views.column_edit_view, name='column_edit'),
     path('grids/<int:project_pk>/columns/<int:col_pk>/delete/', views.column_delete_view, name='column_delete'),
+    
+    # Project Group URLs
+    path('grids/group/create/', views.project_group_create_view, name='project_group_create'),
 ]
