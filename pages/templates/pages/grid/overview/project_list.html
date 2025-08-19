@@ -37,9 +37,9 @@
         {% for group in grouped_projects %}
             {% if group.grouper is None %}
                 <div class="mb-8">
-                    <div class="flex justify-center gap-6 overflow-x-auto">
+                    <div class="flex flex-wrap justify-center gap-6">
                         {% for project in group.list %}
-                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 flex-shrink-0">
+                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
                                 <div class="p-6">
                                     <div class="flex items-center justify-between mb-4">
                                         <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
@@ -90,9 +90,9 @@
                     <div class="flex items-center justify-center mb-6">
                         <h3 class="text-xl font-semibold text-[var(--primary-action-bg)]">{{ group.grouper.name }}</h3>
                     </div>
-                    <div class="flex justify-center gap-6 overflow-x-auto">
+                    <div class="flex flex-wrap justify-center gap-6">
                         {% for project in group.list %}
-                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 flex-shrink-0">
+                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
                                 <div class="p-6">
                                     <div class="flex items-start justify-between mb-4">
                                         <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
