@@ -19503,3 +19503,155 @@ INFO 2025-08-20 20:23:49,713 basehttp 7350 6121828352 "GET /grids/ HTTP/1.1" 200
 INFO 2025-08-20 20:24:00,929 project_views_functions 7350 6121828352 User None created project group: Tester 10
 INFO 2025-08-20 20:24:00,930 basehttp 7350 6121828352 "POST /grids/group/create/ HTTP/1.1" 302 0
 INFO 2025-08-20 20:24:00,950 basehttp 7350 6121828352 "GET /grids/ HTTP/1.1" 200 10947
+INFO 2025-08-20 20:31:37,648 autoreload 7831 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:31:41,177 basehttp 7831 6137966592 "GET /grids/ HTTP/1.1" 200 10995
+INFO 2025-08-20 20:31:41,195 basehttp 7831 6154792960 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-20 20:31:41,196 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 200 74222
+INFO 2025-08-20 20:32:01,357 basehttp 7831 6137966592 "GET /grids/ HTTP/1.1" 200 10997
+INFO 2025-08-20 20:32:01,369 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:01,369 basehttp 7831 6154792960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:11,727 basehttp 7831 6154792960 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:11,738 basehttp 7831 6154792960 "GET /templates/students/ HTTP/1.1" 200 5695
+INFO 2025-08-20 20:32:11,756 basehttp 7831 6171619328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:11,756 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:11,779 basehttp 7831 6154792960 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-20 20:32:11,780 basehttp 7831 6171619328 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-20 20:32:11,781 basehttp 7831 6137966592 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-20 20:32:13,155 basehttp 7831 6137966592 "GET /templates/personal/ HTTP/1.1" 200 5631
+INFO 2025-08-20 20:32:13,173 basehttp 7831 6137966592 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 200 387584
+INFO 2025-08-20 20:32:20,386 basehttp 7831 6137966592 "GET /templates/habit-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:20,414 basehttp 7831 6137966592 "GET /grids/145/ HTTP/1.1" 200 15007
+INFO 2025-08-20 20:32:20,427 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:20,427 basehttp 7831 6171619328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:20,428 basehttp 7831 6154792960 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 20:32:29,139 basehttp 7831 6154792960 "GET /grids/145/delete/ HTTP/1.1" 200 1143
+INFO 2025-08-20 20:32:30,562 basehttp 7831 6154792960 "POST /grids/145/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:30,579 basehttp 7831 6154792960 "GET /grids/ HTTP/1.1" 200 10961
+INFO 2025-08-20 20:32:30,590 basehttp 7831 6171619328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:30,591 basehttp 7831 6154792960 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:32,989 basehttp 7831 6154792960 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:32,998 basehttp 7831 6154792960 "GET /templates/students/ HTTP/1.1" 200 5725
+INFO 2025-08-20 20:32:35,284 basehttp 7831 6154792960 "GET /templates/personal/ HTTP/1.1" 200 5600
+INFO 2025-08-20 20:32:39,053 basehttp 7831 6154792960 "GET /templates/habit-development-tracker/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:39,079 basehttp 7831 6154792960 "GET /grids/146/ HTTP/1.1" 200 13175
+INFO 2025-08-20 20:32:39,093 basehttp 7831 6171619328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:39,093 basehttp 7831 6154792960 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:39,094 basehttp 7831 6137966592 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:48,506 basehttp 7831 6137966592 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:48,514 basehttp 7831 6137966592 "GET /templates/students/ HTTP/1.1" 200 5672
+INFO 2025-08-20 20:32:48,530 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:48,530 basehttp 7831 6154792960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:32:50,022 basehttp 7831 6154792960 "GET /templates/personal/ HTTP/1.1" 200 5592
+INFO 2025-08-20 20:32:52,216 basehttp 7831 6154792960 "GET /templates/habit-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:32:52,238 basehttp 7831 6154792960 "GET /grids/147/ HTTP/1.1" 200 14993
+INFO 2025-08-20 20:32:52,254 basehttp 7831 6154792960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:01,084 basehttp 7831 6154792960 "GET /grids/ HTTP/1.1" 200 11186
+INFO 2025-08-20 20:33:01,099 basehttp 7831 6154792960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:01,100 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:17,989 basehttp 7831 6137966592 "GET /grids/ HTTP/1.1" 200 11157
+INFO 2025-08-20 20:33:18,004 basehttp 7831 6137966592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:18,004 basehttp 7831 6154792960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:42,931 autoreload 7831 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-20 20:33:43,220 autoreload 7908 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:33:51,464 autoreload 7908 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-20 20:33:51,673 autoreload 7917 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:33:55,480 basehttp 7917 6123859968 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:33:55,494 basehttp 7917 6123859968 "GET /templates/students/ HTTP/1.1" 200 5685
+INFO 2025-08-20 20:33:55,511 basehttp 7917 6140686336 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:55,512 basehttp 7917 6123859968 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:56,825 basehttp 7917 6123859968 "GET /templates/personal/ HTTP/1.1" 200 5649
+INFO 2025-08-20 20:33:56,839 basehttp 7917 6123859968 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 20:33:58,988 basehttp 7917 6123859968 "GET /templates/habit-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:33:59,014 basehttp 7917 6123859968 "GET /grids/148/ HTTP/1.1" 200 14950
+INFO 2025-08-20 20:33:59,034 basehttp 7917 6123859968 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:34:39,368 basehttp 7917 6123859968 "GET /grids/148/ HTTP/1.1" 200 14945
+INFO 2025-08-20 20:34:39,390 basehttp 7917 6157512704 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-20 20:34:39,392 basehttp 7917 6140686336 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-20 20:34:39,392 basehttp 7917 6123859968 "GET /static/css/output.css HTTP/1.1" 200 74222
+INFO 2025-08-20 20:34:39,392 basehttp 7917 6174339072 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 20:34:41,789 basehttp 7917 6174339072 "GET /grids/148/delete/ HTTP/1.1" 200 1164
+INFO 2025-08-20 20:34:42,786 basehttp 7917 6174339072 "POST /grids/148/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:34:42,806 basehttp 7917 6174339072 "GET /grids/ HTTP/1.1" 200 11169
+INFO 2025-08-20 20:34:44,662 basehttp 7917 6174339072 "GET /grids/147/delete/ HTTP/1.1" 200 3464
+INFO 2025-08-20 20:34:45,330 basehttp 7917 6174339072 "POST /grids/147/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:34:45,349 basehttp 7917 6174339072 "GET /grids/ HTTP/1.1" 200 11043
+INFO 2025-08-20 20:34:46,860 basehttp 7917 6174339072 "GET /grids/146/delete/ HTTP/1.1" 200 3416
+INFO 2025-08-20 20:34:47,706 basehttp 7917 6174339072 "POST /grids/146/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:34:47,716 basehttp 7917 6174339072 "GET /grids/ HTTP/1.1" 200 10873
+INFO 2025-08-20 20:34:50,037 basehttp 7917 6174339072 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:34:50,045 basehttp 7917 6174339072 "GET /templates/students/ HTTP/1.1" 200 5706
+INFO 2025-08-20 20:34:50,089 basehttp 7917 6157512704 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-08-20 20:34:50,090 basehttp 7917 6123859968 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-08-20 20:34:50,093 basehttp 7917 6174339072 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-08-20 20:34:50,093 basehttp 7917 6140686336 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-08-20 20:34:50,988 basehttp 7917 6140686336 "GET /templates/personal/ HTTP/1.1" 200 5569
+INFO 2025-08-20 20:34:51,003 basehttp 7917 6140686336 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 200 387584
+INFO 2025-08-20 20:34:55,320 basehttp 7917 6140686336 "GET /templates/habit-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:34:55,342 basehttp 7917 6140686336 "GET /grids/149/ HTTP/1.1" 200 14929
+INFO 2025-08-20 20:35:34,870 basehttp 7917 6123859968 "GET /grids/149/delete/ HTTP/1.1" 200 1110
+INFO 2025-08-20 20:35:35,946 basehttp 7917 6123859968 "POST /grids/149/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:35:35,956 basehttp 7917 6123859968 "GET /grids/ HTTP/1.1" 200 10860
+INFO 2025-08-20 20:35:35,968 basehttp 7917 6140686336 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:35:35,969 basehttp 7917 6123859968 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:39:56,929 autoreload 7917 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-20 20:39:57,240 autoreload 8008 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:50:50,183 autoreload 8008 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-20 20:50:50,482 autoreload 8157 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:50:54,372 basehttp 8157 6165393408 "GET /grids/ HTTP/1.1" 200 10900
+INFO 2025-08-20 20:50:54,385 basehttp 8157 6165393408 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:50:54,386 basehttp 8157 6182219776 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:50:55,571 basehttp 8157 6182219776 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:50:55,582 basehttp 8157 6182219776 "GET /templates/students/ HTTP/1.1" 200 5655
+INFO 2025-08-20 20:50:56,686 basehttp 8157 6182219776 "GET /templates/personal/ HTTP/1.1" 200 5608
+INFO 2025-08-20 20:50:56,697 basehttp 8157 6182219776 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 20:50:58,669 basehttp 8157 6182219776 "GET /templates/habit-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:50:58,699 basehttp 8157 6182219776 "GET /grids/150/ HTTP/1.1" 200 16692
+INFO 2025-08-20 20:50:58,717 basehttp 8157 6182219776 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 21:14:34,614 autoreload 8157 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-20 21:14:34,891 autoreload 8338 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:14:53,326 autoreload 8338 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-20 21:14:53,591 autoreload 8366 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:15:08,891 autoreload 8366 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-08-20 21:15:09,144 autoreload 8382 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:15:19,392 autoreload 8382 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-20 21:15:19,570 autoreload 8393 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:15:26,772 autoreload 8393 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 21:15:26,956 autoreload 8403 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:17:45,609 autoreload 8403 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 21:17:45,915 autoreload 8629 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:17:48,298 basehttp 8629 6169047040 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:17:48,309 basehttp 8629 6169047040 "GET /templates/students/ HTTP/1.1" 200 5642
+INFO 2025-08-20 21:17:48,321 basehttp 8629 6185873408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 21:17:48,321 basehttp 8629 6169047040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 21:17:49,427 basehttp 8629 6169047040 "GET /templates/personal/ HTTP/1.1" 200 5705
+INFO 2025-08-20 21:17:49,445 basehttp 8629 6185873408 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 21:17:49,450 basehttp 8629 6169047040 "GET /static/img/Personal/Weekly%20Fitness%20Tracker.png HTTP/1.1" 200 321776
+INFO 2025-08-20 21:17:57,922 basehttp 8629 6169047040 "GET /templates/weekly-fitness-tracker/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:17:57,952 basehttp 8629 6169047040 "GET /grids/151/ HTTP/1.1" 200 15510
+INFO 2025-08-20 21:17:57,964 basehttp 8629 6169047040 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 21:18:02,124 basehttp 8629 6169047040 "GET /grids/151/delete/ HTTP/1.1" 200 1178
+INFO 2025-08-20 21:18:03,046 basehttp 8629 6169047040 "POST /grids/151/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:03,066 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 11044
+INFO 2025-08-20 21:18:04,573 basehttp 8629 6169047040 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:04,582 basehttp 8629 6169047040 "GET /templates/students/ HTTP/1.1" 200 5671
+INFO 2025-08-20 21:18:05,756 basehttp 8629 6169047040 "GET /templates/personal/ HTTP/1.1" 200 5757
+INFO 2025-08-20 21:18:08,669 basehttp 8629 6169047040 "GET /templates/weekly-fitness-tracker/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:08,691 basehttp 8629 6169047040 "GET /grids/152/ HTTP/1.1" 200 12569
+INFO 2025-08-20 21:18:11,536 basehttp 8629 6169047040 "GET /grids/152/delete/ HTTP/1.1" 200 1135
+INFO 2025-08-20 21:18:12,548 basehttp 8629 6169047040 "POST /grids/152/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:12,569 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 11030
+INFO 2025-08-20 21:18:16,760 basehttp 8629 6169047040 "GET /grids/143/delete/ HTTP/1.1" 200 3392
+INFO 2025-08-20 21:18:17,873 basehttp 8629 6169047040 "POST /grids/143/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:17,886 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 10916
+INFO 2025-08-20 21:18:19,609 basehttp 8629 6169047040 "GET /grids/144/delete/ HTTP/1.1" 200 3418
+INFO 2025-08-20 21:18:20,494 basehttp 8629 6169047040 "POST /grids/144/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:20,510 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 10881
+INFO 2025-08-20 21:18:22,021 basehttp 8629 6169047040 "GET /grids/142/delete/ HTTP/1.1" 200 3463
+INFO 2025-08-20 21:18:22,964 basehttp 8629 6169047040 "POST /grids/142/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:22,981 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 10655
+INFO 2025-08-20 21:18:24,093 basehttp 8629 6169047040 "GET /grids/21/delete/ HTTP/1.1" 200 3437
+INFO 2025-08-20 21:18:24,819 basehttp 8629 6169047040 "POST /grids/21/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:24,832 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 10603
+INFO 2025-08-20 21:18:26,719 basehttp 8629 6169047040 "GET /grids/15/delete/ HTTP/1.1" 200 3470
+INFO 2025-08-20 21:18:27,566 basehttp 8629 6169047040 "POST /grids/15/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:18:27,579 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 10348

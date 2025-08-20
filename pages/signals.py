@@ -159,6 +159,144 @@ def create_course_planner_grid(user):
     return project
 
 
+def create_habit_development_tracker_grid(user):
+    """
+    Create a Habit Development Tracker grid with predefined rows and columns for the given user.
+    Based on the Habit Development Tracker structure with days of the week and habit categories.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Habit Development Tracker"
+    )
+    
+    # Create row headers (habit categories)
+    row_headers = [
+        "Morning Upgrades",
+        "Evening Upgrades", 
+        "Swaps",
+        "Daily Victory"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (days of the week)
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Habit Development Tracker image
+    tasks_data = [
+        # Morning Upgrades row
+        (0, 0, "Morning sunlight upon waking", False),  # Monday
+        (0, 0, "Morning exercise", False),  # Monday
+        (0, 1, "Morning exercise", False),  # Tuesday
+        (0, 1, "Morning sunlight upon waking", False),  # Tuesday
+        (0, 2, "Morning sunlight upon waking", False),  # Wednesday
+        (0, 2, "Morning exercise", False),  # Wednesday
+        
+        # Evening Upgrades row
+        (1, 0, "Go to bed by 10:30", False),  # Monday
+        (1, 0, "Read for 30 minutes before bed", False),  # Monday
+        (1, 1, "Go to bed by 10:30", False),  # Tuesday
+        (1, 1, "Read for 30 minutes before bed", False),  # Tuesday
+        (1, 2, "Go to bed by 10:30", False),  # Wednesday
+        (1, 2, "Read for 30 minutes before bed", False),  # Wednesday
+        
+        # Swaps row
+        (2, 0, "Don't look at phone for an hour post waking", False),  # Monday
+        (2, 1, "Don't look at phone for an hour post waking", False),  # Tuesday
+        (2, 2, "Don't look at phone for an hour post waking", False),  # Wednesday
+        
+        # Daily Victory row
+        (3, 0, "Went to the loo without my phone", False),  # Monday
+        (3, 1, "Chose to walk 30 minutes to work without headphones", False),  # Tuesday
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
+def create_habit_development_tracker_grid_structure_only(user):
+    """
+    Create a Habit Development Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Habit Development Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Morning Upgrades",
+        "Evening Upgrades", 
+        "Swaps",
+        "Daily Victory"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all days of the week
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
 def create_shooting_grid(user):
     """
     Create a Shooting grid with predefined rows and columns for the given user.
@@ -318,7 +456,6 @@ def create_line_manager_grid_signal(user):
     
     return project
 
-
 def create_revision_guide_grid(user):
     """
     Create a Revision Guide grid with predefined rows and columns for the given user.
@@ -392,7 +529,6 @@ def create_revision_guide_grid(user):
         )
     
     return project
-
 
 def create_product_development_tracker_grid(user):
     """
@@ -483,7 +619,6 @@ def create_product_development_tracker_grid(user):
         )
     
     return project
-
 
 def create_weekly_planner_grid(user):
     """
@@ -676,7 +811,6 @@ def create_sell_side_project_grid(user):
     
     return project
 
-
 def create_origination_director_grid(user):
     """
     Create an Origination Director grid with predefined rows and columns for the given user.
@@ -776,7 +910,6 @@ def create_origination_director_grid(user):
     
     return project
 
-
 def create_course_planner_grid_structure_only(user):
     """
     Create a Course Planner grid structure only (no tasks) for the given user.
@@ -819,7 +952,6 @@ def create_course_planner_grid_structure_only(user):
         )
     
     return project
-
 
 def create_revision_guide_grid_structure_only(user):
     """
@@ -999,7 +1131,6 @@ def create_weekly_planner_grid_structure_only(user):
     
     return project
 
-
 def create_line_manager_grid_structure_only(user):
     """
     Create a Line Manager grid structure only (no tasks) for the given user.
@@ -1044,7 +1175,6 @@ def create_line_manager_grid_structure_only(user):
     
     return project
 
-
 def create_sell_side_project_grid_structure_only(user):
     """
     Create a Sell Side Project grid structure only (no tasks) for the given user.
@@ -1086,7 +1216,6 @@ def create_sell_side_project_grid_structure_only(user):
         )
     
     return project
-
 
 def create_origination_director_grid_structure_only(user):
     """
@@ -1134,7 +1263,6 @@ def create_origination_director_grid_structure_only(user):
     
     return project
 
-
 def create_product_development_tracker_grid_structure_only(user):
     """
     Create a Product Development Tracker grid structure only (no tasks) for the given user.
@@ -1166,6 +1294,136 @@ def create_product_development_tracker_grid_structure_only(user):
         "Development (Frontend)",
         "Development (Backend)",
         "Marketing and User Outreach"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_weekly_fitness_tracker_grid(user):
+    """
+    Create a Weekly Fitness Tracker grid with predefined rows and columns for the given user.
+    Based on the Weekly Fitness Tracker structure with days of the week and fitness categories.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Weekly Fitness Tracker"
+    )
+    
+    # Create row headers (fitness categories)
+    row_headers = [
+        "Cardio",
+        "Weights", 
+        "Recovery"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (days of the week)
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Weekly Fitness Tracker image
+    tasks_data = [
+        # Cardio row
+        (0, 0, "Training plan (3/14) - 5km at conversational pace before work", False),  # Monday
+        (0, 1, "Training plan (3/14) - 8km at 5:20 per k/m running home", False),  # Tuesday
+        (0, 2, "Cycling", False),  # Wednesday
+        (0, 2, "Get off tube one stop early to get in a 45 minute evening walk", False),  # Wednesday
+        
+        # Weights row
+        (1, 0, "45 minutes - arms and chest workout before work", False),  # Monday
+        (1, 2, "45 minutes - leg workout pre work", False),  # Wednesday
+        
+        # Recovery row
+        (2, 0, "Evening stretches - 15 minutes", False),  # Monday
+        (2, 0, "Evening ice bath", False),  # Monday
+        (2, 1, "Morning Sauna", False),  # Tuesday
+        (2, 1, "Evening ice bath", False),  # Tuesday
+        (2, 1, "Evening stretches - 15 minutes", False),  # Tuesday
+        (2, 2, "Morning Sauna", False),  # Wednesday
+        (2, 2, "Evening stretches - 15 minutes", False),  # Wednesday
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
+def create_weekly_fitness_tracker_grid_structure_only(user):
+    """
+    Create a Weekly Fitness Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Weekly Fitness Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Cardio",
+        "Weights", 
+        "Recovery"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers - include all days of the week
+    column_headers = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
     ]
     
     for order, col_name in enumerate(column_headers):

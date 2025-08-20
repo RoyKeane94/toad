@@ -39,6 +39,8 @@ urlpatterns = [
     path('templates/professionals/', views.professionals_templates_view, name='professionals_templates'),
     path('templates/entrepreneurs/', views.entrepreneurs_templates_view, name='entrepreneurs_templates'),
     path('templates/personal/', views.personal_templates_view, name='personal_templates'),
+    path('templates/habit-development-tracker/', views.habit_development_tracker_template_view, name='habit_development_tracker_template'),
+    path('templates/weekly-fitness-tracker/', views.weekly_fitness_tracker_template_view, name='weekly_fitness_tracker_template'),
     path('templates/create/<str:template_type>/', views.create_from_template_view, name='create_from_template'),
     
     # Support Pages

@@ -25,6 +25,8 @@ from .specific_views.general_views import (
     professionals_templates_view,
     entrepreneurs_templates_view,
     personal_templates_view,
+    habit_development_tracker_template_view,
+    weekly_fitness_tracker_template_view,
     shooting_template_landing_view,
     shooting_template_create_view,
     product_development_tracker_template_view,

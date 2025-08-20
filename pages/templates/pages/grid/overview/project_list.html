@@ -234,15 +234,7 @@
 <!-- Grids Overview -->
 {% if projects %}
     <div class="max-w-7xl mx-auto px-4">
-        <!-- Debug info -->
-        <div class="mb-4 p-4 bg-gray-100 rounded text-sm">
-            <strong>Debug:</strong> Found {{ projects|length }} projects<br>
-            {% regroup projects by project_group as grouped_projects %}
-            <strong>Groups:</strong> {{ grouped_projects|length }} groups<br>
-            {% for group in grouped_projects %}
-                - {% if group.grouper %}{{ group.grouper.name }}{% else %}Ungrouped{% endif %}: {{ group.list|length }} projects<br>
-            {% endfor %}
-        </div>
+
         
         <!-- Group projects by their groups -->
         {% regroup projects by project_group as grouped_projects %}
@@ -414,7 +406,7 @@
             </div>
         </div>
         <h3 class="text-2xl font-medium text-[var(--title-text)] mb-3">No grids yet</h3>
-        <p class="text-[var(--subtitle-text)] mb-8 text-lg">Create your first grid to start organizing your tasks and boost your productivity</p>
+        <p class="text-[var(--subtitle-text)] mb-8 text-lg">Create your first grid to start organising your tasks and boost your productivity</p>
         <a href="{% url 'pages:project_create' %}" 
            class="inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-8 py-4 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md">
             <i class="fas fa-plus mr-2"></i>
@@ -441,7 +433,7 @@
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-[var(--text-primary)]">Create New Group</h3>
-                    <p class="text-sm text-[var(--text-secondary)]">Organize your grids into groups</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Organise your grids into groups</p>
                 </div>
             </div>
             <button type="button" onclick="closeNewGroupModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">

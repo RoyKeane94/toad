@@ -46,10 +46,61 @@
             </p>
         </header>
 
+        <!-- Habit Development Tracker Template Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Habit Development Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Habit Development Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Build better habits with a structured weekly tracker. Monitor your morning routines, evening upgrades, healthy swaps, and daily victories across each day of the week.</p>
+                     <button onclick="showTemplateModal('habit_development_tracker', 'Habit Development Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
+            <!-- Habit Development Tracker Preview -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Personal/Habit Development Tracker.png' %}" alt="Habit Development Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Habit Development Tracker Preview</p>
+                        <p class="text-gray-400 text-xs">Add Habit Development Tracker.png to static/img/Personal/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Fitness Tracker Template Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Weekly Fitness Tracker Preview -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Personal/Weekly Fitness Tracker.png' %}" alt="Weekly Fitness Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Weekly Fitness Tracker Preview</p>
+                        <p class="text-gray-400 text-xs">Add Weekly Fitness Tracker.png to static/img/Personal/</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Weekly Fitness Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Weekly Fitness Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Track your weekly fitness routine with structured categories for cardio, weights, and recovery. Monitor your progress across each day of the week.</p>
+                     <button onclick="showTemplateModal('weekly_fitness_tracker', 'Weekly Fitness Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
         <!-- Coming Soon Section -->
         <div class="text-center px-4 max-w-4xl mx-auto">
             <div class="bg-[var(--container-bg)] p-8 md:p-12 rounded-lg border border-[var(--border-color)]">
-                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">Personal Templates Coming Soon</h3>
+                <h3 class="text-xl md:text-2xl font-bold text-[var(--primary-action-bg)] mb-4">More Personal Templates Coming Soon</h3>
                 <p class="text-[var(--text-secondary)] mb-6">
                     We're building templates for personal organization including:
                 </p>
@@ -86,4 +137,133 @@
         </div>
     </div>
 </div>
+
+<!-- Template Choice Modal -->
+<div id="template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden p-4">
+    <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
+        <!-- Modal Header -->
+        <div class="flex items-center p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-th-large text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]" id="modal-title">Choose Your Template Style</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">How would you like to start with your <span id="template-name" class="font-medium text-[var(--text-primary)]"></span>?</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="space-y-4">
+                <!-- Option 1: Pre-populated -->
+                <button id="pre-populated-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--primary-action-bg)] transition-all duration-200 group cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
+                            <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full group-hover:border-[var(--primary-action-bg)] group-hover:bg-[var(--primary-action-bg)] transition-all duration-200 flex items-center justify-center">
+                                <div class="w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--primary-action-bg)] transition-colors duration-200 mb-1">Start with example habits</h4>
+                            <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Get a head start with pre-filled habits that show you how to use the template effectively.</p>
+                        </div>
+                    </div>
+                </button>
+                
+                <!-- Option 2: Structure only -->
+                <button id="structure-only-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--primary-action-bg)] transition-all duration-200 group cursor-pointer">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
+                            <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full group-hover:border-[var(--primary-action-bg)] group-hover:bg-[var(--primary-action-bg)] transition-all duration-200 flex items-center justify-center">
+                                <div class="w-2 h-2 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--primary-action-bg)] transition-colors duration-200 mb-1">Start with a clean structure</h4>
+                            <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Begin with just the rows and columns, ready for you to add your own habits.</p>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="hideTemplateModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentTemplate = '';
+let currentTemplateName = '';
+
+function showTemplateModal(template, templateName) {
+    currentTemplate = template;
+    currentTemplateName = templateName;
+    document.getElementById('modal-title').textContent = `Choose Your ${templateName} Style`;
+    document.getElementById('template-name').textContent = templateName;
+    const modal = document.getElementById('template-modal');
+    modal.classList.remove('hidden');
+    modal.classList.add('flex', 'items-center', 'justify-center');
+    
+    // Add event listeners for the options
+    document.getElementById('pre-populated-btn').onclick = () => createTemplateWithTasks(template);
+    document.getElementById('structure-only-btn').onclick = () => createTemplateStructureOnly(template);
+}
+
+function hideTemplateModal() {
+    const modal = document.getElementById('template-modal');
+    modal.classList.add('hidden');
+    modal.classList.remove('flex', 'items-center', 'justify-center');
+}
+
+function createTemplateWithTasks(template) {
+    // Create template with pre-populated tasks
+    const urls = {
+        'habit_development_tracker': '{% url "pages:habit_development_tracker_template" %}',
+        'weekly_fitness_tracker': '{% url "pages:weekly_fitness_tracker_template" %}'
+    };
+    
+    if (urls[template]) {
+        // Track template creation with Plausible
+        plausible('grid_created', {props: {source: 'template', template_name: currentTemplateName, style: 'pre_populated'}});
+        window.location.href = urls[template];
+    }
+    hideTemplateModal();
+}
+
+function createTemplateStructureOnly(template) {
+    // Create template with structure only (no tasks)
+    const urls = {
+        'habit_development_tracker': '{% url "pages:habit_development_tracker_template" %}?structure_only=true',
+        'weekly_fitness_tracker': '{% url "pages:weekly_fitness_tracker_template" %}?structure_only=true'
+    };
+    
+    if (urls[template]) {
+        // Track template creation with Plausible
+        plausible('grid_created', {props: {source: 'template', template_name: currentTemplateName, style: 'structure_only'}});
+        window.location.href = urls[template];
+    }
+    hideTemplateModal();
+}
+
+// Close modal when clicking outside
+document.getElementById('template-modal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        hideTemplateModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        hideTemplateModal();
+    }
+});
+</script>
 {% endblock %}
