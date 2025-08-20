@@ -61,7 +61,7 @@ def create_first_grid(sender, instance, created, **kwargs):
             (1, 0, "Make your grid your own by adding your own columns and rows", False),
             (1, 0, "Tidy your grid by clicking 'Clear Completed' to remove all completed tasks", False),
             (1, 0, "Pick a template for your first grid using Templates or create your own grid by clicking Grids", False),
-            (1, 0, "Tailor a grid to start planning your week better, find your next job or organise your holiday", False),
+            (1, 0, "This grid is yours. Feel free to delete it when you're done.", True),
             
             # Your Beta Account row
             (2, 0, "We have built Toad to be simple and fast", True),

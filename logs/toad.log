@@ -19655,3 +19655,25 @@ INFO 2025-08-20 21:18:24,832 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200
 INFO 2025-08-20 21:18:26,719 basehttp 8629 6169047040 "GET /grids/15/delete/ HTTP/1.1" 200 3470
 INFO 2025-08-20 21:18:27,566 basehttp 8629 6169047040 "POST /grids/15/delete/ HTTP/1.1" 302 0
 INFO 2025-08-20 21:18:27,579 basehttp 8629 6169047040 "GET /grids/ HTTP/1.1" 200 10348
+INFO 2025-08-20 21:20:28,068 autoreload 8874 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:20:29,163 basehttp 8874 6202683392 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-20 21:20:29,173 basehttp 8874 6202683392 "GET /templates/students/ HTTP/1.1" 200 5698
+INFO 2025-08-20 21:20:29,556 basehttp 8874 6202683392 "GET /templates/students/ HTTP/1.1" 200 5644
+INFO 2025-08-20 21:20:31,006 basehttp 8874 6202683392 "GET /templates/personal/ HTTP/1.1" 200 5711
+INFO 2025-08-20 21:23:12,402 basehttp 8874 6202683392 "GET /templates/personal/ HTTP/1.1" 200 5678
+INFO 2025-08-20 21:23:12,422 basehttp 8874 6219509760 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 21:23:12,422 basehttp 8874 6236336128 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 21:23:12,422 basehttp 8874 6202683392 "GET /static/img/Personal/Weekly%20Fitness%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 21:23:12,423 basehttp 8874 6253162496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 21:29:30,277 autoreload 8874 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-20 21:29:30,618 autoreload 9238 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 21:30:21,085 basehttp 9238 6191247360 "GET /templates/personal/ HTTP/1.1" 200 5724
+INFO 2025-08-20 21:30:21,098 basehttp 9238 6191247360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 21:30:21,100 basehttp 9238 6224900096 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 21:30:21,100 basehttp 9238 6208073728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 21:30:21,101 basehttp 9238 6241726464 "GET /static/img/Personal/Weekly%20Fitness%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-08-20 21:31:29,410 basehttp 9238 6241726464 "GET /templates/professionals/ HTTP/1.1" 200 6044
+INFO 2025-08-20 21:31:29,448 basehttp 9238 6241726464 "GET /static/img/Professionals/Weekly%20Planner%20Grid.png HTTP/1.1" 200 355440
+INFO 2025-08-20 21:31:29,448 basehttp 9238 6208073728 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 200 330329
+INFO 2025-08-20 21:31:29,450 basehttp 9238 6191247360 "GET /static/img/Professionals/Origination%20Grid.png HTTP/1.1" 200 396399
+INFO 2025-08-20 21:31:29,451 basehttp 9238 6224900096 "GET /static/img/Professionals/Sell-Side%20Deal%20Grid.png HTTP/1.1" 200 411484
