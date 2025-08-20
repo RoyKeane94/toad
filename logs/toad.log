@@ -19478,3 +19478,28 @@ INFO 2025-08-20 20:19:06,039 basehttp 7070 6187331584 "POST /grids/group/create/
 INFO 2025-08-20 20:19:06,047 basehttp 7070 6187331584 "GET /grids/ HTTP/1.1" 200 10531
 INFO 2025-08-20 20:19:08,011 basehttp 7070 6187331584 "POST /grids/project/update-group/ HTTP/1.1" 200 66
 INFO 2025-08-20 20:19:09,811 basehttp 7070 6187331584 "GET /grids/ HTTP/1.1" 200 10562
+INFO 2025-08-20 20:23:21,891 autoreload 7333 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:23:21,996 basehttp 7333 6168637440 "GET /grids/ HTTP/1.1" 200 10601
+INFO 2025-08-20 20:23:22,013 basehttp 7333 6168637440 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:23:29,112 autoreload 7333 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 20:23:29,308 autoreload 7350 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:23:33,497 basehttp 7350 6121828352 "GET /grids/ HTTP/1.1" 200 10568
+INFO 2025-08-20 20:23:35,327 basehttp 7350 6121828352 "GET /grids/ HTTP/1.1" 200 10568
+INFO 2025-08-20 20:23:37,694 basehttp 7350 6121828352 "GET /grids/create/ HTTP/1.1" 200 3479
+INFO 2025-08-20 20:23:40,170 project_views_functions 7350 6121828352 User None created project: Tester 1
+INFO 2025-08-20 20:23:40,171 basehttp 7350 6121828352 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:23:40,191 basehttp 7350 6121828352 "GET /grids/142/ HTTP/1.1" 200 10842
+INFO 2025-08-20 20:23:40,212 basehttp 7350 6121828352 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 20:23:42,224 basehttp 7350 6121828352 "GET /grids/create/ HTTP/1.1" 200 3420
+INFO 2025-08-20 20:23:44,489 project_views_functions 7350 6121828352 User None created project: Tester 2
+INFO 2025-08-20 20:23:44,491 basehttp 7350 6121828352 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:23:44,506 basehttp 7350 6121828352 "GET /grids/143/ HTTP/1.1" 200 10944
+INFO 2025-08-20 20:23:45,772 basehttp 7350 6121828352 "GET /grids/create/ HTTP/1.1" 200 3465
+INFO 2025-08-20 20:23:45,790 basehttp 7350 6121828352 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:23:48,240 project_views_functions 7350 6121828352 User None created project: Tester 3
+INFO 2025-08-20 20:23:48,242 basehttp 7350 6121828352 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:23:48,258 basehttp 7350 6121828352 "GET /grids/144/ HTTP/1.1" 200 10883
+INFO 2025-08-20 20:23:49,713 basehttp 7350 6121828352 "GET /grids/ HTTP/1.1" 200 10941
+INFO 2025-08-20 20:24:00,929 project_views_functions 7350 6121828352 User None created project group: Tester 10
+INFO 2025-08-20 20:24:00,930 basehttp 7350 6121828352 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:24:00,950 basehttp 7350 6121828352 "GET /grids/ HTTP/1.1" 200 10947

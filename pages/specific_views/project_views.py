@@ -1135,21 +1135,24 @@ def project_group_create_view(request):
     if request.method == 'POST':
         form = ProjectGroupForm(request.POST)
         if form.is_valid():
-            group = form.save(commit=False)
-            group.user = request.user
-            group.save()
-            
-            # Handle project assignments if any projects were selected
-            selected_projects = request.POST.getlist('projects')
-            if selected_projects:
-                projects = Project.objects.filter(id__in=selected_projects, user=request.user)
-                for project in projects:
-                    project.project_group = group
-                    project.save()
-            
-            log_user_action(request.user, 'created project group', group.name)
-            messages.success(request, f'Group "{group.name}" created successfully!')
-            return redirect('pages:project_list')
+            try:
+                group = form.save()
+                
+                # Handle project assignments if any projects were selected
+                selected_projects = request.POST.getlist('projects')
+                if selected_projects:
+                    projects = Project.objects.filter(id__in=selected_projects, user=request.user)
+                    for project in projects:
+                        project.project_group = group
+                        project.save()
+                
+                log_user_action(request.user, 'created project group', group.name)
+                messages.success(request, f'Group "{group.name}" created successfully!')
+                return redirect('pages:project_list')
+            except Exception as e:
+                messages.error(request, f'Error creating group: {str(e)}')
+                logger.error(f'Error creating project group: {str(e)}')
+                return redirect('pages:project_list')
         else:
             messages.error(request, 'Please correct the errors below.')
     else:

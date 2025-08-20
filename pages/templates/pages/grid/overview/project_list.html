@@ -234,6 +234,16 @@
 <!-- Grids Overview -->
 {% if projects %}
     <div class="max-w-7xl mx-auto px-4">
+        <!-- Debug info -->
+        <div class="mb-4 p-4 bg-gray-100 rounded text-sm">
+            <strong>Debug:</strong> Found {{ projects|length }} projects<br>
+            {% regroup projects by project_group as grouped_projects %}
+            <strong>Groups:</strong> {{ grouped_projects|length }} groups<br>
+            {% for group in grouped_projects %}
+                - {% if group.grouper %}{{ group.grouper.name }}{% else %}Ungrouped{% endif %}: {{ group.list|length }} projects<br>
+            {% endfor %}
+        </div>
+        
         <!-- Group projects by their groups -->
         {% regroup projects by project_group as grouped_projects %}
         
