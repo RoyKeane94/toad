@@ -33,31 +33,14 @@ from .specific_views.general_views import (
     privacy_policy_view
 )
 
-from .specific_views.project_views import (
-    project_list_view,
-    project_create_view,
-    project_edit_view,
-    project_delete_view,
-    project_grid_view,
-    task_create_view,
-    task_edit_view,
-    task_toggle_complete_view,
-    task_delete_view,
-    task_reorder_view,
-    row_create_view,
-    row_edit_view,
-    row_delete_view,
-    column_create_view,
-    column_edit_view,
-    column_delete_view,
-    delete_completed_tasks_view,
-    create_from_template_view,
-    save_as_template_view,
-    use_template_view,
-    template_edit_view,
-    template_delete_view,
-    project_group_create_view,
-
+from pages.specific_views.project_views import (
+    project_list_view, project_create_view, project_edit_view, project_delete_view,
+    project_grid_view, delete_completed_tasks_view,
+    project_group_create_view, project_group_update_view, project_group_edit_view,
+    save_as_template_view, use_template_view, template_edit_view, template_delete_view,
+    create_from_template_view, task_create_view, task_edit_view, task_toggle_complete_view,
+    task_delete_view, task_reorder_view, row_create_view, row_edit_view, row_delete_view,
+    column_create_view, column_edit_view, column_delete_view
 )
 
 # Import analytics functions

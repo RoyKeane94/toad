@@ -78,4 +78,6 @@ urlpatterns = [
     
     # Project Group URLs
     path('grids/group/create/', views.project_group_create_view, name='project_group_create'),
+    path('grids/project/update-group/', views.project_group_update_view, name='project_group_update'),
+    path('grids/group/<int:pk>/edit/', views.project_group_edit_view, name='project_group_edit'),
 ]

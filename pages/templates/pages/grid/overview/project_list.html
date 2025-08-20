@@ -4,6 +4,203 @@
 
 {% block content %}
 
+<!-- CSRF Token for AJAX requests -->
+{% csrf_token %}
+
+<style>
+    /* Drag and drop styles */
+    .sortable-drag {
+        box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        cursor: grabbing;
+        background-color: var(--container-bg);
+        opacity: 0.8;
+        transform: rotate(2deg);
+        z-index: 1000;
+    }
+
+    .sortable-ghost {
+        opacity: 0.5;
+        border: 2px dashed var(--primary-action-bg);
+        background-color: var(--grid-header-bg);
+    }
+    
+    .sortable-ghost > * {
+        opacity: 0;
+    }
+    
+    /* Project card hover effects */
+    .project-card {
+        transition: all 0.2s ease-out;
+        cursor: grab;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-card:active {
+        cursor: grabbing;
+    }
+    
+    /* Responsive layout improvements */
+    .project-group, #ungrouped-projects {
+        min-height: 200px;
+        padding: 1rem 0;
+        border: 2px solid transparent;
+        border-radius: 0.5rem;
+        transition: all 0.2s ease-out;
+    }
+    
+    /* Smooth transitions for all interactive elements */
+    .project-card * {
+        transition: all 0.2s ease-out;
+    }
+    
+    /* Drag active states - green dotted box drop zones */
+    .drag-active {
+        background-color: var(--grid-header-bg);
+        border: 2px dashed #10B981 !important; /* Green dotted border */
+        border-radius: 0.5rem;
+        transition: all 0.2s ease-out;
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1); /* Green glow */
+    }
+    
+    /* Dragging state */
+    .project-card.dragging {
+        transform: scale(1.02);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+    
+    /* Responsive improvements */
+    @media (max-width: 768px) {
+        .project-group, #ungrouped-projects {
+            justify-content: center;
+        }
+        
+        .project-card {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .project-card {
+            width: calc(50% - 0.75rem);
+            max-width: calc(50% - 0.75rem);
+        }
+    }
+    
+    @media (min-width: 1025px) {
+        .project-card {
+            width: calc(33.333% - 1rem);
+            max-width: calc(33.333% - 1rem);
+        }
+    }
+
+    /* Delete button styling - hidden by default, grey on hover, red on button hover */
+    .delete-btn {
+        opacity: 0;
+        color: #6B7280 !important; /* Grey by default */
+        transition: all 0.2s ease-out;
+    }
+    
+    .project-card:hover .delete-btn {
+        opacity: 1;
+    }
+    
+    .delete-btn:hover {
+        color: #EF4444 !important; /* Red on button hover */
+        background-color: rgba(239, 68, 68, 0.1) !important;
+    }
+    
+    /* Inline editing styles */
+    .grid-name-editable {
+        cursor: text;
+        transition: all 0.2s ease-out;
+        border-radius: 6px;
+        padding: 2px 4px;
+        margin: -2px -4px;
+    }
+    
+    .grid-name-editable:hover {
+        background-color: var(--grid-header-bg);
+        border-radius: 6px;
+        padding: 2px 4px;
+        margin: -2px -4px;
+    }
+    
+    .grid-name-editable.editing {
+        background-color: var(--container-bg) !important;
+        border: 2px dashed var(--tertiary-action-bg) !important;
+        border-radius: 6px !important;
+        padding: 4px 8px !important;
+        outline: none !important;
+        min-height: 24px !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+        position: relative !important;
+    }
+    
+    .grid-name-editable.editing:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+        border-color: var(--tertiary-action-bg) !important;
+    }
+    
+    /* Group name inline editing styles */
+    .group-name-editable {
+        cursor: text;
+        transition: all 0.2s ease-out;
+        border-radius: 6px;
+        padding: 4px 8px;
+        margin: -4px -8px;
+        display: inline-block;
+    }
+    
+    .group-name-editable:hover {
+        background-color: var(--grid-header-bg);
+        border-radius: 6px;
+        padding: 4px 8px;
+        margin: -4px -8px;
+    }
+    
+    .group-name-editable.editing {
+        background-color: var(--container-bg) !important;
+        border: 2px dashed var(--tertiary-action-bg) !important;
+        border-radius: 6px !important;
+        padding: 6px 12px !important;
+        outline: none !important;
+        min-height: 32px !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+        position: relative !important;
+    }
+    
+    .group-name-editable.editing:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+        border-color: var(--tertiary-action-bg) !important;
+    }
+    
+    /* Consistent button styling */
+    .action-button {
+        width: 180px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 24px;
+        border-radius: 0.5rem;
+        font-weight: 500;
+        transition: all 0.2s ease-out;
+        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .action-button:hover {
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+</style>
+
 <!-- Header -->
 <div class="relative mb-12">
     <div class="text-center">
@@ -16,13 +213,20 @@
         <div class="flex space-x-3">
             <a href="{% url 'pages:project_create' %}" 
                 onclick="plausible('grid_created', {props: {source: 'blank'}});"
-               class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
+               class="action-button text-white"
                style="background: var(--tertiary-action-bg);"
                onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
-            
+            <button type="button"
+                    onclick="openNewGroupModal()"
+                    class="action-button text-white"
+                    style="background: var(--primary-action-bg);"
+                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
+                <i class="fas fa-folder-plus mr-2"></i>
+                New Group
+            </button>
         </div>
     </div>
 </div>
@@ -33,107 +237,69 @@
         <!-- Group projects by their groups -->
         {% regroup projects by project_group as grouped_projects %}
         
-        <!-- Ungrouped projects first -->
+        <!-- Display each group -->
         {% for group in grouped_projects %}
-            {% if group.grouper is None %}
-                <div class="mb-8">
-                    <div class="flex flex-wrap justify-center gap-6">
-                        {% for project in group.list %}
-                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
-                                <div class="p-6">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
-                                            {{ project.name }}
-                                        </h3>
-                                        <div class="flex space-x-2 flex-shrink-0">
-                                            <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-                                               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
-                                               title="Edit grid">
-                                                <i class="fas fa-edit text-sm"></i>
-                                            </a>
-                                            <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                                               class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
-                                               title="Delete grid">
-                                                <i class="fas fa-trash text-sm"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                                        <div class="flex items-center">
-                                            <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                            <span>Created {{ project.created_at|date:"d M Y" }}</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-tasks mr-2 text-xs"></i>
-                                            <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                                       class="block w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-4 rounded-lg font-medium transition-colors shadow-sm">
-                                        <i class="fas fa-external-link-alt mr-2"></i>
-                                        Open Grid
-                                    </a>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
+            <div class="mb-8">
+                <!-- Group header -->
+                <div class="text-center mb-6">
+                    {% if group.grouper %}
+                        <h3 class="text-xl font-semibold text-[var(--primary-action-bg)] group-name-editable" 
+                            data-group-id="{{ group.grouper.pk }}" 
+                            data-original-text="{{ group.grouper.name }}"
+                            title="Click to edit group name">
+                            {{ group.grouper.name }}
+                        </h3>
+                    {% endif %}
                 </div>
-            {% endif %}
-        {% endfor %}
-        
-        <!-- Grouped projects -->
-        {% for group in grouped_projects %}
-            {% if group.grouper is not None %}
-                <div class="mb-8">
-                    <div class="flex items-center justify-center mb-6">
-                        <h3 class="text-xl font-semibold text-[var(--primary-action-bg)]">{{ group.grouper.name }}</h3>
-                    </div>
-                    <div class="flex flex-wrap justify-center gap-6">
-                        {% for project in group.list %}
-                            <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
-                                <div class="p-6">
-                                    <div class="flex items-start justify-between mb-4">
-                                        <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
-                                            {{ project.name }}
-                                        </h3>
-                                        <div class="flex space-x-2 flex-shrink-0">
-                                            <a href="{% url 'pages:project_edit' pk=project.pk %}" 
-                                               class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
-                                               title="Edit grid">
-                                                <i class="fas fa-edit text-sm"></i>
-                                            </a>
-                                            <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                                               class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
-                                               title="Delete grid">
-                                                <i class="fas fa-trash text-sm"></i>
-                                            </a>
-                                        </div>
+                
+                <!-- Group container -->
+                <div class="flex flex-wrap justify-start gap-6 {% if group.grouper %}project-group{% endif %}" 
+                     id="{% if group.grouper %}group-{{ group.grouper.pk }}{% else %}ungrouped-projects{% endif %}" 
+                     data-group-id="{% if group.grouper %}{{ group.grouper.pk }}{% else %}null{% endif %}">
+                    
+                    <!-- Projects in this group -->
+                    {% for project in group.list %}
+                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 project-card" 
+                             data-project-id="{{ project.pk }}" 
+                             data-project-group="{% if group.grouper %}{{ group.grouper.pk }}{% else %}null{% endif %}">
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2 grid-name-editable" 
+                                        data-project-id="{{ project.pk }}" 
+                                        data-original-text="{{ project.name }}"
+                                        title="Click to edit grid name">
+                                        {{ project.name }}
+                                    </h3>
+                                    <div class="flex space-x-2 flex-shrink-0">
+                                        <a href="{% url 'pages:project_delete' pk=project.pk %}" 
+                                           class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer delete-btn"
+                                           title="Delete grid">
+                                            <i class="fas fa-trash text-sm"></i>
+                                        </a>
                                     </div>
-                                    
-                                    <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                                        <div class="flex items-center">
-                                            <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                            <span>Created {{ project.created_at|date:"d M Y" }}</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <i class="fas fa-tasks mr-2 text-xs"></i>
-                                            <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
-                                        </div>
-                                    </div>
-                                    
-                                    <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                                       class="block w-full text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-4 rounded-lg font-medium transition-colors shadow-sm">
-                                        <i class="fas fa-external-link-alt mr-2"></i>
-                                        Open Grid
-                                    </a>
                                 </div>
+                                
+                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                        <span>Created {{ project.created_at|date:"d M Y" }}</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-tasks mr-2 text-xs"></i>
+                                        <span>{{ project.tasks.count }} task{{ project.tasks.count|pluralize }}</span>
+                                    </div>
+                                </div>
+                                
+                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                   class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    Open Grid
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
+                        </div>
+                    {% endfor %}
                 </div>
-            {% endif %}
+            </div>
         {% endfor %}
     </div>
     
@@ -141,7 +307,7 @@
     <div class="text-center mt-12 md:hidden">
         <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
             <a href="{% url 'pages:project_create' %}" 
-               class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
+               class="action-button text-white"
                style="background: var(--tertiary-action-bg);"
                onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
                 <i class="fas fa-plus mr-2"></i>
@@ -149,7 +315,7 @@
             </a>
             <button type="button"
                     onclick="openNewGroupModal()"
-                    class="inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md text-white cursor-pointer"
+                    class="action-button text-white"
                     style="background: var(--primary-action-bg);"
                     onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
                 <i class="fas fa-folder-plus mr-2"></i>
@@ -320,9 +486,627 @@
     </div>
 </div>
 
-
-
 <script>
+// Project List Manager for drag and drop functionality
+class ProjectListManager {
+    constructor() {
+        // Bind methods to avoid binding issues
+        this.boundGridNameClick = this.handleGridNameClick.bind(this);
+        this.boundGridNameBlur = this.handleGridNameBlur.bind(this);
+        this.boundGridNameKeydown = this.handleGridNameKeydown.bind(this);
+        this.boundGroupNameClick = this.handleGroupNameClick.bind(this);
+        this.boundGroupNameBlur = this.handleGroupNameBlur.bind(this);
+        this.boundGroupNameKeydown = this.handleGroupNameKeydown.bind(this);
+        
+        this.init();
+    }
+
+    init() {
+        this.setupDragAndDrop();
+        this.setupResponsiveLayout();
+        this.setupInlineEditing();
+    }
+
+    setupDragAndDrop() {
+        // Initialize SortableJS for all project groups and ungrouped projects
+        this.initializeSortable();
+    }
+
+    initializeSortable() {
+        // Get all project containers (groups and ungrouped)
+        const ungroupedContainer = document.getElementById('ungrouped-projects');
+        const groupContainers = document.querySelectorAll('.project-group');
+        
+        const containers = [];
+        if (ungroupedContainer) containers.push(ungroupedContainer);
+        containers.push(...groupContainers);
+
+        if (containers.length === 0) {
+            console.warn('No project containers found for drag and drop');
+            return;
+        }
+
+        containers.forEach((container, index) => {
+            try {
+                new Sortable(container, {
+                    // Enable drag and drop
+                    sort: true,
+                    
+                    // Animation duration
+                    animation: 150,
+                    
+                    // Drag class for the item being dragged
+                    dragClass: 'sortable-drag',
+                    
+                    // Ghost class for the placeholder
+                    ghostClass: 'sortable-ghost',
+                    
+                    // Allow dragging between all containers
+                    group: 'projects',
+                    
+                    // Callback when sorting starts
+                    onStart: (evt) => {
+                        this.handleDragStart(evt);
+                    },
+                    
+                    // Callback when sorting ends
+                    onEnd: (evt) => {
+                        this.handleProjectMove(evt);
+                    },
+                    
+                    // Callback when dragging over a container
+                    onMove: (evt) => {
+                        return this.handleDragMove(evt);
+                    }
+                });
+            } catch (error) {
+                console.error(`Error initializing container ${index}:`, error);
+            }
+        });
+    }
+
+    handleDragStart(evt) {
+        const projectCard = evt.item;
+        projectCard.style.zIndex = '1000';
+        
+        // Add visual feedback
+        projectCard.classList.add('dragging');
+        
+        // Show drop zones more prominently
+        document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
+            container.classList.add('drag-active');
+        });
+    }
+
+    handleDragMove(evt) {
+        // Allow moving between any containers
+        return true;
+    }
+
+    handleProjectMove(evt) {
+        const projectCard = evt.item;
+        const projectId = projectCard.dataset.projectId;
+        const oldGroupId = evt.from.dataset.groupId || 'null';
+        const newGroupId = evt.to.dataset.groupId || 'null';
+        
+        // Remove visual feedback
+        projectCard.style.zIndex = '';
+        projectCard.classList.remove('dragging');
+        
+        // Remove drag-active class from all containers
+        document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
+            container.classList.remove('drag-active');
+        });
+        
+        // Check if the move actually changed groups
+        if (oldGroupId === newGroupId) {
+            // Just reordering within the same group, no need to save
+            return;
+        }
+        
+        // Update the data attribute to reflect the new group
+        projectCard.dataset.projectGroup = newGroupId;
+        
+        // Save the new group assignment to the server
+        this.saveProjectGroupAssignment(projectId, newGroupId, oldGroupId);
+    }
+
+    saveProjectGroupAssignment(projectId, groupId, oldGroupId) {
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        
+        // Show loading state
+        this.showLoadingState(projectId, true);
+        
+        fetch('/grids/project/update-group/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                project_id: projectId,
+                group_id: groupId === 'null' ? null : parseInt(groupId)
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            this.showLoadingState(projectId, false);
+            
+            if (data.success) {
+                // Show success feedback
+                this.showMoveFeedback(projectId, groupId, true, data.message);
+            } else {
+                // Revert the move on error
+                this.revertProjectMove(projectId, oldGroupId);
+                this.showMoveFeedback(projectId, groupId, false, data.error || 'Failed to move grid');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating project group:', error);
+            this.showLoadingState(projectId, false);
+            
+            // Revert the move on error
+            this.revertProjectMove(projectId, oldGroupId);
+            this.showMoveFeedback(projectId, groupId, false, 'Network error. Please try again.');
+        });
+    }
+
+    showLoadingState(projectId, isLoading) {
+        const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
+        if (!projectCard) return;
+
+        if (isLoading) {
+            projectCard.style.opacity = '0.7';
+            projectCard.style.pointerEvents = 'none';
+        } else {
+            projectCard.style.opacity = '';
+            projectCard.style.pointerEvents = '';
+        }
+    }
+
+    showMoveFeedback(projectId, groupId, success, message) {
+        // Create feedback element
+        const feedback = document.createElement('div');
+        feedback.className = `fixed top-4 right-4 px-4 py-2 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-x-full ${
+            success 
+                ? 'bg-green-500 text-white' 
+                : 'bg-red-500 text-white'
+        }`;
+        feedback.textContent = message || (success ? 'Grid moved successfully!' : 'Failed to move grid');
+        
+        document.body.appendChild(feedback);
+        
+        // Animate in
+        setTimeout(() => {
+            feedback.classList.remove('translate-x-full');
+        }, 100);
+        
+        // Remove feedback after 4 seconds
+        setTimeout(() => {
+            feedback.classList.add('translate-x-full');
+            setTimeout(() => {
+                feedback.remove();
+            }, 300);
+        }, 4000);
+    }
+
+    revertProjectMove(projectId, oldGroupId) {
+        // Find the project card
+        const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
+        if (!projectCard) return;
+
+        // Find the old container
+        let oldContainer;
+        if (oldGroupId === 'null') {
+            oldContainer = document.getElementById('ungrouped-projects');
+        } else {
+            oldContainer = document.querySelector(`[data-group-id="${oldGroupId}"]`);
+        }
+
+        if (oldContainer) {
+            // Move the card back to its original position
+            oldContainer.appendChild(projectCard);
+            projectCard.dataset.projectGroup = oldGroupId;
+        }
+    }
+
+    setupResponsiveLayout() {
+        // Ensure proper wrapping on different screen sizes
+        const projectCards = document.querySelectorAll('.project-card');
+        const containers = document.querySelectorAll('.project-group, #ungrouped-projects');
+        
+        // Add responsive classes for better wrapping
+        containers.forEach(container => {
+            container.classList.add('flex', 'flex-wrap', 'justify-start', 'gap-6');
+        });
+        
+        // Ensure cards have consistent sizing for proper wrapping
+        projectCards.forEach(card => {
+            card.classList.add('flex-shrink-0');
+        });
+    }
+
+    setupInlineEditing() {
+        // Add event listeners to all grid name elements
+        this.addInlineEditingListeners();
+        
+        // Add event listeners to all group name elements
+        this.addGroupNameEditingListeners();
+        
+        // Listen for new content being added (HTMX updates)
+        document.addEventListener('htmx:afterSwap', (e) => {
+            if (e.detail.target && e.detail.target.closest('.project-card')) {
+                this.addInlineEditingListeners();
+            }
+            if (e.detail.target && e.detail.target.closest('.project-group')) {
+                this.addGroupNameEditingListeners();
+            }
+        });
+    }
+
+    addInlineEditingListeners() {
+        const gridNameElements = document.querySelectorAll('.grid-name-editable');
+        
+        gridNameElements.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundGridNameClick);
+            element.removeEventListener('blur', this.boundGridNameBlur);
+            element.removeEventListener('keydown', this.boundGridNameKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundGridNameClick);
+            element.addEventListener('blur', this.boundGridNameBlur);
+            element.addEventListener('keydown', this.boundGridNameKeydown);
+        });
+    }
+
+    addGroupNameEditingListeners() {
+        const groupNameElements = document.querySelectorAll('.group-name-editable');
+        
+        groupNameElements.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundGroupNameClick);
+            element.removeEventListener('blur', this.boundGroupNameBlur);
+            element.removeEventListener('keydown', this.boundGroupNameKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundGroupNameClick);
+            element.addEventListener('blur', this.boundGroupNameBlur);
+            element.addEventListener('keydown', this.boundGroupNameKeydown);
+        });
+    }
+
+    // Handle grid name click for inline editing
+    handleGridNameClick(e) {
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing grid names first
+        this.closeAllEditingGridNames();
+        
+        // Now open this grid name for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this grid name when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideGridNameClick.bind(this, element), { once: true });
+        }, 0);
+    }
+
+    // Handle grid name blur (save on blur)
+    handleGridNameBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveGridNameEdit(element);
+            }
+        }, 10);
+    }
+
+    // Handle grid name keydown (Enter to save, Escape to cancel)
+    handleGridNameKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveGridNameEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Handle group name click for inline editing
+    handleGroupNameClick(e) {
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing group names first
+        this.closeAllEditingGroupNames();
+        
+        // Now open this group name for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this group name when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideGroupNameClick.bind(this, element), { once: true });
+        }, 0);
+    }
+
+    // Handle group name blur (save on blur)
+    handleGroupNameBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveGroupNameEdit(element);
+            }
+        }, 10);
+    }
+
+    // Handle group name keydown (Enter to save, Escape to cancel)
+    handleGroupNameKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveGroupNameEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Handle clicking outside of a specific editing grid name
+    handleOutsideGridNameClick(editingElement, e) {
+        // If the click is not on the editing element or its children, close it
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingGridName(editingElement);
+        }
+    }
+
+    // Handle clicking outside of a specific editing group name
+    handleOutsideGroupNameClick(editingElement, e) {
+        // If the click is not on the editing element or its children, close it
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingGroupName(editingElement);
+        }
+    }
+
+    // Close a specific editing grid name
+    closeEditingGridName(element) {
+        if (!element.classList.contains('editing')) return;
+        
+        // If the element has changes, save them
+        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            const currentText = element.textContent.trim();
+            
+            if (currentText !== originalText && currentText !== '') {
+                // Save the changes
+                element.classList.add('saving');
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveGridNameEdit(element);
+            } else {
+                // No changes, just close editing
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                element.classList.remove('saving');
+            }
+        }
+    }
+
+    // Close a specific editing group name
+    closeEditingGroupName(element) {
+        if (!element.classList.contains('editing')) return;
+        
+        // If the element has changes, save them
+        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            const currentText = element.textContent.trim();
+            
+            if (currentText !== originalText && currentText !== '') {
+                // Save the changes
+                element.classList.add('saving');
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveGroupNameEdit(element);
+            } else {
+                // No changes, just close editing
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                element.classList.remove('saving');
+            }
+        }
+    }
+
+    // Close all currently editing grid names
+    closeAllEditingGridNames() {
+        const editingElements = document.querySelectorAll('.grid-name-editable.editing');
+        editingElements.forEach(element => {
+            this.closeEditingGridName(element);
+        });
+    }
+
+    // Close all currently editing group names
+    closeAllEditingGroupNames() {
+        const editingElements = document.querySelectorAll('.group-name-editable.editing');
+        editingElements.forEach(element => {
+            this.closeEditingGroupName(element);
+        });
+    }
+
+    // Save grid name edit to server
+    saveGridNameEdit(element) {
+        const projectId = element.dataset.projectId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid project ID
+        if (!projectId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Send update to server
+        fetch(`/grids/${projectId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
+    // Save group name edit to server
+    saveGroupNameEdit(element) {
+        const groupId = element.dataset.groupId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid group ID
+        if (!groupId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Send update to server
+        fetch(`/grids/group/${groupId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
+
+
+    // Get CSRF token
+    getCSRFToken() {
+        const token = document.querySelector('[name=csrfmiddlewaretoken]');
+        return token ? token.value : '';
+    }
+}
+
 // Modal functions
 function openModal() {
     const modal = document.getElementById('modal');
@@ -388,5 +1172,27 @@ document.addEventListener('click', function(e) {
         closeNewGroupModal();
     }
 });
+
+// Initialize Project List Manager when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    // Check if SortableJS is available
+    if (typeof Sortable === 'undefined') {
+        console.error('SortableJS is not loaded!');
+        return;
+    }
+    
+    // Initialize the project list manager for drag and drop
+    window.projectListManager = new ProjectListManager();
+});
+
+// Fallback initialization in case DOMContentLoaded already fired
+if (document.readyState === 'loading') {
+    // DOM is still loading, wait for DOMContentLoaded
+} else {
+    // DOM is already ready, initialize immediately
+    if (typeof Sortable !== 'undefined') {
+        window.projectListManager = new ProjectListManager();
+    }
+}
 </script>
 {% endblock %} 

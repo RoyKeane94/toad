@@ -19162,3 +19162,297 @@ INFO 2025-08-19 22:19:48,584 basehttp 39023 6159347712 "GET /grids/141/ HTTP/1.1
 INFO 2025-08-19 22:19:50,459 basehttp 39023 6159347712 "GET /grids/ HTTP/1.1" 200 5415
 INFO 2025-08-19 22:21:27,312 basehttp 39023 6159347712 "GET /grids/ HTTP/1.1" 200 5435
 INFO 2025-08-19 22:21:42,403 autoreload 39472 8693374720 Watching for file changes with StatReloader
+INFO 2025-08-20 18:34:24,903 autoreload 1460 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:34:28,590 basehttp 1460 6127759360 "GET / HTTP/1.1" 200 6546
+INFO 2025-08-20 18:34:29,046 basehttp 1460 6127759360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 18:34:29,078 basehttp 1460 6127759360 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-20 18:34:30,755 basehttp 1460 6127759360 "GET /grids/ HTTP/1.1" 200 5405
+INFO 2025-08-20 18:38:15,168 autoreload 1460 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 18:38:16,284 autoreload 1738 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:39:00,205 autoreload 1738 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-20 18:39:00,465 autoreload 1808 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:41:46,750 autoreload 2286 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:42:09,224 autoreload 2286 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 18:42:09,455 autoreload 2301 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:42:58,255 basehttp 2301 6130905088 "GET /grids/ HTTP/1.1" 200 8754
+INFO 2025-08-20 18:46:09,703 autoreload 2301 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 18:46:09,972 autoreload 2952 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:48:14,243 autoreload 2952 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 18:48:14,496 autoreload 3492 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:48:56,322 autoreload 3492 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 18:48:56,501 autoreload 3505 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:49:06,753 autoreload 3505 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 18:49:06,966 autoreload 3514 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:50:42,498 autoreload 3514 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 18:50:42,770 autoreload 3553 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:55:09,445 autoreload 3726 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:55:18,624 autoreload 3815 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:55:25,582 basehttp 3553 6169047040 "GET /grids/ HTTP/1.1" 200 8986
+INFO 2025-08-20 18:55:37,928 basehttp 3553 6169047040 "GET /grids/ HTTP/1.1" 200 9038
+INFO 2025-08-20 18:56:30,930 autoreload 4084 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 18:56:32,984 basehttp 4084 6132707328 "GET /grids/ HTTP/1.1" 200 9012
+INFO 2025-08-20 18:57:09,272 basehttp 4084 6132707328 "GET /grids/15/ HTTP/1.1" 200 15474
+INFO 2025-08-20 18:57:09,288 basehttp 4084 6132707328 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 18:57:12,396 project_views_functions 4084 6132707328 User None reordered tasks: in project Student Planner
+INFO 2025-08-20 18:57:12,396 basehttp 4084 6132707328 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-20 18:57:13,860 basehttp 4084 6132707328 "GET /grids/15/ HTTP/1.1" 200 15461
+INFO 2025-08-20 18:57:16,837 project_views_functions 4084 6132707328 User None reordered tasks: in project Student Planner
+INFO 2025-08-20 18:57:16,837 basehttp 4084 6132707328 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-20 18:57:18,440 basehttp 4084 6132707328 "GET /grids/15/ HTTP/1.1" 200 15492
+INFO 2025-08-20 18:57:18,453 basehttp 4084 6132707328 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 19:30:50,240 autoreload 4466 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:30:54,889 basehttp 4466 6164639744 "GET /grids/ HTTP/1.1" 200 8486
+INFO 2025-08-20 19:31:48,464 autoreload 4466 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-20 19:31:48,731 autoreload 4498 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:32:08,223 project_views_functions 4498 6194098176 User None created project group: Test
+INFO 2025-08-20 19:32:08,231 basehttp 4498 6194098176 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:32:08,251 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8505
+INFO 2025-08-20 19:40:28,491 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8866
+INFO 2025-08-20 19:40:33,207 project_views_functions 4498 6194098176 User None moved project to group: Test -> Big
+INFO 2025-08-20 19:40:33,208 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 103
+INFO 2025-08-20 19:40:41,418 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8856
+INFO 2025-08-20 19:40:49,070 project_views_functions 4498 6194098176 User None moved project to group: Test -> Test
+INFO 2025-08-20 19:40:49,071 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 103
+INFO 2025-08-20 19:40:51,641 project_views_functions 4498 6194098176 User None moved project to group: Accounting -> Test
+INFO 2025-08-20 19:40:51,642 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 108
+INFO 2025-08-20 19:40:53,385 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8767
+INFO 2025-08-20 19:40:54,816 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8821
+INFO 2025-08-20 19:40:58,110 basehttp 4498 6194098176 "GET / HTTP/1.1" 200 6560
+INFO 2025-08-20 19:41:00,156 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8745
+INFO 2025-08-20 19:41:05,629 project_views_functions 4498 6194098176 User None created project group: Test
+INFO 2025-08-20 19:41:05,631 basehttp 4498 6194098176 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:41:05,647 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8787
+INFO 2025-08-20 19:41:12,534 project_views_functions 4498 6194098176 User None moved project to group: Test -> Test
+INFO 2025-08-20 19:41:12,535 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 103
+INFO 2025-08-20 19:41:15,941 project_views_functions 4498 6194098176 User None moved project to group: Student Planner -> Test
+INFO 2025-08-20 19:41:15,941 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 113
+INFO 2025-08-20 19:41:28,724 project_views_functions 4498 6194098176 User None moved project to group: Student Planner -> Test
+INFO 2025-08-20 19:41:28,725 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 113
+INFO 2025-08-20 19:41:31,499 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8747
+INFO 2025-08-20 19:41:35,275 basehttp 4498 6194098176 "GET / HTTP/1.1" 200 6488
+INFO 2025-08-20 19:41:37,417 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8736
+INFO 2025-08-20 19:41:51,118 project_views_functions 4498 6194098176 User None created project group: Accounting
+INFO 2025-08-20 19:41:51,120 basehttp 4498 6194098176 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:41:51,136 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8802
+INFO 2025-08-20 19:42:04,091 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8849
+INFO 2025-08-20 19:42:08,650 project_views_functions 4498 6194098176 User None moved project to group: Student Planner -> Accounting
+INFO 2025-08-20 19:42:08,651 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 113
+INFO 2025-08-20 19:42:10,149 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8857
+INFO 2025-08-20 19:42:18,248 project_views_functions 4498 6194098176 User None moved project to group: Test -> Accounting
+INFO 2025-08-20 19:42:18,248 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 103
+INFO 2025-08-20 19:42:19,844 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8755
+INFO 2025-08-20 19:42:27,412 project_views_functions 4498 6194098176 User None created project group: Work
+INFO 2025-08-20 19:42:27,413 basehttp 4498 6194098176 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:42:27,428 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8805
+INFO 2025-08-20 19:42:38,293 project_views_functions 4498 6194098176 User None moved project to group: Accounting -> Accounting
+INFO 2025-08-20 19:42:38,294 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 108
+INFO 2025-08-20 19:42:40,569 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8807
+INFO 2025-08-20 19:42:45,132 project_views_functions 4498 6194098176 User None moved project to group: Test -> Accounting
+INFO 2025-08-20 19:42:45,132 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 103
+INFO 2025-08-20 19:42:46,740 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8817
+WARNING 2025-08-20 19:42:49,153 log 4498 6194098176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 19:42:49,153 basehttp 4498 6194098176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1915
+INFO 2025-08-20 19:42:51,902 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8768
+WARNING 2025-08-20 19:42:51,929 log 4498 6194098176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 19:42:51,929 basehttp 4498 6194098176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1965
+INFO 2025-08-20 19:43:03,319 project_views_functions 4498 6194098176 User None created project group: Test
+INFO 2025-08-20 19:43:03,320 basehttp 4498 6194098176 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:43:03,336 basehttp 4498 6194098176 "GET /grids/ HTTP/1.1" 200 8819
+WARNING 2025-08-20 19:43:03,356 log 4498 6194098176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 19:43:03,357 basehttp 4498 6194098176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1995
+INFO 2025-08-20 19:43:08,075 project_views_functions 4498 6194098176 User None moved project to group: Accounting -> Accounting
+INFO 2025-08-20 19:43:08,076 basehttp 4498 6194098176 "POST /grids/project/update-group/ HTTP/1.1" 200 108
+INFO 2025-08-20 19:43:15,404 basehttp 4498 6194098176 "GET /grids/15/edit/ HTTP/1.1" 200 3413
+WARNING 2025-08-20 19:43:15,435 log 4498 6194098176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 19:43:15,436 basehttp 4498 6194098176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1976
+INFO 2025-08-20 19:43:16,682 basehttp 4498 6194098176 "GET /grids/15/ HTTP/1.1" 200 12591
+WARNING 2025-08-20 19:43:16,715 log 4498 6194098176 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 19:43:16,716 basehttp 4498 6194098176 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1943
+INFO 2025-08-20 19:43:16,722 basehttp 4498 6210924544 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 51312
+INFO 2025-08-20 19:43:21,422 basehttp 4498 6210924544 "GET /grids/ HTTP/1.1" 200 8810
+WARNING 2025-08-20 19:43:21,464 log 4498 6210924544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 19:43:21,464 basehttp 4498 6210924544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1981
+INFO 2025-08-20 19:44:08,381 basehttp 4498 6210924544 "GET /grids/141/ HTTP/1.1" 200 10834
+INFO 2025-08-20 19:44:08,399 basehttp 4498 6210924544 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 19:44:24,873 basehttp 4498 6210924544 "GET /grids/ HTTP/1.1" 200 8799
+INFO 2025-08-20 19:44:37,478 project_views_functions 4498 6210924544 User None moved project to group: Test -> Test
+INFO 2025-08-20 19:44:37,479 basehttp 4498 6210924544 "POST /grids/project/update-group/ HTTP/1.1" 200 103
+INFO 2025-08-20 19:44:41,562 project_views_functions 4498 6210924544 User None moved project to group: Accounting -> Test
+INFO 2025-08-20 19:44:41,563 basehttp 4498 6210924544 "POST /grids/project/update-group/ HTTP/1.1" 200 108
+INFO 2025-08-20 19:44:42,953 basehttp 4498 6210924544 "GET /grids/ HTTP/1.1" 200 8826
+INFO 2025-08-20 19:44:49,909 basehttp 4498 6210924544 "GET / HTTP/1.1" 200 6500
+INFO 2025-08-20 19:44:51,049 basehttp 4498 6210924544 "GET /admin HTTP/1.1" 301 0
+INFO 2025-08-20 19:44:51,073 basehttp 4498 6194098176 "GET /admin/ HTTP/1.1" 200 2823
+INFO 2025-08-20 19:44:54,619 basehttp 4498 6194098176 "GET /admin/pages/project/ HTTP/1.1" 200 3184
+INFO 2025-08-20 19:44:54,641 basehttp 4498 6194098176 "GET /admin/jsi18n/ HTTP/1.1" 200 1048
+INFO 2025-08-20 19:44:55,873 basehttp 4498 6194098176 "GET /admin/pages/project/141/change/ HTTP/1.1" 200 3530
+INFO 2025-08-20 19:44:55,893 basehttp 4498 6210924544 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-08-20 19:44:55,896 basehttp 4498 6194098176 "GET /admin/jsi18n/ HTTP/1.1" 200 1010
+INFO 2025-08-20 19:44:55,897 basehttp 4498 6210924544 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-08-20 19:44:55,908 basehttp 4498 6210924544 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
+INFO 2025-08-20 19:45:04,284 basehttp 4498 6210924544 "POST /admin/pages/project/141/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:45:04,300 basehttp 4498 6210924544 "GET /admin/pages/project/ HTTP/1.1" 200 3234
+INFO 2025-08-20 19:45:04,316 basehttp 4498 6210924544 "GET /admin/jsi18n/ HTTP/1.1" 200 1021
+INFO 2025-08-20 19:45:05,609 basehttp 4498 6210924544 "GET /admin/pages/project/21/change/ HTTP/1.1" 200 3523
+INFO 2025-08-20 19:45:05,628 basehttp 4498 6210924544 "GET /admin/jsi18n/ HTTP/1.1" 200 969
+INFO 2025-08-20 19:45:08,082 basehttp 4498 6210924544 "POST /admin/pages/project/21/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:45:08,098 basehttp 4498 6210924544 "GET /admin/pages/project/ HTTP/1.1" 200 3253
+INFO 2025-08-20 19:45:08,113 basehttp 4498 6210924544 "GET /admin/jsi18n/ HTTP/1.1" 200 1002
+INFO 2025-08-20 19:45:08,991 basehttp 4498 6210924544 "GET /admin/pages/project/15/change/ HTTP/1.1" 200 3497
+INFO 2025-08-20 19:45:09,009 basehttp 4498 6210924544 "GET /admin/jsi18n/ HTTP/1.1" 200 961
+INFO 2025-08-20 19:45:11,499 basehttp 4498 6210924544 "POST /admin/pages/project/15/change/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:45:11,517 basehttp 4498 6210924544 "GET /admin/pages/project/ HTTP/1.1" 200 3252
+INFO 2025-08-20 19:45:11,533 basehttp 4498 6210924544 "GET /admin/jsi18n/ HTTP/1.1" 200 1026
+INFO 2025-08-20 19:45:13,790 basehttp 4498 6210924544 "GET / HTTP/1.1" 200 6533
+INFO 2025-08-20 19:45:15,055 basehttp 4498 6210924544 "GET /grids/ HTTP/1.1" 200 8755
+INFO 2025-08-20 19:52:59,261 autoreload 4498 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 19:52:59,534 autoreload 4793 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:53:22,999 autoreload 4793 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 19:53:23,194 autoreload 4803 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:55:35,477 autoreload 5254 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:55:38,179 basehttp 5254 6163820544 "GET /grids/ HTTP/1.1" 200 10396
+INFO 2025-08-20 19:55:47,636 project_views_functions 5254 6163820544 User None created project group: Test
+INFO 2025-08-20 19:55:47,637 basehttp 5254 6163820544 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:55:47,653 basehttp 5254 6163820544 "GET /grids/ HTTP/1.1" 200 10502
+INFO 2025-08-20 19:55:50,595 project_views_functions 5254 6163820544 User None moved project to group: Accounting -> ungrouped
+INFO 2025-08-20 19:55:50,596 basehttp 5254 6163820544 "POST /grids/project/update-group/ HTTP/1.1" 200 111
+INFO 2025-08-20 19:55:53,428 project_views_functions 5254 6163820544 User None moved project to group: Test -> ungrouped
+INFO 2025-08-20 19:55:53,429 basehttp 5254 6163820544 "POST /grids/project/update-group/ HTTP/1.1" 200 106
+INFO 2025-08-20 19:55:55,490 basehttp 5254 6163820544 "GET /grids/ HTTP/1.1" 200 10411
+INFO 2025-08-20 19:56:03,667 basehttp 5254 6163820544 "POST /grids/141/edit/ HTTP/1.1" 200 84
+INFO 2025-08-20 19:56:05,960 basehttp 5254 6163820544 "GET /grids/ HTTP/1.1" 200 10400
+INFO 2025-08-20 19:56:09,550 basehttp 5254 6163820544 "POST /grids/141/edit/ HTTP/1.1" 200 85
+INFO 2025-08-20 19:56:46,319 project_views_functions 5254 6163820544 User None created project group: Test
+INFO 2025-08-20 19:56:46,320 basehttp 5254 6163820544 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 19:56:46,335 basehttp 5254 6163820544 "GET /grids/ HTTP/1.1" 200 10462
+INFO 2025-08-20 19:58:10,252 autoreload 5254 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-08-20 19:58:10,537 autoreload 5321 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:58:31,904 autoreload 5321 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 19:58:32,229 autoreload 5330 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:58:41,441 autoreload 5330 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 19:58:41,630 autoreload 5339 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 19:59:09,142 autoreload 5339 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 19:59:09,377 autoreload 5428 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:00:05,394 autoreload 5428 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 20:00:05,621 autoreload 5527 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:00:23,956 autoreload 5527 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 20:00:24,224 autoreload 5617 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:00:44,559 autoreload 5617 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 20:00:44,782 autoreload 5707 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:01:19,822 autoreload 5988 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:01:23,665 basehttp 5988 6203715584 "GET /grids/ HTTP/1.1" 200 11009
+INFO 2025-08-20 20:01:26,452 basehttp 5988 6203715584 "GET /grids/141/delete/ HTTP/1.1" 200 3428
+INFO 2025-08-20 20:01:27,295 basehttp 5988 6203715584 "POST /grids/141/delete/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:01:27,310 basehttp 5988 6203715584 "GET /grids/ HTTP/1.1" 200 10773
+INFO 2025-08-20 20:01:33,412 basehttp 5988 6203715584 "GET /grids/ HTTP/1.1" 200 10763
+INFO 2025-08-20 20:01:42,186 project_views_functions 5988 6203715584 User None created project group: Test
+INFO 2025-08-20 20:01:42,187 basehttp 5988 6203715584 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:01:42,201 basehttp 5988 6203715584 "GET /grids/ HTTP/1.1" 200 10869
+INFO 2025-08-20 20:01:44,903 basehttp 5988 6203715584 "POST /grids/project/update-group/ HTTP/1.1" 200 66
+INFO 2025-08-20 20:01:46,371 basehttp 5988 6203715584 "GET /grids/ HTTP/1.1" 200 10813
+INFO 2025-08-20 20:01:48,688 basehttp 5988 6203715584 "GET /grids/15/ HTTP/1.1" 200 15505
+INFO 2025-08-20 20:01:48,707 basehttp 5988 6203715584 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 20:01:51,032 basehttp 5988 6203715584 "POST /grids/15/tasks/create/58/94/ HTTP/1.1" 200 1531
+INFO 2025-08-20 20:01:55,580 project_views_functions 5988 6203715584 User None reordered tasks: in project Student Planner
+INFO 2025-08-20 20:01:55,580 basehttp 5988 6203715584 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-20 20:01:57,180 basehttp 5988 6203715584 "GET /grids/15/ HTTP/1.1" 200 15653
+INFO 2025-08-20 20:01:57,193 basehttp 5988 6203715584 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:01:59,764 project_views_functions 5988 6203715584 User None reordered tasks: in project Student Planner
+INFO 2025-08-20 20:01:59,765 basehttp 5988 6203715584 "POST /grids/15/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-08-20 20:02:00,943 basehttp 5988 6203715584 "GET /grids/15/ HTTP/1.1" 200 15670
+INFO 2025-08-20 20:02:04,946 project_views_functions 5988 6203715584 User None deleted task: "Dog" from project: Student Planner
+INFO 2025-08-20 20:02:04,950 basehttp 5988 6203715584 "POST /tasks/1058/delete/ HTTP/1.1" 200 58
+INFO 2025-08-20 20:02:06,477 basehttp 5988 6203715584 "GET /grids/ HTTP/1.1" 200 10820
+ERROR 2025-08-20 20:02:09,352 log 5988 6203715584 Internal Server Error: /grids/group/12/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 1235, in project_group_edit_view
+    if group.user != request.user:
+       ^^^^^^^^^^
+AttributeError: 'ProjectGroup' object has no attribute 'user'
+ERROR 2025-08-20 20:02:09,356 basehttp 5988 6203715584 "POST /grids/group/12/edit/ HTTP/1.1" 500 11513
+ERROR 2025-08-20 20:02:12,253 log 5988 6203715584 Internal Server Error: /grids/group/12/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 1235, in project_group_edit_view
+    if group.user != request.user:
+       ^^^^^^^^^^
+AttributeError: 'ProjectGroup' object has no attribute 'user'
+ERROR 2025-08-20 20:02:12,255 basehttp 5988 6203715584 "POST /grids/group/12/edit/ HTTP/1.1" 500 11438
+INFO 2025-08-20 20:02:20,180 autoreload 5988 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-08-20 20:02:20,477 autoreload 6028 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:02:21,810 basehttp 6028 6167457792 "GET /grids/ HTTP/1.1" 200 10842
+ERROR 2025-08-20 20:02:23,788 log 6028 6167457792 Internal Server Error: /grids/group/12/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 1235, in project_group_edit_view
+    if group.user != request.user:
+       ^^^^^^^^^^
+AttributeError: 'ProjectGroup' object has no attribute 'user'
+ERROR 2025-08-20 20:02:23,790 basehttp 6028 6167457792 "POST /grids/group/12/edit/ HTTP/1.1" 500 11497
+INFO 2025-08-20 20:03:05,475 autoreload 6028 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 20:03:05,747 autoreload 6048 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:03:58,227 basehttp 6048 6129430528 "GET /grids/ HTTP/1.1" 200 10824
+INFO 2025-08-20 20:04:01,910 basehttp 6048 6129430528 "POST /grids/group/12/edit/ HTTP/1.1" 200 84
+INFO 2025-08-20 20:04:04,147 basehttp 6048 6129430528 "GET /grids/ HTTP/1.1" 200 10892
+INFO 2025-08-20 20:04:06,397 basehttp 6048 6129430528 "POST /grids/group/12/edit/ HTTP/1.1" 200 83
+INFO 2025-08-20 20:04:10,021 autoreload 6048 8552111872 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-20 20:04:10,291 autoreload 6150 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:04:10,854 basehttp 6150 6159036416 "GET / HTTP/1.1" 200 6552
+INFO 2025-08-20 20:04:12,464 basehttp 6150 6159036416 "GET /grids/ HTTP/1.1" 200 10818
+INFO 2025-08-20 20:04:14,254 basehttp 6150 6159036416 "POST /grids/group/12/edit/ HTTP/1.1" 200 84
+INFO 2025-08-20 20:04:38,254 basehttp 6150 6159036416 "POST /grids/15/edit/ HTTP/1.1" 200 97
+INFO 2025-08-20 20:04:39,980 basehttp 6150 6159036416 "GET /grids/15/ HTTP/1.1" 200 15448
+INFO 2025-08-20 20:04:39,993 basehttp 6150 6159036416 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:04:43,614 basehttp 6150 6159036416 "GET /grids/21/ HTTP/1.1" 200 17799
+INFO 2025-08-20 20:04:45,201 basehttp 6150 6159036416 "GET /grids/ HTTP/1.1" 200 10872
+WARNING 2025-08-20 20:04:50,178 log 6150 6159036416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 20:04:50,178 basehttp 6150 6159036416 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1992
+INFO 2025-08-20 20:04:51,266 basehttp 6150 6159036416 "GET /grids/ HTTP/1.1" 200 10846
+WARNING 2025-08-20 20:04:51,288 log 6150 6159036416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 20:04:51,288 basehttp 6150 6159036416 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1932
+INFO 2025-08-20 20:04:54,919 basehttp 6150 6159036416 "POST /grids/group/12/edit/ HTTP/1.1" 200 85
+INFO 2025-08-20 20:04:57,975 basehttp 6150 6159036416 "POST /grids/21/edit/ HTTP/1.1" 200 92
+INFO 2025-08-20 20:05:00,155 basehttp 6150 6159036416 "GET /grids/ HTTP/1.1" 200 10794
+WARNING 2025-08-20 20:05:00,184 log 6150 6159036416 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-20 20:05:00,185 basehttp 6150 6159036416 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1929
+INFO 2025-08-20 20:05:39,188 basehttp 6150 6159036416 "POST /grids/group/12/edit/ HTTP/1.1" 200 84
+INFO 2025-08-20 20:05:42,266 basehttp 6150 6159036416 "POST /grids/group/12/edit/ HTTP/1.1" 200 83
+INFO 2025-08-20 20:05:50,447 basehttp 6150 6159036416 "POST /grids/group/12/edit/ HTTP/1.1" 200 80
+INFO 2025-08-20 20:07:38,693 autoreload 6484 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:07:41,494 basehttp 6484 6135525376 "GET /grids/ HTTP/1.1" 200 10784
+INFO 2025-08-20 20:09:56,800 basehttp 6484 6135525376 "GET /grids/ HTTP/1.1" 200 10799
+INFO 2025-08-20 20:12:47,962 basehttp 6484 6135525376 "GET /grids/ HTTP/1.1" 200 10767
+INFO 2025-08-20 20:13:11,733 autoreload 6736 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:13:13,699 basehttp 6736 6135394304 "GET /grids/ HTTP/1.1" 200 10815
+INFO 2025-08-20 20:13:15,806 basehttp 6736 6135394304 "GET /grids/15/ HTTP/1.1" 200 15533
+INFO 2025-08-20 20:13:15,822 basehttp 6736 6135394304 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-20 20:13:30,798 basehttp 6736 6135394304 "GET /grids/ HTTP/1.1" 200 10798
+INFO 2025-08-20 20:13:30,812 basehttp 6736 6169047040 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-20 20:13:30,813 basehttp 6736 6152220672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 43186
+INFO 2025-08-20 20:13:30,814 basehttp 6736 6135394304 "GET /static/css/output.css HTTP/1.1" 200 74404
+INFO 2025-08-20 20:13:40,627 basehttp 6736 6135394304 "POST /grids/15/edit/ HTTP/1.1" 200 96

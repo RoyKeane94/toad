@@ -48,13 +48,12 @@ logger = logging.getLogger(__name__)
 
 
 @login_required
-@cache_control(max_age=60)
 def project_list_view(request):
     # Optimize by only loading needed fields and adding task counts
-    projects = Project.objects.filter(user=request.user).annotate(
+    projects = Project.objects.filter(user=request.user).select_related('project_group').annotate(
         task_count=Count('tasks'),
         completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).only('id', 'name', 'created_at').order_by('-created_at')
+    ).only('id', 'name', 'created_at', 'project_group__id', 'project_group__name').order_by('-created_at')
     
     # Get user's personal templates
     personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
@@ -94,6 +93,40 @@ def project_edit_view(request, pk):
     project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
     
     if request.method == 'POST':
+        # Check if this is a JSON request for inline editing
+        if request.headers.get('Content-Type') == 'application/json':
+            try:
+                data = json.loads(request.body)
+                new_name = data.get('name', '').strip()
+                
+                if not new_name:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'Project name cannot be empty'
+                    })
+                
+                # Update the project name
+                project.name = new_name
+                project.save()
+                
+                return JsonResponse({
+                    'success': True,
+                    'message': 'Project name updated successfully',
+                    'new_name': new_name
+                })
+                
+            except json.JSONDecodeError:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Invalid JSON data'
+                })
+            except Exception as e:
+                return JsonResponse({
+                    'success': False,
+                    'error': str(e)
+                })
+        
+        # Regular form submission
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
@@ -291,7 +324,6 @@ def task_edit_view(request, task_pk):
         # Check if this is a JSON request for inline editing
         if request.headers.get('Content-Type') == 'application/json':
             try:
-                import json
                 data = json.loads(request.body)
                 new_text = data.get('text', '').strip()
                 
@@ -1132,5 +1164,140 @@ def project_group_create_view(request):
     }
     
     return render(request, 'pages/grid/actions_new_page/project_group_form.html', context)
+
+
+@login_required
+def project_group_update_view(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            project_id = data.get('project_id')
+            group_id = data.get('group_id')
+            
+            if not project_id:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Project ID is required'
+                })
+            
+            # Get the project
+            try:
+                project = Project.objects.get(id=project_id, user=request.user)
+            except Project.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Project not found'
+                })
+            
+            # Update the project group
+            if group_id is None:
+                project.project_group = None
+            else:
+                try:
+                    group = ProjectGroup.objects.get(id=group_id)
+                    project.project_group = group
+                except ProjectGroup.DoesNotExist:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'Group not found'
+                    })
+            
+            project.save()
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'Project group updated successfully'
+            })
+            
+        except json.JSONDecodeError:
+            return JsonResponse({
+                'success': False,
+                'error': 'Invalid JSON data'
+            })
+        except Exception as e:
+            return JsonResponse({
+                'success': False,
+                'error': str(e)
+            })
+    
+    return JsonResponse({
+        'success': False,
+        'error': 'Invalid request method'
+    })
+
+
+@login_required
+def project_group_edit_view(request, pk):
+    try:
+        group = ProjectGroup.objects.get(id=pk)
+        
+        # Check if user has access to this group by checking if they have projects in this group
+        user_projects_in_group = Project.objects.filter(user=request.user, project_group=group).exists()
+        if not user_projects_in_group:
+            return JsonResponse({
+                'success': False,
+                'error': 'Access denied - you do not have any projects in this group'
+            })
+        
+        if request.method == 'POST':
+            # Check if this is a JSON request for inline editing
+            if request.headers.get('Content-Type') == 'application/json':
+                try:
+                    data = json.loads(request.body)
+                    new_name = data.get('name', '').strip()
+                    
+                    if not new_name:
+                        return JsonResponse({
+                            'success': False,
+                            'error': 'Group name cannot be empty'
+                        })
+                    
+                    # Update the group name
+                    group.name = new_name
+                    group.save()
+                    
+                    return JsonResponse({
+                        'success': True,
+                        'message': 'Group name updated successfully',
+                        'new_name': new_name
+                    })
+                    
+                except json.JSONDecodeError:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'Invalid JSON data'
+                    })
+                except Exception as e:
+                    return JsonResponse({
+                        'success': False,
+                        'error': str(e)
+                    })
+            
+            # Regular form submission (fallback)
+            form = ProjectGroupForm(request.POST, instance=group)
+            if form.is_valid():
+                form.save()
+                messages.success(request, f'Group "{group.name}" updated successfully!')
+                return redirect('pages:project_list')
+        else:
+            form = ProjectGroupForm(instance=group)
+        
+        # Check if this is an HTMX request (modal) or regular page request
+        if request.headers.get('HX-Request'):
+            template_name = 'pages/grid/actions_new_page/project_group_form_modal.html'
+        else:
+            template_name = 'pages/grid/actions_new_page/project_group_form.html'
+        
+        return render(request, template_name, {
+            'form': form, 
+            'group': group, 
+            'title': 'Edit Group'
+        })
+        
+    except ProjectGroup.DoesNotExist:
+        return JsonResponse({
+            'success': False,
+            'error': 'Group not found'
+        })
 
 
