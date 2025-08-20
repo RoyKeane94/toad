@@ -50,10 +50,11 @@ logger = logging.getLogger(__name__)
 @login_required
 def project_list_view(request):
     # Optimize by only loading needed fields and adding task counts
+    # Note: Don't use .only() with select_related for regroup to work properly
     projects = Project.objects.filter(user=request.user).select_related('project_group').annotate(
         task_count=Count('tasks'),
         completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).only('id', 'name', 'created_at', 'project_group__id', 'project_group__name').order_by('-created_at')
+    ).order_by('-created_at')
     
     # Get user's personal templates
     personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
