@@ -49,18 +49,38 @@ logger = logging.getLogger(__name__)
 
 @login_required
 def project_list_view(request):
-    # Optimize by only loading needed fields and adding task counts
-    # Note: Don't use .only() with select_related for regroup to work properly
+    # Get all projects with their groups and task counts
     projects = Project.objects.filter(user=request.user).select_related('project_group').annotate(
         task_count=Count('tasks'),
         completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
     ).order_by('-created_at')
     
+    # Manually group projects by their project_group
+    grouped_projects = {}
+    ungrouped_projects = []
+    
+    for project in projects:
+        if project.project_group:
+            group_id = project.project_group.id
+            if group_id not in grouped_projects:
+                grouped_projects[group_id] = {
+                    'group': project.project_group,
+                    'projects': []
+                }
+            grouped_projects[group_id]['projects'].append(project)
+        else:
+            ungrouped_projects.append(project)
+    
+    # Convert to list format for template
+    grouped_projects_list = list(grouped_projects.values())
+    
     # Get user's personal templates
     personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
     
     context = {
-        'projects': projects,
+        'projects': projects,  # Keep for backward compatibility
+        'grouped_projects': grouped_projects_list,
+        'ungrouped_projects': ungrouped_projects,
         'personal_templates': personal_templates
     }
     
