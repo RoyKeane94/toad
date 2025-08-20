@@ -633,12 +633,10 @@ class ProjectListManager {
             this.showLoadingState(projectId, false);
             
             if (data.success) {
-                // Show success feedback
-                this.showMoveFeedback(projectId, groupId, true, data.message);
+                // Move was successful, no feedback needed
             } else {
                 // Revert the move on error
                 this.revertProjectMove(projectId, oldGroupId);
-                this.showMoveFeedback(projectId, groupId, false, data.error || 'Failed to move grid');
             }
         })
         .catch(error => {
@@ -647,7 +645,6 @@ class ProjectListManager {
             
             // Revert the move on error
             this.revertProjectMove(projectId, oldGroupId);
-            this.showMoveFeedback(projectId, groupId, false, 'Network error. Please try again.');
         });
     }
 
@@ -664,31 +661,7 @@ class ProjectListManager {
         }
     }
 
-    showMoveFeedback(projectId, groupId, success, message) {
-        // Create feedback element
-        const feedback = document.createElement('div');
-        feedback.className = `fixed top-4 right-4 px-4 py-2 rounded-lg shadow-lg z-50 transition-all duration-300 transform translate-x-full ${
-            success 
-                ? 'bg-green-500 text-white' 
-                : 'bg-red-500 text-white'
-        }`;
-        feedback.textContent = message || (success ? 'Grid moved successfully!' : 'Failed to move grid');
-        
-        document.body.appendChild(feedback);
-        
-        // Animate in
-        setTimeout(() => {
-            feedback.classList.remove('translate-x-full');
-        }, 100);
-        
-        // Remove feedback after 4 seconds
-        setTimeout(() => {
-            feedback.classList.add('translate-x-full');
-            setTimeout(() => {
-                feedback.remove();
-            }, 300);
-        }, 4000);
-    }
+
 
     revertProjectMove(projectId, oldGroupId) {
         // Find the project card

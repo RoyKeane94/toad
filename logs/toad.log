@@ -19466,3 +19466,15 @@ INFO 2025-08-20 20:15:40,763 basehttp 6910 6158725120 "GET / HTTP/1.1" 200 6551
 INFO 2025-08-20 20:16:05,470 basehttp 6910 6158725120 "GET / HTTP/1.1" 200 6529
 INFO 2025-08-20 20:16:05,484 basehttp 6910 6158725120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-08-20 20:16:14,768 basehttp 6910 6158725120 "GET /grids/ HTTP/1.1" 200 10860
+INFO 2025-08-20 20:18:52,044 autoreload 7070 8552111872 Watching for file changes with StatReloader
+INFO 2025-08-20 20:18:55,359 basehttp 7070 6170505216 "GET /grids/ HTTP/1.1" 200 10531
+INFO 2025-08-20 20:18:55,373 basehttp 7070 6187331584 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-20 20:18:55,373 basehttp 7070 6170505216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-20 20:19:00,191 project_views_functions 7070 6187331584 User None created project group: Tester
+INFO 2025-08-20 20:19:00,193 basehttp 7070 6187331584 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:19:00,210 basehttp 7070 6187331584 "GET /grids/ HTTP/1.1" 200 10479
+INFO 2025-08-20 20:19:06,038 project_views_functions 7070 6187331584 User None created project group: Tester
+INFO 2025-08-20 20:19:06,039 basehttp 7070 6187331584 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-08-20 20:19:06,047 basehttp 7070 6187331584 "GET /grids/ HTTP/1.1" 200 10531
+INFO 2025-08-20 20:19:08,011 basehttp 7070 6187331584 "POST /grids/project/update-group/ HTTP/1.1" 200 66
+INFO 2025-08-20 20:19:09,811 basehttp 7070 6187331584 "GET /grids/ HTTP/1.1" 200 10562
