@@ -17,6 +17,7 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
+    order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -28,10 +29,11 @@ class Project(models.Model):
         return reverse('project_grid', kwargs={'pk': self.pk})
 
     class Meta:
-        ordering = ['-created_at']
+        ordering = ['project_group', 'order', '-created_at']  # Order by group, then by order, then by creation time
         indexes = [
             models.Index(fields=['user', '-created_at']),  # For user's project list
             models.Index(fields=['user', 'id']),  # For project access checks
+            models.Index(fields=['user', 'project_group', 'order']),  # For ordered project queries within groups
         ]
 
 class RowHeader(models.Model):

@@ -53,7 +53,7 @@ def project_list_view(request):
     projects = Project.objects.filter(user=request.user).select_related('project_group').annotate(
         task_count=Count('tasks'),
         completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).order_by('-created_at')
+    ).order_by('project_group', 'order', '-created_at')
     
     # Manually group projects by their project_group
     grouped_projects = {}
@@ -1197,6 +1197,7 @@ def project_group_update_view(request):
             data = json.loads(request.body)
             project_id = data.get('project_id')
             group_id = data.get('group_id')
+            order = data.get('order')
             
             if not project_id:
                 return JsonResponse({
@@ -1228,9 +1229,28 @@ def project_group_update_view(request):
             
             project.save()
             
+            # Update order if provided
+            if order is not None:
+                try:
+                    # Update all projects in the group with their new order
+                    for item in order:
+                        if item.get('project_id') and item.get('order') is not None:
+                            try:
+                                project_to_update = Project.objects.get(
+                                    id=item['project_id'], 
+                                    user=request.user
+                                )
+                                project_to_update.order = item['order']
+                                project_to_update.save()
+                            except Project.DoesNotExist:
+                                continue  # Skip if project doesn't exist
+                except Exception as e:
+                    logger.error(f'Error updating project order: {str(e)}')
+                    # Don't fail the entire request if order update fails
+            
             return JsonResponse({
                 'success': True,
-                'message': 'Project group updated successfully'
+                'message': 'Project group and order updated successfully'
             })
             
         except json.JSONDecodeError:

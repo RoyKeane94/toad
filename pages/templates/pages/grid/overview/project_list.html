@@ -119,15 +119,14 @@
         cursor: text;
         transition: all 0.2s ease-out;
         border-radius: 6px;
-        padding: 2px 4px;
-        margin: -2px -4px;
+        padding: 4px 8px;
+        margin: -4px -8px;
+        min-height: 24px;
+        border: 2px solid transparent;
     }
     
     .grid-name-editable:hover {
         background-color: var(--grid-header-bg);
-        border-radius: 6px;
-        padding: 2px 4px;
-        margin: -2px -4px;
     }
     
     .grid-name-editable.editing {
@@ -144,6 +143,16 @@
     .grid-name-editable.editing:focus {
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
         border-color: var(--tertiary-action-bg) !important;
+    }
+    
+    /* Adjust delete button position when editing */
+    .project-card .grid-name-editable.editing + .flex-shrink-0 {
+        margin-left: 8px;
+    }
+    
+    /* Alternative approach: adjust the flex container when editing */
+    .project-card:has(.grid-name-editable.editing) .flex.items-start.justify-between {
+        gap: 12px;
     }
     
     /* Group name inline editing styles */
@@ -199,6 +208,13 @@
     .action-button:hover {
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     }
+    
+    /* Mobile buttons - hide on larger screens */
+    @media (min-width: 768px) {
+        .mobile-buttons {
+            display: none !important;
+        }
+    }
 </style>
 
 <!-- Header -->
@@ -209,10 +225,34 @@
         </h1>
         <p class="text-[var(--subtitle-text)] text-lg max-w-2xl mx-auto">Welcome back. Here's everything you're working on</p>
     </div>
+    
+    <!-- Desktop buttons (top right) -->
     <div class="absolute top-0 right-0 hidden md:block">
         <div class="flex space-x-3">
             <a href="{% url 'pages:project_create' %}" 
                 onclick="plausible('grid_created', {props: {source: 'blank'}});"
+               class="action-button text-white"
+               style="background: var(--tertiary-action-bg);"
+               onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
+                <i class="fas fa-plus mr-2"></i>
+                New Grid
+            </a>
+            <button type="button"
+                    onclick="openNewGroupModal()"
+                    class="action-button text-white"
+                    style="background: var(--primary-action-bg);"
+                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
+                <i class="fas fa-folder-plus mr-2"></i>
+                New Group
+            </button>
+        </div>
+    </div>
+    
+    <!-- Mobile buttons (below title) -->
+    <div class="text-center mt-6 mobile-buttons" style="display: block;">
+        <div class="flex flex-row items-center justify-center space-x-4">
+            <a href="{% url 'pages:project_create' %}" 
+               onclick="plausible('grid_created', {props: {source: 'blank'}});"
                class="action-button text-white"
                style="background: var(--tertiary-action-bg);"
                onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
@@ -351,27 +391,6 @@
                 </div>
             </div>
         {% endif %}
-    </div>
-    
-    <!-- Mobile New Grid and Group Buttons -->
-    <div class="text-center mt-12 md:hidden">
-        <div class="flex flex-col sm:flex-row items-center justify-center space-y-3 sm:space-y-0 sm:space-x-4">
-            <a href="{% url 'pages:project_create' %}" 
-               class="action-button text-white"
-               style="background: var(--tertiary-action-bg);"
-               onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
-                <i class="fas fa-plus mr-2"></i>
-                New Grid
-            </a>
-            <button type="button"
-                    onclick="openNewGroupModal()"
-                    class="action-button text-white"
-                    style="background: var(--primary-action-bg);"
-                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
-                <i class="fas fa-folder-plus mr-2"></i>
-                New Group
-            </button>
-        </div>
     </div>
     
     <!-- My Templates Section -->
@@ -650,22 +669,26 @@ class ProjectListManager {
         
         // Check if the move actually changed groups
         if (oldGroupId === newGroupId) {
-            // Just reordering within the same group, no need to save
+            // Just reordering within the same group, save the new order
+            this.saveProjectOrder(evt.to, newGroupId);
             return;
         }
         
         // Update the data attribute to reflect the new group
         projectCard.dataset.projectGroup = newGroupId;
         
-        // Save the new group assignment to the server
-        this.saveProjectGroupAssignment(projectId, newGroupId, oldGroupId);
+        // Save the new group assignment and order to the server
+        this.saveProjectGroupAssignment(projectId, newGroupId, oldGroupId, evt.to);
     }
 
-    saveProjectGroupAssignment(projectId, groupId, oldGroupId) {
+    saveProjectGroupAssignment(projectId, groupId, oldGroupId, container) {
         const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         
         // Show loading state
         this.showLoadingState(projectId, true);
+        
+        // Get the new order from the container
+        const newOrder = this.getProjectOrderFromContainer(container);
         
         fetch('/grids/project/update-group/', {
             method: 'POST',
@@ -675,7 +698,8 @@ class ProjectListManager {
             },
             body: JSON.stringify({
                 project_id: projectId,
-                group_id: groupId === 'null' ? null : parseInt(groupId)
+                group_id: groupId === 'null' ? null : parseInt(groupId),
+                order: newOrder
             })
         })
         .then(response => response.json())
@@ -696,6 +720,44 @@ class ProjectListManager {
             // Revert the move on error
             this.revertProjectMove(projectId, oldGroupId);
         });
+    }
+
+    saveProjectOrder(container, groupId) {
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        
+        // Get the new order from the container
+        const newOrder = this.getProjectOrderFromContainer(container);
+        
+        // Use the same endpoint but with a dummy project_id for order-only updates
+        fetch('/grids/project/update-group/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                project_id: newOrder[0]?.project_id || 0,  // Use first project as dummy
+                group_id: groupId === 'null' ? null : parseInt(groupId),
+                order: newOrder
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                console.error('Failed to save project order');
+            }
+        })
+        .catch(error => {
+            console.error('Error updating project order:', error);
+        });
+    }
+
+    getProjectOrderFromContainer(container) {
+        const projects = Array.from(container.querySelectorAll('.project-card'));
+        return projects.map((project, index) => ({
+            project_id: project.dataset.projectId,
+            order: index
+        }));
     }
 
     showLoadingState(projectId, isLoading) {
@@ -821,6 +883,9 @@ class ProjectListManager {
             element.setAttribute('data-original-text', element.textContent);
         }
         
+        // Adjust spacing for delete button when editing
+        this.adjustDeleteButtonSpacing(element, true);
+        
         // Add a one-time click handler to close this grid name when clicking elsewhere
         setTimeout(() => {
             document.addEventListener('click', this.handleOutsideGridNameClick.bind(this, element), { once: true });
@@ -837,6 +902,10 @@ class ProjectListManager {
                 element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
                 element.classList.remove('editing');
+                
+                // Reset spacing for delete button when editing ends
+                this.adjustDeleteButtonSpacing(element, false);
+                
                 this.saveGridNameEdit(element);
             }
         }, 10);
@@ -852,6 +921,10 @@ class ProjectListManager {
             // Force save and exit edit mode
             element.contentEditable = false;
             element.classList.remove('editing');
+            
+            // Reset spacing for delete button when editing ends
+            this.adjustDeleteButtonSpacing(element, false);
+            
             this.saveGridNameEdit(element);
         } else if (e.key === 'Escape') {
             e.preventDefault();
@@ -860,6 +933,9 @@ class ProjectListManager {
             element.classList.remove('editing');
             const originalText = element.getAttribute('data-original-text') || element.textContent;
             element.textContent = originalText;
+            
+            // Reset spacing for delete button when editing ends
+            this.adjustDeleteButtonSpacing(element, false);
         }
     }
 
@@ -957,12 +1033,19 @@ class ProjectListManager {
                 element.classList.add('saving');
                 element.contentEditable = false;
                 element.classList.remove('editing');
+                
+                // Reset spacing for delete button when editing ends
+                this.adjustDeleteButtonSpacing(element, false);
+                
                 this.saveGridNameEdit(element);
             } else {
                 // No changes, just close editing
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 element.classList.remove('saving');
+                
+                // Reset spacing for delete button when editing ends
+                this.adjustDeleteButtonSpacing(element, false);
             }
         }
     }
@@ -1121,7 +1204,24 @@ class ProjectListManager {
         });
     }
 
-
+    // Adjust delete button spacing when editing grid names
+    adjustDeleteButtonSpacing(element, isEditing) {
+        // Find the project card container
+        const projectCard = element.closest('.project-card');
+        if (!projectCard) return;
+        
+        // Find the delete button container (the flex-shrink-0 div)
+        const deleteButtonContainer = projectCard.querySelector('.flex.items-start.justify-between .flex-shrink-0');
+        if (!deleteButtonContainer) return;
+        
+        if (isEditing) {
+            // Add more spacing when editing
+            deleteButtonContainer.style.marginLeft = '12px';
+        } else {
+            // Reset spacing when not editing
+            deleteButtonContainer.style.marginLeft = '';
+        }
+    }
 
     // Get CSRF token
     getCSRFToken() {
