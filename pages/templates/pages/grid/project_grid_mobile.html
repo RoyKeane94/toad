@@ -15,10 +15,132 @@
 /* Hide drag handle and any Sortable styles on mobile (drag disabled) */
 .drag-handle { display: none !important; }
 .sortable-drag, .sortable-ghost, .sortable-chosen { }
+
+/* Grid Tabs Styling */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+/* Active grid tab styling */
+#grid-tabs a[href*="{{ project.pk }}"] {
+    color: var(--text-primary) !important;
+    border-bottom: 2px solid var(--primary-action-bg) !important;
+    border-radius: 0 !important;
+}
+
+/* Remove border radius from all tabs for flat underline */
+#grid-tabs a {
+    border-radius: 0 !important;
+}
+
+/* Ensure grid tabs are visible */
+#grid-tabs {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Archived project tab styling */
+#grid-tabs a[href*="{{ project.pk }}"].opacity-60 {
+    opacity: 0.6 !important;
+}
+
+#grid-tabs a.opacity-60:hover {
+    opacity: 0.8 !important;
+}
+
+/* Grid tabs responsive design */
+@media (max-width: 640px) {
+    #grid-tabs .flex-wrap {
+        gap: 0.5rem;
+    }
+    
+    #grid-tabs a {
+        font-size: 0.875rem;
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* Button consistency */
+.grid-actions-mobile button,
+.grid-actions-mobile a {
+    min-width: 12rem !important; /* w-48 = 12rem */
+    text-align: center !important;
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Ensure buttons are properly aligned */
+.grid-actions-mobile {
+    align-items: stretch !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* Task text hover state for mobile inline editing */
+.task-text-editable:hover {
+    background-color: var(--grid-header-bg) !important;
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    cursor: text !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Inline editing styles for mobile */
+.editing {
+    background-color: var(--container-bg) !important;
+    border: 2px dashed var(--tertiary-action-bg) !important;
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    outline: none !important;
+    min-height: 24px !important;
+    box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+    position: relative !important;
+}
+
+.editing:focus {
+    box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
+    border-color: var(--tertiary-action-bg) !important;
+}
 </style>
 {% endblock %}
 
 {% block content %}
+
+<!-- Grid Tabs Navigation -->
+<div class="mb-6 px-4" id="grid-tabs">
+    <div class="flex gap-1 overflow-x-auto pb-2 scrollbar-hide">
+        <!-- All Projects on One Line -->
+        {% for p in ungrouped_projects %}
+            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0 {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                {{ p.name }}
+            </a>
+        {% endfor %}
+        
+        {% for group_data in grouped_projects %}
+            {% for p in group_data.projects %}
+                <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+                   class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0 {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                    {{ p.name }}
+                </a>
+            {% endfor %}
+        {% endfor %}
+        
+        {% for p in archived_projects %}
+            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0 opacity-60 {% if p.pk == project.pk %}text-[var(--primary-action-bg)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-secondary)]{% endif %}">
+                {{ p.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div>
 
 <!-- Header -->
 <div class="mb-6 px-4 grid-header-mobile">
@@ -29,117 +151,66 @@
         
     </div>
     
-    <!-- Grid Switcher and Actions -->
-    <div class="flex items-stretch gap-3">
-        <!-- Grid Switcher Dropdown -->
-        <div class="relative flex-1" id="project-switcher-container">
-            <button type="button" 
-                    id="project-switcher-btn"
-                    class="w-full h-full group flex items-center justify-between space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
-                <span class="flex items-center space-x-2">
-                    <i class="fas fa-exchange-alt text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
-                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch Grid</span>
-                </span>
-                <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="switcher-chevron"></i>
+    <!-- Grid Actions - Carousel -->
+    <div class="relative mb-4">
+        <!-- Button Carousel Container -->
+        <div class="flex gap-3 overflow-x-auto scrollbar-hide pb-2" id="button-carousel">
+            <button type="button"
+                    class="inline-flex items-center justify-center w-40 px-4 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer flex-shrink-0"
+                    hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
+                    hx-target="#modal-content"
+                    hx-trigger="click throttle:500ms"
+                    hx-disabled-elt="this"
+                    hx-indicator="#modal-content"
+                    hx-swap="innerHTML"
+                    hx-headers='{"Cache-Control": "no-cache"}'
+                    onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                <i class="fas fa-plus mr-1"></i>Add Row
             </button>
-            
-            <!-- Dropdown Menu -->
-            <div id="project-switcher-dropdown" 
-                 class="absolute top-full left-0 mt-2 w-full bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
-                <!-- Grids List -->
-                <div class="px-3 py-2">
-                    <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Grids</div>
-                    <div class="space-y-1 max-h-60 overflow-y-auto">
-            {% for p in projects %}
-                            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                               class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 cursor-pointer {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
-                                <div class="flex items-center justify-center w-6 h-6 rounded {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]{% else %}bg-gray-500{% endif %} shadow-sm">
-                                    <i class="fas fa-project-diagram text-white text-xs"></i>
-                                </div>
-                                <div class="flex-1 min-w-0">
-                                    <div class="font-medium text-sm truncate">{{ p.name }}</div>
-                                    {% if p.pk == project.pk %}
-                                        <div class="text-xs opacity-75">Current Grid</div>
-                                    {% endif %}
-                                </div>
-                                {% if p.pk == project.pk %}
-                                    <i class="fas fa-check text-xs"></i>
-                                {% endif %}
-                            </a>
-            {% endfor %}
-                    </div>
-                </div>
-                
-                <!-- Divider -->
-                <div class="border-t border-[var(--border-color)] my-2"></div>
-                
-                <!-- Back to Grids -->
-                <div class="px-3">
-                    <a href="{% url 'pages:project_list' %}" 
-                       class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
-                        <div class="flex items-center justify-center w-6 h-6 rounded bg-gray-500 shadow-sm">
-                            <i class="fas fa-arrow-left text-white text-xs"></i>
-                        </div>
-                        <span class="font-medium text-sm">Back to All Grids</span>
-                    </a>
-                </div>
-            </div>
+            <button type="button"
+                    class="inline-flex items-center justify-center w-40 px-4 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer flex-shrink-0"
+                    hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
+                    hx-target="#modal-content"
+                    hx-trigger="click throttle:500ms"
+                    hx-disabled-elt="this"
+                    hx-indicator="#modal-content"
+                    hx-swap="innerHTML"
+                    hx-headers='{"Cache-Control": "no-cache"}'
+                    onclick="document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                <i class="fas fa-plus mr-1"></i>Add Column
+            </button>
+            {% if project.is_archived %}
+                <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="inline flex-shrink-0">
+                    {% csrf_token %}
+                    <button type="submit" 
+                           class="inline-flex items-center justify-center w-40 px-4 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
+                        <i class="fas fa-undo mr-1"></i>Restore Grid
+                    </button>
+                </form>
+            {% else %}
+                <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
+                   class="inline-flex items-center justify-center w-40 px-4 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer flex-shrink-0">
+                    <i class="fas fa-check mr-1"></i>Clear Completed
+                </a>
+            {% endif %}
+            <button type="button"
+                    class="inline-flex items-center justify-center w-40 px-4 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer flex-shrink-0"
+                    onclick="document.getElementById('save-template-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('save-template-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('save-template-modal').querySelector('div').classList.add('scale-100');">
+                <i class="fas fa-save mr-1"></i>Save as Template
+            </button>
         </div>
         
-        <!-- Actions Dropdown -->
-        <div class="relative flex-1" id="actions-menu-container">
-            <button type="button" id="actions-menu-btn" class="w-full h-full group flex items-center justify-between space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
-                <span class="flex items-center space-x-2">
-                    <i class="fas fa-cog text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
-                    <span class="text-sm text-[var(--text-primary)] font-medium">Actions</span>
-                </span>
-                <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="actions-chevron"></i>
-            </button>
-            <div id="actions-menu-dropdown" class="absolute top-full right-0 mt-2 w-full bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
-                <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
-                        hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
-                        hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                    <i class="fas fa-plus text-xs w-4 text-center"></i>
-                    <span>Add Row</span>
-                </button>
-                <button type="button" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
-                        hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
-                        hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                    <i class="fas fa-plus text-xs w-4 text-center"></i>
-                    <span>Add Column</span>
-                </button>
-                 <div class="border-t border-[var(--border-color)] my-2"></div>
-                 <button type="button" id="edit-column-btn" data-col-pk="" data-project-pk="{{ project.pk }}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]"
-                         hx-get="" hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                         onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                     <i class="fas fa-edit text-xs w-4 text-center"></i>
-                     <span>Edit Column</span>
-                 </button>
-                 <button type="button" id="delete-column-btn" data-col-pk="" data-project-pk="{{ project.pk }}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--delete-button-bg)] hover:bg-[var(--grid-header-bg)]"
-                         hx-get="" hx-target="#modal-content" hx-trigger="click throttle:500ms" hx-disabled-elt="this" hx-indicator="#modal-content" hx-swap="innerHTML" hx-headers='{"Cache-Control": "no-cache"}'
-                         onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                     <i class="fas fa-trash text-xs w-4 text-center"></i>
-                     <span>Delete Column</span>
-                 </button>
-                <div class="border-t border-[var(--border-color)] my-2"></div>
-                {% if project.is_archived %}
-                    <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="w-full">
-                        {% csrf_token %}
-                        <button type="submit" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
-                            <i class="fas fa-undo text-xs w-4 text-center text-[var(--primary-action-bg)]"></i>
-                            <span class="text-[var(--primary-action-bg)]">Restore Grid</span>
-                        </button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
-                        <i class="fas fa-broom text-xs w-4 text-center text-[var(--clear-button-bg)]"></i>
-                        <span class="text-[var(--clear-button-bg)]">Clear Completed</span>
-                    </a>
-                {% endif %}
-            </div>
-        </div>
+        <!-- Carousel Navigation Arrows -->
+        <button type="button" 
+                class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-2 w-8 h-8 bg-white border border-[var(--border-color)] rounded-full shadow-md flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:border-[var(--primary-action-bg)] transition-all duration-200 z-10"
+                onclick="scrollButtonCarousel('left')">
+            <i class="fas fa-chevron-left text-xs"></i>
+        </button>
+        <button type="button" 
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-2 w-8 h-8 bg-white border border-[var(--border-color)] rounded-full shadow-md flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:border-[var(--primary-action-bg)] transition-all duration-200 z-10"
+                onclick="scrollButtonCarousel('right')">
+            <i class="fas fa-chevron-right text-xs"></i>
+        </button>
     </div>
 </div>
 
@@ -147,6 +218,88 @@
 
 <!-- Task Grid -->
 {% include 'pages/grid/partials/mobile_grid_content.html' %}
+
+<!-- Save Template Modal -->
+<div id="save-template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+    <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
+        <!-- Modal Header -->
+        <div class="flex items-center p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-save text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Save as Template</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Save your current grid structure as a reusable template</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <form id="save-template-form" method="post" action="{% url 'pages:save_as_template' pk=project.pk %}">
+                {% csrf_token %}
+                
+                <!-- Template Name Field -->
+                <div class="mb-6">
+                    <label for="template_name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Template Name</label>
+                    <input type="text" 
+                           id="template_name" 
+                           name="template_name" 
+                           required
+                           class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)] text-[var(--text-primary)]"
+                           placeholder="Enter template name">
+                </div>
+                
+                <!-- Template Options -->
+                <div class="space-y-4">
+                    <!-- Option 1: Save with example tasks -->
+                    <button type="button" id="with-tasks-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--tertiary-action-bg)] transition-all duration-200 group cursor-pointer">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
+                                <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full transition-all duration-200 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-[var(--tertiary-action-bg)] rounded-full opacity-0 transition-opacity duration-200"></div>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--tertiary-action-bg)] transition-colors duration-200 mb-1">Save with example tasks</h4>
+                                <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Include all current tasks as examples to show how to use the template effectively.</p>
+                            </div>
+                        </div>
+                    </button>
+                    
+                    <!-- Option 2: Save with clean structure -->
+                    <button type="button" id="structure-only-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--tertiary-action-bg)] transition-all duration-200 group cursor-pointer">
+                        <div class="flex items-center justify-start">
+                            <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
+                                <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full transition-all duration-200 flex items-center justify-center">
+                                    <div class="w-3 h-3 bg-[var(--tertiary-action-bg)] rounded-full opacity-0 transition-opacity duration-200"></div>
+                                </div>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--tertiary-action-bg)] transition-colors duration-200 mb-1">Save with a clean structure</h4>
+                                <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Save just the rows and columns structure, ready for new tasks.</p>
+                            </div>
+                        </div>
+                    </button>
+                </div>
+                
+                <!-- Hidden input for template style -->
+                <input type="hidden" id="template_style" name="template_style" value="structure_only">
+            </form>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="hideSaveTemplateModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="submit" form="save-template-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                <i class="fas fa-save mr-1"></i>Save Template
+            </button>
+        </div>
+    </div>
+</div>
 
 <!-- Row Deletion Modal -->
 <div id="delete-row-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -278,5 +431,66 @@
     </div>
 </div>
 
+<script>
+// Save Template Modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const withTasksBtn = document.getElementById('with-tasks-btn');
+    const structureOnlyBtn = document.getElementById('structure-only-btn');
+    const templateStyleInput = document.getElementById('template_style');
+    
+    if (withTasksBtn && structureOnlyBtn && templateStyleInput) {
+        // Set initial state to "Save with clean structure"
+        structureOnlyBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+        
+        // Handle "Save with example tasks" selection
+        withTasksBtn.addEventListener('click', function() {
+            // Update visual state - just show the inner circle
+            withTasksBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+            
+            // Reset other button
+            structureOnlyBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
+            
+            // Set form value
+            templateStyleInput.value = 'with_tasks';
+        });
+        
+        // Handle "Save with clean structure" selection
+        structureOnlyBtn.addEventListener('click', function() {
+            // Update visual state - just show the inner circle
+            structureOnlyBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+            
+            // Reset other button
+            withTasksBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
+            
+            // Set form value
+            templateStyleInput.value = 'structure_only';
+        });
+    }
+});
+
+function hideSaveTemplateModal() {
+    const modal = document.getElementById('save-template-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+// Button carousel scrolling function
+function scrollButtonCarousel(direction) {
+    const carousel = document.getElementById('button-carousel');
+    const scrollAmount = 200; // Adjust scroll distance
+    
+    if (direction === 'left') {
+        carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+        carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+}
+</script>
 
 {% endblock %}

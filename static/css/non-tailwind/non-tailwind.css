@@ -639,18 +639,20 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     }
     
     .grid-actions-mobile {
-        flex-direction: column !important;
+        flex-direction: row !important;
         gap: 8px !important;
         width: 100% !important;
+        flex-wrap: wrap !important;
     }
     
     .grid-actions-mobile button,
     .grid-actions-mobile a {
-        width: 100% !important;
+        width: auto !important;
+        min-width: 12rem !important;
         justify-content: center !important;
-        padding: 12px 16px !important;
+        padding: 6px 24px !important;
         font-size: 14px !important;
-        min-height: 44px !important;
+        min-height: 36px !important;
     }
     
     /* Project switcher mobile optimizations */
@@ -919,6 +921,44 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     background-color: #16a34a !important; /* Dark green instead of yellow */
     border-color: #16a34a !important;
     transition: all 0.2s ease-in-out; /* Smooth checkbox transition */
+}
+
+/* Task Selection Styles - Orange dotted border around text only */
+.task-selected [id^="task-text-"],
+div.task-selected [id^="task-text-"],
+[id^="task-"].task-selected [id^="task-text-"] {
+    border: 3px dotted #f97316 !important; /* Orange dotted border */
+    border-radius: 6px !important;
+    padding: 4px 8px !important;
+    transition: all 0.2s ease-in-out !important;
+    position: relative !important;
+}
+
+/* Show delete button when task is selected */
+.task-selected .mobile-task-actions {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+.task-selected .mobile-task-actions .delete-task-btn {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline-flex !important;
+    background-color: transparent !important;
+    border: none !important;
+    padding: 8px !important;
+    transition: all 0.2s ease-in-out !important;
+    pointer-events: auto !important; /* Enable clicks */
+}
+
+.task-selected .mobile-task-actions .delete-task-btn:hover {
+    background-color: var(--grid-header-bg) !important;
+    border-radius: 4px !important;
+}
+
+.task-selected .mobile-task-actions .delete-task-btn:hover i {
+    color: var(--delete-button-bg) !important;
 }
 
 .task-completed-strikethrough {
@@ -1545,9 +1585,9 @@ input[type="checkbox"]:focus {
         display: none !important;
     }
     
-    /* Hide the main desktop actions buttons */
+    /* Show the mobile actions buttons */
     .grid-header-mobile .grid-actions-mobile {
-        display: none !important;
+        display: flex !important;
     }
     
     .mobile-task-actions {

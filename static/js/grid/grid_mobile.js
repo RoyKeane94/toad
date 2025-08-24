@@ -9,8 +9,6 @@ class MobileGridManager {
         this.state = {
             currentCol: 0,
             totalColumns: 0,
-            projectSwitcherOpen: false,
-            actionsMenuOpen: false,
             currentTaskId: null,
             currentDeleteUrl: null,
             currentRowId: null,
@@ -29,17 +27,8 @@ class MobileGridManager {
     // Cache DOM elements to avoid repeated queries
     cacheElements() {
         const selectors = {
-            // Project switcher
-            switcherBtn: '#project-switcher-btn',
-            projectSwitcherDropdown: '#project-switcher-dropdown',
-            projectSwitcherChevron: '#switcher-chevron',
-            switcherContainer: '#project-switcher-container',
-
-            // Actions menu
-            actionsMenuBtn: '#actions-menu-btn',
-            actionsMenuDropdown: '#actions-menu-dropdown',
-            actionsMenuChevron: '#actions-chevron',
-            actionsMenuContainer: '#actions-menu-container',
+            // Grid Tabs
+            gridTabs: '#grid-tabs',
             
             // Mobile Grid
             gridContainer: '#mobile-grid-container',
@@ -65,6 +54,7 @@ class MobileGridManager {
             cancelDeleteRow: '#cancel-delete-row',
             modal: '#modal',
             modalContent: '#modal-content',
+            saveTemplateModal: '#save-template-modal',
         };
 
         Object.keys(selectors).forEach(key => {
@@ -194,6 +184,16 @@ class MobileGridManager {
 
     // Unified click handler
     handleDocumentClick(e) {
+        // Debug all clicks
+        if (e.target.closest('.mobile-task-actions') || e.target.classList.contains('fas') || e.target.classList.contains('fa-trash')) {
+            console.log('CLICK ON TASK ACTIONS AREA:', e.target);
+            console.log('Target classes:', e.target.classList.toString());
+            console.log('Parent element:', e.target.parentElement);
+            console.log('Closest .delete-task-btn:', e.target.closest('.delete-task-btn'));
+            console.log('Inner HTML of clicked element:', e.target.innerHTML);
+            console.log('All delete buttons in document:', document.querySelectorAll('.delete-task-btn'));
+        }
+        
         // Modal triggers - clear content immediately before HTMX loads new content
         const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
         if (modalTrigger) {
@@ -212,16 +212,6 @@ class MobileGridManager {
             }
         }
 
-        if (e.target.closest('#project-switcher-btn')) {
-            e.stopPropagation(); this.toggleDropdown('projectSwitcher'); return;
-        }
-        if (!e.target.closest('#project-switcher-container')) this.closeDropdown('projectSwitcher');
-
-        if (e.target.closest('#actions-menu-btn')) {
-            e.stopPropagation(); this.toggleDropdown('actionsMenu'); return;
-        }
-        if (!e.target.closest('#actions-menu-container')) this.closeDropdown('actionsMenu');
-
         const actionBtn = e.target.closest('.column-actions-btn, .row-actions-btn');
         if (actionBtn) {
             e.stopPropagation(); this.toggleActionDropdown(actionBtn); return;
@@ -230,7 +220,9 @@ class MobileGridManager {
 
         const deleteTaskBtn = e.target.closest('.delete-task-btn');
         if (deleteTaskBtn) {
+            console.log('DELETE BUTTON CLICKED!');
             e.preventDefault();
+            e.stopPropagation(); // Prevent task selection when clicking delete
             this.showDeleteModal(deleteTaskBtn.dataset.taskId, deleteTaskBtn.dataset.taskText, deleteTaskBtn.dataset.deleteUrl);
             return;
         }
@@ -259,13 +251,45 @@ class MobileGridManager {
         const addTaskCancel = e.target.closest('.add-task-cancel');
         if (addTaskCancel) { e.preventDefault(); this.collapseAddTaskForm(addTaskCancel.closest('.add-task-form')); return; }
         if (!e.target.closest('.add-task-form')) this.collapseAllAddTaskForms();
+
+        // Handle task selection
+        const taskItem = e.target.closest('[data-task-id]');
+        if (taskItem && !e.target.closest('input[type="checkbox"]') && !e.target.closest('button') && !e.target.closest('form')) {
+            this.handleTaskSelection(taskItem);
+            return;
+        }
     }
 
     // Function to close all dropdowns - called from inline onclick handlers
     closeAllDropdowns() {
-        this.closeDropdown('projectSwitcher');
-        this.closeDropdown('actionsMenu');
         this.closeAllActionDropdowns();
+    }
+
+    // Handle task selection
+    handleTaskSelection(taskItem) {
+        // Find the main task container - the one with id="task-{id}"
+        let mainTaskContainer = taskItem;
+        
+        // If we clicked on the inner task-text element, find the parent task container
+        if (taskItem.id && taskItem.id.startsWith('task-text-')) {
+            const taskId = taskItem.id.replace('task-text-', '');
+            mainTaskContainer = document.getElementById(`task-${taskId}`);
+        }
+        
+        // If still not found, use closest to find the main task container
+        if (!mainTaskContainer || !mainTaskContainer.id || !mainTaskContainer.id.startsWith('task-')) {
+            mainTaskContainer = taskItem.closest('[id^="task-"]:not([id*="text"])');
+        }
+        
+        // Remove selection from all other tasks
+        document.querySelectorAll('.task-selected').forEach(task => {
+            task.classList.remove('task-selected');
+        });
+        
+        // Add selection to the main task container
+        if (mainTaskContainer) {
+            mainTaskContainer.classList.add('task-selected');
+        }
     }
     
     // Mobile Grid setup
@@ -291,6 +315,9 @@ class MobileGridManager {
         });
 
         this.scrollToCol(this.state.currentCol, 'auto');
+        
+        // Hide task action buttons after grid setup
+        this.hideTaskActionButtons();
     }
 
     scrollToCol(colIdx, behavior = 'smooth') {
@@ -391,13 +418,12 @@ class MobileGridManager {
     // Keyboard handler
     handleKeydown(e) {
         if (e.key === 'Escape') {
-            this.closeDropdown('projectSwitcher');
-            this.closeDropdown('actionsMenu');
             this.closeAllActionDropdowns();
             this.hideDeleteModal();
             this.hideDeleteRowModal();
             this.hideModal();
             this.collapseAllAddTaskForms();
+            this.closeAllTaskEditing();
         } else if (e.key === 'ArrowLeft') {
             this.scrollToCol(this.state.currentCol - 1);
         } else if (e.key === 'ArrowRight') {
@@ -405,38 +431,7 @@ class MobileGridManager {
         }
     }
     
-    // Generic dropdown methods
-    toggleDropdown(type) {
-        const otherType = type === 'projectSwitcher' ? 'actionsMenu' : 'projectSwitcher';
-        this.closeDropdown(otherType); // Close other dropdown first
 
-        const stateKey = `${type}Open`;
-        this.state[stateKey] = !this.state[stateKey];
-        this.updateDropdownUI(type);
-    }
-
-    closeDropdown(type) {
-        const stateKey = `${type}Open`;
-        if (this.state[stateKey]) {
-            this.state[stateKey] = false;
-            this.updateDropdownUI(type);
-        }
-    }
-
-    updateDropdownUI(type) {
-        const dropdown = this.elements[`${type}Dropdown`];
-        const chevron = this.elements[`${type}Chevron`];
-        if (!dropdown) return;
-
-        const isOpen = this.state[`${type}Open`];
-        const classes = isOpen 
-            ? { remove: ['opacity-0', 'invisible', 'scale-95'], add: ['opacity-100', 'visible', 'scale-100'] }
-            : { remove: ['opacity-100', 'visible', 'scale-100'], add: ['opacity-0', 'invisible', 'scale-95'] };
-        
-        dropdown.classList.remove(...classes.remove);
-        dropdown.classList.add(...classes.add);
-        if (chevron) chevron.style.transform = isOpen ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
 
     // Action dropdowns for rows/columns
     toggleActionDropdown(btn) {
@@ -517,6 +512,32 @@ class MobileGridManager {
     }
     hideModal() { 
         this.setModalState(this.elements.modal, this.elements.modalContent, false); 
+    }
+    
+    showSaveTemplateModal() {
+        if (this.elements.saveTemplateModal) {
+            this.elements.saveTemplateModal.classList.remove('opacity-0', 'invisible');
+            this.elements.saveTemplateModal.classList.add('opacity-100', 'visible');
+            const modalContent = this.elements.saveTemplateModal.querySelector('div');
+            if (modalContent) {
+                modalContent.classList.remove('scale-95');
+                modalContent.classList.add('scale-100');
+            }
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    hideSaveTemplateModal() {
+        if (this.elements.saveTemplateModal) {
+            this.elements.saveTemplateModal.classList.add('opacity-0', 'invisible');
+            this.elements.saveTemplateModal.classList.remove('opacity-100', 'visible');
+            const modalContent = this.elements.saveTemplateModal.querySelector('div');
+            if (modalContent) {
+                modalContent.classList.remove('scale-100');
+                modalContent.classList.add('scale-95');
+            }
+            document.body.style.overflow = '';
+        }
     }
     
     clearModalContent() {
@@ -604,6 +625,228 @@ class MobileGridManager {
 
     collapseAllAddTaskForms() {
         document.querySelectorAll('.add-task-form').forEach(form => this.collapseAddTaskForm(form));
+    }
+
+    // Inline task editing methods
+    startTaskEditing(taskElement) {
+        if (!taskElement) return;
+        
+        // Close any other editing tasks first
+        this.closeAllTaskEditing();
+        
+        const taskText = taskElement.textContent.trim();
+        const taskId = taskElement.dataset.taskId;
+        
+        // Store original content for restoration
+        taskElement.dataset.originalContent = taskElement.innerHTML;
+        
+        // Create editing interface that wraps around the existing text
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.className = 'w-full px-2 py-1 text-sm border-2 border-dashed border-[var(--tertiary-action-bg)] rounded bg-white text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)]';
+        editInput.style.fontSize = 'inherit';
+        editInput.style.lineHeight = 'inherit';
+        editInput.style.fontFamily = 'inherit';
+        editInput.style.fontWeight = 'inherit';
+        editInput.value = taskText;
+        editInput.maxLength = 500;
+        
+        // Replace the text content with the input while preserving the structure
+        const taskTextElement = taskElement.querySelector('[id^="task-text-"]');
+        if (taskTextElement) {
+            // Store original content for restoration
+            taskElement.dataset.originalContent = taskTextElement.innerHTML;
+            taskElement.dataset.originalText = taskTextElement.textContent;
+            
+            // Replace text with input
+            taskTextElement.innerHTML = '';
+            taskTextElement.appendChild(editInput);
+        }
+        
+        // Add editing class
+        taskElement.classList.add('editing');
+        
+        // Focus the input
+        if (editInput) {
+            editInput.focus();
+            editInput.select();
+        }
+        
+        // Add keyboard event listeners
+        const handleKeydown = (e) => {
+            if (e.key === 'Enter') {
+                this.saveTaskEditing(taskElement);
+            } else if (e.key === 'Escape') {
+                this.cancelTaskEditing(taskElement);
+            }
+        };
+        
+        // Add blur event to save when input loses focus
+        const handleBlur = () => {
+            setTimeout(() => this.saveTaskEditing(taskElement), 100);
+        };
+        
+        editInput.addEventListener('keydown', handleKeydown);
+        editInput.addEventListener('blur', handleBlur);
+        taskElement.dataset.keydownHandler = handleKeydown;
+        taskElement.dataset.blurHandler = handleBlur;
+    }
+
+    saveTaskEditing(taskElement) {
+        if (!taskElement) return;
+        
+        const input = taskElement.querySelector('input');
+        if (!input) {
+            console.error('Input element not found, canceling edit');
+            this.cancelTaskEditing(taskElement);
+            return;
+        }
+        
+        const newText = input.value.trim();
+        const taskId = taskElement.dataset.taskId;
+        
+        if (!newText) {
+            // Don't save empty text
+            this.cancelTaskEditing(taskElement);
+            return;
+        }
+        
+        // Send update to server
+        fetch(`/pages/tasks/${taskId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                text: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Restore original content structure but update the text
+                if (taskElement.dataset.originalContent) {
+                    taskElement.innerHTML = taskElement.dataset.originalContent;
+                    // Update the text content within the restored structure
+                    const taskTextElement = taskElement.querySelector('[id^="task-text-"]');
+                    if (taskTextElement) {
+                        taskTextElement.textContent = newText;
+                    }
+                } else {
+                    // Fallback: just update the text
+                    taskElement.textContent = newText;
+                }
+                
+                taskElement.classList.remove('editing');
+                
+                // Update the dataset
+                taskElement.dataset.taskText = newText;
+                
+                // Remove event listeners
+                if (taskElement.dataset.keydownHandler) {
+                    delete taskElement.dataset.keydownHandler;
+                }
+                
+                if (taskElement.dataset.blurHandler) {
+                    delete taskElement.dataset.blurHandler;
+                }
+                
+                // Re-process HTMX for the updated element
+                if (typeof htmx !== 'undefined') {
+                    htmx.process(taskElement);
+                }
+            } else {
+                // Show error and keep editing
+                console.error('Failed to save task:', data.errors);
+                this.cancelTaskEditing(taskElement);
+            }
+        })
+        .catch(error => {
+            console.error('Error saving task:', error);
+            this.cancelTaskEditing(taskElement);
+        });
+    }
+
+    cancelTaskEditing(taskElement) {
+        if (!taskElement) return;
+        
+        // Restore original content
+        if (taskElement.dataset.originalContent) {
+            taskElement.innerHTML = taskElement.dataset.originalContent;
+        } else {
+            const originalText = taskElement.dataset.taskText || '';
+            taskElement.textContent = originalText;
+        }
+        
+        taskElement.classList.remove('editing');
+        
+        // Remove event listeners
+        if (taskElement.dataset.keydownHandler) {
+            delete taskElement.dataset.keydownHandler;
+        }
+        
+        if (taskElement.dataset.blurHandler) {
+            delete taskElement.dataset.blurHandler;
+        }
+        
+        // Re-process HTMX for the restored element
+        if (typeof htmx !== 'undefined') {
+            htmx.process(taskElement);
+        }
+    }
+
+    closeAllTaskEditing() {
+        document.querySelectorAll('.task-text-editable.editing').forEach(taskElement => {
+            this.cancelTaskEditing(taskElement);
+        });
+    }
+    
+    hideTaskActionButtons() {
+        // Hide all edit and delete buttons by default on mobile
+        document.querySelectorAll('.edit-task-btn, .delete-task-btn').forEach(button => {
+            button.style.display = 'none';
+            button.style.visibility = 'hidden';
+            button.style.opacity = '0';
+            button.style.pointerEvents = 'none';
+        });
+        
+        // Also remove any edit button click handlers to prevent edit modal from opening
+        document.querySelectorAll('.edit-task-btn').forEach(button => {
+            button.removeEventListener('click', this.handleEditButtonClick);
+            button.addEventListener('click', this.handleEditButtonClick);
+        });
+    }
+    
+    handleEditButtonClick(e) {
+        // Prevent edit modal from opening on mobile
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }
+    
+    removeEditButtons() {
+        // Completely remove all edit buttons from the DOM on mobile
+        document.querySelectorAll('.edit-task-btn').forEach(button => {
+            button.remove();
+        });
+        
+        // Also remove any edit buttons that might be added later
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.nodeType === Node.ELEMENT_NODE) {
+                        const editButtons = node.querySelectorAll ? node.querySelectorAll('.edit-task-btn') : [];
+                        editButtons.forEach(button => button.remove());
+                    }
+                });
+            });
+        });
+        
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
     }
 
     // HTMX handlers...
@@ -871,6 +1114,10 @@ class MobileGridManager {
         if (e.target && e.target.id === 'grid-content') {
             this.reinitializeComponents();
         }
+        
+        // Re-hide task action buttons after content changes
+        this.hideTaskActionButtons();
+        
         // Set container height after content changes
         this.setContainerHeightToActiveColumn();
     }
@@ -967,6 +1214,10 @@ class MobileGridManager {
         
         // Restore scroll position
         this.restoreScrollPosition();
+        
+        // Re-hide task action buttons after content changes
+        this.hideTaskActionButtons();
+        
         // Set container height after content changes
         this.setContainerHeightToActiveColumn();
     }
@@ -1097,7 +1348,16 @@ class MobileGridManager {
                 }
             }, true);
         }
-
+        
+        // Initialize Save Template Modal functionality
+        this.initializeSaveTemplateModal();
+        
+                // Initialize inline task editing
+        this.initializeInlineTaskEditing();
+        
+        // Completely remove edit buttons on mobile
+        this.removeEditButtons();
+        
         // Update Edit/Delete Column actions when Actions menu is opened
         const actionsMenuBtn = document.getElementById('actions-menu-btn');
         if (actionsMenuBtn) {
@@ -1141,6 +1401,179 @@ class MobileGridManager {
             htmx.config.includeIndicatorStyles = false;
         }
     }
+    
+    initializeSaveTemplateModal() {
+        const withTasksBtn = document.getElementById('with-tasks-btn');
+        const structureOnlyBtn = document.getElementById('structure-only-btn');
+        const templateStyleInput = document.getElementById('template_style');
+        
+        if (withTasksBtn && structureOnlyBtn && templateStyleInput) {
+            // Set initial state to "Save with clean structure"
+            const structureCircle = structureOnlyBtn.querySelector('.w-3.h-3');
+            if (structureCircle) structureCircle.classList.remove('opacity-0');
+            
+            // Handle "Save with example tasks" selection
+            withTasksBtn.addEventListener('click', () => {
+                const withTasksCircle = withTasksBtn.querySelector('.w-3.h-3');
+                const structureCircle = structureOnlyBtn.querySelector('.w-3.h-3');
+                
+                if (withTasksCircle) withTasksCircle.classList.remove('opacity-0');
+                if (structureCircle) structureCircle.classList.add('opacity-0');
+                
+                templateStyleInput.value = 'with_tasks';
+            });
+            
+            // Handle "Save with clean structure" selection
+            structureOnlyBtn.addEventListener('click', () => {
+                const withTasksCircle = withTasksBtn.querySelector('.w-3.h-3');
+                const structureCircle = structureOnlyBtn.querySelector('.w-3.h-3');
+                
+                if (withTasksCircle) withTasksCircle.classList.add('opacity-0');
+                if (structureCircle) structureCircle.classList.remove('opacity-0');
+                
+                templateStyleInput.value = 'structure_only';
+            });
+        }
+    }
+    
+    initializeInlineTaskEditing() {
+        // Add click event listeners to all task text elements
+        document.addEventListener('click', (e) => {
+            const taskText = e.target.closest('.task-text-editable');
+            if (taskText && !taskText.classList.contains('editing')) {
+                e.preventDefault();
+                this.startTaskEditing(taskText);
+            }
+        });
+        
+        // Ensure all task elements have the necessary data attributes
+        document.querySelectorAll('.task-text-editable').forEach(taskElement => {
+            if (!taskElement.dataset.taskText) {
+                taskElement.dataset.taskText = taskElement.textContent.trim();
+            }
+        });
+        
+        // Hide edit buttons and delete buttons by default on mobile
+        this.hideTaskActionButtons();
+        
+        // Add mobile-specific styling for inline editing
+        const style = document.createElement('style');
+        style.textContent = `
+            .task-text-editable.editing {
+                background-color: var(--container-bg) !important;
+                border: 2px dashed var(--tertiary-action-bg) !important;
+                border-radius: 6px !important;
+                padding: 4px 8px !important;
+                outline: none !important;
+                min-height: 24px !important;
+                box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+                position: relative !important;
+            }
+            
+            .task-text-editable.editing:focus {
+                box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
+                border-color: var(--tertiary-action-bg) !important;
+            }
+            
+            /* Completely hide edit buttons on mobile */
+            .edit-task-btn {
+                display: none !important;
+                visibility: hidden !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+            }
+            
+            /* Hide delete buttons by default on mobile */
+            .task-text-editable .delete-task-btn {
+                display: none !important;
+            }
+            
+            /* Show delete button only when editing */
+            .task-text-editable.editing .delete-task-btn {
+                display: inline-flex !important;
+            }
+            
+            /* Style delete button to match row delete button exactly */
+            .task-text-editable.editing .delete-task-btn {
+                background-color: transparent !important;
+                color: inherit !important;
+            }
+            
+            .task-text-editable.editing .delete-task-btn:hover {
+                background-color: var(--grid-header-bg) !important;
+            }
+            
+            .task-text-editable.editing .delete-task-btn i {
+                color: #9ca3af !important; /* text-gray-400 */
+            }
+            
+            .task-text-editable.editing .delete-task-btn:hover i {
+                color: var(--delete-button-bg) !important;
+            }
+            
+            /* Ensure the task element maintains its position when editing */
+            .task-text-editable.editing {
+                background-color: transparent !important;
+                border: none !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+                box-shadow: none !important;
+                position: relative !important;
+                display: block !important;
+                min-height: 24px !important;
+                transition: all 0.2s ease !important;
+            }
+            
+            /* Ensure the editing interface doesn't shift the layout */
+            .task-text-editable.editing > div {
+                position: relative !important;
+                width: 100% !important;
+                transition: all 0.2s ease !important;
+            }
+            
+            /* Prevent layout jumping */
+            .task-text-editable {
+                transition: all 0.2s ease !important;
+                min-height: 24px !important;
+            }
+            
+            /* Force wide editing interface */
+            .task-text-editable.editing {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .task-text-editable.editing > div {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .task-text-editable.editing input {
+                width: 100% !important;
+                min-width: 100% !important;
+                max-width: 100% !important;
+                font-size: inherit !important;
+                line-height: inherit !important;
+                font-family: inherit !important;
+                font-weight: inherit !important;
+                background: transparent !important;
+                border: 2px dashed var(--tertiary-action-bg) !important;
+                border-radius: 6px !important;
+                padding: 4px 8px !important;
+            }
+            
+            /* Ensure the existing delete button in the task container remains visible during editing */
+            .task-text-editable.editing ~ .mobile-task-actions .delete-task-btn,
+            .task-text-editable.editing ~ .desktop-task-actions .delete-task-btn {
+                display: inline-flex !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+        `;
+        document.head.appendChild(style);
+    }
 }
 
 function validateTaskForm(form) {
@@ -1174,6 +1607,12 @@ window.closeAllDropdowns = function() {
     }
 };
 
+// Global function to hide save template modal - called from inline onclick handlers
+window.hideSaveTemplateModal = function() {
+    if (window.mobileGridManager) {
+        window.mobileGridManager.hideSaveTemplateModal();
+    }
+};
 
 
 window.addEventListener('beforeunload', function() {
