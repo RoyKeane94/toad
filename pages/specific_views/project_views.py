@@ -71,8 +71,8 @@ def project_list_view(request):
         else:
             ungrouped_projects.append(project)
     
-    # Convert to list format for template
-    grouped_projects_list = list(grouped_projects.values())
+    # Convert to list format for template and sort groups by name
+    grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].name)
     
     # Get user's personal templates
     personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
@@ -295,8 +295,11 @@ def project_grid_view(request, pk):
             else:
                 ungrouped_projects.append(proj)
         
+        # Convert to list format for template and sort groups by name
+        grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].name)
+        
         # Convert to list format for template
-        context['grouped_projects'] = list(grouped_projects.values())
+        context['grouped_projects'] = grouped_projects_list
         context['ungrouped_projects'] = ungrouped_projects
         context['archived_projects'] = archived_projects
     

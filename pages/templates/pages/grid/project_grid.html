@@ -293,8 +293,23 @@
 
 <!-- Grid Tabs Navigation -->
 <div class="mb-6 px-4" id="grid-tabs">
-    <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide">
-            <!-- All Projects (Grouped and Ungrouped) -->
+            <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide">
+            <!-- Ungrouped Projects First -->
+            {% if ungrouped_projects %}
+                <div class="flex-shrink-0">
+                    <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-3 opacity-0">Ungrouped</div>
+                    <div class="flex flex-wrap gap-1">
+                        {% for p in ungrouped_projects %}
+                            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                                {{ p.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+            
+            <!-- Grouped Projects -->
             {% for group_data in grouped_projects %}
                 <div class="flex-shrink-0">
                     <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-3">{{ group_data.group.name }}</div>
@@ -308,21 +323,6 @@
                     </div>
                 </div>
             {% endfor %}
-            
-            <!-- Ungrouped Projects (with hidden label for alignment) -->
-            {% if ungrouped_projects %}
-                <div class="flex-shrink-0">
-                    <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-3 opacity-0">Placeholder</div>
-                    <div class="flex flex-wrap gap-1">
-                        {% for p in ungrouped_projects %}
-                            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
-                                {{ p.name }}
-                            </a>
-                        {% endfor %}
-                    </div>
-                </div>
-            {% endif %}
             
             <!-- Archived Projects -->
             {% if archived_projects %}
