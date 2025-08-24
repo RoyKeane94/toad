@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import (
     Project, RowHeader, ColumnHeader, Task, PersonalTemplate, 
-    TemplateRowHeader, TemplateColumnHeader, TemplateTask, FAQ, ContactSubmission
+    TemplateRowHeader, TemplateColumnHeader, TemplateTask, ContactSubmission
 )
 
 # Basic admin registration for existing models
@@ -51,26 +51,6 @@ class TaskAdmin(admin.ModelAdmin):
         return super().get_queryset(request).select_related(
             'project', 'row_header', 'column_header', 'project__user', 'project__project_group'
         )
-
-# Enhanced admin for FAQ
-@admin.register(FAQ)
-class FAQAdmin(admin.ModelAdmin):
-    list_display = ['question', 'category', 'order', 'is_active', 'created_at']
-    list_filter = ['category', 'is_active', 'created_at']
-    list_editable = ['order', 'is_active']
-    search_fields = ['question', 'answer']
-    ordering = ['category', 'order', 'question']
-    readonly_fields = ['created_at', 'updated_at']
-    
-    fieldsets = (
-        (None, {
-            'fields': ('question', 'answer', 'category', 'order', 'is_active')
-        }),
-        ('Timestamps', {
-            'fields': ('created_at', 'updated_at'),
-            'classes': ('collapse',)
-        }),
-    )
 
 # Enhanced admin for Contact Submissions
 @admin.register(ContactSubmission)

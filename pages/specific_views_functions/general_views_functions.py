@@ -1,18 +1,10 @@
 from django.shortcuts import render
 from django.contrib import messages
 from django.http import JsonResponse
-from ..models import FAQ, ContactSubmission
+from ..models import ContactSubmission
 import logging
 
 logger = logging.getLogger(__name__)
-
-# FAQ Helper Functions
-
-def get_active_faqs():
-    """Get all active FAQs optimized for display"""
-    return FAQ.objects.filter(is_active=True).only(
-        'id', 'category', 'question', 'answer', 'order'
-    ).order_by('category', 'order', 'question')
 
 # Contact Form Helper Functions
 

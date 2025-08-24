@@ -96,7 +96,6 @@ class Task(models.Model):
             models.Index(fields=['project', 'row_header', 'column_header', 'order']),  # For ordered task queries
         ]
 
-
 class PersonalTemplate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='personal_templates')
     name = models.CharField(max_length=100)
@@ -108,7 +107,6 @@ class PersonalTemplate(models.Model):
     
     class Meta:
         ordering = ['name']
-
 
 class TemplateRowHeader(models.Model):
     template = models.ForeignKey(PersonalTemplate, on_delete=models.CASCADE, related_name='row_headers')
@@ -123,7 +121,6 @@ class TemplateRowHeader(models.Model):
 
     def __str__(self):
         return f"{self.template.name} - {self.name}"
-
 
 class TemplateColumnHeader(models.Model):
     template = models.ForeignKey(PersonalTemplate, on_delete=models.CASCADE, related_name='column_headers')
@@ -159,29 +156,6 @@ class TemplateTask(models.Model):
         if not self.text or not self.text.strip():
             from django.core.exceptions import ValidationError
             raise ValidationError({'text': 'Task text cannot be empty.'})
-
-class FAQ(models.Model):
-    question = models.CharField(max_length=200)
-    answer = models.TextField()
-    category = models.CharField(max_length=50, choices=[
-        ('general', 'General'),
-        ('grids', 'Grids & Tasks'),
-        ('account', 'Account'),
-        ('technical', 'Technical'),
-    ], default='general')
-    order = models.PositiveIntegerField(default=0)
-    is_active = models.BooleanField(default=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ['category', 'order', 'question']
-        verbose_name = 'FAQ'
-        verbose_name_plural = 'FAQs'
-
-    def __str__(self):
-        return self.question
-
 
 class ContactSubmission(models.Model):
     STATUS_CHOICES = [

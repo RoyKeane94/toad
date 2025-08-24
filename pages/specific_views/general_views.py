@@ -3,9 +3,8 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.contrib import messages
-from ..models import FAQ, ContactSubmission
+from ..models import ContactSubmission
 from ..specific_views_functions.general_views_functions import (
-    get_active_faqs,
     process_contact_form_submission,
     render_simple_template,
     get_contact_form_context
@@ -337,10 +336,7 @@ def weekly_fitness_tracker_template_view(request):
 
 def faq_view(request):
     """Display the FAQ page with all active questions"""
-    faqs = get_active_faqs()
-    context = {
-        'faqs': faqs,
-    }
+    context = {}
     return render(request, 'pages/general/bumf/FAQ.html', context)
 
 @require_http_methods(["GET", "POST"])
