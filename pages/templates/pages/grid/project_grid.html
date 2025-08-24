@@ -216,6 +216,58 @@
         }
     }
     
+    /* Grid Tabs Styling */
+    .scrollbar-hide {
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+    }
+    
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none;  /* Safari and Chrome */
+    }
+    
+    /* Active grid tab styling */
+    #grid-tabs a[href*="{{ project.pk }}"] {
+        color: var(--text-primary) !important;
+        border-bottom: 2px solid var(--primary-action-bg) !important;
+        border-radius: 0 !important;
+    }
+    
+    /* Remove border radius from all tabs for flat underline */
+    #grid-tabs a {
+        border-radius: 0 !important;
+    }
+    
+    /* Ensure grid tabs are visible */
+    #grid-tabs {
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+    
+    /* Grid tabs responsive design */
+    @media (max-width: 640px) {
+        #grid-tabs .flex-wrap {
+            gap: 0.5rem;
+        }
+        
+        #grid-tabs a {
+            font-size: 0.875rem;
+            padding: 0.5rem 0.75rem;
+        }
+    }
+    
+    /* Button consistency */
+    .grid-actions-mobile button,
+    .grid-actions-mobile a {
+        min-width: 12rem; /* w-48 = 12rem */
+        text-align: center;
+    }
+    
+    /* Ensure buttons are properly aligned */
+    .grid-actions-mobile {
+        align-items: stretch;
+    }
+    
 
 </style>
 {% endblock %}
@@ -228,6 +280,42 @@
 <!-- Loading Overlay -->
 <div id="grid-loading-overlay" class="grid-loading-overlay">
     <div class="grid-loading-spinner"></div>
+</div>
+
+<!-- Grid Tabs Navigation -->
+<div class="mb-6 px-4" id="grid-tabs">
+    <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide">
+            <!-- All Projects (Grouped and Ungrouped) -->
+            {% for group_data in grouped_projects %}
+                <div class="flex-shrink-0">
+                    <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-3">{{ group_data.group.name }}</div>
+                    <div class="flex flex-wrap gap-1">
+                        {% for p in group_data.projects %}
+                            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                                {{ p.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <!-- Ungrouped Projects (with hidden label for alignment) -->
+            {% if ungrouped_projects %}
+                <div class="flex-shrink-0">
+                    <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-3 opacity-0">Placeholder</div>
+                    <div class="flex flex-wrap gap-1">
+                        {% for p in ungrouped_projects %}
+                            <a href="{% url 'pages:project_grid' pk=p.pk %}" 
+                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                                {{ p.name }}
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
 </div>
 
 <!-- Header -->
@@ -284,71 +372,10 @@
             </div>
         </div>
         
-
-    </div>
-    
-    <!-- Grid Switcher -->
-    <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-        <div class="flex flex-col sm:flex-row sm:items-center gap-4">
-            <!-- Grid Switcher Dropdown -->
-            <div class="relative" id="project-switcher-container">
-                <button type="button" 
-                        id="project-switcher-btn"
-                        class="group flex items-center space-x-2 px-4 py-2 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg shadow-sm transition-all duration-200 hover:shadow-md hover:border-[var(--primary-action-bg)]/30 cursor-pointer">
-                    <i class="fas fa-exchange-alt text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-colors text-sm"></i>
-                    <span class="text-sm text-[var(--text-primary)] font-medium">Switch Grid</span>
-                    <i class="fas fa-chevron-down text-xs text-[var(--text-secondary)] group-hover:text-[var(--primary-action-bg)] transition-all duration-200" id="switcher-chevron"></i>
-                </button>
-                
-                <!-- Dropdown Menu -->
-                <div id="project-switcher-dropdown" 
-                     class="absolute top-full left-0 mt-2 w-80 max-w-[90vw] bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
-                    
-                    <!-- Grids List -->
-                    <div class="px-3 py-2">
-                        <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2">Grids</div>
-                        <div class="space-y-1 max-h-60 overflow-y-auto">
-                {% for p in projects %}
-                                <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                                   class="flex items-center space-x-3 px-3 py-2 rounded-md transition-all duration-150 cursor-pointer {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border-l-2 border-[var(--primary-action-bg)]{% else %}hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)]{% endif %}">
-                                    <div class="flex items-center justify-center w-6 h-6 rounded {% if p.pk == project.pk %}bg-[var(--primary-action-bg)]{% else %}bg-gray-500{% endif %} shadow-sm">
-                                        <i class="fas fa-project-diagram text-white text-xs"></i>
-                                    </div>
-                                    <div class="flex-1 min-w-0">
-                                        <div class="font-medium text-sm truncate">{{ p.name }}</div>
-                                        {% if p.pk == project.pk %}
-                                            <div class="text-xs opacity-75">Current Grid</div>
-                                        {% endif %}
-                                    </div>
-                                    {% if p.pk == project.pk %}
-                                        <i class="fas fa-check text-xs"></i>
-                                    {% endif %}
-                                </a>
-                {% endfor %}
-                        </div>
-                    </div>
-                    
-                    <!-- Divider -->
-                    <div class="border-t border-[var(--border-color)] my-2"></div>
-                    
-                    <!-- Back to Grids -->
-                    <div class="px-3">
-                        <a href="{% url 'pages:project_list' %}" 
-                           class="flex items-center space-x-3 px-3 py-2 rounded-md hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] transition-all duration-150 cursor-pointer">
-                            <div class="flex items-center justify-center w-6 h-6 rounded bg-gray-500 shadow-sm">
-                                <i class="fas fa-arrow-left text-white text-xs"></i>
-                            </div>
-                            <span class="font-medium text-sm">Back to All Grids</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Grid Actions -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 grid-actions-mobile">
+        <!-- Grid Actions - Right Aligned -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
             <button type="button"
-                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
+                    class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
                     hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
                     hx-target="#modal-content"
                     hx-trigger="click throttle:500ms"
@@ -360,7 +387,7 @@
                 <i class="fas fa-plus mr-1"></i>Add Row
             </button>
             <button type="button"
-                    class="w-full sm:w-40 lg:w-48 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
+                    class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
                     hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
                     hx-target="#modal-content"
                     hx-trigger="click throttle:500ms"
@@ -372,14 +399,15 @@
                 <i class="fas fa-plus mr-1"></i>Add Column
             </button>
             <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
-               class="w-full sm:w-40 lg:w-48 bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation">
-                <i class="fas fa-broom mr-1"></i>Clear Completed
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer">
+                <i class="fas fa-check mr-1"></i>Clear Completed
             </a>
             <button type="button"
-                    class="w-full sm:w-40 lg:w-48 bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-white px-4 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer flex items-center justify-center touch-manipulation"
+                    class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
                     onclick="closeAllDropdowns(); document.getElementById('save-template-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('save-template-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('save-template-modal').querySelector('div').classList.add('scale-100');">
                 <i class="fas fa-save mr-1"></i>Save as Template
             </button>
+            
         </div>            
     </div>
 </div>
@@ -576,6 +604,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 gridNameActionsDropdown.classList.remove('scale-100');
             }
         });
+    }
+    
+    // Initialize grid tabs with smooth scrolling
+    const gridTabs = document.getElementById('grid-tabs');
+    if (gridTabs) {
+        // Add smooth scrolling to the tabs container
+        gridTabs.querySelector('.overflow-x-auto').style.scrollBehavior = 'smooth';
     }
 });
 

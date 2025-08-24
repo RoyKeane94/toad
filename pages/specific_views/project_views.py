@@ -265,6 +265,29 @@ def project_grid_view(request, pk):
     # Lazy load projects for dropdown only when needed (non-HTMX, full page loads)
     if not request.headers.get('HX-Request'):
         context['projects'] = get_projects_for_dropdown(request.user)
+        
+        # Add grouped projects data for the grid tabs
+        all_projects = Project.objects.filter(user=request.user).select_related('project_group').order_by('project_group', 'order', '-created_at')
+        
+        # Manually group projects by their project_group
+        grouped_projects = {}
+        ungrouped_projects = []
+        
+        for proj in all_projects:
+            if proj.project_group:
+                group_id = proj.project_group.id
+                if group_id not in grouped_projects:
+                    grouped_projects[group_id] = {
+                        'group': proj.project_group,
+                        'projects': []
+                    }
+                grouped_projects[group_id]['projects'].append(proj)
+            else:
+                ungrouped_projects.append(proj)
+        
+        # Convert to list format for template
+        context['grouped_projects'] = list(grouped_projects.values())
+        context['ungrouped_projects'] = ungrouped_projects
     
     return render(request, template_name, context)
 
