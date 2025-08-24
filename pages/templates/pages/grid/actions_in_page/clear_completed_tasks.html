@@ -46,6 +46,31 @@
                     </button>
                 </div>
             </form>
+            
+            <!-- Archive Project Section -->
+            <div class="mt-8 pt-6 border-t border-[var(--border-color)]">
+                <div class="bg-[var(--task-bg)] border border-[var(--tertiary-action-bg)] rounded-lg p-4 mb-6">
+                    <div class="flex items-start space-x-3">
+                        <i class="fas fa-archive text-[var(--tertiary-action-bg)] mt-1"></i>
+                        <div>
+                            <h3 class="font-medium text-[var(--tertiary-action-bg)]">Archive Project</h3>
+                            <p class="text-sm text-[var(--text-primary)] mt-1">
+                                Archive this project to move it to your archives. Archived projects are hidden from your main grid list but can be restored later.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form method="post" action="{% url 'pages:archive_project' pk=project.pk %}">
+                    {% csrf_token %}
+                    <div class="flex items-center justify-end space-x-3">
+                        <button type="submit" 
+                                class="w-48 h-10 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                            <i class="fas fa-archive mr-2"></i>Archive Project
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

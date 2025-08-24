@@ -49,8 +49,8 @@ logger = logging.getLogger(__name__)
 
 @login_required
 def project_list_view(request):
-    # Get all projects with their groups and task counts
-    projects = Project.objects.filter(user=request.user).select_related('project_group').annotate(
+    # Get all active (non-archived) projects with their groups and task counts
+    projects = Project.objects.filter(user=request.user, is_archived=False).select_related('project_group').annotate(
         task_count=Count('tasks'),
         completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
     ).order_by('project_group', 'order', '-created_at')
@@ -77,11 +77,18 @@ def project_list_view(request):
     # Get user's personal templates
     personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
     
+    # Get archived projects
+    archived_projects = Project.objects.filter(user=request.user, is_archived=True).select_related('project_group').annotate(
+        task_count=Count('tasks'),
+        completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
+    ).order_by('-created_at')
+    
     context = {
         'projects': projects,  # Keep for backward compatibility
         'grouped_projects': grouped_projects_list,
         'ungrouped_projects': ungrouped_projects,
-        'personal_templates': personal_templates
+        'personal_templates': personal_templates,
+        'archived_projects': archived_projects
     }
     
     return render(request, 'pages/grid/overview/project_list.html', context)
@@ -266,15 +273,18 @@ def project_grid_view(request, pk):
     if not request.headers.get('HX-Request'):
         context['projects'] = get_projects_for_dropdown(request.user)
         
-        # Add grouped projects data for the grid tabs
+        # Add grouped projects data for the grid tabs (including archived projects)
         all_projects = Project.objects.filter(user=request.user).select_related('project_group').order_by('project_group', 'order', '-created_at')
         
         # Manually group projects by their project_group
         grouped_projects = {}
         ungrouped_projects = []
+        archived_projects = []
         
         for proj in all_projects:
-            if proj.project_group:
+            if proj.is_archived:
+                archived_projects.append(proj)
+            elif proj.project_group:
                 group_id = proj.project_group.id
                 if group_id not in grouped_projects:
                     grouped_projects[group_id] = {
@@ -288,6 +298,7 @@ def project_grid_view(request, pk):
         # Convert to list format for template
         context['grouped_projects'] = list(grouped_projects.values())
         context['ungrouped_projects'] = ungrouped_projects
+        context['archived_projects'] = archived_projects
     
     return render(request, template_name, context)
 
@@ -824,6 +835,36 @@ def delete_completed_tasks_view(request, pk):
     return render(request, 'pages/grid/actions_in_page/clear_completed_tasks.html', {
         'project': project
     })
+
+
+@login_required
+def archive_project_view(request, pk):
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+    
+    if request.method == 'POST':
+        # Set the project as archived
+        project.is_archived = True
+        project.save()
+        
+        messages.success(request, f'Project "{project.name}" has been archived successfully!')
+        return redirect('pages:project_list')
+    
+    return redirect('pages:project_grid', pk=project.pk)
+
+
+@login_required
+def restore_project_view(request, pk):
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+    
+    if request.method == 'POST':
+        # Set the project as not archived
+        project.is_archived = False
+        project.save()
+        
+        messages.success(request, f'Project "{project.name}" has been restored successfully!')
+        return redirect('pages:project_list')
+    
+    return redirect('pages:project_list')
 
 @login_required
 def create_from_template_view(request, template_type):

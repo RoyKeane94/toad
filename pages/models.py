@@ -16,6 +16,7 @@ class ProjectGroup(models.Model):
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
+    is_archived = models.BooleanField(default=False)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
     order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups
     created_at = models.DateTimeField(auto_now_add=True)
@@ -156,6 +157,21 @@ class TemplateTask(models.Model):
         if not self.text or not self.text.strip():
             from django.core.exceptions import ValidationError
             raise ValidationError({'text': 'Task text cannot be empty.'})
+        
+class ArchiveProject(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='archive_projects')
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='archive_projects')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return f"{self.project.name} - {self.created_at}"
+    
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['user', '-created_at']),
+        ]
 
 class ContactSubmission(models.Model):
     STATUS_CHOICES = [

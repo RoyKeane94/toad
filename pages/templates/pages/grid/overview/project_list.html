@@ -456,6 +456,58 @@
             {% endif %}
         </div>
     </div>
+    
+    <!-- Archives Section -->
+    <div class="max-w-7xl mx-auto px-4 mt-16">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-[var(--primary-action-bg)] mb-3">Archives</h2>
+            {% if archived_projects %}
+                <p class="text-[var(--subtitle-text)] text-lg mb-8">Your archived projects are stored here</p>
+                <div class="flex flex-wrap justify-center gap-6">
+                    {% for project in archived_projects %}
+                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 opacity-75">
+                            <div class="p-6">
+                                <div class="flex items-start justify-between mb-4">
+                                    <h3 class="text-lg font-semibold text-[var(--primary-action-bg)] truncate flex-1 pr-2">
+                                        {{ project.name }}
+                                    </h3>
+                                    <div class="flex space-x-2 flex-shrink-0">
+                                        <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="inline">
+                                            {% csrf_token %}
+                                            <button type="submit"
+                                                    class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                                    title="Restore project">
+                                                <i class="fas fa-undo text-sm"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
+                                    <div class="flex items-center">
+                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                        <span>Created {{ project.created_at|date:"d M Y" }}</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-tasks mr-2 text-xs"></i>
+                                        <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
+                                    </div>
+                                </div>
+                                
+                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                   class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm opacity-75 hover:opacity-100">
+                                    <i class="fas fa-external-link-alt mr-2"></i>
+                                    View Grid
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-[var(--subtitle-text)] text-lg mb-8">To keep your main grids tidy, you can archive completed tasks from any of your active grids.</p>
+            {% endif %}
+        </div>
+    </div>
 {% else %}
     <!-- Empty State -->
     <div class="text-center py-16 max-w-md mx-auto px-4">

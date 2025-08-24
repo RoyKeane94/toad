@@ -124,10 +124,20 @@
                      <span>Delete Column</span>
                  </button>
                 <div class="border-t border-[var(--border-color)] my-2"></div>
-                <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
-                    <i class="fas fa-broom text-xs w-4 text-center text-[var(--clear-button-bg)]"></i>
-                    <span class="text-[var(--clear-button-bg)]">Clear Completed</span>
-                </a>
+                {% if project.is_archived %}
+                    <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="w-full">
+                        {% csrf_token %}
+                        <button type="submit" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
+                            <i class="fas fa-undo text-xs w-4 text-center text-[var(--primary-action-bg)]"></i>
+                            <span class="text-[var(--primary-action-bg)]">Restore Grid</span>
+                        </button>
+                    </form>
+                {% else %}
+                    <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)]">
+                        <i class="fas fa-broom text-xs w-4 text-center text-[var(--clear-button-bg)]"></i>
+                        <span class="text-[var(--clear-button-bg)]">Clear Completed</span>
+                    </a>
+                {% endif %}
             </div>
         </div>
     </div>

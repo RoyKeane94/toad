@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import (
     Project, RowHeader, ColumnHeader, Task, PersonalTemplate, 
-    TemplateRowHeader, TemplateColumnHeader, TemplateTask, ContactSubmission
+    TemplateRowHeader, TemplateColumnHeader, TemplateTask, ContactSubmission, ArchiveProject    
 )
 
 # Basic admin registration for existing models
@@ -15,6 +15,7 @@ admin.site.register(PersonalTemplate)
 admin.site.register(TemplateRowHeader)
 admin.site.register(TemplateColumnHeader)
 admin.site.register(TemplateTask)
+admin.site.register(ArchiveProject)
 
 # Enhanced admin for Task model with date filtering
 @admin.register(Task)
