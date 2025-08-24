@@ -231,17 +231,13 @@
         <div class="flex space-x-3">
             <a href="{% url 'pages:project_create' %}" 
                 onclick="plausible('grid_created', {props: {source: 'blank'}});"
-               class="action-button text-white"
-               style="background: var(--tertiary-action-bg);"
-               onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
             <button type="button"
                     onclick="openNewGroupModal()"
-                    class="action-button text-white"
-                    style="background: var(--primary-action-bg);"
-                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
+                    class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                 <i class="fas fa-folder-plus mr-2"></i>
                 New Group
             </button>
@@ -253,17 +249,13 @@
         <div class="flex flex-row items-center justify-center space-x-4">
             <a href="{% url 'pages:project_create' %}" 
                onclick="plausible('grid_created', {props: {source: 'blank'}});"
-               class="action-button text-white"
-               style="background: var(--tertiary-action-bg);"
-               onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
             <button type="button"
                     onclick="openNewGroupModal()"
-                    class="action-button text-white"
-                    style="background: var(--primary-action-bg);"
-                    onmouseover="this.style.background='var(--primary-action-hover-bg)'" onmouseout="this.style.background='var(--primary-action-bg)'">
+                    class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                 <i class="fas fa-folder-plus mr-2"></i>
                 New Group
             </button>
@@ -475,7 +467,7 @@
         <h3 class="text-2xl font-medium text-[var(--title-text)] mb-3">No grids yet</h3>
         <p class="text-[var(--subtitle-text)] mb-8 text-lg">Create your first grid to start organising your tasks and boost your productivity</p>
         <a href="{% url 'pages:project_create' %}" 
-           class="inline-flex items-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-8 py-4 rounded-lg font-medium transition-colors shadow-sm hover:shadow-md">
+           class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
             <i class="fas fa-plus mr-2"></i>
             Create Your First Grid
         </a>
@@ -526,7 +518,7 @@
                 
                 <!-- Project Selection -->
                 <div class="mb-6">
-                    <label class="block text-sm font-medium text-[var(--text-primary)] mb-3">Select Projects (Optional)</label>
+                    <label class="block text-sm font-medium text-[var(--text-primary)] mb-3">Select Projects</label>
                     <div class="max-h-48 overflow-y-auto border border-[var(--border-color)] rounded-md p-3 bg-[var(--grid-header-bg)]">
                         {% for project in projects %}
                             <label class="flex items-center space-x-3 py-2 hover:bg-[var(--container-bg)] rounded px-2 cursor-pointer">
@@ -538,7 +530,6 @@
                             </label>
                         {% endfor %}
                     </div>
-                    <p class="text-xs text-[var(--text-secondary)] mt-2">You can add projects to groups later or leave them ungrouped</p>
                 </div>
             </form>
         </div>
