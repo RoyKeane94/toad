@@ -309,6 +309,14 @@ class MobileGridManager {
         // Add selection to the main task container
         if (mainTaskContainer) {
             mainTaskContainer.classList.add('task-selected');
+            
+            // Hide calendar button when task is selected
+            const calendarBtn = mainTaskContainer.querySelector('.calendar-reminder-btn');
+            console.log('Task selected, looking for calendar button:', calendarBtn);
+            if (calendarBtn) {
+                calendarBtn.classList.add('js-hidden');
+                console.log('Added js-hidden class to calendar button');
+            }
         }
     }
     
@@ -316,6 +324,12 @@ class MobileGridManager {
     clearAllTaskSelections() {
         document.querySelectorAll('.task-selected').forEach(task => {
             task.classList.remove('task-selected');
+            
+            // Show calendar button again when task is deselected
+            const calendarBtn = task.querySelector('.calendar-reminder-btn');
+            if (calendarBtn) {
+                calendarBtn.classList.remove('js-hidden');
+            }
         });
     }
     
@@ -695,6 +709,8 @@ class MobileGridManager {
         // Close any other editing tasks first
         this.closeAllTaskEditing();
         
+
+        
         const taskText = taskElement.textContent.trim();
         const taskId = taskElement.dataset.taskId;
         
@@ -844,6 +860,8 @@ class MobileGridManager {
                 delete taskElement._editInput;
                 delete taskElement.dataset.originalContent;
                 
+
+                
                 // Clear task selection (remove orange dotted border and delete button)
                 // Remove selection from all tasks to ensure clean state
                 document.querySelectorAll('.task-selected').forEach(task => {
@@ -871,6 +889,8 @@ class MobileGridManager {
 
     cancelTaskEditing(taskElement) {
         if (!taskElement) return;
+        
+
         
         // Restore original content (preserve line breaks)
         const originalText = taskElement.dataset.originalText || '';
@@ -950,7 +970,7 @@ class MobileGridManager {
                     pointer-events: auto !important;
                 `;
                 console.log('Delete button shown for row:', rowText);
-            } else {
+        } else {
                 console.log('Delete button not found in row container');
             }
         } else {

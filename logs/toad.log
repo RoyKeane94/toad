@@ -21296,3 +21296,347 @@ WARNING 2025-08-25 10:04:47,449 log 43874 6156726272 Not Found: /.well-known/app
 WARNING 2025-08-25 10:04:47,450 basehttp 43874 6156726272 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2067
 INFO 2025-08-25 10:04:54,876 basehttp 43874 6156726272 "GET /grids/150/ HTTP/1.1" 200 13781
 INFO 2025-08-25 10:04:54,892 basehttp 43874 6156726272 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-25 10:14:23,364 autoreload 45347 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:15:02,809 autoreload 45543 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:15:20,918 basehttp 45543 6157529088 "GET /grids/150/ HTTP/1.1" 200 15431
+INFO 2025-08-25 10:15:20,933 basehttp 45543 6174355456 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:15:20,939 basehttp 45543 6191181824 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 10:15:20,940 basehttp 45543 6208008192 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-25 10:15:20,940 basehttp 45543 6157529088 "GET /static/css/output.css HTTP/1.1" 200 73620
+INFO 2025-08-25 10:15:29,967 basehttp 45543 6157529088 "GET /accounts/settings/ HTTP/1.1" 200 4106
+INFO 2025-08-25 10:15:29,981 basehttp 45543 6157529088 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:15:29,981 basehttp 45543 6208008192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 10:15:47,095 log 45543 6208008192 Bad Request: /tasks/1716/reminder/
+WARNING 2025-08-25 10:15:47,096 basehttp 45543 6208008192 "POST /tasks/1716/reminder/ HTTP/1.1" 400 56
+INFO 2025-08-25 10:17:26,439 autoreload 45943 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:17:29,807 basehttp 45943 6127120384 "GET /grids/150/ HTTP/1.1" 200 15581
+INFO 2025-08-25 10:17:29,824 basehttp 45943 6127120384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:17:29,829 basehttp 45943 6127120384 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 10:17:29,830 basehttp 45943 6143946752 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+WARNING 2025-08-25 10:17:38,980 log 45943 6143946752 Bad Request: /tasks/1715/reminder/
+WARNING 2025-08-25 10:17:38,981 basehttp 45943 6143946752 "POST /tasks/1715/reminder/ HTTP/1.1" 400 56
+WARNING 2025-08-25 10:17:47,339 log 45943 6143946752 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:17:47,339 basehttp 45943 6143946752 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2029
+INFO 2025-08-25 10:20:44,120 basehttp 45943 6127120384 "GET /grids/150/ HTTP/1.1" 200 15663
+INFO 2025-08-25 10:20:44,144 basehttp 45943 6160773120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:20:44,145 basehttp 45943 6143946752 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:20:44,146 basehttp 45943 6177599488 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:20:44,148 basehttp 45943 6194425856 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 10:20:44,169 log 45943 6127120384 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:20:44,169 basehttp 45943 6127120384 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2084
+ERROR 2025-08-25 10:20:51,831 project_views 45943 6127120384 Error creating task reminder for task 1715: No module named 'icalendar'
+ERROR 2025-08-25 10:20:51,832 log 45943 6127120384 Internal Server Error: /tasks/1715/reminder/
+ERROR 2025-08-25 10:20:51,832 basehttp 45943 6127120384 "POST /tasks/1715/reminder/ HTTP/1.1" 500 56
+INFO 2025-08-25 10:22:25,770 autoreload 46922 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:22:33,641 basehttp 46922 6171439104 "GET /grids/150/ HTTP/1.1" 200 15690
+INFO 2025-08-25 10:22:33,657 basehttp 46922 6188265472 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:22:33,657 basehttp 46922 6171439104 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:22:33,658 basehttp 46922 6205091840 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:22:41,766 basehttp 46922 6205091840 "GET /grids/150/ HTTP/1.1" 200 15681
+INFO 2025-08-25 10:22:41,790 basehttp 46922 6188265472 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 10:22:41,791 basehttp 46922 6221918208 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-25 10:22:41,792 basehttp 46922 6171439104 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45437
+INFO 2025-08-25 10:22:41,793 basehttp 46922 6205091840 "GET /static/css/output.css HTTP/1.1" 200 73620
+ERROR 2025-08-25 10:22:50,964 project_views 46922 6205091840 Error creating task reminder for task 1715: No module named 'icalendar'
+ERROR 2025-08-25 10:22:50,966 log 46922 6205091840 Internal Server Error: /tasks/1715/reminder/
+ERROR 2025-08-25 10:22:50,966 basehttp 46922 6205091840 "POST /tasks/1715/reminder/ HTTP/1.1" 500 56
+WARNING 2025-08-25 10:22:56,351 log 46922 6205091840 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:22:56,352 basehttp 46922 6205091840 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2056
+ERROR 2025-08-25 10:23:21,658 project_views 46922 6205091840 Error creating task reminder for task 1715: No module named 'icalendar'
+ERROR 2025-08-25 10:23:21,659 log 46922 6205091840 Internal Server Error: /tasks/1715/reminder/
+ERROR 2025-08-25 10:23:21,660 basehttp 46922 6205091840 "POST /tasks/1715/reminder/ HTTP/1.1" 500 56
+ERROR 2025-08-25 10:23:24,685 project_views 46922 6205091840 Error creating task reminder for task 1715: No module named 'icalendar'
+ERROR 2025-08-25 10:23:24,685 log 46922 6205091840 Internal Server Error: /tasks/1715/reminder/
+ERROR 2025-08-25 10:23:24,686 basehttp 46922 6205091840 "POST /tasks/1715/reminder/ HTTP/1.1" 500 56
+ERROR 2025-08-25 10:23:26,926 project_views 46922 6205091840 Error creating task reminder for task 1715: No module named 'icalendar'
+ERROR 2025-08-25 10:23:26,927 log 46922 6205091840 Internal Server Error: /tasks/1715/reminder/
+ERROR 2025-08-25 10:23:26,927 basehttp 46922 6205091840 "POST /tasks/1715/reminder/ HTTP/1.1" 500 56
+INFO 2025-08-25 10:23:51,096 autoreload 47979 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:23:59,679 basehttp 47979 6161461248 "GET / HTTP/1.1" 200 29142
+INFO 2025-08-25 10:24:15,305 basehttp 47979 6161461248 "GET /grids/150/ HTTP/1.1" 200 15637
+INFO 2025-08-25 10:24:15,355 basehttp 47979 6211940352 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:24:15,357 basehttp 47979 6178287616 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:24:15,357 basehttp 47979 6195113984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 10:24:15,370 log 47979 6161461248 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:24:15,371 basehttp 47979 6161461248 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2020
+INFO 2025-08-25 10:24:26,588 project_views_functions 47979 6161461248 User None created task reminder: "Go to bed by 10:30 for August 26, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 10:24:26,589 basehttp 47979 6161461248 "POST /tasks/1715/reminder/ HTTP/1.1" 200 82
+INFO 2025-08-25 10:26:06,741 autoreload 47979 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:26:07,036 autoreload 48269 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:26:30,540 autoreload 48269 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:26:30,849 autoreload 48293 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:26:44,742 basehttp 48293 6170570752 "GET /grids/150/ HTTP/1.1" 200 15564
+INFO 2025-08-25 10:26:44,765 basehttp 48293 6187397120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:26:44,770 basehttp 48293 6221049856 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:26:44,771 basehttp 48293 6170570752 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:26:44,771 basehttp 48293 6204223488 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 10:26:44,780 log 48293 6187397120 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:26:44,780 basehttp 48293 6187397120 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2016
+INFO 2025-08-25 10:26:53,599 project_views_functions 48293 6187397120 User None created task reminder: "Read for 30 minutes before bed for August 28, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 10:26:53,600 basehttp 48293 6187397120 "POST /tasks/1716/reminder/ HTTP/1.1" 200 82
+INFO 2025-08-25 10:28:26,268 autoreload 48293 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:28:26,547 autoreload 48324 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:28:33,710 autoreload 48324 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:28:33,891 autoreload 48337 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:28:56,733 autoreload 48435 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:29:07,528 autoreload 48756 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:29:16,134 basehttp 48756 6194196480 "GET /grids/150/ HTTP/1.1" 200 15558
+INFO 2025-08-25 10:29:16,159 basehttp 48756 6227849216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:29:16,164 basehttp 48756 6194196480 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+INFO 2025-08-25 10:29:16,169 basehttp 48756 6211022848 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-25 10:29:16,171 log 48756 6244675584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:29:16,171 basehttp 48756 6244675584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2073
+INFO 2025-08-25 10:29:23,934 project_views_functions 48756 6244675584 User None created task reminder: "Read for 30 minutes before bed for August 29, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 10:29:23,935 basehttp 48756 6244675584 "POST /tasks/1716/reminder/ HTTP/1.1" 200 82
+INFO 2025-08-25 10:30:08,861 autoreload 48756 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:30:09,185 autoreload 48791 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:30:15,405 autoreload 48791 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:30:15,649 autoreload 48802 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:30:36,080 autoreload 48802 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:30:36,494 autoreload 48818 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:30:57,833 basehttp 48818 6197866496 "GET /grids/150/ HTTP/1.1" 200 15590
+INFO 2025-08-25 10:30:57,858 basehttp 48818 6214692864 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:30:57,859 basehttp 48818 6197866496 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 10:30:57,862 basehttp 48818 6231519232 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:30:57,862 basehttp 48818 6248345600 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 10:30:57,870 log 48818 6265171968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:30:57,871 basehttp 48818 6265171968 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2065
+INFO 2025-08-25 10:31:04,015 project_views 48818 6265171968 Parsed reminder date: 2025-08-27 (from input: 2025-08-27)
+INFO 2025-08-25 10:31:04,046 project_views 48818 6265171968 Creating ICS event for date: 2025-08-27 (type: <class 'datetime.date'>)
+INFO 2025-08-25 10:31:04,046 project_views 48818 6265171968 Event dtstart after adding: <icalendar.prop.vDate object at 0x103f9e780>
+INFO 2025-08-25 10:31:04,439 project_views_functions 48818 6265171968 User None created task reminder: "Go to bed by 10:30 for August 27, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 10:31:04,441 basehttp 48818 6265171968 "POST /tasks/1715/reminder/ HTTP/1.1" 200 82
+INFO 2025-08-25 10:31:44,942 autoreload 48818 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:31:45,220 autoreload 48850 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:31:51,521 autoreload 48850 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:31:51,768 autoreload 48862 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:32:06,099 autoreload 48862 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:32:06,359 autoreload 48870 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:32:14,606 autoreload 48870 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:32:14,868 autoreload 48887 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:32:21,016 basehttp 48887 6167277568 "GET /grids/150/ HTTP/1.1" 200 15625
+INFO 2025-08-25 10:32:21,040 basehttp 48887 6184103936 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 10:32:21,040 basehttp 48887 6167277568 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 10:32:21,045 log 48887 6200930304 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 10:32:21,045 basehttp 48887 6200930304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2095
+INFO 2025-08-25 10:32:28,334 project_views 48887 6200930304 Parsed reminder date: 2025-08-28 (from input: 2025-08-28)
+INFO 2025-08-25 10:32:28,370 project_views 48887 6200930304 Creating ICS event for date: 2025-08-28 (type: <class 'datetime.date'>)
+INFO 2025-08-25 10:32:28,370 project_views 48887 6200930304 Event dtstart after adding: vDDDTypes(2025-08-28, Parameters({'VALUE': 'DATE'})) with params: Parameters({'VALUE': 'DATE'})
+INFO 2025-08-25 10:32:28,371 project_views 48887 6200930304 Generated ICS content preview: BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Toad App//Task Reminder//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+SUMMARY:Task Reminder: Go to bed by 10:30
+DTSTART;VALUE=DATE:20250828
+UID:9bfb658c-fc7f-4864-aa5d-616672da67c9
+ATTENDEE:MAILTO:thomasbarratt@yahoo.com
+CATEGORIES:TASK_REMINDER
+DESCRIPTION:Task: Go to bed by 10:30\n\nFrom Grid: Tom's Habit Development
+  Tracker\n\nNote: Test it
+ORGANIZER:MAILTO:thomasbarratt@yahoo.com
+STATUS:CONFIRMED
+TRANSP:TRANSPARENT
+END:VEVENT
+END:...
+INFO 2025-08-25 10:32:28,830 project_views_functions 48887 6200930304 User None created task reminder: "Go to bed by 10:30 for August 28, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 10:32:28,832 basehttp 48887 6200930304 "POST /tasks/1717/reminder/ HTTP/1.1" 200 82
+INFO 2025-08-25 10:33:21,202 autoreload 48887 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:33:21,498 autoreload 48938 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 10:33:35,841 autoreload 48938 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 10:33:36,113 autoreload 48956 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 11:47:23,824 autoreload 49533 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 11:47:27,732 basehttp 49533 6123581440 "GET /grids/150/ HTTP/1.1" 200 15654
+INFO 2025-08-25 11:47:27,807 basehttp 49533 6140407808 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 11:47:27,807 basehttp 49533 6157234176 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 11:47:27,808 basehttp 49533 6174060544 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 11:47:27,808 log 49533 6123581440 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 11:47:27,808 basehttp 49533 6190886912 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 11:47:27,809 basehttp 49533 6123581440 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2035
+INFO 2025-08-25 11:47:34,958 project_views 49533 6123581440 Parsed reminder date: 2025-08-27 (from input: 2025-08-27)
+INFO 2025-08-25 11:47:34,992 project_views 49533 6123581440 Creating ICS event for date: 2025-08-27 (type: <class 'datetime.date'>)
+INFO 2025-08-25 11:47:34,992 project_views 49533 6123581440 Event dtstart: vDDDTypes(2025-08-27, Parameters({'VALUE': 'DATE'})) dtend: vDDDTypes(2025-08-28, Parameters({'VALUE': 'DATE'}))
+INFO 2025-08-25 11:47:34,992 project_views 49533 6123581440 Generated ICS content preview: BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Toad App//Task Reminder//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+SUMMARY:Task Reminder: Read for 30 minutes before bed
+DTSTART;VALUE=DATE:20250827
+DTEND;VALUE=DATE:20250828
+UID:93a2603c-0770-4e2d-92ba-77afabf76ffc
+ATTENDEE:MAILTO:thomasbarratt@yahoo.com
+CATEGORIES:TASK_REMINDER
+DESCRIPTION:Task: Read for 30 minutes before bed\n\nFrom Grid: Tom's Habit
+  Development Tracker\n\nNote: test
+ORGANIZER:MAILTO:thomasbarratt@yahoo.com
+STATUS...
+INFO 2025-08-25 11:47:35,666 project_views_functions 49533 6123581440 User None created task reminder: "Read for 30 minutes before bed for August 27, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 11:47:35,667 basehttp 49533 6123581440 "POST /tasks/1716/reminder/ HTTP/1.1" 200 82
+WARNING 2025-08-25 11:49:43,108 log 49533 6123581440 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 11:49:43,109 basehttp 49533 6123581440 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2067
+INFO 2025-08-25 11:49:46,129 basehttp 49533 6123581440 "GET /grids/150/ HTTP/1.1" 200 12911
+WARNING 2025-08-25 11:49:46,163 log 49533 6140407808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 11:49:46,163 basehttp 49533 6140407808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
+INFO 2025-08-25 11:49:46,167 basehttp 49533 6123581440 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 90485
+INFO 2025-08-25 11:51:39,238 autoreload 49533 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 11:51:39,557 autoreload 49710 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 11:51:57,265 autoreload 49710 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 11:51:57,557 autoreload 49732 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 11:52:03,791 autoreload 49732 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 11:52:04,109 autoreload 49746 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 11:52:20,493 autoreload 49746 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 11:52:20,765 autoreload 49755 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 11:53:20,171 basehttp 49755 6192476160 "GET /grids/150/ HTTP/1.1" 200 14665
+WARNING 2025-08-25 11:53:20,200 log 49755 6192476160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 11:53:20,200 basehttp 49755 6192476160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
+INFO 2025-08-25 11:53:31,350 project_views_functions 49755 6192476160 User None created task reminder: "Go to bed by 10:30 for August 27, 2025" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 11:53:31,351 basehttp 49755 6192476160 "POST /tasks/1715/reminder/ HTTP/1.1" 200 82
+INFO 2025-08-25 11:56:08,507 basehttp 49755 6192476160 "GET /grids/150/ HTTP/1.1" 200 14655
+WARNING 2025-08-25 11:56:08,545 log 49755 6192476160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 11:56:08,546 basehttp 49755 6209302528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 11:56:08,546 basehttp 49755 6192476160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2004
+INFO 2025-08-25 11:56:26,386 project_views_functions 49755 6192476160 User None deleted task: "Read for 30 minutes before bed" from project: Tom's Habit Development Tracker
+INFO 2025-08-25 11:56:26,390 basehttp 49755 6192476160 "POST /tasks/1716/delete/ HTTP/1.1" 200 58
+INFO 2025-08-25 11:57:57,506 basehttp 49755 6192476160 "GET /grids/150/ HTTP/1.1" 200 14534
+INFO 2025-08-25 11:57:57,549 basehttp 49755 6209302528 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-08-25 11:57:57,550 log 49755 6192476160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 11:57:57,551 basehttp 49755 6192476160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2076
+INFO 2025-08-25 12:22:53,060 basehttp 49755 6192476160 "GET /grids/150/ HTTP/1.1" 200 14515
+WARNING 2025-08-25 12:22:53,099 log 49755 6192476160 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 12:22:53,101 basehttp 49755 6209302528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 12:22:53,102 basehttp 49755 6226128896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 12:22:53,102 basehttp 49755 6192476160 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2092
+INFO 2025-08-25 12:22:53,102 basehttp 49755 6242955264 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 12:22:53,107 basehttp 49755 6259781632 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91625
+INFO 2025-08-25 12:22:55,226 basehttp 49755 6259781632 "GET /grids/150/ HTTP/1.1" 200 14524
+WARNING 2025-08-25 12:22:55,255 log 49755 6259781632 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:22:55,256 basehttp 49755 6259781632 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2052
+INFO 2025-08-25 12:23:19,376 autoreload 50605 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 12:23:21,772 basehttp 50605 6189658112 "GET /grids/150/ HTTP/1.1" 200 15518
+INFO 2025-08-25 12:23:21,799 basehttp 50605 6189658112 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+WARNING 2025-08-25 12:23:25,484 log 50605 6189658112 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:23:25,484 basehttp 50605 6189658112 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2038
+INFO 2025-08-25 12:23:26,387 basehttp 50605 6189658112 "GET /grids/150/ HTTP/1.1" 200 14514
+WARNING 2025-08-25 12:23:26,414 log 50605 6189658112 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:23:26,414 basehttp 50605 6189658112 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2064
+INFO 2025-08-25 12:23:38,640 basehttp 50605 6189658112 "GET /grids/150/ HTTP/1.1" 200 14492
+INFO 2025-08-25 12:23:38,666 basehttp 50605 6240137216 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-25 12:23:38,672 log 50605 6189658112 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 12:23:38,672 basehttp 50605 6223310848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45437
+INFO 2025-08-25 12:23:38,672 basehttp 50605 6206484480 "GET /static/css/output.css HTTP/1.1" 200 73620
+WARNING 2025-08-25 12:23:38,673 basehttp 50605 6189658112 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2050
+INFO 2025-08-25 12:23:38,675 basehttp 50605 6256963584 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91625
+INFO 2025-08-25 12:44:24,570 autoreload 51428 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 12:44:28,984 basehttp 51428 6166654976 "GET /grids/150/ HTTP/1.1" 200 14454
+INFO 2025-08-25 12:44:29,021 basehttp 51428 6183481344 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 12:44:29,024 basehttp 51428 6200307712 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-25 12:44:29,033 basehttp 51428 6217134080 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-25 12:44:29,035 log 51428 6166654976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:44:29,035 basehttp 51428 6166654976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
+INFO 2025-08-25 12:44:29,036 basehttp 51428 6233960448 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91831
+INFO 2025-08-25 12:46:22,899 basehttp 51428 6166654976 "GET /grids/150/ HTTP/1.1" 200 14479
+INFO 2025-08-25 12:46:22,924 basehttp 51428 6183481344 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:46:22,925 basehttp 51428 6200307712 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-08-25 12:46:22,932 log 51428 6166654976 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:46:22,932 basehttp 51428 6166654976 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2028
+INFO 2025-08-25 12:48:03,056 autoreload 52081 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 12:48:05,369 basehttp 52081 6167506944 "GET /grids/150/ HTTP/1.1" 200 14460
+INFO 2025-08-25 12:48:05,392 basehttp 52081 6184333312 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:48:05,400 basehttp 52081 6201159680 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91606
+WARNING 2025-08-25 12:48:05,400 log 52081 6167506944 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:48:05,400 basehttp 52081 6167506944 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2068
+INFO 2025-08-25 12:48:10,390 basehttp 52081 6167506944 "GET /grids/150/ HTTP/1.1" 200 14520
+INFO 2025-08-25 12:48:10,407 basehttp 52081 6184333312 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-08-25 12:48:10,412 log 52081 6167506944 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:48:10,413 basehttp 52081 6167506944 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2000
+INFO 2025-08-25 12:48:31,228 autoreload 52512 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 12:48:35,044 basehttp 52512 6159626240 "GET /grids/150/ HTTP/1.1" 200 14494
+INFO 2025-08-25 12:48:35,067 basehttp 52512 6193278976 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:48:35,078 basehttp 52512 6176452608 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-25 12:48:35,079 log 52512 6159626240 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:48:35,079 basehttp 52512 6159626240 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 1999
+INFO 2025-08-25 12:48:41,295 basehttp 52512 6159626240 "GET /grids/150/ HTTP/1.1" 200 14472
+INFO 2025-08-25 12:48:41,318 basehttp 52512 6210105344 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 12:48:41,320 basehttp 52512 6193278976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45437
+INFO 2025-08-25 12:48:41,326 basehttp 52512 6176452608 "GET /static/css/output.css HTTP/1.1" 200 73620
+WARNING 2025-08-25 12:48:41,326 log 52512 6159626240 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:48:41,327 basehttp 52512 6159626240 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2035
+INFO 2025-08-25 12:48:41,327 basehttp 52512 6226931712 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91606
+INFO 2025-08-25 12:50:22,751 basehttp 52512 6159626240 "GET /grids/150/ HTTP/1.1" 200 14506
+INFO 2025-08-25 12:50:22,781 basehttp 52512 6159626240 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:50:22,784 basehttp 52512 6176452608 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91033
+WARNING 2025-08-25 12:50:22,792 log 52512 6159626240 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:50:22,792 basehttp 52512 6159626240 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2054
+INFO 2025-08-25 12:50:37,441 autoreload 52874 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 12:50:42,250 basehttp 52874 6200225792 "GET /grids/150/ HTTP/1.1" 200 14502
+INFO 2025-08-25 12:50:42,272 basehttp 52874 6233878528 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:50:42,277 basehttp 52874 6217052160 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-08-25 12:50:42,282 log 52874 6200225792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:50:42,282 basehttp 52874 6200225792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2053
+INFO 2025-08-25 12:50:47,518 basehttp 52874 6200225792 "GET /grids/150/ HTTP/1.1" 200 15487
+INFO 2025-08-25 12:50:47,531 basehttp 52874 6217052160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:50:47,532 basehttp 52874 6200225792 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 42778
+WARNING 2025-08-25 12:52:08,266 log 52874 6200225792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:52:08,267 basehttp 52874 6200225792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2038
+INFO 2025-08-25 12:52:09,396 basehttp 52874 6200225792 "GET /grids/150/ HTTP/1.1" 200 14523
+INFO 2025-08-25 12:52:09,414 basehttp 52874 6217052160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 12:52:09,416 basehttp 52874 6233878528 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-08-25 12:52:09,423 log 52874 6200225792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:52:09,424 basehttp 52874 6200225792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2029
+INFO 2025-08-25 12:52:16,684 basehttp 52874 6200225792 "GET /grids/153/ HTTP/1.1" 200 11352
+WARNING 2025-08-25 12:52:16,717 log 52874 6200225792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 12:52:16,718 basehttp 52874 6200225792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2039
+INFO 2025-08-25 13:03:45,782 basehttp 52874 6200225792 "GET /grids/153/ HTTP/1.1" 200 11420
+WARNING 2025-08-25 13:03:45,819 log 52874 6200225792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:03:45,820 basehttp 52874 6200225792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2011
+INFO 2025-08-25 13:03:45,823 basehttp 52874 6217052160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 13:03:45,824 basehttp 52874 6200225792 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 90523
+INFO 2025-08-25 13:04:20,697 basehttp 52874 6200225792 "GET /grids/153/ HTTP/1.1" 200 11414
+INFO 2025-08-25 13:04:20,714 basehttp 52874 6217052160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 13:04:20,714 basehttp 52874 6233878528 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+WARNING 2025-08-25 13:04:20,720 log 52874 6200225792 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:04:20,721 basehttp 52874 6200225792 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2097
+INFO 2025-08-25 13:11:36,846 basehttp 52874 6200225792 "GET /grids/153/ HTTP/1.1" 200 11387
+INFO 2025-08-25 13:11:36,867 basehttp 52874 6217052160 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-25 13:11:36,868 basehttp 52874 6233878528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 13:11:36,870 basehttp 52874 6200225792 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45534
+WARNING 2025-08-25 13:11:36,878 log 52874 6250704896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:11:36,878 basehttp 52874 6250704896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2076
+INFO 2025-08-25 13:11:55,743 basehttp 52874 6250704896 "GET /grids/153/ HTTP/1.1" 200 11386
+INFO 2025-08-25 13:11:55,764 basehttp 52874 6233878528 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 13:11:55,773 basehttp 52874 6200225792 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45534
+WARNING 2025-08-25 13:11:55,773 log 52874 6267531264 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-08-25 13:11:55,774 basehttp 52874 6250704896 "GET /static/css/output.css HTTP/1.1" 200 73620
+WARNING 2025-08-25 13:11:55,774 basehttp 52874 6267531264 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2029
+INFO 2025-08-25 13:11:55,774 basehttp 52874 6217052160 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 90523
+INFO 2025-08-25 13:13:43,788 autoreload 53644 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 13:13:46,856 basehttp 53644 6124269568 "GET /grids/153/ HTTP/1.1" 200 11388
+INFO 2025-08-25 13:13:46,891 basehttp 53644 6141095936 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45609
+WARNING 2025-08-25 13:13:46,893 log 53644 6124269568 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:13:46,893 basehttp 53644 6124269568 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2066
+INFO 2025-08-25 13:13:46,894 basehttp 53644 6157922304 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91047
+INFO 2025-08-25 13:13:51,345 basehttp 53644 6124269568 "GET /grids/150/ HTTP/1.1" 200 14474
+INFO 2025-08-25 13:13:51,380 basehttp 53644 6157922304 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-25 13:13:51,388 basehttp 53644 6141095936 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-08-25 13:13:51,388 log 53644 6124269568 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:13:51,389 basehttp 53644 6124269568 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2018
+INFO 2025-08-25 13:14:04,278 basehttp 53644 6124269568 "GET /grids/150/ HTTP/1.1" 200 14515
+INFO 2025-08-25 13:14:04,298 basehttp 53644 6174748672 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 13:14:04,304 basehttp 53644 6157922304 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45609
+INFO 2025-08-25 13:14:04,309 basehttp 53644 6141095936 "GET /static/css/output.css HTTP/1.1" 200 73620
+WARNING 2025-08-25 13:14:04,309 log 53644 6124269568 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:14:04,309 basehttp 53644 6124269568 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2022
+INFO 2025-08-25 13:14:04,310 basehttp 53644 6191575040 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91047
+INFO 2025-08-25 13:14:39,759 basehttp 53644 6124269568 "GET /grids/150/ HTTP/1.1" 200 14529
+INFO 2025-08-25 13:14:39,791 basehttp 53644 6124269568 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45609
+INFO 2025-08-25 13:14:39,794 basehttp 53644 6141095936 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91205
+WARNING 2025-08-25 13:14:39,801 log 53644 6157922304 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:14:39,801 basehttp 53644 6157922304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2070
+INFO 2025-08-25 13:15:18,238 basehttp 53644 6124269568 "GET /grids/150/ HTTP/1.1" 200 14497
+INFO 2025-08-25 13:15:18,264 basehttp 53644 6157922304 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 304 0
+INFO 2025-08-25 13:15:18,265 basehttp 53644 6141095936 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45573
+WARNING 2025-08-25 13:15:18,272 log 53644 6124269568 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 13:15:18,272 basehttp 53644 6124269568 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2029

@@ -507,6 +507,141 @@ def task_delete_view(request, task_pk):
     
     return redirect('pages:project_grid', pk=project_pk)
 
+
+@login_required
+def create_task_reminder(request, task_pk):
+    """Create a calendar reminder for a task by generating and emailing an ICS file"""
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__name']
+    )
+    
+    if request.method == 'POST':
+        try:
+            reminder_date = request.POST.get('reminder_date')
+            reminder_note = request.POST.get('reminder_note', '').strip()
+            
+            if not reminder_date:
+                return JsonResponse({'success': False, 'error': 'Reminder date is required'}, status=400)
+            
+            # Parse the date
+            from datetime import datetime, date
+            try:
+                reminder_date_obj = datetime.strptime(reminder_date, '%Y-%m-%d').date()
+                
+                # Check if date is not in the past
+                if reminder_date_obj < date.today():
+                    return JsonResponse({'success': False, 'error': 'Reminder date cannot be in the past'}, status=400)
+                    
+            except ValueError:
+                return JsonResponse({'success': False, 'error': 'Invalid date format'}, status=400)
+            
+            # Generate ICS calendar file
+            from icalendar import Calendar, Event
+            import uuid
+            from django.core.mail import EmailMessage
+            from django.conf import settings
+            
+            # Create calendar
+            cal = Calendar()
+            cal.add('prodid', '-//Toad App//Task Reminder//EN')
+            cal.add('version', '2.0')
+            cal.add('calscale', 'GREGORIAN')
+            cal.add('method', 'REQUEST')
+            
+            # Create event
+            event = Event()
+            event.add('uid', str(uuid.uuid4()))
+            # Create all-day event by setting both start and end dates
+            # For all-day events, we need to set both DTSTART and DTEND with VALUE=DATE
+            event.add('dtstart', reminder_date_obj)
+            event['dtstart'].params['VALUE'] = 'DATE'
+            
+            # For all-day events, DTEND should be the next day
+            from datetime import timedelta
+            end_date = reminder_date_obj + timedelta(days=1)
+            event.add('dtend', end_date)
+            event['dtend'].params['VALUE'] = 'DATE'
+            
+            event.add('summary', f'Task Reminder: {task.text}')
+            
+            # Build description
+            description_parts = [
+                f'Task: {task.text}',
+                f'From Grid: {task.project.name}',
+            ]
+            if reminder_note:
+                description_parts.append(f'Note: {reminder_note}')
+            
+            event.add('description', '\n\n'.join(description_parts))
+            event.add('categories', 'TASK_REMINDER')
+            event.add('status', 'CONFIRMED')
+            event.add('transp', 'TRANSPARENT')  # Don't block time
+            
+            # Add organizer
+            event.add('organizer', f'MAILTO:{request.user.email}')
+            event.add('attendee', f'MAILTO:{request.user.email}')
+            
+            cal.add_component(event)
+            
+            # Generate ICS content
+            ics_content = cal.to_ical()
+            
+            # Send email with ICS attachment
+            subject = f'Task Reminder: {task.text}'
+            
+            # Format the date nicely
+            formatted_date = reminder_date_obj.strftime('%B %d, %Y')
+            
+            message_body = f"""Hi {request.user.first_name},
+
+You've set a reminder for your task: "{task.text}"
+
+Grid: {task.project.name}
+Reminder Date: {formatted_date}"""
+            
+            if reminder_note:
+                message_body += f"\nNote: {reminder_note}"
+            
+            message_body += """
+
+The calendar invitation is attached to this email. Simply open the attachment to add this reminder to your calendar.
+
+Best regards,
+The Toad Team"""
+            
+            email = EmailMessage(
+                subject=subject,
+                body=message_body,
+                from_email=settings.DEFAULT_FROM_EMAIL,
+                to=[request.user.email],
+            )
+            
+            # Attach ICS file (already generated above)
+            email.attach('task_reminder.ics', ics_content, 'text/calendar')
+            email.send()
+            
+            # Log the action
+            log_user_action(
+                request.user, 
+                'created task reminder', 
+                f'{task.text} for {formatted_date}', 
+                task.project.name
+            )
+            
+            return JsonResponse({
+                'success': True, 
+                'message': f'Calendar reminder sent to {request.user.email}!'
+            })
+            
+        except Exception as e:
+            logger.error(f"Error creating task reminder for task {task_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to create reminder'}, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
 # Row CRUD Views
 
 def row_create_view(request, project_pk):

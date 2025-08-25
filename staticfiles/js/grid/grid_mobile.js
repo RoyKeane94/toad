@@ -695,6 +695,8 @@ class MobileGridManager {
         // Close any other editing tasks first
         this.closeAllTaskEditing();
         
+
+        
         const taskText = taskElement.textContent.trim();
         const taskId = taskElement.dataset.taskId;
         
@@ -844,6 +846,8 @@ class MobileGridManager {
                 delete taskElement._editInput;
                 delete taskElement.dataset.originalContent;
                 
+
+                
                 // Clear task selection (remove orange dotted border and delete button)
                 // Remove selection from all tasks to ensure clean state
                 document.querySelectorAll('.task-selected').forEach(task => {
@@ -871,6 +875,8 @@ class MobileGridManager {
 
     cancelTaskEditing(taskElement) {
         if (!taskElement) return;
+        
+
         
         // Restore original content (preserve line breaks)
         const originalText = taskElement.dataset.originalText || '';
@@ -939,15 +945,22 @@ class MobileGridManager {
         rowHeader.classList.add('editing');
         
         // Show the delete button for this row
-        const rowContainer = rowHeader.closest('.bg-\\[var\\(--container-bg\\)\\]');
+        const rowContainer = rowHeader.closest('.bg-white');
         if (rowContainer) {
             const deleteBtn = rowContainer.querySelector('.delete-row-btn');
             if (deleteBtn) {
-                deleteBtn.style.display = 'inline-flex';
-                deleteBtn.style.opacity = '1';
-                deleteBtn.style.visibility = 'visible';
-                deleteBtn.style.pointerEvents = 'auto';
+                deleteBtn.style.cssText = `
+                    display: inline-flex !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    pointer-events: auto !important;
+                `;
+                console.log('Delete button shown for row:', rowText);
+        } else {
+                console.log('Delete button not found in row container');
             }
+        } else {
+            console.log('Row container not found');
         }
         
         // Focus and select
@@ -1079,14 +1092,16 @@ class MobileGridManager {
     }
 
     hideRowDeleteButton(rowHeader) {
-        const rowContainer = rowHeader.closest('.bg-\\[var\\(--container-bg\\)\\]');
+        const rowContainer = rowHeader.closest('.bg-white');
         if (rowContainer) {
             const deleteBtn = rowContainer.querySelector('.delete-row-btn');
             if (deleteBtn) {
-                deleteBtn.style.display = 'none';
-                deleteBtn.style.opacity = '0';
-                deleteBtn.style.visibility = 'hidden';
-                deleteBtn.style.pointerEvents = 'none';
+                deleteBtn.style.cssText = `
+                    display: none !important;
+                    opacity: 0 !important;
+                    visibility: hidden !important;
+                    pointer-events: none !important;
+                `;
             }
         }
     }

@@ -61,6 +61,13 @@
     <!-- Actions -->
     <div class="flex-shrink-0 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 desktop-task-actions">
         <button type="button"
+                class="calendar-reminder-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                title="Set reminder"
+                data-task-id="{{ task.pk }}"
+                data-task-text="{{ task.text }}">
+            <i class="fas fa-calendar-plus text-xs text-gray-400 hover:text-[var(--primary-action-bg)] transition-colors"></i>
+        </button>
+        <button type="button"
                 class="delete-task-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="Delete task"
                 data-task-id="{{ task.pk }}"
@@ -72,6 +79,13 @@
     
     <!-- Mobile Actions -->
     <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 min-w-[70px] opacity-100">
+        <button type="button"
+                class="calendar-reminder-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                title="Set reminder"
+                data-task-id="{{ task.pk }}"
+                data-task-text="{{ task.text }}">
+            <i class="fas fa-calendar-plus text-sm text-gray-400 hover:text-[var(--primary-action-bg)] transition-colors"></i>
+        </button>
         <button type="button"
                 class="delete-task-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="Delete task"
