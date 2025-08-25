@@ -894,6 +894,9 @@
       border-color: var(--border-color);
     }
   }
+  .self-center {
+    align-self: center;
+  }
   .truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1993,11 +1996,6 @@
       border-color: var(--tertiary-action-bg);
     }
   }
-  .focus\:border-orange-400 {
-    &:focus {
-      border-color: var(--color-orange-400);
-    }
-  }
   .focus\:border-transparent {
     &:focus {
       border-color: transparent;
@@ -2022,11 +2020,6 @@
   .focus\:ring-\[var\(--tertiary-action-bg\)\] {
     &:focus {
       --tw-ring-color: var(--tertiary-action-bg);
-    }
-  }
-  .focus\:ring-orange-400 {
-    &:focus {
-      --tw-ring-color: var(--color-orange-400);
     }
   }
   .focus\:ring-red-500 {

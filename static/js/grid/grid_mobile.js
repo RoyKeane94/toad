@@ -13,6 +13,8 @@ class MobileGridManager {
             currentDeleteUrl: null,
             currentRowId: null,
             currentRowDeleteUrl: null,
+            currentColumnId: null,
+            currentColumnDeleteUrl: null,
             touchStartX: 0,
             touchEndX: 0,
             isSwiping: false,
@@ -225,6 +227,14 @@ class MobileGridManager {
             return;
         }
 
+        const deleteColumnBtn = e.target.closest('.delete-column-btn');
+        if (deleteColumnBtn) {
+            e.preventDefault();
+            e.stopPropagation(); // Prevent column editing when clicking delete
+            this.showDeleteColumnModal(deleteColumnBtn.dataset.columnId, deleteColumnBtn.dataset.columnName, deleteColumnBtn.dataset.deleteUrl);
+            return;
+        }
+
         const closeModalBtn = e.target.closest('.close-modal, #close-delete-modal, #cancel-delete-task, #close-delete-row-modal, #cancel-delete-row');
         if (closeModalBtn) {
             if (closeModalBtn.id === 'close-delete-modal' || closeModalBtn.id === 'cancel-delete-task') this.hideDeleteModal();
@@ -256,6 +266,20 @@ class MobileGridManager {
             }
             return;
         }
+
+        // Handle row editing
+        const rowHeader = e.target.closest('h3[data-row-id]');
+        if (rowHeader && !rowHeader.classList.contains('editing') && !e.target.closest('button') && !e.target.closest('.mobile-row-actions')) {
+            this.startRowEditing(rowHeader);
+            return;
+        }
+
+        // Handle column editing
+        const columnHeader = e.target.closest('#mobile-column-header h2');
+        if (columnHeader && !columnHeader.classList.contains('editing')) {
+            this.startColumnEditing(columnHeader);
+            return;
+        }
     }
 
     // Function to close all dropdowns - called from inline onclick handlers
@@ -280,14 +304,19 @@ class MobileGridManager {
         }
         
         // Remove selection from all other tasks
-        document.querySelectorAll('.task-selected').forEach(task => {
-            task.classList.remove('task-selected');
-        });
+        this.clearAllTaskSelections();
         
         // Add selection to the main task container
         if (mainTaskContainer) {
             mainTaskContainer.classList.add('task-selected');
         }
+    }
+    
+    // Clear all task selections
+    clearAllTaskSelections() {
+        document.querySelectorAll('.task-selected').forEach(task => {
+            task.classList.remove('task-selected');
+        });
     }
     
     // Mobile Grid setup
@@ -422,6 +451,8 @@ class MobileGridManager {
             this.hideModal();
             this.collapseAllAddTaskForms();
             this.closeAllTaskEditing();
+            this.closeAllRowEditing();
+            this.closeAllColumnEditing();
         } else if (e.key === 'ArrowLeft') {
             this.scrollToCol(this.state.currentCol - 1);
         } else if (e.key === 'ArrowRight') {
@@ -475,6 +506,8 @@ class MobileGridManager {
         this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, false);
         this.state.currentTaskId = null;
         this.state.currentDeleteUrl = null;
+        this.state.currentColumnId = null;
+        this.state.currentColumnDeleteUrl = null;
     }
 
     showDeleteRowModal(rowId, rowName, deleteUrl) {
@@ -497,6 +530,25 @@ class MobileGridManager {
         this.setModalState(this.elements.deleteRowModal, this.elements.deleteRowModalContent, false);
         this.state.currentRowId = null;
         this.state.currentRowDeleteUrl = null;
+    }
+
+    showDeleteColumnModal(columnId, columnName, deleteUrl) {
+        // For now, we'll use the same delete modal structure as tasks
+        // In a full implementation, you might want a separate column delete modal
+        this.state.currentColumnId = columnId;
+        this.state.currentColumnDeleteUrl = deleteUrl;
+        
+        if (this.elements.taskToDelete) this.elements.taskToDelete.textContent = `column "${columnName}"`;
+        if (this.elements.deleteTaskForm) {
+            this.elements.deleteTaskForm.action = deleteUrl;
+            this.elements.deleteTaskForm.setAttribute('hx-post', deleteUrl);
+            this.elements.deleteTaskForm.setAttribute('hx-swap', 'none');
+            this.elements.deleteTaskForm.setAttribute('hx-trigger', 'submit');
+            this.elements.deleteTaskForm.setAttribute('hx-disabled-elt', 'this');
+            if (typeof htmx !== 'undefined') htmx.process(this.elements.deleteTaskForm);
+        }
+        this.setModalState(this.elements.deleteModal, this.elements.deleteModalContent, true);
+        setTimeout(() => this.elements.cancelDeleteTask?.focus(), 100);
     }
 
     showModal() { 
@@ -639,16 +691,43 @@ class MobileGridManager {
         taskElement.dataset.originalContent = taskElement.innerHTML;
         taskElement.dataset.originalText = taskText;
         
-        // Create editing input
-        const editInput = document.createElement('input');
-        editInput.type = 'text';
-        editInput.className = 'w-full px-2 py-1 text-sm border-2 border-dashed border-orange-400 rounded bg-white text-gray-800 focus:outline-none';
-        editInput.style.fontSize = 'inherit';
-        editInput.style.lineHeight = 'inherit';
-        editInput.style.fontFamily = 'inherit';
-        editInput.style.fontWeight = 'inherit';
+        // Create editing textarea for multi-line support
+        const editInput = document.createElement('textarea');
+        
+        // Get computed styles from the actual text element (p tag) to match exactly
+        const textElement = taskElement.querySelector('p') || taskElement;
+        const computedStyle = window.getComputedStyle(textElement);
+        
+        // Copy ALL computed styles to ensure exact match
+        editInput.style.cssText = `
+            width: 100% !important;
+            border: 2px dashed #f97316 !important;
+            border-radius: 6px !important;
+            background: transparent !important;
+            outline: none !important;
+            resize: none !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            font-size: ${computedStyle.fontSize} !important;
+            line-height: ${computedStyle.lineHeight} !important;
+            font-family: ${computedStyle.fontFamily} !important;
+            font-weight: ${computedStyle.fontWeight} !important;
+            color: ${computedStyle.color} !important;
+            letter-spacing: ${computedStyle.letterSpacing} !important;
+            text-align: ${computedStyle.textAlign} !important;
+            padding: 4px 8px !important;
+            margin: 0 !important;
+            min-height: 24px !important;
+        `;
+        
         editInput.value = taskText;
         editInput.maxLength = 500;
+        
+        // Auto-resize function
+        const autoResize = () => {
+            editInput.style.height = 'auto';
+            editInput.style.height = editInput.scrollHeight + 'px';
+        };
         
         // Replace the text content with the input
         taskElement.innerHTML = '';
@@ -657,19 +736,25 @@ class MobileGridManager {
         // Add editing class
         taskElement.classList.add('editing');
         
+        // Auto-resize initially and on input
+        autoResize();
+        editInput.addEventListener('input', autoResize);
+        
         // Focus the input
-        editInput.focus();
-        editInput.select();
+            editInput.focus();
+            editInput.select();
         
         // Add keyboard event listeners
         const handleKeydown = (e) => {
-            if (e.key === 'Enter') {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                // Ctrl+Enter or Cmd+Enter to save (allow normal Enter for new lines)
                 e.preventDefault();
                 this.saveTaskEditing(taskElement);
             } else if (e.key === 'Escape') {
                 e.preventDefault();
                 this.cancelTaskEditing(taskElement);
             }
+            // Allow normal Enter key for line breaks in textarea
         };
         
         // Add blur event to save when input loses focus
@@ -683,6 +768,7 @@ class MobileGridManager {
         // Store handlers for cleanup
         taskElement._keydownHandler = handleKeydown;
         taskElement._blurHandler = handleBlur;
+        taskElement._autoResize = autoResize;
         taskElement._editInput = editInput;
     }
 
@@ -719,8 +805,9 @@ class MobileGridManager {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Update the task text and restore normal view
-                taskElement.innerHTML = `<p>${newText}</p>`;
+                // Update the task text and restore normal view (preserve line breaks)
+                const formattedText = newText.replace(/\n/g, '<br>');
+                taskElement.innerHTML = `<p>${formattedText}</p>`;
                 taskElement.classList.remove('editing');
                 
                 // Update the dataset for future reference
@@ -734,11 +821,15 @@ class MobileGridManager {
                     if (taskElement._blurHandler) {
                         taskElement._editInput.removeEventListener('blur', taskElement._blurHandler);
                     }
+                    if (taskElement._autoResize) {
+                        taskElement._editInput.removeEventListener('input', taskElement._autoResize);
+                    }
                 }
                 
                 // Clean up references
                 delete taskElement._keydownHandler;
                 delete taskElement._blurHandler;
+                delete taskElement._autoResize;
                 delete taskElement._editInput;
                 delete taskElement.dataset.originalContent;
                 
@@ -770,9 +861,10 @@ class MobileGridManager {
     cancelTaskEditing(taskElement) {
         if (!taskElement) return;
         
-        // Restore original content
+        // Restore original content (preserve line breaks)
         const originalText = taskElement.dataset.originalText || '';
-        taskElement.innerHTML = `<p>${originalText}</p>`;
+        const formattedText = originalText.replace(/\n/g, '<br>');
+        taskElement.innerHTML = `<p>${formattedText}</p>`;
         taskElement.classList.remove('editing');
         
         // Clean up event listeners
@@ -783,11 +875,15 @@ class MobileGridManager {
             if (taskElement._blurHandler) {
                 taskElement._editInput.removeEventListener('blur', taskElement._blurHandler);
             }
+            if (taskElement._autoResize) {
+                taskElement._editInput.removeEventListener('input', taskElement._autoResize);
+            }
         }
         
         // Clean up references
         delete taskElement._keydownHandler;
         delete taskElement._blurHandler;
+        delete taskElement._autoResize;
         delete taskElement._editInput;
         delete taskElement.dataset.originalContent;
     }
@@ -796,6 +892,390 @@ class MobileGridManager {
         document.querySelectorAll('.task-text-editable.editing').forEach(taskElement => {
             this.cancelTaskEditing(taskElement);
         });
+    }
+
+    // Row editing methods
+    startRowEditing(rowHeader) {
+        if (!rowHeader) return;
+        
+        // Close any other editing and clear task selections
+        this.closeAllTaskEditing();
+        this.closeAllRowEditing();
+        this.closeAllColumnEditing();
+        this.clearAllTaskSelections();
+        
+        const rowText = rowHeader.textContent.trim();
+        const rowId = rowHeader.dataset.rowId;
+        
+        // Store original content
+        rowHeader.dataset.originalText = rowText;
+        
+        // Create editing input
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.className = 'w-full px-2 py-1 text-base font-bold rounded bg-white text-gray-800 focus:outline-none';
+        editInput.style.border = '2px dotted #f97316';
+        editInput.style.fontSize = 'inherit';
+        editInput.style.lineHeight = 'inherit';
+        editInput.style.fontFamily = 'inherit';
+        editInput.style.fontWeight = 'inherit';
+        editInput.value = rowText;
+        editInput.maxLength = 100;
+        
+        // Replace content
+        rowHeader.innerHTML = '';
+        rowHeader.appendChild(editInput);
+        rowHeader.classList.add('editing');
+        
+        // Show the delete button for this row
+        const rowContainer = rowHeader.closest('.bg-\\[var\\(--container-bg\\)\\]');
+        if (rowContainer) {
+            const deleteBtn = rowContainer.querySelector('.delete-row-btn');
+            if (deleteBtn) {
+                deleteBtn.style.display = 'inline-flex';
+                deleteBtn.style.opacity = '1';
+                deleteBtn.style.visibility = 'visible';
+                deleteBtn.style.pointerEvents = 'auto';
+            }
+        }
+        
+        // Focus and select
+        editInput.focus();
+        editInput.select();
+        
+        // Event listeners
+        const handleKeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.saveRowEditing(rowHeader);
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                this.cancelRowEditing(rowHeader);
+            }
+        };
+        
+        const handleBlur = () => {
+            setTimeout(() => this.saveRowEditing(rowHeader), 100);
+        };
+        
+        editInput.addEventListener('keydown', handleKeydown);
+        editInput.addEventListener('blur', handleBlur);
+        
+        // Store references
+        rowHeader._keydownHandler = handleKeydown;
+        rowHeader._blurHandler = handleBlur;
+        rowHeader._editInput = editInput;
+    }
+
+    saveRowEditing(rowHeader) {
+        if (!rowHeader || !rowHeader._editInput) return;
+        
+        const input = rowHeader._editInput;
+        const newText = input.value.trim();
+        const rowId = rowHeader.dataset.rowId;
+        
+        if (!newText) {
+            this.cancelRowEditing(rowHeader);
+            return;
+        }
+        
+        if (newText === rowHeader.dataset.originalText) {
+            this.cancelRowEditing(rowHeader);
+            return;
+        }
+        
+        // Get project ID for the URL
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('Could not determine project ID');
+            this.cancelRowEditing(rowHeader);
+            return;
+        }
+        
+        // Send update to server
+        fetch(`/grids/${projectId}/rows/${rowId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                row_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+                        if (data.success) {
+                // Update the current row header
+                rowHeader.innerHTML = newText;
+                rowHeader.classList.remove('editing');
+                rowHeader.dataset.originalText = newText;
+                
+                // Update all row headers with the same row ID across all columns
+                const rowId = rowHeader.dataset.rowId;
+                document.querySelectorAll(`h3[data-row-id="${rowId}"]`).forEach(otherRowHeader => {
+                    if (otherRowHeader !== rowHeader) {
+                        otherRowHeader.innerHTML = newText;
+                        otherRowHeader.dataset.originalText = newText;
+                    }
+                });
+                
+                // Clean up and hide delete button
+                this.cleanupRowEditing(rowHeader);
+                this.hideRowDeleteButton(rowHeader);
+        } else {
+                console.error('Failed to save row:', data.errors || data.error || 'Unknown error');
+                this.cancelRowEditing(rowHeader);
+            }
+        })
+        .catch(error => {
+            console.error('Error saving row:', error);
+            this.cancelRowEditing(rowHeader);
+        });
+    }
+
+    cancelRowEditing(rowHeader) {
+        if (!rowHeader) return;
+        
+        const originalText = rowHeader.dataset.originalText || '';
+        rowHeader.innerHTML = originalText;
+        rowHeader.classList.remove('editing');
+        
+        this.cleanupRowEditing(rowHeader);
+        this.hideRowDeleteButton(rowHeader);
+    }
+
+    cleanupRowEditing(rowHeader) {
+        if (rowHeader._editInput) {
+            if (rowHeader._keydownHandler) {
+                rowHeader._editInput.removeEventListener('keydown', rowHeader._keydownHandler);
+            }
+            if (rowHeader._blurHandler) {
+                rowHeader._editInput.removeEventListener('blur', rowHeader._blurHandler);
+            }
+        }
+        
+        delete rowHeader._keydownHandler;
+        delete rowHeader._blurHandler;
+        delete rowHeader._editInput;
+        delete rowHeader.dataset.originalText;
+    }
+
+    closeAllRowEditing() {
+        document.querySelectorAll('h3[data-row-id].editing').forEach(rowHeader => {
+            this.cancelRowEditing(rowHeader);
+        });
+    }
+
+    hideRowDeleteButton(rowHeader) {
+        const rowContainer = rowHeader.closest('.bg-\\[var\\(--container-bg\\)\\]');
+        if (rowContainer) {
+            const deleteBtn = rowContainer.querySelector('.delete-row-btn');
+            if (deleteBtn) {
+                deleteBtn.style.display = 'none';
+                deleteBtn.style.opacity = '0';
+                deleteBtn.style.visibility = 'hidden';
+                deleteBtn.style.pointerEvents = 'none';
+            }
+        }
+    }
+
+    // Column editing methods
+    startColumnEditing(columnHeader) {
+        if (!columnHeader) return;
+        
+        // Close any other editing and clear task selections
+        this.closeAllTaskEditing();
+        this.closeAllRowEditing();
+        this.closeAllColumnEditing();
+        this.clearAllTaskSelections();
+        
+        const columnText = columnHeader.textContent.trim();
+        const currentColumn = this.elements.columns[this.state.currentCol];
+        const columnId = currentColumn ? currentColumn.dataset.columnId : null;
+        
+        if (!columnId) {
+            console.error('Could not determine column ID');
+            return;
+        }
+        
+        // Store original content
+        columnHeader.dataset.originalText = columnText;
+        columnHeader.dataset.columnId = columnId;
+        
+        // Create editing input
+        const editInput = document.createElement('input');
+        editInput.type = 'text';
+        editInput.className = 'w-full px-2 py-1 text-lg font-bold rounded bg-white text-gray-800 focus:outline-none text-center';
+        editInput.style.border = '2px dotted #f97316';
+        editInput.style.fontSize = 'inherit';
+        editInput.style.lineHeight = 'inherit';
+        editInput.style.fontFamily = 'inherit';
+        editInput.style.fontWeight = 'inherit';
+        editInput.value = columnText;
+        editInput.maxLength = 100;
+        
+        // Replace content
+        columnHeader.innerHTML = '';
+        columnHeader.appendChild(editInput);
+        columnHeader.classList.add('editing');
+        
+        // Show the delete button for this column
+        this.showColumnDeleteButton();
+        
+        // Focus and select
+        editInput.focus();
+        editInput.select();
+        
+        // Event listeners
+        const handleKeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                this.saveColumnEditing(columnHeader);
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                this.cancelColumnEditing(columnHeader);
+            }
+        };
+        
+        const handleBlur = () => {
+            setTimeout(() => this.saveColumnEditing(columnHeader), 100);
+        };
+        
+        editInput.addEventListener('keydown', handleKeydown);
+        editInput.addEventListener('blur', handleBlur);
+        
+        // Store references
+        columnHeader._keydownHandler = handleKeydown;
+        columnHeader._blurHandler = handleBlur;
+        columnHeader._editInput = editInput;
+    }
+
+    saveColumnEditing(columnHeader) {
+        if (!columnHeader || !columnHeader._editInput) return;
+        
+        const input = columnHeader._editInput;
+        const newText = input.value.trim();
+        const columnId = columnHeader.dataset.columnId;
+        
+        if (!newText) {
+            this.cancelColumnEditing(columnHeader);
+            return;
+        }
+        
+        if (newText === columnHeader.dataset.originalText) {
+            this.cancelColumnEditing(columnHeader);
+            return;
+        }
+        
+        // Get project ID for the URL
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('Could not determine project ID');
+            this.cancelColumnEditing(columnHeader);
+            return;
+        }
+        
+        // Send update to server
+        fetch(`/grids/${projectId}/columns/${columnId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                col_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update the column header
+                columnHeader.innerHTML = newText;
+                columnHeader.classList.remove('editing');
+                columnHeader.dataset.originalText = newText;
+                columnHeader.dataset.columnName = newText;
+                
+                // Update the current column's data attribute
+                const currentColumn = this.elements.columns[this.state.currentCol];
+                if (currentColumn) {
+                    currentColumn.dataset.columnName = newText;
+                }
+                
+                // Clean up and hide delete button
+                this.cleanupColumnEditing(columnHeader);
+                this.hideColumnDeleteButton();
+            } else {
+                console.error('Failed to save column:', data.errors || data.error || 'Unknown error');
+                this.cancelColumnEditing(columnHeader);
+            }
+        })
+        .catch(error => {
+            console.error('Error saving column:', error);
+            this.cancelColumnEditing(columnHeader);
+        });
+    }
+
+    cancelColumnEditing(columnHeader) {
+        if (!columnHeader) return;
+        
+        const originalText = columnHeader.dataset.originalText || '';
+        columnHeader.innerHTML = originalText;
+        columnHeader.classList.remove('editing');
+        
+        this.cleanupColumnEditing(columnHeader);
+        this.hideColumnDeleteButton();
+    }
+
+    cleanupColumnEditing(columnHeader) {
+        if (columnHeader._editInput) {
+            if (columnHeader._keydownHandler) {
+                columnHeader._editInput.removeEventListener('keydown', columnHeader._keydownHandler);
+            }
+            if (columnHeader._blurHandler) {
+                columnHeader._editInput.removeEventListener('blur', columnHeader._blurHandler);
+            }
+        }
+        
+        delete columnHeader._keydownHandler;
+        delete columnHeader._blurHandler;
+        delete columnHeader._editInput;
+        delete columnHeader.dataset.originalText;
+        delete columnHeader.dataset.columnId;
+    }
+
+    closeAllColumnEditing() {
+        document.querySelectorAll('#mobile-column-header h2.editing').forEach(columnHeader => {
+            this.cancelColumnEditing(columnHeader);
+        });
+    }
+
+    showColumnDeleteButton() {
+        const deleteBtn = document.querySelector('.delete-column-btn');
+        if (deleteBtn) {
+            deleteBtn.style.display = 'inline-flex';
+            deleteBtn.style.opacity = '1';
+            deleteBtn.style.visibility = 'visible';
+            deleteBtn.style.pointerEvents = 'auto';
+            
+            // Update the button's data attributes for the current column
+            const currentColumn = this.elements.columns[this.state.currentCol];
+            if (currentColumn) {
+                deleteBtn.dataset.columnId = currentColumn.dataset.columnId;
+                deleteBtn.dataset.columnName = currentColumn.dataset.columnName;
+                deleteBtn.dataset.deleteUrl = currentColumn.dataset.deleteUrl;
+            }
+        }
+    }
+
+    hideColumnDeleteButton() {
+        const deleteBtn = document.querySelector('.delete-column-btn');
+        if (deleteBtn) {
+            deleteBtn.style.display = 'none';
+            deleteBtn.style.opacity = '0';
+            deleteBtn.style.visibility = 'hidden';
+            deleteBtn.style.pointerEvents = 'none';
+        }
     }
     
     hideTaskActionButtons() {
@@ -942,6 +1422,15 @@ class MobileGridManager {
         // Handle delete task form submission
         if (e.target.id === 'delete-task-form') {
             if (e.detail.successful) {
+                // Check if this was a column deletion
+                if (this.state.currentColumnId) {
+                    // Hide the delete modal
+                    this.hideDeleteModal();
+                    // Refresh the page for column deletion
+                    window.location.reload();
+                    return;
+                }
+                
                 // Store the task ID before hiding the modal (which clears it)
                 const taskId = this.state.currentTaskId;
                 

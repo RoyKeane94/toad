@@ -942,6 +942,32 @@ div.task-selected [id^="task-text-"].editing,
     padding: 0 !important;
 }
 
+/* Row and Column Editing Styles */
+h3[data-row-id].editing,
+#mobile-column-header h2.editing {
+    border: none !important; /* Remove any existing borders */
+    padding: 0 !important; /* Remove padding to prevent double borders */
+    background-color: transparent !important;
+    transition: all 0.2s ease-in-out !important;
+    position: relative !important;
+}
+
+/* Hide row delete buttons by default */
+.delete-row-btn {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Hide column delete buttons by default */
+.delete-column-btn {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 /* Show delete button when task is selected */
 .task-selected .mobile-task-actions {
     display: flex !important;
