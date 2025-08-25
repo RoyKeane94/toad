@@ -17,6 +17,9 @@ from .forms import (
     ForgotPasswordForm
 )
 from .email_utils import send_verification_email, send_password_reset_email, send_joining_email
+import base64
+import os
+from django.conf import settings
 
 # Create your views here.
 
@@ -459,3 +462,25 @@ def preview_email_templates(request):
         'email_verification_html': email_verification_html,
         'password_reset_html': password_reset_html
     })
+
+def beta_update_email_preview(request):
+    """Preview the beta update email template"""
+    # Load the Toad image if it exists
+    toad_image_data = None
+    try:
+        image_path = os.path.join(settings.STATICFILES_DIRS[0], 'img', 'Toad Email Image.png')
+        if os.path.exists(image_path):
+            with open(image_path, 'rb') as image_file:
+                toad_image_data = base64.b64encode(image_file.read()).decode('utf-8')
+    except (IndexError, FileNotFoundError):
+        pass
+    
+    # Render the beta update email template
+    from django.template.loader import render_to_string
+    beta_update_html = render_to_string('accounts/email/beta_update_email.html', {
+        'toad_image_data': toad_image_data
+    })
+    
+    # Return the rendered HTML directly
+    from django.http import HttpResponse
+    return HttpResponse(beta_update_html)

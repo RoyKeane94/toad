@@ -11,7 +11,8 @@ from .views import (
     resend_verification_email_view,
     forgot_password_view,
     reset_password_view,
-    preview_email_templates
+    preview_email_templates,
+    beta_update_email_preview
 )
 
 app_name = 'accounts'
@@ -38,4 +39,5 @@ urlpatterns = [
 
     # Email preview (development only)
     path('preview-emails/', preview_email_templates, name='preview_emails'),
+    path('preview-beta-update/', beta_update_email_preview, name='beta_update_preview'),
 ]

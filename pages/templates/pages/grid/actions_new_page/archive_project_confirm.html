@@ -1,7 +1,7 @@
 {% extends "pages/layout.html" %}
 {% load static %}
 
-{% block title %}Clear Completed Tasks - {{ project.name }}{% endblock %}
+{% block title %}Archive {{ project.name }} - Toad{% endblock %}
 
 {% block content %}
 <div class="max-w-2xl mx-auto">
@@ -10,10 +10,10 @@
         <div class="p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
                 <div class="flex items-center justify-center w-10 h-10 bg-[var(--clear-button-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-broom text-[var(--clear-button-text)]"></i>
+                    <i class="fas fa-archive text-[var(--clear-button-text)]"></i>
                 </div>
                 <div>
-                    <h1 class="text-xl font-semibold text-[var(--text-primary)]">Clear Completed Tasks</h1>
+                    <h1 class="text-xl font-semibold text-[var(--text-primary)]">Archive Grid</h1>
                     <p class="text-sm text-[var(--text-secondary)] mt-1">This action cannot be undone</p>
                 </div>
             </div>
@@ -27,13 +27,13 @@
                     <div>
                         <h3 class="font-medium text-[var(--clear-button-bg)]">Warning</h3>
                         <p class="text-sm text-[var(--text-primary)] mt-1">
-                            This will permanently remove all completed tasks from your project. This action cannot be undone.
+                            This will archive your project and move it to your archived grids. This action cannot be undone.
                         </p>
                     </div>
                 </div>
             </div>
             
-            <form method="post">
+            <form method="post" action="{% url 'pages:archive_project' pk=project.pk %}">
                 {% csrf_token %}
                 <div class="flex items-center justify-end space-x-3">
                     <a href="{% url 'pages:project_grid' pk=project.pk %}" 
@@ -42,11 +42,11 @@
                     </a>
                     <button type="submit" 
                             class="w-48 h-10 flex items-center justify-center bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                        <i class="fas fa-broom mr-2"></i>Clear Tasks
+                        <i class="fas fa-archive mr-2"></i>Archive Project
                     </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}

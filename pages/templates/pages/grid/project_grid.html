@@ -438,6 +438,10 @@
                    class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                     <i class="fas fa-check mr-1"></i>Clear Completed
                 </a>
+                <a href="{% url 'pages:archive_project_confirm' pk=project.pk %}" 
+                   class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer">
+                    <i class="fas fa-archive mr-1"></i>Archive Grid
+                </a>
             {% endif %}
             <button type="button"
                     class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"

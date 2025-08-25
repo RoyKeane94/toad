@@ -976,6 +976,25 @@ def delete_completed_tasks_view(request, pk):
 
 
 @login_required
+def archive_project_confirm_view(request, pk):
+    """Show confirmation page before archiving a project"""
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+    
+    # Get project statistics
+    total_tasks = Task.objects.filter(project=project).count()
+    completed_tasks = Task.objects.filter(project=project, completed=True).count()
+    total_rows = RowHeader.objects.filter(project=project).count()
+    total_columns = ColumnHeader.objects.filter(project=project).count()
+    
+    return render(request, 'pages/grid/actions_new_page/archive_project_confirm.html', {
+        'project': project,
+        'total_tasks': total_tasks,
+        'completed_tasks': completed_tasks,
+        'total_rows': total_rows,
+        'total_columns': total_columns,
+    })
+
+@login_required
 def archive_project_view(request, pk):
     project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
     

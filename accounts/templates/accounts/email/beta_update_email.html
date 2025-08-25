@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your feedback is making Toad better. Here's what's new. - Toad</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F2937;
+            background-color: #f9fafb;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+            padding: 20px 30px;
+            text-align: center;
+        }
+        
+        .logo {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+        
+        /* Content */
+        .content {
+            padding: 20px 30px;
+        }
+        
+        .greeting {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1F2937;
+            margin-bottom: 20px;
+        }
+        
+        .message {
+            font-size: 16px;
+            color: #4B5563;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1F2937;
+            margin: 30px 0 15px;
+        }
+        
+        .feature-list {
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.7;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .feature-checkmark {
+            color: #10B981;
+            font-weight: bold;
+            font-size: 16px;
+            margin-right: 8px;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        
+        .feature-title {
+            font-weight: 600;
+            color: #1F2937;
+            font-size: 16px;
+        }
+        
+        .feature-description {
+            color: #4B5563;
+            margin-top: 2px;
+            font-size: 16px;
+        }
+        
+        /* Highlight box */
+        .highlight-box {
+            background-color: #fff7ed;
+            border: 1px solid #ff714c;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: center;
+        }
+        
+        .highlight-box p {
+            color: #c2410c;
+            font-size: 16px;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #f9fafb;
+            padding: 30px;
+            text-align: center;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .footer p {
+            color: #6B7280;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .footer .small {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+        
+        .signature {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e5e7eb;
+        }
+        
+        .signature p {
+            color: #4B5563;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        
+        .signature .name {
+            font-weight: 600;
+            color: #1F2937;
+        }
+        
+        .signature .title {
+            color: #6B7280;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header, .content, .footer {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .section-title {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Toad Email Image at the top -->
+        {% if toad_image_data %}
+        <div class="email-image-container">
+            <img src="data:image/png;base64,{{ toad_image_data }}" alt="Toad - For when your brain has too many tabs open" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto;">
+        </div>
+        {% endif %}
+        
+        <!-- Content -->
+        <div class="content">
+            <div class="greeting">Hi{% if user.first_name %} {{ user.first_name }}{% endif %},</div>
+            
+            <div class="message">
+First, I just want to say a huge thank you. The level of engagement, the number of you who are already using Toad regularly, and the quality of the feedback you've sent over the past two weeks has been incredible. It's been so motivating to see.
+            </div>
+
+            <div class="message">
+You spoke, and I listened. My focus has been on implementing your suggestions in a way that stays true to our "purposefully simple" philosophy. Here are the key improvements we've made, all based on your feedback.
+            </div>
+
+            <div class="section-title">The Frills That Matter: What's New in Toad</div>
+
+            <div class="message">
+Our goal isn't to add more features, but to remove friction. These updates are designed to make the core experience of using Toad faster, more intuitive, and more delightful.
+            </div>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">A Slicker Mobile Experience:</div>
+                        <div class="feature-description">We've redesigned the mobile view to be a powerful, focused workspace. While desktop gives the best overview, mobile is now much more than just an on-the-go option.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Full Drag-and-Drop:</div>
+                        <div class="feature-description">You can now drag tasks not just within a cell, but across any row or column to instantly re-organise your grid.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Inline Editing:</div>
+                        <div class="feature-description">No more pop-ups. You can now edit the text of any task, row, or column simply by clicking on it.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Grid Groups:</div>
+                        <div class="feature-description">For those of you with a growing number of grids, you can now organise them into simple groups like "Work" and "Personal" on your main dashboard.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Simplified Grid Switching:</div>
+                        <div class="feature-description">We've removed the "Switch Grid" dropdown in favor of a cleaner, more intuitive tab-like system for your pinned grids.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Calendar Reminders:</div>
+                        <div class="feature-description">You can now add a date to any task and, with one click, send it to your personal calendar.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Archive Grids:</div>
+                        <div class="feature-description">Instead of permanently deleting completed tasks, you can now archive them to a new grid, keeping your workspace clean without losing your history.</div>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-checkmark">✓</div>
+                    <div>
+                        <div class="feature-title">Save Your Own Templates:</div>
+                        <div class="feature-description">This was a big one. You can now save any grid you've perfected as a reusable template for your own use.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title">What We Haven't Built (and Why)</div>
+            
+            <div class="message">
+Just as important as what we build is what we choose to leave out. A few of you have made excellent suggestions for features like two-way calendar sync, sub-tasks, and notes.
+            </div>
+
+            <div class="message">
+We've decided not to build these, and I want to be transparent about why. Toad's purpose is to be the antidote to the complex, bloated software that creates more work than it saves. Our goal is to provide clarity, not more features.
+            </div>
+
+            <div class="message">
+Instead of adding complexity, we believe the "Toad way" to solve these problems is often simpler:
+            </div>
+            
+            <div class="message" style="margin-left: 20px;">
+                <strong>Toad is not a calendar:</strong> Many of you have asked for a full calendar sync. We've decided against this because our goal is to be a simple planner, not a complex scheduling tool. For key deadlines, you can still use the one-way calendar export to send a task to your diary.
+            </div>
+            
+            <div class="message" style="margin-left: 20px;">
+                <strong>For complex projects with sub-tasks:</strong> We find it's much clearer to create a new, dedicated grid for that project. Our new grid switching system makes it super easy to switch between grids.
+            </div>
+            
+            <div class="message" style="margin-left: 20px;">
+                <strong>No AI Grid Generation:</strong> Some of you suggested using AI to create grids. Our templates are the "thoughtful AI"—clear, proven starting points designed with care to solve your specific problems instantly.
+            </div>
+            
+            <div class="highlight-box">
+                <p>One Week Left to Join the Beta</p>
+            </div>
+            
+            <div class="message">
+The private beta has been a huge success, and we'll be closing it to new members in one week.
+            </div>
+
+            <div class="message">
+If you have any friends or colleagues who you think would love Toad, please feel free to share the sign-up link with them. This is their last chance to get a free lifetime Personal account as a thank you for being an early supporter.
+            </div>
+
+            <div class="message">
+Finally, if you've tried Toad and decided it's not for you, I would be incredibly grateful if you could reply to this email and let me know why. All feedback is a gift and helps me make the product better.
+            </div>
+
+            <div class="message">
+Thanks again for being a part of this.
+            </div>
+            
+            <div class="signature">
+                <p>All the best,</p>
+                <p class="name">Tom</p>
+                <p class="title">Founder, Toad</p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <p>Thanks for being part of the Toad community!</p>
+            <p class="small">
+                This email was sent to you as part of the Toad private beta. If you have any questions, please reply to this email.
+            </p>
+            <p class="small">
+                © 2024 Toad. All rights reserved.
+            </p>
+        </div>
+    </div>
+</body>
+</html>
