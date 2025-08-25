@@ -21666,3 +21666,11 @@ INFO 2025-08-25 14:20:54,129 basehttp 55353 6123401216 "GET /static/css/output.c
 INFO 2025-08-25 14:20:54,130 basehttp 55353 6173880320 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91089
 WARNING 2025-08-25 14:20:54,138 log 55353 6123401216 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-25 14:20:54,142 basehttp 55353 6123401216 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2025
+INFO 2025-08-25 14:51:05,227 autoreload 56381 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 14:51:07,546 basehttp 56381 6158249984 "GET /grids/150/ HTTP/1.1" 200 14672
+INFO 2025-08-25 14:51:07,569 basehttp 56381 6175076352 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 14:51:07,574 basehttp 56381 6191902720 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+WARNING 2025-08-25 14:51:07,581 log 56381 6158249984 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 14:51:07,583 basehttp 56381 6158249984 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2096
+INFO 2025-08-25 14:51:07,584 basehttp 56381 6208729088 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-25 14:51:07,585 basehttp 56381 6225555456 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186

@@ -888,7 +888,8 @@ class MobileGridManager {
     cancelTaskEditing(taskElement) {
         if (!taskElement) return;
         
-
+        // Clear task selection (remove orange dotted box)
+        this.clearAllTaskSelections();
         
         // Restore original content (preserve line breaks)
         const originalText = taskElement.dataset.originalText || '';
