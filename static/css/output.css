@@ -16,6 +16,7 @@
     --color-red-600: oklch(57.7% 0.245 27.325);
     --color-red-700: oklch(50.5% 0.213 27.518);
     --color-red-800: oklch(44.4% 0.177 26.899);
+    --color-orange-400: oklch(75% 0.183 55.934);
     --color-orange-500: oklch(70.5% 0.213 47.604);
     --color-orange-600: oklch(64.6% 0.222 41.116);
     --color-yellow-100: oklch(97.3% 0.071 103.193);
@@ -991,6 +992,9 @@
   .border-green-200 {
     border-color: var(--color-green-200);
   }
+  .border-orange-400 {
+    border-color: var(--color-orange-400);
+  }
   .border-red-200 {
     border-color: var(--color-red-200);
   }
@@ -1461,6 +1465,9 @@
   }
   .text-gray-700 {
     color: var(--color-gray-700);
+  }
+  .text-gray-800 {
+    color: var(--color-gray-800);
   }
   .text-green-600 {
     color: var(--color-green-600);
@@ -1986,6 +1993,11 @@
       border-color: var(--tertiary-action-bg);
     }
   }
+  .focus\:border-orange-400 {
+    &:focus {
+      border-color: var(--color-orange-400);
+    }
+  }
   .focus\:border-transparent {
     &:focus {
       border-color: transparent;
@@ -2010,6 +2022,11 @@
   .focus\:ring-\[var\(--tertiary-action-bg\)\] {
     &:focus {
       --tw-ring-color: var(--tertiary-action-bg);
+    }
+  }
+  .focus\:ring-orange-400 {
+    &:focus {
+      --tw-ring-color: var(--color-orange-400);
     }
   }
   .focus\:ring-red-500 {

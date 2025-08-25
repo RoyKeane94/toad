@@ -184,15 +184,7 @@ class MobileGridManager {
 
     // Unified click handler
     handleDocumentClick(e) {
-        // Debug all clicks
-        if (e.target.closest('.mobile-task-actions') || e.target.classList.contains('fas') || e.target.classList.contains('fa-trash')) {
-            console.log('CLICK ON TASK ACTIONS AREA:', e.target);
-            console.log('Target classes:', e.target.classList.toString());
-            console.log('Parent element:', e.target.parentElement);
-            console.log('Closest .delete-task-btn:', e.target.closest('.delete-task-btn'));
-            console.log('Inner HTML of clicked element:', e.target.innerHTML);
-            console.log('All delete buttons in document:', document.querySelectorAll('.delete-task-btn'));
-        }
+
         
         // Modal triggers - clear content immediately before HTMX loads new content
         const modalTrigger = e.target.closest('[hx-target="#modal-content"]');
@@ -220,7 +212,6 @@ class MobileGridManager {
 
         const deleteTaskBtn = e.target.closest('.delete-task-btn');
         if (deleteTaskBtn) {
-            console.log('DELETE BUTTON CLICKED!');
             e.preventDefault();
             e.stopPropagation(); // Prevent task selection when clicking delete
             this.showDeleteModal(deleteTaskBtn.dataset.taskId, deleteTaskBtn.dataset.taskText, deleteTaskBtn.dataset.deleteUrl);
@@ -252,10 +243,17 @@ class MobileGridManager {
         if (addTaskCancel) { e.preventDefault(); this.collapseAddTaskForm(addTaskCancel.closest('.add-task-form')); return; }
         if (!e.target.closest('.add-task-form')) this.collapseAllAddTaskForms();
 
-        // Handle task selection
+        // Handle task selection and editing
         const taskItem = e.target.closest('[data-task-id]');
         if (taskItem && !e.target.closest('input[type="checkbox"]') && !e.target.closest('button') && !e.target.closest('form')) {
-            this.handleTaskSelection(taskItem);
+            // If clicking on task text specifically, start editing
+            const taskText = e.target.closest('[id^="task-text-"]');
+            if (taskText && !taskText.classList.contains('editing')) {
+                this.handleTaskSelection(taskItem);
+                this.startTaskEditing(taskText);
+            } else {
+                this.handleTaskSelection(taskItem);
+            }
             return;
         }
     }
@@ -639,11 +637,12 @@ class MobileGridManager {
         
         // Store original content for restoration
         taskElement.dataset.originalContent = taskElement.innerHTML;
+        taskElement.dataset.originalText = taskText;
         
-        // Create editing interface that wraps around the existing text
+        // Create editing input
         const editInput = document.createElement('input');
         editInput.type = 'text';
-        editInput.className = 'w-full px-2 py-1 text-sm border-2 border-dashed border-[var(--tertiary-action-bg)] rounded bg-white text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)]';
+        editInput.className = 'w-full px-2 py-1 text-sm border-2 border-dashed border-orange-400 rounded bg-white text-gray-800 focus:outline-none';
         editInput.style.fontSize = 'inherit';
         editInput.style.lineHeight = 'inherit';
         editInput.style.fontFamily = 'inherit';
@@ -651,32 +650,24 @@ class MobileGridManager {
         editInput.value = taskText;
         editInput.maxLength = 500;
         
-        // Replace the text content with the input while preserving the structure
-        const taskTextElement = taskElement.querySelector('[id^="task-text-"]');
-        if (taskTextElement) {
-            // Store original content for restoration
-            taskElement.dataset.originalContent = taskTextElement.innerHTML;
-            taskElement.dataset.originalText = taskTextElement.textContent;
-            
-            // Replace text with input
-            taskTextElement.innerHTML = '';
-            taskTextElement.appendChild(editInput);
-        }
+        // Replace the text content with the input
+        taskElement.innerHTML = '';
+        taskElement.appendChild(editInput);
         
         // Add editing class
         taskElement.classList.add('editing');
         
         // Focus the input
-        if (editInput) {
-            editInput.focus();
-            editInput.select();
-        }
+        editInput.focus();
+        editInput.select();
         
         // Add keyboard event listeners
         const handleKeydown = (e) => {
             if (e.key === 'Enter') {
+                e.preventDefault();
                 this.saveTaskEditing(taskElement);
             } else if (e.key === 'Escape') {
+                e.preventDefault();
                 this.cancelTaskEditing(taskElement);
             }
         };
@@ -688,20 +679,17 @@ class MobileGridManager {
         
         editInput.addEventListener('keydown', handleKeydown);
         editInput.addEventListener('blur', handleBlur);
-        taskElement.dataset.keydownHandler = handleKeydown;
-        taskElement.dataset.blurHandler = handleBlur;
+        
+        // Store handlers for cleanup
+        taskElement._keydownHandler = handleKeydown;
+        taskElement._blurHandler = handleBlur;
+        taskElement._editInput = editInput;
     }
 
     saveTaskEditing(taskElement) {
-        if (!taskElement) return;
+        if (!taskElement || !taskElement._editInput) return;
         
-        const input = taskElement.querySelector('input');
-        if (!input) {
-            console.error('Input element not found, canceling edit');
-            this.cancelTaskEditing(taskElement);
-            return;
-        }
-        
+        const input = taskElement._editInput;
         const newText = input.value.trim();
         const taskId = taskElement.dataset.taskId;
         
@@ -711,8 +699,14 @@ class MobileGridManager {
             return;
         }
         
+        if (newText === taskElement.dataset.originalText) {
+            // No changes, just cancel editing
+            this.cancelTaskEditing(taskElement);
+            return;
+        }
+        
         // Send update to server
-        fetch(`/pages/tasks/${taskId}/edit/`, {
+        fetch(`/tasks/${taskId}/edit/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -725,40 +719,45 @@ class MobileGridManager {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                // Restore original content structure but update the text
-                if (taskElement.dataset.originalContent) {
-                    taskElement.innerHTML = taskElement.dataset.originalContent;
-                    // Update the text content within the restored structure
-                    const taskTextElement = taskElement.querySelector('[id^="task-text-"]');
-                    if (taskTextElement) {
-                        taskTextElement.textContent = newText;
-                    }
-                } else {
-                    // Fallback: just update the text
-                    taskElement.textContent = newText;
-                }
-                
+                // Update the task text and restore normal view
+                taskElement.innerHTML = `<p>${newText}</p>`;
                 taskElement.classList.remove('editing');
                 
-                // Update the dataset
-                taskElement.dataset.taskText = newText;
+                // Update the dataset for future reference
+                taskElement.dataset.originalText = newText;
                 
-                // Remove event listeners
-                if (taskElement.dataset.keydownHandler) {
-                    delete taskElement.dataset.keydownHandler;
+                // Clean up event listeners
+                if (taskElement._editInput) {
+                    if (taskElement._keydownHandler) {
+                        taskElement._editInput.removeEventListener('keydown', taskElement._keydownHandler);
+                    }
+                    if (taskElement._blurHandler) {
+                        taskElement._editInput.removeEventListener('blur', taskElement._blurHandler);
+                    }
                 }
                 
-                if (taskElement.dataset.blurHandler) {
-                    delete taskElement.dataset.blurHandler;
+                // Clean up references
+                delete taskElement._keydownHandler;
+                delete taskElement._blurHandler;
+                delete taskElement._editInput;
+                delete taskElement.dataset.originalContent;
+                
+                // Clear task selection (remove orange dotted border and delete button)
+                // Remove selection from all tasks to ensure clean state
+                document.querySelectorAll('.task-selected').forEach(task => {
+                    task.classList.remove('task-selected');
+                });
+                
+                // Also specifically target the main container
+                const mainTaskContainer = taskElement.closest('[id^="task-"]');
+                if (mainTaskContainer) {
+                    mainTaskContainer.classList.remove('task-selected');
                 }
                 
-                // Re-process HTMX for the updated element
-                if (typeof htmx !== 'undefined') {
-                    htmx.process(taskElement);
-                }
+
             } else {
-                // Show error and keep editing
-                console.error('Failed to save task:', data.errors);
+                // Show error and restore original
+                console.error('Failed to save task:', data.errors || data.error || 'Unknown error');
                 this.cancelTaskEditing(taskElement);
             }
         })
@@ -772,28 +771,25 @@ class MobileGridManager {
         if (!taskElement) return;
         
         // Restore original content
-        if (taskElement.dataset.originalContent) {
-            taskElement.innerHTML = taskElement.dataset.originalContent;
-        } else {
-            const originalText = taskElement.dataset.taskText || '';
-            taskElement.textContent = originalText;
-        }
-        
+        const originalText = taskElement.dataset.originalText || '';
+        taskElement.innerHTML = `<p>${originalText}</p>`;
         taskElement.classList.remove('editing');
         
-        // Remove event listeners
-        if (taskElement.dataset.keydownHandler) {
-            delete taskElement.dataset.keydownHandler;
+        // Clean up event listeners
+        if (taskElement._editInput) {
+            if (taskElement._keydownHandler) {
+                taskElement._editInput.removeEventListener('keydown', taskElement._keydownHandler);
+            }
+            if (taskElement._blurHandler) {
+                taskElement._editInput.removeEventListener('blur', taskElement._blurHandler);
+            }
         }
         
-        if (taskElement.dataset.blurHandler) {
-            delete taskElement.dataset.blurHandler;
-        }
-        
-        // Re-process HTMX for the restored element
-        if (typeof htmx !== 'undefined') {
-            htmx.process(taskElement);
-        }
+        // Clean up references
+        delete taskElement._keydownHandler;
+        delete taskElement._blurHandler;
+        delete taskElement._editInput;
+        delete taskElement.dataset.originalContent;
     }
 
     closeAllTaskEditing() {

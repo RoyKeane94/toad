@@ -934,6 +934,14 @@ div.task-selected [id^="task-text-"],
     position: relative !important;
 }
 
+/* Hide selection border when editing */
+.task-selected [id^="task-text-"].editing,
+div.task-selected [id^="task-text-"].editing,
+[id^="task-"].task-selected [id^="task-text-"].editing {
+    border: none !important;
+    padding: 0 !important;
+}
+
 /* Show delete button when task is selected */
 .task-selected .mobile-task-actions {
     display: flex !important;
