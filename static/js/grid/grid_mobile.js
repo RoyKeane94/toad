@@ -648,10 +648,21 @@ class MobileGridManager {
         const collapsed = form.querySelector('.add-task-collapsed');
         const expanded = form.querySelector('.add-task-expanded');
         const input = form.querySelector('input[name="text"]');
-        if (collapsed && expanded) {
+        if (collapsed && expanded && input) {
             collapsed.style.display = 'none';
             expanded.classList.remove('hidden');
-            setTimeout(() => input?.focus(), 100);
+            
+            // Immediately focus and trigger mobile keyboard
+            setTimeout(() => {
+                input.focus();
+                input.click(); // Additional click to ensure mobile keyboard appears
+                
+                // For iOS specifically, ensure keyboard appears
+                if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                    input.setAttribute('readonly', false);
+                    input.removeAttribute('readonly');
+                }
+            }, 50); // Reduced timeout for faster response
         }
     }
 

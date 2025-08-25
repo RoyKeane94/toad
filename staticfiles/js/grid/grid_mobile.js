@@ -648,10 +648,21 @@ class MobileGridManager {
         const collapsed = form.querySelector('.add-task-collapsed');
         const expanded = form.querySelector('.add-task-expanded');
         const input = form.querySelector('input[name="text"]');
-        if (collapsed && expanded) {
+        if (collapsed && expanded && input) {
             collapsed.style.display = 'none';
             expanded.classList.remove('hidden');
-            setTimeout(() => input?.focus(), 100);
+            
+            // Immediately focus and trigger mobile keyboard
+            setTimeout(() => {
+                input.focus();
+                input.click(); // Additional click to ensure mobile keyboard appears
+                
+                // For iOS specifically, ensure keyboard appears
+                if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+                    input.setAttribute('readonly', false);
+                    input.removeAttribute('readonly');
+                }
+            }, 50); // Reduced timeout for faster response
         }
     }
 
@@ -693,27 +704,33 @@ class MobileGridManager {
         
         // Create editing textarea for multi-line support
         const editInput = document.createElement('textarea');
-        editInput.className = 'focus:outline-none resize-none overflow-hidden';
         
         // Get computed styles from the actual text element (p tag) to match exactly
         const textElement = taskElement.querySelector('p') || taskElement;
         const computedStyle = window.getComputedStyle(textElement);
         
-        // Apply all styles to make it look identical to the original text
-        editInput.style.width = '100%';
-        editInput.style.border = '2px dashed #f97316';
-        editInput.style.borderRadius = '6px';
-        editInput.style.backgroundColor = 'white';
-        editInput.style.color = computedStyle.color;
-        editInput.style.fontSize = computedStyle.fontSize;
-        editInput.style.lineHeight = computedStyle.lineHeight;
-        editInput.style.fontFamily = computedStyle.fontFamily;
-        editInput.style.fontWeight = computedStyle.fontWeight;
-        editInput.style.letterSpacing = computedStyle.letterSpacing;
-        editInput.style.padding = computedStyle.padding;
-        editInput.style.margin = computedStyle.margin;
-        editInput.style.minHeight = computedStyle.minHeight || '24px';
-        editInput.style.textAlign = computedStyle.textAlign;
+        // Copy ALL computed styles to ensure exact match
+        editInput.style.cssText = `
+            width: 100% !important;
+            border: 2px dashed #f97316 !important;
+            border-radius: 6px !important;
+            background: transparent !important;
+            outline: none !important;
+            resize: none !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+            font-size: ${computedStyle.fontSize} !important;
+            line-height: ${computedStyle.lineHeight} !important;
+            font-family: ${computedStyle.fontFamily} !important;
+            font-weight: ${computedStyle.fontWeight} !important;
+            color: ${computedStyle.color} !important;
+            letter-spacing: ${computedStyle.letterSpacing} !important;
+            text-align: ${computedStyle.textAlign} !important;
+            padding: 4px 8px !important;
+            margin: 0 !important;
+            min-height: 24px !important;
+        `;
+        
         editInput.value = taskText;
         editInput.maxLength = 500;
         
