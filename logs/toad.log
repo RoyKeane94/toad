@@ -21866,3 +21866,18 @@ INFO 2025-08-25 18:49:11,433 basehttp 62815 6197555200 "GET /grids/158/ HTTP/1.1
 INFO 2025-08-25 18:49:14,052 basehttp 62815 6197555200 "GET /grids/157/ HTTP/1.1" 200 12742
 INFO 2025-08-25 18:49:14,659 basehttp 62815 6197555200 "GET /grids/158/ HTTP/1.1" 200 12762
 INFO 2025-08-25 18:49:22,037 basehttp 62815 6197555200 "GET /grids/ HTTP/1.1" 200 11490
+INFO 2025-08-25 18:55:41,953 autoreload 63511 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:55:44,392 basehttp 63511 6171750400 "GET /grids/158/delete/ HTTP/1.1" 200 3413
+INFO 2025-08-25 18:55:44,626 basehttp 63511 6188576768 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 18:55:44,627 basehttp 63511 6171750400 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 18:55:46,153 basehttp 63511 6171750400 "GET / HTTP/1.1" 200 6493
+INFO 2025-08-25 18:55:48,722 basehttp 63511 6171750400 "GET /grids/create/ HTTP/1.1" 200 3471
+INFO 2025-08-25 18:55:50,901 project_views_functions 63511 6171750400 User None created project: Test it
+INFO 2025-08-25 18:55:50,903 basehttp 63511 6171750400 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:55:50,927 basehttp 63511 6171750400 "GET /grids/159/ HTTP/1.1" 200 12821
+INFO 2025-08-25 18:55:50,942 basehttp 63511 6171750400 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 18:57:45,270 log 63511 6171750400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 18:57:45,270 basehttp 63511 6171750400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2057
+INFO 2025-08-25 18:57:46,977 basehttp 63511 6171750400 "GET /grids/159/ HTTP/1.1" 200 11511
+WARNING 2025-08-25 18:57:47,007 log 63511 6171750400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 18:57:47,007 basehttp 63511 6171750400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2109
