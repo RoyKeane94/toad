@@ -1882,6 +1882,9 @@ class MobileGridManager {
             });
         }
 
+        // Initialize Grid Actions Dropdown
+        this.initializeGridActionsDropdown();
+
         if (typeof htmx !== 'undefined') {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
@@ -2070,6 +2073,61 @@ class MobileGridManager {
         `;
         document.head.appendChild(style);
     }
+
+    initializeGridActionsDropdown() {
+        const dropdownBtn = document.getElementById('grid-actions-dropdown-btn');
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        
+        if (dropdownBtn && dropdown) {
+            // Toggle dropdown on button click
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleGridActionsDropdown();
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && !dropdownBtn.contains(e.target)) {
+                    this.closeGridActionsDropdown();
+                }
+            });
+            
+            // Close dropdown on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    this.closeGridActionsDropdown();
+                }
+            });
+        }
+    }
+    
+    toggleGridActionsDropdown() {
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        if (dropdown) {
+            const isOpen = !dropdown.classList.contains('opacity-0');
+            if (isOpen) {
+                this.closeGridActionsDropdown();
+            } else {
+                this.openGridActionsDropdown();
+            }
+        }
+    }
+    
+    openGridActionsDropdown() {
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        if (dropdown) {
+            dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+            dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+        }
+    }
+    
+    closeGridActionsDropdown() {
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        if (dropdown) {
+            dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+            dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+        }
+    }
 }
 
 function validateTaskForm(form) {
@@ -2107,6 +2165,13 @@ window.closeAllDropdowns = function() {
 window.hideSaveTemplateModal = function() {
     if (window.mobileGridManager) {
         window.mobileGridManager.hideSaveTemplateModal();
+    }
+};
+
+// Global function to close grid actions dropdown - called from inline onclick handlers
+window.closeGridActionsDropdown = function() {
+    if (window.mobileGridManager) {
+        window.mobileGridManager.closeGridActionsDropdown();
     }
 };
 

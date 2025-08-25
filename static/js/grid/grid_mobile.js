@@ -939,15 +939,22 @@ class MobileGridManager {
         rowHeader.classList.add('editing');
         
         // Show the delete button for this row
-        const rowContainer = rowHeader.closest('.bg-\\[var\\(--container-bg\\)\\]');
+        const rowContainer = rowHeader.closest('.bg-white');
         if (rowContainer) {
             const deleteBtn = rowContainer.querySelector('.delete-row-btn');
             if (deleteBtn) {
-                deleteBtn.style.display = 'inline-flex';
-                deleteBtn.style.opacity = '1';
-                deleteBtn.style.visibility = 'visible';
-                deleteBtn.style.pointerEvents = 'auto';
+                deleteBtn.style.cssText = `
+                    display: inline-flex !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    pointer-events: auto !important;
+                `;
+                console.log('Delete button shown for row:', rowText);
+            } else {
+                console.log('Delete button not found in row container');
             }
+        } else {
+            console.log('Row container not found');
         }
         
         // Focus and select
@@ -1079,14 +1086,16 @@ class MobileGridManager {
     }
 
     hideRowDeleteButton(rowHeader) {
-        const rowContainer = rowHeader.closest('.bg-\\[var\\(--container-bg\\)\\]');
+        const rowContainer = rowHeader.closest('.bg-white');
         if (rowContainer) {
             const deleteBtn = rowContainer.querySelector('.delete-row-btn');
             if (deleteBtn) {
-                deleteBtn.style.display = 'none';
-                deleteBtn.style.opacity = '0';
-                deleteBtn.style.visibility = 'hidden';
-                deleteBtn.style.pointerEvents = 'none';
+                deleteBtn.style.cssText = `
+                    display: none !important;
+                    opacity: 0 !important;
+                    visibility: hidden !important;
+                    pointer-events: none !important;
+                `;
             }
         }
     }
@@ -1882,6 +1891,9 @@ class MobileGridManager {
             });
         }
 
+        // Initialize Grid Actions Dropdown
+        this.initializeGridActionsDropdown();
+
         if (typeof htmx !== 'undefined') {
             htmx.config.disableSelector = '[hx-disable]';
             htmx.config.useTemplateFragments = false;
@@ -2070,6 +2082,61 @@ class MobileGridManager {
         `;
         document.head.appendChild(style);
     }
+
+    initializeGridActionsDropdown() {
+        const dropdownBtn = document.getElementById('grid-actions-dropdown-btn');
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        
+        if (dropdownBtn && dropdown) {
+            // Toggle dropdown on button click
+            dropdownBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                this.toggleGridActionsDropdown();
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target) && !dropdownBtn.contains(e.target)) {
+                    this.closeGridActionsDropdown();
+                }
+            });
+            
+            // Close dropdown on escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    this.closeGridActionsDropdown();
+                }
+            });
+        }
+    }
+    
+    toggleGridActionsDropdown() {
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        if (dropdown) {
+            const isOpen = !dropdown.classList.contains('opacity-0');
+            if (isOpen) {
+                this.closeGridActionsDropdown();
+            } else {
+                this.openGridActionsDropdown();
+            }
+        }
+    }
+    
+    openGridActionsDropdown() {
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        if (dropdown) {
+            dropdown.classList.remove('opacity-0', 'invisible', 'scale-95');
+            dropdown.classList.add('opacity-100', 'visible', 'scale-100');
+        }
+    }
+    
+    closeGridActionsDropdown() {
+        const dropdown = document.getElementById('grid-actions-dropdown');
+        if (dropdown) {
+            dropdown.classList.add('opacity-0', 'invisible', 'scale-95');
+            dropdown.classList.remove('opacity-100', 'visible', 'scale-100');
+        }
+    }
 }
 
 function validateTaskForm(form) {
@@ -2107,6 +2174,13 @@ window.closeAllDropdowns = function() {
 window.hideSaveTemplateModal = function() {
     if (window.mobileGridManager) {
         window.mobileGridManager.hideSaveTemplateModal();
+    }
+};
+
+// Global function to close grid actions dropdown - called from inline onclick handlers
+window.closeGridActionsDropdown = function() {
+    if (window.mobileGridManager) {
+        window.mobileGridManager.closeGridActionsDropdown();
     }
 };
 
