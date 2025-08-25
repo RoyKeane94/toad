@@ -21778,3 +21778,91 @@ INFO 2025-08-25 18:41:45,747 basehttp 61777 6227013632 "GET /static/js/general/g
 INFO 2025-08-25 18:41:45,748 basehttp 61777 6243840000 "GET /static/css/output.css HTTP/1.1" 304 0
 WARNING 2025-08-25 18:41:45,755 log 61777 6193360896 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-08-25 18:41:45,756 basehttp 61777 6193360896 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2073
+INFO 2025-08-25 18:43:41,018 autoreload 62420 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:43:46,501 basehttp 62420 6195654656 "GET /grids/153/archive/confirm/ HTTP/1.1" 200 3560
+INFO 2025-08-25 18:43:46,537 basehttp 62420 6212481024 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 18:43:46,543 basehttp 62420 6229307392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-08-25 18:43:46,544 log 62420 6195654656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 18:43:46,544 basehttp 62420 6195654656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2105
+INFO 2025-08-25 18:43:47,872 basehttp 62420 6195654656 "GET /grids/153/ HTTP/1.1" 200 11565
+WARNING 2025-08-25 18:43:47,907 log 62420 6195654656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-08-25 18:43:47,907 basehttp 62420 6195654656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2077
+INFO 2025-08-25 18:43:55,157 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11409
+INFO 2025-08-25 18:43:57,993 basehttp 62420 6195654656 "GET /grids/153/delete/ HTTP/1.1" 200 3426
+INFO 2025-08-25 18:43:58,920 basehttp 62420 6195654656 "POST /grids/153/delete/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:43:58,936 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11318
+INFO 2025-08-25 18:44:00,016 basehttp 62420 6195654656 "GET /grids/154/delete/ HTTP/1.1" 200 3433
+INFO 2025-08-25 18:44:00,611 basehttp 62420 6195654656 "POST /grids/154/delete/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:44:00,618 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11183
+INFO 2025-08-25 18:44:01,926 basehttp 62420 6195654656 "GET /grids/create/ HTTP/1.1" 200 3505
+INFO 2025-08-25 18:44:07,941 project_views_functions 62420 6195654656 User None created project: Test
+INFO 2025-08-25 18:44:07,942 basehttp 62420 6195654656 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:44:07,963 basehttp 62420 6195654656 "GET /grids/155/ HTTP/1.1" 200 12743
+INFO 2025-08-25 18:44:07,978 basehttp 62420 6195654656 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 18:44:49,092 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11346
+INFO 2025-08-25 18:44:51,128 basehttp 62420 6195654656 "GET /grids/155/delete/ HTTP/1.1" 200 3433
+INFO 2025-08-25 18:44:51,869 basehttp 62420 6195654656 "POST /grids/155/delete/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:44:51,884 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11116
+INFO 2025-08-25 18:44:52,911 basehttp 62420 6195654656 "GET /grids/create/ HTTP/1.1" 200 3446
+INFO 2025-08-25 18:45:02,273 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11132
+INFO 2025-08-25 18:45:05,333 basehttp 62420 6195654656 "GET /grids/ HTTP/1.1" 200 11147
+INFO 2025-08-25 18:45:07,535 basehttp 62420 6195654656 "GET /grids/150/ HTTP/1.1" 200 15437
+INFO 2025-08-25 18:45:42,554 autoreload 62420 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 18:45:42,897 autoreload 62622 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:46:01,283 autoreload 62622 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-25 18:46:01,559 autoreload 62648 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:46:06,758 autoreload 62648 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-25 18:46:06,924 autoreload 62652 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:46:21,257 autoreload 62652 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-08-25 18:46:21,509 autoreload 62660 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:46:25,674 autoreload 62660 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-08-25 18:46:25,848 autoreload 62664 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:46:41,228 autoreload 62664 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 18:46:41,470 autoreload 62670 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:46:51,858 autoreload 62670 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-08-25 18:46:52,282 autoreload 62676 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:02,558 autoreload 62676 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-25 18:47:02,821 autoreload 62700 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:06,978 autoreload 62700 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-25 18:47:07,234 autoreload 62717 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:15,455 autoreload 62717 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-25 18:47:15,684 autoreload 62745 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:19,888 autoreload 62745 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-25 18:47:20,068 autoreload 62753 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:24,230 autoreload 62753 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-25 18:47:24,422 autoreload 62761 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:30,605 autoreload 62761 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-08-25 18:47:30,797 autoreload 62769 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:41,046 autoreload 62769 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-25 18:47:41,317 autoreload 62795 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:46,530 autoreload 62795 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-08-25 18:47:46,742 autoreload 62811 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:47,855 autoreload 62811 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/template_functions.py changed, reloading.
+INFO 2025-08-25 18:47:48,072 autoreload 62815 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-25 18:47:53,926 basehttp 62815 6163902464 "GET /grids/150/ HTTP/1.1" 200 15521
+INFO 2025-08-25 18:47:53,958 basehttp 62815 6180728832 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 18:47:53,958 basehttp 62815 6163902464 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-25 18:47:53,958 basehttp 62815 6197555200 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-25 18:48:00,994 basehttp 62815 6197555200 "GET /grids/ HTTP/1.1" 200 11203
+INFO 2025-08-25 18:48:04,576 basehttp 62815 6197555200 "GET /grids/ HTTP/1.1" 200 11186
+INFO 2025-08-25 18:48:06,421 basehttp 62815 6197555200 "GET /grids/150/ HTTP/1.1" 200 15491
+INFO 2025-08-25 18:48:28,369 basehttp 62815 6197555200 "GET /grids/151/ HTTP/1.1" 200 12905
+INFO 2025-08-25 18:48:28,937 basehttp 62815 6197555200 "GET /grids/150/ HTTP/1.1" 200 15473
+INFO 2025-08-25 18:48:40,036 basehttp 62815 6197555200 "GET /grids/create/ HTTP/1.1" 200 3500
+INFO 2025-08-25 18:48:43,797 project_views_functions 62815 6197555200 User None created project: Tester Grid
+INFO 2025-08-25 18:48:43,798 basehttp 62815 6197555200 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:48:43,814 basehttp 62815 6197555200 "GET /grids/156/ HTTP/1.1" 200 12779
+INFO 2025-08-25 18:48:53,844 basehttp 62815 6197555200 "GET /grids/ HTTP/1.1" 200 11344
+INFO 2025-08-25 18:49:00,550 basehttp 62815 6197555200 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-08-25 18:49:02,069 basehttp 62815 6197555200 "GET /grids/ HTTP/1.1" 200 11238
+INFO 2025-08-25 18:49:04,084 basehttp 62815 6197555200 "GET /grids/create/ HTTP/1.1" 200 3472
+INFO 2025-08-25 18:49:06,429 project_views_functions 62815 6197555200 User None created project: Test it
+INFO 2025-08-25 18:49:06,430 basehttp 62815 6197555200 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:49:06,448 basehttp 62815 6197555200 "GET /grids/157/ HTTP/1.1" 200 12811
+INFO 2025-08-25 18:49:09,181 basehttp 62815 6197555200 "GET /grids/create/ HTTP/1.1" 200 3420
+INFO 2025-08-25 18:49:11,415 project_views_functions 62815 6197555200 User None created project: Again
+INFO 2025-08-25 18:49:11,417 basehttp 62815 6197555200 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-08-25 18:49:11,433 basehttp 62815 6197555200 "GET /grids/158/ HTTP/1.1" 200 12814
+INFO 2025-08-25 18:49:14,052 basehttp 62815 6197555200 "GET /grids/157/ HTTP/1.1" 200 12742
+INFO 2025-08-25 18:49:14,659 basehttp 62815 6197555200 "GET /grids/158/ HTTP/1.1" 200 12762
+INFO 2025-08-25 18:49:22,037 basehttp 62815 6197555200 "GET /grids/ HTTP/1.1" 200 11490
