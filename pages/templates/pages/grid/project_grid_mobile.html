@@ -539,8 +539,19 @@
 </div>
 
 <script>
-// Save Template Modal functionality
+// Auto-scroll to selected grid tab
 document.addEventListener('DOMContentLoaded', function() {
+    // Scroll selected tab into view
+    const selectedTab = document.querySelector('#grid-tabs a[href*="{{ project.pk }}"]');
+    if (selectedTab) {
+        selectedTab.scrollIntoView({
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
+        });
+    }
+    
+    // Save Template Modal functionality
     const withTasksBtn = document.getElementById('with-tasks-btn');
     const structureOnlyBtn = document.getElementById('structure-only-btn');
     const templateStyleInput = document.getElementById('template_style');

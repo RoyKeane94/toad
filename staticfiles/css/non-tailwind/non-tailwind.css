@@ -975,8 +975,8 @@ h3[data-row-id].editing,
     visibility: visible !important;
 }
 
-/* Hide calendar button when task is selected */
-.task-selected .mobile-task-actions .calendar-reminder-btn {
+/* Hide calendar button when task is selected (controlled by JS) */
+.calendar-reminder-btn.js-hidden {
     display: none !important;
 }
 

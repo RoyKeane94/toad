@@ -309,6 +309,12 @@ class MobileGridManager {
         // Add selection to the main task container
         if (mainTaskContainer) {
             mainTaskContainer.classList.add('task-selected');
+            
+            // Hide calendar button when task is selected
+            const calendarBtn = mainTaskContainer.querySelector('.mobile-task-actions .calendar-reminder-btn');
+            if (calendarBtn) {
+                calendarBtn.classList.add('js-hidden');
+            }
         }
     }
     
@@ -316,6 +322,12 @@ class MobileGridManager {
     clearAllTaskSelections() {
         document.querySelectorAll('.task-selected').forEach(task => {
             task.classList.remove('task-selected');
+            
+            // Show calendar button again when task is deselected
+            const calendarBtn = task.querySelector('.mobile-task-actions .calendar-reminder-btn');
+            if (calendarBtn) {
+                calendarBtn.classList.remove('js-hidden');
+            }
         });
     }
     

@@ -311,11 +311,9 @@ class MobileGridManager {
             mainTaskContainer.classList.add('task-selected');
             
             // Hide calendar button when task is selected
-            const calendarBtn = mainTaskContainer.querySelector('.calendar-reminder-btn');
-            console.log('Task selected, looking for calendar button:', calendarBtn);
+            const calendarBtn = mainTaskContainer.querySelector('.mobile-task-actions .calendar-reminder-btn');
             if (calendarBtn) {
                 calendarBtn.classList.add('js-hidden');
-                console.log('Added js-hidden class to calendar button');
             }
         }
     }
@@ -326,7 +324,7 @@ class MobileGridManager {
             task.classList.remove('task-selected');
             
             // Show calendar button again when task is deselected
-            const calendarBtn = task.querySelector('.calendar-reminder-btn');
+            const calendarBtn = task.querySelector('.mobile-task-actions .calendar-reminder-btn');
             if (calendarBtn) {
                 calendarBtn.classList.remove('js-hidden');
             }
