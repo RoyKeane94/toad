@@ -158,7 +158,7 @@
                 
                                             <!-- Dropdown Menu -->
                             <div id="grid-actions-dropdown" 
-                                 class="absolute top-full right-0 mt-2 w-48 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
+                                 class="absolute top-full left-0 mt-2 w-48 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
                     
                     <!-- Edit Grid Name -->
                     <button type="button"
@@ -195,7 +195,7 @@
                             </button>
                         </form>
                     {% else %}
-                        <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
+                        <a href="{% url 'pages:archive_project_confirm' pk=project.pk %}" 
                            class="block w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer">
                             <i class="fas fa-archive mr-2 text-[var(--text-secondary)]"></i>
                             Archive Grid
