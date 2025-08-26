@@ -237,6 +237,13 @@ def society_link_create(request):
     logger.info(f"Files: {request.FILES}")
     logger.info(f"POST data: {request.POST}")
     
+    # Also print to console for immediate feedback
+    print(f"=== SOCIETY LINK CREATE DEBUG ===")
+    print(f"Request method: {request.method}")
+    print(f"User: {request.user}")
+    print(f"Files: {request.FILES}")
+    print(f"POST data: {request.POST}")
+    
     if request.method == 'POST':
         try:
             logger.info("Processing POST request...")
@@ -253,28 +260,26 @@ def society_link_create(request):
                 logger.info(f"Society link name: {society_link.name}")
                 logger.info(f"Society link url_identifier: {getattr(society_link, 'url_identifier', 'NOT SET')}")
                 
-                try:
-                    # Get the public URL from the model property
-                    public_url = request.build_absolute_uri(society_link.public_url)
-                    logger.info(f"Public URL generated: {public_url}")
-                except Exception as url_error:
-                    logger.error(f"Error generating public URL: {url_error}")
-                    public_url = "URL generation failed"
-                
+                # Success message without URL generation
                 messages.success(
                     request, 
-                    f'Society link created successfully! Public URL: {public_url}'
+                    f'Society link created successfully! ID: {society_link.pk}'
                 )
                 logger.info("Success message added, redirecting...")
                 return redirect('crm:home')
             else:
                 logger.error(f"Form is invalid: {form.errors}")
                 logger.error(f"Form non-field errors: {form.non_field_errors()}")
+                print(f"❌ FORM VALIDATION ERROR: {form.errors}")
+                print(f"❌ FORM NON-FIELD ERRORS: {form.non_field_errors()}")
         except Exception as e:
             logger.error(f"Exception in POST processing: {e}")
             logger.error(f"Exception type: {type(e)}")
             import traceback
             logger.error(f"Traceback: {traceback.format_exc()}")
+            print(f"❌ EXCEPTION IN POST PROCESSING: {e}")
+            print(f"❌ EXCEPTION TYPE: {type(e)}")
+            print(f"❌ TRACEBACK: {traceback.format_exc()}")
             messages.error(request, f'Error creating society link: {str(e)}')
     else:
         logger.info("GET request, creating empty form...")

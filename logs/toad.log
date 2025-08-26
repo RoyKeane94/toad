@@ -22268,3 +22268,77 @@ INFO 2025-08-26 21:00:58,317 basehttp 77702 6130987008 "GET /media/media/Screens
 INFO 2025-08-26 21:01:02,761 basehttp 77702 6130987008 "GET /templates/ HTTP/1.1" 302 0
 INFO 2025-08-26 21:01:02,773 basehttp 77702 6130987008 "GET /templates/students/ HTTP/1.1" 200 5683
 INFO 2025-08-26 21:01:04,119 basehttp 77702 6130987008 "GET / HTTP/1.1" 200 6533
+INFO 2025-08-26 21:21:47,355 autoreload 80331 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:21:56,543 basehttp 80331 6171193344 "GET /lilypad/society-links/ HTTP/1.1" 200 3792
+INFO 2025-08-26 21:21:56,564 basehttp 80331 6171193344 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-26 21:21:56,564 basehttp 80331 6188019712 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-26 21:21:56,567 basehttp 80331 6204846080 "GET /media/media/Screenshot_2024-12-09_at_22.07.06.png HTTP/1.1" 304 0
+INFO 2025-08-26 21:21:58,368 views 80331 6204846080 === SOCIETY LINK CREATE DEBUG ===
+INFO 2025-08-26 21:21:58,369 views 80331 6204846080 Request method: GET
+INFO 2025-08-26 21:21:58,369 views 80331 6204846080 User: thomasbarratt@yahoo.com
+INFO 2025-08-26 21:21:58,369 views 80331 6204846080 Files: <MultiValueDict: {}>
+INFO 2025-08-26 21:21:58,369 views 80331 6204846080 POST data: <QueryDict: {}>
+INFO 2025-08-26 21:21:58,369 views 80331 6204846080 GET request, creating empty form...
+INFO 2025-08-26 21:21:58,370 views 80331 6204846080 Rendering template with context: {'form': <SocietyLinkForm bound=False, valid=Unknown, fields=(name;image)>, 'title': 'Create Society Link'}
+INFO 2025-08-26 21:21:58,379 basehttp 80331 6204846080 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4172
+INFO 2025-08-26 21:22:05,910 views 80331 6171193344 === SOCIETY LINK CREATE DEBUG ===
+INFO 2025-08-26 21:22:05,910 views 80331 6171193344 Request method: POST
+INFO 2025-08-26 21:22:05,910 views 80331 6171193344 User: thomasbarratt@yahoo.com
+INFO 2025-08-26 21:22:05,911 views 80331 6171193344 Files: <MultiValueDict: {'image': [<TemporaryUploadedFile: Screenshot 2024-12-09 at 22.07.06.png (image/png)>]}>
+INFO 2025-08-26 21:22:05,911 views 80331 6171193344 POST data: <QueryDict: {'csrfmiddlewaretoken': ['7W503jX8znjxPPE6qkluKHjB3BedXq25PqEHR7SAfv3Ly8QRyZNExWCMk3JKvT2M'], 'name': ['Tester']}>
+INFO 2025-08-26 21:22:05,911 views 80331 6171193344 Processing POST request...
+INFO 2025-08-26 21:22:06,092 views 80331 6171193344 Form created: <div>
+    <label for="id_name">Name:</label>
+
+
+
+<input type="text" name="name" value="Tester" class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent" placeholder="Enter society name" maxlength="100" required id="id_name">
+    
+</div>
+
+  <div>
+    <label for="id_image">Image:</label>
+
+
+
+<input type="file" name="image" class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent" accept="image/*" id="id_image">
+    
+      
+    
+</div>
+INFO 2025-08-26 21:22:06,092 views 80331 6171193344 Form is valid, saving...
+INFO 2025-08-26 21:22:06,092 views 80331 6171193344 Form cleaned data: {'name': 'Tester', 'image': <TemporaryUploadedFile: Screenshot 2024-12-09 at 22.07.06.png (image/png)>}
+INFO 2025-08-26 21:22:06,092 models 80331 6171193344 === SOCIETY LINK SAVE DEBUG ===
+INFO 2025-08-26 21:22:06,092 models 80331 6171193344 Saving society link: Tester
+INFO 2025-08-26 21:22:06,092 models 80331 6171193344 Current url_identifier: 
+INFO 2025-08-26 21:22:06,092 models 80331 6171193344 No url_identifier, generating one...
+INFO 2025-08-26 21:22:06,092 models 80331 6171193344 Base identifier: tester
+INFO 2025-08-26 21:22:06,093 models 80331 6171193344 Final url_identifier set to: tester
+INFO 2025-08-26 21:22:06,093 models 80331 6171193344 Calling super().save()...
+INFO 2025-08-26 21:22:06,095 models 80331 6171193344 Save completed successfully
+INFO 2025-08-26 21:22:06,095 views 80331 6171193344 Society link saved: Tester
+INFO 2025-08-26 21:22:06,095 views 80331 6171193344 Society link ID: 2
+INFO 2025-08-26 21:22:06,095 views 80331 6171193344 Society link name: Tester
+INFO 2025-08-26 21:22:06,095 views 80331 6171193344 Society link url_identifier: tester
+INFO 2025-08-26 21:22:06,096 views 80331 6171193344 Public URL generated: http://127.0.0.1:8000/lilypad/society-links/2/public/
+INFO 2025-08-26 21:22:06,096 views 80331 6171193344 Success message added, redirecting...
+INFO 2025-08-26 21:22:06,096 basehttp 80331 6171193344 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-08-26 21:22:06,104 basehttp 80331 6171193344 "GET /lilypad/ HTTP/1.1" 200 3698
+INFO 2025-08-26 21:22:10,056 basehttp 80331 6171193344 "GET /lilypad/society-links/ HTTP/1.1" 200 3869
+INFO 2025-08-26 21:22:10,171 basehttp 80331 6171193344 "GET /media/society_links/Screenshot_2024-12-09_at_22.07.06.png HTTP/1.1" 200 3140267
+INFO 2025-08-26 21:22:25,230 autoreload 80331 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:22:25,643 autoreload 80382 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:23:06,579 autoreload 80382 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:23:06,913 autoreload 80401 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:23:15,256 autoreload 80401 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:23:15,866 autoreload 80412 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:23:33,376 autoreload 80412 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-08-26 21:23:33,696 autoreload 80427 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:23:46,981 autoreload 80427 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-08-26 21:23:47,282 autoreload 80443 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:23:50,420 autoreload 80443 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/urls.py changed, reloading.
+INFO 2025-08-26 21:23:50,980 autoreload 80452 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:24:02,241 autoreload 80452 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:24:02,511 autoreload 80470 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:24:11,757 autoreload 80470 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:24:12,031 autoreload 80479 8549129984 Watching for file changes with StatReloader

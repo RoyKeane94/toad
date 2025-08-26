@@ -74,4 +74,51 @@
         </div>
     </div>
 </div>
+
+<!-- Debug JavaScript -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('=== SOCIETY LINK FORM DEBUG ===');
+    
+    const form = document.querySelector('form');
+    const submitButton = document.querySelector('button[type="submit"]');
+    
+    console.log('Form found:', form);
+    console.log('Submit button found:', submitButton);
+    
+    // Log form submission
+    form.addEventListener('submit', function(e) {
+        console.log('Form submit event triggered');
+        console.log('Form data:', new FormData(form));
+        console.log('CSRF token:', document.querySelector('[name=csrfmiddlewaretoken]').value);
+        
+        // Don't prevent default - let it submit
+        console.log('Allowing form submission...');
+    });
+    
+    // Log button click
+    submitButton.addEventListener('click', function(e) {
+        console.log('Submit button clicked');
+    });
+    
+    // Check if form fields are properly bound
+    const nameField = document.querySelector('#{{ form.name.id_for_label }}');
+    const imageField = document.querySelector('#{{ form.image.id_for_label }}');
+    
+    console.log('Name field:', nameField);
+    console.log('Image field:', imageField);
+    
+    if (nameField) {
+        nameField.addEventListener('input', function(e) {
+            console.log('Name field value:', e.target.value);
+        });
+    }
+    
+    if (imageField) {
+        imageField.addEventListener('change', function(e) {
+            console.log('Image field file:', e.target.files[0]);
+        });
+    }
+});
+</script>
 {% endblock %}
