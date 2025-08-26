@@ -46,18 +46,32 @@
             </p>
         </header>
 
-        <!-- Weekly Planner Template Section -->
+        <!-- Alternative Weekly Planner Template Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
-            <!-- Weekly Planner Card -->
+            <!-- Alternative Weekly Planner Card -->
             <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
                  <div class="text-center">
-                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Weekly Planner</h2>
-                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Organise your week efficiently with a structured planner. Track admin, meetings, and daily tasks across each day of the week.</p>
-                     <button onclick="showTemplateModal('weekly_planner', 'Weekly Planner')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Alternative Weekly Planner</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Focus on weekly priorities and daily tasks with a simple two-column structure. Perfect for project-based work and task management.</p>
+                     <button onclick="showTemplateModal('alternative_weekly_planner', 'Alternative Weekly Planner')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
                      </button>
                  </div>
             </div>
+            <!-- Alternative Weekly Planner Preview -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Professionals/Alternative Weekly Planner.png' %}" alt="Alternative Weekly Planner Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Alternative Weekly Planner Preview</p>
+                        <p class="text-gray-400 text-xs">Add Alternative Weekly Planner.png to static/img/Professionals/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Planner Template Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
             <!-- Weekly Planner Preview -->
             <div class="flex items-center justify-center">
                 <img src="{% static 'img/Professionals/Weekly Planner Grid.png' %}" alt="Weekly Planner Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -68,20 +82,20 @@
                     </div>
                 </div>
             </div>
+            <!-- Weekly Planner Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Weekly Planner</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Organise your week efficiently with a structured planner. Track admin, meetings, and daily tasks across each day of the week.</p>
+                     <button onclick="showTemplateModal('weekly_planner', 'Weekly Planner')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
         </div>
 
         <!-- Line Manager Template Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
-            <!-- Line Manager Preview -->
-            <div class="flex items-center justify-center">
-                <img src="{% static 'img/Professionals/Line Manager Picture.png' %}" alt="Team Management Grid Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
-                    <div class="text-center">
-                        <p class="text-gray-500 text-sm mb-2">Team Management Grid Preview</p>
-                        <p class="text-gray-400 text-xs">Add Line Manager Picture.png to static/img/Professionals/</p>
-                    </div>
-                </div>
-            </div>
             <!-- Line Manager Card -->
             <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
                  <div class="text-center">
@@ -92,6 +106,16 @@
                      </button>
                  </div>
             </div>
+            <!-- Line Manager Preview -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Professionals/Line Manager Picture.png' %}" alt="Team Management Grid Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Team Management Grid Preview</p>
+                        <p class="text-gray-400 text-xs">Add Line Manager Picture.png to static/img/Professionals/</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Divider -->
@@ -99,16 +123,6 @@
 
         <!-- Sell Side Project Template Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
-            <!-- Sell Side Project Card -->
-            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
-                 <div class="text-center">
-                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Sell Side Project</h2>
-                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage sell-side deals efficiently with structured phases. Track project management, marketing, financial modeling, and due diligence across all deal stages.</p>
-                     <button onclick="showTemplateModal('sell_side_project', 'Sell Side Project')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
-                        Use Template
-                     </button>
-                 </div>
-            </div>
             <!-- Sell Side Project Preview -->
             <div class="flex items-center justify-center">
                 <img src="{% static 'img/Professionals/Sell-Side Deal Grid.png' %}" alt="Sell Side Project Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -119,20 +133,20 @@
                     </div>
                 </div>
             </div>
+            <!-- Sell Side Project Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Sell Side Project</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage sell-side deals efficiently with structured phases. Track project management, marketing, financial modeling, and due diligence across all deal stages.</p>
+                     <button onclick="showTemplateModal('sell_side_project', 'Sell Side Project')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
         </div>
 
         <!-- Origination Director Template Section -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
-            <!-- Origination Director Preview -->
-            <div class="flex items-center justify-center">
-                <img src="{% static 'img/Professionals/Origination Grid.png' %}" alt="Origination Director Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
-                    <div class="text-center">
-                        <p class="text-gray-500 text-sm mb-2">Origination Director Preview</p>
-                        <p class="text-gray-400 text-xs">Add Origination Grid.png to static/img/Professionals/</p>
-                    </div>
-                </div>
-            </div>
             <!-- Origination Director Card -->
             <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
                  <div class="text-center">
@@ -142,6 +156,16 @@
                         Use Template
                      </button>
                  </div>
+            </div>
+            <!-- Origination Director Preview -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Professionals/Origination Grid.png' %}" alt="Origination Director Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Origination Director Preview</p>
+                        <p class="text-gray-400 text-xs">Add Origination Grid.png to static/img/Professionals/</p>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -253,6 +277,7 @@ function hideTemplateModal() {
 function createTemplateWithTasks(template) {
     // Create template with pre-populated tasks
     const urls = {
+        'alternative_weekly_planner': '{% url "pages:alternative_weekly_planner_template" %}',
         'weekly_planner': '{% url "pages:weekly_planner_template" %}',
         'line_manager': '{% url "pages:line_manager_template" %}',
         'sell_side_project': '{% url "pages:sell_side_project_template" %}',
@@ -270,6 +295,7 @@ function createTemplateWithTasks(template) {
 function createTemplateStructureOnly(template) {
     // Create template with structure only (no tasks)
     const urls = {
+        'alternative_weekly_planner': '{% url "pages:alternative_weekly_planner_template" %}?structure_only=true',
         'weekly_planner': '{% url "pages:weekly_planner_template" %}?structure_only=true',
         'line_manager': '{% url "pages:line_manager_template" %}?structure_only=true',
         'sell_side_project': '{% url "pages:sell_side_project_template" %}?structure_only=true',

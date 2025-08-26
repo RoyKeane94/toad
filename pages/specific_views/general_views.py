@@ -18,7 +18,8 @@ from ..signals import (
     create_job_application_tracker_grid_structure_only, create_weekly_planner_grid_structure_only, 
     create_line_manager_grid_structure_only, create_sell_side_project_grid_structure_only, 
     create_origination_director_grid_structure_only, create_product_development_tracker_grid_structure_only, 
-    create_habit_development_tracker_grid_structure_only, create_weekly_fitness_tracker_grid_structure_only
+    create_habit_development_tracker_grid_structure_only, create_weekly_fitness_tracker_grid_structure_only,
+    create_alternative_weekly_planner_grid, create_alternative_weekly_planner_grid_structure_only
 )
 from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid, create_line_manager_grid
 import logging
@@ -163,6 +164,28 @@ def line_manager_template_view(request):
     except Exception as e:
         logger.error(f"Error creating line manager grid: {e}")
         messages.error(request, "There was an error creating your Team Management Grid. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def alternative_weekly_planner_template_view(request):
+    """Create an Alternative Weekly Planner grid for the current user and redirect to it"""
+    try:
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the alternative weekly planner grid structure only
+            project = create_alternative_weekly_planner_grid_structure_only(request.user)
+        else:
+            # Create the alternative weekly planner grid with pre-populated tasks
+            project = create_alternative_weekly_planner_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating alternative weekly planner grid: {e}")
+        messages.error(request, "There was an error creating your Alternative Weekly Planner. Please try again.")
         return redirect('pages:templates_overview')
 
 @login_required

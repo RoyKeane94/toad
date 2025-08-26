@@ -1437,3 +1437,124 @@ def create_weekly_fitness_tracker_grid_structure_only(user):
     return project
 
 
+def create_alternative_weekly_planner_grid(user):
+    """
+    Create an Alternative Weekly Planner grid with predefined rows and columns for the given user.
+    Based on the Alternative Weekly Planner structure with Weekly Priorities and To Do Today columns.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Alternative Weekly Planner"
+    )
+    
+    # Create row headers (project categories)
+    row_headers = [
+        "Admin",
+        "Project Pearl",
+        "Project Coral"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (Weekly Priorities and To Do Today)
+    column_headers = [
+        "Weekly Priorities",
+        "To Do Today"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create sample tasks based on the Alternative Weekly Planner structure
+    tasks_data = [
+        # Admin row - Weekly Priorities
+        (0, 0, "Submit expenses", False),
+        
+        # Admin row - To Do Today  
+        (0, 1, "Buy birthday card for Mum", False),
+        
+        # Project Pearl row - Weekly Priorities
+        (1, 0, "Finalise resourcing", False),
+        (1, 0, "Draft the client proposal", False),
+        
+        # Project Pearl row - To Do Today
+        (1, 1, "Write up notes from team catch up and circulate", False),
+        
+        # Project Coral row - Weekly Priorities
+        (2, 0, "Get final sign off on comms plan", False),
+        (2, 0, "Write internal thought piece on project", False),
+        
+        # Project Coral row - To Do Today
+        (2, 1, "Handover to Steve for my holiday next week", False),
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed,
+            order=0  # Will be updated by the bulk creation logic
+        )
+    
+    return project
+
+def create_alternative_weekly_planner_grid_structure_only(user):
+    """
+    Create an Alternative Weekly Planner grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Alternative Weekly Planner"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Project Pearl",
+        "Project Coral"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers
+    column_headers = [
+        "Weekly Priorities",
+        "To Do Today"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+

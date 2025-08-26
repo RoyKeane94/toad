@@ -28,6 +28,7 @@ urlpatterns = [
     path('templates/job-application-tracker/', views.job_application_tracker_template_view, name='job_application_tracker_template'),
     path('templates/line-manager/', views.line_manager_template_view, name='line_manager_template'),
     path('templates/weekly-planner/', views.weekly_planner_template_view, name='weekly_planner_template'),
+    path('templates/alternative-weekly-planner/', views.alternative_weekly_planner_template_view, name='alternative_weekly_planner_template'),
     path('templates/sell-side-project/', views.sell_side_project_template_view, name='sell_side_project_template'),
     path('templates/origination-director/', views.origination_director_template_view, name='origination_director_template'),
     path('templates/shooting/', views.shooting_template_landing_view, name='shooting_template'),

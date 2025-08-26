@@ -19,6 +19,7 @@ from .specific_views.general_views import (
     job_application_tracker_template_view,
     line_manager_template_view,
     weekly_planner_template_view,
+    alternative_weekly_planner_template_view,
     sell_side_project_template_view,
     origination_director_template_view,
     professionals_jobs_template_view,
