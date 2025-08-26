@@ -258,9 +258,7 @@ def society_link_create(request):
                 logger.info(f"Society link saved: {society_link}")
                 logger.info(f"Society link ID: {society_link.pk}")
                 logger.info(f"Society link name: {society_link.name}")
-                logger.info(f"Society link url_identifier: {getattr(society_link, 'url_identifier', 'NOT SET')}")
                 
-                # Success message without URL generation
                 messages.success(
                     request, 
                     f'Society link created successfully! ID: {society_link.pk}'
