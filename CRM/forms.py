@@ -97,7 +97,17 @@ class SocietyLinkForm(forms.ModelForm):
         print(f"💾 SOCIETY LINK FORM SAVE DEBUG ===")
         print(f"Commit: {commit}")
         print(f"Instance: {self.instance}")
+        print(f"Instance name before: {getattr(self.instance, 'name', 'NOT SET')}")
         print(f"Cleaned data: {self.cleaned_data}")
+        
+        # Ensure instance fields are set before saving
+        if commit:
+            # Set the fields on the instance before calling save
+            for field_name, value in self.cleaned_data.items():
+                setattr(self.instance, field_name, value)
+                print(f"Set {field_name} = {value}")
+            
+            print(f"Instance name after setting: {getattr(self.instance, 'name', 'NOT SET')}")
         
         try:
             instance = super().save(commit=commit)

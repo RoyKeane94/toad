@@ -51,14 +51,30 @@ class SocietyLink(models.Model):
         logger.info(f"Saving society link: {self.name}")
         logger.info(f"Current url_identifier: {getattr(self, 'url_identifier', 'NOT SET')}")
         
+        # Add print statements for Railway logs
+        print(f"=== SOCIETY LINK SAVE DEBUG ===")
+        print(f"Saving society link: {self.name}")
+        print(f"Name type: {type(self.name)}")
+        print(f"Current url_identifier: {getattr(self, 'url_identifier', 'NOT SET')}")
+        
         if not self.url_identifier:
             logger.info("No url_identifier, generating one...")
+            print("No url_identifier, generating one...")
+            
+            # Ensure we have a name to work with
+            if not self.name:
+                logger.error("Name is None, cannot generate url_identifier")
+                print("❌ ERROR: Name is None, cannot generate url_identifier")
+                print(f"❌ Current instance state: {self.__dict__}")
+                raise ValueError("SocietyLink name cannot be None when saving")
+            
             # Generate a unique URL identifier based on name
             base_identifier = self.name.lower().replace(' ', '-').replace('&', 'and')
             # Remove special characters
             import re
             base_identifier = re.sub(r'[^a-z0-9-]', '', base_identifier)
             logger.info(f"Base identifier: {base_identifier}")
+            print(f"Base identifier: {base_identifier}")
             
             # Ensure uniqueness
             counter = 1
@@ -67,15 +83,20 @@ class SocietyLink(models.Model):
                 identifier = f"{base_identifier}-{counter}"
                 counter += 1
                 logger.info(f"Identifier {identifier} already exists, trying {identifier}")
+                print(f"Identifier {identifier} already exists, trying {identifier}")
             
             self.url_identifier = identifier
             logger.info(f"Final url_identifier set to: {self.url_identifier}")
+            print(f"Final url_identifier set to: {self.url_identifier}")
         else:
             logger.info(f"url_identifier already exists: {self.url_identifier}")
+            print(f"url_identifier already exists: {self.url_identifier}")
         
         logger.info("Calling super().save()...")
+        print("Calling super().save()...")
         super().save(*args, **kwargs)
         logger.info("Save completed successfully")
+        print("✅ Save completed successfully")
     
     @property
     def public_url(self):
