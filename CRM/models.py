@@ -34,13 +34,8 @@ class LeadMessage(models.Model):
         return f"Message - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
     
 class SocietyLink(models.Model):
-    name = models.CharField(max_length=100, null=False, blank=False)
+    name = models.CharField(max_length=100)
     image = models.ImageField(upload_to='society_links/', null=True, blank=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
+    
     def __str__(self):
         return self.name
-    
-    class Meta:
-        ordering = ['-created_at']
