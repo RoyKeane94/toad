@@ -112,12 +112,10 @@ class SocietyLinkForm(forms.ModelForm):
         try:
             # Debug: Check instance state before calling super().save()
             print(f"🔍 INSTANCE STATE BEFORE SUPER SAVE:")
-            print(f"  Instance: {instance}")
-            print(f"  Instance name: {getattr(instance, 'name', 'NOT SET')}")
-            print(f"  Instance image: {getattr(instance, 'image', 'NOT SET')}")
-            print(f"  Instance created_at: {getattr(instance, 'created_at', 'NOT SET')}")
-            print(f"  Instance updated_at: {getattr(instance, 'updated_at', 'NOT SET')}")
-            print(f"  Instance __dict__: {instance.__dict__}")
+            print(f"  Instance: {self.instance}")
+            print(f"  Instance name: {getattr(self.instance, 'name', 'NOT SET')}")
+            print(f"  Instance image: {getattr(self.instance, 'image', 'NOT SET')}")
+            print(f"  Instance __dict__: {self.instance.__dict__}")
             
             instance = super().save(commit=commit)
             print(f"✅ Save successful: {instance}")
