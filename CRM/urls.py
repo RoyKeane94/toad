@@ -13,4 +13,9 @@ urlpatterns = [
     path('leads/<int:lead_pk>/messages/create/', views.lead_message_create, name='lead_message_create'),
     path('focus/create/', views.lead_focus_create, name='lead_focus_create'),
     path('contact-methods/create/', views.contact_method_create, name='contact_method_create'),
+    
+    # Society Links
+    path('society-links/', views.society_link_list, name='society_link_list'),
+    path('society-links/create/', views.society_link_create, name='society_link_create'),
+    path('society-links/<int:pk>/public/', views.society_link_public, name='society_link_public'),
 ]

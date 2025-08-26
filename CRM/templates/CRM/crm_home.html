@@ -82,6 +82,10 @@
                     <i class="fas fa-tag mr-2"></i>
                     Add Focus Area
                 </a>
+                <a href="{% url 'crm:society_link_create' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-link mr-2"></i>
+                    Create Society Link
+                </a>
             </div>
         </div>
 
@@ -134,6 +138,22 @@
                 <p class="text-[var(--text-secondary)]">No leads yet. <a href="{% url 'crm:lead_create' %}" class="text-[var(--primary-action-bg)] hover:underline">Add your first lead</a></p>
             </div>
             {% endif %}
+        </div>
+
+        <!-- Society Links -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mt-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">Society Links</h2>
+                <a href="{% url 'crm:society_link_list' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">View All</a>
+            </div>
+            
+            <div class="text-center py-8">
+                <i class="fas fa-link text-[var(--text-secondary)] text-4xl mb-4"></i>
+                <p class="text-[var(--text-secondary)] mb-4">Create public links for societies with custom images</p>
+                <a href="{% url 'crm:society_link_create' %}" class="inline-flex items-center px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-md font-medium transition-colors duration-200">
+                    <i class="fas fa-plus mr-2"></i>Create Society Link
+                </a>
+            </div>
         </div>
     </div>
 </div>

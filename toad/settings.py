@@ -32,6 +32,10 @@ load_dotenv(os.path.join(BASE_DIR, '.env'))
 # All other settings will be derived from this one variable.
 IS_PRODUCTION = os.environ.get('DJANGO_DEBUG_ENVIRONMENT') == '1'
 
+# TEMPORARY: Override for S3 testing in development
+# Set this to True to test S3 locally, then set back to False
+FORCE_S3_TESTING = os.environ.get('FORCE_S3_TESTING') == 'true'
+
 # The DEBUG flag is the opposite of IS_PRODUCTION.
 DEBUG = not IS_PRODUCTION
 
@@ -192,6 +196,37 @@ if IS_PRODUCTION:
 else:
     # The default storage is fine for development
     STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+# ---
+# MEDIA FILES (User Uploads)
+# https://docs.djangoproject.com/en/5.0/topics/files/
+# ---
+
+# Media files configuration
+if IS_PRODUCTION or FORCE_S3_TESTING:
+    # Use S3 for media files in production
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    
+    # S3 Configuration
+    AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')
+     # Optional: for CloudFront
+    
+    # S3 Security and Performance
+    AWS_S3_FILE_OVERWRITE = False  # Don't overwrite files with same name
+    AWS_DEFAULT_ACL = 'public-read'  # Make files publicly readable
+    AWS_S3_OBJECT_PARAMETERS = {
+        'CacheControl': 'max-age=86400',  # Cache for 24 hours
+    }
+    
+    # Media files will be stored in S3
+    MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
+else:
+    # Use local storage for media files in development
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # ---

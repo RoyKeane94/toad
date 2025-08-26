@@ -1,5 +1,5 @@
 from django import forms
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
 
 class LeadForm(forms.ModelForm):
     class Meta:
@@ -49,5 +49,20 @@ class ContactMethodForm(forms.ModelForm):
             'name': forms.TextInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
                 'placeholder': 'Enter contact method name'
+            })
+        }
+
+class SocietyLinkForm(forms.ModelForm):
+    class Meta:
+        model = SocietyLink
+        fields = ['name', 'image']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Enter society name'
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'accept': 'image/*'
             })
         }

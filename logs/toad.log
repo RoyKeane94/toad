@@ -22110,3 +22110,161 @@ INFO 2025-08-26 20:13:23,545 basehttp 73929 6169423872 "GET /static/img/Entrepre
 INFO 2025-08-26 20:13:27,601 basehttp 73929 6169423872 "GET /templates/personal/ HTTP/1.1" 200 5742
 INFO 2025-08-26 20:13:27,616 basehttp 73929 6186250240 "GET /static/img/Personal/Weekly%20Fitness%20Tracker.png HTTP/1.1" 200 321776
 INFO 2025-08-26 20:13:27,617 basehttp 73929 6169423872 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 200 387584
+INFO 2025-08-26 20:39:19,476 autoreload 76316 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:39:23,162 basehttp 76316 6122680320 "GET /templates/personal/ HTTP/1.1" 200 5740
+INFO 2025-08-26 20:39:23,198 basehttp 76316 6122680320 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-26 20:39:23,199 basehttp 76316 6139506688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-26 20:42:14,090 autoreload 76316 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-08-26 20:42:14,401 autoreload 76425 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:43:53,226 autoreload 76425 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-26 20:43:53,532 autoreload 76484 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:44:12,939 autoreload 76484 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-26 20:44:13,225 autoreload 76496 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:44:15,367 autoreload 76496 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-08-26 20:44:15,569 autoreload 76503 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:57:38,508 autoreload 77561 8549129984 Watching for file changes with StatReloader
+WARNING 2025-08-26 20:57:42,141 log 77561 6171275264 Not Found: /crm/society-links/create/
+WARNING 2025-08-26 20:57:42,141 basehttp 77561 6171275264 "GET /crm/society-links/create/ HTTP/1.1" 404 2112
+ERROR 2025-08-26 20:58:09,327 log 77561 6171275264 Internal Server Error: /lilypad/society-links/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 253, in society_link_create
+    return render(request, 'CRM/society_links/society_link_form.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: CRM/society_links/society_link_form.html
+ERROR 2025-08-26 20:58:09,331 basehttp 77561 6171275264 "GET /lilypad/society-links/create/ HTTP/1.1" 500 13546
+INFO 2025-08-26 20:58:32,938 autoreload 77561 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:58:33,311 autoreload 77589 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:58:39,543 autoreload 77589 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:58:40,006 autoreload 77603 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:58:47,334 autoreload 77603 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:58:47,658 autoreload 77612 8549129984 Watching for file changes with StatReloader
+ERROR 2025-08-26 20:58:48,358 log 77612 6198538240 Internal Server Error: /lilypad/society-links/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 253, in society_link_create
+    return render(request, 'crm/society_links/society_link_form.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: crm/society_links/society_link_form.html
+ERROR 2025-08-26 20:58:48,360 basehttp 77612 6198538240 "GET /lilypad/society-links/create/ HTTP/1.1" 500 13473
+ERROR 2025-08-26 20:58:59,904 log 77612 6198538240 Internal Server Error: /lilypad/society-links/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 253, in society_link_create
+    return render(request, 'crm/society_links/society_link_form.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: crm/society_links/society_link_form.html
+ERROR 2025-08-26 20:58:59,909 basehttp 77612 6198538240 "GET /lilypad/society-links/create/ HTTP/1.1" 500 13435
+INFO 2025-08-26 20:59:00,096 autoreload 77612 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:59:00,389 autoreload 77627 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:59:18,781 autoreload 77627 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:59:19,064 autoreload 77642 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:59:25,267 autoreload 77642 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:59:25,523 autoreload 77654 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:59:32,775 autoreload 77654 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:59:33,168 autoreload 77661 8549129984 Watching for file changes with StatReloader
+ERROR 2025-08-26 20:59:37,965 log 77661 6132215808 Internal Server Error: /lilypad/society-links/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 253, in society_link_create
+    return render(request, 'CRM/society_links/society_link_form.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: CRM/society_links/society_link_form.html
+ERROR 2025-08-26 20:59:37,972 basehttp 77661 6132215808 "GET /lilypad/society-links/create/ HTTP/1.1" 500 13523
+INFO 2025-08-26 20:59:49,657 autoreload 77661 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:59:49,929 autoreload 77675 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 20:59:56,134 autoreload 77675 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 20:59:56,419 autoreload 77685 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:00:02,637 autoreload 77685 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:00:02,908 autoreload 77692 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:00:11,764 basehttp 77692 6137131008 "GET /lilypad/society-links/create/ HTTP/1.1" 200 3727
+INFO 2025-08-26 21:00:11,783 basehttp 77692 6153957376 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-26 21:00:11,783 basehttp 77692 6137131008 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-26 21:00:13,205 autoreload 77692 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-08-26 21:00:13,553 autoreload 77702 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-26 21:00:26,391 basehttp 77702 6130987008 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-08-26 21:00:26,409 basehttp 77702 6130987008 "GET /lilypad/ HTTP/1.1" 200 3719
+INFO 2025-08-26 21:00:43,260 basehttp 77702 6130987008 "GET /lilypad/society-links/ HTTP/1.1" 200 3788
+INFO 2025-08-26 21:00:43,368 basehttp 77702 6130987008 "GET /media/media/Screenshot_2024-12-09_at_22.07.06.png HTTP/1.1" 200 3140224
+INFO 2025-08-26 21:00:53,586 basehttp 77702 6130987008 "GET / HTTP/1.1" 200 6495
+INFO 2025-08-26 21:00:58,267 basehttp 77702 6130987008 "GET /lilypad/society-links/1/public/ HTTP/1.1" 200 3393
+INFO 2025-08-26 21:00:58,317 basehttp 77702 6130987008 "GET /media/media/Screenshot_2024-12-09_at_22.07.06.png HTTP/1.1" 304 0
+INFO 2025-08-26 21:01:02,761 basehttp 77702 6130987008 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-08-26 21:01:02,773 basehttp 77702 6130987008 "GET /templates/students/ HTTP/1.1" 200 5683
+INFO 2025-08-26 21:01:04,119 basehttp 77702 6130987008 "GET / HTTP/1.1" 200 6533

@@ -1,0 +1,77 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Create Society Link - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)] overflow-hidden">
+        <!-- Header -->
+        <div class="p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-link text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-semibold text-[var(--text-primary)]">Create Society Link</h1>
+                    <p class="text-sm text-[var(--text-secondary)] mt-1">Upload a society image and create a public link</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Form -->
+        <div class="p-6">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Society Name -->
+                <div class="mb-6">
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Society Name *
+                    </label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                        <div class="mt-1 text-sm text-red-600">
+                            {% for error in form.name.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Image Upload -->
+                <div class="mb-6">
+                    <label for="{{ form.image.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Society Image *
+                    </label>
+                    <div class="border-2 border-dashed border-[var(--border-color)] rounded-lg p-6 text-center hover:border-[var(--primary-action-bg)] transition-colors">
+                        {{ form.image }}
+                        <p class="text-sm text-[var(--text-secondary)] mt-2">
+                            Upload an image for the society (JPG, PNG, GIF)
+                        </p>
+                    </div>
+                    {% if form.image.errors %}
+                        <div class="mt-1 text-sm text-red-600">
+                            {% for error in form.image.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <!-- Form Actions -->
+                <div class="flex items-center justify-end space-x-3">
+                    <a href="{% url 'crm:home' %}" 
+                       class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                        <i class="fas fa-times mr-2"></i>Cancel
+                    </a>
+                    <button type="submit" 
+                            class="px-6 py-2 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                        <i class="fas fa-plus mr-2"></i>Create Society Link
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -4,7 +4,7 @@ from django.contrib import admin
 
 from .models import (
     Project, RowHeader, ColumnHeader, Task, PersonalTemplate, 
-    TemplateRowHeader, TemplateColumnHeader, TemplateTask, ContactSubmission, ArchiveProject    
+    TemplateRowHeader, TemplateColumnHeader, TemplateTask, ContactSubmission, ArchiveProject
 )
 
 # Basic admin registration for existing models

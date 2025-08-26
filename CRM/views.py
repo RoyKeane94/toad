@@ -3,8 +3,8 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseForbidden, JsonResponse
 from django.contrib import messages
 from django.urls import reverse
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage
-from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
+from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm
 
 # Create your views here.
 
@@ -220,3 +220,61 @@ def crm_403_error(request, exception=None):
     Custom 403 error handler for CRM app.
     """
     return render(request, 'CRM/403.html', status=403)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_link_create(request):
+    """
+    Create a new society link with image upload.
+    Only accessible by superusers.
+    """
+    if request.method == 'POST':
+        form = SocietyLinkForm(request.POST, request.FILES)
+        if form.is_valid():
+            society_link = form.save()
+            
+            # Generate the public URL
+            public_url = request.build_absolute_uri(
+                reverse('crm:society_link_public', kwargs={'pk': society_link.pk})
+            )
+            
+            messages.success(
+                request, 
+                f'Society link created successfully! Public URL: {public_url}'
+            )
+            return redirect('crm:home')
+    else:
+        form = SocietyLinkForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create Society Link',
+    }
+    return render(request, 'society_links/society_link_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_link_list(request):
+    """
+    List all society links.
+    Only accessible by superusers.
+    """
+    society_links = SocietyLink.objects.all().order_by('-created_at')
+    
+    context = {
+        'society_links': society_links,
+        'title': 'Society Links',
+    }
+    return render(request, 'society_links/society_link_list.html', context)
+
+def society_link_public(request, pk):
+    """
+    Public view for society links - accessible by anyone.
+    """
+    society_link = get_object_or_404(SocietyLink, pk=pk)
+    
+    context = {
+        'society_link': society_link,
+        'title': society_link.name,
+    }
+    return render(request, 'society_links/society_link_public.html', context)

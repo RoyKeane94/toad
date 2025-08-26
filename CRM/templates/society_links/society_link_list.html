@@ -1,0 +1,110 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Society Links - Toad{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold text-[var(--text-primary)]">Society Links</h1>
+                <p class="text-[var(--text-secondary)] mt-2">Manage public society links and images</p>
+            </div>
+            <a href="{% url 'crm:society_link_create' %}" 
+               class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+                <i class="fas fa-plus mr-2"></i>Create New Link
+            </a>
+        </div>
+    </div>
+    
+    <!-- Society Links Grid -->
+    {% if society_links %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {% for society_link in society_links %}
+                <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)] overflow-hidden">
+                    <!-- Image -->
+                    <div class="h-48 bg-gray-100 overflow-hidden">
+                        {% if society_link.image %}
+                            <img src="{{ society_link.image.url }}" 
+                                 alt="{{ society_link.name }}" 
+                                 class="w-full h-full object-cover">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center">
+                                <i class="fas fa-image text-4xl text-gray-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-2">
+                            {{ society_link.name }}
+                        </h3>
+                        
+                        <div class="text-sm text-[var(--text-secondary)] mb-4">
+                            Created: {{ society_link.created_at|date:"M j, Y" }}
+                        </div>
+                        
+                        <!-- Public URL -->
+                        <div class="mb-4">
+                            <label class="block text-xs font-medium text-[var(--text-secondary)] mb-1">
+                                Public URL:
+                            </label>
+                            <div class="flex items-center space-x-2">
+                                <input type="text" 
+                                       value="{% url 'crm:society_link_public' pk=society_link.pk %}" 
+                                       readonly 
+                                       class="flex-1 text-xs bg-gray-50 border border-gray-200 rounded px-2 py-1 text-gray-600">
+                                <button onclick="copyToClipboard(this.previousElementSibling.value)" 
+                                        class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] text-xs">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div class="flex space-x-2">
+                            <a href="{% url 'crm:society_link_public' pk=society_link.pk %}" 
+                               target="_blank"
+                               class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm py-2 px-3 rounded text-center transition-colors duration-200">
+                                <i class="fas fa-external-link-alt mr-1"></i>View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <!-- Empty State -->
+        <div class="text-center py-12">
+            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-link text-3xl text-gray-400"></i>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No society links yet</h3>
+            <p class="text-gray-500 mb-6">Create your first society link to get started</p>
+            <a href="{% url 'crm:society_link_create' %}" 
+               class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-6 py-3 rounded-lg font-medium transition-colors duration-200">
+                <i class="fas fa-plus mr-2"></i>Create Society Link
+            </a>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        // Show feedback
+        const button = event.target.closest('button');
+        const icon = button.querySelector('i');
+        const originalClass = icon.className;
+        
+        icon.className = 'fas fa-check text-green-500';
+        setTimeout(() => {
+            icon.className = originalClass;
+        }, 1000);
+    });
+}
+</script>
+{% endblock %}
