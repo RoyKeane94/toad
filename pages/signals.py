@@ -1436,17 +1436,4 @@ def create_weekly_fitness_tracker_grid_structure_only(user):
     
     return project
 
-@receiver(post_save, sender=Project)
-def handle_project_archiving(sender, instance, created, **kwargs):
-    """
-    Handle project archiving by creating an ArchiveProject record when is_archived is set to True
-    """
-    if not created and instance.is_archived:
-        # Check if an ArchiveProject record already exists
-        archive_record, created = ArchiveProject.objects.get_or_create(
-            user=instance.user,
-            project=instance
-        )
-        if created:
-            # Log the archiving action
-            print(f"Project '{instance.name}' has been archived for user {instance.user.username}")
+
