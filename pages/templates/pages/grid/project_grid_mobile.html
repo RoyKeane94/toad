@@ -12,6 +12,20 @@
     <script src="{% static 'js/grid/grid_mobile.js' %}"></script>
 {% endif %}
 <style>
+/* Prevent horizontal page scrolling on mobile */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Ensure main content containers don't exceed viewport width */
+main, #app {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
 /* Hide drag handle and any Sortable styles on mobile (drag disabled) */
 .drag-handle { display: none !important; }
 .sortable-drag, .sortable-ghost, .sortable-chosen { }
@@ -25,6 +39,29 @@
 .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
 }
+
+/* Ensure grid tabs container has proper boundaries */
+#grid-tabs {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+}
+
+#grid-tabs > div {
+    width: 100% !important;
+    max-width: none !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 1rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+#grid-tabs a {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
 
 /* Active grid tab styling */
 #grid-tabs a[href*="{{ project.pk }}"] {
