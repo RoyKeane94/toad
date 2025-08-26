@@ -44,12 +44,21 @@ class SocietyLink(models.Model):
         return self.name
     
     def save(self, *args, **kwargs):
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        logger.info(f"=== SOCIETY LINK SAVE DEBUG ===")
+        logger.info(f"Saving society link: {self.name}")
+        logger.info(f"Current url_identifier: {getattr(self, 'url_identifier', 'NOT SET')}")
+        
         if not self.url_identifier:
+            logger.info("No url_identifier, generating one...")
             # Generate a unique URL identifier based on name
             base_identifier = self.name.lower().replace(' ', '-').replace('&', 'and')
             # Remove special characters
             import re
             base_identifier = re.sub(r'[^a-z0-9-]', '', base_identifier)
+            logger.info(f"Base identifier: {base_identifier}")
             
             # Ensure uniqueness
             counter = 1
@@ -57,10 +66,16 @@ class SocietyLink(models.Model):
             while SocietyLink.objects.filter(url_identifier=identifier).exists():
                 identifier = f"{base_identifier}-{counter}"
                 counter += 1
+                logger.info(f"Identifier {identifier} already exists, trying {identifier}")
             
             self.url_identifier = identifier
+            logger.info(f"Final url_identifier set to: {self.url_identifier}")
+        else:
+            logger.info(f"url_identifier already exists: {self.url_identifier}")
         
+        logger.info("Calling super().save()...")
         super().save(*args, **kwargs)
+        logger.info("Save completed successfully")
     
     @property
     def public_url(self):

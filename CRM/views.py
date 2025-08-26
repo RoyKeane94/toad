@@ -221,6 +221,9 @@ def crm_403_error(request, exception=None):
     """
     return render(request, 'CRM/403.html', status=403)
 
+import logging
+logger = logging.getLogger(__name__)
+
 @login_required
 @user_passes_test(is_superuser)
 def society_link_create(request):
@@ -228,26 +231,60 @@ def society_link_create(request):
     Create a new society link with image upload.
     Only accessible by superusers.
     """
+    logger.info("=== SOCIETY LINK CREATE DEBUG ===")
+    logger.info(f"Request method: {request.method}")
+    logger.info(f"User: {request.user}")
+    logger.info(f"Files: {request.FILES}")
+    logger.info(f"POST data: {request.POST}")
+    
     if request.method == 'POST':
-        form = SocietyLinkForm(request.POST, request.FILES)
-        if form.is_valid():
-            society_link = form.save()
+        try:
+            logger.info("Processing POST request...")
+            form = SocietyLinkForm(request.POST, request.FILES)
+            logger.info(f"Form created: {form}")
             
-            # Get the public URL from the model property
-            public_url = request.build_absolute_uri(society_link.public_url)
-            
-            messages.success(
-                request, 
-                f'Society link created successfully! Public URL: {public_url}'
-            )
-            return redirect('crm:home')
+            if form.is_valid():
+                logger.info("Form is valid, saving...")
+                logger.info(f"Form cleaned data: {form.cleaned_data}")
+                
+                society_link = form.save()
+                logger.info(f"Society link saved: {society_link}")
+                logger.info(f"Society link ID: {society_link.pk}")
+                logger.info(f"Society link name: {society_link.name}")
+                logger.info(f"Society link url_identifier: {getattr(society_link, 'url_identifier', 'NOT SET')}")
+                
+                try:
+                    # Get the public URL from the model property
+                    public_url = request.build_absolute_uri(society_link.public_url)
+                    logger.info(f"Public URL generated: {public_url}")
+                except Exception as url_error:
+                    logger.error(f"Error generating public URL: {url_error}")
+                    public_url = "URL generation failed"
+                
+                messages.success(
+                    request, 
+                    f'Society link created successfully! Public URL: {public_url}'
+                )
+                logger.info("Success message added, redirecting...")
+                return redirect('crm:home')
+            else:
+                logger.error(f"Form is invalid: {form.errors}")
+                logger.error(f"Form non-field errors: {form.non_field_errors()}")
+        except Exception as e:
+            logger.error(f"Exception in POST processing: {e}")
+            logger.error(f"Exception type: {type(e)}")
+            import traceback
+            logger.error(f"Traceback: {traceback.format_exc()}")
+            messages.error(request, f'Error creating society link: {str(e)}')
     else:
+        logger.info("GET request, creating empty form...")
         form = SocietyLinkForm()
     
     context = {
         'form': form,
         'title': 'Create Society Link',
     }
+    logger.info(f"Rendering template with context: {context}")
     return render(request, 'society_links/society_link_form.html', context)
 
 @login_required
