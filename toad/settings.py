@@ -216,7 +216,8 @@ if IS_PRODUCTION or FORCE_S3_TESTING:
     
     # S3 Security and Performance
     AWS_S3_FILE_OVERWRITE = False  # Don't overwrite files with same name
-    AWS_DEFAULT_ACL = 'public-read'  # Make files publicly readable
+    # Explicitly disable ACLs since bucket doesn't support them
+    AWS_DEFAULT_ACL = None
     AWS_S3_OBJECT_PARAMETERS = {
         'CacheControl': 'max-age=86400',  # Cache for 24 hours
     }
@@ -226,7 +227,12 @@ if IS_PRODUCTION or FORCE_S3_TESTING:
 else:
     # Use local storage for media files in development
     MEDIA_URL = '/media/'
-    MEDIA_ROOT = BASE_DIR / 'media'
+    if IS_PRODUCTION:
+        # Use Railway-compatible path for production
+        MEDIA_ROOT = '/tmp/media'
+    else:
+        # Use local path for development
+        MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # ---
