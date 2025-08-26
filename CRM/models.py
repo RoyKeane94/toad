@@ -35,14 +35,38 @@ class LeadMessage(models.Model):
     
 class SocietyLink(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
-    url = models.URLField(max_length=200, null=False, blank=False)
-    url_expires_at = models.DateTimeField(null=True, blank=True)
-    image = models.ImageField(upload_to='media/', null=True, blank=True)
+    url_identifier = models.CharField(max_length=50, unique=True, blank=True)
+    image = models.ImageField(upload_to='society_links/', null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.image.name} - {self.created_at}"
+        return self.name
+    
+    def save(self, *args, **kwargs):
+        if not self.url_identifier:
+            # Generate a unique URL identifier based on name
+            base_identifier = self.name.lower().replace(' ', '-').replace('&', 'and')
+            # Remove special characters
+            import re
+            base_identifier = re.sub(r'[^a-z0-9-]', '', base_identifier)
+            
+            # Ensure uniqueness
+            counter = 1
+            identifier = base_identifier
+            while SocietyLink.objects.filter(url_identifier=identifier).exists():
+                identifier = f"{base_identifier}-{counter}"
+                counter += 1
+            
+            self.url_identifier = identifier
+        
+        super().save(*args, **kwargs)
+    
+    @property
+    def public_url(self):
+        """Generate the full public URL for this society link"""
+        from django.urls import reverse
+        return reverse('crm:society_link_public', kwargs={'pk': self.pk})
     
     class Meta:
         ordering = ['-created_at']

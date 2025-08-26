@@ -233,10 +233,8 @@ def society_link_create(request):
         if form.is_valid():
             society_link = form.save()
             
-            # Generate the public URL
-            public_url = request.build_absolute_uri(
-                reverse('crm:society_link_public', kwargs={'pk': society_link.pk})
-            )
+            # Get the public URL from the model property
+            public_url = request.build_absolute_uri(society_link.public_url)
             
             messages.success(
                 request, 
