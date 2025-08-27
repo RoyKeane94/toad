@@ -4,7 +4,7 @@ from django.http import HttpResponseForbidden, JsonResponse
 from django.contrib import messages
 from django.urls import reverse
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
-from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm
+from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, TestSocietyLinkForm
 
 # Create your views here.
 
@@ -251,7 +251,6 @@ def society_link_create(request):
             logger.info(f"Form created: {form}")
             
             if form.is_valid():
-                logger.info("Form is valid, saving...")
                 logger.info(f"Form cleaned data: {form.cleaned_data}")
                 
                 society_link = form.save()
@@ -297,19 +296,35 @@ def test_society_link_create(request):
     Test view for creating a new test society link.
     Only accessible by superusers.
     """
+    print(f"=== TEST SOCIETY LINK CREATE DEBUG ===")
+    print(f"Request method: {request.method}")
+    print(f"User: {request.user}")
+    print(f"Files: {request.FILES}")
+    print(f"POST data: {request.POST}")
+    
     if request.method == 'POST':
-        form = TestSocietyLinkForm(request.POST, request.FILES)
-        if form.is_valid():
-            test_link = form.save()
-            messages.success(request, f'Test society link created successfully! ID: {test_link.pk}')
-            return redirect('crm:home')
+        try:
+            print("Processing POST request...")
+            form = TestSocietyLinkForm(request.POST, request.FILES)
+            print(f"Form created: {form}")
+            
+            if form.is_valid():
+                print("Form is valid, saving...")
+                test_link = form.save()
+                messages.success(request, f'Test society link created successfully! ID: {test_link.pk}')
+                return redirect('crm:home')
+            else:
+                print(f"Form is invalid: {form.errors}")
+                # Return form with errors instead of 400
+                context = {'form': form, 'title': 'Create Test Society Link'}
+                return render(request, 'society_links/test_society_link_form.html', context)
+        except Exception as e:
+            print(f"Exception: {e}")
+            messages.error(request, f'Error: {str(e)}')
     else:
         form = TestSocietyLinkForm()
     
-    context = {
-        'form': form,
-        'title': 'Create Test Society Link',
-    }
+    context = {'form': form, 'title': 'Create Test Society Link'}
     return render(request, 'society_links/test_society_link_form.html', context)
 
 @login_required

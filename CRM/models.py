@@ -46,3 +46,9 @@ class TestSocietyLink(models.Model):
     
     def __str__(self):
         return self.title or f"TestSocietyLink-{self.id}" if self.id else "TestSocietyLink-New"
+
+class SimpleTestModel(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name or f"SimpleTest-{self.id}" if self.id else "SimpleTest-New"
