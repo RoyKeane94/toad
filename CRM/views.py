@@ -231,62 +231,26 @@ def society_link_create(request):
     Create a new society link with image upload.
     Only accessible by superusers.
     """
-    logger.info("=== SOCIETY LINK CREATE DEBUG ===")
-    logger.info(f"Request method: {request.method}")
-    logger.info(f"User: {request.user}")
-    logger.info(f"Files: {request.FILES}")
-    logger.info(f"POST data: {request.POST}")
-    
-    # Also print to console for immediate feedback
-    print(f"=== SOCIETY LINK CREATE DEBUG ===")
-    print(f"Request method: {request.method}")
-    print(f"User: {request.user}")
-    print(f"Files: {request.FILES}")
-    print(f"POST data: {request.POST}")
-    
     if request.method == 'POST':
-        try:
-            logger.info("Processing POST request...")
-            form = SocietyLinkForm(request.POST, request.FILES)
-            logger.info(f"Form created: {form}")
-            
-            if form.is_valid():
-                logger.info(f"Form cleaned data: {form.cleaned_data}")
-                
-                society_link = form.save()
-                logger.info(f"Society link saved: {society_link}")
-                logger.info(f"Society link ID: {society_link.pk}")
-                logger.info(f"Society link name: {society_link.name}")
-                
-                messages.success(
-                    request, 
-                    f'Society link created successfully! ID: {society_link.pk}'
-                )
-                logger.info("Success message added, redirecting...")
-                return redirect('crm:home')
-            else:
-                logger.error(f"Form is invalid: {form.errors}")
-                logger.error(f"Form non-field errors: {form.non_field_errors()}")
-                print(f"❌ FORM VALIDATION ERROR: {form.errors}")
-                print(f"❌ FORM NON-FIELD ERRORS: {form.non_field_errors()}")
-        except Exception as e:
-            logger.error(f"Exception in POST processing: {e}")
-            logger.error(f"Exception type: {type(e)}")
-            import traceback
-            logger.error(f"Traceback: {traceback.format_exc()}")
-            print(f"❌ EXCEPTION IN POST PROCESSING: {e}")
-            print(f"❌ EXCEPTION TYPE: {type(e)}")
-            print(f"❌ TRACEBACK: {traceback.format_exc()}")
-            messages.error(request, f'Error creating society link: {str(e)}')
+        form = SocietyLinkForm(request.POST, request.FILES)
+        if form.is_valid():
+            society_link = form.save()
+            messages.success(
+                request, 
+                f'Society link created successfully! ID: {society_link.pk}'
+            )
+            return redirect('crm:home')
+        else:
+            # Return form with errors
+            context = {'form': form, 'title': 'Create Society Link'}
+            return render(request, 'society_links/society_link_form.html', context)
     else:
-        logger.info("GET request, creating empty form...")
         form = SocietyLinkForm()
     
     context = {
         'form': form,
         'title': 'Create Society Link',
     }
-    logger.info(f"Rendering template with context: {context}")
     return render(request, 'society_links/society_link_form.html', context)
 
 @login_required
@@ -296,31 +260,16 @@ def test_society_link_create(request):
     Test view for creating a new test society link.
     Only accessible by superusers.
     """
-    print(f"=== TEST SOCIETY LINK CREATE DEBUG ===")
-    print(f"Request method: {request.method}")
-    print(f"User: {request.user}")
-    print(f"Files: {request.FILES}")
-    print(f"POST data: {request.POST}")
-    
     if request.method == 'POST':
-        try:
-            print("Processing POST request...")
-            form = TestSocietyLinkForm(request.POST, request.FILES)
-            print(f"Form created: {form}")
-            
-            if form.is_valid():
-                print("Form is valid, saving...")
-                test_link = form.save()
-                messages.success(request, f'Test society link created successfully! ID: {test_link.pk}')
-                return redirect('crm:home')
-            else:
-                print(f"Form is invalid: {form.errors}")
-                # Return form with errors instead of 400
-                context = {'form': form, 'title': 'Create Test Society Link'}
-                return render(request, 'society_links/test_society_link_form.html', context)
-        except Exception as e:
-            print(f"Exception: {e}")
-            messages.error(request, f'Error: {str(e)}')
+        form = TestSocietyLinkForm(request.POST, request.FILES)
+        if form.is_valid():
+            test_link = form.save()
+            messages.success(request, f'Test society link created successfully! ID: {test_link.pk}')
+            return redirect('crm:home')
+        else:
+            # Return form with errors
+            context = {'form': form, 'title': 'Create Test Society Link'}
+            return render(request, 'society_links/test_society_link_form.html', context)
     else:
         form = TestSocietyLinkForm()
     
