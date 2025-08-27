@@ -18,4 +18,5 @@ urlpatterns = [
     path('society-links/', views.society_link_list, name='society_link_list'),
     path('society-links/create/', views.society_link_create, name='society_link_create'),
     path('society-links/<int:pk>/public/', views.society_link_public, name='society_link_public'),
+    path('test-society-links/create/', views.test_society_link_create, name='test_society_link_create'),
 ]

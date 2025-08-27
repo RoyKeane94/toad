@@ -38,4 +38,11 @@ class SocietyLink(models.Model):
     image = models.ImageField(upload_to='society_links/', null=True, blank=True)
     
     def __str__(self):
-        return self.name
+        return self.name or f"SocietyLink-{self.id}" if self.id else "SocietyLink-New"
+
+class TestSocietyLink(models.Model):
+    title = models.CharField(max_length=100)
+    photo = models.ImageField(upload_to='test_society_links/', null=True, blank=True)
+    
+    def __str__(self):
+        return self.title or f"TestSocietyLink-{self.id}" if self.id else "TestSocietyLink-New"

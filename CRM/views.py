@@ -292,12 +292,34 @@ def society_link_create(request):
 
 @login_required
 @user_passes_test(is_superuser)
+def test_society_link_create(request):
+    """
+    Test view for creating a new test society link.
+    Only accessible by superusers.
+    """
+    if request.method == 'POST':
+        form = TestSocietyLinkForm(request.POST, request.FILES)
+        if form.is_valid():
+            test_link = form.save()
+            messages.success(request, f'Test society link created successfully! ID: {test_link.pk}')
+            return redirect('crm:home')
+    else:
+        form = TestSocietyLinkForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create Test Society Link',
+    }
+    return render(request, 'society_links/test_society_link_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
 def society_link_list(request):
     """
     List all society links.
     Only accessible by superusers.
     """
-    society_links = SocietyLink.objects.all().order_by('-created_at')
+    society_links = SocietyLink.objects.all().order_by('-id')
     
     context = {
         'society_links': society_links,

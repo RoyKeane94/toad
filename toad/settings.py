@@ -233,6 +233,9 @@ else:
     else:
         # Use local path for development
         MEDIA_ROOT = BASE_DIR / 'media'
+    
+    # Ensure local storage is used when S3 is disabled
+    DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 
 
 # ---
