@@ -1,4 +1,25 @@
 from django.db import models
+from django.conf import settings
+
+def get_storage_backend():
+    """Get the appropriate storage backend based on settings"""
+    try:
+        from django.conf import settings
+        if getattr(settings, 'FORCE_S3_TESTING', False):
+            # Import and return the actual storage class, not the string
+            storage_path = settings.DEFAULT_FILE_STORAGE
+            if storage_path:
+                module_path, class_name = storage_path.rsplit('.', 1)
+                module = __import__(module_path, fromlist=[class_name])
+                storage_class = getattr(module, class_name)
+                return storage_class()
+            else:
+                return None
+        else:
+            return None  # Use Django's default
+    except Exception as e:
+        print(f"Error getting storage backend: {e}")
+        return None  # Fallback to Django's default
 
 # Create your models here.
 
@@ -35,14 +56,24 @@ class LeadMessage(models.Model):
     
 class SocietyLink(models.Model):
     name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='society_links/', null=True, blank=True)
+    image = models.ImageField(
+        upload_to='society_links/', 
+        null=True, 
+        blank=True,
+        storage=get_storage_backend()
+    )
     
     def __str__(self):
         return self.name or f"SocietyLink-{self.id}" if self.id else "SocietyLink-New"
 
 class TestSocietyLink(models.Model):
     title = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='test_society_links/', null=True, blank=True)
+    photo = models.ImageField(
+        upload_to='test_society_links/', 
+        null=True, 
+        blank=True,
+        storage=get_storage_backend()
+    )
     
     def __str__(self):
         return self.title or f"TestSocietyLink-{self.id}" if self.id else "TestSocietyLink-New"

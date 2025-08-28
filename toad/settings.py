@@ -211,8 +211,7 @@ if IS_PRODUCTION or FORCE_S3_TESTING:
     AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
     AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME', 'us-east-1')
-     # Optional: for CloudFront
+    AWS_S3_REGION_NAME = os.environ.get('AWS_S3_REGION_NAME')
     
     # S3 Security and Performance
     AWS_S3_FILE_OVERWRITE = False  # Don't overwrite files with same name
@@ -222,7 +221,7 @@ if IS_PRODUCTION or FORCE_S3_TESTING:
         'CacheControl': 'max-age=86400',  # Cache for 24 hours
     }
     
-    # Media files will be stored in S3
+    # Use the correct S3 endpoint format
     MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
 else:
     # Use local storage for media files in development

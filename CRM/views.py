@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.urls import reverse
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
 from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, TestSocietyLinkForm
+from django.core.files.base import ContentFile
 
 # Create your views here.
 
@@ -260,17 +261,148 @@ def test_society_link_create(request):
     Test view for creating a new test society link.
     Only accessible by superusers.
     """
+    print("=== VIEW CALLED ===")
+    print(f"Request method: {request.method}")
+    
     if request.method == 'POST':
+        print("=== PROCESSING POST ===")
+        
+        # Force S3 storage BEFORE creating the form
+        from django.conf import settings
+        expected_storage_path = getattr(settings, 'DEFAULT_FILE_STORAGE', 'Not set')
+        if expected_storage_path != 'Not set':
+            try:
+                import importlib
+                module_path, class_name = expected_storage_path.rsplit('.', 1)
+                module = importlib.import_module(module_path)
+                expected_class = getattr(module, class_name)
+                
+                # Check if we need to force S3 storage
+                from django.core.files.storage import default_storage
+                if not isinstance(default_storage, expected_class):
+                    print("⚠️  Forcing S3 storage before form creation...")
+                    forced_storage = expected_class()
+                    import django.core.files.storage
+                    django.core.files.storage.default_storage = forced_storage
+                    print("✅ Default storage overridden to S3 before form creation")
+            except Exception as e:
+                print(f"Error forcing S3 storage: {e}")
+        
         form = TestSocietyLinkForm(request.POST, request.FILES)
+        print(f"Form created: {form}")
+        print(f"Form is valid: {form.is_valid()}")
+        
         if form.is_valid():
+            print("=== UPLOAD DEBUG ===")
+            print(f"Form is valid, about to save...")
+            print(f"Image file: {request.FILES.get('photo')}")
+            print(f"Image name: {request.FILES.get('photo').name if request.FILES.get('photo') else 'None'}")
+            
+            # Check storage backend before saving
+            from django.core.files.storage import default_storage
+            from django.conf import settings
+            
+            # Get the storage class that should be used according to settings
+            expected_storage_path = getattr(settings, 'DEFAULT_FILE_STORAGE', 'Not set')
+            actual_storage = default_storage
+            
+            print(f"Storage backend: {actual_storage.__class__.__name__}")
+            print(f"Storage location: {getattr(actual_storage, 'location', 'N/A')}")
+            print(f"Settings DEFAULT_FILE_STORAGE: {expected_storage_path}")
+            print(f"Settings FORCE_S3_TESTING: {getattr(settings, 'FORCE_S3_TESTING', 'Not set')}")
+            print(f"Settings IS_PRODUCTION: {getattr(settings, 'IS_PRODUCTION', 'Not set')}")
+            print(f"Settings MEDIA_URL: {getattr(settings, 'MEDIA_URL', 'Not set')}")
+            print(f"Expected storage path: {expected_storage_path}")
+            print(f"Actual storage class: {actual_storage.__class__}")
+            print(f"Storage module: {actual_storage.__class__.__module__}")
+            
+            # Try to import the expected storage class
+            try:
+                if expected_storage_path != 'Not set':
+                    import importlib
+                    module_path, class_name = expected_storage_path.rsplit('.', 1)
+                    module = importlib.import_module(module_path)
+                    expected_class = getattr(module, class_name)
+                    print(f"Successfully imported expected storage class: {expected_class}")
+                    print(f"Are they the same? {isinstance(actual_storage, expected_class)}")
+                    
+                    # Force Django to use the correct storage
+                    if not isinstance(actual_storage, expected_class):
+                        print("⚠️  Storage mismatch detected! Forcing S3 storage...")
+                        # Create a new S3 storage instance
+                        forced_storage = expected_class()
+                        print(f"Forced storage created: {forced_storage.__class__.__name__}")
+                        print(f"Forced storage location: {getattr(forced_storage, 'location', 'N/A')}")
+                        
+                        # Override the default storage temporarily
+                        import django.core.files.storage
+                        django.core.files.storage.default_storage = forced_storage
+                        print("✅ Default storage overridden to S3")
+                else:
+                    print("No DEFAULT_FILE_STORAGE setting found")
+            except Exception as e:
+                print(f"Error importing expected storage class: {e}")
+            
             test_link = form.save()
+            print(f"Test link saved with ID: {test_link.pk}")
+            print(f"Photo field value: {test_link.photo}")
+            print(f"Photo field URL: {test_link.photo.url if test_link.photo else 'None'}")
+            
+            # Check if file exists in storage
+            if test_link.photo:
+                print(f"File exists in storage: {default_storage.exists(test_link.photo.name)}")
+                print(f"Full storage path: {test_link.photo.name}")
+                
+                # Check the actual file object
+                print(f"Photo field name: {test_link.photo.name}")
+                print(f"Photo field size: {test_link.photo.size if hasattr(test_link.photo, 'size') else 'N/A'}")
+                print(f"Photo field storage: {test_link.photo.storage.__class__.__name__}")
+                
+                # Try to access the file content
+                try:
+                    with test_link.photo.open('rb') as f:
+                        content = f.read()
+                        print(f"✅ File content read successfully, size: {len(content)} bytes")
+                except Exception as e:
+                    print(f"❌ Error reading file content: {e}")
+                
+                # Test S3 storage directly
+                try:
+                    print("🔍 Testing S3 storage directly...")
+                    test_content = b"S3 storage test content"
+                    test_path = "test_s3_upload.txt"
+                    
+                    # Try to save a test file to S3
+                    saved_path = default_storage.save(test_path, ContentFile(test_content))
+                    print(f"✅ Test file saved to S3: {saved_path}")
+                    
+                    # Check if it exists
+                    exists = default_storage.exists(saved_path)
+                    print(f"✅ Test file exists in S3: {exists}")
+                    
+                    # Get the URL
+                    url = default_storage.url(saved_path)
+                    print(f"✅ Test file S3 URL: {url}")
+                    
+                    # Clean up
+                    default_storage.delete(saved_path)
+                    print("✅ Test file cleaned up")
+                    
+                except Exception as e:
+                    print(f"❌ S3 storage test failed: {e}")
+                    print(f"Error type: {type(e)}")
+                    import traceback
+                    traceback.print_exc()
+            
             messages.success(request, f'Test society link created successfully! ID: {test_link.pk}')
             return redirect('crm:home')
         else:
+            print(f"Form is invalid: {form.errors}")
             # Return form with errors
             context = {'form': form, 'title': 'Create Test Society Link'}
             return render(request, 'society_links/test_society_link_form.html', context)
     else:
+        print("=== PROCESSING GET ===")
         form = TestSocietyLinkForm()
     
     context = {'form': form, 'title': 'Create Test Society Link'}

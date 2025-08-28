@@ -53,6 +53,6 @@ else:
     # Standard static file serving when DEBUG = True
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     
-    # Serve media files in development
-    if hasattr(settings, 'MEDIA_ROOT') and settings.MEDIA_ROOT:
+    # Serve media files in development ONLY when not using S3
+    if hasattr(settings, 'MEDIA_ROOT') and settings.MEDIA_ROOT and not getattr(settings, 'FORCE_S3_TESTING', False):
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

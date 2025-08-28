@@ -81,3 +81,25 @@ class TestSocietyLinkForm(forms.ModelForm):
                 'accept': 'image/*'
             })
         }
+    
+    def __init__(self, *args, **kwargs):
+        print("=== FORM INIT ===")
+        print(f"Form args: {args}")
+        print(f"Form kwargs: {kwargs}")
+        super().__init__(*args, **kwargs)
+    
+    def save(self, commit=True):
+        print("=== FORM SAVE DEBUG ===")
+        print(f"Form save called with commit={commit}")
+        print(f"Form cleaned data: {self.cleaned_data}")
+        print(f"Form instance: {self.instance}")
+        
+        if commit:
+            print("About to call super().save()...")
+            instance = super().save(commit=commit)
+            print(f"Super save completed, instance: {instance}")
+            print(f"Instance photo field: {instance.photo}")
+            return instance
+        else:
+            print("Commit=False, returning instance without saving")
+            return self.instance
