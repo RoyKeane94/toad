@@ -232,26 +232,119 @@ def society_link_create(request):
     Create a new society link with image upload.
     Only accessible by superusers.
     """
+    print("=== PRODUCTION SOCIETY LINK CREATE DEBUG ===")
+    print(f"Request method: {request.method}")
+    print(f"User: {request.user.email if request.user.is_authenticated else 'Not authenticated'}")
+    print(f"Files: {request.FILES}")
+    print(f"POST data: {request.POST}")
+    
     if request.method == 'POST':
-        form = SocietyLinkForm(request.POST, request.FILES)
+        print("=== PROCESSING POST REQUEST ===")
+        
+        # Check storage configuration before form creation
+        try:
+            from django.conf import settings
+            from django.core.files.storage import default_storage
+            
+            print(f"=== STORAGE CONFIGURATION DEBUG ===")
+            print(f"IS_PRODUCTION: {getattr(settings, 'IS_PRODUCTION', 'Not set')}")
+            print(f"FORCE_S3_TESTING: {getattr(settings, 'FORCE_S3_TESTING', 'Not set')}")
+            print(f"DEFAULT_FILE_STORAGE: {getattr(settings, 'DEFAULT_FILE_STORAGE', 'Not set')}")
+            print(f"MEDIA_URL: {getattr(settings, 'MEDIA_URL', 'Not set')}")
+            print(f"Current default_storage: {default_storage.__class__.__name__}")
+            print(f"Storage location: {getattr(default_storage, 'location', 'N/A')}")
+            
+            # Check AWS credentials
+            print(f"=== AWS CREDENTIALS DEBUG ===")
+            print(f"AWS_ACCESS_KEY_ID: {'✅ Set' if getattr(settings, 'AWS_ACCESS_KEY_ID', None) else '❌ Missing'}")
+            print(f"AWS_SECRET_ACCESS_KEY: {'✅ Set' if getattr(settings, 'AWS_SECRET_ACCESS_KEY', None) else '❌ Missing'}")
+            print(f"AWS_STORAGE_BUCKET_NAME: {'✅ Set' if getattr(settings, 'AWS_STORAGE_BUCKET_NAME', None) else '❌ Missing'}")
+            print(f"AWS_S3_REGION_NAME: {'✅ Set' if getattr(settings, 'AWS_S3_REGION_NAME', None) else '❌ Missing'}")
+            
+        except Exception as e:
+            print(f"❌ Error checking storage configuration: {e}")
+            import traceback
+            traceback.print_exc()
+        
+        # Create form
+        try:
+            print("=== CREATING FORM ===")
+            form = SocietyLinkForm(request.POST, request.FILES)
+            print(f"Form created successfully: {form}")
+            print(f"Form has files: {bool(request.FILES)}")
+            if request.FILES:
+                print(f"File keys: {list(request.FILES.keys())}")
+                for key, file in request.FILES.items():
+                    print(f"File {key}: {file.name}, size: {file.size}, type: {file.content_type}")
+        except Exception as e:
+            print(f"❌ Error creating form: {e}")
+            import traceback
+            traceback.print_exc()
+            return render(request, 'CRM/500.html', status=500)
+        
+        # Validate form
+        try:
+            print("=== VALIDATING FORM ===")
+            is_valid = form.is_valid()
+            print(f"Form is valid: {is_valid}")
+            if not is_valid:
+                print(f"Form errors: {form.errors}")
+                print(f"Form non-field errors: {form.non_field_errors()}")
+        except Exception as e:
+            print(f"❌ Error validating form: {e}")
+            import traceback
+            traceback.print_exc()
+            return render(request, 'CRM/500.html', status=500)
+        
         if form.is_valid():
-            society_link = form.save()
-            messages.success(
-                request, 
-                f'Society link created successfully! ID: {society_link.pk}'
-            )
-            return redirect('crm:home')
+            try:
+                print("=== SAVING SOCIETY LINK ===")
+                print(f"About to save form...")
+                society_link = form.save()
+                print(f"✅ Society link saved successfully!")
+                print(f"ID: {society_link.pk}")
+                print(f"Name: {society_link.name}")
+                print(f"Image field: {society_link.image}")
+                if society_link.image:
+                    print(f"Image name: {society_link.image.name}")
+                    print(f"Image URL: {society_link.image.url}")
+                    print(f"Image storage: {society_link.image.storage.__class__.__name__}")
+                
+                messages.success(
+                    request, 
+                    f'Society link created successfully! ID: {society_link.pk}'
+                )
+                return redirect('crm:home')
+                
+            except Exception as e:
+                print(f"❌ Error saving society link: {e}")
+                print(f"Error type: {type(e)}")
+                import traceback
+                traceback.print_exc()
+                messages.error(request, f'Error creating society link: {str(e)}')
+                context = {'form': form, 'title': 'Create Society Link'}
+                return render(request, 'society_links/society_link_form.html', context)
         else:
+            print("=== FORM INVALID, RETURNING WITH ERRORS ===")
             # Return form with errors
             context = {'form': form, 'title': 'Create Society Link'}
             return render(request, 'society_links/society_link_form.html', context)
     else:
-        form = SocietyLinkForm()
+        print("=== PROCESSING GET REQUEST ===")
+        try:
+            form = SocietyLinkForm()
+            print(f"Form created for GET request: {form}")
+        except Exception as e:
+            print(f"❌ Error creating form for GET: {e}")
+            import traceback
+            traceback.print_exc()
+            return render(request, 'CRM/500.html', status=500)
     
     context = {
         'form': form,
         'title': 'Create Society Link',
     }
+    print("=== RENDERING TEMPLATE ===")
     return render(request, 'society_links/society_link_form.html', context)
 
 @login_required

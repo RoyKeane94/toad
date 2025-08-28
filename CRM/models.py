@@ -4,15 +4,26 @@ from django.conf import settings
 def get_storage_backend():
     """Get the appropriate storage backend based on settings"""
     try:
+        # Only try to get settings if Django is fully configured
         from django.conf import settings
-        if getattr(settings, 'FORCE_S3_TESTING', False):
+        from django.core.exceptions import ImproperlyConfigured
+        
+        # Check if settings are ready
+        if not hasattr(settings, 'DEFAULT_FILE_STORAGE'):
+            return None
+            
+        if getattr(settings, 'FORCE_S3_TESTING', False) or getattr(settings, 'IS_PRODUCTION', False):
             # Import and return the actual storage class, not the string
             storage_path = settings.DEFAULT_FILE_STORAGE
             if storage_path:
-                module_path, class_name = storage_path.rsplit('.', 1)
-                module = __import__(module_path, fromlist=[class_name])
-                storage_class = getattr(module, class_name)
-                return storage_class()
+                try:
+                    module_path, class_name = storage_path.rsplit('.', 1)
+                    module = __import__(module_path, fromlist=[class_name])
+                    storage_class = getattr(module, class_name)
+                    return storage_class()
+                except (ImportError, AttributeError) as e:
+                    print(f"Error importing storage class {storage_path}: {e}")
+                    return None
             else:
                 return None
         else:
