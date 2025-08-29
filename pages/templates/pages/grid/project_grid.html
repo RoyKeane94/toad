@@ -421,13 +421,26 @@
                     <!-- Divider -->
                     <div class="border-t border-[var(--border-color)] my-2"></div>
                     
-                    <!-- Archive Grid -->
-                    <button type="button"
-                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--clear-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                            onclick="closeAllDropdowns(); window.location.href='{% url 'pages:archive_project_confirm' pk=project.pk %}'">
-                        <i class="fas fa-archive text-xs w-4 text-center"></i>
-                        <span>Archive Grid</span>
-                    </button>
+                    {% if project.is_archived %}
+                        <!-- Restore Grid -->
+                        <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="w-full">
+                            {% csrf_token %}
+                            <button type="submit" 
+                                   class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                   onclick="closeAllDropdowns();">
+                                <i class="fas fa-undo text-xs w-4 text-center"></i>
+                                <span>Restore Grid</span>
+                            </button>
+                        </form>
+                    {% else %}
+                        <!-- Archive Grid -->
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--clear-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                onclick="closeAllDropdowns(); window.location.href='{% url 'pages:archive_project_confirm' pk=project.pk %}'">
+                            <i class="fas fa-archive text-xs w-4 text-center"></i>
+                            <span>Archive Grid</span>
+                        </button>
+                    {% endif %}
                     
                     <!-- Save as Template -->
                     <button type="button"
