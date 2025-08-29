@@ -217,6 +217,31 @@
             box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
             border-color: var(--tertiary-action-bg) !important;
         }
+        
+        /* Grid name inline editing styles */
+        .grid-name-editable:hover {
+            background-color: var(--grid-header-bg) !important;
+            border-radius: 6px !important;
+            padding: 4px 8px !important;
+            cursor: text !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        .grid-name-editable.editing {
+            background-color: var(--container-bg) !important;
+            border: 2px dashed var(--tertiary-action-bg) !important;
+            border-radius: 6px !important;
+            padding: 4px 8px !important;
+            outline: none !important;
+            min-height: 24px !important;
+            box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+            position: relative !important;
+        }
+        
+        .grid-name-editable.editing:focus {
+            box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
+            border-color: var(--tertiary-action-bg) !important;
+        }
     }
     
     /* Grid Tabs Styling */
@@ -349,7 +374,7 @@
 <div class="mb-6 px-4 grid-header-mobile grid-content-hidden" id="grid-header">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
         <div class="flex items-center space-x-3">
-            <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
             
             <!-- Grid Name Actions Dropdown -->
             <div class="relative" id="grid-name-actions-container">

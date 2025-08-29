@@ -23089,3 +23089,24 @@ INFO 2025-08-28 20:28:20,996 basehttp 99347 6200946688 "GET /lilypad/society-lin
 INFO 2025-08-28 20:28:27,772 basehttp 99347 6200946688 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
 INFO 2025-08-28 20:28:27,791 basehttp 99347 6200946688 "GET /lilypad/ HTTP/1.1" 200 3713
 INFO 2025-08-28 20:28:30,091 basehttp 99347 6200946688 "GET /lilypad/society-links/ HTTP/1.1" 200 5420
+INFO 2025-08-29 10:10:36,194 autoreload 9297 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-29 10:10:40,662 basehttp 9297 6125072384 "GET / HTTP/1.1" 200 6503
+INFO 2025-08-29 10:10:40,684 basehttp 9297 6125072384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-29 10:10:40,692 basehttp 9297 6125072384 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-08-29 10:10:40,697 basehttp 9297 6125072384 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:10:40,802 basehttp 9297 6125072384 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-08-29 10:10:42,114 basehttp 9297 6125072384 "GET /grids/ HTTP/1.1" 200 11464
+INFO 2025-08-29 10:10:43,871 basehttp 9297 6125072384 "GET /grids/150/ HTTP/1.1" 200 15573
+INFO 2025-08-29 10:10:43,889 basehttp 9297 6125072384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:11:06,010 autoreload 9749 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-29 10:11:21,853 basehttp 9749 6160330752 "GET /grids/150/ HTTP/1.1" 200 15600
+INFO 2025-08-29 10:11:21,872 basehttp 9749 6193983488 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-29 10:11:21,873 basehttp 9749 6177157120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-08-29 10:11:21,874 basehttp 9749 6210809856 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-08-29 10:11:21,875 basehttp 9749 6160330752 "GET /static/css/output.css HTTP/1.1" 200 75699
+INFO 2025-08-29 10:11:25,435 basehttp 9749 6160330752 "POST /grids/150/edit/ HTTP/1.1" 200 111
+INFO 2025-08-29 10:11:27,259 basehttp 9749 6160330752 "GET /grids/150/ HTTP/1.1" 200 15571
+INFO 2025-08-29 10:11:27,274 basehttp 9749 6160330752 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-29 10:11:27,275 basehttp 9749 6177157120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:11:27,275 basehttp 9749 6193983488 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:11:30,583 basehttp 9749 6160330752 "POST /grids/150/edit/ HTTP/1.1" 200 112

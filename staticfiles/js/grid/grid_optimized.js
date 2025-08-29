@@ -1863,6 +1863,9 @@ class GridManager {
         // Reinitialize inline editing for headers
         this.addHeaderInlineEditingListeners();
         
+        // Reinitialize inline editing for grid name
+        this.addGridNameInlineEditingListeners();
+        
         // Restore scroll position immediately, no timeout
         if (this.elements.scrollable && currentScrollLeft > 0) {
             this.elements.scrollable.scrollLeft = currentScrollLeft;
@@ -1902,6 +1905,7 @@ class GridManager {
         const taskTextElements = document.querySelectorAll('.task-text-editable');
         const rowHeaders = document.querySelectorAll('.row-header-editable');
         const columnHeaders = document.querySelectorAll('.column-header-editable');
+        const gridNameElement = document.querySelector('.grid-name-editable');
         
         taskTextElements.forEach(element => {
             element.removeEventListener('click', this.boundTaskTextClick);
@@ -1920,6 +1924,12 @@ class GridManager {
             element.removeEventListener('blur', this.boundColumnHeaderBlur);
             element.removeEventListener('keydown', this.boundColumnHeaderKeydown);
         });
+        
+        if (gridNameElement) {
+            gridNameElement.removeEventListener('click', this.boundGridNameClick);
+            gridNameElement.removeEventListener('blur', this.boundGridNameBlur);
+            gridNameElement.removeEventListener('keydown', this.boundGridNameKeydown);
+        }
     }
 
     // Initialize everything
@@ -1981,11 +1991,19 @@ class GridManager {
         this.boundColumnHeaderBlur = this.handleColumnHeaderBlur.bind(this);
         this.boundColumnHeaderKeydown = this.handleColumnHeaderKeydown.bind(this);
         
+        // Grid name inline editing
+        this.boundGridNameClick = this.handleGridNameClick.bind(this);
+        this.boundGridNameBlur = this.handleGridNameBlur.bind(this);
+        this.boundGridNameKeydown = this.handleGridNameKeydown.bind(this);
+        
         // Add event listeners to all task text elements
         this.addInlineEditingListeners();
         
         // Add event listeners to row and column headers
         this.addHeaderInlineEditingListeners();
+        
+        // Add event listeners to grid name
+        this.addGridNameInlineEditingListeners();
         
         // Listen for new tasks being added (HTMX updates)
         document.addEventListener('htmx:afterSwap', (e) => {
@@ -2047,6 +2065,23 @@ class GridManager {
             element.addEventListener('blur', this.boundColumnHeaderBlur);
             element.addEventListener('keydown', this.boundColumnHeaderKeydown);
         });
+    }
+
+    // Add inline editing event listeners to grid name
+    addGridNameInlineEditingListeners() {
+        const gridNameElement = document.querySelector('.grid-name-editable');
+        
+        if (gridNameElement) {
+            // Remove existing listeners to prevent duplicates
+            gridNameElement.removeEventListener('click', this.boundGridNameClick);
+            gridNameElement.removeEventListener('blur', this.boundGridNameBlur);
+            gridNameElement.removeEventListener('keydown', this.boundGridNameKeydown);
+            
+            // Add new listeners
+            gridNameElement.addEventListener('click', this.boundGridNameClick);
+            gridNameElement.addEventListener('blur', this.boundGridNameBlur);
+            gridNameElement.addEventListener('keydown', this.boundGridNameKeydown);
+        }
     }
 
     // Handle task text click for inline editing
@@ -2599,6 +2634,163 @@ class GridManager {
             this.state.isDragging = originalDragging;
             this.state.isScrollingToEnd = originalScrollingToEnd;
         }, 1000); // Give enough time for scroll to complete
+    }
+
+    // Grid name inline editing methods
+    handleGridNameClick(e) {
+        if (window.innerWidth < 769) return; // Only on desktop
+        
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing elements first
+        this.closeAllEditingElements();
+        
+        // Now open this grid name for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Add a one-time click handler to close this grid name when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideGridNameClick.bind(this, element), { once: true });
+        }, 0);
+    }
+
+    handleGridNameBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                this.saveGridNameEdit(element);
+            }
+        }, 10);
+    }
+
+    handleGridNameKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveGridNameEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+        }
+    }
+
+    // Handle clicks outside editing grid name
+    handleOutsideGridNameClick(editingElement, e) {
+        // Check if the click target is outside the editing element
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingGridName(editingElement);
+        }
+    }
+
+    // Close a single editing grid name
+    closeEditingGridName(element) {
+        if (element.classList.contains('editing')) {
+            element.classList.add('saving');
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            this.saveGridNameEdit(element);
+        }
+    }
+
+    // Close all editing elements
+    closeAllEditingElements() {
+        this.closeAllEditingTasks();
+        this.closeAllEditingHeaders();
+        
+        const editingGridName = document.querySelector('.grid-name-editable.editing');
+        if (editingGridName) {
+            this.closeEditingGridName(editingGridName);
+        }
+    }
+
+    // Save grid name edit to server
+    saveGridNameEdit(element) {
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Get project ID from current page
+        const projectId = this.getProjectId();
+        if (!projectId) {
+            console.error('No project ID found');
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Send update to server using correct URL format
+        fetch(`/grids/${projectId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+                // Update the page title if it contains the project name
+                const pageTitle = document.querySelector('title');
+                if (pageTitle && pageTitle.textContent.includes(originalText)) {
+                    pageTitle.textContent = pageTitle.textContent.replace(originalText, newText);
+                }
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
     }
 }
 
