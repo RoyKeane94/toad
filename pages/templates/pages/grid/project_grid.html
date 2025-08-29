@@ -388,10 +388,25 @@
                 <div id="grid-name-actions-dropdown" 
                      class="absolute top-full left-0 mt-2 w-48 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
                     
-                    <!-- Edit Grid Name -->
+                    <!-- + Row -->
                     <button type="button"
-                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                            hx-get="{% url 'pages:project_edit' pk=project.pk %}"
+                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
+                            hx-target="#modal-content"
+                            hx-trigger="click throttle:500ms"
+                            hx-disabled-elt="this"
+                            hx-indicator="#modal-content"
+                            hx-swap="innerHTML"
+                            hx-headers='{"Cache-Control": "no-cache"}'
+                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                        <i class="fas fa-plus text-xs w-4 text-center"></i>
+                        <span>Row</span>
+                    </button>
+                    
+                    <!-- + Column -->
+                    <button type="button"
+                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
                             hx-target="#modal-content"
                             hx-trigger="click throttle:500ms"
                             hx-disabled-elt="this"
@@ -399,8 +414,27 @@
                             hx-swap="innerHTML"
                             hx-headers='{"Cache-Control": "no-cache"}"
                             onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-edit text-xs w-4 text-center"></i>
-                        <span>Edit Name</span>
+                        <i class="fas fa-plus text-xs w-4 text-center"></i>
+                        <span>Column</span>
+                    </button>
+                    
+                    <!-- Divider -->
+                    <div class="border-t border-[var(--border-color)] my-2"></div>
+                    
+                    <!-- Archive Grid -->
+                    <button type="button"
+                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--clear-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            onclick="closeAllDropdowns(); window.location.href='{% url 'pages:archive_project_confirm' pk=project.pk %}'">
+                        <i class="fas fa-archive text-xs w-4 text-center"></i>
+                        <span>Archive Grid</span>
+                    </button>
+                    
+                    <!-- Save as Template -->
+                    <button type="button"
+                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            onclick="closeAllDropdowns(); document.getElementById('save-template-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('save-template-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('save-template-modal').querySelector('div').classList.add('scale-100');">
+                        <i class="fas fa-save text-xs w-4 text-center"></i>
+                        <span>Save as Template</span>
                     </button>
                     
                     <!-- Divider -->
@@ -415,7 +449,7 @@
                             hx-disabled-elt="this"
                             hx-indicator="#modal-content"
                             hx-swap="innerHTML"
-                            hx-headers='{"Cache-Control": "no-cache"}"
+                            hx-headers='{"Cache-Control": "no-cache"}'
                             onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
                         <i class="fas fa-trash text-xs w-4 text-center"></i>
                         <span>Delete Grid</span>

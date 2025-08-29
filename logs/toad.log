@@ -23110,3 +23110,19 @@ INFO 2025-08-29 10:11:27,274 basehttp 9749 6160330752 "GET /static/css/output.cs
 INFO 2025-08-29 10:11:27,275 basehttp 9749 6177157120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-08-29 10:11:27,275 basehttp 9749 6193983488 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-08-29 10:11:30,583 basehttp 9749 6160330752 "POST /grids/150/edit/ HTTP/1.1" 200 112
+INFO 2025-08-29 10:29:33,204 autoreload 10598 8549129984 Watching for file changes with StatReloader
+INFO 2025-08-29 10:29:36,116 basehttp 10598 6122024960 "GET /grids/150/ HTTP/1.1" 200 15789
+INFO 2025-08-29 10:29:36,160 basehttp 10598 6138851328 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-29 10:29:36,163 basehttp 10598 6122024960 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-08-29 10:29:36,163 basehttp 10598 6155677696 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-08-29 10:29:42,802 basehttp 10598 6122024960 "GET /grids/150/rows/create/ HTTP/1.1" 200 1055
+INFO 2025-08-29 10:29:45,652 basehttp 10598 6122024960 "GET /grids/150/columns/create/ HTTP/1.1" 200 1040
+INFO 2025-08-29 10:29:48,718 basehttp 10598 6122024960 "GET /grids/150/archive/confirm/ HTTP/1.1" 200 3603
+INFO 2025-08-29 10:29:48,743 basehttp 10598 6122024960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:29:49,918 basehttp 10598 6122024960 "GET /grids/150/ HTTP/1.1" 200 15763
+INFO 2025-08-29 10:29:49,928 basehttp 10598 6122024960 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:32:29,822 basehttp 10598 6122024960 "GET /grids/150/ HTTP/1.1" 200 15760
+INFO 2025-08-29 10:32:29,843 basehttp 10598 6138851328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:32:29,844 basehttp 10598 6122024960 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-08-29 10:32:29,845 basehttp 10598 6155677696 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-08-29 10:32:32,939 basehttp 10598 6122024960 "GET /grids/150/rows/create/ HTTP/1.1" 200 1056
