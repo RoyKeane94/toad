@@ -23574,3 +23574,11 @@ INFO 2025-09-02 19:25:48,373 basehttp 22951 6125711360 "GET /accounts/login/ HTT
 INFO 2025-09-02 19:25:53,348 basehttp 22951 6125711360 "GET /accounts/register/ HTTP/1.1" 200 4455
 INFO 2025-09-02 19:25:55,249 basehttp 22951 6125711360 "GET /accounts/forgot-password/ HTTP/1.1" 200 4007
 INFO 2025-09-02 19:25:56,663 basehttp 22951 6125711360 "GET /accounts/login/ HTTP/1.1" 200 4360
+INFO 2025-09-02 19:30:07,045 autoreload 23354 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:30:23,568 basehttp 23354 6157299712 "GET /accounts/register/beta HTTP/1.1" 301 0
+INFO 2025-09-02 19:30:23,583 basehttp 23354 6174126080 "GET /accounts/register/beta/ HTTP/1.1" 200 4513
+INFO 2025-09-02 19:30:40,842 autoreload 23354 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-09-02 19:30:41,240 autoreload 23378 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:30:48,175 basehttp 23378 6200963072 "GET /accounts/register/barnabytoad/ HTTP/1.1" 200 4529
+INFO 2025-09-02 19:30:52,790 autoreload 23378 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 19:30:53,149 autoreload 23391 8549129984 Watching for file changes with StatReloader

@@ -566,3 +566,61 @@ class RegisterPersonalView(FormView):
         """Handle form validation errors"""
         messages.error(self.request, 'Please correct the errors below.')
         return super().form_invalid(form)
+
+
+class SecretRegistrationView(FormView):
+    """
+    Secret registration view for Beta users
+    """
+    template_name = 'accounts/pages/registration/secret_registration.html'
+    form_class = CustomUserCreationForm
+    
+    def form_valid(self, form):
+        """Create the user and send verification email"""
+        user = form.save()
+        
+        # Set user tier to Beta
+        user.tier = 'beta'
+        user.save()
+        
+        # Log registration attempt
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"New Beta user registration: {user.email} ({user.get_short_name()})")
+        
+        # Add session flag immediately for better UX
+        self.request.session['show_verification_message'] = True
+        
+        # Send verification email asynchronously to improve performance
+        try:
+            import threading
+            def send_email_async():
+                try:
+                    email_sent = send_verification_email(user, self.request)
+                    logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                except Exception as e:
+                    logger.error(f"Failed to send verification email to {user.email}: {e}")
+            
+            # Start email sending in background thread
+            email_thread = threading.Thread(target=send_email_async)
+            email_thread.daemon = True
+            email_thread.start()
+            
+            messages.success(self.request, f'Welcome to Toad Beta, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad.')
+        except Exception as e:
+            logger.error(f"Failed to start email sending: {e}")
+            messages.warning(self.request, f'Welcome to Toad Beta, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
+        
+        # Redirect to login page immediately
+        return redirect('accounts:login')
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+    
+    def dispatch(self, request, *args, **kwargs):
+        """Redirect authenticated users away from registration page"""
+        if request.user.is_authenticated:
+            return redirect('pages:project_list')
+        return super().dispatch(request, *args, **kwargs)
