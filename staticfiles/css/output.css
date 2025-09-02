@@ -1014,6 +1014,9 @@
   .border-green-200 {
     border-color: var(--color-green-200);
   }
+  .border-orange-500 {
+    border-color: var(--color-orange-500);
+  }
   .border-red-200 {
     border-color: var(--color-red-200);
   }
@@ -1112,6 +1115,9 @@
   }
   .bg-green-500 {
     background-color: var(--color-green-500);
+  }
+  .bg-orange-500 {
+    background-color: var(--color-orange-500);
   }
   .bg-purple-100 {
     background-color: var(--color-purple-100);
@@ -1536,6 +1542,9 @@
   .text-green-800 {
     color: var(--color-green-800);
   }
+  .text-orange-500 {
+    color: var(--color-orange-500);
+  }
   .text-purple-600 {
     color: var(--color-purple-600);
   }
@@ -1910,6 +1919,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-300);
+      }
+    }
+  }
+  .hover\:bg-orange-600 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-orange-600);
       }
     }
   }

@@ -372,7 +372,7 @@
 
 <!-- Header -->
 <div class="mb-6 px-4 grid-header-mobile grid-content-hidden" id="grid-header">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4" style="max-width: 83vw; margin: 0 auto;">
         <div class="flex items-center space-x-3">
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
             
@@ -480,14 +480,12 @@
         
         <!-- Grid Actions - Right Aligned -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
-            
-            
+            <div class="w-full sm:w-auto sm:ml-auto">
                 <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
-                   class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer">
+                   class="inline-flex items-center justify-center w-full sm:w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                     <i class="fas fa-check mr-1"></i>Clear Completed
                 </a>
-                
-            
+            </div>
         </div>            
     </div>
 </div>
