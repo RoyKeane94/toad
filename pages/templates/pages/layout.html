@@ -93,7 +93,7 @@
                         </div>
                     {% else %}
                         <div class="flex items-center space-x-3">
-                            <a href="{% url 'accounts:register' %}" class="bg-transparent hover:bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border border-[var(--primary-action-bg)] hover:border-[var(--primary-action-hover-bg)] px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 whitespace-nowrap">
+                            <a href="{% url 'accounts:register_choices' %}" class="bg-transparent hover:bg-[var(--primary-action-bg)]/10 text-[var(--primary-action-bg)] border border-[var(--primary-action-bg)] hover:border-[var(--primary-action-hover-bg)] px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 whitespace-nowrap">
                                 Register
                             </a>
                             <a href="{% url 'accounts:login' %}" class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 whitespace-nowrap">
@@ -176,7 +176,7 @@
                         <li><a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Grids</a></li>
                         <li><a href="{% url 'accounts:account_settings' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Account</a></li>
                         {% else %}
-                        <li><a href="{% url 'accounts:register' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Sign Up</a></li>
+                        <li><a href="{% url 'accounts:register_choices' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Sign Up</a></li>
                         <li><a href="{% url 'accounts:login' %}" class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200 text-sm">Sign In</a></li>
                         {% endif %}
                     </ul>

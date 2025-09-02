@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, update_session_auth_hash, logout
 from django.contrib import messages
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.db import transaction
@@ -70,7 +70,7 @@ class LoginView(FormView):
             return redirect(self.success_url)
         return super().dispatch(request, *args, **kwargs)
 
-class RegisterView(FormView):
+class RegisterFreeView(FormView):
     """
     Custom registration view using email authentication
     """
@@ -81,10 +81,14 @@ class RegisterView(FormView):
         """Create the user and send verification email"""
         user = form.save()
         
+        # Set user tier to Free
+        user.tier = 'free'
+        user.save()
+        
         # Log registration attempt
         import logging
         logger = logging.getLogger(__name__)
-        logger.info(f"New user registration: {user.email} ({user.get_short_name()})")
+        logger.info(f"New Free plan user registration: {user.email} ({user.get_short_name()})")
         
         # Add session flag immediately for better UX
         self.request.session['show_verification_message'] = True
@@ -484,3 +488,81 @@ def beta_update_email_preview(request):
     # Return the rendered HTML directly
     from django.http import HttpResponse
     return HttpResponse(beta_update_html)
+
+
+class RegisterChoicesView(TemplateView):
+    """
+    View to display pricing plan choices
+    """
+    template_name = 'accounts/pages/register_choices.html'
+
+
+class RegisterPersonalView(FormView):
+    """
+    Custom registration view for Personal plan using email authentication
+    """
+    template_name = 'accounts/pages/register_personal.html'
+    form_class = CustomUserCreationForm
+    
+    def form_valid(self, form):
+        """Create the user and send verification email"""
+        user = form.save()
+        
+        # Set user tier to Personal (assuming you have a tier field)
+        # You may need to adjust this based on your User model
+        if hasattr(user, 'tier'):
+            user.tier = 'personal'
+            user.save()
+        
+        # Log registration attempt
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f"New Personal plan user registration: {user.email} ({user.get_short_name()})")
+        
+        # Add session flag immediately for better UX
+        self.request.session['show_verification_message'] = True
+        
+        # Send verification email asynchronously to improve performance
+        try:
+            import threading
+            def send_email_async():
+                try:
+                    email_sent = send_verification_email(user, self.request)
+                    logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                except Exception as e:
+                    logger.error(f"Failed to send verification email to {user.email}: {e}")
+            
+            # Start email sending in background thread
+            email_thread = threading.Thread(target=send_email_async)
+            email_thread.daemon = True
+            email_thread.start()
+            
+        except Exception as e:
+            logger.error(f"Failed to start email thread for {user.email}: {e}")
+        
+        # Send joining email asynchronously
+        try:
+            import threading
+            def send_joining_email_async():
+                try:
+                    email_sent = send_joining_email(user, self.request)
+                    logger.info(f"Joining email sent: {email_sent} for {user.email}")
+                except Exception as e:
+                    logger.error(f"Failed to send joining email to {user.email}: {e}")
+            
+            # Start email sending in background thread
+            email_thread = threading.Thread(target=send_joining_email_async)
+            email_thread.daemon = True
+            email_thread.start()
+            
+        except Exception as e:
+            logger.error(f"Failed to start joining email thread for {user.email}: {e}")
+        
+        # Redirect to login with success message
+        messages.success(self.request, 'Account created successfully! Please check your email to verify your account.')
+        return redirect('accounts:login')
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)

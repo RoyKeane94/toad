@@ -23428,3 +23428,115 @@ INFO 2025-09-02 05:35:39,906 basehttp 19592 6191443968 "GET /static/css/output.c
 INFO 2025-09-02 05:35:39,940 basehttp 19592 6191443968 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
 INFO 2025-09-02 05:35:42,465 basehttp 19592 6191443968 "GET /accounts/register/ HTTP/1.1" 200 4720
 INFO 2025-09-02 05:35:46,351 basehttp 19592 6191443968 "GET /accounts/register/ HTTP/1.1" 200 4561
+INFO 2025-09-02 06:01:09,012 autoreload 20689 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 06:01:20,444 basehttp 20689 6171258880 "GET / HTTP/1.1" 200 6353
+INFO 2025-09-02 06:01:20,777 basehttp 20689 6171258880 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 06:01:20,791 basehttp 20689 6171258880 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-02 06:01:23,758 basehttp 20689 6171258880 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-02 06:01:23,781 basehttp 20689 6171258880 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-09-02 06:01:23,793 basehttp 20689 6171258880 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1593
+INFO 2025-09-02 06:01:23,799 basehttp 20689 6204911616 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-02 06:01:23,800 basehttp 20689 6188085248 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-02 06:01:23,801 basehttp 20689 6171258880 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-02 06:01:23,803 basehttp 20689 6188085248 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-09-02 06:01:23,803 basehttp 20689 6171258880 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-02 06:01:23,804 basehttp 20689 6204911616 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-02 06:01:23,805 basehttp 20689 6171258880 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-02 06:01:25,125 basehttp 20689 6171258880 "GET /accounts/register/ HTTP/1.1" 200 4285
+INFO 2025-09-02 06:01:25,153 basehttp 20689 6204911616 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-02 06:01:25,153 basehttp 20689 6171258880 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 06:01:30,129 basehttp 20689 6171258880 "GET /accounts/register/free/ HTTP/1.1" 200 4500
+INFO 2025-09-02 06:01:30,148 basehttp 20689 6171258880 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 06:01:32,469 basehttp 20689 6171258880 "GET /accounts/register/personal/ HTTP/1.1" 200 4590
+INFO 2025-09-02 06:01:43,863 basehttp 20689 6171258880 "GET /accounts/register/free/ HTTP/1.1" 200 4483
+INFO 2025-09-02 06:01:43,879 basehttp 20689 6171258880 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 18:54:33,009 basehttp 20689 6171258880 "GET /accounts/register/ HTTP/1.1" 200 4265
+INFO 2025-09-02 18:54:33,032 basehttp 20689 6171258880 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 18:54:33,032 basehttp 20689 6188085248 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 19:04:01,092 basehttp 20689 6204911616 "GET /accounts/register/ HTTP/1.1" 200 4387
+WARNING 2025-09-02 19:04:08,438 log 20689 6204911616 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 19:04:08,438 basehttp 20689 6204911616 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2059
+INFO 2025-09-02 19:04:09,728 basehttp 20689 6204911616 "GET /accounts/register/ HTTP/1.1" 200 4328
+WARNING 2025-09-02 19:04:09,750 log 20689 6204911616 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 19:04:09,751 basehttp 20689 6204911616 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2052
+INFO 2025-09-02 19:06:46,012 autoreload 20689 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 19:06:46,446 autoreload 21594 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:07:17,103 autoreload 21594 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 19:07:17,468 autoreload 21618 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:07:22,650 autoreload 21618 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 19:07:23,008 autoreload 21621 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:09:07,140 autoreload 21621 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 19:09:07,528 autoreload 21642 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:09:26,960 autoreload 21642 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-09-02 19:09:27,424 autoreload 21658 8549129984 Watching for file changes with StatReloader
+ERROR 2025-09-02 19:09:52,590 log 21658 6124941312 Internal Server Error: /accounts/register/free/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/response.py", line 92, in rendered_content
+    return template.render(context, self._request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'register' not found. 'register' is not a valid view function or pattern name.
+ERROR 2025-09-02 19:09:52,594 basehttp 21658 6124941312 "GET /accounts/register/free/ HTTP/1.1" 500 18011
+INFO 2025-09-02 19:09:52,638 basehttp 21658 6124941312 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-02 19:09:52,642 basehttp 21658 6124941312 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-02 19:11:47,311 basehttp 21658 6124941312 "GET /accounts/register/free/ HTTP/1.1" 200 4505
+INFO 2025-09-02 19:12:05,017 basehttp 21658 6124941312 "GET /accounts/register/ HTTP/1.1" 200 4386
+INFO 2025-09-02 19:12:26,624 basehttp 21658 6124941312 "GET /accounts/register/ HTTP/1.1" 200 4336
+INFO 2025-09-02 19:15:47,678 basehttp 21658 6124941312 "GET /accounts/register/ HTTP/1.1" 200 4363
+INFO 2025-09-02 19:16:21,522 basehttp 21658 6124941312 "GET /accounts/register/ HTTP/1.1" 200 4425
+INFO 2025-09-02 19:16:34,707 basehttp 21658 6124941312 "GET /accounts/register/ HTTP/1.1" 200 4421
+INFO 2025-09-02 19:19:52,480 autoreload 22258 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:19:55,722 basehttp 22258 6204207104 "GET / HTTP/1.1" 200 6296
+INFO 2025-09-02 19:19:57,808 basehttp 22258 6204207104 "GET /accounts/register/ HTTP/1.1" 200 4386

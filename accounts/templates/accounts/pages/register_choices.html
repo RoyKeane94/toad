@@ -1,0 +1,290 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Choose Your Plan - Toad{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+    }
+    
+    /* Make main take remaining height after navbar */
+    main {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Pricing page specific styles */
+    .pricing-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 4rem 1rem;
+        background: var(--main-bg);
+    }
+    
+    .pricing-cards {
+        display: flex;
+        gap: 2rem;
+        max-width: 1200px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .pricing-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: var(--container-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        position: relative;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease-out;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-card.popular {
+        border: 2px solid var(--primary-action-bg);
+        background: white;
+        transform: translateY(-16px);
+    }
+    
+    .popular-badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-action-bg);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    .pricing-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .pricing-description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    
+    .pricing-amount {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+    }
+    
+    .pricing-period {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+    
+    .pricing-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+    
+    .pricing-features li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
+    }
+    
+    .pricing-features li i {
+        color: var(--primary-action-bg);
+        margin-right: 0.75rem;
+        width: 16px;
+        text-align: center;
+    }
+    
+    .pricing-button {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        transition: all 0.2s ease-out;
+        border: none;
+        cursor: pointer;
+        margin-top: auto;
+    }
+    
+    .pricing-button.free {
+        background: white;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+    
+    .pricing-button.free:hover {
+        background: var(--grid-header-bg);
+        color: var(--text-primary);
+    }
+    
+    .pricing-button.personal {
+        background: var(--primary-action-bg);
+        color: white;
+    }
+    
+    .pricing-button.personal:hover {
+        background: var(--primary-action-hover-bg);
+        color: white;
+    }
+    
+    .pricing-button.pro {
+        background: var(--tertiary-action-bg);
+        color: white;
+    }
+    
+    .pricing-button.pro:hover {
+        background: var(--tertiary-action-hover-bg);
+        color: white;
+    }
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .pricing-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .pricing-card {
+            min-width: 280px;
+            max-width: 100%;
+        }
+        
+        .pricing-container {
+            padding: 2rem 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="pricing-container">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">
+            Our pricing is as simple as our product
+        </h1>
+        <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            No complex tiers, no hidden fees. Just a clear, honest price for a tool that brings you clarity.
+        </p>
+    </div>
+    
+    <!-- Pricing Cards -->
+    <div class="pricing-cards">
+        <!-- Free Plan -->
+        <div class="pricing-card">
+            <h3 class="pricing-title">Free</h3>
+            <p class="pricing-description">
+                The perfect place to start. Organize your most important projects and see what clarity feels like
+            </p>
+            <div class="pricing-amount">Free</div>
+            <div class="pricing-period">forever</div>
+            
+            <ul class="pricing-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Manage up to 2 active grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Create unlimited tasks
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Use any of out pre-built templates
+                </li>
+            </ul>
+            
+            <a href="{% url 'accounts:register_free' %}" class="pricing-button free">
+                Get Started for Free
+            </a>
+        </div>
+        
+        <!-- Personal Plan -->
+        <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
+            <h3 class="pricing-title">Personal</h3>
+            <p class="pricing-description">
+                For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
+            </p>
+            <div class="pricing-amount">£2</div>
+            <div class="pricing-period">/ month</div>
+            
+            <ul class="pricing-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Manage up to 10 active grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Save time by creating custom templates
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Stay focused by archiving completed tasks
+                </li>
+            </ul>
+            
+            <a href="{% url 'accounts:register_personal' %}" class="pricing-button personal">
+                Start Personal
+            </a>
+        </div>
+        
+        <!-- Pro Plan -->
+        <div class="pricing-card">
+            <h3 class="pricing-title">Pro</h3>
+            <p class="pricing-description">
+                For collaborating with your team. Simple, shared clarity without any unnecesarry noise
+            </p>
+            <div class="pricing-amount">£5</div>
+            <div class="pricing-period">/ month</div>
+            
+            <ul class="pricing-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Everything in Personal, plus...
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Unlimited shared grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Access to Team Toad, our premium collaboration tool
+                </li>
+            </ul>
+            
+            <a href="#" class="pricing-button pro">
+                Request Early Access
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
