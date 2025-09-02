@@ -305,6 +305,29 @@
         align-items: stretch;
     }
     
+    /* Default layout for grids with 3 or fewer data columns */
+    #grid-tabs {
+        max-width: 91vw;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    #grid-header {
+        max-width: 91vw;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    
+    /* Narrow layout for grids with 4+ data columns */
+    #grid-tabs.narrow-layout {
+        max-width: 83vw !important;
+        padding: 0 0.5rem !important;
+    }
+    
+    #grid-header.narrow-layout {
+        max-width: 83vw !important;
+        padding: 0 0.5rem !important;
+    }
 
 </style>
 {% endblock %}
@@ -314,13 +337,25 @@
 <!-- CSRF Token for inline editing -->
 {% csrf_token %}
 
+<script>
+// Check column count and apply narrow layout if needed
+document.addEventListener('DOMContentLoaded', function() {
+    const totalColumns = parseInt('{{ total_data_columns }}');
+    
+    if (totalColumns > 3) {
+        document.getElementById('grid-tabs').classList.add('narrow-layout');
+        document.getElementById('grid-header').classList.add('narrow-layout');
+    }
+});
+</script>
+
 <!-- Loading Overlay -->
 <div id="grid-loading-overlay" class="grid-loading-overlay">
     <div class="grid-loading-spinner"></div>
 </div>
 
 <!-- Grid Tabs Navigation -->
-<div class="mb-6" id="grid-tabs" style="max-width: 90vw; margin: 0 auto; padding: 0 1rem;">
+<div class="mb-6" id="grid-tabs" data-total-columns="{{ total_data_columns }}">
             <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide">
             <!-- Ungrouped Projects First -->
             {% if ungrouped_projects %}
@@ -371,7 +406,7 @@
 </div>
 
 <!-- Header -->
-<div class="mb-6 grid-header-mobile grid-content-hidden" id="grid-header" style="max-width: 90vw; margin: 0 auto; padding: 0 1rem;">
+<div class="mb-6 grid-header-mobile grid-content-hidden" id="grid-header" data-total-columns="{{ total_data_columns }}">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
         <div class="flex items-center space-x-3">
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>

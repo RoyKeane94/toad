@@ -21,7 +21,7 @@ def create_first_grid(sender, instance, created, **kwargs):
         row_headers = [
             "The Basics",
             "Make It Your Own", 
-            "Your Beta Account"
+            "Your Account"
         ]
         
         for order, row_name in enumerate(row_headers):
@@ -65,7 +65,6 @@ def create_first_grid(sender, instance, created, **kwargs):
             
             # Your Beta Account row
             (2, 0, "We have built Toad to be simple and fast", True),
-            (2, 0, "As a Beta user, you have a free Toad Pro plan for life, meaning no limit on grids and the ability to create your own templates", False),
             (2, 0, "Please reach out any time with issues or ideas to tom@meettoad.co.uk", False),
         ]
         

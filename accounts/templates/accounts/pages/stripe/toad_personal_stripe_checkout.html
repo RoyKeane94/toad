@@ -1,0 +1,91 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Subscribe to Toad Personal{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/stripe/style.css' %}">
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-[var(--main-bg)] py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Header -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold text-[var(--primary-action-bg)]">
+                Upgrade to Toad Personal
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                Unlock more grids and power features
+            </p>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
+                        <div>
+                            <p class="font-medium mb-1">Error</p>
+                            <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <!-- Product Card -->
+        <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
+            <div class="product text-center mb-6">
+                <div class="flex justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48px" height="48px" viewBox="0 0 14 16" version="1.1">
+                        <defs/>
+                        <g id="Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                            <g id="0-Default" transform="translate(-121.000000, -40.000000)" fill="#E184DF">
+                                <path d="M127,50 L126,50 C123.238576,50 121,47.7614237 121,45 C121,42.2385763 123.238576,40 126,40 L135,40 L135,56 L133,56 L133,42 L129,42 L129,56 L127,56 L127,50 Z M127,48 L127,42 L126,42 C124.343146,42 123,43.3431458 123,45 C123,46.6568542 124.343146,48 126,48 L127,48 Z" id="Pilcrow"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="description">
+                    <h3 class="text-2xl font-bold text-[var(--text-primary)] mb-2">Toad Personal</h3>
+                    <h5 class="text-3xl font-bold text-[var(--primary-action-bg)] mb-4">£2.00 / month</h5>
+                    <div class="text-left space-y-2 text-sm text-[var(--text-secondary)]">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Up to 10 active grids</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Create and save custom templates</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Archive completed tasks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <form action="{% url 'accounts:create_checkout_session' %}" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="lookup_key" value="Toad_-_Personal-c6aa14b" />
+                <button id="checkout-and-portal-button" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200">
+                    <i class="fas fa-credit-card mr-2"></i>
+                    Subscribe Now
+                </button>
+            </form>
+            
+            <div class="text-center mt-4">
+                <p class="text-xs text-[var(--text-secondary)]">
+                    Cancel anytime. Secure payment powered by Stripe.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

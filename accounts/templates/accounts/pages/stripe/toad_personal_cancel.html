@@ -1,0 +1,49 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Checkout Canceled - Toad{% endblock %}
+
+{% block extra_head %}
+    <link rel="stylesheet" href="{% static 'css/stripe/style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-[var(--main-bg)] py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Cancel Card -->
+        <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)] text-center">
+            <div class="product mb-6">
+                <div class="flex justify-center mb-4">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center">
+                        <i class="fas fa-times text-yellow-600 text-2xl"></i>
+                    </div>
+                </div>
+                <div class="description">
+                    <h3 class="text-2xl font-bold text-[var(--text-primary)] mb-2">Checkout Canceled</h3>
+                    <p class="text-[var(--text-secondary)] mb-6">
+                        No worries! You can always upgrade to Toad Personal later when you're ready.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="space-y-4">
+                <a href="{% url 'accounts:stripe_checkout' %}" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200">
+                    <i class="fas fa-credit-card mr-2"></i>
+                    Try Again
+                </a>
+                
+                <a href="{% url 'pages:project_list' %}" class="w-full flex justify-center py-3 px-4 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--grid-header-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200">
+                    <i class="fas fa-th-large mr-2"></i>
+                    Continue with Free Plan
+                </a>
+            </div>
+            
+            <div class="mt-6 text-center">
+                <p class="text-xs text-[var(--text-secondary)]">
+                    You can upgrade anytime from your account settings.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

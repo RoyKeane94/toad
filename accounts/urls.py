@@ -17,6 +17,14 @@ from .views import (
     preview_email_templates,
     beta_update_email_preview
 )
+from .stripe_django_views import (
+    stripe_checkout_view,
+    create_checkout_session,
+    stripe_success_view,
+    stripe_cancel_view,
+    create_portal_session,
+    stripe_webhook
+)
 
 app_name = 'accounts'
 
@@ -46,4 +54,12 @@ urlpatterns = [
     # Email preview (development only)
     path('preview-emails/', preview_email_templates, name='preview_emails'),
     path('preview-beta-update/', beta_update_email_preview, name='beta_update_preview'),
+    
+    # Stripe integration
+    path('stripe/checkout/', stripe_checkout_view, name='stripe_checkout'),
+    path('stripe/create-checkout-session/', create_checkout_session, name='create_checkout_session'),
+    path('stripe/success/', stripe_success_view, name='stripe_success'),
+    path('stripe/cancel/', stripe_cancel_view, name='stripe_cancel'),
+    path('stripe/create-portal-session/', create_portal_session, name='create_portal_session'),
+    path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
 ]

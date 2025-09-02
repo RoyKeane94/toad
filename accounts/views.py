@@ -47,8 +47,8 @@ class LoginView(FormView):
         """Login the user and redirect to success URL"""
         user = form.get_user()
         
-        # Check if email is verified
-        if not user.email_verified:
+        # Check if email is verified (allow Personal plan users to proceed to checkout)
+        if not user.email_verified and user.tier != 'personal':
             messages.error(
                 self.request, 
                 'Please verify your email address before logging in. Check your inbox and spam folder for the verification link. If you haven\'t received it, you can request a new verification email below.'
@@ -505,62 +505,25 @@ class RegisterPersonalView(FormView):
     form_class = CustomUserCreationForm
     
     def form_valid(self, form):
-        """Create the user and send verification email"""
+        """Create the user and redirect to Stripe checkout"""
         user = form.save()
         
-        # Set user tier to Personal (assuming you have a tier field)
-        # You may need to adjust this based on your User model
+        # Set user tier to FREE initially - will be upgraded to personal after successful payment
         if hasattr(user, 'tier'):
-            user.tier = 'personal'
+            user.tier = 'free'  # Default to free tier
             user.save()
         
         # Log registration attempt
         import logging
         logger = logging.getLogger(__name__)
-        logger.info(f"New Personal plan user registration: {user.email} ({user.get_short_name()})")
+        logger.info(f"New Personal plan user registration: {user.email} ({user.get_short_name()}) - tier set to FREE initially")
         
-        # Add session flag immediately for better UX
-        self.request.session['show_verification_message'] = True
+        # Log the user in immediately so they can proceed to checkout
+        login(self.request, user)
         
-        # Send verification email asynchronously to improve performance
-        try:
-            import threading
-            def send_email_async():
-                try:
-                    email_sent = send_verification_email(user, self.request)
-                    logger.info(f"Verification email sent: {email_sent} for {user.email}")
-                except Exception as e:
-                    logger.error(f"Failed to send verification email to {user.email}: {e}")
-            
-            # Start email sending in background thread
-            email_thread = threading.Thread(target=send_email_async)
-            email_thread.daemon = True
-            email_thread.start()
-            
-        except Exception as e:
-            logger.error(f"Failed to start email thread for {user.email}: {e}")
-        
-        # Send joining email asynchronously
-        try:
-            import threading
-            def send_joining_email_async():
-                try:
-                    email_sent = send_joining_email(user, self.request)
-                    logger.info(f"Joining email sent: {email_sent} for {user.email}")
-                except Exception as e:
-                    logger.error(f"Failed to send joining email to {user.email}: {e}")
-            
-            # Start email sending in background thread
-            email_thread = threading.Thread(target=send_joining_email_async)
-            email_thread.daemon = True
-            email_thread.start()
-            
-        except Exception as e:
-            logger.error(f"Failed to start joining email thread for {user.email}: {e}")
-        
-        # Redirect to login with success message
-        messages.success(self.request, 'Account created successfully! Please check your email to verify your account.')
-        return redirect('accounts:login')
+        # Redirect to Stripe checkout for Personal plan
+        messages.success(self.request, 'Account created successfully! Please complete your subscription to activate Personal features.')
+        return redirect('accounts:stripe_checkout')
     
     def form_invalid(self, form):
         """Handle form validation errors"""

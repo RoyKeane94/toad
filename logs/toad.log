@@ -23582,3 +23582,398 @@ INFO 2025-09-02 19:30:41,240 autoreload 23378 8549129984 Watching for file chang
 INFO 2025-09-02 19:30:48,175 basehttp 23378 6200963072 "GET /accounts/register/barnabytoad/ HTTP/1.1" 200 4529
 INFO 2025-09-02 19:30:52,790 autoreload 23378 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
 INFO 2025-09-02 19:30:53,149 autoreload 23391 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:44:58,546 autoreload 23879 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 19:44:59,676 basehttp 23879 6126481408 "GET /accounts/register/ HTTP/1.1" 200 4420
+INFO 2025-09-02 20:13:55,860 autoreload 24809 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:14:10,086 basehttp 24809 6125498368 "GET /accounts/register/personal/ HTTP/1.1" 200 4539
+INFO 2025-09-02 20:14:10,102 basehttp 24809 6125498368 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-02 20:14:27,431 views 24809 6125498368 New Personal plan user registration: tom_barratt@hotmail.com (Tom)
+INFO 2025-09-02 20:14:27,435 email_utils 24809 6159151104 Attempting to send verification email to tom_barratt@hotmail.com
+INFO 2025-09-02 20:14:27,436 email_utils 24809 6175977472 Attempting to send joining email to tom_barratt@hotmail.com
+INFO 2025-09-02 20:14:27,436 basehttp 24809 6125498368 "POST /accounts/register/personal/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:14:27,441 basehttp 24809 6125498368 "GET /accounts/stripe/checkout/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:14:27,446 basehttp 24809 6125498368 "GET /accounts/login/?next=/accounts/stripe/checkout/ HTTP/1.1" 200 4541
+INFO 2025-09-02 20:14:30,554 email_utils 24809 6175977472 Successfully sent joining email to tom_barratt@hotmail.com
+INFO 2025-09-02 20:14:30,555 views 24809 6175977472 Joining email sent: True for tom_barratt@hotmail.com
+INFO 2025-09-02 20:14:30,560 email_utils 24809 6159151104 Successfully sent verification email to tom_barratt@hotmail.com
+INFO 2025-09-02 20:14:30,561 views 24809 6159151104 Verification email sent: True for tom_barratt@hotmail.com
+INFO 2025-09-02 20:15:55,271 basehttp 24809 6125498368 "GET /accounts/register/ HTTP/1.1" 200 4410
+INFO 2025-09-02 20:15:55,289 basehttp 24809 6125498368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 20:15:56,282 basehttp 24809 6125498368 "GET /accounts/register/personal/ HTTP/1.1" 200 4497
+INFO 2025-09-02 20:16:08,258 basehttp 24809 6125498368 "POST /accounts/register/personal/ HTTP/1.1" 200 4787
+INFO 2025-09-02 20:16:29,758 basehttp 24809 6125498368 "GET /accounts/register/personal/ HTTP/1.1" 200 4535
+INFO 2025-09-02 20:16:35,545 basehttp 24809 6125498368 "GET /accounts/login/ HTTP/1.1" 200 4334
+INFO 2025-09-02 20:16:37,341 basehttp 24809 6125498368 "GET /accounts/resend-verification/ HTTP/1.1" 200 3926
+INFO 2025-09-02 20:16:45,814 basehttp 24809 6125498368 "POST /accounts/resend-verification/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:16:45,824 basehttp 24809 6125498368 "GET /accounts/login/ HTTP/1.1" 200 4362
+INFO 2025-09-02 20:17:38,410 basehttp 24809 6125498368 "GET /accounts/login/ HTTP/1.1" 200 4290
+INFO 2025-09-02 20:17:46,880 basehttp 24809 6125498368 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:17:46,892 basehttp 24809 6125498368 "GET /grids/ HTTP/1.1" 200 11358
+INFO 2025-09-02 20:17:48,847 basehttp 24809 6125498368 "GET / HTTP/1.1" 200 6506
+INFO 2025-09-02 20:17:49,856 basehttp 24809 6125498368 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-02 20:17:49,879 basehttp 24809 6125498368 "GET /admin/ HTTP/1.1" 200 2839
+INFO 2025-09-02 20:17:49,892 basehttp 24809 6125498368 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-02 20:17:49,898 basehttp 24809 6125498368 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-02 20:17:49,898 basehttp 24809 6159151104 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-02 20:17:49,898 basehttp 24809 6142324736 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-02 20:17:49,899 basehttp 24809 6159151104 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-02 20:17:52,166 basehttp 24809 6159151104 "GET /admin/accounts/user/ HTTP/1.1" 200 3211
+INFO 2025-09-02 20:17:52,181 basehttp 24809 6159151104 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-02 20:17:52,181 basehttp 24809 6341865472 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-02 20:17:52,181 basehttp 24809 6325039104 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-02 20:17:52,183 basehttp 24809 6358691840 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-02 20:17:52,185 basehttp 24809 6159151104 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-02 20:17:52,186 basehttp 24809 6142324736 "GET /admin/jsi18n/ HTTP/1.1" 200 1026
+INFO 2025-09-02 20:17:52,187 basehttp 24809 6341865472 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-02 20:17:52,188 basehttp 24809 6325039104 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-02 20:17:52,188 basehttp 24809 6125498368 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-02 20:17:52,191 basehttp 24809 6142324736 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-02 20:17:52,195 basehttp 24809 6142324736 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-02 20:17:52,208 basehttp 24809 6142324736 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-02 20:17:59,793 basehttp 24809 6125498368 "POST /admin/accounts/user/ HTTP/1.1" 200 3550
+INFO 2025-09-02 20:17:59,808 basehttp 24809 6125498368 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-09-02 20:18:01,333 basehttp 24809 6125498368 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:18:01,344 basehttp 24809 6125498368 "GET /admin/accounts/user/ HTTP/1.1" 200 3198
+INFO 2025-09-02 20:18:01,354 basehttp 24809 6125498368 "GET /admin/jsi18n/ HTTP/1.1" 200 972
+INFO 2025-09-02 20:18:04,642 basehttp 24809 6125498368 "POST /admin/logout/ HTTP/1.1" 200 1345
+INFO 2025-09-02 20:18:05,616 basehttp 24809 6125498368 "GET / HTTP/1.1" 200 6316
+INFO 2025-09-02 20:18:07,431 basehttp 24809 6125498368 "GET /accounts/register/ HTTP/1.1" 200 4416
+INFO 2025-09-02 20:18:08,728 basehttp 24809 6125498368 "GET /accounts/register/personal/ HTTP/1.1" 200 4543
+INFO 2025-09-02 20:18:21,495 views 24809 6125498368 New Personal plan user registration: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-02 20:18:21,497 email_utils 24809 6325039104 Attempting to send joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:18:21,500 basehttp 24809 6125498368 "POST /accounts/register/personal/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:18:21,503 email_utils 24809 6159151104 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:18:21,505 basehttp 24809 6125498368 "GET /accounts/stripe/checkout/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:18:21,509 basehttp 24809 6125498368 "GET /accounts/login/?next=/accounts/stripe/checkout/ HTTP/1.1" 200 4469
+INFO 2025-09-02 20:18:22,027 email_utils 24809 6325039104 Successfully sent joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:18:22,028 views 24809 6325039104 Joining email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:18:22,046 email_utils 24809 6159151104 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:18:22,047 views 24809 6159151104 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:20:29,088 views 24809 6125498368 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:20:29,091 views 24809 6125498368 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:20:29,098 views 24809 6125498368 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:20:29,102 email_utils 24809 6159151104 Attempting to send joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:20:29,102 views 24809 6125498368 Redirecting to first project: 163
+INFO 2025-09-02 20:20:29,105 basehttp 24809 6125498368 "GET /accounts/verify-email/fRniEpgNl2xrYylSNaiJGwf5vV3omhg4/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:20:29,124 basehttp 24809 6125498368 "GET /grids/163/ HTTP/1.1" 200 15303
+INFO 2025-09-02 20:20:29,169 basehttp 24809 6125498368 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 20:20:29,171 basehttp 24809 6142324736 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-02 20:20:29,709 email_utils 24809 6159151104 Successfully sent joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:20:34,115 basehttp 24809 6125498368 "GET /accounts/settings/ HTTP/1.1" 200 4141
+INFO 2025-09-02 20:20:35,449 basehttp 24809 6125498368 "GET /accounts/settings/delete/ HTTP/1.1" 200 4374
+INFO 2025-09-02 20:20:41,535 views 24809 6125498368 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-02 20:20:41,549 basehttp 24809 6125498368 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:20:41,563 basehttp 24809 6125498368 "GET / HTTP/1.1" 200 6329
+INFO 2025-09-02 20:21:46,807 autoreload 24809 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 20:21:47,332 autoreload 25040 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:21:56,017 autoreload 25040 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:21:56,471 autoreload 25052 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:22:05,488 autoreload 25052 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 20:22:05,960 autoreload 25062 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:22:17,649 autoreload 25062 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:22:18,711 autoreload 25069 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:22:34,294 basehttp 25069 6195982336 "GET /accounts/register/ HTTP/1.1" 200 4423
+INFO 2025-09-02 20:22:34,312 basehttp 25069 6195982336 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 20:22:35,498 basehttp 25069 6195982336 "GET /accounts/register/personal/ HTTP/1.1" 200 4508
+INFO 2025-09-02 20:22:49,980 views 25069 6195982336 New Personal plan user registration: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-02 20:22:49,983 basehttp 25069 6195982336 "POST /accounts/register/personal/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:22:49,992 basehttp 25069 6195982336 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3936
+WARNING 2025-09-02 20:22:50,017 basehttp 25069 6195982336 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 20:22:53,281 _util 25069 6195982336 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product
+INFO 2025-09-02 20:22:53,596 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product response_code=200
+INFO 2025-09-02 20:22:53,605 _util 25069 6195982336 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-09-02 20:22:54,440 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-09-02 20:22:54,443 basehttp 25069 6195982336 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:25:04,493 _util 25069 6195982336 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_test_a17Is2mofGQeM3zVYQOhGkfThSBhn7QGtbwpjF2vDv9FghpbIBd4guibia
+INFO 2025-09-02 20:25:04,803 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_test_a17Is2mofGQeM3zVYQOhGkfThSBhn7QGtbwpjF2vDv9FghpbIBd4guibia response_code=200
+INFO 2025-09-02 20:25:04,812 stripe_django_views 25069 6195982336 User tom_barratt@hotmail.co.uk successfully subscribed to Personal plan. Session: cs_test_a17Is2mofGQeM3zVYQOhGkfThSBhn7QGtbwpjF2vDv9FghpbIBd4guibia
+INFO 2025-09-02 20:25:04,819 basehttp 25069 6195982336 "GET /accounts/stripe/success/?session_id=cs_test_a17Is2mofGQeM3zVYQOhGkfThSBhn7QGtbwpjF2vDv9FghpbIBd4guibia HTTP/1.1" 200 3609
+INFO 2025-09-02 20:25:04,822 email_utils 25069 6230208512 Attempting to send verification email to tom_barratt@hotmail.co.uk
+WARNING 2025-09-02 20:25:04,866 basehttp 25069 6195982336 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 20:25:05,429 email_utils 25069 6230208512 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:25:05,430 stripe_django_views 25069 6230208512 Verification email sent after payment: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-02 20:25:09,037 _util 25069 6195982336 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_test_a17Is2mofGQeM3zVYQOhGkfThSBhn7QGtbwpjF2vDv9FghpbIBd4guibia
+INFO 2025-09-02 20:25:09,356 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_test_a17Is2mofGQeM3zVYQOhGkfThSBhn7QGtbwpjF2vDv9FghpbIBd4guibia response_code=200
+INFO 2025-09-02 20:25:09,359 _util 25069 6195982336 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-09-02 20:25:09,596 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=400
+INFO 2025-09-02 20:25:09,597 _util 25069 6195982336 error_code=None error_message='No configuration provided and your test mode default configuration has not been created. Provide a configuration or create your default by saving your customer portal settings in test mode at https://dashboard.stripe.com/test/settings/billing/portal.' error_param=None error_type=invalid_request_error message='Stripe v1 API error received'
+ERROR 2025-09-02 20:25:09,597 stripe_django_views 25069 6195982336 Stripe error in create_portal_session: Request req_E0FHUi1jNm99vh: No configuration provided and your test mode default configuration has not been created. Provide a configuration or create your default by saving your customer portal settings in test mode at https://dashboard.stripe.com/test/settings/billing/portal.
+INFO 2025-09-02 20:25:09,599 basehttp 25069 6195982336 "POST /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:25:09,620 basehttp 25069 6195982336 "GET /accounts/settings/ HTTP/1.1" 200 4199
+INFO 2025-09-02 20:25:22,741 basehttp 25069 6195982336 "GET /grids/ HTTP/1.1" 200 10979
+INFO 2025-09-02 20:25:26,461 basehttp 25069 6195982336 "GET /accounts/settings/ HTTP/1.1" 200 4238
+INFO 2025-09-02 20:27:45,900 basehttp 25069 6195982336 "GET /accounts/settings/delete/ HTTP/1.1" 200 4432
+INFO 2025-09-02 20:27:51,264 views 25069 6195982336 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-02 20:27:51,271 basehttp 25069 6195982336 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:27:51,281 basehttp 25069 6195982336 "GET / HTTP/1.1" 200 6350
+INFO 2025-09-02 20:27:52,949 basehttp 25069 6195982336 "GET /accounts/register/ HTTP/1.1" 200 4416
+INFO 2025-09-02 20:27:53,981 basehttp 25069 6195982336 "GET /accounts/register/personal/ HTTP/1.1" 200 4757
+INFO 2025-09-02 20:28:08,428 views 25069 6195982336 New Personal plan user registration: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-02 20:28:08,431 basehttp 25069 6195982336 "POST /accounts/register/personal/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:28:08,436 basehttp 25069 6195982336 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3990
+WARNING 2025-09-02 20:28:08,457 basehttp 25069 6195982336 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 20:28:14,409 _util 25069 6195982336 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product
+INFO 2025-09-02 20:28:14,722 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product response_code=200
+INFO 2025-09-02 20:28:14,725 _util 25069 6195982336 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-09-02 20:28:15,222 _util 25069 6195982336 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-09-02 20:28:15,225 basehttp 25069 6195982336 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:32:17,039 autoreload 25069 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:32:17,544 autoreload 25285 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:32:23,219 autoreload 25285 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:32:23,696 autoreload 25296 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:33:14,627 autoreload 25296 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:33:15,593 autoreload 25620 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:41:14,205 _util 26938 8549129984 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?limit=1
+INFO 2025-09-02 20:41:14,508 _util 26938 8549129984 message='Stripe API response' path=https://api.stripe.com/v1/prices?limit=1 response_code=200
+INFO 2025-09-02 20:41:22,192 autoreload 27597 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:41:29,257 stripe_django_views 25620 6160117760 Webhook received: No signature
+ERROR 2025-09-02 20:41:29,257 stripe_django_views 25620 6160117760 Invalid signature in webhook
+WARNING 2025-09-02 20:41:29,259 log 25620 6160117760 Bad Request: /accounts/stripe/webhook/
+WARNING 2025-09-02 20:41:29,259 basehttp 25620 6160117760 "POST /accounts/stripe/webhook/ HTTP/1.1" 400 0
+INFO 2025-09-02 20:57:00,524 autoreload 32619 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:57:11,995 _util 33880 8549129984 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?limit=1
+INFO 2025-09-02 20:57:12,299 _util 33880 8549129984 message='Stripe API response' path=https://api.stripe.com/v1/prices?limit=1 response_code=200
+INFO 2025-09-02 20:57:35,053 basehttp 25620 6160117760 "GET /accounts/register/personal/ HTTP/1.1" 200 4528
+INFO 2025-09-02 20:57:35,102 basehttp 25620 6193770496 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-02 20:57:35,103 basehttp 25620 6176944128 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-02 20:57:35,104 basehttp 25620 6160117760 "GET /static/css/output.css HTTP/1.1" 200 75950
+INFO 2025-09-02 20:57:53,412 basehttp 25620 6160117760 "POST /accounts/register/personal/ HTTP/1.1" 200 4733
+INFO 2025-09-02 20:57:55,672 basehttp 25620 6160117760 "GET /accounts/login/ HTTP/1.1" 200 4300
+INFO 2025-09-02 20:58:06,238 basehttp 25620 6160117760 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-02 20:58:06,252 basehttp 25620 6160117760 "GET /grids/ HTTP/1.1" 200 10950
+INFO 2025-09-02 20:58:36,895 autoreload 25620 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 20:58:37,696 autoreload 33969 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:58:43,258 autoreload 33969 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:58:43,775 autoreload 33981 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 20:58:52,396 autoreload 33981 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-02 20:58:53,198 autoreload 33989 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:02:18,446 autoreload 35797 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:02:21,509 basehttp 35797 6195998720 "GET /accounts/settings/ HTTP/1.1" 200 4274
+INFO 2025-09-02 21:02:23,951 basehttp 35797 6195998720 "GET /accounts/settings/delete/ HTTP/1.1" 200 4409
+INFO 2025-09-02 21:02:28,524 views 35797 6195998720 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-02 21:02:28,532 basehttp 35797 6195998720 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:02:28,539 basehttp 35797 6195998720 "GET / HTTP/1.1" 200 6296
+INFO 2025-09-02 21:02:28,575 basehttp 35797 6195998720 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-09-02 21:02:31,833 basehttp 35797 6195998720 "GET /accounts/register/ HTTP/1.1" 200 4392
+INFO 2025-09-02 21:02:33,302 basehttp 35797 6195998720 "GET /accounts/register/personal/ HTTP/1.1" 200 4604
+INFO 2025-09-02 21:08:33,065 views 35797 6195998720 New Personal plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to FREE initially
+INFO 2025-09-02 21:08:33,069 basehttp 35797 6195998720 "POST /accounts/register/personal/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:08:33,080 basehttp 35797 6195998720 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3978
+INFO 2025-09-02 21:08:33,104 basehttp 35797 6212825088 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:08:33,110 basehttp 35797 6195998720 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 21:08:51,809 _util 35797 6195998720 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product
+INFO 2025-09-02 21:08:52,099 _util 35797 6195998720 message='Stripe API response' path=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product response_code=200
+INFO 2025-09-02 21:08:52,101 basehttp 35797 6195998720 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:08:52,108 basehttp 35797 6195998720 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 4068
+WARNING 2025-09-02 21:08:52,139 basehttp 35797 6195998720 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 21:08:55,066 _util 35797 6195998720 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product
+INFO 2025-09-02 21:08:55,346 _util 35797 6195998720 message='Stripe API response' path=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product response_code=200
+INFO 2025-09-02 21:08:55,348 basehttp 35797 6195998720 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:08:55,361 basehttp 35797 6195998720 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 4127
+WARNING 2025-09-02 21:08:55,391 basehttp 35797 6195998720 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 21:13:15,613 autoreload 40997 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:13:44,194 autoreload 41372 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:13:47,552 basehttp 41372 6199488512 "GET / HTTP/1.1" 200 6344
+INFO 2025-09-02 21:13:47,589 basehttp 41372 6199488512 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:13:47,591 basehttp 41372 6199488512 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:13:50,039 basehttp 41372 6199488512 "GET /accounts/login/ HTTP/1.1" 200 4286
+INFO 2025-09-02 21:13:58,083 basehttp 41372 6199488512 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:13:58,090 basehttp 41372 6199488512 "GET /accounts/login/ HTTP/1.1" 200 4565
+INFO 2025-09-02 21:14:05,485 basehttp 41372 6199488512 "GET /accounts/resend-verification/ HTTP/1.1" 200 3955
+INFO 2025-09-02 21:14:12,859 basehttp 41372 6199488512 "GET /accounts/register/ HTTP/1.1" 200 4389
+INFO 2025-09-02 21:14:14,328 basehttp 41372 6199488512 "GET /accounts/register/personal/ HTTP/1.1" 200 4545
+INFO 2025-09-02 21:14:25,522 views 41372 6199488512 New Personal plan user registration: accounts@meettoad.co.uk (Tom) - tier set to FREE initially
+INFO 2025-09-02 21:14:25,525 basehttp 41372 6199488512 "POST /accounts/register/personal/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:14:25,530 basehttp 41372 6199488512 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3978
+WARNING 2025-09-02 21:14:25,548 basehttp 41372 6199488512 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 21:14:29,395 _util 41372 6199488512 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product
+INFO 2025-09-02 21:14:29,792 _util 41372 6199488512 message='Stripe API response' path=https://api.stripe.com/v1/prices?lookup_keys[0]=Toad_-_Personal-c6aa14b&expand[0]=data.product response_code=200
+INFO 2025-09-02 21:14:29,800 _util 41372 6199488512 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-09-02 21:14:30,317 _util 41372 6199488512 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-09-02 21:14:30,321 basehttp 41372 6199488512 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:15:05,728 stripe_django_views 41372 6199488512 Webhook received: t=1756847705,v1=8ce62987e5cbb5f76193997e7d998659c76de14a7c7c0ecc82bdc72c89893065,v0=036da4feeb3ca936ad35f68de89300faba097e08372a22c03e911a0a2c781671
+INFO 2025-09-02 21:15:05,733 stripe_django_views 41372 6199488512 Webhook event type: charge.succeeded
+INFO 2025-09-02 21:15:05,735 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:05,762 stripe_django_views 41372 6199488512 Webhook received: t=1756847705,v1=1471a6f091cdb433165c319900c3d62087c05eab060938a191c24a2b0bfacd63,v0=c2537518ef8db58e0d03c7cb0fc4b04dccb9e293e764cbaf279dc2fc0be818fc
+INFO 2025-09-02 21:15:05,762 stripe_django_views 41372 6199488512 Webhook event type: payment_method.attached
+INFO 2025-09-02 21:15:05,763 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:05,816 stripe_django_views 41372 6199488512 Webhook received: t=1756847705,v1=029d9c3f90f6dd1465b1eb60fbabc66b6174aacca63cec77876de76dc7241e78,v0=961c39b1c2fc058ba76c084fc65c7c80029a0405fc4b9c27676d9187b34d69d8
+INFO 2025-09-02 21:15:05,817 stripe_django_views 41372 6199488512 Webhook event type: customer.created
+INFO 2025-09-02 21:15:05,817 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:05,911 stripe_django_views 41372 6199488512 Webhook received: t=1756847705,v1=0fc1a1a7b03bbcc6091137e6368c97e808a4735fbae8649d11196048c0b314c3,v0=9b2adde7af6a02b5f0c4da9c4ab0a8cfa4bf5f1eef36477f82884b68860328a8
+INFO 2025-09-02 21:15:05,912 stripe_django_views 41372 6199488512 Webhook event type: customer.updated
+INFO 2025-09-02 21:15:05,912 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:05,963 stripe_django_views 41372 6199488512 Webhook received: t=1756847705,v1=f3db0dffa1f8aacae10a59dae5f140ea78a3e74f88801c776047ec13fc4e9fa4,v0=565cd4a87e53a5e8b4b2c387b016cafb66f2feee3b2867d694725b62551972df
+INFO 2025-09-02 21:15:05,965 stripe_django_views 41372 6199488512 Webhook event type: customer.subscription.created
+INFO 2025-09-02 21:15:05,966 stripe_django_views 41372 6199488512 Subscription created: evt_1S31XhImvDyA3xuk2vLXQRLK
+INFO 2025-09-02 21:15:05,966 stripe_django_views 41372 6199488512 Subscription created for customer: cus_SyzWUVkW8mXr9a
+INFO 2025-09-02 21:15:05,966 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,000 stripe_django_views 41372 6199488512 Webhook received: t=1756847705,v1=222241113df624287fccafe2a1218d9a3178662cee51735837b6d9840aa52ff1,v0=736a6b0907ff9e84e05d3378c32a39b10c75744bcbb935395c128a08a87ee67e
+INFO 2025-09-02 21:15:06,001 stripe_django_views 41372 6199488512 Webhook event type: payment_intent.succeeded
+INFO 2025-09-02 21:15:06,002 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,171 stripe_django_views 41372 6199488512 Webhook received: t=1756847706,v1=1f2b494306f49fd255794d51a50da9e2df4eec7008b7fc475c6624a0418ff092,v0=0beb6d41a2e70f288cef93085743dbb62453a333b35379e7ffbddda25801a1ba
+INFO 2025-09-02 21:15:06,173 stripe_django_views 41372 6199488512 Webhook event type: payment_intent.created
+INFO 2025-09-02 21:15:06,174 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,227 stripe_django_views 41372 6199488512 Webhook received: t=1756847706,v1=31cec9b2c6c65a833de4fc55b95409f8a8995a1eb6574dfb057be5aba970e227,v0=f60f7f395f0ef3db6d55b8fe2fee4b1c6dffd4dd84ce805b8ee9378c3c69a4e2
+INFO 2025-09-02 21:15:06,230 stripe_django_views 41372 6199488512 Webhook event type: invoice.created
+INFO 2025-09-02 21:15:06,231 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,285 stripe_django_views 41372 6199488512 Webhook received: t=1756847706,v1=a61fdd3ac6fee7c85dcdccde00042ffc2507de8c8a763333ec452545252d7ccd,v0=996484d1153098a06ed0785daad730d00dad946d2cbc0a33ff4c183ec55115b9
+INFO 2025-09-02 21:15:06,288 stripe_django_views 41372 6199488512 Webhook event type: checkout.session.completed
+INFO 2025-09-02 21:15:06,288 stripe_django_views 41372 6199488512 🔔 Payment succeeded!
+INFO 2025-09-02 21:15:06,295 stripe_django_views 41372 6199488512 User accounts@meettoad.co.uk tier updated to personal via webhook
+INFO 2025-09-02 21:15:06,295 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,329 stripe_django_views 41372 6199488512 Webhook received: t=1756847706,v1=fc4f935d4ca661ad80b090db4ccfda77dae842c26765b4468ff0d53379db0835,v0=8747a4e98f5316f4f4c6d2b7e5822b922b553025d2bb56ccdc76b8c21b2730f6
+INFO 2025-09-02 21:15:06,330 stripe_django_views 41372 6199488512 Webhook event type: invoice.finalized
+INFO 2025-09-02 21:15:06,331 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,391 stripe_django_views 41372 6199488512 Webhook received: t=1756847706,v1=63d6a5e5672e776c0f3a423ad038c259e0c5a38d50b636319e6fd40fc3f609d6,v0=0b7e6f278107cb9ba9722e87d396e264a535cdfd4a1f8d6d1ff1fa04bb972997
+INFO 2025-09-02 21:15:06,393 stripe_django_views 41372 6199488512 Webhook event type: invoice.paid
+INFO 2025-09-02 21:15:06,393 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:06,471 stripe_django_views 41372 6199488512 Webhook received: t=1756847706,v1=ab7008b7f4fdeac8088634c592a1dcbab86af25f7e77efe943ef0b1919724c3a,v0=0c8963239711f0aeeb29c9071d9711d0a8e007d33fe54d7694513741dd4a7cd9
+INFO 2025-09-02 21:15:06,473 stripe_django_views 41372 6199488512 Webhook event type: invoice.payment_succeeded
+INFO 2025-09-02 21:15:06,474 basehttp 41372 6199488512 "POST /accounts/stripe/webhook/ HTTP/1.1" 200 21
+INFO 2025-09-02 21:15:07,546 _util 41372 6216314880 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_test_a1B5x2VrQl0FnZaK8m9pCQkzQ0yE3muuRMFWf8jfMRiVgQU7WRMI0Xsic8
+INFO 2025-09-02 21:15:07,905 _util 41372 6216314880 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_test_a1B5x2VrQl0FnZaK8m9pCQkzQ0yE3muuRMFWf8jfMRiVgQU7WRMI0Xsic8 response_code=200
+INFO 2025-09-02 21:15:07,910 stripe_django_views 41372 6216314880 User accounts@meettoad.co.uk successfully subscribed to Personal plan. Session: cs_test_a1B5x2VrQl0FnZaK8m9pCQkzQ0yE3muuRMFWf8jfMRiVgQU7WRMI0Xsic8
+INFO 2025-09-02 21:15:07,917 basehttp 41372 6216314880 "GET /accounts/stripe/success/?session_id=cs_test_a1B5x2VrQl0FnZaK8m9pCQkzQ0yE3muuRMFWf8jfMRiVgQU7WRMI0Xsic8 HTTP/1.1" 200 3585
+INFO 2025-09-02 21:15:07,920 email_utils 41372 6233714688 Attempting to send verification email to accounts@meettoad.co.uk
+WARNING 2025-09-02 21:15:07,966 basehttp 41372 6216314880 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-09-02 21:15:08,824 email_utils 41372 6233714688 Successfully sent verification email to accounts@meettoad.co.uk
+INFO 2025-09-02 21:15:08,825 stripe_django_views 41372 6233714688 Verification email sent after payment: True for accounts@meettoad.co.uk
+INFO 2025-09-02 21:15:49,618 views 41372 6216314880 Found user for verification token: accounts@meettoad.co.uk
+INFO 2025-09-02 21:15:49,621 views 41372 6216314880 Email verification successful for user: accounts@meettoad.co.uk
+INFO 2025-09-02 21:15:49,623 views 41372 6216314880 User automatically logged in after email verification: accounts@meettoad.co.uk
+INFO 2025-09-02 21:15:49,626 views 41372 6216314880 Redirecting to first project: 167
+INFO 2025-09-02 21:15:49,629 basehttp 41372 6216314880 "GET /accounts/verify-email/CSv33ZNi6PoSeYjZxnTd4uuGvs4XyFxf/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:15:49,630 email_utils 41372 6250541056 Attempting to send joining email to accounts@meettoad.co.uk
+INFO 2025-09-02 21:15:49,648 basehttp 41372 6216314880 "GET /grids/167/ HTTP/1.1" 200 15241
+INFO 2025-09-02 21:15:49,693 basehttp 41372 6216314880 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:15:50,187 email_utils 41372 6250541056 Successfully sent joining email to accounts@meettoad.co.uk
+INFO 2025-09-02 21:17:23,602 autoreload 41372 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-02 21:17:24,093 autoreload 42020 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:20:01,418 basehttp 42020 6135492608 "GET / HTTP/1.1" 200 6559
+INFO 2025-09-02 21:20:02,771 basehttp 42020 6135492608 "GET /grids/ HTTP/1.1" 200 11002
+INFO 2025-09-02 21:20:03,726 basehttp 42020 6135492608 "GET /grids/167/ HTTP/1.1" 200 15310
+INFO 2025-09-02 21:20:22,152 basehttp 42020 6135492608 "GET /grids/167/columns/create/ HTTP/1.1" 200 1035
+INFO 2025-09-02 21:20:24,669 basehttp 42020 6135492608 "POST /grids/167/columns/create/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:20:24,739 basehttp 42020 6135492608 - Broken pipe from ('127.0.0.1', 54610)
+INFO 2025-09-02 21:20:24,739 basehttp 42020 6152318976 - Broken pipe from ('127.0.0.1', 54611)
+INFO 2025-09-02 21:20:24,741 basehttp 42020 6169145344 "GET /grids/167/ HTTP/1.1" 200 15664
+INFO 2025-09-02 21:22:00,949 autoreload 42020 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-09-02 21:22:02,847 autoreload 42111 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:22:13,452 basehttp 42111 6166474752 "GET /grids/167/columns/create/ HTTP/1.1" 200 1029
+INFO 2025-09-02 21:22:16,239 basehttp 42111 6166474752 "POST /grids/167/columns/create/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:22:16,323 basehttp 42111 6200127488 "GET /grids/167/ HTTP/1.1" 200 16070
+INFO 2025-09-02 21:22:16,324 basehttp 42111 6183301120 - Broken pipe from ('127.0.0.1', 54653)
+INFO 2025-09-02 21:22:16,325 basehttp 42111 6166474752 - Broken pipe from ('127.0.0.1', 54652)
+INFO 2025-09-02 21:22:18,595 basehttp 42111 6166474752 "GET /grids/167/columns/create/ HTTP/1.1" 200 1012
+INFO 2025-09-02 21:22:20,980 basehttp 42111 6166474752 "POST /grids/167/columns/create/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:22:21,042 basehttp 42111 6166474752 - Broken pipe from ('127.0.0.1', 54656)
+INFO 2025-09-02 21:22:21,043 basehttp 42111 6183301120 - Broken pipe from ('127.0.0.1', 54657)
+INFO 2025-09-02 21:22:21,044 basehttp 42111 6200127488 "GET /grids/167/ HTTP/1.1" 200 16394
+INFO 2025-09-02 21:25:32,584 basehttp 42111 6166474752 "GET /grids/167/ HTTP/1.1" 200 16457
+INFO 2025-09-02 21:25:32,603 basehttp 42111 6166474752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:26:35,911 autoreload 42627 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:26:47,810 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16507
+INFO 2025-09-02 21:26:47,827 basehttp 42627 6171652096 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-02 21:26:47,829 basehttp 42627 6154825728 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-02 21:26:47,829 basehttp 42627 6188478464 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-02 21:26:47,830 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 200 76062
+INFO 2025-09-02 21:26:52,620 basehttp 42627 6137999360 "GET /grids/167/columns/782/delete/ HTTP/1.1" 200 938
+INFO 2025-09-02 21:26:53,615 basehttp 42627 6137999360 "POST /grids/167/columns/782/delete/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:26:53,660 basehttp 42627 6137999360 - Broken pipe from ('127.0.0.1', 54776)
+INFO 2025-09-02 21:26:53,661 basehttp 42627 6154825728 "GET /grids/167/ HTTP/1.1" 200 16185
+INFO 2025-09-02 21:26:53,672 basehttp 42627 6154825728 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:26:53,672 basehttp 42627 6137999360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:26:53,672 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:27:46,074 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16240
+INFO 2025-09-02 21:27:46,090 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:27:46,090 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:27:46,091 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:27:49,364 basehttp 42627 6137999360 "GET /grids/167/columns/create/ HTTP/1.1" 200 1044
+INFO 2025-09-02 21:27:53,045 basehttp 42627 6137999360 "POST /grids/167/columns/create/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:27:53,121 basehttp 42627 6137999360 - Broken pipe from ('127.0.0.1', 54826)
+INFO 2025-09-02 21:27:53,122 basehttp 42627 6154825728 - Broken pipe from ('127.0.0.1', 54830)
+INFO 2025-09-02 21:27:53,123 basehttp 42627 6171652096 "GET /grids/167/ HTTP/1.1" 200 16611
+INFO 2025-09-02 21:27:55,231 basehttp 42627 6171652096 "GET /grids/167/ HTTP/1.1" 200 16619
+INFO 2025-09-02 21:27:55,243 basehttp 42627 6154825728 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:27:55,244 basehttp 42627 6171652096 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:27:55,244 basehttp 42627 6137999360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:28:06,752 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16544
+INFO 2025-09-02 21:28:06,770 basehttp 42627 6171652096 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-02 21:28:06,771 basehttp 42627 6154825728 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-02 21:28:06,771 basehttp 42627 6188478464 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-02 21:28:06,772 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 200 76062
+WARNING 2025-09-02 21:28:15,843 log 42627 6137999360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:28:15,844 basehttp 42627 6137999360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2108
+WARNING 2025-09-02 21:28:53,767 log 42627 6137999360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:28:53,768 basehttp 42627 6137999360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2071
+INFO 2025-09-02 21:28:57,778 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16667
+INFO 2025-09-02 21:28:57,800 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:28:57,800 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:28:57,800 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:28:57,811 log 42627 6171652096 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:28:57,811 basehttp 42627 6171652096 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2030
+INFO 2025-09-02 21:29:09,440 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16695
+WARNING 2025-09-02 21:29:14,302 log 42627 6137999360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:29:14,303 basehttp 42627 6137999360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2087
+INFO 2025-09-02 21:29:17,041 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16693
+INFO 2025-09-02 21:29:17,061 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:29:17,063 basehttp 42627 6188478464 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:29:17,063 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:29:17,070 log 42627 6171652096 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:29:17,070 basehttp 42627 6171652096 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2123
+INFO 2025-09-02 21:29:26,624 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16622
+INFO 2025-09-02 21:29:26,651 basehttp 42627 6188478464 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-09-02 21:29:26,651 log 42627 6137999360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-02 21:29:26,653 basehttp 42627 6171652096 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+WARNING 2025-09-02 21:29:26,653 basehttp 42627 6137999360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2124
+INFO 2025-09-02 21:29:26,654 basehttp 42627 6205304832 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-02 21:29:26,655 basehttp 42627 6154825728 "GET /static/css/output.css HTTP/1.1" 200 76062
+INFO 2025-09-02 21:30:03,361 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16722
+INFO 2025-09-02 21:30:03,401 basehttp 42627 6154825728 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:30:03,402 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:30:03,403 basehttp 42627 6171652096 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:30:03,417 log 42627 6188478464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:30:03,417 basehttp 42627 6188478464 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2111
+INFO 2025-09-02 21:30:35,361 basehttp 42627 6154825728 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-02 21:30:35,383 log 42627 6137999360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:30:35,384 basehttp 42627 6137999360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2121
+INFO 2025-09-02 21:30:36,819 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16610
+INFO 2025-09-02 21:30:36,857 basehttp 42627 6137999360 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:30:36,859 basehttp 42627 6154825728 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:30:36,884 log 42627 6171652096 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:30:36,885 basehttp 42627 6171652096 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2052
+INFO 2025-09-02 21:30:44,789 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16619
+WARNING 2025-09-02 21:30:44,834 log 42627 6137999360 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:30:44,835 basehttp 42627 6137999360 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2046
+INFO 2025-09-02 21:31:08,741 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16564
+INFO 2025-09-02 21:31:08,771 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:31:08,772 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:31:08,780 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:31:08,795 log 42627 6188478464 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:31:08,796 basehttp 42627 6188478464 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2079
+INFO 2025-09-02 21:31:14,522 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16597
+INFO 2025-09-02 21:31:23,545 basehttp 42627 6137999360 "GET /grids/167/columns/783/delete/ HTTP/1.1" 200 989
+INFO 2025-09-02 21:31:24,816 basehttp 42627 6137999360 "POST /grids/167/columns/783/delete/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:31:24,861 basehttp 42627 6137999360 - Broken pipe from ('127.0.0.1', 55446)
+INFO 2025-09-02 21:31:24,862 basehttp 42627 6154825728 "GET /grids/167/ HTTP/1.1" 200 16262
+INFO 2025-09-02 21:31:31,312 basehttp 42627 6137999360 "GET /grids/167/columns/create/ HTTP/1.1" 200 1059
+INFO 2025-09-02 21:31:33,464 basehttp 42627 6137999360 "POST /grids/167/columns/create/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:31:33,517 basehttp 42627 6154825728 - Broken pipe from ('127.0.0.1', 55451)
+INFO 2025-09-02 21:31:33,517 basehttp 42627 6137999360 - Broken pipe from ('127.0.0.1', 55450)
+INFO 2025-09-02 21:31:33,518 basehttp 42627 6171652096 "GET /grids/167/ HTTP/1.1" 200 16537
+INFO 2025-09-02 21:32:02,278 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16541
+INFO 2025-09-02 21:32:02,299 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:32:02,299 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:32:02,299 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:32:12,821 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16627
+INFO 2025-09-02 21:32:20,838 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16571
+INFO 2025-09-02 21:32:25,631 basehttp 42627 6137999360 "GET /grids/167/columns/784/delete/ HTTP/1.1" 200 989
+INFO 2025-09-02 21:32:26,951 basehttp 42627 6137999360 "POST /grids/167/columns/784/delete/ HTTP/1.1" 204 0
+INFO 2025-09-02 21:32:26,990 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16217
+INFO 2025-09-02 21:32:26,991 basehttp 42627 6137999360 - Broken pipe from ('127.0.0.1', 55490)
+INFO 2025-09-02 21:32:26,992 basehttp 42627 6154825728 "GET /grids/167/ HTTP/1.1" 200 16301
+INFO 2025-09-02 21:32:36,271 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1" 200 16238
+INFO 2025-09-02 21:32:36,291 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:32:36,291 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:32:36,292 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
