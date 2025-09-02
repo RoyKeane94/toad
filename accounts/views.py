@@ -27,7 +27,7 @@ class LoginView(FormView):
     """
     Custom login view using email authentication
     """
-    template_name = 'accounts/pages/login.html'
+    template_name = 'accounts/pages/login/login.html'
     form_class = EmailAuthenticationForm
     success_url = reverse_lazy('pages:project_list')  # Updated to project list
     
@@ -74,7 +74,7 @@ class RegisterFreeView(FormView):
     """
     Custom registration view using email authentication
     """
-    template_name = 'accounts/pages/register.html'
+    template_name = 'accounts/pages/registration/register_free.html'
     form_class = CustomUserCreationForm
     
     def form_valid(self, form):
@@ -159,7 +159,7 @@ def account_settings_view(request):
         'profile_form': profile_form,
         'user': request.user,
     }
-    return render(request, 'accounts/pages/account_settings.html', context)
+    return render(request, 'accounts/pages/settings/account_settings.html', context)
 
 @login_required
 def change_password_view(request):
@@ -193,7 +193,7 @@ def change_password_view(request):
         'form': form,
         'user': request.user,
     }
-    return render(request, 'accounts/pages/password_change.html', context)
+    return render(request, 'accounts/pages/settings/password_change.html', context)
 
 @login_required
 def delete_account_view(request):
@@ -228,7 +228,7 @@ def delete_account_view(request):
         'form': form,
         'user': request.user,
     }
-    return render(request, 'accounts/pages/delete_account.html', context)
+    return render(request, 'accounts/pages/settings/delete_account.html', context)
 
 @login_required
 def account_overview_view(request):
@@ -257,7 +257,7 @@ def account_overview_view(request):
         'completion_rate': completion_rate,
         'recent_projects': recent_projects,
     }
-    return render(request, 'accounts/pages/account_overview.html', context)
+    return render(request, 'accounts/pages/settings/account_overview.html', context)
 
 
 def forgot_password_view(request):
@@ -288,7 +288,7 @@ def forgot_password_view(request):
     context = {
         'form': form,
     }
-    return render(request, 'accounts/pages/forgot_password.html', context)
+    return render(request, 'accounts/pages/settings/forgot_password.html', context)
 
 
 def reset_password_view(request, token):
@@ -329,7 +329,7 @@ def reset_password_view(request, token):
     context = {
         'token': token,
     }
-    return render(request, 'accounts/pages/reset_password.html', context)
+    return render(request, 'accounts/pages/settings/reset_password.html', context)
 
 
 def verify_email_view(request, token):
@@ -425,7 +425,7 @@ def resend_verification_email_view(request):
                 return redirect('accounts:login')
     
     # Show resend verification form
-    return render(request, 'accounts/pages/resend_verification.html')
+    return render(request, 'accounts/pages/registration/resend_verification.html')
 
 
 def preview_email_templates(request):
@@ -494,14 +494,14 @@ class RegisterChoicesView(TemplateView):
     """
     View to display pricing plan choices
     """
-    template_name = 'accounts/pages/register_choices.html'
+    template_name = 'accounts/pages/registration/register_choices.html'
 
 
 class RegisterPersonalView(FormView):
     """
     Custom registration view for Personal plan using email authentication
     """
-    template_name = 'accounts/pages/register_personal.html'
+    template_name = 'accounts/pages/registration/register_personal.html'
     form_class = CustomUserCreationForm
     
     def form_valid(self, form):
