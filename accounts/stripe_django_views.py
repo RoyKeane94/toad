@@ -15,11 +15,21 @@ logger = logging.getLogger(__name__)
 # Set your secret key from environment variable
 stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
+# Check if Stripe is properly configured
+if not stripe.api_key:
+    logger.error("STRIPE_SECRET_KEY environment variable is not set!")
+
 @login_required
 def stripe_checkout_view(request):
     """
     Display the Stripe checkout page for Toad Personal subscription
     """
+    # Check if Stripe is configured
+    if not stripe.api_key:
+        logger.error("Stripe API key not configured - cannot display checkout page")
+        messages.error(request, 'Payment system is not configured. Please contact support.')
+        return redirect('pages:project_list')
+    
     return render(request, 'accounts/pages/stripe/toad_personal_stripe_checkout.html')
 
 @login_required
@@ -31,6 +41,12 @@ def create_checkout_session(request):
         return redirect('accounts:stripe_checkout')
     
     try:
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('accounts:stripe_checkout')
+        
         # Get the price ID from the form (for live mode)
         price_id = request.POST.get('price_id', 'price_1S308oImvDyA3xukKtKWjXPI')
         
@@ -206,6 +222,11 @@ def stripe_webhook(request):
     payload = request.body
     sig_header = request.META.get('HTTP_STRIPE_SIGNATURE')
     endpoint_secret = os.environ.get('STRIPE_WEBHOOK_SECRET', 'whsec_12345')
+    
+    # Check if webhook secret is configured
+    if endpoint_secret == 'whsec_12345':
+        logger.error("STRIPE_WEBHOOK_SECRET not properly configured")
+        return HttpResponse(status=400)
     
     # Log webhook received
     logger.info(f"Webhook received: {request.META.get('HTTP_STRIPE_SIGNATURE', 'No signature')}")
