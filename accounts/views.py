@@ -506,24 +506,36 @@ class RegisterPersonalView(FormView):
     
     def form_valid(self, form):
         """Create the user and redirect to Stripe checkout"""
-        user = form.save()
-        
-        # Set user tier to FREE initially - will be upgraded to personal after successful payment
-        if hasattr(user, 'tier'):
-            user.tier = 'free'  # Default to free tier
-            user.save()
-        
-        # Log registration attempt
         import logging
         logger = logging.getLogger(__name__)
-        logger.info(f"New Personal plan user registration: {user.email} ({user.get_short_name()}) - tier set to FREE initially")
         
-        # Log the user in immediately so they can proceed to checkout
-        login(self.request, user)
-        
-        # Redirect to Stripe checkout for Personal plan
-        messages.success(self.request, 'Account created successfully! Please complete your subscription to activate Personal features.')
-        return redirect('accounts:stripe_checkout')
+        try:
+            logger.info("Starting Personal plan user registration...")
+            user = form.save()
+            logger.info(f"User created successfully: {user.email}")
+            
+            # Set user tier to FREE initially - will be upgraded to personal after successful payment
+            if hasattr(user, 'tier'):
+                user.tier = 'free'  # Default to free tier
+                user.save()
+                logger.info(f"User tier set to free: {user.email}")
+            
+            # Log registration attempt
+            logger.info(f"New Personal plan user registration: {user.email} ({user.get_short_name()}) - tier set to FREE initially")
+            
+            # Log the user in immediately so they can proceed to checkout
+            logger.info("Logging user in...")
+            login(self.request, user)
+            logger.info("User logged in successfully")
+            
+            # Redirect to Stripe checkout for Personal plan
+            logger.info("Redirecting to Stripe checkout...")
+            messages.success(self.request, 'Account created successfully! Please complete your subscription to activate Personal features.')
+            return redirect('accounts:stripe_checkout')
+            
+        except Exception as e:
+            logger.error(f"Error in RegisterPersonalView.form_valid: {e}", exc_info=True)
+            raise
     
     def form_invalid(self, form):
         """Handle form validation errors"""

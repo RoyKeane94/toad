@@ -314,7 +314,7 @@ SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')
 # ---
 
 if IS_PRODUCTION:
-    # Production logging - only file logging to avoid console output in Railway logs
+    # Production logging - both console and file for Railway debugging
     LOGGING = {
         'version': 1,
         'disable_existing_loggers': False,
@@ -323,8 +323,17 @@ if IS_PRODUCTION:
                 'format': '{levelname} {asctime} {module} {process:d} {thread:d} {message}',
                 'style': '{',
             },
+            'simple': {
+                'format': '{levelname} {message}',
+                'style': '{',
+            },
         },
         'handlers': {
+            'console': {
+                'level': 'INFO',
+                'class': 'logging.StreamHandler',
+                'formatter': 'simple',
+            },
             'file': {
                 'level': 'INFO',
                 'class': 'logging.handlers.RotatingFileHandler',
@@ -335,12 +344,12 @@ if IS_PRODUCTION:
             },
         },
         'root': {
-            'handlers': ['file'],
+            'handlers': ['console', 'file'],
             'level': 'INFO',
         },
         'loggers': {
             'django': {
-                'handlers': ['file'],
+                'handlers': ['console', 'file'],
                 'level': 'INFO',
                 'propagate': False,
             },

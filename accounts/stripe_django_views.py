@@ -24,13 +24,28 @@ def stripe_checkout_view(request):
     """
     Display the Stripe checkout page for Toad Personal subscription
     """
-    # Check if Stripe is configured
-    if not stripe.api_key:
-        logger.error("Stripe API key not configured - cannot display checkout page")
-        messages.error(request, 'Payment system is not configured. Please contact support.')
-        return redirect('pages:project_list')
+    logger.info(f"Stripe checkout view accessed by user: {request.user.email}")
     
-    return render(request, 'accounts/pages/stripe/toad_personal_stripe_checkout.html')
+    try:
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured - cannot display checkout page")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('pages:project_list')
+        
+        logger.info("Stripe API key is configured, proceeding...")
+        
+        # Test template rendering
+        logger.info("Rendering Stripe checkout template...")
+        response = render(request, 'accounts/pages/stripe/toad_personal_stripe_checkout.html')
+        logger.info("Template rendered successfully")
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error in stripe_checkout_view: {e}", exc_info=True)
+        # Return a simple error page instead of raising
+        from django.http import HttpResponse
+        return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
 
 @login_required
 def create_checkout_session(request):
