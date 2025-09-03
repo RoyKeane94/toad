@@ -31,24 +31,30 @@ def create_checkout_session(request):
         return redirect('accounts:stripe_checkout')
     
     try:
-        # Get the lookup key from the form
-        lookup_key = request.POST.get('lookup_key', 'Toad_-_Personal-c6aa14b')
+        # Get the price ID from the form (for live mode)
+        price_id = request.POST.get('price_id', 'price_1S308oImvDyA3xukKtKWjXPI')
         
+        # For live mode, we'll use the price ID directly instead of lookup key
         # Get the price from Stripe
-        prices = stripe.Price.list(
-            lookup_keys=[lookup_key],
-            expand=['data.product']
-        )
-        
-        if not prices.data:
-            messages.error(request, 'Subscription plan not found. Please contact support.')
-            return redirect('accounts:stripe_checkout')
+        try:
+            price = stripe.Price.retrieve(price_id, expand=['product'])
+        except stripe.error.InvalidRequestError:
+            # Fallback to lookup key method for backward compatibility
+            lookup_key = request.POST.get('lookup_key', 'Toad_-_Personal-c6aa14b')
+            prices = stripe.Price.list(
+                lookup_keys=[lookup_key],
+                expand=['data.product']
+            )
+            if not prices.data:
+                messages.error(request, 'Subscription plan not found. Please contact support.')
+                return redirect('accounts:stripe_checkout')
+            price = prices.data[0]
         
         # Create checkout session
         checkout_session = stripe.checkout.Session.create(
             line_items=[
                 {
-                    'price': prices.data[0].id,
+                    'price': price.id,
                     'quantity': 1,
                 },
             ],

@@ -52,20 +52,31 @@
                    {% if task.completed %}checked{% endif %}
                    class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer {% if task.completed %}checkbox-completed{% endif %}">
         </form>
-        <div id="task-text-{{ task.id }}" 
-             class="text-sm text-[var(--text-primary)] {% if task.completed %}task-completed-strikethrough{% endif %} leading-relaxed whitespace-pre-wrap cursor-text hover:bg-[var(--grid-header-bg)] hover:rounded px-1 transition-all duration-200 task-text-editable"
-             data-task-id="{{ task.id }}"
-             data-original-text="{{ task.text|escapejs }}">{{ task.text|linebreaks }}</div>
+        <div class="flex-1 min-w-0">
+            <div id="task-text-{{ task.id }}" 
+                 class="text-sm text-[var(--text-primary)] {% if task.completed %}task-completed-strikethrough{% endif %} leading-relaxed whitespace-pre-wrap cursor-text hover:bg-[var(--grid-header-bg)] hover:rounded px-1 transition-all duration-200 task-text-editable"
+                 data-task-id="{{ task.id }}"
+                 data-original-text="{{ task.text|escapejs }}">{{ task.text|linebreaks }}</div>
+            
+            <!-- Reminder Display -->
+            {% if task.has_reminder %}
+                <div class="reminder-display flex items-center space-x-1 mt-1 text-xs text-green-600 ml-1">
+                    <i class="fas fa-calendar-check text-green-500"></i>
+                    <span>{{ task.get_reminder_date_display }}</span>
+                </div>
+            {% endif %}
+        </div>
     </div>
     
     <!-- Actions -->
     <div class="flex-shrink-0 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 desktop-task-actions">
         <button type="button"
                 class="calendar-reminder-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                title="Set reminder"
+                title="{% if task.has_reminder %}Edit reminder{% else %}Set reminder{% endif %}"
                 data-task-id="{{ task.pk }}"
-                data-task-text="{{ task.text }}">
-            <i class="fas fa-calendar-plus text-xs text-gray-400 hover:text-[var(--primary-action-bg)] transition-colors"></i>
+                data-task-text="{{ task.text }}"
+                {% if task.has_reminder %}data-reminder-date="{{ task.reminder|date:'Y-m-d' }}"{% endif %}>
+            <i class="fas {% if task.has_reminder %}fa-calendar-check text-green-500{% else %}fa-calendar-plus text-gray-400 hover:text-[var(--primary-action-bg)]{% endif %} text-xs transition-colors"></i>
         </button>
         <button type="button"
                 class="delete-task-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
@@ -81,10 +92,11 @@
     <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 min-w-[70px] opacity-100">
         <button type="button"
                 class="calendar-reminder-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                title="Set reminder"
+                title="{% if task.has_reminder %}Edit reminder{% else %}Set reminder{% endif %}"
                 data-task-id="{{ task.pk }}"
-                data-task-text="{{ task.text }}">
-            <i class="fas fa-calendar-plus text-sm text-gray-400 hover:text-[var(--primary-action-bg)] transition-colors"></i>
+                data-task-text="{{ task.text }}"
+                {% if task.has_reminder %}data-reminder-date="{{ task.reminder|date:'Y-m-d' }}"{% endif %}>
+            <i class="fas {% if task.has_reminder %}fa-calendar-check text-green-500{% else %}fa-calendar-plus text-gray-400 hover:text-[var(--primary-action-bg)]{% endif %} text-sm transition-colors"></i>
         </button>
         <button type="button"
                 class="delete-task-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 

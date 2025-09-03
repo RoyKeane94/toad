@@ -883,7 +883,7 @@ function hideSaveTemplateModal() {
 }
 
 // Calendar Reminder Modal functionality
-function showCalendarReminderModal(taskId, taskText) {
+function showCalendarReminderModal(taskId, taskText, existingReminderDate = null) {
     const modal = document.getElementById('calendar-reminder-modal');
     const taskDisplay = document.getElementById('task-for-reminder');
     const form = document.getElementById('calendar-reminder-form');
@@ -899,7 +899,13 @@ function showCalendarReminderModal(taskId, taskText) {
         // Set minimum date to today
         const today = new Date().toISOString().split('T')[0];
         dateInput.min = today;
-        dateInput.value = today;
+        
+        // Set date value - use existing reminder date if available, otherwise today
+        if (existingReminderDate) {
+            dateInput.value = existingReminderDate;
+        } else {
+            dateInput.value = today;
+        }
         
         // Show modal
         modal.classList.remove('opacity-0', 'invisible');
@@ -927,6 +933,84 @@ function hideCalendarReminderModal() {
         if (form) form.reset();
         if (noteTextarea) noteTextarea.value = '';
     }
+}
+
+// Function to update task reminder display without page refresh
+function updateTaskReminderDisplay(taskId, reminderDate) {
+    const taskElement = document.getElementById(`task-${taskId}`);
+    if (!taskElement) return;
+    
+    // Format the date to match the new format (02 Sep 2025)
+    const date = new Date(reminderDate);
+    const formattedDate = date.toLocaleDateString('en-GB', {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric'
+    });
+    
+    // Find the task text container
+    const taskTextContainer = taskElement.querySelector('.flex-1.min-w-0');
+    if (!taskTextContainer) return;
+    
+    // Check if reminder display already exists
+    let reminderDisplay = taskTextContainer.querySelector('.reminder-display');
+    
+    if (!reminderDisplay) {
+        // Create new reminder display
+        reminderDisplay = document.createElement('div');
+        reminderDisplay.className = 'reminder-display flex items-center space-x-1 mt-1 text-xs text-green-600 ml-1';
+        reminderDisplay.innerHTML = `
+            <i class="fas fa-calendar-check text-green-500"></i>
+            <span>${formattedDate}</span>
+        `;
+        // Insert after the task text div, not at the end of the container
+        const taskTextDiv = taskTextContainer.querySelector('[id^="task-text-"]');
+        if (taskTextDiv) {
+            taskTextDiv.parentNode.insertBefore(reminderDisplay, taskTextDiv.nextSibling);
+        } else {
+            taskTextContainer.appendChild(reminderDisplay);
+        }
+    } else {
+        // Update existing reminder display
+        const dateSpan = reminderDisplay.querySelector('span');
+        if (dateSpan) {
+            dateSpan.textContent = formattedDate;
+        }
+    }
+    
+    // Update calendar button icons
+    const calendarButtons = taskElement.querySelectorAll('.calendar-reminder-btn');
+    calendarButtons.forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon) {
+            icon.className = 'fas fa-calendar-check text-green-500 text-xs transition-colors';
+            btn.title = 'Edit reminder';
+            btn.setAttribute('data-reminder-date', reminderDate);
+        }
+    });
+}
+
+// Function to remove task reminder display (for future use)
+function removeTaskReminderDisplay(taskId) {
+    const taskElement = document.getElementById(`task-${taskId}`);
+    if (!taskElement) return;
+    
+    // Remove reminder display
+    const reminderDisplay = taskElement.querySelector('.reminder-display');
+    if (reminderDisplay) {
+        reminderDisplay.remove();
+    }
+    
+    // Update calendar button icons back to default
+    const calendarButtons = taskElement.querySelectorAll('.calendar-reminder-btn');
+    calendarButtons.forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon) {
+            icon.className = 'fas fa-calendar-plus text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors';
+            btn.title = 'Set reminder';
+            btn.removeAttribute('data-reminder-date');
+        }
+    });
 }
 
 // Calendar reminder event listeners
@@ -961,7 +1045,8 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             const taskId = calendarBtn.dataset.taskId;
             const taskText = calendarBtn.dataset.taskText;
-            showCalendarReminderModal(taskId, taskText);
+            const existingReminderDate = calendarBtn.dataset.reminderDate;
+            showCalendarReminderModal(taskId, taskText, existingReminderDate);
         }
     });
     
@@ -973,6 +1058,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const formData = new FormData(calendarForm);
             const taskId = calendarForm.action.split('/tasks/')[1].split('/reminder/')[0];
+            const reminderDate = formData.get('reminder_date');
             
             // Form data ready for submission
             
@@ -1002,6 +1088,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Created!';
                     submitBtn.classList.remove('bg-[var(--primary-action-bg)]', 'hover:bg-[var(--primary-action-hover-bg)]');
                     submitBtn.classList.add('bg-green-500');
+                    
+                    // Update the task display immediately
+                    updateTaskReminderDisplay(taskId, reminderDate);
                     
                     // Close modal after short delay
                     setTimeout(() => {

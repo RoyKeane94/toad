@@ -534,6 +534,10 @@ def create_task_reminder(request, task_pk):
                 # Check if date is not in the past
                 if reminder_date_obj < date.today():
                     return JsonResponse({'success': False, 'error': 'Reminder date cannot be in the past'}, status=400)
+                
+                # Save reminder date to task model
+                task.reminder = datetime.combine(reminder_date_obj, datetime.min.time())
+                task.save(update_fields=['reminder'])
                     
             except ValueError:
                 return JsonResponse({'success': False, 'error': 'Invalid date format'}, status=400)
@@ -622,14 +626,6 @@ The Toad Team"""
             # Attach ICS file (already generated above)
             email.attach('task_reminder.ics', ics_content, 'text/calendar')
             email.send()
-            
-            # Log the action
-            log_user_action(
-                request.user, 
-                'created task reminder', 
-                f'{task.text} for {formatted_date}', 
-                task.project.name
-            )
             
             return JsonResponse({
                 'success': True, 

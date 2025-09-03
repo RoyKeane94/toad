@@ -79,6 +79,7 @@ class Task(models.Model):
     order = models.PositiveIntegerField(default=0)  # For maintaining task order within cells
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    reminder = models.DateTimeField(blank=True, null=True)
 
     def __str__(self):
         return f"{self.text[:50]} - {self.created_at} - project: {self.project.name} - user: {self.project.user}" if self.text else 'Empty Task'
@@ -87,6 +88,16 @@ class Task(models.Model):
         if not self.text or not self.text.strip():
             from django.core.exceptions import ValidationError
             raise ValidationError({'text': 'Task text cannot be empty.'})
+    
+    def has_reminder(self):
+        """Check if task has a reminder set"""
+        return self.reminder is not None
+    
+    def get_reminder_date_display(self):
+        """Get formatted reminder date for display"""
+        if self.reminder:
+            return self.reminder.strftime('%d %b %Y')
+        return None
 
     class Meta:
         ordering = ['order', 'created_at']  # Order first, then by creation time

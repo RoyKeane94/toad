@@ -23977,3 +23977,52 @@ INFO 2025-09-02 21:32:36,271 basehttp 42627 6137999360 "GET /grids/167/ HTTP/1.1
 INFO 2025-09-02 21:32:36,291 basehttp 42627 6154825728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-09-02 21:32:36,291 basehttp 42627 6171652096 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
 INFO 2025-09-02 21:32:36,292 basehttp 42627 6137999360 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:34:06,850 autoreload 43354 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:34:08,712 basehttp 43354 6122893312 "GET /grids/ HTTP/1.1" 200 10975
+INFO 2025-09-02 21:34:08,732 basehttp 43354 6139719680 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:34:08,732 basehttp 43354 6122893312 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:34:10,240 basehttp 43354 6122893312 "GET /accounts/settings/ HTTP/1.1" 200 4110
+INFO 2025-09-02 21:34:11,701 basehttp 43354 6122893312 "GET /accounts/settings/delete/ HTTP/1.1" 200 4420
+INFO 2025-09-02 21:34:16,153 views 43354 6122893312 Account deleted: accounts@meettoad.co.uk (Tom)
+INFO 2025-09-02 21:34:16,161 basehttp 43354 6122893312 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:34:16,167 basehttp 43354 6122893312 "GET / HTTP/1.1" 200 6347
+INFO 2025-09-02 21:34:16,210 basehttp 43354 6122893312 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-09-02 21:35:26,770 autoreload 43354 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-09-02 21:35:27,334 autoreload 43405 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:40:58,193 autoreload 43963 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:41:00,088 basehttp 43963 6200373248 "GET /accounts/login/ HTTP/1.1" 200 4357
+INFO 2025-09-02 21:41:00,126 basehttp 43963 6217199616 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:41:00,132 basehttp 43963 6200373248 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:41:07,912 basehttp 43963 6200373248 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-02 21:41:07,929 basehttp 43963 6200373248 "GET /grids/ HTTP/1.1" 200 11386
+INFO 2025-09-02 21:41:10,831 basehttp 43963 6200373248 "GET /grids/150/ HTTP/1.1" 200 15884
+INFO 2025-09-02 21:41:10,844 basehttp 43963 6200373248 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:41:21,001 project_views_functions 43963 6200373248 User None created task reminder: "Go to bed by 10:30 for September 02, 2025" from project: Dog
+INFO 2025-09-02 21:41:21,003 basehttp 43963 6200373248 "POST /tasks/1715/reminder/ HTTP/1.1" 200 82
+INFO 2025-09-02 21:41:25,875 basehttp 43963 6200373248 "GET /grids/150/ HTTP/1.1" 200 15896
+INFO 2025-09-02 21:41:48,896 project_views_functions 43963 6200373248 User None created task reminder: "Chose to walk 30 minutes to work without headphones for September 24, 2025" from project: Dog
+INFO 2025-09-02 21:41:48,898 basehttp 43963 6200373248 "POST /tasks/1723/reminder/ HTTP/1.1" 200 82
+INFO 2025-09-02 21:41:53,425 basehttp 43963 6200373248 "GET /grids/150/ HTTP/1.1" 200 16047
+INFO 2025-09-02 21:42:35,630 basehttp 43963 6217199616 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-02 21:42:35,648 log 43963 6200373248 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:42:35,648 basehttp 43963 6200373248 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2085
+INFO 2025-09-02 21:42:40,292 basehttp 43963 6200373248 "GET /grids/150/ HTTP/1.1" 200 14873
+INFO 2025-09-02 21:42:40,337 basehttp 43963 6234025984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-02 21:42:40,352 log 43963 6200373248 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-02 21:42:40,353 basehttp 43963 6200373248 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2078
+INFO 2025-09-02 21:42:40,354 basehttp 43963 6217199616 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-02 21:42:45,925 autoreload 43963 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-09-02 21:42:46,455 autoreload 44129 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:43:47,609 basehttp 44129 6134902784 "GET /grids/150/ HTTP/1.1" 200 16721
+INFO 2025-09-02 21:43:47,630 basehttp 44129 6134902784 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:43:47,764 autoreload 44129 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-09-02 21:43:48,232 autoreload 44179 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-02 21:43:54,086 project_views_functions 44179 6137131008 User None created task reminder: "Don't look at phone for an hour post waking for September 02, 2025" from project: Dog
+INFO 2025-09-02 21:43:54,087 basehttp 44179 6137131008 "POST /tasks/1720/reminder/ HTTP/1.1" 200 82
+INFO 2025-09-02 21:44:02,918 basehttp 44179 6137131008 "GET /grids/150/ HTTP/1.1" 200 16850
+INFO 2025-09-02 21:46:13,605 basehttp 44179 6137131008 "GET /grids/150/ HTTP/1.1" 200 16883
+INFO 2025-09-02 21:46:13,635 basehttp 44179 6153957376 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:46:13,635 basehttp 44179 6170783744 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-02 21:46:13,635 basehttp 44179 6137131008 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-02 21:46:20,204 project_views_functions 44179 6137131008 User None created task reminder: "Don't look at phone for an hour post waking for September 02, 2025" from project: Dog
+INFO 2025-09-02 21:46:20,206 basehttp 44179 6137131008 "POST /tasks/1721/reminder/ HTTP/1.1" 200 82
