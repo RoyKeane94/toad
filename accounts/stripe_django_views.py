@@ -13,7 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 # Set your secret key from environment variable
-stripe.api_key = os.environ.get('STRIPE_SECRET_KEY', 'sk_test_51S01pdImvDyA3xukkudoGTJTfB2oENzAjmFFt23DVDwnGZzRzmjpo9sCBrJwbcos8pGGrbIxuNPfIOaLe1J2EmXG00vxlYwdXB')
+stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 
 @login_required
 def stripe_checkout_view(request):
