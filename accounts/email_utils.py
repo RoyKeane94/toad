@@ -51,7 +51,7 @@ If the link doesn't work, you can copy and paste it into your browser.
 
 Security Notice: This verification link will expire in 24 hours for your security. If you didn't create a Toad account, you can safely ignore this email.
 
-Once verified, you'll have full access to create grids, organize tasks, and boost your productivity with Toad's powerful task management tools.
+Once verified, you'll have full access to create grids, organise tasks, and boost your productivity with Toad's powerful task management tools.
 
 Thanks for choosing Toad!
 
