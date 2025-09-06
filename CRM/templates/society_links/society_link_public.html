@@ -12,81 +12,369 @@
         .cta-button:hover {
             transform: translateY(-2px);
         }
+        
+        /* Ensure desktop arrows are perfectly circular */
+        #prev-btn, #next-btn {
+            border-radius: 50% !important;
+            aspect-ratio: 1;
+        }
     </style>
 {% endblock %}
 
 {% block content %}
-<main class="max-w-4xl mx-auto px-4 py-12 sm:px-6 sm:py-20 text-center antialiased" style="background-color: var(--highlight-bg);">
+<main class="max-w-4xl mx-auto px-3 py-8 sm:px-6 sm:py-20 text-center antialiased" style="background-color: var(--highlight-bg);">
 
     <!-- Co-branded Header -->
-    <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-12">
+    <div class="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-8 sm:mb-12">
         <!-- Toad Logo -->
-        <div class="flex items-center space-x-3">
-            <svg class="h-20 w-20 sm:h-24 sm:w-24 fill-current text-[var(--primary-action-bg)] drop-shadow-lg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/></svg>
-            <span class="text-3xl sm:text-4xl font-bold text-[var(--primary-action-bg)]">Toad</span>
+        <div class="flex items-center space-x-2 sm:space-x-3">
+            <svg class="h-16 w-16 sm:h-24 sm:w-24 fill-current text-[var(--primary-action-bg)] drop-shadow-lg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/></svg>
+            <span class="text-2xl sm:text-4xl font-bold text-[var(--primary-action-bg)]">Toad</span>
         </div>
         
         <!-- Plus Sign -->
-        <span class="text-gray-300 text-4xl font-light">+</span>
+        <span class="text-gray-300 text-3xl sm:text-4xl font-light">+</span>
         
         <!-- Society Logo -->
         {% if society_link.image %}
             <img src="{{ society_link.image.url }}" 
                  alt="{{ society_link.name }} Logo" 
-                 class="h-24 sm:h-32 w-auto object-contain drop-shadow-sm max-w-48 sm:max-w-64">
+                 class="h-20 sm:h-32 w-auto object-contain drop-shadow-sm max-w-40 sm:max-w-64">
         {% else %}
-            <div class="h-24 sm:h-32 w-48 sm:w-64 bg-gray-200 rounded-lg flex items-center justify-center shadow-sm">
-                <span class="text-gray-500 font-semibold text-lg sm:text-xl">{{ society_link.name }}</span>
+            <div class="h-20 sm:h-32 w-40 sm:w-64 bg-gray-200 rounded-lg flex items-center justify-center shadow-sm">
+                <span class="text-gray-500 font-semibold text-base sm:text-xl px-2 text-center">{{ society_link.name }}</span>
             </div>
         {% endif %}
     </div>
 
     <!-- Hero Section -->
     <section>
-        <h1 class="mt-4 text-3xl sm:text-5xl font-extrabold text-[var(--primary-action-bg)] tracking-tight leading-tight">
-            Exclusive offer for the members of <br class="hidden sm:inline"> {{ society_link.name }}
+        <h1 class="mt-4 text-2xl sm:text-5xl font-extrabold text-[var(--primary-action-bg)] tracking-tight leading-tight px-2">
+            Your secret weapon for a calm and organised year ahead
         </h1>
-        <p class="mt-6 max-w-2xl mx-auto text-lg sm:text-xl text-[var(--subtitle-text)]">
-            Your committee is already using Toad to get organized for the year ahead. Now, it's your turn.
+        <p class="mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-xl text-[var(--subtitle-text)] px-2">
+            {{ society_link.name }} has partnered with Toad to give every member a free 6-month Personal plan. Organise your courses, plan your revision, and ace your job applications
         </p>
     </section>
     
     <!-- Offer Section -->
-    <section class="mt-8">
-        <div class="bg-white border-2 border-[var(--primary-action-bg)] rounded-xl p-8 max-w-2xl mx-auto shadow-lg">
-            <h2 class="text-2xl font-bold text-[var(--text-primary)]">Get a free 6-month Personal plan.</h2>
-            <p class="mt-2 text-[var(--text-secondary)]">As a member, you get free access to Toad's Personal plan (£2/month value) for the first two terms. Organize your courses, plan your revision, and ace your job applications.</p>
-            <a href="{% url 'accounts:register_personal' %}" class="cta-button mt-6 inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-md">
-                Claim Your Free Account
+    <section class="mt-6 sm:mt-8">
+        <div class="bg-white border-2 border-[var(--primary-action-bg)] rounded-xl p-4 sm:p-8 max-w-2xl mx-auto shadow-lg mx-2">
+            <h2 class="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">Get a free 6-month Personal plan.</h2>
+            <p class="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">As a member of {{ society_link.name }}, you get free access to Toad's Personal plan (£2/month value) for the first two terms. Organize your courses, plan your revision, and ace your job applications.</p>
+            <a href="{% url 'accounts:register_trial' %}?society={{ society_link.name|urlencode }}" class="cta-button mt-4 sm:mt-6 inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-base sm:text-lg shadow-md w-full sm:w-auto">
+                Start Your Free 6-Month Trial
             </a>
-            <p class="mt-3 text-xs text-gray-400">No credit card required.</p>
+            <p class="mt-3 text-xs text-gray-400">No credit card required • Cancel anytime</p>
         </div>
     </section>
 
-    <!-- Template Showcase -->
-    <section class="mt-16">
-        <h3 class="text-2xl font-bold text-[var(--title-text)]">Start with a solution, not a blank page.</h3>
-        <p class="mt-2 text-lg text-[var(--subtitle-text)]">Your free account comes with pre-built templates, like this one for your internship search.</p>
-        <div class="mt-6">
-            <img src="{% static 'img/Professionals/Job Application Tracker.png' %}" 
-                 alt="A pre-populated job application tracker for accounting firms in Toad" 
-                 class="rounded-xl shadow-2xl ring-1 ring-black/5 max-w-full h-auto"
-                 onerror="this.src='https://placehold.co/1200x750/F9FAFB/1F2F37?text=Job+Application+Tracker+Preview'; this.alt='Error loading app preview image';">
+    <!-- Student Templates Showcase -->
+    <section class="mt-12 sm:mt-16">
+        <h3 class="text-xl sm:text-2xl font-bold text-[var(--primary-action-bg)] px-2">See how other students are using Toad</h3>
+        <p class="mt-2 text-base sm:text-lg text-[var(--subtitle-text)] px-2">Your free account comes with pre-built templates designed by students, for students.</p>
+        
+        <!-- Templates Carousel -->
+        <div class="mt-6 sm:mt-8 max-w-4xl mx-auto px-1 sm:px-0">
+            <!-- Navigation Arrows - Outside Container -->
+            <div class="flex justify-between items-center mb-4 sm:mb-6">
+                <!-- Desktop arrows -->
+                <button id="prev-btn" class="hidden sm:flex bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-12 h-12 rounded-full shadow-lg items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer" style="border-radius: 50%;">
+                    <i class="fas fa-chevron-left text-lg"></i>
+                </button>
+                <div class="flex-1 mx-0 sm:mx-12">
+                    <!-- Carousel Container -->
+                    <div class="carousel-container overflow-hidden rounded-xl">
+                        <div class="carousel-track flex transition-transform duration-700 ease-in-out" id="carousel-track">
+                            <!-- Course Planner -->
+                            <div class="carousel-slide w-full flex-shrink-0">
+                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
+                                    <div class="text-center mb-2 sm:mb-6">
+                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Course Planner</h4>
+                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Track modules, manage assignments, and never miss a deadline.</p>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <img src="{% static 'gif/Course Planner GIF.gif' %}" 
+                                             alt="Course Planner Preview" 
+                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
+                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                                            <div class="text-center">
+                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Course Planner Preview</p>
+                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Revision Planner -->
+                            <div class="carousel-slide w-full flex-shrink-0">
+                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
+                                    <div class="text-center mb-2 sm:mb-6">
+                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Revision Planner</h4>
+                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Plan your revision with what works for you and ace your exams.</p>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <img src="{% static 'gif/Revision Planner GIF.gif' %}" 
+                                             alt="Revision Planner Preview" 
+                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
+                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                                            <div class="text-center">
+                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Revision Planner Preview</p>
+                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Essay Planner -->
+                            <div class="carousel-slide w-full flex-shrink-0">
+                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
+                                    <div class="text-center mb-2 sm:mb-6">
+                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Essay Planner</h4>
+                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Structure your essays with a proven framework.</p>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <img src="{% static 'gif/Essay Planner GIF.gif' %}" 
+                                             alt="Essay Planner Preview" 
+                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
+                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                                            <div class="text-center">
+                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Essay Planner Preview</p>
+                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Job Application Tracker -->
+                            <div class="carousel-slide w-full flex-shrink-0">
+                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
+                                    <div class="text-center mb-2 sm:mb-6">
+                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Job Application Tracker</h4>
+                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Track applications systematically and maximize your success.</p>
+                                    </div>
+                                    <div class="flex justify-center">
+                                        <img src="{% static 'gif/Job Application Tracker GIF.gif' %}" 
+                                             alt="Job Application Tracker Preview" 
+                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
+                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                                            <div class="text-center">
+                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Job Application Tracker Preview</p>
+                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="next-btn" class="hidden sm:flex bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-12 h-12 rounded-full shadow-lg items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer" style="border-radius: 50%;">
+                    <i class="fas fa-chevron-right text-lg"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Navigation Buttons -->
+            <div class="flex sm:hidden justify-center mt-4 space-x-4">
+                <button id="mobile-prev-btn" class="bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110" style="border-radius: 50%;">
+                    <i class="fas fa-chevron-left text-sm"></i>
+                </button>
+                <button id="mobile-next-btn" class="bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110" style="border-radius: 50%;">
+                    <i class="fas fa-chevron-right text-sm"></i>
+                </button>
+            </div>
+            
+            <!-- Dots Indicator -->
+            <div class="flex justify-center mt-4 sm:mt-6 space-x-2">
+                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[var(--primary-action-bg)] transition-all duration-200" data-slide="0"></button>
+                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-200" data-slide="1"></button>
+                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-200" data-slide="2"></button>
+                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-200" data-slide="3"></button>
+            </div>
+        </div>
+        
+        <!-- CTA Section -->
+        <div class="mt-8 sm:mt-12 text-center px-2">
+            <a href="{% url 'accounts:register_trial' %}?society={{ society_link.name|urlencode }}" class="cta-button inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-8 sm:px-12 py-3 sm:py-4 rounded-lg font-bold text-lg sm:text-xl shadow-lg w-full sm:w-auto">
+                Start Your Free 6-Month Trial
+            </a>
         </div>
     </section>
     
 </main>
 
-<!-- Footer -->
-<footer class="mt-16">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center border-t border-[var(--border-color)]">
-        <p class="text-sm text-[var(--subtitle-text)]">
-            &copy; <span id="currentYear"></span> Toad. A simple tool built by a solo maker in London.
-        </p>
-    </div>
-</footer>
 
 <script>
-    document.getElementById('currentYear').textContent = new Date().getFullYear();
+    // Set current year safely
+    const currentYearElement = document.getElementById('currentYear');
+    if (currentYearElement) {
+        currentYearElement.textContent = new Date().getFullYear();
+    }
+    
+    // Carousel functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        let currentSlide = 0;
+        const totalSlides = 4;
+        const track = document.getElementById('carousel-track');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const mobilePrevBtn = document.getElementById('mobile-prev-btn');
+        const mobileNextBtn = document.getElementById('mobile-next-btn');
+        
+        console.log('Carousel elements found:', { track, dots, prevBtn, nextBtn, mobilePrevBtn, mobileNextBtn });
+        
+        function updateCarousel() {
+            if (!track) return;
+            
+            const translateX = -currentSlide * 100;
+            track.style.transform = `translateX(${translateX}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-gray-300', 'hover:bg-gray-400');
+                    dot.classList.add('bg-[var(--primary-action-bg)]');
+                } else {
+                    dot.classList.remove('bg-[var(--primary-action-bg)]');
+                    dot.classList.add('bg-gray-300', 'hover:bg-gray-400');
+                }
+            });
+            
+            // Update button states
+            if (prevBtn) prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            if (nextBtn) nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
+        }
+        
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateCarousel();
+        }
+        
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+            } else {
+                currentSlide = 0; // Loop back to start
+            }
+            updateCarousel();
+        }
+        
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+            } else {
+                currentSlide = totalSlides - 1; // Loop to end
+            }
+            updateCarousel();
+        }
+        
+        // Event listeners for desktop buttons
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Next button clicked');
+                nextSlide();
+            });
+        }
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Prev button clicked');
+                prevSlide();
+            });
+        }
+        
+        // Event listeners for mobile buttons
+        if (mobileNextBtn) {
+            mobileNextBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Mobile next button clicked');
+                nextSlide();
+            });
+        }
+        
+        if (mobilePrevBtn) {
+            mobilePrevBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Mobile prev button clicked');
+                prevSlide();
+            });
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function(e) {
+                e.preventDefault();
+                console.log('Dot clicked:', index);
+                goToSlide(index);
+            });
+        });
+        
+        // Auto-play
+        let autoPlayInterval = setInterval(() => {
+            console.log('Auto-play: moving to next slide');
+            nextSlide();
+        }, 8000); // Change slide every 8 seconds
+        
+        // Pause auto-play on hover
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlayInterval);
+                console.log('Auto-play paused');
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoPlayInterval = setInterval(() => {
+                    console.log('Auto-play: moving to next slide');
+                    nextSlide();
+                }, 8000);
+                console.log('Auto-play resumed');
+            });
+        }
+        
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        if (track) {
+            track.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+                console.log('Touch start:', touchStartX);
+            });
+            
+            track.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                const swipeThreshold = 50; // Minimum distance for a swipe
+                const diff = touchStartX - touchEndX;
+                
+                console.log('Touch end:', touchEndX, 'Diff:', diff);
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        // Swiped left - go to next slide
+                        console.log('Swipe left - next slide');
+                        nextSlide();
+                    } else {
+                        // Swiped right - go to previous slide
+                        console.log('Swipe right - prev slide');
+                        prevSlide();
+                    }
+                }
+            });
+        }
+        
+        // Initialize carousel
+        updateCarousel();
+        console.log('Carousel initialized');
+    });
 </script>
 {% endblock %}
