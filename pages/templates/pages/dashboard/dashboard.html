@@ -116,6 +116,60 @@
         </div>
     </div>
 
+    <!-- Users by Tier -->
+    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6 mb-8">
+        <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Users by Tier</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <!-- Beta Users -->
+            <div class="bg-gradient-to-br from-purple-50 to-purple-100 border border-purple-200 rounded-lg p-4">
+                <div class="text-center">
+                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-flask text-purple-600"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ beta_users }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Beta Users</p>
+                    <p class="text-xs text-purple-600">{{ beta_percentage }}%</p>
+                </div>
+            </div>
+            
+            <!-- Free Users -->
+            <div class="bg-gradient-to-br from-gray-50 to-gray-100 border border-gray-200 rounded-lg p-4">
+                <div class="text-center">
+                    <div class="w-8 h-8 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-user text-gray-600"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ free_users }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Free Users</p>
+                    <p class="text-xs text-gray-600">{{ free_percentage }}%</p>
+                </div>
+            </div>
+            
+            <!-- Personal Users -->
+            <div class="bg-gradient-to-br from-green-50 to-green-100 border border-green-200 rounded-lg p-4">
+                <div class="text-center">
+                    <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-crown text-green-600"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ personal_users }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Personal Users</p>
+                    <p class="text-xs text-green-600">{{ personal_percentage }}%</p>
+                </div>
+            </div>
+            
+            <!-- Pro Users -->
+            <div class="bg-gradient-to-br from-blue-50 to-blue-100 border border-blue-200 rounded-lg p-4">
+                <div class="text-center">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-star text-blue-600"></i>
+                    </div>
+                    <p class="text-2xl font-bold text-[var(--title-text)]">{{ pro_users }}</p>
+                    <p class="text-sm text-[var(--text-secondary)]">Pro Users</p>
+                    <p class="text-xs text-blue-600">{{ pro_percentage }}%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Users by Grid Count -->
     <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
         <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Users by Grid Count</h2>

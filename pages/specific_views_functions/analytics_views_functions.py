@@ -18,6 +18,18 @@ def get_dashboard_analytics():
     # Total users
     total_users = User.objects.count()
     
+    # Users by tier
+    beta_users = User.objects.filter(tier='beta').count()
+    free_users = User.objects.filter(tier='free').count()
+    personal_users = User.objects.filter(tier='personal').count()
+    pro_users = User.objects.filter(tier='pro').count()
+    
+    # Calculate percentages
+    beta_percentage = round((beta_users / total_users * 100) if total_users > 0 else 0, 1)
+    free_percentage = round((free_users / total_users * 100) if total_users > 0 else 0, 1)
+    personal_percentage = round((personal_users / total_users * 100) if total_users > 0 else 0, 1)
+    pro_percentage = round((pro_users / total_users * 100) if total_users > 0 else 0, 1)
+    
     # Active Users windows (created grid, ticked off a task, or created a new task)
     last_day_active_users = User.objects.filter(
         Q(toad_projects__created_at__gte=day_ago) |
@@ -144,6 +156,15 @@ def get_dashboard_analytics():
         'monthly_active_percentage': monthly_active_percentage,
         'inactive_users': inactive_users,
         'inactive_percentage': inactive_percentage,
+        # User tier analytics
+        'beta_users': beta_users,
+        'free_users': free_users,
+        'personal_users': personal_users,
+        'pro_users': pro_users,
+        'beta_percentage': beta_percentage,
+        'free_percentage': free_percentage,
+        'personal_percentage': personal_percentage,
+        'pro_percentage': pro_percentage,
         'users_with_1_grid': users_with_1_grid,
         'users_with_2_grids': users_with_2_grids,
         'users_with_3_grids': users_with_3_grids,
