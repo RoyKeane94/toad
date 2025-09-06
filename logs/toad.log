@@ -24026,3 +24026,682 @@ INFO 2025-09-02 21:46:13,635 basehttp 44179 6170783744 "GET /static/js/grid/grid
 INFO 2025-09-02 21:46:13,635 basehttp 44179 6137131008 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-09-02 21:46:20,204 project_views_functions 44179 6137131008 User None created task reminder: "Don't look at phone for an hour post waking for September 02, 2025" from project: Dog
 INFO 2025-09-02 21:46:20,206 basehttp 44179 6137131008 "POST /tasks/1721/reminder/ HTTP/1.1" 200 82
+INFO 2025-09-03 20:26:48,497 autoreload 50493 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 20:26:53,950 basehttp 50493 6159413248 "GET / HTTP/1.1" 200 6516
+INFO 2025-09-03 20:26:54,271 basehttp 50493 6159413248 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:26:54,271 basehttp 50493 6176239616 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:26:54,272 basehttp 50493 6193065984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 20:26:57,024 basehttp 50493 6159413248 "GET /accounts/settings/ HTTP/1.1" 200 4334
+INFO 2025-09-03 20:27:23,157 basehttp 50493 6159413248 "POST /accounts/settings/ HTTP/1.1" 302 0
+INFO 2025-09-03 20:27:23,169 basehttp 50493 6159413248 "GET /accounts/settings/ HTTP/1.1" 200 4309
+INFO 2025-09-03 20:27:56,428 autoreload 50850 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 20:27:58,721 basehttp 50850 6199324672 "GET /accounts/settings/ HTTP/1.1" 200 4339
+INFO 2025-09-03 20:28:08,716 basehttp 50850 6199324672 "GET /accounts/settings/ HTTP/1.1" 200 4296
+INFO 2025-09-03 20:28:08,734 basehttp 50850 6232977408 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-03 20:28:08,736 basehttp 50850 6199324672 "GET /static/css/output.css HTTP/1.1" 200 76441
+INFO 2025-09-03 20:28:08,736 basehttp 50850 6216151040 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-03 20:28:10,857 basehttp 50850 6199324672 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-09-03 20:28:10,867 basehttp 50850 6199324672 "GET /accounts/settings/ HTTP/1.1" 200 4297
+INFO 2025-09-03 20:28:10,885 basehttp 50850 6216151040 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 20:28:10,885 basehttp 50850 6199324672 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:28:13,908 basehttp 50850 6199324672 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-09-03 20:28:13,919 basehttp 50850 6199324672 "GET /accounts/settings/ HTTP/1.1" 200 4279
+INFO 2025-09-03 20:28:13,934 basehttp 50850 6216151040 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 20:28:13,934 basehttp 50850 6199324672 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:28:59,580 autoreload 50850 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-09-03 20:29:00,308 autoreload 50891 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 20:29:08,047 autoreload 50891 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-03 20:29:08,495 autoreload 50906 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 20:29:15,067 autoreload 50906 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-09-03 20:29:15,977 autoreload 50918 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 20:29:31,878 autoreload 50918 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-09-03 20:29:32,372 autoreload 50931 8549129984 Watching for file changes with StatReloader
+ERROR 2025-09-03 20:46:12,129 log 50931 6197833728 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.stripe_customer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.stripe_customer_id
+ERROR 2025-09-03 20:46:12,137 basehttp 50931 6197833728 "GET / HTTP/1.1" 500 19346
+ERROR 2025-09-03 20:46:19,599 log 50931 6197833728 Internal Server Error: /admin
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.stripe_customer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.stripe_customer_id
+ERROR 2025-09-03 20:46:19,602 basehttp 50931 6197833728 "GET /admin HTTP/1.1" 500 19421
+ERROR 2025-09-03 20:46:21,739 log 50931 6197833728 Internal Server Error: /lilypad
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.stripe_customer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.stripe_customer_id
+ERROR 2025-09-03 20:46:21,744 basehttp 50931 6197833728 "GET /lilypad HTTP/1.1" 500 19384
+ERROR 2025-09-03 20:46:21,825 log 50931 6197833728 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.stripe_customer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.stripe_customer_id
+ERROR 2025-09-03 20:46:21,828 basehttp 50931 6197833728 "GET /favicon.ico HTTP/1.1" 500 19406
+ERROR 2025-09-03 20:47:37,254 log 50931 6197833728 Internal Server Error: /lilypad
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.stripe_customer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.stripe_customer_id
+ERROR 2025-09-03 20:47:37,258 basehttp 50931 6197833728 "GET /lilypad HTTP/1.1" 500 19345
+ERROR 2025-09-03 20:47:37,310 log 50931 6197833728 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.stripe_customer_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.stripe_customer_id
+ERROR 2025-09-03 20:47:37,313 basehttp 50931 6197833728 "GET /favicon.ico HTTP/1.1" 500 19327
+INFO 2025-09-03 20:50:00,742 autoreload 52150 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 20:50:02,274 basehttp 52150 6202552320 "GET / HTTP/1.1" 200 6557
+INFO 2025-09-03 20:50:02,309 basehttp 52150 6202552320 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:50:02,312 basehttp 52150 6202552320 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 20:50:02,403 basehttp 52150 6202552320 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-09-03 20:50:06,024 basehttp 52150 6202552320 "GET /lilypad/society-links/ HTTP/1.1" 200 5430
+INFO 2025-09-03 20:50:08,320 basehttp 52150 6202552320 "GET /grids/ HTTP/1.1" 200 11350
+INFO 2025-09-03 20:50:17,194 basehttp 52150 6202552320 "GET / HTTP/1.1" 200 6518
+INFO 2025-09-03 20:50:18,578 basehttp 52150 6202552320 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-09-03 20:50:18,585 basehttp 52150 6202552320 "GET /lilypad/ HTTP/1.1" 200 3779
+INFO 2025-09-03 20:50:22,058 basehttp 52150 6202552320 "GET /lilypad/society-links/ HTTP/1.1" 200 5430
+INFO 2025-09-03 20:50:24,254 basehttp 52150 6202552320 "GET /lilypad/society-links/13/public/ HTTP/1.1" 200 4432
+WARNING 2025-09-03 20:50:24,301 basehttp 52150 6202552320 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 20:50:36,796 basehttp 52150 6202552320 "GET / HTTP/1.1" 200 6512
+INFO 2025-09-03 20:50:37,932 basehttp 52150 6202552320 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-03 20:50:37,955 basehttp 52150 6202552320 "GET /admin/ HTTP/1.1" 200 2867
+INFO 2025-09-03 20:50:37,963 basehttp 52150 6236778496 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-03 20:50:37,963 basehttp 52150 6219378688 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-03 20:50:37,964 basehttp 52150 6202552320 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-03 20:50:37,965 basehttp 52150 6236778496 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-03 20:50:37,966 basehttp 52150 6202552320 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-03 20:50:37,967 basehttp 52150 6219378688 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-03 20:50:37,967 basehttp 52150 6202552320 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-03 20:50:37,970 basehttp 52150 6219378688 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-03 20:50:37,970 basehttp 52150 6202552320 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-03 20:50:37,970 basehttp 52150 6236778496 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-03 20:50:37,971 basehttp 52150 6219378688 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-03 20:50:38,164 basehttp 52150 6219378688 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-03 20:50:38,166 basehttp 52150 6219378688 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-03 20:50:40,328 basehttp 52150 6202552320 "GET /admin/CRM/societylink/ HTTP/1.1" 200 3345
+INFO 2025-09-03 20:50:40,342 basehttp 52150 6202552320 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-03 20:50:40,344 basehttp 52150 6253604864 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-03 20:50:40,345 basehttp 52150 6270431232 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-03 20:50:40,347 basehttp 52150 6287257600 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-03 20:50:40,348 basehttp 52150 6202552320 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-03 20:50:40,350 basehttp 52150 6253604864 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-03 20:50:40,351 basehttp 52150 6270431232 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-03 20:50:40,351 basehttp 52150 6219378688 "GET /admin/jsi18n/ HTTP/1.1" 200 973
+INFO 2025-09-03 20:50:40,354 basehttp 52150 6287257600 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-03 20:50:40,355 basehttp 52150 6236778496 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-03 20:50:40,357 basehttp 52150 6236778496 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-03 20:50:40,370 basehttp 52150 6236778496 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-03 20:50:44,159 basehttp 52150 6202552320 "POST /admin/CRM/societylink/ HTTP/1.1" 200 3015
+INFO 2025-09-03 20:50:44,169 basehttp 52150 6202552320 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-09-03 20:50:45,307 basehttp 52150 6202552320 "POST /admin/CRM/societylink/ HTTP/1.1" 302 0
+INFO 2025-09-03 20:50:45,320 basehttp 52150 6202552320 "GET /admin/CRM/societylink/ HTTP/1.1" 200 2845
+INFO 2025-09-03 20:50:45,335 basehttp 52150 6202552320 "GET /admin/jsi18n/ HTTP/1.1" 200 1056
+INFO 2025-09-03 20:55:54,966 basehttp 52150 6202552320 "GET / HTTP/1.1" 200 6554
+INFO 2025-09-03 20:55:55,001 basehttp 52150 6202552320 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:55:55,004 basehttp 52150 6202552320 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 20:55:57,334 basehttp 52150 6202552320 "GET /lilypad/society-links/ HTTP/1.1" 200 3438
+INFO 2025-09-03 20:56:02,231 basehttp 52150 6202552320 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4124
+INFO 2025-09-03 20:56:55,656 basehttp 52150 6202552320 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-09-03 20:56:55,665 basehttp 52150 6202552320 "GET /lilypad/ HTTP/1.1" 200 3707
+INFO 2025-09-03 20:56:57,768 basehttp 52150 6202552320 "GET /lilypad/society-links/ HTTP/1.1" 200 4027
+INFO 2025-09-03 20:56:59,435 basehttp 52150 6202552320 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4520
+WARNING 2025-09-03 20:56:59,482 basehttp 52150 6202552320 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 20:58:20,850 basehttp 52150 6202552320 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4526
+WARNING 2025-09-03 20:58:20,872 basehttp 52150 6202552320 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 20:59:37,339 basehttp 52150 6202552320 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4479
+INFO 2025-09-03 20:59:37,365 basehttp 52150 6219378688 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 20:59:37,366 basehttp 52150 6236778496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-03 20:59:37,371 basehttp 52150 6202552320 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 20:59:58,557 autoreload 52783 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 21:00:02,646 basehttp 52783 6165196800 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4487
+WARNING 2025-09-03 21:00:02,666 basehttp 52783 6165196800 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:00:16,659 basehttp 52783 6165196800 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4513
+WARNING 2025-09-03 21:00:16,674 basehttp 52783 6216249344 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:00:16,684 basehttp 52783 6199422976 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-03 21:00:16,684 basehttp 52783 6182023168 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-03 21:00:16,685 basehttp 52783 6165196800 "GET /static/css/output.css HTTP/1.1" 200 77467
+INFO 2025-09-03 21:01:30,251 basehttp 52783 6165196800 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4548
+INFO 2025-09-03 21:01:30,270 basehttp 52783 6182023168 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:01:30,274 basehttp 52783 6165196800 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:01:30,274 basehttp 52783 6199422976 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:01:42,301 basehttp 52783 6165196800 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4505
+WARNING 2025-09-03 21:01:42,323 basehttp 52783 6216249344 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:01:42,324 basehttp 52783 6199422976 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-03 21:01:42,324 basehttp 52783 6182023168 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-03 21:01:42,325 basehttp 52783 6165196800 "GET /static/css/output.css HTTP/1.1" 200 77467
+INFO 2025-09-03 21:02:42,864 autoreload 53214 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 21:02:45,046 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4458
+WARNING 2025-09-03 21:02:45,067 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:02:45,069 basehttp 53214 6195605504 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-03 21:02:45,069 basehttp 53214 6177632256 "GET /static/css/output.css HTTP/1.1" 200 77391
+INFO 2025-09-03 21:03:49,439 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4461
+INFO 2025-09-03 21:03:49,463 basehttp 53214 6177632256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:03:49,468 basehttp 53214 6195032064 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:03:49,468 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:04:03,683 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4515
+INFO 2025-09-03 21:04:03,701 basehttp 53214 6195032064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:04:03,701 basehttp 53214 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:04:03,703 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:05:38,187 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4425
+INFO 2025-09-03 21:05:38,211 basehttp 53214 6195032064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:05:38,212 basehttp 53214 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:05:38,216 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:06:26,232 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4520
+WARNING 2025-09-03 21:06:26,248 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:06:26,251 basehttp 53214 6160805888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:06:26,251 basehttp 53214 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 21:07:56,242 basehttp 53214 6160805888 "GET / HTTP/1.1" 200 6531
+INFO 2025-09-03 21:07:56,626 basehttp 53214 6160805888 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 21:07:56,641 basehttp 53214 6160805888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:07:56,690 basehttp 53214 6160805888 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-09-03 21:07:57,659 basehttp 53214 6160805888 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-03 21:07:57,700 basehttp 53214 6160805888 "GET /admin/ HTTP/1.1" 200 2712
+INFO 2025-09-03 21:07:57,706 basehttp 53214 6177632256 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-03 21:07:57,706 basehttp 53214 6195032064 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-03 21:07:57,707 basehttp 53214 6160805888 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-03 21:07:57,708 basehttp 53214 6160805888 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-03 21:07:57,708 basehttp 53214 6195032064 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-03 21:07:57,709 basehttp 53214 6177632256 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-03 21:07:57,710 basehttp 53214 6177632256 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-03 21:07:57,713 basehttp 53214 6177632256 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-03 21:07:57,714 basehttp 53214 6195032064 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-03 21:07:57,714 basehttp 53214 6160805888 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-03 21:07:57,714 basehttp 53214 6177632256 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-03 21:07:58,089 basehttp 53214 6177632256 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-03 21:07:58,091 basehttp 53214 6177632256 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-03 21:08:00,229 basehttp 53214 6160805888 "GET /admin/CRM/societylink/ HTTP/1.1" 200 3166
+INFO 2025-09-03 21:08:00,244 basehttp 53214 6160805888 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-03 21:08:00,247 basehttp 53214 6211858432 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-03 21:08:00,247 basehttp 53214 6245511168 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-03 21:08:00,248 basehttp 53214 6228684800 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-03 21:08:00,251 basehttp 53214 6160805888 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-03 21:08:00,252 basehttp 53214 6177632256 "GET /admin/jsi18n/ HTTP/1.1" 200 1053
+INFO 2025-09-03 21:08:00,252 basehttp 53214 6245511168 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-03 21:08:00,253 basehttp 53214 6211858432 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-03 21:08:00,258 basehttp 53214 6195032064 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-03 21:08:00,259 basehttp 53214 6228684800 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-03 21:08:00,261 basehttp 53214 6228684800 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-03 21:08:00,279 basehttp 53214 6228684800 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-03 21:08:01,632 basehttp 53214 6228684800 "GET /admin/CRM/societylink/14/change/ HTTP/1.1" 200 3427
+INFO 2025-09-03 21:08:01,645 basehttp 53214 6228684800 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-09-03 21:08:01,650 basehttp 53214 6195032064 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-03 21:08:01,650 basehttp 53214 6211858432 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-09-03 21:08:01,651 basehttp 53214 6228684800 "GET /admin/jsi18n/ HTTP/1.1" 200 994
+INFO 2025-09-03 21:08:01,652 basehttp 53214 6211858432 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-03 21:08:30,630 basehttp 53214 6160805888 "POST /admin/CRM/societylink/14/change/ HTTP/1.1" 302 0
+INFO 2025-09-03 21:08:30,646 basehttp 53214 6160805888 "GET /admin/CRM/societylink/ HTTP/1.1" 200 3176
+INFO 2025-09-03 21:08:30,670 basehttp 53214 6160805888 "GET /admin/jsi18n/ HTTP/1.1" 200 1019
+INFO 2025-09-03 21:08:32,244 basehttp 53214 6160805888 "GET / HTTP/1.1" 200 6549
+INFO 2025-09-03 21:08:32,304 basehttp 53214 6160805888 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 21:08:32,307 basehttp 53214 6160805888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:08:34,495 basehttp 53214 6160805888 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-03 21:08:34,506 basehttp 53214 6160805888 "GET /admin/ HTTP/1.1" 200 2613
+INFO 2025-09-03 21:08:37,074 basehttp 53214 6160805888 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-09-03 21:08:37,090 basehttp 53214 6160805888 "GET /lilypad/ HTTP/1.1" 200 3723
+INFO 2025-09-03 21:08:42,889 basehttp 53214 6160805888 "GET /lilypad/society-links/ HTTP/1.1" 200 4030
+INFO 2025-09-03 21:08:44,448 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4477
+WARNING 2025-09-03 21:08:44,494 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:10:17,993 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4507
+INFO 2025-09-03 21:10:18,010 basehttp 53214 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 21:10:18,010 basehttp 53214 6195032064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-03 21:10:18,013 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:11:19,789 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4488
+INFO 2025-09-03 21:11:19,804 basehttp 53214 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-03 21:11:19,805 basehttp 53214 6195032064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-03 21:11:19,805 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:11:46,894 basehttp 53214 6160805888 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4484
+WARNING 2025-09-03 21:11:46,915 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+WARNING 2025-09-03 21:11:55,275 log 53214 6177632256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-03 21:11:55,276 basehttp 53214 6177632256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2053
+INFO 2025-09-03 21:11:56,437 basehttp 53214 6177632256 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4518
+WARNING 2025-09-03 21:11:56,461 log 53214 6177632256 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-03 21:11:56,466 basehttp 53214 6177632256 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2078
+WARNING 2025-09-03 21:11:56,466 basehttp 53214 6160805888 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:12:22,983 autoreload 53793 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-03 21:12:24,848 basehttp 53793 6128889856 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4533
+WARNING 2025-09-03 21:12:24,883 basehttp 53793 6128889856 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:12:24,886 basehttp 53793 6163689472 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-03 21:12:24,887 basehttp 53793 6145716224 "GET /static/css/output.css HTTP/1.1" 200 77553
+INFO 2025-09-03 21:12:28,768 basehttp 53793 6145716224 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:12:28,785 log 53793 6163689472 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-03 21:12:28,785 basehttp 53793 6163689472 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2063
+INFO 2025-09-03 21:12:29,650 basehttp 53793 6128889856 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4557
+WARNING 2025-09-03 21:12:29,675 log 53793 6128889856 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-03 21:12:29,678 basehttp 53793 6145716224 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+INFO 2025-09-03 21:12:29,678 basehttp 53793 13035925504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:12:29,679 basehttp 53793 6163689472 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:12:29,679 basehttp 53793 6128889856 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2075
+INFO 2025-09-03 21:13:24,691 basehttp 53793 6128889856 "GET /lilypad/society-links/14/public/ HTTP/1.1" 200 4534
+INFO 2025-09-03 21:13:24,716 basehttp 53793 13035925504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-03 21:13:24,716 basehttp 53793 6163116032 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-03 21:13:24,719 basehttp 53793 6128889856 "GET /static/img/Professionals/Job%20Application%20Tracker.png HTTP/1.1" 404 2066
+WARNING 2025-09-03 21:13:24,724 log 53793 6145716224 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-03 21:13:24,724 basehttp 53793 6145716224 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2082
+INFO 2025-09-06 12:42:30,353 autoreload 56608 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 12:42:33,660 basehttp 56608 6189625344 "GET / HTTP/1.1" 200 6500
+INFO 2025-09-06 12:42:33,672 basehttp 56608 6189625344 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-06 12:42:33,674 basehttp 56608 6189625344 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-09-06 12:42:33,675 basehttp 56608 6189625344 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 12:42:35,897 basehttp 56608 6189625344 "GET /grids/ HTTP/1.1" 200 11363
+INFO 2025-09-06 12:42:37,147 basehttp 56608 6189625344 "GET /grids/150/ HTTP/1.1" 200 17113
+INFO 2025-09-06 12:42:37,162 basehttp 56608 6189625344 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-06 12:42:43,421 basehttp 56608 6189625344 "POST /tasks/1717/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-06 12:42:51,141 basehttp 56608 6189625344 "GET /grids/150/ HTTP/1.1" 200 17163
+INFO 2025-09-06 12:43:55,552 basehttp 56608 6189625344 "GET /grids/150/ HTTP/1.1" 200 17368
+INFO 2025-09-06 12:43:57,683 basehttp 56608 6189625344 "POST /grids/150/clear-completed/ HTTP/1.1" 302 0
+INFO 2025-09-06 12:43:57,711 basehttp 56608 6189625344 "GET /grids/150/ HTTP/1.1" 200 17222
+WARNING 2025-09-06 12:44:08,065 log 56608 6189625344 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-06 12:44:08,066 basehttp 56608 6189625344 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2090
+INFO 2025-09-06 12:44:31,057 autoreload 56608 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-06 12:44:31,516 autoreload 56667 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 12:44:43,290 autoreload 56667 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-06 12:44:43,711 autoreload 56683 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 12:44:48,070 basehttp 56683 6200340480 "GET /grids/150/ HTTP/1.1" 200 17241
+INFO 2025-09-06 12:44:51,215 basehttp 56683 6200340480 "POST /tasks/1718/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-06 12:44:53,146 basehttp 56683 6200340480 "POST /grids/150/clear-completed/ HTTP/1.1" 200 71
+INFO 2025-09-06 12:44:54,690 basehttp 56683 6200340480 "GET /grids/150/ HTTP/1.1" 200 16878

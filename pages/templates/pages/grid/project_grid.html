@@ -516,10 +516,11 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Grid Actions - Right Aligned -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
             <div class="w-full sm:w-auto sm:ml-auto">
-                <a href="{% url 'pages:delete_completed_tasks' pk=project.pk %}" 
-                   class="inline-flex items-center justify-center w-full sm:w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer">
+                <button type="button"
+                        class="inline-flex items-center justify-center w-full sm:w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+                        onclick="showClearCompletedModal()">
                     <i class="fas fa-check mr-1"></i>Clear Completed
-                </a>
+                </button>
             </div>
         </div>            
     </div>
@@ -756,6 +757,61 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+<!-- Clear Completed Modal -->
+<div id="clear-completed-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="clear-completed-modal-content">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--clear-button-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-check text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Clear Completed Tasks</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">This action cannot be undone</p>
+                </div>
+            </div>
+            <button type="button" id="close-clear-completed-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="mb-6">
+                <p class="text-[var(--text-primary)] mb-4">Are you sure you want to clear all completed tasks from this grid?</p>
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex items-center justify-center w-8 h-8 bg-[var(--clear-button-bg)] rounded-lg shadow-sm flex-shrink-0">
+                            <i class="fas fa-tasks text-white text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="font-medium text-[var(--text-primary)] text-sm">All completed tasks will be permanently removed</p>
+                            <p class="text-xs text-[var(--text-secondary)] mt-1">This will help keep your grid clean and focused on active tasks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <button type="button" 
+                    id="cancel-clear-completed"
+                    class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <form id="clear-completed-form" method="post" action="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="inline">
+                {% csrf_token %}
+                <button type="submit" 
+                        class="w-40 h-10 flex items-center justify-center bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-bg)]/90 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-check mr-2"></i>Clear All
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
 <script>
 // Grid Name Actions Dropdown functionality
 document.addEventListener('DOMContentLoaded', function() {
@@ -872,6 +928,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function hideSaveTemplateModal() {
     const modal = document.getElementById('save-template-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+// Clear Completed Modal functionality
+function showClearCompletedModal() {
+    const modal = document.getElementById('clear-completed-modal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+    }
+}
+
+function hideClearCompletedModal() {
+    const modal = document.getElementById('clear-completed-modal');
     if (modal) {
         modal.classList.add('opacity-0', 'invisible');
         const modalContent = modal.querySelector('div');
@@ -1034,6 +1115,107 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === calendarModal) {
                 hideCalendarReminderModal();
             }
+        });
+    }
+    
+    // Clear Completed modal event listeners
+    const closeClearCompletedModal = document.getElementById('close-clear-completed-modal');
+    const cancelClearCompleted = document.getElementById('cancel-clear-completed');
+    const clearCompletedModal = document.getElementById('clear-completed-modal');
+    
+    if (closeClearCompletedModal) {
+        closeClearCompletedModal.addEventListener('click', hideClearCompletedModal);
+    }
+    
+    if (cancelClearCompleted) {
+        cancelClearCompleted.addEventListener('click', hideClearCompletedModal);
+    }
+    
+    // Close modal when clicking outside
+    if (clearCompletedModal) {
+        clearCompletedModal.addEventListener('click', function(e) {
+            if (e.target === clearCompletedModal) {
+                hideClearCompletedModal();
+            }
+        });
+    }
+    
+    // Handle Clear Completed form submission
+    const clearCompletedForm = document.getElementById('clear-completed-form');
+    if (clearCompletedForm) {
+        clearCompletedForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = clearCompletedForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Clearing...';
+            submitBtn.disabled = true;
+            
+            // Submit form via fetch
+            const formData = new FormData(clearCompletedForm);
+            
+            fetch(clearCompletedForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Cleared!';
+                    submitBtn.classList.remove('bg-[var(--clear-button-bg)]', 'hover:bg-[var(--clear-button-bg)]/90');
+                    submitBtn.classList.add('bg-green-500');
+                    
+                    // Close modal after short delay
+                    setTimeout(() => {
+                        hideClearCompletedModal();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-green-500');
+                        submitBtn.classList.add('bg-[var(--clear-button-bg)]', 'hover:bg-[var(--clear-button-bg)]/90');
+                        
+                        // Reload the page to show updated grid
+                        window.location.reload();
+                    }, 1500);
+                } else {
+                    // Show error
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                    submitBtn.classList.remove('bg-[var(--clear-button-bg)]');
+                    submitBtn.classList.add('bg-red-500');
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-red-500');
+                        submitBtn.classList.add('bg-[var(--clear-button-bg)]');
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error clearing completed tasks:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                submitBtn.classList.remove('bg-[var(--clear-button-bg)]');
+                submitBtn.classList.add('bg-red-500');
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-red-500');
+                    submitBtn.classList.add('bg-[var(--clear-button-bg)]');
+                }, 2000);
+            });
         });
     }
     

@@ -962,9 +962,12 @@ def delete_completed_tasks_view(request, pk):
         count = bulk_delete_completed_tasks(project)
         if count > 0:
             messages.success(request, f'Successfully deleted {count} completed tasks!')
+            # Return JSON response for AJAX requests
+            return create_json_response(True, f'Successfully deleted {count} completed tasks!')
         else:
             messages.info(request, 'No completed tasks to delete.')
-        return redirect('pages:project_grid', pk=project.pk)
+            # Return JSON response for AJAX requests
+            return create_json_response(True, 'No completed tasks to delete.')
     
     return render(request, 'pages/grid/actions_in_page/clear_completed_tasks.html', {
         'project': project
