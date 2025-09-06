@@ -305,28 +305,23 @@
         align-items: stretch;
     }
     
-    /* Default layout for grids with 3 or fewer data columns */
-    #grid-tabs {
-        max-width: 91vw;
+    /* Container for tabs and header that adjusts width based on column count */
+    .grid-header-container {
+        max-width: 90vw;
         margin: 0 auto;
-        padding: 0 1rem;
-    }
-    
-    #grid-header {
-        max-width: 91vw;
-        margin: 0 auto;
-        padding: 0 1rem;
+        padding: 0; /* No padding to align with grid content */
     }
     
     /* Narrow layout for grids with 4+ data columns */
-    #grid-tabs.narrow-layout {
-        max-width: 83vw !important;
-        padding: 0 0.5rem !important;
+    .grid-header-container.narrow-layout {
+        max-width: 83vw; /* Narrower when scroll buttons are present */
+        padding: 0; /* No padding to align with grid content */
     }
     
-    #grid-header.narrow-layout {
-        max-width: 83vw !important;
-        padding: 0 0.5rem !important;
+    /* Ensure grid content wrapper aligns with tabs and header */
+    #grid-content-wrapper {
+        max-width: 90vw;
+        margin: 0 auto;
     }
 
 </style>
@@ -343,8 +338,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalColumns = parseInt('{{ total_data_columns }}');
     
     if (totalColumns > 3) {
-        document.getElementById('grid-tabs').classList.add('narrow-layout');
-        document.getElementById('grid-header').classList.add('narrow-layout');
+        document.getElementById('grid-tabs-container').classList.add('narrow-layout');
+        document.getElementById('grid-header-container').classList.add('narrow-layout');
     }
 });
 </script>
@@ -355,8 +350,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Grid Tabs Navigation -->
-<div class="mb-6" id="grid-tabs" data-total-columns="{{ total_data_columns }}">
-            <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide">
+<div class="grid-header-container mb-6" id="grid-tabs-container" data-total-columns="{{ total_data_columns }}">
+    <div id="grid-tabs">
+            <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide px-4">
             <!-- Ungrouped Projects First -->
             {% if ungrouped_projects %}
                 <div class="flex-shrink-0">
@@ -403,11 +399,13 @@ document.addEventListener('DOMContentLoaded', function() {
             {% endif %}
         </div>
     </div>
+    </div>
 </div>
 
 <!-- Header -->
-<div class="mb-6 grid-header-mobile grid-content-hidden" id="grid-header" data-total-columns="{{ total_data_columns }}">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
+<div class="grid-header-container mb-6" id="grid-header-container" data-total-columns="{{ total_data_columns }}">
+    <div id="grid-header" class="grid-header-mobile grid-content-hidden">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4 px-4">
         <div class="flex items-center space-x-3">
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
             
@@ -523,6 +521,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
             </div>
         </div>            
+    </div>
     </div>
 </div>
 
