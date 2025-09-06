@@ -72,6 +72,13 @@
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
     
+    /* Hold-to-drag visual feedback */
+    .project-card.hold-active {
+        transform: scale(1.01);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        transition: all 0.1s ease-out;
+    }
+    
     /* Responsive improvements */
     @media (max-width: 768px) {
         .project-group, #ungrouped-projects {
@@ -620,6 +627,9 @@ class ProjectListManager {
     setupDragAndDrop() {
         // Initialize SortableJS for all project groups and ungrouped projects
         this.initializeSortable();
+        
+        // Setup mobile hold-to-drag functionality
+        this.setupMobileHoldToDrag();
     }
 
     initializeSortable() {
@@ -654,6 +664,10 @@ class ProjectListManager {
                     // Allow dragging between all containers
                     group: 'projects',
                     
+                    // Disable touch events on mobile (we handle them manually)
+                    touchStartThreshold: 0,
+                    forceFallback: window.innerWidth <= 768,
+                    
                     // Callback when sorting starts
                     onStart: (evt) => {
                         this.handleDragStart(evt);
@@ -686,6 +700,28 @@ class ProjectListManager {
         document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
             container.classList.add('drag-active');
         });
+    }
+
+    triggerDragStart(card) {
+        // Find the Sortable instance for this card's container
+        const container = card.closest('.project-group, #ungrouped-projects');
+        if (!container) return;
+        
+        // Get the Sortable instance
+        const sortableInstance = Sortable.get(container);
+        if (!sortableInstance) return;
+        
+        // Create a synthetic event
+        const syntheticEvent = {
+            item: card,
+            from: container,
+            to: container,
+            oldIndex: Array.from(container.children).indexOf(card),
+            newIndex: Array.from(container.children).indexOf(card)
+        };
+        
+        // Trigger the drag start
+        this.handleDragStart(syntheticEvent);
     }
 
     handleDragMove(evt) {
@@ -834,6 +870,119 @@ class ProjectListManager {
             oldContainer.appendChild(projectCard);
             projectCard.dataset.projectGroup = oldGroupId;
         }
+    }
+
+    setupMobileHoldToDrag() {
+        // Only apply hold-to-drag on mobile devices
+        if (window.innerWidth > 768) return;
+        
+        const projectCards = document.querySelectorAll('.project-card');
+        
+        projectCards.forEach(card => {
+            let holdTimer = null;
+            let isHolding = false;
+            let startX = 0;
+            let startY = 0;
+            
+            // Touch start - start the hold timer
+            card.addEventListener('touchstart', (e) => {
+                // Only start if this is a single touch
+                if (e.touches.length !== 1) return;
+                
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
+                
+                // Add immediate visual feedback
+                card.classList.add('hold-active');
+                
+                // Start the hold timer
+                holdTimer = setTimeout(() => {
+                    isHolding = true;
+                    
+                    // Remove hold-active and add dragging class
+                    card.classList.remove('hold-active');
+                    card.classList.add('dragging');
+                    card.style.transform = 'scale(1.02)';
+                    card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.2)';
+                    card.style.zIndex = '1000';
+                    
+                    // Show drop zones
+                    document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
+                        container.classList.add('drag-active');
+                    });
+                    
+                    // Trigger the drag start event for SortableJS
+                    this.triggerDragStart(card);
+                    
+                }, 500); // 0.5 second hold
+            }, { passive: true });
+            
+            // Touch move - cancel hold if moved too much
+            card.addEventListener('touchmove', (e) => {
+                if (!holdTimer) return;
+                
+                const touch = e.touches[0];
+                const deltaX = Math.abs(touch.clientX - startX);
+                const deltaY = Math.abs(touch.clientY - startY);
+                
+                // If moved more than 10px, cancel the hold
+                if (deltaX > 10 || deltaY > 10) {
+                    clearTimeout(holdTimer);
+                    holdTimer = null;
+                }
+            }, { passive: true });
+            
+            // Touch end - cancel hold if not completed
+            card.addEventListener('touchend', (e) => {
+                if (holdTimer) {
+                    clearTimeout(holdTimer);
+                    holdTimer = null;
+                }
+                
+                // Remove hold-active class
+                card.classList.remove('hold-active');
+                
+                if (isHolding) {
+                    // Reset visual state
+                    card.classList.remove('dragging');
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                    card.style.zIndex = '';
+                    
+                    // Hide drop zones
+                    document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
+                        container.classList.remove('drag-active');
+                    });
+                    
+                    isHolding = false;
+                }
+            }, { passive: true });
+            
+            // Touch cancel - cleanup
+            card.addEventListener('touchcancel', (e) => {
+                if (holdTimer) {
+                    clearTimeout(holdTimer);
+                    holdTimer = null;
+                }
+                
+                // Remove hold-active class
+                card.classList.remove('hold-active');
+                
+                if (isHolding) {
+                    card.classList.remove('dragging');
+                    card.style.transform = '';
+                    card.style.boxShadow = '';
+                    card.style.zIndex = '';
+                    
+                    document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
+                        container.classList.remove('drag-active');
+                    });
+                    
+                    isHolding = false;
+                }
+            }, { passive: true });
+        });
     }
 
     setupResponsiveLayout() {

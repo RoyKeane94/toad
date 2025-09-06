@@ -24776,3 +24776,35 @@ INFO 2025-09-06 13:09:20,994 basehttp 57565 6177206272 "GET /grids/150/ HTTP/1.1
 INFO 2025-09-06 13:09:25,765 basehttp 57565 6177206272 "GET /grids/151/ HTTP/1.1" 200 15014
 INFO 2025-09-06 13:09:32,425 basehttp 57565 6177206272 "GET /grids/150/ HTTP/1.1" 200 17074
 INFO 2025-09-06 13:09:39,334 basehttp 57565 6177206272 "GET /grids/151/ HTTP/1.1" 200 15020
+INFO 2025-09-06 13:15:11,057 autoreload 58348 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 13:15:14,676 basehttp 58348 6135263232 "GET /grids/151/ HTTP/1.1" 200 15006
+INFO 2025-09-06 13:15:14,690 basehttp 58348 6135263232 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-06 13:15:14,691 basehttp 58348 6168915968 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 13:15:14,692 basehttp 58348 6152089600 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 13:15:15,741 basehttp 58348 6152089600 "GET /grids/ HTTP/1.1" 200 12572
+INFO 2025-09-06 13:15:19,246 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:15:20,224 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+WARNING 2025-09-06 13:15:22,629 log 58348 6152089600 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-06 13:15:22,629 basehttp 58348 6152089600 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2060
+INFO 2025-09-06 13:15:23,627 basehttp 58348 6152089600 "GET /grids/ HTTP/1.1" 200 12570
+WARNING 2025-09-06 13:15:23,658 log 58348 6152089600 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-06 13:15:23,658 basehttp 58348 6152089600 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2092
+INFO 2025-09-06 13:15:28,050 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:15:29,023 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:15:30,421 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:16:14,454 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:16:15,811 basehttp 58348 6152089600 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:16:22,275 basehttp 58348 6135263232 "GET /grids/ HTTP/1.1" 200 11480
+INFO 2025-09-06 13:16:26,010 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:16:28,016 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:18:22,842 basehttp 58348 6135263232 "GET /grids/ HTTP/1.1" 200 12574
+INFO 2025-09-06 13:18:22,854 basehttp 58348 6152089600 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 13:18:22,855 basehttp 58348 6135263232 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-06 13:18:25,569 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+WARNING 2025-09-06 13:18:29,745 log 58348 6135263232 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-06 13:18:29,745 basehttp 58348 6135263232 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2118
+INFO 2025-09-06 13:18:30,540 basehttp 58348 6135263232 "GET /grids/ HTTP/1.1" 200 12602
+WARNING 2025-09-06 13:18:30,570 log 58348 6135263232 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-06 13:18:30,570 basehttp 58348 6135263232 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2061
+INFO 2025-09-06 13:18:35,147 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 13:18:42,157 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
