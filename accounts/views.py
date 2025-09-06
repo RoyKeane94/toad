@@ -543,6 +543,73 @@ class RegisterPersonalView(FormView):
         return super().form_invalid(form)
 
 
+class RegisterTrialView(FormView):
+    """
+    Registration view for 6-month free trial users
+    """
+    template_name = 'accounts/pages/registration/register_trial.html'
+    form_class = CustomUserCreationForm
+    
+    def form_valid(self, form):
+        """Create the user and start their trial - mirrors RegisterFreeView but with personal tier"""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            logger.info("Starting trial user registration...")
+            user = form.save()
+            logger.info(f"User created successfully: {user.email}")
+            
+            # Set user tier to personal for trial
+            user.tier = 'personal'
+            user.save()
+            logger.info(f"User tier set to personal for trial: {user.email}")
+            
+            # Start 6-month trial
+            user.start_trial(days=180)  # 6 months
+            logger.info(f"Trial started for user: {user.email}, ends at: {user.trial_ends_at}")
+            
+            # Log registration attempt
+            logger.info(f"New Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PERSONAL for trial")
+            
+            # Add session flag immediately for better UX
+            self.request.session['show_verification_message'] = True
+            
+            # Send verification email asynchronously to improve performance
+            try:
+                from .email_utils import send_verification_email
+                import threading
+                
+                def send_email_async():
+                    try:
+                        email_sent = send_verification_email(user, self.request)
+                        logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                    except Exception as e:
+                        logger.error(f"Failed to send verification email to {user.email}: {e}")
+                
+                # Start email sending in background thread
+                email_thread = threading.Thread(target=send_email_async)
+                email_thread.daemon = True
+                email_thread.start()
+                
+                messages.success(self.request, f'Welcome to your 6-month free trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad Personal features.')
+            except Exception as e:
+                logger.error(f"Failed to start email sending: {e}")
+                messages.warning(self.request, f'Welcome to your 6-month free trial, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
+            
+            # Redirect to login page immediately (like RegisterFreeView)
+            return redirect('accounts:login')
+            
+        except Exception as e:
+            logger.error(f"Error in RegisterTrialView.form_valid: {e}", exc_info=True)
+            raise
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+
+
 class SecretRegistrationView(FormView):
     """
     Secret registration view for Beta users

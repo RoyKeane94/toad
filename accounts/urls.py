@@ -4,6 +4,7 @@ from .views import (
     RegisterFreeView, 
     RegisterPersonalView,
     RegisterChoicesView,
+    RegisterTrialView,
     SecretRegistrationView,
     logout_view, 
     account_settings_view, 
@@ -34,6 +35,7 @@ urlpatterns = [
     path('register/', RegisterChoicesView.as_view(), name='register_choices'),
     path('register/free/', RegisterFreeView.as_view(), name='register_free'),
     path('register/personal/', RegisterPersonalView.as_view(), name='register_personal'),
+    path('register/trial/', RegisterTrialView.as_view(), name='register_trial'),
     path('register/barnabytoad/', SecretRegistrationView.as_view(), name='secret_registration'),
     path('logout/', logout_view, name='logout'),
     

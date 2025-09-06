@@ -24808,3 +24808,345 @@ WARNING 2025-09-06 13:18:30,570 log 58348 6135263232 Not Found: /.well-known/app
 WARNING 2025-09-06 13:18:30,570 basehttp 58348 6135263232 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2061
 INFO 2025-09-06 13:18:35,147 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
 INFO 2025-09-06 13:18:42,157 basehttp 58348 6135263232 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-09-06 14:41:50,765 autoreload 60349 8549129984 Watching for file changes with StatReloader
+ERROR 2025-09-06 14:41:59,074 log 60349 6164426752 Internal Server Error: /accounts/logout/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.trial_started_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.trial_started_at
+ERROR 2025-09-06 14:41:59,078 basehttp 60349 6164426752 "GET /accounts/logout/ HTTP/1.1" 500 19464
+ERROR 2025-09-06 14:41:59,196 log 60349 6164426752 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.trial_started_at
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.trial_started_at
+ERROR 2025-09-06 14:41:59,200 basehttp 60349 6164426752 "GET /favicon.ico HTTP/1.1" 500 19352
+INFO 2025-09-06 14:42:20,739 autoreload 60633 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 14:42:23,255 basehttp 60633 6189297664 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-06 14:42:23,266 basehttp 60633 6189297664 "GET / HTTP/1.1" 200 6339
+INFO 2025-09-06 14:42:23,286 basehttp 60633 6206124032 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 14:42:23,286 basehttp 60633 6189297664 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-06 14:42:23,334 basehttp 60633 6189297664 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 2091279
+INFO 2025-09-06 14:42:26,359 basehttp 60633 6189297664 "GET /accounts/register/ HTTP/1.1" 200 4430
+INFO 2025-09-06 14:42:30,014 basehttp 60633 6189297664 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 14:42:30,023 basehttp 60633 6206124032 "GET /accounts/register/trial/ HTTP/1.1" 200 4105
+INFO 2025-09-06 14:45:13,725 basehttp 60633 6189297664 "GET /accounts/register/personal/ HTTP/1.1" 200 4602
+INFO 2025-09-06 14:45:18,118 basehttp 60633 6189297664 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 14:45:18,131 basehttp 60633 6189297664 "GET /accounts/register/trial/ HTTP/1.1" 200 4782
+INFO 2025-09-06 14:47:16,036 basehttp 60633 6189297664 "GET /accounts/register/trial/ HTTP/1.1" 200 4793
+INFO 2025-09-06 14:50:56,716 basehttp 60633 6189297664 "POST /accounts/register/trial/ HTTP/1.1" 200 5119
+INFO 2025-09-06 14:50:59,763 basehttp 60633 6189297664 "GET /accounts/login/ HTTP/1.1" 200 4373
+INFO 2025-09-06 14:51:11,103 basehttp 60633 6189297664 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-06 14:51:11,107 basehttp 60633 6189297664 "GET /accounts/login/ HTTP/1.1" 200 4553
+INFO 2025-09-06 14:51:15,449 basehttp 60633 6189297664 "GET /accounts/resend-verification/ HTTP/1.1" 200 3947
+INFO 2025-09-06 14:51:21,978 email_utils 60633 6189297664 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:51:25,054 email_utils 60633 6189297664 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:51:25,056 basehttp 60633 6189297664 "POST /accounts/resend-verification/ HTTP/1.1" 302 0
+INFO 2025-09-06 14:51:25,067 basehttp 60633 6189297664 "GET /accounts/login/ HTTP/1.1" 200 4347
+INFO 2025-09-06 14:52:45,423 views 60633 6189297664 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:52:45,426 views 60633 6189297664 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:52:45,429 views 60633 6189297664 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:52:45,432 views 60633 6189297664 Redirecting to first project: 166
+INFO 2025-09-06 14:52:45,437 basehttp 60633 6189297664 "GET /accounts/verify-email/a4WfScxoBLeVAXGSyk9pwBnkrNww995P/ HTTP/1.1" 302 0
+INFO 2025-09-06 14:52:45,439 email_utils 60633 6222950400 Attempting to send free joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:52:45,458 basehttp 60633 6189297664 "GET /grids/166/ HTTP/1.1" 200 16902
+INFO 2025-09-06 14:52:45,473 basehttp 60633 6189297664 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 14:52:45,960 email_utils 60633 6222950400 Successfully sent free joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:52:50,099 basehttp 60633 6189297664 "GET /accounts/settings/ HTTP/1.1" 200 4139
+INFO 2025-09-06 14:52:52,245 basehttp 60633 6189297664 "GET /accounts/settings/delete/ HTTP/1.1" 200 4367
+INFO 2025-09-06 14:52:58,142 views 60633 6189297664 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-06 14:52:58,150 basehttp 60633 6189297664 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-06 14:52:58,156 basehttp 60633 6189297664 "GET / HTTP/1.1" 200 6379
+INFO 2025-09-06 14:53:02,581 basehttp 60633 6189297664 "GET /accounts/register/ HTTP/1.1" 200 4422
+INFO 2025-09-06 14:53:05,689 basehttp 60633 6189297664 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 14:53:05,697 basehttp 60633 6206124032 "GET /accounts/register/trial/ HTTP/1.1" 200 4868
+INFO 2025-09-06 14:53:21,427 views 60633 6206124032 Starting trial user registration...
+INFO 2025-09-06 14:53:21,663 views 60633 6206124032 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:53:21,663 views 60633 6206124032 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-05 14:53:21.663312+00:00
+INFO 2025-09-06 14:53:21,665 views 60633 6206124032 User logged in successfully
+INFO 2025-09-06 14:53:21,667 email_utils 60633 6222950400 Attempting to send personal joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:53:21,668 basehttp 60633 6206124032 "POST /accounts/register/trial/ HTTP/1.1" 302 0
+INFO 2025-09-06 14:53:21,678 basehttp 60633 6206124032 "GET /grids/ HTTP/1.1" 200 12000
+INFO 2025-09-06 14:53:21,696 basehttp 60633 6206124032 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-06 14:53:21,696 basehttp 60633 6189297664 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 14:53:22,101 email_utils 60633 6222950400 Successfully sent personal joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:53:22,101 views 60633 6222950400 Trial welcome email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-06 14:53:48,652 basehttp 60633 6189297664 "GET /grids/169/ HTTP/1.1" 200 16727
+INFO 2025-09-06 14:55:03,973 autoreload 60633 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 14:55:04,697 autoreload 61087 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 14:55:09,357 autoreload 61087 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 14:55:09,846 autoreload 61093 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 14:55:43,106 autoreload 61093 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 14:55:43,751 autoreload 61113 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:01:36,567 autoreload 61113 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:01:37,145 autoreload 61199 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:01:45,897 autoreload 61199 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:01:46,353 autoreload 61211 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:02:11,444 autoreload 61211 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:02:11,936 autoreload 61225 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:02:19,557 autoreload 61225 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:02:20,065 autoreload 61239 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:02:26,678 autoreload 61239 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:02:27,130 autoreload 61246 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:02:33,289 basehttp 61246 6124023808 "GET /accounts/register/ HTTP/1.1" 200 4628
+INFO 2025-09-06 15:02:33,318 basehttp 61246 6124023808 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-06 15:02:33,318 basehttp 61246 6140850176 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 15:02:37,161 basehttp 61246 6124023808 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 15:02:37,170 basehttp 61246 6124023808 "GET /accounts/register/trial/ HTTP/1.1" 200 5040
+INFO 2025-09-06 15:02:56,066 basehttp 61246 6124023808 "POST /accounts/register/trial/ HTTP/1.1" 200 5259
+INFO 2025-09-06 15:03:00,125 basehttp 61246 6124023808 "GET /accounts/settings/ HTTP/1.1" 200 4183
+INFO 2025-09-06 15:03:02,137 basehttp 61246 6124023808 "GET /accounts/settings/delete/ HTTP/1.1" 200 4423
+INFO 2025-09-06 15:03:09,607 views 61246 6124023808 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-06 15:03:09,617 basehttp 61246 6124023808 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:03:09,624 basehttp 61246 6124023808 "GET / HTTP/1.1" 200 6387
+INFO 2025-09-06 15:03:11,581 basehttp 61246 6124023808 "GET /accounts/register/ HTTP/1.1" 200 4397
+INFO 2025-09-06 15:03:16,718 basehttp 61246 6124023808 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 15:03:16,725 basehttp 61246 6124023808 "GET /accounts/register/trial/ HTTP/1.1" 200 4877
+INFO 2025-09-06 15:03:38,115 views 61246 6124023808 Starting trial user registration...
+INFO 2025-09-06 15:03:38,348 views 61246 6124023808 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:03:38,349 views 61246 6124023808 User tier set to personal for trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:03:38,349 views 61246 6124023808 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-05 15:03:38.349212+00:00
+INFO 2025-09-06 15:03:38,349 views 61246 6124023808 New Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL for trial
+INFO 2025-09-06 15:03:38,365 views 61246 6124023808 User logged in successfully
+INFO 2025-09-06 15:03:38,368 basehttp 61246 6124023808 "POST /accounts/register/trial/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:03:38,379 email_utils 61246 6157676544 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:03:38,382 basehttp 61246 6124023808 "GET /grids/ HTTP/1.1" 200 12033
+INFO 2025-09-06 15:03:40,276 email_utils 61246 6157676544 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:03:40,277 views 61246 6157676544 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:05:04,794 autoreload 61246 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:05:05,528 autoreload 61311 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:05:15,229 autoreload 61311 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-06 15:05:15,952 autoreload 61321 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:05:30,731 basehttp 61321 6199013376 "GET /accounts/settings/ HTTP/1.1" 200 4271
+INFO 2025-09-06 15:05:32,170 basehttp 61321 6199013376 "GET /accounts/settings/delete/ HTTP/1.1" 200 4412
+INFO 2025-09-06 15:05:36,865 views 61321 6199013376 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-06 15:05:36,874 basehttp 61321 6199013376 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:05:36,877 basehttp 61321 6199013376 "GET / HTTP/1.1" 200 6303
+INFO 2025-09-06 15:05:39,228 basehttp 61321 6199013376 "GET /accounts/register/ HTTP/1.1" 200 4422
+INFO 2025-09-06 15:05:41,120 basehttp 61321 6199013376 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 15:05:41,127 basehttp 61321 6215839744 "GET /accounts/register/trial/ HTTP/1.1" 200 4817
+INFO 2025-09-06 15:05:53,849 views 61321 6199013376 Starting trial user registration...
+INFO 2025-09-06 15:05:54,058 views 61321 6199013376 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:05:54,059 views 61321 6199013376 User tier set to personal for trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:05:54,060 views 61321 6199013376 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-05 15:05:54.059718+00:00
+INFO 2025-09-06 15:05:54,060 views 61321 6199013376 New Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL for trial
+INFO 2025-09-06 15:05:54,062 basehttp 61321 6199013376 "POST /accounts/register/trial/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:05:54,064 email_utils 61321 6232666112 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:05:54,069 basehttp 61321 6199013376 "GET /accounts/login/ HTTP/1.1" 200 4500
+INFO 2025-09-06 15:05:54,521 email_utils 61321 6232666112 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:05:54,522 views 61321 6232666112 Verification email sent: True for tom_barratt@hotmail.co.uk
+WARNING 2025-09-06 15:07:48,442 views 61321 6199013376 Invalid verification token attempted: uTtedzge9VyVwFDKTDW70zQz29je9OSU
+INFO 2025-09-06 15:07:48,445 basehttp 61321 6199013376 "GET /accounts/verify-email/uTtedzge9VyVwFDKTDW70zQz29je9OSU/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:07:48,452 basehttp 61321 6199013376 "GET / HTTP/1.1" 200 6344
+INFO 2025-09-06 15:08:24,141 basehttp 61321 6199013376 "GET /accounts/login/ HTTP/1.1" 200 4498
+INFO 2025-09-06 15:08:33,811 basehttp 61321 6199013376 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:08:33,822 basehttp 61321 6199013376 "GET /grids/ HTTP/1.1" 200 11984
+INFO 2025-09-06 15:08:35,853 basehttp 61321 6199013376 "GET /accounts/settings/ HTTP/1.1" 200 4278
+INFO 2025-09-06 15:08:37,235 basehttp 61321 6199013376 "GET /accounts/settings/delete/ HTTP/1.1" 200 4427
+INFO 2025-09-06 15:08:41,055 views 61321 6199013376 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-06 15:08:41,061 basehttp 61321 6199013376 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:08:41,066 basehttp 61321 6199013376 "GET / HTTP/1.1" 200 6291
+INFO 2025-09-06 15:08:50,727 autoreload 61492 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-06 15:08:52,428 basehttp 61492 6193508352 "GET /accounts/register/ HTTP/1.1" 200 4409
+INFO 2025-09-06 15:08:54,650 basehttp 61492 6193508352 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 15:08:54,658 basehttp 61492 6210334720 "GET /accounts/register/trial/ HTTP/1.1" 200 4849
+INFO 2025-09-06 15:09:09,667 views 61492 6193508352 Starting trial user registration...
+INFO 2025-09-06 15:09:09,879 views 61492 6193508352 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:09:09,880 views 61492 6193508352 User tier set to personal for trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:09:09,880 views 61492 6193508352 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-05 15:09:09.880370+00:00
+INFO 2025-09-06 15:09:09,880 views 61492 6193508352 New Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL for trial
+INFO 2025-09-06 15:09:09,882 basehttp 61492 6193508352 "POST /accounts/register/trial/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:09:09,885 email_utils 61492 6227161088 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:09:09,890 basehttp 61492 6193508352 "GET /accounts/login/ HTTP/1.1" 200 4533
+INFO 2025-09-06 15:09:10,400 email_utils 61492 6227161088 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:09:10,401 views 61492 6227161088 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:10:50,390 views 61492 6193508352 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:10:50,392 views 61492 6193508352 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:10:50,395 views 61492 6193508352 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:10:50,396 views 61492 6193508352 Redirecting to first project: 172
+INFO 2025-09-06 15:10:50,404 email_utils 61492 6227161088 Attempting to send personal joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:10:50,405 basehttp 61492 6193508352 "GET /accounts/verify-email/GdwmIR2tIIsNpWj3oOM8QkXN4LtKNs8a/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:10:50,427 basehttp 61492 6193508352 "GET /grids/172/ HTTP/1.1" 200 16727
+INFO 2025-09-06 15:10:50,472 basehttp 61492 6193508352 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-06 15:10:50,872 email_utils 61492 6227161088 Successfully sent personal joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-06 15:10:56,134 basehttp 61492 6193508352 "GET /accounts/settings/ HTTP/1.1" 200 4127
+INFO 2025-09-06 15:11:00,866 basehttp 61492 6193508352 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:11:00,872 basehttp 61492 6193508352 "GET / HTTP/1.1" 200 6359
+INFO 2025-09-06 15:11:03,520 basehttp 61492 6193508352 "GET /accounts/register/trial HTTP/1.1" 301 0
+INFO 2025-09-06 15:11:03,529 basehttp 61492 6210334720 "GET /accounts/register/trial/ HTTP/1.1" 200 4881
+INFO 2025-09-06 15:11:05,174 basehttp 61492 6210334720 "GET /accounts/login/ HTTP/1.1" 200 4309
+INFO 2025-09-06 15:11:13,836 basehttp 61492 6193508352 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-06 15:11:13,847 basehttp 61492 6193508352 "GET /grids/ HTTP/1.1" 200 12600
+INFO 2025-09-06 15:11:16,696 basehttp 61492 6193508352 "GET / HTTP/1.1" 200 6515
+INFO 2025-09-06 15:11:17,498 basehttp 61492 6193508352 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-06 15:11:17,528 basehttp 61492 6193508352 "GET /admin/ HTTP/1.1" 200 2676
+INFO 2025-09-06 15:11:17,540 basehttp 61492 6227161088 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-06 15:11:17,541 basehttp 61492 6210334720 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-06 15:11:17,542 basehttp 61492 6193508352 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-06 15:11:17,543 basehttp 61492 6227161088 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-06 15:11:17,543 basehttp 61492 6210334720 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-06 15:11:17,544 basehttp 61492 6193508352 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-06 15:11:17,544 basehttp 61492 6210334720 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-06 15:11:17,548 basehttp 61492 6210334720 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-06 15:11:17,548 basehttp 61492 6193508352 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-06 15:11:17,548 basehttp 61492 6227161088 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-06 15:11:17,549 basehttp 61492 6210334720 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-06 15:11:18,070 basehttp 61492 6210334720 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-06 15:11:18,072 basehttp 61492 6210334720 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-06 15:11:19,460 basehttp 61492 6210334720 "GET /admin/accounts/user/ HTTP/1.1" 200 3230
+INFO 2025-09-06 15:11:19,476 basehttp 61492 6210334720 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-06 15:11:19,477 basehttp 61492 6243987456 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-06 15:11:19,478 basehttp 61492 6260813824 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-06 15:11:19,479 basehttp 61492 6277640192 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-06 15:11:19,482 basehttp 61492 6210334720 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-06 15:11:19,483 basehttp 61492 6260813824 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-06 15:11:19,484 basehttp 61492 6243987456 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-06 15:11:19,486 basehttp 61492 6193508352 "GET /admin/jsi18n/ HTTP/1.1" 200 999
+INFO 2025-09-06 15:11:19,488 basehttp 61492 6277640192 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-06 15:11:19,489 basehttp 61492 6227161088 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-06 15:11:19,491 basehttp 61492 6227161088 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-06 15:11:19,504 basehttp 61492 6227161088 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-06 15:11:21,324 basehttp 61492 6227161088 "GET /admin/accounts/user/25/change/ HTTP/1.1" 200 5960
+INFO 2025-09-06 15:11:21,335 basehttp 61492 6260813824 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-06 15:11:21,336 basehttp 61492 6243987456 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-09-06 15:11:21,336 basehttp 61492 6227161088 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-09-06 15:11:21,337 basehttp 61492 6193508352 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-09-06 15:11:21,338 basehttp 61492 6277640192 "GET /admin/jsi18n/ HTTP/1.1" 200 1046
+INFO 2025-09-06 15:11:21,338 basehttp 61492 6227161088 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-09-06 15:11:21,339 basehttp 61492 6227161088 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-06 15:11:21,371 basehttp 61492 6193508352 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-09-06 15:11:21,371 basehttp 61492 6210334720 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677

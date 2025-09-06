@@ -1,0 +1,264 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Start Your 6-Month Free Trial{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Custom styles for form fields with icons */
+    input[type="email"], input[type="text"], input[type="password"] {
+        padding-left: 2.5rem !important;
+    }
+    
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+    }
+    
+    /* Make main take remaining height after navbar */
+    main {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Register specific styles */
+    .register-split {
+        display: flex;
+        min-height: 0; /* Allow content to determine height */
+    }
+    
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+        /* Ensure form container has proper spacing */
+        .max-w-md {
+            max-width: 100%;
+            padding: 0 1rem;
+        }
+        
+        /* Add more space between elements on mobile */
+        .space-y-8 > * + * {
+            margin-top: 2rem;
+        }
+        
+        /* Messages container styling */
+        .messages-container {
+            min-height: 0;
+            flex-shrink: 0;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-split">
+    <!-- Registration Form - Centered -->
+    <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)] py-8">
+        <div class="max-w-md w-full space-y-8">
+            <!-- Header --> 
+            <div class="text-center">
+                <h2 class="text-3xl font-bold text-[var(--primary-action-bg)]">
+                    Start Your Free Trial
+                </h2>
+                <p class="mt-2 text-sm text-[var(--subtitle-text)]">
+                    6 months free • No card required
+                </p>
+            </div>
+            
+            <!-- Messages Container - Fixed position to push form down -->
+            <div class="messages-container">
+                <!-- Error Messages -->
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm mb-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-medium mb-1">Registration Failed</p>
+                                    <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <!-- Trial Benefits -->
+            <div class="bg-[var(--container-bg)] py-6 px-6 shadow-lg rounded-lg border border-[var(--border-color)]">
+                <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4 text-center">What you get:</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Free Personal account for 6 months worth £12 for free</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Up to 10 active grids</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Create and save custom templates</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Archive completed tasks</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check text-[var(--primary-action-bg)] mr-3"></i>
+                        <span class="text-sm text-[var(--text-secondary)]">Priority support</span>
+                    </li>
+                </ul>
+                
+                <div class="mt-6 p-4 bg-green-50 rounded-lg">
+                    <p class="text-sm text-green-800 text-center">
+                        <strong>No card required</strong> • Cancel anytime • No hidden fees
+                    </p>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
+                <form onsubmit="plausible('trial_started', {props: {source: 'trial_registration'}});" method="post" class="space-y-6">
+                    {% csrf_token %}
+                    
+                    <!-- First Name Field -->
+                    <div>
+                        <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            {{ form.first_name.label }}
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-user text-[var(--text-secondary)]"></i>
+                            </div>
+                            {{ form.first_name }}
+                        </div>
+                        {% if form.first_name.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in form.first_name.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Email Field -->
+                    <div>
+                        <label for="{{ form.email.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            {{ form.email.label }}
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-envelope text-[var(--text-secondary)]"></i>
+                            </div>
+                            {{ form.email }}
+                        </div>
+                        {% if form.email.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in form.email.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Password Field -->
+                    <div>
+                        <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            {{ form.password1.label }}
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-[var(--text-secondary)]"></i>
+                            </div>
+                            {{ form.password1 }}
+                        </div>
+                        {% if form.password1.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in form.password1.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Confirm Password Field -->
+                    <div>
+                        <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            {{ form.password2.label }}
+                        </label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-lock text-[var(--text-secondary)]"></i>
+                            </div>
+                            {{ form.password2 }}
+                        </div>
+                        {% if form.password2.errors %}
+                            <div class="mt-1 text-sm text-red-600">
+                                {% for error in form.password2.errors %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Non-field errors -->
+                    {% if form.non_field_errors %}
+                        <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+                            {% for error in form.non_field_errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                    <!-- Submit Button -->
+                    <div>
+                        <button type="submit" id="register-btn" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200 cursor-pointer">
+                            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                                <i class="fas fa-gift text-[var(--primary-action-text)] opacity-75 group-hover:opacity-100" id="register-icon"></i>
+                            </span>
+                            <span id="register-text">Start My 6-Month Free Trial</span>
+                            <span id="register-loading" class="hidden">
+                                <i class="fas fa-spinner fa-spin mr-2"></i>
+                                Creating Account...
+                            </span>
+                        </button>
+                    </div>
+
+                    <!-- Sign In Link -->
+                    <div class="text-center">
+                        <p class="text-sm text-[var(--text-secondary)]">
+                            Already have an account?
+                            <a href="{% url 'accounts:login' %}" class="font-medium text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] transition-colors cursor-pointer">
+                                Sign in here
+                            </a>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const registerBtn = document.getElementById('register-btn');
+    const registerText = document.getElementById('register-text');
+    const registerLoading = document.getElementById('register-loading');
+    const registerIcon = document.getElementById('register-icon');
+    
+    form.addEventListener('submit', function() {
+        // Show loading state
+        registerBtn.disabled = true;
+        registerText.classList.add('hidden');
+        registerLoading.classList.remove('hidden');
+        registerIcon.classList.add('hidden');
+        
+        // Change button appearance
+        registerBtn.classList.add('opacity-75', 'cursor-not-allowed');
+        registerBtn.classList.remove('hover:bg-[var(--primary-action-hover-bg)]');
+    });
+});
+</script>
+{% endblock %}

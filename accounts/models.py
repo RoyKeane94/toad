@@ -48,6 +48,10 @@ class User(AbstractUser):
     last_name = models.CharField(max_length=30, blank=True, help_text='Optional. Enter your last name.')
     tier = models.CharField(max_length=35, choices=TIER_CHOICES, default='beta',blank=True)
     
+    # Trial and billing fields
+    trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')
+    trial_ends_at = models.DateTimeField(null=True, blank=True, help_text='When the user trial period ends.')
+    
     # Security and tracking fields
     email_verified = models.BooleanField(default=False, help_text='Whether the user has verified their email address.')
     email_verification_token = models.CharField(max_length=100, null=True, blank=True, help_text='Token for email verification.')
@@ -76,6 +80,30 @@ class User(AbstractUser):
         Return the short name for the user.
         """
         return self.first_name
+    
+    def is_on_trial(self):
+        """Check if user is currently on trial"""
+        if not self.trial_ends_at:
+            return False
+        from django.utils import timezone
+        return timezone.now() < self.trial_ends_at
+    
+    def has_trial_expired(self):
+        """Check if user's trial has expired"""
+        if not self.trial_ends_at:
+            return False
+        from django.utils import timezone
+        return timezone.now() >= self.trial_ends_at
+    
+    def start_trial(self, days=180):  # 6 months = ~180 days
+        """Start a trial period for the user"""
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        self.trial_started_at = timezone.now()
+        self.trial_ends_at = timezone.now() + timedelta(days=days)
+        self.tier = 'personal'  # Give them Personal features during trial
+        self.save()
     
     def is_account_locked(self):
         """
