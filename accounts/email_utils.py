@@ -166,6 +166,7 @@ This email was sent to {user.email}.
 def send_joining_email(user, request=None, cta_url=None):
     """
     Send the post-verification welcome email with hero image.
+    Sends different emails based on user tier.
     """
     # Build a default CTA if not provided
     if not cta_url:
@@ -180,7 +181,23 @@ def send_joining_email(user, request=None, cta_url=None):
         with open(image_path, 'rb') as f:
             image_data = base64.b64encode(f.read()).decode('utf-8')
 
-    html_message = render_to_string('accounts/email/joining_email.html', {
+    # Determine template and content based on user tier
+    user_tier = getattr(user, 'tier', 'free')  # Default to 'free' if tier not set
+    
+    if user_tier == 'beta':
+        template_name = 'accounts/email/joining_email_beta.html'
+        subject = "Welcome to Toad Beta — You're all set!"
+        text_intro = "Thanks for joining the private beta and helping shape a calmer way to plan."
+    elif user_tier == 'personal':
+        template_name = 'accounts/email/joining_email_personal.html'
+        subject = "Welcome to Toad Personal — You're all set!"
+        text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
+    else:  # free tier
+        template_name = 'accounts/email/joining_email_free.html'
+        subject = "Welcome to Toad — You're all set!"
+        text_intro = "Thanks for joining us and helping shape a calmer way to plan."
+
+    html_message = render_to_string(template_name, {
         'user': user,
         'toad_image_data': image_data,
         'cta_url': cta_url,
@@ -189,12 +206,14 @@ def send_joining_email(user, request=None, cta_url=None):
     text_message = f"""
 Hi {user.first_name or user.get_short_name()},
 
-Welcome to Toad! Your email is verified and you’re all set.
+Welcome to Toad! Your email is verified and you're all set.
+
+{text_intro}
 
 Your first grid is ready and waiting. Head here to get started:
 {cta_url}
 
-Thanks for joining the private beta. If you have any feedback, reply to this email—I read every message.
+If you have any feedback, reply to this email—I read every message.
 
 — Tom, Founder of Toad
 """
@@ -202,19 +221,19 @@ Thanks for joining the private beta. If you have any feedback, reply to this ema
     try:
         import logging
         logger = logging.getLogger(__name__)
-        logger.info(f"Attempting to send joining email to {user.email}")
+        logger.info(f"Attempting to send {user_tier} joining email to {user.email}")
         send_mail(
-            subject='Welcome to Toad — You’re all set!',
+            subject=subject,
             message=text_message,
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[user.email],
             html_message=html_message,
             fail_silently=False,
         )
-        logger.info(f"Successfully sent joining email to {user.email}")
+        logger.info(f"Successfully sent {user_tier} joining email to {user.email}")
         return True
     except Exception as e:
         import logging
         logger = logging.getLogger(__name__)
-        logger.error(f"Failed to send joining email to {user.email}: {e}")
+        logger.error(f"Failed to send {user_tier} joining email to {user.email}: {e}")
         return False

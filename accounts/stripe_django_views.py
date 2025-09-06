@@ -134,17 +134,21 @@ def stripe_success_view(request):
         request.user.tier = 'personal'
         request.user.save()
         
-        # Send verification email after successful payment
+        # Send joining email after successful payment (user is already verified)
         try:
-            from .email_utils import send_verification_email
+            from .email_utils import send_joining_email
             import threading
             
             def send_email_async():
                 try:
-                    email_sent = send_verification_email(request.user, request)
-                    logger.info(f"Verification email sent after payment: {email_sent} for {request.user.email}")
+                    # Build CTA URL for their first grid
+                    base_url = getattr(settings, 'SITE_URL', '').rstrip('/')
+                    cta_url = f"{base_url}/pages/projects/" if base_url else None
+                    
+                    email_sent = send_joining_email(request.user, request, cta_url)
+                    logger.info(f"Joining email sent after payment: {email_sent} for {request.user.email}")
                 except Exception as e:
-                    logger.error(f"Failed to send verification email after payment to {request.user.email}: {e}")
+                    logger.error(f"Failed to send joining email after payment to {request.user.email}: {e}")
             
             # Start email sending in background thread
             email_thread = threading.Thread(target=send_email_async)
@@ -157,7 +161,7 @@ def stripe_success_view(request):
         # Log the successful subscription
         logger.info(f"User {request.user.email} successfully subscribed to Personal plan. Session: {session_id}")
         
-        messages.success(request, 'Welcome to Toad Personal! Your subscription is now active. Please check your email to verify your account.')
+        messages.success(request, 'Welcome to Toad Personal! Your subscription is now active. Check your email for your welcome message!')
         
         return render(request, 'accounts/pages/stripe/toad_personal_stripe_success.html', {
             'session_id': session_id,
