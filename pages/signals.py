@@ -619,6 +619,88 @@ def create_product_development_tracker_grid(user):
     
     return project
 
+def create_solopreneur_grid(user):
+    """
+    Create a Solopreneur grid with predefined rows and columns for the given user.
+    Based on the Solopreneur structure with client work and business areas.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Solopreneur"
+    )
+    
+    # Create row headers (client/business areas)
+    row_headers = [
+        "Client A: Smith & Jones Website",
+        "Client B - Downton Limited",
+        "Sales & Marketing",
+        "Admin & Finance"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (time-based priorities)
+    column_headers = [
+        "This week's priorities",
+        "To Do Today",
+        "Waiting On / Blockers"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Solopreneur image
+    tasks_data = [
+        # Client A: Smith & Jones Website
+        (0, 0, "Finish the homepage design mock-up", False),  # This week's priorities
+        (0, 0, "Prepare for the weekly check-in call", False),  # This week's priorities
+        (0, 1, "Send revised logo files to the client", False),  # To Do Today
+        (0, 2, "Waiting for client to provide the final copy for the 'About Us' page", False),  # Waiting On / Blockers
+        
+        # Client B - Downton Limited
+        (1, 0, "Finalise brand colour palette", False),  # This week's priorities
+        (1, 1, "Draft three initial logo concepts", False),  # To Do Today
+        
+        # Sales & Marketing
+        (2, 0, "Follow up on Umbrella Limited post discussion on the 12th", False),  # This week's priorities
+        (2, 0, "Follow up on Hunt Limited post discussion on the 15th", False),  # This week's priorities
+        (2, 1, "Send final proposal to Book Limited", False),  # To Do Today
+        (2, 2, "Waiting for a reply from the podcast host I pitched", False),  # Waiting On / Blockers
+        
+        # Admin & Finance
+        (3, 0, "Send out all outstanding invoices for September", False),  # This week's priorities
+        (3, 0, "Categorise business expenses for August", False),  # This week's priorities
+        (3, 1, "Chase the invoice from Stephens Limited", False),  # To Do Today
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
 def create_weekly_planner_grid(user):
     """
     Create a Weekly Planner grid with predefined rows and columns for the given user.
@@ -1305,6 +1387,47 @@ def create_product_development_tracker_grid_structure_only(user):
     
     return project
 
+def create_solopreneur_grid_structure_only(user):
+    """
+    Create a Solopreneur grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Solopreneur"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Client A: Smith & Jones Website",
+        "Client B - Downton Limited",
+        "Sales & Marketing",
+        "Admin & Finance"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers
+    column_headers = [
+        "This week's priorities",
+        "To Do Today",
+        "Waiting On / Blockers"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
 
 def create_weekly_fitness_tracker_grid(user):
     """

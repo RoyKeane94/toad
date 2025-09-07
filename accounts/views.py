@@ -70,6 +70,109 @@ class LoginView(FormView):
             return redirect(self.success_url)
         return super().dispatch(request, *args, **kwargs)
 
+
+@login_required
+def manage_subscription_view(request):
+    """
+    Manage subscription page - shows current plan and upgrade/downgrade options
+    """
+    user = request.user
+    
+    # Get current tier display info
+    tier_display = {
+        'beta': 'Beta Access',
+        'free': 'Free Plan', 
+        'personal': 'Personal Plan',
+        'pro': 'Pro Plan'
+    }.get(user.tier, f"{user.tier.title()} Plan")
+    
+    # Get user's active grids for potential selection
+    from pages.models import Project
+    from django.core.serializers import serialize
+    import json
+    
+    user_grids_queryset = Project.objects.filter(user=user, is_archived=False).order_by('created_at')
+    
+    # Serialize grids to JSON for JavaScript
+    user_grids_json = []
+    for grid in user_grids_queryset:
+        user_grids_json.append({
+            'id': grid.id,
+            'name': grid.name,
+            'created_at': grid.created_at.strftime('%b %d, %Y')
+        })
+    
+    context = {
+        'user': user,
+        'tier_display': tier_display,
+        'user_grids': json.dumps(user_grids_json),
+    }
+    
+    return render(request, 'accounts/pages/settings/manage_subscription.html', context)
+
+
+@login_required
+def downgrade_to_free_view(request):
+    """
+    Downgrade user to Free tier
+    """
+    if request.method != 'POST':
+        return redirect('accounts:manage_subscription')
+    
+    user = request.user
+    
+    # Only allow downgrade if user is not already on free tier
+    if user.tier == 'free':
+        messages.info(request, 'You are already on the Free plan.')
+        return redirect('accounts:manage_subscription')
+    
+    # Handle grid selection
+    from pages.models import Project
+    active_projects = Project.objects.filter(user=user, is_archived=False)
+    
+    if active_projects.count() > 2:
+        # Get selected grids from form
+        selected_grids_str = request.POST.get('selected_grids', '')
+        if not selected_grids_str:
+            messages.error(request, 'Please select which grids to keep active.')
+            return redirect('accounts:manage_subscription')
+        
+        try:
+            selected_grid_ids = [int(id.strip()) for id in selected_grids_str.split(',') if id.strip()]
+            
+            # Validate that exactly 2 grids are selected
+            if len(selected_grid_ids) != 2:
+                messages.error(request, 'Please select exactly 2 grids to keep active.')
+                return redirect('accounts:manage_subscription')
+            
+            # Validate that all selected grids belong to the user
+            selected_projects = Project.objects.filter(id__in=selected_grid_ids, user=user, is_archived=False)
+            if selected_projects.count() != 2:
+                messages.error(request, 'Invalid grid selection.')
+                return redirect('accounts:manage_subscription')
+            
+            # Archive all other active grids
+            projects_to_archive = active_projects.exclude(id__in=selected_grid_ids)
+            archived_count = projects_to_archive.count()
+            
+            for project in projects_to_archive:
+                project.is_archived = True
+                project.save()
+            
+            messages.warning(request, f'Downgraded to Free plan. {archived_count} grids have been archived to comply with the 2-grid limit.')
+            
+        except (ValueError, TypeError):
+            messages.error(request, 'Invalid grid selection format.')
+            return redirect('accounts:manage_subscription')
+    else:
+        messages.success(request, 'Successfully downgraded to Free plan.')
+    
+    # Update user tier
+    user.tier = 'free'
+    user.save()
+    
+    return redirect('accounts:manage_subscription')
+
 class RegisterFreeView(FormView):
     """
     Custom registration view using email authentication
@@ -126,6 +229,109 @@ class RegisterFreeView(FormView):
         if request.user.is_authenticated:
             return redirect('pages:project_list')
         return super().dispatch(request, *args, **kwargs)
+
+
+@login_required
+def manage_subscription_view(request):
+    """
+    Manage subscription page - shows current plan and upgrade/downgrade options
+    """
+    user = request.user
+    
+    # Get current tier display info
+    tier_display = {
+        'beta': 'Beta Access',
+        'free': 'Free Plan', 
+        'personal': 'Personal Plan',
+        'pro': 'Pro Plan'
+    }.get(user.tier, f"{user.tier.title()} Plan")
+    
+    # Get user's active grids for potential selection
+    from pages.models import Project
+    from django.core.serializers import serialize
+    import json
+    
+    user_grids_queryset = Project.objects.filter(user=user, is_archived=False).order_by('created_at')
+    
+    # Serialize grids to JSON for JavaScript
+    user_grids_json = []
+    for grid in user_grids_queryset:
+        user_grids_json.append({
+            'id': grid.id,
+            'name': grid.name,
+            'created_at': grid.created_at.strftime('%b %d, %Y')
+        })
+    
+    context = {
+        'user': user,
+        'tier_display': tier_display,
+        'user_grids': json.dumps(user_grids_json),
+    }
+    
+    return render(request, 'accounts/pages/settings/manage_subscription.html', context)
+
+
+@login_required
+def downgrade_to_free_view(request):
+    """
+    Downgrade user to Free tier
+    """
+    if request.method != 'POST':
+        return redirect('accounts:manage_subscription')
+    
+    user = request.user
+    
+    # Only allow downgrade if user is not already on free tier
+    if user.tier == 'free':
+        messages.info(request, 'You are already on the Free plan.')
+        return redirect('accounts:manage_subscription')
+    
+    # Handle grid selection
+    from pages.models import Project
+    active_projects = Project.objects.filter(user=user, is_archived=False)
+    
+    if active_projects.count() > 2:
+        # Get selected grids from form
+        selected_grids_str = request.POST.get('selected_grids', '')
+        if not selected_grids_str:
+            messages.error(request, 'Please select which grids to keep active.')
+            return redirect('accounts:manage_subscription')
+        
+        try:
+            selected_grid_ids = [int(id.strip()) for id in selected_grids_str.split(',') if id.strip()]
+            
+            # Validate that exactly 2 grids are selected
+            if len(selected_grid_ids) != 2:
+                messages.error(request, 'Please select exactly 2 grids to keep active.')
+                return redirect('accounts:manage_subscription')
+            
+            # Validate that all selected grids belong to the user
+            selected_projects = Project.objects.filter(id__in=selected_grid_ids, user=user, is_archived=False)
+            if selected_projects.count() != 2:
+                messages.error(request, 'Invalid grid selection.')
+                return redirect('accounts:manage_subscription')
+            
+            # Archive all other active grids
+            projects_to_archive = active_projects.exclude(id__in=selected_grid_ids)
+            archived_count = projects_to_archive.count()
+            
+            for project in projects_to_archive:
+                project.is_archived = True
+                project.save()
+            
+            messages.warning(request, f'Downgraded to Free plan. {archived_count} grids have been archived to comply with the 2-grid limit.')
+            
+        except (ValueError, TypeError):
+            messages.error(request, 'Invalid grid selection format.')
+            return redirect('accounts:manage_subscription')
+    else:
+        messages.success(request, 'Successfully downgraded to Free plan.')
+    
+    # Update user tier
+    user.tier = 'free'
+    user.save()
+    
+    return redirect('accounts:manage_subscription')
 
 @login_required
 def logout_view(request):
@@ -666,3 +872,106 @@ class SecretRegistrationView(FormView):
         if request.user.is_authenticated:
             return redirect('pages:project_list')
         return super().dispatch(request, *args, **kwargs)
+
+
+@login_required
+def manage_subscription_view(request):
+    """
+    Manage subscription page - shows current plan and upgrade/downgrade options
+    """
+    user = request.user
+    
+    # Get current tier display info
+    tier_display = {
+        'beta': 'Beta Access',
+        'free': 'Free Plan', 
+        'personal': 'Personal Plan',
+        'pro': 'Pro Plan'
+    }.get(user.tier, f"{user.tier.title()} Plan")
+    
+    # Get user's active grids for potential selection
+    from pages.models import Project
+    from django.core.serializers import serialize
+    import json
+    
+    user_grids_queryset = Project.objects.filter(user=user, is_archived=False).order_by('created_at')
+    
+    # Serialize grids to JSON for JavaScript
+    user_grids_json = []
+    for grid in user_grids_queryset:
+        user_grids_json.append({
+            'id': grid.id,
+            'name': grid.name,
+            'created_at': grid.created_at.strftime('%b %d, %Y')
+        })
+    
+    context = {
+        'user': user,
+        'tier_display': tier_display,
+        'user_grids': json.dumps(user_grids_json),
+    }
+    
+    return render(request, 'accounts/pages/settings/manage_subscription.html', context)
+
+
+@login_required
+def downgrade_to_free_view(request):
+    """
+    Downgrade user to Free tier
+    """
+    if request.method != 'POST':
+        return redirect('accounts:manage_subscription')
+    
+    user = request.user
+    
+    # Only allow downgrade if user is not already on free tier
+    if user.tier == 'free':
+        messages.info(request, 'You are already on the Free plan.')
+        return redirect('accounts:manage_subscription')
+    
+    # Handle grid selection
+    from pages.models import Project
+    active_projects = Project.objects.filter(user=user, is_archived=False)
+    
+    if active_projects.count() > 2:
+        # Get selected grids from form
+        selected_grids_str = request.POST.get('selected_grids', '')
+        if not selected_grids_str:
+            messages.error(request, 'Please select which grids to keep active.')
+            return redirect('accounts:manage_subscription')
+        
+        try:
+            selected_grid_ids = [int(id.strip()) for id in selected_grids_str.split(',') if id.strip()]
+            
+            # Validate that exactly 2 grids are selected
+            if len(selected_grid_ids) != 2:
+                messages.error(request, 'Please select exactly 2 grids to keep active.')
+                return redirect('accounts:manage_subscription')
+            
+            # Validate that all selected grids belong to the user
+            selected_projects = Project.objects.filter(id__in=selected_grid_ids, user=user, is_archived=False)
+            if selected_projects.count() != 2:
+                messages.error(request, 'Invalid grid selection.')
+                return redirect('accounts:manage_subscription')
+            
+            # Archive all other active grids
+            projects_to_archive = active_projects.exclude(id__in=selected_grid_ids)
+            archived_count = projects_to_archive.count()
+            
+            for project in projects_to_archive:
+                project.is_archived = True
+                project.save()
+            
+            messages.warning(request, f'Downgraded to Free plan. {archived_count} grids have been archived to comply with the 2-grid limit.')
+            
+        except (ValueError, TypeError):
+            messages.error(request, 'Invalid grid selection format.')
+            return redirect('accounts:manage_subscription')
+    else:
+        messages.success(request, 'Successfully downgraded to Free plan.')
+    
+    # Update user tier
+    user.tier = 'free'
+    user.save()
+    
+    return redirect('accounts:manage_subscription')

@@ -11,15 +11,16 @@ from ..specific_views_functions.general_views_functions import (
 )
 from ..signals import (
     create_course_planner_grid, create_revision_guide_grid, create_shooting_grid, 
-    create_product_development_tracker_grid, create_weekly_planner_grid, 
+    create_product_development_tracker_grid, create_solopreneur_grid, create_weekly_planner_grid, 
     create_sell_side_project_grid, create_origination_director_grid, create_habit_development_tracker_grid,
     create_weekly_fitness_tracker_grid, create_course_planner_grid_structure_only, 
     create_revision_guide_grid_structure_only, create_essay_planner_grid_structure_only, 
     create_job_application_tracker_grid_structure_only, create_weekly_planner_grid_structure_only, 
     create_line_manager_grid_structure_only, create_sell_side_project_grid_structure_only, 
     create_origination_director_grid_structure_only, create_product_development_tracker_grid_structure_only, 
-    create_habit_development_tracker_grid_structure_only, create_weekly_fitness_tracker_grid_structure_only,
-    create_alternative_weekly_planner_grid, create_alternative_weekly_planner_grid_structure_only
+    create_solopreneur_grid_structure_only, create_habit_development_tracker_grid_structure_only, 
+    create_weekly_fitness_tracker_grid_structure_only, create_alternative_weekly_planner_grid, 
+    create_alternative_weekly_planner_grid_structure_only
 )
 from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid, create_line_manager_grid
 import logging
@@ -293,6 +294,28 @@ def product_development_tracker_template_view(request):
     except Exception as e:
         logger.error(f"Error creating product development tracker grid: {e}")
         messages.error(request, "There was an error creating your Product Development Tracker. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def solopreneur_template_view(request):
+    """Create a Solopreneur grid for the current user and redirect to it"""
+    try:
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the solopreneur grid structure only
+            project = create_solopreneur_grid_structure_only(request.user)
+        else:
+            # Create the solopreneur grid with pre-populated tasks
+            project = create_solopreneur_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating solopreneur grid: {e}")
+        messages.error(request, "There was an error creating your Solopreneur grid. Please try again.")
         return redirect('pages:templates_overview')
 
 def professionals_jobs_template_view(request):

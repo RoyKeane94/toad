@@ -111,6 +111,29 @@
                         
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
                             <div class="min-w-0 flex-1">
+                                <h3 class="font-medium text-[var(--text-primary)]">Current Plan</h3>
+                                <p class="text-sm text-[var(--text-secondary)]">
+                                    {% if user.tier == 'beta' %}
+                                        Beta Access
+                                    {% elif user.tier == 'free' %}
+                                        Free Plan
+                                    {% elif user.tier == 'personal' %}
+                                        Personal Plan
+                                    {% elif user.tier == 'pro' %}
+                                        Pro Plan
+                                    {% else %}
+                                        {{ user.tier|title }} Plan
+                                    {% endif %}
+                                </p>
+                            </div>
+                            <a href="{% url 'accounts:manage_subscription' %}" 
+                               class="px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-sm font-medium transition-colors whitespace-nowrap flex-shrink-0">
+                                Manage Plan
+                            </a>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
+                            <div class="min-w-0 flex-1">
                                 <h3 class="font-medium text-[var(--text-primary)]">Account Created</h3>
                                 <p class="text-sm text-[var(--text-secondary)]">{{ user.date_joined|date:"F j, Y" }}</p>
                             </div>

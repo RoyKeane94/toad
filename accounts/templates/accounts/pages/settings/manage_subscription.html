@@ -1,0 +1,675 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Manage Subscription - Toad{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+    }
+    
+    /* Make main take remaining height after navbar */
+    main {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Subscription management specific styles */
+    .subscription-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 4rem 1rem;
+        background: var(--main-bg);
+    }
+    
+    .subscription-cards {
+        display: flex;
+        gap: 2rem;
+        max-width: 1200px;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .subscription-card {
+        flex: 1;
+        min-width: 300px;
+        max-width: 350px;
+        background: var(--container-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        position: relative;
+        border: 1px solid var(--border-color);
+        transition: all 0.2s ease-out;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .subscription-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .subscription-card.current {
+        border: 2px solid var(--primary-action-bg);
+        background: white;
+        transform: translateY(-8px);
+    }
+    
+    .subscription-card.current::before {
+        content: "Current Plan";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--primary-action-bg);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    
+    
+    .subscription-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+    }
+    
+    .subscription-description {
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+    
+    .subscription-amount {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.25rem;
+    }
+    
+    .subscription-period {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+    }
+    
+    .subscription-features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+    
+    .subscription-features li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.75rem;
+        color: var(--text-primary);
+    }
+    
+    .subscription-features li i {
+        color: var(--primary-action-bg);
+        margin-right: 0.75rem;
+        width: 16px;
+        text-align: center;
+    }
+    
+    .subscription-button {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        transition: all 0.2s ease-out;
+        border: none;
+        cursor: pointer;
+        margin-top: auto;
+    }
+    
+    .subscription-button.current {
+        background: var(--grid-header-bg);
+        color: var(--text-secondary);
+        border: 1px solid var(--border-color);
+        cursor: not-allowed;
+    }
+    
+    .subscription-button.upgrade {
+        background: var(--primary-action-bg);
+        color: white;
+    }
+    
+    .subscription-button.upgrade:hover {
+        background: var(--primary-action-hover-bg);
+        color: white;
+    }
+    
+    .subscription-button.downgrade {
+        background: white;
+        color: var(--text-primary);
+        border: 1px solid var(--border-color);
+    }
+    
+    .subscription-button.downgrade:hover {
+        background: var(--grid-header-bg);
+        color: var(--text-primary);
+    }
+    
+    .subscription-button.pro {
+        background: var(--tertiary-action-bg);
+        color: white;
+    }
+    
+    .subscription-button.pro:hover {
+        background: var(--tertiary-action-hover-bg);
+        color: white;
+    }
+    
+    
+    /* Mobile responsive */
+    @media (max-width: 768px) {
+        .subscription-cards {
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .subscription-card {
+            min-width: 280px;
+            max-width: 100%;
+        }
+        
+        .subscription-container {
+            padding: 2rem 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="subscription-container">
+    <!-- Header -->
+    <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">
+            Manage Your Subscription
+        </h1>
+        <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+            You're currently on the <strong>{{ tier_display }}</strong>. 
+            Choose a different plan or stay with your current one.
+        </p>
+    </div>
+    
+    
+    <!-- Subscription Cards -->
+    <div class="subscription-cards">
+        <!-- Free Plan -->
+        <div class="subscription-card {% if user.tier == 'free' %}current{% endif %}">
+            <h3 class="subscription-title">Free</h3>
+            <p class="subscription-description">
+                The perfect place to start. Organize your most important projects and see what clarity feels like
+            </p>
+            <div class="subscription-amount">Free</div>
+            <div class="subscription-period">forever</div>
+            
+            <ul class="subscription-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Manage up to 2 active grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Create unlimited tasks
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Use any of our pre-built templates
+                </li>
+            </ul>
+            
+            {% if user.tier == 'free' %}
+                <button class="subscription-button current" disabled>
+                    Current Plan
+                </button>
+            {% else %}
+                <button class="subscription-button downgrade" onclick="openDowngradeModal()">
+                    Downgrade to Free
+                </button>
+            {% endif %}
+        </div>
+        
+        <!-- Personal Plan -->
+        <div class="subscription-card {% if user.tier == 'personal' %}current{% endif %}">
+            <h3 class="subscription-title">Personal</h3>
+            <p class="subscription-description">
+                For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
+            </p>
+            <div class="subscription-amount">£2</div>
+            <div class="subscription-period">/ month</div>
+            
+            <ul class="subscription-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Manage up to 10 active grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Save time by creating custom templates
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Stay focused by archiving completed tasks
+                </li>
+            </ul>
+            
+            {% if user.tier == 'personal' %}
+                <button class="subscription-button current" disabled>
+                    Current Plan
+                </button>
+            {% else %}
+                <a href="{% url 'accounts:register_personal' %}" class="subscription-button upgrade">
+                    Upgrade to Personal
+                </a>
+            {% endif %}
+        </div>
+        
+        <!-- Pro Plan -->
+        <div class="subscription-card {% if user.tier == 'pro' %}current{% endif %}">
+            <h3 class="subscription-title">Pro</h3>
+            <p class="subscription-description">
+                For collaborating with your team. Simple, shared clarity without any unnecessary noise
+            </p>
+            <div class="subscription-amount">£5</div>
+            <div class="subscription-period">/ month</div>
+            
+            <ul class="subscription-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Everything in Personal, plus...
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Unlimited shared grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Access to Team Toad, our premium collaboration tool
+                </li>
+            </ul>
+            
+            {% if user.tier == 'pro' %}
+                <button class="subscription-button current" disabled>
+                    Current Plan
+                </button>
+            {% else %}
+                <a href="#" class="subscription-button pro">
+                    Request Early Access
+                </a>
+            {% endif %}
+        </div>
+    </div>
+    
+    <!-- Back to Settings -->
+    <div class="mt-8 text-center">
+        <a href="{% url 'accounts:account_settings' %}" 
+           class="inline-flex items-center px-4 py-2 bg-[var(--grid-header-bg)] hover:bg-[var(--border-color)] text-[var(--text-primary)] rounded-md text-sm font-medium transition-colors">
+            <i class="fas fa-arrow-left mr-2"></i>
+            Back to Account Settings
+        </a>
+    </div>
+</div>
+
+<!-- Downgrade Confirmation Modal -->
+<div id="downgradeModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-yellow-100 rounded-lg shadow-sm">
+                    <i class="fas fa-exclamation-triangle text-yellow-600"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Confirm Downgrade</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">This action will change your plan</p>
+                </div>
+            </div>
+            <button type="button" id="close-downgrade-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <!-- Step 1: Warning about downgrade -->
+            <div id="downgrade-warning" class="mb-6">
+                <p class="text-[var(--text-primary)] mb-4">Are you sure you want to downgrade to the Free plan? This will:</p>
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="space-y-3">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-100 rounded-lg shadow-sm flex-shrink-0">
+                                <i class="fas fa-times text-red-500 text-sm"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-medium text-[var(--text-primary)] text-sm">Limit to 2 active grids</p>
+                                <p class="text-xs text-[var(--text-secondary)] mt-1">Any additional grids will be archived</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-100 rounded-lg shadow-sm flex-shrink-0">
+                                <i class="fas fa-times text-red-500 text-sm"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-medium text-[var(--text-primary)] text-sm">Remove custom templates</p>
+                                <p class="text-xs text-[var(--text-secondary)] mt-1">No more saving grid structures as templates</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-red-100 rounded-lg shadow-sm flex-shrink-0">
+                                <i class="fas fa-times text-red-500 text-sm"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-medium text-[var(--text-primary)] text-sm">Remove task archiving</p>
+                                <p class="text-xs text-[var(--text-secondary)] mt-1">No more archiving completed tasks</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Step 2: Grid Selection (hidden initially) -->
+            <div id="grid-selection" class="mb-6 hidden">
+                <p class="text-[var(--text-primary)] mb-4">You have <span id="total-grid-count">0</span> active grids. Please select which 2 grids you want to keep active:</p>
+                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div id="grid-selection-list" class="space-y-3">
+                        <!-- Grid selection items will be populated here -->
+                    </div>
+                </div>
+                <p class="text-xs text-[var(--text-secondary)] mt-2">The remaining grids will be archived and can be restored later if you upgrade your plan.</p>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <!-- Step 1 Buttons -->
+            <div id="step1-buttons" class="flex items-center space-x-3">
+                <button type="button" 
+                        id="cancel-downgrade"
+                        class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <button type="button" 
+                        id="continue-downgrade"
+                        class="w-40 h-10 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-arrow-right mr-2"></i>Continue
+                </button>
+            </div>
+            
+            <!-- Step 2 Buttons -->
+            <div id="step2-buttons" class="flex items-center space-x-3 hidden">
+                <button type="button" 
+                        id="back-to-warning"
+                        class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-arrow-left mr-2"></i>Back
+                </button>
+                <button type="button" 
+                        id="cancel-downgrade-step2"
+                        class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <form method="post" action="{% url 'accounts:downgrade_to_free' %}" class="inline" id="downgrade-form">
+                    {% csrf_token %}
+                    <input type="hidden" id="selected-grids" name="selected_grids" value="">
+                    <button type="submit" 
+                            id="confirm-downgrade"
+                            class="w-40 h-10 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fas fa-arrow-down mr-2"></i>Downgrade
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showDowngradeModal() {
+    const modal = document.getElementById('downgradeModal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+    }
+}
+
+function closeDowngradeModal() {
+    const modal = document.getElementById('downgradeModal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+// Modal event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modal buttons
+    const closeDowngradeModalBtn = document.getElementById('close-downgrade-modal');
+    const cancelDowngradeBtn = document.getElementById('cancel-downgrade');
+    const cancelDowngradeStep2Btn = document.getElementById('cancel-downgrade-step2');
+    const downgradeModal = document.getElementById('downgradeModal');
+    
+    // Step navigation
+    const continueDowngradeBtn = document.getElementById('continue-downgrade');
+    const backToWarningBtn = document.getElementById('back-to-warning');
+    const confirmDowngradeBtn = document.getElementById('confirm-downgrade');
+    
+    // Grid selection elements
+    const gridSelection = document.getElementById('grid-selection');
+    const downgradeWarning = document.getElementById('downgrade-warning');
+    const step1Buttons = document.getElementById('step1-buttons');
+    const step2Buttons = document.getElementById('step2-buttons');
+    const totalGridCount = document.getElementById('total-grid-count');
+    const gridSelectionList = document.getElementById('grid-selection-list');
+    const selectedGridsInput = document.getElementById('selected-grids');
+    
+    // Track selected grids
+    let selectedGrids = [];
+    let userGrids = [];
+    
+    // Close modal buttons
+    if (closeDowngradeModalBtn) {
+        closeDowngradeModalBtn.addEventListener('click', closeDowngradeModal);
+    }
+    
+    if (cancelDowngradeBtn) {
+        cancelDowngradeBtn.addEventListener('click', closeDowngradeModal);
+    }
+    
+    if (cancelDowngradeStep2Btn) {
+        cancelDowngradeStep2Btn.addEventListener('click', closeDowngradeModal);
+    }
+    
+    // Step navigation
+    if (continueDowngradeBtn) {
+        continueDowngradeBtn.addEventListener('click', function() {
+            // Check if user has more than 2 grids
+            if (userGrids.length > 2) {
+                showGridSelection();
+            } else {
+                // Proceed directly with downgrade
+                proceedWithDowngrade();
+            }
+        });
+    }
+    
+    if (backToWarningBtn) {
+        backToWarningBtn.addEventListener('click', function() {
+            showDowngradeWarning();
+        });
+    }
+    
+    // Confirm downgrade
+    if (confirmDowngradeBtn) {
+        confirmDowngradeBtn.addEventListener('click', function(e) {
+            if (selectedGrids.length !== 2) {
+                e.preventDefault();
+                alert('Please select exactly 2 grids to keep active.');
+                return;
+            }
+            
+            // Set the selected grids in the hidden input
+            selectedGridsInput.value = selectedGrids.join(',');
+        });
+    }
+    
+    // Close modal when clicking outside
+    if (downgradeModal) {
+        downgradeModal.addEventListener('click', function(e) {
+            if (e.target === downgradeModal) {
+                closeDowngradeModal();
+            }
+        });
+    }
+    
+    // Function to show grid selection step
+    function showGridSelection() {
+        // Hide warning, show grid selection
+        downgradeWarning.classList.add('hidden');
+        gridSelection.classList.remove('hidden');
+        step1Buttons.classList.add('hidden');
+        step2Buttons.classList.remove('hidden');
+        
+        // Update grid count
+        totalGridCount.textContent = userGrids.length;
+        
+        // Populate grid selection list
+        gridSelectionList.innerHTML = '';
+        userGrids.forEach((grid, index) => {
+            const gridItem = document.createElement('div');
+            gridItem.className = 'flex items-center space-x-3 p-3 border border-[var(--border-color)] rounded-lg hover:bg-[var(--container-bg)] cursor-pointer transition-colors';
+            gridItem.innerHTML = `
+                <div class="flex-shrink-0">
+                    <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full flex items-center justify-center transition-all duration-200">
+                        <div class="w-3 h-3 bg-[var(--primary-action-bg)] rounded-full opacity-0 transition-opacity duration-200"></div>
+                    </div>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-medium text-[var(--text-primary)] text-sm">${grid.name}</p>
+                    <p class="text-xs text-[var(--text-secondary)]">Created ${grid.created_at}</p>
+                </div>
+            `;
+            
+            gridItem.addEventListener('click', function() {
+                toggleGridSelection(index, gridItem);
+            });
+            
+            gridSelectionList.appendChild(gridItem);
+        });
+        
+        // Update confirm button state
+        updateConfirmButton();
+    }
+    
+    // Function to show downgrade warning step
+    function showDowngradeWarning() {
+        // Show warning, hide grid selection
+        downgradeWarning.classList.remove('hidden');
+        gridSelection.classList.add('hidden');
+        step1Buttons.classList.remove('hidden');
+        step2Buttons.classList.add('hidden');
+        
+        // Reset selection
+        selectedGrids = [];
+        updateConfirmButton();
+    }
+    
+    // Function to toggle grid selection
+    function toggleGridSelection(index, gridItem) {
+        const grid = userGrids[index];
+        const isSelected = selectedGrids.includes(grid.id);
+        
+        if (isSelected) {
+            // Deselect
+            selectedGrids = selectedGrids.filter(id => id !== grid.id);
+            gridItem.querySelector('.w-3.h-3').classList.add('opacity-0');
+            gridItem.classList.remove('border-[var(--primary-action-bg)]', 'bg-[var(--primary-action-bg)]/5');
+        } else {
+            // Select (max 2)
+            if (selectedGrids.length >= 2) {
+                alert('You can only select 2 grids to keep active.');
+                return;
+            }
+            selectedGrids.push(grid.id);
+            gridItem.querySelector('.w-3.h-3').classList.remove('opacity-0');
+            gridItem.classList.add('border-[var(--primary-action-bg)]', 'bg-[var(--primary-action-bg)]/5');
+        }
+        
+        updateConfirmButton();
+    }
+    
+    // Function to update confirm button state
+    function updateConfirmButton() {
+        if (confirmDowngradeBtn) {
+            const isValid = selectedGrids.length === 2;
+            confirmDowngradeBtn.disabled = !isValid;
+            confirmDowngradeBtn.classList.toggle('opacity-50', !isValid);
+            confirmDowngradeBtn.classList.toggle('cursor-not-allowed', !isValid);
+        }
+    }
+    
+    // Function to proceed with downgrade (for users with 2 or fewer grids)
+    function proceedWithDowngrade() {
+        // Create a form and submit it
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '{% url "accounts:downgrade_to_free" %}';
+        
+        // Add CSRF token
+        const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
+        if (csrfToken) {
+            const csrfInput = document.createElement('input');
+            csrfInput.type = 'hidden';
+            csrfInput.name = 'csrfmiddlewaretoken';
+            csrfInput.value = csrfToken.value;
+            form.appendChild(csrfInput);
+        }
+        
+        // Add empty selected_grids (no selection needed)
+        const selectedGridsInput = document.createElement('input');
+        selectedGridsInput.type = 'hidden';
+        selectedGridsInput.name = 'selected_grids';
+        selectedGridsInput.value = '';
+        form.appendChild(selectedGridsInput);
+        
+        // Submit the form
+        document.body.appendChild(form);
+        form.submit();
+    }
+    
+    // Load user grids when modal opens
+    window.openDowngradeModal = function() {
+        // Reset state
+        selectedGrids = [];
+        showDowngradeWarning();
+        
+        // Load user grids from Django template data
+        userGrids = JSON.parse('{{ user_grids|escapejs }}');
+        
+        // Show the modal
+        showDowngradeModal();
+    };
+});
+</script>
+{% endblock %}

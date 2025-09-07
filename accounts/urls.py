@@ -16,7 +16,9 @@ from .views import (
     forgot_password_view,
     reset_password_view,
     preview_email_templates,
-    beta_update_email_preview
+    beta_update_email_preview,
+    manage_subscription_view,
+    downgrade_to_free_view
 )
 from .stripe_django_views import (
     stripe_checkout_view,
@@ -44,6 +46,8 @@ urlpatterns = [
     path('settings/', account_settings_view, name='account_settings'),
     path('settings/password/', change_password_view, name='change_password'),
     path('settings/delete/', delete_account_view, name='delete_account'),
+    path('manage-subscription/', manage_subscription_view, name='manage_subscription'),
+    path('downgrade-to-free/', downgrade_to_free_view, name='downgrade_to_free'),
     
     # Email Verification
     path('verify-email/<str:token>/', verify_email_view, name='verify_email'),

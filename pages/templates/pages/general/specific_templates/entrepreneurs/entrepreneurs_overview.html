@@ -46,18 +46,32 @@
             </p>
         </header>
 
-        <!-- Product Development Tracker Row -->
+        <!-- Solopreneur Row -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
-            <!-- Product Development Tracker Card -->
+            <!-- Solopreneur Card -->
             <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
                  <div class="text-center">
-                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Product Development Tracker</h2>
-                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Track your product development from planning to launch. Organise phases, development areas, and tasks to ensure you launch on time.</p>
-                     <button onclick="showTemplateModal('product_development_tracker', 'Product Development Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Solopreneur</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage your client work and business operations in one place. Track weekly priorities, daily tasks, and blockers across all your projects.</p>
+                     <button onclick="showTemplateModal('solopreneur', 'Solopreneur')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
                         Use Template
                      </button>
                  </div>
             </div>
+            <!-- Solopreneur Image -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Entrepreneurs/Solopreneur Tracker.png' %}" alt="Solopreneur Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Solopreneur Preview</p>
+                        <p class="text-gray-400 text-xs">Add Solopreneur Tracker.png to static/img/Entrepreneurs/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Development Tracker Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
             <!-- Product Development Tracker Image -->
             <div class="flex items-center justify-center">
                 <img src="{% static 'img/Entrepreneurs/Product Development Tracker.png' %}" alt="Product Development Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -67,6 +81,16 @@
                         <p class="text-gray-400 text-xs">Add Product Development Tracker.png to static/img/</p>
                     </div>
                 </div>
+            </div>
+            <!-- Product Development Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Product Development Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Track your product development from planning to launch. Organise phases, development areas, and tasks to ensure you launch on time.</p>
+                     <button onclick="showTemplateModal('product_development_tracker', 'Product Development Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
             </div>
         </div>
 
@@ -181,6 +205,7 @@ function hideTemplateModal() {
 function createTemplateWithTasks(template) {
     // Create template with pre-populated tasks
     const urls = {
+        'solopreneur': '{% url "pages:solopreneur_template" %}',
         'product_development_tracker': '{% url "pages:product_development_tracker_template" %}'
     };
     
@@ -195,6 +220,7 @@ function createTemplateWithTasks(template) {
 function createTemplateStructureOnly(template) {
     // Create template with structure only (no tasks)
     const urls = {
+        'solopreneur': '{% url "pages:solopreneur_template" %}?structure_only=true',
         'product_development_tracker': '{% url "pages:product_development_tracker_template" %}?structure_only=true'
     };
     
