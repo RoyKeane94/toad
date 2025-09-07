@@ -1,5 +1,5 @@
 from django import forms
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, TestSocietyLink
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, TestSocietyLink, SocietyUniversity
 
 class LeadForm(forms.ModelForm):
     class Meta:
@@ -52,10 +52,21 @@ class ContactMethodForm(forms.ModelForm):
             })
         }
 
+class SocietyUniversityForm(forms.ModelForm):
+    class Meta:
+        model = SocietyUniversity
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Enter university name'
+            })
+        }
+
 class SocietyLinkForm(forms.ModelForm):
     class Meta:
         model = SocietyLink
-        fields = ['name', 'image']
+        fields = ['name', 'image', 'society_university']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
@@ -64,8 +75,17 @@ class SocietyLinkForm(forms.ModelForm):
             'image': forms.FileInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
                 'accept': 'image/*'
+            }),
+            'society_university': forms.Select(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent'
             })
         }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Make university field required
+        self.fields['society_university'].required = True
+        self.fields['society_university'].empty_label = "Select a university"
 
 class TestSocietyLinkForm(forms.ModelForm):
     class Meta:

@@ -39,6 +39,27 @@
                     {% endif %}
                 </div>
                 
+                <!-- University -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="{{ form.society_university.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)]">
+                            University *
+                        </label>
+                        <a href="{% url 'crm:society_university_create' %}" 
+                           class="text-xs text-[var(--primary-action-bg)] hover:underline">
+                            <i class="fas fa-plus mr-1"></i>Add University
+                        </a>
+                    </div>
+                    {{ form.society_university }}
+                    {% if form.society_university.errors %}
+                        <div class="mt-1 text-sm text-red-600">
+                            {% for error in form.society_university.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+                
                 <!-- Image Upload -->
                 <div class="mb-6">
                     <label for="{{ form.image.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">

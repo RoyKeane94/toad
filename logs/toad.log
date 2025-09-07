@@ -25638,3 +25638,122 @@ INFO 2025-09-07 07:36:27,482 basehttp 76622 6133886976 "POST /tasks/2002/toggle/
 INFO 2025-09-07 07:36:34,189 basehttp 76622 6133886976 "POST /grids/181/tasks/create/698/825/ HTTP/1.1" 200 1431
 INFO 2025-09-07 07:36:44,382 basehttp 76622 6133886976 "POST /tasks/2008/edit/ HTTP/1.1" 200 134
 INFO 2025-09-07 07:37:01,454 basehttp 76622 6133886976 "POST /tasks/2008/reminder/ HTTP/1.1" 200 82
+INFO 2025-09-07 18:32:02,876 autoreload 83985 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:32:04,586 basehttp 83985 6131150848 "GET /lilypad HTTP/1.1" 301 0
+ERROR 2025-09-07 18:32:04,742 log 83985 6147977216 Internal Server Error: /lilypad/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 36, in crm_home
+    return render(request, 'CRM/crm_home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'society_link_public' with keyword arguments '{'university_slug': '', 'society_slug': 'lol'}' not found. 1 pattern(s) tried: ['lilypad/lilypad/(?P<university_slug>[^/]+)/(?P<society_slug>[^/]+)/\\Z']
+ERROR 2025-09-07 18:32:04,746 basehttp 83985 6147977216 "GET /lilypad/ HTTP/1.1" 500 21753
+INFO 2025-09-07 18:32:04,820 basehttp 83985 6147977216 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-07 18:32:04,824 basehttp 83985 6147977216 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-07 18:33:05,000 autoreload 83985 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-07 18:33:05,536 autoreload 84072 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:33:12,168 autoreload 84072 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-07 18:33:12,609 autoreload 84085 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:34:30,031 autoreload 84085 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-07 18:34:30,560 autoreload 84532 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:34:37,199 autoreload 84532 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-09-07 18:34:37,569 autoreload 84548 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:34:45,118 autoreload 84548 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-07 18:34:45,497 autoreload 84557 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:34:52,773 basehttp 84557 6133559296 "GET /lilypad/ HTTP/1.1" 200 4082
+INFO 2025-09-07 18:34:52,801 basehttp 84557 6150385664 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-07 18:34:52,802 basehttp 84557 6133559296 "GET /static/css/output.css HTTP/1.1" 200 84189
+INFO 2025-09-07 18:34:53,166 autoreload 84557 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-07 18:34:53,536 autoreload 84570 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 18:34:59,258 basehttp 84570 6134198272 "GET /lilypad/society-links/ HTTP/1.1" 200 4062
+INFO 2025-09-07 18:35:04,651 basehttp 84570 6134198272 "GET /lilypad/society-links/14/delete/ HTTP/1.1" 200 3924
+INFO 2025-09-07 18:35:05,821 basehttp 84570 6134198272 "POST /lilypad/society-links/14/delete/ HTTP/1.1" 302 0
+INFO 2025-09-07 18:35:05,831 basehttp 84570 6134198272 "GET /lilypad/society-links/ HTTP/1.1" 200 3481
+INFO 2025-09-07 18:35:07,484 basehttp 84570 6134198272 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4330
+INFO 2025-09-07 18:35:10,937 basehttp 84570 6134198272 "GET /lilypad/society-universities/create/ HTTP/1.1" 200 3516
+INFO 2025-09-07 18:35:10,951 basehttp 84570 6134198272 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-07 18:35:10,951 basehttp 84570 6151024640 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-07 18:35:14,063 basehttp 84570 6151024640 "POST /lilypad/society-universities/create/ HTTP/1.1" 302 0
+INFO 2025-09-07 18:35:14,076 basehttp 84570 6151024640 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4276
+INFO 2025-09-07 18:35:28,118 basehttp 84570 6134198272 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-09-07 18:35:28,127 basehttp 84570 6134198272 "GET /lilypad/ HTTP/1.1" 200 4200
+INFO 2025-09-07 18:35:30,958 basehttp 84570 6134198272 "GET /lilypad/lilypad/sheffield/usis/ HTTP/1.1" 200 6727
+INFO 2025-09-07 18:35:31,208 basehttp 84570 6168424448 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-07 18:35:31,208 basehttp 84570 6134198272 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-07 18:35:31,209 basehttp 84570 6151024640 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

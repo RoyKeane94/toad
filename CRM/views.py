@@ -4,7 +4,7 @@ from django.http import HttpResponseForbidden, JsonResponse
 from django.contrib import messages
 from django.urls import reverse
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
-from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, TestSocietyLinkForm
+from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, TestSocietyLinkForm, SocietyUniversityForm
 from django.core.files.base import ContentFile
 
 # Create your views here.
@@ -24,12 +24,14 @@ def crm_home(request):
     # Get summary statistics
     total_leads = Lead.objects.count()
     recent_leads = Lead.objects.order_by('-created_at')[:5]
+    recent_society_links = SocietyLink.objects.order_by('-id')[:3]
     
     context = {
         'title': 'CRM Dashboard',
         'user': request.user,
         'total_leads': total_leads,
         'recent_leads': recent_leads,
+        'recent_society_links': recent_society_links,
     }
     return render(request, 'CRM/crm_home.html', context)
 
@@ -516,14 +518,82 @@ def society_link_list(request):
     }
     return render(request, 'society_links/society_link_list.html', context)
 
-def society_link_public(request, pk):
+@login_required
+@user_passes_test(is_superuser)
+def society_link_delete(request, pk):
     """
-    Public view for society links - accessible by anyone.
+    Delete a society link.
+    Only accessible by superusers.
     """
     society_link = get_object_or_404(SocietyLink, pk=pk)
+    
+    if request.method == 'POST':
+        society_link.delete()
+        messages.success(request, 'Society link deleted successfully!')
+        return redirect('crm:society_link_list')
+    
+    context = {
+        'society_link': society_link,
+        'title': 'Delete Society Link',
+    }
+    return render(request, 'society_links/society_link_confirm_delete.html', context)
+
+def society_link_public(request, university_slug, society_slug):
+    """
+    Public view for society links - accessible by anyone.
+    Uses university and society slugs in URL.
+    """
+    society_link = get_object_or_404(SocietyLink, 
+                                    society_university__name__iexact=university_slug,
+                                    name__iexact=society_slug)
     
     context = {
         'society_link': society_link,
         'title': society_link.name,
     }
     return render(request, 'society_links/society_link_public.html', context)
+
+def society_link_public_old(request, pk):
+    """
+    Fallback public view for society links using old format.
+    Redirects to new format if university is available.
+    """
+    society_link = get_object_or_404(SocietyLink, pk=pk)
+    
+    # If university is available, redirect to new format
+    if society_link.society_university:
+        from django.shortcuts import redirect
+        from django.utils.text import slugify
+        return redirect('crm:society_link_public', 
+                       university_slug=slugify(society_link.society_university.name),
+                       society_slug=slugify(society_link.name))
+    
+    # Otherwise show error page
+    context = {
+        'society_link': society_link,
+        'title': society_link.name,
+        'error': 'This society link requires a university to be assigned.',
+    }
+    return render(request, 'society_links/society_link_public.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_university_create(request):
+    """
+    Create a new society university.
+    Only accessible by superusers.
+    """
+    if request.method == 'POST':
+        form = SocietyUniversityForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'University created successfully!')
+            return redirect('crm:society_link_create')
+    else:
+        form = SocietyUniversityForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create University',
+    }
+    return render(request, 'society_links/society_university_form.html', context)

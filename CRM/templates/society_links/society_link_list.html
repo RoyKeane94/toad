@@ -43,6 +43,14 @@
                             {{ society_link.name }}
                         </h3>
                         
+                        <div class="text-sm text-[var(--text-secondary)] mb-2">
+                            {% if society_link.society_university %}
+                                {{ society_link.society_university.name }}
+                            {% else %}
+                                No University
+                            {% endif %}
+                        </div>
+                        
                         <div class="text-sm text-[var(--text-secondary)] mb-4">
                             ID: {{ society_link.id }}
                         </div>
@@ -53,23 +61,44 @@
                                 Public URL:
                             </label>
                             <div class="flex items-center space-x-2">
+                                {% if society_link.society_university %}
                                 <input type="text" 
-                                       value="{% url 'crm:society_link_public' pk=society_link.pk %}" 
+                                       value="{% url 'crm:society_link_public' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
                                        readonly 
                                        class="flex-1 text-xs bg-gray-50 border border-gray-200 rounded px-2 py-1 text-gray-600">
                                 <button onclick="copyToClipboard(this.previousElementSibling.value)" 
                                         class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] text-xs">
                                     <i class="fas fa-copy"></i>
                                 </button>
+                                {% else %}
+                                <input type="text" 
+                                       value="No university assigned" 
+                                       readonly 
+                                       class="flex-1 text-xs bg-gray-50 border border-gray-200 rounded px-2 py-1 text-gray-400">
+                                <span class="text-gray-400 text-xs">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </span>
+                                {% endif %}
                             </div>
                         </div>
                         
                         <!-- Actions -->
                         <div class="flex space-x-2">
-                            <a href="{% url 'crm:society_link_public' pk=society_link.pk %}" 
+                            {% if society_link.society_university %}
+                            <a href="{% url 'crm:society_link_public' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
                                target="_blank"
                                class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm py-2 px-3 rounded text-center transition-colors duration-200">
                                 <i class="fas fa-external-link-alt mr-1"></i>View
+                            </a>
+                            {% else %}
+                            <span class="flex-1 bg-gray-100 text-gray-400 text-sm py-2 px-3 rounded text-center">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>No University
+                            </span>
+                            {% endif %}
+                            <a href="{% url 'crm:society_link_delete' pk=society_link.pk %}" 
+                               class="bg-red-100 hover:bg-red-200 text-red-700 text-sm py-2 px-3 rounded text-center transition-colors duration-200"
+                               onclick="return confirm('Are you sure you want to delete this society link?')">
+                                <i class="fas fa-trash mr-1"></i>Delete
                             </a>
                         </div>
                     </div>

@@ -151,6 +151,43 @@
                 <a href="{% url 'crm:society_link_list' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">View All</a>
             </div>
             
+            {% if recent_society_links %}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                {% for society_link in recent_society_links %}
+                <div class="border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="h-32 bg-gray-100 rounded mb-3 overflow-hidden">
+                        {% if society_link.image %}
+                            <img src="{{ society_link.image.url }}" 
+                                 alt="{{ society_link.name }}" 
+                                 class="w-full h-full object-cover">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h3 class="font-medium text-[var(--text-primary)] mb-1">{{ society_link.name }}</h3>
+                    <p class="text-xs text-[var(--text-secondary)] mb-2">ID: {{ society_link.id }}</p>
+                    {% if society_link.society_university %}
+                    <a href="{% url 'crm:society_link_public' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
+                       target="_blank"
+                       class="text-xs text-[var(--primary-action-bg)] hover:underline">
+                        <i class="fas fa-external-link-alt mr-1"></i>View Public Link
+                    </a>
+                    {% else %}
+                    <span class="text-xs text-gray-400">
+                        <i class="fas fa-exclamation-triangle mr-1"></i>No University
+                    </span>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center">
+                <a href="{% url 'crm:society_link_create' %}" class="inline-flex items-center px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-md font-medium transition-colors duration-200">
+                    <i class="fas fa-plus mr-2"></i>Create New Society Link
+                </a>
+            </div>
+            {% else %}
             <div class="text-center py-8">
                 <i class="fas fa-link text-[var(--text-secondary)] text-4xl mb-4"></i>
                 <p class="text-[var(--text-secondary)] mb-4">Create public links for societies with custom images</p>
@@ -158,6 +195,7 @@
                     <i class="fas fa-plus mr-2"></i>Create Society Link
                 </a>
             </div>
+            {% endif %}
         </div>
     </div>
 </div>

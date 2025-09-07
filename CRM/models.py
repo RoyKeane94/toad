@@ -65,14 +65,24 @@ class LeadMessage(models.Model):
             return f"Message for {self.lead.name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
         return f"Message - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
     
+class SocietyUniversity(models.Model):
+    name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    def __str__(self):
+        return self.name
+
 class SocietyLink(models.Model):
     name = models.CharField(max_length=100)
+
     image = models.ImageField(
         upload_to='society_links/', 
         null=True, 
         blank=True,
         storage=get_storage_backend()
     )
+    
+    society_university = models.ForeignKey(SocietyUniversity, null=True, blank=True, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.name or f"SocietyLink-{self.id}" if self.id else "SocietyLink-New"
