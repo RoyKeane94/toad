@@ -25538,3 +25538,103 @@ INFO 2025-09-07 07:15:24,779 basehttp 75572 6192951296 "GET /static/gif/Course%2
 INFO 2025-09-07 07:15:26,703 basehttp 75572 6192951296 "GET /templates/professionals/ HTTP/1.1" 200 6130
 INFO 2025-09-07 07:15:29,280 basehttp 75572 6192951296 "GET /templates/weekly-planner/ HTTP/1.1" 302 0
 INFO 2025-09-07 07:15:29,312 basehttp 75572 6192951296 "GET /grids/177/ HTTP/1.1" 200 21301
+INFO 2025-09-07 07:16:01,671 autoreload 75908 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 07:16:37,349 basehttp 75908 6167932928 "POST /tasks/1920/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:16:41,417 project_views_functions 75908 6167932928 User None reordered tasks: in project Tom's Weekly Planner
+INFO 2025-09-07 07:16:41,417 basehttp 75908 6167932928 "POST /grids/177/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-09-07 07:16:59,595 basehttp 75908 6167932928 "POST /grids/177/tasks/create/682/809/ HTTP/1.1" 200 1424
+INFO 2025-09-07 07:17:11,264 project_views_functions 75908 6167932928 User None deleted task: "Discuss team resource over the next couple of weeks for Project Soft" from project: Tom's Weekly Planner
+INFO 2025-09-07 07:17:11,268 basehttp 75908 6167932928 "POST /tasks/1933/delete/ HTTP/1.1" 200 58
+INFO 2025-09-07 07:17:14,182 project_views_functions 75908 6167932928 User None reordered tasks: in project Tom's Weekly Planner
+INFO 2025-09-07 07:17:14,182 basehttp 75908 6167932928 "POST /grids/177/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-09-07 07:17:15,862 basehttp 75908 6167932928 "POST /tasks/1920/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:17:31,668 basehttp 75908 6167932928 "POST /tasks/1926/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:17:35,803 project_views_functions 75908 6167932928 User None reordered tasks: in project Tom's Weekly Planner
+INFO 2025-09-07 07:17:35,804 basehttp 75908 6167932928 "POST /grids/177/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-09-07 07:17:47,772 basehttp 75908 6167932928 "POST /grids/177/tasks/create/682/809/ HTTP/1.1" 200 1459
+INFO 2025-09-07 07:20:55,180 basehttp 75908 6167932928 "GET /grids/ HTTP/1.1" 200 12202
+INFO 2025-09-07 07:20:56,017 basehttp 75908 6167932928 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:20:56,030 basehttp 75908 6167932928 "GET /templates/students/ HTTP/1.1" 200 5656
+INFO 2025-09-07 07:20:56,042 basehttp 75908 6167932928 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-07 07:20:57,041 basehttp 75908 6167932928 "GET / HTTP/1.1" 200 6523
+INFO 2025-09-07 07:20:59,040 basehttp 75908 6167932928 "GET /static/gif/Entrepreneurs%20GIF.gif HTTP/1.1" 200 2155430
+INFO 2025-09-07 07:21:02,132 basehttp 75908 6167932928 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:21:02,139 basehttp 75908 6167932928 "GET /templates/students/ HTTP/1.1" 200 5728
+INFO 2025-09-07 07:21:03,587 basehttp 75908 6167932928 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5659
+INFO 2025-09-07 07:21:03,602 basehttp 75908 6184759296 "GET /static/img/Entrepreneurs/Product%20Development%20Tracker.png HTTP/1.1" 200 455674
+INFO 2025-09-07 07:21:03,602 basehttp 75908 6167932928 "GET /static/img/Entrepreneurs/Solopreneur%20Tracker.png HTTP/1.1" 200 443965
+INFO 2025-09-07 07:21:08,424 basehttp 75908 6167932928 "GET /templates/product-development-tracker/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:21:08,452 basehttp 75908 6167932928 "GET /grids/178/ HTTP/1.1" 200 19893
+INFO 2025-09-07 07:21:44,807 project_views_functions 75908 6167932928 User None deleted task: "Design the pricing page" from project: Tom's Product Development Tracker
+INFO 2025-09-07 07:21:44,811 basehttp 75908 6167932928 "POST /tasks/1937/delete/ HTTP/1.1" 200 58
+INFO 2025-09-07 07:21:55,746 basehttp 75908 6167932928 "POST /grids/178/tasks/create/684/814/ HTTP/1.1" 200 1420
+INFO 2025-09-07 07:21:58,303 basehttp 75908 6167932928 "POST /tasks/1941/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:22:01,452 basehttp 75908 6167932928 "POST /tasks/1947/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:22:12,998 basehttp 75908 6167932928 "POST /grids/178/tasks/create/684/817/ HTTP/1.1" 200 1441
+INFO 2025-09-07 07:25:26,576 autoreload 76622 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-07 07:25:30,884 basehttp 76622 6133886976 "GET / HTTP/1.1" 200 6493
+INFO 2025-09-07 07:25:30,942 basehttp 76622 6133886976 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-07 07:25:36,594 basehttp 76622 6133886976 "GET / HTTP/1.1" 200 6548
+INFO 2025-09-07 07:25:36,617 basehttp 76622 6167539712 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-07 07:25:36,618 basehttp 76622 6150713344 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-07 07:25:36,618 basehttp 76622 6133886976 "GET /static/css/output.css HTTP/1.1" 200 81056
+INFO 2025-09-07 07:25:36,710 basehttp 76622 6133886976 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-07 07:25:38,733 basehttp 76622 6133886976 "GET /static/gif/Professionals%20GIF.gif HTTP/1.1" 200 1583106
+INFO 2025-09-07 07:26:05,236 basehttp 76622 6133886976 "GET /static/gif/Entrepreneurs%20GIF.gif HTTP/1.1" 200 2147758
+INFO 2025-09-07 07:26:32,722 basehttp 76622 6133886976 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:26:32,731 basehttp 76622 6133886976 "GET /templates/students/ HTTP/1.1" 200 5710
+INFO 2025-09-07 07:26:32,757 basehttp 76622 6133886976 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1772185
+INFO 2025-09-07 07:26:32,761 basehttp 76622 6167539712 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 1020613
+INFO 2025-09-07 07:26:32,762 basehttp 76622 6150713344 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1516692
+INFO 2025-09-07 07:26:37,724 basehttp 76622 6150713344 "GET /templates/revision-guide/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:26:37,754 basehttp 76622 6150713344 "GET /grids/179/ HTTP/1.1" 200 19880
+INFO 2025-09-07 07:26:37,766 basehttp 76622 6150713344 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-07 07:26:50,258 project_views_functions 76622 6150713344 User None deleted task: "Re-read key textbook chapters" from project: Tom's Exam Revision Planner
+INFO 2025-09-07 07:26:50,262 basehttp 76622 6150713344 "POST /tasks/1958/delete/ HTTP/1.1" 200 58
+INFO 2025-09-07 07:27:09,777 basehttp 76622 6150713344 "POST /tasks/1957/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:27:20,120 basehttp 76622 6150713344 "POST /grids/179/tasks/create/688/818/ HTTP/1.1" 200 1456
+INFO 2025-09-07 07:27:23,148 project_views_functions 76622 6150713344 User None reordered tasks: in project Tom's Exam Revision Planner
+INFO 2025-09-07 07:27:23,149 basehttp 76622 6150713344 "POST /grids/179/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-09-07 07:31:47,150 basehttp 76622 6133886976 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:31:47,160 basehttp 76622 6133886976 "GET /templates/students/ HTTP/1.1" 200 5665
+INFO 2025-09-07 07:31:47,179 basehttp 76622 6133886976 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-07 07:31:48,548 basehttp 76622 6133886976 "GET /templates/professionals/ HTTP/1.1" 200 6117
+INFO 2025-09-07 07:31:48,566 basehttp 76622 6150713344 "GET /static/img/Professionals/Weekly%20Planner%20Grid.png HTTP/1.1" 200 355440
+INFO 2025-09-07 07:31:48,568 basehttp 76622 6133886976 "GET /static/img/Professionals/Alternative%20Weekly%20Planner.png HTTP/1.1" 200 1128531
+INFO 2025-09-07 07:31:48,576 basehttp 76622 6150713344 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 200 330329
+INFO 2025-09-07 07:31:48,577 basehttp 76622 6167539712 "GET /static/img/Professionals/Sell-Side%20Deal%20Grid.png HTTP/1.1" 200 411484
+INFO 2025-09-07 07:31:48,577 basehttp 76622 6184366080 "GET /static/img/Professionals/Origination%20Grid.png HTTP/1.1" 200 396399
+INFO 2025-09-07 07:31:51,513 basehttp 76622 6133886976 "GET /templates/students/ HTTP/1.1" 200 5657
+INFO 2025-09-07 07:31:54,709 basehttp 76622 6133886976 "GET /templates/essay-planner/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:31:54,733 basehttp 76622 6133886976 "GET /grids/180/ HTTP/1.1" 200 19558
+INFO 2025-09-07 07:32:03,910 project_views_functions 76622 6133886976 User None deleted task: "Write notes on journal articles" from project: Tom's Essay Planner
+INFO 2025-09-07 07:32:03,914 basehttp 76622 6133886976 "POST /tasks/1984/delete/ HTTP/1.1" 200 58
+INFO 2025-09-07 07:32:21,260 basehttp 76622 6133886976 "POST /tasks/1981/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:32:23,311 basehttp 76622 6133886976 "POST /tasks/1982/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:32:41,763 basehttp 76622 6133886976 "POST /tasks/1981/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:32:42,821 basehttp 76622 6133886976 "POST /tasks/1982/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:32:55,782 basehttp 76622 6133886976 "POST /tasks/1981/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:32:57,359 basehttp 76622 6133886976 "POST /tasks/1982/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:33:14,673 basehttp 76622 6133886976 "POST /tasks/1981/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:33:15,276 basehttp 76622 6133886976 "POST /tasks/1982/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:33:24,831 basehttp 76622 6133886976 "POST /tasks/1981/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:33:34,658 basehttp 76622 6133886976 "POST /grids/180/tasks/create/692/822/ HTTP/1.1" 200 1444
+INFO 2025-09-07 07:33:44,845 basehttp 76622 6133886976 "POST /grids/180/tasks/create/692/821/ HTTP/1.1" 200 1455
+INFO 2025-09-07 07:33:48,896 project_views_functions 76622 6133886976 User None reordered tasks: in project Tom's Essay Planner
+INFO 2025-09-07 07:33:48,897 basehttp 76622 6133886976 "POST /grids/180/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-09-07 07:35:06,204 basehttp 76622 6133886976 "GET /grids/180/delete/ HTTP/1.1" 200 1100
+INFO 2025-09-07 07:35:07,257 basehttp 76622 6133886976 "POST /grids/180/delete/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:35:07,274 basehttp 76622 6133886976 "GET /grids/ HTTP/1.1" 200 12472
+INFO 2025-09-07 07:35:08,313 basehttp 76622 6133886976 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:35:08,322 basehttp 76622 6133886976 "GET /templates/students/ HTTP/1.1" 200 5691
+INFO 2025-09-07 07:35:08,340 basehttp 76622 6133886976 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-07 07:35:13,578 basehttp 76622 6133886976 "GET /templates/job-application-tracker/ HTTP/1.1" 302 0
+INFO 2025-09-07 07:35:13,603 basehttp 76622 6133886976 "GET /grids/181/ HTTP/1.1" 200 20027
+INFO 2025-09-07 07:35:37,175 project_views_functions 76622 6133886976 User None deleted task: "Research their values" from project: Tom's Job Application Tracker
+INFO 2025-09-07 07:35:37,178 basehttp 76622 6133886976 "POST /tasks/2015/delete/ HTTP/1.1" 200 58
+INFO 2025-09-07 07:35:46,569 basehttp 76622 6133886976 "POST /tasks/2002/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:36:10,778 basehttp 76622 6133886976 "POST /tasks/2002/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:36:27,482 basehttp 76622 6133886976 "POST /tasks/2002/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-07 07:36:34,189 basehttp 76622 6133886976 "POST /grids/181/tasks/create/698/825/ HTTP/1.1" 200 1431
+INFO 2025-09-07 07:36:44,382 basehttp 76622 6133886976 "POST /tasks/2008/edit/ HTTP/1.1" 200 134
+INFO 2025-09-07 07:37:01,454 basehttp 76622 6133886976 "POST /tasks/2008/reminder/ HTTP/1.1" 200 82
