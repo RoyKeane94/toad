@@ -716,7 +716,7 @@ def create_weekly_planner_grid(user):
     row_headers = [
         "Admin",
         "Meetings", 
-        "Tasks"
+        "Tasks",
         "Waiting On / Follow Up"
     ]
     
