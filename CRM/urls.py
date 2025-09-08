@@ -20,6 +20,8 @@ urlpatterns = [
     path('society-links/<int:pk>/delete/', views.society_link_delete, name='society_link_delete'),
     path('society-universities/create/', views.society_university_create, name='society_university_create'),
     path('<str:university_slug>/<str:society_slug>/', views.society_link_public, name='society_link_public'),
+    path('<str:university_slug>/<str:society_slug>/qr/', views.society_link_public_qr, name='society_link_public_qr'),
+    path('<str:university_slug>/<str:society_slug>/qr-image/', views.society_link_qr_image, name='society_link_qr_image'),
     # Fallback for old format (temporary)
     path('society-links/<int:pk>/public/', views.society_link_public_old, name='society_link_public_old'),
     path('test-society-links/create/', views.test_society_link_create, name='test_society_link_create'),

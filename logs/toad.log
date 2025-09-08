@@ -25774,3 +25774,79 @@ INFO 2025-09-08 19:41:47,574 basehttp 86766 6203846656 "GET /lilypad/society-lin
 INFO 2025-09-08 19:42:01,460 basehttp 86766 6203846656 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
 INFO 2025-09-08 19:42:01,476 basehttp 86766 6203846656 "GET /lilypad/ HTTP/1.1" 200 4326
 INFO 2025-09-08 19:42:04,089 basehttp 86766 6203846656 "GET /lilypad/sheffield/economics-society/ HTTP/1.1" 200 6741
+INFO 2025-09-08 19:47:41,660 autoreload 87232 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:47:47,120 basehttp 87232 6159675392 "GET /lilypad/ HTTP/1.1" 200 4425
+INFO 2025-09-08 19:47:51,436 basehttp 87232 6159675392 "GET /lilypad/sheffield/economics-society/qr/ HTTP/1.1" 200 4765
+INFO 2025-09-08 19:48:00,028 basehttp 87232 6159675392 "GET /lilypad/society-links/ HTTP/1.1" 200 4483
+INFO 2025-09-08 19:48:02,560 basehttp 87232 6159675392 "GET /lilypad/society-links/17/delete/ HTTP/1.1" 200 3945
+INFO 2025-09-08 19:48:03,805 basehttp 87232 6159675392 "POST /lilypad/society-links/17/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:48:03,812 basehttp 87232 6159675392 "GET /lilypad/society-links/ HTTP/1.1" 200 4262
+INFO 2025-09-08 19:48:06,455 basehttp 87232 6159675392 "GET /lilypad/society-links/16/delete/ HTTP/1.1" 200 4031
+INFO 2025-09-08 19:48:07,403 basehttp 87232 6159675392 "POST /lilypad/society-links/16/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:48:07,414 basehttp 87232 6159675392 "GET /lilypad/society-links/ HTTP/1.1" 200 4139
+INFO 2025-09-08 19:48:09,256 basehttp 87232 6159675392 "GET /lilypad/society-links/15/delete/ HTTP/1.1" 200 3925
+INFO 2025-09-08 19:48:10,587 basehttp 87232 6159675392 "POST /lilypad/society-links/15/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:48:10,595 basehttp 87232 6159675392 "GET /lilypad/society-links/ HTTP/1.1" 200 3429
+INFO 2025-09-08 19:48:12,296 basehttp 87232 6159675392 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4334
+INFO 2025-09-08 19:48:25,347 basehttp 87232 6159675392 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:48:25,355 basehttp 87232 6159675392 "GET /lilypad/ HTTP/1.1" 200 4247
+INFO 2025-09-08 19:48:27,747 basehttp 87232 6159675392 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4782
+INFO 2025-09-08 19:49:33,793 autoreload 87232 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-08 19:49:34,375 autoreload 87472 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:49:43,966 autoreload 87472 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-08 19:49:44,420 autoreload 87480 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:49:49,946 autoreload 87480 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-09-08 19:49:50,372 autoreload 87485 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:50:52,077 autoreload 87961 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:50:59,981 basehttp 87961 6170112000 "GET /lilypad/society-links/ HTTP/1.1" 200 4179
+INFO 2025-09-08 19:51:01,907 basehttp 87961 6170112000 "GET /lilypad/society-links/18/delete/ HTTP/1.1" 200 3968
+INFO 2025-09-08 19:51:02,924 basehttp 87961 6170112000 "POST /lilypad/society-links/18/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:51:02,934 basehttp 87961 6170112000 "GET /lilypad/society-links/ HTTP/1.1" 200 3408
+INFO 2025-09-08 19:51:04,319 basehttp 87961 6170112000 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4355
+INFO 2025-09-08 19:51:14,318 basehttp 87961 6170112000 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:51:14,325 basehttp 87961 6170112000 "GET /lilypad/ HTTP/1.1" 200 4234
+INFO 2025-09-08 19:51:17,196 basehttp 87961 6170112000 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4635
+ERROR 2025-09-08 19:51:17,248 log 87961 6170112000 Internal Server Error: /lilypad/sheffield/the-economics-society/qr-image/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 608, in society_link_qr_image
+    import qrcode
+ModuleNotFoundError: No module named 'qrcode'
+ERROR 2025-09-08 19:51:17,250 basehttp 87961 6170112000 "GET /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 500 11830
+INFO 2025-09-08 19:52:52,533 autoreload 87961 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-08 19:52:53,127 autoreload 88033 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:53:00,446 autoreload 88582 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:55:44,428 autoreload 89623 8549129984 Watching for file changes with StatReloader
+ERROR 2025-09-08 19:55:53,229 log 89623 6164033536 Internal Server Error: /lilypad/sheffield/the-economics-society/qr-image/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 608, in society_link_qr_image
+    import qrcode
+ModuleNotFoundError: No module named 'qrcode'
+ERROR 2025-09-08 19:55:53,230 basehttp 89623 6164033536 "HEAD /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 500 0
+INFO 2025-09-08 19:56:43,509 views 89623 6164033536 Generating QR code for URL: http://127.0.0.1:8000/lilypad/sheffield/the-economics-society/
+INFO 2025-09-08 19:56:43,524 views 89623 6164033536 QR code generated successfully
+INFO 2025-09-08 19:56:43,524 basehttp 89623 6164033536 "HEAD /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 200 0
+INFO 2025-09-08 19:56:57,125 autoreload 90452 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:56:58,880 basehttp 89623 6164033536 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4650
+INFO 2025-09-08 19:56:58,899 views 89623 6164033536 Generating QR code for URL: http://127.0.0.1:8000/lilypad/sheffield/the-economics-society/
+INFO 2025-09-08 19:56:58,904 views 89623 6164033536 QR code generated successfully
+INFO 2025-09-08 19:56:58,904 basehttp 89623 6164033536 "GET /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 200 599
+INFO 2025-09-08 19:57:23,563 autoreload 89623 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-09-08 19:57:24,117 autoreload 90519 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:57:34,767 autoreload 90519 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-08 19:57:35,286 autoreload 90529 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:59:18,127 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4812
+INFO 2025-09-08 19:59:37,785 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4765
+INFO 2025-09-08 20:00:22,834 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4568
+INFO 2025-09-08 20:04:54,762 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4666

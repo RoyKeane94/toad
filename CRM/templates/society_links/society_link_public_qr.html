@@ -1,0 +1,135 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gradient-to-br from-[var(--primary-bg)] to-[var(--secondary-bg)] flex items-center justify-center p-4">
+    <div class="max-w-4xl w-full">
+        <!-- Co-branded Header -->
+        <div class="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-8 sm:mb-12">
+            <!-- Toad Logo -->
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <svg class="h-16 w-16 sm:h-24 sm:w-24 fill-current text-[var(--primary-action-bg)] drop-shadow-lg" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/></svg>
+                <span class="text-2xl sm:text-4xl font-bold text-[var(--primary-action-bg)]">Toad</span>
+            </div>
+            
+            <!-- Plus Sign -->
+            <span class="text-gray-300 text-3xl sm:text-4xl font-light">+</span>
+            
+            <!-- Society Logo -->
+            {% if society_link.image %}
+                <img src="{{ society_link.image.url }}" 
+                     alt="{{ society_link.name }} Logo" 
+                     class="h-20 sm:h-32 w-auto object-contain drop-shadow-sm max-w-40 sm:max-w-64">
+            {% else %}
+                <div class="h-20 sm:h-32 w-40 sm:w-64 bg-gray-200 rounded-lg flex items-center justify-center shadow-sm">
+                    <span class="text-gray-500 font-semibold text-base sm:text-xl px-2 text-center">{{ society_link.name }}</span>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+            <h2 class="text-xl font-bold text-[var(--primary-action-bg)] mb-4">
+                Scan to Access Toad
+            </h2>
+            <p class="text-[var(--text-secondary)] mb-6">
+                Scan this QR code  to access {{ society_link.name }}'s unique sign up page to claim your free 6-month Personal plan.
+            </p>
+            
+            <!-- QR Code -->
+            <div class="flex justify-center mb-6">
+                <div class="p-4 bg-white border-2 border-gray-200 rounded-lg">
+                    <img src="{% url 'crm:society_link_qr_image' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
+                         alt="QR Code for {{ society_link.name }}" 
+                         class="w-64 h-64"
+                         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    
+                    <!-- Fallback -->
+                    <div style="display: none;" class="w-64 h-64 bg-gray-100 border-2 border-dashed border-gray-300 rounded flex items-center justify-center">
+                        <div class="text-center text-gray-500">
+                            <i class="fas fa-qrcode text-4xl mb-2"></i>
+                            <p class="text-sm">QR Code Error</p>
+                            <p class="text-xs mt-1">Use the link below instead</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Alternative Access -->
+            <div class="border-t pt-6">
+                <p class="text-sm text-[var(--text-secondary)] mb-3">
+                    Or visit the link directly:
+                </p>
+                <div class="flex items-center justify-center space-x-2">
+                    <input type="text" 
+                           value="{{ main_url }}" 
+                           readonly 
+                           class="flex-1 max-w-md px-3 py-2 text-sm bg-gray-50 border border-gray-200 rounded-md text-gray-600">
+                    <button onclick="copyToClipboard('{{ main_url }}')" 
+                            class="px-3 py-2 bg-[var(--primary-action-bg)] text-white rounded-md hover:bg-[var(--primary-action-hover-bg)] transition-colors duration-200">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="mt-8 bg-[var(--container-bg)] rounded-xl p-6 border border-[var(--border-color)]">
+            <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4 text-center">
+                How to Use This QR Code
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4 text-sm">
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-mobile-alt text-white"></i>
+                    </div>
+                    <p class="font-medium text-[var(--text-primary)]">1. Open Camera</p>
+                    <p class="text-[var(--text-secondary)]">Open your phone's camera app</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-qrcode text-white"></i>
+                    </div>
+                    <p class="font-medium text-[var(--text-primary)]">2. Scan QR Code</p>
+                    <p class="text-[var(--text-secondary)]">Point camera at the QR code above</p>
+                </div>
+                <div class="text-center">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-full flex items-center justify-center mx-auto mb-2">
+                        <i class="fas fa-external-link-alt text-white"></i>
+                    </div>
+                    <p class="font-medium text-[var(--text-primary)]">3. Tap Link</p>
+                    <p class="text-[var(--text-secondary)]">Tap the notification to open Toad</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 text-sm text-[var(--text-secondary)]">
+            <p>Powered by <span class="font-semibold text-[var(--primary-action-bg)]">Toad</span> - Your Personal Productivity Platform</p>
+        </div>
+    </div>
+</div>
+
+<script>
+// Copy to clipboard function
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        // Show success message
+        const button = event.target.closest('button');
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-check text-green-500"></i>';
+        button.classList.add('bg-green-500');
+        
+        setTimeout(function() {
+            button.innerHTML = originalHTML;
+            button.classList.remove('bg-green-500');
+        }, 2000);
+    }).catch(function(err) {
+        console.error('Could not copy text: ', err);
+        alert('Could not copy to clipboard');
+    });
+}
+</script>
+{% endblock %}

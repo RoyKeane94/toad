@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import HttpResponseForbidden, JsonResponse, Http404
+from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpResponse
 from django.contrib import messages
 from django.urls import reverse
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
@@ -565,6 +565,129 @@ def society_link_public(request, university_slug, society_slug):
         'title': society_link.name,
     }
     return render(request, 'society_links/society_link_public.html', context)
+
+def society_link_public_qr(request, university_slug, society_slug):
+    """
+    QR code version of the public society link page.
+    Shows a QR code that links to the main society page.
+    """
+    from django.utils.text import slugify
+    
+    # Find society link by matching slugified names
+    society_links = SocietyLink.objects.filter(
+        society_university__isnull=False
+    ).select_related('society_university')
+    
+    society_link = None
+    for link in society_links:
+        if (slugify(link.society_university.name) == university_slug and 
+            slugify(link.name) == society_slug):
+            society_link = link
+            break
+    
+    if not society_link:
+        raise Http404("Society link not found")
+    
+    # Generate the main society page URL
+    main_url = request.build_absolute_uri(
+        reverse('crm:society_link_public', 
+                kwargs={'university_slug': university_slug, 'society_slug': society_slug})
+    )
+    
+    context = {
+        'society_link': society_link,
+        'title': f"{society_link.name} - QR Code",
+        'main_url': main_url,
+    }
+    return render(request, 'society_links/society_link_public_qr.html', context)
+
+def society_link_qr_image(request, university_slug, society_slug):
+    """
+    Generate QR code image for society links.
+    """
+    import qrcode
+    from django.utils.text import slugify
+    from io import BytesIO
+    import logging
+    
+    logger = logging.getLogger(__name__)
+    
+    try:
+        # Find society link by matching slugified names
+        society_links = SocietyLink.objects.filter(
+            society_university__isnull=False
+        ).select_related('society_university')
+        
+        society_link = None
+        for link in society_links:
+            if (slugify(link.society_university.name) == university_slug and 
+                slugify(link.name) == society_slug):
+                society_link = link
+                break
+        
+        if not society_link:
+            logger.error(f"Society link not found: {university_slug}/{society_slug}")
+            raise Http404("Society link not found")
+        
+        # Generate the main society page URL
+        main_url = request.build_absolute_uri(
+            reverse('crm:society_link_public', 
+                    kwargs={'university_slug': university_slug, 'society_slug': society_slug})
+        )
+        
+        logger.info(f"Generating QR code for URL: {main_url}")
+        
+        # Create QR code with simpler settings
+        qr = qrcode.QRCode(
+            version=None,  # Auto-determine version
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=8,
+            border=2,
+        )
+        qr.add_data(main_url)
+        qr.make(fit=True)
+        
+        # Create image
+        img = qr.make_image(fill_color="black", back_color="white")
+        
+        # Save to BytesIO
+        buffer = BytesIO()
+        img.save(buffer, format='PNG')
+        buffer.seek(0)
+        
+        logger.info("QR code generated successfully")
+        
+        # Return image response
+        response = HttpResponse(buffer.getvalue(), content_type='image/png')
+        response['Cache-Control'] = 'public, max-age=3600'  # Cache for 1 hour
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error generating QR code: {str(e)}")
+        import traceback
+        logger.error(traceback.format_exc())
+        
+        # Return a simple error image
+        from PIL import Image, ImageDraw
+        import io
+        
+        # Create a simple error image
+        img = Image.new('RGB', (256, 256), color='white')
+        draw = ImageDraw.Draw(img)
+        
+        # Draw error text
+        try:
+            draw.text((50, 100), "QR Code Error", fill='red')
+            draw.text((50, 130), str(e)[:50], fill='red')
+        except:
+            # If text drawing fails, just draw a red rectangle
+            draw.rectangle([50, 100, 200, 150], fill='red')
+        
+        buffer = io.BytesIO()
+        img.save(buffer, format='PNG')
+        buffer.seek(0)
+        
+        return HttpResponse(buffer.getvalue(), content_type='image/png')
 
 def society_link_public_old(request, pk):
     """

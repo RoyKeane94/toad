@@ -169,11 +169,18 @@
                     <h3 class="font-medium text-[var(--text-primary)] mb-1">{{ society_link.name }}</h3>
                     <p class="text-xs text-[var(--text-secondary)] mb-2">ID: {{ society_link.id }}</p>
                     {% if society_link.society_university %}
-                    <a href="{% url 'crm:society_link_public' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
-                       target="_blank"
-                       class="text-xs text-[var(--primary-action-bg)] hover:underline">
-                        <i class="fas fa-external-link-alt mr-1"></i>View Public Link
-                    </a>
+                    <div class="flex space-x-2">
+                        <a href="{% url 'crm:society_link_public' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
+                           target="_blank"
+                           class="text-xs text-[var(--primary-action-bg)] hover:underline">
+                            <i class="fas fa-external-link-alt mr-1"></i>View Link
+                        </a>
+                        <a href="{% url 'crm:society_link_public_qr' university_slug=society_link.society_university.name|slugify society_slug=society_link.name|slugify %}" 
+                           target="_blank"
+                           class="text-xs text-[var(--secondary-action-bg)] hover:underline">
+                            <i class="fas fa-qrcode mr-1"></i>QR Code
+                        </a>
+                    </div>
                     {% else %}
                     <span class="text-xs text-gray-400">
                         <i class="fas fa-exclamation-triangle mr-1"></i>No University
