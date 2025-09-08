@@ -217,9 +217,3 @@ class User(AbstractUser):
         self.email_verification_sent_at = None
         self.save(update_fields=['email_verification_token', 'email_verification_sent_at'])
 
-class BetaTester(models.Model):
-    email = models.EmailField(unique=True, help_text='Required. Enter a valid email address.')
-    date_requested = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.email

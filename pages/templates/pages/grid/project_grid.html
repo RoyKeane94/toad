@@ -408,68 +408,33 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4 px-4">
         <div class="flex items-center space-x-3">
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
-            
-            <!-- Grid Name Actions Dropdown -->
-            <div class="relative" id="grid-name-actions-container">
-                <button type="button" 
-                        id="grid-name-actions-btn"
-                        class="group flex items-center justify-center w-8 h-8 text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] rounded-lg transition-all duration-200 cursor-pointer">
-                    <i class="fas fa-ellipsis-h text-sm"></i>
+        </div>
+        
+        <!-- Grid Actions - Right Aligned -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
+            <div class="w-full sm:w-auto sm:ml-auto flex items-center gap-1">
+                <button type="button"
+                        class="inline-flex items-center justify-center w-full sm:w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+                        onclick="showClearCompletedModal()">
+                    <i class="fas fa-check mr-1"></i>Clear Completed
                 </button>
                 
-                <!-- Dropdown Menu -->
-                <div id="grid-name-actions-dropdown" 
-                     class="absolute top-full left-0 mt-2 w-48 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-left">
-                    
-                    <!-- + Row -->
-                    <button type="button"
-                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                            hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
-                            hx-target="#modal-content"
-                            hx-trigger="click throttle:500ms"
-                            hx-disabled-elt="this"
-                            hx-indicator="#modal-content"
-                            hx-swap="innerHTML"
-                            hx-headers='{"Cache-Control": "no-cache"}'
-                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-plus text-xs w-4 text-center"></i>
-                        <span>Row</span>
+                <!-- Grid Name Actions Dropdown -->
+                <div class="relative w-6 h-6" id="grid-name-actions-container">
+                    <button type="button" 
+                            id="grid-name-actions-btn"
+                            class="group flex items-center justify-center w-full h-full text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] rounded transition-all duration-200 cursor-pointer">
+                        <i class="fas fa-ellipsis-v text-xs"></i>
                     </button>
                     
-                    <!-- + Column -->
-                    <button type="button"
-                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                            hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
-                            hx-target="#modal-content"
-                            hx-trigger="click throttle:500ms"
-                            hx-disabled-elt="this"
-                            hx-indicator="#modal-content"
-                            hx-swap="innerHTML"
-                            hx-headers='{"Cache-Control": "no-cache"}"
-                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-plus text-xs w-4 text-center"></i>
-                        <span>Column</span>
-                    </button>
-                    
-                    <!-- Divider -->
-                    <div class="border-t border-[var(--border-color)] my-2"></div>
-                    
-                    {% if project.is_archived %}
-                        <!-- Restore Grid -->
-                        <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="w-full">
-                            {% csrf_token %}
-                            <button type="submit" 
-                                   class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                                   onclick="closeAllDropdowns();">
-                                <i class="fas fa-undo text-xs w-4 text-center"></i>
-                                <span>Restore Grid</span>
-                            </button>
-                        </form>
-                    {% else %}
-                        <!-- Archive Grid -->
+                    <!-- Dropdown Menu -->
+                    <div id="grid-name-actions-dropdown" 
+                         class="absolute top-full right-0 mt-2 w-48 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg shadow-lg py-2 z-50 opacity-0 invisible transform scale-95 transition-all duration-200 origin-top-right">
+                        
+                        <!-- + Row -->
                         <button type="button"
-                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                                hx-get="{% url 'pages:archive_project_confirm' pk=project.pk %}"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
                                 hx-target="#modal-content"
                                 hx-trigger="click throttle:500ms"
                                 hx-disabled-elt="this"
@@ -477,48 +442,83 @@ document.addEventListener('DOMContentLoaded', function() {
                                 hx-swap="innerHTML"
                                 hx-headers='{"Cache-Control": "no-cache"}'
                                 onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                            <i class="fas fa-archive text-xs w-4 text-center"></i>
-                            <span>Archive Grid</span>
+                            <i class="fas fa-plus text-xs w-4 text-center"></i>
+                            <span>Row</span>
                         </button>
-                    {% endif %}
-                    
-                    <!-- Save as Template -->
-                    <button type="button"
-                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                            onclick="closeAllDropdowns(); document.getElementById('save-template-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('save-template-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('save-template-modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-save text-xs w-4 text-center"></i>
-                        <span>Save as Template</span>
-                    </button>
-                    
-                    <!-- Divider -->
-                    <div class="border-t border-[var(--border-color)] my-2"></div>
-                    
-                    <!-- Delete Grid -->
-                    <button type="button"
-                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--delete-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                            hx-get="{% url 'pages:project_delete' pk=project.pk %}"
-                            hx-target="#modal-content"
-                            hx-trigger="click throttle:500ms"
-                            hx-disabled-elt="this"
-                            hx-indicator="#modal-content"
-                            hx-swap="innerHTML"
-                            hx-headers='{"Cache-Control": "no-cache"}'
-                            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-                        <i class="fas fa-trash text-xs w-4 text-center"></i>
-                        <span>Delete Grid</span>
-                    </button>
+                        
+                        <!-- + Column -->
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
+                                hx-target="#modal-content"
+                                hx-trigger="click throttle:500ms"
+                                hx-disabled-elt="this"
+                                hx-indicator="#modal-content"
+                                hx-swap="innerHTML"
+                                hx-headers='{"Cache-Control": "no-cache"}'
+                                onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                            <i class="fas fa-plus text-xs w-4 text-center"></i>
+                            <span>Column</span>
+                        </button>
+                        
+                        <!-- Divider -->
+                        <div class="border-t border-[var(--border-color)] my-2"></div>
+                        
+                        {% if project.is_archived %}
+                            <!-- Restore Grid -->
+                            <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="w-full">
+                                {% csrf_token %}
+                                <button type="submit" 
+                                       class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                       onclick="closeAllDropdowns();">
+                                    <i class="fas fa-undo text-xs w-4 text-center"></i>
+                                    <span>Restore Grid</span>
+                                </button>
+                            </form>
+                        {% else %}
+                            <!-- Archive Grid -->
+                            <button type="button"
+                                    class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                    hx-get="{% url 'pages:archive_project_confirm' pk=project.pk %}"
+                                    hx-target="#modal-content"
+                                    hx-trigger="click throttle:500ms"
+                                    hx-disabled-elt="this"
+                                    hx-indicator="#modal-content"
+                                    hx-swap="innerHTML"
+                                    hx-headers='{"Cache-Control": "no-cache"}'
+                                    onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                                <i class="fas fa-archive text-xs w-4 text-center"></i>
+                                <span>Archive Grid</span>
+                            </button>
+                        {% endif %}
+                        
+                        <!-- Save as Template -->
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                onclick="closeAllDropdowns(); document.getElementById('save-template-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('save-template-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('save-template-modal').querySelector('div').classList.add('scale-100');">
+                            <i class="fas fa-save text-xs w-4 text-center"></i>
+                            <span>Save as Template</span>
+                        </button>
+                        
+                        <!-- Divider -->
+                        <div class="border-t border-[var(--border-color)] my-2"></div>
+                        
+                        <!-- Delete Grid -->
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--delete-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                hx-get="{% url 'pages:project_delete' pk=project.pk %}"
+                                hx-target="#modal-content"
+                                hx-trigger="click throttle:500ms"
+                                hx-disabled-elt="this"
+                                hx-indicator="#modal-content"
+                                hx-swap="innerHTML"
+                                hx-headers='{"Cache-Control": "no-cache"}'
+                                onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+                            <i class="fas fa-trash text-xs w-4 text-center"></i>
+                            <span>Delete Grid</span>
+                        </button>
+                    </div>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Grid Actions - Right Aligned -->
-        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
-            <div class="w-full sm:w-auto sm:ml-auto">
-                <button type="button"
-                        class="inline-flex items-center justify-center w-full sm:w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
-                        onclick="showClearCompletedModal()">
-                    <i class="fas fa-check mr-1"></i>Clear Completed
-                </button>
             </div>
         </div>            
     </div>

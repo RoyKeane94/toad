@@ -25850,3 +25850,31 @@ INFO 2025-09-08 19:59:18,127 basehttp 90529 6189854720 "GET /lilypad/sheffield/t
 INFO 2025-09-08 19:59:37,785 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4765
 INFO 2025-09-08 20:00:22,834 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4568
 INFO 2025-09-08 20:04:54,762 basehttp 90529 6189854720 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4666
+INFO 2025-09-08 20:11:35,865 autoreload 91103 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 20:11:39,177 basehttp 91103 6137999360 "GET /grids/ HTTP/1.1" 200 12521
+INFO 2025-09-08 20:11:40,243 basehttp 91103 6137999360 "GET /grids/181/ HTTP/1.1" 200 20258
+INFO 2025-09-08 20:11:40,257 basehttp 91103 6137999360 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-08 20:13:55,160 autoreload 91583 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 20:14:03,650 basehttp 91583 6194917376 "GET /grids/181/ HTTP/1.1" 200 20265
+INFO 2025-09-08 20:14:03,668 basehttp 91583 6194917376 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-08 20:14:45,319 basehttp 91583 6194917376 "GET /grids/181/ HTTP/1.1" 200 20237
+INFO 2025-09-08 20:14:45,330 basehttp 91583 6228570112 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-08 20:14:45,332 basehttp 91583 6245396480 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-08 20:14:45,332 basehttp 91583 6211743744 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-08 20:14:45,332 basehttp 91583 6194917376 "GET /static/css/output.css HTTP/1.1" 200 85294
+INFO 2025-09-08 20:17:17,989 basehttp 91583 6194917376 "GET /grids/181/ HTTP/1.1" 200 20244
+INFO 2025-09-08 20:17:18,004 basehttp 91583 6211743744 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 20:17:18,004 basehttp 91583 6194917376 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-08 20:17:18,005 basehttp 91583 6228570112 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 20:17:32,645 basehttp 91583 6228570112 "GET /grids/181/ HTTP/1.1" 200 20241
+INFO 2025-09-08 20:17:32,660 basehttp 91583 6211743744 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-08 20:17:32,661 basehttp 91583 6194917376 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-08 20:17:32,662 basehttp 91583 6245396480 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-08 20:17:32,662 basehttp 91583 6228570112 "GET /static/css/output.css HTTP/1.1" 200 85294
+INFO 2025-09-08 20:17:53,160 autoreload 92102 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 20:17:55,727 basehttp 92102 6159708160 "GET /grids/181/ HTTP/1.1" 200 20228
+INFO 2025-09-08 20:17:55,738 basehttp 92102 6159708160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-08 20:17:55,742 basehttp 92102 6176534528 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-08 20:17:55,742 basehttp 92102 6193360896 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-08 20:19:33,074 autoreload 92102 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-09-08 20:19:33,597 autoreload 92127 8549129984 Watching for file changes with StatReloader
