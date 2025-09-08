@@ -26109,3 +26109,25 @@ INFO 2025-09-08 21:03:19,985 basehttp 95958 6281916416 "GET /static/admin/js/can
 INFO 2025-09-08 21:03:21,153 basehttp 95958 6281916416 "POST /admin/accounts/user/27/delete/ HTTP/1.1" 302 0
 INFO 2025-09-08 21:03:21,162 basehttp 95958 6281916416 "GET /admin/accounts/user/ HTTP/1.1" 200 3193
 INFO 2025-09-08 21:03:21,178 basehttp 95958 6281916416 "GET /admin/jsi18n/ HTTP/1.1" 200 1047
+INFO 2025-09-08 21:11:56,474 autoreload 97031 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 21:12:26,238 autoreload 97225 8549129984 Watching for file changes with StatReloader
+WARNING 2025-09-08 21:12:39,916 log 97225 6132674560 Forbidden (CSRF token from POST incorrect.): /accounts/login/
+WARNING 2025-09-08 21:12:39,917 basehttp 97225 6132674560 "POST /accounts/login/ HTTP/1.1" 403 1299
+INFO 2025-09-08 21:12:46,462 basehttp 97225 6132674560 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:12:46,485 basehttp 97225 6132674560 "GET /grids/ HTTP/1.1" 200 12335
+INFO 2025-09-08 21:12:46,499 basehttp 97225 6132674560 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-08 21:12:46,499 basehttp 97225 6149500928 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 21:12:50,235 basehttp 97225 6132674560 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:12:50,242 basehttp 97225 6132674560 "GET / HTTP/1.1" 200 6362
+INFO 2025-09-08 21:12:51,239 basehttp 97225 6132674560 "GET /accounts/login/ HTTP/1.1" 200 4331
+INFO 2025-09-08 21:12:57,341 basehttp 97225 6132674560 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:12:57,349 basehttp 97225 6132674560 "GET /grids/ HTTP/1.1" 200 12348
+INFO 2025-09-08 21:13:00,818 basehttp 97225 6132674560 "GET / HTTP/1.1" 200 6472
+WARNING 2025-09-08 21:13:03,038 log 97225 6132674560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-08 21:13:03,038 basehttp 97225 6132674560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2095
+INFO 2025-09-08 21:13:03,736 basehttp 97225 6132674560 "GET / HTTP/1.1" 200 6565
+WARNING 2025-09-08 21:13:03,760 log 97225 6132674560 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-08 21:13:03,760 basehttp 97225 6132674560 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2082
+INFO 2025-09-08 21:13:03,782 basehttp 97225 6132674560 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
+INFO 2025-09-08 21:13:08,445 basehttp 97225 6132674560 "GET /static/img/Mobile%20-%20Entrepreneurs%20Grid.png HTTP/1.1" 200 439724
+INFO 2025-09-08 21:13:10,610 basehttp 97225 6132674560 "GET /static/img/Mobile%20-%20Professionals%20Grid.png HTTP/1.1" 200 451800
