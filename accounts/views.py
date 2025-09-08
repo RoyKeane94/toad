@@ -756,15 +756,65 @@ class RegisterTrialView(FormView):
     template_name = 'accounts/pages/registration/register_trial.html'
     form_class = CustomUserCreationForm
     
+    def get_context_data(self, **kwargs):
+        """Add society and university info to context"""
+        context = super().get_context_data(**kwargs)
+        
+        # Get society and university from URL parameters
+        society_name = self.request.GET.get('society', '')
+        university_name = self.request.GET.get('university', '')
+        
+        context['society_name'] = society_name
+        context['university_name'] = university_name
+        
+        return context
+    
     def form_valid(self, form):
         """Create the user and start their trial - mirrors RegisterFreeView but with personal tier"""
         import logging
         logger = logging.getLogger(__name__)
         
         try:
-            logger.info("Starting trial user registration...")
+            # Get society and university info from URL parameters
+            society_name = self.request.GET.get('society', '')
+            university_name = self.request.GET.get('university', '')
+            
+            logger.info(f"Starting trial user registration... Society: {society_name}, University: {university_name}")
             user = form.save()
             logger.info(f"User created successfully: {user.email}")
+            
+            # Try to find and associate the society and university
+            society_link = None
+            university = None
+            
+            if society_name:
+                try:
+                    from CRM.models import SocietyLink, SocietyUniversity
+                    from django.utils.text import slugify
+                    
+                    # Find society link by name
+                    society_links = SocietyLink.objects.filter(
+                        society_university__isnull=False
+                    ).select_related('society_university')
+                    
+                    for link in society_links:
+                        if slugify(link.name) == slugify(society_name):
+                            society_link = link
+                            university = link.society_university
+                            break
+                    
+                    if society_link:
+                        # Associate user with society and university
+                        user.associated_society = society_link
+                        user.associated_university = university
+                        user.save()
+                        
+                        logger.info(f"User {user.email} associated with society: {society_link.name} and university: {university.name}")
+                    else:
+                        logger.warning(f"Could not find society link for: {society_name}")
+                        
+                except Exception as e:
+                    logger.error(f"Error associating user with society/university: {e}")
             
             # Set user tier to personal for trial
             user.tier = 'personal'
@@ -775,8 +825,11 @@ class RegisterTrialView(FormView):
             user.start_trial(days=180)  # 6 months
             logger.info(f"Trial started for user: {user.email}, ends at: {user.trial_ends_at}")
             
-            # Log registration attempt
-            logger.info(f"New Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PERSONAL for trial")
+            # Log registration attempt with society/university info
+            if society_link and university:
+                logger.info(f"New Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PERSONAL for trial - Society: {society_link.name}, University: {university.name}")
+            else:
+                logger.info(f"New Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PERSONAL for trial - No society/university association")
             
             # Add session flag immediately for better UX
             self.request.session['show_verification_message'] = True

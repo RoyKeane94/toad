@@ -25975,3 +25975,137 @@ INFO 2025-09-08 20:33:55,880 basehttp 94632 6143717376 "GET /grids/181/ HTTP/1.1
 INFO 2025-09-08 20:34:00,515 basehttp 94632 6126891008 "GET /grids/181/rows/696/delete/ HTTP/1.1" 200 1022
 INFO 2025-09-08 20:34:01,699 basehttp 94632 6126891008 "POST /grids/181/rows/696/delete/ HTTP/1.1" 200 70
 INFO 2025-09-08 20:34:01,736 basehttp 94632 6126891008 "GET /grids/181/ HTTP/1.1" 200 17906
+INFO 2025-09-08 20:58:45,619 autoreload 95958 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 20:58:48,940 basehttp 95958 6197211136 "GET / HTTP/1.1" 200 6540
+INFO 2025-09-08 20:58:48,954 basehttp 95958 6197211136 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-08 20:58:48,958 basehttp 95958 6197211136 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 20:58:48,997 basehttp 95958 6197211136 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+WARNING 2025-09-08 20:58:55,138 log 95958 6197211136 Not Found: /lilypad/society-links/14/public/
+WARNING 2025-09-08 20:58:55,139 basehttp 95958 6197211136 "GET /lilypad/society-links/14/public/ HTTP/1.1" 404 2345
+INFO 2025-09-08 20:58:55,161 basehttp 95958 6197211136 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-08 20:58:55,162 basehttp 95958 6197211136 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-08 20:59:00,128 basehttp 95958 6197211136 "GET /lilypad/ HTTP/1.1" 200 4247
+INFO 2025-09-08 20:59:02,556 basehttp 95958 6197211136 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6733
+INFO 2025-09-08 20:59:02,596 basehttp 95958 6197211136 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
+INFO 2025-09-08 20:59:02,604 basehttp 95958 6197211136 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
+INFO 2025-09-08 20:59:02,611 basehttp 95958 6197211136 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
+INFO 2025-09-08 20:59:03,824 basehttp 95958 6197211136 "GET /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 200 5265
+INFO 2025-09-08 20:59:08,241 basehttp 95958 6197211136 "GET /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 200 5033
+INFO 2025-09-08 20:59:24,909 basehttp 95958 6197211136 "POST /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 200 5308
+INFO 2025-09-08 20:59:30,018 basehttp 95958 6197211136 "GET /accounts/settings/ HTTP/1.1" 200 4226
+INFO 2025-09-08 20:59:35,718 basehttp 95958 6197211136 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-08 20:59:35,724 basehttp 95958 6197211136 "GET / HTTP/1.1" 200 6314
+INFO 2025-09-08 20:59:36,581 basehttp 95958 6197211136 "GET /accounts/login/ HTTP/1.1" 200 4295
+INFO 2025-09-08 20:59:46,079 basehttp 95958 6197211136 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-08 20:59:46,090 basehttp 95958 6197211136 "GET /grids/ HTTP/1.1" 200 12060
+INFO 2025-09-08 20:59:47,584 basehttp 95958 6197211136 "GET /accounts/settings/ HTTP/1.1" 200 4212
+INFO 2025-09-08 20:59:53,189 basehttp 95958 6197211136 "GET /accounts/settings/delete/ HTTP/1.1" 200 4353
+INFO 2025-09-08 20:59:57,748 views 95958 6197211136 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-08 20:59:57,755 basehttp 95958 6197211136 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 20:59:57,760 basehttp 95958 6197211136 "GET / HTTP/1.1" 200 6352
+INFO 2025-09-08 20:59:59,537 basehttp 95958 6197211136 "GET /accounts/login/ HTTP/1.1" 200 4343
+INFO 2025-09-08 21:00:00,869 basehttp 95958 6197211136 "GET /accounts/register/ HTTP/1.1" 200 4462
+INFO 2025-09-08 21:00:03,312 basehttp 95958 6197211136 "GET / HTTP/1.1" 200 6354
+INFO 2025-09-08 21:00:04,931 basehttp 95958 6197211136 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-09-08 21:00:04,942 basehttp 95958 6214037504 "GET /lilypad/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:00:04,948 basehttp 95958 6214037504 "GET /accounts/login/?next=/lilypad/ HTTP/1.1" 200 4330
+INFO 2025-09-08 21:00:10,210 basehttp 95958 6214037504 "GET / HTTP/1.1" 200 6310
+INFO 2025-09-08 21:00:14,941 basehttp 95958 6214037504 "GET /accounts/register/trial/ HTTP/1.1" 200 4858
+INFO 2025-09-08 21:00:17,266 basehttp 95958 6214037504 "GET / HTTP/1.1" 200 6387
+INFO 2025-09-08 21:00:26,828 basehttp 95958 6214037504 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6591
+INFO 2025-09-08 21:00:28,670 basehttp 95958 6214037504 "GET /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 200 4892
+INFO 2025-09-08 21:00:42,749 views 95958 6214037504 Starting trial user registration... Society: The Economics Society, University: Sheffield
+INFO 2025-09-08 21:00:42,989 views 95958 6214037504 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:00:42,990 views 95958 6214037504 User tom_barratt@hotmail.co.uk associated with society: The Economics Society and university: Sheffield
+INFO 2025-09-08 21:00:42,990 views 95958 6214037504 User tier set to personal for trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:00:42,991 views 95958 6214037504 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-07 21:00:42.991045+00:00
+INFO 2025-09-08 21:00:42,991 views 95958 6214037504 New Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL for trial - Society: The Economics Society, University: Sheffield
+INFO 2025-09-08 21:00:42,993 basehttp 95958 6214037504 "POST /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 302 0
+INFO 2025-09-08 21:00:42,996 email_utils 95958 6231437312 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:00:42,999 basehttp 95958 6214037504 "GET /accounts/login/ HTTP/1.1" 200 4478
+INFO 2025-09-08 21:00:45,698 email_utils 95958 6231437312 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:00:45,699 views 95958 6231437312 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:01:30,090 views 95958 6214037504 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:01:30,092 views 95958 6214037504 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:01:30,094 views 95958 6214037504 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:01:30,095 views 95958 6214037504 Redirecting to first project: 182
+INFO 2025-09-08 21:01:30,099 email_utils 95958 6231437312 Attempting to send personal joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:01:30,101 basehttp 95958 6214037504 "GET /accounts/verify-email/ztrskvOzz9jevWkhKytH9f54CEwbCi6q/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:01:30,123 basehttp 95958 6214037504 "GET /grids/182/ HTTP/1.1" 200 16695
+INFO 2025-09-08 21:01:30,135 basehttp 95958 6214037504 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 21:01:30,679 email_utils 95958 6231437312 Successfully sent personal joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:01:33,402 basehttp 95958 6214037504 "GET /accounts/settings/ HTTP/1.1" 200 4211
+INFO 2025-09-08 21:01:39,160 basehttp 95958 6214037504 "GET /accounts/settings/delete/ HTTP/1.1" 200 4427
+INFO 2025-09-08 21:01:43,603 views 95958 6214037504 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-08 21:01:43,610 basehttp 95958 6214037504 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:01:43,615 basehttp 95958 6214037504 "GET / HTTP/1.1" 200 6349
+INFO 2025-09-08 21:01:45,286 basehttp 95958 6214037504 "GET /accounts/login/ HTTP/1.1" 200 4383
+INFO 2025-09-08 21:01:53,456 basehttp 95958 6214037504 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:01:53,464 basehttp 95958 6214037504 "GET /grids/ HTTP/1.1" 200 12334
+INFO 2025-09-08 21:01:57,018 basehttp 95958 6214037504 "GET / HTTP/1.1" 200 6512
+INFO 2025-09-08 21:01:58,173 basehttp 95958 6214037504 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-08 21:01:58,196 basehttp 95958 6197211136 "GET /admin/ HTTP/1.1" 200 2624
+INFO 2025-09-08 21:01:58,206 basehttp 95958 6197211136 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-08 21:01:58,206 basehttp 95958 6231437312 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-08 21:01:58,207 basehttp 95958 6214037504 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-08 21:01:58,209 basehttp 95958 6197211136 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-08 21:01:58,212 basehttp 95958 6231437312 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-08 21:01:58,212 basehttp 95958 6214037504 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-08 21:01:58,213 basehttp 95958 6197211136 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-08 21:01:58,219 basehttp 95958 6214037504 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-08 21:01:58,219 basehttp 95958 6231437312 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-08 21:01:58,220 basehttp 95958 6197211136 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-08 21:01:58,221 basehttp 95958 6231437312 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-08 21:02:00,662 basehttp 95958 6231437312 "GET /admin/accounts/user/ HTTP/1.1" 200 3147
+INFO 2025-09-08 21:02:00,673 basehttp 95958 6231437312 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-08 21:02:00,680 basehttp 95958 6248263680 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-08 21:02:00,681 basehttp 95958 6265090048 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-08 21:02:00,682 basehttp 95958 6281916416 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-08 21:02:00,684 basehttp 95958 6231437312 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-08 21:02:00,687 basehttp 95958 6248263680 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-08 21:02:00,687 basehttp 95958 6265090048 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-08 21:02:00,690 basehttp 95958 6197211136 "GET /admin/jsi18n/ HTTP/1.1" 200 1058
+INFO 2025-09-08 21:02:00,691 basehttp 95958 6214037504 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-08 21:02:00,693 basehttp 95958 6281916416 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-08 21:02:00,694 basehttp 95958 6214037504 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-08 21:02:00,706 basehttp 95958 6214037504 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-08 21:02:14,272 basehttp 95958 6214037504 "POST /admin/logout/ HTTP/1.1" 200 1331
+INFO 2025-09-08 21:02:15,780 basehttp 95958 6214037504 "GET / HTTP/1.1" 200 6317
+INFO 2025-09-08 21:02:15,789 basehttp 95958 6214037504 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-08 21:02:15,798 basehttp 95958 6214037504 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 21:02:38,824 basehttp 95958 6214037504 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6559
+INFO 2025-09-08 21:02:40,033 basehttp 95958 6214037504 "GET /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 200 4951
+INFO 2025-09-08 21:02:52,584 views 95958 6214037504 Starting trial user registration... Society: The Economics Society, University: Sheffield
+INFO 2025-09-08 21:02:52,824 views 95958 6214037504 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:02:52,825 views 95958 6214037504 User tom_barratt@hotmail.co.uk associated with society: The Economics Society and university: Sheffield
+INFO 2025-09-08 21:02:52,826 views 95958 6214037504 User tier set to personal for trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:02:52,827 views 95958 6214037504 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-07 21:02:52.826965+00:00
+INFO 2025-09-08 21:02:52,827 views 95958 6214037504 New Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL for trial - Society: The Economics Society, University: Sheffield
+INFO 2025-09-08 21:02:52,829 email_utils 95958 6298742784 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:02:52,830 basehttp 95958 6214037504 "POST /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 302 0
+INFO 2025-09-08 21:02:52,836 basehttp 95958 6214037504 "GET /accounts/login/ HTTP/1.1" 200 4487
+INFO 2025-09-08 21:02:53,550 email_utils 95958 6298742784 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:02:53,551 views 95958 6298742784 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-08 21:03:03,789 basehttp 95958 6214037504 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:03:03,797 basehttp 95958 6214037504 "GET /grids/ HTTP/1.1" 200 12354
+INFO 2025-09-08 21:03:05,537 basehttp 95958 6214037504 "GET / HTTP/1.1" 200 6563
+INFO 2025-09-08 21:03:06,326 basehttp 95958 6214037504 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-08 21:03:06,338 basehttp 95958 6281916416 "GET /admin/ HTTP/1.1" 200 2692
+INFO 2025-09-08 21:03:07,764 basehttp 95958 6281916416 "GET /admin/accounts/user/ HTTP/1.1" 200 3136
+INFO 2025-09-08 21:03:07,784 basehttp 95958 6281916416 "GET /admin/jsi18n/ HTTP/1.1" 200 1001
+INFO 2025-09-08 21:03:08,963 basehttp 95958 6281916416 "GET /admin/accounts/user/27/change/ HTTP/1.1" 200 6258
+INFO 2025-09-08 21:03:08,976 basehttp 95958 6281916416 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-09-08 21:03:08,977 basehttp 95958 6231437312 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-08 21:03:08,977 basehttp 95958 6265090048 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-09-08 21:03:08,979 basehttp 95958 6248263680 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-09-08 21:03:08,979 basehttp 95958 6197211136 "GET /admin/jsi18n/ HTTP/1.1" 200 1008
+INFO 2025-09-08 21:03:08,980 basehttp 95958 6281916416 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-09-08 21:03:08,981 basehttp 95958 6197211136 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-08 21:03:08,981 basehttp 95958 6281916416 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-09-08 21:03:09,013 basehttp 95958 6281916416 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-09-08 21:03:09,013 basehttp 95958 6197211136 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-09-08 21:03:19,973 basehttp 95958 6281916416 "GET /admin/accounts/user/27/delete/ HTTP/1.1" 200 3406
+INFO 2025-09-08 21:03:19,985 basehttp 95958 6281916416 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-09-08 21:03:21,153 basehttp 95958 6281916416 "POST /admin/accounts/user/27/delete/ HTTP/1.1" 302 0
+INFO 2025-09-08 21:03:21,162 basehttp 95958 6281916416 "GET /admin/accounts/user/ HTTP/1.1" 200 3193
+INFO 2025-09-08 21:03:21,178 basehttp 95958 6281916416 "GET /admin/jsi18n/ HTTP/1.1" 200 1047

@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
+from CRM.models import SocietyLink, SocietyUniversity
 
 class CustomUserManager(BaseUserManager):
     """
@@ -47,6 +48,8 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30, help_text='Required. Enter your first name.')
     last_name = models.CharField(max_length=30, blank=True, help_text='Optional. Enter your last name.')
     tier = models.CharField(max_length=35, choices=TIER_CHOICES, default='beta',blank=True)
+    associated_society = models.ForeignKey(SocietyLink, on_delete=models.CASCADE, null=True, blank=True, related_name='users')
+    associated_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     
     # Trial and billing fields
     trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')
