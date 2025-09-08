@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.http import HttpResponseForbidden, JsonResponse
+from django.http import HttpResponseForbidden, JsonResponse, Http404
 from django.contrib import messages
 from django.urls import reverse
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
@@ -543,9 +543,22 @@ def society_link_public(request, university_slug, society_slug):
     Public view for society links - accessible by anyone.
     Uses university and society slugs in URL.
     """
-    society_link = get_object_or_404(SocietyLink, 
-                                    society_university__name__iexact=university_slug,
-                                    name__iexact=society_slug)
+    from django.utils.text import slugify
+    
+    # Find society link by matching slugified names
+    society_links = SocietyLink.objects.filter(
+        society_university__isnull=False
+    ).select_related('society_university')
+    
+    society_link = None
+    for link in society_links:
+        if (slugify(link.society_university.name) == university_slug and 
+            slugify(link.name) == society_slug):
+            society_link = link
+            break
+    
+    if not society_link:
+        raise Http404("Society link not found")
     
     context = {
         'society_link': society_link,

@@ -25757,3 +25757,20 @@ INFO 2025-09-07 18:35:30,958 basehttp 84570 6134198272 "GET /lilypad/lilypad/she
 INFO 2025-09-07 18:35:31,208 basehttp 84570 6168424448 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
 INFO 2025-09-07 18:35:31,208 basehttp 84570 6134198272 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-09-07 18:35:31,209 basehttp 84570 6151024640 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 19:41:15,544 autoreload 86766 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-08 19:41:16,966 basehttp 86766 6203846656 "GET / HTTP/1.1" 200 6475
+INFO 2025-09-08 19:41:16,984 basehttp 86766 6203846656 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-08 19:41:16,989 basehttp 86766 6220673024 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-09-08 19:41:16,989 basehttp 86766 6203846656 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-08 19:41:17,021 basehttp 86766 6203846656 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+WARNING 2025-09-08 19:41:20,335 log 86766 6203846656 Not Found: /lilypad/society-links/14/public/
+WARNING 2025-09-08 19:41:20,335 basehttp 86766 6203846656 "GET /lilypad/society-links/14/public/ HTTP/1.1" 404 2286
+INFO 2025-09-08 19:41:26,084 basehttp 86766 6203846656 "GET /lilypad/ HTTP/1.1" 200 4116
+INFO 2025-09-08 19:41:29,107 basehttp 86766 6203846656 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4269
+INFO 2025-09-08 19:41:40,481 basehttp 86766 6203846656 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:41:40,495 basehttp 86766 6203846656 "GET /lilypad/ HTTP/1.1" 200 4223
+INFO 2025-09-08 19:41:43,761 basehttp 86766 6203846656 "GET /lilypad/sheffield/economics/ HTTP/1.1" 200 6758
+INFO 2025-09-08 19:41:47,574 basehttp 86766 6203846656 "GET /lilypad/society-links/create/ HTTP/1.1" 200 4297
+INFO 2025-09-08 19:42:01,460 basehttp 86766 6203846656 "POST /lilypad/society-links/create/ HTTP/1.1" 302 0
+INFO 2025-09-08 19:42:01,476 basehttp 86766 6203846656 "GET /lilypad/ HTTP/1.1" 200 4326
+INFO 2025-09-08 19:42:04,089 basehttp 86766 6203846656 "GET /lilypad/sheffield/economics-society/ HTTP/1.1" 200 6741
