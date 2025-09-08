@@ -420,12 +420,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
                 
                 <!-- Grid Name Actions Dropdown -->
-                <div class="relative w-6 h-6" id="grid-name-actions-container">
-                    <button type="button" 
-                            id="grid-name-actions-btn"
-                            class="group flex items-center justify-center w-full h-full text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] rounded transition-all duration-200 cursor-pointer">
-                        <i class="fas fa-ellipsis-v text-xs"></i>
-                    </button>
+                <div class="relative" id="grid-name-actions-container">
+                    <div type="button" 
+                         id="grid-name-actions-btn"
+                         class="group w-6 h-6 text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-all duration-200 cursor-pointer p-0 m-0 min-w-0 min-h-0 border-0 inline-block flex items-center justify-center ml-2">
+                        <i class="fas fa-ellipsis-v text-base font-semibold"></i>
+                    </div>
                     
                     <!-- Dropdown Menu -->
                     <div id="grid-name-actions-dropdown" 
