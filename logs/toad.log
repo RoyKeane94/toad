@@ -26473,3 +26473,17 @@ INFO 2025-09-09 20:35:35,000 basehttp 5613 6144045056 "GET /static/js/general/ge
 INFO 2025-09-09 20:35:35,019 basehttp 5613 6127218688 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
 INFO 2025-09-09 20:35:50,146 basehttp 5613 6127218688 "GET / HTTP/1.1" 200 5802
 INFO 2025-09-09 20:35:50,157 basehttp 5613 6127218688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 20:58:24,203 autoreload 6720 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 20:58:37,665 basehttp 6720 6129692672 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 3872
+INFO 2025-09-09 20:58:37,680 basehttp 6720 6164492288 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:58:37,680 basehttp 6720 6146519040 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 20:58:37,680 basehttp 6720 6129692672 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 20:58:37,695 views 6720 6164492288 Generating QR code for URL: http://127.0.0.1:8000/lilypad/sheffield/the-economics-society/
+INFO 2025-09-09 20:58:37,728 views 6720 6164492288 QR code generated successfully
+INFO 2025-09-09 20:58:37,728 basehttp 6720 6164492288 "GET /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 200 599
+INFO 2025-09-09 20:58:37,879 basehttp 6720 6164492288 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-09 20:59:12,591 basehttp 6720 6129692672 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 3871
+INFO 2025-09-09 20:59:26,587 basehttp 6720 6129692672 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6019
+INFO 2025-09-09 20:59:26,608 basehttp 6720 6129692672 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
+INFO 2025-09-09 20:59:26,749 basehttp 6720 6129692672 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
+INFO 2025-09-09 20:59:26,752 basehttp 6720 6146519040 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
