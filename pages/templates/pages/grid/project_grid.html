@@ -350,9 +350,9 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Grid Tabs Navigation -->
-<div class="grid-header-container mb-6" id="grid-tabs-container" data-total-columns="{{ total_data_columns }}">
+<div class="grid-header-container mb-6 " id="grid-tabs-container" data-total-columns="{{ total_data_columns }}">
     <div id="grid-tabs">
-            <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide px-4">
+            <div class="flex flex-wrap gap-1 overflow-x-auto pb-2 scrollbar-hide ">
             <!-- Ungrouped Projects First -->
             {% if ungrouped_projects %}
                 <div class="flex-shrink-0">
@@ -403,18 +403,18 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Header -->
-<div class="grid-header-container mb-6" id="grid-header-container" data-total-columns="{{ total_data_columns }}">
+<div class="grid-header-container mb-6 " id="grid-header-container" data-total-columns="{{ total_data_columns }}">
     <div id="grid-header" class="grid-header-mobile grid-content-hidden">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4 px-4">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
         <div class="flex items-center space-x-3">
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
         </div>
         
         <!-- Grid Actions - Right Aligned -->
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
-            <div class="w-full sm:w-auto sm:ml-auto flex items-center gap-1">
+            <div class="w-full sm:w-auto flex items-center gap-1">
                 <button type="button"
-                        class="inline-flex items-center justify-center w-full sm:w-48 px-6 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+                        class="inline-flex items-center justify-center w-full sm:w-48 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
                         onclick="showClearCompletedModal()">
                     <i class="fas fa-check mr-1"></i>Clear Completed
                 </button>

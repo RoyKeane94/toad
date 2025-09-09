@@ -1063,6 +1063,9 @@
   .border-green-200 {
     border-color: var(--color-green-200);
   }
+  .border-green-500 {
+    border-color: var(--color-green-500);
+  }
   .border-purple-200 {
     border-color: var(--color-purple-200);
   }
@@ -2364,11 +2367,6 @@
   .sm\:mb-12 {
     @media (width >= 40rem) {
       margin-bottom: calc(var(--spacing) * 12);
-    }
-  }
-  .sm\:ml-auto {
-    @media (width >= 40rem) {
-      margin-left: auto;
     }
   }
   .sm\:block {
