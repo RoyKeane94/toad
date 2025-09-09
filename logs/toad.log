@@ -26335,3 +26335,141 @@ INFO 2025-09-09 20:21:39,059 basehttp 3577 6133329920 "GET /static/img/logo/toad
 INFO 2025-09-09 20:24:05,721 basehttp 3577 6133329920 "GET / HTTP/1.1" 200 6379
 INFO 2025-09-09 20:24:05,735 basehttp 3577 6133329920 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
 INFO 2025-09-09 20:24:05,757 basehttp 3577 6133329920 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-09 20:25:20,954 autoreload 4015 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 20:25:22,355 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5970
+INFO 2025-09-09 20:25:22,388 basehttp 4015 6203437056 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:25:22,426 basehttp 4015 6203437056 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-09 20:25:23,042 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5982
+INFO 2025-09-09 20:26:13,862 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5945
+INFO 2025-09-09 20:26:13,876 basehttp 4015 6203437056 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:26:37,054 basehttp 4015 6203437056 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-09 20:26:37,060 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5781
+INFO 2025-09-09 20:26:37,074 basehttp 4015 6203437056 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 20:26:38,396 basehttp 4015 6203437056 "GET /accounts/register/ HTTP/1.1" 200 3889
+INFO 2025-09-09 20:27:04,429 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5798
+INFO 2025-09-09 20:27:04,445 basehttp 4015 6203437056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 20:27:04,445 basehttp 4015 6220263424 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+ERROR 2025-09-09 20:27:57,090 log 4015 6203437056 Internal Server Error: /accounts/register/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 567, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 193: 'static', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-09-09 20:27:57,096 basehttp 4015 6203437056 "GET /accounts/register/ HTTP/1.1" 500 20555
+INFO 2025-09-09 20:27:57,166 basehttp 4015 6203437056 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-09 20:27:57,169 basehttp 4015 6203437056 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-09 20:28:20,631 basehttp 4015 6203437056 "GET /accounts/register/ HTTP/1.1" 200 3911
+INFO 2025-09-09 20:28:20,643 basehttp 4015 6203437056 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:28:25,108 basehttp 4015 6203437056 "GET /accounts/register/free/ HTTP/1.1" 200 3984
+INFO 2025-09-09 20:28:41,330 basehttp 4015 6203437056 "GET /accounts/register/ HTTP/1.1" 200 3896
+INFO 2025-09-09 20:28:47,837 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5815
+INFO 2025-09-09 20:29:34,866 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5764
+INFO 2025-09-09 20:29:34,878 basehttp 4015 6203437056 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:29:43,470 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5803
+INFO 2025-09-09 20:29:43,485 basehttp 4015 6237089792 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-09 20:29:43,486 basehttp 4015 6220263424 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-09 20:29:43,487 basehttp 4015 6253916160 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-09 20:29:43,488 basehttp 4015 6203437056 "GET /static/css/output.css HTTP/1.1" 200 85525
+INFO 2025-09-09 20:29:43,628 basehttp 4015 6203437056 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-09 20:29:43,692 basehttp 4015 6203437056 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-09 20:29:55,475 basehttp 4015 6203437056 "GET / HTTP/1.1" 200 5765
+INFO 2025-09-09 20:30:22,496 autoreload 4699 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 20:30:27,957 basehttp 4699 6195474432 "GET / HTTP/1.1" 200 5780
+INFO 2025-09-09 20:31:05,390 basehttp 4699 6195474432 "GET / HTTP/1.1" 200 5756
+INFO 2025-09-09 20:31:05,407 basehttp 4699 6195474432 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:31:26,080 basehttp 4699 6195474432 "GET / HTTP/1.1" 200 5738
+INFO 2025-09-09 20:32:05,929 basehttp 4699 6195474432 "GET / HTTP/1.1" 200 5756
+INFO 2025-09-09 20:33:58,129 autoreload 5175 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 20:33:59,814 basehttp 5175 6200193024 "GET / HTTP/1.1" 200 5753
+INFO 2025-09-09 20:33:59,814 basehttp 5175 6200193024 - Broken pipe from ('127.0.0.1', 53990)
+INFO 2025-09-09 20:33:59,814 basehttp 5175 6217019392 "GET / HTTP/1.1" 200 5740
+INFO 2025-09-09 20:33:59,864 basehttp 5175 6217019392 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-09 20:33:59,901 basehttp 5175 6217019392 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-09 20:34:20,093 basehttp 5175 6200193024 "GET / HTTP/1.1" 200 5754
+INFO 2025-09-09 20:34:47,822 autoreload 5613 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 20:34:51,412 basehttp 5613 6127218688 "GET / HTTP/1.1" 200 5731
+INFO 2025-09-09 20:34:59,544 basehttp 5613 6127218688 "GET / HTTP/1.1" 200 5755
+INFO 2025-09-09 20:34:59,571 basehttp 5613 6160871424 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-09 20:34:59,572 basehttp 5613 6144045056 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-09 20:34:59,573 basehttp 5613 6127218688 "GET /static/css/output.css HTTP/1.1" 200 85457
+INFO 2025-09-09 20:34:59,574 basehttp 5613 6177697792 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-09 20:34:59,699 basehttp 5613 6177697792 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-09 20:34:59,758 basehttp 5613 6177697792 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-09 20:35:13,584 basehttp 5613 6127218688 "GET / HTTP/1.1" 200 5803
+INFO 2025-09-09 20:35:13,600 basehttp 5613 6127218688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 20:35:22,351 basehttp 5613 6127218688 "GET /static/gif/Professionals%20GIF.gif HTTP/1.1" 200 1583106
+INFO 2025-09-09 20:35:23,013 basehttp 5613 6127218688 "GET /static/gif/Entrepreneurs%20GIF.gif HTTP/1.1" 200 2147758
+INFO 2025-09-09 20:35:34,012 basehttp 5613 6127218688 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-09 20:35:34,031 log 5613 6127218688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-09 20:35:34,031 basehttp 5613 6127218688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2077
+INFO 2025-09-09 20:35:34,971 basehttp 5613 6127218688 "GET / HTTP/1.1" 200 5782
+WARNING 2025-09-09 20:35:34,999 log 5613 6127218688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-09 20:35:35,000 basehttp 5613 6127218688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2098
+INFO 2025-09-09 20:35:35,000 basehttp 5613 6144045056 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 20:35:35,019 basehttp 5613 6127218688 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
+INFO 2025-09-09 20:35:50,146 basehttp 5613 6127218688 "GET / HTTP/1.1" 200 5802
+INFO 2025-09-09 20:35:50,157 basehttp 5613 6127218688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

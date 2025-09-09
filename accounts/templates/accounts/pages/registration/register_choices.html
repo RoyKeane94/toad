@@ -1,4 +1,5 @@
 {% extends 'pages/layout.html' %}
+{% load static %}
 
 {% block title %}Choose Your Plan - Toad{% endblock %}
 
@@ -188,6 +189,10 @@
 <div class="pricing-container">
     <!-- Header -->
     <div class="text-center mb-12">
+        <!-- Toad Logo -->
+        <div class="mb-8">
+            <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-16 w-auto mx-auto">
+        </div>
         <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">
             Our pricing is as simple as our product
         </h1>

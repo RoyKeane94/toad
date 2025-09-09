@@ -1,4 +1,5 @@
 {% extends 'pages/layout.html' %}
+{% load static %}
 
 {% block title %}Start Your 6-Month Free Trial{% endblock %}
 
@@ -56,6 +57,10 @@
         <div class="max-w-md w-full space-y-8">
             <!-- Header --> 
             <div class="text-center">
+                <!-- Toad Logo -->
+                <div class="mb-6">
+                    <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-12 w-auto mx-auto">
+                </div>
                 {% if request.GET.society %}
                     <div class="mb-4 p-3 bg-green-50 border border-green-200 rounded-lg">
                         <p class="text-sm text-green-800">
