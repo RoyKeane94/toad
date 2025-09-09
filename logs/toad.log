@@ -26194,3 +26194,107 @@ INFO 2025-09-09 19:13:09,705 basehttp 662 6157217792 "GET /grids/178/ HTTP/1.1" 
 INFO 2025-09-09 19:13:11,482 basehttp 662 6157217792 "GET /grids/181/ HTTP/1.1" 200 17959
 INFO 2025-09-09 19:13:15,990 basehttp 662 6157217792 "GET /grids/178/ HTTP/1.1" 200 20244
 INFO 2025-09-09 19:13:16,003 basehttp 662 6157217792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 19:33:20,917 autoreload 1195 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 19:33:23,284 basehttp 1195 6201765888 "GET / HTTP/1.1" 200 6551
+INFO 2025-09-09 19:33:23,293 basehttp 1195 6201765888 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 19:33:23,299 basehttp 1195 6201765888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:33:23,337 basehttp 1195 6201765888 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-09 19:33:25,390 basehttp 1195 6201765888 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:33:25,396 basehttp 1195 6201765888 "GET / HTTP/1.1" 200 6315
+INFO 2025-09-09 19:33:26,862 basehttp 1195 6201765888 "GET /accounts/login/ HTTP/1.1" 200 4320
+INFO 2025-09-09 19:33:28,487 basehttp 1195 6201765888 "GET /accounts/register/ HTTP/1.1" 200 4369
+INFO 2025-09-09 19:33:30,238 basehttp 1195 6201765888 "GET /accounts/register/free/ HTTP/1.1" 200 4558
+INFO 2025-09-09 19:33:44,364 views 1195 6201765888 New Free plan user registration: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-09 19:33:44,365 basehttp 1195 6201765888 "POST /accounts/register/free/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:33:44,368 email_utils 1195 6235418624 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:33:44,371 basehttp 1195 6201765888 "GET /accounts/login/ HTTP/1.1" 200 4449
+INFO 2025-09-09 19:33:45,238 email_utils 1195 6235418624 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:33:45,239 views 1195 6235418624 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:36:43,071 views 1195 6201765888 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:36:43,077 views 1195 6201765888 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:36:43,087 views 1195 6201765888 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:36:43,089 views 1195 6201765888 Redirecting to first project: 184
+INFO 2025-09-09 19:36:43,100 basehttp 1195 6201765888 "GET /accounts/verify-email/ZNp43uDOpq5ziWMcZNkNGPhUV2HeUjnh/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:36:43,102 email_utils 1195 6235418624 Attempting to send free joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:36:43,126 basehttp 1195 6201765888 "GET /grids/184/ HTTP/1.1" 200 16739
+INFO 2025-09-09 19:36:43,174 basehttp 1195 6201765888 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 19:36:43,178 basehttp 1195 6201765888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:36:43,179 basehttp 1195 6218592256 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:36:43,734 email_utils 1195 6235418624 Successfully sent free joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-09 19:37:21,009 basehttp 1195 6218592256 "GET /accounts/settings/ HTTP/1.1" 200 4168
+INFO 2025-09-09 19:37:24,065 basehttp 1195 6218592256 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7789
+INFO 2025-09-09 19:37:25,497 basehttp 1195 6218592256 "GET /accounts/register/personal/ HTTP/1.1" 200 4766
+INFO 2025-09-09 19:39:28,535 autoreload 1628 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 19:39:30,421 basehttp 1628 6196031488 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:39:30,429 basehttp 1628 6196031488 "GET / HTTP/1.1" 200 6303
+INFO 2025-09-09 19:39:30,453 basehttp 1628 6212857856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:39:30,453 basehttp 1628 6196031488 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 19:39:32,065 basehttp 1628 6196031488 "GET /accounts/login/ HTTP/1.1" 200 4292
+INFO 2025-09-09 19:39:41,379 basehttp 1628 6196031488 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:39:41,390 basehttp 1628 6196031488 "GET /grids/ HTTP/1.1" 200 12357
+INFO 2025-09-09 19:39:46,709 basehttp 1628 6196031488 "GET /accounts/settings/ HTTP/1.1" 200 4161
+INFO 2025-09-09 19:39:54,701 basehttp 1628 6196031488 "GET / HTTP/1.1" 200 6520
+INFO 2025-09-09 19:39:56,110 basehttp 1628 6196031488 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-09 19:39:56,138 basehttp 1628 6196031488 "GET /admin/ HTTP/1.1" 200 2690
+INFO 2025-09-09 19:39:56,151 basehttp 1628 6229684224 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-09 19:39:56,152 basehttp 1628 6212857856 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-09 19:39:56,152 basehttp 1628 6196031488 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-09 19:39:56,154 basehttp 1628 6229684224 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-09 19:39:56,154 basehttp 1628 6212857856 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-09 19:39:56,155 basehttp 1628 6229684224 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-09 19:39:56,155 basehttp 1628 6196031488 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-09 19:39:56,158 basehttp 1628 6212857856 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-09 19:39:56,158 basehttp 1628 6229684224 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-09 19:39:56,159 basehttp 1628 6196031488 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-09 19:39:56,160 basehttp 1628 6196031488 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-09 19:39:56,354 basehttp 1628 6196031488 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-09 19:39:56,356 basehttp 1628 6196031488 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-09 19:39:59,299 basehttp 1628 6196031488 "GET /admin/accounts/user/ HTTP/1.1" 200 3105
+INFO 2025-09-09 19:39:59,315 basehttp 1628 6246510592 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-09 19:39:59,315 basehttp 1628 6196031488 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-09 19:39:59,317 basehttp 1628 6263336960 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-09 19:39:59,318 basehttp 1628 6280163328 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-09 19:39:59,321 basehttp 1628 6246510592 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-09 19:39:59,322 basehttp 1628 6196031488 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-09 19:39:59,323 basehttp 1628 6263336960 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-09 19:39:59,323 basehttp 1628 6229684224 "GET /admin/jsi18n/ HTTP/1.1" 200 1022
+INFO 2025-09-09 19:39:59,326 basehttp 1628 6212857856 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-09 19:39:59,327 basehttp 1628 6280163328 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-09 19:39:59,329 basehttp 1628 6280163328 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-09 19:39:59,341 basehttp 1628 6280163328 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-09 19:40:00,573 basehttp 1628 6280163328 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6160
+INFO 2025-09-09 19:40:00,590 basehttp 1628 6196031488 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-09 19:40:00,590 basehttp 1628 6229684224 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-09-09 19:40:00,591 basehttp 1628 6280163328 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-09-09 19:40:00,593 basehttp 1628 6263336960 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-09-09 19:40:00,594 basehttp 1628 6229684224 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-09-09 19:40:00,594 basehttp 1628 6212857856 "GET /admin/jsi18n/ HTTP/1.1" 200 1047
+INFO 2025-09-09 19:40:00,596 basehttp 1628 6212857856 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-09 19:40:00,596 basehttp 1628 6229684224 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-09-09 19:40:00,626 basehttp 1628 6229684224 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-09-09 19:40:00,628 basehttp 1628 6212857856 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-09-09 19:40:07,477 basehttp 1628 6196031488 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:40:07,490 basehttp 1628 6196031488 "GET /admin/accounts/user/ HTTP/1.1" 200 3202
+INFO 2025-09-09 19:40:07,504 basehttp 1628 6196031488 "GET /admin/jsi18n/ HTTP/1.1" 200 985
+INFO 2025-09-09 19:40:09,246 basehttp 1628 6196031488 "GET / HTTP/1.1" 200 6511
+INFO 2025-09-09 19:40:11,043 basehttp 1628 6196031488 "GET /accounts/settings/ HTTP/1.1" 200 4266
+INFO 2025-09-09 19:40:13,899 basehttp 1628 6196031488 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7822
+INFO 2025-09-09 19:40:43,502 basehttp 1628 6196031488 "POST /accounts/downgrade-to-free/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:40:43,511 basehttp 1628 6196031488 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7826
+INFO 2025-09-09 19:40:45,936 basehttp 1628 6196031488 "GET /grids/ HTTP/1.1" 200 12403
+INFO 2025-09-09 19:44:52,509 basehttp 1628 6196031488 "GET /accounts/settings/ HTTP/1.1" 200 4171
+INFO 2025-09-09 19:44:52,521 basehttp 1628 6212857856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:44:52,521 basehttp 1628 6196031488 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 19:44:53,996 basehttp 1628 6212857856 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7750
+INFO 2025-09-09 19:45:06,591 basehttp 1628 6212857856 "GET /accounts/register/personal/ HTTP/1.1" 200 4688
+INFO 2025-09-09 19:46:59,859 basehttp 1628 6212857856 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7783
+INFO 2025-09-09 19:47:01,064 stripe_django_views 1628 6212857856 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-09 19:47:01,064 stripe_django_views 1628 6212857856 Stripe API key is configured, proceeding...
+INFO 2025-09-09 19:47:01,064 stripe_django_views 1628 6212857856 Rendering Stripe checkout template...
+INFO 2025-09-09 19:47:01,067 stripe_django_views 1628 6212857856 Template rendered successfully
+INFO 2025-09-09 19:47:01,068 basehttp 1628 6212857856 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3962
+INFO 2025-09-09 19:47:03,610 _util 1628 6212857856 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product
+INFO 2025-09-09 19:47:03,903 _util 1628 6212857856 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product response_code=200
+INFO 2025-09-09 19:47:03,912 _util 1628 6212857856 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-09-09 19:47:04,538 _util 1628 6212857856 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-09-09 19:47:04,541 basehttp 1628 6212857856 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0

@@ -274,7 +274,7 @@
                     Current Plan
                 </button>
             {% else %}
-                <a href="{% url 'accounts:register_personal' %}" class="subscription-button upgrade">
+                <a href="{% url 'accounts:stripe_checkout' %}" class="subscription-button upgrade">
                     Upgrade to Personal
                 </a>
             {% endif %}
