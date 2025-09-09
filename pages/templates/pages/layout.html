@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>{% block title %}Toad{% endblock %}</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%235DBB8C'/><text x='16' y='22' font-family='Arial, sans-serif' font-size='18' font-weight='bold' text-anchor='middle' fill='white'>T</text></svg>">
+    <link rel="icon" href="{% static 'img/logo/toad_favicon.ico' %}" type="image/x-icon">
     
     <!-- Asynchronously load Font Awesome for faster initial page rendering -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -37,10 +37,7 @@
             <div class="relative flex items-center h-16">
                 <!-- Logo and Brand (Left) -->
                 <a href="{% url 'pages:home' %}" class="flex items-center space-x-3 hover:opacity-80 transition-opacity duration-200">
-                    <svg class="w-8 h-8 text-[var(--primary-action-bg)]" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                        <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
-                    </svg>
-                    <h1 class="text-2xl font-bold text-[var(--title-text)]">Toad</h1>
+                    <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-6 w-auto">
                 </a>
 
                 <!-- Navigation Links (Right of Logo) -->
@@ -157,10 +154,7 @@
                 <!-- Brand Column -->
                 <div class="col-span-1 md:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
-                        <svg class="w-8 h-8 text-[var(--primary-action-bg)]" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="currentColor" d="M256 448c-69.21 0-131.04-38.38-161.97-98.66C63.25 300.06 23.13 252 23.13 252c-10.05-10.05-10.05-26.32 0-36.36s26.32-10.05 36.36 0l7.57 7.57C80.43 230.43 128 192 128 192c-17.67-17.68-17.67-46.32 0-64s46.32-17.68 64 0l16.12 16.12C218.96 130.96 236.38 128 256 128s37.04 2.96 47.88 16.12L320 128c17.67-17.68 46.32-17.68 64 0s17.67 46.32 0 64c0 0 47.57 38.43 60.94 31.21l7.57-7.57c10.05-10.05 26.32-10.05 36.36 0s10.05 26.32 0 36.36c0 0-40.12 48.06-70.9 97.34C387.04 409.62 325.21 448 256 448zm0-288c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm-80 64c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16zm160 0c-8.84 0-16 7.16-16 16s7.16 16 16 16 16-7.16 16-16-7.16-16-16-16z"/>
-                        </svg>
-                        <h2 class="text-xl font-bold text-[var(--title-text)]">Toad</h2>
+                        <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-6 w-auto">
                     </div>
                     <p class="text-[var(--subtitle-text)] text-sm max-w-md">
                         Radically simple. Surprisingly powerful. Toad is just a grid, and that's why it works.
