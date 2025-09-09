@@ -26298,3 +26298,14 @@ INFO 2025-09-09 19:47:03,903 _util 1628 6212857856 message='Stripe API response'
 INFO 2025-09-09 19:47:03,912 _util 1628 6212857856 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
 INFO 2025-09-09 19:47:04,538 _util 1628 6212857856 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
 INFO 2025-09-09 19:47:04,541 basehttp 1628 6212857856 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-09-09 19:48:58,654 autoreload 2214 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 19:49:11,300 basehttp 2214 6128316416 "GET / HTTP/1.1" 200 6538
+INFO 2025-09-09 19:49:11,312 basehttp 2214 6145142784 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:49:11,313 basehttp 2214 6128316416 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-09 19:49:12,820 basehttp 2214 6128316416 "GET /grids/ HTTP/1.1" 200 12388
+INFO 2025-09-09 19:49:18,958 basehttp 2214 6128316416 "GET /grids/181/ HTTP/1.1" 200 17896
+INFO 2025-09-09 19:49:18,969 basehttp 2214 6128316416 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-09 19:51:51,102 basehttp 2214 6128316416 "GET /grids/181/ HTTP/1.1" 200 17920
+INFO 2025-09-09 19:51:52,914 basehttp 2214 6128316416 "GET /grids/ HTTP/1.1" 200 12402
+INFO 2025-09-09 19:51:54,652 basehttp 2214 6128316416 "GET /grids/177/ HTTP/1.1" 200 21518
+INFO 2025-09-09 19:51:56,681 basehttp 2214 6128316416 "GET /grids/178/ HTTP/1.1" 200 20093

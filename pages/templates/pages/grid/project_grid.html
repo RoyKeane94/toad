@@ -383,8 +383,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             {% endfor %}
             
-            <!-- Archived Projects -->
-            {% if archived_projects %}
+            <!-- Archived Projects - Only show if current project is archived -->
+            {% if project.is_archived and archived_projects %}
                 <div class="flex-shrink-0">
                     <div class="text-xs font-semibold text-[var(--text-secondary)] uppercase tracking-wide mb-2 px-3 opacity-60">Archived</div>
                     <div class="flex flex-wrap gap-1">
