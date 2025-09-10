@@ -412,7 +412,7 @@
             </div>
             
             <!-- Step 2 Buttons -->
-            <div id="step2-buttons" class="flex items-center space-x-3 hidden">
+            <div id="step2-buttons" class="flex items-center space-x-3" style="display: none;">
                 <button type="button" 
                         id="back-to-warning"
                         class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
@@ -549,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function() {
         downgradeWarning.classList.add('hidden');
         gridSelection.classList.remove('hidden');
         step1Buttons.classList.add('hidden');
-        step2Buttons.classList.remove('hidden');
+        step2Buttons.style.display = 'flex';
         
         // Update grid count
         totalGridCount.textContent = userGrids.length;
@@ -588,7 +588,7 @@ document.addEventListener('DOMContentLoaded', function() {
         downgradeWarning.classList.remove('hidden');
         gridSelection.classList.add('hidden');
         step1Buttons.classList.remove('hidden');
-        step2Buttons.classList.add('hidden');
+        step2Buttons.style.display = 'none';
         
         // Reset selection
         selectedGrids = [];

@@ -152,7 +152,7 @@
 </div>
 
 <!-- Template Choice Modal -->
-<div id="template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+<div id="template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 flex items-center justify-center p-4" style="display: none;">
     <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
         <!-- Modal Header -->
         <div class="flex items-center p-6 border-b border-[var(--border-color)]">
@@ -220,7 +220,7 @@ function showTemplateModal(template, templateName) {
     currentTemplateName = templateName;
     document.getElementById('modal-title').textContent = `Choose Your ${templateName} Style`;
     document.getElementById('template-name').textContent = templateName;
-    document.getElementById('template-modal').classList.remove('hidden');
+    document.getElementById('template-modal').style.display = 'flex';
     
     // Add event listeners for the options
     document.getElementById('pre-populated-btn').onclick = () => createTemplateWithTasks(template);
@@ -228,7 +228,7 @@ function showTemplateModal(template, templateName) {
 }
 
 function hideTemplateModal() {
-    document.getElementById('template-modal').classList.add('hidden');
+    document.getElementById('template-modal').style.display = 'none';
 }
 
 function createTemplateWithTasks(template) {

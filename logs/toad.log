@@ -26487,3 +26487,31 @@ INFO 2025-09-09 20:59:26,587 basehttp 6720 6129692672 "GET /lilypad/sheffield/th
 INFO 2025-09-09 20:59:26,608 basehttp 6720 6129692672 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
 INFO 2025-09-09 20:59:26,749 basehttp 6720 6129692672 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
 INFO 2025-09-09 20:59:26,752 basehttp 6720 6146519040 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
+INFO 2025-09-09 20:59:54,893 autoreload 7100 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-09 20:59:55,985 basehttp 7100 6192230400 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 5925
+WARNING 2025-09-09 20:59:56,009 log 7100 6192230400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-09 20:59:56,009 basehttp 7100 6192230400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2044
+INFO 2025-09-10 20:12:10,521 autoreload 8386 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:12:11,937 basehttp 8386 6126530560 "GET / HTTP/1.1" 200 5760
+INFO 2025-09-10 20:12:11,947 basehttp 8386 6126530560 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-10 20:12:11,952 basehttp 8386 6126530560 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-10 20:12:11,953 basehttp 8386 6143356928 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-10 20:12:11,982 basehttp 8386 6143356928 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-10 20:12:14,026 basehttp 8386 6143356928 "GET /accounts/login/ HTTP/1.1" 200 3811
+INFO 2025-09-10 20:12:14,061 basehttp 8386 6143356928 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-10 20:12:20,934 basehttp 8386 6143356928 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-10 20:12:20,945 basehttp 8386 6143356928 "GET /grids/ HTTP/1.1" 200 11519
+INFO 2025-09-10 20:12:22,674 basehttp 8386 6143356928 "GET /grids/181/ HTTP/1.1" 200 16982
+INFO 2025-09-10 20:12:22,691 basehttp 8386 6143356928 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-10 20:16:42,391 basehttp 8386 6126530560 "GET / HTTP/1.1" 200 5999
+INFO 2025-09-10 20:16:43,783 basehttp 8386 6126530560 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-09-10 20:16:43,911 basehttp 8386 6126530560 "GET /lilypad/ HTTP/1.1" 200 3676
+INFO 2025-09-10 20:16:46,783 basehttp 8386 6126530560 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6146
+INFO 2025-09-10 20:16:46,818 basehttp 8386 6126530560 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-10 20:16:46,821 basehttp 8386 6126530560 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-10 20:16:46,821 basehttp 8386 6144503808 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-10 20:16:50,995 basehttp 8386 6144503808 "GET /lilypad/sheffield/the-economics-society/qr/ HTTP/1.1" 200 4069
+INFO 2025-09-10 20:16:51,020 views 8386 6144503808 Generating QR code for URL: http://127.0.0.1:8000/lilypad/sheffield/the-economics-society/
+INFO 2025-09-10 20:16:51,036 views 8386 6144503808 QR code generated successfully
+INFO 2025-09-10 20:16:51,036 basehttp 8386 6144503808 "GET /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 200 599
+INFO 2025-09-10 20:16:57,095 basehttp 8386 6144503808 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6156
