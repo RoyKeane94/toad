@@ -26515,3 +26515,50 @@ INFO 2025-09-10 20:16:51,020 views 8386 6144503808 Generating QR code for URL: h
 INFO 2025-09-10 20:16:51,036 views 8386 6144503808 QR code generated successfully
 INFO 2025-09-10 20:16:51,036 basehttp 8386 6144503808 "GET /lilypad/sheffield/the-economics-society/qr-image/ HTTP/1.1" 200 599
 INFO 2025-09-10 20:16:57,095 basehttp 8386 6144503808 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6156
+INFO 2025-09-10 20:25:02,878 autoreload 9113 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:25:03,914 basehttp 9113 6204289024 "GET / HTTP/1.1" 200 5957
+WARNING 2025-09-10 20:25:10,422 log 9113 6204289024 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:25:10,422 basehttp 9113 6204289024 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2109
+INFO 2025-09-10 20:25:11,531 basehttp 9113 6204289024 "GET / HTTP/1.1" 200 5991
+WARNING 2025-09-10 20:25:11,555 log 9113 6204289024 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:25:11,555 basehttp 9113 6204289024 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2127
+INFO 2025-09-10 20:25:11,562 basehttp 9113 6204289024 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 304 0
+INFO 2025-09-10 20:25:15,105 basehttp 9113 6204289024 "GET /grids/ HTTP/1.1" 200 11505
+WARNING 2025-09-10 20:25:15,137 log 9113 6204289024 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:25:15,138 basehttp 9113 6204289024 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2082
+INFO 2025-09-10 20:25:16,277 basehttp 9113 6204289024 "GET /grids/181/ HTTP/1.1" 200 15187
+WARNING 2025-09-10 20:25:16,306 log 9113 6204289024 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:25:16,309 basehttp 9113 6204289024 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2096
+INFO 2025-09-10 20:25:16,311 basehttp 9113 6221115392 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-10 20:25:26,609 basehttp 9113 6221115392 "GET /grids/181/columns/create/ HTTP/1.1" 200 1039
+INFO 2025-09-10 20:28:24,665 autoreload 9260 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:28:28,017 basehttp 9260 6201356288 "GET /grids/181/ HTTP/1.1" 200 15208
+WARNING 2025-09-10 20:28:28,052 log 9260 6201356288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:28:28,053 basehttp 9260 6201356288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2043
+INFO 2025-09-10 20:29:19,784 autoreload 9376 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:29:24,457 basehttp 9376 6165196800 "GET /grids/181/ HTTP/1.1" 200 15303
+WARNING 2025-09-10 20:29:24,484 log 9376 6165196800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:29:24,485 basehttp 9376 6165196800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2060
+INFO 2025-09-10 20:29:52,888 autoreload 9487 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:29:55,678 basehttp 9487 6167048192 "GET /grids/181/ HTTP/1.1" 200 14478
+WARNING 2025-09-10 20:29:55,702 log 9487 6167048192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:29:55,702 basehttp 9487 6167048192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2070
+INFO 2025-09-10 20:31:52,741 basehttp 9487 6167048192 "GET /grids/181/ HTTP/1.1" 200 14560
+WARNING 2025-09-10 20:31:52,765 log 9487 6167048192 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:31:52,765 basehttp 9487 6167048192 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2119
+INFO 2025-09-10 20:32:19,876 autoreload 9812 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:32:22,893 basehttp 9812 6132592640 "GET /grids/181/ HTTP/1.1" 200 14530
+WARNING 2025-09-10 20:32:22,915 log 9812 6132592640 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:32:22,916 basehttp 9812 6132592640 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2130
+INFO 2025-09-10 20:32:35,491 basehttp 9812 6132592640 "GET /grids/181/ HTTP/1.1" 200 14490
+WARNING 2025-09-10 20:32:35,527 log 9812 6132592640 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-10 20:32:35,527 basehttp 9812 6183071744 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-09-10 20:32:35,529 basehttp 9812 6132592640 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2062
+INFO 2025-09-10 20:32:35,530 basehttp 9812 6166245376 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-10 20:32:35,531 basehttp 9812 6149419008 "GET /static/css/output.css HTTP/1.1" 200 85457
+INFO 2025-09-10 20:32:35,533 basehttp 9812 6199898112 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-10 20:32:35,534 basehttp 9812 6216724480 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-10 20:32:35,695 basehttp 9812 6216724480 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-10 20:34:23,733 basehttp 9812 6216724480 "GET /grids/181/ HTTP/1.1" 200 14533
+WARNING 2025-09-10 20:34:23,763 log 9812 6216724480 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:34:23,764 basehttp 9812 6216724480 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2125
