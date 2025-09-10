@@ -26598,3 +26598,47 @@ INFO 2025-09-10 20:41:42,874 basehttp 10211 6122909696 "POST /grids/181/clear-co
 INFO 2025-09-10 20:41:44,416 basehttp 10211 6122909696 "GET /grids/181/ HTTP/1.1" 200 15052
 WARNING 2025-09-10 20:41:44,438 log 10211 6122909696 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-09-10 20:41:44,438 basehttp 10211 6122909696 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2077
+INFO 2025-09-10 20:58:26,223 autoreload 11929 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-10 20:58:29,129 basehttp 11929 6191820800 "GET / HTTP/1.1" 200 6001
+INFO 2025-09-10 20:58:29,192 basehttp 11929 6191820800 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-10 20:58:30,643 basehttp 11929 6191820800 "GET /grids/ HTTP/1.1" 200 11462
+INFO 2025-09-10 20:58:31,914 basehttp 11929 6191820800 "GET /grids/181/ HTTP/1.1" 200 16813
+INFO 2025-09-10 20:58:31,928 basehttp 11929 6191820800 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+WARNING 2025-09-10 20:58:34,930 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:58:34,930 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
+INFO 2025-09-10 20:58:36,167 basehttp 11929 6191820800 "GET /grids/181/ HTTP/1.1" 200 15153
+WARNING 2025-09-10 20:58:36,193 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:58:36,194 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2117
+INFO 2025-09-10 20:58:56,237 basehttp 11929 6191820800 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 951
+WARNING 2025-09-10 20:58:56,284 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:58:56,284 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2050
+INFO 2025-09-10 20:58:56,285 basehttp 11929 6208647168 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-10 20:58:56,287 basehttp 11929 6208647168 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-10 20:59:01,983 basehttp 11929 6208647168 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+WARNING 2025-09-10 20:59:01,999 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:59:01,999 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2118
+INFO 2025-09-10 20:59:02,000 basehttp 11929 6208647168 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+WARNING 2025-09-10 20:59:02,008 log 11929 6208647168 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:59:02,008 basehttp 11929 6208647168 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2068
+INFO 2025-09-10 20:59:11,080 basehttp 11929 6208647168 "POST /grids/181/clear-completed/ HTTP/1.1" 200 61
+INFO 2025-09-10 20:59:12,628 basehttp 11929 6208647168 "GET /grids/181/ HTTP/1.1" 200 15181
+INFO 2025-09-10 20:59:12,648 basehttp 11929 6191820800 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-09-10 20:59:12,658 log 11929 6259126272 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 20:59:12,660 basehttp 11929 6259126272 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2085
+INFO 2025-09-10 20:59:12,660 basehttp 11929 6225473536 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-10 20:59:12,660 basehttp 11929 6208647168 "GET /static/css/output.css HTTP/1.1" 200 85457
+INFO 2025-09-10 20:59:12,662 basehttp 11929 6242299904 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-10 21:09:28,153 basehttp 11929 6191820800 "GET /grids/181/ HTTP/1.1" 200 15178
+WARNING 2025-09-10 21:09:28,180 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 21:09:28,180 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2100
+INFO 2025-09-10 21:09:31,524 basehttp 11929 6191820800 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 899
+INFO 2025-09-10 21:09:39,276 basehttp 11929 6191820800 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 920
+INFO 2025-09-10 21:09:40,533 basehttp 11929 6191820800 "POST /grids/181/archive/ HTTP/1.1" 302 0
+INFO 2025-09-10 21:09:40,551 basehttp 11929 6191820800 "GET /grids/ HTTP/1.1" 200 11423
+INFO 2025-09-10 21:09:44,742 basehttp 11929 6191820800 "POST /grids/181/restore/ HTTP/1.1" 302 0
+INFO 2025-09-10 21:09:44,752 basehttp 11929 6191820800 "GET /grids/ HTTP/1.1" 200 11507
+WARNING 2025-09-10 21:09:44,782 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 21:09:44,782 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2075
+INFO 2025-09-10 21:09:46,950 basehttp 11929 6191820800 "GET /grids/181/ HTTP/1.1" 200 15179
+WARNING 2025-09-10 21:09:46,978 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-10 21:09:46,978 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2101

@@ -235,11 +235,19 @@ main, #app {
                             </button>
                         </form>
                     {% else %}
-                        <a href="{% url 'pages:archive_project_confirm' pk=project.pk %}" 
-                           class="block w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer">
+                        <button type="button"
+                                class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                hx-get="{% url 'pages:archive_project_confirm' pk=project.pk %}"
+                                hx-target="#modal-content"
+                                hx-trigger="click throttle:500ms"
+                                hx-disabled-elt="this"
+                                hx-indicator="#modal-content"
+                                hx-swap="innerHTML"
+                                hx-headers='{"Cache-Control": "no-cache"}'
+                                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100'); closeGridActionsDropdown();">
                             <i class="fas fa-archive mr-2 text-[var(--clear-button-bg)]"></i>
                             Archive Grid
-                        </a>
+                        </button>
                     {% endif %}
                     
                     <!-- Save as Template -->
@@ -488,7 +496,7 @@ main, #app {
 </div>
 
 <!-- Clear Completed Modal -->
-<div id="clear-completed-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+<div id="clear-completed-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300" style="display: none;">
     <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="clear-completed-modal-content">
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
@@ -661,6 +669,7 @@ function toggleGridActionsDropdown() {
 function showClearCompletedModal() {
     const modal = document.getElementById('clear-completed-modal');
     if (modal) {
+        modal.style.display = 'flex';
         modal.classList.remove('opacity-0', 'invisible');
         const modalContent = modal.querySelector('div');
         if (modalContent) {
@@ -679,6 +688,10 @@ function hideClearCompletedModal() {
             modalContent.classList.add('scale-95');
             modalContent.classList.remove('scale-100');
         }
+        // Hide the modal after transition
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 300);
     }
 }
 
