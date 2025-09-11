@@ -39,6 +39,7 @@ class User(AbstractUser):
     TIER_CHOICES = [
         ('free', 'Free'),
         ('personal', 'Personal'),
+        ('personal_trial', 'Personal Trial'),
         ('pro', 'Pro'),
         ('beta', 'Beta'),
     ]
@@ -105,7 +106,7 @@ class User(AbstractUser):
         
         self.trial_started_at = timezone.now()
         self.trial_ends_at = timezone.now() + timedelta(days=days)
-        self.tier = 'personal'  # Give them Personal features during trial
+        self.tier = 'personal_trial'  # Give them Personal features during trial
         self.save()
     
     def is_account_locked(self):
