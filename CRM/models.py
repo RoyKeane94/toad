@@ -45,8 +45,6 @@ class SocietyUniversity(models.Model):
     def __str__(self):
         return self.name
 
-    
-
 class LeadFocus(models.Model):
     name = models.CharField(max_length=20)
     
@@ -59,6 +57,20 @@ class ContactMethod(models.Model):
     def __str__(self):
         return self.name
 
+class Lead(models.Model):
+    name = models.CharField(max_length=8)
+    society_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
+    toad_customer = models.BooleanField(default=False)
+    toad_customer_date = models.DateField(null=True, blank=True)
+    initial_message_sent = models.BooleanField(default=False)
+    initial_message_sent_date = models.DateField(null=True, blank=True)
+    lead_focus = models.ForeignKey(LeadFocus, on_delete=models.CASCADE)
+    contact_method = models.ForeignKey(ContactMethod, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name + " - " + self.society_university.name
+
 class SocietyLink(models.Model):
     name = models.CharField(max_length=100)
 
@@ -70,24 +82,10 @@ class SocietyLink(models.Model):
     )
     
     society_university = models.ForeignKey(SocietyUniversity, null=True, blank=True, on_delete=models.CASCADE)
+    lead = models.OneToOneField(Lead, on_delete=models.CASCADE, null=True, blank=True)
     
     def __str__(self):
         return self.name or f"SocietyLink-{self.id}" if self.id else "SocietyLink-New"
-
-class Lead(models.Model):
-    name = models.CharField(max_length=20)
-    society_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
-    toad_customer = models.BooleanField(default=False)
-    toad_customer_date = models.DateField(null=True, blank=True)
-    initial_message_sent = models.BooleanField(default=False)
-    initial_message_sent_date = models.DateField(null=True, blank=True)
-    lead_focus = models.ForeignKey(LeadFocus, on_delete=models.CASCADE)
-    contact_method = models.ForeignKey(ContactMethod, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
-    society_link = models.OneToOneField(SocietyLink, on_delete=models.CASCADE, null=True, blank=True)
-
-    def __str__(self):
-        return self.name + " - " + self.society_university.name
 
 class LeadMessage(models.Model):
     lead = models.ForeignKey(Lead, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)

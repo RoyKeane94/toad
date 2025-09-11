@@ -60,6 +60,30 @@
                     {% endif %}
                 </div>
                 
+                <!-- Lead -->
+                <div class="mb-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <label for="{{ form.lead.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)]">
+                            Lead
+                        </label>
+                        <a href="{% url 'crm:lead_create' %}" 
+                           class="text-xs text-[var(--primary-action-bg)] hover:underline">
+                            <i class="fas fa-plus mr-1"></i>Add Lead
+                        </a>
+                    </div>
+                    {{ form.lead }}
+                    {% if form.lead.errors %}
+                        <div class="mt-1 text-sm text-red-600">
+                            {% for error in form.lead.errors %}
+                                <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    <p class="mt-1 text-xs text-[var(--text-secondary)]">
+                        Associate this society link with a specific lead
+                    </p>
+                </div>
+                
                 <!-- Image Upload -->
                 <div class="mb-6">
                     <label for="{{ form.image.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">

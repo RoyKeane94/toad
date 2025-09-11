@@ -92,7 +92,7 @@ class SocietyUniversityForm(forms.ModelForm):
 class SocietyLinkForm(forms.ModelForm):
     class Meta:
         model = SocietyLink
-        fields = ['name', 'image', 'society_university']
+        fields = ['name', 'image', 'society_university', 'lead']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
@@ -104,6 +104,9 @@ class SocietyLinkForm(forms.ModelForm):
             }),
             'society_university': forms.Select(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent'
+            }),
+            'lead': forms.Select(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent'
             })
         }
     
@@ -112,5 +115,8 @@ class SocietyLinkForm(forms.ModelForm):
         # Make university field required
         self.fields['society_university'].required = True
         self.fields['society_university'].empty_label = "Select a university"
+        # Make lead field optional
+        self.fields['lead'].required = False
+        self.fields['lead'].empty_label = "Select a lead (optional)"
 
 
