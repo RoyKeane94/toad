@@ -46,19 +46,19 @@ class SocietyUniversity(models.Model):
         return self.name
 
 class LeadFocus(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
     
 class ContactMethod(models.Model):
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
 
 class Lead(models.Model):
-    name = models.CharField(max_length=8)
+    name = models.CharField(max_length=100)
     society_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     toad_customer = models.BooleanField(default=False)
     toad_customer_date = models.DateField(null=True, blank=True)
