@@ -45,6 +45,24 @@
                     {% endif %}
                 </div>
 
+                <!-- Society University Field -->
+                <div>
+                    <label for="{{ form.society_university.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        University
+                    </label>
+                    {{ form.society_university }}
+                    {% if form.society_university.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.society_university.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a university or <a href="{% url 'crm:society_university_create' %}" class="text-[var(--primary-action-bg)] hover:underline">create a new one</a>
+                    </p>
+                </div>
+
                 <!-- Lead Focus Field -->
                 <div>
                     <label for="{{ form.lead_focus.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
@@ -79,6 +97,77 @@
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">
                         Select a contact method or <a href="{% url 'crm:contact_method_create' %}" class="text-[var(--primary-action-bg)] hover:underline">create a new one</a>
                     </p>
+                </div>
+
+                <!-- Toad Customer Fields -->
+                <div class="border-t border-[var(--border-color)] pt-6">
+                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Customer Status</h3>
+                    
+                    <!-- Toad Customer Checkbox -->
+                    <div class="flex items-center mb-4">
+                        {{ form.toad_customer }}
+                        <label for="{{ form.toad_customer.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            Toad Customer
+                        </label>
+                        {% if form.toad_customer.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.toad_customer.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Toad Customer Date -->
+                    <div>
+                        <label for="{{ form.toad_customer_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Customer Since Date
+                        </label>
+                        {{ form.toad_customer_date }}
+                        {% if form.toad_customer_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.toad_customer_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Select the date when this lead became a Toad customer
+                        </p>
+                    </div>
+                    
+                    <!-- Initial Message Sent Checkbox -->
+                    <div class="flex items-center mb-4">
+                        {{ form.initial_message_sent }}
+                        <label for="{{ form.initial_message_sent.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            Initial Message Sent
+                        </label>
+                        {% if form.initial_message_sent.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_message_sent.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Initial Message Sent Date -->
+                    <div>
+                        <label for="{{ form.initial_message_sent_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Initial Message Sent Date
+                        </label>
+                        {{ form.initial_message_sent_date }}
+                        {% if form.initial_message_sent_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_message_sent_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Select the date when the initial message was sent to this lead
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Form Actions -->

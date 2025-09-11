@@ -26642,3 +26642,95 @@ WARNING 2025-09-10 21:09:44,782 basehttp 11929 6191820800 "GET /.well-known/apps
 INFO 2025-09-10 21:09:46,950 basehttp 11929 6191820800 "GET /grids/181/ HTTP/1.1" 200 15179
 WARNING 2025-09-10 21:09:46,978 log 11929 6191820800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-09-10 21:09:46,978 basehttp 11929 6191820800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2101
+INFO 2025-09-11 19:38:10,301 autoreload 13738 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:39:56,267 autoreload 13738 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 19:39:56,778 autoreload 13783 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:41:08,362 autoreload 14092 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:43:04,499 autoreload 14092 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 19:43:04,990 autoreload 14179 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:43:48,268 autoreload 14179 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-11 19:43:48,754 autoreload 14224 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:43:53,330 autoreload 14224 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-11 19:43:53,706 autoreload 14236 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:44:04,316 autoreload 14236 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-11 19:44:04,771 autoreload 14246 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:44:26,654 basehttp 14246 6124187648 "GET / HTTP/1.1" 200 5926
+INFO 2025-09-11 19:44:26,662 basehttp 14246 6124187648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-11 19:44:26,667 basehttp 14246 6124187648 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-11 19:44:26,670 basehttp 14246 6124187648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-11 19:44:26,693 basehttp 14246 6124187648 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+WARNING 2025-09-11 19:44:29,873 log 14246 6124187648 Not Found: /lilypad/society-links/14/public/
+WARNING 2025-09-11 19:44:29,874 basehttp 14246 6124187648 "GET /lilypad/society-links/14/public/ HTTP/1.1" 404 2310
+INFO 2025-09-11 19:44:35,192 basehttp 14246 6124187648 "GET /lilypad/ HTTP/1.1" 200 3613
+INFO 2025-09-11 19:44:37,942 basehttp 14246 6124187648 "GET /lilypad/leads/create/ HTTP/1.1" 200 3303
+INFO 2025-09-11 19:44:37,972 basehttp 14246 6124187648 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-11 19:44:52,969 basehttp 14246 6124187648 "POST /lilypad/leads/create/ HTTP/1.1" 302 0
+INFO 2025-09-11 19:44:52,983 basehttp 14246 6124187648 "GET /lilypad/leads/ HTTP/1.1" 200 3439
+INFO 2025-09-11 19:44:58,382 basehttp 14246 6124187648 "GET /lilypad/leads/1/ HTTP/1.1" 200 3270
+INFO 2025-09-11 19:45:00,100 basehttp 14246 6124187648 "GET /lilypad/leads/1/messages/create/ HTTP/1.1" 200 2964
+INFO 2025-09-11 19:45:13,411 basehttp 14246 6124187648 "POST /lilypad/leads/1/messages/create/ HTTP/1.1" 302 0
+INFO 2025-09-11 19:45:13,425 basehttp 14246 6124187648 "GET /lilypad/leads/1/ HTTP/1.1" 200 3305
+INFO 2025-09-11 19:45:17,432 basehttp 14246 6124187648 "GET /lilypad/leads/ HTTP/1.1" 200 3451
+INFO 2025-09-11 19:46:58,614 autoreload 14246 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 19:46:59,164 autoreload 14315 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:47:05,787 autoreload 14315 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 19:47:06,143 autoreload 14328 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:48:12,132 autoreload 14328 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 19:48:12,623 autoreload 14372 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 19:49:12,344 autoreload 14372 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 19:49:12,899 autoreload 14414 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:11:27,660 autoreload 14888 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:12:13,213 basehttp 14888 6126628864 "GET /lilypad/leads/ HTTP/1.1" 200 3430
+INFO 2025-09-11 20:12:31,531 basehttp 14888 6126628864 "GET /lilypad/leads/1/update/ HTTP/1.1" 200 3499
+INFO 2025-09-11 20:12:37,344 basehttp 14888 6126628864 "POST /lilypad/leads/1/update/ HTTP/1.1" 302 0
+INFO 2025-09-11 20:12:37,356 basehttp 14888 6126628864 "GET /lilypad/leads/ HTTP/1.1" 200 3515
+INFO 2025-09-11 20:12:46,457 basehttp 14888 6126628864 "GET /lilypad/leads/1/ HTTP/1.1" 200 3409
+INFO 2025-09-11 20:12:59,188 basehttp 14888 6126628864 "GET /lilypad/leads/1/messages/create/ HTTP/1.1" 200 2945
+INFO 2025-09-11 20:13:01,665 basehttp 14888 6126628864 "GET /lilypad/leads/1/messages/create/ HTTP/1.1" 200 2940
+INFO 2025-09-11 20:13:03,250 basehttp 14888 6126628864 "GET /lilypad/leads/1/update/ HTTP/1.1" 200 3504
+INFO 2025-09-11 20:13:45,726 autoreload 14888 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 20:13:46,351 autoreload 14940 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:13:56,045 autoreload 14940 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 20:13:56,477 autoreload 14976 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:15:03,409 autoreload 14976 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 20:15:03,898 autoreload 15037 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:15:21,760 autoreload 15037 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 20:15:22,100 autoreload 15052 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:15:35,352 autoreload 15052 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 20:15:35,702 autoreload 15066 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:16:22,138 autoreload 15066 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-11 20:16:22,658 autoreload 15084 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:16:41,486 autoreload 15084 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-11 20:16:41,912 autoreload 15101 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:17:25,816 autoreload 15474 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:17:29,342 basehttp 15474 6200733696 "GET /lilypad/leads/1/ HTTP/1.1" 200 3348
+INFO 2025-09-11 20:17:47,208 basehttp 15474 6200733696 "GET /lilypad/leads/1/ HTTP/1.1" 200 3368
+INFO 2025-09-11 20:17:53,028 basehttp 15474 6200733696 "GET /lilypad/leads/ HTTP/1.1" 200 3464
+INFO 2025-09-11 20:17:55,107 basehttp 15474 6200733696 "GET /lilypad/leads/ HTTP/1.1" 200 3471
+INFO 2025-09-11 20:17:56,835 basehttp 15474 6200733696 "GET /lilypad/leads/ HTTP/1.1" 200 3531
+INFO 2025-09-11 20:18:10,151 basehttp 15474 6200733696 "GET /lilypad/leads/1/ HTTP/1.1" 200 3300
+INFO 2025-09-11 20:18:36,040 autoreload 15474 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 20:18:36,562 autoreload 15554 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:18:39,118 basehttp 15554 6169636864 "GET /lilypad/leads/1/ HTTP/1.1" 200 3333
+INFO 2025-09-11 20:19:18,105 autoreload 15554 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-11 20:19:18,628 autoreload 15590 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:19:19,706 basehttp 15590 6166474752 "GET /lilypad/leads/1/ HTTP/1.1" 200 3310
+INFO 2025-09-11 20:37:55,157 basehttp 15590 6166474752 "GET /lilypad/leads/ HTTP/1.1" 200 3472
+INFO 2025-09-11 20:38:23,678 autoreload 15590 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-11 20:38:24,241 autoreload 15811 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:39:39,394 autoreload 15811 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 20:39:39,916 autoreload 15842 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:40:03,414 autoreload 16112 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:40:46,751 autoreload 16112 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-09-11 20:40:47,230 autoreload 16162 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-11 20:42:20,611 basehttp 16162 6130806784 "GET /lilypad/leads/ HTTP/1.1" 200 3516
+INFO 2025-09-11 20:43:08,390 basehttp 16162 6130806784 "GET /lilypad/leads/1/ HTTP/1.1" 200 3363
+INFO 2025-09-11 20:43:09,978 basehttp 16162 6130806784 "GET /lilypad/leads/1/update/ HTTP/1.1" 200 3587
+INFO 2025-09-11 20:43:13,663 basehttp 16162 6130806784 "GET /lilypad/leads/ HTTP/1.1" 200 3525
+INFO 2025-09-11 20:43:27,954 basehttp 16162 6130806784 "GET /lilypad/leads/1/ HTTP/1.1" 200 3308
+INFO 2025-09-11 20:43:29,478 basehttp 16162 6130806784 "GET /lilypad/leads/1/messages/create/ HTTP/1.1" 200 2952
+INFO 2025-09-11 20:43:31,245 basehttp 16162 6130806784 "GET /lilypad/leads/1/ HTTP/1.1" 200 3361
+INFO 2025-09-11 20:43:40,369 basehttp 16162 6130806784 "GET /lilypad/leads/ HTTP/1.1" 200 3516
+INFO 2025-09-11 20:44:28,502 basehttp 16162 6130806784 "GET /lilypad/leads/ HTTP/1.1" 200 3555
+INFO 2025-09-11 20:44:47,668 basehttp 16162 6130806784 "GET /lilypad/leads/ HTTP/1.1" 200 3604
+INFO 2025-09-11 20:45:06,355 basehttp 16162 6130806784 "GET /lilypad/leads/ HTTP/1.1" 200 3604

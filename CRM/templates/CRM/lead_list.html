@@ -6,24 +6,23 @@
 <div class="min-h-screen bg-[var(--bg-primary)]">
     <!-- Header -->
     <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center py-6">
+        <div class="max-w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-4 py-6">
+                
                 <div>
                     <h1 class="text-3xl font-bold text-[var(--text-primary)]">Leads</h1>
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage your leads and prospects</p>
                 </div>
-                <div class="flex items-center space-x-4">
-                    <a href="{% url 'crm:lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                        <i class="fas fa-plus mr-2"></i>
-                        Add Lead
-                    </a>
-                </div>
+                <a href="{% url 'crm:lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Add Lead
+                </a>
             </div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Search and Filters -->
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
             <form method="get" class="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -66,8 +65,11 @@
                     <thead class="bg-[var(--grid-header-bg)]">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">University</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Focus</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Customer</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Initial Msg</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Created</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
@@ -80,11 +82,58 @@
                                 <a href="{% url 'crm:lead_detail' lead.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ lead.name }}</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.society_university %}
+                                    {{ lead.society_university.name }}
+                                {% else %}
+                                    <span class="text-[var(--text-secondary)] italic">No university</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--task-bg)] text-[var(--text-primary)]">
                                     {{ lead.lead_focus.name }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.contact_method.name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.toad_customer %}
+                                    <div class="flex flex-col">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            <i class="fas fa-check mr-1"></i>
+                                            Customer
+                                        </span>
+                                        {% if lead.toad_customer_date %}
+                                            <span class="text-xs text-[var(--text-secondary)] mt-1">
+                                                Since {{ lead.toad_customer_date|date:"M d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Lead
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.initial_message_sent %}
+                                    <div class="flex flex-col">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                            <i class="fas fa-paper-plane mr-1"></i>
+                                            Sent
+                                        </span>
+                                        {% if lead.initial_message_sent_date %}
+                                            <span class="text-xs text-[var(--text-secondary)] mt-1">
+                                                {{ lead.initial_message_sent_date|date:"M d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        Pending
+                                    </span>
+                                {% endif %}
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {% if lead.messages.count > 0 %}bg-[var(--primary-action-bg)] text-white{% else %}bg-[var(--text-secondary)] text-white{% endif %}">
                                     {{ lead.messages.count }}
