@@ -317,87 +317,6 @@ main, #app {
 <!-- Task Grid -->
 {% include 'pages/grid/partials/mobile_grid_content.html' %}
 
-<!-- Save Template Modal -->
-<div id="save-template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
-    <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
-        <!-- Modal Header -->
-        <div class="flex items-center p-6 border-b border-[var(--border-color)]">
-            <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-save text-white"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Save as Template</h3>
-                    <p class="text-sm text-[var(--text-secondary)]">Save your current grid structure as a reusable template</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Modal Body -->
-        <div class="p-6">
-            <form id="save-template-form" method="post" action="{% url 'pages:save_as_template' pk=project.pk %}">
-                {% csrf_token %}
-                
-                <!-- Template Name Field -->
-                <div class="mb-6">
-                    <label for="template_name" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Template Name</label>
-                    <input type="text" 
-                           id="template_name" 
-                           name="template_name" 
-                           required
-                           class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)] text-[var(--text-primary)]"
-                           placeholder="Enter template name">
-                </div>
-                
-                <!-- Template Options -->
-                <div class="space-y-4">
-                    <!-- Option 1: Save with example tasks -->
-                    <button type="button" id="with-tasks-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--tertiary-action-bg)] transition-all duration-200 group cursor-pointer">
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
-                                <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full transition-all duration-200 flex items-center justify-center">
-                                    <div class="w-3 h-3 bg-[var(--tertiary-action-bg)] rounded-full opacity-0 transition-opacity duration-200"></div>
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--tertiary-action-bg)] transition-colors duration-200 mb-1">Save with example tasks</h4>
-                                <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Include all current tasks as examples to show how to use the template effectively.</p>
-                            </div>
-                        </div>
-                    </button>
-                    
-                    <!-- Option 2: Save with clean structure -->
-                    <button type="button" id="structure-only-btn" class="w-full text-left p-4 border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] hover:border-[var(--tertiary-action-bg)] transition-all duration-200 group cursor-pointer">
-                        <div class="flex items-center justify-start">
-                            <div class="flex-shrink-0 w-5 h-5 mt-0.5 mr-3">
-                                <div class="w-5 h-5 border-2 border-[var(--border-color)] rounded-full transition-all duration-200 flex items-center justify-center">
-                                    <div class="w-3 h-3 bg-[var(--tertiary-action-bg)] rounded-full opacity-0 transition-opacity duration-200"></div>
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <h4 class="text-sm font-medium text-[var(--text-primary)] group-hover:text-[var(--tertiary-action-bg)] transition-colors duration-200 mb-1">Save with a clean structure</h4>
-                                <p class="text-sm text-[var(--text-secondary)] group-hover:text-[var(--text-primary)] transition-colors duration-200">Save just the rows and columns structure, ready for new tasks.</p>
-                            </div>
-                        </div>
-                    </button>
-                </div>
-                
-                <!-- Hidden input for template style -->
-                <input type="hidden" id="template_style" name="template_style" value="structure_only">
-            </form>
-        </div>
-        
-        <!-- Modal Footer -->
-        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
-            <button onclick="hideSaveTemplateModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
-                <i class="fas fa-times mr-2"></i>Cancel
-            </button>
-            <button type="submit" form="save-template-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                <i class="fas fa-save mr-1"></i>Save Template
-            </button>
-        </div>
-    </div>
-</div>
 
 <!-- Row Deletion Modal -->
 <div id="delete-row-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -727,39 +646,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Save Template Modal functionality
-    const withTasksBtn = document.getElementById('with-tasks-btn');
-    const structureOnlyBtn = document.getElementById('structure-only-btn');
-    const templateStyleInput = document.getElementById('template_style');
-    
-    if (withTasksBtn && structureOnlyBtn && templateStyleInput) {
-        // Set initial state to "Save with clean structure"
-        structureOnlyBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
-        
+    // Save Template Modal functionality (using event delegation for dynamically loaded content)
+    document.addEventListener('click', function(e) {
         // Handle "Save with example tasks" selection
-        withTasksBtn.addEventListener('click', function() {
-            // Update visual state - just show the inner circle
-            withTasksBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+        if (e.target && e.target.closest('#with-tasks-btn')) {
+            const withTasksBtn = e.target.closest('#with-tasks-btn');
+            const structureOnlyBtn = document.getElementById('structure-only-btn');
+            const templateStyleInput = document.getElementById('template_style');
             
-            // Reset other button
-            structureOnlyBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
-            
-            // Set form value
-            templateStyleInput.value = 'with_tasks';
-        });
+            if (structureOnlyBtn && templateStyleInput) {
+                // Update visual state - just show the inner circle
+                withTasksBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+                
+                // Reset other button
+                structureOnlyBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
+                
+                // Set form value
+                templateStyleInput.value = 'with_tasks';
+            }
+        }
         
         // Handle "Save with clean structure" selection
-        structureOnlyBtn.addEventListener('click', function() {
-            // Update visual state - just show the inner circle
-            structureOnlyBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+        if (e.target && e.target.closest('#structure-only-btn')) {
+            const structureOnlyBtn = e.target.closest('#structure-only-btn');
+            const withTasksBtn = document.getElementById('with-tasks-btn');
+            const templateStyleInput = document.getElementById('template_style');
             
-            // Reset other button
-            withTasksBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
+            if (withTasksBtn && templateStyleInput) {
+                // Update visual state - just show the inner circle
+                structureOnlyBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+                
+                // Reset other button
+                withTasksBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
+                
+                // Set form value
+                templateStyleInput.value = 'structure_only';
+            }
+        }
+    });
+    
+    // Initialize Save Template modal when content is loaded
+    document.addEventListener('htmx:afterSwap', function(e) {
+        if (e.detail.target && e.detail.target.id === 'modal-content') {
+            const withTasksBtn = document.getElementById('with-tasks-btn');
+            const structureOnlyBtn = document.getElementById('structure-only-btn');
+            const templateStyleInput = document.getElementById('template_style');
             
-            // Set form value
-            templateStyleInput.value = 'structure_only';
-        });
-    }
+            if (withTasksBtn && structureOnlyBtn && templateStyleInput) {
+                // Set initial state to "Save with clean structure"
+                structureOnlyBtn.querySelector('.w-3.h-3').classList.remove('opacity-0');
+                withTasksBtn.querySelector('.w-3.h-3').classList.add('opacity-0');
+                templateStyleInput.value = 'structure_only';
+            }
+        }
+    });
     
     // Clear Completed modal buttons
     const closeClearCompletedModal = document.getElementById('close-clear-completed-modal');
@@ -907,6 +847,31 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Cancel button
         if (e.target && e.target.id === 'cancel-clear-completed') {
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'invisible');
+                const modalContent = modal.querySelector('div');
+                if (modalContent) {
+                    modalContent.classList.add('scale-95');
+                    modalContent.classList.remove('scale-100');
+                }
+            }
+        }
+        
+        // Save Template modal close buttons
+        if (e.target && e.target.id === 'close-save-template-modal') {
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'invisible');
+                const modalContent = modal.querySelector('div');
+                if (modalContent) {
+                    modalContent.classList.add('scale-95');
+                    modalContent.classList.remove('scale-100');
+                }
+            }
+        }
+        
+        if (e.target && e.target.id === 'cancel-save-template') {
             const modal = document.getElementById('modal');
             if (modal) {
                 modal.classList.add('opacity-0', 'invisible');
@@ -1085,17 +1050,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-function hideSaveTemplateModal() {
-    const modal = document.getElementById('save-template-modal');
-    if (modal) {
-        modal.classList.add('opacity-0', 'invisible');
-        const modalContent = modal.querySelector('div');
-        if (modalContent) {
-            modalContent.classList.add('scale-95');
-            modalContent.classList.remove('scale-100');
-        }
-    }
-}
 
 // Button carousel scrolling function
 function scrollButtonCarousel(direction) {

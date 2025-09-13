@@ -27446,3 +27446,75 @@ INFO 2025-09-13 12:19:01,420 basehttp 36159 6195572736 "POST /grids/181/clear-co
 INFO 2025-09-13 12:19:02,972 basehttp 36159 6195572736 "GET /grids/181/ HTTP/1.1" 200 15538
 WARNING 2025-09-13 12:19:02,997 log 36159 6195572736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-09-13 12:19:02,998 basehttp 36159 6195572736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2094
+INFO 2025-09-13 12:19:27,566 autoreload 36604 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:19:28,682 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 16974
+INFO 2025-09-13 12:19:28,827 basehttp 36604 6167080960 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-13 12:19:31,564 basehttp 36604 6167080960 "POST /tasks/2012/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-13 12:19:33,362 basehttp 36604 6167080960 "POST /grids/181/clear-completed/ HTTP/1.1" 200 71
+INFO 2025-09-13 12:19:34,906 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 16772
+WARNING 2025-09-13 12:19:38,572 log 36604 6167080960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:19:38,572 basehttp 36604 6167080960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2052
+INFO 2025-09-13 12:19:39,612 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 15296
+WARNING 2025-09-13 12:19:39,636 log 36604 6167080960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:19:39,636 basehttp 36604 6167080960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2106
+INFO 2025-09-13 12:21:03,789 basehttp 36604 6167080960 "GET /grids/181/save-template/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:21:03,820 basehttp 36604 6167080960 "GET /grids/ HTTP/1.1" 200 11467
+INFO 2025-09-13 12:21:12,390 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 16803
+INFO 2025-09-13 12:21:12,406 basehttp 36604 6167080960 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 12:21:12,406 basehttp 36604 6183907328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 12:21:12,406 basehttp 36604 6200733696 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:23:27,025 log 36604 6167080960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:23:27,025 basehttp 36604 6167080960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2044
+INFO 2025-09-13 12:23:28,605 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 15304
+INFO 2025-09-13 12:23:28,623 basehttp 36604 6183907328 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:23:28,633 log 36604 6167080960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:23:28,634 basehttp 36604 6167080960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2089
+INFO 2025-09-13 12:23:30,865 basehttp 36604 6167080960 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1008
+INFO 2025-09-13 12:23:33,812 basehttp 36604 6167080960 "GET /grids/181/save-template/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:23:33,863 basehttp 36604 6167080960 "GET /grids/ HTTP/1.1" 200 11501
+INFO 2025-09-13 12:23:54,213 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 15291
+INFO 2025-09-13 12:23:54,238 basehttp 36604 6200733696 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-13 12:23:54,244 basehttp 36604 6183907328 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+WARNING 2025-09-13 12:23:54,251 log 36604 6251212800 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:23:54,252 basehttp 36604 6251212800 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2069
+INFO 2025-09-13 12:23:54,253 basehttp 36604 6167080960 "GET /static/css/output.css HTTP/1.1" 200 85353
+INFO 2025-09-13 12:23:54,254 basehttp 36604 6217560064 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-13 12:23:54,256 basehttp 36604 6234386432 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-13 12:23:54,405 basehttp 36604 6234386432 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-13 12:23:55,990 basehttp 36604 6234386432 "GET /grids/181/save-template/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:23:56,006 basehttp 36604 6234386432 "GET /grids/ HTTP/1.1" 200 11543
+INFO 2025-09-13 12:24:36,311 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 15294
+WARNING 2025-09-13 12:24:36,342 log 36604 6167080960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:24:36,343 basehttp 36604 6167080960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2134
+INFO 2025-09-13 12:26:18,093 basehttp 36604 6167080960 "GET /grids/181/ HTTP/1.1" 200 14658
+INFO 2025-09-13 12:26:18,106 basehttp 36604 6167080960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:26:18,120 log 36604 6167080960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:26:18,121 basehttp 36604 6167080960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2131
+INFO 2025-09-13 12:26:20,294 basehttp 36604 6167080960 "GET /grids/181/save-template/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:26:20,315 basehttp 36604 6167080960 "GET /grids/ HTTP/1.1" 200 11472
+INFO 2025-09-13 12:27:14,057 autoreload 36604 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 12:27:14,643 autoreload 36837 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:28:05,114 autoreload 36837 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 12:28:05,575 autoreload 36947 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:28:25,028 basehttp 36947 6170210304 "GET /grids/181/ HTTP/1.1" 200 14780
+INFO 2025-09-13 12:28:25,063 basehttp 36947 6187036672 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-13 12:28:25,064 log 36947 6170210304 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:28:25,065 basehttp 36947 6170210304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2086
+INFO 2025-09-13 12:28:27,234 basehttp 36947 6170210304 "GET /grids/181/save-template/ HTTP/1.1" 200 1378
+INFO 2025-09-13 12:28:34,107 project_views_functions 36947 6170210304 User None saved project as template: Tester: Tom's Job Application Tracker
+INFO 2025-09-13 12:28:34,108 basehttp 36947 6170210304 "POST /grids/181/save-template/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:28:34,125 basehttp 36947 6170210304 "GET /grids/ HTTP/1.1" 200 11928
+INFO 2025-09-13 12:28:34,155 basehttp 36947 6187036672 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:28:34,163 log 36947 6170210304 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:28:34,163 basehttp 36947 6170210304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2045
+INFO 2025-09-13 12:28:37,066 project_views 36947 6170210304 Creating project from template with 0 template tasks
+INFO 2025-09-13 12:28:37,067 project_views 36947 6170210304 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-09-13 12:28:37,068 project_views 36947 6170210304 === END DEBUG ===
+INFO 2025-09-13 12:28:37,069 project_views 36947 6170210304 Project created with 0 tasks out of 0 template tasks
+INFO 2025-09-13 12:28:37,069 project_views_functions 36947 6170210304 User None created project from template: Tester: Tester
+INFO 2025-09-13 12:28:37,070 basehttp 36947 6170210304 "POST /templates/4/use/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:28:37,089 basehttp 36947 6170210304 "GET /grids/185/ HTTP/1.1" 200 11955
+WARNING 2025-09-13 12:28:37,121 log 36947 6170210304 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:28:37,122 basehttp 36947 6170210304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
+INFO 2025-09-13 12:28:44,266 autoreload 36947 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 12:28:44,770 autoreload 36980 8549129984 Watching for file changes with StatReloader

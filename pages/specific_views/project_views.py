@@ -1044,9 +1044,9 @@ def create_from_template_view(request, template_type):
 @login_required
 def save_as_template_view(request, pk):
     """Save the current project as a personal template"""
+    project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
+    
     if request.method == 'POST':
-        project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
-        
         template_name = request.POST.get('template_name', '').strip()
         template_style = request.POST.get('template_style', '')
         
@@ -1140,7 +1140,10 @@ def save_as_template_view(request, pk):
         
         return redirect('pages:project_list')
     
-    return redirect('pages:project_list')
+    # For GET requests, render the modal template
+    return render(request, 'pages/grid/actions_in_page/save_as_template_modal.html', {
+        'project': project
+    })
 
 
 @login_required
