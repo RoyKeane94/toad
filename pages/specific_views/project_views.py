@@ -89,7 +89,7 @@ def project_list_view(request):
         'ungrouped_projects': ungrouped_projects,
         'personal_templates': personal_templates,
         'archived_projects': archived_projects,
-        'user_tier': getattr(request.user, 'user_tier', 'free'),
+        'user_tier': getattr(request.user, 'tier', 'free'),
     }
     
     return render(request, 'pages/grid/overview/project_list.html', context)
@@ -247,7 +247,7 @@ def project_grid_view(request, pk):
             'columns': [c for c in columns if not c.is_category_column],
             'tasks_by_row_col': tasks_by_row_col,
             'quick_task_form': QuickTaskForm(),
-            'user_tier': getattr(request.user, 'user_tier', 'free'),
+            'user_tier': getattr(request.user, 'tier', 'free'),
         }
         
         template_name = 'pages/grid/project_grid_mobile.html'
@@ -266,7 +266,7 @@ def project_grid_view(request, pk):
             'row_min_heights': row_min_heights,
             'quick_task_form': QuickTaskForm(),
             'total_data_columns': len(data_column_headers),
-            'user_tier': getattr(request.user, 'user_tier', 'free'),
+            'user_tier': getattr(request.user, 'tier', 'free'),
         }
         template_name = 'pages/grid/project_grid.html'
         if request.headers.get('HX-Request'):

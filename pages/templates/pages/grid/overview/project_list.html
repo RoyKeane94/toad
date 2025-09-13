@@ -445,7 +445,12 @@
                                     </div>
                                 </div>
                                 
-                                {% if user_tier == 'personal' %}
+                                {% if user_tier == 'free' %}
+                                <a href="{% url 'pages:upgrade_required' %}" class="block w-full text-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] py-3 px-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
+                                    <i class="fas fa-copy mr-2"></i>
+                                    Use Template
+                                </a>
+                                {% else %}
                                 <form method="post" action="{% url 'pages:use_template' pk=template.pk %}" class="inline">
                                     {% csrf_token %}
                                     <button type="submit" class="block w-full text-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] py-3 px-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
@@ -453,11 +458,6 @@
                                         Use Template
                                     </button>
                                 </form>
-                                {% else %}
-                                <a href="{% url 'pages:upgrade_required' %}" class="block w-full text-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] py-3 px-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
-                                    <i class="fas fa-copy mr-2"></i>
-                                    Use Template
-                                </a>
                                 {% endif %}
                             </div>
                         </div>
@@ -484,7 +484,13 @@
                                         {{ project.name }}
                                     </h3>
                                     <div class="flex space-x-2 flex-shrink-0">
-                                        {% if user_tier == 'personal' %}
+                                        {% if user_tier == 'free' %}
+                                        <a href="{% url 'pages:upgrade_required' %}"
+                                           class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                           title="Restore project">
+                                            <i class="fas fa-undo text-sm"></i>
+                                        </a>
+                                        {% else %}
                                         <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="inline">
                                             {% csrf_token %}
                                             <button type="submit"
@@ -493,12 +499,6 @@
                                                 <i class="fas fa-undo text-sm"></i>
                                             </button>
                                         </form>
-                                        {% else %}
-                                        <a href="{% url 'pages:upgrade_required' %}"
-                                           class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
-                                           title="Restore project">
-                                            <i class="fas fa-undo text-sm"></i>
-                                        </a>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -514,14 +514,14 @@
                                     </div>
                                 </div>
                                 
-                                {% if user_tier == 'personal' %}
-                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                {% if user_tier == 'free' %}
+                                <a href="{% url 'pages:upgrade_required' %}" 
                                    class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm opacity-75 hover:opacity-100">
                                     <i class="fas fa-th-large mr-2"></i>
                                     View Grid
                                 </a>
                                 {% else %}
-                                <a href="{% url 'pages:upgrade_required' %}" 
+                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
                                    class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm opacity-75 hover:opacity-100">
                                     <i class="fas fa-th-large mr-2"></i>
                                     View Grid

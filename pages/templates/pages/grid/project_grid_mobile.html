@@ -268,6 +268,14 @@ main, #app {
                 
                 <!-- Archive Grid -->
                 {% if project.is_archived %}
+                    {% if user_tier == 'free' %}
+                    <a href="{% url 'pages:upgrade_required' %}"
+                       class="w-full px-4 py-2 text-left text-sm text-[var(--primary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                       onclick="closeGridActionsDropdown();">
+                        <i class="fas fa-undo mr-2 text-[var(--primary-action-bg)]"></i>
+                        Restore Grid
+                    </a>
+                    {% else %}
                     <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="w-full">
                         {% csrf_token %}
                         <button type="submit" 
@@ -277,7 +285,16 @@ main, #app {
                             Restore Grid
                         </button>
                     </form>
+                    {% endif %}
                 {% else %}
+                    {% if user_tier == 'free' %}
+                    <a href="{% url 'pages:upgrade_required' %}"
+                       class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                       onclick="closeGridActionsDropdown();">
+                        <i class="fas fa-archive mr-2 text-[var(--clear-button-bg)]"></i>
+                        Archive Grid
+                    </a>
+                    {% else %}
                     <button type="button"
                             class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
                             hx-get="{% url 'pages:archive_project_confirm' pk=project.pk %}"
@@ -291,9 +308,18 @@ main, #app {
                         <i class="fas fa-archive mr-2 text-[var(--clear-button-bg)]"></i>
                         Archive Grid
                     </button>
+                    {% endif %}
                 {% endif %}
                 
                    <!-- Save as Template -->
+                   {% if user_tier == 'free' %}
+                   <a href="{% url 'pages:upgrade_required' %}"
+                      class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                      onclick="closeGridActionsDropdown();">
+                       <i class="fas fa-save mr-2 text-[var(--tertiary-action-bg)]"></i>
+                       Save as Template
+                   </a>
+                   {% else %}
                    <button type="button"
                            class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
                            hx-get="{% url 'pages:save_as_template' pk=project.pk %}"
@@ -307,6 +333,7 @@ main, #app {
                        <i class="fas fa-save mr-2 text-[var(--tertiary-action-bg)]"></i>
                        Save as Template
                    </button>
+                   {% endif %}
                    
                    <!-- Divider -->
                    <div class="border-t border-[var(--border-color)] my-2"></div>

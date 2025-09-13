@@ -27669,3 +27669,133 @@ INFO 2025-09-13 13:53:03,616 basehttp 40133 6196637696 "GET /upgrade-required/ H
 INFO 2025-09-13 13:53:05,211 basehttp 40133 6196637696 "GET /upgrade-required/ HTTP/1.1" 200 3413
 INFO 2025-09-13 13:53:11,184 autoreload 40133 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
 INFO 2025-09-13 13:53:11,663 autoreload 40159 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:57:19,929 autoreload 40492 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:57:21,736 basehttp 40492 6191083520 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-13 13:57:21,777 basehttp 40492 6207909888 "GET /admin/ HTTP/1.1" 200 2800
+INFO 2025-09-13 13:57:21,798 basehttp 40492 6191083520 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-13 13:57:21,798 basehttp 40492 6241562624 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-13 13:57:21,799 basehttp 40492 6275215360 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-13 13:57:21,799 basehttp 40492 6207909888 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-13 13:57:21,800 basehttp 40492 6224736256 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-13 13:57:21,800 basehttp 40492 6258388992 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-13 13:57:21,801 basehttp 40492 6258388992 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-13 13:57:21,811 basehttp 40492 6258388992 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-13 13:57:21,811 basehttp 40492 6207909888 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-13 13:57:21,811 basehttp 40492 6275215360 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-13 13:57:21,840 basehttp 40492 6275215360 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-13 13:57:24,738 basehttp 40492 6191083520 "GET /admin/accounts/user/ HTTP/1.1" 200 3277
+INFO 2025-09-13 13:57:24,749 basehttp 40492 6191083520 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-13 13:57:24,750 basehttp 40492 6241562624 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-13 13:57:24,751 basehttp 40492 6258388992 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-13 13:57:24,752 basehttp 40492 6275215360 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-13 13:57:24,754 basehttp 40492 6241562624 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-13 13:57:24,754 basehttp 40492 6191083520 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-13 13:57:24,755 basehttp 40492 6258388992 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-13 13:57:24,757 basehttp 40492 6207909888 "GET /admin/jsi18n/ HTTP/1.1" 200 1053
+INFO 2025-09-13 13:57:24,759 basehttp 40492 6224736256 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-13 13:57:24,761 basehttp 40492 6275215360 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-13 13:57:24,762 basehttp 40492 6224736256 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-13 13:57:24,777 basehttp 40492 6224736256 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-13 13:57:26,182 basehttp 40492 6224736256 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6355
+INFO 2025-09-13 13:57:26,200 basehttp 40492 6224736256 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-09-13 13:57:26,201 basehttp 40492 6258388992 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-13 13:57:26,201 basehttp 40492 6241562624 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-09-13 13:57:26,202 basehttp 40492 6207909888 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-09-13 13:57:26,202 basehttp 40492 6241562624 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-09-13 13:57:26,205 basehttp 40492 6275215360 "GET /admin/jsi18n/ HTTP/1.1" 200 996
+INFO 2025-09-13 13:57:26,210 basehttp 40492 6275215360 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-13 13:57:26,210 basehttp 40492 6241562624 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-09-13 13:57:26,243 basehttp 40492 6241562624 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-09-13 13:57:26,244 basehttp 40492 6275215360 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-09-13 13:57:33,841 basehttp 40492 6191083520 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-09-13 13:57:33,859 basehttp 40492 6191083520 "GET /admin/accounts/user/ HTTP/1.1" 200 3371
+INFO 2025-09-13 13:57:33,869 basehttp 40492 6191083520 "GET /admin/jsi18n/ HTTP/1.1" 200 1026
+INFO 2025-09-13 13:57:33,876 basehttp 40492 6191083520 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-13 13:57:35,264 basehttp 40492 6191083520 "GET / HTTP/1.1" 200 5932
+INFO 2025-09-13 13:57:35,318 basehttp 40492 6191083520 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:57:35,324 basehttp 40492 6191083520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 13:57:35,356 basehttp 40492 6191083520 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-13 13:57:36,404 basehttp 40492 6191083520 "GET /grids/ HTTP/1.1" 200 11836
+INFO 2025-09-13 13:57:38,181 basehttp 40492 6191083520 "GET /upgrade-required/ HTTP/1.1" 200 3423
+INFO 2025-09-13 13:57:42,580 basehttp 40492 6191083520 "GET /accounts/settings/ HTTP/1.1" 200 3708
+INFO 2025-09-13 13:58:13,266 basehttp 40492 6191083520 "GET /grids/ HTTP/1.1" 200 11904
+INFO 2025-09-13 13:58:14,327 basehttp 40492 6191083520 "GET /grids/181/ HTTP/1.1" 200 16757
+INFO 2025-09-13 13:58:14,336 basehttp 40492 6191083520 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 13:58:16,909 basehttp 40492 6191083520 "GET /upgrade-required/ HTTP/1.1" 200 3441
+INFO 2025-09-13 13:59:27,418 basehttp 40492 6191083520 "GET /grids/181/ HTTP/1.1" 200 16759
+INFO 2025-09-13 13:59:29,904 basehttp 40492 6191083520 "GET /upgrade-required/ HTTP/1.1" 200 3412
+INFO 2025-09-13 13:59:57,087 autoreload 40665 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 14:00:01,345 basehttp 40665 6171258880 "GET /grids/181/ HTTP/1.1" 200 16738
+INFO 2025-09-13 14:00:01,360 basehttp 40665 6188085248 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 14:00:01,360 basehttp 40665 6171258880 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 14:00:03,259 basehttp 40665 6171258880 "GET /upgrade-required/ HTTP/1.1" 200 3481
+INFO 2025-09-13 14:00:05,932 basehttp 40665 6171258880 "GET /upgrade-required/ HTTP/1.1" 200 3465
+INFO 2025-09-13 14:01:10,582 basehttp 40665 6171258880 "GET /accounts/settings/ HTTP/1.1" 200 3705
+INFO 2025-09-13 14:01:15,125 basehttp 40665 6171258880 "GET /grids/ HTTP/1.1" 200 11889
+INFO 2025-09-13 14:01:16,606 basehttp 40665 6171258880 "GET /upgrade-required/ HTTP/1.1" 200 3455
+INFO 2025-09-13 14:01:26,637 autoreload 40813 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 14:01:28,894 basehttp 40813 6201274368 "GET /grids/ HTTP/1.1" 200 11911
+INFO 2025-09-13 14:01:29,995 basehttp 40813 6201274368 "GET /upgrade-required/ HTTP/1.1" 200 3423
+INFO 2025-09-13 14:02:12,021 basehttp 40813 6201274368 "GET /grids/ HTTP/1.1" 200 11932
+INFO 2025-09-13 14:02:21,695 autoreload 40813 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 14:02:22,178 autoreload 40869 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 14:02:31,833 autoreload 40869 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 14:02:32,334 autoreload 40891 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 14:02:43,520 basehttp 40891 6126186496 "GET /grids/ HTTP/1.1" 200 11971
+INFO 2025-09-13 14:02:43,533 basehttp 40891 6143012864 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 14:02:43,534 basehttp 40891 6126186496 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 14:02:44,930 project_views 40891 6126186496 Creating project from template with 0 template tasks
+INFO 2025-09-13 14:02:44,930 project_views 40891 6126186496 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-09-13 14:02:44,932 project_views 40891 6126186496 === END DEBUG ===
+INFO 2025-09-13 14:02:44,932 project_views 40891 6126186496 Project created with 0 tasks out of 0 template tasks
+INFO 2025-09-13 14:02:44,932 project_views_functions 40891 6126186496 User None created project from template: Tester: Tester
+INFO 2025-09-13 14:02:44,933 basehttp 40891 6126186496 "POST /templates/4/use/ HTTP/1.1" 302 0
+INFO 2025-09-13 14:02:44,957 basehttp 40891 6126186496 "GET /grids/186/ HTTP/1.1" 200 14249
+INFO 2025-09-13 14:02:44,968 basehttp 40891 6126186496 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 14:02:48,427 basehttp 40891 6126186496 "GET /grids/186/archive/confirm/ HTTP/1.1" 200 921
+INFO 2025-09-13 14:02:53,224 basehttp 40891 6126186496 "GET /grids/186/delete/ HTTP/1.1" 200 1117
+INFO 2025-09-13 14:03:04,106 basehttp 40891 6126186496 "GET /grids/174/ HTTP/1.1" 200 18120
+INFO 2025-09-13 14:03:06,179 basehttp 40891 6126186496 "POST /grids/174/restore/ HTTP/1.1" 302 0
+INFO 2025-09-13 14:03:06,197 basehttp 40891 6126186496 "GET /grids/ HTTP/1.1" 200 11967
+INFO 2025-09-13 14:03:13,642 basehttp 40891 6126186496 "GET / HTTP/1.1" 200 5987
+INFO 2025-09-13 14:03:15,761 basehttp 40891 6126186496 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-13 14:03:15,795 basehttp 40891 6143012864 "GET /admin/ HTTP/1.1" 200 2877
+INFO 2025-09-13 14:03:18,894 basehttp 40891 6143012864 "GET / HTTP/1.1" 200 5963
+INFO 2025-09-13 14:03:22,052 basehttp 40891 6126186496 "GET /grids/ HTTP/1.1" 200 11956
+INFO 2025-09-13 14:03:23,281 basehttp 40891 6126186496 "GET /grids/186/ HTTP/1.1" 200 14295
+WARNING 2025-09-13 14:03:26,856 log 40891 6126186496 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 14:03:26,857 basehttp 40891 6126186496 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2143
+INFO 2025-09-13 14:03:28,195 basehttp 40891 6126186496 "GET /grids/186/ HTTP/1.1" 200 12087
+WARNING 2025-09-13 14:03:28,221 log 40891 6126186496 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 14:03:28,221 basehttp 40891 6126186496 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2108
+INFO 2025-09-13 14:03:37,815 basehttp 40891 6126186496 "GET /grids/186/archive/confirm/ HTTP/1.1" 200 926
+INFO 2025-09-13 14:03:41,958 basehttp 40891 6126186496 "GET /grids/186/save-template/ HTTP/1.1" 200 1330
+INFO 2025-09-13 14:04:09,039 basehttp 40891 6126186496 "GET / HTTP/1.1" 200 5969
+INFO 2025-09-13 14:04:10,506 basehttp 40891 6126186496 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-13 14:04:10,521 basehttp 40891 6143012864 "GET /admin/ HTTP/1.1" 200 2831
+INFO 2025-09-13 14:04:11,836 basehttp 40891 6143012864 "GET /admin/accounts/user/ HTTP/1.1" 200 3311
+INFO 2025-09-13 14:04:11,855 basehttp 40891 6143012864 "GET /admin/jsi18n/ HTTP/1.1" 200 1004
+INFO 2025-09-13 14:04:13,605 basehttp 40891 6143012864 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6406
+INFO 2025-09-13 14:04:13,620 basehttp 40891 6143012864 "GET /admin/jsi18n/ HTTP/1.1" 200 984
+INFO 2025-09-13 14:04:21,391 basehttp 40891 6126186496 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-09-13 14:04:21,400 basehttp 40891 6126186496 "GET /admin/accounts/user/ HTTP/1.1" 200 3330
+INFO 2025-09-13 14:04:21,412 basehttp 40891 6126186496 "GET /admin/jsi18n/ HTTP/1.1" 200 1050
+INFO 2025-09-13 14:04:23,123 basehttp 40891 6126186496 "GET / HTTP/1.1" 200 5985
+INFO 2025-09-13 14:04:24,214 basehttp 40891 6126186496 "GET /grids/ HTTP/1.1" 200 11950
+INFO 2025-09-13 14:04:25,822 basehttp 40891 6126186496 "GET /grids/181/ HTTP/1.1" 200 16894
+INFO 2025-09-13 14:04:27,976 basehttp 40891 6126186496 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 949
+INFO 2025-09-13 14:04:30,328 basehttp 40891 6126186496 "GET / HTTP/1.1" 200 5980
+INFO 2025-09-13 14:04:31,578 basehttp 40891 6126186496 "GET /admin/ HTTP/1.1" 200 2806
+INFO 2025-09-13 14:04:32,960 basehttp 40891 6126186496 "GET /admin/accounts/user/ HTTP/1.1" 200 3239
+INFO 2025-09-13 14:04:32,980 basehttp 40891 6126186496 "GET /admin/jsi18n/ HTTP/1.1" 200 1030
+INFO 2025-09-13 14:04:34,619 basehttp 40891 6126186496 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6359
+INFO 2025-09-13 14:04:34,634 basehttp 40891 6126186496 "GET /admin/jsi18n/ HTTP/1.1" 200 996
+INFO 2025-09-13 14:04:40,242 basehttp 40891 6126186496 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-09-13 14:04:40,256 basehttp 40891 6126186496 "GET /admin/accounts/user/ HTTP/1.1" 200 3310
+INFO 2025-09-13 14:04:40,273 basehttp 40891 6126186496 "GET /admin/jsi18n/ HTTP/1.1" 200 1023
+INFO 2025-09-13 14:04:41,608 basehttp 40891 6126186496 "GET / HTTP/1.1" 200 5991
+INFO 2025-09-13 14:04:43,043 basehttp 40891 6126186496 "GET /grids/ HTTP/1.1" 200 11926
+INFO 2025-09-13 14:04:44,178 basehttp 40891 6126186496 "GET /grids/186/ HTTP/1.1" 200 14244
+INFO 2025-09-13 14:04:46,182 basehttp 40891 6126186496 "GET /upgrade-required/ HTTP/1.1" 200 3471
+INFO 2025-09-13 14:04:54,729 autoreload 40891 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 14:04:55,304 autoreload 40968 8549129984 Watching for file changes with StatReloader
