@@ -1046,6 +1046,12 @@
   .border-\[var\(--tertiary-action-bg\)\] {
     border-color: var(--tertiary-action-bg);
   }
+  .border-\[var\(--tertiary-action-bg\)\]\/20 {
+    border-color: var(--tertiary-action-bg);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--tertiary-action-bg) 20%, transparent);
+    }
+  }
   .border-blue-200 {
     border-color: var(--color-blue-200);
   }
@@ -1118,6 +1124,12 @@
       background-color: color-mix(in oklab, var(--primary-action-bg) 5%, transparent);
     }
   }
+  .bg-\[var\(--primary-action-bg\)\]\/10 {
+    background-color: var(--primary-action-bg);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--primary-action-bg) 10%, transparent);
+    }
+  }
   .bg-\[var\(--secondary-action-bg\)\] {
     background-color: var(--secondary-action-bg);
   }
@@ -1126,6 +1138,12 @@
   }
   .bg-\[var\(--tertiary-action-bg\)\] {
     background-color: var(--tertiary-action-bg);
+  }
+  .bg-\[var\(--tertiary-action-bg\)\]\/10 {
+    background-color: var(--tertiary-action-bg);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--tertiary-action-bg) 10%, transparent);
+    }
   }
   .bg-\[var\(--text-secondary\)\] {
     background-color: var(--text-secondary);
@@ -1172,6 +1190,9 @@
   .bg-green-500 {
     background-color: var(--color-green-500);
   }
+  .bg-green-600 {
+    background-color: var(--color-green-600);
+  }
   .bg-purple-100 {
     background-color: var(--color-purple-100);
   }
@@ -1216,6 +1237,13 @@
   }
   .from-\[var\(--primary-bg\)\] {
     --tw-gradient-from: var(--primary-bg);
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .from-\[var\(--tertiary-action-bg\)\]\/5 {
+    --tw-gradient-from: var(--tertiary-action-bg);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-from: color-mix(in oklab, var(--tertiary-action-bg) 5%, transparent);
+    }
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .from-blue-50 {
@@ -1272,6 +1300,13 @@
     }
     --tw-gradient-via-stops: var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-via) var(--tw-gradient-via-position), var(--tw-gradient-to) var(--tw-gradient-to-position);
     --tw-gradient-stops: var(--tw-gradient-via-stops);
+  }
+  .to-\[var\(--primary-action-bg\)\]\/5 {
+    --tw-gradient-to: var(--primary-action-bg);
+    @supports (color: color-mix(in lab, red, red)) {
+      --tw-gradient-to: color-mix(in oklab, var(--primary-action-bg) 5%, transparent);
+    }
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
   }
   .to-\[var\(--primary-action-hover-bg\)\] {
     --tw-gradient-to: var(--primary-action-hover-bg);
@@ -1557,9 +1592,6 @@
   }
   .text-\[var\(--clear-button-bg\)\] {
     color: var(--clear-button-bg);
-  }
-  .text-\[var\(--clear-button-text\)\] {
-    color: var(--clear-button-text);
   }
   .text-\[var\(--delete-button-bg\)\] {
     color: var(--delete-button-bg);
@@ -1979,13 +2011,6 @@
       }
     }
   }
-  .hover\:bg-\[var\(--clear-button-hover-bg\)\] {
-    &:hover {
-      @media (hover: hover) {
-        background-color: var(--clear-button-hover-bg);
-      }
-    }
-  }
   .hover\:bg-\[var\(--container-bg\)\] {
     &:hover {
       @media (hover: hover) {
@@ -2084,6 +2109,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-gray-400);
+      }
+    }
+  }
+  .hover\:bg-green-700 {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-green-700);
       }
     }
   }
@@ -2228,6 +2260,14 @@
     &:hover {
       @media (hover: hover) {
         --tw-shadow: 0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+        box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+      }
+    }
+  }
+  .hover\:shadow-xl {
+    &:hover {
+      @media (hover: hover) {
+        --tw-shadow: 0 20px 25px -5px var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 8px 10px -6px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
         box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
       }
     }

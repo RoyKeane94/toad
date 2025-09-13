@@ -9,6 +9,7 @@ from .specific_views.error_views import (
 from .specific_views.general_views import (
     home,
     first_grid_tutorial_view,
+    upgrade_required_view,
     templates_overview_view,
     students_templates_view,
     student_jobs_template_view,

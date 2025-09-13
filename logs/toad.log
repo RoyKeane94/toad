@@ -27536,3 +27536,114 @@ INFO 2025-09-13 12:32:24,151 basehttp 37369 6160805888 "GET /grids/ HTTP/1.1" 20
 INFO 2025-09-13 12:32:24,167 basehttp 37369 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
 WARNING 2025-09-13 12:32:24,176 log 37369 6160805888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-09-13 12:32:24,176 basehttp 37369 6160805888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2098
+INFO 2025-09-13 13:24:16,716 autoreload 38065 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:24:50,426 autoreload 38065 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-09-13 13:24:50,814 autoreload 38090 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:24:54,393 autoreload 38090 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-09-13 13:24:54,761 autoreload 38104 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:24:58,181 basehttp 38104 6194753536 "GET /upgrade-required HTTP/1.1" 301 0
+INFO 2025-09-13 13:24:58,195 basehttp 38104 6211579904 "GET /upgrade-required/ HTTP/1.1" 200 4028
+INFO 2025-09-13 13:24:58,208 basehttp 38104 6211579904 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:24:58,210 basehttp 38104 6194753536 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 13:25:54,959 basehttp 38104 6194753536 "GET /premium-feature-example/ HTTP/1.1" 302 0
+INFO 2025-09-13 13:25:54,964 basehttp 38104 6194753536 "GET /upgrade-required/ HTTP/1.1" 200 3472
+INFO 2025-09-13 13:29:00,120 basehttp 38104 6194753536 "GET /upgrade-required/ HTTP/1.1" 200 3377
+INFO 2025-09-13 13:29:09,617 autoreload 38104 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-09-13 13:29:10,175 autoreload 38201 8549129984 Watching for file changes with StatReloader
+WARNING 2025-09-13 13:29:41,082 log 38201 6169260032 Not Found: /upgrade-required/
+WARNING 2025-09-13 13:29:41,082 basehttp 38201 6169260032 "GET /upgrade-required/ HTTP/1.1" 404 2107
+INFO 2025-09-13 13:29:41,112 basehttp 38201 6169260032 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-13 13:29:41,116 basehttp 38201 6169260032 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+WARNING 2025-09-13 13:29:45,368 log 38201 6169260032 Not Found: /upgrade-required/
+WARNING 2025-09-13 13:29:45,368 basehttp 38201 6169260032 "GET /upgrade-required/ HTTP/1.1" 404 2044
+INFO 2025-09-13 13:31:29,002 autoreload 38201 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-09-13 13:31:29,485 autoreload 38324 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:31:36,081 autoreload 38324 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-09-13 13:31:36,511 autoreload 38329 8549129984 Watching for file changes with StatReloader
+WARNING 2025-09-13 13:33:01,889 log 38329 6199734272 Not Found: /upgrade-required/
+WARNING 2025-09-13 13:33:01,890 basehttp 38329 6199734272 "GET /upgrade-required/ HTTP/1.1" 404 2076
+INFO 2025-09-13 13:33:23,679 autoreload 38329 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-09-13 13:33:24,159 autoreload 38360 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:33:29,374 autoreload 38360 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-09-13 13:33:29,597 autoreload 38375 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:33:32,341 basehttp 38375 6137556992 "GET /upgrade-required/ HTTP/1.1" 200 3555
+INFO 2025-09-13 13:33:32,355 basehttp 38375 6137556992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 13:33:34,274 autoreload 38375 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-09-13 13:33:34,617 autoreload 38390 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:33:54,732 autoreload 38814 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:33:56,137 basehttp 38814 6127136768 "GET /upgrade-required/ HTTP/1.1" 200 3492
+INFO 2025-09-13 13:33:58,897 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:33:58,897 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:33:58,897 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:33:58,901 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:33:58,902 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3483
+WARNING 2025-09-13 13:34:06,765 log 38814 6127136768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 13:34:06,765 basehttp 38814 6127136768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2077
+INFO 2025-09-13 13:34:07,586 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:34:07,587 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:34:07,587 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:34:07,589 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:34:07,590 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3483
+WARNING 2025-09-13 13:34:07,621 log 38814 6127136768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 13:34:07,621 basehttp 38814 6127136768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2147
+WARNING 2025-09-13 13:34:12,411 log 38814 6127136768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 13:34:12,411 basehttp 38814 6127136768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2063
+WARNING 2025-09-13 13:34:12,442 log 38814 6127136768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 13:34:12,442 basehttp 38814 6127136768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2150
+WARNING 2025-09-13 13:34:15,101 log 38814 6127136768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 13:34:15,102 basehttp 38814 6127136768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2118
+WARNING 2025-09-13 13:34:15,117 log 38814 6127136768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 13:34:15,117 basehttp 38814 6127136768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2072
+INFO 2025-09-13 13:34:54,451 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:34:54,452 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:34:54,452 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:34:54,455 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:34:54,457 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3458
+INFO 2025-09-13 13:34:54,479 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 200 87283
+INFO 2025-09-13 13:35:44,818 basehttp 38814 6127136768 "GET /upgrade-required/ HTTP/1.1" 200 3491
+INFO 2025-09-13 13:35:44,866 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:35:52,309 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:35:52,310 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:35:52,310 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:35:52,314 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:35:52,315 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3483
+INFO 2025-09-13 13:36:29,106 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:36:29,107 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:36:29,107 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:36:29,110 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:36:29,111 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3114
+INFO 2025-09-13 13:36:29,156 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:36:55,010 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:36:55,011 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:36:55,011 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:36:55,016 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:36:55,018 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3139
+INFO 2025-09-13 13:36:55,037 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:37:28,044 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:37:28,046 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:37:28,046 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:37:28,051 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:37:28,053 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3156
+INFO 2025-09-13 13:37:28,078 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:38:02,581 stripe_django_views 38814 6127136768 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:38:02,582 stripe_django_views 38814 6127136768 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:38:02,582 stripe_django_views 38814 6127136768 Rendering Stripe checkout template...
+INFO 2025-09-13 13:38:02,586 stripe_django_views 38814 6127136768 Template rendered successfully
+INFO 2025-09-13 13:38:02,587 basehttp 38814 6127136768 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3190
+INFO 2025-09-13 13:38:02,609 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:40:34,625 basehttp 38814 6127136768 "GET /upgrade-required/ HTTP/1.1" 200 3528
+INFO 2025-09-13 13:40:34,659 basehttp 38814 6127136768 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:40:50,210 autoreload 38814 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-09-13 13:40:50,742 autoreload 39145 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 13:41:00,635 stripe_django_views 39145 6165524480 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-09-13 13:41:00,635 stripe_django_views 39145 6165524480 Stripe API key is configured, proceeding...
+INFO 2025-09-13 13:41:00,635 stripe_django_views 39145 6165524480 Rendering Stripe checkout template...
+INFO 2025-09-13 13:41:00,656 stripe_django_views 39145 6165524480 Template rendered successfully
+INFO 2025-09-13 13:41:00,657 basehttp 39145 6165524480 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3144
+INFO 2025-09-13 13:41:28,505 basehttp 39145 6165524480 "GET /upgrade-required/ HTTP/1.1" 200 3579
+INFO 2025-09-13 13:41:28,516 basehttp 39145 6165524480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:41:44,076 basehttp 39145 6165524480 "GET /upgrade-required/ HTTP/1.1" 200 3542
+INFO 2025-09-13 13:43:09,876 basehttp 39145 6165524480 "GET /upgrade-required/ HTTP/1.1" 200 3476
+INFO 2025-09-13 13:43:09,889 basehttp 39145 6165524480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 13:43:09,893 basehttp 39145 6182350848 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-13 13:43:30,341 basehttp 39145 6182350848 "GET /upgrade-required/ HTTP/1.1" 200 3408

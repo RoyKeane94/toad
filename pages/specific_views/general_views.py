@@ -34,6 +34,11 @@ def home(request):
     return render(request, 'pages/general/home.html')
 
 @login_required
+def upgrade_required_view(request):
+    """Display the upgrade required page for free tier users"""
+    return render(request, 'pages/general/upgrade_required.html')
+
+@login_required
 def first_grid_tutorial_view(request):
     """Display the first grid tutorial page for new users"""
     return render_simple_template(request, 'pages/user/first_grid.html')
