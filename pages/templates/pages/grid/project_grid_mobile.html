@@ -214,15 +214,36 @@ main, #app {
                         Edit Grid Name
                     </button>
                     
-                    <!-- Clear Completed -->
-                    {% if not project.is_archived %}
-                        <button type="button"
-                                class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                                onclick="showClearCompletedModal(); closeGridActionsDropdown();">
-                            <i class="fas fa-check mr-2 text-[var(--clear-button-bg)]"></i>
-                            Clear Completed
-                        </button>
-                    {% endif %}
+                    <!-- Add Row -->
+                    <button type="button"
+                            class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
+                            hx-target="#modal-content"
+                            hx-trigger="click throttle:500ms"
+                            hx-disabled-elt="this"
+                            hx-indicator="#modal-content"
+                            hx-swap="innerHTML"
+                            hx-headers='{"Cache-Control": "no-cache"}'
+                            onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100'); closeGridActionsDropdown();">
+                        <i class="fas fa-plus mr-2 text-[var(--primary-action-bg)]"></i>
+                        Add Row
+                    </button>
+                    
+                    <!-- Add Column -->
+                    <button type="button"
+                            class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                            hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
+                            hx-target="#modal-content"
+                            hx-trigger="click throttle:500ms"
+                            hx-disabled-elt="this"
+                            hx-indicator="#modal-content"
+                            hx-swap="innerHTML"
+                            hx-headers='{"Cache-Control": "no-cache"}'
+                            onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100'); closeGridActionsDropdown();">
+                        <i class="fas fa-plus mr-2 text-[var(--primary-action-bg)]"></i>
+                        Add Column
+                    </button>
+                    
                     
                     <!-- Archive Grid -->
                     {% if project.is_archived %}
@@ -263,33 +284,18 @@ main, #app {
         
     </div>
     
-    <!-- Grid Actions - Simple Buttons -->
-    <div class="flex gap-3 mb-2">
+    
+    <!-- Clear Completed Button -->
+    {% if not project.is_archived %}
+    <div class="mb-4">
         <button type="button"
-                class="inline-flex items-center justify-center w-20 px-3 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
-                hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
-                hx-target="#modal-content"
-                hx-trigger="click throttle:500ms"
-                hx-disabled-elt="this"
-                hx-indicator="#modal-content"
-                hx-swap="innerHTML"
-                hx-headers='{"Cache-Control": "no-cache"}'
-                onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-            <i class="fas fa-plus mr-1"></i>Row
-        </button>
-        <button type="button"
-                class="inline-flex items-center justify-center w-20 px-3 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
-                hx-get="{% url 'pages:column_create' project_pk=project.pk %}"
-                hx-target="#modal-content"
-                hx-trigger="click throttle:500ms"
-                hx-disabled-elt="this"
-                hx-indicator="#modal-content"
-                hx-swap="innerHTML"
-                hx-headers='{"Cache-Control": "no-cache"}'
-                onclick="document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
-            <i class="fas fa-plus mr-1"></i>Column
+                class="inline-flex items-center px-4 py-2 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+                onclick="showClearCompletedModal();">
+            <i class="fas fa-check mr-2"></i>
+            Clear Completed
         </button>
     </div>
+    {% endif %}
 </div>
 
 
@@ -496,7 +502,7 @@ main, #app {
 </div>
 
 <!-- Clear Completed Modal -->
-<div id="clear-completed-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300" style="display: none;">
+<div id="clear-completed-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300" style="display: none;">
     <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="clear-completed-modal-content">
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
