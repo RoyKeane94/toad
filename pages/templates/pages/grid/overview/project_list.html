@@ -242,7 +242,7 @@
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
-            {% elif user_tier == 'personal' and projects|length >= 10 %}
+            {% elif user_tier == 'personal' and projects|length >= 10 or user_tier == 'personal_trial' and projects|length >= 10 %}
             <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit&tier=personal" 
                class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
                title="Archive some grids to create new ones">
@@ -276,7 +276,7 @@
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
-            {% elif user_tier == 'personal' and projects|length >= 10 %}
+            {% elif user_tier == 'personal' and projects|length >= 10 or user_tier == 'personal_trial' and projects|length >= 10 %}
             <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit&tier=personal" 
                class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
                title="Archive some grids to create new ones">

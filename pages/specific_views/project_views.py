@@ -106,7 +106,7 @@ def project_create_view(request):
             messages.error(request, 'Free users can have a maximum of 2 active grids. Please upgrade to Personal to create more grids.')
             from django.urls import reverse
             return redirect(f"{reverse('pages:upgrade_required')}?reason=grid_limit")
-    elif user_tier == 'personal':
+    elif user_tier in ['personal', 'personal_trial']:
         if active_project_count >= 10:
             messages.error(request, 'Personal users can have a maximum of 10 active grids. Please archive some grids to create new ones.')
             from django.urls import reverse
