@@ -802,12 +802,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Clear Completed form submission
-    const clearCompletedForm = document.getElementById('clear-completed-form');
-    if (clearCompletedForm) {
-        clearCompletedForm.addEventListener('submit', function(e) {
+    // Clear Completed form submission (using event delegation for dynamically loaded content)
+    document.addEventListener('submit', function(e) {
+        if (e.target && e.target.id === 'clear-completed-form') {
             e.preventDefault();
             
+            const clearCompletedForm = e.target;
             const submitBtn = clearCompletedForm.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
             
@@ -840,7 +840,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // Close modal after short delay
                     setTimeout(() => {
-                        hideClearCompletedModal();
+                        // Close the main modal
+                        const modal = document.getElementById('modal');
+                        if (modal) {
+                            modal.classList.add('opacity-0', 'invisible');
+                            const modalContent = modal.querySelector('div');
+                            if (modalContent) {
+                                modalContent.classList.add('scale-95');
+                                modalContent.classList.remove('scale-100');
+                            }
+                        }
                         
                         // Reset button
                         submitBtn.innerHTML = originalText;
@@ -878,8 +887,37 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.classList.add('bg-[var(--clear-button-bg)]');
                 }, 2000);
             });
-        });
-    }
+        }
+    });
+    
+    // Clear Completed modal close buttons (using event delegation for dynamically loaded content)
+    document.addEventListener('click', function(e) {
+        // Close modal button
+        if (e.target && e.target.id === 'close-clear-completed-modal') {
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'invisible');
+                const modalContent = modal.querySelector('div');
+                if (modalContent) {
+                    modalContent.classList.add('scale-95');
+                    modalContent.classList.remove('scale-100');
+                }
+            }
+        }
+        
+        // Cancel button
+        if (e.target && e.target.id === 'cancel-clear-completed') {
+            const modal = document.getElementById('modal');
+            if (modal) {
+                modal.classList.add('opacity-0', 'invisible');
+                const modalContent = modal.querySelector('div');
+                if (modalContent) {
+                    modalContent.classList.add('scale-95');
+                    modalContent.classList.remove('scale-100');
+                }
+            }
+        }
+    });
 });
 
 // Calendar Reminder Modal functionality

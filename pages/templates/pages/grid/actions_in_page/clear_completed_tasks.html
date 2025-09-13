@@ -1,52 +1,49 @@
-{% extends "pages/layout.html" %}
-{% load static %}
-
-{% block title %}Clear Completed Tasks - {{ project.name }}{% endblock %}
-
-{% block content %}
-<div class="max-w-2xl mx-auto">
-    <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)] overflow-hidden">
-        <!-- Header -->
-        <div class="p-6 border-b border-[var(--border-color)]">
-            <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--clear-button-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-broom text-[var(--clear-button-text)]"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-semibold text-[var(--text-primary)]">Clear Completed Tasks</h1>
-                    <p class="text-sm text-[var(--text-secondary)] mt-1">This action cannot be undone</p>
-                </div>
-            </div>
+<!-- Modal Header -->
+<div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+    <div class="flex items-center space-x-3">
+        <div class="flex items-center justify-center w-10 h-10 bg-[var(--clear-button-bg)] rounded-lg shadow-sm">
+            <i class="fas fa-check text-white"></i>
         </div>
-        
-        <!-- Content -->
-        <div class="p-6">
-            <div class="bg-[var(--task-bg)] border border-[var(--clear-button-bg)] rounded-lg p-4 mb-6">
-                <div class="flex items-start space-x-3">
-                    <i class="fas fa-exclamation-triangle text-[var(--clear-button-bg)] mt-1"></i>
-                    <div>
-                        <h3 class="font-medium text-[var(--clear-button-bg)]">Warning</h3>
-                        <p class="text-sm text-[var(--text-primary)] mt-1">
-                            This will permanently remove all completed tasks from your project. This action cannot be undone.
-                        </p>
-                    </div>
+        <div>
+            <h3 class="text-lg font-semibold text-[var(--text-primary)]">Clear Completed Tasks</h3>
+            <p class="text-sm text-[var(--text-secondary)]">This action cannot be undone</p>
+        </div>
+    </div>
+    <button type="button" id="close-clear-completed-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+        <i class="fas fa-times"></i>
+    </button>
+</div>
+
+<!-- Modal Body -->
+<div class="p-6">
+    <div class="mb-6">
+        <p class="text-[var(--text-primary)] mb-4">Are you sure you want to clear all completed tasks from this grid?</p>
+        <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+            <div class="flex items-start space-x-3">
+                <div class="flex items-center justify-center w-8 h-8 bg-[var(--clear-button-bg)] rounded-lg shadow-sm flex-shrink-0">
+                    <i class="fas fa-tasks text-white text-sm"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="font-medium text-[var(--text-primary)] text-sm">All completed tasks will be permanently removed</p>
+                    <p class="text-xs text-[var(--text-secondary)] mt-1">This will help keep your grid clean and focused on active tasks</p>
                 </div>
             </div>
-            
-            <form method="post">
-                {% csrf_token %}
-                <div class="flex items-center justify-end space-x-3">
-                    <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                       class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
-                        <i class="fas fa-times mr-2"></i>Cancel
-                    </a>
-                    <button type="submit" 
-                            class="w-48 h-10 flex items-center justify-center bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-hover-bg)] text-[var(--clear-button-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                        <i class="fas fa-broom mr-2"></i>Clear Tasks
-                    </button>
-                </div>
-            </form>
         </div>
     </div>
 </div>
-{% endblock %} 
+
+<!-- Modal Footer -->
+<div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+    <button type="button" 
+            id="cancel-clear-completed"
+            class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+        <i class="fas fa-times mr-2"></i>Cancel
+    </button>
+    <form id="clear-completed-form" method="post" action="{% url 'pages:delete_completed_tasks' pk=project.pk %}" class="inline">
+        {% csrf_token %}
+        <button type="submit" 
+                class="w-40 h-10 flex items-center justify-center bg-[var(--clear-button-bg)] hover:bg-[var(--clear-button-bg)]/90 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+            <i class="fas fa-check mr-2"></i>Clear All
+        </button>
+    </form>
+</div>

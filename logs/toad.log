@@ -27421,3 +27421,28 @@ INFO 2025-09-13 12:12:47,603 basehttp 35534 6122532864 "GET /grids/181/save-temp
 INFO 2025-09-13 12:12:47,626 basehttp 35534 6122532864 "GET /grids/ HTTP/1.1" 200 11444
 INFO 2025-09-13 12:13:08,406 basehttp 35534 6122532864 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 958
 INFO 2025-09-13 12:13:10,431 basehttp 35534 6122532864 "GET /grids/181/clear-completed/ HTTP/1.1" 200 3019
+INFO 2025-09-13 12:17:06,116 autoreload 36159 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:17:07,229 basehttp 36159 6195572736 "GET /grids/181/ HTTP/1.1" 200 15540
+INFO 2025-09-13 12:17:07,255 basehttp 36159 6212399104 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 12:17:07,256 basehttp 36159 6229225472 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:17:07,264 log 36159 6195572736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:17:07,265 basehttp 36159 6195572736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2071
+INFO 2025-09-13 12:17:08,260 basehttp 36159 6195572736 "GET /grids/181/clear-completed/ HTTP/1.1" 200 861
+INFO 2025-09-13 12:17:10,497 basehttp 36159 6195572736 "POST /grids/181/ HTTP/1.1" 200 15501
+WARNING 2025-09-13 12:17:10,521 log 36159 6195572736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:17:10,521 basehttp 36159 6195572736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2076
+INFO 2025-09-13 12:17:12,629 basehttp 36159 6195572736 "POST /tasks/2052/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-13 12:17:13,272 basehttp 36159 6195572736 "GET /grids/181/clear-completed/ HTTP/1.1" 200 827
+INFO 2025-09-13 12:17:14,308 basehttp 36159 6195572736 "POST /grids/181/ HTTP/1.1" 200 15530
+WARNING 2025-09-13 12:17:14,331 log 36159 6195572736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:17:14,331 basehttp 36159 6195572736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2067
+INFO 2025-09-13 12:17:32,196 basehttp 36159 6195572736 "GET /grids/181/clear-completed/ HTTP/1.1" 200 879
+INFO 2025-09-13 12:18:58,545 basehttp 36159 6195572736 "GET /grids/181/ HTTP/1.1" 200 15713
+INFO 2025-09-13 12:18:58,563 basehttp 36159 6195572736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:18:58,583 log 36159 6195572736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:18:58,584 basehttp 36159 6195572736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2051
+INFO 2025-09-13 12:18:59,587 basehttp 36159 6195572736 "GET /grids/181/clear-completed/ HTTP/1.1" 200 986
+INFO 2025-09-13 12:19:01,420 basehttp 36159 6195572736 "POST /grids/181/clear-completed/ HTTP/1.1" 200 71
+INFO 2025-09-13 12:19:02,972 basehttp 36159 6195572736 "GET /grids/181/ HTTP/1.1" 200 15538
+WARNING 2025-09-13 12:19:02,997 log 36159 6195572736 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:19:02,998 basehttp 36159 6195572736 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2094
