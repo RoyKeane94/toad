@@ -27249,3 +27249,175 @@ INFO 2025-09-13 11:35:22,044 basehttp 32684 6133067776 "POST /grids/181/columns/
 INFO 2025-09-13 11:35:22,083 basehttp 32684 6133067776 "GET /grids/181/ HTTP/1.1" 200 15488
 WARNING 2025-09-13 11:35:22,102 log 32684 6133067776 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-09-13 11:35:22,102 basehttp 32684 6133067776 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2052
+INFO 2025-09-13 11:39:26,854 autoreload 33099 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 11:39:28,865 basehttp 33099 6191788032 "GET /grids/181/ HTTP/1.1" 200 15470
+INFO 2025-09-13 11:39:28,880 basehttp 33099 6208614400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 11:39:28,881 basehttp 33099 6191788032 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-13 11:39:28,889 log 33099 6208614400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:39:28,889 basehttp 33099 6208614400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2086
+INFO 2025-09-13 11:39:40,281 basehttp 33099 6208614400 "GET /grids/181/ HTTP/1.1" 200 15522
+INFO 2025-09-13 11:39:40,317 basehttp 33099 6242267136 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-09-13 11:39:40,318 log 33099 6208614400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-13 11:39:40,319 basehttp 33099 6225440768 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+WARNING 2025-09-13 11:39:40,320 basehttp 33099 6208614400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2075
+INFO 2025-09-13 11:39:40,336 basehttp 33099 6275919872 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-13 11:39:40,348 basehttp 33099 6259093504 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-13 11:39:40,348 basehttp 33099 6191788032 "GET /static/css/output.css HTTP/1.1" 200 85410
+INFO 2025-09-13 11:39:40,505 basehttp 33099 6191788032 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-13 11:43:25,728 basehttp 33099 6191788032 "GET /grids/181/ HTTP/1.1" 200 15482
+INFO 2025-09-13 11:43:25,750 basehttp 33099 6191788032 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 11:43:25,750 basehttp 33099 6208614400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 11:43:25,758 log 33099 6225440768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:43:25,758 basehttp 33099 6225440768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2085
+INFO 2025-09-13 11:43:54,071 basehttp 33099 6225440768 "GET /grids/181/ HTTP/1.1" 200 15454
+WARNING 2025-09-13 11:43:54,094 log 33099 6225440768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:43:54,094 basehttp 33099 6225440768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2042
+INFO 2025-09-13 11:44:00,810 basehttp 33099 6225440768 "GET /grids/181/ HTTP/1.1" 200 15441
+WARNING 2025-09-13 11:44:00,831 log 33099 6225440768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:44:00,832 basehttp 33099 6225440768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2115
+INFO 2025-09-13 11:44:57,596 basehttp 33099 6225440768 "GET /grids/181/ HTTP/1.1" 200 15778
+WARNING 2025-09-13 11:44:57,619 log 33099 6225440768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:44:57,620 basehttp 33099 6225440768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2123
+INFO 2025-09-13 11:45:38,573 basehttp 33099 6225440768 "GET /grids/181/ HTTP/1.1" 200 15472
+INFO 2025-09-13 11:45:38,591 basehttp 33099 6208614400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 11:45:38,600 log 33099 6225440768 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:45:38,600 basehttp 33099 6225440768 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2079
+INFO 2025-09-13 11:45:42,195 basehttp 33099 6225440768 "GET /grids/181/rows/create/ HTTP/1.1" 200 978
+INFO 2025-09-13 11:45:45,608 basehttp 33099 6225440768 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 882
+INFO 2025-09-13 11:46:54,903 basehttp 33099 6225440768 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 962
+INFO 2025-09-13 11:47:32,904 basehttp 33099 6225440768 "GET /grids/181/ HTTP/1.1" 200 15499
+INFO 2025-09-13 11:47:32,926 basehttp 33099 6225440768 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-13 11:47:32,935 log 33099 6208614400 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:47:32,935 basehttp 33099 6208614400 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2046
+INFO 2025-09-13 11:47:51,260 basehttp 33099 6208614400 "GET /grids/181/ HTTP/1.1" 200 15516
+INFO 2025-09-13 11:47:51,280 basehttp 33099 6191788032 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-13 11:47:51,284 basehttp 33099 6225440768 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-13 11:47:51,288 basehttp 33099 6242267136 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-13 11:47:51,292 basehttp 33099 6208614400 "GET /static/css/output.css HTTP/1.1" 200 85410
+WARNING 2025-09-13 11:47:51,293 log 33099 6275919872 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-13 11:47:51,293 basehttp 33099 6259093504 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+WARNING 2025-09-13 11:47:51,294 basehttp 33099 6275919872 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2120
+INFO 2025-09-13 11:47:51,452 basehttp 33099 6275919872 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-13 11:49:03,957 autoreload 33787 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 11:49:09,476 basehttp 33787 6166294528 "GET /grids/181/ HTTP/1.1" 200 15441
+INFO 2025-09-13 11:49:09,504 basehttp 33787 6199947264 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-13 11:49:09,507 basehttp 33787 6183120896 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-13 11:49:09,509 basehttp 33787 6166294528 "GET /static/css/output.css HTTP/1.1" 200 85353
+INFO 2025-09-13 11:49:09,510 basehttp 33787 6216773632 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-13 11:49:09,516 basehttp 33787 6233600000 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+WARNING 2025-09-13 11:49:09,517 log 33787 6250426368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:49:09,517 basehttp 33787 6250426368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2059
+INFO 2025-09-13 11:49:09,684 basehttp 33787 6250426368 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-13 11:52:20,060 basehttp 33787 6250426368 "GET / HTTP/1.1" 200 5927
+INFO 2025-09-13 11:52:20,094 basehttp 33787 6233600000 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 11:52:20,096 basehttp 33787 6216773632 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 11:52:20,102 log 33787 6250426368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:52:20,102 basehttp 33787 6250426368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2065
+INFO 2025-09-13 11:52:20,129 basehttp 33787 6250426368 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
+INFO 2025-09-13 11:52:22,310 basehttp 33787 6250426368 "GET /grids/ HTTP/1.1" 200 11533
+WARNING 2025-09-13 11:52:22,345 log 33787 6250426368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:52:22,345 basehttp 33787 6250426368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2096
+INFO 2025-09-13 11:52:23,999 basehttp 33787 6250426368 "GET /grids/181/ HTTP/1.1" 200 15478
+WARNING 2025-09-13 11:52:24,029 log 33787 6250426368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:52:24,029 basehttp 33787 6250426368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2048
+INFO 2025-09-13 11:52:43,888 autoreload 34294 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 11:53:04,010 basehttp 34294 6132428800 "GET /grids/181/ HTTP/1.1" 200 15474
+INFO 2025-09-13 11:53:04,036 basehttp 34294 6166081536 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-09-13 11:53:04,044 basehttp 34294 6149255168 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-09-13 11:53:04,044 basehttp 34294 6132428800 "GET /static/css/output.css HTTP/1.1" 200 85353
+WARNING 2025-09-13 11:53:04,045 log 34294 6216560640 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-13 11:53:04,046 basehttp 34294 6182907904 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+WARNING 2025-09-13 11:53:04,046 basehttp 34294 6216560640 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2092
+INFO 2025-09-13 11:53:04,047 basehttp 34294 6199734272 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-13 11:53:04,229 basehttp 34294 6199734272 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-13 11:56:56,810 basehttp 34294 6132428800 "GET /grids/181/ HTTP/1.1" 200 14688
+INFO 2025-09-13 11:56:56,829 basehttp 34294 6132428800 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 11:56:56,829 basehttp 34294 6149255168 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 11:56:56,837 log 34294 6149255168 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:56:56,837 basehttp 34294 6149255168 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2088
+INFO 2025-09-13 11:56:58,355 basehttp 34294 6149255168 "GET /grids/181/clear-completed/ HTTP/1.1" 200 3023
+INFO 2025-09-13 11:57:47,781 autoreload 34294 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 11:57:48,285 autoreload 34397 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 11:57:51,902 autoreload 34397 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 11:57:52,448 autoreload 34402 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 11:59:15,044 basehttp 34402 6158839808 "GET /grids/181/ HTTP/1.1" 200 14709
+INFO 2025-09-13 11:59:15,081 basehttp 34402 6175666176 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 11:59:15,082 basehttp 34402 6192492544 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 11:59:15,083 log 34402 6158839808 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 11:59:15,083 basehttp 34402 6158839808 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2113
+INFO 2025-09-13 11:59:16,087 basehttp 34402 6158839808 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1079
+INFO 2025-09-13 12:00:28,730 basehttp 34402 6158839808 "GET /grids/181/ HTTP/1.1" 200 14760
+INFO 2025-09-13 12:00:28,751 basehttp 34402 6158839808 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 12:00:28,751 basehttp 34402 6175666176 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:00:28,760 log 34402 6192492544 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:00:28,760 basehttp 34402 6192492544 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2050
+INFO 2025-09-13 12:00:29,602 basehttp 34402 6192492544 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1065
+INFO 2025-09-13 12:00:47,870 autoreload 34966 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:00:53,438 basehttp 34966 6125858816 "GET /grids/181/ HTTP/1.1" 200 14712
+INFO 2025-09-13 12:00:53,471 basehttp 34966 6176337920 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-09-13 12:00:53,472 log 34966 6125858816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-13 12:00:53,473 basehttp 34966 6159511552 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+WARNING 2025-09-13 12:00:53,473 basehttp 34966 6125858816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2128
+INFO 2025-09-13 12:00:53,475 basehttp 34966 6142685184 "GET /static/css/output.css HTTP/1.1" 200 85353
+INFO 2025-09-13 12:00:53,476 basehttp 34966 6193164288 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-09-13 12:00:53,476 basehttp 34966 6209990656 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-09-13 12:00:53,656 basehttp 34966 6209990656 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-09-13 12:00:54,489 basehttp 34966 6209990656 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1014
+INFO 2025-09-13 12:01:39,097 basehttp 34966 6125858816 "GET /grids/181/ HTTP/1.1" 200 14829
+INFO 2025-09-13 12:01:39,121 basehttp 34966 6125858816 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:01:39,140 log 34966 6125858816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:01:39,141 basehttp 34966 6125858816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
+INFO 2025-09-13 12:01:40,188 basehttp 34966 6125858816 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1025
+INFO 2025-09-13 12:01:50,192 basehttp 34966 6125858816 "GET /grids/181/ HTTP/1.1" 200 14774
+INFO 2025-09-13 12:01:50,210 basehttp 34966 6142685184 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:01:50,218 log 34966 6125858816 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:01:50,219 basehttp 34966 6125858816 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2105
+INFO 2025-09-13 12:01:53,099 basehttp 34966 6125858816 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1025
+INFO 2025-09-13 12:03:35,895 basehttp 34966 6125858816 "GET /grids/181/ HTTP/1.1" 200 14728
+INFO 2025-09-13 12:03:35,920 basehttp 34966 6125858816 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 12:03:35,920 basehttp 34966 6142685184 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:03:35,938 log 34966 6142685184 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:03:35,939 basehttp 34966 6142685184 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2050
+INFO 2025-09-13 12:03:36,955 basehttp 34966 6142685184 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1002
+INFO 2025-09-13 12:04:06,281 autoreload 35486 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:04:07,975 basehttp 35486 6168326144 "GET /grids/181/ HTTP/1.1" 200 14747
+INFO 2025-09-13 12:04:07,994 basehttp 35486 6168326144 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+WARNING 2025-09-13 12:04:07,998 log 35486 6185152512 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:04:07,999 basehttp 35486 6185152512 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2072
+INFO 2025-09-13 12:04:09,864 basehttp 35486 6185152512 "GET /grids/181/clear-completed/ HTTP/1.1" 200 1059
+INFO 2025-09-13 12:04:38,718 autoreload 35486 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 12:04:39,299 autoreload 35513 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:04:41,829 autoreload 35513 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 12:04:42,137 autoreload 35516 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:04:43,403 basehttp 35516 6202552320 "GET /grids/181/ HTTP/1.1" 200 14704
+INFO 2025-09-13 12:04:43,438 basehttp 35516 6219378688 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:04:43,446 log 35516 6202552320 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:04:43,447 basehttp 35516 6202552320 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2105
+INFO 2025-09-13 12:04:45,747 basehttp 35516 6202552320 "GET /grids/181/clear-completed/ HTTP/1.1" 200 776
+INFO 2025-09-13 12:04:55,958 autoreload 35516 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-09-13 12:04:56,443 autoreload 35534 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:04:58,019 basehttp 35534 6122532864 "GET /grids/181/ HTTP/1.1" 200 15485
+INFO 2025-09-13 12:04:58,046 basehttp 35534 6122532864 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:04:58,054 log 35534 6139359232 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:04:58,055 basehttp 35534 6139359232 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2117
+INFO 2025-09-13 12:09:56,545 basehttp 35534 6122532864 "GET /grids/181/ HTTP/1.1" 200 15540
+WARNING 2025-09-13 12:09:56,603 log 35534 6122532864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-09-13 12:09:56,604 basehttp 35534 6139359232 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-13 12:09:56,605 basehttp 35534 6122532864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2088
+INFO 2025-09-13 12:09:56,605 basehttp 35534 6156185600 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 12:10:48,982 basehttp 35534 6122532864 "GET /grids/181/ HTTP/1.1" 200 15523
+INFO 2025-09-13 12:10:48,998 basehttp 35534 6122532864 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:10:49,008 log 35534 6122532864 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:10:49,008 basehttp 35534 6122532864 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2122
+INFO 2025-09-13 12:12:33,164 basehttp 35534 6122532864 "GET /grids/181/ HTTP/1.1" 200 15525
+INFO 2025-09-13 12:12:33,183 basehttp 35534 6139359232 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 12:12:33,183 basehttp 35534 6122532864 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-13 12:12:33,192 log 35534 6156185600 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:12:33,192 basehttp 35534 6156185600 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2125
+INFO 2025-09-13 12:12:36,327 basehttp 35534 6122532864 "GET /grids/181/edit/ HTTP/1.1" 200 1046
+INFO 2025-09-13 12:12:41,262 basehttp 35534 6122532864 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 900
+INFO 2025-09-13 12:12:45,024 basehttp 35534 6122532864 "GET /grids/181/edit/ HTTP/1.1" 200 1082
+INFO 2025-09-13 12:12:47,603 basehttp 35534 6122532864 "GET /grids/181/save-template/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:12:47,626 basehttp 35534 6122532864 "GET /grids/ HTTP/1.1" 200 11444
+INFO 2025-09-13 12:13:08,406 basehttp 35534 6122532864 "GET /grids/181/archive/confirm/ HTTP/1.1" 200 958
+INFO 2025-09-13 12:13:10,431 basehttp 35534 6122532864 "GET /grids/181/clear-completed/ HTTP/1.1" 200 3019
