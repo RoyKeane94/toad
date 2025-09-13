@@ -27095,3 +27095,14 @@ INFO 2025-09-13 10:40:32,782 basehttp 29922 6124646400 "GET /lilypad/leads/1/upd
 INFO 2025-09-13 10:40:40,858 basehttp 29922 6124646400 "POST /lilypad/leads/1/update/ HTTP/1.1" 302 0
 INFO 2025-09-13 10:40:40,871 basehttp 29922 6124646400 "GET /lilypad/leads/ HTTP/1.1" 200 3594
 INFO 2025-09-13 10:41:32,087 basehttp 29922 6124646400 "GET /lilypad/leads/1/ HTTP/1.1" 200 3364
+INFO 2025-09-13 10:45:36,886 autoreload 30457 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 10:45:37,973 basehttp 30457 6201028608 "GET /lilypad/leads/ HTTP/1.1" 200 3729
+INFO 2025-09-13 10:45:38,030 basehttp 30457 6201028608 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-13 10:45:38,350 basehttp 30457 6201028608 "GET /lilypad/leads/ HTTP/1.1" 200 3704
+INFO 2025-09-13 10:45:42,131 basehttp 30457 6201028608 "GET /lilypad/leads/?sort=university HTTP/1.1" 200 3785
+INFO 2025-09-13 10:45:42,863 basehttp 30457 6201028608 "GET /lilypad/leads/?sort=university HTTP/1.1" 200 3785
+INFO 2025-09-13 10:45:45,623 basehttp 30457 6201028608 "GET /lilypad/leads/create/ HTTP/1.1" 200 3656
+INFO 2025-09-13 10:45:53,386 basehttp 30457 6201028608 "GET /lilypad/leads/?search=&university=Sheffield&focus= HTTP/1.1" 200 3774
+INFO 2025-09-13 10:45:55,668 basehttp 30457 6201028608 "GET /lilypad/leads/?university=Sheffield&sort=no_response HTTP/1.1" 200 3779
+INFO 2025-09-13 10:45:56,400 basehttp 30457 6201028608 "GET /lilypad/leads/?university=Sheffield&sort=no_response HTTP/1.1" 200 3726
+INFO 2025-09-13 10:45:57,506 basehttp 30457 6201028608 "GET /lilypad/leads/?university=Sheffield&sort=created HTTP/1.1" 200 3743

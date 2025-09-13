@@ -25,12 +25,23 @@
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Search and Filters -->
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
-            <form method="get" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <form method="get" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                     <label for="search" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Search</label>
                     <input type="text" name="search" id="search" value="{{ search_query }}" 
                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent"
                            placeholder="Search by name...">
+                </div>
+                
+                <div>
+                    <label for="university" class="block text-sm font-medium text-[var(--text-primary)] mb-2">University</label>
+                    <select name="university" id="university" 
+                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                        <option value="">All Universities</option>
+                        {% for university in universities %}
+                        <option value="{{ university.name }}" {% if university_filter == university.name %}selected{% endif %}>{{ university.name }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 
                 <div>
@@ -65,14 +76,39 @@
                     <thead class="bg-[var(--grid-header-bg)]">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Name</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">University</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=university" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    University
+                                    {% if sort == 'university' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Focus</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Customer</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Initial Msg</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">No Response</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=customer" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    Customer
+                                    {% if sort == 'customer' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=initial_message" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    Initial Msg
+                                    {% if sort == 'initial_message' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=no_response" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    No Response
+                                    {% if sort == 'no_response' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Created</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=created" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    Created
+                                    {% if sort == 'created' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -140,7 +176,7 @@
                                     <div class="flex flex-col">
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
                                             <i class="fas fa-times-circle mr-1"></i>
-                                            Response Status
+                                            No Response
                                         </span>
                                         {% if lead.no_response_date %}
                                             <span class="text-xs text-[var(--text-secondary)] mt-1">

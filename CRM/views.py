@@ -39,14 +39,19 @@ def crm_home(request):
 @user_passes_test(is_superuser)
 def lead_list(request):
     """
-    List all leads with filtering and search.
+    List all leads with filtering, search, and sorting.
     """
-    leads = Lead.objects.select_related('lead_focus', 'contact_method', 'society_university').order_by('-created_at')
+    leads = Lead.objects.select_related('lead_focus', 'contact_method', 'society_university')
     
     # Search functionality
     search_query = request.GET.get('search', '')
     if search_query:
         leads = leads.filter(name__icontains=search_query)
+    
+    # Filter by university
+    university_filter = request.GET.get('university', '')
+    if university_filter:
+        leads = leads.filter(society_university__name=university_filter)
     
     # Filter by focus area
     focus_filter = request.GET.get('focus', '')
@@ -58,17 +63,37 @@ def lead_list(request):
     if contact_filter:
         leads = leads.filter(contact_method__name=contact_filter)
     
+    # Sorting functionality
+    sort = request.GET.get('sort', 'created')
+    if sort == 'university':
+        leads = leads.order_by('society_university__name')
+    elif sort == 'customer':
+        leads = leads.order_by('-toad_customer', 'toad_customer_date')
+    elif sort == 'initial_message':
+        leads = leads.order_by('-initial_message_sent', 'initial_message_sent_date')
+    elif sort == 'no_response':
+        leads = leads.order_by('-no_response', 'no_response_date')
+    elif sort == 'created':
+        leads = leads.order_by('-created_at')
+    else:
+        leads = leads.order_by('-created_at')
+    
     # Get filter options
+    from .models import SocietyUniversity
+    universities = SocietyUniversity.objects.all()
     focus_areas = LeadFocus.objects.all()
     contact_methods = ContactMethod.objects.all()
     
     context = {
         'leads': leads,
+        'universities': universities,
         'focus_areas': focus_areas,
         'contact_methods': contact_methods,
         'search_query': search_query,
+        'university_filter': university_filter,
         'focus_filter': focus_filter,
         'contact_filter': contact_filter,
+        'sort': sort,
     }
     return render(request, 'CRM/lead_list.html', context)
 
