@@ -27078,3 +27078,20 @@ INFO 2025-09-11 21:31:37,537 autoreload 22348 8549129984 Watching for file chang
 INFO 2025-09-11 21:31:38,822 basehttp 22348 6170406912 "GET / HTTP/1.1" 200 5941
 INFO 2025-09-11 21:32:05,036 autoreload 22654 8549129984 Watching for file changes with StatReloader
 INFO 2025-09-11 21:32:07,296 basehttp 22654 6136360960 "GET / HTTP/1.1" 200 5944
+INFO 2025-09-13 10:30:25,455 autoreload 29922 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 10:40:14,260 basehttp 29922 6124646400 "GET / HTTP/1.1" 200 5971
+INFO 2025-09-13 10:40:14,274 basehttp 29922 6124646400 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-13 10:40:14,281 basehttp 29922 6124646400 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-09-13 10:40:14,286 basehttp 29922 6124646400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-13 10:40:14,286 basehttp 29922 6141472768 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-13 10:40:14,317 basehttp 29922 6141472768 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+WARNING 2025-09-13 10:40:17,637 log 29922 6124646400 Not Found: /lilypad/society-links/14/public/
+WARNING 2025-09-13 10:40:17,637 basehttp 29922 6124646400 "GET /lilypad/society-links/14/public/ HTTP/1.1" 404 2294
+WARNING 2025-09-13 10:40:17,890 log 29922 6124646400 Not Found: /lilypad/society-links/14/public/
+WARNING 2025-09-13 10:40:17,891 basehttp 29922 6124646400 "GET /lilypad/society-links/14/public/ HTTP/1.1" 404 2325
+INFO 2025-09-13 10:40:21,326 basehttp 29922 6124646400 "GET /lilypad/ HTTP/1.1" 200 4060
+INFO 2025-09-13 10:40:25,988 basehttp 29922 6124646400 "GET /lilypad/leads/ HTTP/1.1" 200 3572
+INFO 2025-09-13 10:40:32,782 basehttp 29922 6124646400 "GET /lilypad/leads/1/update/ HTTP/1.1" 200 3690
+INFO 2025-09-13 10:40:40,858 basehttp 29922 6124646400 "POST /lilypad/leads/1/update/ HTTP/1.1" 302 0
+INFO 2025-09-13 10:40:40,871 basehttp 29922 6124646400 "GET /lilypad/leads/ HTTP/1.1" 200 3594
+INFO 2025-09-13 10:41:32,087 basehttp 29922 6124646400 "GET /lilypad/leads/1/ HTTP/1.1" 200 3364

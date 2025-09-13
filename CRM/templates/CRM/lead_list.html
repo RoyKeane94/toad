@@ -70,6 +70,7 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Customer</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Initial Msg</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">No Response</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Created</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
@@ -131,6 +132,26 @@
                                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
                                         <i class="fas fa-clock mr-1"></i>
                                         Pending
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.no_response %}
+                                    <div class="flex flex-col">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                            <i class="fas fa-times-circle mr-1"></i>
+                                            Response Status
+                                        </span>
+                                        {% if lead.no_response_date %}
+                                            <span class="text-xs text-[var(--text-secondary)] mt-1">
+                                                {{ lead.no_response_date|date:"M d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        Active
                                     </span>
                                 {% endif %}
                             </td>

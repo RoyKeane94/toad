@@ -168,6 +168,39 @@
                             Select the date when the initial message was sent to this lead
                         </p>
                     </div>
+                    
+                    <!-- No Response Checkbox -->
+                    <div class="flex items-center mb-4">
+                        {{ form.no_response }}
+                        <label for="{{ form.no_response.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            No Response
+                        </label>
+                        {% if form.no_response.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.no_response.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- No Response Date -->
+                    <div>
+                        <label for="{{ form.no_response_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            No Response Date
+                        </label>
+                        {{ form.no_response_date }}
+                        {% if form.no_response_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.no_response_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Select the date when it was determined there was no response from this lead
+                        </p>
+                    </div>
                 </div>
 
                 <!-- Form Actions -->

@@ -64,6 +64,8 @@ class Lead(models.Model):
     toad_customer_date = models.DateField(null=True, blank=True)
     initial_message_sent = models.BooleanField(default=False)
     initial_message_sent_date = models.DateField(null=True, blank=True)
+    no_response = models.BooleanField(default=False)
+    no_response_date = models.DateField(null=True, blank=True)
     lead_focus = models.ForeignKey(LeadFocus, on_delete=models.CASCADE)
     contact_method = models.ForeignKey(ContactMethod, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -4,7 +4,7 @@ from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink,  S
 class LeadForm(forms.ModelForm):
     class Meta:
         model = Lead
-        fields = ['name', 'society_university', 'lead_focus', 'contact_method', 'toad_customer', 'toad_customer_date', 'initial_message_sent', 'initial_message_sent_date']
+        fields = ['name', 'society_university', 'lead_focus', 'contact_method', 'toad_customer', 'toad_customer_date', 'initial_message_sent', 'initial_message_sent_date', 'no_response', 'no_response_date']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
@@ -32,6 +32,13 @@ class LeadForm(forms.ModelForm):
             'initial_message_sent_date': forms.DateInput(attrs={
                 'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
                 'type': 'date'
+            }),
+            'no_response': forms.CheckboxInput(attrs={
+                'class': 'h-4 w-4 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] border-[var(--inline-input-border)] rounded'
+            }),
+            'no_response_date': forms.DateInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'type': 'date'
             })
         }
     
@@ -43,6 +50,7 @@ class LeadForm(forms.ModelForm):
         # Make date fields optional
         self.fields['toad_customer_date'].required = False
         self.fields['initial_message_sent_date'].required = False
+        self.fields['no_response_date'].required = False
 
 class LeadMessageForm(forms.ModelForm):
     class Meta:

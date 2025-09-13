@@ -103,6 +103,30 @@
                         </div>
                         
                         <div>
+                            <dt class="text-sm font-medium text-[var(--text-secondary)]">Response Status</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1">
+                                {% if lead.no_response %}
+                                    <div class="flex items-center">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                            <i class="fas fa-times-circle mr-1"></i>
+                                            No Response
+                                        </span>
+                                        {% if lead.no_response_date %}
+                                            <span class="ml-2 text-xs text-[var(--text-secondary)]">
+                                                Since {{ lead.no_response_date|date:"F d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        Active
+                                    </span>
+                                {% endif %}
+                            </dd>
+                        </div>
+                        
+                        <div>
                             <dt class="text-sm font-medium text-[var(--text-secondary)]">Created</dt>
                             <dd class="text-sm text-[var(--text-primary)] mt-1">{{ lead.created_at|date:"F d, Y \a\t g:i A" }}</dd>
                         </div>
