@@ -477,6 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </form>
                         {% else %}
                             <!-- Archive Grid -->
+                            {% if user_tier == 'personal' %}
                             <button type="button"
                                     class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
                                     hx-get="{% url 'pages:archive_project_confirm' pk=project.pk %}"
@@ -490,15 +491,32 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <i class="fas fa-archive text-xs w-4 text-center"></i>
                                 <span>Archive Grid</span>
                             </button>
+                            {% else %}
+                            <a href="{% url 'pages:upgrade_required' %}"
+                               class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                               onclick="closeAllDropdowns();">
+                                <i class="fas fa-archive text-xs w-4 text-center"></i>
+                                <span>Archive Grid</span>
+                            </a>
+                            {% endif %}
                         {% endif %}
                         
                         <!-- Save as Template -->
+                        {% if user_tier == 'personal' %}
                         <button type="button"
                                 class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
                                 onclick="closeAllDropdowns(); document.getElementById('save-template-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('save-template-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('save-template-modal').querySelector('div').classList.add('scale-100');">
                             <i class="fas fa-save text-xs w-4 text-center"></i>
                             <span>Save as Template</span>
                         </button>
+                        {% else %}
+                        <a href="{% url 'pages:upgrade_required' %}"
+                           class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           onclick="closeAllDropdowns();">
+                            <i class="fas fa-save text-xs w-4 text-center"></i>
+                            <span>Save as Template</span>
+                        </a>
+                        {% endif %}
                         
                         <!-- Divider -->
                         <div class="border-t border-[var(--border-color)] my-2"></div>
