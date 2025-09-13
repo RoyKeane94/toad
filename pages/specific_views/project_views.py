@@ -88,7 +88,8 @@ def project_list_view(request):
         'grouped_projects': grouped_projects_list,
         'ungrouped_projects': ungrouped_projects,
         'personal_templates': personal_templates,
-        'archived_projects': archived_projects
+        'archived_projects': archived_projects,
+        'user_tier': getattr(request.user, 'user_tier', 'free'),
     }
     
     return render(request, 'pages/grid/overview/project_list.html', context)
