@@ -293,23 +293,41 @@ main, #app {
                     </button>
                 {% endif %}
                 
-                <!-- Save as Template -->
-                <button type="button"
-                        class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                        hx-get="{% url 'pages:save_as_template' pk=project.pk %}"
-                        hx-target="#modal-content"
-                        hx-trigger="click throttle:500ms"
-                        hx-disabled-elt="this"
-                        hx-indicator="#modal-content"
-                        hx-swap="innerHTML"
-                        hx-headers='{"Cache-Control": "no-cache"}'
-                        onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100'); closeGridActionsDropdown();">
-                    <i class="fas fa-save mr-2 text-[var(--tertiary-action-bg)]"></i>
-                    Save as Template
-                </button>
-            </div>
-        </div>
-    </div>
+                   <!-- Save as Template -->
+                   <button type="button"
+                           class="w-full px-4 py-2 text-left text-sm text-[var(--text-primary)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           hx-get="{% url 'pages:save_as_template' pk=project.pk %}"
+                           hx-target="#modal-content"
+                           hx-trigger="click throttle:500ms"
+                           hx-disabled-elt="this"
+                           hx-indicator="#modal-content"
+                           hx-swap="innerHTML"
+                           hx-headers='{"Cache-Control": "no-cache"}'
+                           onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100'); closeGridActionsDropdown();">
+                       <i class="fas fa-save mr-2 text-[var(--tertiary-action-bg)]"></i>
+                       Save as Template
+                   </button>
+                   
+                   <!-- Divider -->
+                   <div class="border-t border-[var(--border-color)] my-2"></div>
+                   
+                   <!-- Delete Grid -->
+                   <button type="button"
+                           class="w-full px-4 py-2 text-left text-sm text-[var(--delete-button-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           hx-get="{% url 'pages:project_delete' pk=project.pk %}"
+                           hx-target="#modal-content"
+                           hx-trigger="click throttle:500ms"
+                           hx-disabled-elt="this"
+                           hx-indicator="#modal-content"
+                           hx-swap="innerHTML"
+                           hx-headers='{"Cache-Control": "no-cache"}'
+                           onclick="document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100'); closeGridActionsDropdown();">
+                       <i class="fas fa-trash mr-2 text-[var(--delete-button-bg)]"></i>
+                       Delete Grid
+                   </button>
+               </div>
+           </div>
+       </div>
 </div>
 
 

@@ -27518,3 +27518,21 @@ WARNING 2025-09-13 12:28:37,121 log 36947 6170210304 Not Found: /.well-known/app
 WARNING 2025-09-13 12:28:37,122 basehttp 36947 6170210304 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2091
 INFO 2025-09-13 12:28:44,266 autoreload 36947 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
 INFO 2025-09-13 12:28:44,770 autoreload 36980 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:32:13,632 autoreload 37369 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-13 12:32:14,891 basehttp 37369 6160805888 "GET /grids/185/ HTTP/1.1" 200 12034
+INFO 2025-09-13 12:32:14,914 basehttp 37369 6177632256 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-13 12:32:14,921 log 37369 6160805888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:32:14,921 basehttp 37369 6160805888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2137
+INFO 2025-09-13 12:32:15,353 basehttp 37369 6160805888 "GET /grids/185/ HTTP/1.1" 200 12045
+WARNING 2025-09-13 12:32:15,377 log 37369 6160805888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:32:15,378 basehttp 37369 6160805888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2068
+INFO 2025-09-13 12:32:17,618 basehttp 37369 6160805888 "GET /grids/185/delete/ HTTP/1.1" 200 1135
+INFO 2025-09-13 12:32:18,974 basehttp 37369 6160805888 "POST /grids/185/delete/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:32:18,992 basehttp 37369 6160805888 "GET /grids/ HTTP/1.1" 200 11877
+WARNING 2025-09-13 12:32:19,028 log 37369 6160805888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:32:19,028 basehttp 37369 6160805888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2041
+INFO 2025-09-13 12:32:24,135 basehttp 37369 6160805888 "POST /grids/177/restore/ HTTP/1.1" 302 0
+INFO 2025-09-13 12:32:24,151 basehttp 37369 6160805888 "GET /grids/ HTTP/1.1" 200 11913
+INFO 2025-09-13 12:32:24,167 basehttp 37369 6177632256 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-09-13 12:32:24,176 log 37369 6160805888 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-09-13 12:32:24,176 basehttp 37369 6160805888 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2098
