@@ -11,6 +11,24 @@
                 <i class="fas fa-crown text-5xl text-green-600"></i>
             </div>
             <h1 class="text-3xl font-bold text-green-600 mb-4">Upgrade Required</h1>
+            {% if request.GET.reason == 'grid_limit' %}
+            <div class="bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-300 rounded-xl p-6 mb-8 shadow-lg">
+                <div>
+                    <h3 class="text-xl font-bold mb-2" style="color: var(--tertiary-action-bg);">
+                        Grid Limit Reached
+                    </h3>
+                    {% if request.GET.tier == 'personal' %}
+                    <p class="text-lg leading-relaxed mb-3" style="color: var(--tertiary-action-bg);">
+                        You've reached the maximum of <span class="font-bold" style="color: var(--tertiary-action-hover-bg);">10 grids</span> allowed on the Personal tier. Please archive some grids to create new ones.
+                    </p>
+                    {% else %}
+                    <p class="text-lg leading-relaxed mb-3" style="color: var(--tertiary-action-bg);">
+                        You've reached the maximum of <span class="font-bold" style="color: var(--tertiary-action-hover-bg);">2 grids</span> allowed on the free tier.
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
             <p class="text-lg text-[var(--text-secondary)] mb-8">
                 This feature is only available with a Toad Personal subscription.
             </p>

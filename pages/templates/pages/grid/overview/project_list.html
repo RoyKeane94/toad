@@ -235,12 +235,28 @@
     <!-- Desktop buttons (top right) -->
     <div class="absolute top-0 right-0 hidden md:block">
         <div class="flex space-x-3">
+            {% if user_tier == 'free' and projects|length >= 2 %}
+            <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit" 
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+               title="Upgrade to create more grids">
+                <i class="fas fa-plus mr-2"></i>
+                New Grid
+            </a>
+            {% elif user_tier == 'personal' and projects|length >= 10 %}
+            <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit&tier=personal" 
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+               title="Archive some grids to create new ones">
+                <i class="fas fa-plus mr-2"></i>
+                New Grid
+            </a>
+            {% else %}
             <a href="{% url 'pages:project_create' %}" 
                 onclick="plausible('grid_created', {props: {source: 'blank'}});"
                class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
+            {% endif %}
             <button type="button"
                     onclick="openNewGroupModal()"
                     class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
@@ -253,12 +269,28 @@
     <!-- Mobile buttons (below title) -->
     <div class="text-center mt-6 mobile-buttons" style="display: block;">
         <div class="flex flex-row items-center justify-center space-x-4">
+            {% if user_tier == 'free' and projects|length >= 2 %}
+            <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit" 
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+               title="Upgrade to create more grids">
+                <i class="fas fa-plus mr-2"></i>
+                New Grid
+            </a>
+            {% elif user_tier == 'personal' and projects|length >= 10 %}
+            <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit&tier=personal" 
+               class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+               title="Archive some grids to create new ones">
+                <i class="fas fa-plus mr-2"></i>
+                New Grid
+            </a>
+            {% else %}
             <a href="{% url 'pages:project_create' %}" 
                onclick="plausible('grid_created', {props: {source: 'blank'}});"
                class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--tertiary-action-bg)] bg-white border border-[var(--tertiary-action-bg)] rounded-lg hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
                 <i class="fas fa-plus mr-2"></i>
                 New Grid
             </a>
+            {% endif %}
             <button type="button"
                     onclick="openNewGroupModal()"
                     class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
@@ -546,11 +578,27 @@
         </div>
         <h3 class="text-2xl font-medium text-[var(--title-text)] mb-3">No grids yet</h3>
         <p class="text-[var(--subtitle-text)] mb-8 text-lg">Create your first grid to start organising your tasks and boost your productivity</p>
+        {% if user_tier == 'free' and projects|length >= 2 %}
+        <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit" 
+           class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+           title="Upgrade to create more grids">
+            <i class="fas fa-plus mr-2"></i>
+            Create Your First Grid
+        </a>
+        {% elif user_tier == 'personal' and projects|length >= 10 %}
+        <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit&tier=personal" 
+           class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+           title="Archive some grids to create new ones">
+            <i class="fas fa-plus mr-2"></i>
+            Create Your First Grid
+        </a>
+        {% else %}
         <a href="{% url 'pages:project_create' %}" 
            class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
             <i class="fas fa-plus mr-2"></i>
             Create Your First Grid
         </a>
+        {% endif %}
     </div>
 {% endif %}
 

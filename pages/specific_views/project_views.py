@@ -97,6 +97,21 @@ def project_list_view(request):
 
 @login_required
 def project_create_view(request):
+    # Check grid limit based on user tier
+    user_tier = getattr(request.user, 'tier', 'free')
+    active_project_count = Project.objects.filter(user=request.user, is_archived=False).count()
+    
+    if user_tier == 'free':
+        if active_project_count >= 2:
+            messages.error(request, 'Free users can have a maximum of 2 active grids. Please upgrade to Personal to create more grids.')
+            from django.urls import reverse
+            return redirect(f"{reverse('pages:upgrade_required')}?reason=grid_limit")
+    elif user_tier == 'personal':
+        if active_project_count >= 10:
+            messages.error(request, 'Personal users can have a maximum of 10 active grids. Please archive some grids to create new ones.')
+            from django.urls import reverse
+            return redirect(f"{reverse('pages:upgrade_required')}?reason=grid_limit&tier=personal")
+    
     if request.method == 'POST':
         form = ProjectForm(request.POST)
         if form.is_valid():
