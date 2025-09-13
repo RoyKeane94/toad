@@ -84,6 +84,12 @@ def lead_list(request):
     focus_areas = LeadFocus.objects.all()
     contact_methods = ContactMethod.objects.all()
     
+    # Calculate statistics
+    total_leads = Lead.objects.count()
+    customer_count = Lead.objects.filter(toad_customer=True).count()
+    no_response_count = Lead.objects.filter(no_response=True).count()
+    university_count = SocietyUniversity.objects.count()
+    
     context = {
         'leads': leads,
         'universities': universities,
@@ -94,6 +100,10 @@ def lead_list(request):
         'focus_filter': focus_filter,
         'contact_filter': contact_filter,
         'sort': sort,
+        'total_leads': total_leads,
+        'customer_count': customer_count,
+        'no_response_count': no_response_count,
+        'university_count': university_count,
     }
     return render(request, 'CRM/lead_list.html', context)
 

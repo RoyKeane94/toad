@@ -64,6 +64,65 @@
             </form>
         </div>
 
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-users text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Total Leads</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ total_leads }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-check-circle text-green-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Customers</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ customer_count }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-red-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-times-circle text-red-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">No Response</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ no_response_count }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-university text-purple-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Universities</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ university_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- Leads Table -->
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)]">
             <div class="px-6 py-4 border-b border-[var(--border-color)]">
