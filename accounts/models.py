@@ -53,6 +53,7 @@ class User(AbstractUser):
     associated_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     second_grid_created = models.BooleanField(default=False, help_text='Whether the user has created their second grid.')
     second_grid_email_sent = models.BooleanField(default=False, help_text='Whether the user has received the email about their second grid.')
+    regular_user = models.BooleanField(default=False, help_text='Whether the user is a regular user.')
     
     # Trial and billing fields
     trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')
