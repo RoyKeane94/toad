@@ -51,6 +51,8 @@ class User(AbstractUser):
     tier = models.CharField(max_length=35, choices=TIER_CHOICES, default='beta',blank=True)
     associated_society = models.ForeignKey(SocietyLink, on_delete=models.CASCADE, null=True, blank=True, related_name='users')
     associated_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
+    second_grid_created = models.BooleanField(default=False, help_text='Whether the user has created their second grid.')
+    second_grid_email_sent = models.BooleanField(default=False, help_text='Whether the user has received the email about their second grid.')
     
     # Trial and billing fields
     trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')
@@ -220,4 +222,11 @@ class User(AbstractUser):
         self.email_verification_token = None
         self.email_verification_sent_at = None
         self.save(update_fields=['email_verification_token', 'email_verification_sent_at'])
+    
+    def has_created_second_grid(self):
+        """
+        Check if user has created their second grid.
+        Uses the cached boolean field for optimal performance.
+        """
+        return self.second_grid_created
 

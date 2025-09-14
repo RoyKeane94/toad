@@ -122,6 +122,13 @@ def project_create_view(request):
             # Use optimized bulk creation
             create_default_project_structure(project)
             
+            # Update second grid tracking
+            if not request.user.second_grid_created:
+                active_project_count = Project.objects.filter(user=request.user, is_archived=False).count()
+                if active_project_count >= 2:
+                    request.user.second_grid_created = True
+                    request.user.save(update_fields=['second_grid_created'])
+            
             log_user_action(request.user, 'created project', project.name)
             messages.success(request, f'Grid "{project.name}" created successfully!')
             return redirect('pages:project_grid', pk=project.pk)
