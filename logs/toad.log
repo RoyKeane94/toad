@@ -27971,3 +27971,60 @@ INFO 2025-09-13 15:02:23,555 basehttp 42712 6124597248 "POST /admin/pages/projec
 INFO 2025-09-13 15:02:23,565 basehttp 42712 6124597248 "GET /admin/pages/project/ HTTP/1.1" 200 2835
 INFO 2025-09-13 15:02:23,578 basehttp 42712 6124597248 "GET /admin/jsi18n/ HTTP/1.1" 200 1059
 INFO 2025-09-13 15:02:26,746 basehttp 42712 6124597248 "GET / HTTP/1.1" 200 6003
+INFO 2025-09-14 15:12:40,394 autoreload 48269 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-14 15:12:42,597 basehttp 48269 6133084160 "GET / HTTP/1.1" 200 5975
+INFO 2025-09-14 15:12:42,607 basehttp 48269 6133084160 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-14 15:12:42,612 basehttp 48269 6149910528 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-14 15:12:42,612 basehttp 48269 6133084160 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-14 15:12:42,647 basehttp 48269 6133084160 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-09-14 15:12:46,464 basehttp 48269 6133084160 "GET /accounts/settings/ HTTP/1.1" 200 3640
+INFO 2025-09-14 15:12:49,105 basehttp 48269 6133084160 "GET / HTTP/1.1" 200 5978
+INFO 2025-09-14 15:12:50,361 basehttp 48269 6133084160 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-14 15:12:50,387 basehttp 48269 6149910528 "GET /admin/ HTTP/1.1" 200 2746
+INFO 2025-09-14 15:13:46,561 basehttp 48269 6149910528 "GET /admin/accounts/user/ HTTP/1.1" 200 3291
+INFO 2025-09-14 15:13:46,580 basehttp 48269 6149910528 "GET /admin/jsi18n/ HTTP/1.1" 200 961
+INFO 2025-09-14 15:13:49,970 basehttp 48269 6149910528 "POST /admin/accounts/user/ HTTP/1.1" 200 2959
+INFO 2025-09-14 15:13:50,974 basehttp 48269 6149910528 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-09-14 15:13:50,986 basehttp 48269 6149910528 "GET /admin/accounts/user/ HTTP/1.1" 200 3261
+INFO 2025-09-14 15:13:50,999 basehttp 48269 6149910528 "GET /admin/jsi18n/ HTTP/1.1" 200 992
+INFO 2025-09-14 15:13:53,448 basehttp 48269 6149910528 "POST /admin/logout/ HTTP/1.1" 200 1372
+INFO 2025-09-14 15:13:54,923 basehttp 48269 6149910528 "GET / HTTP/1.1" 200 5812
+INFO 2025-09-14 15:13:57,030 basehttp 48269 6149910528 "GET /accounts/register/ HTTP/1.1" 200 3878
+INFO 2025-09-14 15:13:58,659 basehttp 48269 6149910528 "GET /accounts/register/free/ HTTP/1.1" 200 3950
+INFO 2025-09-14 15:13:58,956 autoreload 48269 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-09-14 15:13:59,436 autoreload 48318 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-14 15:14:02,968 autoreload 48318 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-09-14 15:14:03,276 autoreload 48323 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-14 15:14:12,412 views 48323 6123352064 New Free plan user registration: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-14 15:14:12,419 basehttp 48323 6123352064 "POST /accounts/register/free/ HTTP/1.1" 302 0
+INFO 2025-09-14 15:14:12,423 email_utils 48323 6157004800 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-14 15:14:12,431 basehttp 48323 6123352064 "GET /accounts/login/ HTTP/1.1" 200 3923
+INFO 2025-09-14 15:14:15,692 email_utils 48323 6157004800 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-14 15:14:15,693 views 48323 6157004800 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-14 15:14:26,187 basehttp 48323 6123352064 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-14 15:14:26,196 basehttp 48323 6123352064 "GET /grids/ HTTP/1.1" 200 10500
+INFO 2025-09-14 15:14:29,359 autoreload 48323 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/analytics_views_functions.py changed, reloading.
+INFO 2025-09-14 15:14:29,851 autoreload 48332 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-14 15:14:30,751 basehttp 48332 6190018560 "GET /accounts/settings/ HTTP/1.1" 200 3709
+INFO 2025-09-14 15:14:39,200 basehttp 48332 6190018560 "GET / HTTP/1.1" 200 5930
+INFO 2025-09-14 15:14:40,266 basehttp 48332 6190018560 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-14 15:14:40,291 basehttp 48332 6206844928 "GET /admin/ HTTP/1.1" 200 2845
+INFO 2025-09-14 15:14:41,749 basehttp 48332 6206844928 "GET /admin/accounts/user/ HTTP/1.1" 200 3299
+INFO 2025-09-14 15:14:41,766 basehttp 48332 6206844928 "GET /admin/jsi18n/ HTTP/1.1" 200 978
+INFO 2025-09-14 15:14:42,802 basehttp 48332 6206844928 "GET /admin/accounts/user/29/change/ HTTP/1.1" 200 6392
+INFO 2025-09-14 15:14:42,819 basehttp 48332 6206844928 "GET /admin/jsi18n/ HTTP/1.1" 200 1022
+INFO 2025-09-14 15:14:47,383 basehttp 48332 6206844928 "POST /admin/accounts/user/29/change/ HTTP/1.1" 302 0
+INFO 2025-09-14 15:14:47,392 basehttp 48332 6206844928 "GET /admin/accounts/user/ HTTP/1.1" 200 3373
+INFO 2025-09-14 15:14:47,407 basehttp 48332 6206844928 "GET /admin/jsi18n/ HTTP/1.1" 200 1009
+INFO 2025-09-14 15:14:48,825 basehttp 48332 6206844928 "POST /admin/logout/ HTTP/1.1" 200 1349
+INFO 2025-09-14 15:14:49,795 basehttp 48332 6206844928 "GET / HTTP/1.1" 200 5794
+INFO 2025-09-14 15:14:51,235 basehttp 48332 6206844928 "GET /accounts/login/ HTTP/1.1" 200 3781
+INFO 2025-09-14 15:14:59,906 basehttp 48332 6206844928 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-14 15:14:59,916 basehttp 48332 6206844928 "GET /grids/ HTTP/1.1" 200 11149
+INFO 2025-09-14 15:15:01,525 basehttp 48332 6206844928 "GET /grids/197/ HTTP/1.1" 200 15770
+INFO 2025-09-14 15:15:01,538 basehttp 48332 6206844928 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-14 15:15:09,735 basehttp 48332 6190018560 "POST /tasks/2063/toggle/ HTTP/1.1" 200 79
+INFO 2025-09-14 15:15:53,526 autoreload 48332 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-09-14 15:15:54,128 autoreload 48385 8549129984 Watching for file changes with StatReloader
+INFO 2025-09-14 15:15:55,664 autoreload 48385 8549129984 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-09-14 15:15:55,999 autoreload 48392 8549129984 Watching for file changes with StatReloader

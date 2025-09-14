@@ -21,7 +21,7 @@ def create_first_grid(sender, instance, created, **kwargs):
         row_headers = [
             "The Basics",
             "Make It Your Own", 
-            "Your Account"
+            "Your Turn!"
         ]
         
         for order, row_name in enumerate(row_headers):
@@ -51,21 +51,20 @@ def create_first_grid(sender, instance, created, **kwargs):
         
         # Create predefined tasks
         tasks_data = [
-            # The Basics row
-            (0, 0, "This is a task. You can check it off", False),
-            (0, 0, "Easily add a new task by clicking 'Add Task'", False),
-            (0, 0, "You can easily edit a task by clicking on it", False),            
-            (0, 0, "If you're on desktop, you can drag and drop tasks to reorder them", False),
-            
-            # Make It Your Own row
-            (1, 0, "Make your grid your own by adding your own columns and rows", False),
-            (1, 0, "Tidy your grid by clicking 'Clear Completed' to remove all completed tasks", False),
-            (1, 0, "Pick a template for your first grid using Templates or create your own grid by clicking Grids", False),
-            (1, 0, "This grid is yours. Feel free to delete it when you're done.", True),
-            
-            # Your Beta Account row
-            (2, 0, "We have built Toad to be simple and fast", True),
-            (2, 0, "Please reach out any time with issues or ideas to tom@meettoad.co.uk", False),
+            # Row 1: Your First Five Minutes
+            (0, 0, "✅ Welcome! Click the checkbox to complete your first task.", False),
+            (0, 0, "✏️ Now, click on this text to edit it to something else.", False),
+            (0, 0, "👇 Click 'Add Task' below to add a real task you have.", False),
+
+            # Row 2: Make it Your Own
+            (1, 0, "Let's expand. Add a new column to your right called 'In Progress'.", False),
+            (1, 0, "Feeling organised? Hit 'Clear Completed' to tidy up checked-off tasks.", False),
+            (1, 0, "This tutorial grid is just the start. You can delete it anytime.", True),
+
+            # Row 3: Your Turn!
+            (2, 0, "🔥 Your Mission: Create your first real grid.", False),
+            (2, 0, "Click on 'New Grid' to create your own grid from scratch or leverage a template like 'Weekly Planner' or 'Product Development Tracker'.", False),
+            (2, 0, "We're a small team building a simple tool. Ideas? Issues? Email tom@meettoad.co.uk", True),
         ]
         
         # Create all tasks

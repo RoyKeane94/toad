@@ -22,12 +22,14 @@ def get_dashboard_analytics():
     beta_users = User.objects.filter(tier='beta').count()
     free_users = User.objects.filter(tier='free').count()
     personal_users = User.objects.filter(tier='personal').count()
+    personal_trial_users = User.objects.filter(tier='personal_trial').count()
     pro_users = User.objects.filter(tier='pro').count()
     
     # Calculate percentages
     beta_percentage = round((beta_users / total_users * 100) if total_users > 0 else 0, 1)
     free_percentage = round((free_users / total_users * 100) if total_users > 0 else 0, 1)
     personal_percentage = round((personal_users / total_users * 100) if total_users > 0 else 0, 1)
+    personal_trial_percentage = round((personal_trial_users / total_users * 100) if total_users > 0 else 0, 1)
     pro_percentage = round((pro_users / total_users * 100) if total_users > 0 else 0, 1)
     
     # Active Users windows (created grid, ticked off a task, or created a new task)
@@ -160,10 +162,12 @@ def get_dashboard_analytics():
         'beta_users': beta_users,
         'free_users': free_users,
         'personal_users': personal_users,
+        'personal_trial_users': personal_trial_users,
         'pro_users': pro_users,
         'beta_percentage': beta_percentage,
         'free_percentage': free_percentage,
         'personal_percentage': personal_percentage,
+        'personal_trial_percentage': personal_trial_percentage,
         'pro_percentage': pro_percentage,
         'users_with_1_grid': users_with_1_grid,
         'users_with_2_grids': users_with_2_grids,
