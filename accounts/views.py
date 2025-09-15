@@ -634,6 +634,28 @@ def resend_verification_email_view(request):
     return render(request, 'accounts/pages/registration/resend_verification.html')
 
 
+def unsubscribe_view(request, user_id):
+    """
+    Unsubscribe user from emails
+    """
+    try:
+        user = User.objects.get(id=user_id)
+        user.email_subscribed = False
+        user.save(update_fields=['email_subscribed'])
+        
+        messages.success(request, f'You have been unsubscribed from Toad emails. We\'re sorry to see you go!')
+        
+        # Log the unsubscribe
+        import logging
+        logger = logging.getLogger(__name__)
+        logger.info(f'User unsubscribed from emails: {user.email} (ID: {user_id})')
+        
+    except User.DoesNotExist:
+        messages.error(request, 'Invalid unsubscribe link.')
+    
+    return redirect('pages:home')
+
+
 def preview_email_templates(request):
     """Test view to preview email templates"""
     from django.template.loader import render_to_string

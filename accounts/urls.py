@@ -15,6 +15,7 @@ from .views import (
     resend_verification_email_view,
     forgot_password_view,
     reset_password_view,
+    unsubscribe_view,
     preview_email_templates,
     beta_update_email_preview,
     manage_subscription_view,
@@ -56,6 +57,9 @@ urlpatterns = [
     # Password Reset
     path('forgot-password/', forgot_password_view, name='forgot_password'),
     path('reset-password/<str:token>/', reset_password_view, name='reset_password'),
+    
+    # Email Management
+    path('unsubscribe/<int:user_id>/', unsubscribe_view, name='unsubscribe'),
 
     # Email preview (development only)
     path('preview-emails/', preview_email_templates, name='preview_emails'),

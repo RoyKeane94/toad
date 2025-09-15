@@ -325,6 +325,11 @@
             <p class="small">
                 © {{ now|default:2025 }} Toad. All rights reserved.
             </p>
+            {% if user and user.email_subscribed %}
+            <p class="small" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #E5E7EB;">
+                <a href="{% url 'accounts:unsubscribe' user.id %}" style="color: #9CA3AF; text-decoration: none;">Unsubscribe from emails</a>
+            </p>
+            {% endif %}
             {% endblock %}
         </div>
     </div>

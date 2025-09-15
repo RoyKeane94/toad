@@ -11,6 +11,10 @@ def send_verification_email(user, request=None):
     """
     Send email verification email to the user.
     """
+    # Check if user is subscribed to emails (verification emails should always be sent)
+    # if not getattr(user, 'email_subscribed', True):
+    #     return False
+    
     # Generate verification token
     token = user.generate_email_verification_token()
     
@@ -90,6 +94,10 @@ def send_password_reset_email(user, request=None):
     """
     Send password reset email to the user.
     """
+    # Check if user is subscribed to emails (password reset emails should always be sent)
+    # if not getattr(user, 'email_subscribed', True):
+    #     return False
+    
     # Generate password reset token
     token = user.generate_password_reset_token()
     
@@ -168,6 +176,10 @@ def send_joining_email(user, request=None, cta_url=None):
     Send the post-verification welcome email with hero image.
     Sends different emails based on user tier.
     """
+    # Check if user is subscribed to emails
+    if not getattr(user, 'email_subscribed', True):
+        return False
+    
     # Build a default CTA if not provided
     if not cta_url:
         # Try to send them to their first project or project list
