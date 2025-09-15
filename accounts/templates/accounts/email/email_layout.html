@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Toad{% endblock %}</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Use the same CSS variables as static/css/input.css for consistent theming */
+        :root {
+            --main-bg: #FFFFFF;
+            --container-bg: #FFFFFF;
+            --title-text: #1F2937;
+            --subtitle-text: #6B7280;
+            --primary-action-bg: #10B981;
+            --primary-action-hover-bg: #059669;
+            --primary-action-text: #FFFFFF;
+            --text-primary: #1F2937;
+            --text-secondary: #4B5563;
+            --border-color: #E5E7EB;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--main-bg);
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Container */
+        .email-container {
+            max-width: 640px;
+            margin: 0 auto;
+            background-color: var(--container-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+        
+        /* Toad Image Header */
+        .email-image-container {
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .email-image-container img {
+            width: 100%;
+            max-width: 640px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            padding: 24px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-action-bg) 0%, var(--primary-action-hover-bg) 100%);
+        }
+        
+        .header h1 {
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 16px;
+        }
+        
+        /* Alternative header for non-gradient emails */
+        .header-simple {
+            padding: 24px;
+            text-align: center;
+            background: var(--container-bg);
+        }
+        
+        .header-simple h1 {
+            color: var(--title-text);
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .header-simple p {
+            color: var(--subtitle-text);
+            font-size: 16px;
+        }
+        
+        /* Content */
+        .content {
+            padding: 24px;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+        
+        .content h1 {
+            font-size: 24px;
+            margin: 0 0 8px 0;
+            color: var(--title-text);
+        }
+        
+        .content h2 {
+            font-size: 20px;
+            margin: 0 0 16px 0;
+            color: var(--title-text);
+        }
+        
+        .content p {
+            margin: 0 0 16px 0;
+            color: var(--text-secondary);
+        }
+        
+        .content .greeting {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+        
+        .content .message {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        /* Buttons */
+        .button-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--primary-action-bg);
+            color: var(--primary-action-text) !important;
+            text-decoration: none;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.2s ease;
+        }
+        
+        .btn:hover {
+            background: var(--primary-action-hover-bg);
+            color: var(--primary-action-text) !important;
+        }
+        
+        .btn-large {
+            padding: 16px 32px;
+            font-size: 16px;
+        }
+        
+        .btn-secondary {
+            background: #6366F1;
+            color: white !important;
+        }
+        
+        .btn-secondary:hover {
+            background: #4F46E5;
+            color: white !important;
+        }
+        
+        /* Alternative link */
+        .alternative-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .alternative-link a {
+            color: var(--primary-action-bg);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .alternative-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Special sections */
+        .upgrade-section {
+            background: #F9FAFB;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        
+        .upgrade-section p {
+            margin: 0 0 8px 0;
+        }
+        
+        .upgrade-section .upgrade-btn {
+            background: #6366F1;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: inline-block;
+        }
+        
+        .upgrade-section .upgrade-btn:hover {
+            background: #4F46E5;
+        }
+        
+        .beta-badge {
+            background: #F59E0B;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+        
+        /* Security notice */
+        .security-notice {
+            background-color: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+        }
+        
+        .security-notice p {
+            color: #92400e;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #f9fafb;
+            padding: 30px 24px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        .footer p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .footer .small {
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+        
+        /* Responsive */
+        @media (max-width: 600px) {
+            .email-container {
+                margin: 0;
+                border-radius: 0;
+            }
+            
+            .header, .header-simple, .content, .footer {
+                padding: 20px;
+            }
+            
+            .header h1, .header-simple h1 {
+                font-size: 24px;
+            }
+            
+            .content h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <!-- Toad Email Image at the top -->
+        {% if toad_image_data %}
+        <div class="email-image-container">
+            <img src="data:image/png;base64,{{ toad_image_data }}" alt="Toad - For when your brain has too many tabs open">
+        </div>
+        {% endif %}
+        
+        <!-- Header -->
+        {% block header %}
+        <div class="header-simple">
+            <h1>{% block header_title %}Welcome to Toad{% endblock %}</h1>
+            {% block header_subtitle %}{% endblock %}
+        </div>
+        {% endblock %}
+        
+        <!-- Content -->
+        <div class="content">
+            {% block content %}
+            <div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
+            
+            <div class="message">
+                {% block message %}Welcome to Toad!{% endblock %}
+            </div>
+            
+            {% block cta %}{% endblock %}
+            
+            {% block additional_content %}{% endblock %}
+            {% endblock %}
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            {% block footer %}
+            <p>Thanks for choosing Toad!</p>
+            <p class="small">
+                This email was sent to {{ user.email }}. If you have any questions, please contact our support team.
+            </p>
+            <p class="small">
+                © {{ now|default:2025 }} Toad. All rights reserved.
+            </p>
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>
