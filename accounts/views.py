@@ -880,14 +880,14 @@ class SecretRegistrationView(FormView):
         """Create the user and send verification email"""
         user = form.save()
         
-        # Set user tier to Beta
-        user.tier = 'beta'
+        # Set user tier to Society Pro
+        user.tier = 'society_pro'
         user.save()
         
         # Log registration attempt
         import logging
         logger = logging.getLogger(__name__)
-        logger.info(f"New Beta user registration: {user.email} ({user.get_short_name()})")
+        logger.info(f"New Society Pro user registration: {user.email} ({user.get_short_name()})")
         
         # Add session flag immediately for better UX
         self.request.session['show_verification_message'] = True
@@ -907,10 +907,10 @@ class SecretRegistrationView(FormView):
             email_thread.daemon = True
             email_thread.start()
             
-            messages.success(self.request, f'Welcome to Toad Beta, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad.')
+            messages.success(self.request, f'Welcome to Toad Society Pro, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad.')
         except Exception as e:
             logger.error(f"Failed to start email sending: {e}")
-            messages.warning(self.request, f'Welcome to Toad Beta, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
+            messages.warning(self.request, f'Welcome to Toad Society Pro, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
         
         # Redirect to login page immediately
         return redirect('accounts:login')

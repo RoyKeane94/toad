@@ -41,6 +41,8 @@ class User(AbstractUser):
         ('personal', 'Personal'),
         ('personal_trial', 'Personal Trial'),
         ('pro', 'Pro'),
+        ('pro_trial', 'Pro Trial'),
+        ('society_pro', 'Society Pro'),
         ('beta', 'Beta'),
     ]
     
