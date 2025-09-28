@@ -28178,3 +28178,62 @@ INFO 2025-09-14 16:18:57,986 tom_email_utils 57699 8549129984 Attempting to send
 ERROR 2025-09-14 16:19:03,274 tom_email_utils 57699 8549129984 Failed to send Tom's test email to thomasbarratt@yahoo.com: (535, b'5.7.139 Authentication unsuccessful, SmtpClientAuthentication is disabled for the Tenant. Visit https://aka.ms/smtp_auth_disabled for more information. [LO2P123CA0040.GBRP123.PROD.OUTLOOK.COM 2025-09-14T16:19:03.256Z 08DDF357D3F94405]')
 INFO 2025-09-14 16:21:27,357 tom_email_utils 58290 8549129984 Attempting to send Tom's test email to thomasbarratt@yahoo.com
 INFO 2025-09-14 16:21:30,337 tom_email_utils 58290 8549129984 Successfully sent Tom's test email to thomasbarratt@yahoo.com
+INFO 2025-09-28 12:25:08,380 autoreload 8887 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-28 12:25:11,591 basehttp 8887 6193475584 "GET / HTTP/1.1" 200 6005
+INFO 2025-09-28 12:25:11,601 basehttp 8887 6193475584 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-28 12:25:11,605 basehttp 8887 6193475584 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-09-28 12:25:11,607 basehttp 8887 6193475584 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-09-28 12:25:11,607 basehttp 8887 6210301952 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-28 12:25:11,649 basehttp 8887 6210301952 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-28 12:25:11,949 basehttp 8887 6210301952 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-09-28 12:25:13,828 basehttp 8887 6210301952 "GET /grids/ HTTP/1.1" 200 11137
+INFO 2025-09-28 12:25:15,442 basehttp 8887 6210301952 "GET / HTTP/1.1" 200 5990
+INFO 2025-09-28 12:25:16,762 basehttp 8887 6210301952 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-09-28 12:25:16,766 basehttp 8887 6193475584 "GET /lilypad/ HTTP/1.1" 302 0
+INFO 2025-09-28 12:25:16,769 basehttp 8887 6193475584 "GET /accounts/login/?next=/lilypad/ HTTP/1.1" 302 0
+INFO 2025-09-28 12:25:16,777 basehttp 8887 6193475584 "GET /grids/ HTTP/1.1" 200 11160
+INFO 2025-09-28 12:25:25,388 basehttp 8887 6193475584 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-28 12:25:25,395 basehttp 8887 6193475584 "GET / HTTP/1.1" 200 5779
+INFO 2025-09-28 12:25:26,409 basehttp 8887 6193475584 "GET /accounts/login/ HTTP/1.1" 200 3773
+INFO 2025-09-28 12:25:33,320 basehttp 8887 6193475584 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-28 12:25:33,327 basehttp 8887 6193475584 "GET /grids/ HTTP/1.1" 200 10567
+INFO 2025-09-28 12:25:35,413 basehttp 8887 6193475584 "GET / HTTP/1.1" 200 6007
+INFO 2025-09-28 12:25:36,795 basehttp 8887 6193475584 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-09-28 12:25:36,954 basehttp 8887 6227128320 "GET /lilypad/ HTTP/1.1" 200 4008
+INFO 2025-09-28 12:25:40,332 basehttp 8887 6227128320 "GET /lilypad/leads/create/ HTTP/1.1" 200 3653
+INFO 2025-09-28 12:25:51,664 basehttp 8887 6227128320 "GET /lilypad/contact-methods/create/ HTTP/1.1" 200 2931
+INFO 2025-09-28 12:25:55,645 basehttp 8887 6227128320 "POST /lilypad/contact-methods/create/ HTTP/1.1" 302 0
+INFO 2025-09-28 12:25:55,664 basehttp 8887 6227128320 "GET /lilypad/leads/ HTTP/1.1" 200 3973
+INFO 2025-09-28 12:26:00,578 basehttp 8887 6227128320 "GET /lilypad/leads/create/ HTTP/1.1" 200 3684
+INFO 2025-09-28 12:26:13,126 basehttp 8887 6227128320 "POST /lilypad/leads/create/ HTTP/1.1" 302 0
+INFO 2025-09-28 12:26:13,142 basehttp 8887 6227128320 "GET /lilypad/leads/ HTTP/1.1" 200 4156
+ERROR 2025-09-28 12:26:14,460 log 8887 6227128320 Internal Server Error: /lilypad/leads/2/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 184, in lead_detail
+    'title': f'Lead: {lead.name} - {lead.society_university.name}',
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'NoneType' object has no attribute 'name'
+ERROR 2025-09-28 12:26:14,463 basehttp 8887 6227128320 "GET /lilypad/leads/2/ HTTP/1.1" 500 12205
+INFO 2025-09-28 12:26:14,504 basehttp 8887 6227128320 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-28 12:26:14,505 basehttp 8887 6227128320 "GET /static/img/favicon.svg HTTP/1.1" 304 0
+INFO 2025-09-28 12:27:12,433 autoreload 8887 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-28 12:27:12,953 autoreload 8966 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-28 12:27:16,010 basehttp 8966 6135771136 "GET /lilypad/leads/2/ HTTP/1.1" 200 3365
+INFO 2025-09-28 12:27:17,601 autoreload 8966 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-28 12:27:17,958 autoreload 8978 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-28 12:27:29,628 autoreload 8978 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-09-28 12:27:29,958 autoreload 8988 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-28 12:27:33,436 autoreload 8988 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-09-28 12:27:33,803 autoreload 9000 8398642944 Watching for file changes with StatReloader

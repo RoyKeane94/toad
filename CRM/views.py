@@ -181,7 +181,7 @@ def lead_detail(request, pk):
     
     context = {
         'lead': lead,
-        'title': f'Lead: {lead.name} - {lead.society_university.name}',
+        'title': f'Lead: {lead.name} - {lead.society_university.name if lead.society_university else "No University"}',
     }
     return render(request, 'CRM/lead_detail.html', context)
 
