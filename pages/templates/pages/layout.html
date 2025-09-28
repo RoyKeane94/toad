@@ -53,6 +53,11 @@
                         <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
                             My Grids
                         </a>
+                        {% if user.is_superuser %}
+                        <a href="{% url 'crm:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
+                            Lilypad
+                        </a>
+                        {% endif %}
                     </div>
                     {% endif %}
                 </div>
@@ -121,6 +126,11 @@
                     <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         My Grids
                     </a>
+                    {% if user.is_superuser %}
+                    <a href="{% url 'crm:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                        Lilypad
+                    </a>
+                    {% endif %}
                     {% else %}
                     <a href="{% url 'pages:templates_overview' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         Templates
