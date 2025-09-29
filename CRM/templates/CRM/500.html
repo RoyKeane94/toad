@@ -1,0 +1,29 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Server Error - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center">
+    <div class="max-w-md mx-auto text-center">
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-8">
+            <div class="mb-6">
+                <i class="fas fa-exclamation-triangle text-red-500 text-6xl mb-4"></i>
+                <h1 class="text-2xl font-bold text-[var(--text-primary)] mb-2">Server Error</h1>
+                <p class="text-[var(--text-secondary)]">Something went wrong on our end. Please try again later.</p>
+            </div>
+            
+            <div class="space-y-3">
+                <a href="{% url 'crm:home' %}" class="inline-flex items-center px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-md font-medium transition-colors duration-200">
+                    <i class="fas fa-home mr-2"></i>
+                    Back to CRM Dashboard
+                </a>
+                <div>
+                    <a href="{% url 'pages:home' %}" class="text-sm text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors duration-200">
+                        ← Back to Toad Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
