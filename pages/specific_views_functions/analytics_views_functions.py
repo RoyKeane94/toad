@@ -23,6 +23,7 @@ def get_dashboard_analytics():
     free_users = User.objects.filter(tier='free').count()
     personal_users = User.objects.filter(tier='personal').count()
     personal_trial_users = User.objects.filter(tier='personal_trial').count()
+    personal_3_month_trial_users = User.objects.filter(tier='personal_3_month_trial').count()
     pro_users = User.objects.filter(tier='pro').count()
     society_pro_users = User.objects.filter(tier='society_pro').count()
     
@@ -31,6 +32,7 @@ def get_dashboard_analytics():
     free_percentage = round((free_users / total_users * 100) if total_users > 0 else 0, 1)
     personal_percentage = round((personal_users / total_users * 100) if total_users > 0 else 0, 1)
     personal_trial_percentage = round((personal_trial_users / total_users * 100) if total_users > 0 else 0, 1)
+    personal_3_month_trial_percentage = round((personal_3_month_trial_users / total_users * 100) if total_users > 0 else 0, 1)
     pro_percentage = round((pro_users / total_users * 100) if total_users > 0 else 0, 1)
     society_pro_percentage = round((society_pro_users / total_users * 100) if total_users > 0 else 0, 1)
     
@@ -165,12 +167,14 @@ def get_dashboard_analytics():
         'free_users': free_users,
         'personal_users': personal_users,
         'personal_trial_users': personal_trial_users,
+        'personal_3_month_trial_users': personal_3_month_trial_users,
         'pro_users': pro_users,
         'society_pro_users': society_pro_users,
         'beta_percentage': beta_percentage,
         'free_percentage': free_percentage,
         'personal_percentage': personal_percentage,
         'personal_trial_percentage': personal_trial_percentage,
+        'personal_3_month_trial_percentage': personal_3_month_trial_percentage,
         'pro_percentage': pro_percentage,
         'society_pro_percentage': society_pro_percentage,
         'users_with_1_grid': users_with_1_grid,
