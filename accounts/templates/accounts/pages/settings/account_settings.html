@@ -119,6 +119,10 @@
                                         Free Plan
                                     {% elif user.tier == 'personal' %}
                                         Personal Plan
+                                    {% elif user.tier == 'personal_trial' %}
+                                        Personal Trial Plan
+                                    {% elif user.tier == 'personal_3_month_trial' %}
+                                        Personal 3 Month Trial Plan
                                     {% elif user.tier == 'pro' %}
                                         Pro Plan
                                     {% else %}

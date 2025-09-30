@@ -28408,3 +28408,227 @@ INFO 2025-09-30 10:19:09,457 autoreload 13532 8398642944 Watching for file chang
 INFO 2025-09-30 10:20:39,005 basehttp 13532 6167539712 "GET /dashboard/ HTTP/1.1" 200 4093
 INFO 2025-09-30 10:20:39,014 basehttp 13532 6167539712 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-09-30 10:20:39,015 basehttp 13532 6167539712 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 10:27:10,889 autoreload 14023 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 10:27:12,641 basehttp 14023 6194606080 "GET / HTTP/1.1" 200 6012
+INFO 2025-09-30 10:27:12,650 basehttp 14023 6194606080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 10:27:12,656 basehttp 14023 6194606080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 10:27:12,699 basehttp 14023 6194606080 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-09-30 10:27:13,765 basehttp 14023 6194606080 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-30 10:27:13,798 basehttp 14023 6194606080 "GET /admin/ HTTP/1.1" 200 2860
+INFO 2025-09-30 10:27:13,805 basehttp 14023 6211432448 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-09-30 10:27:13,805 basehttp 14023 6228258816 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-09-30 10:27:13,805 basehttp 14023 6194606080 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-09-30 10:27:13,807 basehttp 14023 6194606080 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-09-30 10:27:13,807 basehttp 14023 6228258816 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-09-30 10:27:13,807 basehttp 14023 6211432448 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-09-30 10:27:13,808 basehttp 14023 6211432448 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-09-30 10:27:13,811 basehttp 14023 6211432448 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-09-30 10:27:13,812 basehttp 14023 6194606080 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-09-30 10:27:13,812 basehttp 14023 6228258816 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-09-30 10:27:13,813 basehttp 14023 6211432448 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-09-30 10:27:22,974 basehttp 14023 6211432448 "GET /accounts/register/trial-3-month HTTP/1.1" 301 0
+INFO 2025-09-30 10:27:22,978 basehttp 14023 6228258816 "GET /accounts/register/trial-3-month/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:27:22,989 basehttp 14023 6228258816 "GET /grids/ HTTP/1.1" 200 10542
+INFO 2025-09-30 10:27:25,774 basehttp 14023 6228258816 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:27:25,779 basehttp 14023 6228258816 "GET / HTTP/1.1" 200 5761
+INFO 2025-09-30 10:27:29,493 basehttp 14023 6228258816 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-30 10:27:29,499 basehttp 14023 6194606080 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:27:29,509 basehttp 14023 6194606080 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1699
+INFO 2025-09-30 10:27:29,517 basehttp 14023 6194606080 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-09-30 10:27:33,656 basehttp 14023 6194606080 "GET /accounts/register/trial-3-month HTTP/1.1" 301 0
+INFO 2025-09-30 10:27:33,666 basehttp 14023 6211432448 "GET /accounts/register/trial-3-month/ HTTP/1.1" 200 4361
+INFO 2025-09-30 10:28:28,350 basehttp 14023 6211432448 "GET /accounts/register/trial-3-month/ HTTP/1.1" 200 4410
+INFO 2025-09-30 10:28:28,362 basehttp 14023 6211432448 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 10:28:28,363 basehttp 14023 6194606080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 10:28:42,142 basehttp 14023 6194606080 "POST /accounts/register/trial-3-month/ HTTP/1.1" 200 4565
+INFO 2025-09-30 10:28:47,934 basehttp 14023 6194606080 "GET / HTTP/1.1" 200 5809
+INFO 2025-09-30 10:28:49,513 basehttp 14023 6194606080 "GET /accounts/login/ HTTP/1.1" 200 3787
+INFO 2025-09-30 10:28:55,561 basehttp 14023 6194606080 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:28:55,570 basehttp 14023 6194606080 "GET /grids/ HTTP/1.1" 200 10538
+INFO 2025-09-30 10:28:57,438 basehttp 14023 6194606080 "GET / HTTP/1.1" 200 6000
+INFO 2025-09-30 10:28:58,216 basehttp 14023 6194606080 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-30 10:28:58,238 basehttp 14023 6211432448 "GET /admin/ HTTP/1.1" 200 2835
+INFO 2025-09-30 10:28:58,343 basehttp 14023 6211432448 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-09-30 10:28:58,346 basehttp 14023 6211432448 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-09-30 10:28:59,697 basehttp 14023 6211432448 "GET /admin/accounts/user/ HTTP/1.1" 200 3306
+INFO 2025-09-30 10:28:59,708 basehttp 14023 6211432448 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-09-30 10:28:59,715 basehttp 14023 6211432448 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-09-30 10:28:59,715 basehttp 14023 6245085184 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-09-30 10:28:59,718 basehttp 14023 6261911552 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-09-30 10:28:59,718 basehttp 14023 6278737920 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-09-30 10:28:59,719 basehttp 14023 6211432448 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-09-30 10:28:59,721 basehttp 14023 6194606080 "GET /admin/jsi18n/ HTTP/1.1" 200 1010
+INFO 2025-09-30 10:28:59,721 basehttp 14023 6245085184 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-09-30 10:28:59,724 basehttp 14023 6228258816 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-09-30 10:28:59,725 basehttp 14023 6261911552 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-09-30 10:28:59,727 basehttp 14023 6228258816 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-09-30 10:28:59,740 basehttp 14023 6228258816 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-09-30 10:29:04,235 basehttp 14023 6228258816 "POST /admin/accounts/user/ HTTP/1.1" 200 3604
+INFO 2025-09-30 10:29:04,247 basehttp 14023 6228258816 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-09-30 10:29:05,348 basehttp 14023 6228258816 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:29:05,359 basehttp 14023 6228258816 "GET /admin/accounts/user/ HTTP/1.1" 200 3308
+INFO 2025-09-30 10:29:05,370 basehttp 14023 6228258816 "GET /admin/jsi18n/ HTTP/1.1" 200 976
+INFO 2025-09-30 10:29:08,392 basehttp 14023 6228258816 "POST /admin/logout/ HTTP/1.1" 200 1318
+INFO 2025-09-30 10:29:10,036 basehttp 14023 6228258816 "GET / HTTP/1.1" 200 5809
+INFO 2025-09-30 10:29:13,797 basehttp 14023 6228258816 "GET /accounts/register/trial-3-month/ HTTP/1.1" 200 4316
+INFO 2025-09-30 10:29:23,483 views 14023 6228258816 Starting 3-month trial user registration...
+INFO 2025-09-30 10:29:23,719 views 14023 6228258816 User created successfully: tom_barratt@hotmail.com
+INFO 2025-09-30 10:29:23,719 views 14023 6228258816 User tier set to personal_3_month_trial: tom_barratt@hotmail.com
+INFO 2025-09-30 10:29:23,720 views 14023 6228258816 3-month trial started for user: tom_barratt@hotmail.com, ends at: 2025-12-29 10:29:23.719933+00:00
+INFO 2025-09-30 10:29:23,720 views 14023 6228258816 New 3-Month Trial plan user registration: tom_barratt@hotmail.com (Tom) - tier set to PERSONAL_3_MONTH_TRIAL
+INFO 2025-09-30 10:29:23,722 basehttp 14023 6228258816 "POST /accounts/register/trial-3-month/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:29:23,725 email_utils 14023 6295564288 Attempting to send verification email to tom_barratt@hotmail.com
+INFO 2025-09-30 10:29:23,728 basehttp 14023 6228258816 "GET /accounts/login/ HTTP/1.1" 200 3915
+INFO 2025-09-30 10:29:34,561 email_utils 14023 6295564288 Successfully sent verification email to tom_barratt@hotmail.com
+INFO 2025-09-30 10:29:34,561 views 14023 6295564288 Verification email sent: True for tom_barratt@hotmail.com
+INFO 2025-09-30 10:31:09,682 basehttp 14023 6228258816 "GET /accounts/register/trial-3-month/ HTTP/1.1" 200 4410
+INFO 2025-09-30 10:31:09,694 basehttp 14023 6228258816 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 10:31:09,694 basehttp 14023 6261911552 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 10:31:20,979 views 14023 6261911552 Starting 3-month trial user registration...
+INFO 2025-09-30 10:31:21,216 views 14023 6261911552 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:31:21,216 views 14023 6261911552 User tier set to personal_3_month_trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:31:21,217 views 14023 6261911552 3-month trial started for user: tom_barratt@hotmail.co.uk, ends at: 2025-12-29 10:31:21.217027+00:00
+INFO 2025-09-30 10:31:21,217 views 14023 6261911552 New 3-Month Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL_3_MONTH_TRIAL
+INFO 2025-09-30 10:31:21,218 basehttp 14023 6261911552 "POST /accounts/register/trial-3-month/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:31:21,221 email_utils 14023 6295564288 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:31:21,224 basehttp 14023 6261911552 "GET /accounts/login/ HTTP/1.1" 200 3973
+INFO 2025-09-30 10:31:28,219 email_utils 14023 6295564288 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:31:28,220 views 14023 6295564288 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:32:47,296 views 14023 6194606080 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:32:47,299 views 14023 6194606080 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:32:47,303 views 14023 6194606080 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:32:47,306 views 14023 6194606080 Redirecting to first project: 202
+INFO 2025-09-30 10:32:47,308 email_utils 14023 6228258816 Attempting to send personal_trial joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:32:47,311 basehttp 14023 6194606080 "GET /accounts/verify-email/FRLRxcT5U27K3KACKMmj59vgS6GLSg1Q/ HTTP/1.1" 302 0
+INFO 2025-09-30 10:32:47,331 basehttp 14023 6194606080 "GET /grids/202/ HTTP/1.1" 200 15894
+INFO 2025-09-30 10:32:47,347 basehttp 14023 6211432448 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 10:32:47,349 basehttp 14023 6245085184 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 10:32:47,350 basehttp 14023 6194606080 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-09-30 10:32:56,347 email_utils 14023 6228258816 Successfully sent personal_trial joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 10:32:56,599 basehttp 14023 6194606080 "GET /accounts/settings/ HTTP/1.1" 200 3710
+INFO 2025-09-30 10:33:43,967 basehttp 14023 6194606080 "GET /accounts/settings/ HTTP/1.1" 200 3683
+INFO 2025-09-30 10:34:08,547 basehttp 14023 6194606080 "GET /accounts/settings/ HTTP/1.1" 200 3668
+INFO 2025-09-30 10:35:44,885 autoreload 14023 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 10:35:45,471 autoreload 14295 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 10:35:52,087 autoreload 14295 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 10:35:52,630 autoreload 14308 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 10:36:08,318 basehttp 14308 6197145600 "GET /accounts/settings/ HTTP/1.1" 200 3687
+INFO 2025-09-30 10:36:08,333 basehttp 14308 6213971968 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 10:36:08,333 basehttp 14308 6197145600 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 10:36:19,495 basehttp 14308 6197145600 "GET /accounts/settings/ HTTP/1.1" 200 3703
+INFO 2025-09-30 10:37:14,011 autoreload 14308 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 10:37:14,525 autoreload 14353 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 10:37:22,148 autoreload 14353 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 10:37:22,679 autoreload 14367 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 10:37:24,182 basehttp 14367 6124482560 "GET /accounts/settings/ HTTP/1.1" 200 3719
+INFO 2025-09-30 11:22:05,408 basehttp 14367 6124482560 "GET /accounts/settings/delete/ HTTP/1.1" 200 3859
+INFO 2025-09-30 11:22:05,431 basehttp 14367 6124482560 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 11:22:05,432 basehttp 14367 6141308928 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 11:22:11,054 views 14367 6124482560 Account deleted: tom_barratt@hotmail.co.uk (Tom)
+INFO 2025-09-30 11:22:11,063 basehttp 14367 6124482560 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:22:11,070 basehttp 14367 6124482560 "GET / HTTP/1.1" 200 5810
+INFO 2025-09-30 11:23:46,615 autoreload 14367 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 11:23:47,132 autoreload 14528 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 11:23:58,884 autoreload 14528 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 11:23:59,303 autoreload 14534 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 11:24:16,143 autoreload 14534 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-09-30 11:24:16,699 autoreload 14545 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 11:24:51,830 autoreload 14650 8398642944 Watching for file changes with StatReloader
+INFO 2025-09-30 11:25:58,899 basehttp 14650 6196129792 "GET /accounts/register/trial-3-month/ HTTP/1.1" 200 4409
+INFO 2025-09-30 11:26:12,633 views 14650 6196129792 Starting 3-month trial user registration...
+INFO 2025-09-30 11:26:12,845 views 14650 6196129792 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:26:12,846 views 14650 6196129792 User tier set to personal_3_month_trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:26:12,846 views 14650 6196129792 3-month trial started for user: tom_barratt@hotmail.co.uk, ends at: 2025-12-29 11:26:12.845713+00:00
+INFO 2025-09-30 11:26:12,846 views 14650 6196129792 New 3-Month Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL_3_MONTH_TRIAL
+INFO 2025-09-30 11:26:12,848 basehttp 14650 6196129792 "POST /accounts/register/trial-3-month/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:26:12,850 email_utils 14650 6229782528 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:26:12,855 basehttp 14650 6196129792 "GET /accounts/login/ HTTP/1.1" 200 3908
+INFO 2025-09-30 11:26:19,438 email_utils 14650 6229782528 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:26:19,439 views 14650 6229782528 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:30:18,536 views 14650 6196129792 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:30:18,539 views 14650 6196129792 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:30:18,541 views 14650 6196129792 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:30:18,543 views 14650 6196129792 Redirecting to first project: 203
+INFO 2025-09-30 11:30:18,548 basehttp 14650 6196129792 "GET /accounts/verify-email/EhcThnBG4UODN5ailTbldGbnc6YfrENB/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:30:18,550 email_utils 14650 6229782528 Attempting to send personal_3_month_trial joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:30:18,565 basehttp 14650 6196129792 "GET /grids/203/ HTTP/1.1" 200 15838
+INFO 2025-09-30 11:30:18,609 basehttp 14650 6196129792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 11:30:18,611 basehttp 14650 6246608896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 11:30:18,612 basehttp 14650 6212956160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 11:30:20,693 basehttp 14650 6196129792 "GET /accounts/settings/ HTTP/1.1" 200 3655
+INFO 2025-09-30 11:30:24,771 basehttp 14650 6196129792 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:30:24,779 basehttp 14650 6196129792 "GET / HTTP/1.1" 200 5763
+INFO 2025-09-30 11:30:25,628 email_utils 14650 6229782528 Successfully sent personal_3_month_trial joining email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:30:26,490 basehttp 14650 6196129792 "GET /accounts/login/ HTTP/1.1" 200 3750
+INFO 2025-09-30 11:30:33,055 basehttp 14650 6196129792 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:30:33,064 basehttp 14650 6196129792 "GET /grids/ HTTP/1.1" 200 10534
+INFO 2025-09-30 11:30:34,352 basehttp 14650 6196129792 "GET / HTTP/1.1" 200 5977
+INFO 2025-09-30 11:30:35,256 basehttp 14650 6196129792 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-30 11:30:35,282 basehttp 14650 6212956160 "GET /admin/ HTTP/1.1" 200 2831
+INFO 2025-09-30 11:30:39,345 basehttp 14650 6212956160 "GET /admin/accounts/user/ HTTP/1.1" 200 3292
+INFO 2025-09-30 11:30:39,364 basehttp 14650 6212956160 "GET /admin/jsi18n/ HTTP/1.1" 200 1016
+INFO 2025-09-30 11:30:41,804 basehttp 14650 6212956160 "GET /admin/accounts/user/33/change/ HTTP/1.1" 200 6581
+INFO 2025-09-30 11:30:41,823 basehttp 14650 6229782528 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-09-30 11:30:41,824 basehttp 14650 6212956160 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-09-30 11:30:41,825 basehttp 14650 6246608896 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-09-30 11:30:41,825 basehttp 14650 6263435264 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-09-30 11:30:41,825 basehttp 14650 6196129792 "GET /admin/jsi18n/ HTTP/1.1" 200 1044
+INFO 2025-09-30 11:30:41,826 basehttp 14650 6246608896 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-09-30 11:30:41,827 basehttp 14650 6196129792 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-09-30 11:30:41,827 basehttp 14650 6246608896 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-09-30 11:30:41,854 basehttp 14650 6246608896 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-09-30 11:30:41,855 basehttp 14650 6196129792 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-09-30 11:30:45,477 basehttp 14650 6196129792 "GET /admin/accounts/user/ HTTP/1.1" 200 3316
+INFO 2025-09-30 11:30:49,959 basehttp 14650 6196129792 "POST /admin/accounts/user/ HTTP/1.1" 200 3770
+INFO 2025-09-30 11:30:52,159 basehttp 14650 6196129792 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:30:52,171 basehttp 14650 6196129792 "GET /admin/accounts/user/ HTTP/1.1" 200 3291
+INFO 2025-09-30 11:30:52,182 basehttp 14650 6196129792 "GET /admin/jsi18n/ HTTP/1.1" 200 993
+INFO 2025-09-30 11:30:54,277 basehttp 14650 6196129792 "POST /admin/logout/ HTTP/1.1" 200 1360
+INFO 2025-09-30 11:30:55,067 basehttp 14650 6196129792 "GET / HTTP/1.1" 200 5812
+INFO 2025-09-30 11:30:56,054 basehttp 14650 6196129792 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-30 11:30:56,073 basehttp 14650 6246608896 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:30:56,082 basehttp 14650 6246608896 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1571
+INFO 2025-09-30 11:32:32,173 basehttp 14650 6246608896 "GET /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 200 4346
+INFO 2025-09-30 11:32:32,187 basehttp 14650 6263435264 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-09-30 11:32:32,188 basehttp 14650 6246608896 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 11:32:44,034 views 14650 6263435264 Starting trial user registration... Society: The Economics Society, University: Sheffield
+INFO 2025-09-30 11:32:44,272 views 14650 6263435264 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:32:44,273 views 14650 6263435264 User tom_barratt@hotmail.co.uk associated with society: The Economics Society and university: Sheffield
+INFO 2025-09-30 11:32:44,274 views 14650 6263435264 User tier set to personal for trial: tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:32:44,275 views 14650 6263435264 Trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-03-29 11:32:44.274429+00:00
+INFO 2025-09-30 11:32:44,275 views 14650 6263435264 New Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PERSONAL for trial - Society: The Economics Society, University: Sheffield
+INFO 2025-09-30 11:32:44,277 email_utils 14650 6196129792 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:32:44,278 basehttp 14650 6263435264 "POST /accounts/register/trial/?society=The%20Economics%20Society&university=Sheffield HTTP/1.1" 302 0
+INFO 2025-09-30 11:32:44,284 basehttp 14650 6263435264 "GET /accounts/login/ HTTP/1.1" 200 3958
+INFO 2025-09-30 11:32:47,369 basehttp 14650 6263435264 "GET /accounts/login/ HTTP/1.1" 200 3766
+INFO 2025-09-30 11:32:51,452 email_utils 14650 6196129792 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:32:51,453 views 14650 6196129792 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-09-30 11:32:53,332 basehttp 14650 6263435264 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:32:53,339 basehttp 14650 6263435264 "GET /grids/ HTTP/1.1" 200 10618
+INFO 2025-09-30 11:32:55,089 basehttp 14650 6263435264 "GET / HTTP/1.1" 200 5961
+INFO 2025-09-30 11:32:55,917 basehttp 14650 6263435264 "GET /admin HTTP/1.1" 301 0
+INFO 2025-09-30 11:32:55,939 basehttp 14650 6246608896 "GET /admin/ HTTP/1.1" 200 2866
+INFO 2025-09-30 11:32:57,283 basehttp 14650 6246608896 "GET /admin/accounts/user/ HTTP/1.1" 200 3257
+INFO 2025-09-30 11:32:57,305 basehttp 14650 6246608896 "GET /admin/jsi18n/ HTTP/1.1" 200 993
+INFO 2025-09-30 11:32:58,812 basehttp 14650 6246608896 "GET /admin/accounts/user/34/change/ HTTP/1.1" 200 6651
+INFO 2025-09-30 11:32:58,833 basehttp 14650 6246608896 "GET /admin/jsi18n/ HTTP/1.1" 200 994
+INFO 2025-09-30 11:33:15,176 basehttp 14650 6246608896 "GET /admin/accounts/user/34/delete/ HTTP/1.1" 200 3565
+INFO 2025-09-30 11:33:16,377 basehttp 14650 6246608896 "POST /admin/accounts/user/34/delete/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:33:16,390 basehttp 14650 6246608896 "GET /admin/accounts/user/ HTTP/1.1" 200 3291
+INFO 2025-09-30 11:33:16,410 basehttp 14650 6246608896 "GET /admin/jsi18n/ HTTP/1.1" 200 1015
+INFO 2025-09-30 11:33:54,275 basehttp 14650 6196129792 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:33:54,281 basehttp 14650 6196129792 "GET / HTTP/1.1" 200 5761
+INFO 2025-09-30 11:33:54,296 basehttp 14650 6196129792 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-09-30 11:33:54,297 basehttp 14650 6212956160 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-09-30 11:33:58,473 log 14650 6212956160 Not Found: /lilypad/leicester/ulif/
+WARNING 2025-09-30 11:33:58,474 basehttp 14650 6212956160 "GET /lilypad/leicester/ulif/ HTTP/1.1" 404 2272
+INFO 2025-09-30 11:34:03,360 basehttp 14650 6212956160 "GET / HTTP/1.1" 200 5796
+INFO 2025-09-30 11:34:18,757 basehttp 14650 6212956160 "GET /accounts/login/ HTTP/1.1" 200 3783
+INFO 2025-09-30 11:34:24,875 basehttp 14650 6212956160 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-09-30 11:34:24,882 basehttp 14650 6212956160 "GET /grids/ HTTP/1.1" 200 10588
+INFO 2025-09-30 11:34:27,168 basehttp 14650 6212956160 "GET /lilypad/ HTTP/1.1" 200 4163
+INFO 2025-09-30 11:34:30,769 basehttp 14650 6196129792 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6151
+INFO 2025-09-30 11:34:30,795 basehttp 14650 6196129792 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
+INFO 2025-09-30 11:34:30,930 basehttp 14650 6196129792 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
+INFO 2025-09-30 11:34:30,931 basehttp 14650 6212956160 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
+INFO 2025-09-30 11:34:37,836 basehttp 14650 6212956160 "GET /lilypad/society-links/create/ HTTP/1.1" 200 3906

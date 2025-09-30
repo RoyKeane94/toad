@@ -83,6 +83,8 @@ def manage_subscription_view(request):
         'beta': 'Beta Access',
         'free': 'Free Plan', 
         'personal': 'Personal Plan',
+        'personal_trial': 'Personal Trial Plan',
+        'personal_3_month_trial': 'Personal 3 Month Trial Plan',
         'pro': 'Pro Plan'
     }.get(user.tier, f"{user.tier.title()} Plan")
     
@@ -243,6 +245,8 @@ def manage_subscription_view(request):
         'beta': 'Beta Access',
         'free': 'Free Plan', 
         'personal': 'Personal Plan',
+        'personal_trial': 'Personal Trial Plan',
+        'personal_3_month_trial': 'Personal 3 Month Trial Plan',
         'pro': 'Pro Plan'
     }.get(user.tier, f"{user.tier.title()} Plan")
     
@@ -891,6 +895,81 @@ class RegisterTrialView(FormView):
         return super().form_invalid(form)
 
 
+class Register3MonthTrialView(FormView):
+    """
+    Registration view for 3-month free trial users
+    """
+    template_name = 'accounts/pages/registration/register_3_month_trial.html'
+    form_class = CustomUserCreationForm
+    
+    def form_valid(self, form):
+        """Create the user and start their 3-month trial"""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            from django.utils import timezone
+            from datetime import timedelta
+            
+            logger.info("Starting 3-month trial user registration...")
+            user = form.save()
+            logger.info(f"User created successfully: {user.email}")
+            
+            # Set user tier to personal_3_month_trial and start 3-month trial
+            user.tier = 'personal_3_month_trial'
+            user.trial_started_at = timezone.now()
+            user.trial_ends_at = timezone.now() + timedelta(days=90)  # 3 months
+            user.save()
+            logger.info(f"User tier set to personal_3_month_trial: {user.email}")
+            logger.info(f"3-month trial started for user: {user.email}, ends at: {user.trial_ends_at}")
+            
+            # Log registration attempt
+            logger.info(f"New 3-Month Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PERSONAL_3_MONTH_TRIAL")
+            
+            # Add session flag immediately for better UX
+            self.request.session['show_verification_message'] = True
+            
+            # Send verification email asynchronously to improve performance
+            try:
+                from .email_utils import send_verification_email
+                import threading
+                
+                def send_email_async():
+                    try:
+                        email_sent = send_verification_email(user, self.request)
+                        logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                    except Exception as e:
+                        logger.error(f"Failed to send verification email to {user.email}: {e}")
+                
+                # Start email sending in background thread
+                email_thread = threading.Thread(target=send_email_async)
+                email_thread.daemon = True
+                email_thread.start()
+                
+                messages.success(self.request, f'Welcome to your 3-month free trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad Personal features.')
+            except Exception as e:
+                logger.error(f"Failed to start email sending: {e}")
+                messages.warning(self.request, f'Welcome to your 3-month free trial, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
+            
+            # Redirect to login page immediately
+            return redirect('accounts:login')
+            
+        except Exception as e:
+            logger.error(f"Error in Register3MonthTrialView.form_valid: {e}", exc_info=True)
+            raise
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+    
+    def dispatch(self, request, *args, **kwargs):
+        """Redirect authenticated users away from registration page"""
+        if request.user.is_authenticated:
+            return redirect('pages:project_list')
+        return super().dispatch(request, *args, **kwargs)
+
+
 class SecretRegistrationView(FormView):
     """
     Secret registration view for Beta users
@@ -961,6 +1040,8 @@ def manage_subscription_view(request):
         'beta': 'Beta Access',
         'free': 'Free Plan', 
         'personal': 'Personal Plan',
+        'personal_trial': 'Personal Trial Plan',
+        'personal_3_month_trial': 'Personal 3 Month Trial Plan',
         'pro': 'Pro Plan'
     }.get(user.tier, f"{user.tier.title()} Plan")
     
