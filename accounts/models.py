@@ -40,6 +40,7 @@ class User(AbstractUser):
         ('free', 'Free'),
         ('personal', 'Personal'),
         ('personal_trial', 'Personal Trial'),
+        ('personal_3_month_trial', 'Personal 3 Month Trial'),
         ('pro', 'Pro'),
         ('pro_trial', 'Pro Trial'),
         ('society_pro', 'Society Pro'),
