@@ -314,10 +314,8 @@ TEST_EMAIL_FROM = os.environ.get('TEST_EMAIL_FROM', DEFAULT_FROM_EMAIL)
 
 # Tom's email configuration (for test emails from tom@meettoad.co.uk)
 # Uses PERSONAL_EMAIL_HOST_USER for authentication
-TOM_EMAIL_HOST = os.environ.get('TOM_EMAIL_HOST', EMAIL_HOST)
-TOM_EMAIL_PORT = int(os.environ.get('TOM_EMAIL_PORT', EMAIL_PORT))
-TOM_EMAIL_USE_TLS = os.environ.get('TOM_EMAIL_USE_TLS', EMAIL_USE_TLS).lower() == 'true' if os.environ.get('TOM_EMAIL_USE_TLS') else EMAIL_USE_TLS
-TOM_EMAIL_USE_SSL = os.environ.get('TOM_EMAIL_USE_SSL', EMAIL_USE_SSL).lower() == 'true' if os.environ.get('TOM_EMAIL_USE_SSL') else EMAIL_USE_SSL
+TOM_EMAIL_HOST = os.environ.get('PERSONAL_EMAIL_HOST', EMAIL_HOST)
+TOM_EMAIL_PORT = int(os.environ.get('PERSONAL_EMAIL_PORT', EMAIL_PORT))
 TOM_EMAIL_USER = os.environ.get('PERSONAL_EMAIL_HOST_USER', EMAIL_HOST_USER)
 TOM_EMAIL_PASSWORD = os.environ.get('PERSONAL_EMAIL_HOST_PASSWORD', EMAIL_HOST_PASSWORD)
 

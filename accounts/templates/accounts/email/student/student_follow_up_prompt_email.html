@@ -2,7 +2,7 @@
 
 {% block title %}Welcome to Toad - Student Follow-up{% endblock %}
 
-{% block header_title %}<span style="color: var(--primary-action-bg);">Thanks for being part of Toad!</span>{% endblock %}
+{% block header_title %}<span style="color: #10B981;">Thanks for being part of Toad!</span>{% endblock %}
 
 {% block header_subtitle %}
 <p>We hope you're settling in well</p>
@@ -17,28 +17,28 @@
     
     <!-- Mission 1: Coursework -->
     <div style="margin-bottom: 20px;">
-        <h3 style="color: var(--title-text); margin: 0 0 8px 0; font-size: 18px;">🎯 Mission 1: Master Your Coursework</h3>
-        <p style="margin: 0 0 12px 0; color: var(--text-secondary);">Never miss a deadline again. Track all your assignments, readings, and exam dates in one simple grid.</p>
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">🎯 Mission 1: Master Your Coursework</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Never miss a deadline again. Track all your assignments, readings, and exam dates in one simple grid.</p>
         <div class="button-container" style="margin: 12px 0;">
-            <a href="{% url 'pages:course_planner_template' %}" class="btn btn-large">Start Course Planner</a>
+            <a href="https://meettoad.co.uk/templates/course-planner/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Start Course Planner</a>
         </div>
     </div>
 
     <!-- Mission 2: Essays -->
     <div style="margin-bottom: 20px;">
-        <h3 style="color: var(--title-text); margin: 0 0 8px 0; font-size: 18px;">✍️ Mission 2: Ace Your Next Essay</h3>
-        <p style="margin: 0 0 12px 0; color: var(--text-secondary);">Break down that daunting 5,000-word essay into manageable steps, from research to final submission.</p>
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">✍️ Mission 2: Ace Your Next Essay</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Break down that daunting 5,000-word essay into manageable steps, from research to final submission.</p>
         <div class="button-container" style="margin: 12px 0;">
-            <a href="{% url 'pages:essay_planner_template' %}" class="btn btn-large">Start Essay Plan</a>
+            <a href="https://meettoad.co.uk/templates/essay-planner/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Start Essay Plan</a>
         </div>
     </div>
 
     <!-- Mission 3: Career -->
     <div style="margin-bottom: 20px;">
-        <h3 style="color: var(--title-text); margin: 0 0 8px 0; font-size: 18px;">🚀 Mission 3: Land Your Dream Job</h3>
-        <p style="margin: 0 0 12px 0; color: var(--text-secondary);">Organise your job or internship applications and track your progress with every company.</p>
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">🚀 Mission 3: Land Your Dream Job</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Organise your job or internship applications and track your progress with every company.</p>
         <div class="button-container" style="margin: 12px 0;">
-            <a href="{% url 'pages:job_application_tracker_template' %}" class="btn btn-large">Start Job Tracker</a>
+            <a href="https://meettoad.co.uk/templates/job-application-tracker/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Start Job Tracker</a>
         </div>
     </div>
     
@@ -47,21 +47,21 @@
 
 {% block cta %}
 <div class="button-container">
-    <a href="{% url 'pages:students_templates' %}" class="btn btn-large">
+    <a href="https://meettoad.co.uk/templates/students/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">
         Explore Student Templates
     </a>
 </div>
 
 <div class="alternative-link">
-    <a href="{% url 'pages:project_create' %}">Or start from scratch</a>
+    <a href="https://meettoad.co.uk/grids/create/" style="color: #10B981; text-decoration: none; font-size: 14px;">Or start from scratch</a>
 </div>
 
 <!-- Share with a friend section -->
-<div style="background: #F9FAFB; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin: 30px 0;">
-    <h3 style="color: var(--title-text); margin: 0 0 12px 0; font-size: 18px;">💚 Want to be a great friend?</h3>
-    <p style="margin: 0 0 16px 0; color: var(--text-secondary);">Share this link with a friend to give them a free three month trial of Toad!</p>
+<div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; margin: 30px 0;">
+    <h3 style="color: #1F2937; margin: 0 0 12px 0; font-size: 18px;">💚 Want to be a great friend?</h3>
+    <p style="margin: 0 0 16px 0; color: #4B5563;">Forward this email to a friend and tell them to click the button below to get a free three month trial of Toad!</p>
     <div class="button-container" style="margin: 12px 0;">
-        <a href="{% url 'accounts:register_3_month_trial' %}" class="btn btn-large">Share Free Trial</a>
+        <a href="https://meettoad.co.uk/accounts/register/trial-3-month/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Share Free Trial</a>
     </div>
 </div>
 {% endblock %}
