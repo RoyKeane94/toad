@@ -28632,3 +28632,212 @@ INFO 2025-09-30 11:34:30,795 basehttp 14650 6196129792 "GET /static/gif/Revision
 INFO 2025-09-30 11:34:30,930 basehttp 14650 6196129792 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
 INFO 2025-09-30 11:34:30,931 basehttp 14650 6212956160 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
 INFO 2025-09-30 11:34:37,836 basehttp 14650 6212956160 "GET /lilypad/society-links/create/ HTTP/1.1" 200 3906
+INFO 2025-10-02 05:39:52,362 autoreload 18157 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-02 05:39:53,976 log 18157 6164885504 Internal Server Error: /accounts/preview-emails/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 946, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 633, in get
+    raise self.model.DoesNotExist(
+accounts.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py", line 671, in preview_email_templates
+    test_user, created = User.objects.get_or_create(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 948, in get_or_create
+    params = self._extract_model_params(defaults, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1046, in _extract_model_params
+    raise exceptions.FieldError(
+django.core.exceptions.FieldError: Invalid field name(s) for model User: 'username'.
+ERROR 2025-10-02 05:39:53,979 basehttp 18157 6164885504 "GET /accounts/preview-emails/ HTTP/1.1" 500 13586
+ERROR 2025-10-02 05:40:17,436 log 18157 6164885504 Internal Server Error: /accounts/preview-student-follow-up/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 946, in get_or_create
+    return self.get(**kwargs), False
+           ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 633, in get
+    raise self.model.DoesNotExist(
+accounts.models.User.DoesNotExist: User matching query does not exist.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py", line 751, in student_follow_up_email_preview
+    test_user, created = User.objects.get_or_create(
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 948, in get_or_create
+    params = self._extract_model_params(defaults, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1046, in _extract_model_params
+    raise exceptions.FieldError(
+django.core.exceptions.FieldError: Invalid field name(s) for model User: 'username'.
+ERROR 2025-10-02 05:40:17,439 basehttp 18157 6164885504 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 500 13569
+INFO 2025-10-02 05:40:27,951 autoreload 18157 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-02 05:40:28,385 autoreload 18178 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-02 05:40:31,947 autoreload 18178 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-02 05:40:32,278 autoreload 18186 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-02 05:40:49,394 log 18186 6121877504 Internal Server Error: /accounts/preview-student-follow-up/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py", line 769, in student_follow_up_email_preview
+    student_follow_up_html = render_to_string('accounts/email/student/student_follow_up_prompt_email.html', {
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'student_templates' not found. 'student_templates' is not a valid view function or pattern name.
+ERROR 2025-10-02 05:40:49,398 basehttp 18186 6121877504 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 500 24628
+INFO 2025-10-02 05:41:15,364 basehttp 18186 6121877504 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 81306
+INFO 2025-10-02 05:41:31,420 basehttp 18186 6121877504 "GET /templates/students/ HTTP/1.1" 200 5212
+INFO 2025-10-02 05:41:31,437 basehttp 18186 6121877504 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-02 05:41:31,437 basehttp 18186 6138703872 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-02 05:41:33,273 basehttp 18186 6121877504 "GET / HTTP/1.1" 200 6025
+INFO 2025-10-02 05:41:44,631 views 18186 6121877504 User unsubscribed from emails: test@example.com (ID: 35)
+INFO 2025-10-02 05:41:44,631 basehttp 18186 6121877504 "GET /accounts/unsubscribe/35/ HTTP/1.1" 302 0
+INFO 2025-10-02 05:41:44,638 basehttp 18186 6121877504 "GET / HTTP/1.1" 200 6034
+INFO 2025-10-02 07:01:29,433 autoreload 18186 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-02 07:01:29,947 autoreload 18437 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-02 07:01:50,863 autoreload 18437 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-02 07:01:51,245 autoreload 18447 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-02 07:01:54,734 autoreload 18447 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-02 07:01:55,073 autoreload 18455 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-02 07:05:22,079 basehttp 18455 6189346816 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2631
+INFO 2025-10-02 07:06:49,391 autoreload 18924 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-02 07:07:22,997 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2643
+INFO 2025-10-02 07:08:05,641 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2601
+INFO 2025-10-02 07:08:37,550 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2579
+INFO 2025-10-02 07:13:56,146 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2653
+INFO 2025-10-02 07:15:41,798 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2900
+INFO 2025-10-02 07:15:45,938 basehttp 18924 6204387328 "GET /templates/course-planner/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:15:45,969 basehttp 18924 6204387328 "GET /grids/206/ HTTP/1.1" 200 17856
+INFO 2025-10-02 07:15:45,987 basehttp 18924 6204387328 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-10-02 07:15:49,094 basehttp 18924 6204387328 "GET /templates/essay-planner/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:15:49,116 basehttp 18924 6204387328 "GET /grids/207/ HTTP/1.1" 200 18672
+INFO 2025-10-02 07:15:51,290 basehttp 18924 6204387328 "GET /templates/job-application-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:15:51,316 basehttp 18924 6204387328 "GET /grids/208/ HTTP/1.1" 200 19107
+INFO 2025-10-02 07:18:20,994 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2881
+INFO 2025-10-02 07:18:22,995 basehttp 18924 6204387328 "GET /templates/create/course-planner/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:18:23,001 basehttp 18924 6204387328 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:18:23,015 basehttp 18924 6204387328 "GET /templates/students/ HTTP/1.1" 200 5154
+INFO 2025-10-02 07:18:25,503 basehttp 18924 6204387328 "GET /templates/create/essay-planner/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:18:25,508 basehttp 18924 6204387328 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:18:25,515 basehttp 18924 6204387328 "GET /templates/students/ HTTP/1.1" 200 5216
+INFO 2025-10-02 07:19:43,354 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2895
+INFO 2025-10-02 07:19:44,743 basehttp 18924 6204387328 "GET /templates/course-planner/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:19:44,771 basehttp 18924 6204387328 "GET /grids/209/ HTTP/1.1" 200 17949
+INFO 2025-10-02 07:19:44,782 basehttp 18924 6204387328 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-02 07:19:54,343 basehttp 18924 6204387328 "GET /templates/essay-planner/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:19:54,369 basehttp 18924 6204387328 "GET /grids/210/ HTTP/1.1" 200 18790
+INFO 2025-10-02 07:19:57,861 basehttp 18924 6204387328 "GET /templates/job-application-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:19:57,886 basehttp 18924 6204387328 "GET /grids/211/ HTTP/1.1" 200 19261
+INFO 2025-10-02 07:20:03,461 basehttp 18924 6204387328 "GET /grids/211/delete/ HTTP/1.1" 200 1120
+INFO 2025-10-02 07:20:04,505 basehttp 18924 6204387328 "POST /grids/211/delete/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:20:04,527 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 12037
+INFO 2025-10-02 07:20:06,629 basehttp 18924 6204387328 "GET /grids/209/delete/ HTTP/1.1" 200 2896
+INFO 2025-10-02 07:20:07,567 basehttp 18924 6204387328 "POST /grids/209/delete/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:20:07,585 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 11921
+INFO 2025-10-02 07:20:08,631 basehttp 18924 6204387328 "GET /grids/210/delete/ HTTP/1.1" 200 2951
+INFO 2025-10-02 07:20:09,303 basehttp 18924 6204387328 "POST /grids/210/delete/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:20:09,321 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 11857
+INFO 2025-10-02 07:20:10,969 basehttp 18924 6204387328 "GET /grids/208/delete/ HTTP/1.1" 200 2929
+INFO 2025-10-02 07:20:11,630 basehttp 18924 6204387328 "POST /grids/208/delete/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:20:11,642 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 11684
+INFO 2025-10-02 07:20:12,681 basehttp 18924 6204387328 "GET /grids/207/delete/ HTTP/1.1" 200 2947
+INFO 2025-10-02 07:20:13,382 basehttp 18924 6204387328 "POST /grids/207/delete/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:20:13,399 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 11628
+INFO 2025-10-02 07:20:14,530 basehttp 18924 6204387328 "GET /grids/206/delete/ HTTP/1.1" 200 2973
+INFO 2025-10-02 07:20:15,184 basehttp 18924 6204387328 "POST /grids/206/delete/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:20:15,197 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 10557
+WARNING 2025-10-02 07:20:38,256 log 18924 6204387328 Not Found: /grids/206/delete/
+WARNING 2025-10-02 07:20:38,264 basehttp 18924 6204387328 "POST /grids/206/delete/ HTTP/1.1" 404 1761
+INFO 2025-10-02 07:20:40,033 basehttp 18924 6204387328 "GET / HTTP/1.1" 200 5965
+INFO 2025-10-02 07:20:52,836 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2917
+INFO 2025-10-02 07:22:00,231 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2811
+INFO 2025-10-02 07:22:31,622 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2818
+INFO 2025-10-02 07:23:28,144 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2962
+INFO 2025-10-02 07:24:00,035 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2997
+INFO 2025-10-02 07:24:17,172 basehttp 18924 6204387328 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2886
+INFO 2025-10-02 07:24:20,111 basehttp 18924 6204387328 "GET /accounts/register/trial-3-month/ HTTP/1.1" 302 0
+INFO 2025-10-02 07:24:20,133 basehttp 18924 6204387328 "GET /grids/ HTTP/1.1" 200 10569
+INFO 2025-10-02 07:24:26,755 basehttp 18924 6204387328 "GET /grids/create/ HTTP/1.1" 200 2938

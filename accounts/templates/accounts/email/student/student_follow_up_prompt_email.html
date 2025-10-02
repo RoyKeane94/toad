@@ -1,0 +1,73 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}Welcome to Toad - Student Follow-up{% endblock %}
+
+{% block header_title %}<span style="color: var(--primary-action-bg);">Thanks for being part of Toad!</span>{% endblock %}
+
+{% block header_subtitle %}
+<p>We hope you're settling in well</p>
+{% endblock %}
+
+{% block content %}
+<div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
+
+<div class="message">
+    
+    <p>Students across the UK are loving Toad and using it to make University that bit easier. Here are three missions to get you started:</p>
+    
+    <!-- Mission 1: Coursework -->
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: var(--title-text); margin: 0 0 8px 0; font-size: 18px;">🎯 Mission 1: Master Your Coursework</h3>
+        <p style="margin: 0 0 12px 0; color: var(--text-secondary);">Never miss a deadline again. Track all your assignments, readings, and exam dates in one simple grid.</p>
+        <div class="button-container" style="margin: 12px 0;">
+            <a href="{% url 'pages:course_planner_template' %}" class="btn btn-large">Start Course Planner</a>
+        </div>
+    </div>
+
+    <!-- Mission 2: Essays -->
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: var(--title-text); margin: 0 0 8px 0; font-size: 18px;">✍️ Mission 2: Ace Your Next Essay</h3>
+        <p style="margin: 0 0 12px 0; color: var(--text-secondary);">Break down that daunting 5,000-word essay into manageable steps, from research to final submission.</p>
+        <div class="button-container" style="margin: 12px 0;">
+            <a href="{% url 'pages:essay_planner_template' %}" class="btn btn-large">Start Essay Plan</a>
+        </div>
+    </div>
+
+    <!-- Mission 3: Career -->
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: var(--title-text); margin: 0 0 8px 0; font-size: 18px;">🚀 Mission 3: Land Your Dream Job</h3>
+        <p style="margin: 0 0 12px 0; color: var(--text-secondary);">Organise your job or internship applications and track your progress with every company.</p>
+        <div class="button-container" style="margin: 12px 0;">
+            <a href="{% url 'pages:job_application_tracker_template' %}" class="btn btn-large">Start Job Tracker</a>
+        </div>
+    </div>
+    
+    <p>We've got a bunch of other templates to choose from. You can also start from scratch and create your own template.</p>
+</div>
+
+{% block cta %}
+<div class="button-container">
+    <a href="{% url 'pages:students_templates' %}" class="btn btn-large">
+        Explore Student Templates
+    </a>
+</div>
+
+<div class="alternative-link">
+    <a href="{% url 'pages:project_create' %}">Or start from scratch</a>
+</div>
+
+<!-- Share with a friend section -->
+<div style="background: #F9FAFB; border: 1px solid var(--border-color); border-radius: 8px; padding: 20px; margin: 30px 0;">
+    <h3 style="color: var(--title-text); margin: 0 0 12px 0; font-size: 18px;">💚 Want to be a great friend?</h3>
+    <p style="margin: 0 0 16px 0; color: var(--text-secondary);">Share this link with a friend to give them a free three month trial of Toad!</p>
+    <div class="button-container" style="margin: 12px 0;">
+        <a href="{% url 'accounts:register_3_month_trial' %}" class="btn btn-large">Share Free Trial</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_content %}
+
+{% endblock %}
+
+{% endblock %}

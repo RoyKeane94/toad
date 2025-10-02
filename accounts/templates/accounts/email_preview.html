@@ -31,5 +31,18 @@
             </div>
         </div>
     </div>
+    
+    <!-- Student Follow-up Email Template -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Student Follow-up Email Template</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ student_follow_up_html|safe }}
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %} 

@@ -672,8 +672,7 @@ def preview_email_templates(request):
         email='test@example.com',
         defaults={
             'first_name': 'Test',
-            'last_name': 'User',
-            'username': 'test@example.com'
+            'last_name': 'User'
         }
     )
     
@@ -684,19 +683,23 @@ def preview_email_templates(request):
     # Render email templates
     email_verification_html = render_to_string('accounts/email/email_verification.html', {
         'user': test_user,
-        'verification_url': verification_url,
-        'toad_image_data': None  # Set to None for now
+        'verification_url': verification_url
     })
     
     password_reset_html = render_to_string('accounts/email/password_reset_email.html', {
         'user': test_user,
-        'reset_url': reset_url,
-        'toad_image_data': None  # Set to None for now
+        'reset_url': reset_url
+    })
+    
+    # Render student follow-up email
+    student_follow_up_html = render_to_string('accounts/email/student/student_follow_up_prompt_email.html', {
+        'user': test_user
     })
     
     return render(request, 'accounts/email_preview.html', {
         'email_verification_html': email_verification_html,
-        'password_reset_html': password_reset_html
+        'password_reset_html': password_reset_html,
+        'student_follow_up_html': student_follow_up_html
     })
 
 def beta_update_email_preview(request):
@@ -720,6 +723,32 @@ def beta_update_email_preview(request):
     # Return the rendered HTML directly
     from django.http import HttpResponse
     return HttpResponse(beta_update_html)
+
+
+def student_follow_up_email_preview(request):
+    """Preview the student follow-up email template"""
+    from django.template.loader import render_to_string
+    from django.contrib.auth import get_user_model
+    from django.http import HttpResponse
+    
+    User = get_user_model()
+    
+    # Create a test user
+    test_user, created = User.objects.get_or_create(
+        email='test@example.com',
+        defaults={
+            'first_name': 'Test',
+            'last_name': 'User'
+        }
+    )
+    
+    # Render the student follow-up email template
+    student_follow_up_html = render_to_string('accounts/email/student/student_follow_up_prompt_email.html', {
+        'user': test_user
+    })
+    
+    # Return the rendered HTML directly
+    return HttpResponse(student_follow_up_html)
 
 
 class RegisterChoicesView(TemplateView):

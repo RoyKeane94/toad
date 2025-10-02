@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,16 +46,16 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
-        /* Toad Image Header */
+        /* Toad Logo Header */
         .email-image-container {
             width: 100%;
             text-align: center;
-            border-bottom: 1px solid var(--border-color);
+            padding: 30px 24px;
         }
         
         .email-image-container img {
             width: 100%;
-            max-width: 640px;
+            max-width: 300px;
             height: auto;
             display: block;
             margin: 0 auto;
@@ -160,8 +161,10 @@
         }
         
         .btn-large {
-            padding: 16px 32px;
-            font-size: 16px;
+            padding: 12px 20px;
+            font-size: 14px;
+            min-width: 180px;
+            text-align: center;
         }
         
         .btn-secondary {
@@ -285,12 +288,10 @@
 </head>
 <body>
     <div class="email-container">
-        <!-- Toad Email Image at the top -->
-        {% if toad_image_data %}
+        <!-- Toad Logo at the top -->
         <div class="email-image-container">
-            <img src="data:image/png;base64,{{ toad_image_data }}" alt="Toad - For when your brain has too many tabs open">
+            <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad - For when your brain has too many tabs open">
         </div>
-        {% endif %}
         
         <!-- Header -->
         {% block header %}
