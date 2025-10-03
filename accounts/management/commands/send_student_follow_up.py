@@ -71,6 +71,9 @@ class Command(BaseCommand):
             self.show_preview(users_with_university.first())
             return
         
+        # Show all emails that will be sent
+        self.show_all_emails(users_with_university)
+        
         # Confirm before sending
         if not self.confirm_send(users_with_university.count()):
             self.stdout.write(self.style.WARNING('Operation cancelled'))
@@ -208,6 +211,17 @@ class Command(BaseCommand):
             
         except Exception as e:
             self.stdout.write(self.style.ERROR(f'✗ Failed to send test email: {e}'))
+
+    def show_all_emails(self, users):
+        """Show all email addresses that will be sent to"""
+        self.stdout.write('\n' + '='*60)
+        self.stdout.write('EMAILS TO BE SENT')
+        self.stdout.write('='*60)
+        
+        for i, user in enumerate(users, 1):
+            self.stdout.write(f'{i:3d}. {user.get_full_name()} - {user.email}')
+        
+        self.stdout.write('='*60 + '\n')
 
     def show_preview(self, user):
         """Show preview of what would be sent"""
