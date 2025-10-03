@@ -41,6 +41,7 @@ urlpatterns = [
     path('templates/coffee-shop-tracker/', views.coffee_shop_tracker_template_view, name='coffee_shop_tracker_template'),
     path('templates/content-creator-tracker/', views.content_creator_tracker_template_view, name='content_creator_tracker_template'),
     path('templates/interior-designer-tracker/', views.interior_designer_tracker_template_view, name='interior_designer_tracker_template'),
+    path('templates/online-store-tracker/', views.online_store_tracker_template_view, name='online_store_tracker_template'),
     path('templates/student-jobs/', views.student_jobs_template_view, name='student_jobs_template'),
     path('templates/student-revision/', views.student_revision_template_view, name='student_revision_template'),
     path('templates/professionals-jobs/', views.professionals_jobs_template_view, name='professionals_jobs_template'),

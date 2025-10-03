@@ -70,6 +70,9 @@
             </div>
         </div>
 
+        <!-- Divider -->
+        <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
         <!-- Product Development Tracker Row -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
             <!-- Product Development Tracker Image -->
@@ -121,6 +124,9 @@
             </div>
         </div>
 
+        <!-- Divider -->
+        <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
         <!-- Content Creator Tracker Row -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
             <!-- Content Creator Tracker Image -->
@@ -144,6 +150,9 @@
                  </div>
             </div>
         </div>
+
+        <!-- Divider -->
+        <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
 
         <!-- Interior Designer Tracker Row -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
@@ -171,6 +180,30 @@
 
         <!-- Divider -->
         <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
+        <!-- Online Store Tracker Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Online Store Tracker Image -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Entrepreneurs/Online Store Tracker.png' %}" alt="Online Store Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Online Store Tracker Preview</p>
+                        <p class="text-gray-400 text-xs">Add Online Store Tracker.png to static/img/Entrepreneurs/</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Online Store Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Online Store Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage your online store operations across admin tasks, product development, and client marketing. Track daily priorities, weekly goals, and long-term projects.</p>
+                     <button onclick="showTemplateModal('online_store_tracker', 'Online Store Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
+        </div>
 
         <!-- Coming Soon Section -->
         <div class="text-center px-4 max-w-4xl mx-auto">
@@ -284,7 +317,8 @@ function createTemplateWithTasks(template) {
         'product_development_tracker': '{% url "pages:product_development_tracker_template" %}',
         'coffee_shop_tracker': '{% url "pages:coffee_shop_tracker_template" %}',
         'content_creator_tracker': '{% url "pages:content_creator_tracker_template" %}',
-        'interior_designer_tracker': '{% url "pages:interior_designer_tracker_template" %}'
+        'interior_designer_tracker': '{% url "pages:interior_designer_tracker_template" %}',
+        'online_store_tracker': '{% url "pages:online_store_tracker_template" %}'
     };
     
     if (urls[template]) {
@@ -302,7 +336,8 @@ function createTemplateStructureOnly(template) {
         'product_development_tracker': '{% url "pages:product_development_tracker_template" %}?structure_only=true',
         'coffee_shop_tracker': '{% url "pages:coffee_shop_tracker_template" %}?structure_only=true',
         'content_creator_tracker': '{% url "pages:content_creator_tracker_template" %}?structure_only=true',
-        'interior_designer_tracker': '{% url "pages:interior_designer_tracker_template" %}?structure_only=true'
+        'interior_designer_tracker': '{% url "pages:interior_designer_tracker_template" %}?structure_only=true',
+        'online_store_tracker': '{% url "pages:online_store_tracker_template" %}?structure_only=true'
     };
     
     if (urls[template]) {

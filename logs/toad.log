@@ -29016,3 +29016,39 @@ INFO 2025-10-03 04:44:48,644 basehttp 27117 6129168384 "POST /grids/212/delete/ 
 INFO 2025-10-03 04:44:48,658 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 10533
 INFO 2025-10-03 04:45:02,506 autoreload 27117 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
 INFO 2025-10-03 04:45:03,054 autoreload 27283 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:47:47,245 autoreload 27717 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:47:48,706 basehttp 27717 6161887232 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:47:48,717 basehttp 27717 6161887232 "GET /templates/students/ HTTP/1.1" 200 5220
+INFO 2025-10-03 04:47:48,925 basehttp 27717 6161887232 "GET /templates/students/ HTTP/1.1" 200 5142
+INFO 2025-10-03 04:47:51,114 basehttp 27717 6161887232 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5642
+INFO 2025-10-03 04:47:51,141 basehttp 27717 6178713600 "GET /static/img/Entrepreneurs/Content%20Creator%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:47:51,142 basehttp 27717 6161887232 "GET /static/img/Entrepreneurs/Coffee%20Shop%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:47:51,142 basehttp 27717 6195539968 "GET /static/img/Entrepreneurs/Interior%20Designer%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:52:52,413 autoreload 27717 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-10-03 04:52:52,945 autoreload 27939 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:53:03,233 autoreload 27939 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-03 04:53:03,582 autoreload 27945 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:53:14,877 autoreload 27945 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-10-03 04:53:15,213 autoreload 27951 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:53:21,399 autoreload 27951 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-10-03 04:53:21,756 autoreload 27960 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:53:50,269 autoreload 27960 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-03 04:53:50,620 autoreload 27978 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:53:56,232 autoreload 27978 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-10-03 04:53:56,664 autoreload 27983 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:54:16,040 basehttp 27983 6134198272 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5844
+INFO 2025-10-03 04:54:16,058 basehttp 27983 6151024640 "GET /static/img/Entrepreneurs/Content%20Creator%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:54:16,059 basehttp 27983 6134198272 "GET /static/img/Entrepreneurs/Coffee%20Shop%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:54:16,061 basehttp 27983 6134198272 "GET /static/img/Entrepreneurs/Interior%20Designer%20Tracker.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:54:16,066 basehttp 27983 6151024640 "GET /static/img/Entrepreneurs/Online%20Store%20Tracker.png HTTP/1.1" 200 399839
+INFO 2025-10-03 04:54:20,313 basehttp 27983 6151024640 "GET /templates/online-store-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:54:20,343 basehttp 27983 6151024640 "GET /grids/218/ HTTP/1.1" 200 17505
+INFO 2025-10-03 04:54:23,800 basehttp 27983 6151024640 "GET /grids/218/delete/ HTTP/1.1" 200 1109
+INFO 2025-10-03 04:54:24,806 basehttp 27983 6151024640 "POST /grids/218/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:54:24,819 basehttp 27983 6151024640 "GET /grids/ HTTP/1.1" 200 10609
+INFO 2025-10-03 04:54:26,302 basehttp 27983 6151024640 "GET /grids/ HTTP/1.1" 200 10538
+INFO 2025-10-03 04:54:27,394 basehttp 27983 6151024640 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:54:27,406 basehttp 27983 6151024640 "GET /templates/students/ HTTP/1.1" 200 5148
+INFO 2025-10-03 04:54:29,387 basehttp 27983 6151024640 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5785
+INFO 2025-10-03 04:54:34,459 basehttp 27983 6151024640 "GET /templates/online-store-tracker/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-10-03 04:54:34,479 basehttp 27983 6151024640 "GET /grids/219/ HTTP/1.1" 200 13918

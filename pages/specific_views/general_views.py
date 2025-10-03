@@ -23,7 +23,8 @@ from ..signals import (
     create_alternative_weekly_planner_grid_structure_only, create_coffee_shop_tracker_grid,
     create_coffee_shop_tracker_grid_structure_only, create_content_creator_tracker_grid,
     create_content_creator_tracker_grid_structure_only, create_interior_designer_tracker_grid,
-    create_interior_designer_tracker_grid_structure_only
+    create_interior_designer_tracker_grid_structure_only, create_online_store_tracker_grid,
+    create_online_store_tracker_grid_structure_only
 )
 from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid, create_line_manager_grid
 import logging
@@ -472,3 +473,18 @@ def contact_us_view(request):
 def privacy_policy_view(request):
     """Display the privacy policy page"""
     return render_simple_template(request, 'pages/general/bumf/privacy_policy.html')
+
+@login_required
+def online_store_tracker_template_view(request):
+    """Create an Online Store Tracker grid for the current user and redirect to it"""
+    try:
+        structure_only = request.GET.get('structure_only') == 'true'
+        if structure_only:
+            project = create_online_store_tracker_grid_structure_only(request.user)
+        else:
+            project = create_online_store_tracker_grid(request.user)
+        return redirect('pages:project_grid', pk=project.pk)
+    except Exception as e:
+        logger.error(f"Error creating online store tracker grid: {e}")
+        messages.error(request, "There was an error creating your Online Store Tracker. Please try again.")
+        return redirect('pages:templates_overview')

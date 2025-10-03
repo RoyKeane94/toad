@@ -2061,3 +2061,128 @@ def create_interior_designer_tracker_grid_structure_only(user):
     return project
 
 
+def create_online_store_tracker_grid(user):
+    """
+    Create an Online Store Tracker grid with predefined rows and columns for the given user.
+    Based on the Online Store Tracker structure with admin, product development, and clients/marketing areas.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Online Store Tracker"
+    )
+    
+    # Create row headers (operational areas)
+    row_headers = [
+        "Admin",
+        "Product Development", 
+        "Clients and Marketing"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (time-based priorities)
+    column_headers = [
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Online Store Tracker image
+    tasks_data = [
+        # Admin row
+        (0, 0, "Update website banner for autumn sale", False),  # To Do Today
+        (0, 1, "Conduct stock check", False),  # Weekly Priorities
+        (0, 1, "Send Q2 accounts to accountant", False),  # Weekly Priorities
+        (0, 2, "Migrate store to Shopify", False),  # Projects
+        (0, 2, "Prepare relevant documents for end of year tax filing", False),  # Projects
+        
+        # Product Development row
+        (1, 0, "Finalise designs for Spring collection", False),  # To Do Today
+        (1, 0, "Write description for Spring collection", False),  # To Do Today
+        (1, 1, "Winter collection photoshoot", False),  # Weekly Priorities
+        (1, 2, "Plan product release for Spring collection", False),  # Projects
+        (1, 2, "Look into more sustainable packaging solutions", False),  # Projects
+        
+        # Clients and Marketing row
+        (2, 0, "Respond to all customer DMs and emails", False),  # To Do Today
+        (2, 0, "Pack and ship all outstanding orders", False),  # To Do Today
+        (2, 1, "Schedule 3 social media posts for next week", False),  # Weekly Priorities
+        (2, 1, "Send \"Thank You\" email to new customers", False),  # Weekly Priorities
+        (2, 2, "Plan and budget Black Friday marketing campaign", False),  # Projects
+        (2, 2, "Set up an automated email sequence for abandoned carts", False),  # Projects
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
+def create_online_store_tracker_grid_structure_only(user):
+    """
+    Create an Online Store Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Online Store Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Product Development", 
+        "Clients and Marketing"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers
+    column_headers = [
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+

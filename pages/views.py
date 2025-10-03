@@ -36,6 +36,7 @@ from .specific_views.general_views import (
     coffee_shop_tracker_template_view,
     content_creator_tracker_template_view,
     interior_designer_tracker_template_view,
+    online_store_tracker_template_view,
     faq_view,
     contact_us_view,
     privacy_policy_view
