@@ -97,6 +97,81 @@
         <!-- Divider -->
         <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
 
+        <!-- Coffee Shop Tracker Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Coffee Shop Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Coffee Shop Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage your coffee shop operations across admin, customer service, and product management. Track daily tasks, weekly priorities, and long-term projects.</p>
+                     <button onclick="showTemplateModal('coffee_shop_tracker', 'Coffee Shop Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
+            <!-- Coffee Shop Tracker Image -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Entrepreneurs/Coffee Shop Tracker.png' %}" alt="Coffee Shop Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Coffee Shop Tracker Preview</p>
+                        <p class="text-gray-400 text-xs">Add Coffee Shop Tracker.png to static/img/Entrepreneurs/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Creator Tracker Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Content Creator Tracker Image -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Entrepreneurs/Content Creator Tracker.png' %}" alt="Content Creator Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Content Creator Tracker Preview</p>
+                        <p class="text-gray-400 text-xs">Add Content Creator Tracker.png to static/img/Entrepreneurs/</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Content Creator Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Content Creator Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Organise your content creation workflow across admin tasks, content planning, and collaboration management. Track daily priorities, weekly goals, and ongoing projects.</p>
+                     <button onclick="showTemplateModal('content_creator_tracker', 'Content Creator Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Interior Designer Tracker Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 px-4 max-w-6xl mx-auto">
+            <!-- Interior Designer Tracker Card -->
+            <div class="template-card bg-[var(--container-bg)] p-4 md:p-6 rounded-lg border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] flex flex-col justify-center min-h-[256px]">
+                 <div class="text-center">
+                     <h2 class="text-lg md:text-xl font-bold text-[var(--primary-action-bg)] mb-3">Interior Designer Tracker</h2>
+                     <p class="text-sm text-[var(--text-secondary)] mb-6 max-w-sm mx-auto">Manage your interior design projects from discovery to completion. Track client interactions, supplier communications, and key deliverables across project phases.</p>
+                     <button onclick="showTemplateModal('interior_designer_tracker', 'Interior Designer Tracker')" class="w-auto px-6 text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] font-semibold py-2.5 md:py-2 rounded-md text-sm transition-colors duration-200 cursor-pointer inline-block">
+                        Use Template
+                     </button>
+                 </div>
+            </div>
+            <!-- Interior Designer Tracker Image -->
+            <div class="flex items-center justify-center">
+                <img src="{% static 'img/Entrepreneurs/Interior Designer Tracker.png' %}" alt="Interior Designer Tracker Preview" class="w-full h-auto max-w-md rounded-lg shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-64 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
+                    <div class="text-center">
+                        <p class="text-gray-500 text-sm mb-2">Interior Designer Tracker Preview</p>
+                        <p class="text-gray-400 text-xs">Add Interior Designer Tracker.png to static/img/Entrepreneurs/</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <div class="border-t border-dashed border-[var(--border-color)] my-8 md:my-12 mx-4"></div>
+
         <!-- Coming Soon Section -->
         <div class="text-center px-4 max-w-4xl mx-auto">
             <div class="bg-[var(--container-bg)] p-8 md:p-12 rounded-lg border border-[var(--border-color)]">
@@ -206,7 +281,10 @@ function createTemplateWithTasks(template) {
     // Create template with pre-populated tasks
     const urls = {
         'solopreneur': '{% url "pages:solopreneur_template" %}',
-        'product_development_tracker': '{% url "pages:product_development_tracker_template" %}'
+        'product_development_tracker': '{% url "pages:product_development_tracker_template" %}',
+        'coffee_shop_tracker': '{% url "pages:coffee_shop_tracker_template" %}',
+        'content_creator_tracker': '{% url "pages:content_creator_tracker_template" %}',
+        'interior_designer_tracker': '{% url "pages:interior_designer_tracker_template" %}'
     };
     
     if (urls[template]) {
@@ -221,7 +299,10 @@ function createTemplateStructureOnly(template) {
     // Create template with structure only (no tasks)
     const urls = {
         'solopreneur': '{% url "pages:solopreneur_template" %}?structure_only=true',
-        'product_development_tracker': '{% url "pages:product_development_tracker_template" %}?structure_only=true'
+        'product_development_tracker': '{% url "pages:product_development_tracker_template" %}?structure_only=true',
+        'coffee_shop_tracker': '{% url "pages:coffee_shop_tracker_template" %}?structure_only=true',
+        'content_creator_tracker': '{% url "pages:content_creator_tracker_template" %}?structure_only=true',
+        'interior_designer_tracker': '{% url "pages:interior_designer_tracker_template" %}?structure_only=true'
     };
     
     if (urls[template]) {

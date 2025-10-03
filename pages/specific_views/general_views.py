@@ -20,7 +20,10 @@ from ..signals import (
     create_origination_director_grid_structure_only, create_product_development_tracker_grid_structure_only, 
     create_solopreneur_grid_structure_only, create_habit_development_tracker_grid_structure_only, 
     create_weekly_fitness_tracker_grid_structure_only, create_alternative_weekly_planner_grid, 
-    create_alternative_weekly_planner_grid_structure_only
+    create_alternative_weekly_planner_grid_structure_only, create_coffee_shop_tracker_grid,
+    create_coffee_shop_tracker_grid_structure_only, create_content_creator_tracker_grid,
+    create_content_creator_tracker_grid_structure_only, create_interior_designer_tracker_grid,
+    create_interior_designer_tracker_grid_structure_only
 )
 from ..specific_views_functions.template_functions import create_essay_planner_grid, create_course_planner_template_grid, create_exam_revision_planner_grid, create_job_application_tracker_grid, create_line_manager_grid
 import logging
@@ -381,6 +384,72 @@ def weekly_fitness_tracker_template_view(request):
     except Exception as e:
         logger.error(f"Error creating weekly fitness tracker grid: {e}")
         messages.error(request, "There was an error creating your Weekly Fitness Tracker. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def coffee_shop_tracker_template_view(request):
+    """Create a Coffee Shop Tracker grid for the current user and redirect to it"""
+    try:
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the coffee shop tracker grid structure only
+            project = create_coffee_shop_tracker_grid_structure_only(request.user)
+        else:
+            # Create the coffee shop tracker grid with pre-populated tasks
+            project = create_coffee_shop_tracker_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating coffee shop tracker grid: {e}")
+        messages.error(request, "There was an error creating your Coffee Shop Tracker. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def content_creator_tracker_template_view(request):
+    """Create a Content Creator Tracker grid for the current user and redirect to it"""
+    try:
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the content creator tracker grid structure only
+            project = create_content_creator_tracker_grid_structure_only(request.user)
+        else:
+            # Create the content creator tracker grid with pre-populated tasks
+            project = create_content_creator_tracker_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating content creator tracker grid: {e}")
+        messages.error(request, "There was an error creating your Content Creator Tracker. Please try again.")
+        return redirect('pages:templates_overview')
+
+@login_required
+def interior_designer_tracker_template_view(request):
+    """Create an Interior Designer Tracker grid for the current user and redirect to it"""
+    try:
+        # Check if user wants structure only or pre-populated tasks
+        structure_only = request.GET.get('structure_only') == 'true'
+        
+        if structure_only:
+            # Create the interior designer tracker grid structure only
+            project = create_interior_designer_tracker_grid_structure_only(request.user)
+        else:
+            # Create the interior designer tracker grid with pre-populated tasks
+            project = create_interior_designer_tracker_grid(request.user)
+        
+        # Redirect to the newly created grid
+        return redirect('pages:project_grid', pk=project.pk)
+        
+    except Exception as e:
+        logger.error(f"Error creating interior designer tracker grid: {e}")
+        messages.error(request, "There was an error creating your Interior Designer Tracker. Please try again.")
         return redirect('pages:templates_overview')
 
 # Support Pages

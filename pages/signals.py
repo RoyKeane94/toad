@@ -1679,3 +1679,385 @@ def create_alternative_weekly_planner_grid_structure_only(user):
     return project
 
 
+def create_coffee_shop_tracker_grid(user):
+    """
+    Create a Coffee Shop Tracker grid with predefined rows and columns for the given user.
+    Based on the Coffee Shop Tracker structure with admin, customer service, and product management areas.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Coffee Shop Tracker"
+    )
+    
+    # Create row headers (operational areas)
+    row_headers = [
+        "Admin",
+        "Customer Service", 
+        "Product Management"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (time-based priorities)
+    column_headers = [
+        "Daily Tasks",
+        "Weekly Priorities",
+        "Long-term Projects"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Coffee Shop Tracker image
+    tasks_data = [
+        # Admin row
+        (0, 0, "Check daily sales reports", False),  # Daily Tasks
+        (0, 0, "Review inventory levels", False),  # Daily Tasks
+        (0, 0, "Process payroll for staff", False),  # Daily Tasks
+        (0, 1, "Update financial projections", False),  # Weekly Priorities
+        (0, 1, "Schedule staff training sessions", False),  # Weekly Priorities
+        (0, 2, "Plan expansion to second location", False),  # Long-term Projects
+        
+        # Customer Service row
+        (1, 0, "Respond to customer feedback", False),  # Daily Tasks
+        (1, 0, "Train new baristas", False),  # Daily Tasks
+        (1, 0, "Monitor customer satisfaction", False),  # Daily Tasks
+        (1, 1, "Implement loyalty program", False),  # Weekly Priorities
+        (1, 1, "Update customer service protocols", False),  # Weekly Priorities
+        (1, 2, "Launch customer feedback system", False),  # Long-term Projects
+        
+        # Product Management row
+        (2, 0, "Test new coffee blends", False),  # Daily Tasks
+        (2, 0, "Quality check pastries", False),  # Daily Tasks
+        (2, 0, "Order fresh ingredients", False),  # Daily Tasks
+        (2, 1, "Develop seasonal menu", False),  # Weekly Priorities
+        (2, 1, "Research new suppliers", False),  # Weekly Priorities
+        (2, 2, "Launch signature drink line", False),  # Long-term Projects
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
+def create_coffee_shop_tracker_grid_structure_only(user):
+    """
+    Create a Coffee Shop Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Coffee Shop Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Customer Service", 
+        "Product Management"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers
+    column_headers = [
+        "Daily Tasks",
+        "Weekly Priorities",
+        "Long-term Projects"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_content_creator_tracker_grid(user):
+    """
+    Create a Content Creator Tracker grid with predefined rows and columns for the given user.
+    Based on the Content Creator Tracker structure with admin, content planning, and collaboration areas.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Content Creator Tracker"
+    )
+    
+    # Create row headers (content areas)
+    row_headers = [
+        "Admin",
+        "Content Planning", 
+        "Collaboration Management"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (time-based priorities)
+    column_headers = [
+        "Daily Priorities",
+        "Weekly Goals",
+        "Ongoing Projects"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Content Creator Tracker image
+    tasks_data = [
+        # Admin row
+        (0, 0, "Respond to brand partnership emails", False),  # Daily Priorities
+        (0, 0, "Update analytics dashboard", False),  # Daily Priorities
+        (0, 0, "Review and approve content calendar", False),  # Daily Priorities
+        (0, 1, "Plan monthly content strategy", False),  # Weekly Goals
+        (0, 1, "Schedule social media posts", False),  # Weekly Goals
+        (0, 2, "Build brand partnerships", False),  # Ongoing Projects
+        
+        # Content Planning row
+        (1, 0, "Film daily content", False),  # Daily Priorities
+        (1, 0, "Edit and upload videos", False),  # Daily Priorities
+        (1, 0, "Write captions and hashtags", False),  # Daily Priorities
+        (1, 1, "Research trending topics", False),  # Weekly Goals
+        (1, 1, "Plan video series concepts", False),  # Weekly Goals
+        (1, 2, "Develop signature content style", False),  # Ongoing Projects
+        
+        # Collaboration Management row
+        (2, 0, "Coordinate with other creators", False),  # Daily Priorities
+        (2, 0, "Manage community interactions", False),  # Daily Priorities
+        (2, 0, "Review collaboration proposals", False),  # Daily Priorities
+        (2, 1, "Plan collaborative content", False),  # Weekly Goals
+        (2, 1, "Schedule creator meetups", False),  # Weekly Goals
+        (2, 2, "Build creator network", False),  # Ongoing Projects
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
+def create_content_creator_tracker_grid_structure_only(user):
+    """
+    Create a Content Creator Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Content Creator Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Admin",
+        "Content Planning", 
+        "Collaboration Management"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers
+    column_headers = [
+        "Daily Priorities",
+        "Weekly Goals",
+        "Ongoing Projects"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+
+def create_interior_designer_tracker_grid(user):
+    """
+    Create an Interior Designer Tracker grid with predefined rows and columns for the given user.
+    Based on the Interior Designer Tracker structure with discovery, design, and delivery phases.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Interior Designer Tracker"
+    )
+    
+    # Create row headers (project phases)
+    row_headers = [
+        "Discovery & Client Interaction",
+        "Design & Planning", 
+        "Delivery & Installation"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (key deliverables)
+    column_headers = [
+        "Client Communications",
+        "Supplier Relations",
+        "Key Deliverables"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the Interior Designer Tracker image
+    tasks_data = [
+        # Discovery & Client Interaction row
+        (0, 0, "Initial client consultation", False),  # Client Communications
+        (0, 0, "Present design concepts", False),  # Client Communications
+        (0, 0, "Gather client feedback", False),  # Client Communications
+        (0, 1, "Research furniture suppliers", False),  # Supplier Relations
+        (0, 1, "Get quotes from contractors", False),  # Supplier Relations
+        (0, 2, "Create mood boards", False),  # Key Deliverables
+        (0, 2, "Develop space planning", False),  # Key Deliverables
+        
+        # Design & Planning row
+        (1, 0, "Schedule design review meetings", False),  # Client Communications
+        (1, 0, "Present final design proposal", False),  # Client Communications
+        (1, 1, "Finalise supplier contracts", False),  # Supplier Relations
+        (1, 1, "Coordinate with contractors", False),  # Supplier Relations
+        (1, 2, "Create detailed floor plans", False),  # Key Deliverables
+        (1, 2, "Specify materials and finishes", False),  # Key Deliverables
+        
+        # Delivery & Installation row
+        (2, 0, "Update client on installation progress", False),  # Client Communications
+        (2, 0, "Conduct final walkthrough", False),  # Client Communications
+        (2, 1, "Manage installation timeline", False),  # Supplier Relations
+        (2, 1, "Quality check delivered items", False),  # Supplier Relations
+        (2, 2, "Complete project documentation", False),  # Key Deliverables
+        (2, 2, "Handover project to client", False),  # Key Deliverables
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project
+
+
+def create_interior_designer_tracker_grid_structure_only(user):
+    """
+    Create an Interior Designer Tracker grid structure only (no tasks) for the given user.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Interior Designer Tracker"
+    )
+    
+    # Create row headers
+    row_headers = [
+        "Discovery & Client Interaction",
+        "Design & Planning", 
+        "Delivery & Installation"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers
+    column_headers = [
+        "Client Communications",
+        "Supplier Relations",
+        "Key Deliverables"
+    ]
+    
+    for order, col_name in enumerate(column_headers):
+        ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+    
+    return project
+
+

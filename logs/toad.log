@@ -28863,3 +28863,156 @@ INFO 2025-10-02 08:19:29,831 send_student_follow_up 23498 8398642944 Student fol
 INFO 2025-10-02 08:19:35,520 send_student_follow_up 23498 8398642944 Student follow-up email sent to mohamadfaizaan10@gmail.com
 INFO 2025-10-02 08:19:42,076 send_student_follow_up 23498 8398642944 Student follow-up email sent to millybubs@gmail.com
 INFO 2025-10-02 08:19:48,134 send_student_follow_up 23498 8398642944 Student follow-up email sent to Dillonpatel220807@gmail.com
+INFO 2025-10-03 04:35:10,252 autoreload 26332 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:39:00,779 autoreload 26332 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-03 04:39:01,215 autoreload 26381 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:39:04,849 autoreload 26381 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-03 04:39:05,276 autoreload 26389 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-03 04:40:54,616 exception 26389 6164852736 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-03 04:40:54,623 log 26389 6164852736 Bad Request: /
+WARNING 2025-10-03 04:40:54,623 basehttp 26389 6164852736 "GET / HTTP/1.1" 400 143
+ERROR 2025-10-03 04:40:54,647 exception 26389 6181679104 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-03 04:40:54,647 log 26389 6181679104 Bad Request: /favicon.ico
+WARNING 2025-10-03 04:40:54,647 basehttp 26389 6181679104 "GET /favicon.ico HTTP/1.1" 400 143
+ERROR 2025-10-03 04:41:03,370 exception 26389 6164852736 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-03 04:41:03,371 log 26389 6164852736 Bad Request: /
+WARNING 2025-10-03 04:41:03,372 basehttp 26389 6164852736 "GET / HTTP/1.1" 400 143
+ERROR 2025-10-03 04:41:03,382 exception 26389 6181679104 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-03 04:41:03,383 log 26389 6181679104 Bad Request: /favicon.ico
+WARNING 2025-10-03 04:41:03,384 basehttp 26389 6181679104 "GET /favicon.ico HTTP/1.1" 400 143
+INFO 2025-10-03 04:42:43,203 autoreload 26389 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-10-03 04:42:43,768 autoreload 26460 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:42:53,437 autoreload 27015 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:42:55,507 autoreload 26460 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-10-03 04:42:55,967 autoreload 27075 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:43:02,895 autoreload 27117 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-03 04:43:05,429 basehttp 27117 6129168384 "GET / HTTP/1.1" 200 5991
+INFO 2025-10-03 04:43:05,451 basehttp 27117 6162821120 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:05,456 basehttp 27117 6145994752 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-03 04:43:05,458 basehttp 27117 6129168384 "GET /static/css/output.css HTTP/1.1" 200 89044
+INFO 2025-10-03 04:43:05,479 basehttp 27117 6129168384 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:05,494 basehttp 27117 6129168384 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:07,616 basehttp 27117 6129168384 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:43:07,627 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5147
+INFO 2025-10-03 04:43:07,638 basehttp 27117 6145994752 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:07,638 basehttp 27117 6129168384 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:07,645 basehttp 27117 6129168384 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:08,924 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5692
+INFO 2025-10-03 04:43:08,945 basehttp 27117 6145994752 "GET /static/img/Entrepreneurs/Product%20Development%20Tracker.png HTTP/1.1" 200 455674
+INFO 2025-10-03 04:43:08,946 basehttp 27117 6129168384 "GET /static/img/Entrepreneurs/Solopreneur%20Tracker.png HTTP/1.1" 200 443965
+INFO 2025-10-03 04:43:08,959 basehttp 27117 6162821120 "GET /static/img/Entrepreneurs/Coffee%20Shop%20Tracker.png HTTP/1.1" 200 358711
+INFO 2025-10-03 04:43:08,966 basehttp 27117 6196473856 "GET /static/img/Entrepreneurs/Interior%20Designer%20Tracker.png HTTP/1.1" 200 459030
+INFO 2025-10-03 04:43:08,967 basehttp 27117 6179647488 "GET /static/img/Entrepreneurs/Content%20Creator%20Tracker.png HTTP/1.1" 200 442834
+INFO 2025-10-03 04:43:16,726 basehttp 27117 6179647488 "GET /templates/professionals/ HTTP/1.1" 200 5598
+INFO 2025-10-03 04:43:16,746 basehttp 27117 6196473856 "GET /static/img/Professionals/Weekly%20Planner%20Grid.png HTTP/1.1" 200 355440
+INFO 2025-10-03 04:43:16,759 basehttp 27117 6162821120 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 200 330329
+INFO 2025-10-03 04:43:16,761 basehttp 27117 6145994752 "GET /static/img/Professionals/Origination%20Grid.png HTTP/1.1" 200 396399
+INFO 2025-10-03 04:43:16,762 basehttp 27117 6179647488 "GET /static/img/Professionals/Alternative%20Weekly%20Planner.png HTTP/1.1" 200 1128531
+INFO 2025-10-03 04:43:16,763 basehttp 27117 6129168384 "GET /static/img/Professionals/Sell-Side%20Deal%20Grid.png HTTP/1.1" 200 411484
+INFO 2025-10-03 04:43:23,921 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5172
+INFO 2025-10-03 04:43:27,021 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5701
+INFO 2025-10-03 04:43:28,089 basehttp 27117 6129168384 "GET /templates/personal/ HTTP/1.1" 200 5178
+INFO 2025-10-03 04:43:28,114 basehttp 27117 6179647488 "GET /static/img/Personal/Weekly%20Fitness%20Tracker.png HTTP/1.1" 200 321776
+INFO 2025-10-03 04:43:28,115 basehttp 27117 6129168384 "GET /static/img/Personal/Habit%20Development%20Tracker.png HTTP/1.1" 200 387584
+INFO 2025-10-03 04:43:28,690 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5654
+INFO 2025-10-03 04:43:47,637 basehttp 27117 6129168384 "GET /templates/content-creator-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:43:47,668 basehttp 27117 6129168384 "GET /grids/212/ HTTP/1.1" 200 17756
+INFO 2025-10-03 04:43:47,685 basehttp 27117 6129168384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-03 04:43:50,505 basehttp 27117 6129168384 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:43:50,515 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5134
+INFO 2025-10-03 04:43:51,806 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5679
+INFO 2025-10-03 04:43:59,417 basehttp 27117 6129168384 "GET /templates/content-creator-tracker/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-10-03 04:43:59,437 basehttp 27117 6129168384 "GET /grids/213/ HTTP/1.1" 200 13959
+INFO 2025-10-03 04:44:03,849 basehttp 27117 6129168384 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:03,859 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5175
+INFO 2025-10-03 04:44:05,434 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5616
+INFO 2025-10-03 04:44:08,982 basehttp 27117 6129168384 "GET /templates/coffee-shop-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:09,005 basehttp 27117 6129168384 "GET /grids/214/ HTTP/1.1" 200 17739
+INFO 2025-10-03 04:44:11,421 basehttp 27117 6129168384 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:11,430 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5207
+INFO 2025-10-03 04:44:12,757 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5695
+INFO 2025-10-03 04:44:16,269 basehttp 27117 6129168384 "GET /templates/coffee-shop-tracker/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:16,286 basehttp 27117 6129168384 "GET /grids/215/ HTTP/1.1" 200 13970
+INFO 2025-10-03 04:44:17,988 basehttp 27117 6129168384 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:17,999 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5129
+INFO 2025-10-03 04:44:19,594 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5644
+INFO 2025-10-03 04:44:23,516 basehttp 27117 6129168384 "GET /templates/interior-designer-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:23,536 basehttp 27117 6129168384 "GET /grids/216/ HTTP/1.1" 200 18027
+INFO 2025-10-03 04:44:27,777 basehttp 27117 6129168384 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:27,786 basehttp 27117 6129168384 "GET /templates/students/ HTTP/1.1" 200 5152
+INFO 2025-10-03 04:44:30,491 basehttp 27117 6129168384 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5694
+INFO 2025-10-03 04:44:35,435 basehttp 27117 6129168384 "GET /templates/interior-designer-tracker/?structure_only=true HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:35,453 basehttp 27117 6129168384 "GET /grids/217/ HTTP/1.1" 200 14086
+INFO 2025-10-03 04:44:38,059 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 12079
+INFO 2025-10-03 04:44:39,209 basehttp 27117 6129168384 "GET /grids/217/delete/ HTTP/1.1" 200 2895
+INFO 2025-10-03 04:44:40,023 basehttp 27117 6129168384 "POST /grids/217/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:40,040 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 11997
+INFO 2025-10-03 04:44:41,107 basehttp 27117 6129168384 "GET /grids/216/delete/ HTTP/1.1" 200 2892
+INFO 2025-10-03 04:44:41,860 basehttp 27117 6129168384 "POST /grids/216/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:41,875 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 11845
+INFO 2025-10-03 04:44:42,671 basehttp 27117 6129168384 "GET /grids/215/delete/ HTTP/1.1" 200 2956
+INFO 2025-10-03 04:44:43,343 basehttp 27117 6129168384 "POST /grids/215/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:43,359 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 11851
+INFO 2025-10-03 04:44:44,124 basehttp 27117 6129168384 "GET /grids/214/delete/ HTTP/1.1" 200 2969
+INFO 2025-10-03 04:44:44,764 basehttp 27117 6129168384 "POST /grids/214/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:44,780 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 11689
+INFO 2025-10-03 04:44:46,157 basehttp 27117 6129168384 "GET /grids/213/delete/ HTTP/1.1" 200 2963
+INFO 2025-10-03 04:44:46,744 basehttp 27117 6129168384 "POST /grids/213/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:46,761 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 11535
+INFO 2025-10-03 04:44:47,869 basehttp 27117 6129168384 "GET /grids/212/delete/ HTTP/1.1" 200 2904
+INFO 2025-10-03 04:44:48,644 basehttp 27117 6129168384 "POST /grids/212/delete/ HTTP/1.1" 302 0
+INFO 2025-10-03 04:44:48,658 basehttp 27117 6129168384 "GET /grids/ HTTP/1.1" 200 10533
+INFO 2025-10-03 04:45:02,506 autoreload 27117 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-10-03 04:45:03,054 autoreload 27283 8398642944 Watching for file changes with StatReloader

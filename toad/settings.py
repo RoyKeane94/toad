@@ -65,8 +65,16 @@ if IS_PRODUCTION:
         'https://toad-production.up.railway.app', # Replace with your actual Railway domain
     ]
 else:
-    # In development, allow localhost and 127.0.0.1
-    ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
+    # In development, allow localhost and 127.0.0.1 with common ports
+    ALLOWED_HOSTS = [
+        'localhost', 
+        '127.0.0.1', 
+        '0.0.0.0',
+        'localhost:8000',
+        '127.0.0.1:8000',
+        'localhost:3000',  # Common React dev server port
+        '127.0.0.1:3000'
+    ]
     CSRF_TRUSTED_ORIGINS = []
 
 
