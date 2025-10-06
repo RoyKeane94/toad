@@ -25,4 +25,11 @@ urlpatterns = [
     # Fallback for old format (temporary)
     path('society-links/<int:pk>/public/', views.society_link_public_old, name='society_link_public_old'),
     
+    # Instagram Posts
+    path('instagram/', views.instagram_index, name='instagram_index'),
+    path('instagram/introducing-toad/', views.instagram_introducing_toad, name='instagram_introducing_toad'),
+    path('instagram/why-users-love-toad/', views.instagram_why_users_love_toad, name='instagram_why_users_love_toad'),
+    path('instagram/toad-bingo-card/', views.instagram_toad_bingo_card, name='instagram_toad_bingo_card'),
+    path('instagram/preview/', views.instagram_preview, name='instagram_preview'),
+    
 ]

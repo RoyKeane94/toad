@@ -29052,3 +29052,94 @@ INFO 2025-10-03 04:54:27,406 basehttp 27983 6151024640 "GET /templates/students/
 INFO 2025-10-03 04:54:29,387 basehttp 27983 6151024640 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5785
 INFO 2025-10-03 04:54:34,459 basehttp 27983 6151024640 "GET /templates/online-store-tracker/?structure_only=true HTTP/1.1" 302 0
 INFO 2025-10-03 04:54:34,479 basehttp 27983 6151024640 "GET /grids/219/ HTTP/1.1" 200 13918
+INFO 2025-10-06 04:23:15,882 autoreload 34361 8398642944 Watching for file changes with StatReloader
+WARNING 2025-10-06 04:23:18,251 log 34361 6163492864 Not Found: /CRM/templates/instagram/introducing_toad.html
+WARNING 2025-10-06 04:23:18,252 basehttp 34361 6163492864 "GET /CRM/templates/instagram/introducing_toad.html HTTP/1.1" 404 2168
+INFO 2025-10-06 04:23:18,341 basehttp 34361 6163492864 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-06 04:23:18,346 basehttp 34361 6163492864 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-06 04:23:35,931 autoreload 34361 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-06 04:23:36,403 autoreload 34391 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:23:40,960 autoreload 34391 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-06 04:23:41,315 autoreload 34402 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:23:45,831 autoreload 34402 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-06 04:23:46,191 autoreload 34414 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:24:05,062 autoreload 34414 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-06 04:24:05,520 autoreload 34436 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:24:07,027 autoreload 34436 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-06 04:24:07,370 autoreload 34439 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:24:09,813 autoreload 34439 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-06 04:24:10,161 autoreload 34444 8398642944 Watching for file changes with StatReloader
+WARNING 2025-10-06 04:25:16,215 log 34444 6126235648 Not Found: /CRM/templates/instagram/introducing_toad.html
+WARNING 2025-10-06 04:25:16,216 basehttp 34444 6126235648 "GET /CRM/templates/instagram/introducing_toad.html HTTP/1.1" 404 2209
+INFO 2025-10-06 04:25:42,246 basehttp 34444 6126235648 "GET / HTTP/1.1" 200 5975
+INFO 2025-10-06 04:25:42,294 basehttp 34444 6126235648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-06 04:25:42,297 basehttp 34444 6126235648 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-06 04:25:42,301 basehttp 34444 6126235648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-06 04:25:42,302 basehttp 34444 6143062016 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-10-06 04:25:42,376 basehttp 34444 6143062016 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-10-06 04:25:45,330 basehttp 34444 6143062016 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-10-06 04:25:45,496 basehttp 34444 6126235648 "GET /lilypad/ HTTP/1.1" 200 4178
+INFO 2025-10-06 04:25:54,961 basehttp 34444 6126235648 "GET /lilypad/instagram HTTP/1.1" 301 0
+ERROR 2025-10-06 04:25:54,979 log 34444 6143635456 Internal Server Error: /lilypad/instagram/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 647, in instagram_index
+    return render(request, 'CRM/instagram/index.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: CRM/instagram/index.html
+ERROR 2025-10-06 04:25:54,981 basehttp 34444 6143635456 "GET /lilypad/instagram/ HTTP/1.1" 500 13278
+INFO 2025-10-06 04:26:21,087 autoreload 34444 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-06 04:26:21,657 autoreload 34532 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:26:24,174 autoreload 34532 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-06 04:26:24,611 autoreload 34541 8398642944 Watching for file changes with StatReloader
+WARNING 2025-10-06 04:26:25,905 log 34541 6202667008 Not Found: /lilypad/instagram/introducing-toad/
+WARNING 2025-10-06 04:26:25,905 basehttp 34541 6202667008 "GET /lilypad/instagram/introducing-toad/ HTTP/1.1" 404 2386
+INFO 2025-10-06 04:26:38,742 basehttp 34541 6202667008 "GET /lilypad/instagram/ HTTP/1.1" 200 1310
+WARNING 2025-10-06 04:26:40,973 log 34541 6202667008 Not Found: /lilypad/instagram/introducing-toad/
+WARNING 2025-10-06 04:26:40,974 basehttp 34541 6202667008 "GET /lilypad/instagram/introducing-toad/ HTTP/1.1" 404 2322
+INFO 2025-10-06 04:27:02,060 autoreload 34541 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-06 04:27:02,555 autoreload 34560 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:27:12,067 basehttp 34560 6131101696 "GET /lilypad/instagram/introducing-toad/ HTTP/1.1" 200 1477
+INFO 2025-10-06 04:27:12,091 basehttp 34560 6131101696 "GET /static/img/Desktop%20-%20Student%20Grid.png HTTP/1.1" 200 237315
+INFO 2025-10-06 04:27:16,385 autoreload 34560 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-06 04:27:16,842 autoreload 34580 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 04:28:23,170 basehttp 34580 6131740672 "GET / HTTP/1.1" 200 6024
+INFO 2025-10-06 04:28:27,227 basehttp 34580 6131740672 "GET /lilypad/ HTTP/1.1" 200 4118
+INFO 2025-10-06 04:28:33,534 basehttp 34580 6131740672 "GET /lilypad/instagram/ HTTP/1.1" 200 1355
+INFO 2025-10-06 04:28:35,334 basehttp 34580 6131740672 "GET /lilypad/instagram/introducing-toad/ HTTP/1.1" 200 1493
+INFO 2025-10-06 04:29:08,258 autoreload 34580 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-06 04:29:08,842 autoreload 34636 8398642944 Watching for file changes with StatReloader
+WARNING 2025-10-06 04:29:13,640 log 34636 6165393408 Not Found: /lilypad/instagram/introducing-toad/
+WARNING 2025-10-06 04:29:13,640 basehttp 34636 6165393408 "GET /lilypad/instagram/introducing-toad/ HTTP/1.1" 404 2371
+INFO 2025-10-06 04:29:24,308 basehttp 34636 6165393408 "GET / HTTP/1.1" 200 6000
+INFO 2025-10-06 05:17:29,148 basehttp 34636 6165393408 "GET /grids/ HTTP/1.1" 200 11601
+INFO 2025-10-06 05:17:31,740 basehttp 34636 6165393408 "GET /grids/219/ HTTP/1.1" 200 13983
+INFO 2025-10-06 05:17:31,766 basehttp 34636 6165393408 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-06 05:18:25,396 basehttp 34636 6165393408 "POST /grids/219/tasks/create/794/917/ HTTP/1.1" 200 1398
+INFO 2025-10-06 05:18:26,566 basehttp 34636 6165393408 "POST /tasks/2307/toggle/ HTTP/1.1" 200 79
+INFO 2025-10-06 05:18:30,051 project_views_functions 34636 6165393408 User None reordered tasks: in project Tom's Online Store Tracker
+INFO 2025-10-06 05:18:30,052 basehttp 34636 6165393408 "POST /grids/219/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-10-06 16:05:33,884 autoreload 34636 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-06 16:05:34,566 autoreload 40218 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 16:05:37,147 autoreload 40218 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-06 16:05:37,566 autoreload 40225 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 16:07:07,804 basehttp 40225 6134460416 "GET / HTTP/1.1" 200 6208
+INFO 2025-10-06 16:07:07,867 basehttp 40225 6134460416 "GET /static/css/output.css HTTP/1.1" 200 89044
+INFO 2025-10-06 16:07:07,868 basehttp 40225 6134460416 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-06 16:07:07,894 basehttp 40225 6134460416 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-06 16:07:07,895 basehttp 40225 6151286784 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-06 16:07:08,027 basehttp 40225 6151286784 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-06 16:07:08,525 basehttp 40225 6134460416 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760

@@ -614,3 +614,34 @@ def society_university_create(request):
         'title': 'Create University',
     }
     return render(request, 'society_links/society_university_form.html', context)
+
+# Instagram Post Views
+def instagram_introducing_toad(request):
+    """
+    Instagram post: Introducing Toad
+    """
+    return render(request, 'CRM/instagram/introducing_toad.html')
+
+def instagram_why_users_love_toad(request):
+    """
+    Instagram post: Why Users Love Toad
+    """
+    return render(request, 'CRM/instagram/why_users_love_toad.html')
+
+def instagram_toad_bingo_card(request):
+    """
+    Instagram post: Toad Bingo Card
+    """
+    return render(request, 'CRM/instagram/toad_bingo_card.html')
+
+def instagram_preview(request):
+    """
+    Preview all Instagram posts
+    """
+    return render(request, 'CRM/instagram/preview.html')
+
+def instagram_index(request):
+    """
+    Instagram posts index page
+    """
+    return render(request, 'CRM/instagram/index.html')

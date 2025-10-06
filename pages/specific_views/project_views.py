@@ -1386,7 +1386,6 @@ def task_reorder_view(request, project_pk):
                         logger.warning(f"Task {task_id} not found for project {project_pk}")
                         continue
 
-            log_user_action(request.user, 'reordered tasks', f'in project {project.name}')
             return JsonResponse({'success': True, 'message': 'Task order and position updated successfully'})
             
         except json.JSONDecodeError:
