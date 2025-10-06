@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage
 from django.conf import settings
+from django.utils import timezone
+from datetime import timedelta
 import logging
 import os
 
@@ -28,13 +30,23 @@ class Command(BaseCommand):
         dry_run = options['dry_run']
         test_email = options['test_email']
         
-        # Step 1: Find users with associated university
+        # Step 1: Find users with associated university who haven't received second email yet
+        # and who registered between 2 and 3 days ago
+        end_dt = timezone.now() - timedelta(days=2)   # up to 2 days ago (exclusive)
+        start_dt = timezone.now() - timedelta(days=3) # from 3 days ago (inclusive)
+
         users_with_university = User.objects.filter(
-            associated_university__isnull=False
+            associated_university__isnull=False,
+            second_grid_email_sent=False,
+            date_joined__gte=start_dt,
+            date_joined__lt=end_dt,
         )
         
         # Debug: Let's see what we're actually finding
-        self.stdout.write(f'Found {users_with_university.count()} users with associated university')
+        self.stdout.write(
+            f"Found {users_with_university.count()} eligible users (associated university, not yet sent, "
+            f"registered between {start_dt.strftime('%Y-%m-%d %H:%M')} and {end_dt.strftime('%Y-%m-%d %H:%M')})"
+        )
         
         # Debug: Show some examples
         if users_with_university.exists():
@@ -42,10 +54,29 @@ class Command(BaseCommand):
             for user in users_with_university[:5]:  # Show first 5
                 self.stdout.write(f'  - {user.email}: {user.associated_university}')
         else:
-            self.stdout.write('No users found with associated university')
-            # Let's check if there are any users at all
+            self.stdout.write("No eligible users found for this 2-3 day registration window")
+            
+            # Let's check what users we have
             total_users = User.objects.count()
             self.stdout.write(f'Total users in database: {total_users}')
+            
+            # Check users with university but already sent email
+            users_with_university_sent = User.objects.filter(
+                associated_university__isnull=False,
+                second_grid_email_sent=True
+            )
+            self.stdout.write(f'Users with university who already received second email: {users_with_university_sent.count()}')
+
+            # Check users who match time window but have been sent already (for clarity)
+            users_time_window_sent = User.objects.filter(
+                associated_university__isnull=False,
+                second_grid_email_sent=True,
+                date_joined__gte=start_dt,
+                date_joined__lt=end_dt,
+            )
+            self.stdout.write(
+                f"Users in 2-3 day window who already received second email: {users_time_window_sent.count()}"
+            )
             
             # Check if any users have the field but it's None
             users_with_none = User.objects.filter(associated_university__isnull=True)
@@ -71,13 +102,8 @@ class Command(BaseCommand):
             self.show_preview(users_with_university.first())
             return
         
-        # Show all emails that will be sent
+        # Show all emails that will be sent (informational)
         self.show_all_emails(users_with_university)
-        
-        # Confirm before sending
-        if not self.confirm_send(users_with_university.count()):
-            self.stdout.write(self.style.WARNING('Operation cancelled'))
-            return
         
         # Step 2: Send emails and mark as second email sent
         success_count = 0
