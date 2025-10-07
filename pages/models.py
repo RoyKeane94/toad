@@ -4,6 +4,7 @@ from django.urls import reverse
 
 class ProjectGroup(models.Model):
     name = models.CharField(max_length=100)
+    is_team_toad = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -16,6 +17,7 @@ class ProjectGroup(models.Model):
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
+    is_team_toad = models.BooleanField(default=False)
     is_archived = models.BooleanField(default=False)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
     order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups
@@ -80,6 +82,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     reminder = models.DateTimeField(blank=True, null=True)
+    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
 
     def __str__(self):
         return f"{self.text[:50]} - {self.created_at} - project: {self.project.name} - user: {self.project.user}" if self.text else 'Empty Task'
