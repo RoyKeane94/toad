@@ -1682,7 +1682,7 @@ def create_alternative_weekly_planner_grid_structure_only(user):
 def create_coffee_shop_tracker_grid(user):
     """
     Create a Coffee Shop Tracker grid with predefined rows and columns for the given user.
-    Based on the Coffee Shop Tracker structure with admin, customer service, and product management areas.
+    Based on the Coffee Shop Tracker structure with time-based rows and operational area columns.
     """
     # Create the project
     project = Project.objects.create(
@@ -1690,11 +1690,11 @@ def create_coffee_shop_tracker_grid(user):
         name=f"{user.first_name}'s Coffee Shop Tracker"
     )
     
-    # Create row headers (operational areas)
+    # Create row headers (time-based priorities)
     row_headers = [
-        "Admin",
-        "Customer Service", 
-        "Product Management"
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -1704,11 +1704,11 @@ def create_coffee_shop_tracker_grid(user):
             order=order
         )
     
-    # Create column headers (time-based priorities)
+    # Create column headers (operational areas)
     column_headers = [
-        "Daily Tasks",
-        "Weekly Priorities",
-        "Long-term Projects"
+        "Admin",
+        "Customers",
+        "Product"
     ]
     
     col_objects = []
@@ -1726,29 +1726,23 @@ def create_coffee_shop_tracker_grid(user):
     
     # Create tasks based on the Coffee Shop Tracker image
     tasks_data = [
-        # Admin row
-        (0, 0, "Check daily sales reports", False),  # Daily Tasks
-        (0, 0, "Review inventory levels", False),  # Daily Tasks
-        (0, 0, "Process payroll for staff", False),  # Daily Tasks
-        (0, 1, "Update financial projections", False),  # Weekly Priorities
-        (0, 1, "Schedule staff training sessions", False),  # Weekly Priorities
-        (0, 2, "Plan expansion to second location", False),  # Long-term Projects
+        # To Do Today row
+        (0, 0, "Post job advert on Indeed", False),  # Admin
+        (0, 1, "Design and print new WiFi password sign", False),  # Customers
+        (0, 1, "Upload a new Instagram post introducing our new Barista", False),  # Customers
+        (0, 2, "Replace broken mug", True),  # Product (completed)
         
-        # Customer Service row
-        (1, 0, "Respond to customer feedback", False),  # Daily Tasks
-        (1, 0, "Train new baristas", False),  # Daily Tasks
-        (1, 0, "Monitor customer satisfaction", False),  # Daily Tasks
-        (1, 1, "Implement loyalty program", False),  # Weekly Priorities
-        (1, 1, "Update customer service protocols", False),  # Weekly Priorities
-        (1, 2, "Launch customer feedback system", False),  # Long-term Projects
+        # Weekly Priorities row
+        (1, 0, "Quarterly deep clean of the espresso machine", False),  # Admin
+        (1, 1, "Respond to new Google reviews", False),  # Customers
+        (1, 1, "Fix the wobbly table by the window", False),  # Customers
+        (1, 2, "Finalise the cost out of the new Winter drinks menu", False),  # Product
+        (1, 2, "Get quotes from two alternative oat milk suppliers", False),  # Product
         
-        # Product Management row
-        (2, 0, "Test new coffee blends", False),  # Daily Tasks
-        (2, 0, "Quality check pastries", False),  # Daily Tasks
-        (2, 0, "Order fresh ingredients", False),  # Daily Tasks
-        (2, 1, "Develop seasonal menu", False),  # Weekly Priorities
-        (2, 1, "Research new suppliers", False),  # Weekly Priorities
-        (2, 2, "Launch signature drink line", False),  # Long-term Projects
+        # Projects row
+        (2, 0, "Sign off on Q3 accounts", True),  # Admin (completed)
+        (2, 0, "Share Q3 accounts with accountant", False),  # Admin
+        (2, 1, "Plan budget for Christmas marketing campaign", False),  # Customers
     ]
     
     # Create all tasks
@@ -1774,11 +1768,11 @@ def create_coffee_shop_tracker_grid_structure_only(user):
         name=f"{user.first_name}'s Coffee Shop Tracker"
     )
     
-    # Create row headers
+    # Create row headers (time-based priorities)
     row_headers = [
-        "Admin",
-        "Customer Service", 
-        "Product Management"
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -1788,11 +1782,11 @@ def create_coffee_shop_tracker_grid_structure_only(user):
             order=order
         )
     
-    # Create column headers
+    # Create column headers (operational areas)
     column_headers = [
-        "Daily Tasks",
-        "Weekly Priorities",
-        "Long-term Projects"
+        "Admin",
+        "Customers",
+        "Product"
     ]
     
     for order, col_name in enumerate(column_headers):
@@ -1809,7 +1803,7 @@ def create_coffee_shop_tracker_grid_structure_only(user):
 def create_content_creator_tracker_grid(user):
     """
     Create a Content Creator Tracker grid with predefined rows and columns for the given user.
-    Based on the Content Creator Tracker structure with admin, content planning, and collaboration areas.
+    Based on the Content Creator Tracker structure with time-based rows and operational area columns.
     """
     # Create the project
     project = Project.objects.create(
@@ -1817,11 +1811,11 @@ def create_content_creator_tracker_grid(user):
         name=f"{user.first_name}'s Content Creator Tracker"
     )
     
-    # Create row headers (content areas)
+    # Create row headers (time-based priorities)
     row_headers = [
-        "Admin",
-        "Content Planning", 
-        "Collaboration Management"
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -1831,11 +1825,11 @@ def create_content_creator_tracker_grid(user):
             order=order
         )
     
-    # Create column headers (time-based priorities)
+    # Create column headers (content areas)
     column_headers = [
-        "Daily Priorities",
-        "Weekly Goals",
-        "Ongoing Projects"
+        "Admin",
+        "Content",
+        "Collaborations"
     ]
     
     col_objects = []
@@ -1853,29 +1847,30 @@ def create_content_creator_tracker_grid(user):
     
     # Create tasks based on the Content Creator Tracker image
     tasks_data = [
-        # Admin row
-        (0, 0, "Respond to brand partnership emails", False),  # Daily Priorities
-        (0, 0, "Update analytics dashboard", False),  # Daily Priorities
-        (0, 0, "Review and approve content calendar", False),  # Daily Priorities
-        (0, 1, "Plan monthly content strategy", False),  # Weekly Goals
-        (0, 1, "Schedule social media posts", False),  # Weekly Goals
-        (0, 2, "Build brand partnerships", False),  # Ongoing Projects
+        # To Do Today row
+        (0, 0, "Clear email inbox", False),  # Admin
+        (0, 1, "Respond to comments on latest Instagram Reel", False),  # Content
+        (0, 1, "Schedule tomorrow's story", False),  # Content
+        (0, 1, "Research trending topics for YouTube shorts", False),  # Content
+        (0, 2, "Send follow up email to Daylesford", False),  # Collaborations
+        (0, 2, "Draft pitch for Dyptique product collaboration", False),  # Collaborations
         
-        # Content Planning row
-        (1, 0, "Film daily content", False),  # Daily Priorities
-        (1, 0, "Edit and upload videos", False),  # Daily Priorities
-        (1, 0, "Write captions and hashtags", False),  # Daily Priorities
-        (1, 1, "Research trending topics", False),  # Weekly Goals
-        (1, 1, "Plan video series concepts", False),  # Weekly Goals
-        (1, 2, "Develop signature content style", False),  # Ongoing Projects
+        # Weekly Priorities row
+        (1, 0, "Submit Q2 accounts to accountant", False),  # Admin
+        (1, 1, "Batch create 3 new reels for next week", False),  # Content
+        (1, 1, "Plan grid posts for next 7 days", False),  # Content
+        (1, 1, "Analyse reel interaction", False),  # Content
+        (1, 1, "Outline script for next YouTube video", False),  # Content
+        (1, 2, "Finalise contract with Sheer Luxe", False),  # Collaborations
+        (1, 2, "Source products for upcoming unboxing video", False),  # Collaborations
         
-        # Collaboration Management row
-        (2, 0, "Coordinate with other creators", False),  # Daily Priorities
-        (2, 0, "Manage community interactions", False),  # Daily Priorities
-        (2, 0, "Review collaboration proposals", False),  # Daily Priorities
-        (2, 1, "Plan collaborative content", False),  # Weekly Goals
-        (2, 1, "Schedule creator meetups", False),  # Weekly Goals
-        (2, 2, "Build creator network", False),  # Ongoing Projects
+        # Projects row
+        (2, 0, "Update website for new media forms", False),  # Admin
+        (2, 0, "Research new monetisation strategies", False),  # Admin
+        (2, 1, "Plan a 6 part deep dive series for YouTube", False),  # Content
+        (2, 1, "Research new camera equipment", False),  # Content
+        (2, 2, "Create an \"About Me\" pitch deck", False),  # Collaborations
+        (2, 2, "Create system for tracking collaboration ROI", False),  # Collaborations
     ]
     
     # Create all tasks
@@ -1901,11 +1896,11 @@ def create_content_creator_tracker_grid_structure_only(user):
         name=f"{user.first_name}'s Content Creator Tracker"
     )
     
-    # Create row headers
+    # Create row headers (time-based priorities)
     row_headers = [
-        "Admin",
-        "Content Planning", 
-        "Collaboration Management"
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -1915,11 +1910,11 @@ def create_content_creator_tracker_grid_structure_only(user):
             order=order
         )
     
-    # Create column headers
+    # Create column headers (content areas)
     column_headers = [
-        "Daily Priorities",
-        "Weekly Goals",
-        "Ongoing Projects"
+        "Admin",
+        "Content",
+        "Collaborations"
     ]
     
     for order, col_name in enumerate(column_headers):
@@ -1936,7 +1931,7 @@ def create_content_creator_tracker_grid_structure_only(user):
 def create_interior_designer_tracker_grid(user):
     """
     Create an Interior Designer Tracker grid with predefined rows and columns for the given user.
-    Based on the Interior Designer Tracker structure with discovery, design, and delivery phases.
+    Based on the Interior Designer Tracker structure with project phases as rows and stakeholder columns.
     """
     # Create the project
     project = Project.objects.create(
@@ -1946,9 +1941,9 @@ def create_interior_designer_tracker_grid(user):
     
     # Create row headers (project phases)
     row_headers = [
-        "Discovery & Client Interaction",
-        "Design & Planning", 
-        "Delivery & Installation"
+        "Discovery and planning",
+        "Design",
+        "Procurement"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -1958,11 +1953,11 @@ def create_interior_designer_tracker_grid(user):
             order=order
         )
     
-    # Create column headers (key deliverables)
+    # Create column headers (stakeholder areas)
     column_headers = [
-        "Client Communications",
-        "Supplier Relations",
-        "Key Deliverables"
+        "Client",
+        "Suppliers",
+        "Key deliverables"
     ]
     
     col_objects = []
@@ -1980,30 +1975,34 @@ def create_interior_designer_tracker_grid(user):
     
     # Create tasks based on the Interior Designer Tracker image
     tasks_data = [
-        # Discovery & Client Interaction row
-        (0, 0, "Initial client consultation", False),  # Client Communications
-        (0, 0, "Present design concepts", False),  # Client Communications
-        (0, 0, "Gather client feedback", False),  # Client Communications
-        (0, 1, "Research furniture suppliers", False),  # Supplier Relations
-        (0, 1, "Get quotes from contractors", False),  # Supplier Relations
-        (0, 2, "Create mood boards", False),  # Key Deliverables
-        (0, 2, "Develop space planning", False),  # Key Deliverables
+        # Discovery and planning row
+        (0, 0, "Initial meeting on 3rd October", True),  # Client (completed)
+        (0, 0, "Discuss scope of working including style likes and budget", False),  # Client
+        (0, 0, "Get key measurements", False),  # Client
+        (0, 1, "Speak to suppliers to come up with ideas", False),  # Suppliers
+        (0, 1, "Contact decorators for quotes on wallpapering", False),  # Suppliers
+        (0, 2, "Signed contract", False),  # Key deliverables
+        (0, 2, "Initial design brief", False),  # Key deliverables
+        (0, 2, "Client questionnaire", False),  # Key deliverables
+        (0, 2, "Agree a timeline", False),  # Key deliverables
         
-        # Design & Planning row
-        (1, 0, "Schedule design review meetings", False),  # Client Communications
-        (1, 0, "Present final design proposal", False),  # Client Communications
-        (1, 1, "Finalise supplier contracts", False),  # Supplier Relations
-        (1, 1, "Coordinate with contractors", False),  # Supplier Relations
-        (1, 2, "Create detailed floor plans", False),  # Key Deliverables
-        (1, 2, "Specify materials and finishes", False),  # Key Deliverables
+        # Design row
+        (1, 0, "Pull together mood board to discuss", False),  # Client
+        (1, 0, "Sketching to present to clients", False),  # Client
+        (1, 0, "Share and discuss furniture options with client", False),  # Client
+        (1, 1, "Get supplier product availability for wallpaper", False),  # Suppliers
+        (1, 1, "Pull together options for bed", False),  # Suppliers
+        (1, 1, "Pull together options for dressing table", False),  # Suppliers
+        (1, 1, "Pull together options for carpet", False),  # Suppliers
+        (1, 2, "Finalise design drawings with client", False),  # Key deliverables
+        (1, 2, "Finalise furniture purchases with client", False),  # Key deliverables
         
-        # Delivery & Installation row
-        (2, 0, "Update client on installation progress", False),  # Client Communications
-        (2, 0, "Conduct final walkthrough", False),  # Client Communications
-        (2, 1, "Manage installation timeline", False),  # Supplier Relations
-        (2, 1, "Quality check delivered items", False),  # Supplier Relations
-        (2, 2, "Complete project documentation", False),  # Key Deliverables
-        (2, 2, "Handover project to client", False),  # Key Deliverables
+        # Procurement row
+        (2, 0, "Agree deliveries with client", False),  # Client
+        (2, 0, "Agree decorator with client", False),  # Client
+        (2, 1, "Speak to suppliers re agreed client purchase list", False),  # Suppliers
+        (2, 1, "Inform client of any timeline issues with suppliers", False),  # Suppliers
+        (2, 2, "Vendor confirmations", False),  # Key deliverables
     ]
     
     # Create all tasks
@@ -2029,11 +2028,11 @@ def create_interior_designer_tracker_grid_structure_only(user):
         name=f"{user.first_name}'s Interior Designer Tracker"
     )
     
-    # Create row headers
+    # Create row headers (project phases)
     row_headers = [
-        "Discovery & Client Interaction",
-        "Design & Planning", 
-        "Delivery & Installation"
+        "Discovery and planning",
+        "Design",
+        "Procurement"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -2043,11 +2042,11 @@ def create_interior_designer_tracker_grid_structure_only(user):
             order=order
         )
     
-    # Create column headers
+    # Create column headers (stakeholder areas)
     column_headers = [
-        "Client Communications",
-        "Supplier Relations",
-        "Key Deliverables"
+        "Client",
+        "Suppliers",
+        "Key deliverables"
     ]
     
     for order, col_name in enumerate(column_headers):
@@ -2064,7 +2063,7 @@ def create_interior_designer_tracker_grid_structure_only(user):
 def create_online_store_tracker_grid(user):
     """
     Create an Online Store Tracker grid with predefined rows and columns for the given user.
-    Based on the Online Store Tracker structure with admin, product development, and clients/marketing areas.
+    Based on the Online Store Tracker structure with time-based rows and operational area columns.
     """
     # Create the project
     project = Project.objects.create(
@@ -2072,11 +2071,11 @@ def create_online_store_tracker_grid(user):
         name=f"{user.first_name}'s Online Store Tracker"
     )
     
-    # Create row headers (operational areas)
+    # Create row headers (time-based priorities)
     row_headers = [
-        "Admin",
-        "Product Development", 
-        "Clients and Marketing"
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -2086,11 +2085,11 @@ def create_online_store_tracker_grid(user):
             order=order
         )
     
-    # Create column headers (time-based priorities)
+    # Create column headers (operational areas)
     column_headers = [
-        "To Do Today",
-        "Weekly Priorities",
-        "Projects"
+        "Admin",
+        "Product Development",
+        "Clients and Marketing"
     ]
     
     col_objects = []
@@ -2108,27 +2107,27 @@ def create_online_store_tracker_grid(user):
     
     # Create tasks based on the Online Store Tracker image
     tasks_data = [
-        # Admin row
-        (0, 0, "Update website banner for autumn sale", False),  # To Do Today
-        (0, 1, "Conduct stock check", False),  # Weekly Priorities
-        (0, 1, "Send Q2 accounts to accountant", False),  # Weekly Priorities
-        (0, 2, "Migrate store to Shopify", False),  # Projects
-        (0, 2, "Prepare relevant documents for end of year tax filing", False),  # Projects
+        # To Do Today row
+        (0, 0, "Update website banner for autumn sale", False),  # Admin
+        (0, 1, "Finalise designs for Spring collection", False),  # Product Development
+        (0, 1, "Write description for Spring collection", False),  # Product Development
+        (0, 2, "Respond to all customer DMs and emails", False),  # Clients and Marketing
+        (0, 2, "Pack and ship all outstanding orders", False),  # Clients and Marketing
         
-        # Product Development row
-        (1, 0, "Finalise designs for Spring collection", False),  # To Do Today
-        (1, 0, "Write description for Spring collection", False),  # To Do Today
-        (1, 1, "Winter collection photoshoot", False),  # Weekly Priorities
-        (1, 2, "Plan product release for Spring collection", False),  # Projects
-        (1, 2, "Look into more sustainable packaging solutions", False),  # Projects
+        # Weekly Priorities row
+        (1, 0, "Conduct stock check", False),  # Admin
+        (1, 0, "Send Q2 accounts to accountant", False),  # Admin
+        (1, 1, "Winter collection photoshoot", False),  # Product Development
+        (1, 2, "Schedule 3 social media posts for next week", False),  # Clients and Marketing
+        (1, 2, "Send \"Thank You\" email to new customers", False),  # Clients and Marketing
         
-        # Clients and Marketing row
-        (2, 0, "Respond to all customer DMs and emails", False),  # To Do Today
-        (2, 0, "Pack and ship all outstanding orders", False),  # To Do Today
-        (2, 1, "Schedule 3 social media posts for next week", False),  # Weekly Priorities
-        (2, 1, "Send \"Thank You\" email to new customers", False),  # Weekly Priorities
-        (2, 2, "Plan and budget Black Friday marketing campaign", False),  # Projects
-        (2, 2, "Set up an automated email sequence for abandoned carts", False),  # Projects
+        # Projects row
+        (2, 0, "Migrate store to Shopify", False),  # Admin
+        (2, 0, "Prepare relevant documents for end of year tax filing", False),  # Admin
+        (2, 1, "Plan product release for Spring collection", False),  # Product Development
+        (2, 1, "Look into more sustainable packaging solutions", False),  # Product Development
+        (2, 2, "Plan and budget Black Friday marketing campaign", False),  # Clients and Marketing
+        (2, 2, "Set up an automated email sequence for abandoned carts", False),  # Clients and Marketing
     ]
     
     # Create all tasks
@@ -2154,11 +2153,11 @@ def create_online_store_tracker_grid_structure_only(user):
         name=f"{user.first_name}'s Online Store Tracker"
     )
     
-    # Create row headers
+    # Create row headers (time-based priorities)
     row_headers = [
-        "Admin",
-        "Product Development", 
-        "Clients and Marketing"
+        "To Do Today",
+        "Weekly Priorities",
+        "Projects"
     ]
     
     for order, row_name in enumerate(row_headers):
@@ -2168,11 +2167,11 @@ def create_online_store_tracker_grid_structure_only(user):
             order=order
         )
     
-    # Create column headers
+    # Create column headers (operational areas)
     column_headers = [
-        "To Do Today",
-        "Weekly Priorities",
-        "Projects"
+        "Admin",
+        "Product Development",
+        "Clients and Marketing"
     ]
     
     for order, col_name in enumerate(column_headers):

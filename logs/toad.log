@@ -29146,3 +29146,204 @@ INFO 2025-10-06 16:07:08,525 basehttp 40225 6134460416 "GET /static/img/logo/toa
 INFO 2025-10-06 16:15:35,728 send_student_follow_up 40928 8398642944 Student follow-up email sent to kushalmehta2003@gmail.com
 INFO 2025-10-06 16:15:36,341 send_student_follow_up 40928 8398642944 Student follow-up email sent to mehaksakhuja@icloud.com
 INFO 2025-10-06 16:15:36,946 send_student_follow_up 40928 8398642944 Student follow-up email sent to alexsos736@gmail.com
+INFO 2025-10-06 17:36:17,859 autoreload 41770 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-06 17:36:19,694 exception 41770 6191345664 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:36:19,699 log 41770 6191345664 Bad Request: /
+WARNING 2025-10-06 17:36:19,699 basehttp 41770 6191345664 "GET / HTTP/1.1" 400 143
+ERROR 2025-10-06 17:36:19,766 exception 41770 6208172032 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:36:19,767 log 41770 6208172032 Bad Request: /favicon.ico
+WARNING 2025-10-06 17:36:19,767 basehttp 41770 6208172032 "GET /favicon.ico HTTP/1.1" 400 143
+ERROR 2025-10-06 17:36:26,967 exception 41770 6190772224 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:36:26,970 log 41770 6190772224 Bad Request: /
+WARNING 2025-10-06 17:36:26,971 basehttp 41770 6190772224 "GET / HTTP/1.1" 400 143
+ERROR 2025-10-06 17:36:26,979 exception 41770 6207598592 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:36:26,980 log 41770 6207598592 Bad Request: /favicon.ico
+WARNING 2025-10-06 17:36:26,981 basehttp 41770 6207598592 "GET /favicon.ico HTTP/1.1" 400 143
+INFO 2025-10-06 17:37:04,489 autoreload 41770 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-10-06 17:37:05,003 autoreload 41791 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 17:37:08,538 autoreload 41791 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-10-06 17:37:09,159 autoreload 41807 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 17:37:29,054 autoreload 41807 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/toad/settings.py changed, reloading.
+INFO 2025-10-06 17:37:29,516 autoreload 41820 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-06 17:37:34,818 exception 41820 6167343104 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:37:34,823 log 41820 6167343104 Bad Request: /
+WARNING 2025-10-06 17:37:34,824 basehttp 41820 6167343104 "GET / HTTP/1.1" 400 143
+ERROR 2025-10-06 17:37:34,832 exception 41820 6184169472 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:37:34,833 log 41820 6184169472 Bad Request: /favicon.ico
+WARNING 2025-10-06 17:37:34,834 basehttp 41820 6184169472 "GET /favicon.ico HTTP/1.1" 400 143
+ERROR 2025-10-06 17:37:36,905 exception 41820 6166769664 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:37:36,906 log 41820 6166769664 Bad Request: /
+WARNING 2025-10-06 17:37:36,907 basehttp 41820 6166769664 "GET / HTTP/1.1" 400 143
+ERROR 2025-10-06 17:37:36,916 exception 41820 6183596032 Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/deprecation.py", line 119, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/middleware/security.py", line 28, in process_request
+    host = self.redirect_host or request.get_host()
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/http/request.py", line 191, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: '127.0.0.1:8000'. You may need to add '127.0.0.1' to ALLOWED_HOSTS.
+WARNING 2025-10-06 17:37:36,917 log 41820 6183596032 Bad Request: /favicon.ico
+WARNING 2025-10-06 17:37:36,917 basehttp 41820 6183596032 "GET /favicon.ico HTTP/1.1" 400 143
+INFO 2025-10-06 17:38:00,670 autoreload 41852 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 17:38:30,364 autoreload 42024 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-06 17:38:33,109 basehttp 42024 6161788928 "GET / HTTP/1.1" 200 6264
+INFO 2025-10-06 17:38:33,163 basehttp 42024 6161788928 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-06 17:38:36,017 basehttp 42024 6161788928 "GET /static/gif/Professionals%20GIF.gif HTTP/1.1" 200 1583106
+INFO 2025-10-06 17:38:36,979 basehttp 42024 6161788928 "GET /static/gif/Entrepreneurs%20GIF.gif HTTP/1.1" 200 2147758
+INFO 2025-10-07 04:10:33,698 autoreload 43549 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:10:37,808 basehttp 43549 6159953920 "GET / HTTP/1.1" 200 6177
+INFO 2025-10-07 04:10:37,838 basehttp 43549 6159953920 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-07 04:10:37,842 basehttp 43549 6159953920 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-07 04:10:38,147 basehttp 43549 6159953920 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-07 04:10:40,863 basehttp 43549 6159953920 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:10:40,874 basehttp 43549 6159953920 "GET /templates/students/ HTTP/1.1" 200 5187
+INFO 2025-10-07 04:10:40,926 basehttp 43549 6176780288 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
+INFO 2025-10-07 04:10:40,930 basehttp 43549 6193606656 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
+INFO 2025-10-07 04:10:40,932 basehttp 43549 6159953920 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-10-07 04:10:40,933 basehttp 43549 6210433024 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
+INFO 2025-10-07 04:10:41,978 basehttp 43549 6210433024 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5785
+INFO 2025-10-07 04:10:41,993 basehttp 43549 6159953920 "GET /static/img/Entrepreneurs/Product%20Development%20Tracker.png HTTP/1.1" 200 455674
+INFO 2025-10-07 04:10:41,994 basehttp 43549 6210433024 "GET /static/img/Entrepreneurs/Solopreneur%20Tracker.png HTTP/1.1" 200 443965
+INFO 2025-10-07 04:10:42,007 basehttp 43549 6159953920 "GET /static/img/Entrepreneurs/Coffee%20Shop%20Tracker.png HTTP/1.1" 200 358711
+INFO 2025-10-07 04:10:42,012 basehttp 43549 6210433024 "GET /static/img/Entrepreneurs/Content%20Creator%20Tracker.png HTTP/1.1" 200 442834
+INFO 2025-10-07 04:10:42,015 basehttp 43549 6176780288 "GET /static/img/Entrepreneurs/Online%20Store%20Tracker.png HTTP/1.1" 200 399839
+INFO 2025-10-07 04:10:42,016 basehttp 43549 6193606656 "GET /static/img/Entrepreneurs/Interior%20Designer%20Tracker.png HTTP/1.1" 200 459030
+INFO 2025-10-07 04:10:48,725 basehttp 43549 6193606656 "GET /templates/coffee-shop-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:10:48,758 basehttp 43549 6193606656 "GET /grids/220/ HTTP/1.1" 200 17812
+INFO 2025-10-07 04:10:48,775 basehttp 43549 6193606656 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-10-07 04:10:59,151 basehttp 43549 6193606656 "GET /templates/content-creator-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:10:59,175 basehttp 43549 6193606656 "GET /grids/221/ HTTP/1.1" 200 17813
+INFO 2025-10-07 04:12:21,844 autoreload 43549 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:12:22,423 autoreload 43627 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:12:31,184 autoreload 43627 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:12:31,776 autoreload 43633 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:12:40,528 autoreload 43633 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:12:41,046 autoreload 43647 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:13:00,045 basehttp 43647 6160691200 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:13:00,059 basehttp 43647 6160691200 "GET /templates/students/ HTTP/1.1" 200 5151
+INFO 2025-10-07 04:13:02,376 basehttp 43647 6160691200 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5748
+INFO 2025-10-07 04:13:51,304 autoreload 43647 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:13:51,830 autoreload 43715 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:14:01,499 autoreload 43715 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:14:01,965 autoreload 43728 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:14:14,723 autoreload 43728 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:14:15,183 autoreload 43737 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:14:29,739 basehttp 43737 6155333632 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5819
+INFO 2025-10-07 04:14:34,376 basehttp 43737 6155333632 "GET /templates/coffee-shop-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:14:34,408 basehttp 43737 6155333632 "GET /grids/222/ HTTP/1.1" 200 16938
+INFO 2025-10-07 04:16:14,674 autoreload 43737 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:16:15,222 autoreload 43768 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:16:27,961 autoreload 43768 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:16:28,436 autoreload 43779 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:17:04,595 autoreload 43779 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:17:05,095 autoreload 43792 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:17:18,828 autoreload 43792 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:17:19,298 autoreload 43802 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:19:03,727 autoreload 43802 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:19:04,432 autoreload 43892 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:19:15,642 autoreload 43892 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:19:16,186 autoreload 43904 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:19:34,819 basehttp 43904 6162919424 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5735
+INFO 2025-10-07 04:19:35,122 autoreload 43904 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-07 04:19:35,651 autoreload 43918 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-07 04:19:44,570 basehttp 43918 6164869120 "GET /templates/interior-designer-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:19:44,604 basehttp 43918 6164869120 "GET /grids/223/ HTTP/1.1" 200 18774
+INFO 2025-10-07 04:19:56,508 basehttp 43918 6164869120 "GET /templates/online-store-tracker/ HTTP/1.1" 302 0
+INFO 2025-10-07 04:19:56,531 basehttp 43918 6164869120 "GET /grids/224/ HTTP/1.1" 200 17689
