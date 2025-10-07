@@ -127,6 +127,22 @@ class PersonalTemplate(models.Model):
     class Meta:
         ordering = ['name']
 
+class TeamToadTemplate(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='team_toad_templates')
+    name = models.CharField(max_length=100)
+    team_members = models.ManyToManyField(User, related_name='member_of_team_toad_templates', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['name']
+        indexes = [
+            models.Index(fields=['creator']),  # For creator's team toad template queries
+        ]
+
 class TemplateRowHeader(models.Model):
     template = models.ForeignKey(PersonalTemplate, on_delete=models.CASCADE, related_name='row_headers')
     name = models.CharField(max_length=100)
