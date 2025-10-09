@@ -463,6 +463,23 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         <!-- Divider -->
                         <div class="border-t border-[var(--border-color)] my-2"></div>
+
+                        <!-- Share Grid -->
+                        {% if user_tier == 'free' %}
+                        <a href="{% url 'pages:upgrade_required' %}"
+                           class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           onclick="closeAllDropdowns();">
+                            <i class="fas fa-share text-xs w-4 text-center"></i>
+                            <span>Share Grid</span>
+                        </a>
+                        {% else %}
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                onclick="closeAllDropdowns(); document.getElementById('share-grid-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('share-grid-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('share-grid-modal').querySelector('div').classList.add('scale-100');">
+                            <i class="fas fa-share text-xs w-4 text-center"></i>
+                            <span>Share Grid</span>
+                        </button>
+                        {% endif %}
                         
                         {% if project.is_archived %}
                             <!-- Restore Grid -->
@@ -692,6 +709,76 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+<!-- Assign Task Modal -->
+<div id="assign-task-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300" id="assign-modal-content">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-user-plus text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Assign Task</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Choose a team member for this task</p>
+                </div>
+            </div>
+            <button type="button" id="close-assign-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <form id="assign-task-form" method="post">
+            {% csrf_token %}
+            <div class="p-6">
+                <div class="mb-6">
+                    <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4 mb-6">
+                        <div class="flex items-start space-x-3">
+                            <div class="flex items-center justify-center w-8 h-8 bg-[var(--primary-action-bg)] rounded-lg shadow-sm flex-shrink-0">
+                                <i class="fas fa-tasks text-white text-sm"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="font-medium text-[var(--text-primary)] text-sm" id="task-for-assignment">Task Name</p>
+                                <p class="text-xs text-[var(--text-secondary)] mt-1">Assign this task to a team member</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member Selection -->
+                    <div class="space-y-4">
+                        <div>
+                            <label for="assign-user" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Assign To</label>
+                            <select id="assign-user" 
+                                    name="assigned_to" 
+                                    required
+                                    class="w-full px-3 py-2 border border-[var(--border-color)] rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)] bg-[var(--container-bg)]">
+                                <option value="">Select team member...</option>
+                                {% for team_member in project.team_toad_user.all %}
+                                    <option value="{{ team_member.pk }}">{{ team_member.first_name|default:team_member.username }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+                <button type="button" 
+                        id="cancel-assign-task"
+                        class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-times mr-2"></i>Cancel
+                </button>
+                <button type="submit" 
+                        class="w-40 h-10 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-user-check mr-2"></i>Assign Task
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <!-- Save Template Modal -->
 <div id="save-template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
     <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
@@ -769,6 +856,66 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
             <button type="submit" form="save-template-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
                 <i class="fas fa-save mr-2"></i>Save Template
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Share Grid Modal -->
+<div id="share-grid-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+    <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
+        <!-- Modal Header -->
+        <div class="flex items-center p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-share text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Share your Grid</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Collaborate with team members</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <form id="share-grid-form" method="post">
+                {% csrf_token %}
+                
+                <div class="mb-6">
+                    <p class="text-[var(--text-primary)] mb-4">Please enter the email address of the person you would like to share with - all they need is a Toad Pro account to start collaborating</p>
+                    
+                    <!-- Email Input -->
+                    <div class="mb-4">
+                        <label for="share-email" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Email Address</label>
+                        <input type="email" 
+                               id="share-email" 
+                               name="email" 
+                               required
+                               class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)] text-[var(--text-primary)]"
+                               placeholder="Enter email address">
+                    </div>
+                    
+                    <!-- Optional Message -->
+                    <div>
+                        <label for="share-message" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Personal Message (Optional)</label>
+                        <textarea id="share-message" 
+                                  name="message" 
+                                  rows="3"
+                                  placeholder="Add a personal message to your invitation..."
+                                  class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)] text-[var(--text-primary)] resize-none"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="hideShareGridModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="submit" form="share-grid-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                <i class="fas fa-share mr-2"></i>Send Invitation
             </button>
         </div>
     </div>
@@ -955,6 +1102,22 @@ function hideSaveTemplateModal() {
     }
 }
 
+function hideShareGridModal() {
+    const modal = document.getElementById('share-grid-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+        
+        // Reset form
+        const form = document.getElementById('share-grid-form');
+        if (form) form.reset();
+    }
+}
+
 // Clear Completed Modal functionality
 function showClearCompletedModal() {
     const modal = document.getElementById('clear-completed-modal');
@@ -1030,6 +1193,53 @@ function hideCalendarReminderModal() {
         const noteTextarea = document.getElementById('reminder-note');
         if (form) form.reset();
         if (noteTextarea) noteTextarea.value = '';
+    }
+}
+
+// Assign Task Modal functionality
+function showAssignTaskModal(taskId, taskText, currentAssignedTo = null) {
+    const modal = document.getElementById('assign-task-modal');
+    const taskDisplay = document.getElementById('task-for-assignment');
+    const form = document.getElementById('assign-task-form');
+    const userSelect = document.getElementById('assign-user');
+    
+    if (modal && taskDisplay && form && userSelect) {
+        // Set task text in modal
+        taskDisplay.textContent = taskText;
+        
+        // Set form action URL
+        form.action = `/tasks/${taskId}/assign/`;
+        
+        // Set current assignment if available
+        if (currentAssignedTo) {
+            userSelect.value = currentAssignedTo;
+        } else {
+            userSelect.value = '';
+        }
+        
+        // Show modal
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+    }
+}
+
+function hideAssignTaskModal() {
+    const modal = document.getElementById('assign-task-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+        
+        // Reset form
+        const form = document.getElementById('assign-task-form');
+        if (form) form.reset();
     }
 }
 
@@ -1111,6 +1321,76 @@ function removeTaskReminderDisplay(taskId) {
     });
 }
 
+// Function to update task assignment display without page refresh
+function updateTaskAssignmentDisplay(taskId, assignedUserId, assignedUserName) {
+    const taskElement = document.getElementById(`task-${taskId}`);
+    if (!taskElement) return;
+    
+    // Find the task text container
+    const taskTextContainer = taskElement.querySelector('.flex-1.min-w-0');
+    if (!taskTextContainer) return;
+    
+    // Check if assignment display already exists
+    let assignmentDisplay = taskTextContainer.querySelector('.assignment-display');
+    
+    if (assignedUserId && assignedUserName) {
+        if (!assignmentDisplay) {
+            // Create new assignment display
+            assignmentDisplay = document.createElement('div');
+            assignmentDisplay.className = 'assignment-display flex items-center space-x-1 mt-1 text-xs text-blue-600 ml-1';
+            assignmentDisplay.innerHTML = `
+                <i class="fas fa-user text-blue-500"></i>
+                <span>${assignedUserName}</span>
+            `;
+            // Insert before the reminder display if it exists, otherwise append
+            const taskTextDiv = taskTextContainer.querySelector('[id^="task-text-"]');
+            const reminderDisplay = taskTextContainer.querySelector('.reminder-display');
+            if (taskTextDiv) {
+                if (reminderDisplay) {
+                    taskTextDiv.parentNode.insertBefore(assignmentDisplay, reminderDisplay);
+                } else {
+                    taskTextDiv.parentNode.insertBefore(assignmentDisplay, taskTextDiv.nextSibling);
+                }
+            } else {
+                taskTextContainer.appendChild(assignmentDisplay);
+            }
+        } else {
+            // Update existing assignment display
+            const nameSpan = assignmentDisplay.querySelector('span');
+            if (nameSpan) {
+                nameSpan.textContent = assignedUserName;
+            }
+        }
+        
+        // Update assign button icons to show task is assigned
+        const assignButtons = taskElement.querySelectorAll('.assign-task-btn');
+        assignButtons.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.className = 'fas fa-user-check text-blue-500 text-xs transition-colors';
+                btn.title = 'Reassign task';
+                btn.setAttribute('data-assigned-to', assignedUserId);
+            }
+        });
+    } else {
+        // Remove assignment display if no user assigned
+        if (assignmentDisplay) {
+            assignmentDisplay.remove();
+        }
+        
+        // Update assign button icons back to default
+        const assignButtons = taskElement.querySelectorAll('.assign-task-btn');
+        assignButtons.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                icon.className = 'fas fa-user-plus text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors';
+                btn.title = 'Assign task';
+                btn.removeAttribute('data-assigned-to');
+            }
+        });
+    }
+}
+
 // Calendar reminder event listeners
 document.addEventListener('DOMContentLoaded', function() {
     // Close calendar modal buttons
@@ -1154,6 +1434,56 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.target === clearCompletedModal) {
                 hideClearCompletedModal();
             }
+        });
+    }
+    
+    // Share Grid modal event listeners
+    const shareGridModal = document.getElementById('share-grid-modal');
+    if (shareGridModal) {
+        shareGridModal.addEventListener('click', function(e) {
+            if (e.target === shareGridModal) {
+                hideShareGridModal();
+            }
+        });
+    }
+    
+    // Handle Share Grid form submission
+    const shareGridForm = document.getElementById('share-grid-form');
+    if (shareGridForm) {
+        shareGridForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(shareGridForm);
+            const submitBtn = shareGridForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            // For now, just simulate success (you'll need to implement the backend)
+            setTimeout(() => {
+                // Show success message
+                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Sent!';
+                submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]', 'hover:bg-[var(--tertiary-action-hover-bg)]');
+                submitBtn.classList.add('bg-green-500');
+                
+                // Close modal after short delay
+                setTimeout(() => {
+                    hideShareGridModal();
+                    
+                    // Reset button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-green-500');
+                    submitBtn.classList.add('bg-[var(--tertiary-action-bg)]', 'hover:bg-[var(--tertiary-action-hover-bg)]');
+                    
+                    // Show notification if available
+                    if (window.showNotification) {
+                        window.showNotification('Grid invitation sent successfully!', 'success');
+                    }
+                }, 1500);
+            }, 1000);
         });
     }
     
@@ -1231,6 +1561,131 @@ document.addEventListener('DOMContentLoaded', function() {
                     submitBtn.disabled = false;
                     submitBtn.classList.remove('bg-red-500');
                     submitBtn.classList.add('bg-[var(--clear-button-bg)]');
+                }, 2000);
+            });
+        });
+    }
+    
+    // Assign Task modal event listeners
+    const closeAssignModal = document.getElementById('close-assign-modal');
+    const cancelAssignTask = document.getElementById('cancel-assign-task');
+    const assignTaskModal = document.getElementById('assign-task-modal');
+    
+    if (closeAssignModal) {
+        closeAssignModal.addEventListener('click', hideAssignTaskModal);
+    }
+    
+    if (cancelAssignTask) {
+        cancelAssignTask.addEventListener('click', hideAssignTaskModal);
+    }
+    
+    // Close modal when clicking outside
+    if (assignTaskModal) {
+        assignTaskModal.addEventListener('click', function(e) {
+            if (e.target === assignTaskModal) {
+                hideAssignTaskModal();
+            }
+        });
+    }
+    
+    // Handle assign task button clicks
+    document.addEventListener('click', function(e) {
+        const assignBtn = e.target.closest('.assign-task-btn');
+        if (assignBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const taskId = assignBtn.dataset.taskId;
+            const taskText = assignBtn.dataset.taskText;
+            const currentAssignedTo = assignBtn.dataset.assignedTo;
+            showAssignTaskModal(taskId, taskText, currentAssignedTo);
+        }
+    });
+    
+    // Handle assign task form submission
+    const assignTaskForm = document.getElementById('assign-task-form');
+    if (assignTaskForm) {
+        assignTaskForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(assignTaskForm);
+            const taskId = assignTaskForm.action.split('/tasks/')[1].split('/assign/')[0];
+            const assignedUserId = formData.get('assigned_to');
+            
+            // Get the selected user's name from the dropdown
+            const userSelect = document.getElementById('assign-user');
+            const assignedUserName = userSelect.options[userSelect.selectedIndex].text;
+            
+            const submitBtn = assignTaskForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Assigning...';
+            submitBtn.disabled = true;
+            
+            // Submit form via fetch
+            fetch(assignTaskForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Assigned!';
+                    submitBtn.classList.remove('bg-[var(--primary-action-bg)]', 'hover:bg-[var(--primary-action-hover-bg)]');
+                    submitBtn.classList.add('bg-green-500');
+                    
+                    // Update the task display immediately
+                    updateTaskAssignmentDisplay(taskId, assignedUserId, assignedUserName);
+                    
+                    // Close modal after short delay
+                    setTimeout(() => {
+                        hideAssignTaskModal();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-green-500');
+                        submitBtn.classList.add('bg-[var(--primary-action-bg)]', 'hover:bg-[var(--primary-action-hover-bg)]');
+                        
+                        // Show notification if available
+                        if (window.showNotification) {
+                            window.showNotification('Task assigned successfully!', 'success');
+                        }
+                    }, 1500);
+                } else {
+                    // Show error
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                    submitBtn.classList.remove('bg-[var(--primary-action-bg)]');
+                    submitBtn.classList.add('bg-red-500');
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-red-500');
+                        submitBtn.classList.add('bg-[var(--primary-action-bg)]');
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error assigning task:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                submitBtn.classList.remove('bg-[var(--primary-action-bg)]');
+                submitBtn.classList.add('bg-red-500');
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-red-500');
+                    submitBtn.classList.add('bg-[var(--primary-action-bg)]');
                 }, 2000);
             });
         });

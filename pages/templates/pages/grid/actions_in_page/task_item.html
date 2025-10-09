@@ -58,6 +58,14 @@
                  data-task-id="{{ task.id }}"
                  data-original-text="{{ task.text|escapejs }}">{{ task.text|linebreaks }}</div>
             
+            <!-- Assignment Display -->
+            {% if task.assigned_to %}
+                <div class="assignment-display flex items-center space-x-1 mt-1 text-xs text-blue-600 ml-1">
+                    <i class="fas fa-user text-blue-500"></i>
+                    <span>{{ task.assigned_to.first_name|default:task.assigned_to.username }}</span>
+                </div>
+            {% endif %}
+            
             <!-- Reminder Display -->
             {% if task.has_reminder %}
                 <div class="reminder-display flex items-center space-x-1 mt-1 text-xs text-green-600 ml-1">
@@ -70,6 +78,16 @@
     
     <!-- Actions -->
     <div class="flex-shrink-0 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 desktop-task-actions">
+        {% if project.is_team_toad %}
+        <button type="button"
+                class="assign-task-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                title="{% if task.assigned_to %}Reassign task{% else %}Assign task{% endif %}"
+                data-task-id="{{ task.pk }}"
+                data-task-text="{{ task.text }}"
+                {% if task.assigned_to %}data-assigned-to="{{ task.assigned_to.pk }}"{% endif %}>
+            <i class="fas {% if task.assigned_to %}fa-user-check text-blue-500{% else %}fa-user-plus text-gray-400 hover:text-[var(--primary-action-bg)]{% endif %} text-xs transition-colors"></i>
+        </button>
+        {% endif %}
         <button type="button"
                 class="calendar-reminder-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="{% if task.has_reminder %}Edit reminder{% else %}Set reminder{% endif %}"
@@ -89,7 +107,17 @@
     </div>
     
     <!-- Mobile Actions -->
-    <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 min-w-[70px] opacity-100">
+    <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 {% if project.is_team_toad %}min-w-[100px]{% else %}min-w-[70px]{% endif %} opacity-100">
+        {% if project.is_team_toad %}
+        <button type="button"
+                class="assign-task-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
+                title="{% if task.assigned_to %}Reassign task{% else %}Assign task{% endif %}"
+                data-task-id="{{ task.pk }}"
+                data-task-text="{{ task.text }}"
+                {% if task.assigned_to %}data-assigned-to="{{ task.assigned_to.pk }}"{% endif %}>
+            <i class="fas {% if task.assigned_to %}fa-user-check text-blue-500{% else %}fa-user-plus text-gray-400 hover:text-[var(--primary-action-bg)]{% endif %} text-sm transition-colors"></i>
+        </button>
+        {% endif %}
         <button type="button"
                 class="calendar-reminder-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="{% if task.has_reminder %}Edit reminder{% else %}Set reminder{% endif %}"

@@ -663,6 +663,65 @@ The Toad Team"""
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
+
+@login_required
+def task_assign_view(request, task_pk):
+    """Assign a task to a team member in a team_toad project"""
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project', 'project__user', 'assigned_to'],
+        prefetch_related=['project__team_toad_user'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__is_team_toad', 'assigned_to']
+    )
+    
+    # Verify this is a team_toad project
+    if not task.project.is_team_toad:
+        return JsonResponse({'success': False, 'error': 'This is not a team project'}, status=403)
+    
+    # Verify user has permission (project owner or team member)
+    is_owner = task.project.user == request.user
+    is_team_member = request.user in task.project.team_toad_user.all()
+    
+    if not (is_owner or is_team_member):
+        return JsonResponse({'success': False, 'error': 'Permission denied'}, status=403)
+    
+    if request.method == 'POST':
+        try:
+            assigned_to_id = request.POST.get('assigned_to')
+            
+            if not assigned_to_id:
+                return JsonResponse({'success': False, 'error': 'User ID is required'}, status=400)
+            
+            # Get the user to assign
+            from accounts.models import User
+            try:
+                assigned_user = User.objects.get(pk=assigned_to_id)
+            except User.DoesNotExist:
+                return JsonResponse({'success': False, 'error': 'User not found'}, status=404)
+            
+            # Verify the user is a team member
+            if assigned_user not in task.project.team_toad_user.all():
+                return JsonResponse({'success': False, 'error': 'User is not a team member'}, status=403)
+            
+            # Assign the task
+            task.assigned_to = assigned_user
+            task.save(update_fields=['assigned_to'])
+            
+            logger.info(f"Task {task_pk} assigned to user {assigned_user.id} by {request.user.id}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Task assigned to {assigned_user.first_name or assigned_user.username}!'
+            })
+            
+        except Exception as e:
+            logger.error(f"Error assigning task {task_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to assign task'}, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
 # Row CRUD Views
 
 def row_create_view(request, project_pk):
