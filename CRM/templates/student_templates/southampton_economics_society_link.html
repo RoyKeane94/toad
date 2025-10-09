@@ -24,11 +24,7 @@
                 }
         
         .feature-card {
-            transition: transform 0.2s ease-in-out;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
+            /* Removed hover animation */
         }
         
         .society-logo {
@@ -138,28 +134,28 @@
                     </p>
                 </div>
                 
-                    </div>
-                    
-                    <!-- Southampton Economics Society Template Section -->
-                    <div class="mt-16 mb-8">
-                        <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
-                            Southampton Economics Society have designed a template on Toad to help you land your next role.
-                        </p>
-                        
-                        <a href="{% url 'crm:load_southampton_economics_template' %}" 
-                           class="cta-button inline-flex items-center px-8 py-4 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white text-lg font-semibold rounded-xl shadow-lg">
-                            <span class="mr-3">📋</span>
-                            Load the Template
-                            <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                            </svg>
-                        </a>
-                    </div>
-                    
-                </div>
-            </section>
+            </div>
+            
+            <!-- Southampton Economics Society Template Section -->
+            <div class="mt-16 mb-8">
+                <p class="text-lg text-gray-700 mb-6 max-w-2xl mx-auto">
+                    Southampton Economics Society have designed a template on Toad to help you land your next role. Once you've registered, you can load the template straight away.
+                </p>
+                
+                <a href="{% url 'crm:load_southampton_economics_template' %}" 
+                   class="cta-button inline-flex items-center px-8 py-4 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white text-lg font-semibold rounded-xl shadow-lg">
+                    <span class="mr-3">📋</span>
+                    Load the Template
+                    <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+            </div>
+            
+        </div>
+    </section>
 
-            <!-- Final CTA -->
+    <!-- Final CTA -->
     <section class="py-16 sm:py-20 hero-gradient">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center hero-text">
             
