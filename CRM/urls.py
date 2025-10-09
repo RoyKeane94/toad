@@ -14,6 +14,10 @@ urlpatterns = [
     path('focus/create/', views.lead_focus_create, name='lead_focus_create'),
     path('contact-methods/create/', views.contact_method_create, name='contact_method_create'),
     
+    # Student Society Partnership Pages (MUST come before generic society links)
+    path('southampton-economics-society/load-template/', views.load_southampton_economics_template, name='load_southampton_economics_template'),
+    path('southampton-economics-society/', views.southampton_economics_society_page, name='southampton_economics_society'),
+    
     # Society Links
     path('society-links/', views.society_link_list, name='society_link_list'),
     path('society-links/create/', views.society_link_create, name='society_link_create'),
@@ -24,9 +28,6 @@ urlpatterns = [
     path('<str:university_slug>/<str:society_slug>/qr-image/', views.society_link_qr_image, name='society_link_qr_image'),
     # Fallback for old format (temporary)
     path('society-links/<int:pk>/public/', views.society_link_public_old, name='society_link_public_old'),
-    
-    # Student Society Partnership Pages
-    path('southampton-economics-society/', views.southampton_economics_society_page, name='southampton_economics_society'),
     
     # Instagram Posts
     path('instagram/', views.instagram_index, name='instagram_index'),

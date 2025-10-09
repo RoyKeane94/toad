@@ -29389,3 +29389,287 @@ INFO 2025-10-09 21:26:34,814 basehttp 63644 6158692352 "GET /lilypad/southampton
 INFO 2025-10-09 21:27:31,330 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4397
 INFO 2025-10-09 21:27:31,343 basehttp 63644 6158692352 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
 INFO 2025-10-09 21:28:18,056 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4408
+INFO 2025-10-09 21:32:25,790 autoreload 64826 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:32:30,187 basehttp 64826 6121861120 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4562
+WARNING 2025-10-09 21:32:32,724 log 64826 6121861120 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:32:32,724 basehttp 64826 6121861120 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2326
+INFO 2025-10-09 21:34:13,778 autoreload 64826 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:34:14,313 autoreload 65273 8398642944 Watching for file changes with StatReloader
+WARNING 2025-10-09 21:34:22,997 log 65273 6130135040 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:34:22,998 basehttp 65273 6130135040 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2347
+INFO 2025-10-09 21:34:27,216 autoreload 65273 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:34:27,731 autoreload 65294 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:34:31,367 basehttp 65294 6125776896 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4589
+INFO 2025-10-09 21:34:31,380 basehttp 65294 6125776896 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+WARNING 2025-10-09 21:34:33,706 log 65294 6125776896 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:34:33,707 basehttp 65294 6125776896 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2335
+INFO 2025-10-09 21:34:53,727 autoreload 65389 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:34:57,312 basehttp 65389 6133280768 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4607
+WARNING 2025-10-09 21:34:59,491 log 65389 6133280768 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:34:59,492 basehttp 65389 6133280768 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2407
+INFO 2025-10-09 21:35:21,963 autoreload 65389 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:35:22,463 autoreload 65408 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:35:34,579 basehttp 65408 6197817344 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4649
+INFO 2025-10-09 21:35:36,254 autoreload 65408 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:35:36,828 autoreload 65426 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-09 21:35:37,547 log 65426 6132920320 Internal Server Error: /lilypad/southampton-economics-society/load-template/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 667, in load_southampton_economics_template
+    project = create_southampton_economics_society_template(request.user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py", line 2195, in create_southampton_economics_society_template
+    project = Project.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+ERROR 2025-10-09 21:35:37,552 basehttp 65426 6132920320 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 500 19247
+INFO 2025-10-09 21:35:42,101 autoreload 65512 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:35:45,335 basehttp 65512 6121795584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4613
+ERROR 2025-10-09 21:35:46,982 log 65512 6121795584 Internal Server Error: /lilypad/southampton-economics-society/load-template/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 667, in load_southampton_economics_template
+    project = create_southampton_economics_society_template(request.user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py", line 2195, in create_southampton_economics_society_template
+    project = Project.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+ERROR 2025-10-09 21:35:46,987 basehttp 65512 6121795584 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 500 19246
+INFO 2025-10-09 21:37:21,689 autoreload 65512 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:37:22,230 autoreload 65813 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:37:35,022 autoreload 65813 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:37:35,488 autoreload 65830 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:38:23,021 autoreload 65830 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-10-09 21:38:23,527 autoreload 65866 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:38:28,102 autoreload 65866 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:38:28,440 autoreload 65879 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:38:30,374 basehttp 65879 6199439360 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4483
+INFO 2025-10-09 21:39:43,552 autoreload 65879 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:39:44,063 autoreload 65928 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-09 21:40:56,761 log 65928 6200520704 Internal Server Error: /lilypad/southampton-economics-society/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 654, in southampton_economics_society_page
+    return render(request, 'student_templates/southampton_economics_society_link.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'load_southampton_economics_template' not found. 'load_southampton_economics_template' is not a valid view function or pattern name.
+ERROR 2025-10-09 21:40:56,765 basehttp 65928 6200520704 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 500 18520
+INFO 2025-10-09 21:45:01,500 autoreload 66736 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:45:14,627 basehttp 66736 6198456320 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4640
+INFO 2025-10-09 21:45:14,645 basehttp 66736 6198456320 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+WARNING 2025-10-09 21:45:39,360 log 66736 6198456320 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:45:39,361 basehttp 66736 6198456320 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2363
+INFO 2025-10-09 21:46:22,433 autoreload 66736 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:46:22,846 autoreload 66766 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:46:37,244 autoreload 66766 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:46:37,582 autoreload 66777 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:46:54,907 basehttp 66777 6160691200 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4570
+ERROR 2025-10-09 21:46:56,878 log 66777 6160691200 Internal Server Error: /lilypad/southampton-economics-society/load-template/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 670, in load_southampton_economics_template
+    return redirect('pages:project_grid', project_pk=project.pk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'project_grid' with keyword arguments '{'project_pk': 230}' not found. 1 pattern(s) tried: ['grids/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-10-09 21:46:56,881 basehttp 66777 6160691200 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 500 13288
+INFO 2025-10-09 21:47:17,678 autoreload 66777 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-09 21:47:18,084 autoreload 66819 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:47:26,776 basehttp 66819 6205337600 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4633
+INFO 2025-10-09 21:47:29,085 basehttp 66819 6205337600 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 302 0
+INFO 2025-10-09 21:47:29,116 basehttp 66819 6205337600 "GET /grids/231/ HTTP/1.1" 200 16173
+INFO 2025-10-09 21:47:30,561 autoreload 66819 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-09 21:47:31,022 autoreload 66833 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:47:37,938 basehttp 66833 6191509504 "GET /grids/ HTTP/1.1" 200 11877
+INFO 2025-10-09 21:47:39,623 basehttp 66833 6191509504 "GET /grids/231/delete/ HTTP/1.1" 200 2944
+INFO 2025-10-09 21:47:40,458 basehttp 66833 6191509504 "POST /grids/231/delete/ HTTP/1.1" 302 0
+INFO 2025-10-09 21:47:40,466 basehttp 66833 6191509504 "GET /grids/ HTTP/1.1" 200 11885

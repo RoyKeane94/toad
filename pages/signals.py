@@ -2185,3 +2185,77 @@ def create_online_store_tracker_grid_structure_only(user):
     return project
 
 
+
+def create_southampton_economics_society_template(user):
+    """
+    Create a Southampton Economics Society template grid with predefined rows and columns for the given user.
+    This template is designed to help students land their next role, based on the job application grid structure.
+    """
+    # Create the project
+    project = Project.objects.create(
+        user=user,
+        name=f"{user.first_name}'s Southampton Economics Society Career Template",
+        is_team_toad=False  # This is a personal template, not a team template
+    )
+    
+    # Create row headers (career application phases)
+    row_headers = [
+        "Research",
+        "Application", 
+        "Follow-up",
+        "Interview Prep"
+    ]
+    
+    for order, row_name in enumerate(row_headers):
+        RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+    
+    # Create column headers (companies)
+    column_headers = [
+        "Company (e.g. JP Morgan)",
+        "Company 2",
+        "Company 3"
+    ]
+    
+    col_objects = []
+    for order, col_name in enumerate(column_headers):
+        col_obj = ColumnHeader.objects.create(
+            project=project,
+            name=col_name,
+            order=order,
+            is_category_column=False
+        )
+        col_objects.append(col_obj)
+    
+    # Create row objects list for easy reference
+    row_objects = list(RowHeader.objects.filter(project=project).order_by('order'))
+    
+    # Create tasks based on the job application template structure
+    tasks_data = [
+        # Research row - JP Morgan column
+        (0, 0, "J.P. Morgan is a leading global financial services firm and a leader in investment banking, commercial banking, financial transaction processing and asset management. With assets of $2.6 trillion and operations worldwide, we serve millions of consumers, small businesses and many of the world's most prominent corporate, institutional and government clients.", False),
+        
+        # Application row - JP Morgan column
+        (1, 0, "Create a CV dedicated to Investment Banking, refer to more experiences to do with IB. Show off skills relevant to IB", False),
+        
+        # Follow-up row - JP Morgan column
+        (2, 0, "Do the practice questions on JP Morgan website, practice critical thinking questions, look at situational questions", False),
+        
+        # Interview Prep row - JP Morgan column
+        (3, 0, "Look at previously asked questions, write list of experiences showing leadership, hardship/ challenge.", False),
+    ]
+    
+    # Create all tasks
+    for row_idx, col_idx, task_text, completed in tasks_data:
+        Task.objects.create(
+            project=project,
+            row_header=row_objects[row_idx],
+            column_header=col_objects[col_idx],
+            text=task_text,
+            completed=completed
+        )
+    
+    return project

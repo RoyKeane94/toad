@@ -652,3 +652,19 @@ def southampton_economics_society_page(request):
     Southampton Economics Society partnership page
     """
     return render(request, 'student_templates/southampton_economics_society_link.html')
+
+def load_southampton_economics_template(request):
+    """
+    Load the Southampton Economics Society template for the user
+    """
+    if not request.user.is_authenticated:
+        return redirect('accounts:login')
+    
+    # Import the template creation function from signals
+    from pages.signals import create_southampton_economics_society_template
+    
+    # Create the template for the user
+    project = create_southampton_economics_society_template(request.user)
+    
+    # Redirect to the new project
+    return redirect('pages:project_grid', pk=project.pk)

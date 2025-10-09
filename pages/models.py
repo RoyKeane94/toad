@@ -4,18 +4,23 @@ from django.urls import reverse
 
 class ProjectGroup(models.Model):
     name = models.CharField(max_length=100)
+    is_team_toad = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
     def __str__(self):
         return self.name
 
     class Meta:
-        ordering = ['name']
+        ordering = ['name']  # Order by name
+        indexes = [
+            models.Index(fields=['is_team_toad']),  # For team toad project group queries
+        ]
     
 class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
+    is_team_toad = models.BooleanField(default=False)
+    team_toad_user = models.ManyToManyField(User, related_name='team_toad_projects', null=True, blank=True)
     is_archived = models.BooleanField(default=False)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
     order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups
@@ -80,6 +85,7 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     reminder = models.DateTimeField(blank=True, null=True)
+    assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
 
     def __str__(self):
         return f"{self.text[:50]} - {self.created_at} - project: {self.project.name} - user: {self.project.user}" if self.text else 'Empty Task'
@@ -119,6 +125,22 @@ class PersonalTemplate(models.Model):
     
     class Meta:
         ordering = ['name']
+
+class TeamToadTemplate(models.Model):
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, related_name='team_toad_templates')
+    name = models.CharField(max_length=100)
+    team_members = models.ManyToManyField(User, related_name='member_of_team_toad_templates', blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.name
+    
+    class Meta:
+        ordering = ['name']
+        indexes = [
+            models.Index(fields=['creator']),  # For creator's team toad template queries
+        ]
 
 class TemplateRowHeader(models.Model):
     template = models.ForeignKey(PersonalTemplate, on_delete=models.CASCADE, related_name='row_headers')
