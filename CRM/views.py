@@ -645,3 +645,10 @@ def instagram_index(request):
     Instagram posts index page
     """
     return render(request, 'CRM/instagram/index.html')
+
+# Student Society Partnership Pages
+def southampton_economics_society_page(request):
+    """
+    Southampton Economics Society partnership page
+    """
+    return render(request, 'student_templates/southampton_economics_society_link.html')

@@ -1,0 +1,177 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Southampton Economics Society - Toad Partnership{% endblock %}
+
+{% block extra_head %}
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .cta-button {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+                .hero-gradient {
+                    background: linear-gradient(135deg, #f8fffe 0%, #f0f9f7 100%);
+                }
+                
+                .hero-text {
+                    color: var(--primary-action-bg);
+                }
+        
+        .feature-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .society-logo {
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+        <main class="min-h-screen" style="background: linear-gradient(135deg, #f8fffe 0%, #f0f9f7 100%);">
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-16 sm:py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 text-center hero-text">
+            
+            <!-- Society Logo at the top -->
+            <div class="mb-8">
+                <img src="{% static 'img/Other_templates/Southampton Economics Society.png' %}" 
+                     alt="University of Southampton Economics Society Logo" 
+                     class="society-logo h-24 sm:h-32 w-auto mx-auto object-contain">
+            </div>
+            
+            <!-- Partnership Announcement -->
+            <div class="mb-12">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+                    Southampton Economics Society is proud to have partnered with Toad
+                </h1>
+                <p class="text-lg sm:text-xl lg:text-2xl font-medium text-white/90 max-w-4xl mx-auto leading-relaxed">
+                    to deliver a workshop on applying for spring weeks, internships and graduate roles.
+                </p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Exclusive Offer Section -->
+    <section class="py-16 sm:py-20" style="background-color: var(--container-bg);">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+            
+            <div class="mb-12">
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 text-[var(--primary-action-bg)]">
+                    Exclusive Member Benefits
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                    As a member of Southampton Economics Society, you get an exclusive link for 
+                    <span class="font-bold" style="color: var(--primary-action-bg);">6 months free access</span> 
+                    to Toad to help you stay on top of your studies and get the job you want.
+                </p>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="mb-12">
+                <a href="https://www.meettoad.co.uk/accounts/register/trial/?society=The%20Economics%20Society&university=Southampton" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   class="cta-button inline-flex items-center px-8 py-4 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white text-lg font-semibold rounded-xl shadow-lg">
+                    <span class="mr-3">🎓</span>
+                    Start Your 6-Month Free Trial
+                    <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
+                <p class="text-sm text-gray-500 mt-4">
+                    No card required • Cancel anytime • No hidden fees
+                </p>
+            </div>
+            
+            <!-- Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                
+                <!-- Feature 1 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--text-primary);">Study organisation</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Keep track of assignments, deadlines, and coursework with customisable grids that adapt to your study style.
+                    </p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V8a2 2 0 012-2V6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--text-primary);">Career Planning</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Organise your job applications, track deadlines for spring weeks, internships, and graduate schemes.
+                    </p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="feature-card bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)] rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold mb-3" style="color: var(--text-primary);">Boost Productivity</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">
+                        Stay focused and productive with Toad's simple grid system that helps you prioritise and complete tasks efficiently.
+                    </p>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-16 sm:py-20 hero-gradient">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center hero-text">
+            
+            <h2 class="text-2xl sm:text-3xl font-bold mb-6">
+                Ready to Get Organised?
+            </h2>
+            
+            <p class="text-lg sm:text-xl opacity-90 mb-8 max-w-2xl mx-auto">
+                Join thousands of students who are already using Toad to stay on top of their studies and career goals.
+            </p>
+            
+            <a href="https://www.meettoad.co.uk/accounts/register/trial/?society=The%20Economics%20Society&university=Southampton" 
+               target="_blank" 
+               rel="noopener noreferrer"
+               class="cta-button inline-flex items-center px-8 py-4 bg-white text-[var(--primary-action-bg)] text-lg font-semibold rounded-xl shadow-lg hover:bg-gray-50">
+                <span class="mr-3">🚀</span>
+                Start Your Free Trial Now
+                <svg class="ml-3 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+            </a>
+            
+            <p class="text-sm opacity-60 mt-4">
+                Exclusive offer for Southampton Economics Society members only
+            </p>
+            
+        </div>
+    </section>
+
+</main>
+{% endblock %}

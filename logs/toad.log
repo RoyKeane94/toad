@@ -29347,3 +29347,45 @@ INFO 2025-10-07 04:19:44,570 basehttp 43918 6164869120 "GET /templates/interior-
 INFO 2025-10-07 04:19:44,604 basehttp 43918 6164869120 "GET /grids/223/ HTTP/1.1" 200 18774
 INFO 2025-10-07 04:19:56,508 basehttp 43918 6164869120 "GET /templates/online-store-tracker/ HTTP/1.1" 302 0
 INFO 2025-10-07 04:19:56,531 basehttp 43918 6164869120 "GET /grids/224/ HTTP/1.1" 200 17689
+INFO 2025-10-09 20:41:47,470 autoreload 63089 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 20:41:52,707 basehttp 63089 6126923776 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-10-09 20:41:52,838 basehttp 63089 6126923776 "GET /lilypad/ HTTP/1.1" 200 4121
+INFO 2025-10-09 20:42:08,084 basehttp 63089 6126923776 "GET /lilypad/southampton-economics-society HTTP/1.1" 301 0
+INFO 2025-10-09 20:42:08,089 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4814
+INFO 2025-10-09 20:42:08,118 basehttp 63089 6144323584 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 200 2022674
+INFO 2025-10-09 20:42:48,065 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4622
+WARNING 2025-10-09 20:42:52,784 log 63089 6144323584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-09 20:42:52,784 basehttp 63089 6144323584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2211
+INFO 2025-10-09 20:42:53,634 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4706
+WARNING 2025-10-09 20:42:53,658 log 63089 6144323584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-09 20:42:53,659 basehttp 63089 6144323584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2128
+INFO 2025-10-09 20:43:05,805 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4650
+INFO 2025-10-09 20:44:14,586 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4616
+INFO 2025-10-09 20:44:14,597 basehttp 63089 6144323584 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 20:44:42,939 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4352
+INFO 2025-10-09 20:48:11,971 autoreload 63089 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 20:48:12,501 autoreload 63199 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:10:06,104 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4398
+INFO 2025-10-09 21:10:06,137 basehttp 63199 6130724864 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 21:10:30,392 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4438
+INFO 2025-10-09 21:10:42,731 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4453
+INFO 2025-10-09 21:11:16,216 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4390
+INFO 2025-10-09 21:11:47,854 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4430
+INFO 2025-10-09 21:15:40,745 autoreload 63199 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:15:41,504 autoreload 63573 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:15:48,209 autoreload 63573 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-09 21:15:48,650 autoreload 63591 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:21:50,271 basehttp 63591 6165098496 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4629
+INFO 2025-10-09 21:21:50,284 basehttp 63591 6165098496 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+WARNING 2025-10-09 21:21:53,711 log 63591 6165098496 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:21:53,712 basehttp 63591 6165098496 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2346
+INFO 2025-10-09 21:22:51,149 autoreload 63591 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:22:51,717 autoreload 63641 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:22:53,225 autoreload 63641 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:22:53,552 autoreload 63644 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:23:01,265 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4349
+INFO 2025-10-09 21:25:55,470 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4419
+INFO 2025-10-09 21:26:34,814 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4452
+INFO 2025-10-09 21:27:31,330 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4397
+INFO 2025-10-09 21:27:31,343 basehttp 63644 6158692352 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 21:28:18,056 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4408

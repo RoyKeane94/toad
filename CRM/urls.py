@@ -25,6 +25,9 @@ urlpatterns = [
     # Fallback for old format (temporary)
     path('society-links/<int:pk>/public/', views.society_link_public_old, name='society_link_public_old'),
     
+    # Student Society Partnership Pages
+    path('southampton-economics-society/', views.southampton_economics_society_page, name='southampton_economics_society'),
+    
     # Instagram Posts
     path('instagram/', views.instagram_index, name='instagram_index'),
     path('instagram/introducing-toad/', views.instagram_introducing_toad, name='instagram_introducing_toad'),
