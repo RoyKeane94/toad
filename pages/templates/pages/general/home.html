@@ -30,37 +30,38 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="min-h-[80vh] sm:min-h-[80vh] flex items-start justify-center px-4 pt-1 bg-white">
-    <div class="text-center max-w-4xl mx-auto">
-        <!-- Big Toad Logo -->
-        <div class="mb-2 " id="logo-container" style="transform: scale(0.3) translateY(50px);">
-            <div class="w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 mx-auto mb-2">
+<div class="min-h-[80vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-4 bg-white">
+    <!-- Initial Logo and Text (shown first) -->
+    <div id="initial-content" class="text-center">
+        <div class="mb-6" id="logo-container" style="opacity: 0;">
+            <div class="w-48 h-48 sm:w-64 sm:h-64 mx-auto">
                 <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
             </div>
         </div>
-        
-        <!-- Main Headline -->
-        <div class="mb-6 " id="headline-container" style="transform: scale(0.3) translateY(50px);">
-            <h1 class="text-4xl sm:text-6xl font-extrabold text-[var(--title-text)] mb-6 leading-tight">
-                For when your<br class="sm:hidden"> brain has<br class="hidden sm:block">
-                <span class="text-[var(--primary-action-bg)]">too many tabs open</span>
-            </h1>
-            <p class="text-xl sm:text-2xl text-black max-w-3xl mx-auto leading-relaxed opacity-0" id="typewriter-text">
-                Find clarity with a simple grid for everything that matters
-            </p>
+        <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-8" style="opacity: 0;">
+            <span style="color: var(--title-text);">For people who</span>
+            <span style="color: var(--primary-action-bg);"> have a job to do.</span>
+        </h1>
+        <!-- Join Button -->
+        <div id="join-button" class="text-center" style="opacity: 0;">
+            <a href="{% url 'accounts:register_choices' %}"
+               class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-[var(--primary-action-text)]"
+               style="background: var(--tertiary-action-bg);"
+               onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
+                Join Today for Free
+            </a>
         </div>
+    </div>
 
-        <!-- Waitlist Form Section -->
-        <div class="max-w-lg mx-auto mt-0 opacity-0" id="waitlist-form">
-            <div class="text-center">
-                <a href="{% url 'accounts:register_choices' %}"
-                   class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-[var(--primary-action-text)]"
-                   style="background: var(--tertiary-action-bg);"
-                   onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
-                    Join Today for Free
-                </a>
-            </div>
-        </div>
+    <!-- Video Section (hidden initially) -->
+    <div id="video-container" class="w-full max-w-5xl relative" style="opacity: 0; display: none;">
+        <video id="hero-video" class="w-full h-auto object-contain" 
+               muted 
+               playsinline>
+            <source src="{% static 'video/Home -Hero Video.mp4' %}" type="video/mp4">
+        </video>
+        <!-- Dark Overlay on Video -->
+        <div class="absolute inset-0 bg-black opacity-60 pointer-events-none"></div>
     </div>
 </div>
 
@@ -168,62 +169,81 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Home page animations
+        // Animation sequence elements
         const logoContainer = document.getElementById('logo-container');
-        const headlineContainer = document.getElementById('headline-container');
-        const typewriterText = document.getElementById('typewriter-text');
-        const waitlistForm = document.getElementById('waitlist-form');
+        const initialText = document.getElementById('initial-text');
+        const joinButton = document.getElementById('join-button');
+        const initialContent = document.getElementById('initial-content');
+        const videoContainer = document.getElementById('video-container');
+        const heroVideo = document.getElementById('hero-video');
         
-        if (logoContainer && headlineContainer && typewriterText) {
-            // Reset initial states
-            logoContainer.style.opacity = '0';
-            headlineContainer.style.opacity = '0';
-            typewriterText.style.opacity = '0';
-            if (waitlistForm) waitlistForm.style.opacity = '0';
+        // Phase 1: Show logo and text (no button yet)
+        initialContent.style.display = 'block';
+        setTimeout(() => {
+            logoContainer.style.opacity = '1';
+            logoContainer.style.transition = 'opacity 0.8s ease-out';
+        }, 100);
+        
+        setTimeout(() => {
+            initialText.style.opacity = '1';
+            initialText.style.transition = 'opacity 0.8s ease-out';
+        }, 400);
+        
+        // Phase 2: After 3 seconds, switch to video
+        setTimeout(() => {
+            // Fade out initial content
+            initialContent.style.opacity = '0';
+            initialContent.style.transition = 'opacity 0.5s ease-out';
             
-            // Check if we're on mobile (small screen)
-            const isMobile = window.innerWidth < 768;
+            setTimeout(() => {
+                // Hide initial content completely
+                initialContent.style.display = 'none';
+                
+                // Show and fade in video
+                videoContainer.style.display = 'block';
+                videoContainer.style.opacity = '0';
+                setTimeout(() => {
+                    videoContainer.style.opacity = '1';
+                    videoContainer.style.transition = 'opacity 0.8s ease-out';
+                    // Start video playback
+                    heroVideo.play();
+                }, 50);
+            }, 500);
+        }, 3000);
+        
+        // Phase 3: When video ends, show logo + text + button (final state)
+        heroVideo.addEventListener('ended', function() {
+            // Fade out video
+            videoContainer.style.opacity = '0';
+            videoContainer.style.transition = 'opacity 0.5s ease-out';
             
-            // Logo animation
             setTimeout(() => {
-                logoContainer.style.opacity = '1';
-                logoContainer.style.transform = 'scale(1) translateY(0)';
-                logoContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-            }, 100);
-
-            // Headline animation
-            setTimeout(() => {
-                headlineContainer.style.opacity = '1';
-                headlineContainer.style.transform = 'scale(1) translateY(0)';
-                headlineContainer.style.transition = 'opacity 1.2s ease-out, transform 1.2s ease-out';
-            }, isMobile ? 800 : 700);
-
-            // Typewriter effect (both desktop and mobile)
-            const text = typewriterText.textContent;
-            typewriterText.textContent = '';
-            typewriterText.style.width = '0';
-            typewriterText.style.overflow = 'hidden';
-            typewriterText.style.whiteSpace = isMobile ? 'normal' : 'nowrap';
-            setTimeout(() => {
-                typewriterText.style.opacity = '1';
-                let i = 0;
-                const typeInterval = setInterval(() => {
-                    if (i < text.length) {
-                        typewriterText.textContent += text.charAt(i);
-                        i++;
-                    } else {
-                        clearInterval(typeInterval);
-                        // Show waitlist form after typewriter completes
-                        if (waitlistForm) {
-                            setTimeout(() => {
-                                waitlistForm.style.opacity = '1';
-                                waitlistForm.style.transition = 'opacity 0.8s ease-out';
-                            }, isMobile ? 100 : 600);
-                        }
-                    }
-                }, isMobile ? 40 : 30);
-            }, isMobile ? 1400 : 1200);
-        }
+                videoContainer.style.display = 'none';
+                
+                // Show initial content again with button
+                initialContent.style.display = 'block';
+                initialContent.style.opacity = '0';
+                logoContainer.style.opacity = '0';
+                initialText.style.opacity = '0';
+                
+                setTimeout(() => {
+                    initialContent.style.opacity = '1';
+                    initialContent.style.transition = 'opacity 0.8s ease-out';
+                    logoContainer.style.opacity = '1';
+                    logoContainer.style.transition = 'opacity 0.8s ease-out';
+                }, 100);
+                
+                setTimeout(() => {
+                    initialText.style.opacity = '1';
+                    initialText.style.transition = 'opacity 0.8s ease-out';
+                }, 400);
+                
+                setTimeout(() => {
+                    joinButton.style.opacity = '1';
+                    joinButton.style.transition = 'opacity 0.8s ease-out';
+                }, 700);
+            }, 500);
+        });
     });
 </script>
 
@@ -331,4 +351,4 @@
 })();
 </script>
 
-{% endblock %} 
+{% endblock %}

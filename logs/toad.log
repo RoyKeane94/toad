@@ -29713,3 +29713,120 @@ INFO 2025-10-11 06:20:52,682 autoreload 70495 8398642944 /Users/tombarratt/Deskt
 INFO 2025-10-11 06:20:53,022 autoreload 70519 8398642944 Watching for file changes with StatReloader
 INFO 2025-10-11 06:21:23,674 autoreload 70519 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
 INFO 2025-10-11 06:21:24,052 autoreload 70531 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 07:30:59,717 autoreload 71670 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 07:31:00,925 basehttp 71670 6160936960 "GET / HTTP/1.1" 200 6381
+INFO 2025-10-11 07:31:16,819 autoreload 71877 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 07:31:18,465 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6378
+INFO 2025-10-11 07:31:26,628 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6292
+INFO 2025-10-11 07:31:26,652 basehttp 71877 6162526208 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 07:31:26,654 basehttp 71877 6145699840 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-11 07:31:26,655 basehttp 71877 6128873472 "GET /static/css/output.css HTTP/1.1" 200 90004
+INFO 2025-10-11 07:31:26,655 basehttp 71877 6179352576 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-11 07:31:27,221 basehttp 71877 6179352576 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-11 07:31:46,084 basehttp 71877 6179352576 - Broken pipe from ('127.0.0.1', 63725)
+INFO 2025-10-11 07:32:04,424 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6366
+INFO 2025-10-11 07:32:04,448 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 200 614314
+INFO 2025-10-11 07:32:04,519 basehttp 71877 6128873472 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-11 07:32:49,542 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6375
+INFO 2025-10-11 07:32:49,564 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 304 0
+INFO 2025-10-11 07:33:46,175 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6380
+INFO 2025-10-11 07:33:46,198 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 304 0
+INFO 2025-10-11 07:37:38,830 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6318
+INFO 2025-10-11 07:37:38,860 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 304 0
+INFO 2025-10-11 12:55:28,480 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6331
+INFO 2025-10-11 12:55:28,492 basehttp 71877 6128873472 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 12:55:28,502 basehttp 71877 6128873472 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 12:55:28,839 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 11369826
+INFO 2025-10-11 12:56:53,231 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6366
+INFO 2025-10-11 12:57:29,779 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6351
+INFO 2025-10-11 12:58:54,822 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 12:58:56,804 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6350
+INFO 2025-10-11 13:07:48,911 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+ERROR 2025-10-11 13:07:50,809 log 71877 6128873472 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 38, in home
+    return render(request, 'pages/general/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 373: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-10-11 13:07:50,815 basehttp 71877 6128873472 "GET / HTTP/1.1" 500 20999
+INFO 2025-10-11 13:07:50,902 basehttp 71877 6128873472 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-11 13:07:50,903 basehttp 71877 6128873472 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-11 13:08:21,118 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6506
+INFO 2025-10-11 13:12:39,283 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 13:15:00,363 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6124
+INFO 2025-10-11 13:15:21,096 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6131
+INFO 2025-10-11 13:15:35,742 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6161
+INFO 2025-10-11 13:17:35,551 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6278
+INFO 2025-10-11 13:17:35,579 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 13:31:53,390 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-11 13:31:55,409 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6217
+INFO 2025-10-11 13:31:55,727 basehttp 71877 6128873472 - Broken pipe from ('127.0.0.1', 51898)
+INFO 2025-10-11 13:31:58,998 basehttp 71877 6145699840 - Broken pipe from ('127.0.0.1', 51900)
+INFO 2025-10-11 13:31:59,005 basehttp 71877 6128873472 - Broken pipe from ('127.0.0.1', 51903)
+INFO 2025-10-11 13:31:59,017 basehttp 71877 6128873472 - Broken pipe from ('127.0.0.1', 51904)
+INFO 2025-10-11 13:31:59,041 basehttp 71877 6145699840 - Broken pipe from ('127.0.0.1', 51905)
+WARNING 2025-10-11 13:32:25,871 log 71877 6128873472 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 13:32:25,871 basehttp 71877 6128873472 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2156
+INFO 2025-10-11 13:32:27,515 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6252
+WARNING 2025-10-11 13:32:27,543 log 71877 6128873472 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 13:32:27,544 basehttp 71877 6128873472 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2201
+INFO 2025-10-11 13:32:27,554 basehttp 71877 6128873472 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
