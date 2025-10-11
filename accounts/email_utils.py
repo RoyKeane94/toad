@@ -611,3 +611,74 @@ This email was sent to {recipient_email}.
     except Exception as e:
         logger.error(f"Failed to send test {user_tier} joining email to {recipient_email}: {e}")
         return False
+
+
+def send_feedback_request_email(user):
+    """
+    Send feedback request email to the user.
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    # Check if user is subscribed to emails
+    if not getattr(user, 'email_subscribed', True):
+        logger.info(f"Skipping feedback email for {user.email} - user unsubscribed")
+        return False
+    
+    # Render email template
+    html_message = render_to_string('accounts/email/beta_feedback_email.html', {
+        'user': user,
+        'now': timezone.now(),
+    })
+    
+    # Plain text version
+    text_message = f"""
+Hi {user.first_name or user.get_short_name()},
+
+We hope you're enjoying using Toad to organize your work and life!
+
+As we continue to improve Toad, your feedback would be incredibly helpful. We read every single response and use them to shape the future of the product.
+
+It'll only take 2-3 minutes and would mean the world to us.
+
+Share your feedback: https://meettoad.co.uk/crm/feedback/
+
+---
+
+Love Toad? Share it with friends!
+
+Know someone who could benefit from better organization? Share this special link to give them a 3-month free trial of Toad:
+
+https://meettoad.co.uk/accounts/register/trial-3-month
+
+✨ No card required • Cancel anytime • Worth £6
+
+---
+
+Thank you so much for being part of the Toad community. Your support and feedback help us build something truly special.
+
+Warmly,
+The Toad Team
+
+This email was sent to {user.email}. If you have any questions, reply to this email or contact us at support@meettoad.co.uk
+
+© {timezone.now().year} Toad. All rights reserved.
+    """
+    
+    try:
+        logger.info(f"Attempting to send feedback request email to {user.email}")
+        
+        send_mail(
+            subject="We'd love your thoughts on Toad",
+            message=text_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        
+        logger.info(f"Successfully sent feedback request email to {user.email}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send feedback request email to {user.email}: {e}")
+        return False

@@ -1,0 +1,67 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block header %}
+<div class="header-simple">
+    <h1>We'd Love Your Thoughts on Toad 💭</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
+
+<div class="message">
+    <p>We hope you're enjoying using Toad to organize your work and life!</p>
+    
+    <p>As we continue to improve Toad, <strong>your feedback would be incredibly helpful</strong>. We read every single response and use them to shape the future of the product.</p>
+    
+    <p>It'll only take 2-3 minutes and would mean the world to us.</p>
+</div>
+
+<div class="button-container">
+    <a href="https://meettoad.co.uk/crm/feedback/" class="btn btn-large">Share Your Feedback</a>
+</div>
+
+<div class="alternative-link">
+    <p style="color: #6B7280; font-size: 14px;">Or copy this link: <a href="https://meettoad.co.uk/crm/feedback/" style="color: #10B981;">https://meettoad.co.uk/crm/feedback/</a></p>
+</div>
+
+<!-- Share Section -->
+<div style="background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%); border: 2px solid #10B981; border-radius: 12px; padding: 24px; margin: 32px 0; text-align: center;">
+    <h2 style="color: #065F46; font-size: 20px; margin-bottom: 12px; margin-top: 0;">
+        🎁 Love Toad? Share it with friends!
+    </h2>
+    <p style="color: #047857; font-size: 15px; margin-bottom: 16px; line-height: 1.6;">
+        Know someone who could benefit from better organization? Share this special link to give them a <strong>3-month free trial</strong> of Toad:
+    </p>
+    <div style="background: white; border: 2px dashed #10B981; border-radius: 8px; padding: 12px; margin: 16px 0;">
+        <a href="https://meettoad.co.uk/accounts/register/trial-3-month" style="color: #047857; text-decoration: none; font-weight: 600; font-size: 15px; word-break: break-all;">
+            https://meettoad.co.uk/accounts/register/trial-3-month
+        </a>
+    </div>
+    <p style="color: #065F46; font-size: 13px; margin-top: 12px; margin-bottom: 0;">
+        ✨ No card required • Cancel anytime • Worth £6
+    </p>
+</div>
+
+<div class="message" style="margin-top: 32px;">
+    <p>Thank you so much for being part of the Toad community. Your support and feedback help us build something truly special.</p>
+    
+    <p style="margin-bottom: 0;">Warmly,<br>
+    <strong>The Toad Team</strong></p>
+</div>
+{% endblock %}
+
+{% block footer %}
+<p>Thanks for being part of the Toad community!</p>
+<p class="small">
+    This email was sent to {{ user.email }}. If you have any questions, reply to this email or contact us at <a href="mailto:support@meettoad.co.uk" style="color: #10B981; text-decoration: none;">support@meettoad.co.uk</a>
+</p>
+<p class="small">
+    © {{ now.year|default:2025 }} Toad. All rights reserved.
+</p>
+{% if user and user.email_subscribed %}
+<p class="small" style="margin-top: 16px; padding-top: 16px; border-top: 1px solid #E5E7EB;">
+    <a href="https://meettoad.co.uk/accounts/unsubscribe/{{ user.id }}/" style="color: #9CA3AF; text-decoration: none;">Unsubscribe from emails</a>
+</p>
+{% endif %}
+{% endblock %}

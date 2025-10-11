@@ -1160,3 +1160,34 @@ def downgrade_to_free_view(request):
     user.save()
     
     return redirect('accounts:manage_subscription')
+
+
+def beta_feedback_email_preview(request):
+    """Preview the beta feedback email template"""
+    from django.template.loader import render_to_string
+    from django.contrib.auth import get_user_model
+    from django.http import HttpResponse
+    from django.utils import timezone
+    
+    User = get_user_model()
+    
+    # Use current logged in user if available, otherwise create test user
+    if request.user.is_authenticated:
+        test_user = request.user
+    else:
+        test_user, created = User.objects.get_or_create(
+            email='test@example.com',
+            defaults={
+                'first_name': 'Test',
+                'last_name': 'User'
+            }
+        )
+    
+    # Render the beta feedback email template
+    beta_feedback_html = render_to_string('accounts/email/beta_feedback_email.html', {
+        'user': test_user,
+        'now': timezone.now(),
+    })
+    
+    # Return the rendered HTML directly
+    return HttpResponse(beta_feedback_html)
