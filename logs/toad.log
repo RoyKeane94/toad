@@ -29347,45 +29347,72 @@ INFO 2025-10-07 04:19:44,570 basehttp 43918 6164869120 "GET /templates/interior-
 INFO 2025-10-07 04:19:44,604 basehttp 43918 6164869120 "GET /grids/223/ HTTP/1.1" 200 18774
 INFO 2025-10-07 04:19:56,508 basehttp 43918 6164869120 "GET /templates/online-store-tracker/ HTTP/1.1" 302 0
 INFO 2025-10-07 04:19:56,531 basehttp 43918 6164869120 "GET /grids/224/ HTTP/1.1" 200 17689
-INFO 2025-10-07 04:22:15,951 autoreload 44537 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-07 04:22:17,730 basehttp 44537 6204600320 "GET /templates/content-creator-tracker/ HTTP/1.1" 302 0
-INFO 2025-10-07 04:22:17,833 basehttp 44537 6204600320 "GET /grids/225/ HTTP/1.1" 200 18096
-INFO 2025-10-07 04:22:30,390 basehttp 44537 6204600320 "POST /grids/225/edit/ HTTP/1.1" 200 111
-INFO 2025-10-07 04:22:43,270 basehttp 44537 6204600320 "GET /grids/225/columns/create/ HTTP/1.1" 200 1028
-INFO 2025-10-07 04:22:50,102 basehttp 44537 6204600320 "POST /grids/225/columns/create/ HTTP/1.1" 204 0
-INFO 2025-10-07 04:22:50,191 basehttp 44537 6204600320 - Broken pipe from ('127.0.0.1', 62943)
-INFO 2025-10-07 04:22:50,191 basehttp 44537 6238253056 "GET /grids/225/ HTTP/1.1" 200 18476
-INFO 2025-10-07 04:22:50,193 basehttp 44537 6221426688 "GET /grids/225/ HTTP/1.1" 200 18471
-INFO 2025-10-07 04:22:50,193 basehttp 44537 6221426688 - Broken pipe from ('127.0.0.1', 62944)
-INFO 2025-10-07 04:22:54,615 basehttp 44537 6204600320 "GET /grids/225/ HTTP/1.1" 200 18387
-INFO 2025-10-07 04:23:02,513 basehttp 44537 6204600320 "GET /grids/225/columns/create/ HTTP/1.1" 200 994
-INFO 2025-10-07 04:23:04,483 basehttp 44537 6204600320 "POST /grids/225/columns/create/ HTTP/1.1" 204 0
-INFO 2025-10-07 04:23:04,563 basehttp 44537 6204600320 - Broken pipe from ('127.0.0.1', 62962)
-INFO 2025-10-07 04:23:04,564 basehttp 44537 6221426688 - Broken pipe from ('127.0.0.1', 62963)
-INFO 2025-10-07 04:23:04,565 basehttp 44537 6238253056 "GET /grids/225/ HTTP/1.1" 200 18855
-INFO 2025-10-07 04:23:10,563 basehttp 44537 6204600320 "GET /grids/225/columns/939/delete/ HTTP/1.1" 200 982
-INFO 2025-10-07 04:23:11,593 basehttp 44537 6204600320 "POST /grids/225/columns/939/delete/ HTTP/1.1" 204 0
-INFO 2025-10-07 04:23:11,649 basehttp 44537 6221426688 "GET /grids/225/ HTTP/1.1" 200 18392
-INFO 2025-10-07 04:23:11,653 basehttp 44537 6204600320 "GET /grids/225/ HTTP/1.1" 200 18486
-INFO 2025-10-07 04:23:11,653 basehttp 44537 6204600320 - Broken pipe from ('127.0.0.1', 62967)
-INFO 2025-10-07 04:23:19,964 basehttp 44537 6204600320 "GET /grids/225/ HTTP/1.1" 200 18450
-INFO 2025-10-07 04:23:22,243 basehttp 44537 6204600320 "GET /grids/225/columns/create/ HTTP/1.1" 200 987
-INFO 2025-10-07 04:23:24,448 basehttp 44537 6204600320 "POST /grids/225/columns/create/ HTTP/1.1" 204 0
-INFO 2025-10-07 04:23:24,523 basehttp 44537 6238253056 "GET /grids/225/ HTTP/1.1" 200 18924
-INFO 2025-10-07 04:23:24,523 basehttp 44537 6204600320 - Broken pipe from ('127.0.0.1', 62973)
-INFO 2025-10-07 04:23:24,525 basehttp 44537 6221426688 "GET /grids/225/ HTTP/1.1" 200 18890
-INFO 2025-10-07 04:23:24,526 basehttp 44537 6221426688 - Broken pipe from ('127.0.0.1', 62974)
-INFO 2025-10-07 04:23:27,827 basehttp 44537 6204600320 "GET /grids/225/columns/940/delete/ HTTP/1.1" 200 928
-INFO 2025-10-07 04:23:28,837 basehttp 44537 6204600320 "POST /grids/225/columns/940/delete/ HTTP/1.1" 204 0
-INFO 2025-10-07 04:23:28,888 basehttp 44537 6221426688 "GET /grids/225/ HTTP/1.1" 200 18413
-INFO 2025-10-07 04:23:28,892 basehttp 44537 6204600320 - Broken pipe from ('127.0.0.1', 62976)
-INFO 2025-10-07 04:27:44,590 basehttp 44537 6204600320 "POST /tasks/2396/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-07 04:27:50,808 basehttp 44537 6204600320 "POST /grids/225/tasks/reorder/ HTTP/1.1" 200 76
-INFO 2025-10-07 04:28:02,361 basehttp 44537 6204600320 "POST /tasks/2405/edit/ HTTP/1.1" 200 125
-INFO 2025-10-07 04:28:10,009 basehttp 44537 6204600320 "POST /tasks/2399/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-07 05:29:48,648 autoreload 47479 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-07 05:29:50,110 basehttp 47479 6196834304 "GET / HTTP/1.1" 200 6208
-ERROR 2025-10-07 05:29:51,814 log 47479 6196834304 Internal Server Error: /grids/
+INFO 2025-10-09 20:41:47,470 autoreload 63089 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 20:41:52,707 basehttp 63089 6126923776 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-10-09 20:41:52,838 basehttp 63089 6126923776 "GET /lilypad/ HTTP/1.1" 200 4121
+INFO 2025-10-09 20:42:08,084 basehttp 63089 6126923776 "GET /lilypad/southampton-economics-society HTTP/1.1" 301 0
+INFO 2025-10-09 20:42:08,089 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4814
+INFO 2025-10-09 20:42:08,118 basehttp 63089 6144323584 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 200 2022674
+INFO 2025-10-09 20:42:48,065 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4622
+WARNING 2025-10-09 20:42:52,784 log 63089 6144323584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-09 20:42:52,784 basehttp 63089 6144323584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2211
+INFO 2025-10-09 20:42:53,634 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4706
+WARNING 2025-10-09 20:42:53,658 log 63089 6144323584 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-09 20:42:53,659 basehttp 63089 6144323584 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2128
+INFO 2025-10-09 20:43:05,805 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4650
+INFO 2025-10-09 20:44:14,586 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4616
+INFO 2025-10-09 20:44:14,597 basehttp 63089 6144323584 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 20:44:42,939 basehttp 63089 6144323584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4352
+INFO 2025-10-09 20:48:11,971 autoreload 63089 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 20:48:12,501 autoreload 63199 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:10:06,104 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4398
+INFO 2025-10-09 21:10:06,137 basehttp 63199 6130724864 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 21:10:30,392 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4438
+INFO 2025-10-09 21:10:42,731 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4453
+INFO 2025-10-09 21:11:16,216 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4390
+INFO 2025-10-09 21:11:47,854 basehttp 63199 6130724864 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4430
+INFO 2025-10-09 21:15:40,745 autoreload 63199 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:15:41,504 autoreload 63573 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:15:48,209 autoreload 63573 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-09 21:15:48,650 autoreload 63591 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:21:50,271 basehttp 63591 6165098496 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4629
+INFO 2025-10-09 21:21:50,284 basehttp 63591 6165098496 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+WARNING 2025-10-09 21:21:53,711 log 63591 6165098496 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:21:53,712 basehttp 63591 6165098496 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2346
+INFO 2025-10-09 21:22:51,149 autoreload 63591 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:22:51,717 autoreload 63641 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:22:53,225 autoreload 63641 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:22:53,552 autoreload 63644 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:23:01,265 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4349
+INFO 2025-10-09 21:25:55,470 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4419
+INFO 2025-10-09 21:26:34,814 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4452
+INFO 2025-10-09 21:27:31,330 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4397
+INFO 2025-10-09 21:27:31,343 basehttp 63644 6158692352 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 21:28:18,056 basehttp 63644 6158692352 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4408
+INFO 2025-10-09 21:32:25,790 autoreload 64826 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:32:30,187 basehttp 64826 6121861120 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4562
+WARNING 2025-10-09 21:32:32,724 log 64826 6121861120 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:32:32,724 basehttp 64826 6121861120 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2326
+INFO 2025-10-09 21:34:13,778 autoreload 64826 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:34:14,313 autoreload 65273 8398642944 Watching for file changes with StatReloader
+WARNING 2025-10-09 21:34:22,997 log 65273 6130135040 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:34:22,998 basehttp 65273 6130135040 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2347
+INFO 2025-10-09 21:34:27,216 autoreload 65273 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:34:27,731 autoreload 65294 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:34:31,367 basehttp 65294 6125776896 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4589
+INFO 2025-10-09 21:34:31,380 basehttp 65294 6125776896 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+WARNING 2025-10-09 21:34:33,706 log 65294 6125776896 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:34:33,707 basehttp 65294 6125776896 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2335
+INFO 2025-10-09 21:34:53,727 autoreload 65389 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:34:57,312 basehttp 65389 6133280768 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4607
+WARNING 2025-10-09 21:34:59,491 log 65389 6133280768 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:34:59,492 basehttp 65389 6133280768 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2407
+INFO 2025-10-09 21:35:21,963 autoreload 65389 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:35:22,463 autoreload 65408 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:35:34,579 basehttp 65408 6197817344 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4649
+INFO 2025-10-09 21:35:36,254 autoreload 65408 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:35:36,828 autoreload 65426 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-09 21:35:37,547 log 65426 6132920320 Internal Server Error: /lilypad/southampton-economics-society/load-template/
 Traceback (most recent call last):
   File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
     return self.cursor.execute(sql, params)
@@ -29393,7 +29420,7 @@ Traceback (most recent call last):
   File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
     return super().execute(query, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-sqlite3.OperationalError: no such column: pages_project.team_toad_user_id
+sqlite3.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
 
 The above exception was the direct cause of the following exception:
 
@@ -29404,20 +29431,35 @@ Traceback (most recent call last):
   File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
     response = wrapped_callback(request, *callback_args, **callback_kwargs)
                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
-    return view_func(request, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 62, in project_list_view
-    for project in projects:
-  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 384, in __iter__
-    self._fetch_all()
-  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
-    self._result_cache = list(self._iterable_class(self))
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
-    results = compiler.execute_sql(
-              ^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 667, in load_southampton_economics_template
+    project = create_southampton_economics_society_template(request.user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py", line 2195, in create_southampton_economics_society_template
+    project = Project.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
     cursor.execute(sql, params)
   File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
     return super().execute(sql, params)
@@ -29438,236 +29480,775 @@ Traceback (most recent call last):
   File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
     return super().execute(query, params)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-django.db.utils.OperationalError: no such column: pages_project.team_toad_user_id
-ERROR 2025-10-07 05:29:51,818 basehttp 47479 6196834304 "GET /grids/ HTTP/1.1" 500 18429
-INFO 2025-10-07 05:29:51,871 basehttp 47479 6196834304 "GET /favicon.ico HTTP/1.1" 301 0
-INFO 2025-10-07 05:29:51,874 basehttp 47479 6196834304 "GET /static/img/favicon.svg HTTP/1.1" 200 226
-INFO 2025-10-07 05:30:18,230 autoreload 47764 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-07 05:30:20,829 basehttp 47764 6160265216 "GET /grids/ HTTP/1.1" 200 12274
-INFO 2025-10-08 04:27:47,489 autoreload 55208 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-08 04:27:50,393 basehttp 55208 6197080064 "GET / HTTP/1.1" 200 6178
-INFO 2025-10-08 04:27:50,405 basehttp 55208 6197080064 "GET /static/css/output.css HTTP/1.1" 304 0
-INFO 2025-10-08 04:27:50,410 basehttp 55208 6197080064 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
-INFO 2025-10-08 04:27:51,093 basehttp 55208 6197080064 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 304 0
-INFO 2025-10-08 04:28:01,536 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 12323
-INFO 2025-10-08 04:28:03,210 basehttp 55208 6197080064 "GET /grids/225/delete/ HTTP/1.1" 200 2954
-INFO 2025-10-08 04:28:04,203 basehttp 55208 6197080064 "POST /grids/225/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:04,220 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 12126
-INFO 2025-10-08 04:28:05,582 basehttp 55208 6197080064 "GET /grids/224/delete/ HTTP/1.1" 200 2934
-INFO 2025-10-08 04:28:06,383 basehttp 55208 6197080064 "POST /grids/224/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:06,402 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 12022
-INFO 2025-10-08 04:28:07,476 basehttp 55208 6197080064 "GET /grids/223/delete/ HTTP/1.1" 200 2935
-INFO 2025-10-08 04:28:08,183 basehttp 55208 6197080064 "POST /grids/223/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:08,202 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11903
-INFO 2025-10-08 04:28:09,198 basehttp 55208 6197080064 "GET /grids/222/delete/ HTTP/1.1" 200 2974
-INFO 2025-10-08 04:28:09,884 basehttp 55208 6197080064 "POST /grids/222/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:09,901 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11808
-INFO 2025-10-08 04:28:10,961 basehttp 55208 6197080064 "GET /grids/221/delete/ HTTP/1.1" 200 2940
-INFO 2025-10-08 04:28:11,830 basehttp 55208 6197080064 "POST /grids/221/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:11,842 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11719
-INFO 2025-10-08 04:28:13,279 basehttp 55208 6197080064 "GET /templates/4/delete/ HTTP/1.1" 200 1105
-INFO 2025-10-08 04:28:14,132 project_views_functions 55208 6197080064 User None deleted template: Tester: N/A
-INFO 2025-10-08 04:28:14,133 basehttp 55208 6197080064 "POST /templates/4/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:14,147 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11275
-INFO 2025-10-08 04:28:15,615 basehttp 55208 6197080064 "GET /grids/220/delete/ HTTP/1.1" 200 2928
-INFO 2025-10-08 04:28:16,785 basehttp 55208 6197080064 "POST /grids/220/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:16,801 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11151
-INFO 2025-10-08 04:28:17,831 basehttp 55208 6197080064 "GET /grids/219/delete/ HTTP/1.1" 200 2929
-INFO 2025-10-08 04:28:18,520 basehttp 55208 6197080064 "POST /grids/219/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:18,533 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 10605
-INFO 2025-10-08 04:28:20,046 basehttp 55208 6197080064 "GET /templates/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:20,059 basehttp 55208 6197080064 "GET /templates/students/ HTTP/1.1" 200 5173
-INFO 2025-10-08 04:28:41,356 basehttp 55208 6197080064 "GET /templates/course-planner/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:41,387 basehttp 55208 6197080064 "GET /grids/226/ HTTP/1.1" 200 18574
-INFO 2025-10-08 04:28:41,398 basehttp 55208 6197080064 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
-INFO 2025-10-08 04:28:44,629 basehttp 55208 6197080064 "GET /templates/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:44,637 basehttp 55208 6197080064 "GET /templates/students/ HTTP/1.1" 200 5177
-INFO 2025-10-08 04:28:47,047 basehttp 55208 6197080064 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5735
-INFO 2025-10-08 04:28:47,066 basehttp 55208 6213906432 "GET /static/img/Entrepreneurs/Coffee%20Shop%20Tracker.png HTTP/1.1" 304 0
-INFO 2025-10-08 04:28:47,066 basehttp 55208 6197080064 "GET /static/img/Entrepreneurs/Content%20Creator%20Tracker.png HTTP/1.1" 304 0
-INFO 2025-10-08 04:28:47,067 basehttp 55208 6197080064 "GET /static/img/Entrepreneurs/Interior%20Designer%20Tracker.png HTTP/1.1" 304 0
-INFO 2025-10-08 04:28:47,068 basehttp 55208 6197080064 "GET /static/img/Entrepreneurs/Online%20Store%20Tracker.png HTTP/1.1" 304 0
-INFO 2025-10-08 04:28:51,579 basehttp 55208 6197080064 "GET /templates/product-development-tracker/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:28:51,603 basehttp 55208 6197080064 "GET /grids/227/ HTTP/1.1" 200 19825
-INFO 2025-10-08 04:29:04,830 basehttp 55208 6197080064 "GET /templates/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:29:04,841 basehttp 55208 6197080064 "GET /templates/students/ HTTP/1.1" 200 5154
-INFO 2025-10-08 04:29:06,008 basehttp 55208 6197080064 "GET /templates/professionals/ HTTP/1.1" 200 5629
-INFO 2025-10-08 04:29:06,038 basehttp 55208 6213906432 "GET /static/img/Professionals/Weekly%20Planner%20Grid.png HTTP/1.1" 200 355440
-INFO 2025-10-08 04:29:06,044 basehttp 55208 6230732800 "GET /static/img/Professionals/Line%20Manager%20Picture.png HTTP/1.1" 200 330329
-INFO 2025-10-08 04:29:06,045 basehttp 55208 6247559168 "GET /static/img/Professionals/Sell-Side%20Deal%20Grid.png HTTP/1.1" 200 411484
-INFO 2025-10-08 04:29:06,046 basehttp 55208 6264385536 "GET /static/img/Professionals/Origination%20Grid.png HTTP/1.1" 200 396399
-INFO 2025-10-08 04:29:06,049 basehttp 55208 6197080064 "GET /static/img/Professionals/Alternative%20Weekly%20Planner.png HTTP/1.1" 200 1128531
-INFO 2025-10-08 04:29:12,839 basehttp 55208 6197080064 "GET /templates/line-manager/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:29:12,862 basehttp 55208 6197080064 "GET /grids/228/ HTTP/1.1" 200 17984
-INFO 2025-10-08 04:29:26,097 basehttp 55208 6197080064 "GET /templates/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:29:26,105 basehttp 55208 6197080064 "GET /templates/students/ HTTP/1.1" 200 5155
-INFO 2025-10-08 04:29:28,649 basehttp 55208 6197080064 "GET /templates/professionals/ HTTP/1.1" 200 5623
-INFO 2025-10-08 04:29:29,565 basehttp 55208 6197080064 "GET /templates/entrepreneurs/ HTTP/1.1" 200 5780
-INFO 2025-10-08 04:29:33,734 basehttp 55208 6197080064 "GET /templates/online-store-tracker/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:29:33,757 basehttp 55208 6197080064 "GET /grids/229/ HTTP/1.1" 200 18397
-INFO 2025-10-08 04:29:41,651 basehttp 55208 6197080064 "POST /grids/229/edit/ HTTP/1.1" 200 108
-INFO 2025-10-08 04:29:43,941 basehttp 55208 6197080064 "GET /grids/228/ HTTP/1.1" 200 17959
-INFO 2025-10-08 04:29:47,674 basehttp 55208 6197080064 "POST /grids/228/edit/ HTTP/1.1" 200 108
-INFO 2025-10-08 04:29:48,813 basehttp 55208 6197080064 "GET /grids/227/ HTTP/1.1" 200 19918
-INFO 2025-10-08 04:29:52,194 basehttp 55208 6197080064 "POST /grids/227/edit/ HTTP/1.1" 200 115
-INFO 2025-10-08 04:29:53,627 basehttp 55208 6197080064 "GET /grids/226/ HTTP/1.1" 200 18659
-INFO 2025-10-08 04:29:56,809 basehttp 55208 6197080064 "POST /grids/226/edit/ HTTP/1.1" 200 102
-INFO 2025-10-08 04:30:32,640 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11458
-INFO 2025-10-08 04:30:51,900 project_views_functions 55208 6197080064 User None created project group: Entrepreneurs
-INFO 2025-10-08 04:30:51,902 basehttp 55208 6197080064 "POST /grids/group/create/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:30:51,916 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11631
-INFO 2025-10-08 04:30:59,715 project_views_functions 55208 6197080064 User None created project group: Professionals
-INFO 2025-10-08 04:30:59,716 basehttp 55208 6197080064 "POST /grids/group/create/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:30:59,732 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11643
-INFO 2025-10-08 04:31:11,118 project_views_functions 55208 6197080064 User None created project group: Students
-INFO 2025-10-08 04:31:11,120 basehttp 55208 6197080064 "POST /grids/group/create/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:31:11,135 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11669
-INFO 2025-10-08 04:31:13,737 basehttp 55208 6197080064 "GET /grids/229/ HTTP/1.1" 200 18338
-INFO 2025-10-08 04:31:28,199 basehttp 55208 6197080064 "GET /grids/create/ HTTP/1.1" 200 2982
-INFO 2025-10-08 04:31:32,088 project_views_functions 55208 6197080064 User None created project: Toad Introduction
-INFO 2025-10-08 04:31:32,090 basehttp 55208 6197080064 "POST /grids/create/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:31:32,108 basehttp 55208 6197080064 "GET /grids/230/ HTTP/1.1" 200 14584
-INFO 2025-10-08 04:33:37,500 basehttp 55208 6197080064 "GET /grids/230/delete/ HTTP/1.1" 200 1114
-INFO 2025-10-08 04:33:38,525 basehttp 55208 6197080064 "POST /grids/230/delete/ HTTP/1.1" 302 0
-INFO 2025-10-08 04:33:38,540 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11595
-INFO 2025-10-08 04:33:42,489 basehttp 55208 6197080064 "GET /grids/226/ HTTP/1.1" 200 18709
-INFO 2025-10-08 04:33:44,478 basehttp 55208 6197080064 "GET /grids/229/ HTTP/1.1" 200 18355
-INFO 2025-10-08 04:34:32,791 project_views_functions 55208 6197080064 User None deleted task: "Send Q2 accounts to accountant" from project: Toad's Online Store Tracker
-INFO 2025-10-08 04:34:32,797 basehttp 55208 6197080064 "POST /tasks/2468/delete/ HTTP/1.1" 200 58
-INFO 2025-10-08 04:34:34,283 basehttp 55208 6197080064 "GET /grids/227/ HTTP/1.1" 200 19909
-INFO 2025-10-08 04:34:42,939 basehttp 55208 6197080064 "POST /grids/227/tasks/reorder/ HTTP/1.1" 200 76
-INFO 2025-10-08 04:34:47,584 basehttp 55208 6197080064 "GET /grids/227/ HTTP/1.1" 200 19971
-INFO 2025-10-08 04:34:59,510 basehttp 55208 6197080064 "GET /grids/228/ HTTP/1.1" 200 18009
-INFO 2025-10-08 04:35:07,344 basehttp 55208 6197080064 "POST /tasks/2454/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:35:34,958 basehttp 55208 6197080064 "POST /tasks/2456/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:35:40,007 basehttp 55208 6197080064 "POST /tasks/2450/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:35:41,036 basehttp 55208 6197080064 "GET /grids/229/ HTTP/1.1" 200 18248
-INFO 2025-10-08 04:38:25,499 basehttp 55208 6197080064 "POST /tasks/2463/edit/ HTTP/1.1" 200 125
-INFO 2025-10-08 04:38:39,290 basehttp 55208 6197080064 "POST /grids/229/tasks/create/828/951/ HTTP/1.1" 200 1438
-INFO 2025-10-08 04:38:41,232 basehttp 55208 6197080064 "POST /tasks/2467/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:38:43,188 basehttp 55208 6197080064 "GET /grids/227/ HTTP/1.1" 200 19914
-INFO 2025-10-08 04:38:49,485 basehttp 55208 6197080064 "POST /grids/227/tasks/reorder/ HTTP/1.1" 200 76
-INFO 2025-10-08 04:38:53,465 basehttp 55208 6197080064 "GET /grids/228/ HTTP/1.1" 200 18026
-INFO 2025-10-08 04:38:56,568 basehttp 55208 6197080064 "POST /grids/228/clear-completed/ HTTP/1.1" 200 71
-INFO 2025-10-08 04:38:58,110 basehttp 55208 6197080064 "GET /grids/228/ HTTP/1.1" 200 16899
-INFO 2025-10-08 04:39:01,881 basehttp 55208 6197080064 "GET /grids/228/columns/create/ HTTP/1.1" 200 991
-INFO 2025-10-08 04:39:05,048 basehttp 55208 6197080064 "POST /grids/228/columns/create/ HTTP/1.1" 204 0
-INFO 2025-10-08 04:39:05,111 basehttp 55208 6197080064 - Broken pipe from ('127.0.0.1', 52257)
-INFO 2025-10-08 04:39:05,119 basehttp 55208 6213906432 - Broken pipe from ('127.0.0.1', 52445)
-INFO 2025-10-08 04:39:05,121 basehttp 55208 6230732800 "GET /grids/228/ HTTP/1.1" 200 17468
-INFO 2025-10-08 04:39:12,850 basehttp 55208 6230732800 "POST /grids/228/tasks/create/824/956/ HTTP/1.1" 200 1454
-INFO 2025-10-08 04:39:15,965 basehttp 55208 6230732800 "GET /grids/226/ HTTP/1.1" 200 18687
-INFO 2025-10-08 04:39:27,003 basehttp 55208 6230732800 "POST /tasks/2415/reminder/ HTTP/1.1" 200 82
-INFO 2025-10-08 04:56:30,791 basehttp 55208 6197080064 "GET / HTTP/1.1" 200 6244
-INFO 2025-10-08 04:56:33,761 basehttp 55208 6197080064 "GET /grids/ HTTP/1.1" 200 11658
-INFO 2025-10-08 04:56:35,096 basehttp 55208 6197080064 "GET /grids/229/ HTTP/1.1" 200 18463
-INFO 2025-10-08 04:56:49,763 basehttp 55208 6197080064 "POST /tasks/2467/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:56:54,644 project_views_functions 55208 6197080064 User None deleted task: "Send Q2 accounts to the accountant by the end of October" from project: Toad's Online Store Tracker
-INFO 2025-10-08 04:56:54,647 basehttp 55208 6197080064 "POST /tasks/2479/delete/ HTTP/1.1" 200 58
-INFO 2025-10-08 04:58:17,263 basehttp 55208 6197080064 "POST /tasks/2463/edit/ HTTP/1.1" 200 125
-INFO 2025-10-08 04:58:19,617 basehttp 55208 6197080064 "POST /tasks/2462/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:58:21,452 basehttp 55208 6197080064 "POST /tasks/2467/toggle/ HTTP/1.1" 200 79
-INFO 2025-10-08 04:58:34,073 basehttp 55208 6197080064 "POST /grids/229/tasks/create/828/951/ HTTP/1.1" 200 1444
-INFO 2025-10-08 04:58:42,354 basehttp 55208 6197080064 "POST /tasks/2481/reminder/ HTTP/1.1" 200 82
-INFO 2025-10-09 05:27:27,567 autoreload 59876 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:27:29,014 basehttp 59876 6155300864 "GET / HTTP/1.1" 200 5953
-INFO 2025-10-09 05:27:29,079 basehttp 59876 6155300864 "GET /static/css/output.css HTTP/1.1" 200 89044
-INFO 2025-10-09 05:27:29,080 basehttp 59876 6155300864 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
-INFO 2025-10-09 05:27:29,105 basehttp 59876 6155300864 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
-INFO 2025-10-09 05:27:29,106 basehttp 59876 6172127232 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
-INFO 2025-10-09 05:27:29,316 basehttp 59876 6172127232 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
-INFO 2025-10-09 05:27:29,689 basehttp 59876 6172127232 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
-INFO 2025-10-09 05:27:30,920 basehttp 59876 6172127232 "GET /accounts/login/ HTTP/1.1" 200 3817
-INFO 2025-10-09 05:27:40,133 basehttp 59876 6172127232 "POST /accounts/login/ HTTP/1.1" 200 4009
-INFO 2025-10-09 05:27:45,309 basehttp 59876 6172127232 "POST /accounts/login/ HTTP/1.1" 200 3971
-INFO 2025-10-09 05:27:50,833 basehttp 59876 6172127232 "POST /accounts/login/ HTTP/1.1" 200 4013
-INFO 2025-10-09 05:28:01,719 basehttp 59876 6172127232 "POST /accounts/login/ HTTP/1.1" 200 3971
-INFO 2025-10-09 05:28:13,980 basehttp 59876 6172127232 "POST /accounts/login/ HTTP/1.1" 302 0
-INFO 2025-10-09 05:28:13,993 basehttp 59876 6172127232 "GET /grids/ HTTP/1.1" 200 11621
-INFO 2025-10-09 05:28:17,679 basehttp 59876 6172127232 "GET /grids/229/ HTTP/1.1" 200 18537
-INFO 2025-10-09 05:28:17,693 basehttp 59876 6172127232 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
-INFO 2025-10-09 05:29:28,226 autoreload 60244 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:29:33,536 basehttp 60244 6189608960 "GET /grids/229/ HTTP/1.1" 200 18508
-INFO 2025-10-09 05:34:17,414 basehttp 60244 6189608960 "GET /grids/229/ HTTP/1.1" 200 18466
-INFO 2025-10-09 05:34:25,398 basehttp 60244 6189608960 "GET /grids/229/archive/confirm/ HTTP/1.1" 200 954
-INFO 2025-10-09 05:38:53,021 basehttp 60244 6189608960 "GET / HTTP/1.1" 200 6203
-INFO 2025-10-09 05:38:54,000 basehttp 60244 6189608960 "GET /admin HTTP/1.1" 301 0
-INFO 2025-10-09 05:38:54,026 basehttp 60244 6189608960 "GET /admin/ HTTP/1.1" 200 2830
-INFO 2025-10-09 05:38:54,038 basehttp 60244 6206435328 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
-INFO 2025-10-09 05:38:54,038 basehttp 60244 6223261696 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
-INFO 2025-10-09 05:38:54,039 basehttp 60244 6223261696 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
-INFO 2025-10-09 05:38:54,040 basehttp 60244 6189608960 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
-INFO 2025-10-09 05:38:54,040 basehttp 60244 6206435328 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
-INFO 2025-10-09 05:38:54,041 basehttp 60244 6189608960 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
-INFO 2025-10-09 05:38:54,042 basehttp 60244 6189608960 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
-INFO 2025-10-09 05:38:54,045 basehttp 60244 6206435328 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
-INFO 2025-10-09 05:38:54,045 basehttp 60244 6223261696 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
-INFO 2025-10-09 05:38:54,046 basehttp 60244 6189608960 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
-INFO 2025-10-09 05:38:54,046 basehttp 60244 6206435328 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
-INFO 2025-10-09 05:38:54,177 basehttp 60244 6206435328 "GET /favicon.ico HTTP/1.1" 301 0
-INFO 2025-10-09 05:38:54,179 basehttp 60244 6206435328 "GET /static/img/favicon.svg HTTP/1.1" 200 226
-INFO 2025-10-09 05:38:55,643 basehttp 60244 6206435328 "GET /admin/accounts/user/ HTTP/1.1" 200 3218
-INFO 2025-10-09 05:38:55,655 basehttp 60244 6206435328 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
-INFO 2025-10-09 05:38:55,662 basehttp 60244 6206435328 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
-INFO 2025-10-09 05:38:55,663 basehttp 60244 6240088064 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
-INFO 2025-10-09 05:38:55,664 basehttp 60244 6256914432 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
-INFO 2025-10-09 05:38:55,666 basehttp 60244 6273740800 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
-INFO 2025-10-09 05:38:55,668 basehttp 60244 6206435328 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
-INFO 2025-10-09 05:38:55,669 basehttp 60244 6189608960 "GET /admin/jsi18n/ HTTP/1.1" 200 1017
-INFO 2025-10-09 05:38:55,669 basehttp 60244 6240088064 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
-INFO 2025-10-09 05:38:55,672 basehttp 60244 6223261696 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
-INFO 2025-10-09 05:38:55,673 basehttp 60244 6256914432 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
-INFO 2025-10-09 05:38:55,675 basehttp 60244 6256914432 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
-INFO 2025-10-09 05:38:55,687 basehttp 60244 6256914432 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
-INFO 2025-10-09 05:38:59,301 basehttp 60244 6256914432 "GET /admin/accounts/user/35/change/ HTTP/1.1" 200 6561
-INFO 2025-10-09 05:38:59,315 basehttp 60244 6256914432 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
-INFO 2025-10-09 05:38:59,316 basehttp 60244 6189608960 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
-INFO 2025-10-09 05:38:59,317 basehttp 60244 6206435328 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
-INFO 2025-10-09 05:38:59,318 basehttp 60244 6240088064 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
-INFO 2025-10-09 05:38:59,319 basehttp 60244 6189608960 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
-INFO 2025-10-09 05:38:59,320 basehttp 60244 6223261696 "GET /admin/jsi18n/ HTTP/1.1" 200 1011
-INFO 2025-10-09 05:38:59,321 basehttp 60244 6189608960 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
-INFO 2025-10-09 05:38:59,321 basehttp 60244 6223261696 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
-INFO 2025-10-09 05:38:59,351 basehttp 60244 6223261696 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
-INFO 2025-10-09 05:38:59,351 basehttp 60244 6189608960 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
-INFO 2025-10-09 05:39:06,331 basehttp 60244 6189608960 "POST /admin/accounts/user/35/change/ HTTP/1.1" 200 6687
-INFO 2025-10-09 05:39:06,346 basehttp 60244 6189608960 "GET /admin/jsi18n/ HTTP/1.1" 200 963
-INFO 2025-10-09 05:39:13,585 basehttp 60244 6189608960 "POST /admin/accounts/user/35/change/ HTTP/1.1" 302 0
-INFO 2025-10-09 05:39:13,599 basehttp 60244 6189608960 "GET /admin/accounts/user/ HTTP/1.1" 200 3326
-INFO 2025-10-09 05:39:13,613 basehttp 60244 6189608960 "GET /admin/jsi18n/ HTTP/1.1" 200 1042
-INFO 2025-10-09 05:39:15,005 basehttp 60244 6189608960 "GET /admin/accounts/user/35/change/ HTTP/1.1" 200 6604
-INFO 2025-10-09 05:39:15,017 basehttp 60244 6189608960 "GET /admin/jsi18n/ HTTP/1.1" 200 980
-INFO 2025-10-09 05:39:16,094 basehttp 60244 6189608960 "GET /admin/accounts/user/ HTTP/1.1" 200 3247
-INFO 2025-10-09 05:45:09,389 basehttp 60244 6189608960 "GET / HTTP/1.1" 200 6267
-INFO 2025-10-09 05:45:11,570 basehttp 60244 6189608960 "GET /grids/ HTTP/1.1" 200 11660
-INFO 2025-10-09 05:45:12,758 basehttp 60244 6189608960 "GET /grids/229/ HTTP/1.1" 200 18498
-INFO 2025-10-09 05:51:02,057 autoreload 60244 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
-INFO 2025-10-09 05:51:02,565 autoreload 60431 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:54:33,781 autoreload 60792 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:54:36,162 basehttp 60792 6190968832 "GET / HTTP/1.1" 200 6265
-INFO 2025-10-09 05:54:36,823 basehttp 60792 6190968832 "GET /admin HTTP/1.1" 301 0
-INFO 2025-10-09 05:54:36,857 basehttp 60792 6190968832 "GET /admin/ HTTP/1.1" 200 2827
-INFO 2025-10-09 05:54:39,855 basehttp 60792 6190968832 "GET /admin/pages/project/ HTTP/1.1" 200 3382
-INFO 2025-10-09 05:54:39,874 basehttp 60792 6190968832 "GET /admin/jsi18n/ HTTP/1.1" 200 1006
-INFO 2025-10-09 05:54:42,093 basehttp 60792 6190968832 "GET /admin/pages/project/229/change/ HTTP/1.1" 200 3997
-INFO 2025-10-09 05:54:42,110 basehttp 60792 6190968832 "GET /admin/jsi18n/ HTTP/1.1" 200 1043
-INFO 2025-10-09 05:54:42,123 basehttp 60792 6190968832 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
-INFO 2025-10-09 05:54:57,174 basehttp 60792 6190968832 "POST /admin/pages/project/229/change/ HTTP/1.1" 302 0
-INFO 2025-10-09 05:54:57,189 basehttp 60792 6190968832 "GET /admin/pages/project/ HTTP/1.1" 200 3394
-INFO 2025-10-09 05:54:57,205 basehttp 60792 6190968832 "GET /admin/jsi18n/ HTTP/1.1" 200 1057
-INFO 2025-10-09 05:54:59,396 basehttp 60792 6190968832 "GET /admin/pages/project/229/change/ HTTP/1.1" 200 3987
-INFO 2025-10-09 05:54:59,412 basehttp 60792 6190968832 "GET /admin/jsi18n/ HTTP/1.1" 200 1047
-INFO 2025-10-09 05:55:00,591 basehttp 60792 6190968832 "GET /admin/pages/project/ HTTP/1.1" 200 3349
-INFO 2025-10-09 05:55:06,856 basehttp 60792 6190968832 "GET / HTTP/1.1" 200 6264
-INFO 2025-10-09 05:55:09,178 basehttp 60792 6190968832 "GET /grids/ HTTP/1.1" 200 11664
-INFO 2025-10-09 05:55:10,321 basehttp 60792 6190968832 "GET /grids/229/ HTTP/1.1" 200 19974
-WARNING 2025-10-09 05:55:15,983 log 60792 6190968832 Not Found: /tasks/2462/assign/
-WARNING 2025-10-09 05:55:15,984 basehttp 60792 6190968832 "POST /tasks/2462/assign/ HTTP/1.1" 404 2167
-INFO 2025-10-09 05:55:59,591 autoreload 60792 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
-INFO 2025-10-09 05:56:00,079 autoreload 60822 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:56:46,991 autoreload 60822 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
-INFO 2025-10-09 05:56:47,342 autoreload 60847 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:57:05,766 autoreload 60847 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
-INFO 2025-10-09 05:57:06,107 autoreload 60863 8398642944 Watching for file changes with StatReloader
-INFO 2025-10-09 05:57:26,056 autoreload 60863 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
-INFO 2025-10-09 05:57:26,544 autoreload 60879 8398642944 Watching for file changes with StatReloader
+django.db.utils.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+ERROR 2025-10-09 21:35:37,552 basehttp 65426 6132920320 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 500 19247
+INFO 2025-10-09 21:35:42,101 autoreload 65512 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:35:45,335 basehttp 65512 6121795584 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4613
+ERROR 2025-10-09 21:35:46,982 log 65512 6121795584 Internal Server Error: /lilypad/southampton-economics-society/load-template/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 667, in load_southampton_economics_template
+    project = create_southampton_economics_society_template(request.user)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py", line 2195, in create_southampton_economics_society_template
+    project = Project.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 663, in create
+    obj.save(force_insert=True, using=self.db)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 902, in save
+    self.save_base(
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1008, in save_base
+    updated = self._save_table(
+              ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1169, in _save_table
+    results = self._do_insert(
+              ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/base.py", line 1210, in _do_insert
+    return manager._insert(
+           ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1868, in _insert
+    return query.get_compiler(using=using).execute_sql(returning_fields)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1882, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.IntegrityError: NOT NULL constraint failed: pages_project.is_team_toad
+ERROR 2025-10-09 21:35:46,987 basehttp 65512 6121795584 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 500 19246
+INFO 2025-10-09 21:37:21,689 autoreload 65512 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:37:22,230 autoreload 65813 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:37:35,022 autoreload 65813 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:37:35,488 autoreload 65830 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:38:23,021 autoreload 65830 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-10-09 21:38:23,527 autoreload 65866 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:38:28,102 autoreload 65866 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:38:28,440 autoreload 65879 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:38:30,374 basehttp 65879 6199439360 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4483
+INFO 2025-10-09 21:39:43,552 autoreload 65879 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/signals.py changed, reloading.
+INFO 2025-10-09 21:39:44,063 autoreload 65928 8398642944 Watching for file changes with StatReloader
+ERROR 2025-10-09 21:40:56,761 log 65928 6200520704 Internal Server Error: /lilypad/southampton-economics-society/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 654, in southampton_economics_society_page
+    return render(request, 'student_templates/southampton_economics_society_link.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'load_southampton_economics_template' not found. 'load_southampton_economics_template' is not a valid view function or pattern name.
+ERROR 2025-10-09 21:40:56,765 basehttp 65928 6200520704 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 500 18520
+INFO 2025-10-09 21:45:01,500 autoreload 66736 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:45:14,627 basehttp 66736 6198456320 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4640
+INFO 2025-10-09 21:45:14,645 basehttp 66736 6198456320 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+WARNING 2025-10-09 21:45:39,360 log 66736 6198456320 Not Found: /lilypad/southampton-economics-society/load-template/
+WARNING 2025-10-09 21:45:39,361 basehttp 66736 6198456320 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 404 2363
+INFO 2025-10-09 21:46:22,433 autoreload 66736 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:46:22,846 autoreload 66766 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:46:37,244 autoreload 66766 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-09 21:46:37,582 autoreload 66777 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:46:54,907 basehttp 66777 6160691200 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4570
+ERROR 2025-10-09 21:46:56,878 log 66777 6160691200 Internal Server Error: /lilypad/southampton-economics-society/load-template/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 670, in load_southampton_economics_template
+    return redirect('pages:project_grid', project_pk=project.pk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'project_grid' with keyword arguments '{'project_pk': 230}' not found. 1 pattern(s) tried: ['grids/(?P<pk>[0-9]+)/\\Z']
+ERROR 2025-10-09 21:46:56,881 basehttp 66777 6160691200 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 500 13288
+INFO 2025-10-09 21:47:17,678 autoreload 66777 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-09 21:47:18,084 autoreload 66819 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:47:26,776 basehttp 66819 6205337600 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4633
+INFO 2025-10-09 21:47:29,085 basehttp 66819 6205337600 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 302 0
+INFO 2025-10-09 21:47:29,116 basehttp 66819 6205337600 "GET /grids/231/ HTTP/1.1" 200 16173
+INFO 2025-10-09 21:47:30,561 autoreload 66819 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-09 21:47:31,022 autoreload 66833 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:47:37,938 basehttp 66833 6191509504 "GET /grids/ HTTP/1.1" 200 11877
+INFO 2025-10-09 21:47:39,623 basehttp 66833 6191509504 "GET /grids/231/delete/ HTTP/1.1" 200 2944
+INFO 2025-10-09 21:47:40,458 basehttp 66833 6191509504 "POST /grids/231/delete/ HTTP/1.1" 302 0
+INFO 2025-10-09 21:47:40,466 basehttp 66833 6191509504 "GET /grids/ HTTP/1.1" 200 11885
+INFO 2025-10-09 21:52:00,391 autoreload 67206 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 21:52:02,529 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4628
+INFO 2025-10-09 21:53:02,232 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4636
+INFO 2025-10-09 21:53:02,245 basehttp 67206 6160363520 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-09 21:53:22,329 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4635
+INFO 2025-10-09 21:53:36,932 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4575
+INFO 2025-10-09 21:53:45,242 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4555
+INFO 2025-10-09 21:53:55,536 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4555
+INFO 2025-10-09 21:54:42,410 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4577
+INFO 2025-10-09 21:54:57,919 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4636
+INFO 2025-10-09 21:55:10,762 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4603
+INFO 2025-10-09 21:55:20,527 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4401
+INFO 2025-10-09 21:59:59,434 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4555
+INFO 2025-10-09 22:00:03,406 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/load-template/ HTTP/1.1" 302 0
+INFO 2025-10-09 22:00:03,436 basehttp 67206 6160363520 "GET /grids/232/ HTTP/1.1" 200 16248
+INFO 2025-10-09 22:01:03,044 basehttp 67206 6160363520 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4614
+INFO 2025-10-09 22:07:08,099 autoreload 68070 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-09 22:07:08,648 basehttp 68070 6159544320 "GET / HTTP/1.1" 200 6231
+INFO 2025-10-09 22:07:08,670 basehttp 68070 6159544320 "GET /static/css/output.css HTTP/1.1" 200 89044
+INFO 2025-10-09 22:07:08,676 basehttp 68070 6159544320 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-09 22:07:08,935 basehttp 68070 6159544320 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-09 22:07:12,624 basehttp 68070 6159544320 "GET /lilypad/southampton-economics-society/ HTTP/1.1" 200 4604
+INFO 2025-10-09 22:07:12,639 basehttp 68070 6159544320 "GET /static/img/Other_templates/Southampton%20Economics%20Society.png HTTP/1.1" 304 0
+INFO 2025-10-11 06:20:42,209 autoreload 70495 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 06:20:43,737 basehttp 70495 6161477632 "GET / HTTP/1.1" 200 6244
+INFO 2025-10-11 06:20:43,794 basehttp 70495 6161477632 "GET /static/css/output.css HTTP/1.1" 200 90004
+INFO 2025-10-11 06:20:43,796 basehttp 70495 6161477632 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-11 06:20:43,819 basehttp 70495 6161477632 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 06:20:43,820 basehttp 70495 6178304000 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-11 06:20:44,009 basehttp 70495 6178304000 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-11 06:20:44,379 basehttp 70495 6178304000 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-11 06:20:46,018 basehttp 70495 6178304000 "GET /grids/create/ HTTP/1.1" 200 2931
+INFO 2025-10-11 06:20:48,504 project_views_functions 70495 6178304000 User None created project: Test
+INFO 2025-10-11 06:20:48,505 basehttp 70495 6178304000 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-10-11 06:20:48,534 basehttp 70495 6178304000 "GET /grids/233/ HTTP/1.1" 200 14718
+INFO 2025-10-11 06:20:48,545 basehttp 70495 6178304000 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-10-11 06:20:52,682 autoreload 70495 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-11 06:20:53,022 autoreload 70519 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 06:21:23,674 autoreload 70519 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-11 06:21:24,052 autoreload 70531 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 07:30:59,717 autoreload 71670 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 07:31:00,925 basehttp 71670 6160936960 "GET / HTTP/1.1" 200 6381
+INFO 2025-10-11 07:31:16,819 autoreload 71877 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 07:31:18,465 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6378
+INFO 2025-10-11 07:31:26,628 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6292
+INFO 2025-10-11 07:31:26,652 basehttp 71877 6162526208 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 07:31:26,654 basehttp 71877 6145699840 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-11 07:31:26,655 basehttp 71877 6128873472 "GET /static/css/output.css HTTP/1.1" 200 90004
+INFO 2025-10-11 07:31:26,655 basehttp 71877 6179352576 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-11 07:31:27,221 basehttp 71877 6179352576 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-11 07:31:46,084 basehttp 71877 6179352576 - Broken pipe from ('127.0.0.1', 63725)
+INFO 2025-10-11 07:32:04,424 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6366
+INFO 2025-10-11 07:32:04,448 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 200 614314
+INFO 2025-10-11 07:32:04,519 basehttp 71877 6128873472 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-11 07:32:49,542 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6375
+INFO 2025-10-11 07:32:49,564 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 304 0
+INFO 2025-10-11 07:33:46,175 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6380
+INFO 2025-10-11 07:33:46,198 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 304 0
+INFO 2025-10-11 07:37:38,830 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6318
+INFO 2025-10-11 07:37:38,860 basehttp 71877 6128873472 "GET /static/img/home/home_hero_picture.png HTTP/1.1" 304 0
+INFO 2025-10-11 12:55:28,480 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6331
+INFO 2025-10-11 12:55:28,492 basehttp 71877 6128873472 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 12:55:28,502 basehttp 71877 6128873472 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 12:55:28,839 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 11369826
+INFO 2025-10-11 12:56:53,231 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6366
+INFO 2025-10-11 12:57:29,779 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6351
+INFO 2025-10-11 12:58:54,822 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 12:58:56,804 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6350
+INFO 2025-10-11 13:07:48,911 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+ERROR 2025-10-11 13:07:50,809 log 71877 6128873472 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'endblock'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 38, in home
+    return render(request, 'pages/general/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 577, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 373: 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-10-11 13:07:50,815 basehttp 71877 6128873472 "GET / HTTP/1.1" 500 20999
+INFO 2025-10-11 13:07:50,902 basehttp 71877 6128873472 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-11 13:07:50,903 basehttp 71877 6128873472 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-11 13:08:21,118 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6506
+INFO 2025-10-11 13:12:39,283 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 13:15:00,363 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6124
+INFO 2025-10-11 13:15:21,096 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6131
+INFO 2025-10-11 13:15:35,742 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6161
+INFO 2025-10-11 13:17:35,551 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6278
+INFO 2025-10-11 13:17:35,579 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 13:31:53,390 basehttp 71877 6128873472 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-11 13:31:55,409 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6217
+INFO 2025-10-11 13:31:55,727 basehttp 71877 6128873472 - Broken pipe from ('127.0.0.1', 51898)
+INFO 2025-10-11 13:31:58,998 basehttp 71877 6145699840 - Broken pipe from ('127.0.0.1', 51900)
+INFO 2025-10-11 13:31:59,005 basehttp 71877 6128873472 - Broken pipe from ('127.0.0.1', 51903)
+INFO 2025-10-11 13:31:59,017 basehttp 71877 6128873472 - Broken pipe from ('127.0.0.1', 51904)
+INFO 2025-10-11 13:31:59,041 basehttp 71877 6145699840 - Broken pipe from ('127.0.0.1', 51905)
+WARNING 2025-10-11 13:32:25,871 log 71877 6128873472 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 13:32:25,871 basehttp 71877 6128873472 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2156
+INFO 2025-10-11 13:32:27,515 basehttp 71877 6128873472 "GET / HTTP/1.1" 200 6252
+WARNING 2025-10-11 13:32:27,543 log 71877 6128873472 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 13:32:27,544 basehttp 71877 6128873472 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2201
+INFO 2025-10-11 13:32:27,554 basehttp 71877 6128873472 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
+INFO 2025-10-11 13:45:02,646 autoreload 74889 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 13:45:04,781 basehttp 74889 6201356288 "GET / HTTP/1.1" 200 6275
+INFO 2025-10-11 13:45:05,103 basehttp 74889 6201356288 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-11 13:46:04,364 basehttp 74889 6201356288 "GET / HTTP/1.1" 200 6196
+WARNING 2025-10-11 14:00:02,727 log 74889 6201356288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:00:02,729 basehttp 74889 6201356288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2132
+INFO 2025-10-11 14:00:04,148 basehttp 74889 6201356288 "GET / HTTP/1.1" 200 6491
+WARNING 2025-10-11 14:00:04,186 log 74889 6201356288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:00:04,186 basehttp 74889 6201356288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2170
+INFO 2025-10-11 14:00:04,189 basehttp 74889 6218182656 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-11 14:00:04,212 basehttp 74889 6218182656 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:01:57,503 basehttp 74889 6218182656 "GET / HTTP/1.1" 200 6419
+INFO 2025-10-11 14:01:57,521 basehttp 74889 6218182656 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+WARNING 2025-10-11 14:01:57,541 log 74889 6218182656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:01:57,541 basehttp 74889 6218182656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2191
+INFO 2025-10-11 14:03:09,890 basehttp 74889 6218182656 "GET / HTTP/1.1" 200 6427
+INFO 2025-10-11 14:03:09,911 basehttp 74889 6201356288 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+WARNING 2025-10-11 14:03:09,953 log 74889 6218182656 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:03:09,954 basehttp 74889 6218182656 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2178
+INFO 2025-10-11 14:03:09,989 basehttp 74889 6218182656 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:03:54,432 basehttp 74889 6218182656 "GET / HTTP/1.1" 200 6461
+INFO 2025-10-11 14:03:57,984 basehttp 74889 6218182656 "GET / HTTP/1.1" 200 6496
+INFO 2025-10-11 14:06:29,008 basehttp 74889 6218182656 "GET / HTTP/1.1" 200 6458
+INFO 2025-10-11 14:06:29,023 basehttp 74889 6218182656 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:06:29,044 basehttp 74889 6218182656 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:10:22,568 basehttp 74889 6201356288 "GET / HTTP/1.1" 200 7518
+INFO 2025-10-11 14:10:22,583 basehttp 74889 6201356288 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:10:22,609 basehttp 74889 6201356288 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:10:37,336 basehttp 74889 6201356288 "GET / HTTP/1.1" 200 7445
+INFO 2025-10-11 14:12:52,253 basehttp 74889 6201356288 "GET / HTTP/1.1" 200 7589
+INFO 2025-10-11 14:12:52,278 basehttp 74889 6201356288 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:13:24,512 autoreload 75916 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 14:13:38,475 basehttp 75916 6125006848 "GET / HTTP/1.1" 200 7545
+WARNING 2025-10-11 14:13:38,541 log 75916 6209138688 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:13:38,542 basehttp 75916 6209138688 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2143
+INFO 2025-10-11 14:13:38,544 basehttp 75916 6175485952 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-11 14:13:38,544 basehttp 75916 6158659584 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 14:13:38,545 basehttp 75916 6141833216 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-11 14:13:38,546 basehttp 75916 6125006848 "GET /static/css/output.css HTTP/1.1" 200 89476
+INFO 2025-10-11 14:13:38,548 basehttp 75916 6192312320 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-11 14:13:38,611 basehttp 75916 6192312320 "GET /static/img/Mobile%20-%20Student%20Grid.png HTTP/1.1" 200 473666
+INFO 2025-10-11 14:13:38,651 basehttp 75916 6192312320 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-11 14:13:38,715 basehttp 75916 6192312320 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-11 14:13:59,781 basehttp 75916 6192312320 "GET / HTTP/1.1" 200 7491
+INFO 2025-10-11 14:13:59,798 basehttp 75916 6192312320 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:13:59,799 basehttp 75916 6125006848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:13:59,844 basehttp 75916 6125006848 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-11 14:20:07,663 basehttp 75916 6125006848 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:20:09,448 basehttp 75916 6125006848 "GET / HTTP/1.1" 200 7689
+INFO 2025-10-11 14:20:09,479 basehttp 75916 6141833216 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:20:09,479 basehttp 75916 6125006848 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:20:09,479 basehttp 75916 6158659584 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:22:19,557 basehttp 75916 6125006848 "GET / HTTP/1.1" 200 7765
+INFO 2025-10-11 14:22:19,573 basehttp 75916 6125006848 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:22:19,573 basehttp 75916 6141833216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:22:52,498 basehttp 75916 6125006848 "GET / HTTP/1.1" 200 7718
+INFO 2025-10-11 14:22:52,519 basehttp 75916 6125006848 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:25:35,268 basehttp 75916 6125006848 "GET / HTTP/1.1" 200 7752
+INFO 2025-10-11 14:25:35,293 basehttp 75916 6141833216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:25:35,294 basehttp 75916 6125006848 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:25:35,315 basehttp 75916 6125006848 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:26:11,013 autoreload 76720 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 14:26:13,028 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7769
+INFO 2025-10-11 14:26:13,041 basehttp 76720 6205370368 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:26:23,326 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7715
+INFO 2025-10-11 14:26:23,352 basehttp 76720 6239023104 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 14:26:23,355 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 200 90575
+INFO 2025-10-11 14:26:23,356 basehttp 76720 6222196736 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-11 14:26:23,357 basehttp 76720 6255849472 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-11 14:26:23,359 basehttp 76720 6272675840 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-11 14:26:23,939 basehttp 76720 6205370368 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-11 14:26:40,784 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7694
+INFO 2025-10-11 14:26:40,797 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:26:40,797 basehttp 76720 6222196736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:27:39,688 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7713
+INFO 2025-10-11 14:27:39,709 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:27:39,709 basehttp 76720 6222196736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:27:43,333 basehttp 76720 6222196736 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-11 14:29:13,544 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7763
+INFO 2025-10-11 14:29:13,561 basehttp 76720 6222196736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:29:13,562 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:29:13,583 basehttp 76720 6205370368 - Broken pipe from ('127.0.0.1', 63069)
+INFO 2025-10-11 14:29:13,618 basehttp 76720 6222196736 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-11 14:33:07,412 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 8316
+INFO 2025-10-11 14:33:07,457 basehttp 76720 6222196736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:33:07,464 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:33:07,465 basehttp 76720 6239023104 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:40:55,200 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7265
+INFO 2025-10-11 14:40:55,219 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:40:55,219 basehttp 76720 6222196736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:40:55,220 basehttp 76720 6239023104 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:40:55,236 basehttp 76720 6239023104 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 14:41:44,929 basehttp 76720 6205370368 "GET /accounts/register/ HTTP/1.1" 200 4090
+INFO 2025-10-11 14:41:48,078 basehttp 76720 6205370368 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-11 14:41:48,092 basehttp 76720 6205370368 "GET /templates/students/ HTTP/1.1" 200 5165
+INFO 2025-10-11 14:41:48,194 basehttp 76720 6222196736 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
+INFO 2025-10-11 14:41:48,197 basehttp 76720 6205370368 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-10-11 14:41:48,199 basehttp 76720 6239023104 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
+INFO 2025-10-11 14:41:48,203 basehttp 76720 6255849472 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
+INFO 2025-10-11 14:44:54,165 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7212
+INFO 2025-10-11 14:44:54,184 basehttp 76720 6222196736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:44:54,184 basehttp 76720 6205370368 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-10-11 14:45:24,835 log 76720 6205370368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:45:24,836 basehttp 76720 6205370368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2220
+INFO 2025-10-11 14:45:25,999 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7234
+WARNING 2025-10-11 14:45:26,037 log 76720 6205370368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:45:26,038 basehttp 76720 6205370368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2207
+INFO 2025-10-11 14:53:50,533 basehttp 76720 6205370368 "GET / HTTP/1.1" 200 7302
+INFO 2025-10-11 14:53:50,562 basehttp 76720 6239023104 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 14:53:50,571 basehttp 76720 6222196736 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 14:53:50,595 basehttp 76720 6255849472 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 14:53:50,607 basehttp 76720 6222196736 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+WARNING 2025-10-11 14:53:50,661 log 76720 6205370368 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 14:53:50,662 basehttp 76720 6205370368 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2203
+INFO 2025-10-11 15:14:07,867 autoreload 77991 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 15:14:08,567 basehttp 77991 6202863616 "GET / HTTP/1.1" 200 7311
+INFO 2025-10-11 15:14:08,594 basehttp 77991 6202863616 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 15:14:08,595 basehttp 77991 6219689984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 15:14:08,600 basehttp 77991 6236516352 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 15:14:08,942 basehttp 77991 6236516352 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 15:14:10,860 basehttp 77991 6236516352 "GET /lilypad/ HTTP/1.1" 200 4128
+INFO 2025-10-11 15:14:13,510 basehttp 77991 6236516352 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 6942
+INFO 2025-10-11 15:17:40,897 basehttp 77991 6236516352 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 5154
+INFO 2025-10-11 15:17:40,977 basehttp 77991 6236516352 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 200 10893681
+INFO 2025-10-11 15:17:55,886 basehttp 77991 6236516352 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 5158
+INFO 2025-10-11 15:19:00,778 basehttp 77991 6236516352 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 5116
+INFO 2025-10-11 15:19:00,805 basehttp 77991 6236516352 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 15:19:00,807 basehttp 77991 6219689984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 15:19:00,837 basehttp 77991 6219689984 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 15:19:29,888 autoreload 78617 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 15:19:31,709 basehttp 78617 6165082112 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 5164
+INFO 2025-10-11 15:46:53,620 basehttp 78617 6165082112 "GET /lilypad/sheffield/the-economics-society/ HTTP/1.1" 200 5131
+INFO 2025-10-11 15:46:53,663 basehttp 78617 6199308288 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 15:46:53,670 basehttp 78617 6181908480 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 15:46:53,670 basehttp 78617 6165082112 "GET /static/css/output.css HTTP/1.1" 200 87815
+INFO 2025-10-11 15:46:53,703 basehttp 78617 6165082112 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 15:47:25,576 autoreload 79196 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 15:47:26,340 basehttp 79196 6189641728 "GET / HTTP/1.1" 200 7268
+INFO 2025-10-11 15:47:26,588 basehttp 79196 6189641728 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 15:47:29,837 basehttp 79196 6189641728 "GET /lilypad/ HTTP/1.1" 200 4090
+INFO 2025-10-11 15:47:33,177 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5081
+INFO 2025-10-11 15:50:04,861 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5193
+INFO 2025-10-11 15:50:04,884 basehttp 79196 6206468096 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 15:50:04,885 basehttp 79196 6189641728 "GET /static/css/output.css HTTP/1.1" 200 87801
+INFO 2025-10-11 15:50:08,414 basehttp 79196 6189641728 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 15:50:17,389 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5226
+INFO 2025-10-11 15:52:18,589 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5156
+INFO 2025-10-11 15:52:18,600 basehttp 79196 6206468096 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 15:52:18,600 basehttp 79196 6189641728 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 15:52:25,007 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5131
+INFO 2025-10-11 15:55:45,603 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5367
+INFO 2025-10-11 15:55:45,625 basehttp 79196 6206468096 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 15:55:45,625 basehttp 79196 6189641728 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 15:55:48,198 basehttp 79196 6206468096 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 16:03:27,631 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5312
+INFO 2025-10-11 16:03:27,656 basehttp 79196 6189641728 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 16:03:27,657 basehttp 79196 6206468096 "GET /static/css/output.css HTTP/1.1" 304 0
+WARNING 2025-10-11 16:03:37,419 log 79196 6189641728 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:03:37,421 basehttp 79196 6189641728 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2189
+INFO 2025-10-11 16:03:38,276 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5382
+WARNING 2025-10-11 16:03:38,306 log 79196 6189641728 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:03:38,307 basehttp 79196 6189641728 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2204
+INFO 2025-10-11 16:03:48,322 basehttp 79196 6189641728 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 16:03:56,295 basehttp 79196 6189641728 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5318
+INFO 2025-10-11 16:37:11,568 autoreload 81695 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:37:12,895 basehttp 81695 6196899840 "GET / HTTP/1.1" 200 7277
+INFO 2025-10-11 16:37:12,910 basehttp 81695 6196899840 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 16:37:12,915 basehttp 81695 6213726208 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 16:37:12,916 basehttp 81695 6196899840 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 16:37:14,301 basehttp 81695 6196899840 "GET /lilypad HTTP/1.1" 301 0
+INFO 2025-10-11 16:37:14,421 basehttp 81695 6213726208 "GET /lilypad/ HTTP/1.1" 200 4170
+INFO 2025-10-11 16:37:18,139 basehttp 81695 6213726208 "GET /lilypad/feedback HTTP/1.1" 301 0
+INFO 2025-10-11 16:37:18,151 basehttp 81695 6230552576 "GET /lilypad/feedback/ HTTP/1.1" 200 4621
+INFO 2025-10-11 16:37:52,212 basehttp 81695 6230552576 "POST /lilypad/feedback/ HTTP/1.1" 302 0
+WARNING 2025-10-11 16:37:52,225 log 81695 6230552576 Not Found: /lilypad/feedback/success/
+WARNING 2025-10-11 16:37:52,226 basehttp 81695 6230552576 "GET /lilypad/feedback/success/ HTTP/1.1" 404 2405
+INFO 2025-10-11 16:37:52,248 basehttp 81695 6230552576 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-11 16:37:52,252 basehttp 81695 6230552576 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-11 16:38:23,516 autoreload 81695 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-10-11 16:38:23,926 autoreload 81754 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:38:29,233 basehttp 81754 6135738368 "POST /lilypad/feedback/ HTTP/1.1" 302 0
+INFO 2025-10-11 16:38:29,243 basehttp 81754 6135738368 "GET /lilypad/feedback/success/ HTTP/1.1" 200 3316
+INFO 2025-10-11 16:38:35,154 basehttp 81754 6135738368 "GET /dashboard/ HTTP/1.1" 200 4096
+INFO 2025-10-11 16:38:38,893 basehttp 81754 6135738368 "GET /grids/create/ HTTP/1.1" 200 2996
+INFO 2025-10-11 16:39:55,352 basehttp 81754 6135738368 "GET /lilypad/feedback/list HTTP/1.1" 301 0
+INFO 2025-10-11 16:39:55,367 basehttp 81754 6152564736 "GET /lilypad/feedback/list/ HTTP/1.1" 200 3663
+INFO 2025-10-11 16:40:02,517 autoreload 81754 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-10-11 16:40:02,903 autoreload 81882 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:40:05,032 autoreload 81882 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-10-11 16:40:05,266 autoreload 81886 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:40:32,842 autoreload 81886 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/admin.py changed, reloading.
+INFO 2025-10-11 16:40:33,214 autoreload 81918 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:40:35,413 autoreload 81918 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/admin.py changed, reloading.
+INFO 2025-10-11 16:40:35,672 autoreload 81930 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:40:38,884 autoreload 81930 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-10-11 16:40:39,139 autoreload 81936 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:44:46,201 basehttp 81936 6202568704 "GET /lilypad/feedback/ HTTP/1.1" 200 4632
+INFO 2025-10-11 16:44:46,244 basehttp 81936 6202568704 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 16:44:46,245 basehttp 81936 6219395072 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 16:44:51,173 basehttp 81936 6202568704 "GET /lilypad/feedback/list/ HTTP/1.1" 200 3613
+INFO 2025-10-11 16:44:52,571 basehttp 81936 6202568704 "GET /lilypad/feedback/2/ HTTP/1.1" 200 3571
+INFO 2025-10-11 16:44:55,215 autoreload 81936 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-10-11 16:44:55,574 autoreload 82363 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:45:05,528 basehttp 82363 6171750400 "GET /lilypad/feedback/list/ HTTP/1.1" 200 3612
+INFO 2025-10-11 16:45:10,818 basehttp 82363 6171750400 "GET /lilypad/feedback/ HTTP/1.1" 200 4661
+INFO 2025-10-11 16:45:34,542 autoreload 82363 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-10-11 16:45:34,939 autoreload 82407 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:46:44,342 autoreload 82695 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:46:48,119 basehttp 82695 6171684864 "GET /lilypad/feedback/ HTTP/1.1" 200 4610
+INFO 2025-10-11 16:47:14,025 basehttp 82695 6171684864 "POST /lilypad/feedback/ HTTP/1.1" 302 0
+INFO 2025-10-11 16:47:14,036 basehttp 82695 6171684864 "GET /lilypad/feedback/success/ HTTP/1.1" 200 3289
+INFO 2025-10-11 16:47:16,154 basehttp 82695 6171684864 "GET /grids/ HTTP/1.1" 200 12120
+INFO 2025-10-11 16:47:22,069 basehttp 82695 6171684864 "GET /lilypad/feedback/list HTTP/1.1" 301 0
+INFO 2025-10-11 16:47:22,082 basehttp 82695 6188511232 "GET /lilypad/feedback/list/ HTTP/1.1" 200 3709
+INFO 2025-10-11 16:47:27,220 basehttp 82695 6171684864 "GET /lilypad/feedback/3/ HTTP/1.1" 200 3553
+INFO 2025-10-11 16:47:33,771 basehttp 82695 6171684864 "GET /lilypad/feedback/list/ HTTP/1.1" 200 3703
+INFO 2025-10-11 16:47:50,060 autoreload 82695 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-10-11 16:47:50,449 autoreload 82746 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 16:49:34,803 basehttp 82746 6137868288 "GET /lilypad/feedback/ HTTP/1.1" 200 5302
+INFO 2025-10-11 16:49:46,293 basehttp 82746 6137868288 "GET / HTTP/1.1" 200 7235
+INFO 2025-10-11 16:49:46,378 basehttp 82746 6137868288 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+WARNING 2025-10-11 16:49:51,859 log 82746 6137868288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:49:51,860 basehttp 82746 6137868288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2172
+INFO 2025-10-11 16:49:52,746 basehttp 82746 6137868288 "GET /lilypad/feedback/ HTTP/1.1" 200 5301
+WARNING 2025-10-11 16:49:52,776 log 82746 6137868288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:49:52,776 basehttp 82746 6137868288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2208
+WARNING 2025-10-11 16:49:55,317 log 82746 6137868288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:49:55,318 basehttp 82746 6137868288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2180
+WARNING 2025-10-11 16:49:55,341 log 82746 6137868288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:49:55,341 basehttp 82746 6137868288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2172
+INFO 2025-10-11 16:49:59,351 basehttp 82746 6137868288 "GET /lilypad/feedback/list/ HTTP/1.1" 200 3690
+WARNING 2025-10-11 16:49:59,374 log 82746 6137868288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 16:49:59,375 basehttp 82746 6137868288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2224
+INFO 2025-10-11 17:00:56,212 basehttp 82746 6137868288 "GET /lilypad/feedback/ HTTP/1.1" 200 5301
+WARNING 2025-10-11 17:00:56,282 log 82746 6137868288 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+INFO 2025-10-11 17:00:56,283 basehttp 82746 6154694656 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 17:00:56,283 basehttp 82746 6171521024 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+WARNING 2025-10-11 17:00:56,283 basehttp 82746 6137868288 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2178
+INFO 2025-10-11 18:02:12,709 autoreload 83861 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:04:38,369 autoreload 83861 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-11 18:04:38,761 autoreload 83982 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:05:03,369 autoreload 83982 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-11 18:05:03,737 autoreload 84002 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:05:05,887 autoreload 84002 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-11 18:05:06,207 autoreload 84005 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:05:15,471 autoreload 84005 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-11 18:05:15,744 autoreload 84023 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:05:32,180 autoreload 84023 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-11 18:05:32,546 autoreload 84038 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:06:24,669 autoreload 84038 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-11 18:06:25,064 autoreload 84052 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:07:10,192 basehttp 84052 6164852736 "GET / HTTP/1.1" 200 7269
+INFO 2025-10-11 18:07:10,207 basehttp 84052 6164852736 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 18:07:10,211 basehttp 84052 6181679104 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-11 18:07:10,211 basehttp 84052 6164852736 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:07:12,112 basehttp 84052 6164852736 "GET /accounts/preview-beta-feedback/ HTTP/1.1" 200 2776
+INFO 2025-10-11 18:07:57,706 basehttp 84052 6164852736 "GET / HTTP/1.1" 200 7266
+INFO 2025-10-11 18:07:58,015 basehttp 84052 6164852736 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-11 18:08:00,106 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 12124
+INFO 2025-10-11 18:08:01,242 basehttp 84052 6164852736 "GET /grids/233/ HTTP/1.1" 200 14754
+INFO 2025-10-11 18:08:01,262 basehttp 84052 6164852736 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-10-11 18:08:04,593 basehttp 84052 6164852736 "GET /grids/232/ HTTP/1.1" 200 16312
+INFO 2025-10-11 18:08:11,960 basehttp 84052 6164852736 "GET /grids/230/ HTTP/1.1" 200 16296
+INFO 2025-10-11 18:08:13,192 basehttp 84052 6164852736 "GET /grids/229/ HTTP/1.1" 200 17989
+INFO 2025-10-11 18:08:24,177 basehttp 84052 6164852736 "GET /grids/229/ HTTP/1.1" 200 17881
+INFO 2025-10-11 18:08:30,820 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 12160
+INFO 2025-10-11 18:08:32,589 basehttp 84052 6164852736 "GET /grids/233/delete/ HTTP/1.1" 200 2890
+INFO 2025-10-11 18:08:33,309 basehttp 84052 6164852736 "POST /grids/233/delete/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:08:33,325 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 11932
+INFO 2025-10-11 18:08:34,287 basehttp 84052 6164852736 "GET /grids/232/delete/ HTTP/1.1" 200 2977
+INFO 2025-10-11 18:08:35,509 basehttp 84052 6164852736 "POST /grids/232/delete/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:08:35,526 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 11817
+INFO 2025-10-11 18:08:36,468 basehttp 84052 6164852736 "GET /grids/230/delete/ HTTP/1.1" 200 2931
+INFO 2025-10-11 18:08:37,172 basehttp 84052 6164852736 "POST /grids/230/delete/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:08:37,190 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 11603
+INFO 2025-10-11 18:08:39,152 basehttp 84052 6164852736 "GET /grids/229/delete/ HTTP/1.1" 200 2888
+INFO 2025-10-11 18:08:39,907 basehttp 84052 6164852736 "POST /grids/229/delete/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:08:39,924 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 11502
+INFO 2025-10-11 18:08:40,901 basehttp 84052 6164852736 "GET /grids/227/delete/ HTTP/1.1" 200 2946
+INFO 2025-10-11 18:08:41,607 basehttp 84052 6164852736 "POST /grids/227/delete/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:08:41,623 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 11367
+INFO 2025-10-11 18:08:43,027 basehttp 84052 6164852736 "GET /grids/228/ HTTP/1.1" 200 16777
+INFO 2025-10-11 18:11:38,486 autoreload 84620 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:11:39,628 basehttp 84620 6201438208 "GET / HTTP/1.1" 200 7267
+WARNING 2025-10-11 18:11:46,902 log 84620 6201438208 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 18:11:46,903 basehttp 84620 6201438208 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2156
+INFO 2025-10-11 18:11:47,722 basehttp 84620 6201438208 "GET / HTTP/1.1" 200 7325
+WARNING 2025-10-11 18:11:47,752 log 84620 6201438208 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-11 18:11:47,752 basehttp 84620 6201438208 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2129
+INFO 2025-10-11 18:12:15,818 basehttp 84620 6201438208 "GET / HTTP/1.1" 200 7232
+INFO 2025-10-11 18:12:20,188 basehttp 84620 6201438208 "GET /grids/ HTTP/1.1" 200 11322
+INFO 2025-10-11 18:12:21,952 basehttp 84620 6201438208 "GET / HTTP/1.1" 200 7232
+INFO 2025-10-11 18:12:22,921 basehttp 84620 6201438208 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-11 18:12:22,949 basehttp 84620 6218264576 "GET /admin/ HTTP/1.1" 200 3080
+INFO 2025-10-11 18:12:22,961 basehttp 84620 6201438208 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-10-11 18:12:22,961 basehttp 84620 6235090944 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-10-11 18:12:22,962 basehttp 84620 6218264576 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-10-11 18:12:22,963 basehttp 84620 6235090944 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-10-11 18:12:22,964 basehttp 84620 6218264576 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-10-11 18:12:22,964 basehttp 84620 6201438208 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-10-11 18:12:22,965 basehttp 84620 6218264576 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-10-11 18:12:22,968 basehttp 84620 6201438208 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-10-11 18:12:22,968 basehttp 84620 6218264576 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-10-11 18:12:22,969 basehttp 84620 6235090944 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-10-11 18:12:22,969 basehttp 84620 6201438208 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-10-11 18:12:26,563 basehttp 84620 6201438208 "GET /admin/pages/project/ HTTP/1.1" 200 3394
+INFO 2025-10-11 18:12:26,579 basehttp 84620 6201438208 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-10-11 18:12:26,581 basehttp 84620 6251917312 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-10-11 18:12:26,582 basehttp 84620 6268743680 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-10-11 18:12:26,583 basehttp 84620 6201438208 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-10-11 18:12:26,584 basehttp 84620 6285570048 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-10-11 18:12:26,587 basehttp 84620 6251917312 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-10-11 18:12:26,588 basehttp 84620 6235090944 "GET /admin/jsi18n/ HTTP/1.1" 200 975
+INFO 2025-10-11 18:12:26,588 basehttp 84620 6268743680 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-10-11 18:12:26,591 basehttp 84620 6218264576 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-10-11 18:12:26,592 basehttp 84620 6201438208 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-10-11 18:12:26,594 basehttp 84620 6201438208 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-10-11 18:12:26,606 basehttp 84620 6201438208 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-10-11 18:12:28,266 basehttp 84620 6201438208 "GET /admin/pages/project/205/change/ HTTP/1.1" 200 4073
+INFO 2025-10-11 18:12:28,280 basehttp 84620 6268743680 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-10-11 18:12:28,281 basehttp 84620 6201438208 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-10-11 18:12:28,284 basehttp 84620 6201438208 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-10-11 18:12:28,285 basehttp 84620 6218264576 "GET /admin/jsi18n/ HTTP/1.1" 200 1038
+INFO 2025-10-11 18:12:28,285 basehttp 84620 6268743680 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-10-11 18:12:28,287 basehttp 84620 6218264576 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-10-11 18:12:28,299 basehttp 84620 6218264576 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
+INFO 2025-10-11 18:12:43,217 basehttp 84620 6218264576 "POST /admin/pages/project/205/change/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:12:43,233 basehttp 84620 6218264576 "GET /admin/pages/project/ HTTP/1.1" 200 3368
+INFO 2025-10-11 18:12:43,249 basehttp 84620 6218264576 "GET /admin/jsi18n/ HTTP/1.1" 200 1036
+INFO 2025-10-11 18:12:44,179 basehttp 84620 6218264576 "GET /admin/pages/project/ HTTP/1.1" 200 3381
+INFO 2025-10-11 18:12:44,196 basehttp 84620 6218264576 "GET /admin/jsi18n/ HTTP/1.1" 200 1046
+INFO 2025-10-11 18:12:45,724 basehttp 84620 6218264576 "GET /admin/pages/project/205/change/ HTTP/1.1" 200 4028
+INFO 2025-10-11 18:12:45,738 basehttp 84620 6218264576 "GET /admin/jsi18n/ HTTP/1.1" 200 991
+INFO 2025-10-11 18:14:04,601 basehttp 84620 6218264576 "GET /grids/228/ HTTP/1.1" 200 16794
+INFO 2025-10-11 18:14:13,582 basehttp 84620 6218264576 "GET /grids/226/ HTTP/1.1" 200 17977
+INFO 2025-10-11 18:14:17,167 basehttp 84620 6218264576 "GET /grids/228/ HTTP/1.1" 200 16804
+INFO 2025-10-11 18:16:31,176 autoreload 84823 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:16:33,557 basehttp 84823 6203617280 "GET / HTTP/1.1" 200 7319
+INFO 2025-10-11 18:16:34,853 basehttp 84823 6203617280 "GET /grids/ HTTP/1.1" 200 11406
+INFO 2025-10-11 18:16:35,869 basehttp 84823 6203617280 "GET /grids/228/ HTTP/1.1" 200 16866
+INFO 2025-10-11 18:19:47,558 basehttp 84823 6203617280 "GET /grids/228/ HTTP/1.1" 200 16800
+INFO 2025-10-11 18:19:51,876 basehttp 84823 6203617280 "GET / HTTP/1.1" 200 7277
+INFO 2025-10-11 18:19:52,856 basehttp 84823 6203617280 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-11 18:19:52,887 basehttp 84823 6220443648 "GET /admin/ HTTP/1.1" 200 2838
+INFO 2025-10-11 18:19:56,216 basehttp 84823 6220443648 "GET /admin/pages/project/ HTTP/1.1" 200 3366
+INFO 2025-10-11 18:19:56,234 basehttp 84823 6220443648 "GET /admin/jsi18n/ HTTP/1.1" 200 962
+INFO 2025-10-11 18:19:57,723 basehttp 84823 6220443648 "GET /admin/pages/project/205/change/ HTTP/1.1" 200 4058
+INFO 2025-10-11 18:19:57,740 basehttp 84823 6220443648 "GET /admin/jsi18n/ HTTP/1.1" 200 1002
+INFO 2025-10-11 18:19:58,783 basehttp 84823 6220443648 "GET /admin/pages/project/ HTTP/1.1" 200 3316
+INFO 2025-10-11 18:19:59,796 basehttp 84823 6220443648 "GET /admin/pages/project/228/change/ HTTP/1.1" 200 4060
+INFO 2025-10-11 18:19:59,812 basehttp 84823 6220443648 "GET /admin/jsi18n/ HTTP/1.1" 200 980
+INFO 2025-10-11 18:20:01,187 basehttp 84823 6220443648 "GET /admin/pages/project/ HTTP/1.1" 200 3361
+INFO 2025-10-11 18:20:05,317 basehttp 84823 6220443648 "POST /admin/pages/project/ HTTP/1.1" 200 3645
+INFO 2025-10-11 18:20:05,330 basehttp 84823 6220443648 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-10-11 18:20:06,687 basehttp 84823 6220443648 "POST /admin/pages/project/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:20:06,700 basehttp 84823 6220443648 "GET /admin/pages/project/ HTTP/1.1" 200 3368
+INFO 2025-10-11 18:20:06,712 basehttp 84823 6220443648 "GET /admin/jsi18n/ HTTP/1.1" 200 1018
+INFO 2025-10-11 18:20:07,879 basehttp 84823 6220443648 "GET /admin/pages/project/228/change/ HTTP/1.1" 200 4034
+INFO 2025-10-11 18:20:07,895 basehttp 84823 6220443648 "GET /admin/jsi18n/ HTTP/1.1" 200 1047
+INFO 2025-10-11 18:20:13,727 basehttp 84823 6220443648 "POST /admin/pages/project/228/change/ HTTP/1.1" 302 0
+INFO 2025-10-11 18:20:13,738 basehttp 84823 6220443648 "GET /admin/pages/project/ HTTP/1.1" 200 3336
+INFO 2025-10-11 18:20:13,756 basehttp 84823 6220443648 "GET /admin/jsi18n/ HTTP/1.1" 200 995
+INFO 2025-10-11 18:20:15,700 basehttp 84823 6220443648 "GET / HTTP/1.1" 200 7262
+INFO 2025-10-11 18:20:17,171 basehttp 84823 6220443648 "GET /grids/ HTTP/1.1" 200 11315
+INFO 2025-10-11 18:20:18,811 basehttp 84823 6220443648 "GET /grids/228/ HTTP/1.1" 200 16988
+INFO 2025-10-11 18:24:06,634 basehttp 84823 6220443648 "GET /grids/228/ HTTP/1.1" 200 17905
+INFO 2025-10-11 18:24:06,651 basehttp 84823 6220443648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 18:24:06,651 basehttp 84823 6203617280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:24:06,651 basehttp 84823 6237270016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:24:44,261 autoreload 85400 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:24:46,013 basehttp 85400 6123073536 "GET /grids/228/ HTTP/1.1" 200 17889
+INFO 2025-10-11 18:28:05,026 basehttp 85400 6123073536 "GET /grids/228/ HTTP/1.1" 200 18146
+INFO 2025-10-11 18:29:52,255 basehttp 85400 6123073536 "GET /grids/228/ HTTP/1.1" 200 18233
+INFO 2025-10-11 18:30:49,259 autoreload 85998 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:30:51,493 basehttp 85998 6161444864 "GET /grids/228/ HTTP/1.1" 200 18420
+INFO 2025-10-11 18:31:03,518 basehttp 85998 6161444864 "GET /grids/228/ HTTP/1.1" 200 18434
+INFO 2025-10-11 18:31:03,540 basehttp 85998 6195097600 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-11 18:31:03,542 basehttp 85998 6178271232 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 45575
+INFO 2025-10-11 18:31:03,542 basehttp 85998 6211923968 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 45947
+INFO 2025-10-11 18:31:03,544 basehttp 85998 6161444864 "GET /static/css/output.css HTTP/1.1" 200 91107
+INFO 2025-10-11 18:31:03,544 basehttp 85998 6228750336 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-11 18:31:03,723 basehttp 85998 6228750336 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-11 18:33:34,983 autoreload 85998 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-11 18:33:35,398 autoreload 86042 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:33:52,857 autoreload 86042 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-11 18:33:53,217 autoreload 86064 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:34:02,505 autoreload 86064 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-10-11 18:34:02,796 autoreload 86077 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:34:22,303 autoreload 86077 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-11 18:34:22,657 autoreload 86088 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:37:31,611 basehttp 86088 6156513280 "GET /grids/228/ HTTP/1.1" 200 18710
+INFO 2025-10-11 18:37:31,625 basehttp 86088 6190166016 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:37:31,625 basehttp 86088 6156513280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 18:37:31,626 basehttp 86088 6173339648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:37:35,283 project_views_functions 86088 6173339648 User None assigned task: ""Schedule September all team in-person catch up" to Tom " from project: Toad's Team Management Grid
+INFO 2025-10-11 18:37:35,284 basehttp 86088 6173339648 "POST /tasks/2453/assign/ HTTP/1.1" 200 112
+INFO 2025-10-11 18:37:38,776 project_views_functions 86088 6173339648 User None assigned task: ""Schedule September all team in-person catch up" to Test User" from project: Toad's Team Management Grid
+INFO 2025-10-11 18:37:38,777 basehttp 86088 6173339648 "POST /tasks/2453/assign/ HTTP/1.1" 200 124
+INFO 2025-10-11 18:40:17,656 autoreload 86484 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-11 18:40:20,268 basehttp 86484 6168358912 "GET /grids/228/ HTTP/1.1" 200 18887
+INFO 2025-10-11 18:40:20,282 basehttp 86484 6185185280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:40:20,282 basehttp 86484 6168358912 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 18:40:20,282 basehttp 86484 6202011648 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:40:23,197 project_views_functions 86484 6202011648 User None assigned task: ""Schedule September all team in-person catch up" to Tom " from project: Toad's Team Management Grid
+INFO 2025-10-11 18:40:23,198 basehttp 86484 6202011648 "POST /tasks/2453/assign/ HTTP/1.1" 200 112
+INFO 2025-10-11 18:41:49,123 basehttp 86484 6202011648 "GET /grids/228/ HTTP/1.1" 200 18906
+INFO 2025-10-11 18:41:49,147 basehttp 86484 6202011648 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 18:41:49,147 basehttp 86484 6168358912 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 18:41:49,147 basehttp 86484 6185185280 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 19:38:09,135 project_views_functions 86484 6168358912 User None assigned task: ""Schedule September all team in-person catch up" to Tom " from project: Toad's Team Management Grid
+INFO 2025-10-11 19:38:09,136 basehttp 86484 6168358912 "POST /tasks/2453/assign/ HTTP/1.1" 200 112
+INFO 2025-10-11 19:38:12,688 basehttp 86484 6168358912 "GET /grids/226/ HTTP/1.1" 200 19707
+INFO 2025-10-11 19:38:12,707 basehttp 86484 6168358912 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-11 19:38:12,707 basehttp 86484 6202011648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 19:38:12,708 basehttp 86484 6185185280 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-11 19:38:15,240 basehttp 86484 6185185280 "GET /grids/228/ HTTP/1.1" 200 18888
+INFO 2025-10-11 19:38:20,051 project_views_functions 86484 6185185280 User None assigned task: ""Schedule September all team in-person catch up" to Test User" from project: Toad's Team Management Grid
+INFO 2025-10-11 19:38:20,052 basehttp 86484 6185185280 "POST /tasks/2453/assign/ HTTP/1.1" 200 124
+INFO 2025-10-11 19:38:42,693 project_views_functions 86484 6185185280 User None assigned task: ""Schedule September all team in-person catch up" to Tom " from project: Toad's Team Management Grid
+INFO 2025-10-11 19:38:42,694 basehttp 86484 6185185280 "POST /tasks/2453/assign/ HTTP/1.1" 200 112
+INFO 2025-10-11 19:38:50,601 project_views_functions 86484 6185185280 User None assigned task: ""Schedule September all team in-person catch up" to Tom " from project: Toad's Team Management Grid
+INFO 2025-10-11 19:38:50,602 basehttp 86484 6185185280 "POST /tasks/2453/assign/ HTTP/1.1" 200 112

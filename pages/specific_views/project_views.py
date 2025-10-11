@@ -534,6 +534,91 @@ def task_delete_view(request, task_pk):
 
 
 @login_required
+def task_assign_view(request, task_pk):
+    """Assign a task to a team member"""
+    from accounts.models import User
+    
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project', 'assigned_to'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__is_team_toad', 'assigned_to__id']
+    )
+    
+    # Verify this is a team toad project
+    if not task.project.is_team_toad:
+        return JsonResponse({
+            'success': False,
+            'error': 'This is not a team project'
+        }, status=400)
+    
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user_id = data.get('user_id')
+            
+            if not user_id:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'No user specified'
+                }, status=400)
+            
+            # Get the user to assign to
+            try:
+                assign_to_user = User.objects.get(pk=user_id)
+            except User.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User not found'
+                }, status=404)
+            
+            # Verify the user is in the team_toad_user list
+            if not task.project.team_toad_user.filter(pk=user_id).exists():
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User is not a team member'
+                }, status=403)
+            
+            # Assign the task
+            task.assigned_to = assign_to_user
+            task.save()
+            
+            log_user_action(
+                request.user, 
+                'assigned task', 
+                f'"{task.text}" to {assign_to_user.first_name} {assign_to_user.last_name}', 
+                task.project.name
+            )
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Task assigned to {assign_to_user.first_name} {assign_to_user.last_name}',
+                'assigned_to': {
+                    'id': assign_to_user.pk,
+                    'name': f'{assign_to_user.first_name} {assign_to_user.last_name}',
+                    'initials': f'{assign_to_user.first_name[0]}{assign_to_user.last_name[0]}' if assign_to_user.first_name and assign_to_user.last_name else assign_to_user.email[0]
+                }
+            })
+            
+        except json.JSONDecodeError:
+            return JsonResponse({
+                'success': False,
+                'error': 'Invalid JSON data'
+            }, status=400)
+        except Exception as e:
+            logger.error(f'Error assigning task: {e}')
+            return JsonResponse({
+                'success': False,
+                'error': str(e)
+            }, status=500)
+    
+    return JsonResponse({
+        'success': False,
+        'error': 'Invalid request method'
+    }, status=405)
+
+
+@login_required
 def create_task_reminder(request, task_pk):
     """Create a calendar reminder for a task by generating and emailing an ICS file"""
     task = get_user_task_optimized(
