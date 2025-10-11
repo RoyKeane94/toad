@@ -28,7 +28,7 @@
     <div class="flex flex-col sm:flex-row justify-center items-center space-y-6 sm:space-y-0 sm:space-x-8 mb-8 sm:mb-12">
         <!-- Toad Logo -->
         <div class="flex items-center space-x-2 sm:space-x-3">
-            <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-10 w-auto sm:h-12 sm:w-auto drop-shadow-lg">
+            <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-10 w-auto sm:h-12 sm:w-auto">
         </div>
         
         <!-- Plus Sign -->
@@ -47,155 +47,110 @@
     </div>
 
     <!-- Hero Section -->
-    <section>
-        <h1 class="mt-4 text-2xl sm:text-5xl font-extrabold text-[var(--primary-action-bg)] tracking-tight leading-tight px-2">
-            Your secret weapon for a calm and organised year ahead
-        </h1>
-        <p class="mt-4 sm:mt-6 max-w-2xl mx-auto text-base sm:text-xl text-[var(--subtitle-text)] px-2">
-            {{ society_link.name }} has partnered with Toad to give every member a free 6-month Personal plan. Organise your courses, plan your revision, and ace your job applications
-        </p>
-    </section>
     
     <!-- Offer Section -->
-    <section class="mt-6 sm:mt-8">
-        <div class="bg-white border-2 border-[var(--primary-action-bg)] rounded-xl p-4 sm:p-8 max-w-2xl mx-auto shadow-lg">
-            <h2 class="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">Get a free 6-month Personal plan.</h2>
-            <p class="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">As a member of {{ society_link.name }}, you get free access to Toad's Personal plan (£2/month value) for the first two terms. Organise your courses, plan your revision, and ace your job applications.</p>
-            <a href="{% url 'accounts:register_trial' %}?society={{ society_link.name|urlencode }}&university={{ society_link.society_university.name|urlencode }}" class="cta-button mt-4 sm:mt-6 inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-6 sm:px-8 py-3 rounded-lg font-semibold text-base sm:text-lg shadow-md w-full sm:w-auto">
-                Start Your Free 6-Month Trial
-            </a>
-            <p class="mt-3 text-xs text-gray-400">No credit card required • Cancel anytime</p>
-        </div>
-    </section>
+   
 
-    <!-- Student Templates Showcase -->
+    <!-- Student Benefits Section -->
     <section class="mt-12 sm:mt-16">
-        <h3 class="text-xl sm:text-2xl font-bold text-[var(--primary-action-bg)] px-2">See how other students are using Toad</h3>
-        <p class="mt-2 text-base sm:text-lg text-[var(--subtitle-text)] px-2">Your free account comes with pre-built templates designed by students, for students.</p>
+        <h3 class="text-2xl sm:text-4xl font-bold text-[var(--primary-action-bg)] px-2 mb-8">
+            The ultimate tool to organise your studies and ace your job hunt
+        </h3>
         
-        <!-- Templates Carousel -->
-        <div class="mt-6 sm:mt-8 max-w-4xl mx-auto px-1 sm:px-0">
-            <!-- Navigation Arrows - Outside Container -->
-            <div class="flex justify-between items-center mb-4 sm:mb-6">
-                <!-- Desktop arrows -->
-                <button id="prev-btn" class="hidden sm:flex bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-12 h-12 rounded-full shadow-lg items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer" style="border-radius: 50%;">
-                    <i class="fas fa-chevron-left text-lg"></i>
-                </button>
-                <div class="flex-1 mx-0 sm:mx-12">
-                    <!-- Carousel Container -->
-                    <div class="carousel-container overflow-hidden rounded-xl">
-                        <div class="carousel-track flex transition-transform duration-700 ease-in-out" id="carousel-track">
-                            <!-- Course Planner -->
-                            <div class="carousel-slide w-full flex-shrink-0">
-                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
-                                    <div class="text-center mb-2 sm:mb-6">
-                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Course Planner</h4>
-                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Track modules, manage assignments, and never miss a deadline.</p>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <img src="{% static 'gif/Course Planner GIF.gif' %}" 
-                                             alt="Course Planner Preview" 
-                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
-                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
-                                            <div class="text-center">
-                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Course Planner Preview</p>
-                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Revision Planner -->
-                            <div class="carousel-slide w-full flex-shrink-0">
-                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
-                                    <div class="text-center mb-2 sm:mb-6">
-                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Revision Planner</h4>
-                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Plan your revision with what works for you and ace your exams.</p>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <img src="{% static 'gif/Revision Planner GIF.gif' %}" 
-                                             alt="Revision Planner Preview" 
-                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
-                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
-                                            <div class="text-center">
-                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Revision Planner Preview</p>
-                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Essay Planner -->
-                            <div class="carousel-slide w-full flex-shrink-0">
-                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
-                                    <div class="text-center mb-2 sm:mb-6">
-                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Essay Planner</h4>
-                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Structure your essays with a proven framework.</p>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <img src="{% static 'gif/Essay Planner GIF.gif' %}" 
-                                             alt="Essay Planner Preview" 
-                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
-                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
-                                            <div class="text-center">
-                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Essay Planner Preview</p>
-                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Job Application Tracker -->
-                            <div class="carousel-slide w-full flex-shrink-0">
-                                <div class="bg-[var(--container-bg)] p-2 sm:p-8 rounded-xl border border-[var(--border-color)] border-l-4 border-l-[var(--tertiary-action-bg)] mx-1 sm:mx-0 max-w-xs sm:max-w-none">
-                                    <div class="text-center mb-2 sm:mb-6">
-                                        <h4 class="text-base sm:text-2xl font-bold text-[var(--primary-action-bg)] mb-1 sm:mb-3">Job Application Tracker</h4>
-                                        <p class="text-xs sm:text-lg text-[var(--text-secondary)]">Track applications systematically and maximize your success.</p>
-                                    </div>
-                                    <div class="flex justify-center">
-                                        <img src="{% static 'gif/Job Application Tracker GIF.gif' %}" 
-                                             alt="Job Application Tracker Preview" 
-                                             class="w-full h-48 sm:h-96 object-contain rounded-lg shadow-lg" 
-                                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                                        <div class="w-full h-48 sm:h-96 bg-gray-100 rounded-lg flex items-center justify-center border border-[var(--border-color)]" style="display: none;">
-                                            <div class="text-center">
-                                                <p class="text-gray-500 text-sm sm:text-lg mb-2">Job Application Tracker Preview</p>
-                                                <p class="text-gray-400 text-xs sm:text-sm">Template preview coming soon</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <!-- Benefits Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
+            <!-- Benefit 1: Semester Dashboard -->
+            <div class="text-center">
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style="background-color: var(--primary-action-bg);">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
                     </div>
                 </div>
-                <button id="next-btn" class="hidden sm:flex bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-12 h-12 rounded-full shadow-lg items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer" style="border-radius: 50%;">
-                    <i class="fas fa-chevron-right text-lg"></i>
-                </button>
+                <h4 class="text-xl font-bold mb-4 text-[var(--primary-action-bg)]">
+                    Your Semester Dashboard
+                </h4>
+                <p class="text-gray-600 leading-relaxed">
+                    See all your courses, deadlines, and revision plans in one place. Toad's simple grid gives you a clear overview of your entire semester, so you never miss a deadline again.
+                </p>
+            </div>
+
+            <!-- Benefit 2: Ace Your Assignments -->
+            <div class="text-center">
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style="background-color: var(--primary-action-bg);">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h4 class="text-xl font-bold mb-4 text-[var(--primary-action-bg)]">
+                    Ace Your Assignments
+                </h4>
+                <p class="text-gray-600 leading-relaxed">
+                    Go beyond a simple checklist. Break down that daunting 5,000-word essay or final year project into manageable steps. Track your research, outlines, and drafts to ensure you stay on track for a first-class mark.
+                </p>
+            </div>
+
+            <!-- Benefit 3: Career Launcher -->
+            <div class="text-center">
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style="background-color: var(--primary-action-bg);">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <h4 class="text-xl font-bold mb-4 text-[var(--primary-action-bg)]">
+                    Your Career Launcher
+                </h4>
+                <p class="text-gray-600 leading-relaxed">
+                    Managing your job hunt is a project in itself. Track every internship and graduate scheme application, from initial contact to final interview. Stay on top of your networking and never drop the ball on a follow-up.
+                </p>
+            </div>
+        </div>
+        <section class="mt-6 sm:mt-8">
+            <div class="bg-white border-2 border-[var(--primary-action-bg)] rounded-xl p-4 sm:p-8 max-w-2xl mx-auto shadow-lg">
+                <h2 class="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">Get a free 6-month Personal plan.</h2>
+                <p class="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">As a member of {{ society_link.name }}, you get free access to Toad's Personal plan (£2/month value) for the first two terms. Organise your courses, plan your revision, and ace your job applications.</p>
+                <a href="{% url 'accounts:register_trial' %}?society={{ society_link.name|urlencode }}&university={{ society_link.society_university.name|urlencode }}" class="cta-button mt-4 sm:mt-6 inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-8 sm:px-12 py-3 sm:py-4 rounded-lg font-bold text-lg sm:text-xl shadow-lg w-full sm:w-auto">
+                    Start Your Free 6-Month Trial
+                </a>
+                <p class="mt-3 text-xs text-gray-400">No credit card required • Cancel anytime</p>
+            </div>
+        </section>
+
+
+    <!-- Student Video Section -->
+    <section class="mt-12 sm:mt-16">
+        <h3 class="text-2xl sm:text-4xl font-bold px-2 mb-6" style="color: var(--tertiary-action-bg);">Click play to see how Students are using Toad to organise their studies right now</h3>
+        
+        <!-- Video Container -->
+        <div class="mt-6 sm:mt-8 max-w-4xl mx-auto px-1 sm:px-0">
+            <!-- Play Button (Initial State) -->
+            <div id="video-thumbnail" class="flex justify-center" onclick="expandVideo()">
+                <div class="bg-white rounded-full p-4 sm:p-5 shadow-lg cursor-pointer group hover:shadow-xl transform hover:scale-110 transition-all duration-300">
+                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[var(--primary-action-bg)] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </div>
             </div>
             
-            <!-- Mobile Navigation Buttons -->
-            <div class="flex sm:hidden justify-center mt-4 space-x-4">
-                <button id="mobile-prev-btn" class="bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110" style="border-radius: 50%;">
-                    <i class="fas fa-chevron-left text-sm"></i>
-                </button>
-                <button id="mobile-next-btn" class="bg-white/90 hover:bg-white text-[var(--primary-action-bg)] w-10 h-10 rounded-full shadow-lg flex items-center justify-center transition-all duration-200 hover:scale-110" style="border-radius: 50%;">
-                    <i class="fas fa-chevron-right text-sm"></i>
-                </button>
-            </div>
-            
-            <!-- Dots Indicator -->
-            <div class="flex justify-center mt-4 sm:mt-6 space-x-2">
-                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-[var(--primary-action-bg)] transition-all duration-200" data-slide="0"></button>
-                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-200" data-slide="1"></button>
-                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-200" data-slide="2"></button>
-                <button class="carousel-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 hover:bg-gray-400 transition-all duration-200" data-slide="3"></button>
+            <!-- Full Screen Video Modal (Hidden Initially) -->
+            <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" onclick="closeVideo()">
+                <div class="relative w-full h-full max-w-6xl max-h-full">
+                    <video id="student-video" class="w-full h-full object-contain" preload="none" onclick="event.stopPropagation()">
+                        <source src="{% static 'video/Student - Video Highlights.mp4' %}" type="video/mp4">
+                    </video>
+                    
+                    <!-- Close Button -->
+                    <button onclick="closeVideo()" class="absolute top-4 right-4 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-all duration-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
         
@@ -217,163 +172,54 @@
         currentYearElement.textContent = new Date().getFullYear();
     }
     
-    // Carousel functionality
+    // Video functionality
     document.addEventListener('DOMContentLoaded', function() {
-        let currentSlide = 0;
-        const totalSlides = 4;
-        const track = document.getElementById('carousel-track');
-        const dots = document.querySelectorAll('.carousel-dot');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
-        const mobilePrevBtn = document.getElementById('mobile-prev-btn');
-        const mobileNextBtn = document.getElementById('mobile-next-btn');
+        const video = document.getElementById('student-video');
         
-        console.log('Carousel elements found:', { track, dots, prevBtn, nextBtn, mobilePrevBtn, mobileNextBtn });
+        if (video) {
+            // Auto-play when video is loaded and visible
+            video.addEventListener('loadeddata', function() {
+                video.play();
+            });
+        }
+    });
+    
+    // Function to expand video (called from onclick)
+    function expandVideo() {
+        const modal = document.getElementById('video-modal');
+        const video = document.getElementById('student-video');
         
-        function updateCarousel() {
-            if (!track) return;
+        if (modal && video) {
+            // Show modal
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
             
-            const translateX = -currentSlide * 100;
-            track.style.transform = `translateX(${translateX}%)`;
+            // Load and play video
+            video.load();
+            video.play();
+        }
+    }
+    
+    // Function to close video
+    function closeVideo() {
+        const modal = document.getElementById('video-modal');
+        const video = document.getElementById('student-video');
+        
+        if (modal && video) {
+            // Hide modal
+            modal.classList.add('hidden');
+            document.body.style.overflow = ''; // Restore background scrolling
             
-            // Update dots
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.remove('bg-gray-300', 'hover:bg-gray-400');
-                    dot.classList.add('bg-[var(--primary-action-bg)]');
-                } else {
-                    dot.classList.remove('bg-[var(--primary-action-bg)]');
-                    dot.classList.add('bg-gray-300', 'hover:bg-gray-400');
-                }
-            });
-            
-            // Update button states
-            if (prevBtn) prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
-            if (nextBtn) nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
+            // Pause video
+            video.pause();
         }
-        
-        function goToSlide(slideIndex) {
-            currentSlide = slideIndex;
-            updateCarousel();
+    }
+    
+    // Close video on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeVideo();
         }
-        
-        function nextSlide() {
-            if (currentSlide < totalSlides - 1) {
-                currentSlide++;
-            } else {
-                currentSlide = 0; // Loop back to start
-            }
-            updateCarousel();
-        }
-        
-        function prevSlide() {
-            if (currentSlide > 0) {
-                currentSlide--;
-            } else {
-                currentSlide = totalSlides - 1; // Loop to end
-            }
-            updateCarousel();
-        }
-        
-        // Event listeners for desktop buttons
-        if (nextBtn) {
-            nextBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Next button clicked');
-                nextSlide();
-            });
-        }
-        
-        if (prevBtn) {
-            prevBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Prev button clicked');
-                prevSlide();
-            });
-        }
-        
-        // Event listeners for mobile buttons
-        if (mobileNextBtn) {
-            mobileNextBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Mobile next button clicked');
-                nextSlide();
-            });
-        }
-        
-        if (mobilePrevBtn) {
-            mobilePrevBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Mobile prev button clicked');
-                prevSlide();
-            });
-        }
-        
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('Dot clicked:', index);
-                goToSlide(index);
-            });
-        });
-        
-        // Auto-play
-        let autoPlayInterval = setInterval(() => {
-            console.log('Auto-play: moving to next slide');
-            nextSlide();
-        }, 8000); // Change slide every 8 seconds
-        
-        // Pause auto-play on hover
-        const carouselContainer = document.querySelector('.carousel-container');
-        if (carouselContainer) {
-            carouselContainer.addEventListener('mouseenter', () => {
-                clearInterval(autoPlayInterval);
-                console.log('Auto-play paused');
-            });
-            
-            carouselContainer.addEventListener('mouseleave', () => {
-                autoPlayInterval = setInterval(() => {
-                    console.log('Auto-play: moving to next slide');
-                    nextSlide();
-                }, 8000);
-                console.log('Auto-play resumed');
-            });
-        }
-        
-        // Touch support for mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        if (track) {
-            track.addEventListener('touchstart', function(e) {
-                touchStartX = e.changedTouches[0].screenX;
-                console.log('Touch start:', touchStartX);
-            });
-            
-            track.addEventListener('touchend', function(e) {
-                touchEndX = e.changedTouches[0].screenX;
-                const swipeThreshold = 50; // Minimum distance for a swipe
-                const diff = touchStartX - touchEndX;
-                
-                console.log('Touch end:', touchEndX, 'Diff:', diff);
-                
-                if (Math.abs(diff) > swipeThreshold) {
-                    if (diff > 0) {
-                        // Swiped left - go to next slide
-                        console.log('Swipe left - next slide');
-                        nextSlide();
-                    } else {
-                        // Swiped right - go to previous slide
-                        console.log('Swipe right - prev slide');
-                        prevSlide();
-                    }
-                }
-            });
-        }
-        
-        // Initialize carousel
-        updateCarousel();
-        console.log('Carousel initialized');
     });
 </script>
 {% endblock %}
