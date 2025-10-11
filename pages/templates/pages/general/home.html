@@ -30,10 +30,10 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="min-h-[80vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-4 bg-white">
+<div class="min-h-[80vh] sm:min-h-[80vh] flex flex-col items-center justify-start px-4 pt-8 bg-white">
     <!-- Initial Logo and Text (shown first) -->
     <div id="initial-content" class="text-center">
-        <div class="mb-6" id="logo-container" style="opacity: 0;">
+        <div class="mb-2" id="logo-container" style="opacity: 0;">
             <div class="w-48 h-48 sm:w-64 sm:h-64 mx-auto">
                 <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
             </div>
@@ -43,7 +43,7 @@
             <span style="color: var(--primary-action-bg);"> have a job to do.</span>
         </h1>
         <!-- Join Button -->
-        <div id="join-button" class="text-center" style="opacity: 0;">
+        <div id="join-button" class="text-center mt-12 sm:mt-16" style="opacity: 0;">
             <a href="{% url 'accounts:register_choices' %}"
                class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-[var(--primary-action-text)]"
                style="background: var(--tertiary-action-bg);"
@@ -54,118 +54,201 @@
     </div>
 
     <!-- Video Section (hidden initially) -->
-    <div id="video-container" class="w-full max-w-5xl relative" style="opacity: 0; display: none;">
+    <div id="video-container" class="w-full relative" style="opacity: 0; display: none;">
         <video id="hero-video" class="w-full h-auto object-contain" 
                muted 
                playsinline>
             <source src="{% static 'video/Home -Hero Video.mp4' %}" type="video/mp4">
         </video>
-        <!-- Dark Overlay on Video -->
-        <div class="absolute inset-0 bg-black opacity-60 pointer-events-none"></div>
+    </div>
+
+    <!-- Mobile Screenshot Section (hidden initially) -->
+    <div id="mobile-screenshot-container" class="w-full max-w-sm mx-auto mt-16" style="opacity: 0; display: none;">
+        <img src="{% static 'img/home/Mobile Home Screenshot.png' %}" alt="Mobile Toad App Screenshot" class="w-full h-auto object-contain rounded-lg">
     </div>
 </div>
 
-<!-- Interactive Use Case Section -->
-<section id="use-case-section" class="pt-8 pb-16 sm:pt-12 sm:pb-24 mt-2 sm:mt-6 mb-10 opacity-0 translate-y-8 transition-all duration-700" style="background: var(--primary-action-bg);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold" style="color: #fff;">The surprising power of a simple grid</h2>
-            <div class="mt-6 mb-10 max-w-3xl mx-auto">
-                <p class="text-lg" style="color: var(--container-bg);">
-                    Toad's simple grid helps you organise anything, from your job search to your next big project. Start with a pre-built template or a blank canvas and build the simple grid you need
+<!-- New Content Section -->
+<section id="green-section" class="min-h-screen opacity-0 translate-y-8 transition-all duration-700" style="background-color: oklch(0.99 0.005 106);">
+    <!-- Hero Section -->
+    <div class="container mx-auto px-4 py-20 md:py-32">
+        <div class="max-w-5xl mx-auto text-center space-y-8">
+            <!-- Animated Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 text-sm font-medium text-gray-700 mb-4 mt-8">
+                <span class="relative flex h-2 w-2">
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                The antidote to complexity
+            </div>
+
+            <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-gray-900">
+                Tired of tools that are <span style="color: var(--primary-action-bg);">more work</span> than the work itself?
+            </h1>
+
+            <p class="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                The feature fatigue, the mandatory onboarding, the endless notifications. Most "productivity" tools become
+                the very thing they're supposed to solve: a distraction.
+            </p>
+
+            <div class="pt-4">
+                <p class="text-lg font-semibold mb-6 text-gray-900">We believe in the opposite.</p>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Toad is the antidote to complexity. It's built on one ruthless principle: give you exactly what you need
+                    to get organised, and nothing you don't.
                 </p>
             </div>
         </div>
-        <div class="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-center">
-            <!-- Left Column: Text Triggers -->
-            <div class="lg:col-span-1 space-y-6">
-                <div id="persona-students" class="persona-trigger active cursor-pointer p-4 rounded-lg border persona-box" style="border-color: var(--border-color); background: var(--container-bg); transition: box-shadow 0.2s, border-left-width 0.2s, border-left-color 0.2s; border-left-width: 6px; border-left-color: transparent;">
-                    <h3 class="text-lg font-semibold persona-title" style="color: var(--text-primary); transition: color 0.2s;">For Students</h3>
-                    <ul class="text-sm mt-2 space-y-2" style="color: var(--text-secondary); list-style: none; padding: 0;">
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Track job applications and internships</li>
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Plan revision and manage deadlines</li>
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Organise group projects and coursework</li>
-                    </ul>
+    </div>
+
+    <!-- Main Value Prop -->
+    <div class="container mx-auto px-4 py-20">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-6xl font-bold text-center mt-12 mb-20 text-gray-900">
+                Your entire world, <span style="color: var(--primary-action-bg);">on one simple grid.</span>
+            </h2>
+
+            <!-- Feature Cards -->
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="p-8 space-y-4 border-2 border-gray-200 hover:border-green-300 transition-colors rounded-xl bg-white shadow-sm">
+                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2a2 2 0 002-2z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">The Visual Command Center</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        See all your projects, clients, and deadlines at a glance. Toad's "matrix of checklists" gives you
+                        complete visibility without the overwhelm.
+                    </p>
                 </div>
-                <div id="persona-professionals" class="persona-trigger cursor-pointer p-4 rounded-lg border persona-box" style="border-color: var(--border-color); background: var(--container-bg); transition: box-shadow 0.2s, border-left-width 0.2s, border-left-color 0.2s; border-left-width: 6px; border-left-color: transparent;">
-                    <h3 class="text-lg font-semibold persona-title" style="color: var(--text-primary); transition: color 0.2s;">For Professionals</h3>
-                    <ul class="text-sm mt-2 space-y-2" style="color: var(--text-secondary); list-style: none; padding: 0;">
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Manage client projects and deliverables</li>
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Track personal goals and habits</li>
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Plan your week without corporate clutter</li>
-                    </ul>
+
+                <!-- Card 2 -->
+                <div class="p-8 space-y-4 border-2 border-gray-200 hover:border-green-300 transition-colors rounded-xl bg-white shadow-sm">
+                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">Radical Simplicity</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        No induction needed. Ever. Toad is so intuitive you can sign up and have your first project running in
+                        under 60 seconds.
+                    </p>
                 </div>
-                <div id="persona-entrepreneurs" class="persona-trigger cursor-pointer p-4 rounded-lg border persona-box" style="border-color: var(--border-color); background: var(--container-bg); transition: box-shadow 0.2s, border-left-width 0.2s, border-left-color 0.2s; border-left-width: 6px; border-left-color: transparent;">
-                    <h3 class="text-lg font-semibold persona-title" style="color: var(--text-primary); transition: color 0.2s;">For Entrepreneurs</h3>
-                    <ul class="text-sm mt-2 space-y-2" style="color: var(--text-secondary); list-style: none; padding: 0;">
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Validate your business idea</li>
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Create a launch plan and roadmap</li>
-                        <li class="flex items-start gap-2"><span class="mt-1 text-[var(--primary-action-bg)]"><i class="fas fa-check-circle"></i></span>Manage marketing and growth tasks</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Right Column: Image Showcase -->
-            <div id="showcase-image-container" class="lg:col-span-2 mt-10 lg:mt-0 flex flex-col items-center">
-                <img id="showcase-image" src="https://storage.googleapis.com/gemini-prod-us-west1-assets/image_b9f7c3.png" alt="A screenshot of a Toad grid for students" class="rounded-xl shadow-2xl ring-1 ring-black/5 max-w-full h-auto" style="box-shadow: 0 8px 32px 0 rgba(16,185,129,0.15); border: 2px solid var(--primary-action-bg);">
-                <video id="showcase-video" class="rounded-xl shadow-2xl ring-1 ring-black/5 max-w-full h-auto" style="box-shadow: 0 8px 32px 0 rgba(16,185,129,0.15); border: 2px solid var(--primary-action-bg); display: none;" autoplay muted loop playsinline></video>
-                <div class="mt-6 text-center">
-                    <a href="{% url 'pages:templates_overview' %}" 
-                       class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white"
-                       style="background-color: var(--tertiary-action-bg);"
-                       onmouseover="this.style.backgroundColor='#e65c36'" onmouseout="this.style.backgroundColor='var(--tertiary-action-bg)'">
-                        Browse Templates
-                    </a>
+
+                <!-- Card 3 -->
+                <div class="p-8 space-y-4 border-2 border-gray-200 hover:border-green-300 transition-colors rounded-xl bg-white shadow-sm">
+                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900">More Than a To-Do List</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Go beyond simple tasks. Manage multi-stage projects, from a product launch to a wedding, all in one
+                        beautifully simple interface.
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Radically Simple. Surprisingly Powerful. Section -->
-<section class="pt-2 pb-6 bg-[var(--container-bg)]">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-6">
-            <h2 class="text-3xl sm:text-6xl font-bold" style="color: var(--tertiary-action-bg);">Radically Simple</h2>
-            <h2 class="text-3xl sm:text-6xl font-bold mt-2" style="color: var(--tertiary-action-bg);">Surprisingly Powerful</h2>
+<!-- Perfect Fit Section -->
+<section class="py-16 sm:py-24 bg-white">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-8">
+                A perfect fit for the <span style="color: var(--tertiary-action-bg);">work you actually do.</span>
+            </h2>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <!-- Box 1 -->
-            <div class="bg-white border border-[var(--border-color)] rounded-xl shadow-sm p-8 flex flex-col items-center text-center">
-                <div class="mb-4 text-[var(--primary-action-bg)]">
-                    <i class="fas fa-magic fa-2x"></i>
+
+        <!-- Three Columns -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            <!-- Column 1: Founders & Entrepreneurs -->
+            <div class="text-center">
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style="background-color: var(--tertiary-action-bg);">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold mb-2" style="color: var(--primary-action-bg);">Purposefully Simple</h3>
-                <p class="text-[var(--text-secondary)] text-base">We believe software should get out of your way. No complexity, no distractions.</p>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">
+                    Founders & Entrepreneurs
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Map out your product launch, track growth experiments, and manage your entire business from one simple grid.
+                </p>
             </div>
-            <!-- Box 2 -->
-            <div class="bg-white border border-[var(--border-color)] rounded-xl shadow-sm p-8 flex flex-col items-center text-center">
-                <div class="mb-4 text-[var(--primary-action-bg)]">
-                    <i class="fas fa-bullseye fa-2x"></i>
+
+            <!-- Column 2: Freelancers & Creators -->
+            <div class="text-center">
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style="background-color: var(--tertiary-action-bg);">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold mb-2" style="color: var(--primary-action-bg);">Find Your Focus</h3>
-                <p class="text-[var(--text-secondary)] text-base">A clear grid provides a clear mind. See everything at once and focus on what's next.</p>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">
+                    Freelancers & Creators
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Manage your client pipeline, plan your content calendar, and track project deadlines with beautiful clarity.
+                </p>
             </div>
-            <!-- Box 3 -->
-            <div class="bg-white border border-[var(--border-color)] rounded-xl shadow-sm p-8 flex flex-col items-center text-center">
-                <div class="mb-4 text-[var(--primary-action-bg)]">
-                    <i class="fas fa-heart fa-2x"></i>
+
+            <!-- Column 3: Students & Academics -->
+            <div class="text-center">
+                <div class="mb-6">
+                    <div class="w-16 h-16 mx-auto rounded-full flex items-center justify-center" style="background-color: var(--tertiary-action-bg);">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"></path>
+                        </svg>
+                    </div>
                 </div>
-                <h3 class="text-xl font-semibold mb-2" style="color: var(--primary-action-bg);">Thoughtfully Crafted</h3>
-                <p class="text-[var(--text-secondary)] text-base">We obsess over the details that make Toad feel responsive and delightful to use.</p>
+                <h3 class="text-2xl font-bold mb-4 text-gray-900">
+                    Students & Academics
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                    Organize your courses, plan your essays, and track your revision. Finally, a clear view of your entire semester.
+                </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Bottom Call to Action -->
-<div class="max-w-lg mx-auto mt-6 mb-12 text-center">
-    <a href="{% url 'accounts:register_choices' %}"
-       class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-[var(--primary-action-text)]"
-       style="background: var(--tertiary-action-bg);"
-       onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
-        Join Today for Free
-    </a>
-</div>
+<!-- Call to Action Section -->
+<section class="py-16 sm:py-24" style="background-color: oklch(0.99 0.005 106);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
+            Ready to <span style="color: var(--primary-action-bg);">simplify your workflow?</span>
+        </h2>
+        <p class="text-xl text-gray-600 mb-12">
+            Join thousands who've ditched complexity for clarity.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="{% url 'accounts:register_choices' %}"
+               class="inline-block w-full sm:w-auto px-8 py-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white text-center"
+               style="background: var(--primary-action-bg);"
+               onmouseover="this.style.background='var(--primary-action-hover-bg)'" 
+               onmouseout="this.style.background='var(--primary-action-bg)'">
+                Try Toad today for free
+            </a>
+            <a href="{% url 'pages:templates_overview' %}"
+               class="inline-block w-full sm:w-auto px-8 py-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-gray-900 bg-white border border-gray-300 text-center"
+               onmouseover="this.style.backgroundColor='#f9fafb'" 
+               onmouseout="this.style.backgroundColor='white'">
+                See how other users are benefitting from Toad
+            </a>
+        </div>
+    </div>
+</section>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -176,74 +259,100 @@
         const initialContent = document.getElementById('initial-content');
         const videoContainer = document.getElementById('video-container');
         const heroVideo = document.getElementById('hero-video');
+        const mobileScreenshotContainer = document.getElementById('mobile-screenshot-container');
         
-        // Phase 1: Show logo and text (no button yet)
+        // Check if we're on mobile
+        const isMobile = window.innerWidth < 768;
+        
+        // Phase 1: Show logo and text (button only on mobile initially)
         initialContent.style.display = 'block';
         setTimeout(() => {
             logoContainer.style.opacity = '1';
             logoContainer.style.transition = 'opacity 0.8s ease-out';
-        }, 100);
-        
-        setTimeout(() => {
             initialText.style.opacity = '1';
             initialText.style.transition = 'opacity 0.8s ease-out';
-        }, 400);
-        
-        // Phase 2: After 3 seconds, switch to video
-        setTimeout(() => {
-            // Fade out initial content
-            initialContent.style.opacity = '0';
-            initialContent.style.transition = 'opacity 0.5s ease-out';
             
-            setTimeout(() => {
-                // Hide initial content completely
-                initialContent.style.display = 'none';
-                
-                // Show and fade in video
-                videoContainer.style.display = 'block';
-                videoContainer.style.opacity = '0';
+            // Only show button on mobile initially
+            if (isMobile) {
+                joinButton.style.opacity = '1';
+                joinButton.style.transition = 'opacity 0.8s ease-out';
+            }
+        }, 100);
+        
+        // Phase 2: After 3 seconds, switch based on device
+        setTimeout(() => {
+            if (isMobile) {
+                // Mobile: Show screenshot and scroll to it
+                mobileScreenshotContainer.style.display = 'block';
+                mobileScreenshotContainer.style.opacity = '0';
                 setTimeout(() => {
-                    videoContainer.style.opacity = '1';
-                    videoContainer.style.transition = 'opacity 0.8s ease-out';
-                    // Start video playback
-                    heroVideo.play();
-                }, 50);
-            }, 500);
+                    mobileScreenshotContainer.style.opacity = '1';
+                    mobileScreenshotContainer.style.transition = 'opacity 0.8s ease-out';
+                    
+                    // Smooth scroll to screenshot
+                    mobileScreenshotContainer.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }, 100);
+            } else {
+                // Desktop: Show video
+                // Fade out initial content
+                initialContent.style.opacity = '0';
+                initialContent.style.transition = 'opacity 0.5s ease-out';
+                
+                setTimeout(() => {
+                    // Hide initial content completely
+                    initialContent.style.display = 'none';
+                    
+                    // Show and fade in video
+                    videoContainer.style.display = 'block';
+                    videoContainer.style.opacity = '0';
+                    setTimeout(() => {
+                        videoContainer.style.opacity = '1';
+                        videoContainer.style.transition = 'opacity 0.8s ease-out';
+                        // Start video playback
+                        heroVideo.play();
+                    }, 50);
+                }, 500);
+            }
         }, 3000);
         
-        // Phase 3: When video ends, show logo + text + button (final state)
-        heroVideo.addEventListener('ended', function() {
-            // Fade out video
-            videoContainer.style.opacity = '0';
-            videoContainer.style.transition = 'opacity 0.5s ease-out';
-            
-            setTimeout(() => {
-                videoContainer.style.display = 'none';
-                
-                // Show initial content again with button
-                initialContent.style.display = 'block';
-                initialContent.style.opacity = '0';
-                logoContainer.style.opacity = '0';
-                initialText.style.opacity = '0';
+        // Phase 3: Desktop only - when video ends, show logo + text + button (final state)
+        if (!isMobile) {
+            heroVideo.addEventListener('ended', function() {
+                // Fade out video
+                videoContainer.style.opacity = '0';
+                videoContainer.style.transition = 'opacity 0.5s ease-out';
                 
                 setTimeout(() => {
-                    initialContent.style.opacity = '1';
-                    initialContent.style.transition = 'opacity 0.8s ease-out';
-                    logoContainer.style.opacity = '1';
-                    logoContainer.style.transition = 'opacity 0.8s ease-out';
-                }, 100);
-                
-                setTimeout(() => {
-                    initialText.style.opacity = '1';
-                    initialText.style.transition = 'opacity 0.8s ease-out';
-                }, 400);
-                
-                setTimeout(() => {
-                    joinButton.style.opacity = '1';
-                    joinButton.style.transition = 'opacity 0.8s ease-out';
-                }, 700);
-            }, 500);
-        });
+                    videoContainer.style.display = 'none';
+                    
+                    // Show initial content again with button
+                    initialContent.style.display = 'block';
+                    initialContent.style.opacity = '0';
+                    logoContainer.style.opacity = '0';
+                    initialText.style.opacity = '0';
+                    
+                    setTimeout(() => {
+                        initialContent.style.opacity = '1';
+                        initialContent.style.transition = 'opacity 0.8s ease-out';
+                        logoContainer.style.opacity = '1';
+                        logoContainer.style.transition = 'opacity 0.8s ease-out';
+                    }, 100);
+                    
+                    setTimeout(() => {
+                        initialText.style.opacity = '1';
+                        initialText.style.transition = 'opacity 0.8s ease-out';
+                    }, 400);
+                    
+                    setTimeout(() => {
+                        joinButton.style.opacity = '1';
+                        joinButton.style.transition = 'opacity 0.8s ease-out';
+                    }, 700);
+                }, 500);
+            });
+        }
     });
 </script>
 
@@ -334,19 +443,34 @@
         });
     });
 
-    // Intersection Observer for fade-in
+    // Intersection Observer for fade-in sections
+    const greenSection = document.getElementById('green-section');
     const useCaseSection = document.getElementById('use-case-section');
+    
+    if (greenSection) {
+        const greenObserver = new window.IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    greenSection.classList.remove('opacity-0', 'translate-y-8');
+                    greenSection.classList.add('opacity-100', 'translate-y-0');
+                    greenObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.2 });
+        greenObserver.observe(greenSection);
+    }
+    
     if (useCaseSection) {
-        const observer = new window.IntersectionObserver((entries) => {
+        const useCaseObserver = new window.IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     useCaseSection.classList.remove('opacity-0', 'translate-y-8');
                     useCaseSection.classList.add('opacity-100', 'translate-y-0');
-                    observer.disconnect();
+                    useCaseObserver.disconnect();
                 }
             });
         }, { threshold: 0.2 });
-        observer.observe(useCaseSection);
+        useCaseObserver.observe(useCaseSection);
     }
 })();
 </script>
