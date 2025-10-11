@@ -1,0 +1,230 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">Feedback Details</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Submitted on {{ feedback.created_at|date:"F j, Y \a\t g:i A" }}
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:feedback_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- User Information -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-6">
+            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">
+                <i class="fas fa-user-circle mr-2"></i>
+                User Information
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)] mb-1">User Account</p>
+                    {% if feedback.user %}
+                    <p class="text-base text-[var(--text-primary)]">
+                        <i class="fas fa-user mr-2 text-blue-600"></i>
+                        {{ feedback.user.email }}
+                    </p>
+                    {% else %}
+                    <p class="text-base text-[var(--text-secondary)] italic">
+                        <i class="fas fa-user-secret mr-2"></i>
+                        Not logged in
+                    </p>
+                    {% endif %}
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)] mb-1">Name</p>
+                    {% if feedback.name %}
+                    <p class="text-base text-[var(--text-primary)]">
+                        <i class="fas fa-user-circle mr-2 text-green-600"></i>
+                        {{ feedback.name }}
+                    </p>
+                    {% else %}
+                    <p class="text-base text-[var(--text-secondary)] italic">
+                        Anonymous
+                    </p>
+                    {% endif %}
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)] mb-1">IP Address</p>
+                    {% if feedback.ip_address %}
+                    <p class="text-base text-[var(--text-primary)] font-mono">
+                        {{ feedback.ip_address }}
+                    </p>
+                    {% else %}
+                    <p class="text-base text-[var(--text-secondary)] italic">Not recorded</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <p class="text-sm font-medium text-[var(--text-secondary)] mb-1">Submission Date</p>
+                    <p class="text-base text-[var(--text-primary)]">
+                        {{ feedback.created_at|date:"F j, Y \a\t g:i A" }}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Core Feedback -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-6">
+            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">
+                <i class="fas fa-comment-dots mr-2"></i>
+                Core Feedback
+            </h2>
+            
+            <!-- Using Toad Status -->
+            <div class="mb-6 p-4 rounded-lg {% if feedback.regularly_using_toad %}bg-green-50 border border-green-200{% else %}bg-red-50 border border-red-200{% endif %}">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">Are they regularly using Toad?</p>
+                <p class="text-2xl font-bold {% if feedback.regularly_using_toad %}text-green-700{% else %}text-red-700{% endif %}">
+                    {% if feedback.regularly_using_toad %}
+                    <i class="fas fa-check-circle mr-2"></i>YES
+                    {% else %}
+                    <i class="fas fa-times-circle mr-2"></i>NO
+                    {% endif %}
+                </p>
+            </div>
+            
+            <!-- Usage Reason -->
+            {% if feedback.usage_reason %}
+            <div class="mb-6">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">If yes, why? If not, why not?</p>
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                    <p class="text-base text-[var(--text-primary)] whitespace-pre-wrap">{{ feedback.usage_reason }}</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Organization Preferences -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-6">
+            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">
+                <i class="fas fa-tasks mr-2"></i>
+                Organization Preferences
+            </h2>
+            
+            {% if feedback.organization_method %}
+            <div class="mb-4">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">How do they tend to organize?</p>
+                <p class="text-lg text-[var(--text-primary)]">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                        {{ feedback.get_organization_method_display }}
+                    </span>
+                    {% if feedback.organization_other %}
+                    <span class="ml-2 text-base text-[var(--text-secondary)]">
+                        ({{ feedback.organization_other }})
+                    </span>
+                    {% endif %}
+                </p>
+            </div>
+            {% else %}
+            <p class="text-base text-[var(--text-secondary)] italic">Not specified</p>
+            {% endif %}
+        </div>
+
+        <!-- Improvement Suggestions -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-6">
+            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">
+                <i class="fas fa-lightbulb mr-2"></i>
+                Improvement Suggestions
+            </h2>
+            
+            <!-- Non-User Suggestion -->
+            {% if feedback.non_user_suggestion %}
+            <div class="mb-6">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">
+                    What would make them use Toad?
+                </p>
+                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <p class="text-base text-[var(--text-primary)] whitespace-pre-wrap">{{ feedback.non_user_suggestion }}</p>
+                </div>
+            </div>
+            {% endif %}
+            
+            <!-- User Improvement -->
+            {% if feedback.user_improvement %}
+            <div class="mb-6">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">
+                    What could make Toad better?
+                </p>
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <p class="text-base text-[var(--text-primary)] whitespace-pre-wrap">{{ feedback.user_improvement }}</p>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if not feedback.non_user_suggestion and not feedback.user_improvement %}
+            <p class="text-base text-[var(--text-secondary)] italic">No suggestions provided</p>
+            {% endif %}
+        </div>
+
+        <!-- Team Toad Interest -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-6">
+            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">
+                <i class="fas fa-users mr-2"></i>
+                Team Toad & Sharing
+            </h2>
+            
+            <!-- Team Toad Interest -->
+            {% if feedback.team_toad_interest %}
+            <div class="mb-6">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">
+                    Interest in Team Toad
+                </p>
+                <div class="p-4 bg-purple-50 rounded-lg border border-purple-200">
+                    <p class="text-base text-[var(--text-primary)] whitespace-pre-wrap">{{ feedback.team_toad_interest }}</p>
+                </div>
+            </div>
+            {% else %}
+            <div class="mb-6">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">Interest in Team Toad</p>
+                <p class="text-base text-[var(--text-secondary)] italic">No response provided</p>
+            </div>
+            {% endif %}
+            
+            <!-- Would Share -->
+            <div class="p-4 rounded-lg {% if feedback.would_share %}bg-green-50 border border-green-200{% else %}bg-gray-50 border border-gray-200{% endif %}">
+                <p class="text-sm font-medium text-[var(--text-secondary)] mb-2">
+                    Would they share Toad with friends/colleagues?
+                </p>
+                <p class="text-xl font-bold {% if feedback.would_share %}text-green-700{% else %}text-gray-600{% endif %}">
+                    {% if feedback.would_share %}
+                    <i class="fas fa-check-circle mr-2"></i>YES
+                    {% else %}
+                    <i class="fas fa-minus-circle mr-2"></i>NO
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex justify-between items-center">
+            <a href="{% url 'crm:feedback_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Feedback List
+            </a>
+            
+            {% if feedback.user.email %}
+            <a href="mailto:{{ feedback.user.email }}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                <i class="fas fa-envelope mr-2"></i>
+                Reply to User
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

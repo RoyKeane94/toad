@@ -3,8 +3,9 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpResponse
 from django.contrib import messages
 from django.urls import reverse
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink
-from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, SocietyUniversityForm
+from django.db import models
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback
+from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, SocietyUniversityForm, FeedbackForm
 from django.core.files.base import ContentFile
 
 # Create your views here.
@@ -668,3 +669,97 @@ def load_southampton_economics_template(request):
     
     # Redirect to the new project
     return redirect('pages:project_grid', pk=project.pk)
+
+# Feedback Views
+def feedback_form(request):
+    """
+    Public feedback form - accessible to anyone (anonymous or logged in).
+    """
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            
+            # Attach user if logged in
+            if request.user.is_authenticated:
+                feedback.user = request.user
+            
+            # Capture IP address
+            x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+            if x_forwarded_for:
+                feedback.ip_address = x_forwarded_for.split(',')[0]
+            else:
+                feedback.ip_address = request.META.get('REMOTE_ADDR')
+            
+            feedback.save()
+            messages.success(request, 'Thank you for your feedback! We really appreciate it.')
+            return redirect('crm:feedback_success')
+    else:
+        form = FeedbackForm()
+    
+    context = {
+        'form': form,
+        'title': 'Share Your Feedback',
+    }
+    return render(request, 'feedback/feedback_form.html', context)
+
+def feedback_success(request):
+    """
+    Success page after feedback submission.
+    """
+    return render(request, 'feedback/feedback_success.html', {'title': 'Thank You!'})
+
+@login_required
+@user_passes_test(is_superuser)
+def feedback_list(request):
+    """
+    List all feedback submissions - only accessible by superusers.
+    """
+    feedbacks = Feedback.objects.select_related('user').all()
+    
+    # Search functionality
+    search_query = request.GET.get('search', '')
+    if search_query:
+        feedbacks = feedbacks.filter(
+            models.Q(name__icontains=search_query) |
+            models.Q(usage_reason__icontains=search_query) |
+            models.Q(user__email__icontains=search_query)
+        )
+    
+    # Filter by usage
+    usage_filter = request.GET.get('usage', '')
+    if usage_filter == 'yes':
+        feedbacks = feedbacks.filter(regularly_using_toad=True)
+    elif usage_filter == 'no':
+        feedbacks = feedbacks.filter(regularly_using_toad=False)
+    
+    # Filter by share willingness
+    share_filter = request.GET.get('share', '')
+    if share_filter == 'yes':
+        feedbacks = feedbacks.filter(would_share=True)
+    elif share_filter == 'no':
+        feedbacks = feedbacks.filter(would_share=False)
+    
+    context = {
+        'feedbacks': feedbacks,
+        'search_query': search_query,
+        'usage_filter': usage_filter,
+        'share_filter': share_filter,
+        'title': 'User Feedback',
+        'total_count': feedbacks.count(),
+    }
+    return render(request, 'feedback/feedback_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def feedback_detail(request, pk):
+    """
+    View detailed feedback - only accessible by superusers.
+    """
+    feedback = get_object_or_404(Feedback, pk=pk)
+    
+    context = {
+        'feedback': feedback,
+        'title': f'Feedback #{feedback.pk}',
+    }
+    return render(request, 'feedback/feedback_detail.html', context)

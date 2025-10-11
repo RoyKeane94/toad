@@ -1,0 +1,309 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="py-8 text-center">
+                <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-3">We'd Love Your Feedback</h1>
+                <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+                    Help us make Toad better! Your feedback is anonymous and will help shape the future of Toad.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-8">
+            <form method="post" class="space-y-8" id="feedback-form">
+                {% csrf_token %}
+                
+                <!-- Name Field (Optional) -->
+                <div class="pb-6 border-b border-[var(--border-color)]">
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Your Name <span class="text-[var(--text-secondary)] font-normal">(Optional)</span>
+                    </label>
+                    {{ form.name }}
+                    <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                        <i class="fas fa-info-circle mr-1"></i>
+                        Share your name if you'd like - otherwise your feedback will be anonymous
+                    </p>
+                    {% if form.name.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.name.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Core Question: Are you regularly using Toad? -->
+                <div>
+                    <label class="block text-lg font-semibold text-[var(--text-primary)] mb-4">
+                        Are you regularly using Toad? *
+                    </label>
+                    <div class="space-y-3">
+                        {% for choice in form.regularly_using_toad %}
+                        <div class="flex items-center">
+                            {{ choice.tag }}
+                            <label for="{{ choice.id_for_label }}" class="ml-3 text-base text-[var(--text-primary)] cursor-pointer">
+                                {{ choice.choice_label }}
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% if form.regularly_using_toad.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.regularly_using_toad.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Usage Reason -->
+                <div>
+                    <label for="{{ form.usage_reason.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                        If yes, why? If not, why not?
+                    </label>
+                    {{ form.usage_reason }}
+                    {% if form.usage_reason.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.usage_reason.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Organization Method -->
+                <div>
+                    <label for="{{ form.organization_method.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                        How do you tend to organise?
+                    </label>
+                    {{ form.organization_method }}
+                    {% if form.organization_method.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.organization_method.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Organization Other (conditionally shown) -->
+                <div id="organization-other-field" style="display: none;">
+                    <label for="{{ form.organization_other.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Please specify your organization method
+                    </label>
+                    {{ form.organization_other }}
+                    {% if form.organization_other.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.organization_other.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Non-User Suggestion -->
+                <div>
+                    <label for="{{ form.non_user_suggestion.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                        If you're not using Toad, is there anything that would make you use it?
+                    </label>
+                    {{ form.non_user_suggestion }}
+                    <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                        What features or changes would convince you to give Toad a try?
+                    </p>
+                    {% if form.non_user_suggestion.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.non_user_suggestion.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- User Improvement -->
+                <div>
+                    <label for="{{ form.user_improvement.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                        If you are using Toad, what could make it better?
+                    </label>
+                    {{ form.user_improvement }}
+                    <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                        We're constantly improving - tell us what would make Toad even better for you
+                    </p>
+                    {% if form.user_improvement.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.user_improvement.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Team Toad Interest -->
+                <div>
+                    <label for="{{ form.team_toad_interest.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                        Would you be interested in Team Toad?
+                    </label>
+                    {{ form.team_toad_interest }}
+                    <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                        Team Toad would allow you to collaborate on grids with colleagues and friends
+                    </p>
+                    {% if form.team_toad_interest.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.team_toad_interest.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Would Share -->
+                <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <div class="flex items-start">
+                        <div class="flex items-center h-5">
+                            {{ form.would_share }}
+                        </div>
+                        <div class="ml-3">
+                            <label for="{{ form.would_share.id_for_label }}" class="text-lg font-semibold text-[var(--text-primary)] cursor-pointer">
+                                Would you share Toad with friends and/or colleagues?
+                            </label>
+                            <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                                Your recommendation means the world to us!
+                            </p>
+                        </div>
+                    </div>
+                    {% if form.would_share.errors %}
+                    <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.would_share.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t border-[var(--border-color)]">
+                    <a href="{% url 'pages:home' %}" class="inline-flex items-center px-6 py-3 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        Maybe Later
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-paper-plane mr-2"></i>
+                        Submit Feedback
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Privacy Note -->
+        <div class="mt-6 text-center">
+            <p class="text-sm text-[var(--text-secondary)]">
+                <i class="fas fa-lock mr-1"></i>
+                Your feedback is anonymous unless you choose to provide your name
+            </p>
+        </div>
+        
+        <!-- Share Toad Link -->
+        <div class="mt-8 p-6 bg-gradient-to-br from-green-50 to-emerald-50 rounded-lg border-2 border-green-200">
+            <div class="text-center">
+                <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-3">
+                    <i class="fas fa-gift text-green-600 mr-2"></i>
+                    Love Toad? Share it with friends!
+                </h3>
+                <p class="text-sm text-[var(--text-secondary)] mb-4">
+                    Know someone who could benefit from Toad? Share this link to give them a 3-month free trial:
+                </p>
+                <div class="max-w-2xl mx-auto">
+                    <input type="text" 
+                           value="https://meettoad.co.uk/accounts/register/trial-3-month" 
+                           readonly
+                           id="share-link"
+                           onclick="this.select()"
+                           class="w-full px-4 py-3 text-sm bg-white border-2 border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 text-center font-mono text-[var(--text-primary)] cursor-pointer hover:bg-green-50 transition-colors mb-3">
+                    <button type="button"
+                            onclick="copyShareLink()"
+                            class="w-full inline-flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-base font-semibold transition-all duration-200 shadow-md hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]">
+                        <i class="fas fa-copy mr-2"></i>
+                        <span id="copy-button-text">Copy Link to Share</span>
+                    </button>
+                </div>
+                <p class="text-sm text-green-700 font-medium mt-3" id="copy-success" style="opacity: 0; transition: opacity 0.3s;">
+                    <i class="fas fa-check-circle mr-1"></i>
+                    Link copied to clipboard!
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Show/hide the "Other" organization method field
+document.addEventListener('DOMContentLoaded', function() {
+    const orgMethodSelect = document.getElementById('{{ form.organization_method.id_for_label }}');
+    const orgOtherField = document.getElementById('organization-other-field');
+    
+    if (orgMethodSelect) {
+        function toggleOtherField() {
+            if (orgMethodSelect.value === 'other') {
+                orgOtherField.style.display = 'block';
+            } else {
+                orgOtherField.style.display = 'none';
+            }
+        }
+        
+        // Check on page load
+        toggleOtherField();
+        
+        // Check on change
+        orgMethodSelect.addEventListener('change', toggleOtherField);
+    }
+    
+    // Style radio buttons
+    const radioInputs = document.querySelectorAll('input[type="radio"]');
+    radioInputs.forEach(input => {
+        input.classList.add('h-4', 'w-4', 'text-[var(--primary-action-bg)]', 'focus:ring-[var(--primary-action-bg)]', 'border-[var(--inline-input-border)]');
+    });
+});
+
+// Copy share link to clipboard
+function copyShareLink() {
+    const linkInput = document.getElementById('share-link');
+    const successMessage = document.getElementById('copy-success');
+    const buttonText = document.getElementById('copy-button-text');
+    
+    // Select and copy the text
+    linkInput.select();
+    linkInput.setSelectionRange(0, 99999); // For mobile devices
+    
+    // Copy to clipboard
+    navigator.clipboard.writeText(linkInput.value).then(function() {
+        // Update button text
+        buttonText.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+        
+        // Show success message
+        successMessage.style.opacity = '1';
+        
+        // Reset after 3 seconds
+        setTimeout(function() {
+            successMessage.style.opacity = '0';
+            buttonText.innerHTML = '<i class="fas fa-copy mr-2"></i>Copy Link to Share';
+        }, 3000);
+    }).catch(function(err) {
+        // Fallback for older browsers
+        document.execCommand('copy');
+        buttonText.innerHTML = '<i class="fas fa-check mr-2"></i>Copied!';
+        successMessage.style.opacity = '1';
+        setTimeout(function() {
+            successMessage.style.opacity = '0';
+            buttonText.innerHTML = '<i class="fas fa-copy mr-2"></i>Copy Link to Share';
+        }, 3000);
+    });
+}
+</script>
+{% endblock %}

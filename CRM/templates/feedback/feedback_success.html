@@ -1,0 +1,83 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)] flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <div class="max-w-2xl w-full">
+        <!-- Success Card -->
+        <div class="bg-white rounded-lg shadow-lg border border-[var(--border-color)] overflow-hidden">
+            <!-- Success Icon -->
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 px-6 py-12 text-center border-b border-[var(--border-color)]">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-green-100 rounded-full mb-6">
+                    <i class="fas fa-check text-4xl text-green-600"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-[var(--text-primary)] mb-3">
+                    Thank You!
+                </h1>
+                <p class="text-lg text-[var(--text-secondary)] max-w-md mx-auto">
+                    Your feedback has been received and means a lot to us.
+                </p>
+            </div>
+            
+            <!-- Content -->
+            <div class="px-6 py-8 text-center">
+                <p class="text-base text-[var(--text-primary)] mb-6">
+                    We read every piece of feedback and use it to make Toad better. Your insights will help shape the future of our platform.
+                </p>
+                
+                <!-- Call to Action Buttons -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'pages:project_list' %}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-th-large mr-2"></i>
+                        Go to My Grids
+                    </a>
+                    <a href="{% url 'pages:project_create' %}" class="inline-flex items-center justify-center px-6 py-3 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Create New Grid
+                    </a>
+                    {% else %}
+                    <a href="{% url 'pages:home' %}" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-home mr-2"></i>
+                        Return Home
+                    </a>
+                    <a href="{% url 'accounts:register_choices' %}" class="inline-flex items-center justify-center px-6 py-3 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        Sign Up for Toad
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Footer Message -->
+            <div class="bg-gradient-to-br from-green-50 to-emerald-50 px-6 py-4 border-t border-[var(--border-color)]">
+                <p class="text-sm text-[var(--text-secondary)] text-center">
+                    <i class="fas fa-heart text-red-500 mr-1"></i>
+                    Built with care by the Toad team
+                </p>
+            </div>
+        </div>
+        
+        <!-- Optional: Share Section -->
+        <div class="mt-8 text-center">
+            <p class="text-sm text-[var(--text-secondary)] mb-3">
+                Love Toad? Share it with others!
+            </p>
+            <div class="flex justify-center gap-3">
+                <a href="https://twitter.com/intent/tweet?text=I%20just%20shared%20my%20feedback%20with%20@MeetToad%20-%20a%20simple%2C%20powerful%20planning%20tool!%20Check%20it%20out%3A&url=https://meettoad.co.uk" 
+                   target="_blank"
+                   class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)] transition-colors">
+                    <i class="fab fa-twitter text-blue-400"></i>
+                </a>
+                <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://meettoad.co.uk" 
+                   target="_blank"
+                   class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white border border-[var(--border-color)] hover:bg-[var(--bg-secondary)] transition-colors">
+                    <i class="fab fa-linkedin text-blue-600"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

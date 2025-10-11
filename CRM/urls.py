@@ -18,6 +18,12 @@ urlpatterns = [
     path('southampton-economics-society/load-template/', views.load_southampton_economics_template, name='load_southampton_economics_template'),
     path('southampton-economics-society/', views.southampton_economics_society_page, name='southampton_economics_society'),
     
+# Feedback
+    path('feedback/', views.feedback_form, name='feedback_form'),
+    path('feedback/success/', views.feedback_success, name='feedback_success'),
+    path('feedback/list/', views.feedback_list, name='feedback_list'),
+    path('feedback/<int:pk>/', views.feedback_detail, name='feedback_detail'),
+
     # Society Links
     path('society-links/', views.society_link_list, name='society_link_list'),
     path('society-links/create/', views.society_link_create, name='society_link_create'),
@@ -35,5 +41,6 @@ urlpatterns = [
     path('instagram/why-users-love-toad/', views.instagram_why_users_love_toad, name='instagram_why_users_love_toad'),
     path('instagram/toad-bingo-card/', views.instagram_toad_bingo_card, name='instagram_toad_bingo_card'),
     path('instagram/preview/', views.instagram_preview, name='instagram_preview'),
+    
     
 ]
