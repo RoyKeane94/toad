@@ -207,20 +207,36 @@ def create_default_project_structure(project):
         order=1
     )
     
-    # Create single row
-    row = RowHeader.objects.create(
-        project=project, 
-        name='Quick Actions', 
-        order=0
-    )
+    # Create three rows
+    row_headers = [
+        "To Do Today",
+        "Weekly Priorities",
+        "Longer Term Projects"
+    ]
     
-    # Create single task
-    Task.objects.create(
-        project=project,
-        row_header=row,
-        column_header=data_column,
-        text='Begin by decluttering your mind'
-    )
+    rows = []
+    for order, row_name in enumerate(row_headers):
+        row = RowHeader.objects.create(
+            project=project,
+            name=row_name,
+            order=order
+        )
+        rows.append(row)
+    
+    # Create tasks for each row
+    task_texts = [
+        "Low hanging fruit to crack on with today",
+        "Not urgent but need to do this week",
+        "On my radar but let's get the more urgent stuff done first"
+    ]
+    
+    for row, task_text in zip(rows, task_texts):
+        Task.objects.create(
+            project=project,
+            row_header=row,
+            column_header=data_column,
+            text=task_text
+        )
 
 def create_project_from_template_config(user, template_config):
     """Create project from template configuration"""
