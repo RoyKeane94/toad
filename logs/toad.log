@@ -30164,3 +30164,9 @@ WARNING 2025-10-12 08:30:41,891 log 96900 6166081536 Not Found: /.well-known/app
 WARNING 2025-10-12 08:30:41,891 basehttp 96900 6166081536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2165
 INFO 2025-10-12 08:31:01,624 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7739
 INFO 2025-10-12 08:31:10,479 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7812
+INFO 2025-10-12 08:44:40,460 autoreload 98372 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:44:41,006 basehttp 98372 6124007424 "GET / HTTP/1.1" 200 7737
+INFO 2025-10-12 08:44:41,048 basehttp 98372 6124007424 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 08:44:41,048 basehttp 98372 6140833792 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 08:44:41,049 basehttp 98372 6157660160 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 08:44:41,132 basehttp 98372 6140833792 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
