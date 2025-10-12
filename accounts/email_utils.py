@@ -689,14 +689,35 @@ This email was sent to {user.email}. If you have any questions, reply to this em
     try:
         logger.info(f"Attempting to send feedback request email to {user.email}")
         
-        send_mail(
+        # Get personal email settings
+        personal_email_host = os.environ.get('PERSONAL_EMAIL_HOST', settings.EMAIL_HOST)
+        personal_email_port = int(os.environ.get('PERSONAL_EMAIL_PORT', settings.EMAIL_PORT))
+        personal_email_user = os.environ.get('PERSONAL_EMAIL_HOST_USER', settings.EMAIL_HOST_USER)
+        personal_email_password = os.environ.get('PERSONAL_EMAIL_HOST_PASSWORD', settings.EMAIL_HOST_PASSWORD)
+        
+        # Create email message with personal email settings
+        from django.core.mail import EmailMessage, get_connection
+        email = EmailMessage(
             subject="We'd love your thoughts on Toad",
-            message=text_message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-            html_message=html_message,
-            fail_silently=False,
+            body=html_message,
+            from_email=personal_email_user,
+            to=[user.email],
+            connection=None  # We'll create a custom connection
         )
+        email.content_subtype = "html"
+        
+        # Create connection with personal email settings
+        connection = get_connection(
+            host=personal_email_host,
+            port=personal_email_port,
+            username=personal_email_user,
+            password=personal_email_password,
+            use_tls=True
+        )
+        
+        # Send email using personal connection
+        email.connection = connection
+        email.send()
         
         logger.info(f"Successfully sent feedback request email to {user.email}")
         return True
