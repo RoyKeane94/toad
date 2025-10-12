@@ -35,4 +35,45 @@ def to_json(queryset):
 
 @register.filter(name='cell_key')
 def cell_key(row_pk, col_pk):
-    return f"{row_pk}_{col_pk}" 
+    return f"{row_pk}_{col_pk}"
+
+@register.filter(name='get_avatar_color')
+def get_avatar_color(user_id):
+    """Get a color for user avatar based on their ID."""
+    colors = [
+        '#FF6B6B',  # Red
+        '#4ECDC4',  # Teal
+        '#45B7D1',  # Blue
+        '#FFA07A',  # Light Salmon
+        '#98D8C8',  # Mint
+        '#F7DC6F',  # Yellow
+        '#BB8FCE',  # Purple
+        '#85C1E2',  # Sky Blue
+        '#F8B88B',  # Peach
+        '#52B788'   # Green
+    ]
+    try:
+        index = int(user_id) % len(colors)
+        return colors[index]
+    except (ValueError, TypeError):
+        return colors[0]
+
+@register.filter(name='get_initials')
+def get_initials(name):
+    """
+    Get initials from a name.
+    For full names (2+ words): First letter of first word + first letter of last word
+    For single names: Just the first letter
+    """
+    if not name:
+        return ''
+    
+    name = str(name).strip()
+    words = name.split()
+    
+    if len(words) >= 2:
+        # First initial of first word + first initial of last word
+        return (words[0][0] + words[-1][0]).upper()
+    else:
+        # Just the first letter for single names
+        return name[0].upper() if name else '' 

@@ -756,7 +756,6 @@ def task_assign_view(request, task_pk):
         task_pk,
         request.user,
         select_related=['project', 'project__user', 'assigned_to'],
-        prefetch_related=['project__team_toad_user'],
         only_fields=['id', 'text', 'project__id', 'project__user', 'project__is_team_toad', 'assigned_to']
     )
     
@@ -773,10 +772,27 @@ def task_assign_view(request, task_pk):
     
     if request.method == 'POST':
         try:
-            assigned_to_id = request.POST.get('assigned_to')
+            import json
             
+            # Handle JSON requests
+            if request.headers.get('Content-Type') == 'application/json':
+                data = json.loads(request.body)
+                assigned_to_id = data.get('user_id')
+            else:
+                # Handle form requests
+                assigned_to_id = request.POST.get('assigned_to')
+            
+            # Handle unassign (when user_id is null/empty)
             if not assigned_to_id:
-                return JsonResponse({'success': False, 'error': 'User ID is required'}, status=400)
+                task.assigned_to = None
+                task.save(update_fields=['assigned_to'])
+                
+                logger.info(f"Task {task_pk} unassigned by {request.user.id}")
+                
+                return JsonResponse({
+                    'success': True,
+                    'message': 'Task unassigned successfully!'
+                })
             
             # Get the user to assign
             from accounts.models import User
@@ -797,7 +813,7 @@ def task_assign_view(request, task_pk):
             
             return JsonResponse({
                 'success': True,
-                'message': f'Task assigned to {assigned_user.first_name or assigned_user.username}!'
+                'message': f'Task assigned to {assigned_user.get_full_name()}!'
             })
             
         except Exception as e:
