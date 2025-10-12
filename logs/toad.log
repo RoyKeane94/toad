@@ -30294,3 +30294,9 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^^
 TypeError: get_user_task_optimized() got an unexpected keyword argument 'prefetch_related'
 ERROR 2025-10-12 06:52:42,779 basehttp 91659 6154448896 "POST /tasks/2453/assign/ HTTP/1.1" 500 12031
+INFO 2025-10-12 15:32:11,987 autoreload 6035 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 15:32:13,195 basehttp 6035 6130331648 "GET / HTTP/1.1" 200 6240
+INFO 2025-10-12 15:32:13,280 basehttp 6035 6130331648 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-12 15:32:14,802 basehttp 6035 6130331648 "GET /grids/ HTTP/1.1" 200 11357
+INFO 2025-10-12 15:32:15,965 basehttp 6035 6130331648 "GET /grids/228/ HTTP/1.1" 200 18942
+INFO 2025-10-12 15:32:15,977 basehttp 6035 6130331648 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
