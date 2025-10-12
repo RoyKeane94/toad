@@ -13,7 +13,8 @@ logger = logging.getLogger(__name__)
 
 def get_user_project_optimized(project_pk, user, select_related=None, prefetch_related=None, only_fields=None):
     """Get project with optimized queries and permission check"""
-    queryset = Project.objects.filter(user=user)
+    # Include projects where user is owner OR part of team_toad_user
+    queryset = Project.objects.filter(Q(user=user) | Q(team_toad_user=user))
     
     if select_related:
         queryset = queryset.select_related(*select_related)
@@ -26,7 +27,8 @@ def get_user_project_optimized(project_pk, user, select_related=None, prefetch_r
 
 def get_user_task_optimized(task_pk, user, select_related=None, only_fields=None):
     """Get task with optimized queries and permission check"""
-    queryset = Task.objects.filter(project__user=user)
+    # Include tasks from projects where user is owner OR part of team_toad_user
+    queryset = Task.objects.filter(Q(project__user=user) | Q(project__team_toad_user=user))
     
     if select_related:
         queryset = queryset.select_related(*select_related)
@@ -112,7 +114,10 @@ def process_grid_data_optimized(project):
 
 def get_projects_for_dropdown(user):
     """Get optimized project list for dropdown"""
-    return Project.objects.filter(user=user).only('id', 'name').order_by('name')
+    # Include projects where user is owner OR part of team_toad_user
+    return Project.objects.filter(
+        Q(user=user) | Q(team_toad_user=user)
+    ).distinct().only('id', 'name').order_by('name')
 
 # HTMX Response Helpers
 

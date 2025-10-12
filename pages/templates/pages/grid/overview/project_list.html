@@ -1,4 +1,5 @@
 {% extends "pages/layout.html" %}
+{% load custom_filters %}
 
 {% block title %}{{ user.first_name }}'s Grids{% endblock %}
 
@@ -344,7 +345,28 @@
                                         <i class="fas fa-tasks mr-2 text-xs"></i>
                                         <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
                                     </div>
+                                    {% if project.is_team_toad %}
+                                    <div class="flex items-center">
+                                        <i class="fas fa-users mr-2 text-xs"></i>
+                                        <span class="font-medium">Group Grid</span>
+                                    </div>
+                                    {% endif %}
                                 </div>
+                                
+                                {% if project.is_team_toad %}
+                                <!-- Team Members Display -->
+                                <div class="mb-4">
+                                    <div class="flex items-center space-x-1">
+                                        {% for team_member in project.team_toad_user.all %}
+                                        <div class="flex items-center justify-center" 
+                                             style="width: 28px; height: 28px; border-radius: 50%; background-color: {{ team_member.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px;"
+                                             title="{{ team_member.get_full_name }}">
+                                            {{ team_member.get_full_name|get_initials }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
                                 
                                 <a href="{% url 'pages:project_grid' pk=project.pk %}" 
                                    class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm">
@@ -407,7 +429,28 @@
                                         <i class="fas fa-tasks mr-2 text-xs"></i>
                                         <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
                                     </div>
+                                    {% if project.is_team_toad %}
+                                    <div class="flex items-center">
+                                        <i class="fas fa-users mr-2 text-xs"></i>
+                                        <span class="font-medium">Group Grid</span>
+                                    </div>
+                                    {% endif %}
                                 </div>
+                                
+                                {% if project.is_team_toad %}
+                                <!-- Team Members Display -->
+                                <div class="mb-4">
+                                    <div class="flex items-center space-x-1">
+                                        {% for team_member in project.team_toad_user.all %}
+                                        <div class="flex items-center justify-center" 
+                                             style="width: 28px; height: 28px; border-radius: 50%; background-color: {{ team_member.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px;"
+                                             title="{{ team_member.get_full_name }}">
+                                            {{ team_member.get_full_name|get_initials }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
                                 
                                 <a href="{% url 'pages:project_grid' pk=project.pk %}" 
                                    class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm">
@@ -544,7 +587,28 @@
                                         <i class="fas fa-tasks mr-2 text-xs"></i>
                                         <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
                                     </div>
+                                    {% if project.is_team_toad %}
+                                    <div class="flex items-center">
+                                        <i class="fas fa-users mr-2 text-xs"></i>
+                                        <span class="font-medium">Group Grid</span>
+                                    </div>
+                                    {% endif %}
                                 </div>
+                                
+                                {% if project.is_team_toad %}
+                                <!-- Team Members Display -->
+                                <div class="mb-4">
+                                    <div class="flex items-center space-x-1">
+                                        {% for team_member in project.team_toad_user.all %}
+                                        <div class="flex items-center justify-center" 
+                                             style="width: 28px; height: 28px; border-radius: 50%; background-color: {{ team_member.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px;"
+                                             title="{{ team_member.get_full_name }}">
+                                            {{ team_member.get_full_name|get_initials }}
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                                {% endif %}
                                 
                                 {% if user_tier == 'free' %}
                                 <a href="{% url 'pages:upgrade_required' %}" 

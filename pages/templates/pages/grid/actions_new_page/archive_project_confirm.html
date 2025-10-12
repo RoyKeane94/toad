@@ -22,8 +22,13 @@
             <div>
                 <h3 class="font-medium text-[var(--tertiary-action-bg)]">Warning</h3>
                 <p class="text-sm text-[var(--text-primary)] mt-1">
-                    This will archive your project and move it to your archived grids.
+                    This will archive your grid and move it to your archived grids.
                 </p>
+                {% if project.is_team_toad %}
+                <p class="text-sm text-[var(--text-secondary)] mt-2">
+                    This will be archived as a group grid.
+                </p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -43,7 +48,7 @@
             </button>
             <button type="submit" 
                     class="w-48 h-10 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                <i class="fas fa-archive mr-2"></i>Archive Project
+                <i class="fas fa-archive mr-2"></i>Archive Grid
             </button>
         </div>
     </form>

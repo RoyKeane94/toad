@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -17,6 +17,7 @@ from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
 from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask, ProjectGroup
+from accounts.models import User
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm, ProjectGroupForm, ProjectGroupAssignmentForm
 from pages.specific_views_functions.project_views_functions import (
     get_user_project_optimized,
@@ -50,10 +51,19 @@ logger = logging.getLogger(__name__)
 @login_required
 def project_list_view(request):
     # Get all active (non-archived) projects with their groups and task counts
-    projects = Project.objects.filter(user=request.user, is_archived=False).select_related('project_group').annotate(
-        task_count=Count('tasks'),
-        completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).order_by('project_group', 'order', '-created_at')
+    # Include projects where user is owner OR part of team_toad_user
+    # Optimized query with minimal fields and efficient prefetching
+    projects = Project.objects.filter(
+        Q(user=request.user) | Q(team_toad_user=request.user),
+        is_archived=False
+    ).select_related(
+        'project_group'
+    ).prefetch_related(
+        Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+    ).annotate(
+        task_count=Count('tasks', distinct=True),
+        completed_task_count=Count('tasks', filter=Q(tasks__completed=True), distinct=True)
+    ).distinct().order_by('project_group', 'order', '-created_at')
     
     # Manually group projects by their project_group
     grouped_projects = {}
@@ -74,14 +84,23 @@ def project_list_view(request):
     # Convert to list format for template and sort groups by name
     grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].name)
     
-    # Get user's personal templates
-    personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
+    # Get user's personal templates (only needed fields)
+    personal_templates = PersonalTemplate.objects.filter(
+        user=request.user
+    ).only('id', 'name', 'created_at').order_by('name')
     
-    # Get archived projects
-    archived_projects = Project.objects.filter(user=request.user, is_archived=True).select_related('project_group').annotate(
-        task_count=Count('tasks'),
-        completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).order_by('-created_at')
+    # Get archived projects (owner OR team member)
+    archived_projects = Project.objects.filter(
+        Q(user=request.user) | Q(team_toad_user=request.user),
+        is_archived=True
+    ).select_related(
+        'project_group'
+    ).prefetch_related(
+        Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+    ).annotate(
+        task_count=Count('tasks', distinct=True),
+        completed_task_count=Count('tasks', filter=Q(tasks__completed=True), distinct=True)
+    ).distinct().order_by('-created_at')
     
     context = {
         'projects': projects,  # Keep for backward compatibility
@@ -299,7 +318,15 @@ def project_grid_view(request, pk):
         context['projects'] = get_projects_for_dropdown(request.user)
         
         # Add grouped projects data for the grid tabs (including archived projects)
-        all_projects = Project.objects.filter(user=request.user).select_related('project_group').order_by('project_group', 'order', '-created_at')
+        # Include projects where user is owner OR part of team_toad_user
+        # Optimized with Prefetch for team members
+        all_projects = Project.objects.filter(
+            Q(user=request.user) | Q(team_toad_user=request.user)
+        ).select_related(
+            'project_group'
+        ).prefetch_related(
+            Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+        ).distinct().order_by('project_group', 'order', '-created_at')
         
         # Manually group projects by their project_group
         grouped_projects = {}

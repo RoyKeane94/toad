@@ -31167,3 +31167,152 @@ INFO 2025-10-12 16:14:19,825 basehttp 9282 6123778048 "GET /grids/228/ HTTP/1.1"
 INFO 2025-10-12 16:15:23,019 basehttp 9282 6123778048 "GET /grids/228/ HTTP/1.1" 200 18100
 INFO 2025-10-12 16:15:23,031 basehttp 9282 6123778048 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-10-12 16:15:23,032 basehttp 9282 6140604416 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 9854
+INFO 2025-10-12 16:23:20,867 autoreload 10070 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 16:23:22,690 basehttp 10070 6129070080 "GET /grids/228/ HTTP/1.1" 200 18060
+INFO 2025-10-12 16:23:22,704 basehttp 10070 6129070080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 16:23:22,707 basehttp 10070 6145896448 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 9053
+INFO 2025-10-12 16:23:25,114 basehttp 10070 6129070080 "GET /grids/228/archive/confirm/ HTTP/1.1" 200 903
+INFO 2025-10-12 16:23:31,311 basehttp 10070 6129070080 "GET /grids/228/archive/confirm/ HTTP/1.1" 200 904
+INFO 2025-10-12 16:57:48,275 basehttp 10070 6129070080 "GET /grids/228/ HTTP/1.1" 200 18066
+INFO 2025-10-12 16:57:48,321 basehttp 10070 6129070080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 16:57:48,321 basehttp 10070 6145896448 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-12 16:57:48,322 basehttp 10070 6162722816 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-10-12 16:57:51,581 basehttp 10070 6162722816 "GET /grids/228/archive/confirm/ HTTP/1.1" 200 964
+INFO 2025-10-12 16:57:55,236 basehttp 10070 6162722816 "GET /grids/226/ HTTP/1.1" 200 19199
+INFO 2025-10-12 16:58:03,392 basehttp 10070 6162722816 "GET /grids/226/archive/confirm/ HTTP/1.1" 200 890
+INFO 2025-10-12 16:58:08,275 basehttp 10070 6162722816 "GET /grids/228/ HTTP/1.1" 200 18077
+INFO 2025-10-12 16:58:12,692 project_views 10070 6162722816 Task 2451 assigned to user 2 by 2
+INFO 2025-10-12 16:58:12,692 basehttp 10070 6162722816 "POST /tasks/2451/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 16:58:14,439 basehttp 10070 6162722816 "GET /grids/226/ HTTP/1.1" 200 19234
+INFO 2025-10-12 16:58:15,253 basehttp 10070 6162722816 "GET /grids/228/ HTTP/1.1" 200 18198
+INFO 2025-10-12 16:58:19,639 basehttp 10070 6162722816 "POST /tasks/2451/reminder/ HTTP/1.1" 200 82
+INFO 2025-10-12 16:58:31,525 project_views 10070 6162722816 Task 2451 assigned to user 35 by 2
+INFO 2025-10-12 16:58:31,526 basehttp 10070 6162722816 "POST /tasks/2451/assign/ HTTP/1.1" 200 54
+INFO 2025-10-12 16:58:33,523 project_views 10070 6162722816 Task 2451 unassigned by 2
+INFO 2025-10-12 16:58:33,524 basehttp 10070 6162722816 "POST /tasks/2451/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 16:58:36,695 basehttp 10070 6162722816 "GET /grids/228/ HTTP/1.1" 200 18148
+INFO 2025-10-12 16:59:40,595 basehttp 10070 6162722816 "GET /grids/228/ HTTP/1.1" 200 18144
+INFO 2025-10-12 16:59:57,059 basehttp 10070 6162722816 "GET /templates/ HTTP/1.1" 302 0
+INFO 2025-10-12 16:59:57,071 basehttp 10070 6162722816 "GET /templates/students/ HTTP/1.1" 200 5203
+INFO 2025-10-12 16:59:57,118 basehttp 10070 6145896448 "GET /static/gif/Revision%20Planner%20GIF.gif HTTP/1.1" 200 1557392
+INFO 2025-10-12 16:59:57,119 basehttp 10070 6162722816 "GET /static/gif/Course%20Planner%20GIF.gif HTTP/1.1" 200 1742244
+INFO 2025-10-12 16:59:57,127 basehttp 10070 6129070080 "GET /static/gif/Essay%20Planner%20GIF.gif HTTP/1.1" 200 1785518
+INFO 2025-10-12 16:59:57,129 basehttp 10070 6179549184 "GET /static/gif/Job%20Application%20Tracker%20GIF.gif HTTP/1.1" 200 2108312
+INFO 2025-10-12 16:59:58,005 basehttp 10070 6179549184 "GET /grids/ HTTP/1.1" 200 11352
+INFO 2025-10-12 17:06:48,568 basehttp 10070 6129070080 "GET /grids/228/ HTTP/1.1" 200 18182
+INFO 2025-10-12 17:06:48,580 basehttp 10070 6145896448 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 17:06:48,580 basehttp 10070 6129070080 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-12 17:06:51,251 basehttp 10070 6145896448 "GET /grids/228/archive/confirm/ HTTP/1.1" 200 937
+INFO 2025-10-12 17:06:53,000 basehttp 10070 6145896448 "POST /grids/228/archive/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:06:53,017 basehttp 10070 6145896448 "GET /grids/ HTTP/1.1" 200 11443
+INFO 2025-10-12 17:07:24,742 basehttp 10070 6145896448 "GET /grids/228/ HTTP/1.1" 200 18117
+INFO 2025-10-12 17:07:27,381 basehttp 10070 6145896448 "GET /grids/ HTTP/1.1" 200 11392
+INFO 2025-10-12 17:09:22,269 basehttp 10070 6145896448 "GET /grids/ HTTP/1.1" 200 11576
+INFO 2025-10-12 17:09:29,924 basehttp 10070 6145896448 "POST /grids/228/restore/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:09:29,939 basehttp 10070 6145896448 "GET /grids/ HTTP/1.1" 200 11511
+INFO 2025-10-12 17:10:47,558 basehttp 10070 6145896448 "GET / HTTP/1.1" 200 6192
+INFO 2025-10-12 17:10:48,814 basehttp 10070 6145896448 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-12 17:10:48,840 basehttp 10070 6129070080 "GET /admin/ HTTP/1.1" 200 2958
+INFO 2025-10-12 17:10:51,711 basehttp 10070 6129070080 "GET /admin/accounts/user/ HTTP/1.1" 200 3253
+INFO 2025-10-12 17:10:51,732 basehttp 10070 6129070080 "GET /admin/jsi18n/ HTTP/1.1" 200 1032
+INFO 2025-10-12 17:10:56,398 basehttp 10070 6129070080 "POST /admin/logout/ HTTP/1.1" 200 1378
+INFO 2025-10-12 17:10:58,605 basehttp 10070 6129070080 "GET / HTTP/1.1" 200 5973
+INFO 2025-10-12 17:11:00,715 basehttp 10070 6129070080 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-10-12 17:11:01,920 basehttp 10070 6129070080 "GET /accounts/login/ HTTP/1.1" 200 3751
+INFO 2025-10-12 17:11:08,156 basehttp 10070 6129070080 "POST /accounts/login/ HTTP/1.1" 200 3967
+INFO 2025-10-12 17:11:12,728 basehttp 10070 6129070080 "GET / HTTP/1.1" 200 6032
+INFO 2025-10-12 17:11:15,894 basehttp 10070 6129070080 "GET /accounts/login/ HTTP/1.1" 200 3802
+INFO 2025-10-12 17:11:20,748 basehttp 10070 6129070080 "GET /accounts/register/ HTTP/1.1" 200 3919
+INFO 2025-10-12 17:11:23,223 basehttp 10070 6129070080 "GET /accounts/register/free/ HTTP/1.1" 200 4006
+INFO 2025-10-12 17:11:32,841 views 10070 6129070080 New Free plan user registration: tom@meettoad.co.uk (Tom)
+INFO 2025-10-12 17:11:32,843 basehttp 10070 6129070080 "POST /accounts/register/free/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:11:32,845 email_utils 10070 6162722816 Attempting to send verification email to tom@meettoad.co.uk
+INFO 2025-10-12 17:11:32,849 basehttp 10070 6129070080 "GET /accounts/login/ HTTP/1.1" 200 3978
+INFO 2025-10-12 17:11:33,430 email_utils 10070 6162722816 Successfully sent verification email to tom@meettoad.co.uk
+INFO 2025-10-12 17:11:33,431 views 10070 6162722816 Verification email sent: True for tom@meettoad.co.uk
+INFO 2025-10-12 17:11:46,236 views 10070 6129070080 Found user for verification token: tom@meettoad.co.uk
+INFO 2025-10-12 17:11:46,237 views 10070 6129070080 Email verification successful for user: tom@meettoad.co.uk
+INFO 2025-10-12 17:11:46,243 views 10070 6129070080 User automatically logged in after email verification: tom@meettoad.co.uk
+INFO 2025-10-12 17:11:46,245 views 10070 6129070080 Redirecting to first project: 234
+INFO 2025-10-12 17:11:46,246 email_utils 10070 6162722816 Attempting to send free joining email to tom@meettoad.co.uk
+INFO 2025-10-12 17:11:46,248 basehttp 10070 6129070080 "GET /accounts/verify-email/JyfxNEEQqBRnjLI2GEcTuaVPTjIukupX/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:11:46,264 basehttp 10070 6129070080 "GET /grids/234/ HTTP/1.1" 200 17056
+INFO 2025-10-12 17:11:46,711 email_utils 10070 6162722816 Successfully sent free joining email to tom@meettoad.co.uk
+INFO 2025-10-12 17:11:48,902 basehttp 10070 6129070080 "GET /grids/ HTTP/1.1" 200 11123
+INFO 2025-10-12 17:11:53,336 basehttp 10070 6129070080 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:11:53,342 basehttp 10070 6129070080 "GET / HTTP/1.1" 200 5966
+INFO 2025-10-12 17:11:58,479 basehttp 10070 6129070080 "GET /accounts/login/ HTTP/1.1" 200 3843
+INFO 2025-10-12 17:12:04,991 basehttp 10070 6129070080 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:12:05,000 basehttp 10070 6129070080 "GET /grids/ HTTP/1.1" 200 11608
+INFO 2025-10-12 17:12:11,138 basehttp 10070 6129070080 "GET / HTTP/1.1" 200 6198
+INFO 2025-10-12 17:12:12,050 basehttp 10070 6129070080 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-12 17:12:12,069 basehttp 10070 6145896448 "GET /admin/ HTTP/1.1" 200 2875
+INFO 2025-10-12 17:12:13,821 basehttp 10070 6145896448 "GET /admin/accounts/user/ HTTP/1.1" 200 3276
+INFO 2025-10-12 17:12:13,842 basehttp 10070 6145896448 "GET /admin/jsi18n/ HTTP/1.1" 200 1053
+INFO 2025-10-12 17:12:16,786 basehttp 10070 6145896448 "GET /admin/pages/project/ HTTP/1.1" 200 3264
+INFO 2025-10-12 17:12:16,804 basehttp 10070 6145896448 "GET /admin/jsi18n/ HTTP/1.1" 200 1045
+INFO 2025-10-12 17:12:18,347 basehttp 10070 6145896448 "GET /admin/pages/project/228/change/ HTTP/1.1" 200 4012
+INFO 2025-10-12 17:12:18,358 basehttp 10070 6145896448 "GET /admin/jsi18n/ HTTP/1.1" 200 1056
+INFO 2025-10-12 17:12:18,364 basehttp 10070 6145896448 "GET /static/admin/img/tooltag-arrowright.svg HTTP/1.1" 200 280
+INFO 2025-10-12 17:12:22,563 basehttp 10070 6145896448 "POST /admin/pages/project/228/change/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:12:22,578 basehttp 10070 6145896448 "GET /admin/pages/project/ HTTP/1.1" 200 3367
+INFO 2025-10-12 17:12:22,595 basehttp 10070 6145896448 "GET /admin/jsi18n/ HTTP/1.1" 200 1049
+INFO 2025-10-12 17:12:24,527 basehttp 10070 6145896448 "POST /admin/logout/ HTTP/1.1" 200 1322
+INFO 2025-10-12 17:13:11,902 basehttp 10070 6145896448 "GET / HTTP/1.1" 200 5974
+INFO 2025-10-12 17:13:13,472 basehttp 10070 6145896448 "GET /accounts/login/ HTTP/1.1" 200 3772
+INFO 2025-10-12 17:13:51,810 basehttp 10070 6145896448 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:13:51,818 basehttp 10070 6145896448 "GET /grids/ HTTP/1.1" 200 11603
+INFO 2025-10-12 17:13:51,837 basehttp 10070 6145896448 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 17:14:07,772 basehttp 10070 6145896448 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:14:07,778 basehttp 10070 6145896448 "GET / HTTP/1.1" 200 6009
+INFO 2025-10-12 17:14:10,353 basehttp 10070 6145896448 "GET /accounts/login/ HTTP/1.1" 200 3813
+INFO 2025-10-12 17:14:16,329 basehttp 10070 6145896448 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:14:16,337 basehttp 10070 6145896448 "GET /grids/ HTTP/1.1" 200 11123
+INFO 2025-10-12 17:16:06,935 autoreload 10070 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:16:07,547 autoreload 10859 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:16:21,327 autoreload 10859 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:16:21,828 autoreload 10878 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:16:34,834 autoreload 10878 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-12 17:16:35,275 autoreload 10896 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:16:41,878 autoreload 10896 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-12 17:16:42,289 autoreload 10901 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:16:47,831 autoreload 10901 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-12 17:16:48,247 autoreload 10905 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:17:10,093 autoreload 10905 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:17:10,641 autoreload 10929 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:17:11,225 basehttp 10929 6126743552 "GET /grids/ HTTP/1.1" 200 11546
+INFO 2025-10-12 17:17:32,881 basehttp 10929 6126743552 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 200 3651
+INFO 2025-10-12 17:17:43,191 basehttp 10929 6126743552 "GET /grids/234/delete/ HTTP/1.1" 200 2933
+INFO 2025-10-12 17:17:43,965 basehttp 10929 6126743552 "POST /grids/234/delete/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:17:43,979 basehttp 10929 6126743552 "GET /grids/ HTTP/1.1" 200 11363
+INFO 2025-10-12 17:17:44,683 basehttp 10929 6126743552 "GET /grids/create/ HTTP/1.1" 200 2893
+INFO 2025-10-12 17:17:45,054 autoreload 10929 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-10-12 17:17:45,525 autoreload 10956 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:17:46,646 project_views_functions 10956 6166605824 User None created project: Test
+INFO 2025-10-12 17:17:46,658 basehttp 10956 6166605824 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:17:46,684 basehttp 10956 6166605824 "GET /grids/235/ HTTP/1.1" 200 14822
+INFO 2025-10-12 17:17:49,611 basehttp 10956 6166605824 "GET /grids/ HTTP/1.1" 200 11622
+INFO 2025-10-12 17:17:55,443 project_views_functions 10956 6166605824 User None created project group: Lol
+INFO 2025-10-12 17:17:55,444 basehttp 10956 6166605824 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:17:55,463 basehttp 10956 6166605824 "GET /grids/ HTTP/1.1" 200 11634
+INFO 2025-10-12 17:18:03,476 autoreload 10956 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:18:03,987 autoreload 10975 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:18:12,883 basehttp 10975 6204256256 "GET /grids/235/ HTTP/1.1" 200 14835
+INFO 2025-10-12 17:18:14,790 autoreload 10975 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:18:15,268 autoreload 10992 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:18:16,123 basehttp 10992 6166425600 "GET /upgrade-required/ HTTP/1.1" 200 3481
+INFO 2025-10-12 17:18:16,178 basehttp 10992 6166425600 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-12 17:18:19,800 autoreload 10992 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:18:20,163 autoreload 11001 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:18:36,931 autoreload 11001 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:18:37,463 autoreload 11019 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:18:49,197 basehttp 11019 6200455168 "GET / HTTP/1.1" 200 6161
+INFO 2025-10-12 17:18:51,498 basehttp 11019 6200455168 "GET /grids/ HTTP/1.1" 200 11604
+INFO 2025-10-12 17:19:11,875 autoreload 11019 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-10-12 17:19:12,375 autoreload 11802 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:19:52,498 autoreload 12183 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:19:54,972 basehttp 12183 6131937280 "GET /grids/ HTTP/1.1" 200 11583
+INFO 2025-10-12 17:19:56,408 basehttp 12183 6131937280 "GET /grids/235/ HTTP/1.1" 200 14787
+INFO 2025-10-12 17:19:58,643 basehttp 12183 6131937280 "GET /upgrade-required/ HTTP/1.1" 200 3453
+INFO 2025-10-12 17:20:21,939 autoreload 12183 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-12 17:20:22,435 autoreload 12202 8398642944 Watching for file changes with StatReloader

@@ -40,6 +40,9 @@ class Project(models.Model):
             models.Index(fields=['user', '-created_at']),  # For user's project list
             models.Index(fields=['user', 'id']),  # For project access checks
             models.Index(fields=['user', 'project_group', 'order']),  # For ordered project queries within groups
+            models.Index(fields=['user', 'is_archived']),  # For filtering user's active/archived projects
+            models.Index(fields=['is_archived', 'project_group', 'order']),  # For team grid queries
+            models.Index(fields=['is_team_toad', 'is_archived']),  # For team grid filtering
         ]
 
 class RowHeader(models.Model):
