@@ -30252,3 +30252,45 @@ INFO 2025-10-11 19:38:42,693 project_views_functions 86484 6185185280 User None 
 INFO 2025-10-11 19:38:42,694 basehttp 86484 6185185280 "POST /tasks/2453/assign/ HTTP/1.1" 200 112
 INFO 2025-10-11 19:38:50,601 project_views_functions 86484 6185185280 User None assigned task: ""Schedule September all team in-person catch up" to Tom " from project: Toad's Team Management Grid
 INFO 2025-10-11 19:38:50,602 basehttp 86484 6185185280 "POST /tasks/2453/assign/ HTTP/1.1" 200 112
+INFO 2025-10-12 06:51:51,521 autoreload 91659 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 06:51:52,168 basehttp 91659 6137622528 "GET / HTTP/1.1" 200 6228
+INFO 2025-10-12 06:51:52,188 basehttp 91659 6154448896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-12 06:51:52,191 basehttp 91659 6137622528 "GET /static/css/output.css HTTP/1.1" 200 91107
+INFO 2025-10-12 06:51:54,305 basehttp 91659 6137622528 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-12 06:51:54,339 basehttp 91659 6154448896 "GET /admin/ HTTP/1.1" 200 2811
+INFO 2025-10-12 06:51:54,345 basehttp 91659 6171275264 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-10-12 06:51:54,345 basehttp 91659 6154448896 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-10-12 06:51:54,347 basehttp 91659 6137622528 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-10-12 06:51:54,348 basehttp 91659 6171275264 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-10-12 06:51:54,348 basehttp 91659 6154448896 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-10-12 06:51:54,348 basehttp 91659 6137622528 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-10-12 06:51:54,350 basehttp 91659 6137622528 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-10-12 06:51:54,353 basehttp 91659 6171275264 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-10-12 06:51:54,353 basehttp 91659 6154448896 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-10-12 06:51:54,353 basehttp 91659 6137622528 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-10-12 06:51:59,006 basehttp 91659 6137622528 "GET /accounts/preview-student-follow-up/ HTTP/1.1" 200 2862
+INFO 2025-10-12 06:51:59,391 basehttp 91659 6137622528 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-12 06:51:59,393 basehttp 91659 6137622528 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-12 06:52:10,839 basehttp 91659 6137622528 "GET / HTTP/1.1" 200 6211
+INFO 2025-10-12 06:52:10,850 basehttp 91659 6137622528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 06:52:11,187 basehttp 91659 6137622528 "GET /static/video/Toad%20-%20Students%20Highlights.mp4 HTTP/1.1" 200 13532070
+INFO 2025-10-12 06:52:12,111 basehttp 91659 6137622528 "GET /grids/ HTTP/1.1" 200 11385
+INFO 2025-10-12 06:52:13,232 basehttp 91659 6137622528 "GET /grids/228/ HTTP/1.1" 200 18953
+INFO 2025-10-12 06:52:13,244 basehttp 91659 6137622528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 06:52:13,245 basehttp 91659 6154448896 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+ERROR 2025-10-12 06:52:42,775 log 91659 6154448896 Internal Server Error: /tasks/2453/assign/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 755, in task_assign_view
+    task = get_user_task_optimized(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: get_user_task_optimized() got an unexpected keyword argument 'prefetch_related'
+ERROR 2025-10-12 06:52:42,779 basehttp 91659 6154448896 "POST /tasks/2453/assign/ HTTP/1.1" 500 12031
