@@ -645,6 +645,27 @@ Share your feedback: https://meettoad.co.uk/crm/feedback/
 
 ---
 
+✨ Here's Why People Are Loving Toad
+
+Toad is a beautifully simple, visual grid that acts as a command centre for all your projects.
+
+✅ Get a bird's-eye view
+See all your projects, clients, and goals in one place. Whether you're a founder planning a product launch, a freelancer managing a client pipeline, or a student tracking your coursework, Toad gives you an instant overview.
+
+✅ Start in 60 seconds
+There's no complex setup or lengthy induction needed. Sign up, pick a template (or start from scratch), and you can have your first project organised in under a minute. It just works.
+
+✅ Go beyond to-do lists
+Toad is more than just a list; it's a "matrix of checklists." This unique structure helps you manage multi-stage projects with the clarity and organisation that simple lists and notes can't provide.
+
+---
+
+💡 Need Help Getting Started?
+
+Not sure how you'd use Toad but keen to give it a try? Reply to this email and we can set up a quick 15-minute call to help you get the most out of Toad!
+
+---
+
 Love Toad? Share it with friends!
 
 Know someone who could benefit from better organization? Share this special link to give them a 3-month free trial of Toad:

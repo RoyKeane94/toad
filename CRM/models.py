@@ -164,6 +164,25 @@ class Feedback(models.Model):
         verbose_name="Would you share Toad with friends and/or colleagues?"
     )
     
+    # Testimonial fields
+    testimonial_quote = models.TextField(
+        verbose_name="Would you like to provide a testimonial quote?",
+        blank=True,
+        help_text="Share why you love Toad - we may feature this on our website!"
+    )
+    testimonial_first_name = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="First name for testimonial",
+        help_text="Your first name to display with the quote"
+    )
+    testimonial_job_title = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name="Job title for testimonial",
+        help_text="Your job title to display with the quote"
+    )
+    
     # Metadata
     created_at = models.DateTimeField(auto_now_add=True)
     ip_address = models.GenericIPAddressField(null=True, blank=True)

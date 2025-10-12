@@ -1,4 +1,5 @@
 {% extends 'pages/layout.html' %}
+{% load static %}
 
 {% block title %}{{ title }} - Toad{% endblock %}
 
@@ -8,7 +9,11 @@
     <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="py-8 text-center">
-                <h1 class="text-4xl font-bold text-[var(--text-primary)] mb-3">We'd Love Your Feedback</h1>
+                <!-- Toad Logo -->
+                <div class="mb-6">
+                    <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-16 mx-auto">
+                </div>
+                <h1 class="text-4xl font-bold text-green-600 mb-3">We'd Love Your Feedback</h1>
                 <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
                     Help us make Toad better! Your feedback is anonymous and will help shape the future of Toad.
                 </p>
@@ -43,7 +48,7 @@
 
                 <!-- Core Question: Are you regularly using Toad? -->
                 <div>
-                    <label class="block text-lg font-semibold text-[var(--text-primary)] mb-4">
+                    <label class="block text-lg font-semibold text-green-600 mb-4">
                         Are you regularly using Toad? *
                     </label>
                     <div class="space-y-3">
@@ -67,7 +72,7 @@
 
                 <!-- Usage Reason -->
                 <div>
-                    <label for="{{ form.usage_reason.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                    <label for="{{ form.usage_reason.id_for_label }}" class="block text-lg font-semibold text-green-600 mb-3">
                         If yes, why? If not, why not?
                     </label>
                     {{ form.usage_reason }}
@@ -82,7 +87,7 @@
 
                 <!-- Organization Method -->
                 <div>
-                    <label for="{{ form.organization_method.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                    <label for="{{ form.organization_method.id_for_label }}" class="block text-lg font-semibold text-green-600 mb-3">
                         How do you tend to organise?
                     </label>
                     {{ form.organization_method }}
@@ -112,7 +117,7 @@
 
                 <!-- Non-User Suggestion -->
                 <div>
-                    <label for="{{ form.non_user_suggestion.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                    <label for="{{ form.non_user_suggestion.id_for_label }}" class="block text-lg font-semibold text-green-600 mb-3">
                         If you're not using Toad, is there anything that would make you use it?
                     </label>
                     {{ form.non_user_suggestion }}
@@ -130,7 +135,7 @@
 
                 <!-- User Improvement -->
                 <div>
-                    <label for="{{ form.user_improvement.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                    <label for="{{ form.user_improvement.id_for_label }}" class="block text-lg font-semibold text-green-600 mb-3">
                         If you are using Toad, what could make it better?
                     </label>
                     {{ form.user_improvement }}
@@ -148,7 +153,7 @@
 
                 <!-- Team Toad Interest -->
                 <div>
-                    <label for="{{ form.team_toad_interest.id_for_label }}" class="block text-lg font-semibold text-[var(--text-primary)] mb-3">
+                    <label for="{{ form.team_toad_interest.id_for_label }}" class="block text-lg font-semibold text-green-600 mb-3">
                         Would you be interested in Team Toad?
                     </label>
                     {{ form.team_toad_interest }}
@@ -171,7 +176,7 @@
                             {{ form.would_share }}
                         </div>
                         <div class="ml-3">
-                            <label for="{{ form.would_share.id_for_label }}" class="text-lg font-semibold text-[var(--text-primary)] cursor-pointer">
+                            <label for="{{ form.would_share.id_for_label }}" class="text-lg font-semibold text-green-600 cursor-pointer">
                                 Would you share Toad with friends and/or colleagues?
                             </label>
                             <p class="mt-1 text-sm text-[var(--text-secondary)]">
@@ -186,6 +191,71 @@
                         {% endfor %}
                     </div>
                     {% endif %}
+                </div>
+
+                <!-- Testimonial Section -->
+                <div class="bg-gradient-to-br from-yellow-50 to-amber-50 p-6 rounded-lg border-2 border-amber-300">
+                    <div class="mb-4">
+                        <h3 class="text-xl font-bold text-green-600 mb-2">
+                            ⭐ Love Toad? Share Your Story!
+                        </h3>
+                        <p class="text-sm text-[var(--text-secondary)] mb-4">
+                            We would <strong>love</strong> to feature your testimonial on our website! If you're enjoying Toad, please share a quote about why you love it along with your first name and job title.
+                        </p>
+                    </div>
+                    
+                    <div class="space-y-4">
+                        <!-- Testimonial Quote -->
+                        <div>
+                            <label for="{{ form.testimonial_quote.id_for_label }}" class="block text-base font-semibold text-green-600 mb-2">
+                                Your Testimonial <span class="text-[var(--text-secondary)] font-normal">(Optional)</span>
+                            </label>
+                            {{ form.testimonial_quote }}
+                            <p class="mt-1 text-xs text-[var(--text-secondary)]">
+                                Share why you love Toad in your own words
+                            </p>
+                            {% if form.testimonial_quote.errors %}
+                            <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.testimonial_quote.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Testimonial First Name -->
+                        <div>
+                            <label for="{{ form.testimonial_first_name.id_for_label }}" class="block text-base font-semibold text-green-600 mb-2">
+                                Your First Name <span class="text-[var(--text-secondary)] font-normal">(For testimonial)</span>
+                            </label>
+                            {{ form.testimonial_first_name }}
+                            {% if form.testimonial_first_name.errors %}
+                            <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.testimonial_first_name.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <!-- Testimonial Job Title -->
+                        <div>
+                            <label for="{{ form.testimonial_job_title.id_for_label }}" class="block text-base font-semibold text-green-600 mb-2">
+                                Your Job Title <span class="text-[var(--text-secondary)] font-normal">(For testimonial)</span>
+                            </label>
+                            {{ form.testimonial_job_title }}
+                            <p class="mt-1 text-xs text-[var(--text-secondary)]">
+                                e.g., Marketing Manager, Student, Entrepreneur
+                            </p>
+                            {% if form.testimonial_job_title.errors %}
+                            <div class="mt-2 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.testimonial_job_title.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Form Actions -->

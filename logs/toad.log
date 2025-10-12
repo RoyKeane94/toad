@@ -30112,3 +30112,33 @@ INFO 2025-10-11 18:08:40,901 basehttp 84052 6164852736 "GET /grids/227/delete/ H
 INFO 2025-10-11 18:08:41,607 basehttp 84052 6164852736 "POST /grids/227/delete/ HTTP/1.1" 302 0
 INFO 2025-10-11 18:08:41,623 basehttp 84052 6164852736 "GET /grids/ HTTP/1.1" 200 11367
 INFO 2025-10-11 18:08:43,027 basehttp 84052 6164852736 "GET /grids/228/ HTTP/1.1" 200 16777
+INFO 2025-10-12 06:57:34,768 autoreload 93666 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 06:57:36,320 basehttp 93666 6127300608 "GET / HTTP/1.1" 200 7288
+INFO 2025-10-12 06:57:36,337 basehttp 93666 6127300608 "GET /static/css/output.css HTTP/1.1" 200 87801
+INFO 2025-10-12 06:57:36,339 basehttp 93666 6144126976 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-12 06:57:36,597 basehttp 93666 6144126976 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-12 07:36:01,636 autoreload 95174 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 07:36:07,103 basehttp 95174 6170128384 "GET / HTTP/1.1" 200 7292
+INFO 2025-10-12 07:36:07,121 basehttp 95174 6170128384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 07:36:07,125 basehttp 95174 6170128384 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 07:36:07,973 basehttp 95174 6170128384 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-12 07:36:16,531 basehttp 95174 6170128384 "GET /lilypad/feedback/ HTTP/1.1" 200 5441
+INFO 2025-10-12 07:40:33,121 basehttp 95174 6170128384 "GET /lilypad/feedback/ HTTP/1.1" 200 5402
+INFO 2025-10-12 07:40:33,138 basehttp 95174 6170128384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 07:41:22,843 autoreload 95385 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 07:41:28,956 basehttp 95385 6195638272 "GET /lilypad/feedback/ HTTP/1.1" 200 5873
+INFO 2025-10-12 07:58:39,123 autoreload 96081 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 07:58:42,273 basehttp 96081 6162952192 "GET /accounts/preview-beta-feedback/ HTTP/1.1" 200 3138
+INFO 2025-10-12 08:00:26,543 basehttp 96081 6162952192 "GET /accounts/preview-beta-feedback/ HTTP/1.1" 200 3798
+INFO 2025-10-12 08:00:31,077 autoreload 96081 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-12 08:00:31,570 autoreload 96118 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:01:10,602 autoreload 96118 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-12 08:01:11,077 autoreload 96150 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:01:16,488 autoreload 96150 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-12 08:01:18,116 autoreload 96167 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:02:05,561 basehttp 96167 6191886336 "GET /accounts/preview-beta-feedback/ HTTP/1.1" 200 3765
+INFO 2025-10-12 08:03:44,236 autoreload 96167 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-12 08:03:44,638 autoreload 96211 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:03:51,886 autoreload 96211 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-12 08:03:52,243 autoreload 96221 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:04:15,978 basehttp 96221 6194704384 "GET /accounts/preview-beta-feedback/ HTTP/1.1" 200 3541

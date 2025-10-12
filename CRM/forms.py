@@ -139,7 +139,10 @@ class FeedbackForm(forms.ModelForm):
             'non_user_suggestion', 
             'user_improvement', 
             'team_toad_interest',
-            'would_share'
+            'would_share',
+            'testimonial_quote',
+            'testimonial_first_name',
+            'testimonial_job_title'
         ]
         widgets = {
             'name': forms.TextInput(attrs={
@@ -179,6 +182,19 @@ class FeedbackForm(forms.ModelForm):
             'would_share': forms.CheckboxInput(attrs={
                 'class': 'h-4 w-4 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] border-[var(--inline-input-border)] rounded'
             }),
+            'testimonial_quote': forms.Textarea(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'rows': 3,
+                'placeholder': 'Share your testimonial about why you love Toad...'
+            }),
+            'testimonial_first_name': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Your first name'
+            }),
+            'testimonial_job_title': forms.TextInput(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
+                'placeholder': 'Your job title (e.g., Marketing Manager)'
+            }),
         }
     
     def __init__(self, *args, **kwargs):
@@ -191,6 +207,9 @@ class FeedbackForm(forms.ModelForm):
         self.fields['non_user_suggestion'].required = False
         self.fields['user_improvement'].required = False
         self.fields['team_toad_interest'].required = False
+        self.fields['testimonial_quote'].required = False
+        self.fields['testimonial_first_name'].required = False
+        self.fields['testimonial_job_title'].required = False
         
         # Add empty label for organization method
         self.fields['organization_method'].empty_label = "Select an option..."
