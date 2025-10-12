@@ -102,54 +102,80 @@
     </div>
 
     <!-- Main Value Prop -->
-    <div class="container mx-auto px-4 py-20">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl md:text-6xl font-bold text-center mt-12 mb-20 text-gray-900">
-                Your entire world, <span style="color: var(--primary-action-bg);">on one simple grid.</span>
-            </h2>
-
-            <!-- Feature Cards -->
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <div class="p-8 space-y-4 border-2 border-gray-200 hover:border-green-300 transition-colors rounded-xl bg-white shadow-sm">
-                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h2a2 2 0 002-2z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900">The Visual Command Center</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        See all your projects, clients, and deadlines at a glance. Toad's "matrix of checklists" gives you
-                        complete visibility without the overwhelm.
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-7xl mx-auto">
+            <!-- Two-column layout -->
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Left Column: Text and Features -->
+                <div>
+                    <h2 class="text-5xl md:text-6xl font-bold text-left mb-3 text-gray-900">
+                        <span class="text-green-600">Clarity</span>, <span class="text-orange-500">by Design.</span>
+                    </h2>
+                    <p class="text-xl text-gray-600 text-left mb-12 leading-relaxed">
+                        We built Toad for people who have a job to do. That means giving you exactly what you need to get organised, and ruthlessly cutting everything you don't.
                     </p>
+
+                    <!-- Feature Grid -->
+                    <div class="grid grid-cols-2 gap-6">
+                        <!-- Box 1: Visual Command Center -->
+                        <div class="p-6 space-y-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-colors shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-green-600">Your Visual Command Center</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                Get a bird's-eye view of all your projects, clients, and goals. Toad's simple grid turns your chaos into a clear, scannable dashboard.
+                            </p>
+                        </div>
+
+                        <!-- Box 2: Radical Simplicity -->
+                        <div class="p-6 space-y-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-colors shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-green-600">Radical Simplicity</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                No complex setup or lengthy induction needed. Sign up and have your first project organised in under 60 seconds.
+                            </p>
+                        </div>
+
+                        <!-- Box 3: Projects, Not Just Tasks -->
+                        <div class="p-6 space-y-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-colors shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-green-600">Projects, Not Just Tasks</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                A simple list can't manage a product launch. Toad's unique "matrix of checklists" gives you the structure for complex projects.
+                            </p>
+                        </div>
+
+                        <!-- Box 4: Clarity Without the Cost -->
+                        <div class="p-6 space-y-4 bg-white rounded-xl border border-gray-200 hover:border-green-300 transition-colors shadow-sm">
+                            <div class="w-12 h-12 rounded-lg bg-gray-100 flex items-center justify-center">
+                                <svg class="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-lg font-bold text-green-600">Clarity Without the Cost</h3>
+                            <p class="text-sm text-gray-600 leading-relaxed">
+                                No confusing tiers, no hidden enterprise fees. We believe in simple, fair pricing. Get started with our generous free plan, and if you need more, it's just <span class="font-bold text-green-600">£2 a month</span>.
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Card 2 -->
-                <div class="p-8 space-y-4 border-2 border-gray-200 hover:border-green-300 transition-colors rounded-xl bg-white shadow-sm">
-                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
+                <!-- Right Column: Screenshot -->
+                <div class="flex justify-center lg:justify-end">
+                    <div class="w-full max-w-lg">
+                        <img src="{% static 'img/home/Quick grid screenshot.png' %}" alt="Toad Grid Screenshot" class="w-full h-auto rounded-lg shadow-lg">
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-900">Radical Simplicity</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        No induction needed. Ever. Toad is so intuitive you can sign up and have your first project running in
-                        under 60 seconds.
-                    </p>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="p-8 space-y-4 border-2 border-gray-200 hover:border-green-300 transition-colors rounded-xl bg-white shadow-sm">
-                    <div class="w-14 h-14 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <h3 class="text-2xl font-bold text-gray-900">More Than a To-Do List</h3>
-                    <p class="text-gray-600 leading-relaxed">
-                        Go beyond simple tasks. Manage multi-stage projects, from a product launch to a wedding, all in one
-                        beautifully simple interface.
-                    </p>
                 </div>
             </div>
         </div>
@@ -215,7 +241,7 @@
                     Students & Academics
                 </h3>
                 <p class="text-gray-600 leading-relaxed">
-                    Organize your courses, plan your essays, and track your revision. Finally, a clear view of your entire semester.
+                    Organise your courses, plan your essays, and track your revision. Finally, a clear view of your entire semester.
                 </p>
             </div>
         </div>

@@ -30142,3 +30142,25 @@ INFO 2025-10-12 08:03:44,638 autoreload 96211 8398642944 Watching for file chang
 INFO 2025-10-12 08:03:51,886 autoreload 96211 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
 INFO 2025-10-12 08:03:52,243 autoreload 96221 8398642944 Watching for file changes with StatReloader
 INFO 2025-10-12 08:04:15,978 basehttp 96221 6194704384 "GET /accounts/preview-beta-feedback/ HTTP/1.1" 200 3541
+INFO 2025-10-12 08:15:12,675 autoreload 96900 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 08:15:14,338 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7731
+INFO 2025-10-12 08:15:14,360 basehttp 96900 6166081536 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 08:15:14,364 basehttp 96900 6166081536 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-12 08:15:14,365 basehttp 96900 6182907904 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 08:15:14,369 basehttp 96900 6166081536 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 200 266075
+INFO 2025-10-12 08:15:14,555 basehttp 96900 6166081536 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-12 08:24:52,399 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7785
+INFO 2025-10-12 08:24:52,441 basehttp 96900 6166081536 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 08:24:52,441 basehttp 96900 6199734272 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 08:24:52,441 basehttp 96900 6182907904 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 08:24:52,473 basehttp 96900 6182907904 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 304 0
+INFO 2025-10-12 08:29:13,012 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7721
+INFO 2025-10-12 08:29:13,026 basehttp 96900 6166081536 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 304 0
+INFO 2025-10-12 08:30:15,507 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7725
+WARNING 2025-10-12 08:30:40,648 log 96900 6166081536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-12 08:30:40,650 basehttp 96900 6166081536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2190
+INFO 2025-10-12 08:30:41,861 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7804
+WARNING 2025-10-12 08:30:41,891 log 96900 6166081536 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-12 08:30:41,891 basehttp 96900 6166081536 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2165
+INFO 2025-10-12 08:31:01,624 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7739
+INFO 2025-10-12 08:31:10,479 basehttp 96900 6166081536 "GET / HTTP/1.1" 200 7812
