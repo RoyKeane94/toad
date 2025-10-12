@@ -38,10 +38,21 @@
                 <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
             </div>
         </div>
+        
+        <!-- Video Section (hidden initially, positioned where text will be) -->
+        <div id="video-container" class="w-full relative" style="opacity: 0; display: none;">
+            <video id="hero-video" class="w-full h-auto object-contain" 
+                   muted 
+                   playsinline>
+                <source src="{% static 'video/Home -Hero Video.mp4' %}" type="video/mp4">
+            </video>
+        </div>
+        
         <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-8" style="opacity: 0;">
             <span style="color: var(--title-text);">For people who</span>
             <span style="color: var(--primary-action-bg);"> have a job to do.</span>
         </h1>
+        
         <!-- Join Button -->
         <div id="join-button" class="text-center mt-12 sm:mt-16" style="opacity: 0;">
             <a href="{% url 'accounts:register_choices' %}"
@@ -51,15 +62,6 @@
                 Join Today for Free
             </a>
         </div>
-    </div>
-
-    <!-- Video Section (hidden initially) -->
-    <div id="video-container" class="w-full relative" style="opacity: 0; display: none;">
-        <video id="hero-video" class="w-full h-auto object-contain" 
-               muted 
-               playsinline>
-            <source src="{% static 'video/Home -Hero Video.mp4' %}" type="video/mp4">
-        </video>
     </div>
 
     <!-- Mobile Screenshot Section (hidden initially) -->
@@ -322,16 +324,17 @@
                     });
                 }, 100);
             } else {
-                // Desktop: Show video
-                // Fade out initial content
-                initialContent.style.opacity = '0';
-                initialContent.style.transition = 'opacity 0.5s ease-out';
+                // Desktop: Fade out text and button, keep logo visible
+                initialText.style.opacity = '0';
+                joinButton.style.opacity = '0';
+                initialText.style.transition = 'opacity 0.5s ease-out';
+                joinButton.style.transition = 'opacity 0.5s ease-out';
                 
                 setTimeout(() => {
-                    // Hide initial content completely
-                    initialContent.style.display = 'none';
+                    // Hide text completely
+                    initialText.style.display = 'none';
                     
-                    // Show and fade in video
+                    // Show and fade in video (moves up to replace text position)
                     videoContainer.style.display = 'block';
                     videoContainer.style.opacity = '0';
                     setTimeout(() => {
@@ -344,7 +347,7 @@
             }
         }, 3000);
         
-        // Phase 3: Desktop only - when video ends, show logo + text + button (final state)
+        // Phase 3: Desktop only - when video ends, fade out video and show text + button
         if (!isMobile) {
             heroVideo.addEventListener('ended', function() {
                 // Fade out video
@@ -354,28 +357,19 @@
                 setTimeout(() => {
                     videoContainer.style.display = 'none';
                     
-                    // Show initial content again with button
-                    initialContent.style.display = 'block';
-                    initialContent.style.opacity = '0';
-                    logoContainer.style.opacity = '0';
+                    // Show and fade text back in
+                    initialText.style.display = 'block';
                     initialText.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        initialContent.style.opacity = '1';
-                        initialContent.style.transition = 'opacity 0.8s ease-out';
-                        logoContainer.style.opacity = '1';
-                        logoContainer.style.transition = 'opacity 0.8s ease-out';
-                    }, 100);
                     
                     setTimeout(() => {
                         initialText.style.opacity = '1';
                         initialText.style.transition = 'opacity 0.8s ease-out';
-                    }, 400);
+                    }, 100);
                     
                     setTimeout(() => {
                         joinButton.style.opacity = '1';
                         joinButton.style.transition = 'opacity 0.8s ease-out';
-                    }, 700);
+                    }, 400);
                 }, 500);
             });
         }
