@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 def get_user_project_optimized(project_pk, user, select_related=None, prefetch_related=None, only_fields=None):
     """Get project with optimized queries and permission check"""
     # Include projects where user is owner OR part of team_toad_user
-    queryset = Project.objects.filter(Q(user=user) | Q(team_toad_user=user))
+    queryset = Project.objects.filter(Q(user=user) | Q(team_toad_user=user)).distinct()
     
     if select_related:
         queryset = queryset.select_related(*select_related)
@@ -28,7 +28,7 @@ def get_user_project_optimized(project_pk, user, select_related=None, prefetch_r
 def get_user_task_optimized(task_pk, user, select_related=None, only_fields=None):
     """Get task with optimized queries and permission check"""
     # Include tasks from projects where user is owner OR part of team_toad_user
-    queryset = Task.objects.filter(Q(project__user=user) | Q(project__team_toad_user=user))
+    queryset = Task.objects.filter(Q(project__user=user) | Q(project__team_toad_user=user)).distinct()
     
     if select_related:
         queryset = queryset.select_related(*select_related)

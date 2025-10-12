@@ -31316,3 +31316,125 @@ INFO 2025-10-12 17:19:56,408 basehttp 12183 6131937280 "GET /grids/235/ HTTP/1.1
 INFO 2025-10-12 17:19:58,643 basehttp 12183 6131937280 "GET /upgrade-required/ HTTP/1.1" 200 3453
 INFO 2025-10-12 17:20:21,939 autoreload 12183 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
 INFO 2025-10-12 17:20:22,435 autoreload 12202 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:23:07,564 autoreload 12557 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:23:09,124 basehttp 12557 6200733696 "GET /grids/228/ HTTP/1.1" 200 18042
+INFO 2025-10-12 17:23:09,141 basehttp 12557 6200733696 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-12 17:23:09,141 basehttp 12557 6217560064 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-12 17:23:46,013 project_views 12557 6217560064 Task 2459 assigned to user 2 by 36
+INFO 2025-10-12 17:23:46,015 basehttp 12557 6217560064 "POST /tasks/2459/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:23:54,064 basehttp 12557 6217560064 "GET /accounts/settings/ HTTP/1.1" 200 3683
+INFO 2025-10-12 17:23:59,054 basehttp 12557 6217560064 "POST /accounts/settings/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:23:59,062 basehttp 12557 6217560064 "GET /accounts/settings/ HTTP/1.1" 200 3682
+INFO 2025-10-12 17:24:00,590 basehttp 12557 6217560064 "GET / HTTP/1.1" 200 6175
+INFO 2025-10-12 17:24:02,092 basehttp 12557 6217560064 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-12 17:24:02,107 basehttp 12557 6200733696 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:24:02,121 basehttp 12557 6200733696 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1649
+INFO 2025-10-12 17:24:02,139 basehttp 12557 6200733696 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-10-12 17:24:10,229 basehttp 12557 6200733696 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:24:10,243 basehttp 12557 6200733696 "GET /admin/ HTTP/1.1" 200 2842
+INFO 2025-10-12 17:24:12,294 basehttp 12557 6200733696 "GET /admin/accounts/user/ HTTP/1.1" 200 3247
+INFO 2025-10-12 17:24:12,320 basehttp 12557 6200733696 "GET /admin/jsi18n/ HTTP/1.1" 200 978
+INFO 2025-10-12 17:24:13,596 basehttp 12557 6200733696 "GET /admin/accounts/user/35/change/ HTTP/1.1" 200 6602
+INFO 2025-10-12 17:24:13,625 basehttp 12557 6200733696 "GET /admin/jsi18n/ HTTP/1.1" 200 1019
+INFO 2025-10-12 17:24:25,199 basehttp 12557 6200733696 "POST /admin/accounts/user/35/change/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:24:25,213 basehttp 12557 6200733696 "GET /admin/accounts/user/ HTTP/1.1" 200 3401
+INFO 2025-10-12 17:24:25,232 basehttp 12557 6200733696 "GET /admin/jsi18n/ HTTP/1.1" 200 963
+INFO 2025-10-12 17:24:26,706 basehttp 12557 6200733696 "GET /admin/accounts/user/36/change/ HTTP/1.1" 200 6651
+INFO 2025-10-12 17:24:26,723 basehttp 12557 6200733696 "GET /admin/jsi18n/ HTTP/1.1" 200 975
+INFO 2025-10-12 17:24:29,346 basehttp 12557 6200733696 "GET /admin/accounts/user/ HTTP/1.1" 200 3250
+INFO 2025-10-12 17:24:30,533 basehttp 12557 6200733696 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6663
+INFO 2025-10-12 17:24:30,550 basehttp 12557 6200733696 "GET /admin/jsi18n/ HTTP/1.1" 200 1042
+INFO 2025-10-12 17:24:38,631 basehttp 12557 6200733696 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-10-12 17:24:38,646 basehttp 12557 6200733696 "GET /admin/accounts/user/ HTTP/1.1" 200 3358
+INFO 2025-10-12 17:24:38,661 basehttp 12557 6200733696 "GET /admin/jsi18n/ HTTP/1.1" 200 971
+INFO 2025-10-12 17:24:39,770 basehttp 12557 6200733696 "GET / HTTP/1.1" 200 6253
+INFO 2025-10-12 17:24:41,857 basehttp 12557 6200733696 "GET /grids/ HTTP/1.1" 200 11625
+ERROR 2025-10-12 17:24:43,250 log 12557 6200733696 Internal Server Error: /grids/228/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py", line 257, in project_grid_view
+    project = get_user_project_optimized(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py", line 26, in get_user_project_optimized
+    return get_object_or_404(queryset, pk=project_pk)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 90, in get_object_or_404
+    return queryset.get(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 636, in get
+    raise self.model.MultipleObjectsReturned(
+pages.models.Project.MultipleObjectsReturned: get() returned more than one Project -- it returned 3!
+ERROR 2025-10-12 17:24:43,254 basehttp 12557 6200733696 "GET /grids/228/ HTTP/1.1" 500 13204
+INFO 2025-10-12 17:25:20,251 autoreload 12557 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-12 17:25:20,819 autoreload 12738 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:25:26,430 autoreload 12738 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-12 17:25:26,892 autoreload 12752 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:25:32,665 basehttp 12752 6136229888 "GET /grids/228/ HTTP/1.1" 200 18396
+INFO 2025-10-12 17:25:34,680 basehttp 12752 6136229888 "GET /grids/ HTTP/1.1" 200 11634
+INFO 2025-10-12 17:25:36,446 basehttp 12752 6136229888 "GET /grids/228/ HTTP/1.1" 200 18316
+INFO 2025-10-12 17:25:39,046 project_views 12752 6136229888 Task 2459 unassigned by 2
+INFO 2025-10-12 17:25:39,047 basehttp 12752 6136229888 "POST /tasks/2459/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:25:41,140 basehttp 12752 6136229888 "GET /grids/228/ HTTP/1.1" 200 18172
+INFO 2025-10-12 17:25:53,994 autoreload 12752 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views_functions/project_views_functions.py changed, reloading.
+INFO 2025-10-12 17:25:54,485 autoreload 12772 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-12 17:26:01,956 project_views 12772 6134525952 Task 2459 assigned to user 2 by 2
+INFO 2025-10-12 17:26:01,957 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:26:04,531 project_views 12772 6134525952 Task 2459 assigned to user 36 by 2
+INFO 2025-10-12 17:26:04,531 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 59
+INFO 2025-10-12 17:26:06,732 project_views 12772 6134525952 Task 2459 unassigned by 2
+INFO 2025-10-12 17:26:06,733 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:26:08,345 basehttp 12772 6134525952 "POST /tasks/2459/toggle/ HTTP/1.1" 200 79
+INFO 2025-10-12 17:26:11,170 basehttp 12772 6134525952 "POST /grids/228/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-10-12 17:26:20,499 project_views 12772 6134525952 Task 2451 assigned to user 2 by 2
+INFO 2025-10-12 17:26:20,500 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:26:27,583 basehttp 12772 6134525952 "POST /tasks/2459/toggle/ HTTP/1.1" 200 79
+INFO 2025-10-12 17:26:29,757 project_views 12772 6134525952 Task 2451 unassigned by 2
+INFO 2025-10-12 17:26:29,757 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:26:45,313 project_views 12772 6134525952 Task 2451 assigned to user 2 by 2
+INFO 2025-10-12 17:26:45,314 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:26:48,111 project_views 12772 6134525952 Task 2459 assigned to user 35 by 2
+INFO 2025-10-12 17:26:48,112 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 67
+INFO 2025-10-12 17:26:50,277 project_views 12772 6134525952 Task 2459 assigned to user 2 by 2
+INFO 2025-10-12 17:26:50,278 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:26:52,310 project_views 12772 6134525952 Task 2459 assigned to user 36 by 2
+INFO 2025-10-12 17:26:52,311 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 59
+INFO 2025-10-12 17:26:54,375 project_views 12772 6134525952 Task 2459 unassigned by 2
+INFO 2025-10-12 17:26:54,376 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:26:59,877 basehttp 12772 6134525952 "POST /grids/228/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-10-12 17:27:42,742 project_views 12772 6134525952 Task 2451 unassigned by 2
+INFO 2025-10-12 17:27:42,743 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:28:08,587 project_views 12772 6134525952 Task 2459 assigned to user 2 by 2
+INFO 2025-10-12 17:28:08,588 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:28:13,960 project_views 12772 6134525952 Task 2459 assigned to user 35 by 2
+INFO 2025-10-12 17:28:13,960 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 67
+INFO 2025-10-12 17:28:34,981 project_views 12772 6134525952 Task 2459 unassigned by 2
+INFO 2025-10-12 17:28:34,983 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:28:41,395 basehttp 12772 6134525952 "GET /grids/228/ HTTP/1.1" 200 18211
+INFO 2025-10-12 17:30:08,855 project_views 12772 6134525952 Task 2459 assigned to user 2 by 2
+INFO 2025-10-12 17:30:08,856 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:30:10,878 project_views 12772 6134525952 Task 2459 assigned to user 35 by 2
+INFO 2025-10-12 17:30:10,879 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 67
+INFO 2025-10-12 17:30:13,879 project_views 12772 6134525952 Task 2459 assigned to user 36 by 2
+INFO 2025-10-12 17:30:13,879 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 59
+INFO 2025-10-12 17:30:16,734 project_views 12772 6134525952 Task 2451 assigned to user 2 by 2
+INFO 2025-10-12 17:30:16,735 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:30:19,826 basehttp 12772 6134525952 "POST /grids/228/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-10-12 17:30:22,578 project_views 12772 6134525952 Task 2459 unassigned by 2
+INFO 2025-10-12 17:30:22,579 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:34:31,040 project_views 12772 6134525952 Task 2451 assigned to user 35 by 2
+INFO 2025-10-12 17:34:31,041 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 67
+INFO 2025-10-12 17:34:33,082 project_views 12772 6134525952 Task 2451 assigned to user 36 by 2
+INFO 2025-10-12 17:34:33,083 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 59
+INFO 2025-10-12 17:34:35,111 project_views 12772 6134525952 Task 2451 unassigned by 2
+INFO 2025-10-12 17:34:35,111 basehttp 12772 6134525952 "POST /tasks/2451/assign/ HTTP/1.1" 200 61
+INFO 2025-10-12 17:34:37,209 project_views 12772 6134525952 Task 2459 assigned to user 2 by 2
+INFO 2025-10-12 17:34:37,209 basehttp 12772 6134525952 "POST /tasks/2459/assign/ HTTP/1.1" 200 62
+INFO 2025-10-12 17:34:40,743 basehttp 12772 6134525952 "POST /grids/228/tasks/reorder/ HTTP/1.1" 200 76
