@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
+from .models import User
 import os
 import base64
 
@@ -610,4 +611,119 @@ This email was sent to {recipient_email}.
         return True
     except Exception as e:
         logger.error(f"Failed to send test {user_tier} joining email to {recipient_email}: {e}")
+        return False
+
+
+def send_grid_invitation_email(invitation, request=None):
+    """
+    Send grid invitation email to the invited user.
+    
+    Args:
+        invitation (GridInvitation): The invitation object
+        request (HttpRequest, optional): Request object for building absolute URLs
+    
+    Returns:
+        bool: True if email sent successfully, False otherwise
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    # Check if the invited user has an account and their tier
+    invited_user = None
+    try:
+        invited_user = User.objects.get(email=invitation.invited_email)
+        user_tier = invited_user.tier
+    except User.DoesNotExist:
+        user_tier = 'free'  # User doesn't have account yet
+    
+    # Check if user has a valid tier for collaboration
+    valid_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
+    if user_tier not in valid_tiers:
+        logger.warning(f"Cannot send invitation to {invitation.invited_email} - user has tier '{user_tier}', needs one of: {valid_tiers}")
+        return False
+    
+    # Build invitation URL
+    if request:
+        invitation_url = request.build_absolute_uri(
+            reverse('pages:accept_grid_invitation', kwargs={'token': invitation.token})
+        )
+    else:
+        invitation_url = f"{settings.SITE_URL}/grids/invite/{invitation.token}/"
+    
+    # Build registration URL for users who need to sign up
+    if request:
+        upgrade_url = request.build_absolute_uri(reverse('accounts:register'))
+    else:
+        upgrade_url = f"{settings.SITE_URL}/accounts/register/"
+    
+    # Read and encode the image
+    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
+    image_data = ""
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+    
+    # Render email template
+    html_message = render_to_string('pages/email/grid_invitation.html', {
+        'invitation': invitation,
+        'invitation_url': invitation_url,
+        'upgrade_url': upgrade_url,
+        'toad_image_data': image_data,
+        'now': timezone.now(),
+    })
+    
+    # Plain text version
+    inviter_name = invitation.invited_by.get_full_name() or invitation.invited_by.first_name
+    personal_message_text = f"""
+{inviter_name} sent you a personal message:
+"{invitation.personal_message}"
+
+""" if invitation.personal_message else ""
+    
+    text_message = f"""
+Hi there,
+{personal_message_text}
+{inviter_name} has invited you to collaborate on their grid: "{invitation.project.name}"
+
+With Toad Pro, you can work together on grids, assign tasks, and stay organized as a team. All you need is a Toad Pro account to get started!
+
+Note: You must be signed in to your Toad account to accept this invitation.
+
+Join the grid here:
+{invitation_url}
+
+If the link doesn't work, you can copy and paste it into your browser.
+
+⏰ This invitation expires on {invitation.expires_at.strftime('%B %d, %Y')} at {invitation.expires_at.strftime('%I:%M %p')}.
+
+Don't have a Toad account yet? No problem! You can sign up for a Toad Pro account to start collaborating:
+{upgrade_url}
+
+Thanks for being part of the Toad community!
+
+This invitation was sent by {inviter_name} ({invitation.invited_by.email}) 
+for the grid "{invitation.project.name}".
+
+If you weren't expecting this invitation or have any questions, please contact our support team.
+
+© 2025 Toad. All rights reserved.
+    """
+    
+    # Send email
+    try:
+        logger.info(f"Attempting to send grid invitation email to {invitation.invited_email}")
+        
+        send_mail(
+            subject=f'You\'re invited to collaborate on "{invitation.project.name}" - Toad',
+            message=text_message,
+            from_email=settings.EMAIL_HOST_USER,  # Use EMAIL_HOST_USER as specified
+            recipient_list=[invitation.invited_email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        
+        logger.info(f"Successfully sent grid invitation email to {invitation.invited_email}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send grid invitation email to {invitation.invited_email}: {e}")
         return False

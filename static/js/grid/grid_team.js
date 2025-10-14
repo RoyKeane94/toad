@@ -88,6 +88,9 @@ function updateTaskAssignmentDisplay(taskId, assignedUserId, assignedUserName) {
         assignButtons.forEach(btn => {
             btn.setAttribute('data-assigned-to', assignedUserId);
         });
+        
+        // Update task element data attribute for filtering
+        taskElement.setAttribute('data-assigned-user-id', assignedUserId);
     } else {
         // Remove assignment display if no user assigned
         if (assignmentDisplay) {
@@ -99,6 +102,9 @@ function updateTaskAssignmentDisplay(taskId, assignedUserId, assignedUserName) {
         assignButtons.forEach(btn => {
             btn.removeAttribute('data-assigned-to');
         });
+        
+        // Remove task element data attribute for filtering
+        taskElement.removeAttribute('data-assigned-user-id');
     }
 }
 

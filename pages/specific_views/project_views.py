@@ -1779,3 +1779,217 @@ def project_group_edit_view(request, pk):
         })
 
 
+@login_required
+def share_grid_view(request, pk):
+    """
+    Handle grid sharing via email invitation or shareable link
+    """
+    try:
+        project = get_user_project_optimized(pk, request.user)
+        
+        if request.method == 'POST':
+            data = json.loads(request.body)
+            invitation_type = data.get('type')  # 'email' or 'link'
+            email = data.get('email', '').strip()
+            personal_message = data.get('message', '').strip()
+            
+            if invitation_type == 'email':
+                return _handle_email_invitation(request, project, email, personal_message)
+            elif invitation_type == 'link':
+                return _handle_shareable_link(request, project)
+            else:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Invalid invitation type'
+                })
+        
+        return JsonResponse({
+            'success': False,
+            'error': 'Invalid request method'
+        })
+        
+    except Exception as e:
+        logger.error(f"Error in share_grid_view: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'An error occurred while sharing the grid'
+        })
+
+
+def _handle_email_invitation(request, project, email, personal_message):
+    """
+    Handle email invitation creation and sending
+    """
+    from pages.models import GridInvitation
+    from accounts.email_utils import send_grid_invitation_email
+    from django.utils import timezone
+    from datetime import timedelta
+    
+    # Validate email
+    if not email:
+        return JsonResponse({
+            'success': False,
+            'error': 'Email address is required'
+        })
+    
+    # Check if user has valid tier for collaboration
+    try:
+        invited_user = User.objects.get(email=email)
+        valid_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
+        if invited_user.tier not in valid_tiers:
+            return JsonResponse({
+                'success': False,
+                'error': f'User with email {email} has tier "{invited_user.tier}" but needs one of: {", ".join(valid_tiers)}'
+            })
+    except User.DoesNotExist:
+        return JsonResponse({
+            'success': False,
+            'error': f'No user found with email {email}. User must have a Toad account with Pro, Pro Trial, Society Pro, or Beta tier.'
+        })
+    
+    # Check if user is already part of the project
+    if project.team_toad_user.filter(email=email).exists():
+        return JsonResponse({
+            'success': False,
+            'error': f'User with email {email} is already part of this grid'
+        })
+    
+    # Check if there's already a pending invitation for this email and project
+    existing_invitation = GridInvitation.objects.filter(
+        project=project,
+        invited_email=email,
+        invitation_type='email',
+        status='pending'
+    ).first()
+    
+    if existing_invitation and not existing_invitation.is_expired():
+        return JsonResponse({
+            'success': False,
+            'error': f'A pending invitation already exists for {email}. Please wait for it to be accepted or expired.'
+        })
+    
+    # Create new invitation
+    try:
+        invitation = GridInvitation.objects.create(
+            project=project,
+            invited_by=request.user,
+            invited_email=email,
+            invitation_type='email',
+            personal_message=personal_message,
+            expires_at=timezone.now() + timedelta(days=7),  # 7 days expiry
+        )
+        
+        # Send email
+        email_sent = send_grid_invitation_email(invitation, request)
+        
+        if email_sent:
+            return JsonResponse({
+                'success': True,
+                'message': f'Invitation sent successfully to {email}',
+                'invitation_id': invitation.id
+            })
+        else:
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to send invitation email'
+            })
+            
+    except Exception as e:
+        logger.error(f"Error creating email invitation: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Failed to create invitation'
+        })
+
+
+def _handle_shareable_link(request, project):
+    """
+    Handle shareable link creation - creates a new link each time
+    """
+    from pages.models import GridInvitation
+    from django.utils import timezone
+    from datetime import timedelta
+    from django.urls import reverse
+    
+    # Create a new shareable link invitation each time
+    try:
+        invitation = GridInvitation.objects.create(
+            project=project,
+            invited_by=request.user,
+            invited_email='',  # Empty for shareable links
+            invitation_type='link',
+            expires_at=timezone.now() + timedelta(days=30),  # 30 days for links
+        )
+        
+        # Build the shareable link
+        if request:
+            shareable_url = request.build_absolute_uri(
+                reverse('pages:accept_grid_invitation', kwargs={'token': invitation.token})
+            )
+        else:
+            shareable_url = f"{settings.SITE_URL}/grids/invite/{invitation.token}/"
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'Shareable link created successfully',
+            'shareable_url': shareable_url,
+            'invitation_id': invitation.id,
+            'expires_at': invitation.expires_at.isoformat()
+        })
+        
+    except Exception as e:
+        logger.error(f"Error creating shareable link: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Failed to create shareable link'
+        })
+
+
+def accept_grid_invitation_view(request, token):
+    """
+    Handle accepting grid invitations via token
+    """
+    from pages.models import GridInvitation
+    from django.contrib import messages
+    
+    try:
+        invitation = GridInvitation.objects.get(token=token)
+        
+        # Check if invitation is still valid
+        if not invitation.can_be_accepted():
+            if invitation.is_expired():
+                messages.error(request, 'This invitation has expired.')
+            else:
+                messages.error(request, 'This invitation is no longer valid.')
+            return redirect('pages:home')
+        
+        # If user is logged in, accept the invitation
+        if request.user.is_authenticated:
+            # Check if user has valid tier
+            valid_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
+            if request.user.tier not in valid_tiers:
+                messages.error(request, f'You need a Pro, Pro Trial, Society Pro, or Beta account to collaborate on grids. Your current tier is "{request.user.tier}".')
+                return redirect('pages:upgrade_required')
+            
+            # Accept the invitation
+            if invitation.accept(request.user):
+                messages.success(request, f'You have successfully joined the grid "{invitation.project.name}"!')
+                return redirect('pages:project_grid', pk=invitation.project.pk)
+            else:
+                messages.error(request, 'Failed to accept the invitation.')
+                return redirect('pages:home')
+        
+        else:
+            # User is not logged in, redirect to login with next parameter
+            messages.info(request, 'Please log in to accept this grid invitation.')
+            return redirect('accounts:login') + f'?next={request.get_full_path()}'
+            
+    except GridInvitation.DoesNotExist:
+        messages.error(request, 'Invalid invitation link.')
+        return redirect('pages:home')
+    except Exception as e:
+        logger.error(f"Error accepting grid invitation: {e}")
+        messages.error(request, 'An error occurred while accepting the invitation.')
+        return redirect('pages:home')
+
+

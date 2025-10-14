@@ -1,6 +1,8 @@
 from django.db import models
 from accounts.models import User  # Use our custom User model
 from django.urls import reverse
+import secrets
+import string
 
 class ProjectGroup(models.Model):
     name = models.CharField(max_length=100)
@@ -231,6 +233,100 @@ class ContactSubmission(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
+
+
+class GridInvitation(models.Model):
+    """
+    Model to track grid sharing invitations via email and shareable links
+    """
+    INVITATION_TYPE_CHOICES = [
+        ('email', 'Email Invitation'),
+        ('link', 'Shareable Link'),
+    ]
+    
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('declined', 'Declined'),
+        ('expired', 'Expired'),
+    ]
+    
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name='invitations')
+    invited_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_invitations')
+    invited_email = models.EmailField(blank=True, help_text='Email address of the invited user (empty for shareable links)')
+    invited_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_invitations', 
+                                   null=True, blank=True, help_text='User object if they have an account')
+    invitation_type = models.CharField(max_length=10, choices=INVITATION_TYPE_CHOICES, default='email')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending')
+    token = models.CharField(max_length=32, unique=True, help_text='Unique token for the invitation')
+    personal_message = models.TextField(blank=True, help_text='Optional personal message from the inviter')
+    expires_at = models.DateTimeField(help_text='When the invitation expires')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    accepted_at = models.DateTimeField(null=True, blank=True, help_text='When the invitation was accepted')
+    
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['token']),
+            models.Index(fields=['invited_email', 'status']),
+            models.Index(fields=['project', 'status']),
+            models.Index(fields=['expires_at']),
+        ]
+        # Allow multiple invitations per project
+        # For email invitations: one per email per project (handled in view logic)
+        # For shareable links: multiple allowed per project
+    
+    def __str__(self):
+        return f"{self.project.name} - {self.invited_email} ({self.status})"
+    
+    def generate_token(self):
+        """Generate a secure random token for the invitation"""
+        alphabet = string.ascii_letters + string.digits
+        return ''.join(secrets.choice(alphabet) for _ in range(32))
+    
+    def save(self, *args, **kwargs):
+        if not self.token:
+            self.token = self.generate_token()
+        super().save(*args, **kwargs)
+    
+    def is_expired(self):
+        """Check if the invitation has expired"""
+        from django.utils import timezone
+        return timezone.now() > self.expires_at
+    
+    def can_be_accepted(self):
+        """Check if the invitation can still be accepted"""
+        return self.status == 'pending' and not self.is_expired()
+    
+    def accept(self, user=None):
+        """Accept the invitation and add user to the project"""
+        if not self.can_be_accepted():
+            return False
+        
+        # If user is provided and matches the invited email, or if we have an invited_user
+        if user and user.email == self.invited_email:
+            self.invited_user = user
+        elif not self.invited_user and self.invited_email:
+            # Try to find the user by email
+            try:
+                self.invited_user = User.objects.get(email=self.invited_email)
+            except User.DoesNotExist:
+                pass
+        
+        # Add user to the project's team
+        if self.invited_user:
+            self.project.team_toad_user.add(self.invited_user)
+            self.project.is_team_toad = True
+            self.project.save()
+        
+        # Update invitation status
+        from django.utils import timezone
+        self.status = 'accepted'
+        self.accepted_at = timezone.now()
+        self.save()
+        
+        return True
 
 
     

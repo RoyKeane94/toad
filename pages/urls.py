@@ -97,4 +97,8 @@ urlpatterns = [
     path('grids/group/create/', views.project_group_create_view, name='project_group_create'),
     path('grids/project/update-group/', views.project_group_update_view, name='project_group_update'),
     path('grids/group/<int:pk>/edit/', views.project_group_edit_view, name='project_group_edit'),
+    
+    # Grid Sharing URLs
+    path('grids/<int:pk>/share/', views.share_grid_view, name='share_grid'),
+    path('grids/invite/<str:token>/', views.accept_grid_invitation_view, name='accept_grid_invitation'),
 ]
