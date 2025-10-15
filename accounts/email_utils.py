@@ -652,7 +652,7 @@ def send_grid_invitation_email(invitation, request=None):
     
     # Build registration URL for users who need to sign up
     if request:
-        upgrade_url = request.build_absolute_uri(reverse('accounts:register'))
+        upgrade_url = request.build_absolute_uri(reverse('accounts:register_choices'))
     else:
         upgrade_url = f"{settings.SITE_URL}/accounts/register/"
     

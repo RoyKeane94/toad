@@ -3,6 +3,8 @@ from accounts.models import User  # Use our custom User model
 from django.urls import reverse
 import secrets
 import string
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class ProjectGroup(models.Model):
     name = models.CharField(max_length=100)
@@ -22,7 +24,7 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
     is_team_toad = models.BooleanField(default=False)
-    team_toad_user = models.ManyToManyField(User, related_name='team_toad_projects', null=True, blank=True)
+    team_toad_user = models.ManyToManyField(User, related_name='team_toad_projects', blank=True)
     is_archived = models.BooleanField(default=False)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
     order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups
@@ -33,8 +35,26 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('project_grid', kwargs={'pk': self.pk})
+    def save(self, *args, **kwargs):
+        # Check if is_team_toad is being set to True
+        if self.is_team_toad and self.pk:
+            # Get the current state from the database
+            try:
+                old_instance = Project.objects.get(pk=self.pk)
+                if not old_instance.is_team_toad:
+                    # is_team_toad was just set to True, add the user to team
+                    self.team_toad_user.add(self.user)
+            except Project.DoesNotExist:
+                # New instance, add user if is_team_toad is True
+                if self.is_team_toad:
+                    self.team_toad_user.add(self.user)
+        elif self.is_team_toad and not self.pk:
+            # New instance with is_team_toad=True, add user after save
+            super().save(*args, **kwargs)
+            self.team_toad_user.add(self.user)
+            return
+        
+        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ['project_group', 'order', '-created_at']  # Order by group, then by order, then by creation time
@@ -304,8 +324,11 @@ class GridInvitation(models.Model):
         if not self.can_be_accepted():
             return False
         
-        # If user is provided and matches the invited email, or if we have an invited_user
-        if user and user.email == self.invited_email:
+        # For shareable links (invited_email is empty), always use the provided user
+        if self.invitation_type == 'link' and user:
+            self.invited_user = user
+        # For email invitations, check if user matches the invited email
+        elif user and user.email == self.invited_email:
             self.invited_user = user
         elif not self.invited_user and self.invited_email:
             # Try to find the user by email
@@ -329,4 +352,12 @@ class GridInvitation(models.Model):
         return True
 
 
-    
+# Signal to automatically add user to team_toad_user when is_team_toad is set to True
+@receiver(post_save, sender=Project)
+def add_user_to_team_toad(sender, instance, created, **kwargs):
+    """
+    Automatically add the project owner to team_toad_user when is_team_toad is set to True.
+    This handles cases where the save method might not catch all scenarios.
+    """
+    if instance.is_team_toad and instance.user not in instance.team_toad_user.all():
+        instance.team_toad_user.add(instance.user)

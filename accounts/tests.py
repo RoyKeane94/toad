@@ -58,7 +58,7 @@ class LoginViewTests(TestCase):
 class RegisterViewTests(TestCase):
     def setUp(self):
         self.client = Client()
-        self.register_url = reverse('accounts:register')
+        self.register_url = reverse('accounts:register_choices')
 
     def test_register_page_loads(self):
         """Test that register page loads correctly"""
