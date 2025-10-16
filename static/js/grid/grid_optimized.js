@@ -2896,6 +2896,378 @@ window.inspectDuplicateTasks = function() {
     }
 };
 
+// Task Note Panel functionality
+window.showTaskNotePanel = function(taskId, taskText, hasNote) {
+    const panel = document.getElementById('task-note-panel');
+    const overlay = document.getElementById('task-note-overlay');
+    const taskTextElement = document.getElementById('note-panel-task-text');
+    const form = document.getElementById('task-note-form');
+    const noteTextarea = document.getElementById('note-text');
+    const notesDisplay = document.getElementById('notes-display');
+    const notesList = document.getElementById('notes-list');
+    const noteFormLabel = document.getElementById('note-form-label');
+    
+    if (panel && overlay && taskTextElement && form && noteTextarea) {
+        // Set task text in panel header
+        taskTextElement.textContent = taskText;
+        
+        // Set form action URL
+        form.action = `/tasks/${taskId}/note/`;
+        
+        // Clear form
+        noteTextarea.value = '';
+        
+        if (hasNote) {
+            // Show notes display and load existing notes
+            notesDisplay.classList.remove('hidden');
+            noteFormLabel.textContent = 'Add Note';
+            
+            // Load all notes via fetch
+            fetch(`/tasks/${taskId}/notes/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success && data.notes) {
+                        notesList.innerHTML = '';
+                        
+                        // Notes are already ordered by most recent first from the backend
+                        data.notes.forEach(note => {
+                            const noteDiv = document.createElement('div');
+                            noteDiv.className = 'border border-gray-200 rounded-lg p-4 relative mb-2';
+                            
+                            const date = new Date(note.created_at);
+                            const day = date.getDate();
+                            const month = date.toLocaleDateString('en-GB', { month: 'short' });
+                            const year = date.getFullYear().toString().slice(-2);
+                            const dayWithSuffix = day + (day === 1 || day === 21 || day === 31 ? 'st' : 
+                                                       day === 2 || day === 22 ? 'nd' : 
+                                                       day === 3 || day === 23 ? 'rd' : 'th');
+                            
+                            noteDiv.innerHTML = `
+                                <button type="button" 
+                                        class="delete-note-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors"
+                                        data-note-id="${note.id}"
+                                        title="Delete note">
+                                    <i class="fas fa-trash text-xs"></i>
+                                </button>
+                                <p class="text-sm text-gray-900 whitespace-pre-wrap pr-6">${note.note}</p>
+                                <p class="text-xs text-gray-700 mt-2">${dayWithSuffix} ${month} ${year}</p>
+                            `;
+                            
+                            notesList.appendChild(noteDiv);
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading notes:', error);
+                });
+        } else {
+            // Hide notes display
+            notesDisplay.classList.add('hidden');
+            noteFormLabel.textContent = 'Add Note';
+        }
+        
+        // Show panel and overlay
+        overlay.style.pointerEvents = 'auto';
+        overlay.classList.remove('opacity-0', 'invisible');
+        panel.style.transform = 'translateX(0)';
+        panel.style.transition = 'transform 0.3s ease-in-out';
+        
+        // Focus on textarea
+        setTimeout(() => {
+            noteTextarea.focus();
+        }, 300);
+    } else {
+        console.error('Required elements not found:', { panel, taskTextElement, form, noteTextarea });
+    }
+};
+
+window.hideTaskNotePanel = function() {
+    const panel = document.getElementById('task-note-panel');
+    const overlay = document.getElementById('task-note-overlay');
+    if (panel && overlay) {
+        overlay.style.pointerEvents = 'none';
+        overlay.classList.add('opacity-0', 'invisible');
+        panel.style.transform = 'translateX(100%)';
+        panel.style.transition = 'transform 0.3s ease-in-out';
+    }
+};
+
+// Handle task note button clicks - moved outside DOMContentLoaded to ensure it works
+document.addEventListener('click', function(e) {
+    const noteBtn = e.target.closest('.task-note-btn');
+    if (noteBtn) {
+        e.preventDefault();
+        const taskId = noteBtn.dataset.taskId;
+        const taskText = noteBtn.dataset.taskText;
+        const hasNote = noteBtn.dataset.hasNote === 'true';
+        showTaskNotePanel(taskId, taskText, hasNote);
+        return false; // Prevent further event propagation
+    }
+});
+
+// Task note event listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Close note panel buttons
+    const closeNotePanel = document.getElementById('close-note-panel');
+    const cancelNoteBtn = document.getElementById('cancel-note-btn');
+    const notePanel = document.getElementById('task-note-panel');
+    
+    if (closeNotePanel) {
+        closeNotePanel.addEventListener('click', hideTaskNotePanel);
+    }
+    
+    // Handle delete note buttons (dynamically created)
+    document.addEventListener('click', function(e) {
+        const deleteBtn = e.target.closest('.delete-note-btn');
+        if (deleteBtn) {
+            e.preventDefault();
+            const noteId = deleteBtn.dataset.noteId;
+            const form = document.getElementById('task-note-form');
+            const taskId = form.action.split('/tasks/')[1].split('/note/')[0];
+            
+            // Delete note via fetch
+            fetch(`/tasks/${taskId}/note/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'X-Note-ID': noteId
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Update the task note display
+                    updateTaskNoteDisplay(taskId, data.has_notes);
+                    
+                    // Reload notes in panel
+                    if (data.has_notes) {
+                        fetch(`/tasks/${taskId}/notes/`)
+                            .then(response => response.json())
+                            .then(notesData => {
+                                if (notesData.success && notesData.notes) {
+                                    const notesList = document.getElementById('notes-list');
+                                    notesList.innerHTML = '';
+                                    
+                                    // Notes are already ordered by most recent first from the backend
+                                    notesData.notes.forEach(note => {
+                                        const noteDiv = document.createElement('div');
+                                        noteDiv.className = 'border border-gray-200 rounded-lg p-4 relative mb-2';
+                                        
+                                        const date = new Date(note.created_at);
+                                        const day = date.getDate();
+                                        const month = date.toLocaleDateString('en-GB', { month: 'short' });
+                                        const year = date.getFullYear().toString().slice(-2);
+                                        const dayWithSuffix = day + (day === 1 || day === 21 || day === 31 ? 'st' : 
+                                                                   day === 2 || day === 22 ? 'nd' : 
+                                                                   day === 3 || day === 23 ? 'rd' : 'th');
+                                        
+                                        noteDiv.innerHTML = `
+                                            <button type="button" 
+                                                    class="delete-note-btn absolute top-2 right-2 text-gray-400 hover:text-red-500 transition-colors"
+                                                    data-note-id="${note.id}"
+                                                    title="Delete note">
+                                                <i class="fas fa-trash text-xs"></i>
+                                            </button>
+                                            <p class="text-sm text-gray-900 whitespace-pre-wrap pr-6">${note.note}</p>
+                                            <p class="text-xs text-gray-700 mt-2">${dayWithSuffix} ${month} ${year}</p>
+                                        `;
+                                        
+                                        notesList.appendChild(noteDiv);
+                                    });
+                                }
+                            });
+                    } else {
+                        // Hide notes display if no notes left
+                        const notesDisplay = document.getElementById('notes-display');
+                        notesDisplay.classList.add('hidden');
+                    }
+                    
+                    // Show notification if available
+                    if (window.showNotification) {
+                        window.showNotification('Note deleted successfully!', 'success');
+                    }
+                } else {
+                    // Show error
+                    if (window.showNotification) {
+                        window.showNotification('Failed to delete note', 'error');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting note:', error);
+                if (window.showNotification) {
+                    window.showNotification('Failed to delete note', 'error');
+                }
+            });
+        }
+    });
+    
+    // Close panel when clicking outside
+    if (notePanel) {
+        notePanel.addEventListener('click', function(e) {
+            if (e.target === notePanel) {
+                hideTaskNotePanel();
+            }
+        });
+    }
+    
+    // Close panel when clicking on overlay
+    const noteOverlay = document.getElementById('task-note-overlay');
+    if (noteOverlay) {
+        noteOverlay.addEventListener('click', function(e) {
+            if (e.target === noteOverlay) {
+                hideTaskNotePanel();
+            }
+        });
+    }
+    
+    // Handle task note form submission
+    const noteForm = document.getElementById('task-note-form');
+    if (noteForm) {
+        noteForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(noteForm);
+            const taskId = noteForm.action.split('/tasks/')[1].split('/note/')[0];
+            const noteText = formData.get('note');
+            
+            // Show loading state
+            const submitBtn = noteForm.querySelector('#save-note-btn');
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            
+            // Submit form via fetch
+            fetch(noteForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': formData.get('csrfmiddlewaretoken')
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    // Update the task note button icon immediately
+                    updateTaskNoteDisplay(taskId, true);
+                    
+                    // Close panel immediately
+                    hideTaskNotePanel();
+                    
+                    // Show notification if available
+                    if (window.showNotification) {
+                        window.showNotification('Note saved successfully!', 'success');
+                    }
+                    
+                    // Re-enable button
+                    submitBtn.disabled = false;
+                } else {
+                    // Show error
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                    submitBtn.classList.remove('text-gray-400', 'hover:text-[var(--primary-action-bg)]');
+                    submitBtn.classList.add('text-red-500');
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('text-red-500');
+                        submitBtn.classList.add('text-gray-400', 'hover:text-[var(--primary-action-bg)]');
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error saving note:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+                submitBtn.classList.remove('text-gray-400', 'hover:text-[var(--primary-action-bg)]');
+                submitBtn.classList.add('text-red-500');
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('text-red-500');
+                    submitBtn.classList.add('text-gray-400', 'hover:text-[var(--primary-action-bg)]');
+                }, 2000);
+            });
+        });
+    }
+});
+
+// Function to update task note display without page refresh
+function updateTaskNoteDisplay(taskId, hasNote) {
+    const taskElement = document.getElementById(`task-${taskId}`);
+    if (!taskElement) return;
+    
+    // Update note button icons
+    const noteButtons = taskElement.querySelectorAll('.task-note-btn');
+    noteButtons.forEach(btn => {
+        const icon = btn.querySelector('i');
+        if (icon) {
+            if (hasNote) {
+                icon.className = 'fas fa-sticky-note text-[var(--primary-action-bg)] text-xs transition-colors';
+                btn.title = 'Edit note';
+                btn.setAttribute('data-has-note', 'true');
+            } else {
+                icon.className = 'fas fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors';
+                btn.title = 'Add note';
+                btn.setAttribute('data-has-note', 'false');
+            }
+        }
+    });
+    
+    // Update note display beneath task text
+    const taskTextContainer = taskElement.querySelector('.flex-1.min-w-0');
+    if (!taskTextContainer) return;
+    
+    let noteDisplay = taskTextContainer.querySelector('.note-display');
+    
+    if (hasNote) {
+        // Fetch all notes for this task
+        fetch(`/tasks/${taskId}/notes/`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success && data.notes && data.notes.length > 0) {
+                    // Create or update note display (single note only)
+                    if (!noteDisplay) {
+                        noteDisplay = document.createElement('div');
+                        noteDisplay.className = 'note-display flex items-center mt-1 text-xs text-[var(--text-secondary)] ml-1';
+                        
+                        // Insert after the task text div, before reminder if it exists
+                        const taskTextDiv = taskTextContainer.querySelector('[id^="task-text-"]');
+                        const reminderDisplay = taskTextContainer.querySelector('.reminder-display');
+                        
+                        if (reminderDisplay) {
+                            taskTextContainer.insertBefore(noteDisplay, reminderDisplay);
+                        } else {
+                            taskTextDiv.parentNode.insertBefore(noteDisplay, taskTextDiv.nextSibling);
+                        }
+                    }
+                    
+                    // Show only the note icon (no date)
+                    noteDisplay.innerHTML = `
+                        <i class="fas fa-sticky-note text-[var(--primary-action-bg)]"></i>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching notes:', error);
+            });
+    } else {
+        // Remove note display
+        if (noteDisplay) {
+            noteDisplay.remove();
+        }
+    }
+}
+
 // Cleanup on page unload
 window.addEventListener('beforeunload', function() {
     if (window.gridManager) {

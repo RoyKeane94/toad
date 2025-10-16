@@ -114,6 +114,19 @@ class Task(models.Model):
             models.Index(fields=['project', 'row_header', 'column_header', 'order']),  # For ordered task queries
         ]
 
+class TaskNote(models.Model):
+    task = models.ForeignKey(Task, on_delete=models.CASCADE, related_name='notes')
+    note = models.TextField(blank=False, null=False, help_text='Enter the note')
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='created_task_notes')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.task.text[:50]} - {self.created_at} - user: {self.task.project.user}" if self.note else 'Empty Note'
+    
+    class Meta:
+        ordering = ['-created_at']  # Most recent first
+
 class PersonalTemplate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='personal_templates')
     name = models.CharField(max_length=100)

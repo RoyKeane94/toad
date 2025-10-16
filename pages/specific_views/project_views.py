@@ -663,6 +663,148 @@ The Toad Team"""
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
+
+@login_required
+def task_note_view(request, task_pk):
+    """Handle task notes - GET to retrieve, POST to create/update, DELETE to remove"""
+    from pages.models import TaskNote
+    from pages.forms import TaskNoteForm
+    
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__name']
+    )
+    
+    if request.method == 'GET':
+        # Return existing note if it exists
+        try:
+            note = task.notes.first()
+            if note:
+                return JsonResponse({
+                    'success': True,
+                    'note': {
+                        'note': note.note,
+                        'created_at': note.created_at.isoformat(),
+                        'updated_at': note.updated_at.isoformat()
+                    }
+                })
+            else:
+                return JsonResponse({
+                    'success': True,
+                    'note': None
+                })
+        except Exception as e:
+            logger.error(f"Error retrieving note for task {task_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to retrieve note'}, status=500)
+    
+    elif request.method == 'POST':
+        # Create or update note
+        try:
+            note_text = request.POST.get('note', '').strip()
+            
+            if not note_text:
+                return JsonResponse({'success': False, 'error': 'Note text is required'}, status=400)
+            
+            # Always create a new note
+            note = TaskNote.objects.create(
+                task=task,
+                created_by=request.user,
+                note=note_text
+            )
+            
+            return JsonResponse({
+                'success': True,
+                'message': 'Note saved successfully!',
+                'note': {
+                    'note': note.note,
+                    'created_at': note.created_at.isoformat(),
+                    'updated_at': note.updated_at.isoformat()
+                }
+            })
+            
+        except Exception as e:
+            logger.error(f"Error saving note for task {task_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to save note'}, status=500)
+    
+    elif request.method == 'DELETE':
+        # Delete note
+        try:
+            note_id = request.headers.get('X-Note-ID')
+            if note_id:
+                # Delete specific note
+                try:
+                    note = TaskNote.objects.get(id=note_id, task=task)
+                    note.delete()
+                    has_notes = task.notes.exists()
+                    return JsonResponse({
+                        'success': True,
+                        'message': 'Note deleted successfully!',
+                        'has_notes': has_notes
+                    })
+                except TaskNote.DoesNotExist:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'Note not found'
+                    }, status=404)
+            else:
+                # Delete first note (legacy behavior)
+                note = task.notes.first()
+                if note:
+                    note.delete()
+                    has_notes = task.notes.exists()
+                    return JsonResponse({
+                        'success': True,
+                        'message': 'Note deleted successfully!',
+                        'has_notes': has_notes
+                    })
+                else:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'No note found to delete'
+                    }, status=404)
+                
+        except Exception as e:
+            logger.error(f"Error deleting note for task {task_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to delete note'}, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+@login_required
+def task_notes_view(request, task_pk):
+    """Get all notes for a task"""
+    from pages.models import TaskNote
+    
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__name']
+    )
+    
+    if request.method == 'GET':
+        try:
+            notes = task.notes.all()
+            notes_data = []
+            for note in notes:
+                notes_data.append({
+                    'id': note.id,
+                    'note': note.note,
+                    'created_at': note.created_at.isoformat(),
+                    'updated_at': note.updated_at.isoformat()
+                })
+            
+            return JsonResponse({
+                'success': True,
+                'notes': notes_data
+            })
+        except Exception as e:
+            logger.error(f"Error retrieving notes for task {task_pk}: {e}")
+            return JsonResponse({'success': False, 'error': 'Failed to retrieve notes'}, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
 # Row CRUD Views
 
 def row_create_view(request, project_pk):

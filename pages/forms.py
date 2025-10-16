@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, RowHeader, ColumnHeader, Task, ProjectGroup
+from .models import Project, RowHeader, ColumnHeader, Task, ProjectGroup, TaskNote
 
 class ProjectForm(forms.ModelForm):
     class Meta:
@@ -109,5 +109,28 @@ class ProjectGroupAssignmentForm(forms.Form):
         super().__init__(*args, **kwargs)
         if user:
             self.fields['projects'].queryset = user.toad_projects.all()
+
+class TaskNoteForm(forms.ModelForm):
+    class Meta:
+        model = TaskNote
+        fields = ['note']
+        widgets = {
+            'note': forms.Textarea(attrs={
+                'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-lg shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)] resize-none',
+                'placeholder': 'Add a note to this task...',
+                'rows': 4,
+                'required': True,
+            }),
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['note'].required = True
+    
+    def clean_note(self):
+        note = self.cleaned_data.get('note', '')
+        if not note or not note.strip():
+            raise forms.ValidationError('Please enter a note')
+        return note.strip()
 
 

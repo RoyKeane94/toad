@@ -79,6 +79,8 @@ urlpatterns = [
     path('tasks/<int:task_pk>/toggle/', views.task_toggle_complete_view, name='task_toggle_complete'),
     path('tasks/<int:task_pk>/delete/', views.task_delete_view, name='task_delete'),
     path('tasks/<int:task_pk>/reminder/', views.create_task_reminder, name='create_task_reminder'),
+    path('tasks/<int:task_pk>/note/', views.task_note_view, name='task_note'),
+    path('tasks/<int:task_pk>/notes/', views.task_notes_view, name='task_notes'),
     path('grids/<int:project_pk>/tasks/reorder/', views.task_reorder_view, name='task_reorder'),
     
     # Row URLs
