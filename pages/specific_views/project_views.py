@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
-from django.db.models import Q
+from django.db.models import Q, Prefetch
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
@@ -17,6 +17,7 @@ from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
 from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask, ProjectGroup
+from accounts.models import User
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm, ProjectGroupForm, ProjectGroupAssignmentForm
 from pages.specific_views_functions.project_views_functions import (
     get_user_project_optimized,
@@ -50,10 +51,19 @@ logger = logging.getLogger(__name__)
 @login_required
 def project_list_view(request):
     # Get all active (non-archived) projects with their groups and task counts
-    projects = Project.objects.filter(user=request.user, is_archived=False).select_related('project_group').annotate(
-        task_count=Count('tasks'),
-        completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).order_by('project_group', 'order', '-created_at')
+    # Include projects where user is owner OR part of team_toad_user
+    # Optimized query with minimal fields and efficient prefetching
+    projects = Project.objects.filter(
+        Q(user=request.user) | Q(team_toad_user=request.user),
+        is_archived=False
+    ).select_related(
+        'project_group'
+    ).prefetch_related(
+        Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+    ).annotate(
+        task_count=Count('tasks', distinct=True),
+        completed_task_count=Count('tasks', filter=Q(tasks__completed=True), distinct=True)
+    ).distinct().order_by('project_group', 'order', '-created_at')
     
     # Manually group projects by their project_group
     grouped_projects = {}
@@ -74,14 +84,23 @@ def project_list_view(request):
     # Convert to list format for template and sort groups by name
     grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].name)
     
-    # Get user's personal templates
-    personal_templates = PersonalTemplate.objects.filter(user=request.user).order_by('name')
+    # Get user's personal templates (only needed fields)
+    personal_templates = PersonalTemplate.objects.filter(
+        user=request.user
+    ).only('id', 'name', 'created_at').order_by('name')
     
-    # Get archived projects
-    archived_projects = Project.objects.filter(user=request.user, is_archived=True).select_related('project_group').annotate(
-        task_count=Count('tasks'),
-        completed_task_count=Count('tasks', filter=Q(tasks__completed=True))
-    ).order_by('-created_at')
+    # Get archived projects (owner OR team member)
+    archived_projects = Project.objects.filter(
+        Q(user=request.user) | Q(team_toad_user=request.user),
+        is_archived=True
+    ).select_related(
+        'project_group'
+    ).prefetch_related(
+        Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+    ).annotate(
+        task_count=Count('tasks', distinct=True),
+        completed_task_count=Count('tasks', filter=Q(tasks__completed=True), distinct=True)
+    ).distinct().order_by('-created_at')
     
     context = {
         'projects': projects,  # Keep for backward compatibility
@@ -299,7 +318,15 @@ def project_grid_view(request, pk):
         context['projects'] = get_projects_for_dropdown(request.user)
         
         # Add grouped projects data for the grid tabs (including archived projects)
-        all_projects = Project.objects.filter(user=request.user).select_related('project_group').order_by('project_group', 'order', '-created_at')
+        # Include projects where user is owner OR part of team_toad_user
+        # Optimized with Prefetch for team members
+        all_projects = Project.objects.filter(
+            Q(user=request.user) | Q(team_toad_user=request.user)
+        ).select_related(
+            'project_group'
+        ).prefetch_related(
+            Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+        ).distinct().order_by('project_group', 'order', '-created_at')
         
         # Manually group projects by their project_group
         grouped_projects = {}
@@ -531,6 +558,91 @@ def task_delete_view(request, task_pk):
         messages.success(request, 'Task deleted successfully!')
     
     return redirect('pages:project_grid', pk=project_pk)
+
+
+@login_required
+def task_assign_view(request, task_pk):
+    """Assign a task to a team member"""
+    from accounts.models import User
+    
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project', 'assigned_to'],
+        only_fields=['id', 'text', 'project__id', 'project__user', 'project__is_team_toad', 'assigned_to__id']
+    )
+    
+    # Verify this is a team toad project
+    if not task.project.is_team_toad:
+        return JsonResponse({
+            'success': False,
+            'error': 'This is not a team project'
+        }, status=400)
+    
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user_id = data.get('user_id')
+            
+            if not user_id:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'No user specified'
+                }, status=400)
+            
+            # Get the user to assign to
+            try:
+                assign_to_user = User.objects.get(pk=user_id)
+            except User.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User not found'
+                }, status=404)
+            
+            # Verify the user is in the team_toad_user list
+            if not task.project.team_toad_user.filter(pk=user_id).exists():
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User is not a team member'
+                }, status=403)
+            
+            # Assign the task
+            task.assigned_to = assign_to_user
+            task.save()
+            
+            log_user_action(
+                request.user, 
+                'assigned task', 
+                f'"{task.text}" to {assign_to_user.first_name} {assign_to_user.last_name}', 
+                task.project.name
+            )
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Task assigned to {assign_to_user.first_name} {assign_to_user.last_name}',
+                'assigned_to': {
+                    'id': assign_to_user.pk,
+                    'name': f'{assign_to_user.first_name} {assign_to_user.last_name}',
+                    'initials': f'{assign_to_user.first_name[0]}{assign_to_user.last_name[0]}' if assign_to_user.first_name and assign_to_user.last_name else assign_to_user.email[0]
+                }
+            })
+            
+        except json.JSONDecodeError:
+            return JsonResponse({
+                'success': False,
+                'error': 'Invalid JSON data'
+            }, status=400)
+        except Exception as e:
+            logger.error(f'Error assigning task: {e}')
+            return JsonResponse({
+                'success': False,
+                'error': str(e)
+            }, status=500)
+    
+    return JsonResponse({
+        'success': False,
+        'error': 'Invalid request method'
+    }, status=405)
 
 
 @login_required
@@ -1732,5 +1844,219 @@ def project_group_edit_view(request, pk):
             'success': False,
             'error': 'Group not found'
         })
+
+
+@login_required
+def share_grid_view(request, pk):
+    """
+    Handle grid sharing via email invitation or shareable link
+    """
+    try:
+        project = get_user_project_optimized(pk, request.user)
+        
+        if request.method == 'POST':
+            data = json.loads(request.body)
+            invitation_type = data.get('type')  # 'email' or 'link'
+            email = data.get('email', '').strip()
+            personal_message = data.get('message', '').strip()
+            
+            if invitation_type == 'email':
+                return _handle_email_invitation(request, project, email, personal_message)
+            elif invitation_type == 'link':
+                return _handle_shareable_link(request, project)
+            else:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Invalid invitation type'
+                })
+        
+        return JsonResponse({
+            'success': False,
+            'error': 'Invalid request method'
+        })
+        
+    except Exception as e:
+        logger.error(f"Error in share_grid_view: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'An error occurred while sharing the grid'
+        })
+
+
+def _handle_email_invitation(request, project, email, personal_message):
+    """
+    Handle email invitation creation and sending
+    """
+    from pages.models import GridInvitation
+    from accounts.email_utils import send_grid_invitation_email
+    from django.utils import timezone
+    from datetime import timedelta
+    
+    # Validate email
+    if not email:
+        return JsonResponse({
+            'success': False,
+            'error': 'Email address is required'
+        })
+    
+    # Check if user has valid tier for collaboration
+    try:
+        invited_user = User.objects.get(email=email)
+        valid_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
+        if invited_user.tier not in valid_tiers:
+            return JsonResponse({
+                'success': False,
+                'error': f'User with email {email} has tier "{invited_user.tier}" but needs one of: {", ".join(valid_tiers)}'
+            })
+    except User.DoesNotExist:
+        return JsonResponse({
+            'success': False,
+            'error': f'No user found with email {email}. User must have a Toad account with Pro, Pro Trial, Society Pro, or Beta tier.'
+        })
+    
+    # Check if user is already part of the project
+    if project.team_toad_user.filter(email=email).exists():
+        return JsonResponse({
+            'success': False,
+            'error': f'User with email {email} is already part of this grid'
+        })
+    
+    # Check if there's already a pending invitation for this email and project
+    existing_invitation = GridInvitation.objects.filter(
+        project=project,
+        invited_email=email,
+        invitation_type='email',
+        status='pending'
+    ).first()
+    
+    if existing_invitation and not existing_invitation.is_expired():
+        return JsonResponse({
+            'success': False,
+            'error': f'A pending invitation already exists for {email}. Please wait for it to be accepted or expired.'
+        })
+    
+    # Create new invitation
+    try:
+        invitation = GridInvitation.objects.create(
+            project=project,
+            invited_by=request.user,
+            invited_email=email,
+            invitation_type='email',
+            personal_message=personal_message,
+            expires_at=timezone.now() + timedelta(days=7),  # 7 days expiry
+        )
+        
+        # Send email
+        email_sent = send_grid_invitation_email(invitation, request)
+        
+        if email_sent:
+            return JsonResponse({
+                'success': True,
+                'message': f'Invitation sent successfully to {email}',
+                'invitation_id': invitation.id
+            })
+        else:
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to send invitation email'
+            })
+            
+    except Exception as e:
+        logger.error(f"Error creating email invitation: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Failed to create invitation'
+        })
+
+
+def _handle_shareable_link(request, project):
+    """
+    Handle shareable link creation - creates a new link each time
+    """
+    from pages.models import GridInvitation
+    from django.utils import timezone
+    from datetime import timedelta
+    from django.urls import reverse
+    
+    # Create a new shareable link invitation each time
+    try:
+        invitation = GridInvitation.objects.create(
+            project=project,
+            invited_by=request.user,
+            invited_email='',  # Empty for shareable links
+            invitation_type='link',
+            expires_at=timezone.now() + timedelta(days=30),  # 30 days for links
+        )
+        
+        # Build the shareable link
+        if request:
+            shareable_url = request.build_absolute_uri(
+                reverse('pages:accept_grid_invitation', kwargs={'token': invitation.token})
+            )
+        else:
+            shareable_url = f"{settings.SITE_URL}/grids/invite/{invitation.token}/"
+        
+        return JsonResponse({
+            'success': True,
+            'message': 'Shareable link created successfully',
+            'shareable_url': shareable_url,
+            'invitation_id': invitation.id,
+            'expires_at': invitation.expires_at.isoformat()
+        })
+        
+    except Exception as e:
+        logger.error(f"Error creating shareable link: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Failed to create shareable link'
+        })
+
+
+def accept_grid_invitation_view(request, token):
+    """
+    Handle accepting grid invitations via token
+    """
+    from pages.models import GridInvitation
+    from django.contrib import messages
+    
+    try:
+        invitation = GridInvitation.objects.get(token=token)
+        
+        # Check if invitation is still valid
+        if not invitation.can_be_accepted():
+            if invitation.is_expired():
+                messages.error(request, 'This invitation has expired.')
+            else:
+                messages.error(request, 'This invitation is no longer valid.')
+            return redirect('pages:home')
+        
+        # If user is logged in, accept the invitation
+        if request.user.is_authenticated:
+            # Check if user has valid tier
+            valid_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
+            if request.user.tier not in valid_tiers:
+                messages.error(request, f'You need a Pro, Pro Trial, Society Pro, or Beta account to collaborate on grids. Your current tier is "{request.user.tier}".')
+                return redirect('pages:upgrade_required')
+            
+            # Accept the invitation
+            if invitation.accept(request.user):
+                messages.success(request, f'You have successfully joined the grid "{invitation.project.name}"!')
+                return redirect('pages:project_grid', pk=invitation.project.pk)
+            else:
+                messages.error(request, 'Failed to accept the invitation.')
+                return redirect('pages:home')
+        
+        else:
+            # User is not logged in, redirect to login with next parameter
+            messages.info(request, 'Please log in to accept this grid invitation.')
+            return redirect('accounts:login') + f'?next={request.get_full_path()}'
+            
+    except GridInvitation.DoesNotExist:
+        messages.error(request, 'Invalid invitation link.')
+        return redirect('pages:home')
+    except Exception as e:
+        logger.error(f"Error accepting grid invitation: {e}")
+        messages.error(request, 'An error occurred while accepting the invitation.')
+        return redirect('pages:home')
 
 

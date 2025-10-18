@@ -78,6 +78,7 @@ urlpatterns = [
     path('tasks/<int:task_pk>/edit/', views.task_edit_view, name='task_edit'),
     path('tasks/<int:task_pk>/toggle/', views.task_toggle_complete_view, name='task_toggle_complete'),
     path('tasks/<int:task_pk>/delete/', views.task_delete_view, name='task_delete'),
+    path('tasks/<int:task_pk>/assign/', views.task_assign_view, name='task_assign'),
     path('tasks/<int:task_pk>/reminder/', views.create_task_reminder, name='create_task_reminder'),
     path('tasks/<int:task_pk>/note/', views.task_note_view, name='task_note'),
     path('tasks/<int:task_pk>/notes/', views.task_notes_view, name='task_notes'),
@@ -97,4 +98,8 @@ urlpatterns = [
     path('grids/group/create/', views.project_group_create_view, name='project_group_create'),
     path('grids/project/update-group/', views.project_group_update_view, name='project_group_update'),
     path('grids/group/<int:pk>/edit/', views.project_group_edit_view, name='project_group_edit'),
+    
+    # Grid Sharing URLs
+    path('grids/<int:pk>/share/', views.share_grid_view, name='share_grid'),
+    path('grids/invite/<str:token>/', views.accept_grid_invitation_view, name='accept_grid_invitation'),
 ]

@@ -96,7 +96,7 @@
                             <div class="space-y-2 pb-16" data-row="{{ row_h.pk }}" data-col="{{ col_h.pk }}" id="tasks-{{ row_h.pk }}-{{ col_h.pk }}">
                                 {% with key=row_h.pk|cell_key:col_h.pk %}
                                     {% for task in tasks_by_cell|get_item:key %}
-                                        {% include 'pages/grid/actions_in_page/task_item.html' with task=task %}
+                                        {% include 'pages/grid/actions_in_page/task_item.html' with task=task project=project %}
                                     {% endfor %}
                                 {% endwith %}
                             </div>

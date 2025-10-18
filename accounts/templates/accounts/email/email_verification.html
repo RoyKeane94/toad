@@ -1,223 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verify Your Email - Toad</title>
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            line-height: 1.6;
-            color: #1F2937;
-            background-color: #f9fafb;
-        }
-        
-        /* Container */
-        .email-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            padding: 20px 30px;
-            text-align: center;
-        }
-        
-        .logo {
-            width: 60px;
-            height: 60px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .logo svg {
-            width: 32px;
-            height: 32px;
-            fill: white;
-        }
-        
-        .header h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-        }
-        
-        /* Content */
-        .content {
-            padding: 20px 30px;
-        }
-        
-        .greeting {
-            font-size: 18px;
-            font-weight: 600;
-            color: #1F2937;
-            margin-bottom: 20px;
-        }
-        
-        .message {
-            font-size: 16px;
-            color: #4B5563;
-            margin-bottom: 30px;
-            line-height: 1.7;
-        }
-        
-        /* Button */
-        .button-container {
-            text-align: center;
-            margin: 30px 0;
-        }
-        
-        .verify-button {
-            display: inline-block;
-            background-color: #10B981;
-            color: white !important;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 16px;
-            transition: background-color 0.2s ease;
-        }
-        
-        .verify-button:hover {
-            background-color: #059669;
-            color: white !important;
-        }
-        
-        /* Alternative link */
-        .alternative-link {
-            text-align: center;
-            margin-top: 20px;
-        }
-        
-        .alternative-link a {
-            color: #10B981;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        .alternative-link a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: #f9fafb;
-            padding: 30px;
-            text-align: center;
-            border-top: 1px solid #e5e7eb;
-        }
-        
-        .footer p {
-            color: #6B7280;
-            font-size: 14px;
-            margin-bottom: 10px;
-        }
-        
-        .footer .small {
-            font-size: 12px;
-            color: #9CA3AF;
-        }
-        
-        /* Security notice */
-        .security-notice {
-            background-color: #fef3c7;
-            border: 1px solid #f59e0b;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 20px 0;
-        }
-        
-        .security-notice p {
-            color: #92400e;
-            font-size: 14px;
-            margin: 0;
-        }
-        
-        /* Responsive */
-        @media (max-width: 600px) {
-            .email-container {
-                margin: 0;
-                border-radius: 0;
-            }
-            
-            .header, .content, .footer {
-                padding: 20px;
-            }
-            
-            .header h1 {
-                font-size: 24px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="email-container">
-        <!-- Toad Email Image at the top -->
-        {% if toad_image_data %}
-        <div class="email-image-container">
-            <img src="data:image/png;base64,{{ toad_image_data }}" alt="Toad - For when your brain has too many tabs open" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto;">
-        </div>
-        {% endif %}
-        
-        <!-- Content -->
-        <div class="content">
-            <div class="greeting">Hi {{ user.first_name }},</div>
-            
-            <div class="message">
-                Welcome to Toad! Let's make sure it's you. Just one quick click to verify your email, and you can start closing some of those mental tabs.
-            </div>
-            
-            <div class="button-container">
-                <a href="{{ verification_url }}" class="verify-button">
-                    Verify Email Address
-                </a>
-            </div>
-            
-            <div class="alternative-link">
-                <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
-                <a href="{{ verification_url }}">{{ verification_url }}</a>
-            </div>
-            
-            <div class="security-notice">
-                <p><strong>Security Notice:</strong> This verification link will expire in 24 hours for your security. If you didn't create a Toad account, you can safely ignore this email.</p>
-            </div>
-            
-        </div>
-        
-        <!-- Footer -->
-        <div class="footer">
-            <p>Thanks for choosing Toad!</p>
-            <p class="small">
-                This email was sent to {{ user.email }}. If you have any questions, please contact our support team.
-            </p>
-            <p class="small">
-                © 2024 Toad. All rights reserved.
-            </p>
-        </div>
-    </div>
-</body>
-</html> 
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}Verify Your Email - Toad{% endblock %}
+
+{% block header %}
+<div class="header">
+    <h1>Verify Your Email</h1>
+    <p>Let's make sure it's you</p>
+</div>
+{% endblock %}
+
+{% block content %}
+{% if toad_image_data %}
+<div class="email-image-container">
+    <img src="data:image/png;base64,{{ toad_image_data }}" alt="Toad - For when your brain has too many tabs open" style="width: 100%; max-width: 600px; height: auto; display: block; margin: 0 auto;">
+</div>
+{% endif %}
+
+<div class="message">
+    <p>Welcome to Toad! Let's make sure it's you. Just one quick click to verify your email, and you can start closing some of those mental tabs.</p>
+</div>
+
+{% block cta %}
+<div class="button-container">
+    <a href="{{ verification_url }}" class="btn">
+        Verify Email Address
+    </a>
+</div>
+
+<div class="alternative-link">
+    <p>If the button doesn't work, you can copy and paste this link into your browser:</p>
+    <a href="{{ verification_url }}">{{ verification_url }}</a>
+</div>
+{% endblock %}
+
+<div class="security-notice">
+    <p><strong>Security Notice:</strong> This verification link will expire in 24 hours for your security. If you didn't create a Toad account, you can safely ignore this email.</p>
+</div>
+{% endblock %}

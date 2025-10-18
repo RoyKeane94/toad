@@ -1,10 +1,12 @@
 {% load static %}
-<div class="group flex items-center justify-between w-full p-2 rounded-lg hover:bg-[var(--grid-header-bg)] transition-all duration-200"
+{% load custom_filters %}
+<div class="task-item group flex items-center justify-between w-full p-2 rounded-lg hover:bg-[var(--grid-header-bg)] transition-all duration-200"
      data-task-id="{{ task.id }}"
      id="task-{{ task.id }}"
      data-task-order="{{ task.order|default:0 }}"
      data-task-row="{{ task.row.pk }}"
-     data-task-col="{{ task.column.pk }}">
+     data-task-col="{{ task.column.pk }}"
+     {% if task.assigned_to %}data-assigned-user-id="{{ task.assigned_to.pk }}"{% endif %}>
     <div class="flex items-center space-x-3 min-w-0 flex-1">
             <!-- Drag Handle (Desktop Only) -->
     <div class="drag-handle flex-shrink-0 cursor-grab active:cursor-grabbing opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2"
@@ -77,6 +79,16 @@
     
     <!-- Actions -->
     <div class="flex-shrink-0 flex space-x-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200 desktop-task-actions">
+        {% if project.is_team_toad %}
+        <button type="button"
+                class="assign-task-btn p-1 rounded transition-colors cursor-pointer" 
+                title="{% if task.assigned_to %}Reassign task{% else %}Assign task{% endif %}"
+                data-task-id="{{ task.pk }}"
+                data-task-text="{{ task.text }}"
+                {% if task.assigned_to %}data-assigned-to="{{ task.assigned_to.pk }}"{% endif %}>
+            <i class="fas fa-user text-gray-400 hover:text-orange-500 text-xs transition-colors"></i>
+        </button>
+        {% endif %}
         <button type="button"
                 class="task-note-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="{% if task.notes.exists %}Edit note{% else %}Add note{% endif %}"
@@ -104,7 +116,17 @@
     </div>
     
     <!-- Mobile Actions -->
-    <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 min-w-[70px] opacity-100">
+    <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 {% if project.is_team_toad %}min-w-[100px]{% else %}min-w-[70px]{% endif %} opacity-100">
+        {% if project.is_team_toad %}
+        <button type="button"
+                class="assign-task-btn p-2 rounded transition-colors cursor-pointer" 
+                title="{% if task.assigned_to %}Reassign task{% else %}Assign task{% endif %}"
+                data-task-id="{{ task.pk }}"
+                data-task-text="{{ task.text }}"
+                {% if task.assigned_to %}data-assigned-to="{{ task.assigned_to.pk }}"{% endif %}>
+            <i class="fas fa-user text-gray-400 hover:text-orange-500 text-sm transition-colors"></i>
+        </button>
+        {% endif %}
         <button type="button"
                 class="task-note-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="{% if task.notes.exists %}Edit note{% else %}Add note{% endif %}"

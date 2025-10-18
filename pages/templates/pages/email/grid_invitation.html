@@ -1,0 +1,66 @@
+{% extends "accounts/email/email_layout.html" %}
+{% load static %}
+
+{% block header_title %}You're invited to collaborate!{% endblock %}
+
+{% block header_subtitle %}
+<p>Join {{ invitation.invited_by.get_full_name|default:invitation.invited_by.first_name }} on their Toad grid</p>
+{% endblock %}
+
+{% block content %}
+<div class="greeting">Hi there,</div>
+
+<div class="message">
+    {% if invitation.personal_message %}
+    <p><strong>{{ invitation.invited_by.get_full_name|default:invitation.invited_by.first_name }} sent you a personal message:</strong></p>
+    <div style="background-color: #f9fafb; border-left: 4px solid #10B981; padding: 16px; margin: 16px 0; border-radius: 0 8px 8px 0;">
+        <p style="margin: 0; font-style: italic; color: #4B5563;">"{{ invitation.personal_message }}"</p>
+    </div>
+    {% endif %}
+    
+    <p><strong>{{ invitation.invited_by.get_full_name|default:invitation.invited_by.first_name }}</strong> has invited you to collaborate on their grid: <strong>"{{ invitation.project.name }}"</strong></p>
+    
+    <p>With Toad Pro, you can work together on grids, assign tasks, and stay organized as a team. All you need is a Toad Pro account to get started!</p>
+    
+    <p><strong>Note:</strong> You must be signed in to your Toad account to accept this invitation.</p>
+</div>
+
+{% block cta %}
+<div class="button-container">
+    <a href="{{ invitation_url }}" class="btn btn-large">Join the Grid</a>
+</div>
+
+<div class="alternative-link">
+    <p>If the button doesn't work, copy and paste this link into your browser:</p>
+    <p style="word-break: break-all; font-size: 14px; color: #10B981;">{{ invitation_url }}</p>
+</div>
+{% endblock %}
+
+{% block additional_content %}
+<div class="upgrade-section">
+    <h3 style="margin: 0 0 12px 0; color: #1F2937; font-size: 18px;">Don't have a Toad account yet?</h3>
+    <p style="margin: 0 0 16px 0;">No problem! You can sign up for a Toad Pro account to start collaborating on this grid and unlock team features.</p>
+    <a href="{{ upgrade_url }}" class="upgrade-btn">Sign Up for Pro</a>
+</div>
+
+<div style="background-color: #fef3c7; border: 1px solid #f59e0b; border-radius: 8px; padding: 16px; margin: 20px 0;">
+    <p style="margin: 0; color: #92400e; font-size: 14px;">
+        <strong>⏰ This invitation expires on {{ invitation.expires_at|date:"F j, Y" }} at {{ invitation.expires_at|time:"g:i A" }}.</strong>
+    </p>
+</div>
+{% endblock %}
+{% endblock %}
+
+{% block footer %}
+<p>Thanks for being part of the Toad community!</p>
+<p class="small">
+    This invitation was sent by {{ invitation.invited_by.get_full_name|default:invitation.invited_by.first_name }} ({{ invitation.invited_by.email }}) 
+    for the grid "{{ invitation.project.name }}".
+</p>
+<p class="small">
+    If you weren't expecting this invitation or have any questions, please contact our support team.
+</p>
+<p class="small">
+    © {{ now|default:2025 }} Toad. All rights reserved.
+</p>
+{% endblock %}

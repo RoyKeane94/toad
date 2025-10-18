@@ -3,6 +3,7 @@ from django.template.loader import render_to_string
 from django.conf import settings
 from django.urls import reverse
 from django.utils import timezone
+from .models import User
 import os
 import base64
 

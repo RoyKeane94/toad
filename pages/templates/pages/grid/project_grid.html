@@ -12,6 +12,11 @@
     <script src="{% static 'js/grid/grid_optimized.js' %}"></script>
 {% endif %}
 
+<!-- Team functionality JavaScript - only load for team_toad projects -->
+{% if project.is_team_toad %}
+    <script src="{% static 'js/grid/grid_team.js' %}"></script>
+{% endif %}
+
 <style>
     /* Loading overlay styles */
     .grid-loading-overlay {
@@ -152,7 +157,8 @@
     .row-delete-btn,
     .column-delete-btn,
     .delete-task-btn,
-    .calendar-reminder-btn {
+    .calendar-reminder-btn,
+    .assign-task-btn {
         transition: all 0.2s ease-out;
         will-change: opacity, transform;
     }
@@ -160,15 +166,101 @@
     .row-delete-btn:hover,
     .column-delete-btn:hover,
     .delete-task-btn:hover,
-    .calendar-reminder-btn:hover {
+    .calendar-reminder-btn:hover,
+    .assign-task-btn:hover {
         transform: scale(1.1);
     }
     
     .row-delete-btn:active,
     .column-delete-btn:active,
     .delete-task-btn:active,
-    .calendar-reminder-btn:active {
+    .calendar-reminder-btn:active,
+    .assign-task-btn:active {
         transform: scale(0.95);
+    }
+    
+    /* Assign Task Popup Styling */
+    .assign-popup {
+        position: absolute;
+        background: var(--container-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        padding: 12px;
+        z-index: 1000;
+        display: none;
+        min-width: 160px;
+    }
+    
+    .assign-popup.active {
+        display: block;
+    }
+    
+    .assign-popup-arrow {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--container-bg);
+        border: 1px solid var(--border-color);
+        transform: rotate(45deg);
+        left: 16px;
+        top: -5px;
+        border-right: none;
+        border-bottom: none;
+    }
+    
+    .user-avatar {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+        font-size: 10px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: 3px solid transparent;
+        position: relative;
+    }
+    
+    .user-avatar:hover {
+        transform: scale(1.1);
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    
+    .user-avatar.selected {
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    
+    .user-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 8px;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .unassign-option {
+        width: 100%;
+        padding: 8px 12px;
+        background: var(--grid-header-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        color: var(--text-secondary);
+        font-size: 12px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .unassign-option:hover {
+        background: var(--delete-button-bg);
+        color: white;
+        border-color: var(--delete-button-bg);
     }
     
     /* Ensure smooth opacity transitions for delete buttons */
@@ -406,8 +498,25 @@ document.addEventListener('DOMContentLoaded', function() {
 <div class="grid-header-container mb-6 " id="grid-header-container" data-total-columns="{{ total_data_columns }}">
     <div id="grid-header" class="grid-header-mobile grid-content-hidden">
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 gap-4">
-        <div class="flex items-center space-x-3">
-            <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
+        <div class="flex flex-col space-y-3">
+            <div class="flex items-center space-x-3">
+                <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
+            </div>
+            
+            <!-- Team Members Display - Only show for team_toad projects -->
+            {% if project.is_team_toad and project.team_toad_user.all %}
+            <div class="flex items-center space-x-1" id="team-members-display">
+                {% for team_member in project.team_toad_user.all %}
+                <div class="team-member-avatar cursor-pointer transition-all duration-200 hover:scale-110" 
+                     data-user-id="{{ team_member.pk }}" 
+                     data-user-name="{{ team_member.get_full_name }}"
+                     style="--avatar-color: {{ team_member.pk|get_avatar_color }}; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 10px; background-color: var(--avatar-color)"
+                     title="{{ team_member.get_full_name }} - Click to filter tasks">
+                    {{ team_member.get_full_name|get_initials }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
         </div>
         
         <!-- Grid Actions - Right Aligned -->
@@ -463,6 +572,23 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         <!-- Divider -->
                         <div class="border-t border-[var(--border-color)] my-2"></div>
+
+                        <!-- Share Grid -->
+                        {% if user_tier == 'free' %}
+                        <a href="{% url 'pages:upgrade_required' %}"
+                           class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           onclick="closeAllDropdowns();">
+                            <i class="fas fa-share text-xs w-4 text-center"></i>
+                            <span>Share Grid</span>
+                        </a>
+                        {% else %}
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                onclick="closeAllDropdowns(); document.getElementById('share-grid-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('share-grid-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('share-grid-modal').querySelector('div').classList.add('scale-100');">
+                            <i class="fas fa-share text-xs w-4 text-center"></i>
+                            <span>Share Grid</span>
+                        </button>
+                        {% endif %}
                         
                         {% if project.is_archived %}
                             <!-- Restore Grid -->
@@ -692,6 +818,14 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
+<!-- Assign Task Popup -->
+<div id="assign-task-popup" class="assign-popup">
+    <div class="assign-popup-arrow"></div>
+    <div class="user-list" id="user-list">
+        <!-- User avatars will be dynamically added here -->
+    </div>
+</div>
+
 <!-- Save Template Modal -->
 <div id="save-template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
     <div class="bg-[var(--container-bg)] rounded-xl max-w-lg w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
@@ -769,6 +903,151 @@ document.addEventListener('DOMContentLoaded', function() {
             </button>
             <button type="submit" form="save-template-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
                 <i class="fas fa-save mr-2"></i>Save Template
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Share Grid Modal -->
+<div id="share-grid-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+    <div class="bg-[var(--container-bg)] rounded-xl max-w-2xl w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
+        <!-- Modal Header -->
+        <div class="flex items-center p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-share text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Share your Grid</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Collaborate with team members</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <!-- Sharing Options Tabs -->
+            <div class="mb-6">
+                <div class="flex space-x-1 bg-[var(--grid-header-bg)] p-1 rounded-lg">
+                    <button type="button" id="email-tab" class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-200 cursor-pointer bg-[var(--tertiary-action-bg)] text-white">
+                        <i class="fas fa-envelope mr-2"></i>Email Invitation
+                    </button>
+                    <button type="button" id="link-tab" class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-200 cursor-pointer text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--container-bg)]">
+                        <i class="fas fa-link mr-2"></i>Shareable Link
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Email Invitation Form -->
+            <div id="email-form" class="sharing-form min-h-[280px]">
+                <form id="share-grid-form">
+                    {% csrf_token %}
+                    
+                    <div class="mb-6">
+                        <p class="text-[var(--text-primary)] mb-4">Send an email invitation to collaborate on your grid. The recipient needs a Toad Pro account.</p>
+                        
+                        <!-- Error Message Display -->
+                        <div id="email-error-message" class="hidden mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <i class="fas fa-exclamation-triangle text-red-400"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <p id="email-error-text" class="text-sm text-red-700"></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Email Input -->
+                        <div class="mb-4">
+                            <label for="share-email" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Email Address</label>
+                            <input type="email" 
+                                   id="share-email" 
+                                   name="email" 
+                                   required
+                                   class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)] text-[var(--text-primary)]"
+                                   placeholder="Enter email address">
+                        </div>
+                        
+                        <!-- Optional Message -->
+                        <div>
+                            <label for="share-message" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Personal Message (Optional)</label>
+                            <textarea id="share-message" 
+                                      name="message" 
+                                      rows="3"
+                                      placeholder="Add a personal message to your invitation..."
+                                      class="w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--tertiary-action-bg)] focus:border-[var(--tertiary-action-bg)] text-[var(--text-primary)] resize-none"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Shareable Link Form -->
+            <div id="link-form" class="sharing-form hidden min-h-[280px]">
+                <div class="mb-6">
+                    <p class="text-[var(--text-primary)] mb-4">Generate a shareable link that can be sent to anyone. Recipients need a Toad Pro account to join.</p>
+                    
+                    <!-- Error Message Display -->
+                    <div id="link-error-message" class="hidden mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle text-red-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p id="link-error-text" class="text-sm text-red-700"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Generated Link Display -->
+                    <div id="link-display" class="hidden">
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-[var(--text-primary)] mb-2">Shareable Link</label>
+                            <div class="flex items-center space-x-2">
+                                <input type="text" 
+                                       id="generated-link" 
+                                       readonly
+                                       class="flex-1 px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm bg-[var(--grid-header-bg)] text-[var(--text-primary)] text-sm">
+                                <button type="button" 
+                                        id="copy-link-btn"
+                                        class="px-3 py-2 bg-[var(--tertiary-action-bg)] text-white rounded-md hover:bg-[var(--tertiary-action-hover-bg)] transition-colors cursor-pointer">
+                                    <i class="fas fa-copy"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                            <div class="flex items-start space-x-3">
+                                <div class="flex items-center justify-center w-8 h-8 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm flex-shrink-0">
+                                    <i class="fas fa-info text-white text-sm"></i>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="font-medium text-[var(--text-primary)] text-sm">Link Details</p>
+                                    <p class="text-xs text-[var(--text-secondary)] mt-1">This link will expire in 30 days and can be used by anyone with a valid Toad Pro account.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Generate Link Button -->
+                    <div id="generate-link-section">
+                        <button type="button" 
+                                id="generate-link-btn"
+                                class="w-full py-3 px-4 bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                            <i class="fas fa-link mr-2"></i>Generate Shareable Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="hideShareGridModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="submit" id="submit-email-btn" form="share-grid-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                <i class="fas fa-share mr-2"></i>Send Invitation
             </button>
         </div>
     </div>
@@ -1011,6 +1290,111 @@ function hideSaveTemplateModal() {
     }
 }
 
+function hideShareGridModal() {
+    const modal = document.getElementById('share-grid-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+        
+        // Reset forms and states
+        const emailForm = document.getElementById('share-grid-form');
+        if (emailForm) emailForm.reset();
+        
+        // Reset to email tab
+        switchToEmailTab();
+        
+        // Hide link display
+        const linkDisplay = document.getElementById('link-display');
+        const generateSection = document.getElementById('generate-link-section');
+        if (linkDisplay) linkDisplay.classList.add('hidden');
+        if (generateSection) generateSection.classList.remove('hidden');
+        
+        // Clear all error messages
+        clearAllErrors();
+    }
+}
+
+// Function to clear all error messages
+function clearAllErrors() {
+    const emailError = document.getElementById('email-error-message');
+    const linkError = document.getElementById('link-error-message');
+    
+    if (emailError) emailError.classList.add('hidden');
+    if (linkError) linkError.classList.add('hidden');
+}
+
+// Function to show error message in modal
+function showError(message, type = 'email') {
+    clearAllErrors();
+    
+    const errorElement = document.getElementById(`${type}-error-message`);
+    const errorText = document.getElementById(`${type}-error-text`);
+    
+    if (errorElement && errorText) {
+        errorText.textContent = message;
+        errorElement.classList.remove('hidden');
+    }
+}
+
+// Tab switching functionality
+function switchToEmailTab() {
+    const emailTab = document.getElementById('email-tab');
+    const linkTab = document.getElementById('link-tab');
+    const emailForm = document.getElementById('email-form');
+    const linkForm = document.getElementById('link-form');
+    const submitBtn = document.getElementById('submit-email-btn');
+    
+    if (emailTab && linkTab && emailForm && linkForm) {
+        // Clear any existing errors
+        clearAllErrors();
+        
+        // Update tab styles
+        emailTab.classList.add('bg-[var(--tertiary-action-bg)]', 'text-white');
+        emailTab.classList.remove('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        linkTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
+        linkTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        // Show/hide forms
+        emailForm.classList.remove('hidden');
+        linkForm.classList.add('hidden');
+        
+        // Show submit button
+        if (submitBtn) submitBtn.classList.remove('hidden');
+    }
+}
+
+function switchToLinkTab() {
+    const emailTab = document.getElementById('email-tab');
+    const linkTab = document.getElementById('link-tab');
+    const emailForm = document.getElementById('email-form');
+    const linkForm = document.getElementById('link-form');
+    const submitBtn = document.getElementById('submit-email-btn');
+    
+    if (emailTab && linkTab && emailForm && linkForm) {
+        // Clear any existing errors
+        clearAllErrors();
+        
+        // Update tab styles
+        linkTab.classList.add('bg-[var(--tertiary-action-bg)]', 'text-white');
+        linkTab.classList.remove('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        emailTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
+        emailTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        // Show/hide forms
+        linkForm.classList.remove('hidden');
+        emailForm.classList.add('hidden');
+        
+        // Hide submit button
+        if (submitBtn) submitBtn.classList.add('hidden');
+    }
+}
+
 // Clear Completed Modal functionality
 function showClearCompletedModal() {
     const modal = document.getElementById('clear-completed-modal');
@@ -1168,6 +1552,48 @@ function removeTaskReminderDisplay(taskId) {
     });
 }
 
+
+// Team member filtering functionality
+let currentFilterUserId = null;
+
+function filterTasksByUser(userId) {
+    const allTasks = document.querySelectorAll('.task-item');
+    const teamMemberAvatars = document.querySelectorAll('.team-member-avatar');
+    
+    // Remove active state from all avatars
+    teamMemberAvatars.forEach(avatar => {
+        avatar.classList.remove('ring-2', 'ring-white', 'ring-offset-2');
+    });
+    
+    if (currentFilterUserId === userId) {
+        // If clicking the same user, reset filter
+        currentFilterUserId = null;
+        allTasks.forEach(task => {
+            task.style.opacity = '1';
+        });
+    } else {
+        // Filter to show only tasks assigned to this user
+        currentFilterUserId = userId;
+        
+        // Add active state to clicked avatar
+        const clickedAvatar = document.querySelector(`[data-user-id="${userId}"]`);
+        if (clickedAvatar) {
+            clickedAvatar.classList.add('ring-2', 'ring-white', 'ring-offset-2');
+        }
+        
+        allTasks.forEach(task => {
+            const assignedUserId = task.dataset.assignedUserId;
+            if (assignedUserId && assignedUserId === userId.toString()) {
+                // Task is assigned to this user - keep full opacity
+                task.style.opacity = '1';
+            } else {
+                // Task is not assigned to this user - reduce opacity
+                task.style.opacity = '0.25';
+            }
+        });
+    }
+}
+
 // Calendar reminder event listeners
 document.addEventListener('DOMContentLoaded', function() {
     // Close calendar modal buttons
@@ -1210,6 +1636,233 @@ document.addEventListener('DOMContentLoaded', function() {
         clearCompletedModal.addEventListener('click', function(e) {
             if (e.target === clearCompletedModal) {
                 hideClearCompletedModal();
+            }
+        });
+    }
+    
+    // Share Grid modal event listeners
+    const shareGridModal = document.getElementById('share-grid-modal');
+    if (shareGridModal) {
+        shareGridModal.addEventListener('click', function(e) {
+            if (e.target === shareGridModal) {
+                hideShareGridModal();
+            }
+        });
+    }
+    
+    // Tab switching event listeners
+    const emailTab = document.getElementById('email-tab');
+    const linkTab = document.getElementById('link-tab');
+    
+    if (emailTab) {
+        emailTab.addEventListener('click', switchToEmailTab);
+    }
+    
+    if (linkTab) {
+        linkTab.addEventListener('click', switchToLinkTab);
+    }
+    
+    // Handle Share Grid form submission (Email invitation)
+    const shareGridForm = document.getElementById('share-grid-form');
+    if (shareGridForm) {
+        shareGridForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('share-email').value.trim();
+            const message = document.getElementById('share-message').value.trim();
+            const submitBtn = document.getElementById('submit-email-btn');
+            const originalText = submitBtn.innerHTML;
+            
+            if (!email) {
+                showError('Please enter an email address', 'email');
+                return;
+            }
+            
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sending...';
+            submitBtn.disabled = true;
+            
+            // Send request to backend
+            fetch(`/grids/{{ project.pk }}/share/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    type: 'email',
+                    email: email,
+                    message: message
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show success message
+                    submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Sent!';
+                    submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]', 'hover:bg-[var(--tertiary-action-hover-bg)]');
+                    submitBtn.classList.add('bg-green-500');
+                    
+                    // Close modal after short delay
+                    setTimeout(() => {
+                        hideShareGridModal();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-green-500');
+                        submitBtn.classList.add('bg-[var(--tertiary-action-bg)]', 'hover:bg-[var(--tertiary-action-hover-bg)]');
+                        
+                        // Show notification if available
+                        if (window.showNotification) {
+                            window.showNotification(data.message || 'Grid invitation sent successfully!', 'success');
+                        }
+                    }, 1500);
+                } else {
+                    // Show error message
+                    submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                    submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+                    submitBtn.classList.add('bg-red-500');
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.classList.remove('bg-red-500');
+                        submitBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                        
+                        // Show error in modal
+                        showError(data.error || 'Failed to send invitation', 'email');
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error sending invitation:', error);
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+                submitBtn.classList.add('bg-red-500');
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-red-500');
+                    submitBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                    
+                    showError('An error occurred while sending the invitation', 'email');
+                }, 2000);
+            });
+        });
+    }
+    
+    // Handle shareable link generation
+    const generateLinkBtn = document.getElementById('generate-link-btn');
+    if (generateLinkBtn) {
+        generateLinkBtn.addEventListener('click', function() {
+            const originalText = generateLinkBtn.innerHTML;
+            
+            // Show loading state
+            generateLinkBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Generating...';
+            generateLinkBtn.disabled = true;
+            
+            // Send request to backend
+            fetch(`/grids/{{ project.pk }}/share/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    type: 'link'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Show the generated link
+                    const linkDisplay = document.getElementById('link-display');
+                    const generateSection = document.getElementById('generate-link-section');
+                    const generatedLink = document.getElementById('generated-link');
+                    
+                    if (linkDisplay && generateSection && generatedLink) {
+                        generatedLink.value = data.shareable_url;
+                        generateSection.classList.add('hidden');
+                        linkDisplay.classList.remove('hidden');
+                    }
+                    
+                    // Reset button
+                    generateLinkBtn.innerHTML = originalText;
+                    generateLinkBtn.disabled = false;
+                    
+                    // Show notification if available
+                    if (window.showNotification) {
+                        window.showNotification(data.message || 'Shareable link generated successfully!', 'success');
+                    }
+                } else {
+                    // Show error
+                    generateLinkBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                    generateLinkBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+                    generateLinkBtn.classList.add('bg-red-500');
+                    
+                    setTimeout(() => {
+                        generateLinkBtn.innerHTML = originalText;
+                        generateLinkBtn.disabled = false;
+                        generateLinkBtn.classList.remove('bg-red-500');
+                        generateLinkBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                        
+                        showError(data.error || 'Failed to generate link', 'link');
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error generating link:', error);
+                generateLinkBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                generateLinkBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+                generateLinkBtn.classList.add('bg-red-500');
+                
+                setTimeout(() => {
+                    generateLinkBtn.innerHTML = originalText;
+                    generateLinkBtn.disabled = false;
+                    generateLinkBtn.classList.remove('bg-red-500');
+                    generateLinkBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                    
+                    showError('An error occurred while generating the link', 'link');
+                }, 2000);
+            });
+        });
+    }
+    
+    // Handle copy link functionality
+    const copyLinkBtn = document.getElementById('copy-link-btn');
+    if (copyLinkBtn) {
+        copyLinkBtn.addEventListener('click', function() {
+            const linkInput = document.getElementById('generated-link');
+            if (linkInput) {
+                linkInput.select();
+                linkInput.setSelectionRange(0, 99999); // For mobile devices
+                
+                try {
+                    document.execCommand('copy');
+                    
+                    // Show success feedback
+                    const originalIcon = copyLinkBtn.innerHTML;
+                    copyLinkBtn.innerHTML = '<i class="fas fa-check"></i>';
+                    copyLinkBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+                    copyLinkBtn.classList.add('bg-green-500');
+                    
+                    setTimeout(() => {
+                        copyLinkBtn.innerHTML = originalIcon;
+                        copyLinkBtn.classList.remove('bg-green-500');
+                        copyLinkBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                    }, 1500);
+                    
+                    if (window.showNotification) {
+                        window.showNotification('Link copied to clipboard!', 'success');
+                    }
+                } catch (err) {
+                    console.error('Failed to copy link:', err);
+                    if (window.showNotification) {
+                        window.showNotification('Failed to copy link', 'error');
+                    }
+                }
             }
         });
     }
@@ -1292,6 +1945,18 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+    
+    
+    // Handle team member avatar clicks for filtering
+    document.addEventListener('click', function(e) {
+        const teamMemberAvatar = e.target.closest('.team-member-avatar');
+        if (teamMemberAvatar) {
+            e.preventDefault();
+            e.stopPropagation();
+            const userId = teamMemberAvatar.dataset.userId;
+            filterTasksByUser(userId);
+        }
+    });
     
     // Handle calendar reminder button clicks
     document.addEventListener('click', function(e) {
