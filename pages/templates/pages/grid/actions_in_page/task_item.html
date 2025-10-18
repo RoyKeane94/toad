@@ -54,24 +54,36 @@
                    {% if task.completed %}checked{% endif %}
                    class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer {% if task.completed %}checkbox-completed{% endif %}">
         </form>
+        
+        <!-- Note Display - Left of text -->
+        {% if task.notes.exists %}
+            <div class="note-display flex items-center text-xs text-[var(--text-secondary)] mr-2">
+                <i class="fas fa-sticky-note text-[var(--primary-action-bg)]"></i>
+            </div>
+        {% endif %}
+        
         <div class="flex-1 min-w-0">
             <div id="task-text-{{ task.id }}" 
                  class="text-sm text-[var(--text-primary)] {% if task.completed %}task-completed-strikethrough{% endif %} leading-relaxed whitespace-pre-wrap cursor-text hover:bg-[var(--grid-header-bg)] hover:rounded px-1 transition-all duration-200 task-text-editable"
                  data-task-id="{{ task.id }}"
                  data-original-text="{{ task.text|escapejs }}">{{ task.text|linebreaks }}</div>
             
-            <!-- Note Display -->
-            {% if task.notes.exists %}
-                <div class="note-display flex items-center mt-1 text-xs text-[var(--text-secondary)] ml-1">
-                    <i class="fas fa-sticky-note text-[var(--primary-action-bg)]"></i>
-                </div>
-            {% endif %}
-            
             <!-- Reminder Display -->
             {% if task.has_reminder %}
                 <div class="reminder-display flex items-center space-x-1 mt-1 text-xs ml-1" style="color: var(--primary-action-bg);">
                     <i class="fas fa-calendar-check text-green-500"></i>
                     <span>{{ task.get_reminder_date_display }}</span>
+                </div>
+            {% endif %}
+            
+            <!-- Assignee Display -->
+            {% if project.is_team_toad and task.assigned_to %}
+                <div class="assignee-display flex items-center mt-1 text-xs ml-1">
+                    <div class="assignee-avatar" 
+                         style="width: 16px; height: 16px; border-radius: 50%; background-color: {{ task.assigned_to.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 8px; display: flex; align-items: center; justify-content: center; margin-right: 4px;"
+                         title="{{ task.assigned_to.get_full_name }}">
+                        {{ task.assigned_to.get_full_name|get_smart_initials:project.team_toad_user.all }}
+                    </div>
                 </div>
             {% endif %}
         </div>

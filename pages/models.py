@@ -267,7 +267,6 @@ class ContactSubmission(models.Model):
     def __str__(self):
         return f"{self.name} - {self.subject}"
 
-
 class GridInvitation(models.Model):
     """
     Model to track grid sharing invitations via email and shareable links
@@ -363,7 +362,6 @@ class GridInvitation(models.Model):
         self.save()
         
         return True
-
 
 # Signal to automatically add user to team_toad_user when is_team_toad is set to True
 @receiver(post_save, sender=Project)

@@ -725,3 +725,50 @@ This email was sent to {user.email}. If you have any questions, reply to this em
     except Exception as e:
         logger.error(f"Failed to send feedback request email to {user.email}: {e}")
         return False
+
+
+def send_grid_invitation_email(invitation, request=None):
+    """
+    Send grid invitation email to the invited user.
+    """
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    try:
+        from django.template.loader import render_to_string
+        from django.core.mail import EmailMessage
+        from django.conf import settings
+        from django.urls import reverse
+        
+        # Build invitation URL
+        base_url = settings.SITE_URL.rstrip('/')
+        # Replace localhost with 127.0.0.1 for email links
+        base_url = base_url.replace('localhost', '127.0.0.1')
+        invitation_url = f"{base_url}{reverse('pages:accept_grid_invitation', args=[invitation.token])}"
+        
+        # Build upgrade URL for non-users
+        upgrade_url = f"{base_url}/register/"
+        
+        # Render email template
+        html_message = render_to_string('pages/email/grid_invitation.html', {
+            'invitation': invitation,
+            'invitation_url': invitation_url,
+            'upgrade_url': upgrade_url,
+            'now': invitation.created_at,
+        })
+        
+        # Send email
+        email = EmailMessage(
+            subject=f"You're invited to collaborate on '{invitation.project.name}'",
+            body=html_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[invitation.invited_email],
+        )
+        email.content_subtype = "html"
+        email.send()
+        
+        logger.info(f"Successfully sent grid invitation email to {invitation.invited_email}")
+        return True
+    except Exception as e:
+        logger.error(f"Failed to send grid invitation email to {invitation.invited_email}: {e}")
+        return False

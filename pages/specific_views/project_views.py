@@ -584,11 +584,22 @@ def task_assign_view(request, task_pk):
             data = json.loads(request.body)
             user_id = data.get('user_id')
             
-            if not user_id:
+            if user_id is None:
+                # Unassign the task
+                task.assigned_to = None
+                task.save()
+                
+                log_user_action(
+                    request.user, 
+                    'unassigned task', 
+                    f'"{task.text}"', 
+                    task.project
+                )
+                
                 return JsonResponse({
-                    'success': False,
-                    'error': 'No user specified'
-                }, status=400)
+                    'success': True,
+                    'message': 'Task unassigned successfully'
+                })
             
             # Get the user to assign to
             try:

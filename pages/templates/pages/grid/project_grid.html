@@ -512,7 +512,7 @@ document.addEventListener('DOMContentLoaded', function() {
                      data-user-name="{{ team_member.get_full_name }}"
                      style="--avatar-color: {{ team_member.pk|get_avatar_color }}; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: 600; font-size: 10px; background-color: var(--avatar-color)"
                      title="{{ team_member.get_full_name }} - Click to filter tasks">
-                    {{ team_member.get_full_name|get_initials }}
+                    {{ team_member.get_full_name|get_smart_initials:project.team_toad_user.all }}
                 </div>
                 {% endfor %}
             </div>
@@ -825,6 +825,21 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- User avatars will be dynamically added here -->
     </div>
 </div>
+
+<!-- Team Members Data for JavaScript -->
+{% if project.is_team_toad %}
+<script type="application/json" id="team-members-data">
+[
+    {% for team_member in project.team_toad_user.all %}
+    {
+        "id": "{{ team_member.pk }}",
+        "name": "{{ team_member.get_full_name }}",
+        "initials": "{{ team_member.get_full_name|get_smart_initials:project.team_toad_user.all }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+]
+</script>
+{% endif %}
 
 <!-- Save Template Modal -->
 <div id="save-template-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">

@@ -31080,3 +31080,198 @@ INFO 2025-10-18 15:49:01,503 basehttp 71712 6204174336 "POST /tasks/2515/note/ H
 INFO 2025-10-18 15:49:01,513 basehttp 71712 6204174336 "GET /tasks/2515/notes/ HTTP/1.1" 200 156
 INFO 2025-10-18 15:49:07,895 basehttp 71712 6204174336 "GET /tasks/2515/notes/ HTTP/1.1" 200 156
 INFO 2025-10-18 15:49:09,637 basehttp 71712 6204174336 "DELETE /tasks/2515/note/ HTTP/1.1" 200 78
+INFO 2025-10-18 15:58:03,357 autoreload 74407 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 15:58:30,971 autoreload 74407 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-18 15:58:31,313 autoreload 74423 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 15:59:08,163 autoreload 74423 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-18 15:59:08,494 autoreload 74650 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 15:59:34,181 autoreload 74650 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-18 15:59:34,531 autoreload 75193 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:00:07,075 basehttp 75193 6138310656 "GET /grids/244/ HTTP/1.1" 200 20569
+INFO 2025-10-18 16:00:07,091 basehttp 75193 6138310656 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:00:16,293 basehttp 75193 6138310656 "GET / HTTP/1.1" 200 7731
+INFO 2025-10-18 16:00:16,336 basehttp 75193 6155137024 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 200 266075
+INFO 2025-10-18 16:00:16,339 basehttp 75193 6138310656 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-18 16:00:17,448 basehttp 75193 6138310656 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-18 16:00:17,479 basehttp 75193 6155137024 "GET /admin/ HTTP/1.1" 200 3125
+INFO 2025-10-18 16:00:17,486 basehttp 75193 6138310656 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-10-18 16:00:17,487 basehttp 75193 6155137024 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-10-18 16:00:17,487 basehttp 75193 6171963392 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-10-18 16:00:17,489 basehttp 75193 6138310656 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-10-18 16:00:17,489 basehttp 75193 6155137024 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-10-18 16:00:17,490 basehttp 75193 6171963392 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-10-18 16:00:17,491 basehttp 75193 6138310656 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-10-18 16:00:17,493 basehttp 75193 6138310656 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-10-18 16:00:17,494 basehttp 75193 6155137024 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-10-18 16:00:17,494 basehttp 75193 6171963392 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-10-18 16:00:17,495 basehttp 75193 6138310656 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-10-18 16:00:17,683 basehttp 75193 6138310656 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-18 16:00:17,693 basehttp 75193 6138310656 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-18 16:00:33,762 basehttp 75193 6138310656 "GET /admin/pages/project/ HTTP/1.1" 200 3382
+INFO 2025-10-18 16:00:33,774 basehttp 75193 6138310656 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-10-18 16:00:33,785 basehttp 75193 6188789760 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-10-18 16:00:33,786 basehttp 75193 6171963392 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-10-18 16:00:33,787 basehttp 75193 6205616128 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-10-18 16:00:33,788 basehttp 75193 6222442496 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-10-18 16:00:33,791 basehttp 75193 6188789760 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-10-18 16:00:33,793 basehttp 75193 6138310656 "GET /admin/jsi18n/ HTTP/1.1" 200 984
+INFO 2025-10-18 16:00:33,793 basehttp 75193 6171963392 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-10-18 16:00:33,796 basehttp 75193 6155137024 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-10-18 16:00:33,797 basehttp 75193 6205616128 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-10-18 16:00:33,799 basehttp 75193 6205616128 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-10-18 16:00:33,815 basehttp 75193 6205616128 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-10-18 16:00:35,354 basehttp 75193 6205616128 "GET /admin/pages/project/244/change/ HTTP/1.1" 200 4036
+INFO 2025-10-18 16:00:35,366 basehttp 75193 6171963392 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-10-18 16:00:35,367 basehttp 75193 6205616128 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-10-18 16:00:35,370 basehttp 75193 6155137024 "GET /admin/jsi18n/ HTTP/1.1" 200 1034
+INFO 2025-10-18 16:00:35,372 basehttp 75193 6171963392 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-10-18 16:00:35,373 basehttp 75193 6205616128 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-10-18 16:00:35,375 basehttp 75193 6171963392 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-10-18 16:00:42,960 basehttp 75193 6171963392 "GET /admin/pages/project/ HTTP/1.1" 200 3370
+INFO 2025-10-18 16:00:44,559 basehttp 75193 6171963392 "GET /admin/ HTTP/1.1" 200 3053
+INFO 2025-10-18 16:00:46,679 basehttp 75193 6171963392 "GET /admin/ HTTP/1.1" 200 3053
+INFO 2025-10-18 16:00:47,458 basehttp 75193 6171963392 "GET / HTTP/1.1" 200 7732
+INFO 2025-10-18 16:00:47,820 basehttp 75193 6171963392 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-18 16:00:49,056 basehttp 75193 6171963392 "GET /grids/ HTTP/1.1" 200 11600
+INFO 2025-10-18 16:00:51,563 basehttp 75193 6171963392 "GET /grids/242/ HTTP/1.1" 200 18194
+INFO 2025-10-18 16:00:51,575 basehttp 75193 6171963392 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 9328
+INFO 2025-10-18 16:01:22,062 basehttp 75193 6171963392 "GET /grids/244/ HTTP/1.1" 200 20564
+INFO 2025-10-18 16:01:22,077 basehttp 75193 6171963392 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+ERROR 2025-10-18 16:01:33,192 project_views 75193 6171963392 Error in share_grid_view: cannot import name 'send_grid_invitation_email' from 'accounts.email_utils' (/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py)
+INFO 2025-10-18 16:01:33,193 basehttp 75193 6171963392 "POST /grids/244/share/ HTTP/1.1" 200 71
+INFO 2025-10-18 16:02:35,789 autoreload 75193 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-18 16:02:36,163 autoreload 75440 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:03:02,556 basehttp 75440 6128054272 "GET /grids/244/ HTTP/1.1" 200 20612
+INFO 2025-10-18 16:03:02,567 basehttp 75440 6128054272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:03:15,353 email_utils 75440 6128054272 Successfully sent grid invitation email to tom@meettoad.co.uk
+INFO 2025-10-18 16:03:15,353 basehttp 75440 6128054272 "POST /grids/244/share/ HTTP/1.1" 200 103
+INFO 2025-10-18 16:03:20,158 basehttp 75440 6128054272 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:03:20,166 basehttp 75440 6128054272 "GET / HTTP/1.1" 200 7591
+INFO 2025-10-18 16:03:22,024 basehttp 75440 6128054272 "GET /accounts/login/ HTTP/1.1" 200 3790
+INFO 2025-10-18 16:03:29,431 basehttp 75440 6128054272 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:03:29,442 basehttp 75440 6128054272 "GET /grids/ HTTP/1.1" 200 11556
+ERROR 2025-10-18 16:04:39,004 project_views 75440 6144880640 Error accepting grid invitation: unsupported operand type(s) for +: 'HttpResponseRedirect' and 'str'
+INFO 2025-10-18 16:04:39,006 basehttp 75440 6144880640 "GET /grids/invite/Rh39ORhscr1yG12Enh4WoUdOYJI83DZ9/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:04:39,011 basehttp 75440 6144880640 "GET / HTTP/1.1" 200 7561
+INFO 2025-10-18 16:04:39,056 basehttp 75440 6178533376 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-18 16:04:39,057 basehttp 75440 6161707008 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 46997
+INFO 2025-10-18 16:04:39,059 basehttp 75440 6144880640 "GET /static/css/output.css HTTP/1.1" 200 91533
+INFO 2025-10-18 16:04:39,062 basehttp 75440 6195359744 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-18 16:04:39,068 basehttp 75440 6212186112 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-18 16:04:39,070 basehttp 75440 6195359744 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 200 266075
+INFO 2025-10-18 16:04:39,222 basehttp 75440 6195359744 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-18 16:04:39,290 basehttp 75440 6195359744 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-18 16:05:14,029 autoreload 75440 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-18 16:05:14,416 autoreload 75649 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:05:46,255 autoreload 75649 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-18 16:05:46,622 autoreload 75661 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:06:03,037 autoreload 75661 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-18 16:06:03,365 autoreload 75777 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:06:42,085 basehttp 75777 6124269568 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:06:42,098 basehttp 75777 6124269568 "GET / HTTP/1.1" 200 7563
+INFO 2025-10-18 16:06:42,116 basehttp 75777 6124269568 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:06:44,882 basehttp 75777 6124269568 "GET /accounts/login/ HTTP/1.1" 200 3806
+INFO 2025-10-18 16:06:51,714 basehttp 75777 6124269568 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:06:51,729 basehttp 75777 6124269568 "GET /grids/ HTTP/1.1" 200 11625
+INFO 2025-10-18 16:07:04,179 basehttp 75777 6124269568 "GET / HTTP/1.1" 200 7720
+INFO 2025-10-18 16:07:05,743 basehttp 75777 6124269568 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-18 16:07:05,769 basehttp 75777 6141095936 "GET /admin/ HTTP/1.1" 200 3142
+INFO 2025-10-18 16:09:00,459 autoreload 75777 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/models.py changed, reloading.
+INFO 2025-10-18 16:09:00,874 autoreload 75844 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:09:20,334 autoreload 75844 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/admin.py changed, reloading.
+INFO 2025-10-18 16:09:20,678 autoreload 75871 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:09:22,717 basehttp 75871 6136557568 "GET /admin/ HTTP/1.1" 200 3182
+INFO 2025-10-18 16:09:25,478 basehttp 75871 6136557568 "GET /admin/pages/gridinvitation/ HTTP/1.1" 200 3419
+INFO 2025-10-18 16:09:25,502 basehttp 75871 6136557568 "GET /admin/jsi18n/ HTTP/1.1" 200 1058
+INFO 2025-10-18 16:09:30,211 basehttp 75871 6136557568 "POST /admin/pages/gridinvitation/ HTTP/1.1" 200 3110
+INFO 2025-10-18 16:09:30,226 basehttp 75871 6136557568 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-10-18 16:09:31,364 basehttp 75871 6136557568 "POST /admin/pages/gridinvitation/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:09:31,378 basehttp 75871 6136557568 "GET /admin/pages/gridinvitation/ HTTP/1.1" 200 2935
+INFO 2025-10-18 16:09:31,389 basehttp 75871 6136557568 "GET /admin/jsi18n/ HTTP/1.1" 200 1003
+INFO 2025-10-18 16:09:42,082 basehttp 75871 6136557568 "GET / HTTP/1.1" 200 7776
+INFO 2025-10-18 16:09:42,094 basehttp 75871 6136557568 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:09:46,082 basehttp 75871 6136557568 "GET /grids/ HTTP/1.1" 200 11545
+INFO 2025-10-18 16:09:48,211 basehttp 75871 6136557568 "GET /grids/244/ HTTP/1.1" 200 20616
+INFO 2025-10-18 16:10:13,605 email_utils 75871 6136557568 Successfully sent grid invitation email to tom@meettoad.co.uk
+INFO 2025-10-18 16:10:13,606 basehttp 75871 6136557568 "POST /grids/244/share/ HTTP/1.1" 200 103
+INFO 2025-10-18 16:11:00,075 basehttp 75871 6136557568 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:11:00,081 basehttp 75871 6136557568 "GET / HTTP/1.1" 200 7506
+INFO 2025-10-18 16:11:08,545 basehttp 75871 6136557568 "GET /accounts/login/ HTTP/1.1" 200 3834
+INFO 2025-10-18 16:11:16,173 basehttp 75871 6136557568 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:11:16,183 basehttp 75871 6136557568 "GET /grids/ HTTP/1.1" 200 11489
+INFO 2025-10-18 16:11:23,748 basehttp 75871 6136557568 "GET /grids/invite/4yql7d8E8TARCMgDrwGLaheFSSPGFi5N/ HTTP/1.1" 302 0
+INFO 2025-10-18 16:11:23,780 basehttp 75871 6136557568 "GET /grids/244/ HTTP/1.1" 200 20934
+INFO 2025-10-18 16:11:23,797 basehttp 75871 6136557568 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-18 16:11:58,689 basehttp 75871 6136557568 "GET /grids/242/ HTTP/1.1" 200 18150
+INFO 2025-10-18 16:11:58,702 basehttp 75871 6136557568 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:11:59,723 basehttp 75871 6136557568 "GET /grids/235/ HTTP/1.1" 200 17915
+INFO 2025-10-18 16:12:01,180 basehttp 75871 6136557568 "GET /grids/244/ HTTP/1.1" 200 20900
+INFO 2025-10-18 16:20:48,775 basehttp 75871 6136557568 "GET /grids/244/ HTTP/1.1" 200 21117
+INFO 2025-10-18 16:20:48,785 basehttp 75871 6136557568 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-18 16:20:48,786 basehttp 75871 6153383936 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:20:51,522 project_views_functions 75871 6153383936 User None assigned task: ""Buy birthday card for Mum" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:20:51,523 basehttp 75871 6153383936 "POST /tasks/2515/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 16:20:53,886 project_views_functions 75871 6153383936 User None assigned task: ""Buy birthday card for Mum" to Tom Jones" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:20:53,887 basehttp 75871 6153383936 "POST /tasks/2515/assign/ HTTP/1.1" 200 124
+WARNING 2025-10-18 16:20:55,910 log 75871 6153383936 Bad Request: /tasks/2515/assign/
+WARNING 2025-10-18 16:20:55,911 basehttp 75871 6153383936 "POST /tasks/2515/assign/ HTTP/1.1" 400 48
+WARNING 2025-10-18 16:20:56,961 log 75871 6153383936 Bad Request: /tasks/2515/assign/
+WARNING 2025-10-18 16:20:56,962 basehttp 75871 6153383936 "POST /tasks/2515/assign/ HTTP/1.1" 400 48
+INFO 2025-10-18 16:20:58,720 project_views_functions 75871 6153383936 User None assigned task: ""Buy birthday card for Mum" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:20:58,721 basehttp 75871 6153383936 "POST /tasks/2515/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 16:21:02,753 project_views_functions 75871 6153383936 User None assigned task: ""Submit expenses" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:21:02,754 basehttp 75871 6153383936 "POST /tasks/2514/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 16:21:32,529 project_views_functions 75871 6153383936 User None assigned task: ""Submit expenses" to Tom Jones" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:21:32,531 basehttp 75871 6153383936 "POST /tasks/2514/assign/ HTTP/1.1" 200 124
+INFO 2025-10-18 16:21:37,837 project_views_functions 75871 6153383936 User None assigned task: ""Buy birthday card for Mum" to Tom Jones" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:21:37,837 basehttp 75871 6153383936 "POST /tasks/2515/assign/ HTTP/1.1" 200 124
+INFO 2025-10-18 16:22:21,908 autoreload 75871 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-18 16:22:22,294 autoreload 76247 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:23:20,753 basehttp 76247 6192476160 "GET /grids/244/ HTTP/1.1" 200 21190
+INFO 2025-10-18 16:24:41,376 autoreload 76247 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/templatetags/custom_filters.py changed, reloading.
+INFO 2025-10-18 16:24:41,733 autoreload 76395 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:25:09,211 basehttp 76395 6161838080 "GET /grids/244/ HTTP/1.1" 200 21203
+INFO 2025-10-18 16:25:09,228 basehttp 76395 6161838080 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:25:09,230 basehttp 76395 6178664448 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 9291
+INFO 2025-10-18 16:25:29,186 basehttp 76395 6178664448 "POST /tasks/2515/note/ HTTP/1.1" 200 189
+INFO 2025-10-18 16:25:29,196 basehttp 76395 6178664448 "GET /tasks/2515/notes/ HTTP/1.1" 200 163
+INFO 2025-10-18 16:32:47,253 basehttp 76395 6161838080 "GET /grids/244/ HTTP/1.1" 200 21203
+INFO 2025-10-18 16:32:47,265 basehttp 76395 6161838080 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-18 16:32:47,266 basehttp 76395 6178664448 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:33:07,160 basehttp 76395 6178664448 "POST /tasks/2516/note/ HTTP/1.1" 200 190
+INFO 2025-10-18 16:33:07,169 basehttp 76395 6178664448 "GET /tasks/2516/notes/ HTTP/1.1" 200 164
+INFO 2025-10-18 16:33:10,184 basehttp 76395 6178664448 "GET /grids/244/ HTTP/1.1" 200 21278
+INFO 2025-10-18 16:33:18,826 basehttp 76395 6178664448 "POST /tasks/2518/note/ HTTP/1.1" 200 186
+INFO 2025-10-18 16:33:18,835 basehttp 76395 6178664448 "GET /tasks/2518/notes/ HTTP/1.1" 200 160
+INFO 2025-10-18 16:33:21,624 basehttp 76395 6178664448 "GET /grids/244/ HTTP/1.1" 200 21247
+INFO 2025-10-18 16:34:24,762 basehttp 76395 6178664448 "GET /grids/244/ HTTP/1.1" 200 21292
+INFO 2025-10-18 16:34:24,780 basehttp 76395 6178664448 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-18 16:34:26,501 basehttp 76395 6178664448 "GET /tasks/2516/notes/ HTTP/1.1" 200 164
+INFO 2025-10-18 16:34:28,107 basehttp 76395 6178664448 "DELETE /tasks/2516/note/ HTTP/1.1" 200 78
+INFO 2025-10-18 16:34:34,292 basehttp 76395 6178664448 "POST /tasks/2516/note/ HTTP/1.1" 200 185
+INFO 2025-10-18 16:34:34,301 basehttp 76395 6178664448 "GET /tasks/2516/notes/ HTTP/1.1" 200 159
+INFO 2025-10-18 16:34:39,035 basehttp 76395 6178664448 "GET /tasks/2516/notes/ HTTP/1.1" 200 159
+INFO 2025-10-18 16:34:40,359 basehttp 76395 6178664448 "DELETE /tasks/2516/note/ HTTP/1.1" 200 78
+INFO 2025-10-18 16:34:42,817 basehttp 76395 6178664448 "GET /grids/244/ HTTP/1.1" 200 21278
+INFO 2025-10-18 16:34:47,291 basehttp 76395 6178664448 "POST /tasks/2516/note/ HTTP/1.1" 200 182
+INFO 2025-10-18 16:34:47,300 basehttp 76395 6178664448 "GET /tasks/2516/notes/ HTTP/1.1" 200 156
+INFO 2025-10-18 16:35:19,695 autoreload 77274 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 16:35:30,071 basehttp 77274 6166032384 "GET /grids/244/ HTTP/1.1" 200 21262
+INFO 2025-10-18 16:35:30,095 basehttp 77274 6199685120 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-18 16:35:30,095 basehttp 77274 6233337856 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 9291
+INFO 2025-10-18 16:35:30,097 basehttp 77274 6182858752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 46997
+INFO 2025-10-18 16:35:30,099 basehttp 77274 6216511488 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 53625
+INFO 2025-10-18 16:35:30,099 basehttp 77274 6250164224 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-18 16:35:30,100 basehttp 77274 6166032384 "GET /static/css/output.css HTTP/1.1" 200 91805
+INFO 2025-10-18 16:35:30,260 basehttp 77274 6166032384 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-18 16:35:34,177 basehttp 77274 6166032384 "POST /tasks/2517/note/ HTTP/1.1" 200 181
+INFO 2025-10-18 16:35:34,187 basehttp 77274 6166032384 "GET /tasks/2517/notes/ HTTP/1.1" 200 155
+INFO 2025-10-18 16:35:36,141 basehttp 77274 6166032384 "GET /tasks/2516/notes/ HTTP/1.1" 200 156
+INFO 2025-10-18 16:35:37,333 basehttp 77274 6166032384 "DELETE /tasks/2516/note/ HTTP/1.1" 200 78
+INFO 2025-10-18 16:35:48,438 basehttp 77274 6166032384 "GET /tasks/2517/notes/ HTTP/1.1" 200 155
+INFO 2025-10-18 16:35:49,718 basehttp 77274 6166032384 "DELETE /tasks/2517/note/ HTTP/1.1" 200 78
+INFO 2025-10-18 16:36:00,441 project_views_functions 77274 6166032384 User None assigned task: ""Finalise resourcing" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 16:36:00,442 basehttp 77274 6166032384 "POST /tasks/2516/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 16:37:50,023 basehttp 77274 6166032384 "GET /grids/ HTTP/1.1" 200 11722
+INFO 2025-10-18 16:37:50,045 basehttp 77274 6166032384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-18 16:37:50,046 basehttp 77274 6250164224 "GET /static/js/general/general.min.js HTTP/1.1" 304 0

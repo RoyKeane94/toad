@@ -76,4 +76,53 @@ def get_initials(name):
         return (words[0][0] + words[-1][0]).upper()
     else:
         # Just the first letter for single names
-        return name[0].upper() if name else '' 
+        return name[0].upper() if name else ''
+
+
+@register.filter(name='get_smart_initials')
+def get_smart_initials(name, team_members=None):
+    """
+    Get smart initials that handle duplicates within a team context.
+    If team_members is provided, will add last name initial for duplicates.
+    """
+    if not name:
+        return ''
+    
+    name = str(name).strip()
+    words = name.split()
+    
+    # Get basic initials
+    if len(words) >= 2:
+        basic_initials = (words[0][0] + words[-1][0]).upper()
+    else:
+        basic_initials = name[0].upper() if name else ''
+    
+    # If no team context provided, return basic initials
+    if not team_members:
+        return basic_initials
+    
+    # Check for duplicates in team
+    team_initials = []
+    for member in team_members:
+        member_name = str(member.get_full_name()).strip()
+        member_words = member_name.split()
+        if len(member_words) >= 2:
+            member_initials = (member_words[0][0] + member_words[-1][0]).upper()
+        else:
+            member_initials = member_name[0].upper() if member_name else ''
+        team_initials.append(member_initials)
+    
+    # Count how many times our initials appear
+    duplicate_count = team_initials.count(basic_initials)
+    
+    if duplicate_count > 1 and len(words) >= 2:
+        # Add middle initial or second letter of first name for uniqueness
+        if len(words) > 2:
+            # Has middle name, use middle initial
+            return (words[0][0] + words[1][0] + words[-1][0]).upper()
+        else:
+            # Use second letter of first name if available
+            if len(words[0]) > 1:
+                return (words[0][0] + words[0][1] + words[-1][0]).upper()
+    
+    return basic_initials 

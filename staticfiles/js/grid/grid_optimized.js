@@ -3223,11 +3223,11 @@ function updateTaskNoteDisplay(taskId, hasNote) {
         }
     });
     
-    // Update note display beneath task text
-    const taskTextContainer = taskElement.querySelector('.flex-1.min-w-0');
-    if (!taskTextContainer) return;
+    // Update note display to the left of task text
+    const taskRow = taskElement.querySelector('.flex.items-center.space-x-3');
+    if (!taskRow) return;
     
-    let noteDisplay = taskTextContainer.querySelector('.note-display');
+    let noteDisplay = taskRow.querySelector('.note-display');
     
     if (hasNote) {
         // Fetch all notes for this task
@@ -3238,16 +3238,14 @@ function updateTaskNoteDisplay(taskId, hasNote) {
                     // Create or update note display (single note only)
                     if (!noteDisplay) {
                         noteDisplay = document.createElement('div');
-                        noteDisplay.className = 'note-display flex items-center mt-1 text-xs text-[var(--text-secondary)] ml-1';
+                        noteDisplay.className = 'note-display flex items-center text-xs text-[var(--text-secondary)] mr-2';
                         
-                        // Insert after the task text div, before reminder if it exists
-                        const taskTextDiv = taskTextContainer.querySelector('[id^="task-text-"]');
-                        const reminderDisplay = taskTextContainer.querySelector('.reminder-display');
+                        // Insert after the checkbox form, before the task text container
+                        const checkboxForm = taskRow.querySelector('form');
+                        const taskTextContainer = taskRow.querySelector('.flex-1.min-w-0');
                         
-                        if (reminderDisplay) {
-                            taskTextContainer.insertBefore(noteDisplay, reminderDisplay);
-                        } else {
-                            taskTextDiv.parentNode.insertBefore(noteDisplay, taskTextDiv.nextSibling);
+                        if (checkboxForm && taskTextContainer) {
+                            taskRow.insertBefore(noteDisplay, taskTextContainer);
                         }
                     }
                     
