@@ -891,6 +891,16 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <div>
                                     <p class="text-sm font-medium text-[var(--text-primary)]">{{ team_member.get_full_name }}</p>
                                     <p class="text-xs text-[var(--text-secondary)]">{{ team_member.email }}</p>
+                                    {% if team_member.associated_society or team_member.associated_university %}
+                                    <div class="mt-1 space-y-0.5">
+                                        {% if team_member.associated_society %}
+                                        <p class="text-xs text-[var(--primary-action-bg)]">{{ team_member.associated_society.name }}</p>
+                                        {% endif %}
+                                        {% if team_member.associated_university %}
+                                        <p class="text-xs text-[var(--tertiary-action-bg)]">{{ team_member.associated_university.name }}</p>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             {% if team_member == project.user %}
