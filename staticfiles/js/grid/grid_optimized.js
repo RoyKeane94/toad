@@ -3266,6 +3266,150 @@ function updateTaskNoteDisplay(taskId, hasNote) {
     }
 }
 
+// Team Settings Modal Functions
+function showTeamSettingsModal() {
+    const modal = document.getElementById('team-settings-modal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('opacity-100', 'visible');
+        modal.querySelector('.transform').classList.remove('scale-95');
+        modal.querySelector('.transform').classList.add('scale-100');
+    }
+}
+
+function hideTeamSettingsModal() {
+    const modal = document.getElementById('team-settings-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        modal.classList.remove('opacity-100', 'visible');
+        modal.querySelector('.transform').classList.add('scale-95');
+        modal.querySelector('.transform').classList.remove('scale-100');
+    }
+}
+
+// Team Settings Modal Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Close modal when clicking close button
+    const closeBtn = document.getElementById('close-team-settings-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', hideTeamSettingsModal);
+    }
+
+    // Close modal when clicking outside
+    const modal = document.getElementById('team-settings-modal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideTeamSettingsModal();
+            }
+        });
+    }
+
+    // Remove member functionality
+    document.addEventListener('click', function(e) {
+        if (e.target.closest('.remove-member-btn')) {
+            const btn = e.target.closest('.remove-member-btn');
+            const memberId = btn.getAttribute('data-member-id');
+            const memberName = btn.getAttribute('data-member-name');
+            
+            if (confirm(`Are you sure you want to remove ${memberName} from the team?`)) {
+                removeTeamMember(memberId);
+            }
+        }
+    });
+
+    // Add member form submission
+    const addMemberForm = document.getElementById('add-member-form');
+    if (addMemberForm) {
+        addMemberForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('member-email').value.trim();
+            if (email) {
+                addTeamMember(email);
+            }
+        });
+    }
+});
+
+function removeTeamMember(memberId) {
+    // Get project ID from URL or data attribute
+    const projectId = window.location.pathname.match(/\/grids\/(\d+)\//)?.[1];
+    if (!projectId) return;
+
+    fetch(`/grids/${projectId}/team/remove/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify({
+            member_id: memberId
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Remove the member from the UI
+            const memberElement = document.querySelector(`[data-member-id="${memberId}"]`).closest('.flex.items-center.justify-between');
+            if (memberElement) {
+                memberElement.remove();
+            }
+            
+            // Show success message
+            if (window.showNotification) {
+                window.showNotification(data.message, 'success');
+            }
+        } else {
+            if (window.showNotification) {
+                window.showNotification(data.error || 'Failed to remove team member', 'error');
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error removing team member:', error);
+        if (window.showNotification) {
+            window.showNotification('Failed to remove team member', 'error');
+        }
+    });
+}
+
+function addTeamMember(email) {
+    // Get project ID from URL or data attribute
+    const projectId = window.location.pathname.match(/\/grids\/(\d+)\//)?.[1];
+    if (!projectId) return;
+
+    fetch(`/grids/${projectId}/team/add/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify({
+            email: email
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Clear the email input
+            document.getElementById('member-email').value = '';
+            
+            // Reload the page to show the new team member
+            window.location.reload();
+        } else {
+            if (window.showNotification) {
+                window.showNotification(data.error || 'Failed to add team member', 'error');
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error adding team member:', error);
+        if (window.showNotification) {
+            window.showNotification('Failed to add team member', 'error');
+        }
+    });
+}
+
 // Cleanup on page unload
 window.addEventListener('beforeunload', function() {
     if (window.gridManager) {

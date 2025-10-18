@@ -528,6 +528,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     <i class="fas fa-check mr-1"></i>Clear Completed
                 </button>
                 
+                <!-- Team Toad Settings Button - Only show for Team Toad projects -->
+                {% if project.is_team_toad %}
+                <i class="fas fa-cog text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-all duration-200 cursor-pointer ml-3"
+                   onclick="showTeamSettingsModal()"
+                   title="Team Settings"></i>
+                {% endif %}
+                
                 <!-- Grid Name Actions Dropdown -->
                 <div class="relative" id="grid-name-actions-container">
                     <div type="button" 
@@ -839,6 +846,84 @@ document.addEventListener('DOMContentLoaded', function() {
     {% endfor %}
 ]
 </script>
+{% endif %}
+
+<!-- Team Settings Modal -->
+{% if project.is_team_toad %}
+<div id="team-settings-modal" class="fixed inset-0 bg-black/60 backdrop-blur-md z-50 opacity-0 invisible transition-all duration-300 flex items-center justify-center p-4">
+    <div class="bg-[var(--container-bg)] rounded-xl max-w-2xl w-full mx-4 transform scale-95 transition-all duration-300 shadow-2xl border border-[var(--border-color)]">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--primary-action-bg)]/10">
+                    <i class="fas fa-users text-[var(--primary-action-bg)]"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Team Settings</h3>
+                    <p class="text-sm text-[var(--text-secondary)]">Manage team members for {{ project.name }}</p>
+                </div>
+            </div>
+            <button type="button" id="close-team-settings-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors cursor-pointer">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="space-y-6">
+                <!-- Current Team Members -->
+                <div>
+                    <h4 class="text-sm font-medium text-[var(--text-primary)] mb-3">Current Team Members</h4>
+                    <div id="team-members-list" class="space-y-2">
+                        {% for team_member in project.team_toad_user.all %}
+                        <div class="flex items-center justify-between p-3 bg-[var(--grid-header-bg)] rounded-lg">
+                            <div class="flex items-center space-x-3">
+                                <div class="team-member-avatar" 
+                                     style="--avatar-color: {{ team_member.pk|get_avatar_color }}; width: 32px; height: 32px; border-radius: 50%; background-color: var(--avatar-color); color: white; font-weight: 600; font-size: 12px; display: flex; align-items: center; justify-content: center;"
+                                     title="{{ team_member.get_full_name }}">
+                                    {{ team_member.get_full_name|get_smart_initials:project.team_toad_user.all }}
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium text-[var(--text-primary)]">{{ team_member.get_full_name }}</p>
+                                    <p class="text-xs text-[var(--text-secondary)]">{{ team_member.email }}</p>
+                                </div>
+                            </div>
+                            {% if team_member == project.user %}
+                            <span class="text-xs text-[var(--primary-action-bg)] font-medium">Owner</span>
+                            {% elif team_member == user %}
+                            <span class="text-xs text-[var(--text-secondary)]">You</span>
+                            {% else %}
+                            <button type="button" 
+                                    class="remove-member-btn text-xs text-red-500 hover:text-red-700 transition-colors cursor-pointer"
+                                    data-member-id="{{ team_member.pk }}"
+                                    data-member-name="{{ team_member.get_full_name }}"
+                                    title="Remove from team">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Owner restriction notice -->
+                {% if user != project.user %}
+                <div class="mt-4 p-3 bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg">
+                    <div class="flex items-start space-x-3">
+                        <div class="flex items-center justify-center w-6 h-6 bg-[var(--text-secondary)] rounded-full flex-shrink-0 mt-0.5">
+                            <i class="fas fa-info text-white text-xs"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm text-[var(--text-secondary)]">You must be the grid's owner to remove people from the team.</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
 {% endif %}
 
 <!-- Save Template Modal -->
@@ -1435,6 +1520,31 @@ function hideClearCompletedModal() {
     }
 }
 
+// Team Settings Modal functionality
+function showTeamSettingsModal() {
+    const modal = document.getElementById('team-settings-modal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+    }
+}
+
+function hideTeamSettingsModal() {
+    const modal = document.getElementById('team-settings-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
 // Calendar Reminder Modal functionality
 function showCalendarReminderModal(taskId, taskText, existingReminderDate = null) {
     const modal = document.getElementById('calendar-reminder-modal');
@@ -1651,6 +1761,23 @@ document.addEventListener('DOMContentLoaded', function() {
         clearCompletedModal.addEventListener('click', function(e) {
             if (e.target === clearCompletedModal) {
                 hideClearCompletedModal();
+            }
+        });
+    }
+    
+    // Team Settings modal event listeners
+    const closeTeamSettingsModal = document.getElementById('close-team-settings-modal');
+    const teamSettingsModal = document.getElementById('team-settings-modal');
+    
+    if (closeTeamSettingsModal) {
+        closeTeamSettingsModal.addEventListener('click', hideTeamSettingsModal);
+    }
+    
+    // Close modal when clicking outside
+    if (teamSettingsModal) {
+        teamSettingsModal.addEventListener('click', function(e) {
+            if (e.target === teamSettingsModal) {
+                hideTeamSettingsModal();
             }
         });
     }

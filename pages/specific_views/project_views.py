@@ -2071,3 +2071,151 @@ def accept_grid_invitation_view(request, token):
         return redirect('pages:home')
 
 
+@login_required
+def team_add_member_view(request, project_pk):
+    """Add a team member to a Team Toad project"""
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    project = get_object_or_404(Project, pk=project_pk)
+    
+    # Check if user is the project owner
+    if project.user != request.user:
+        return JsonResponse({
+            'success': False,
+            'error': 'Only the project owner can add team members'
+        }, status=403)
+    
+    # Check if this is a Team Toad project
+    if not project.is_team_toad:
+        return JsonResponse({
+            'success': False,
+            'error': 'This is not a Team Toad project'
+        }, status=400)
+    
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            email = data.get('email', '').strip().lower()
+            
+            if not email:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Email is required'
+                }, status=400)
+            
+            # Check if user exists
+            try:
+                user_to_add = User.objects.get(email=email)
+            except User.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'No user found with this email address'
+                }, status=404)
+            
+            # Check if user is already a team member
+            if project.team_toad_user.filter(pk=user_to_add.pk).exists():
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User is already a team member'
+                }, status=400)
+            
+            # Add user to team
+            project.team_toad_user.add(user_to_add)
+            
+            logger.info(f"Added {user_to_add.get_full_name} ({email}) to team project {project.name}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'{user_to_add.get_full_name} has been added to the team'
+            })
+            
+        except Exception as e:
+            logger.error(f"Error adding team member: {e}")
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to add team member'
+            }, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
+@login_required
+def team_remove_member_view(request, project_pk):
+    """Remove a team member from a Team Toad project"""
+    import logging
+    logger = logging.getLogger(__name__)
+    
+    project = get_object_or_404(Project, pk=project_pk)
+    
+    # Check if user is the project owner
+    if project.user != request.user:
+        return JsonResponse({
+            'success': False,
+            'error': 'Only the project owner can remove team members'
+        }, status=403)
+    
+    # Check if this is a Team Toad project
+    if not project.is_team_toad:
+        return JsonResponse({
+            'success': False,
+            'error': 'This is not a Team Toad project'
+        }, status=400)
+    
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            member_id = data.get('member_id')
+            
+            if not member_id:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Member ID is required'
+                }, status=400)
+            
+            # Get the user to remove
+            try:
+                user_to_remove = User.objects.get(pk=member_id)
+            except User.DoesNotExist:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User not found'
+                }, status=404)
+            
+            # Check if user is actually a team member
+            if not project.team_toad_user.filter(pk=member_id).exists():
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User is not a team member'
+                }, status=400)
+            
+            # Don't allow removing the project owner
+            if user_to_remove == project.user:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Cannot remove the project owner'
+                }, status=400)
+            
+            # Remove user from team
+            project.team_toad_user.remove(user_to_remove)
+            
+            # Unassign any tasks assigned to this user
+            Task.objects.filter(project=project, assigned_to=user_to_remove).update(assigned_to=None)
+            
+            logger.info(f"Removed {user_to_remove.get_full_name} from team project {project.name}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'{user_to_remove.get_full_name} has been removed from the team'
+            })
+            
+        except Exception as e:
+            logger.error(f"Error removing team member: {e}")
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to remove team member'
+            }, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+

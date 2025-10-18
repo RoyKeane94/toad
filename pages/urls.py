@@ -102,4 +102,8 @@ urlpatterns = [
     # Grid Sharing URLs
     path('grids/<int:pk>/share/', views.share_grid_view, name='share_grid'),
     path('grids/invite/<str:token>/', views.accept_grid_invitation_view, name='accept_grid_invitation'),
+    
+    # Team Management URLs
+    path('grids/<int:project_pk>/team/add/', views.team_add_member_view, name='team_add_member'),
+    path('grids/<int:project_pk>/team/remove/', views.team_remove_member_view, name='team_remove_member'),
 ]
