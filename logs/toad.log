@@ -31322,3 +31322,61 @@ INFO 2025-10-18 17:17:43,010 basehttp 79916 6158725120 "GET /grids/244/ HTTP/1.1
 INFO 2025-10-18 17:17:43,028 basehttp 79916 6242856960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-10-18 17:17:43,028 basehttp 79916 6158725120 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-10-18 17:17:43,028 basehttp 79916 6158725120 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-18 17:19:46,973 autoreload 80442 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 17:19:48,101 basehttp 80442 6129348608 "GET /grids/244/ HTTP/1.1" 200 22110
+INFO 2025-10-18 17:19:48,130 basehttp 80442 6129348608 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-18 17:19:48,136 basehttp 80442 6146174976 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-18 17:19:48,142 basehttp 80442 6163001344 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-18 17:19:53,515 basehttp 80442 6163001344 "GET /tasks/2514/notes/ HTTP/1.1" 200 233
+INFO 2025-10-18 17:20:04,334 basehttp 80442 6163001344 "GET /grids/244/rows/create/ HTTP/1.1" 200 1062
+INFO 2025-10-18 17:20:08,305 basehttp 80442 6163001344 "GET /grids/244/columns/create/ HTTP/1.1" 200 1067
+INFO 2025-10-18 17:20:24,331 basehttp 80442 6163001344 "GET /grids/244/archive/confirm/ HTTP/1.1" 200 934
+INFO 2025-10-18 17:20:42,410 basehttp 80442 6163001344 "GET /grids/244/archive/confirm/ HTTP/1.1" 200 947
+INFO 2025-10-18 17:20:50,196 basehttp 80442 6163001344 "GET /grids/244/delete/ HTTP/1.1" 200 1144
+INFO 2025-10-18 18:14:27,521 basehttp 80442 6129348608 "GET /grids/244/ HTTP/1.1" 200 22098
+INFO 2025-10-18 18:14:27,540 basehttp 80442 6129348608 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-18 18:14:27,540 basehttp 80442 6146174976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-18 18:14:27,541 basehttp 80442 6163001344 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-18 18:14:27,541 basehttp 80442 6179827712 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-18 18:14:27,541 basehttp 80442 6196654080 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-18 18:14:37,887 basehttp 80442 6196654080 "GET /grids/244/rows/create/ HTTP/1.1" 200 1065
+INFO 2025-10-18 18:15:07,850 basehttp 80442 6196654080 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-18 18:15:07,859 basehttp 80442 6196654080 "GET / HTTP/1.1" 200 7505
+INFO 2025-10-18 18:15:07,891 basehttp 80442 6179827712 "GET /static/img/home/Quick%20grid%20screenshot.png HTTP/1.1" 200 266075
+INFO 2025-10-18 18:15:07,893 basehttp 80442 6196654080 "GET /static/img/home/Mobile%20Home%20Screenshot.png HTTP/1.1" 200 814259
+INFO 2025-10-18 18:15:07,935 basehttp 80442 6196654080 "GET /static/video/Home%20-Hero%20Video.mp4 HTTP/1.1" 200 9054587
+INFO 2025-10-18 18:15:08,883 basehttp 80442 6196654080 "GET /accounts/login/ HTTP/1.1" 200 3831
+INFO 2025-10-18 18:15:15,821 basehttp 80442 6196654080 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-18 18:15:15,843 basehttp 80442 6196654080 "GET /grids/ HTTP/1.1" 200 11666
+INFO 2025-10-18 18:15:17,881 basehttp 80442 6196654080 "GET /grids/244/ HTTP/1.1" 200 22042
+INFO 2025-10-18 18:15:24,640 project_views 80442 6196654080 Removed <bound method User.get_full_name of <User: tom@meettoad.co.uk>> from team project Lucy's Alternative Weekly Planner
+INFO 2025-10-18 18:15:24,641 basehttp 80442 6196654080 "POST /grids/244/team/remove/ HTTP/1.1" 200 126
+INFO 2025-10-18 18:15:50,024 basehttp 80442 6196654080 "GET /grids/244/rows/create/ HTTP/1.1" 200 998
+INFO 2025-10-18 18:16:07,924 basehttp 80442 6129348608 "GET /grids/244/ HTTP/1.1" 200 21863
+INFO 2025-10-18 18:16:07,943 basehttp 80442 6196654080 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 9291
+INFO 2025-10-18 18:16:07,945 basehttp 80442 6163001344 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-18 18:16:07,945 basehttp 80442 6129348608 "GET /static/css/output.css HTTP/1.1" 200 91929
+INFO 2025-10-18 18:16:07,946 basehttp 80442 6146174976 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 46997
+INFO 2025-10-18 18:16:07,947 basehttp 80442 6179827712 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 56434
+INFO 2025-10-18 18:16:07,947 basehttp 80442 6213480448 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-18 18:16:08,154 basehttp 80442 6213480448 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-18 18:16:10,979 basehttp 80442 6213480448 "GET /grids/244/rows/create/ HTTP/1.1" 200 1063
+INFO 2025-10-18 18:16:14,200 basehttp 80442 6129348608 "GET /grids/244/columns/create/ HTTP/1.1" 200 1032
+INFO 2025-10-18 18:16:17,479 basehttp 80442 6129348608 "GET /grids/244/archive/confirm/ HTTP/1.1" 200 978
+INFO 2025-10-18 18:16:26,911 basehttp 80442 6129348608 "GET /grids/244/delete/ HTTP/1.1" 200 1163
+INFO 2025-10-18 18:16:50,218 autoreload 81319 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-18 18:16:53,446 basehttp 81319 6160281600 "GET /grids/244/ HTTP/1.1" 200 22134
+INFO 2025-10-18 18:16:55,879 basehttp 81319 6160281600 "GET /grids/244/rows/create/ HTTP/1.1" 200 1036
+INFO 2025-10-18 18:19:24,830 basehttp 81319 6160281600 "GET /grids/244/rows/create/ HTTP/1.1" 200 1020
+INFO 2025-10-18 18:19:39,950 project_views_functions 81319 6160281600 User None assigned task: ""Buy birthday card for Mum" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 18:19:39,951 basehttp 81319 6160281600 "POST /tasks/2515/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 18:19:44,394 project_views_functions 81319 6160281600 User None unassigned task: ""Buy birthday card for Mum"" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 18:19:44,396 basehttp 81319 6160281600 "POST /tasks/2515/assign/ HTTP/1.1" 200 60
+INFO 2025-10-18 18:19:46,658 project_views_functions 81319 6160281600 User None assigned task: ""Buy birthday card for Mum" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 18:19:46,659 basehttp 81319 6160281600 "POST /tasks/2515/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 18:19:51,385 project_views_functions 81319 6160281600 User None unassigned task: ""Buy birthday card for Mum"" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 18:19:51,386 basehttp 81319 6160281600 "POST /tasks/2515/assign/ HTTP/1.1" 200 60
+INFO 2025-10-18 18:19:57,947 project_views_functions 81319 6160281600 User None assigned task: ""Write up notes from team catch up and circulate" to Lucy Simpson" from project: Lucy's Alternative Weekly Planner
+INFO 2025-10-18 18:19:57,948 basehttp 81319 6160281600 "POST /tasks/2518/assign/ HTTP/1.1" 200 129
+INFO 2025-10-18 18:20:11,162 basehttp 81319 6160281600 "GET /grids/244/columns/create/ HTTP/1.1" 200 1023
+INFO 2025-10-18 18:20:18,072 basehttp 81319 6160281600 "GET /grids/244/columns/create/ HTTP/1.1" 200 1044

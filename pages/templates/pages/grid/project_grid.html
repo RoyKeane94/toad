@@ -245,22 +245,27 @@
     }
     
     .unassign-option {
-        width: 100%;
-        padding: 8px 12px;
-        background: var(--grid-header-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 6px;
-        color: var(--text-secondary);
-        font-size: 12px;
+        width: auto;
+        padding: 4px;
+        background: transparent;
+        border: none;
+        border-radius: 50%;
+        color: var(--primary-action-bg);
+        font-size: 16px;
         text-align: center;
         cursor: pointer;
         transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 24px;
+        min-height: 24px;
     }
     
     .unassign-option:hover {
-        background: var(--delete-button-bg);
-        color: white;
-        border-color: var(--delete-button-bg);
+        background: transparent;
+        color: var(--primary-action-hover-bg);
+        transform: scale(1.1);
     }
     
     /* Ensure smooth opacity transitions for delete buttons */
@@ -689,8 +694,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--delete-button-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-exclamation-triangle text-white"></i>
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg">
+                    <i class="fas fa-exclamation-triangle text-[var(--delete-button-bg)]"></i>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-[var(--text-primary)]">Delete Task</h3>
@@ -754,8 +759,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-calendar-plus text-white"></i>
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg">
+                    <i class="fas fa-calendar-plus text-[var(--primary-action-bg)]"></i>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-[var(--text-primary)]">Set Task Reminder</h3>
@@ -932,8 +937,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Modal Header -->
         <div class="flex items-center p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-save text-white"></i>
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg">
+                    <i class="fas fa-save text-[var(--tertiary-action-bg)]"></i>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-[var(--text-primary)]">Save as Template</h3>
@@ -1014,8 +1019,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Modal Header -->
         <div class="flex items-center p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-share text-white"></i>
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg">
+                    <i class="fas fa-share text-[var(--tertiary-action-bg)]"></i>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-[var(--text-primary)]">Share your Grid</h3>
@@ -1159,8 +1164,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-[var(--clear-button-bg)] rounded-lg shadow-sm">
-                    <i class="fas fa-check text-white"></i>
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg">
+                    <i class="fas fa-check text-[var(--clear-button-bg)]"></i>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold text-[var(--text-primary)]">Clear Completed Tasks</h3>
@@ -2097,6 +2102,56 @@ document.addEventListener('DOMContentLoaded', function() {
             e.stopPropagation();
             const userId = teamMemberAvatar.dataset.userId;
             filterTasksByUser(userId);
+        }
+    });
+    
+    // Handle remove member button clicks (no confirmation popup)
+    document.addEventListener('click', function(e) {
+        const removeMemberBtn = e.target.closest('.remove-member-btn');
+        if (removeMemberBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const memberId = removeMemberBtn.dataset.memberId;
+            const memberName = removeMemberBtn.dataset.memberName;
+            
+            // Directly remove the member without confirmation
+            fetch(`/grids/{{ project.pk }}/remove-member/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({
+                    member_id: memberId
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Remove the member from the UI
+                    const memberElement = removeMemberBtn.closest('.flex.items-center.justify-between');
+                    if (memberElement) {
+                        memberElement.remove();
+                    }
+                    
+                    // Show success notification if available
+                    if (window.showNotification) {
+                        window.showNotification(`${memberName} has been removed from the team`, 'success');
+                    }
+                } else {
+                    // Show error notification if available
+                    if (window.showNotification) {
+                        window.showNotification(data.error || 'Failed to remove team member', 'error');
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error removing team member:', error);
+                if (window.showNotification) {
+                    window.showNotification('An error occurred while removing the team member', 'error');
+                }
+            });
         }
     });
     
