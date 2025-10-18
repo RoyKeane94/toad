@@ -1112,7 +1112,8 @@ function updateTaskReminderDisplay(taskId, reminderDate) {
     if (!reminderDisplay) {
         // Create new reminder display
         reminderDisplay = document.createElement('div');
-        reminderDisplay.className = 'reminder-display flex items-center space-x-1 mt-1 text-xs text-green-600 ml-1';
+        reminderDisplay.className = 'reminder-display flex items-center space-x-1 mt-1 text-xs ml-1';
+        reminderDisplay.style.color = 'var(--primary-action-bg)';
         reminderDisplay.innerHTML = `
             <i class="fas fa-calendar-check text-green-500"></i>
             <span>${formattedDate}</span>

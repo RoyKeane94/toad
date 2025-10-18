@@ -180,6 +180,8 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     width: calc(100% - var(--category-col-width));
     /* Ensure the container can properly calculate available width */
     box-sizing: border-box;
+    background-color: var(--container-bg);
+    border-radius: 0 12px 12px 0;
 }
 
 /* Grid table visibility - always visible by default */
@@ -299,9 +301,25 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 
 :root {
     --category-col-width: 225px;
-    --border-color: #e5e7eb; /* Example */
-    --container-bg: #ffffff; /* Example */
-    --grid-header-bg: #f9fafb; /* Example */
+    
+    /* Modern dashboard background */
+    --main-bg: #f9f9f9;           /* Page background - subtle grey */
+    --container-bg: #ffffff;      /* Grid container - pure white */
+    --grid-header-bg: #f9fafb;    /* Grid header background */
+    
+    /* Subtle border colors */
+    --border-color: #e5e5e5;
+    --border-color-subtle: #eeeeee;
+    
+    /* Typography hierarchy colors */
+    --text-primary: #333333;      /* Column headers - bold, dark grey */
+    --text-secondary: #555555;    /* Row headers - medium-dark grey */
+    --text-tertiary: #666666;    /* Regular content */
+    
+    /* Brand green - only for interactive elements */
+    --primary-action-bg: #10b981;
+    --primary-action-hover-bg: #059669;
+    --primary-action-text: #ffffff;
 }
 
 /* Ensure the category column width is always available */
@@ -361,8 +379,10 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     min-width: 0;
     max-width: 90vw; /* Limit to 90% of viewport width */
     margin: 0 auto; /* Center the container */
-    border: 1px solid #f3f4f6;
-    border-radius: 8px;
+    border: none;
+    border-radius: 12px;
+    background-color: var(--container-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     /* overflow: hidden removed to allow sticky headers to work */
     /* Ensure proper box sizing for width calculations */
     box-sizing: border-box;
@@ -375,7 +395,8 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     left: 0;
     z-index: 20;
     background-color: var(--container-bg);
-    border-right: 1px solid var(--border-color);
+    border-radius: 12px 0 0 12px;
+    overflow: hidden;
 }
 
 
@@ -405,7 +426,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 .grid-table-fixed th, .grid-table-fixed td,
 .grid-table th, .grid-table td {
     padding: 0.75rem 1rem;
-    border-bottom: 1px solid #f3f4f6;
+    border-bottom: 1px solid var(--border-color-subtle);
     vertical-align: top;
     text-align: left;
     white-space: normal;
@@ -456,6 +477,16 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     box-sizing: border-box;
 }
 
+/* Row header styling - L3 Headers (Section titles) */
+.grid-table-fixed td.category-column h3,
+.grid-table-fixed td.category-column .row-title {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
 /* Ensure row text in category column wraps and doesn't exceed "Weekly Tasks & Reading" length */
 .grid-table-fixed td .truncate {
     max-width: 140px; /* Approximate width of "Weekly Tasks & Reading" */
@@ -494,7 +525,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border-bottom: none;
 }
 .grid-table th, .grid-table td {
-    border-right: 1px solid #f3f4f6;
+    border-right: 1px solid var(--border-color-subtle);
 }
 .grid-table th:last-child, .grid-table td:last-child {
     border-right: none;
@@ -503,8 +534,10 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* === Header Styles (for both tables) === */
 .grid-table-fixed th, .grid-table th {
     background-color: var(--container-bg);
-    font-weight: 600;
-    border-bottom: 2px solid var(--border-color);
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border-color-subtle);
 }
 
 .grid-table-fixed td,
@@ -1251,17 +1284,19 @@ input[type="checkbox"]:focus {
     align-items: center;
     justify-content: space-between;
     padding: 20px 16px;
-    background: linear-gradient(135deg, var(--grid-header-bg), #f3f4f6);
-    border-bottom: 2px solid var(--border-color);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    background: var(--container-bg);
+    border-bottom: 1px solid var(--border-color-subtle);
+    border-radius: 12px 12px 0 0;
 }
 
 .mobile-column-title {
     font-size: 1.125rem;
     font-weight: 700;
-    color: var(--primary-action-bg);
+    color: var(--text-primary);
     text-align: center;
     padding: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .mobile-column-actions {
@@ -1293,7 +1328,8 @@ input[type="checkbox"]:focus {
 .mobile-column-content {
     padding: 12px;
     background-color: var(--container-bg);
-    border-top: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
@@ -1317,8 +1353,8 @@ input[type="checkbox"]:focus {
 /* Mobile Task Section */
 .mobile-task-section {
     margin-bottom: 20px;
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    border: none;
+    border-radius: 8px;
     background-color: var(--container-bg);
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
@@ -1331,18 +1367,19 @@ input[type="checkbox"]:focus {
 /* Mobile Row Header */
 .mobile-row-header {
     padding: 12px;
-    background-color: var(--grid-header-bg);
-    border-bottom: 1px solid var(--border-color);
+    background-color: var(--container-bg);
+    border-bottom: 1px solid var(--border-color-subtle);
     position: sticky;
     top: 0;
     z-index: 10;
+    border-radius: 8px 8px 0 0;
 }
 
 .mobile-row-title {
     font-weight: 600;
-    color: var(--text-primary);
+    color: var(--text-secondary);
     margin: 0;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    font-size: 0.875rem;
 }
 
 .mobile-row-actions {
@@ -1437,6 +1474,7 @@ input[type="checkbox"]:focus {
     padding: 16px;
     min-height: 60px;
     background-color: var(--container-bg);
+    border-radius: 0 0 8px 8px;
 }
 
 .mobile-tasks-container:empty::after {
@@ -1517,8 +1555,9 @@ input[type="checkbox"]:focus {
 /* Mobile Add Task Container */
 .mobile-add-task-container {
     padding: 16px;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color-subtle);
     background-color: var(--grid-header-bg);
+    border-radius: 0 0 8px 8px;
 }
 
 .mobile-add-task-form {
@@ -1761,6 +1800,10 @@ input[type="checkbox"]:focus {
     flex-direction: column;
     height: calc(100vh - 200px); /* Account for header and navigation */
     min-height: 0;
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 
 #mobile-grid-slider {
@@ -1769,6 +1812,7 @@ input[type="checkbox"]:focus {
     /* Remove fixed height to allow content to fill the page */
     flex: 1;
     min-height: 0;
+    background-color: var(--container-bg);
 }
 
 .mobile-column {

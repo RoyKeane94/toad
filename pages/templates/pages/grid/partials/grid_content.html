@@ -22,9 +22,10 @@
                     <tr>
                         <td>
                              <div class="flex items-center justify-between group" data-row-id="{{ row_h.pk }}">
-                                <span class="text-green-600 font-semibold truncate row-header-editable" 
+                                <span class="truncate row-header-editable" 
                                       data-row-id="{{ row_h.pk }}" 
-                                      data-original-text="{{ row_h.name }}">{{ row_h.name }}</span>
+                                      data-original-text="{{ row_h.name }}"
+                                      style="color: var(--text-secondary); font-weight: 600; font-size: 0.875rem;">{{ row_h.name }}</span>
                                 <div class="relative ml-2">
                                     <button type="button"
                                             class="row-delete-btn p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer opacity-0 group-hover:opacity-100" 
@@ -61,9 +62,10 @@
                         {% for col_h in data_column_headers %}
                             <th class="p-4 font-medium" style="background-color: var(--container-bg) !important;">
                                 <div class="flex items-center justify-between group" data-column-id="{{ col_h.pk }}">
-                                    <span class="text-green-600 font-semibold truncate column-header-editable" 
+                                    <span class="truncate column-header-editable" 
                                           data-column-id="{{ col_h.pk }}" 
-                                          data-original-text="{{ col_h.name }}">{{ col_h.name }}</span>
+                                          data-original-text="{{ col_h.name }}"
+                                          style="color: var(--text-primary); font-weight: 700; font-size: 0.875rem;">{{ col_h.name }}</span>
                                     <div class="relative ml-2">
                                         <button type="button"
                                                 class="column-delete-btn p-1 rounded hover:bg-[var(--container-bg)] transition-colors cursor-pointer opacity-0 group-hover:opacity-100" 

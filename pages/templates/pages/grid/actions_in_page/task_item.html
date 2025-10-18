@@ -67,7 +67,7 @@
             
             <!-- Reminder Display -->
             {% if task.has_reminder %}
-                <div class="reminder-display flex items-center space-x-1 mt-1 text-xs text-green-600 ml-1">
+                <div class="reminder-display flex items-center space-x-1 mt-1 text-xs ml-1" style="color: var(--primary-action-bg);">
                     <i class="fas fa-calendar-check text-green-500"></i>
                     <span>{{ task.get_reminder_date_display }}</span>
                 </div>
