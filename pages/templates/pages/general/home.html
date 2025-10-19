@@ -86,11 +86,13 @@
         
         <div class="max-w-4xl mx-auto">
             <video 
+                id="hero-video"
                 src="{% static 'video/Toad Landing Page.mp4' %}" 
                 autoplay 
                 muted 
                 loop 
                 playsinline
+                preload="auto"
                 class="w-full h-auto rounded-lg shadow-2xl"
                 style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
                 Your browser does not support the video tag.
@@ -302,6 +304,38 @@
                 window.location.href = `{% url 'accounts:register_free' %}?email=${encodeURIComponent(email)}`;
             }
         });
+    });
+    
+    // Force video autoplay
+    document.addEventListener('DOMContentLoaded', function() {
+        const video = document.getElementById('hero-video');
+        if (video) {
+            // Try to play immediately
+            video.play().catch(() => {
+                // If autoplay fails, try again after any user interaction
+                const playVideoOnInteraction = () => {
+                    video.play().catch(() => {});
+                    document.removeEventListener('click', playVideoOnInteraction);
+                    document.removeEventListener('scroll', playVideoOnInteraction);
+                    document.removeEventListener('touchstart', playVideoOnInteraction);
+                };
+                
+                document.addEventListener('click', playVideoOnInteraction);
+                document.addEventListener('scroll', playVideoOnInteraction);
+                document.addEventListener('touchstart', playVideoOnInteraction);
+            });
+            
+            // Ensure video plays when it comes into view
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            videoObserver.observe(video);
+        }
     });
 </script>
 
