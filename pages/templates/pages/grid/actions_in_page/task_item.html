@@ -55,9 +55,9 @@
                    class="w-4 h-4 rounded border-gray-300 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] cursor-pointer {% if task.completed %}checkbox-completed{% endif %}">
         </form>
         
-        <!-- Note Display - Left of text -->
+        <!-- Note Display - Left of text (Hidden on mobile) -->
         {% if task.notes.exists %}
-            <div class="note-display flex items-center text-xs text-[var(--text-secondary)] mr-2">
+            <div class="note-display hidden sm:flex items-center text-xs text-[var(--text-secondary)] mr-2">
                 <i class="fas fa-sticky-note text-[var(--primary-action-bg)]"></i>
             </div>
         {% endif %}
@@ -128,25 +128,7 @@
     </div>
     
     <!-- Mobile Actions -->
-    <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 {% if project.is_team_toad %}min-w-[100px]{% else %}min-w-[70px]{% endif %} opacity-100">
-        {% if project.is_team_toad %}
-        <button type="button"
-                class="assign-task-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                title="{% if task.assigned_to %}Reassign task{% else %}Assign task{% endif %}"
-                data-task-id="{{ task.pk }}"
-                data-task-text="{{ task.text }}"
-                {% if task.assigned_to %}data-assigned-to="{{ task.assigned_to.pk }}"{% endif %}>
-            <i class="fas fa-user text-gray-400 hover:text-orange-500 text-sm transition-colors"></i>
-        </button>
-        {% endif %}
-        <button type="button"
-                class="task-note-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                title="{% if task.notes.exists %}Edit note{% else %}Add note{% endif %}"
-                data-task-id="{{ task.pk }}"
-                data-task-text="{{ task.text }}"
-                {% if task.notes.exists %}data-has-note="true"{% else %}data-has-note="false"{% endif %}>
-            <i class="fas {% if task.notes.exists %}fa-sticky-note text-[var(--primary-action-bg)]{% else %}fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)]{% endif %} text-sm transition-colors"></i>
-        </button>
+    <div class="mobile-task-actions flex flex-row justify-end items-center space-x-1 min-w-[50px] opacity-100">
         <button type="button"
                 class="calendar-reminder-btn p-2 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="{% if task.has_reminder %}Edit reminder{% else %}Set reminder{% endif %}"

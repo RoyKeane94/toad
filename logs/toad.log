@@ -32464,3 +32464,33 @@ INFO 2025-10-19 16:48:39,290 basehttp 5515 6196310016 "GET /static/css/output.cs
 INFO 2025-10-19 16:48:39,290 basehttp 5515 6229962752 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-10-19 16:48:39,321 basehttp 5515 6229962752 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 304 0
 INFO 2025-10-19 16:48:43,067 basehttp 5515 6229962752 "GET / HTTP/1.1" 200 7556
+INFO 2025-10-19 16:53:21,259 autoreload 6012 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 16:53:27,875 basehttp 6012 6137966592 "GET /grids/ HTTP/1.1" 200 11992
+INFO 2025-10-19 16:53:29,232 basehttp 6012 6137966592 "GET /grids/247/ HTTP/1.1" 200 22554
+INFO 2025-10-19 16:53:29,245 basehttp 6012 6154792960 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-19 16:53:29,245 basehttp 6012 6137966592 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+WARNING 2025-10-19 16:53:35,059 log 6012 6137966592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:53:35,059 basehttp 6012 6137966592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2318
+INFO 2025-10-19 16:53:36,477 basehttp 6012 6137966592 "GET /grids/247/ HTTP/1.1" 200 15509
+WARNING 2025-10-19 16:53:36,553 log 6012 6137966592 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:53:36,553 basehttp 6012 6137966592 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2310
+INFO 2025-10-19 16:53:36,564 basehttp 6012 6154792960 "GET /static/js/grid/grid_mobile.js HTTP/1.1" 200 91186
+INFO 2025-10-19 16:53:45,905 basehttp 6012 6154792960 "GET /grids/245/ HTTP/1.1" 200 12534
+WARNING 2025-10-19 16:53:45,979 log 6012 6154792960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:53:45,979 basehttp 6012 6154792960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2306
+INFO 2025-10-19 16:53:46,966 basehttp 6012 6154792960 "GET /grids/249/ HTTP/1.1" 200 12472
+WARNING 2025-10-19 16:53:47,010 log 6012 6154792960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:53:47,010 basehttp 6012 6154792960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2331
+INFO 2025-10-19 16:53:50,111 basehttp 6012 6154792960 "GET /grids/249/ HTTP/1.1" 200 12395
+WARNING 2025-10-19 16:53:50,139 log 6012 6154792960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:53:50,141 basehttp 6012 6154792960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2272
+INFO 2025-10-19 16:53:53,065 basehttp 6012 6154792960 "GET /grids/249/ HTTP/1.1" 200 19357
+INFO 2025-10-19 16:55:06,162 basehttp 6012 6154792960 "GET /grids/249/ HTTP/1.1" 200 19367
+INFO 2025-10-19 16:55:08,897 basehttp 6012 6154792960 "GET /grids/245/ HTTP/1.1" 200 20044
+INFO 2025-10-19 16:55:12,181 basehttp 6012 6154792960 "GET /grids/247/ HTTP/1.1" 200 22473
+WARNING 2025-10-19 16:55:16,723 log 6012 6154792960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:55:16,723 basehttp 6012 6154792960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2311
+INFO 2025-10-19 16:55:17,924 basehttp 6012 6154792960 "GET /grids/247/ HTTP/1.1" 200 15405
+WARNING 2025-10-19 16:55:17,986 log 6012 6154792960 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-19 16:55:17,987 basehttp 6012 6154792960 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2313
+INFO 2025-10-19 16:55:40,388 basehttp 6012 6154792960 "GET /grids/247/ HTTP/1.1" 200 22445
