@@ -32186,3 +32186,15 @@ INFO 2025-10-19 13:17:52,894 basehttp 98068 6205501440 "GET /upgrade-required/ H
 INFO 2025-10-19 13:17:56,585 basehttp 98068 6205501440 "GET /upgrade-required/ HTTP/1.1" 200 3434
 INFO 2025-10-19 13:18:07,819 autoreload 98068 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
 INFO 2025-10-19 13:18:08,333 autoreload 98091 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:24:30,709 autoreload 98719 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:24:41,753 basehttp 98719 6194229248 "GET /grids/253/ HTTP/1.1" 200 19196
+INFO 2025-10-19 13:24:44,275 basehttp 98719 6194229248 "GET /upgrade-required-pro/ HTTP/1.1" 200 3810
+INFO 2025-10-19 13:25:45,182 autoreload 98719 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-19 13:25:45,695 autoreload 99905 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:27:00,384 basehttp 99905 6164082688 "GET /upgrade-required-pro/ HTTP/1.1" 200 3728
+INFO 2025-10-19 13:27:11,909 basehttp 99905 6164082688 "GET /upgrade-required-pro/ HTTP/1.1" 200 3687
+INFO 2025-10-19 13:27:22,893 basehttp 99905 6164082688 "GET /accounts/register/trial-3-month-pro/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:27:22,923 basehttp 99905 6164082688 "GET /grids/ HTTP/1.1" 200 11348
+INFO 2025-10-19 13:27:36,841 basehttp 99905 6164082688 "GET /upgrade-required HTTP/1.1" 301 0
+INFO 2025-10-19 13:27:36,848 basehttp 99905 6180909056 "GET /upgrade-required/ HTTP/1.1" 200 3443
+INFO 2025-10-19 13:29:30,651 basehttp 99905 6164082688 "GET /upgrade-required-pro/ HTTP/1.1" 200 3449

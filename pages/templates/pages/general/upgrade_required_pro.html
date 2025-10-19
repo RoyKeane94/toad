@@ -1,0 +1,129 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}Upgrade to Pro Required - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-center justify-center bg-[var(--main-bg)] py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Header -->
+        <div class="text-center">
+            <div class="mx-auto flex items-center justify-center h-24 w-24 rounded-full bg-green-100 mb-4">
+                <i class="fas fa-crown text-5xl text-green-600"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-green-600 mb-4">Upgrade Required</h1>
+            <p class="text-lg text-[var(--text-secondary)] mb-8">
+                This feature is only available with Toad Pro.
+            </p>
+        </div>
+
+        <!-- Feature Info Card -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl p-6 shadow-sm">
+            <div class="flex items-start space-x-4">
+                <div class="flex-shrink-0">
+                    <div class="w-12 h-12 bg-[var(--primary-action-bg)]/10 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-share text-[var(--primary-action-bg)] text-lg"></i>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-2">Pro Feature</h3>
+                    <p class="text-[var(--text-secondary)] mb-4">
+                        You're currently on the free tier. Upgrade to Toad Pro to unlock this feature and many more.
+                    </p>
+                    <div class="description">
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Access to Team Toad, our premium collaboration tool</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Create custom templates</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Archive completed tasks</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-check text-[var(--primary-action-bg)] mr-2"></i>
+                            <span>Add notes to your tasks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trial Card -->
+        <div class="border border-[var(--border-color)] rounded-xl p-6">
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-green-600 mb-2">Try Pro Free</h3>
+                <div class="mb-4">
+                    <span class="text-4xl font-bold text-green-600">3 months</span>
+                    <span class="text-lg text-[var(--text-secondary)]"> free trial</span>
+                </div>
+                
+                <!-- Trial Button -->
+                <a href="{% url 'accounts:register_3_month_pro_trial' %}" 
+                   class="inline-flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white bg-green-600 hover:bg-green-700 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
+                    <i class="fas fa-gift mr-2"></i>
+                    Start Free Trial
+                </a>
+
+                <p class="text-[var(--text-secondary)] mt-4 mb-6">
+                    Experience all Pro features for 3 months, completely free.
+                </p>
+                
+                <p class="text-xs text-[var(--text-secondary)] mt-4">
+                    No payment required. Cancel anytime.
+                </p>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center">
+            <a href="javascript:history.back()" 
+               class="inline-flex items-center text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors duration-200">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Go Back
+            </a>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Smooth animations */
+    .transform {
+        transition: transform 0.2s ease-in-out;
+    }
+    
+    .hover\:scale-105:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Gradient background animation */
+    .bg-gradient-to-br {
+        background-size: 200% 200%;
+        animation: gradientShift 6s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    /* Success message animation */
+    #success-message {
+        animation: slideInRight 0.3s ease-out;
+    }
+    
+    @keyframes slideInRight {
+        from {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+</style>
+{% endblock %}

@@ -16,6 +16,7 @@ urlpatterns = [
     
     # Upgrade required
     path('upgrade-required/', views.upgrade_required_view, name='upgrade_required'),
+    path('upgrade-required-pro/', views.upgrade_required_pro_view, name='upgrade_required_pro'),
     
     # Test error pages (development only)
     path('test-404/', views.test_404, name='test_404'),

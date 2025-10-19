@@ -608,8 +608,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <div class="border-t border-[var(--border-color)] my-2"></div>
 
                         <!-- Share Grid -->
-                        {% if user_tier == 'free' %}
-                        <a href="{% url 'pages:upgrade_required' %}"
+                        {% if user_tier == 'free' or user_tier == 'personal' or user_tier == 'personal_trial' or user_tier == 'personal_3_month_trial' %}
+                        <a href="{% url 'pages:upgrade_required_pro' %}"
                            class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
                            onclick="closeAllDropdowns();">
                             <i class="fas fa-share text-xs w-4 text-center"></i>
