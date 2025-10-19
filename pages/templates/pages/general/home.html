@@ -39,35 +39,38 @@
             </div>
         </div>
         
-        <!-- Video Section (hidden initially, positioned where text will be) -->
-        <div id="video-container" class="w-full relative" style="opacity: 0; display: none;">
-            <video id="hero-video" class="w-full h-auto object-contain" 
-                   muted 
-                   playsinline>
-                <source src="{% static 'video/Home -Hero Video.mp4' %}" type="video/mp4">
-            </video>
-        </div>
         
         <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-8" style="opacity: 0;">
             <span style="color: var(--title-text);">For people who</span>
             <span style="color: var(--primary-action-bg);"> have a job to do.</span>
         </h1>
         
-        <!-- Join Button -->
-        <div id="join-button" class="text-center mt-12 sm:mt-16" style="opacity: 0;">
-            <a href="{% url 'accounts:register_choices' %}"
-               class="inline-block px-8 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-[var(--primary-action-text)]"
-               style="background: var(--tertiary-action-bg);"
-               onmouseover="this.style.background='#e65c36'" onmouseout="this.style.background='var(--tertiary-action-bg)'">
-                Join Today for Free
-            </a>
+        <!-- Secondary Text -->
+        <div id="secondary-text" class="text-center mb-8" style="opacity: 0;">
+            <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                Tired of complex, bloated tools? Toad is the antidote. It's a simple, visual command center for your projects and goals. Get organised in 60 seconds.
+            </p>
         </div>
+        
+        <!-- Email Signup Form -->
+        <div id="email-signup" class="text-center mt-8 mb-8" style="opacity: 0;">
+            <form id="email-signup-form" class="max-w-md mx-auto">
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" 
+                           id="signup-email" 
+                           placeholder="Enter your email"
+                           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)]"
+                           required>
+                    <button type="submit" 
+                            class="px-6 py-3 bg-[var(--primary-action-bg)] text-white rounded-lg font-medium hover:bg-[var(--primary-action-hover-bg)] transition-all duration-200 cursor-pointer whitespace-nowrap">
+                        Join Today for Free
+                    </button>
+                </div>
+            </form>
+        </div>
+        
     </div>
 
-    <!-- Mobile Screenshot Section (hidden initially) -->
-    <div id="mobile-screenshot-container" class="w-full max-w-sm mx-auto mt-16" style="opacity: 0; display: none;">
-        <img src="{% static 'img/home/Mobile Home Screenshot.png' %}" alt="Mobile Toad App Screenshot" class="w-full h-auto object-contain rounded-lg">
-    </div>
 </div>
 
 <!-- New Content Section -->
@@ -283,96 +286,51 @@
         // Animation sequence elements
         const logoContainer = document.getElementById('logo-container');
         const initialText = document.getElementById('initial-text');
-        const joinButton = document.getElementById('join-button');
+        const secondaryText = document.getElementById('secondary-text');
+        const emailSignup = document.getElementById('email-signup');
         const initialContent = document.getElementById('initial-content');
-        const videoContainer = document.getElementById('video-container');
-        const heroVideo = document.getElementById('hero-video');
-        const mobileScreenshotContainer = document.getElementById('mobile-screenshot-container');
         
-        // Check if we're on mobile
-        const isMobile = window.innerWidth < 768;
-        
-        // Phase 1: Show logo and text (button only on mobile initially)
+        // Animation sequence: Logo → "For people who have a job to do" → Secondary text → Email signup
         initialContent.style.display = 'block';
+        
+        // Phase 1: Show logo first
         setTimeout(() => {
             logoContainer.style.opacity = '1';
             logoContainer.style.transition = 'opacity 0.8s ease-out';
-            initialText.style.opacity = '1';
-            initialText.style.transition = 'opacity 0.8s ease-out';
-            
-            // Only show button on mobile initially
-            if (isMobile) {
-                joinButton.style.opacity = '1';
-                joinButton.style.transition = 'opacity 0.8s ease-out';
-            }
         }, 100);
         
-        // Phase 2: After 3 seconds, switch based on device
+        // Phase 2: Show "For people who have a job to do" text
         setTimeout(() => {
-            if (isMobile) {
-                // Mobile: Show screenshot and scroll to it
-                mobileScreenshotContainer.style.display = 'block';
-                mobileScreenshotContainer.style.opacity = '0';
-                setTimeout(() => {
-                    mobileScreenshotContainer.style.opacity = '1';
-                    mobileScreenshotContainer.style.transition = 'opacity 0.8s ease-out';
-                    
-                    // Smooth scroll to screenshot
-                    mobileScreenshotContainer.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'center' 
-                    });
-                }, 100);
-            } else {
-                // Desktop: Fade out text and button, keep logo visible
-                initialText.style.opacity = '0';
-                joinButton.style.opacity = '0';
-                initialText.style.transition = 'opacity 0.5s ease-out';
-                joinButton.style.transition = 'opacity 0.5s ease-out';
-                
-                setTimeout(() => {
-                    // Hide text completely
-                    initialText.style.display = 'none';
-                    
-                    // Show and fade in video (moves up to replace text position)
-                    videoContainer.style.display = 'block';
-                    videoContainer.style.opacity = '0';
-                    setTimeout(() => {
-                        videoContainer.style.opacity = '1';
-                        videoContainer.style.transition = 'opacity 0.8s ease-out';
-                        // Start video playback
-                        heroVideo.play();
-                    }, 50);
-                }, 500);
-            }
-        }, 3000);
+            initialText.style.opacity = '1';
+            initialText.style.transition = 'opacity 0.8s ease-out';
+        }, 1200);
         
-        // Phase 3: Desktop only - when video ends, fade out video and show text + button
-        if (!isMobile) {
-            heroVideo.addEventListener('ended', function() {
-                // Fade out video
-                videoContainer.style.opacity = '0';
-                videoContainer.style.transition = 'opacity 0.5s ease-out';
-                
-                setTimeout(() => {
-                    videoContainer.style.display = 'none';
-                    
-                    // Show and fade text back in
-                    initialText.style.display = 'block';
-                    initialText.style.opacity = '0';
-                    
-                    setTimeout(() => {
-                        initialText.style.opacity = '1';
-                        initialText.style.transition = 'opacity 0.8s ease-out';
-                    }, 100);
-                    
-                    setTimeout(() => {
-                        joinButton.style.opacity = '1';
-                        joinButton.style.transition = 'opacity 0.8s ease-out';
-                    }, 400);
-                }, 500);
-            });
-        }
+        // Phase 3: Show secondary text
+        setTimeout(() => {
+            secondaryText.style.opacity = '1';
+            secondaryText.style.transition = 'opacity 0.8s ease-out';
+        }, 2400);
+        
+        // Phase 4: Show email signup form
+        setTimeout(() => {
+            emailSignup.style.opacity = '1';
+            emailSignup.style.transition = 'opacity 0.8s ease-out';
+        }, 3600);
+        
+        
+        // Handle email signup form submission
+        const emailSignupForm = document.getElementById('email-signup-form');
+        const signupEmailInput = document.getElementById('signup-email');
+        
+        emailSignupForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = signupEmailInput.value.trim();
+            if (email) {
+                // Redirect to registration with email parameter
+                window.location.href = `{% url 'accounts:register_free' %}?email=${encodeURIComponent(email)}`;
+            }
+        });
     });
 </script>
 

@@ -108,6 +108,8 @@
         border-color: var(--tertiary-action-bg) !important;
     }
     
+    /* Saving state styles removed - no visual saving state needed */
+    
     /* Smooth scrolling optimizations */
     .grid-table-scrollable {
         scroll-behavior: smooth;
@@ -287,6 +289,24 @@
             transition: all 0.2s ease !important;
         }
         
+        
+        .task-text-editable.editing {
+            background-color: var(--container-bg) !important;
+            border: 2px dashed var(--tertiary-action-bg) !important;
+            border-radius: 6px !important;
+            padding: 4px 8px !important;
+            outline: none !important;
+            min-height: 24px !important;
+            box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+            position: relative !important;
+            transition: all 0.3s ease-out !important;
+        }
+        
+        .task-text-editable.editing:focus {
+            box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
+            border-color: var(--tertiary-action-bg) !important;
+        }
+        
         /* Row and column header inline editing styles */
         .row-header-editable:hover,
         .column-header-editable:hover {
@@ -308,6 +328,7 @@
             box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
             position: relative !important;
         }
+        
         
         .row-header-editable.editing:focus,
         .column-header-editable.editing:focus {
@@ -334,6 +355,7 @@
             box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
             position: relative !important;
         }
+        
         
         .grid-name-editable.editing:focus {
             box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;

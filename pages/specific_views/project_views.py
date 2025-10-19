@@ -81,8 +81,8 @@ def project_list_view(request):
         else:
             ungrouped_projects.append(project)
     
-    # Convert to list format for template and sort groups by name
-    grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].name)
+    # Convert to list format for template and sort groups by creation date
+    grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].created_at)
     
     # Get user's personal templates (only needed fields)
     personal_templates = PersonalTemplate.objects.filter(
@@ -347,8 +347,8 @@ def project_grid_view(request, pk):
             else:
                 ungrouped_projects.append(proj)
         
-        # Convert to list format for template and sort groups by name
-        grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].name)
+        # Convert to list format for template and sort groups by creation date
+        grouped_projects_list = sorted(list(grouped_projects.values()), key=lambda x: x['group'].created_at)
         
         # Convert to list format for template
         context['grouped_projects'] = grouped_projects_list
@@ -382,7 +382,7 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             task.order = get_next_order(existing_tasks)
         
         def htmx_response(task):
-            return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task})
+            return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task, 'project': project})
         
         def success_message_callback(task):
             return f'Task "{task.text}" added successfully!'

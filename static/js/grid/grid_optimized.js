@@ -1805,8 +1805,32 @@ class GridManager {
             // Grid updates just need height sync, not full reinit
             // But skip if it's a task update (handled separately)
             setTimeout(() => this.syncRowHeights(), 10);
+        } else if (isTaskUpdate) {
+            // Handle task additions/updates and individual task edits
+            const isNewTaskAdded = e.detail.target && e.detail.target.querySelector('[data-task-id]');
+            
+            if (isNewTaskAdded) {
+                // Re-process HTMX for any new task elements that were added
+                setTimeout(() => {
+                    const taskElements = e.detail.target.querySelectorAll('[data-task-id]');
+                    if (typeof htmx !== 'undefined') {
+                        taskElements.forEach(element => {
+                            htmx.process(element);
+                        });
+                    }
+                    
+                    // Ensure assign button functionality works for new tasks
+                    const assignButtons = e.detail.target.querySelectorAll('.assign-task-btn');
+                    assignButtons.forEach(button => {
+                        // The event listener should already work due to event delegation,
+                        // but let's ensure the button is properly initialized
+                        if (!button.hasAttribute('data-initialized')) {
+                            button.setAttribute('data-initialized', 'true');
+                        }
+                    });
+                }, 100);
+            }
         }
-        // Task additions/updates and individual task edits don't need any reinitialization
     }
 
     handleHtmxAfterSettle(e) {
@@ -2121,21 +2145,13 @@ class GridManager {
         // Use a small timeout to ensure the blur event is fully processed
         setTimeout(() => {
             // Check if we're in edit mode by looking at the editing class
-            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
-                element.classList.add('saving'); // Prevent double saves
-                element.contentEditable = false;
+            if (element.classList.contains('editing')) {
                 element.classList.remove('editing');
+                element.contentEditable = false;
                 this.saveTaskEdit(element);
-            } else if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            } else if (element.contentEditable === 'true') {
                 // Fallback: if contentEditable is still true but editing class is missing
-                element.classList.add('saving'); // Prevent double saves
                 element.contentEditable = false;
-                this.saveTaskEdit(element);
-            } else if (element.classList.contains('editing')) {
-                // Another fallback: if we have the editing class but contentEditable was changed
-                element.classList.add('saving'); // Prevent double saves
-                element.contentEditable = false;
-                element.classList.remove('editing');
                 this.saveTaskEdit(element);
             }
         }, 10); // Small timeout to ensure proper event handling
@@ -2154,13 +2170,12 @@ class GridManager {
         if (!element.classList.contains('editing')) return;
         
         // If the element has changes, save them
-        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+        if (element.contentEditable === 'true') {
             const originalText = element.getAttribute('data-original-text') || element.textContent;
             const currentText = element.textContent.trim();
             
             if (currentText !== originalText && currentText !== '') {
                 // Save the changes
-                element.classList.add('saving');
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 this.saveTaskEdit(element);
@@ -2168,7 +2183,6 @@ class GridManager {
                 // No changes, just close editing
                 element.contentEditable = false;
                 element.classList.remove('editing');
-                element.classList.remove('saving');
             }
         }
     }
@@ -2227,20 +2241,17 @@ class GridManager {
         
         // Check if we have a valid task ID
         if (!taskId) {
-            element.classList.remove('saving');
             return;
         }
         
         // Don't save if text hasn't changed
         if (newText === originalText) {
-            element.classList.remove('saving');
             return;
         }
         
         // Don't save if text is empty
         if (!newText) {
             element.textContent = originalText;
-            element.classList.remove('saving');
             return;
         }
         
@@ -2267,12 +2278,10 @@ class GridManager {
                 // Revert on error
                 element.textContent = originalText;
             }
-            element.classList.remove('saving');
         })
         .catch(error => {
             // Revert on error
             element.textContent = originalText;
-            element.classList.remove('saving');
         });
     }
 

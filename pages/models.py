@@ -15,7 +15,7 @@ class ProjectGroup(models.Model):
         return self.name
 
     class Meta:
-        ordering = ['name']  # Order by name
+        ordering = ['created_at']  # Order by creation time
         indexes = [
             models.Index(fields=['is_team_toad']),  # For team toad project group queries
         ]
@@ -24,7 +24,7 @@ class Project(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='toad_projects')
     name = models.CharField(max_length=100)
     is_team_toad = models.BooleanField(default=False)
-    team_toad_user = models.ManyToManyField(User, related_name='team_toad_projects', null=True, blank=True)
+    team_toad_user = models.ManyToManyField(User, related_name='team_toad_projects', blank=True)
     is_archived = models.BooleanField(default=False)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
     order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups

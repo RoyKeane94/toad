@@ -259,4 +259,22 @@ document.addEventListener('DOMContentLoaded', function() {
             hideAssignPopup();
         }
     });
+    
+    // Ensure assign buttons work for dynamically added tasks
+    document.addEventListener('htmx:afterSwap', function(e) {
+        // Check if new task elements were added
+        const taskElements = e.detail.target.querySelectorAll('[data-task-id]');
+        if (taskElements.length > 0) {
+            // Ensure assign buttons are properly initialized
+            const assignButtons = e.detail.target.querySelectorAll('.assign-task-btn');
+            assignButtons.forEach(button => {
+                // Force re-initialization of hover effects
+                const icon = button.querySelector('i');
+                if (icon) {
+                    // Ensure the icon has the proper classes
+                    icon.className = 'fas fa-user text-gray-400 hover:text-orange-500 text-xs transition-colors';
+                }
+            });
+        }
+    });
 });
