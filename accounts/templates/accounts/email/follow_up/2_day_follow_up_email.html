@@ -1,0 +1,89 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}Welcome to Toad - Getting Started{% endblock %}
+
+{% block header_title %}<span style="color: #10B981;">Thanks for joining Toad!</span>{% endblock %}
+
+{% block header_subtitle %}
+<p>We hope you're settling in well</p>
+{% endblock %}
+
+{% block content %}
+<div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
+
+<div class="message">
+    
+    <p>You've been using Toad for a couple of days now, and we hope you're starting to see how it can help you stay organised and focused. Here are some ways to get the most out of Toad:</p>
+    
+    <!-- Cool Tips Section -->
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: #1F2937; margin: 0 0 12px 0; font-size: 18px;">💡 Cool Tips to Try</h3>
+        <div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 16px; margin: 12px 0;">
+            <ul style="margin: 0; padding-left: 20px; color: #4B5563;">
+                <li style="margin-bottom: 8px;"><strong>Add notes to tasks</strong> - Click on any task to add detailed notes and keep all your thoughts in one place</li>
+                <li style="margin-bottom: 8px;"><strong>Archive grids for later</strong> - Keep your workspace clean by archiving completed projects</li>
+                <li style="margin-bottom: 8px;"><strong>Save custom templates</strong> - Turn your best grids into reusable templates for future projects</li>
+                <li style="margin-bottom: 8px;"><strong>Use color coding</strong> - Assign different colors to rows or columns to visually organize your work</li>
+                <li style="margin-bottom: 0;"><strong>Drag and drop</strong> - Easily reorder tasks by dragging them to new positions</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Getting Started Tips -->
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">🎯 Quick Start Tips</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Break down your projects into clear rows and columns. Start simple - you can always add more complexity later.</p>
+        <div class="button-container" style="margin: 12px 0;">
+            <a href="https://meettoad.co.uk/grids/create/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Create New Grid</a>
+        </div>
+    </div>
+
+    <!-- Templates Section -->
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">📋 Ready-Made Templates</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Don't start from scratch! We've created templates for students, professionals, entrepreneurs, and personal projects.</p>
+        <div class="button-container" style="margin: 12px 0;">
+            <a href="https://meettoad.co.uk/templates/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Browse Templates</a>
+        </div>
+    </div>
+
+    <!-- Pro Features -->
+    {% if user.tier == 'free' or user.tier == 'personal' or user.tier == 'personal_trial' or user.tier == 'personal_3_month_trial' %}
+    <div style="margin-bottom: 20px;">
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">🚀 Unlock Pro Features</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Ready for more? Try Toad Pro free for 3 months and get access to team collaboration, custom templates, and advanced features.</p>
+        <div class="button-container" style="margin: 12px 0;">
+            <a href="https://meettoad.co.uk/accounts/register/trial-3-month-pro/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Start Pro Trial</a>
+        </div>
+    </div>
+    {% endif %}
+    
+    <p>Need help getting started? Just reply to this email and we'll be happy to help you set up your first grid!</p>
+</div>
+
+{% block cta %}
+<div class="button-container">
+    <a href="https://meettoad.co.uk/grids/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">
+        View Your Grids
+    </a>
+</div>
+
+<div class="alternative-link">
+    <a href="https://meettoad.co.uk/templates/" style="color: #10B981; text-decoration: none; font-size: 14px;">Or explore templates</a>
+</div>
+
+<!-- Share with a friend section -->
+<div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; margin: 30px 0;">
+    <h3 style="color: #1F2937; margin: 0 0 12px 0; font-size: 18px;">💚 Love Toad? Share it!</h3>
+    <p style="margin: 0 0 16px 0; color: #4B5563;">Forward this email to a friend and tell them to click the button below to get a free three month trial of Toad Pro!</p>
+    <div class="button-container" style="margin: 12px 0;">
+        <a href="https://meettoad.co.uk/accounts/register/trial-3-month-pro/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Share Pro Trial</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_content %}
+
+{% endblock %}
+
+{% endblock %}

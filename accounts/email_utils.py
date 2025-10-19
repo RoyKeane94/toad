@@ -256,6 +256,114 @@ If you have any feedback, reply to this email—I read every message.
         return False
 
 
+def send_2_day_follow_up_email(user, request=None):
+    """
+    Send 2-day follow-up email to all users from PERSONAL_EMAIL_HOST
+    """
+    import os
+    from django.core.mail import EmailMessage, get_connection
+    
+    # Check if user is subscribed to emails
+    if not getattr(user, 'email_subscribed', True):
+        return False
+    
+    # Read and encode the image
+    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
+    image_data = ""
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+    
+    # Render email template
+    html_message = render_to_string('accounts/email/follow_up/2_day_follow_up_email.html', {
+        'user': user,
+        'toad_image_data': image_data,
+    })
+    
+    # Plain text version
+    text_message = f"""
+Hi {user.first_name or user.get_short_name()},
+
+Thanks for joining Toad! You've been using it for a couple of days now, and we hope you're starting to see how it can help you stay organised and focused.
+
+Here are some ways to get the most out of Toad:
+
+💡 Cool Tips to Try
+• Add notes to tasks - Click on any task to add detailed notes and keep all your thoughts in one place
+• Archive grids for later - Keep your workspace clean by archiving completed projects
+• Save custom templates - Turn your best grids into reusable templates for future projects
+• Use color coding - Assign different colors to rows or columns to visually organize your work
+• Drag and drop - Easily reorder tasks by dragging them to new positions
+
+🎯 Quick Start Tips
+Break down your projects into clear rows and columns. Start simple - you can always add more complexity later.
+Create New Grid: https://meettoad.co.uk/grids/create/
+
+📋 Ready-Made Templates
+Don't start from scratch! We've created templates for students, professionals, entrepreneurs, and personal projects.
+Browse Templates: https://meettoad.co.uk/templates/
+
+🚀 Unlock Pro Features
+Ready for more? Try Toad Pro free for 3 months and get access to team collaboration, custom templates, and advanced features.
+Start Pro Trial: https://meettoad.co.uk/accounts/register/trial-3-month-pro/
+
+Need help getting started? Just reply to this email and we'll be happy to help you set up your first grid!
+
+View Your Grids: https://meettoad.co.uk/grids/
+
+💚 Love Toad? Share it!
+Forward this email to a friend and tell them to click the button below to get a free three month trial of Toad Pro!
+Share Pro Trial: https://meettoad.co.uk/accounts/register/trial-3-month-pro/
+
+— Tom, Founder of Toad
+"""
+    
+    try:
+        logger = logging.getLogger(__name__)
+        logger.info(f"Attempting to send 2-day follow-up email to {user.email}")
+        
+        # Get personal email settings
+        personal_email_host = os.environ.get('PERSONAL_EMAIL_HOST', settings.EMAIL_HOST)
+        personal_email_port = int(os.environ.get('PERSONAL_EMAIL_PORT', settings.EMAIL_PORT))
+        personal_email_user = os.environ.get('PERSONAL_EMAIL_HOST_USER', settings.EMAIL_HOST_USER)
+        personal_email_password = os.environ.get('PERSONAL_EMAIL_HOST_PASSWORD', settings.EMAIL_HOST_PASSWORD)
+        
+        # Create email message with personal email settings
+        email = EmailMessage(
+            subject='Welcome to Toad - Getting Started',
+            body=html_message,
+            from_email=personal_email_user,
+            to=[user.email],
+            connection=None  # We'll create a custom connection
+        )
+        email.content_subtype = "html"
+        
+        # Create connection with personal email settings
+        connection = get_connection(
+            host=personal_email_host,
+            port=personal_email_port,
+            username=personal_email_user,
+            password=personal_email_password,
+            use_tls=True
+        )
+        
+        # Send email using personal connection
+        email.connection = connection
+        email.send()
+        
+        # Mark second_email_sent as True
+        user.second_email_sent = True
+        user.save(update_fields=['second_email_sent'])
+        
+        logger.info(f'2-day follow-up email sent to {user.email}')
+        return True
+        
+    except Exception as e:
+        logger = logging.getLogger(__name__)
+        logger.error(f"Failed to send 2-day follow-up email to {user.email}: {e}")
+        return False
+
+
 def send_test_email(recipient_email, email_type='simple', user=None):
     """
     Send a test email to verify email functionality.
