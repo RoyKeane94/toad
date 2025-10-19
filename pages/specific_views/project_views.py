@@ -1917,12 +1917,12 @@ def _handle_email_invitation(request, project, email, personal_message):
         if invited_user.tier not in valid_tiers:
             return JsonResponse({
                 'success': False,
-                'error': f'User with email {email} has tier "{invited_user.tier}" but needs one of: {", ".join(valid_tiers)}'
+                'error': f'The user with email {email} doesn\'t have a Pro account. They need to upgrade to Pro, Pro Trial, Society Pro, or Beta to collaborate on grids.'
             })
     except User.DoesNotExist:
         return JsonResponse({
             'success': False,
-            'error': f'No user found with email {email}. User must have a Toad account with Pro, Pro Trial, Society Pro, or Beta tier.'
+            'error': f'No user found with email {email}. User must have a Toad Pro account.'
         })
     
     # Check if user is already part of the project
@@ -2047,7 +2047,7 @@ def accept_grid_invitation_view(request, token):
             valid_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
             if request.user.tier not in valid_tiers:
                 messages.error(request, f'You need a Pro, Pro Trial, Society Pro, or Beta account to collaborate on grids. Your current tier is "{request.user.tier}".')
-                return redirect('pages:upgrade_required')
+                return redirect('pages:upgrade_required_pro')
             
             # Accept the invitation
             if invitation.accept(request.user):
