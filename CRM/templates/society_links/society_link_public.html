@@ -138,7 +138,7 @@
             </div>
             
             <!-- Full Screen Video Modal (Hidden Initially) -->
-            <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4" onclick="closeVideo()">
+            <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 p-4" onclick="closeVideo()">
                 <div class="relative w-full h-full max-w-6xl max-h-full">
                     <video id="student-video" class="w-full h-full object-contain" preload="none" onclick="event.stopPropagation()">
                         <source src="{% static 'video/Student - Video Highlights.mp4' %}" type="video/mp4">
@@ -190,8 +190,9 @@
         const video = document.getElementById('student-video');
         
         if (modal && video) {
-            // Show modal
+            // Show modal with flexbox layout
             modal.classList.remove('hidden');
+            modal.classList.add('flex', 'items-center', 'justify-center');
             document.body.style.overflow = 'hidden'; // Prevent background scrolling
             
             // Load and play video
@@ -206,8 +207,9 @@
         const video = document.getElementById('student-video');
         
         if (modal && video) {
-            // Hide modal
+            // Hide modal and remove flexbox classes
             modal.classList.add('hidden');
+            modal.classList.remove('flex', 'items-center', 'justify-center');
             document.body.style.overflow = ''; // Restore background scrolling
             
             // Pause video
