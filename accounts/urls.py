@@ -1,4 +1,5 @@
 from django.urls import path
+from django.shortcuts import redirect
 from .views import (
     LoginView, 
     RegisterFreeView, 
@@ -7,7 +8,6 @@ from .views import (
     RegisterTrialView,
     Register3MonthTrialView,
     Register3MonthProTrialView,
-    SecretRegistrationView,
     logout_view, 
     account_settings_view, 
     change_password_view, 
@@ -25,6 +25,10 @@ from .views import (
     manage_subscription_view,
     downgrade_to_free_view
 )
+
+def secret_registration_redirect(request):
+    """Redirect secret registration to 3-month pro trial registration"""
+    return redirect('accounts:register_3_month_pro_trial')
 from .stripe_django_views import (
     stripe_checkout_view,
     create_checkout_session,
@@ -45,7 +49,7 @@ urlpatterns = [
     path('register/trial/', RegisterTrialView.as_view(), name='register_trial'),
     path('register/trial-3-month/', Register3MonthTrialView.as_view(), name='register_3_month_trial'),
     path('register/trial-3-month-pro/', Register3MonthProTrialView.as_view(), name='register_3_month_pro_trial'),
-    path('register/barnabytoad/', SecretRegistrationView.as_view(), name='secret_registration'),
+    path('register/barnabytoad/', secret_registration_redirect, name='secret_registration'),
     path('logout/', logout_view, name='logout'),
     
     # Account Management
