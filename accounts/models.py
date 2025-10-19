@@ -92,6 +92,24 @@ class User(AbstractUser):
         """
         return self.first_name
     
+    def trial_status(self):
+        """
+        Return trial status information for admin display.
+        """
+        if not self.trial_ends_at:
+            return "No trial"
+        
+        from django.utils import timezone
+        now = timezone.now()
+        
+        if now < self.trial_ends_at:
+            days_left = (self.trial_ends_at - now).days
+            return f"Active ({days_left} days left)"
+        else:
+            return "Expired"
+    
+    trial_status.short_description = "Trial Status"
+    
     def is_on_trial(self):
         """Check if user is currently on trial"""
         if not self.trial_ends_at:

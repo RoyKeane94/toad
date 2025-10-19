@@ -31885,3 +31885,304 @@ INFO 2025-10-19 12:55:04,514 email_utils 96620 6222802944 Attempting to send ver
 INFO 2025-10-19 12:55:04,522 basehttp 96620 6189150208 "GET /accounts/login/ HTTP/1.1" 200 3979
 INFO 2025-10-19 12:55:05,326 email_utils 96620 6222802944 Successfully sent verification email to tom_barratt@hotmail.co.uk
 INFO 2025-10-19 12:55:05,328 views 96620 6222802944 Verification email sent: True for tom_barratt@hotmail.co.uk
+INFO 2025-10-19 13:00:45,537 autoreload 97255 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:00:47,554 basehttp 97255 6160412672 "GET / HTTP/1.1" 200 7019
+INFO 2025-10-19 13:00:47,931 basehttp 97255 6160412672 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 304 0
+INFO 2025-10-19 13:01:23,411 views 97255 6160412672 Found user for verification token: tom_barratt@hotmail.co.uk
+INFO 2025-10-19 13:01:23,415 views 97255 6160412672 Email verification successful for user: tom_barratt@hotmail.co.uk
+INFO 2025-10-19 13:01:23,420 views 97255 6160412672 User automatically logged in after email verification: tom_barratt@hotmail.co.uk
+INFO 2025-10-19 13:01:23,425 views 97255 6160412672 Redirecting to first project: 252
+INFO 2025-10-19 13:01:23,431 basehttp 97255 6160412672 "GET /accounts/verify-email/OgyhlakDu1T82MkOKGpY7UV5f4HGCPqI/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:01:23,432 email_utils 97255 6194065408 Attempting to send pro_trial joining email to tom_barratt@hotmail.co.uk
+INFO 2025-10-19 13:01:23,501 basehttp 97255 6160412672 "GET /grids/252/ HTTP/1.1" 200 20870
+INFO 2025-10-19 13:01:23,651 basehttp 97255 6160412672 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 56295
+INFO 2025-10-19 13:01:24,590 email_utils 97255 6194065408 Successfully sent pro_trial joining email to tom_barratt@hotmail.co.uk
+INFO 2025-10-19 13:01:28,578 basehttp 97255 6160412672 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:01:28,585 basehttp 97255 6160412672 "GET / HTTP/1.1" 200 7033
+INFO 2025-10-19 13:01:30,011 basehttp 97255 6160412672 "GET /accounts/login/ HTTP/1.1" 200 3782
+INFO 2025-10-19 13:01:37,508 basehttp 97255 6160412672 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:01:37,522 basehttp 97255 6160412672 "GET /grids/ HTTP/1.1" 200 11978
+INFO 2025-10-19 13:01:39,704 basehttp 97255 6160412672 "GET / HTTP/1.1" 200 7232
+INFO 2025-10-19 13:01:40,526 basehttp 97255 6160412672 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-19 13:01:40,552 basehttp 97255 6177239040 "GET /admin/ HTTP/1.1" 200 3212
+INFO 2025-10-19 13:01:40,559 basehttp 97255 6160412672 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-10-19 13:01:40,559 basehttp 97255 6194065408 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-10-19 13:01:40,561 basehttp 97255 6177239040 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-10-19 13:01:40,561 basehttp 97255 6160412672 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-10-19 13:01:40,561 basehttp 97255 6194065408 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-10-19 13:01:40,563 basehttp 97255 6177239040 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-10-19 13:01:40,563 basehttp 97255 6194065408 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-10-19 13:01:40,566 basehttp 97255 6194065408 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-10-19 13:01:40,566 basehttp 97255 6177239040 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-10-19 13:01:40,567 basehttp 97255 6160412672 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-10-19 13:01:40,567 basehttp 97255 6177239040 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-10-19 13:01:40,674 basehttp 97255 6177239040 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-19 13:01:40,676 basehttp 97255 6177239040 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-19 13:01:42,328 basehttp 97255 6177239040 "GET /admin/accounts/user/ HTTP/1.1" 200 4429
+INFO 2025-10-19 13:01:42,343 basehttp 97255 6210891776 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-10-19 13:01:42,345 basehttp 97255 6227718144 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-10-19 13:01:42,346 basehttp 97255 6177239040 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-10-19 13:01:42,347 basehttp 97255 6244544512 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-10-19 13:01:42,349 basehttp 97255 6210891776 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-10-19 13:01:42,350 basehttp 97255 6160412672 "GET /admin/jsi18n/ HTTP/1.1" 200 1035
+INFO 2025-10-19 13:01:42,350 basehttp 97255 6227718144 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-10-19 13:01:42,352 basehttp 97255 6177239040 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-10-19 13:01:42,352 basehttp 97255 6210891776 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-10-19 13:01:42,355 basehttp 97255 6194065408 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-10-19 13:01:42,356 basehttp 97255 6244544512 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-10-19 13:01:42,358 basehttp 97255 6244544512 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-10-19 13:01:42,362 basehttp 97255 6244544512 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-10-19 13:01:42,373 basehttp 97255 6210891776 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-10-19 13:01:42,373 basehttp 97255 6244544512 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-10-19 13:01:42,374 basehttp 97255 6194065408 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-10-19 13:02:02,000 basehttp 97255 6194065408 "POST /admin/accounts/user/ HTTP/1.1" 200 3982
+INFO 2025-10-19 13:02:02,009 basehttp 97255 6194065408 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-10-19 13:02:04,289 basehttp 97255 6194065408 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:02:04,300 basehttp 97255 6194065408 "GET /admin/accounts/user/ HTTP/1.1" 200 4413
+INFO 2025-10-19 13:02:04,318 basehttp 97255 6194065408 "GET /admin/jsi18n/ HTTP/1.1" 200 1054
+INFO 2025-10-19 13:02:05,570 basehttp 97255 6194065408 "GET /admin/accounts/user/39/change/ HTTP/1.1" 200 6117
+INFO 2025-10-19 13:02:05,585 basehttp 97255 6244544512 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-10-19 13:02:05,585 basehttp 97255 6194065408 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-10-19 13:02:05,587 basehttp 97255 6227718144 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-10-19 13:02:05,587 basehttp 97255 6177239040 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-10-19 13:02:05,588 basehttp 97255 6244544512 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-10-19 13:02:05,591 basehttp 97255 6210891776 "GET /admin/jsi18n/ HTTP/1.1" 200 1024
+INFO 2025-10-19 13:02:05,592 basehttp 97255 6244544512 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-10-19 13:02:05,617 basehttp 97255 6244544512 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-10-19 13:02:05,618 basehttp 97255 6210891776 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-10-19 13:03:23,913 basehttp 97255 6160412672 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:03:23,933 basehttp 97255 6160412672 "GET /grids/ HTTP/1.1" 200 12012
+INFO 2025-10-19 13:03:26,787 autoreload 97255 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-10-19 13:03:27,716 autoreload 97404 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:03:31,899 autoreload 97404 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-10-19 13:03:32,170 autoreload 97418 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:03:34,527 basehttp 97418 6190608384 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:03:34,560 basehttp 97418 6190608384 "GET /grids/ HTTP/1.1" 200 11993
+INFO 2025-10-19 13:03:37,935 autoreload 97418 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-10-19 13:03:38,245 autoreload 97429 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:03:39,329 basehttp 97429 6192082944 "GET /grids/245/ HTTP/1.1" 200 19431
+INFO 2025-10-19 13:03:45,500 autoreload 97429 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-10-19 13:03:45,880 autoreload 97447 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:03:48,284 basehttp 97447 6129709056 "GET /admin/accounts/user/39/change/ HTTP/1.1" 200 6640
+INFO 2025-10-19 13:03:48,296 basehttp 97447 6129709056 "GET /admin/jsi18n/ HTTP/1.1" 200 1043
+INFO 2025-10-19 13:03:55,911 basehttp 97447 6129709056 "POST /admin/accounts/user/39/change/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:03:55,929 basehttp 97447 6129709056 "GET /admin/accounts/user/ HTTP/1.1" 200 4534
+INFO 2025-10-19 13:03:55,944 basehttp 97447 6129709056 "GET /admin/jsi18n/ HTTP/1.1" 200 983
+INFO 2025-10-19 13:04:09,089 basehttp 97447 6129709056 "POST /grids/245/share/ HTTP/1.1" 200 227
+INFO 2025-10-19 13:04:14,379 basehttp 97447 6129709056 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:04:14,390 basehttp 97447 6129709056 "GET / HTTP/1.1" 200 7106
+INFO 2025-10-19 13:04:15,793 basehttp 97447 6129709056 "GET /accounts/login/ HTTP/1.1" 200 3795
+INFO 2025-10-19 13:04:27,007 basehttp 97447 6129709056 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:04:27,018 basehttp 97447 6129709056 "GET /grids/ HTTP/1.1" 200 11161
+INFO 2025-10-19 13:04:31,531 basehttp 97447 6129709056 "GET /grids/invite/1M2zT1u2n9gy6QYRpHTBPWyRTpNH8UYB/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:04:31,569 basehttp 97447 6129709056 "GET /grids/245/ HTTP/1.1" 200 20228
+INFO 2025-10-19 13:04:31,599 basehttp 97447 6129709056 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-19 13:11:03,349 basehttp 97447 6129709056 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:11:03,354 basehttp 97447 6129709056 "GET / HTTP/1.1" 200 7059
+INFO 2025-10-19 13:11:07,660 basehttp 97447 6129709056 "GET /accounts/login/ HTTP/1.1" 200 3796
+INFO 2025-10-19 13:11:15,270 basehttp 97447 6129709056 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:11:15,283 basehttp 97447 6129709056 "GET /grids/ HTTP/1.1" 200 12040
+INFO 2025-10-19 13:11:21,331 basehttp 97447 6129709056 "GET /grids/247/ HTTP/1.1" 200 22904
+WARNING 2025-10-19 13:14:24,645 log 97447 6129709056 Forbidden (CSRF token from POST incorrect.): /accounts/login/
+WARNING 2025-10-19 13:14:24,647 basehttp 97447 6129709056 "POST /accounts/login/ HTTP/1.1" 403 1257
+INFO 2025-10-19 13:14:35,199 basehttp 97447 6129709056 "GET / HTTP/1.1" 200 7253
+INFO 2025-10-19 13:14:35,555 basehttp 97447 6129709056 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-19 13:14:35,556 basehttp 97447 6146535424 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-19 13:14:37,734 basehttp 97447 6129709056 "GET /accounts/settings/ HTTP/1.1" 200 3729
+INFO 2025-10-19 13:14:41,242 basehttp 97447 6129709056 "GET /grids/ HTTP/1.1" 200 11968
+INFO 2025-10-19 13:14:43,089 basehttp 97447 6129709056 "GET /grids/245/ HTTP/1.1" 200 20282
+WARNING 2025-10-19 13:14:48,831 log 97447 6146535424 Not Found: /grids/245/remove-member/
+WARNING 2025-10-19 13:14:48,832 basehttp 97447 6146535424 "POST /grids/245/remove-member/ HTTP/1.1" 404 2231
+INFO 2025-10-19 13:14:48,836 project_views 97447 6129709056 Removed <bound method User.get_full_name of <User: tom_barratt@hotmail.co.uk>> from team project Solo Toad
+INFO 2025-10-19 13:14:48,836 basehttp 97447 6129709056 "POST /grids/245/team/remove/ HTTP/1.1" 200 133
+INFO 2025-10-19 13:14:52,810 basehttp 97447 6129709056 "GET /grids/245/ HTTP/1.1" 200 20090
+INFO 2025-10-19 13:14:56,383 basehttp 97447 6129709056 "GET /grids/247/ HTTP/1.1" 200 22905
+WARNING 2025-10-19 13:15:02,145 log 97447 6146535424 Not Found: /grids/247/remove-member/
+WARNING 2025-10-19 13:15:02,147 basehttp 97447 6146535424 "POST /grids/247/remove-member/ HTTP/1.1" 404 2281
+INFO 2025-10-19 13:15:02,149 project_views 97447 6129709056 Removed <bound method User.get_full_name of <User: tom@meettoad.co.uk>> from team project Team Toad
+INFO 2025-10-19 13:15:02,149 basehttp 97447 6129709056 "POST /grids/247/team/remove/ HTTP/1.1" 200 126
+INFO 2025-10-19 13:15:06,008 basehttp 97447 6129709056 "GET /grids/247/ HTTP/1.1" 200 22536
+INFO 2025-10-19 13:15:15,216 autoreload 97447 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-10-19 13:15:15,674 autoreload 97730 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:15:18,871 autoreload 97730 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-10-19 13:15:19,129 autoreload 97737 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:15:26,980 basehttp 97737 6160560128 "GET /accounts/settings/ HTTP/1.1" 200 3698
+INFO 2025-10-19 13:15:31,473 basehttp 97737 6160560128 "GET / HTTP/1.1" 200 7294
+INFO 2025-10-19 13:15:34,808 basehttp 97737 6160560128 "GET /accounts/settings/ HTTP/1.1" 200 3662
+INFO 2025-10-19 13:15:36,913 basehttp 97737 6160560128 "GET / HTTP/1.1" 200 7295
+INFO 2025-10-19 13:15:37,874 basehttp 97737 6160560128 "GET /admin HTTP/1.1" 301 0
+INFO 2025-10-19 13:15:37,902 basehttp 97737 6160560128 "GET /admin/ HTTP/1.1" 200 3201
+INFO 2025-10-19 13:15:41,285 basehttp 97737 6160560128 "GET /admin/pages/task/ HTTP/1.1" 200 7277
+INFO 2025-10-19 13:15:41,303 basehttp 97737 6160560128 "GET /admin/jsi18n/ HTTP/1.1" 200 1026
+INFO 2025-10-19 13:15:46,928 basehttp 97737 6160560128 "GET /admin/accounts/user/ HTTP/1.1" 200 4469
+INFO 2025-10-19 13:15:46,942 basehttp 97737 6160560128 "GET /admin/jsi18n/ HTTP/1.1" 200 968
+INFO 2025-10-19 13:15:51,251 basehttp 97737 6160560128 "GET /admin/accounts/user/36/change/ HTTP/1.1" 200 6594
+INFO 2025-10-19 13:15:51,265 basehttp 97737 6160560128 "GET /admin/jsi18n/ HTTP/1.1" 200 1021
+INFO 2025-10-19 13:15:58,468 basehttp 97737 6160560128 "POST /admin/accounts/user/36/change/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:15:58,480 basehttp 97737 6160560128 "GET /admin/accounts/user/ HTTP/1.1" 200 4588
+INFO 2025-10-19 13:15:58,493 basehttp 97737 6160560128 "GET /admin/jsi18n/ HTTP/1.1" 200 962
+INFO 2025-10-19 13:16:01,127 basehttp 97737 6160560128 "POST /admin/logout/ HTTP/1.1" 200 1374
+INFO 2025-10-19 13:16:01,984 basehttp 97737 6160560128 "GET / HTTP/1.1" 200 7095
+INFO 2025-10-19 13:16:03,745 basehttp 97737 6160560128 "GET /accounts/login/ HTTP/1.1" 200 3802
+INFO 2025-10-19 13:16:09,638 basehttp 97737 6160560128 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:16:09,649 basehttp 97737 6160560128 "GET /grids/ HTTP/1.1" 200 11175
+INFO 2025-10-19 13:16:13,159 basehttp 97737 6160560128 "GET / HTTP/1.1" 200 7218
+INFO 2025-10-19 13:16:16,003 basehttp 97737 6160560128 "GET /grids/create/ HTTP/1.1" 200 2890
+INFO 2025-10-19 13:16:17,339 project_views_functions 97737 6160560128 User None created project: sdf
+INFO 2025-10-19 13:16:17,340 basehttp 97737 6160560128 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:16:17,385 basehttp 97737 6160560128 "GET /grids/253/ HTTP/1.1" 200 19172
+INFO 2025-10-19 13:16:19,188 basehttp 97737 6160560128 "GET /grids/create/ HTTP/1.1" 302 0
+ERROR 2025-10-19 13:16:19,250 log 97737 6160560128 Internal Server Error: /upgrade-required/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 43, in upgrade_required_view
+    return render(request, 'pages/general/upgrade_required.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'stripe_checkout' not found. 'stripe_checkout' is not a valid view function or pattern name.
+ERROR 2025-10-19 13:16:19,253 basehttp 97737 6160560128 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 500 19335
+INFO 2025-10-19 13:16:26,239 basehttp 97737 6160560128 "GET /grids/235/ HTTP/1.1" 200 18328
+INFO 2025-10-19 13:16:27,180 basehttp 97737 6160560128 "GET /grids/253/ HTTP/1.1" 200 19220
+INFO 2025-10-19 13:16:28,277 basehttp 97737 6160560128 "GET /grids/create/ HTTP/1.1" 302 0
+ERROR 2025-10-19 13:16:28,314 log 97737 6160560128 Internal Server Error: /upgrade-required/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py", line 43, in upgrade_required_view
+    return render(request, 'pages/general/upgrade_required.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'stripe_checkout' not found. 'stripe_checkout' is not a valid view function or pattern name.
+ERROR 2025-10-19 13:16:28,318 basehttp 97737 6160560128 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 500 19302
+INFO 2025-10-19 13:16:59,563 autoreload 97737 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-19 13:16:59,963 autoreload 97810 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:17:08,397 autoreload 97810 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-19 13:17:08,876 autoreload 97846 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:17:24,718 autoreload 97846 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-19 13:17:25,201 autoreload 98068 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 13:17:26,329 basehttp 98068 6205501440 "GET /grids/253/ HTTP/1.1" 200 19213
+INFO 2025-10-19 13:17:27,167 basehttp 98068 6205501440 "GET /grids/create/ HTTP/1.1" 302 0
+INFO 2025-10-19 13:17:27,176 basehttp 98068 6205501440 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 200 3627
+INFO 2025-10-19 13:17:32,403 basehttp 98068 6205501440 "GET /upgrade-required/ HTTP/1.1" 200 3431
+INFO 2025-10-19 13:17:41,829 stripe_django_views 98068 6205501440 Stripe checkout view accessed by user: tom@meettoad.co.uk
+INFO 2025-10-19 13:17:41,829 stripe_django_views 98068 6205501440 Stripe API key is configured, proceeding...
+INFO 2025-10-19 13:17:41,830 stripe_django_views 98068 6205501440 Rendering Stripe checkout template...
+INFO 2025-10-19 13:17:41,835 stripe_django_views 98068 6205501440 Template rendered successfully
+INFO 2025-10-19 13:17:41,837 basehttp 98068 6205501440 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3331
+INFO 2025-10-19 13:17:52,894 basehttp 98068 6205501440 "GET /upgrade-required/ HTTP/1.1" 200 3400
+INFO 2025-10-19 13:17:56,585 basehttp 98068 6205501440 "GET /upgrade-required/ HTTP/1.1" 200 3434
+INFO 2025-10-19 13:18:07,819 autoreload 98068 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-19 13:18:08,333 autoreload 98091 8398642944 Watching for file changes with StatReloader
