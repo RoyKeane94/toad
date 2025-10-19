@@ -205,6 +205,10 @@ def send_joining_email(user, request=None, cta_url=None):
         template_name = 'accounts/email/joining_email_personal.html'
         subject = "Welcome to Toad Personal — You're all set!"
         text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
+    elif user_tier == 'pro_trial':
+        template_name = 'accounts/email/joining_email_pro_trial.html'
+        subject = "Welcome to Toad Pro Trial — You're all set!"
+        text_intro = "Thanks for starting your Pro trial and exploring our most powerful features!"
     else:  # free tier
         template_name = 'accounts/email/joining_email_free.html'
         subject = "Welcome to Toad — You're all set!"
@@ -564,6 +568,10 @@ def _send_test_joining_email(user, recipient_email):
         template_name = 'accounts/email/joining_email_personal.html'
         subject = "[TEST] Welcome to Toad Personal — You're all set!"
         text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
+    elif user_tier == 'pro_trial':
+        template_name = 'accounts/email/joining_email_pro_trial.html'
+        subject = "[TEST] Welcome to Toad Pro Trial — You're all set!"
+        text_intro = "Thanks for starting your Pro trial and exploring our most powerful features!"
     else:  # free tier
         template_name = 'accounts/email/joining_email_free.html'
         subject = "[TEST] Welcome to Toad — You're all set!"

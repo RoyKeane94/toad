@@ -116,6 +116,16 @@ class User(AbstractUser):
         self.tier = 'personal_trial'  # Give them Personal features during trial
         self.save()
     
+    def start_pro_trial(self, days=90):  # 3 months = ~90 days
+        """Start a Pro trial period for the user"""
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        self.trial_started_at = timezone.now()
+        self.trial_ends_at = timezone.now() + timedelta(days=days)
+        self.tier = 'pro_trial'  # Give them Pro features during trial
+        self.save()
+    
     def is_account_locked(self):
         """
         Check if the account is currently locked due to failed login attempts.

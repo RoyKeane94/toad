@@ -31827,3 +31827,61 @@ INFO 2025-10-19 12:06:29,660 basehttp 90572 6133395456 "GET /templates/ HTTP/1.1
 INFO 2025-10-19 12:06:29,668 basehttp 90572 6133395456 "GET /templates/students/ HTTP/1.1" 200 4952
 WARNING 2025-10-19 12:06:29,704 log 90572 6133395456 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-10-19 12:06:29,705 basehttp 90572 6133395456 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2270
+INFO 2025-10-19 12:09:49,649 autoreload 92595 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:09:53,888 basehttp 92595 6133411840 "GET / HTTP/1.1" 200 7040
+INFO 2025-10-19 12:10:02,017 basehttp 92595 6133411840 "GET / HTTP/1.1" 200 7010
+INFO 2025-10-19 12:11:04,558 basehttp 92595 6133411840 "GET / HTTP/1.1" 200 7023
+INFO 2025-10-19 12:11:30,809 basehttp 92595 6133411840 "GET / HTTP/1.1" 200 7082
+INFO 2025-10-19 12:13:39,647 basehttp 92595 6133411840 "GET / HTTP/1.1" 200 7027
+INFO 2025-10-19 12:20:43,698 basehttp 92595 6133411840 "GET /accounts/register/ HTTP/1.1" 200 3866
+INFO 2025-10-19 12:20:43,740 basehttp 92595 6133411840 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-19 12:20:43,740 basehttp 92595 6150238208 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-19 12:20:48,185 basehttp 92595 6150238208 "GET /accounts/register/personal/ HTTP/1.1" 200 4002
+INFO 2025-10-19 12:20:53,078 basehttp 92595 6150238208 "GET /accounts/register/free/ HTTP/1.1" 200 4151
+INFO 2025-10-19 12:20:56,791 basehttp 92595 6150238208 "GET /accounts/register/personal/ HTTP/1.1" 200 4004
+INFO 2025-10-19 12:32:49,802 autoreload 92595 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-10-19 12:32:50,446 autoreload 93283 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:33:13,089 autoreload 93283 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-19 12:33:13,642 autoreload 93290 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:33:28,031 autoreload 93290 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-19 12:33:28,407 autoreload 93299 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:33:31,598 autoreload 93299 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-10-19 12:33:31,993 autoreload 93302 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:34:24,140 autoreload 93302 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-10-19 12:34:24,531 autoreload 93344 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:42:03,727 basehttp 93344 6193262592 "GET / HTTP/1.1" 200 7106
+INFO 2025-10-19 12:42:06,673 basehttp 93344 6193262592 "GET /accounts/register/trial-3-month-pro/ HTTP/1.1" 200 4630
+INFO 2025-10-19 12:45:26,444 basehttp 93344 6193262592 "GET /accounts/register/trial-3-month-pro/ HTTP/1.1" 200 4674
+INFO 2025-10-19 12:46:18,614 views 93344 6193262592 Starting 3-month Pro trial user registration...
+INFO 2025-10-19 12:46:18,834 views 93344 6193262592 User created successfully: tom_barratt@hotmail.com
+INFO 2025-10-19 12:46:18,835 views 93344 6193262592 User tier set to pro_trial: tom_barratt@hotmail.com
+INFO 2025-10-19 12:46:18,835 views 93344 6193262592 3-month Pro trial started for user: tom_barratt@hotmail.com, ends at: 2026-01-17 12:46:18.834679+00:00
+INFO 2025-10-19 12:46:18,835 views 93344 6193262592 New 3-Month Pro Trial plan user registration: tom_barratt@hotmail.com (Tom) - tier set to PRO_TRIAL
+INFO 2025-10-19 12:46:18,838 basehttp 93344 6193262592 "POST /accounts/register/trial-3-month-pro/ HTTP/1.1" 302 0
+INFO 2025-10-19 12:46:18,845 email_utils 93344 6226915328 Attempting to send verification email to tom_barratt@hotmail.com
+INFO 2025-10-19 12:46:18,855 basehttp 93344 6193262592 "GET /accounts/login/ HTTP/1.1" 200 3955
+INFO 2025-10-19 12:46:18,882 basehttp 93344 6210088960 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-19 12:46:18,882 basehttp 93344 6193262592 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-19 12:46:19,905 email_utils 93344 6226915328 Successfully sent verification email to tom_barratt@hotmail.com
+INFO 2025-10-19 12:46:19,906 views 93344 6226915328 Verification email sent: True for tom_barratt@hotmail.com
+INFO 2025-10-19 12:49:09,566 basehttp 93344 6193262592 "GET /accounts/register/trial-3-month-pro/ HTTP/1.1" 200 4692
+INFO 2025-10-19 12:51:49,965 autoreload 93344 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-19 12:51:50,682 autoreload 95080 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:52:07,119 autoreload 95080 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-19 12:52:07,471 autoreload 95093 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:53:30,696 email_utils 95501 8398642944 Attempting to send pro_trial joining email to test-pro@example.com
+ERROR 2025-10-19 12:53:31,013 email_utils 95501 8398642944 Failed to send pro_trial joining email to test-pro@example.com: {'test-pro@example.com': (501, b'5.1.5 Recipient address reserved by RFC 2606')}
+INFO 2025-10-19 12:54:06,112 autoreload 95093 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-10-19 12:54:06,508 autoreload 96597 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:54:47,530 autoreload 96597 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2025-10-19 12:54:47,914 autoreload 96620 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-19 12:55:03,984 views 96620 6189150208 Starting 3-month Pro trial user registration...
+INFO 2025-10-19 12:55:04,478 views 96620 6189150208 User created successfully: tom_barratt@hotmail.co.uk
+INFO 2025-10-19 12:55:04,480 views 96620 6189150208 User tier set to pro_trial: tom_barratt@hotmail.co.uk
+INFO 2025-10-19 12:55:04,480 views 96620 6189150208 3-month Pro trial started for user: tom_barratt@hotmail.co.uk, ends at: 2026-01-17 12:55:04.478810+00:00
+INFO 2025-10-19 12:55:04,480 views 96620 6189150208 New 3-Month Pro Trial plan user registration: tom_barratt@hotmail.co.uk (Tom) - tier set to PRO_TRIAL
+INFO 2025-10-19 12:55:04,494 basehttp 96620 6189150208 "POST /accounts/register/trial-3-month-pro/ HTTP/1.1" 302 0
+INFO 2025-10-19 12:55:04,514 email_utils 96620 6222802944 Attempting to send verification email to tom_barratt@hotmail.co.uk
+INFO 2025-10-19 12:55:04,522 basehttp 96620 6189150208 "GET /accounts/login/ HTTP/1.1" 200 3979
+INFO 2025-10-19 12:55:05,326 email_utils 96620 6222802944 Successfully sent verification email to tom_barratt@hotmail.co.uk
+INFO 2025-10-19 12:55:05,328 views 96620 6222802944 Verification email sent: True for tom_barratt@hotmail.co.uk

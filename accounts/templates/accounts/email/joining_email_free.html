@@ -5,11 +5,7 @@
 {% block header_title %}Welcome to Toad, {{ user.first_name|default:user.get_short_name }}!{% endblock %}
 
 {% block content %}
-{% if toad_image_data %}
-<div class="email-image-container">
-    <img src="data:image/png;base64,{{ toad_image_data }}" alt="Toad" style="width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; border: 0; outline: none;">
-</div>
-{% endif %}
+
 
 <div class="message">
     <p>I'm Tom, the founder of Toad. Thanks for joining us and helping shape a calmer way to plan.</p>

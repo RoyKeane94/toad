@@ -6,6 +6,7 @@ from .views import (
     RegisterChoicesView,
     RegisterTrialView,
     Register3MonthTrialView,
+    Register3MonthProTrialView,
     SecretRegistrationView,
     logout_view, 
     account_settings_view, 
@@ -43,6 +44,7 @@ urlpatterns = [
     path('register/personal/', RegisterPersonalView.as_view(), name='register_personal'),
     path('register/trial/', RegisterTrialView.as_view(), name='register_trial'),
     path('register/trial-3-month/', Register3MonthTrialView.as_view(), name='register_3_month_trial'),
+    path('register/trial-3-month-pro/', Register3MonthProTrialView.as_view(), name='register_3_month_pro_trial'),
     path('register/barnabytoad/', SecretRegistrationView.as_view(), name='secret_registration'),
     path('logout/', logout_view, name='logout'),
     

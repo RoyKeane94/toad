@@ -1,0 +1,75 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}Welcome to Toad Pro Trial{% endblock %}
+
+{% block header_title %}Welcome to Toad Pro, {{ user.first_name|default:user.get_short_name }}! <span class="pro-badge">PRO TRIAL</span>{% endblock %}
+
+{% block content %}
+
+<div class="message">
+    <p>I'm Tom, the founder of Toad. Thanks for starting your Pro trial and exploring our most powerful features!</p>
+    <p>Your 3-month Pro trial is now active. You have full access to all Pro features to see how Toad can transform your productivity.</p>
+</div>
+
+<div class="trial-info">
+    <p style="margin: 0 0 8px 0; font-weight: 600; color: var(--title-text);">🎉 Your Pro Trial Includes:</p>
+    <ul class="features-list">
+        <li>Access to Team Toad, our premium collaboration tool</li>
+        <li>Create custom templates</li>
+        <li>Archive completed tasks</li>
+        <li>Add notes to your tasks</li>
+        <li>Unlimited projects and grids</li>
+        <li>Priority support</li>
+    </ul>
+    <p style="margin: 12px 0 0 0; font-size: 14px; color: var(--text-secondary);">
+        <strong>Trial Duration:</strong> 3 months (90 days)<br>
+        <strong>No Credit Card Required:</strong> Cancel anytime
+    </p>
+</div>
+
+{% block cta %}
+{% if cta_url %}
+<div class="button-container">
+    <a href="{{ cta_url }}" class="btn">Start Your Pro Journey</a>
+</div>
+{% endif %}
+{% endblock %}
+
+<div class="message">
+    <p>Your first grid is ready and waiting. It's a quick, interactive tour — no boring pop‑ups, I promise.</p>
+    <p>Be sure to checkout our existing templates <a href="https://www.meettoad.co.uk/templates/students/">here</a> to get some inspiration or just get going with your own new grid <a href="https://www.meettoad.co.uk/grids/create/">here</a>.</p>
+    <p style="margin-top: 16px;">Got thoughts—good, bad, or random? Just reply to this email. I read and respond to every one.</p>
+    <p style="margin-top: 16px;">All the best,<br/>Tom<br/>Founder, Toad</p>
+    <p style="margin-top: 16px; font-style: italic;">P.S. Toad works great on mobile, but the best bird's‑eye view is on a bigger screen. Try logging in on desktop at meettoad.co.uk.</p>
+</div>
+{% endblock %}
+
+<style>
+.pro-badge { 
+    background: linear-gradient(135deg, #8B5CF6, #3B82F6); 
+    color: white; 
+    padding: 4px 8px; 
+    border-radius: 4px; 
+    font-size: 12px; 
+    font-weight: 600; 
+    margin-left: 8px; 
+}
+
+.trial-info { 
+    background: linear-gradient(135deg, #F0F9FF, #F0FDF4); 
+    border: 1px solid #BFDBFE; 
+    border-radius: 8px; 
+    padding: 16px; 
+    margin: 16px 0; 
+}
+
+.features-list { 
+    margin: 8px 0; 
+    padding-left: 20px; 
+}
+
+.features-list li { 
+    margin: 4px 0; 
+    color: var(--text-secondary); 
+}
+</style>
