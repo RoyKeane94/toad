@@ -32525,3 +32525,56 @@ INFO 2025-10-20 06:10:50,107 basehttp 11838 6230618112 "GET /admin HTTP/1.1" 301
 INFO 2025-10-20 06:10:50,132 basehttp 11838 6213791744 "GET /admin/ HTTP/1.1" 200 2982
 INFO 2025-10-20 06:10:51,739 basehttp 11838 6213791744 "GET / HTTP/1.1" 200 7542
 INFO 2025-10-20 06:10:52,675 basehttp 11838 6213791744 "GET /dashboard/ HTTP/1.1" 200 4087
+ERROR 2025-10-20 19:50:32,545 exception 13586 8398642944 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-10-20 19:50:32,788 exception 13586 8398642944 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+ERROR 2025-10-20 19:50:33,012 exception 13586 8398642944 Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/utils/deprecation.py", line 133, in __call__
+    response = self.process_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/middleware/common.py", line 48, in process_request
+    host = request.get_host()
+           ^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.12/lib/python3.12/site-packages/django/http/request.py", line 151, in get_host
+    raise DisallowedHost(msg)
+django.core.exceptions.DisallowedHost: Invalid HTTP_HOST header: 'testserver'. You may need to add 'testserver' to ALLOWED_HOSTS.
+INFO 2025-10-20 19:52:23,109 autoreload 13755 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-20 19:52:24,831 basehttp 13755 6198718464 "GET / HTTP/1.1" 200 7484
+INFO 2025-10-20 19:52:24,856 basehttp 13755 6198718464 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-20 19:52:24,858 basehttp 13755 6215544832 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-20 19:52:24,859 basehttp 13755 6215544832 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-20 19:52:30,579 basehttp 13755 6198718464 "GET /accounts/register/trial-6-month-pro/ HTTP/1.1" 302 0
+INFO 2025-10-20 19:52:30,598 basehttp 13755 6198718464 "GET /grids/ HTTP/1.1" 200 11930
+INFO 2025-10-20 19:52:32,784 basehttp 13755 6198718464 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-20 19:52:32,790 basehttp 13755 6198718464 "GET / HTTP/1.1" 200 7280
+INFO 2025-10-20 19:52:32,810 basehttp 13755 6198718464 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 304 0
+INFO 2025-10-20 19:52:40,947 basehttp 13755 6198718464 "GET /accounts/register/trial-6-month-pro/ HTTP/1.1" 200 4675

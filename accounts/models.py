@@ -63,6 +63,10 @@ class User(AbstractUser):
     # Trial and billing fields
     trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')
     trial_ends_at = models.DateTimeField(null=True, blank=True, help_text='When the user trial period ends.')
+    trial_type = models.CharField(max_length=20, choices=[
+        ('3_month', '3 Month'),
+        ('6_month', '6 Month'),
+    ], null=True, blank=True, help_text='Type of trial period for Pro users.')
     
     # Security and tracking fields
     email_verified = models.BooleanField(default=False, help_text='Whether the user has verified their email address.')
