@@ -327,6 +327,14 @@ TOM_EMAIL_PORT = int(os.environ.get('PERSONAL_EMAIL_PORT', EMAIL_PORT))
 TOM_EMAIL_USER = os.environ.get('PERSONAL_EMAIL_HOST_USER', EMAIL_HOST_USER)
 TOM_EMAIL_PASSWORD = os.environ.get('PERSONAL_EMAIL_HOST_PASSWORD', EMAIL_HOST_PASSWORD)
 
+# Personal email configuration (for sending emails from tom@meettoad.co.uk)
+PERSONAL_EMAIL_HOST = os.environ.get('PERSONAL_EMAIL_HOST', 'smtp.office365.com')
+PERSONAL_EMAIL_PORT = int(os.environ.get('PERSONAL_EMAIL_PORT', 587))
+PERSONAL_EMAIL_HOST_USER = os.environ.get('PERSONAL_EMAIL_HOST_USER', 'tom@meettoad.co.uk')
+PERSONAL_EMAIL_HOST_PASSWORD = os.environ.get('PERSONAL_EMAIL_HOST_PASSWORD', '')
+PERSONAL_EMAIL_USE_TLS = os.environ.get('PERSONAL_EMAIL_USE_TLS', 'True').lower() == 'true'
+PERSONAL_DEFAULT_FROM_EMAIL = os.environ.get('PERSONAL_DEFAULT_FROM_EMAIL', 'tom@meettoad.co.uk')
+
 # ---
 # LOGGING
 # ---

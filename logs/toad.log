@@ -32610,3 +32610,11 @@ INFO 2025-10-20 20:41:41,373 send_new_features_email 16559 8398642944 New featur
 INFO 2025-10-20 20:41:42,079 send_new_features_email 16559 8398642944 New features email sent to tom@meettoad.co.uk
 INFO 2025-10-20 20:41:42,663 send_new_features_email 16559 8398642944 New features email sent to tom_barratt@hotmail.co.uk
 INFO 2025-10-20 20:41:42,664 send_new_features_email 16559 8398642944 New features email campaign completed. Sent: 3, Failed: 0, Total: 3
+ERROR 2025-10-20 20:44:35,510 send_new_features_email 17037 8398642944 Failed to send new features email to thomasbarratt@yahoo.com: (535, b'5.7.139 Authentication unsuccessful, the user credentials were incorrect. [LO4P265CA0264.GBRP265.PROD.OUTLOOK.COM 2025-10-20T20:44:35.450Z 08DE0EDF7B130F6F]')
+ERROR 2025-10-20 20:44:40,835 send_new_features_email 17037 8398642944 Failed to send new features email to tom@meettoad.co.uk: (535, b'5.7.139 Authentication unsuccessful, the user credentials were incorrect. [LO4P265CA0266.GBRP265.PROD.OUTLOOK.COM 2025-10-20T20:44:39.463Z 08DE0EE686F8585C]')
+ERROR 2025-10-20 20:44:45,993 send_new_features_email 17037 8398642944 Failed to send new features email to tom_barratt@hotmail.co.uk: (535, b'5.7.139 Authentication unsuccessful, the user credentials were incorrect. [LO4P265CA0259.GBRP265.PROD.OUTLOOK.COM 2025-10-20T20:44:45.989Z 08DE1001DE7BDE73]')
+INFO 2025-10-20 20:44:45,994 send_new_features_email 17037 8398642944 New features email campaign completed. Sent: 0, Failed: 3, Total: 3
+INFO 2025-10-20 20:46:00,042 send_new_features_email 17485 8398642944 New features email sent to thomasbarratt@yahoo.com
+INFO 2025-10-20 20:46:00,942 send_new_features_email 17485 8398642944 New features email sent to tom@meettoad.co.uk
+INFO 2025-10-20 20:46:01,736 send_new_features_email 17485 8398642944 New features email sent to tom_barratt@hotmail.co.uk
+INFO 2025-10-20 20:46:01,737 send_new_features_email 17485 8398642944 New features email campaign completed. Sent: 3, Failed: 0, Total: 3

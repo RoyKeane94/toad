@@ -86,7 +86,7 @@ class Command(BaseCommand):
                 email = EmailMultiAlternatives(
                     subject='🚀 Team Toad is Here! (+ Task Notes Added!)',
                     body='',  # We're sending HTML only
-                    from_email='tom@meettoad.co.uk',  # Hardcoded to ensure it uses Tom's email
+                    from_email=getattr(settings, 'PERSONAL_DEFAULT_FROM_EMAIL', getattr(settings, 'PERSONAL_EMAIL_HOST_USER', 'tom@meettoad.co.uk')),
                     to=[user.email],
                 )
                 
@@ -95,11 +95,11 @@ class Command(BaseCommand):
                 
                 # Create personal email connection using PERSONAL_EMAIL_* settings
                 personal_connection = get_connection(
-                    host='smtp.office365.com',  # Hardcoded from your .env
-                    port=587,  # Hardcoded from your .env
-                    username='tom@meettoad.co.uk',  # Hardcoded from your .env
-                    password='Ob3sechild',  # Hardcoded from your .env
-                    use_tls=True,
+                    host=getattr(settings, 'PERSONAL_EMAIL_HOST', 'smtp.office365.com'),
+                    port=int(getattr(settings, 'PERSONAL_EMAIL_PORT', 587)),
+                    username=getattr(settings, 'PERSONAL_EMAIL_HOST_USER', 'tom@meettoad.co.uk'),
+                    password=getattr(settings, 'PERSONAL_EMAIL_HOST_PASSWORD', ''),
+                    use_tls=getattr(settings, 'PERSONAL_EMAIL_USE_TLS', True),
                     fail_silently=False,
                 )
                 email.connection = personal_connection
