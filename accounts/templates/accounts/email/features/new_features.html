@@ -1,0 +1,50 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}🚀 Team Toad is Here! (+ Task Notes Added!) {% endblock %}
+
+{% block header_title %}<span style="color: #10B981;">Collaboration, Simplified: Team Toad Has Arrived!</span>{% endblock %}
+
+{% block header_subtitle %}
+<p>Plus, add crucial context with Task Notes.</p> {% endblock %}
+
+{% block content %}
+<div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
+
+<div class="message">
+    <p>Huge news! After much anticipation and valuable feedback from users like you, we're thrilled to announce that Team Toad is now live! We've also added another highly requested feature: Task Notes.</p>
+
+    <div style="margin-bottom: 30px; padding-top: 15px; border-top: 1px solid #E5E7EB;">
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">👥 Team Toad: Clarity for Your Whole Crew</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Bring the radical simplicity of Toad to your team projects. Team Toad transforms your grids into <strong>shared command centers</strong>, keeping everyone in sync without the complexity of traditional tools.</p>
+        <ul style="margin: 12px 0 16px 0; padding-left: 20px; color: #4B5563; list-style-type: disc;">
+            <li style="margin-bottom: 6px;"><strong>Share grids instantly:</strong> Collaborate on projects in real-time.</li>
+            <li style="margin-bottom: 6px;"><strong>Simple permissions:</strong> Just Owners & Members to keep things easy.</li>
+            <li style="margin-bottom: 6px;"><strong>Visual progress tracking:</strong> See tasks completed by teammates as they happen.</li>
+        </ul>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">It's the collaborative clarity you need, built the simple Toad way.</p>
+        {# Optional: Link to a blog post or short video demo #}
+        {# <a href="YOUR_TEAM_TOAD_INFO_LINK" style="color: #10B981; text-decoration: underline;">See Team Toad in action</a> #}
+    </div>
+
+    <div style="margin-bottom: 20px; padding-top: 15px; border-top: 1px solid #E5E7EB;">
+        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">📝 Task Notes: Context Without the Clutter</h3>
+        <p style="margin: 0 0 12px 0; color: #4B5563;">Need to add more detail? You can now add notes to any task. Perfect for links, briefs, or context. We've designed it the Toad way – notes are hidden until you click the task, keeping your main grid view clean and scannable.</p>
+    </div>
+</div>
+
+{% block cta %}
+<!-- CTA Section -->
+<div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; margin: 30px 0;">
+    <h3 style="color: #1F2937; margin: 0 0 12px 0; font-size: 18px;">💚 Know Someone Who Would Love Team Toad?</h3>
+    <p style="margin: 0 0 16px 0; color: #4B5563;">Gift them 3 months of Pro features completely free! They'll get access to Team Toad, task notes, and all our premium features to experience the full power of collaborative productivity.</p>
+    <div class="button-container" style="margin: 12px 0;">
+        <a href="https://meettoad.co.uk/accounts/register/trial-3-month-pro/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Gift 3 Months Free</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block additional_content %}
+
+{% endblock %}
+
+{% endblock %}
