@@ -32894,3 +32894,12 @@ INFO 2025-10-21 20:05:57,146 project_views_functions 46796 6202863616 User None 
 INFO 2025-10-21 20:05:57,147 basehttp 46796 6202863616 "POST /tasks/2543/assign/ HTTP/1.1" 200 123
 INFO 2025-10-21 20:06:04,971 project_views_functions 46796 6202863616 User None unassigned task: ""Team Toad feature highlights to be showcased on the landing page"" from project: Team Toad
 INFO 2025-10-21 20:06:04,971 basehttp 46796 6202863616 "POST /tasks/2543/assign/ HTTP/1.1" 200 60
+INFO 2025-10-21 20:25:27,297 autoreload 60160 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-21 20:25:30,235 basehttp 60160 6133329920 "GET / HTTP/1.1" 200 7492
+INFO 2025-10-21 20:25:30,246 basehttp 60160 6133329920 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-21 20:25:30,250 basehttp 60160 6133329920 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-21 20:25:30,592 basehttp 60160 6133329920 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-10-21 20:25:36,131 basehttp 60160 6133329920 "GET /accounts/preview-2-day-follow-up/ HTTP/1.1" 200 3110
+INFO 2025-10-21 20:25:36,348 basehttp 60160 6133329920 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-21 20:25:36,349 basehttp 60160 6133329920 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-21 20:30:51,029 basehttp 60160 6133329920 "GET /accounts/preview-2-day-follow-up/ HTTP/1.1" 200 3104

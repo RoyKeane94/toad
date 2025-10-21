@@ -23,6 +23,7 @@ from .views import (
     beta_update_email_preview,
     beta_feedback_email_preview,
     student_follow_up_email_preview,
+    two_day_follow_up_email_preview,
     manage_subscription_view,
     downgrade_to_free_view
 )
@@ -78,6 +79,7 @@ urlpatterns = [
     path('preview-beta-update/', beta_update_email_preview, name='beta_update_preview'),
     path('preview-beta-feedback/', beta_feedback_email_preview, name='beta_feedback_preview'),
     path('preview-student-follow-up/', student_follow_up_email_preview, name='student_follow_up_preview'),
+    path('preview-2-day-follow-up/', two_day_follow_up_email_preview, name='two_day_follow_up_preview'),
     
     # Stripe integration
     path('stripe/checkout/', stripe_checkout_view, name='stripe_checkout'),

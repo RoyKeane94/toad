@@ -753,6 +753,41 @@ def student_follow_up_email_preview(request):
     return HttpResponse(student_follow_up_html)
 
 
+def two_day_follow_up_email_preview(request):
+    """Preview the 2-day follow-up email template"""
+    from django.template.loader import render_to_string
+    from django.contrib.auth import get_user_model
+    from django.http import HttpResponse
+    
+    User = get_user_model()
+    
+    # Use the logged-in user if available, otherwise use a test user
+    if request.user.is_authenticated:
+        test_user = request.user
+    else:
+        # Create or get a test user
+        test_user, created = User.objects.get_or_create(
+            email='test@example.com',
+            defaults={
+                'first_name': 'Test',
+                'last_name': 'User',
+                'tier': 'free'  # Test with a free user to see Pro promotion
+            }
+        )
+    
+    # Get base URL
+    base_url = getattr(settings, 'BASE_URL', 'https://www.meettoad.co.uk')
+    
+    # Render the 2-day follow-up email template
+    email_html = render_to_string('accounts/email/follow_up/2_day_follow_up_email.html', {
+        'user': test_user,
+        'base_url': base_url
+    })
+    
+    # Return the rendered HTML directly
+    return HttpResponse(email_html)
+
+
 class RegisterChoicesView(TemplateView):
     """
     View to display pricing plan choices
