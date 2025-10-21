@@ -2142,16 +2142,19 @@ class GridManager {
     handleTaskTextBlur(e) {
         const element = e.target;
         
+        // IMMEDIATELY remove contentEditable and focus to kill the browser outline
+        element.contentEditable = false;
+        element.classList.remove('editing'); // Remove editing class immediately
+        
+        // Force focus away from this element to the body
+        element.blur();
+        document.body.focus();
+        
         // Use a small timeout to ensure the blur event is fully processed
         setTimeout(() => {
-            // Check if we're in edit mode by looking at the editing class
-            if (element.classList.contains('editing')) {
-                element.classList.remove('editing');
-                element.contentEditable = false;
-                this.saveTaskEdit(element);
-            } else if (element.contentEditable === 'true') {
-                // Fallback: if contentEditable is still true but editing class is missing
-                element.contentEditable = false;
+            // Check if we need to save
+            if (!element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
                 this.saveTaskEdit(element);
             }
         }, 10); // Small timeout to ensure proper event handling
@@ -2169,20 +2172,24 @@ class GridManager {
     closeEditingTask(element) {
         if (!element.classList.contains('editing')) return;
         
-        // If the element has changes, save them
-        if (element.contentEditable === 'true') {
+        // IMMEDIATELY remove contentEditable, editing class, and force blur to kill browser outline
+        element.contentEditable = false;
+        element.classList.remove('editing');
+        element.blur();
+        document.body.focus(); // Force focus away from element
+        
+        // Check if we need to save changes
+        if (!element.classList.contains('saving')) {
             const originalText = element.getAttribute('data-original-text') || element.textContent;
             const currentText = element.textContent.trim();
             
             if (currentText !== originalText && currentText !== '') {
                 // Save the changes
-                element.contentEditable = false;
-                element.classList.remove('editing');
+                element.classList.add('saving');
                 this.saveTaskEdit(element);
             } else {
                 // No changes, just close editing
-                element.contentEditable = false;
-                element.classList.remove('editing');
+                element.classList.remove('saving');
             }
         }
     }
@@ -2202,13 +2209,16 @@ class GridManager {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             e.stopPropagation();
-            // Force save and exit edit mode
+            // IMMEDIATELY blur and remove contentEditable to prevent browser outline
+            element.blur();
             element.contentEditable = false;
             element.classList.remove('editing');
             this.saveTaskEdit(element);
         } else if (e.key === 'Escape') {
             e.preventDefault();
             e.stopPropagation();
+            // IMMEDIATELY blur and remove contentEditable to prevent browser outline
+            element.blur();
             element.contentEditable = false;
             element.classList.remove('editing');
             const originalText = element.getAttribute('data-original-text') || element.textContent;
@@ -2241,17 +2251,20 @@ class GridManager {
         
         // Check if we have a valid task ID
         if (!taskId) {
+            element.classList.remove('saving');
             return;
         }
         
         // Don't save if text hasn't changed
         if (newText === originalText) {
+            element.classList.remove('saving');
             return;
         }
         
         // Don't save if text is empty
         if (!newText) {
             element.textContent = originalText;
+            element.classList.remove('saving');
             return;
         }
         
@@ -2278,10 +2291,12 @@ class GridManager {
                 // Revert on error
                 element.textContent = originalText;
             }
+            element.classList.remove('saving');
         })
         .catch(error => {
             // Revert on error
             element.textContent = originalText;
+            element.classList.remove('saving');
         });
     }
 

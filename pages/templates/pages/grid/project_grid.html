@@ -91,21 +91,82 @@
         }
     }
     
-    /* Inline editing styles */
+    /* Inline editing styles - clean orange dashed border, no box-shadow */
     .editing {
-        background-color: var(--container-bg) !important;
+        background-color: transparent !important;
         border: 2px dashed var(--tertiary-action-bg) !important;
         border-radius: 6px !important;
         padding: 4px 8px !important;
         outline: none !important;
-        min-height: 24px !important;
-        box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+        box-shadow: none !important;
         position: relative !important;
+        display: inline-block !important;
+        width: auto !important;
+        transition: border-color 0.15s ease !important;
     }
     
     .editing:focus {
-        box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
+        box-shadow: none !important;
+        outline: none !important;
         border-color: var(--tertiary-action-bg) !important;
+    }
+    
+    /* NUCLEAR OPTION: Remove ALL browser default focus styles for contenteditable */
+    /* This overrides the blue/black outline that browsers add by default */
+    
+    /* General contenteditable overrides */
+    *[contenteditable="true"],
+    *[contenteditable="true"]:focus,
+    *[contenteditable="true"]:focus-visible,
+    *[contenteditable="true"]:focus-within {
+        outline: 0 !important;
+        outline: none !important;
+        outline-width: 0 !important;
+        outline-style: none !important;
+        outline-color: transparent !important;
+        outline-offset: 0 !important;
+        box-shadow: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+    
+    /* Task-specific contenteditable overrides */
+    .task-text-editable[contenteditable="true"],
+    .task-text-editable[contenteditable="true"]:focus,
+    .task-text-editable[contenteditable="true"]:focus-visible,
+    [id^="task-text-"][contenteditable="true"],
+    [id^="task-text-"][contenteditable="true"]:focus,
+    [id^="task-text-"][contenteditable="true"]:focus-visible {
+        outline: 0 !important;
+        outline: none !important;
+        box-shadow: none !important;
+        border: none !important; /* Let .editing class handle the border */
+    }
+    
+    /* Remove any borders/outlines when no longer editing */
+    *[contenteditable="false"],
+    *[contenteditable="false"]:focus,
+    .task-text-editable:not(.editing),
+    [id^="task-text-"]:not(.editing) {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+    
+    /* Browser-specific overrides */
+    /* Webkit (Chrome, Safari, Edge) */
+    *[contenteditable="true"]::-webkit-input-placeholder {
+        outline: none !important;
+    }
+    
+    /* Firefox */
+    *[contenteditable="true"]::-moz-focus-inner,
+    *[contenteditable="true"]::-moz-focus-outer {
+        border: 0 !important;
+        outline: none !important;
+    }
+    
+    *[contenteditable="true"]:-moz-focusring {
+        outline: none !important;
     }
     
     /* Saving state styles removed - no visual saving state needed */
@@ -289,22 +350,30 @@
             transition: all 0.2s ease !important;
         }
         
-        
+        /* Override conflicting rules from non-tailwind.css for editing state */
+        .task-selected [id^="task-text-"].editing,
+        div.task-selected [id^="task-text-"].editing,
+        [id^="task-"].task-selected [id^="task-text-"].editing,
         .task-text-editable.editing {
-            background-color: var(--container-bg) !important;
+            background-color: transparent !important;
             border: 2px dashed var(--tertiary-action-bg) !important;
             border-radius: 6px !important;
             padding: 4px 8px !important;
             outline: none !important;
-            min-height: 24px !important;
-            box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.1 !important;
+            box-shadow: none !important;
             position: relative !important;
-            transition: all 0.3s ease-out !important;
+            display: inline-block !important;
+            width: auto !important;
+            transition: border-color 0.15s ease !important;
         }
         
-        .task-text-editable.editing:focus {
-            box-shadow: 0 0 0 3px var(--tertiary-action-bg) / 0.2 !important;
-            border-color: var(--tertiary-action-bg) !important;
+        /* Ensure contenteditable elements never show browser default focus styles */
+        .task-text-editable[contenteditable="true"],
+        .task-text-editable[contenteditable="true"]:focus,
+        [id^="task-text-"][contenteditable="true"],
+        [id^="task-text-"][contenteditable="true"]:focus {
+            outline: none !important;
+            box-shadow: none !important;
         }
         
         /* Row and column header inline editing styles */
