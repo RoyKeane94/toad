@@ -32950,3 +32950,15 @@ INFO 2025-10-21 20:35:58,137 basehttp 66143 6216101888 "GET /static/admin/img/ic
 INFO 2025-10-21 20:35:58,137 basehttp 66143 6131970048 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
 INFO 2025-10-21 20:36:38,096 autoreload 66143 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
 INFO 2025-10-21 20:36:38,735 autoreload 66703 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-21 20:51:56,466 autoreload 75828 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-21 20:52:06,320 basehttp 75828 6126202880 "GET / HTTP/1.1" 200 7481
+INFO 2025-10-21 20:52:06,333 basehttp 75828 6126202880 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-21 20:52:06,337 basehttp 75828 6126202880 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-21 20:52:13,190 basehttp 75828 6126202880 "GET /lilypad/ HTTP/1.1" 200 4169
+INFO 2025-10-21 20:52:14,943 basehttp 75828 6126202880 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5671
+INFO 2025-10-21 20:52:26,308 basehttp 75828 6126202880 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-10-21 20:52:26,313 basehttp 75828 6126202880 "GET / HTTP/1.1" 200 7281
+INFO 2025-10-21 20:52:28,086 basehttp 75828 6126202880 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5488
+INFO 2025-10-21 20:52:34,870 basehttp 75828 6126202880 "GET /accounts/register/trial/?society=Test&university=Sheffield&email=Test%40sexy.com HTTP/1.1" 200 4416
+INFO 2025-10-21 20:54:24,159 basehttp 75828 6126202880 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5475
+INFO 2025-10-21 20:54:30,166 basehttp 75828 6126202880 "GET /accounts/register/trial/?society=Test&university=Sheffield&email=test%40sexy.com HTTP/1.1" 200 4492

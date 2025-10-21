@@ -114,12 +114,39 @@
             <div class="bg-white border-2 border-[var(--primary-action-bg)] rounded-xl p-4 sm:p-8 max-w-2xl mx-auto shadow-lg">
                 <h2 class="text-xl sm:text-2xl font-bold text-[var(--text-primary)]">Get a free 6-month Personal plan.</h2>
                 <p class="mt-2 text-sm sm:text-base text-[var(--text-secondary)]">As a member of {{ society_link.name }}, you get free access to Toad's Personal plan (£2/month value) for the first two terms. Organise your courses, plan your revision, and ace your job applications.</p>
-                <a href="{% url 'accounts:register_trial' %}?society={{ society_link.name|urlencode }}&university={{ society_link.society_university.name|urlencode }}" class="cta-button mt-4 sm:mt-6 inline-block bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-8 sm:px-12 py-3 sm:py-4 rounded-lg font-bold text-lg sm:text-xl shadow-lg w-full sm:w-auto">
-                    Start Your Free 6-Month Trial
-                </a>
+                
+                <form id="email-form" class="mt-4 sm:mt-6">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                        <input 
+                            type="email" 
+                            id="email-input"
+                            placeholder="Type your email in to start your 6 month trial today"
+                            class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent text-base"
+                            required
+                        >
+                        <button 
+                            type="submit"
+                            class="bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white px-8 py-3 rounded-lg font-bold text-base shadow-lg transition-colors duration-200"
+                        >
+                            Start Free Trial
+                        </button>
+                    </div>
+                </form>
+                
                 <p class="mt-3 text-xs text-gray-400">No credit card required • Cancel anytime</p>
             </div>
         </section>
+
+        <script>
+            document.getElementById('email-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById('email-input').value;
+                if (email) {
+                    const url = "{% url 'accounts:register_trial' %}?society={{ society_link.name|urlencode }}&university={{ society_link.society_university.name|urlencode }}&email=" + encodeURIComponent(email);
+                    window.location.href = url;
+                }
+            });
+        </script>
 
 
     <!-- Student Video Section -->
