@@ -24,19 +24,35 @@ class Command(BaseCommand):
             default=None,
             help='Limit the number of emails to send (for testing)',
         )
+        parser.add_argument(
+            '--test-email',
+            type=str,
+            default=None,
+            help='Send email to a specific email address for testing',
+        )
 
     def handle(self, *args, **options):
         dry_run = options['dry_run']
         limit = options['limit']
+        test_email = options['test_email']
         
         # Get base URL from settings
         base_url = getattr(settings, 'SITE_URL', '').rstrip('/')
         
         # Get all subscribed users
-        users = User.objects.filter(
-            email_subscribed=True,
-            email_verified=True
-        ).order_by('id')
+        if test_email:
+            # Test to specific email address
+            users = User.objects.filter(email=test_email)
+            if not users.exists():
+                self.stdout.write(
+                    self.style.ERROR(f'No user found with email: {test_email}')
+                )
+                return
+        else:
+            users = User.objects.filter(
+                email_subscribed=True,
+                email_verified=True
+            ).order_by('id')
         
         if limit:
             users = users[:limit]
@@ -106,6 +122,11 @@ class Command(BaseCommand):
                 email.send()
                 
                 sent_count += 1
+                
+                # Print each person who receives the email
+                self.stdout.write(
+                    self.style.SUCCESS(f"✅ Email sent to: {user.email} ({user.get_full_name()})")
+                )
                 
                 # Log progress every 50 emails
                 if sent_count % 50 == 0:
