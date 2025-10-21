@@ -55,8 +55,6 @@ class User(AbstractUser):
     associated_society = models.ForeignKey(SocietyLink, on_delete=models.CASCADE, null=True, blank=True, related_name='users')
     associated_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     second_grid_created = models.BooleanField(default=False, help_text='Whether the user has created their second grid.')
-    second_grid_email_sent = models.BooleanField(default=False, help_text='Whether the user has received the email about their second grid.')
-    second_email_sent = models.BooleanField(default=False, help_text='Whether the user has received the 2-day follow-up email.')
     regular_user = models.BooleanField(default=False, help_text='Whether the user is a regular user.')
     email_subscribed = models.BooleanField(default=True, help_text='Whether the user has subscribed to the email list.')
     

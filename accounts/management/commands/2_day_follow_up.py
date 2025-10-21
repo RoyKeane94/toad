@@ -30,21 +30,31 @@ class Command(BaseCommand):
         dry_run = options['dry_run']
         test_email = options['test_email']
         
-        # Step 1: Find users with associated university who haven't received second email yet
-        # and who registered between 2 and 3 days ago
-        end_dt = timezone.now() - timedelta(days=2)   # up to 2 days ago (exclusive)
-        start_dt = timezone.now() - timedelta(days=3) # from 3 days ago (inclusive)
+        # Step 1: Find users who registered exactly 2 days ago (within 24-hour window)
+        end_dt = timezone.now() - timedelta(days=2)   # 2 days ago (start of day)
+        start_dt = timezone.now() - timedelta(days=3) # 3 days ago (start of day)
 
+        # Students: users with associated university
         users_with_university = User.objects.filter(
             associated_university__isnull=False,
-            second_grid_email_sent=False,
+            date_joined__gte=start_dt,
+            date_joined__lt=end_dt,
+        )
+        
+        # Non-students: users without associated university
+        users_without_university = User.objects.filter(
+            associated_university__isnull=True,
             date_joined__gte=start_dt,
             date_joined__lt=end_dt,
         )
         
         # Debug: Let's see what we're actually finding
         self.stdout.write(
-            f"Found {users_with_university.count()} eligible users (associated university, not yet sent, "
+            f"Found {users_with_university.count()} eligible STUDENTS (associated university, "
+            f"registered between {start_dt.strftime('%Y-%m-%d %H:%M')} and {end_dt.strftime('%Y-%m-%d %H:%M')})"
+        )
+        self.stdout.write(
+            f"Found {users_without_university.count()} eligible NON-STUDENTS (no associated university, "
             f"registered between {start_dt.strftime('%Y-%m-%d %H:%M')} and {end_dt.strftime('%Y-%m-%d %H:%M')})"
         )
         
@@ -60,23 +70,13 @@ class Command(BaseCommand):
             total_users = User.objects.count()
             self.stdout.write(f'Total users in database: {total_users}')
             
-            # Check users with university but already sent email
-            users_with_university_sent = User.objects.filter(
+            # Check users with university in the time window
+            users_with_university_window = User.objects.filter(
                 associated_university__isnull=False,
-                second_grid_email_sent=True
-            )
-            self.stdout.write(f'Users with university who already received second email: {users_with_university_sent.count()}')
-
-            # Check users who match time window but have been sent already (for clarity)
-            users_time_window_sent = User.objects.filter(
-                associated_university__isnull=False,
-                second_grid_email_sent=True,
                 date_joined__gte=start_dt,
                 date_joined__lt=end_dt,
             )
-            self.stdout.write(
-                f"Users in 2-3 day window who already received second email: {users_time_window_sent.count()}"
-            )
+            self.stdout.write(f'Users with university in 2-3 day window: {users_with_university_window.count()}')
             
             # Check if any users have the field but it's None
             users_with_none = User.objects.filter(associated_university__isnull=True)
@@ -103,37 +103,75 @@ class Command(BaseCommand):
             return
         
         # Show all emails that will be sent (informational)
+        self.stdout.write('\n' + '='*60)
+        self.stdout.write('STUDENTS - EMAILS TO BE SENT')
+        self.stdout.write('='*60)
         self.show_all_emails(users_with_university)
         
-        # Step 2: Send emails and mark as second email sent
-        success_count = 0
-        error_count = 0
+        self.stdout.write('\n' + '='*60)
+        self.stdout.write('NON-STUDENTS - EMAILS TO BE SENT')
+        self.stdout.write('='*60)
+        self.show_all_emails(users_without_university)
         
+        # Step 2: Send emails to students
+        student_success = 0
+        student_error = 0
+        
+        self.stdout.write('\n' + self.style.SUCCESS('=== SENDING TO STUDENTS ==='))
         for user in users_with_university:
             try:
-                # Send email
+                # Send student follow-up email
                 if self.send_student_follow_up_email(user):
-                    # Step 3: Mark as second email sent
-                    user.second_grid_email_sent = True
-                    user.save(update_fields=['second_grid_email_sent'])
-                    success_count += 1
-                    self.stdout.write(f'✓ Sent to {user.email}')
+                    student_success += 1
+                    self.stdout.write(f'✓ Sent student email to {user.email}')
                 else:
-                    error_count += 1
+                    student_error += 1
                     self.stdout.write(self.style.ERROR(f'✗ Failed to send to {user.email}'))
                     
             except Exception as e:
-                error_count += 1
+                student_error += 1
+                logger.error(f'Error sending email to {user.email}: {e}')
+                self.stdout.write(self.style.ERROR(f'✗ Error sending to {user.email}: {e}'))
+        
+        # Step 3: Send emails to non-students
+        non_student_success = 0
+        non_student_error = 0
+        
+        self.stdout.write('\n' + self.style.SUCCESS('=== SENDING TO NON-STUDENTS ==='))
+        for user in users_without_university:
+            try:
+                # Send 2-day follow-up email
+                if self.send_2_day_follow_up_email(user):
+                    non_student_success += 1
+                    self.stdout.write(f'✓ Sent 2-day follow-up email to {user.email}')
+                else:
+                    non_student_error += 1
+                    self.stdout.write(self.style.ERROR(f'✗ Failed to send to {user.email}'))
+                    
+            except Exception as e:
+                non_student_error += 1
                 logger.error(f'Error sending email to {user.email}: {e}')
                 self.stdout.write(self.style.ERROR(f'✗ Error sending to {user.email}: {e}'))
         
         # Summary
+        total_users = users_with_university.count() + users_without_university.count()
+        total_success = student_success + non_student_success
+        total_error = student_error + non_student_error
+        
         self.stdout.write('\n' + '='*50)
         self.stdout.write('EMAIL SENDING SUMMARY')
         self.stdout.write('='*50)
-        self.stdout.write(f'Total users: {users_with_university.count()}')
-        self.stdout.write(f'Successfully sent: {success_count}')
-        self.stdout.write(f'Failed: {error_count}')
+        self.stdout.write(f'Students: {users_with_university.count()} users')
+        self.stdout.write(f'  - Successfully sent: {student_success}')
+        self.stdout.write(f'  - Failed: {student_error}')
+        self.stdout.write('')
+        self.stdout.write(f'Non-students: {users_without_university.count()} users')
+        self.stdout.write(f'  - Successfully sent: {non_student_success}')
+        self.stdout.write(f'  - Failed: {non_student_error}')
+        self.stdout.write('')
+        self.stdout.write(f'TOTAL: {total_users} users')
+        self.stdout.write(f'  - Successfully sent: {total_success}')
+        self.stdout.write(f'  - Failed: {total_error}')
         self.stdout.write('='*50)
 
     def send_student_follow_up_email(self, user):
@@ -179,6 +217,55 @@ class Command(BaseCommand):
             
         except Exception as e:
             logger.error(f'Failed to send student follow-up email to {user.email}: {e}')
+            return False
+    
+    def send_2_day_follow_up_email(self, user):
+        """Send the 2-day follow-up email to non-student users"""
+        try:
+            # Get base URL
+            base_url = getattr(settings, 'BASE_URL', 'https://www.meettoad.co.uk')
+            
+            # Render the email template
+            html_message = render_to_string('accounts/email/follow_up/2_day_follow_up_email.html', {
+                'user': user,
+                'base_url': base_url
+            })
+            
+            # Get personal email settings
+            personal_email_host = os.environ.get('PERSONAL_EMAIL_HOST', settings.EMAIL_HOST)
+            personal_email_port = int(os.environ.get('PERSONAL_EMAIL_PORT', settings.EMAIL_PORT))
+            personal_email_user = os.environ.get('PERSONAL_EMAIL_HOST_USER', settings.EMAIL_HOST_USER)
+            personal_email_password = os.environ.get('PERSONAL_EMAIL_HOST_PASSWORD', settings.EMAIL_HOST_PASSWORD)
+            
+            # Create email message with personal email settings
+            email = EmailMessage(
+                subject='Getting the Most Out of Toad?',
+                body=html_message,
+                from_email=personal_email_user,
+                to=[user.email],
+                connection=None  # We'll create a custom connection
+            )
+            email.content_subtype = "html"
+            
+            # Create connection with personal email settings
+            from django.core.mail import get_connection
+            connection = get_connection(
+                host=personal_email_host,
+                port=personal_email_port,
+                username=personal_email_user,
+                password=personal_email_password,
+                use_tls=True
+            )
+            
+            # Send email using personal connection
+            email.connection = connection
+            email.send()
+            
+            logger.info(f'2-day follow-up email sent to {user.email}')
+            return True
+            
+        except Exception as e:
+            logger.error(f'Failed to send 2-day follow-up email to {user.email}: {e}')
             return False
 
     def send_test_email(self, test_email, dry_run):

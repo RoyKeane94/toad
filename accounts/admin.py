@@ -5,8 +5,8 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'first_name', 'last_name', 'tier', 'associated_university', 'trial_status', 'second_email_sent', 'email_subscribed', 'email_verified', 'is_active', 'date_joined')
-    list_filter = ('email_subscribed', 'email_verified', 'tier', 'associated_university', 'second_email_sent', 'is_active', 'is_staff', 'is_superuser', 'date_joined')
+    list_display = ('email', 'first_name', 'last_name', 'tier', 'associated_university', 'trial_status', 'email_subscribed', 'email_verified', 'is_active', 'date_joined')
+    list_filter = ('email_subscribed', 'email_verified', 'tier', 'associated_university', 'is_active', 'is_staff', 'is_superuser', 'date_joined')
     search_fields = ('email', 'first_name', 'last_name', 'associated_university__name')
     ordering = ('-date_joined',)
     readonly_fields = ('date_joined', 'last_login', 'trial_status')
@@ -16,7 +16,7 @@ class UserAdmin(admin.ModelAdmin):
             'fields': ('email', 'first_name', 'last_name', 'password')
         }),
                 ('Account Status', {
-                    'fields': ('tier', 'email_verified', 'email_subscribed', 'second_email_sent', 'is_active', 'account_locked_until')
+                    'fields': ('tier', 'email_verified', 'email_subscribed', 'is_active', 'account_locked_until')
                 }),
         ('University & Society', {
             'fields': ('associated_university', 'associated_society'),
