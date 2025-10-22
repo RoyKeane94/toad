@@ -196,6 +196,47 @@
         border-color: var(--tertiary-action-bg) !important;
     }
     
+    /* Template name inline editing styles */
+    .template-name-editable {
+        cursor: text;
+        transition: all 0.2s ease-out;
+        border-radius: 6px;
+        padding: 4px 8px;
+        margin: -4px -8px;
+        min-height: 24px;
+        border: 2px solid transparent;
+    }
+    
+    .template-name-editable:hover {
+        background-color: var(--grid-header-bg);
+    }
+    
+    .template-name-editable.editing {
+        background-color: var(--container-bg) !important;
+        border: 2px dashed var(--tertiary-action-bg) !important;
+        border-radius: 6px !important;
+        padding: 4px 8px !important;
+        outline: none !important;
+        min-height: 24px !important;
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1) !important;
+        position: relative !important;
+    }
+    
+    .template-name-editable.editing:focus {
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
+        border-color: var(--tertiary-action-bg) !important;
+    }
+    
+    /* Adjust delete button position when editing template name */
+    .template-name-editable.editing + .flex-shrink-0 {
+        margin-left: 8px;
+    }
+    
+    /* Show delete button on hover for template cards */
+    .template-card:hover .delete-btn {
+        opacity: 1;
+    }
+    
     /* Consistent button styling */
     .action-button {
         width: 180px;
@@ -215,6 +256,17 @@
     
     .action-button:hover {
         box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+    
+    /* Team member avatar styling */
+    .team-member-avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background-color: var(--avatar-color);
+        color: white;
+        font-weight: 600;
+        font-size: 10px;
     }
     
     /* Mobile buttons - hide on larger screens */
@@ -358,8 +410,8 @@
                                 <div class="mb-4">
                                     <div class="flex items-center space-x-1">
                                         {% for team_member in project.team_toad_user.all %}
-                                        <div class="flex items-center justify-center" 
-                                             style="width: 28px; height: 28px; border-radius: 50%; background-color: {{ team_member.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px;"
+                                        <div class="flex items-center justify-center team-member-avatar" 
+                                             style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
                                              title="{{ team_member.get_full_name }}">
                                             {{ team_member.get_full_name|get_initials }}
                                         </div>
@@ -442,8 +494,8 @@
                                 <div class="mb-4">
                                     <div class="flex items-center space-x-1">
                                         {% for team_member in project.team_toad_user.all %}
-                                        <div class="flex items-center justify-center" 
-                                             style="width: 28px; height: 28px; border-radius: 50%; background-color: {{ team_member.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px;"
+                                        <div class="flex items-center justify-center team-member-avatar" 
+                                             style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
                                              title="{{ team_member.get_full_name }}">
                                             {{ team_member.get_full_name|get_initials }}
                                         </div>
@@ -471,30 +523,20 @@
             <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">My Templates</h2>
             {% if personal_templates %}
                 <p class="text-[var(--subtitle-text)] text-lg mb-8">Stop reinventing the wheel. Save any grid as a template and turn your best work into your new starting point</p>
-                <div class="flex flex-wrap justify-center gap-6">
+                <div class="flex flex-wrap justify-start gap-6">
                     {% for template in personal_templates %}
-                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200">
+                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 template-card">
                             <div class="p-6">
                                 <div class="flex items-start justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2">
+                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2 template-name-editable text-left" 
+                                        data-template-id="{{ template.pk }}" 
+                                        data-original-text="{{ template.name }}"
+                                        title="Click to edit template name">
                                         {{ template.name }}
                                     </h3>
                                     <div class="flex space-x-2 flex-shrink-0">
                                         <button type="button"
-                                                class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
-                                                title="Edit template"
-                                                hx-get="{% url 'pages:template_edit' pk=template.pk %}"
-                                                hx-target="#modal-content"
-                                                hx-trigger="click throttle:500ms"
-                                                hx-disabled-elt="this"
-                                                hx-indicator="#modal-content"
-                                                hx-swap="innerHTML"
-                                                hx-headers='{"Cache-Control": "no-cache"}'
-                                                onclick="openModal();">
-                                            <i class="fas fa-edit text-sm"></i>
-                                        </button>
-                                        <button type="button"
-                                                class="text-[var(--text-secondary)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer"
+                                                class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer delete-btn"
                                                 title="Delete template"
                                                 hx-get="{% url 'pages:template_delete' pk=template.pk %}"
                                                 hx-target="#modal-content"
@@ -513,10 +555,6 @@
                                     <div class="flex items-center">
                                         <i class="fas fa-calendar-alt mr-2 text-xs"></i>
                                         <span>Created {{ template.created_at|date:"d M Y" }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-th-large mr-2 text-xs"></i>
-                                        <span>{{ template.row_headers.count }} rows, {{ template.column_headers.count }} columns</span>
                                     </div>
                                 </div>
                                 
@@ -600,8 +638,8 @@
                                 <div class="mb-4">
                                     <div class="flex items-center space-x-1">
                                         {% for team_member in project.team_toad_user.all %}
-                                        <div class="flex items-center justify-center" 
-                                             style="width: 28px; height: 28px; border-radius: 50%; background-color: {{ team_member.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px;"
+                                        <div class="flex items-center justify-center team-member-avatar" 
+                                             style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
                                              title="{{ team_member.get_full_name }}">
                                             {{ team_member.get_full_name|get_initials }}
                                         </div>
@@ -749,6 +787,9 @@ class ProjectListManager {
         this.boundGroupNameClick = this.handleGroupNameClick.bind(this);
         this.boundGroupNameBlur = this.handleGroupNameBlur.bind(this);
         this.boundGroupNameKeydown = this.handleGroupNameKeydown.bind(this);
+        this.boundTemplateNameClick = this.handleTemplateNameClick.bind(this);
+        this.boundTemplateNameBlur = this.handleTemplateNameBlur.bind(this);
+        this.boundTemplateNameKeydown = this.handleTemplateNameKeydown.bind(this);
         
         this.init();
     }
@@ -757,6 +798,7 @@ class ProjectListManager {
         this.setupDragAndDrop();
         this.setupResponsiveLayout();
         this.setupInlineEditing();
+        this.setupTemplateEditing();
     }
 
     setupDragAndDrop() {
@@ -1151,6 +1193,9 @@ class ProjectListManager {
             if (e.detail.target && e.detail.target.closest('.project-group')) {
                 this.addGroupNameEditingListeners();
             }
+            if (e.detail.target && e.detail.target.closest('.template-card')) {
+                this.addTemplateEditingListeners();
+            }
         });
     }
 
@@ -1184,6 +1229,228 @@ class ProjectListManager {
             element.addEventListener('blur', this.boundGroupNameBlur);
             element.addEventListener('keydown', this.boundGroupNameKeydown);
         });
+    }
+
+    setupTemplateEditing() {
+        // Add event listeners to all template name elements
+        this.addTemplateEditingListeners();
+    }
+
+    addTemplateEditingListeners() {
+        const templateNameElements = document.querySelectorAll('.template-name-editable');
+        
+        templateNameElements.forEach(element => {
+            // Remove existing listeners to prevent duplicates
+            element.removeEventListener('click', this.boundTemplateNameClick);
+            element.removeEventListener('blur', this.boundTemplateNameBlur);
+            element.removeEventListener('keydown', this.boundTemplateNameKeydown);
+            
+            // Add new listeners
+            element.addEventListener('click', this.boundTemplateNameClick);
+            element.addEventListener('blur', this.boundTemplateNameBlur);
+            element.addEventListener('keydown', this.boundTemplateNameKeydown);
+        });
+    }
+
+    // Handle template name click for inline editing
+    handleTemplateNameClick(e) {
+        const element = e.target;
+        
+        // If this element is already being edited, don't do anything
+        if (element.classList.contains('editing')) {
+            return;
+        }
+        
+        // Close any other currently editing template names first
+        this.closeAllEditingTemplateNames();
+        
+        // Now open this template name for editing
+        element.contentEditable = true;
+        element.focus();
+        element.classList.add('editing');
+        
+        // Store original text if not already stored
+        if (!element.getAttribute('data-original-text')) {
+            element.setAttribute('data-original-text', element.textContent);
+        }
+        
+        // Adjust spacing for delete button when editing
+        this.adjustTemplateDeleteButtonSpacing(element, true);
+        
+        // Add a one-time click handler to close this template name when clicking elsewhere
+        setTimeout(() => {
+            document.addEventListener('click', this.handleOutsideTemplateNameClick.bind(this, element), { once: true });
+        }, 0);
+    }
+
+    // Handle template name blur (save on blur)
+    handleTemplateNameBlur(e) {
+        const element = e.target;
+        
+        // Use a small timeout to ensure the blur event is fully processed
+        setTimeout(() => {
+            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+                element.classList.add('saving'); // Prevent double saves
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                
+                // Reset spacing for delete button when editing ends
+                this.adjustTemplateDeleteButtonSpacing(element, false);
+                
+                this.saveTemplateNameEdit(element);
+            }
+        }, 10);
+    }
+
+    // Handle template name keydown (Enter to save, Escape to cancel)
+    handleTemplateNameKeydown(e) {
+        const element = e.target;
+        
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            e.stopPropagation();
+            // Force save and exit edit mode
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            
+            // Reset spacing for delete button when editing ends
+            this.adjustTemplateDeleteButtonSpacing(element, false);
+            
+            this.saveTemplateNameEdit(element);
+        } else if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            element.contentEditable = false;
+            element.classList.remove('editing');
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            element.textContent = originalText;
+            
+            // Reset spacing for delete button when editing ends
+            this.adjustTemplateDeleteButtonSpacing(element, false);
+        }
+    }
+
+    // Handle clicking outside of a specific editing template name
+    handleOutsideTemplateNameClick(editingElement, e) {
+        // If the click is not on the editing element or its children, close it
+        if (!editingElement.contains(e.target)) {
+            this.closeEditingTemplateName(editingElement);
+        }
+    }
+
+    // Close a specific editing template name
+    closeEditingTemplateName(element) {
+        if (!element.classList.contains('editing')) return;
+        
+        // If the element has changes, save them
+        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+            const originalText = element.getAttribute('data-original-text') || element.textContent;
+            const currentText = element.textContent.trim();
+            
+            if (currentText !== originalText && currentText !== '') {
+                // Save the changes
+                element.classList.add('saving');
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                
+                // Reset spacing for delete button when editing ends
+                this.adjustTemplateDeleteButtonSpacing(element, false);
+                
+                this.saveTemplateNameEdit(element);
+            } else {
+                // No changes, just close editing
+                element.contentEditable = false;
+                element.classList.remove('editing');
+                element.classList.remove('saving');
+                
+                // Reset spacing for delete button when editing ends
+                this.adjustTemplateDeleteButtonSpacing(element, false);
+            }
+        }
+    }
+
+    // Close all currently editing template names
+    closeAllEditingTemplateNames() {
+        const editingElements = document.querySelectorAll('.template-name-editable.editing');
+        editingElements.forEach(element => {
+            this.closeEditingTemplateName(element);
+        });
+    }
+
+    // Save template name edit to server
+    saveTemplateNameEdit(element) {
+        const templateId = element.dataset.templateId;
+        const newText = element.textContent.trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        
+        // Check if we have a valid template ID
+        if (!templateId) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Don't save if text is empty
+        if (!newText) {
+            element.textContent = originalText;
+            element.classList.remove('saving');
+            return;
+        }
+        
+        // Store original text for comparison
+        element.setAttribute('data-original-text', originalText);
+        
+        // Send update to server using the correct URL pattern
+        fetch(`/templates/${templateId}/edit/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': this.getCSRFToken()
+            },
+            body: JSON.stringify({
+                template_name: newText
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Update was successful
+                element.setAttribute('data-original-text', newText);
+            } else {
+                // Revert on error
+                element.textContent = originalText;
+            }
+            element.classList.remove('saving');
+        })
+        .catch(error => {
+            // Revert on error
+            element.textContent = originalText;
+            element.classList.remove('saving');
+        });
+    }
+
+    // Adjust delete button spacing when editing template names
+    adjustTemplateDeleteButtonSpacing(element, isEditing) {
+        // Find the template card container
+        const templateCard = element.closest('.template-card');
+        if (!templateCard) return;
+        
+        // Find the delete button container (the flex-shrink-0 div)
+        const deleteButtonContainer = templateCard.querySelector('.flex.items-start.justify-between .flex-shrink-0');
+        if (!deleteButtonContainer) return;
+        
+        if (isEditing) {
+            // Add more spacing when editing
+            deleteButtonContainer.style.marginLeft = '12px';
+        } else {
+            // Reset spacing when not editing
+            deleteButtonContainer.style.marginLeft = '';
+        }
     }
 
     // Handle grid name click for inline editing

@@ -1545,6 +1545,42 @@ def template_edit_view(request, pk):
         return redirect('pages:project_list')
     
     if request.method == 'POST':
+        # Check if this is a JSON request for inline editing
+        if request.headers.get('Content-Type') == 'application/json':
+            try:
+                data = json.loads(request.body)
+                template_name = data.get('template_name', '').strip()
+                
+                if not template_name:
+                    return JsonResponse({
+                        'success': False,
+                        'error': 'Template name cannot be empty'
+                    })
+                
+                # Update the template name
+                template.name = template_name
+                template.save()
+                
+                log_user_action(request.user, f'edited template: {template_name}', template.name)
+                
+                return JsonResponse({
+                    'success': True,
+                    'message': 'Template name updated successfully',
+                    'new_name': template_name
+                })
+                
+            except json.JSONDecodeError:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Invalid JSON data'
+                })
+            except Exception as e:
+                return JsonResponse({
+                    'success': False,
+                    'error': str(e)
+                })
+        
+        # Regular form submission
         template_name = request.POST.get('template_name', '').strip()
         if not template_name:
             messages.error(request, 'Template name is required.')

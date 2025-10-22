@@ -32985,3 +32985,62 @@ INFO 2025-10-22 19:18:09,424 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7301
 INFO 2025-10-22 19:19:00,232 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7240
 INFO 2025-10-22 19:19:14,960 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7285
 INFO 2025-10-22 19:19:23,423 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7325
+INFO 2025-10-22 19:23:07,615 autoreload 81454 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-22 19:23:09,544 basehttp 81454 6136147968 "GET / HTTP/1.1" 200 7318
+INFO 2025-10-22 19:23:12,632 basehttp 81454 6136147968 "GET /accounts/login/ HTTP/1.1" 200 3756
+INFO 2025-10-22 19:23:20,649 basehttp 81454 6136147968 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-10-22 19:23:20,661 basehttp 81454 6136147968 "GET /grids/ HTTP/1.1" 200 12554
+INFO 2025-10-22 19:23:22,631 basehttp 81454 6136147968 "GET /grids/247/ HTTP/1.1" 200 23039
+INFO 2025-10-22 19:23:22,645 basehttp 81454 6152974336 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 10157
+INFO 2025-10-22 19:23:22,645 basehttp 81454 6136147968 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 56510
+INFO 2025-10-22 19:23:24,927 basehttp 81454 6136147968 "GET /grids/ HTTP/1.1" 200 12638
+INFO 2025-10-22 19:23:26,833 basehttp 81454 6136147968 "GET /grids/249/ HTTP/1.1" 200 19927
+INFO 2025-10-22 19:23:26,844 basehttp 81454 6136147968 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-22 19:23:33,796 project_views_functions 81454 6136147968 User None saved project as template: Test: Q4 Marketing
+INFO 2025-10-22 19:23:33,798 basehttp 81454 6136147968 "POST /grids/249/save-template/ HTTP/1.1" 302 0
+INFO 2025-10-22 19:23:33,816 basehttp 81454 6136147968 "GET /grids/ HTTP/1.1" 200 12918
+WARNING 2025-10-22 19:23:39,890 log 81454 6136147968 Not Found: /grids/template/5/edit/
+WARNING 2025-10-22 19:23:39,890 basehttp 81454 6136147968 "POST /grids/template/5/edit/ HTTP/1.1" 404 2263
+WARNING 2025-10-22 19:23:42,873 log 81454 6136147968 Not Found: /grids/template/5/edit/
+WARNING 2025-10-22 19:23:42,874 basehttp 81454 6136147968 "POST /grids/template/5/edit/ HTTP/1.1" 404 2310
+WARNING 2025-10-22 19:23:59,190 log 81454 6136147968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-22 19:23:59,190 basehttp 81454 6136147968 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2252
+WARNING 2025-10-22 19:24:10,250 log 81454 6136147968 Not Found: /grids/template/5/edit/
+WARNING 2025-10-22 19:24:10,251 basehttp 81454 6136147968 "POST /grids/template/5/edit/ HTTP/1.1" 404 2228
+INFO 2025-10-22 19:28:29,772 basehttp 81454 6136147968 "GET /grids/ HTTP/1.1" 200 12959
+WARNING 2025-10-22 19:28:29,807 log 81454 6136147968 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-10-22 19:28:29,807 basehttp 81454 6136147968 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2251
+WARNING 2025-10-22 19:28:36,237 log 81454 6136147968 Not Found: /pages/template/5/edit/
+WARNING 2025-10-22 19:28:36,238 basehttp 81454 6136147968 "POST /pages/template/5/edit/ HTTP/1.1" 404 2231
+INFO 2025-10-22 19:28:44,539 basehttp 81454 6136147968 "GET /grids/ HTTP/1.1" 200 12972
+INFO 2025-10-22 19:29:09,847 basehttp 81454 6136147968 "GET /grids/ HTTP/1.1" 200 12497
+INFO 2025-10-22 19:31:57,817 autoreload 81454 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-22 19:31:58,353 autoreload 81618 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-22 19:32:10,113 autoreload 81618 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-22 19:32:10,744 autoreload 81636 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-22 19:32:43,072 basehttp 81636 6133673984 "GET / HTTP/1.1" 200 7509
+INFO 2025-10-22 19:32:44,519 basehttp 81636 6133673984 "GET /grids/ HTTP/1.1" 200 13024
+INFO 2025-10-22 19:32:49,131 project_views_functions 81636 6133673984 User None edited template: Tet: Tet
+INFO 2025-10-22 19:32:49,132 basehttp 81636 6133673984 "POST /templates/5/edit/ HTTP/1.1" 200 85
+INFO 2025-10-22 19:32:54,967 project_views_functions 81636 6133673984 User None edited template: Test: Test
+INFO 2025-10-22 19:32:54,968 basehttp 81636 6133673984 "POST /templates/5/edit/ HTTP/1.1" 200 86
+INFO 2025-10-22 19:33:05,443 basehttp 81636 6133673984 "GET /templates/5/delete/ HTTP/1.1" 200 1083
+INFO 2025-10-22 19:33:06,335 project_views_functions 81636 6133673984 User None deleted template: Test: N/A
+INFO 2025-10-22 19:33:06,338 basehttp 81636 6133673984 "POST /templates/5/delete/ HTTP/1.1" 302 0
+INFO 2025-10-22 19:33:06,356 basehttp 81636 6133673984 "GET /grids/ HTTP/1.1" 200 12626
+INFO 2025-10-22 19:33:09,579 basehttp 81636 6133673984 "GET /grids/248/ HTTP/1.1" 200 19938
+INFO 2025-10-22 19:33:09,591 basehttp 81636 6133673984 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-22 19:33:14,692 project_views_functions 81636 6133673984 User None saved project as template: Add: Fitness
+INFO 2025-10-22 19:33:14,692 basehttp 81636 6133673984 "POST /grids/248/save-template/ HTTP/1.1" 302 0
+INFO 2025-10-22 19:33:14,706 basehttp 81636 6133673984 "GET /grids/ HTTP/1.1" 200 12967
+INFO 2025-10-22 19:34:04,912 basehttp 81636 6133673984 "GET /grids/ HTTP/1.1" 200 13030
+INFO 2025-10-22 19:35:24,042 basehttp 81636 6133673984 "GET /grids/ HTTP/1.1" 200 12965
+INFO 2025-10-22 19:35:51,147 basehttp 81636 6133673984 "GET /grids/ HTTP/1.1" 200 13021
+INFO 2025-10-22 19:35:57,825 project_views_functions 81636 6133673984 User None edited template: Ad: Ad
+INFO 2025-10-22 19:35:57,826 basehttp 81636 6133673984 "POST /templates/6/edit/ HTTP/1.1" 200 84
+INFO 2025-10-22 19:35:59,554 project_views_functions 81636 6133673984 User None edited template: Add: Add
+INFO 2025-10-22 19:35:59,554 basehttp 81636 6133673984 "POST /templates/6/edit/ HTTP/1.1" 200 85
+INFO 2025-10-22 19:36:39,844 basehttp 81636 6133673984 "GET /grids/245/ HTTP/1.1" 200 20558
+INFO 2025-10-22 19:36:39,855 basehttp 81636 6133673984 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-10-22 19:36:46,662 project_views_functions 81636 6133673984 User None assigned task: ""Low hanging fruit to crack on with today" to Toad Toad" from project: Solo Toad
+INFO 2025-10-22 19:36:46,663 basehttp 81636 6133673984 "POST /tasks/2522/assign/ HTTP/1.1" 200 123
