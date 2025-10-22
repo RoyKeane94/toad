@@ -32962,3 +32962,26 @@ INFO 2025-10-21 20:52:28,086 basehttp 75828 6126202880 "GET /lilypad/sheffield/t
 INFO 2025-10-21 20:52:34,870 basehttp 75828 6126202880 "GET /accounts/register/trial/?society=Test&university=Sheffield&email=Test%40sexy.com HTTP/1.1" 200 4416
 INFO 2025-10-21 20:54:24,159 basehttp 75828 6126202880 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5475
 INFO 2025-10-21 20:54:30,166 basehttp 75828 6126202880 "GET /accounts/register/trial/?society=Test&university=Sheffield&email=test%40sexy.com HTTP/1.1" 200 4492
+INFO 2025-10-22 19:14:42,320 autoreload 80728 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-22 19:14:43,591 basehttp 80728 6195195904 "GET / HTTP/1.1" 200 7273
+INFO 2025-10-22 19:14:43,603 basehttp 80728 6195195904 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-10-22 19:14:43,606 basehttp 80728 6212022272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-10-22 19:14:43,608 basehttp 80728 6195195904 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-10-22 19:14:43,608 basehttp 80728 6228848640 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-10-22 19:14:43,617 basehttp 80728 6195195904 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 304 0
+INFO 2025-10-22 19:14:43,691 basehttp 80728 6195195904 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-22 19:14:49,577 basehttp 80728 6195195904 "GET / HTTP/1.1" 200 7261
+INFO 2025-10-22 19:15:00,206 basehttp 80728 6195195904 "GET / HTTP/1.1" 200 7230
+INFO 2025-10-22 19:15:00,230 basehttp 80728 6212022272 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-10-22 19:15:00,231 basehttp 80728 6195195904 "GET /static/css/output.css HTTP/1.1" 200 92889
+INFO 2025-10-22 19:15:00,232 basehttp 80728 6228848640 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 46997
+INFO 2025-10-22 19:15:00,233 basehttp 80728 6245675008 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-10-22 19:15:00,371 basehttp 80728 6245675008 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-10-22 19:16:47,711 basehttp 80728 6245675008 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-10-22 19:16:48,687 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7350
+INFO 2025-10-22 19:16:57,009 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7298
+INFO 2025-10-22 19:17:45,626 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7303
+INFO 2025-10-22 19:18:09,424 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7301
+INFO 2025-10-22 19:19:00,232 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7240
+INFO 2025-10-22 19:19:14,960 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7285
+INFO 2025-10-22 19:19:23,423 basehttp 80728 6245675008 "GET / HTTP/1.1" 200 7325
