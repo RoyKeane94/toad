@@ -575,8 +575,12 @@ def verify_email_view(request, token):
         try:
             import threading
             from django.conf import settings
+            from django.urls import reverse
+            
+            # Use reverse to get the correct URL path
+            project_list_path = reverse('pages:project_list')
             base_url = getattr(settings, 'SITE_URL', '').rstrip('/')
-            cta_url = f"{base_url}/pages/projects/" if base_url else None
+            cta_url = f"{base_url}{project_list_path}" if base_url else None
             threading.Thread(target=lambda: send_joining_email(user, request, cta_url)).start()
         except Exception as e:
             logger.error(f"Failed to queue joining email for {user.email}: {e}")

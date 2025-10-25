@@ -142,8 +142,10 @@ def stripe_success_view(request):
             def send_email_async():
                 try:
                     # Build CTA URL for their first grid
+                    from django.urls import reverse
+                    project_list_path = reverse('pages:project_list')
                     base_url = getattr(settings, 'SITE_URL', '').rstrip('/')
-                    cta_url = f"{base_url}/pages/projects/" if base_url else None
+                    cta_url = f"{base_url}{project_list_path}" if base_url else None
                     
                     email_sent = send_joining_email(request.user, request, cta_url)
                     logger.info(f"Joining email sent after payment: {email_sent} for {request.user.email}")

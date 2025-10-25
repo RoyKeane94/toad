@@ -184,8 +184,10 @@ def send_joining_email(user, request=None, cta_url=None):
     # Build a default CTA if not provided
     if not cta_url:
         # Try to send them to their first project or project list
+        from django.urls import reverse
+        project_list_path = reverse('pages:project_list')
         base_url = settings.SITE_URL.rstrip('/')
-        cta_url = f"{base_url}/projects/"  # generic fallback
+        cta_url = f"{base_url}{project_list_path}"  # generic fallback
 
     # Read and encode the image
     image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
@@ -655,8 +657,10 @@ def _send_test_joining_email(user, recipient_email):
     logger = logging.getLogger(__name__)
     
     # Build a default CTA
+    from django.urls import reverse
+    project_list_path = reverse('pages:project_list')
     base_url = settings.SITE_URL.rstrip('/')
-    cta_url = f"{base_url}/projects/"
+    cta_url = f"{base_url}{project_list_path}"
     
     # Read and encode the image
     image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
