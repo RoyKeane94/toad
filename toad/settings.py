@@ -315,7 +315,12 @@ else:
         DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL', 'accounts@meettoad.co.uk')
 
 # Site URL for email links
-SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')
+if IS_PRODUCTION:
+    # In production, use the production domain unless SITE_URL is explicitly set
+    SITE_URL = os.environ.get('SITE_URL', 'https://www.meettoad.co.uk')
+else:
+    # In development, use localhost
+    SITE_URL = os.environ.get('SITE_URL', 'http://localhost:8000')
 
 # Test email sender (optional - falls back to DEFAULT_FROM_EMAIL)
 TEST_EMAIL_FROM = os.environ.get('TEST_EMAIL_FROM', DEFAULT_FROM_EMAIL)
