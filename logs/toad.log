@@ -33245,3 +33245,35 @@ INFO 2025-10-25 13:20:02,000 autoreload 7391 8398642944 /Users/tombarratt/Deskto
 INFO 2025-10-25 13:20:02,479 autoreload 7400 8398642944 Watching for file changes with StatReloader
 INFO 2025-10-25 13:22:25,292 autoreload 7400 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
 INFO 2025-10-25 13:22:25,829 autoreload 7548 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:47:26,614 autoreload 8250 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:47:28,141 basehttp 8250 6194737152 "GET / HTTP/1.1" 200 7482
+INFO 2025-10-25 13:47:30,945 basehttp 8250 6194737152 "GET /grids/ HTTP/1.1" 200 13056
+INFO 2025-10-25 13:47:32,221 basehttp 8250 6194737152 "GET /grids/247/ HTTP/1.1" 200 23006
+INFO 2025-10-25 13:47:32,234 basehttp 8250 6211563520 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-10-25 13:47:32,237 basehttp 8250 6194737152 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 56755
+INFO 2025-10-25 13:47:34,717 basehttp 8250 6194737152 "GET /accounts/settings/ HTTP/1.1" 200 3689
+ERROR 2025-10-25 13:47:43,949 project_views 8250 6194737152 Error creating task reminder for task 2543: (550, b"5.2.254 InvalidRecipientsException; Sender throttled due to continuous invalid recipients errors.; STOREDRV.Submission.Exception:InvalidRecipientsException; Failed to process message due to a permanent exception with message [BeginDiagnosticData]A message can't be sent because it contains no recipients. InvalidRecipientsException: A message can't be sent because it contains no recipients.[EndDiagnosticData] [Hostname=LOBP302MB2222.GBRP302.PROD.OUTLOOK.COM]")
+ERROR 2025-10-25 13:47:43,951 log 8250 6194737152 Internal Server Error: /tasks/2543/reminder/
+ERROR 2025-10-25 13:47:43,952 basehttp 8250 6194737152 "POST /tasks/2543/reminder/ HTTP/1.1" 500 56
+INFO 2025-10-25 13:48:17,690 autoreload 8250 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:48:18,197 autoreload 8316 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:48:26,855 autoreload 8316 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:48:27,210 autoreload 8328 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:48:33,828 autoreload 8328 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:48:34,188 autoreload 8336 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:48:46,833 autoreload 8336 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:48:47,271 autoreload 8351 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:50:08,414 basehttp 8351 6131544064 "GET /grids/247/ HTTP/1.1" 200 23060
+ERROR 2025-10-25 13:50:11,135 project_views 8351 6131544064 Error creating task reminder for task 2528: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2025-10-25 13:50:11,136 log 8351 6131544064 Internal Server Error: /tasks/2528/reminder/
+ERROR 2025-10-25 13:50:11,136 basehttp 8351 6131544064 "POST /tasks/2528/reminder/ HTTP/1.1" 500 56
+INFO 2025-10-25 13:50:26,351 autoreload 8351 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:50:26,814 autoreload 8383 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:50:33,419 autoreload 8383 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:50:33,787 autoreload 8395 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:50:41,396 autoreload 8395 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:50:41,806 autoreload 8405 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:50:47,337 autoreload 8405 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-10-25 13:50:47,695 autoreload 8415 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:50:57,613 basehttp 8415 6165213184 "GET /grids/247/ HTTP/1.1" 200 23067
+INFO 2025-10-25 13:51:05,664 basehttp 8415 6165213184 "POST /tasks/2553/reminder/ HTTP/1.1" 200 82

@@ -683,8 +683,11 @@ def create_task_reminder(request, task_pk):
                 if reminder_date_obj < date.today():
                     return JsonResponse({'success': False, 'error': 'Reminder date cannot be in the past'}, status=400)
                 
-                # Save reminder date to task model
-                task.reminder = datetime.combine(reminder_date_obj, datetime.min.time())
+                # Save reminder date to task model (use timezone-aware datetime)
+                from django.utils import timezone as tz
+                # Combine date with min time and make it timezone-aware
+                reminder_datetime = tz.make_aware(datetime.combine(reminder_date_obj, datetime.min.time()))
+                task.reminder = reminder_datetime
                 task.save(update_fields=['reminder'])
                     
             except ValueError:
@@ -717,6 +720,12 @@ def create_task_reminder(request, task_pk):
             event.add('dtend', end_date)
             event['dtend'].params['VALUE'] = 'DATE'
             
+            # Set creation timestamp (use timezone-aware datetime)
+            from django.utils import timezone
+            # Get current time in UTC (timezone.now() returns timezone-aware datetime)
+            dtstamp = timezone.now()
+            event.add('dtstamp', dtstamp)
+            
             event.add('summary', f'Task Reminder: {task.text}')
             
             # Build description
@@ -730,48 +739,89 @@ def create_task_reminder(request, task_pk):
             event.add('description', '\n\n'.join(description_parts))
             event.add('categories', 'TASK_REMINDER')
             event.add('status', 'CONFIRMED')
+            event.add('sequence', 0)  # Required for proper Outlook handling
             event.add('transp', 'TRANSPARENT')  # Don't block time
             
-            # Add organizer
-            event.add('organizer', f'MAILTO:{request.user.email}')
-            event.add('attendee', f'MAILTO:{request.user.email}')
+            # Add organizer (required for Outlook to show Accept/Decline buttons)
+            from django.utils.encoding import force_str
+            event.add('organizer', f'MAILTO:{request.user.email}', parameters={'CN': force_str(request.user.get_full_name() or request.user.email)})
+            
+            # Add attendee with RSVP
+            event.add('attendee', f'MAILTO:{request.user.email}', parameters={
+                'CN': force_str(request.user.get_full_name() or request.user.email),
+                'RSVP': 'FALSE',  # Set to FALSE so no response is expected
+                'ROLE': 'REQ-PARTICIPANT',
+                'PARTSTAT': 'ACCEPTED'
+            })
             
             cal.add_component(event)
             
             # Generate ICS content
             ics_content = cal.to_ical()
             
-            # Send email with ICS attachment
+            # Send email with ICS attachment as Outlook invite
             subject = f'Task Reminder: {task.text}'
             
             # Format the date nicely
             formatted_date = reminder_date_obj.strftime('%B %d, %Y')
             
-            message_body = f"""Hi {request.user.first_name},
-
-You've set a reminder for your task: "{task.text}"
-
-Grid: {task.project.name}
-Reminder Date: {formatted_date}"""
+            # Create HTML message
+            html_message = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; }}
+        .container {{ max-width: 600px; margin: 0 auto; padding: 20px; }}
+        .task-info {{ background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0; }}
+        .task-info strong {{ color: #2563eb; }}
+        .note {{ background: #fef3c7; padding: 10px; border-left: 3px solid #f59e0b; margin: 15px 0; }}
+        .footer {{ margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 14px; }}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>Hi {request.user.first_name},</p>
+        
+        <p>You've set a reminder for your task:</p>
+        
+        <div class="task-info">
+            <strong>Task:</strong> {task.text}<br>
+            <strong>Grid:</strong> {task.project.name}<br>
+            <strong>Reminder Date:</strong> {formatted_date}
+        </div>"""
             
             if reminder_note:
-                message_body += f"\nNote: {reminder_note}"
+                html_message += f"""
+        <div class="note">
+            <strong>Note:</strong> {reminder_note}
+        </div>"""
             
-            message_body += """
-
-The calendar invitation is attached to this email. Simply open the attachment to add this reminder to your calendar.
-
-Best regards,
-The Toad Team"""
+            html_message += """
+        <p>This email contains a calendar invitation. Click <strong>"Accept"</strong> or <strong>"Add to Calendar"</strong> to add this reminder to your calendar.</p>
+        
+        <div class="footer">
+            Best regards,<br>
+            The Toad Team
+        </div>
+    </div>
+</body>
+</html>"""
+            
+            # Validate email address
+            if not request.user.email:
+                return JsonResponse({'success': False, 'error': 'User email address is required'}, status=400)
             
             email = EmailMessage(
                 subject=subject,
-                body=message_body,
+                body=html_message,
                 from_email=settings.DEFAULT_FROM_EMAIL,
                 to=[request.user.email],
             )
+            email.content_subtype = "html"
             
-            # Attach ICS file (already generated above)
+            # Attach ICS file with proper content type for Outlook invites
+            # Note: Some email clients prefer this without the method=REQUEST in the content type
             email.attach('task_reminder.ics', ics_content, 'text/calendar')
             email.send()
             
