@@ -151,34 +151,22 @@
 
     <!-- Student Video Section -->
     <section class="mt-12 sm:mt-16">
-        <h3 class="text-2xl sm:text-4xl font-bold px-2 mb-6" style="color: var(--tertiary-action-bg);">Click play to see how Students are using Toad to organise their studies right now</h3>
+        <h3 class="text-2xl sm:text-4xl font-bold px-2 mb-6" style="color: var(--tertiary-action-bg);">See how Students are using Toad to organise their studies right now</h3>
         
         <!-- Video Container -->
         <div class="mt-6 sm:mt-8 max-w-4xl mx-auto px-1 sm:px-0">
-            <!-- Play Button (Initial State) -->
-            <div id="video-thumbnail" class="flex justify-center" onclick="expandVideo()">
-                <div class="bg-white rounded-full p-4 sm:p-5 shadow-lg cursor-pointer group hover:shadow-xl transform hover:scale-110 transition-all duration-300">
-                    <svg class="w-8 h-8 sm:w-10 sm:h-10 text-[var(--primary-action-bg)] ml-1" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M8 5v14l11-7z"/>
-                    </svg>
-                </div>
-            </div>
-            
-            <!-- Full Screen Video Modal (Hidden Initially) -->
-            <div id="video-modal" class="hidden fixed inset-0 bg-black bg-opacity-90 z-50 p-4" onclick="closeVideo()">
-                <div class="relative w-full h-full max-w-6xl max-h-full">
-                    <video id="student-video" class="w-full h-full object-contain" preload="none" onclick="event.stopPropagation()">
-                        <source src="{% static 'video/Student - Video Highlights.mp4' %}" type="video/mp4">
-                    </video>
-                    
-                    <!-- Close Button -->
-                    <button onclick="closeVideo()" class="absolute top-4 right-4 bg-black bg-opacity-50 text-white rounded-full p-2 hover:bg-opacity-75 transition-all duration-300">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+            <video 
+                id="student-video"
+                src="{% static 'video/Student - Video Highlights.mp4' %}" 
+                autoplay 
+                muted 
+                loop 
+                playsinline
+                preload="auto"
+                class="w-full h-auto rounded-lg shadow-2xl"
+                style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
+                Your browser does not support the video tag.
+            </video>
         </div>
         
         <!-- CTA Section -->
@@ -199,55 +187,35 @@
         currentYearElement.textContent = new Date().getFullYear();
     }
     
-    // Video functionality
+    // Force video autoplay
     document.addEventListener('DOMContentLoaded', function() {
         const video = document.getElementById('student-video');
-        
         if (video) {
-            // Auto-play when video is loaded and visible
-            video.addEventListener('loadeddata', function() {
-                video.play();
+            // Try to play immediately
+            video.play().catch(() => {
+                // If autoplay fails, try again after any user interaction
+                const playVideoOnInteraction = () => {
+                    video.play().catch(() => {});
+                    document.removeEventListener('click', playVideoOnInteraction);
+                    document.removeEventListener('scroll', playVideoOnInteraction);
+                    document.removeEventListener('touchstart', playVideoOnInteraction);
+                };
+                
+                document.addEventListener('click', playVideoOnInteraction);
+                document.addEventListener('scroll', playVideoOnInteraction);
+                document.addEventListener('touchstart', playVideoOnInteraction);
             });
-        }
-    });
-    
-    // Function to expand video (called from onclick)
-    function expandVideo() {
-        const modal = document.getElementById('video-modal');
-        const video = document.getElementById('student-video');
-        
-        if (modal && video) {
-            // Show modal with flexbox layout
-            modal.classList.remove('hidden');
-            modal.classList.add('flex', 'items-center', 'justify-center');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
             
-            // Load and play video
-            video.load();
-            video.play();
-        }
-    }
-    
-    // Function to close video
-    function closeVideo() {
-        const modal = document.getElementById('video-modal');
-        const video = document.getElementById('student-video');
-        
-        if (modal && video) {
-            // Hide modal and remove flexbox classes
-            modal.classList.add('hidden');
-            modal.classList.remove('flex', 'items-center', 'justify-center');
-            document.body.style.overflow = ''; // Restore background scrolling
+            // Ensure video plays when it comes into view
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        video.play().catch(() => {});
+                    }
+                });
+            }, { threshold: 0.5 });
             
-            // Pause video
-            video.pause();
-        }
-    }
-    
-    // Close video on Escape key
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            closeVideo();
+            videoObserver.observe(video);
         }
     });
 </script>
