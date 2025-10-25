@@ -33152,3 +33152,96 @@ INFO 2025-10-25 08:44:27,489 basehttp 4719 6205173760 "GET /static/video/Toad%20
 INFO 2025-10-25 08:44:29,415 basehttp 4719 6171521024 "GET /lilypad/ HTTP/1.1" 200 4171
 INFO 2025-10-25 08:44:31,721 basehttp 4719 6171521024 "GET /lilypad/sheffield/test/ HTTP/1.1" 200 5363
 INFO 2025-10-25 08:44:32,037 basehttp 4719 6171521024 "GET /static/video/Student%20-%20Video%20Highlights.mp4 HTTP/1.1" 200 10893681
+INFO 2025-10-25 13:06:21,918 autoreload 6600 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:06:45,553 autoreload 6865 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:06:46,983 basehttp 6865 6156890112 "GET / HTTP/1.1" 200 7470
+INFO 2025-10-25 13:06:48,462 basehttp 6865 6156890112 "GET /lilypad/ HTTP/1.1" 200 3560
+ERROR 2025-10-25 13:06:58,708 log 6865 6156890112 Internal Server Error: /lilypad/b2b/leads/2/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 189, in b2b_lead_detail
+    return render(request, 'CRM/b2b/b2b_lead_detail.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: CRM/b2b/b2b_lead_detail.html
+ERROR 2025-10-25 13:06:58,712 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/2/ HTTP/1.1" 500 13735
+INFO 2025-10-25 13:06:58,756 basehttp 6865 6156890112 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-10-25 13:06:58,763 basehttp 6865 6156890112 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-10-25 13:08:28,792 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/2/ HTTP/1.1" 200 3447
+INFO 2025-10-25 13:08:31,774 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/2/delete/ HTTP/1.1" 200 3104
+INFO 2025-10-25 13:08:32,673 basehttp 6865 6156890112 "POST /lilypad/b2b/leads/2/delete/ HTTP/1.1" 302 0
+INFO 2025-10-25 13:08:32,690 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3943
+INFO 2025-10-25 13:08:34,636 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/1/delete/ HTTP/1.1" 200 3057
+INFO 2025-10-25 13:08:35,685 basehttp 6865 6156890112 "POST /lilypad/b2b/leads/1/delete/ HTTP/1.1" 302 0
+INFO 2025-10-25 13:08:35,700 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3368
+INFO 2025-10-25 13:08:51,992 basehttp 6865 6156890112 "GET /lilypad/ HTTP/1.1" 200 3174
+ERROR 2025-10-25 13:08:55,214 log 6865 6156890112 Internal Server Error: /lilypad/society/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 281, in society_crm_home
+    return render(request, 'CRM/society/society_home.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: CRM/society/society_home.html
+ERROR 2025-10-25 13:08:55,217 basehttp 6865 6156890112 "GET /lilypad/society/ HTTP/1.1" 500 13880
+INFO 2025-10-25 13:11:06,831 basehttp 6865 6156890112 "GET /lilypad/society/ HTTP/1.1" 200 3546
+INFO 2025-10-25 13:11:11,762 basehttp 6865 6156890112 "GET /lilypad/ HTTP/1.1" 200 3187
+INFO 2025-10-25 13:11:15,444 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3370
+INFO 2025-10-25 13:11:21,428 basehttp 6865 6156890112 "GET /lilypad/b2b/leads/create/ HTTP/1.1" 200 3752
+INFO 2025-10-25 13:12:25,806 autoreload 6865 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-10-25 13:12:26,342 autoreload 7282 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:13:25,134 autoreload 7282 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-10-25 13:13:25,549 autoreload 7302 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:16:43,109 basehttp 7302 6136475648 "GET /lilypad/b2b/leads/create/ HTTP/1.1" 200 3717
+INFO 2025-10-25 13:19:02,904 basehttp 7302 6136475648 "GET /lilypad/b2b/companies/create/ HTTP/1.1" 200 2942
+INFO 2025-10-25 13:19:11,221 basehttp 7302 6136475648 "GET /lilypad/b2b/companies/create/ HTTP/1.1" 200 2957
+INFO 2025-10-25 13:19:14,839 basehttp 7302 6136475648 "POST /lilypad/b2b/companies/create/ HTTP/1.1" 302 0
+INFO 2025-10-25 13:19:14,851 basehttp 7302 6136475648 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 2783
+INFO 2025-10-25 13:19:22,092 basehttp 7302 6136475648 "GET /lilypad/ HTTP/1.1" 200 3197
+INFO 2025-10-25 13:19:23,493 basehttp 7302 6136475648 "GET /lilypad/b2b/leads/create/ HTTP/1.1" 200 3768
+INFO 2025-10-25 13:19:46,018 basehttp 7302 6136475648 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3376
+INFO 2025-10-25 13:19:48,920 basehttp 7302 6136475648 "GET /lilypad/ HTTP/1.1" 200 3192
+INFO 2025-10-25 13:19:50,197 basehttp 7302 6136475648 "GET /lilypad/society/ HTTP/1.1" 200 3556
+INFO 2025-10-25 13:19:52,809 autoreload 7302 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-10-25 13:19:53,320 autoreload 7391 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:19:54,542 basehttp 7391 6165065728 "GET /lilypad/society/leads/create/ HTTP/1.1" 200 3745
+INFO 2025-10-25 13:20:02,000 autoreload 7391 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-10-25 13:20:02,479 autoreload 7400 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:22:25,292 autoreload 7400 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-10-25 13:22:25,829 autoreload 7548 8398642944 Watching for file changes with StatReloader

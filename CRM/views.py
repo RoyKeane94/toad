@@ -4,8 +4,11 @@ from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpRespon
 from django.contrib import messages
 from django.urls import reverse
 from django.db import models
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback
-from .forms import LeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, SocietyLinkForm, SocietyUniversityForm, FeedbackForm
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback, Company, CompanySector, B2BLink
+from .forms import (
+    B2BLeadForm, SocietyLeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, 
+    SocietyLinkForm, SocietyUniversityForm, FeedbackForm, CompanyForm, CompanySectorForm, B2BLinkForm
+)
 from django.core.files.base import ContentFile
 
 # Create your views here.
@@ -20,29 +23,270 @@ def is_superuser(user):
 @user_passes_test(is_superuser)
 def crm_home(request):
     """
-    CRM home page view - only accessible by superusers.
+    CRM home page view - B2B focused dashboard.
     """
-    # Get summary statistics
-    total_leads = Lead.objects.count()
-    recent_leads = Lead.objects.select_related('lead_focus', 'contact_method', 'society_university').order_by('-created_at')[:5]
-    recent_society_links = SocietyLink.objects.order_by('-id')[:3]
+    # Get B2B statistics
+    b2b_leads = Lead.objects.filter(lead_type='b2b')
+    total_b2b_leads = b2b_leads.count()
+    b2b_customers = b2b_leads.filter(toad_customer=True).count()
+    recent_b2b_leads = b2b_leads.select_related('lead_focus', 'contact_method').order_by('-created_at')[:5]
+    recent_b2b_links = B2BLink.objects.select_related('company', 'lead').order_by('-id')[:3]
+    total_companies = Company.objects.count()
     
     context = {
-        'title': 'CRM Dashboard',
+        'title': 'B2B CRM Dashboard',
         'user': request.user,
-        'total_leads': total_leads,
-        'recent_leads': recent_leads,
-        'recent_society_links': recent_society_links,
+        'total_b2b_leads': total_b2b_leads,
+        'b2b_customers': b2b_customers,
+        'recent_b2b_leads': recent_b2b_leads,
+        'recent_b2b_links': recent_b2b_links,
+        'total_companies': total_companies,
     }
-    return render(request, 'CRM/crm_home.html', context)
+    return render(request, 'CRM/b2b/b2b_home.html', context)
+
+# ==================== B2B CRM VIEWS ====================
 
 @login_required
 @user_passes_test(is_superuser)
-def lead_list(request):
+def b2b_lead_list(request):
     """
-    List all leads with filtering, search, and sorting.
+    List all B2B leads with filtering, search, and sorting.
     """
-    leads = Lead.objects.select_related('lead_focus', 'contact_method', 'society_university')
+    leads = Lead.objects.filter(lead_type='b2b').select_related('lead_focus', 'contact_method')
+    
+    # Search functionality
+    search_query = request.GET.get('search', '')
+    if search_query:
+        leads = leads.filter(name__icontains=search_query)
+    
+    # Filter by focus area
+    focus_filter = request.GET.get('focus', '')
+    if focus_filter:
+        leads = leads.filter(lead_focus__name=focus_filter)
+    
+    # Filter by contact method
+    contact_filter = request.GET.get('contact', '')
+    if contact_filter:
+        leads = leads.filter(contact_method__name=contact_filter)
+    
+    # Sorting functionality
+    sort = request.GET.get('sort', 'created')
+    if sort == 'customer':
+        leads = leads.order_by('-toad_customer', 'toad_customer_date')
+    elif sort == 'initial_message':
+        leads = leads.order_by('-initial_message_sent', 'initial_message_sent_date')
+    elif sort == 'no_response':
+        leads = leads.order_by('-no_response', 'no_response_date')
+    elif sort == 'created':
+        leads = leads.order_by('-created_at')
+    else:
+        leads = leads.order_by('-created_at')
+    
+    # Get filter options
+    focus_areas = LeadFocus.objects.all()
+    contact_methods = ContactMethod.objects.all()
+    
+    # Calculate statistics
+    total_leads = leads.count()
+    customer_count = Lead.objects.filter(lead_type='b2b', toad_customer=True).count()
+    no_response_count = Lead.objects.filter(lead_type='b2b', no_response=True).count()
+    
+    context = {
+        'leads': leads,
+        'focus_areas': focus_areas,
+        'contact_methods': contact_methods,
+        'search_query': search_query,
+        'focus_filter': focus_filter,
+        'contact_filter': contact_filter,
+        'sort': sort,
+        'total_leads': total_leads,
+        'customer_count': customer_count,
+        'no_response_count': no_response_count,
+        'crm_type': 'b2b',
+    }
+    return render(request, 'CRM/b2b/b2b_lead_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def b2b_lead_create(request):
+    """
+    Create a new B2B lead.
+    """
+    if request.method == 'POST':
+        form = B2BLeadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'B2B lead created successfully!')
+            return redirect('crm:b2b_lead_list')
+    else:
+        form = B2BLeadForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New B2B Lead',
+        'crm_type': 'b2b',
+    }
+    return render(request, 'CRM/b2b/b2b_lead_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def b2b_lead_update(request, pk):
+    """
+    Update an existing B2B lead.
+    """
+    lead = get_object_or_404(Lead, pk=pk, lead_type='b2b')
+    
+    if request.method == 'POST':
+        form = B2BLeadForm(request.POST, instance=lead)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'B2B lead updated successfully!')
+            return redirect('crm:b2b_lead_list')
+    else:
+        form = B2BLeadForm(instance=lead)
+    
+    context = {
+        'form': form,
+        'lead': lead,
+        'title': 'Update B2B Lead',
+        'crm_type': 'b2b',
+    }
+    return render(request, 'CRM/b2b/b2b_lead_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def b2b_lead_delete(request, pk):
+    """
+    Delete a B2B lead.
+    """
+    lead = get_object_or_404(Lead, pk=pk, lead_type='b2b')
+    
+    if request.method == 'POST':
+        lead.delete()
+        messages.success(request, 'B2B lead deleted successfully!')
+        return redirect('crm:b2b_lead_list')
+    
+    context = {
+        'lead': lead,
+        'title': 'Delete B2B Lead',
+        'crm_type': 'b2b',
+    }
+    return render(request, 'CRM/b2b/b2b_lead_confirm_delete.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def b2b_lead_detail(request, pk):
+    """
+    View B2B lead details.
+    """
+    lead = get_object_or_404(Lead, pk=pk, lead_type='b2b')
+    
+    context = {
+        'lead': lead,
+        'title': f'B2B Lead: {lead.name}',
+        'crm_type': 'b2b',
+    }
+    return render(request, 'CRM/b2b/b2b_lead_detail.html', context)
+
+# Company Views
+@login_required
+@user_passes_test(is_superuser)
+def company_list(request):
+    """
+    List all companies.
+    """
+    companies = Company.objects.select_related('sector').all()
+    
+    # Search functionality
+    search_query = request.GET.get('search', '')
+    if search_query:
+        companies = companies.filter(name__icontains=search_query)
+    
+    context = {
+        'companies': companies,
+        'search_query': search_query,
+        'title': 'Companies',
+    }
+    return render(request, 'CRM/b2b/company_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_create(request):
+    """
+    Create a new company.
+    """
+    if request.method == 'POST':
+        form = CompanyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Company created successfully!')
+            return redirect('crm:company_list')
+    else:
+        form = CompanyForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New Company',
+    }
+    return render(request, 'CRM/b2b/company_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_sector_create(request):
+    """
+    Create a new company sector.
+    """
+    if request.method == 'POST':
+        form = CompanySectorForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Company sector created successfully!')
+            return redirect('crm:company_list')
+    else:
+        form = CompanySectorForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New Company Sector',
+    }
+    return render(request, 'CRM/b2b/company_sector_form.html', context)
+
+# ==================== SOCIETY CRM VIEWS ====================
+
+@login_required
+@user_passes_test(is_superuser)
+def society_crm_home(request):
+    """
+    Society CRM home page view.
+    """
+    # Get society statistics
+    society_leads = Lead.objects.filter(lead_type='society')
+    total_society_leads = society_leads.count()
+    society_customers = society_leads.filter(toad_customer=True).count()
+    recent_society_leads = society_leads.select_related('lead_focus', 'contact_method', 'society_university').order_by('-created_at')[:5]
+    recent_society_links = SocietyLink.objects.select_related('society_university').order_by('-id')[:3]
+    
+    from .models import SocietyUniversity
+    total_universities = SocietyUniversity.objects.count()
+    
+    context = {
+        'title': 'Society CRM Dashboard',
+        'user': request.user,
+        'total_society_leads': total_society_leads,
+        'society_customers': society_customers,
+        'recent_society_leads': recent_society_leads,
+        'recent_society_links': recent_society_links,
+        'total_universities': total_universities,
+    }
+    return render(request, 'CRM/society/society_home.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_lead_list(request):
+    """
+    List all society leads with filtering, search, and sorting.
+    """
+    leads = Lead.objects.filter(lead_type='society').select_related('lead_focus', 'contact_method', 'society_university')
     
     # Search functionality
     search_query = request.GET.get('search', '')
@@ -86,9 +330,9 @@ def lead_list(request):
     contact_methods = ContactMethod.objects.all()
     
     # Calculate statistics
-    total_leads = Lead.objects.count()
-    customer_count = Lead.objects.filter(toad_customer=True).count()
-    no_response_count = Lead.objects.filter(no_response=True).count()
+    total_leads = leads.count()
+    customer_count = Lead.objects.filter(lead_type='society', toad_customer=True).count()
+    no_response_count = Lead.objects.filter(lead_type='society', no_response=True).count()
     university_count = SocietyUniversity.objects.count()
     
     context = {
@@ -105,86 +349,139 @@ def lead_list(request):
         'customer_count': customer_count,
         'no_response_count': no_response_count,
         'university_count': university_count,
+        'crm_type': 'society',
     }
-    return render(request, 'CRM/lead_list.html', context)
+    return render(request, 'CRM/society/society_lead_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_lead_create(request):
+    """
+    Create a new society lead.
+    """
+    if request.method == 'POST':
+        form = SocietyLeadForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Society lead created successfully!')
+            return redirect('crm:society_lead_list')
+    else:
+        form = SocietyLeadForm()
+    
+    context = {
+        'form': form,
+        'title': 'Create New Society Lead',
+        'crm_type': 'society',
+    }
+    return render(request, 'CRM/society/society_lead_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_lead_update(request, pk):
+    """
+    Update an existing society lead.
+    """
+    lead = get_object_or_404(Lead, pk=pk, lead_type='society')
+    
+    if request.method == 'POST':
+        form = SocietyLeadForm(request.POST, instance=lead)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Society lead updated successfully!')
+            return redirect('crm:society_lead_list')
+    else:
+        form = SocietyLeadForm(instance=lead)
+    
+    context = {
+        'form': form,
+        'lead': lead,
+        'title': 'Update Society Lead',
+        'crm_type': 'society',
+    }
+    return render(request, 'CRM/society/society_lead_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_lead_delete(request, pk):
+    """
+    Delete a society lead.
+    """
+    lead = get_object_or_404(Lead, pk=pk, lead_type='society')
+    
+    if request.method == 'POST':
+        lead.delete()
+        messages.success(request, 'Society lead deleted successfully!')
+        return redirect('crm:society_lead_list')
+    
+    context = {
+        'lead': lead,
+        'title': 'Delete Society Lead',
+        'crm_type': 'society',
+    }
+    return render(request, 'CRM/society/society_lead_confirm_delete.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def society_lead_detail(request, pk):
+    """
+    View society lead details.
+    """
+    lead = get_object_or_404(Lead, pk=pk, lead_type='society')
+    
+    context = {
+        'lead': lead,
+        'title': f'Society Lead: {lead.name}',
+        'crm_type': 'society',
+    }
+    return render(request, 'CRM/society/society_lead_detail.html', context)
+
+# ==================== LEGACY/OLD VIEWS (redirect to B2B for backward compatibility) ====================
+
+@login_required
+@user_passes_test(is_superuser)
+def lead_list(request):
+    """
+    Legacy view - redirects to B2B lead list.
+    """
+    return redirect('crm:b2b_lead_list')
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_create(request):
     """
-    Create a new lead.
+    Legacy view - redirects to B2B lead create.
     """
-    if request.method == 'POST':
-        form = LeadForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Lead created successfully!')
-            return redirect('crm:lead_list')
-    else:
-        form = LeadForm()
-    
-    context = {
-        'form': form,
-        'title': 'Create New Lead',
-    }
-    return render(request, 'CRM/lead_form.html', context)
+    return redirect('crm:b2b_lead_create')
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_update(request, pk):
     """
-    Update an existing lead.
+    Legacy view - redirects to B2B lead update.
     """
-    lead = get_object_or_404(Lead, pk=pk)
-    
-    if request.method == 'POST':
-        form = LeadForm(request.POST, instance=lead)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Lead updated successfully!')
-            return redirect('crm:lead_list')
-    else:
-        form = LeadForm(instance=lead)
-    
-    context = {
-        'form': form,
-        'lead': lead,
-        'title': 'Update Lead',
-    }
-    return render(request, 'CRM/lead_form.html', context)
+    return redirect('crm:b2b_lead_update', pk=pk)
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_delete(request, pk):
     """
-    Delete a lead.
+    Legacy view - redirects to B2B lead delete.
     """
-    lead = get_object_or_404(Lead, pk=pk)
-    
-    if request.method == 'POST':
-        lead.delete()
-        messages.success(request, 'Lead deleted successfully!')
-        return redirect('crm:lead_list')
-    
-    context = {
-        'lead': lead,
-        'title': 'Delete Lead',
-    }
-    return render(request, 'CRM/lead_confirm_delete.html', context)
+    return redirect('crm:b2b_lead_delete', pk=pk)
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_detail(request, pk):
     """
-    View lead details.
+    Legacy view - redirects to appropriate lead detail based on lead type.
     """
     lead = get_object_or_404(Lead, pk=pk)
-    
-    context = {
-        'lead': lead,
-        'title': f'Lead: {lead.name} - {lead.society_university.name if lead.society_university else "No University"}',
-    }
-    return render(request, 'CRM/lead_detail.html', context)
+    if lead.lead_type == 'b2b':
+        return redirect('crm:b2b_lead_detail', pk=pk)
+    else:
+        return redirect('crm:society_lead_detail', pk=pk)
+
+# ==================== SHARED VIEWS ====================
 
 @login_required
 @user_passes_test(is_superuser)

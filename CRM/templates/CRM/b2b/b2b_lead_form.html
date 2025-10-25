@@ -1,0 +1,207 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        {% if lead %}Update lead information{% else %}Add a new lead to your CRM{% endif %}
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Leads
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <form method="post" class="space-y-6">
+                {% csrf_token %}
+                
+                <!-- Name Field -->
+                <div>
+                    <label for="{{ form.name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Lead Name *
+                    </label>
+                    {{ form.name }}
+                    {% if form.name.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.name.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Company Field -->
+                <div>
+                    <label for="{{ form.company.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Company
+                    </label>
+                    {{ form.company }}
+                    {% if form.company.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.company.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a company or <a href="{% url 'crm:company_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- Contact Method Field -->
+                <div>
+                    <label for="{{ form.contact_method.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Contact Method *
+                    </label>
+                    {{ form.contact_method }}
+                    {% if form.contact_method.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.contact_method.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a contact method or <a href="{% url 'crm:contact_method_create' %}" class="text-[var(--primary-action-bg)] hover:underline">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- Toad Customer Fields -->
+                <div class="border-t border-[var(--border-color)] pt-6">
+                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Customer Status</h3>
+                    
+                    <!-- Toad Customer Checkbox -->
+                    <div class="flex items-center mb-4">
+                        {{ form.toad_customer }}
+                        <label for="{{ form.toad_customer.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            Toad Customer
+                        </label>
+                        {% if form.toad_customer.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.toad_customer.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Toad Customer Date -->
+                    <div>
+                        <label for="{{ form.toad_customer_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Customer Since Date
+                        </label>
+                        {{ form.toad_customer_date }}
+                        {% if form.toad_customer_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.toad_customer_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Select the date when this lead became a Toad customer
+                        </p>
+                    </div>
+                    
+                    <!-- Initial Message Sent Checkbox -->
+                    <div class="flex items-center mb-4">
+                        {{ form.initial_message_sent }}
+                        <label for="{{ form.initial_message_sent.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            Initial Message Sent
+                        </label>
+                        {% if form.initial_message_sent.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_message_sent.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- Initial Message Sent Date -->
+                    <div>
+                        <label for="{{ form.initial_message_sent_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Initial Message Sent Date
+                        </label>
+                        {{ form.initial_message_sent_date }}
+                        {% if form.initial_message_sent_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_message_sent_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Select the date when the initial message was sent to this lead
+                        </p>
+                    </div>
+                    
+                    <!-- No Response Checkbox -->
+                    <div class="flex items-center mb-4">
+                        {{ form.no_response }}
+                        <label for="{{ form.no_response.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            No Response
+                        </label>
+                        {% if form.no_response.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.no_response.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <!-- No Response Date -->
+                    <div>
+                        <label for="{{ form.no_response_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            No Response Date
+                        </label>
+                        {{ form.no_response_date }}
+                        {% if form.no_response_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.no_response_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Select the date when it was determined there was no response from this lead
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t border-[var(--border-color)]">
+                    <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        Cancel
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        {% if lead %}
+                        <i class="fas fa-save mr-2"></i>
+                        Update Lead
+                        {% else %}
+                        <i class="fas fa-plus mr-2"></i>
+                        Create Lead
+                        {% endif %}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %} 

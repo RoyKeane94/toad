@@ -1,13 +1,22 @@
 from django.contrib import admin
-from .models import Lead, LeadFocus, LeadMessage, SocietyLink, SocietyUniversity, Feedback
+from .models import Lead, LeadFocus, LeadMessage, SocietyLink, SocietyUniversity, Feedback, Company, CompanySector, B2BLink, ContactMethod
 
 # Register your models here.
 
+# Society-related models
 admin.site.register(SocietyLink)
+admin.site.register(SocietyUniversity)
+
+# B2B-related models
+admin.site.register(Company)
+admin.site.register(CompanySector)
+admin.site.register(B2BLink)
+
+# Shared models
 admin.site.register(Lead)
 admin.site.register(LeadFocus)
+admin.site.register(ContactMethod)
 admin.site.register(LeadMessage)
-admin.site.register(SocietyUniversity)
 
 @admin.register(Feedback)
 class FeedbackAdmin(admin.ModelAdmin):

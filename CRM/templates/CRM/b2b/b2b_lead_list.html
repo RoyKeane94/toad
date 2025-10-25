@@ -1,0 +1,285 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}Leads - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center space-x-4 py-6">
+                
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">Leads</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage your leads and prospects</p>
+                </div>
+                <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Add Lead
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Search and Filters -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <form method="get" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label for="search" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Search</label>
+                    <input type="text" name="search" id="search" value="{{ search_query }}" 
+                           class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent"
+                           placeholder="Search by name...">
+                </div>
+                
+                <div>
+                    <label for="university" class="block text-sm font-medium text-[var(--text-primary)] mb-2">University</label>
+                    <select name="university" id="university" 
+                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                        <option value="">All Universities</option>
+                        {% for university in universities %}
+                        <option value="{{ university.name }}" {% if university_filter == university.name %}selected{% endif %}>{{ university.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="focus" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Focus Area</label>
+                    <select name="focus" id="focus" 
+                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                        <option value="">All Focus Areas</option>
+                        {% for focus in focus_areas %}
+                        <option value="{{ focus.name }}" {% if focus_filter == focus.name %}selected{% endif %}>{{ focus.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="flex items-end">
+                    <button type="submit" class="w-full px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-search mr-2"></i>
+                        Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-users text-blue-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Total Leads</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ total_leads }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-check-circle text-green-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Customers</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ customer_count }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-red-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-times-circle text-red-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">No Response</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ no_response_count }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center">
+                            <i class="fas fa-university text-purple-600"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Universities</p>
+                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ university_count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leads Table -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)]">
+            <div class="px-6 py-4 border-b border-[var(--border-color)]">
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">All Leads ({{ leads.count }})</h2>
+            </div>
+            
+            {% if leads %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-[var(--border-color)]">
+                    <thead class="bg-[var(--grid-header-bg)]">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Company</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact Method</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=customer" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    Customer
+                                    {% if sort == 'customer' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=initial_message" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    Initial Msg
+                                    {% if sort == 'initial_message' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=no_response" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    No Response
+                                    {% if sort == 'no_response' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=created" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                    Created
+                                    {% if sort == 'created' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
+                                </a>
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-[var(--border-color)]">
+                        {% for lead in leads %}
+                        <tr class="hover:bg-[var(--bg-secondary)]">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
+                                <a href="{% url 'crm:b2b_lead_detail' lead.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ lead.name }}</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.b2b_link and lead.b2b_link.company %}
+                                    <div>
+                                        <p class="font-medium text-[var(--text-primary)]">{{ lead.b2b_link.company.name }}</p>
+                                        {% if lead.b2b_link.company.sector %}
+                                        <p class="text-xs text-[var(--text-secondary)]">{{ lead.b2b_link.company.sector.name }}</p>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="text-[var(--text-secondary)] italic">No company</span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.contact_method %}{{ lead.contact_method.name }}{% else %}-{% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.toad_customer %}
+                                    <div class="flex flex-col">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            <i class="fas fa-check mr-1"></i>
+                                            Customer
+                                        </span>
+                                        {% if lead.toad_customer_date %}
+                                            <span class="text-xs text-[var(--text-secondary)] mt-1">
+                                                Since {{ lead.toad_customer_date|date:"M d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                        <i class="fas fa-times mr-1"></i>
+                                        Lead
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.initial_message_sent %}
+                                    <div class="flex flex-col">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                            <i class="fas fa-paper-plane mr-1"></i>
+                                            Sent
+                                        </span>
+                                        {% if lead.initial_message_sent_date %}
+                                            <span class="text-xs text-[var(--text-secondary)] mt-1">
+                                                {{ lead.initial_message_sent_date|date:"M d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        <i class="fas fa-clock mr-1"></i>
+                                        Pending
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.no_response %}
+                                    <div class="flex flex-col">
+                                        <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                            <i class="fas fa-times-circle mr-1"></i>
+                                            No Response
+                                        </span>
+                                        {% if lead.no_response_date %}
+                                            <span class="text-xs text-[var(--text-secondary)] mt-1">
+                                                {{ lead.no_response_date|date:"M d, Y" }}
+                                            </span>
+                                        {% endif %}
+                                    </div>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <i class="fas fa-check-circle mr-1"></i>
+                                        Active
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {% if lead.messages.count > 0 %}bg-[var(--primary-action-bg)] text-white{% else %}bg-[var(--text-secondary)] text-white{% endif %}">
+                                    {{ lead.messages.count }}
+                                </span>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.created_at|date:"M d, Y" }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="{% url 'crm:b2b_lead_detail' lead.pk %}" class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] mr-3">View</a>
+                                <a href="{% url 'crm:b2b_lead_update' lead.pk %}" class="text-[var(--tertiary-action-bg)] hover:text-[var(--tertiary-action-bg)] mr-3">Edit</a>
+                                <a href="{% url 'crm:b2b_lead_delete' lead.pk %}" class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-hover-bg)]">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-12">
+                <i class="fas fa-users text-[var(--text-secondary)] text-4xl mb-4"></i>
+                <h3 class="text-lg font-medium text-[var(--text-primary)] mb-2">No leads found</h3>
+                <p class="text-[var(--text-secondary)] mb-6">
+                    {% if search_query or focus_filter or contact_filter %}
+                        No leads match your current filters. <a href="{% url 'crm:b2b_lead_list' %}" class="text-[var(--primary-action-bg)] hover:underline">Clear filters</a>
+                    {% else %}
+                        Get started by adding your first lead.
+                    {% endif %}
+                </p>
+                <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Add Lead
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %} 

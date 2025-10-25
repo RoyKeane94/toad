@@ -1,0 +1,50 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="text-center">
+                <!-- Warning Icon -->
+                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-6">
+                    <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                </div>
+                
+                <!-- Warning Message -->
+                <h1 class="text-2xl font-bold text-[var(--text-primary)] mb-4">{{ title }}</h1>
+                <p class="text-[var(--text-secondary)] mb-6">
+                    Are you sure you want to delete the lead "<strong>{{ lead.name }}</strong>"? This action cannot be undone.
+                </p>
+                
+                <!-- Lead Details -->
+                <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-6 text-left">
+                    <h3 class="font-medium text-[var(--text-primary)] mb-2">Lead Details:</h3>
+                    <dl class="text-sm text-[var(--text-secondary)] space-y-1">
+                        <div><strong>Name:</strong> {{ lead.name }}</div>
+                        <div><strong>Focus:</strong> {{ lead.lead_focus.name }}</div>
+                        <div><strong>Contact:</strong> {{ lead.contact_method.name }}</div>
+                        <div><strong>Created:</strong> {{ lead.created_at|date:"M d, Y" }}</div>
+                    </dl>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex justify-center space-x-4">
+                    <a href="{% url 'crm:society_lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-times mr-2"></i>
+                        Cancel
+                    </a>
+                    <form method="post" class="inline">
+                        {% csrf_token %}
+                        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--delete-button-bg)] transition-colors">
+                            <i class="fas fa-trash mr-2"></i>
+                            Delete Lead
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

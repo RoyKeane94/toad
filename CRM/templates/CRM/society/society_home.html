@@ -1,0 +1,206 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">Society CRM Dashboard</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage your student society relationships</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:home' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">← Switch to B2B CRM</a>
+                    <span class="text-sm text-[var(--text-secondary)]">Welcome, {{ user.get_full_name|default:user.username }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-[var(--primary-action-bg)] rounded-md flex items-center justify-center">
+                            <i class="fas fa-users text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Total Society Leads</p>
+                        <p class="text-2xl font-bold text-[var(--text-primary)]">{{ total_society_leads }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-[var(--tertiary-action-bg)] rounded-md flex items-center justify-center">
+                            <i class="fas fa-check-circle text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Customers</p>
+                        <p class="text-2xl font-bold text-[var(--text-primary)]">{{ society_customers }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-[var(--secondary-action-bg)] rounded-md flex items-center justify-center">
+                            <i class="fas fa-university text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Universities</p>
+                        <p class="text-2xl font-bold text-[var(--text-primary)]">{{ total_universities }}</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <div class="w-8 h-8 bg-[var(--clear-button-bg)] rounded-md flex items-center justify-center">
+                            <i class="fas fa-link text-white text-sm"></i>
+                        </div>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm font-medium text-[var(--text-secondary)]">Society Links</p>
+                        <p class="text-2xl font-bold text-[var(--text-primary)]">{{ recent_society_links.count }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Quick Actions</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <a href="{% url 'crm:society_lead_create' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-plus mr-2"></i>
+                    Add Society Lead
+                </a>
+                <a href="{% url 'crm:society_lead_list' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-list mr-2"></i>
+                    View All Leads
+                </a>
+                <a href="{% url 'crm:society_link_create' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-link mr-2"></i>
+                    Create Society Link
+                </a>
+                <a href="{% url 'crm:society_link_list' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <i class="fas fa-link mr-2"></i>
+                    View Society Links
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Society Leads -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">Recent Society Leads</h2>
+                <a href="{% url 'crm:society_lead_list' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">View All</a>
+            </div>
+            
+            {% if recent_society_leads %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-[var(--border-color)]">
+                    <thead class="bg-[var(--grid-header-bg)]">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">University</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Focus</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Customer</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Created</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-[var(--border-color)]">
+                        {% for lead in recent_society_leads %}
+                        <tr class="hover:bg-[var(--bg-secondary)]">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
+                                <a href="{% url 'crm:society_lead_detail' lead.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ lead.name }}</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.society_university %}{{ lead.society_university.name }}{% else %}-{% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.lead_focus.name }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
+                                {% if lead.toad_customer %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-[var(--tertiary-action-bg)] text-white">
+                                    Yes
+                                </span>
+                                {% else %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-800">
+                                    No
+                                </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.created_at|date:"M d, Y" }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                                <a href="{% url 'crm:society_lead_update' lead.pk %}" class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] mr-3">Edit</a>
+                                <a href="{% url 'crm:society_lead_delete' lead.pk %}" class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-hover-bg)]">Delete</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <div class="text-center py-8">
+                <i class="fas fa-users text-[var(--text-secondary)] text-4xl mb-4"></i>
+                <p class="text-[var(--text-secondary)]">No society leads yet. <a href="{% url 'crm:society_lead_create' %}" class="text-[var(--primary-action-bg)] hover:underline">Add your first society lead</a></p>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Recent Society Links -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">Recent Society Links</h2>
+                <a href="{% url 'crm:society_link_list' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">View All</a>
+            </div>
+            
+            {% if recent_society_links %}
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {% for society_link in recent_society_links %}
+                <div class="border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="h-32 bg-gray-100 rounded mb-3 overflow-hidden">
+                        {% if society_link.image %}
+                            <img src="{{ society_link.image.url }}" 
+                                 alt="{{ society_link.name }}" 
+                                 class="w-full h-full object-cover">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center">
+                                <i class="fas fa-image text-2xl text-gray-400"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    <h3 class="font-medium text-[var(--text-primary)] mb-1">{{ society_link.name }}</h3>
+                    <p class="text-xs text-[var(--text-secondary)] mb-2">{{ society_link.society_university.name }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="text-center py-8">
+                <i class="fas fa-link text-[var(--text-secondary)] text-4xl mb-4"></i>
+                <p class="text-[var(--text-secondary)] mb-4">No society links yet</p>
+                <a href="{% url 'crm:society_link_create' %}" class="inline-flex items-center px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-md font-medium transition-colors duration-200">
+                    <i class="fas fa-plus mr-2"></i>Create Society Link
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+

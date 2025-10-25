@@ -58,7 +58,13 @@ class ContactMethod(models.Model):
         return self.name
 
 class Lead(models.Model):
+    LEAD_TYPE_CHOICES = [
+        ('b2b', 'B2B'),
+        ('society', 'Society'),
+    ]
+    
     name = models.CharField(max_length=100)
+    lead_type = models.CharField(max_length=10, choices=LEAD_TYPE_CHOICES, default='b2b')
     society_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     toad_customer = models.BooleanField(default=False)
     toad_customer_date = models.DateField(null=True, blank=True)
@@ -66,14 +72,21 @@ class Lead(models.Model):
     initial_message_sent_date = models.DateField(null=True, blank=True)
     no_response = models.BooleanField(default=False)
     no_response_date = models.DateField(null=True, blank=True)
-    lead_focus = models.ForeignKey(LeadFocus, on_delete=models.CASCADE)
-    contact_method = models.ForeignKey(ContactMethod, on_delete=models.CASCADE)
+    lead_focus = models.ForeignKey(LeadFocus, on_delete=models.CASCADE, null=True, blank=True)
+    contact_method = models.ForeignKey(ContactMethod, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        if self.society_university:
-            return self.name + " - " + self.society_university.name
-        return self.name + " - No University"
+        if self.lead_type == 'society' and self.society_university:
+            return f"{self.name} - {self.society_university.name}"
+        elif self.lead_type == 'b2b':
+            # Try to get company from B2BLink
+            try:
+                if hasattr(self, 'b2b_link') and self.b2b_link.company:
+                    return f"{self.name} - {self.b2b_link.company.name}"
+            except:
+                pass
+        return self.name
 
 class SocietyLink(models.Model):
     name = models.CharField(max_length=100)
@@ -86,10 +99,50 @@ class SocietyLink(models.Model):
     )
     
     society_university = models.ForeignKey(SocietyUniversity, null=True, blank=True, on_delete=models.CASCADE)
-    lead = models.OneToOneField(Lead, on_delete=models.CASCADE, null=True, blank=True)
+    lead = models.OneToOneField(Lead, on_delete=models.CASCADE, null=True, blank=True, related_name='society_link')
     
     def __str__(self):
         return self.name or f"SocietyLink-{self.id}" if self.id else "SocietyLink-New"
+
+# B2B Models
+class CompanySector(models.Model):
+    name = models.CharField(max_length=100)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['name']
+    
+    def __str__(self):
+        return self.name
+
+class Company(models.Model):
+    name = models.CharField(max_length=200)
+    sector = models.ForeignKey(CompanySector, on_delete=models.SET_NULL, null=True, blank=True)
+    website = models.URLField(max_length=500, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        ordering = ['name']
+        verbose_name_plural = 'Companies'
+    
+    def __str__(self):
+        return self.name
+
+class B2BLink(models.Model):
+    name = models.CharField(max_length=100, help_text="Contact person name")
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
+    lead = models.OneToOneField(Lead, on_delete=models.CASCADE, null=True, blank=True, related_name='b2b_link')
+    
+    class Meta:
+        verbose_name = 'B2B Link'
+        verbose_name_plural = 'B2B Links'
+    
+    def __str__(self):
+        if self.company:
+            return f"{self.name} - {self.company.name}"
+        return self.name or f"B2BLink-{self.id}" if self.id else "B2BLink-New"
 
 class LeadMessage(models.Model):
     lead = models.ForeignKey(Lead, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)
