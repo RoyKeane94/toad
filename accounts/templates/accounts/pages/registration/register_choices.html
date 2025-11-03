@@ -232,35 +232,6 @@
             </a>
         </div>
         
-        <!-- Personal Plan -->
-        <div class="pricing-card">
-            <h3 class="pricing-title">Personal</h3>
-            <p class="pricing-description">
-                For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
-            </p>
-            <div class="pricing-amount">£2</div>
-            <div class="pricing-period">/ month</div>
-            
-            <ul class="pricing-features">
-                <li>
-                    <i class="fas fa-check"></i>
-                    Manage up to 10 active grids
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Save time by creating custom templates
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Stay focused by archiving completed tasks
-                </li>
-            </ul>
-            
-            <a href="{% url 'accounts:register_personal' %}" class="pricing-button personal">
-                Start Personal
-            </a>
-        </div>
-        
         <!-- Pro Plan -->
         <div class="pricing-card popular">
             <div class="popular-badge">Most Popular</div>
@@ -288,6 +259,35 @@
             
             <a href="{% url 'accounts:register_pro' %}" class="pricing-button pro">
                 Start Pro Plan
+            </a>
+        </div>
+        
+        <!-- Personal Plan -->
+        <div class="pricing-card">
+            <h3 class="pricing-title">Personal</h3>
+            <p class="pricing-description">
+                For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
+            </p>
+            <div class="pricing-amount">£2</div>
+            <div class="pricing-period">/ month</div>
+            
+            <ul class="pricing-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Manage up to 10 active grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Save time by creating custom templates
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Stay focused by archiving completed tasks
+                </li>
+            </ul>
+            
+            <a href="{% url 'accounts:register_personal' %}" class="pricing-button personal">
+                Start Personal
             </a>
         </div>
     </div>
