@@ -57,9 +57,14 @@
         
         <!-- Note Display - Left of text (Hidden on mobile) -->
         {% if task.notes.exists %}
-            <div class="note-display hidden sm:flex items-center text-xs text-[var(--text-secondary)] mr-2">
+            <button type="button"
+                    class="note-display-button hidden sm:flex items-center text-xs text-[var(--text-secondary)] mr-2 cursor-pointer hover:opacity-80 transition-opacity"
+                    title="Edit note"
+                    data-task-id="{{ task.pk }}"
+                    data-task-text="{{ task.text }}"
+                    data-has-note="true">
                 <i class="fas fa-sticky-note text-[var(--primary-action-bg)]"></i>
-            </div>
+            </button>
         {% endif %}
         
         <div class="flex-1 min-w-0">
@@ -101,14 +106,16 @@
             <i class="fas fa-user text-gray-400 hover:text-orange-500 text-xs transition-colors"></i>
         </button>
         {% endif %}
+        {% if not task.notes.exists %}
         <button type="button"
                 class="task-note-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
-                title="{% if task.notes.exists %}Edit note{% else %}Add note{% endif %}"
+                title="Add note"
                 data-task-id="{{ task.pk }}"
                 data-task-text="{{ task.text }}"
-                {% if task.notes.exists %}data-has-note="true"{% else %}data-has-note="false"{% endif %}>
-            <i class="fas {% if task.notes.exists %}fa-sticky-note text-[var(--primary-action-bg)]{% else %}fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)]{% endif %} text-xs transition-colors"></i>
+                data-has-note="false">
+            <i class="fas fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors"></i>
         </button>
+        {% endif %}
         <button type="button"
                 class="calendar-reminder-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 
                 title="{% if task.has_reminder %}Edit reminder{% else %}Set reminder{% endif %}"

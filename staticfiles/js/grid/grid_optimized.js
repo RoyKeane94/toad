@@ -2142,24 +2142,19 @@ class GridManager {
     handleTaskTextBlur(e) {
         const element = e.target;
         
+        // IMMEDIATELY remove contentEditable and focus to kill the browser outline
+        element.contentEditable = false;
+        element.classList.remove('editing'); // Remove editing class immediately
+        
+        // Force focus away from this element to the body
+        element.blur();
+        document.body.focus();
+        
         // Use a small timeout to ensure the blur event is fully processed
         setTimeout(() => {
-            // Check if we're in edit mode by looking at the editing class
-            if (element.classList.contains('editing') && !element.classList.contains('saving')) {
+            // Check if we need to save
+            if (!element.classList.contains('saving')) {
                 element.classList.add('saving'); // Prevent double saves
-                element.contentEditable = false;
-                element.classList.remove('editing');
-                this.saveTaskEdit(element);
-            } else if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
-                // Fallback: if contentEditable is still true but editing class is missing
-                element.classList.add('saving'); // Prevent double saves
-                element.contentEditable = false;
-                this.saveTaskEdit(element);
-            } else if (element.classList.contains('editing')) {
-                // Another fallback: if we have the editing class but contentEditable was changed
-                element.classList.add('saving'); // Prevent double saves
-                element.contentEditable = false;
-                element.classList.remove('editing');
                 this.saveTaskEdit(element);
             }
         }, 10); // Small timeout to ensure proper event handling
@@ -2177,21 +2172,23 @@ class GridManager {
     closeEditingTask(element) {
         if (!element.classList.contains('editing')) return;
         
-        // If the element has changes, save them
-        if (element.contentEditable === 'true' && !element.classList.contains('saving')) {
+        // IMMEDIATELY remove contentEditable, editing class, and force blur to kill browser outline
+        element.contentEditable = false;
+        element.classList.remove('editing');
+        element.blur();
+        document.body.focus(); // Force focus away from element
+        
+        // Check if we need to save changes
+        if (!element.classList.contains('saving')) {
             const originalText = element.getAttribute('data-original-text') || element.textContent;
             const currentText = element.textContent.trim();
             
             if (currentText !== originalText && currentText !== '') {
                 // Save the changes
                 element.classList.add('saving');
-                element.contentEditable = false;
-                element.classList.remove('editing');
                 this.saveTaskEdit(element);
             } else {
                 // No changes, just close editing
-                element.contentEditable = false;
-                element.classList.remove('editing');
                 element.classList.remove('saving');
             }
         }
@@ -2212,13 +2209,16 @@ class GridManager {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             e.stopPropagation();
-            // Force save and exit edit mode
+            // IMMEDIATELY blur and remove contentEditable to prevent browser outline
+            element.blur();
             element.contentEditable = false;
             element.classList.remove('editing');
             this.saveTaskEdit(element);
         } else if (e.key === 'Escape') {
             e.preventDefault();
             e.stopPropagation();
+            // IMMEDIATELY blur and remove contentEditable to prevent browser outline
+            element.blur();
             element.contentEditable = false;
             element.classList.remove('editing');
             const originalText = element.getAttribute('data-original-text') || element.textContent;
@@ -3019,11 +3019,22 @@ window.hideTaskNotePanel = function() {
 // Handle task note button clicks - moved outside DOMContentLoaded to ensure it works
 document.addEventListener('click', function(e) {
     const noteBtn = e.target.closest('.task-note-btn');
+    const noteDisplayBtn = e.target.closest('.note-display-button');
+    
     if (noteBtn) {
         e.preventDefault();
         const taskId = noteBtn.dataset.taskId;
         const taskText = noteBtn.dataset.taskText;
         const hasNote = noteBtn.dataset.hasNote === 'true';
+        showTaskNotePanel(taskId, taskText, hasNote);
+        return false; // Prevent further event propagation
+    }
+    
+    if (noteDisplayBtn) {
+        e.preventDefault();
+        const taskId = noteDisplayBtn.dataset.taskId;
+        const taskText = noteDisplayBtn.dataset.taskText;
+        const hasNote = noteDisplayBtn.dataset.hasNote === 'true';
         showTaskNotePanel(taskId, taskText, hasNote);
         return false; // Prevent further event propagation
     }
@@ -3108,11 +3119,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     } else {
                         // Hide notes display if no notes left
                         const notesDisplay = document.getElementById('notes-display');
-                        notesDisplay.classList.add('hidden');
+                        if (notesDisplay) {
+                            notesDisplay.classList.add('hidden');
+                        }
+                        
+                        // Close the note panel
+                        hideTaskNotePanel();
+                        
+                        // Refresh the page to update icons (hide left icon, show right button)
+                        // Use a short delay to ensure the deletion is complete
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 200);
                     }
                     
-                    // Show notification if available
-                    if (window.showNotification) {
+                    // Show notification if available (only if notes still exist)
+                    if (data.has_notes && window.showNotification) {
                         window.showNotification('Note deleted successfully!', 'success');
                     }
                 } else {
@@ -3230,16 +3252,17 @@ function updateTaskNoteDisplay(taskId, hasNote) {
     const taskElement = document.getElementById(`task-${taskId}`);
     if (!taskElement) return;
     
-    // Update note button icons
+    // Update note button icons - hide right-side button when note exists
     const noteButtons = taskElement.querySelectorAll('.task-note-btn');
     noteButtons.forEach(btn => {
-        const icon = btn.querySelector('i');
-        if (icon) {
-            if (hasNote) {
-                icon.className = 'fas fa-sticky-note text-[var(--primary-action-bg)] text-xs transition-colors';
-                btn.title = 'Edit note';
-                btn.setAttribute('data-has-note', 'true');
-            } else {
+        if (hasNote) {
+            // Hide the right-side note button when a note exists
+            btn.style.display = 'none';
+        } else {
+            // Show the right-side note button when no note exists
+            btn.style.display = '';
+            const icon = btn.querySelector('i');
+            if (icon) {
                 icon.className = 'fas fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors';
                 btn.title = 'Add note';
                 btn.setAttribute('data-has-note', 'false');
@@ -3251,7 +3274,21 @@ function updateTaskNoteDisplay(taskId, hasNote) {
     const taskRow = taskElement.querySelector('.flex.items-center.space-x-3');
     if (!taskRow) return;
     
-    let noteDisplay = taskRow.querySelector('.note-display');
+    // Check for both old .note-display and new .note-display-button to ensure only one exists
+    let noteDisplay = taskRow.querySelector('.note-display-button');
+    if (!noteDisplay) {
+        noteDisplay = taskRow.querySelector('.note-display');
+    }
+    
+    // Remove any duplicate note displays to ensure only one icon shows
+    const allNoteDisplays = taskRow.querySelectorAll('.note-display-button, .note-display');
+    if (allNoteDisplays.length > 1) {
+        // Keep only the first one, remove the rest
+        for (let i = 1; i < allNoteDisplays.length; i++) {
+            allNoteDisplays[i].remove();
+        }
+        noteDisplay = allNoteDisplays[0];
+    }
     
     if (hasNote) {
         // Fetch all notes for this task
@@ -3259,10 +3296,29 @@ function updateTaskNoteDisplay(taskId, hasNote) {
             .then(response => response.json())
             .then(data => {
                 if (data.success && data.notes && data.notes.length > 0) {
-                    // Create or update note display (single note only)
+                    // Create or update note display (single note only) - make it clickable
                     if (!noteDisplay) {
-                        noteDisplay = document.createElement('div');
-                        noteDisplay.className = 'note-display flex items-center text-xs text-[var(--text-secondary)] mr-2';
+                        noteDisplay = document.createElement('button');
+                        noteDisplay.type = 'button';
+                        noteDisplay.className = 'note-display-button hidden sm:flex items-center text-xs text-[var(--text-secondary)] mr-2 cursor-pointer hover:opacity-80 transition-opacity';
+                        noteDisplay.title = 'Edit note';
+                        noteDisplay.setAttribute('data-task-id', taskId);
+                        
+                        // Get task text from the task element or from the task text div
+                        const taskTextDiv = taskElement.querySelector('[id^="task-text-"]');
+                        let taskText = '';
+                        if (taskTextDiv) {
+                            // Get plain text, stripping HTML tags
+                            taskText = taskTextDiv.textContent || taskTextDiv.innerText || '';
+                        } else {
+                            // Fallback: try to get from existing note button or task data attribute
+                            const existingNoteBtn = taskElement.querySelector('.task-note-btn');
+                            if (existingNoteBtn && existingNoteBtn.dataset.taskText) {
+                                taskText = existingNoteBtn.dataset.taskText;
+                            }
+                        }
+                        noteDisplay.setAttribute('data-task-text', taskText);
+                        noteDisplay.setAttribute('data-has-note', 'true');
                         
                         // Insert after the checkbox form, before the task text container
                         const checkboxForm = taskRow.querySelector('form');
@@ -3271,22 +3327,42 @@ function updateTaskNoteDisplay(taskId, hasNote) {
                         if (checkboxForm && taskTextContainer) {
                             taskRow.insertBefore(noteDisplay, taskTextContainer);
                         }
+                    } else {
+                        // Update existing note display button attributes if needed
+                        const taskTextDiv = taskElement.querySelector('[id^="task-text-"]');
+                        if (taskTextDiv) {
+                            const taskText = taskTextDiv.textContent || taskTextDiv.innerText || '';
+                            noteDisplay.setAttribute('data-task-text', taskText);
+                        }
                     }
                     
-                    // Show only the note icon (no date)
+                    // Update note icon and ensure it's clickable
                     noteDisplay.innerHTML = `
                         <i class="fas fa-sticky-note text-[var(--primary-action-bg)]"></i>
                     `;
+                    
+                    // Hide right-side note button when note exists
+                    const noteButtons = taskElement.querySelectorAll('.task-note-btn');
+                    noteButtons.forEach(btn => {
+                        btn.style.display = 'none';
+                    });
                 }
             })
             .catch(error => {
                 console.error('Error fetching notes:', error);
             });
     } else {
-        // Remove note display
-        if (noteDisplay) {
-            noteDisplay.remove();
-        }
+        // Remove all note displays (ensure only one exists, then remove it)
+        const allNoteDisplays = taskRow.querySelectorAll('.note-display-button, .note-display');
+        allNoteDisplays.forEach(display => {
+            display.remove();
+        });
+        
+        // Show right-side note button when no note exists
+        const noteButtons = taskElement.querySelectorAll('.task-note-btn');
+        noteButtons.forEach(btn => {
+            btn.style.display = '';
+        });
     }
 }
 
