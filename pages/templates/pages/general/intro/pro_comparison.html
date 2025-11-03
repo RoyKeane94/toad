@@ -1,0 +1,292 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Toad Plans Comparison - Toad{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Override layout padding for comparison page */
+    #app {
+        padding: 0 !important;
+    }
+    
+    .comparison-container {
+        min-height: 100vh;
+        padding: 4rem 1rem;
+        background: white;
+    }
+    
+    .comparison-table {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08);
+        border: 1px solid var(--border-color);
+        display: table;
+    }
+    
+    /* Ensure shadow is visible */
+    #comparison-table {
+        padding: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .comparison-table thead {
+        background: white;
+    }
+    
+    .comparison-table th {
+        padding: 1.5rem 1rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: var(--text-primary);
+        border-bottom: 2px solid var(--border-color);
+    }
+    
+    .comparison-table th:first-child {
+        text-align: left;
+        font-weight: 600;
+        color: var(--text-secondary);
+    }
+    
+    .comparison-table th.popular {
+        background: var(--primary-action-bg);
+        color: white;
+        position: relative;
+    }
+    
+    .comparison-table th.popular::before {
+        content: 'Most Popular';
+        position: absolute;
+        top: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        opacity: 0.9;
+    }
+    
+    .comparison-table td {
+        padding: 1.25rem 1rem;
+        text-align: center;
+        border-bottom: 1px solid var(--border-color);
+        color: var(--text-primary);
+    }
+    
+    .comparison-table td:first-child {
+        text-align: left;
+        font-weight: 500;
+        color: var(--text-primary);
+    }
+    
+    .comparison-table tbody tr:last-child td {
+        border-bottom: none;
+    }
+    
+    .comparison-table tbody tr:hover {
+        background: var(--grid-header-bg);
+    }
+    
+    /* Light green shading for Pro column */
+    .comparison-table tbody tr td:last-child {
+        background: oklch(0.98 0.02 120);
+    }
+    
+    .comparison-table tbody tr:hover td:last-child {
+        background: oklch(0.96 0.03 120);
+    }
+    
+    .tick {
+        color: var(--primary-action-bg);
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    
+    .cross {
+        color: #dc2626;
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    
+    .plan-name {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        display: block;
+    }
+    
+    @media (max-width: 768px) {
+        .comparison-table {
+            font-size: 0.875rem;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 0.75rem 0.5rem;
+        }
+        
+        .comparison-table th:first-child,
+        .comparison-table td:first-child {
+            min-width: 140px;
+        }
+        
+        .plan-name {
+            font-size: 1.125rem;
+        }
+        
+        .tick, .cross {
+            font-size: 1.25rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="comparison-container">
+    <div class="max-w-6xl mx-auto px-4">
+        <!-- Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+                Compare <span class="text-green-600">Toad Plans</span>
+            </h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Choose the plan that's right for you.
+            </p>
+        </div>
+        
+        <!-- Comparison Table -->
+        <div id="comparison-table" class="overflow-x-auto">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Free</th>
+                        <th>
+                            <span class="plan-name">Personal</span>
+                            <span style="display: block; font-size: 0.875rem; font-weight: 400; margin-top: 0.5rem; opacity: 0.9;">£2/month</span>
+                        </th>
+                        <th class="popular">
+                            <span class="plan-name">Pro</span>
+                            <span style="display: block; font-size: 0.875rem; font-weight: 400; margin-top: 0.5rem; opacity: 0.9;">£5/month</span>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Number of grids</td>
+                        <td>2</td>
+                        <td>Up to 10</td>
+                        <td>Unlimited</td>
+                    </tr>
+                    <tr>
+                        <td>Simple and powerful grid system</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Drag and drop</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Add notes to tasks</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Toad templates</td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Create custom templates</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Archive grids</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="tick">✓</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Share grids</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                    <tr>
+                        <td>Collaborate on grids</td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="cross">✗</span></td>
+                        <td><span class="tick">✓</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Call to Action -->
+        <div class="text-center mt-12">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+                Ready to get started?
+            </h2>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="{% url 'accounts:register_free' %}"
+                   class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-gray-900 bg-white border border-gray-300 text-center hover:bg-gray-50"
+                   style="min-width: 140px;">
+                    Start Free
+                </a>
+                <a href="{% url 'accounts:register_personal' %}"
+                   class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white text-center"
+                   style="background: var(--primary-action-bg); min-width: 140px;"
+                   onmouseover="this.style.background='var(--primary-action-hover-bg)'" 
+                   onmouseout="this.style.background='var(--primary-action-bg)'">
+                    Start Personal
+                </a>
+                <a href="{% url 'accounts:register_pro' %}"
+                   class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white text-center"
+                   style="background: var(--primary-action-bg); min-width: 140px;"
+                   onmouseover="this.style.background='var(--primary-action-hover-bg)'" 
+                   onmouseout="this.style.background='var(--primary-action-bg)'">
+                    Start Pro
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Feature points animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const featurePoints = document.querySelectorAll('.feature-point');
+        if (featurePoints.length > 0) {
+            const featureObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseInt(entry.target.getAttribute('data-delay'));
+                        setTimeout(() => {
+                            entry.target.classList.remove('opacity-0', 'translate-y-4');
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                        }, delay);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            featurePoints.forEach(point => {
+                featureObserver.observe(point);
+            });
+        }
+    });
+</script>
+{% endblock %}
+

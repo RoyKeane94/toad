@@ -61,7 +61,7 @@
                 <div class="mb-6">
                     <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-12 w-auto mx-auto">
                 </div>
-                <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)]">
+                <h2 class="text-3xl font-bold text-[var(--primary-action-bg)]">
                     Start Your Pro Plan
                 </h2>
                 <p class="mt-2 text-sm text-[var(--subtitle-text)]">
@@ -185,7 +185,7 @@
 
                     <!-- Submit Button -->
                     <div>
-                        <button type="submit" id="register-btn" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200 cursor-pointer">
+                        <button type="submit" id="register-btn" class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200 cursor-pointer">
                             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
                                 <i class="fas fa-user-plus text-white opacity-75 group-hover:opacity-100" id="register-icon"></i>
                             </span>
@@ -201,7 +201,7 @@
                     <div class="text-center">
                         <p class="text-sm text-[var(--text-secondary)]">
                             Already have an account?
-                            <a href="{% url 'accounts:login' %}" class="font-medium text-[var(--tertiary-action-bg)] hover:text-[var(--tertiary-action-hover-bg)] transition-colors cursor-pointer">
+                            <a href="{% url 'accounts:login' %}" class="font-medium text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] transition-colors cursor-pointer">
                                 Sign in here
                             </a>
                         </p>
@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Change button appearance
         registerBtn.classList.add('opacity-75', 'cursor-not-allowed');
-        registerBtn.classList.remove('hover:bg-[var(--tertiary-action-hover-bg)]');
+        registerBtn.classList.remove('hover:bg-[var(--primary-action-hover-bg)]');
     });
 });
 </script>

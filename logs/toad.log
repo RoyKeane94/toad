@@ -33450,3 +33450,61 @@ INFO 2025-11-03 13:08:04,751 autoreload 31091 8398642944 /Users/tombarratt/Deskt
 INFO 2025-11-03 13:08:05,298 autoreload 31192 8398642944 Watching for file changes with StatReloader
 INFO 2025-11-03 13:08:19,169 autoreload 31192 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
 INFO 2025-11-03 13:08:19,609 autoreload 31207 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 15:31:57,090 autoreload 32362 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 15:32:00,605 basehttp 32362 6131625984 "GET /pro-trial/ HTTP/1.1" 302 0
+INFO 2025-11-03 15:32:00,623 basehttp 32362 6131625984 "GET /accounts/settings/ HTTP/1.1" 200 3754
+INFO 2025-11-03 15:32:00,645 basehttp 32362 6148452352 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-11-03 15:32:00,646 basehttp 32362 6131625984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-03 15:32:03,157 basehttp 32362 6131625984 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-11-03 15:32:03,165 basehttp 32362 6131625984 "GET / HTTP/1.1" 200 7234
+INFO 2025-11-03 15:32:09,936 basehttp 32362 6131625984 "GET /pro-trial/ HTTP/1.1" 200 6168
+INFO 2025-11-03 15:32:09,954 basehttp 32362 6131625984 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-03 15:32:09,955 basehttp 32362 6148452352 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-11-03 15:34:38,027 basehttp 32362 6148452352 "GET /accounts/register/trial-3-month-pro/?email=thomasbarratt%40yahoo.com HTTP/1.1" 200 4771
+INFO 2025-11-03 15:43:27,837 autoreload 32362 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-11-03 15:43:28,539 autoreload 32482 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 15:43:33,160 autoreload 32482 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-11-03 15:43:33,580 autoreload 32485 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 15:43:38,749 autoreload 32485 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-11-03 15:43:39,021 autoreload 32494 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 15:43:48,701 autoreload 32494 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-11-03 15:43:49,133 autoreload 32504 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 15:45:01,789 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3644
+INFO 2025-11-03 15:45:14,437 basehttp 32504 6169997312 "GET /accounts/register/personal/ HTTP/1.1" 200 3984
+INFO 2025-11-03 15:45:16,411 basehttp 32504 6169997312 "GET /accounts/register/pro/ HTTP/1.1" 200 3995
+INFO 2025-11-03 15:45:19,259 basehttp 32504 6169997312 "GET /accounts/register/personal/ HTTP/1.1" 200 4021
+INFO 2025-11-03 15:45:20,722 basehttp 32504 6169997312 "GET /accounts/register/free/ HTTP/1.1" 200 4148
+INFO 2025-11-03 15:47:09,763 basehttp 32504 6169997312 "GET /accounts/register/personal/ HTTP/1.1" 200 3999
+INFO 2025-11-03 15:47:12,346 basehttp 32504 6169997312 "GET /accounts/register/pro/ HTTP/1.1" 200 3993
+INFO 2025-11-03 15:47:14,293 basehttp 32504 6169997312 "GET /accounts/register/free/ HTTP/1.1" 200 4144
+INFO 2025-11-03 15:47:17,293 basehttp 32504 6169997312 "GET /accounts/register/free/ HTTP/1.1" 200 4113
+INFO 2025-11-03 15:47:19,692 basehttp 32504 6169997312 "GET /accounts/register/personal/ HTTP/1.1" 200 3975
+INFO 2025-11-03 15:48:22,640 basehttp 32504 6169997312 "GET /pro-trial/ HTTP/1.1" 200 6211
+INFO 2025-11-03 15:48:31,794 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3674
+INFO 2025-11-03 15:51:42,313 basehttp 32504 6169997312 "GET /pro-trial/ HTTP/1.1" 200 6198
+INFO 2025-11-03 15:51:46,812 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 5567
+INFO 2025-11-03 15:52:07,953 basehttp 32504 6169997312 "GET /accounts/register/personal/ HTTP/1.1" 200 4063
+INFO 2025-11-03 15:52:09,598 basehttp 32504 6169997312 "GET /accounts/register/pro/ HTTP/1.1" 200 4048
+INFO 2025-11-03 15:54:32,503 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3926
+INFO 2025-11-03 15:56:07,760 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3993
+INFO 2025-11-03 15:57:00,404 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3984
+INFO 2025-11-03 15:57:00,426 basehttp 32504 6203650048 "GET /static/js/general/general.min.js HTTP/1.1" 200 11921
+INFO 2025-11-03 15:57:00,428 basehttp 32504 6186823680 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 46997
+INFO 2025-11-03 15:57:00,429 basehttp 32504 6169997312 "GET /static/css/output.css HTTP/1.1" 200 92889
+INFO 2025-11-03 15:57:00,429 basehttp 32504 6220476416 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-11-03 15:57:00,585 basehttp 32504 6220476416 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-11-03 15:58:56,373 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3940
+INFO 2025-11-03 15:59:56,857 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 4058
+INFO 2025-11-03 16:00:24,620 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3989
+WARNING 2025-11-03 16:00:36,343 log 32504 6169997312 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-03 16:00:36,348 basehttp 32504 6169997312 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2314
+INFO 2025-11-03 16:00:37,118 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 3978
+WARNING 2025-11-03 16:00:37,140 log 32504 6169997312 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-11-03 16:00:37,141 basehttp 32504 6169997312 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2345
+INFO 2025-11-03 16:00:47,116 basehttp 32504 6169997312 "GET /pro-comparison/ HTTP/1.1" 200 4003
+INFO 2025-11-03 16:01:07,489 basehttp 32504 6169997312 "GET /pro-trial/ HTTP/1.1" 200 6177
+INFO 2025-11-03 16:01:07,527 basehttp 32504 6169997312 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-03 16:04:43,431 basehttp 32504 6169997312 "GET /pro-trial/ HTTP/1.1" 200 7082
+INFO 2025-11-03 16:05:30,378 basehttp 32504 6169997312 "GET /accounts/register/trial-3-month-pro/ HTTP/1.1" 200 4640
+INFO 2025-11-03 16:06:28,184 basehttp 32504 6169997312 "GET /pro-trial/ HTTP/1.1" 200 7145
+INFO 2025-11-03 16:06:36,404 basehttp 32504 6169997312 "GET /pro-trial/ HTTP/1.1" 200 7113

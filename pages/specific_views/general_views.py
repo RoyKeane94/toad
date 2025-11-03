@@ -41,6 +41,10 @@ def three_month_pro_trial_intro_view(request):
     """Display the 3-month Pro trial intro page"""
     return render(request, 'pages/general/intro/3_month_pro_trial_intro.html')
 
+def pro_comparison_view(request):
+    """Display the Pro comparison page"""
+    return render(request, 'pages/general/intro/pro_comparison.html')
+
 @login_required
 def upgrade_required_view(request):
     """Display the upgrade required page for free tier users"""

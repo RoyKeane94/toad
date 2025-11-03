@@ -10,6 +10,7 @@ urlpatterns = [
     
     # Pro Trial Intro
     path('pro-trial/', views.three_month_pro_trial_intro_view, name='three_month_pro_trial_intro'),
+    path('pro-comparison/', views.pro_comparison_view, name='pro_comparison'),
     
     # Superuser Dashboard
     path('dashboard/', views.dashboard_view, name='dashboard'),
