@@ -157,12 +157,12 @@
     }
     
     .pricing-button.pro {
-        background: var(--tertiary-action-bg);
+        background: var(--primary-action-bg);
         color: white;
     }
     
     .pricing-button.pro:hover {
-        background: var(--tertiary-action-hover-bg);
+        background: var(--primary-action-hover-bg);
         color: white;
     }
     
@@ -233,8 +233,7 @@
         </div>
         
         <!-- Personal Plan -->
-        <div class="pricing-card popular">
-            <div class="popular-badge">Most Popular</div>
+        <div class="pricing-card">
             <h3 class="pricing-title">Personal</h3>
             <p class="pricing-description">
                 For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
@@ -263,7 +262,8 @@
         </div>
         
         <!-- Pro Plan -->
-        <div class="pricing-card">
+        <div class="pricing-card popular">
+            <div class="popular-badge">Most Popular</div>
             <h3 class="pricing-title">Pro</h3>
             <p class="pricing-description">
                 For collaborating with your team. Simple, shared clarity without any unnecesarry noise
@@ -290,6 +290,17 @@
                 Start Pro Plan
             </a>
         </div>
+    </div>
+    
+    <!-- Compare Plans Button -->
+    <div class="text-center mt-12">
+        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+            Find the best Toad plan for you
+        </h2>
+        <a href="{% url 'pages:pro_comparison' %}" 
+           class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-gray-900 bg-white border border-gray-300 text-center hover:bg-gray-50">
+            Compare all plans
+        </a>
     </div>
 </div>
 {% endblock %}
