@@ -8,6 +8,7 @@ from .specific_views.error_views import (
 
 from .specific_views.general_views import (
     home,
+    three_month_pro_trial_intro_view,
     first_grid_tutorial_view,
     upgrade_required_view,
     upgrade_required_pro_view,

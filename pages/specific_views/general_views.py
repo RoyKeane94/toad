@@ -37,6 +37,10 @@ def home(request):
     """Handle the home page"""
     return render(request, 'pages/general/home.html')
 
+def three_month_pro_trial_intro_view(request):
+    """Display the 3-month Pro trial intro page"""
+    return render(request, 'pages/general/intro/3_month_pro_trial_intro.html')
+
 @login_required
 def upgrade_required_view(request):
     """Display the upgrade required page for free tier users"""

@@ -8,6 +8,9 @@ urlpatterns = [
     # Home
     path('', views.home, name='home'),
     
+    # Pro Trial Intro
+    path('pro-trial/', views.three_month_pro_trial_intro_view, name='three_month_pro_trial_intro'),
+    
     # Superuser Dashboard
     path('dashboard/', views.dashboard_view, name='dashboard'),
     

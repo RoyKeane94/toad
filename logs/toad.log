@@ -33277,3 +33277,176 @@ INFO 2025-10-25 13:50:47,337 autoreload 8405 8398642944 /Users/tombarratt/Deskto
 INFO 2025-10-25 13:50:47,695 autoreload 8415 8398642944 Watching for file changes with StatReloader
 INFO 2025-10-25 13:50:57,613 basehttp 8415 6165213184 "GET /grids/247/ HTTP/1.1" 200 23067
 INFO 2025-10-25 13:51:05,664 basehttp 8415 6165213184 "POST /tasks/2553/reminder/ HTTP/1.1" 200 82
+INFO 2025-10-25 13:55:45,147 autoreload 9064 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 13:55:47,810 basehttp 9064 6190968832 "POST /grids/247/clear-completed/ HTTP/1.1" 200 71
+INFO 2025-10-25 13:55:49,400 basehttp 9064 6190968832 "GET /grids/247/ HTTP/1.1" 200 22479
+INFO 2025-10-25 13:55:49,446 basehttp 9064 6190968832 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-10-25 14:17:38,378 autoreload 9064 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-10-25 14:17:38,901 autoreload 9210 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 14:17:46,559 autoreload 9210 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-10-25 14:17:46,997 autoreload 9215 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 14:17:55,305 autoreload 9215 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-10-25 14:17:55,637 autoreload 9219 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 14:19:30,855 autoreload 9219 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-25 14:19:31,546 autoreload 9256 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 14:19:32,367 basehttp 9256 6122139648 "GET / HTTP/1.1" 200 7454
+INFO 2025-10-25 14:19:35,123 autoreload 9256 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-10-25 14:19:35,478 autoreload 9268 8398642944 Watching for file changes with StatReloader
+INFO 2025-10-25 14:19:41,843 basehttp 9268 6128300032 "GET /pro-trial HTTP/1.1" 301 0
+INFO 2025-10-25 14:19:41,865 basehttp 9268 6145126400 "GET /pro-trial/ HTTP/1.1" 200 5520
+INFO 2025-10-25 14:20:26,872 basehttp 9268 6145126400 "GET / HTTP/1.1" 200 7513
+INFO 2025-11-01 11:17:35,233 basehttp 9268 6128300032 "GET / HTTP/1.1" 200 7466
+INFO 2025-11-01 11:17:35,301 basehttp 9268 6128300032 "GET /static/css/output.css HTTP/1.1" 200 92889
+INFO 2025-11-01 11:17:35,303 basehttp 9268 6128300032 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 46997
+INFO 2025-11-01 11:17:35,308 basehttp 9268 6145126400 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-01 11:17:35,309 basehttp 9268 6128300032 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-11-01 11:17:36,278 basehttp 9268 6128300032 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-01 11:17:36,324 basehttp 9268 6145126400 "GET /admin/ HTTP/1.1" 200 3239
+INFO 2025-11-01 11:17:36,330 basehttp 9268 6161952768 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-11-01 11:17:36,330 basehttp 9268 6128300032 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-11-01 11:17:36,330 basehttp 9268 6145126400 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-11-01 11:17:36,332 basehttp 9268 6161952768 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-11-01 11:17:36,332 basehttp 9268 6128300032 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-11-01 11:17:36,333 basehttp 9268 6145126400 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-11-01 11:17:36,333 basehttp 9268 6128300032 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-11-01 11:17:36,336 basehttp 9268 6161952768 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-11-01 11:17:36,336 basehttp 9268 6145126400 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-11-01 11:17:36,337 basehttp 9268 6128300032 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-11-01 11:17:36,337 basehttp 9268 6145126400 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+WARNING 2025-11-01 11:17:43,144 log 9268 6145126400 Not Found: /accounts/pro-trial
+WARNING 2025-11-01 11:17:43,145 basehttp 9268 6145126400 "GET /accounts/pro-trial HTTP/1.1" 404 2789
+INFO 2025-11-01 11:17:56,409 basehttp 9268 6145126400 "GET /pro-trial HTTP/1.1" 301 0
+INFO 2025-11-01 11:17:56,418 basehttp 9268 6128300032 "GET /pro-trial/ HTTP/1.1" 200 6112
+INFO 2025-11-01 11:17:56,485 basehttp 9268 6128300032 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-01 11:17:59,466 basehttp 9268 6128300032 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-11-01 11:17:59,470 basehttp 9268 6128300032 "GET / HTTP/1.1" 200 7261
+INFO 2025-11-01 11:18:03,750 basehttp 9268 6128300032 "GET /pro-trial HTTP/1.1" 301 0
+INFO 2025-11-01 11:18:03,754 basehttp 9268 6145126400 "GET /pro-trial/ HTTP/1.1" 200 5923
+INFO 2025-11-01 11:30:20,849 basehttp 9268 6128300032 "GET /accounts/register/trial-3-month-pro/?email=test%40hotmail.com HTTP/1.1" 200 4660
+INFO 2025-11-01 11:34:16,305 basehttp 9268 6128300032 "GET /pro-trial/ HTTP/1.1" 200 6192
+INFO 2025-11-03 12:40:31,910 basehttp 9268 6128300032 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-03 12:41:40,232 autoreload 9268 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-11-03 12:41:40,938 autoreload 30295 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:41:45,537 autoreload 30295 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-11-03 12:41:45,941 autoreload 30306 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:41:47,418 autoreload 30306 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-11-03 12:41:47,777 autoreload 30309 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:42:42,479 autoreload 30309 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-11-03 12:42:42,919 autoreload 30351 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:43:51,098 autoreload 30351 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:43:51,610 autoreload 30386 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:44:05,467 autoreload 30386 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:44:05,934 autoreload 30401 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:45:16,169 autoreload 30401 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-11-03 12:45:16,840 autoreload 30427 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:45:18,362 autoreload 30427 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-11-03 12:45:18,746 autoreload 30430 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:45:20,405 autoreload 30430 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-11-03 12:45:20,723 autoreload 30431 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:45:26,291 autoreload 30431 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-11-03 12:45:26,642 autoreload 30434 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:45:59,895 autoreload 30434 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-11-03 12:46:00,430 autoreload 30465 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:50:05,044 autoreload 30465 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:50:05,585 autoreload 30512 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:50:16,287 autoreload 30512 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:50:16,955 autoreload 30520 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:52:24,594 autoreload 30520 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:52:25,187 autoreload 30549 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:52:39,079 autoreload 30549 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:52:39,532 autoreload 30557 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:53:03,887 autoreload 30557 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:53:04,528 autoreload 30572 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:55:01,857 autoreload 30572 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 12:55:02,441 autoreload 30650 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 12:55:06,320 basehttp 30650 6125006848 "GET / HTTP/1.1" 200 7283
+INFO 2025-11-03 12:55:06,347 basehttp 30650 6125006848 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-11-03 12:55:06,353 basehttp 30650 6125006848 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-11-03 12:55:06,354 basehttp 30650 6141833216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-03 12:55:06,354 basehttp 30650 6158659584 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-11-03 12:55:06,856 basehttp 30650 6158659584 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-11-03 12:55:08,485 basehttp 30650 6158659584 "GET /accounts/register/ HTTP/1.1" 200 3844
+INFO 2025-11-03 12:55:11,398 basehttp 30650 6125006848 "GET /accounts/register/pro/ HTTP/1.1" 200 4064
+INFO 2025-11-03 12:55:38,361 basehttp 30650 6125006848 "POST /accounts/register/pro/ HTTP/1.1" 200 4282
+INFO 2025-11-03 12:55:46,890 basehttp 30650 6125006848 "GET / HTTP/1.1" 200 7243
+INFO 2025-11-03 12:55:51,214 basehttp 30650 6125006848 "GET /accounts/login/ HTTP/1.1" 200 3805
+INFO 2025-11-03 12:56:43,086 basehttp 30650 6125006848 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-11-03 12:56:43,105 basehttp 30650 6125006848 "GET /grids/ HTTP/1.1" 200 12973
+INFO 2025-11-03 12:57:42,261 basehttp 30650 6125006848 "GET / HTTP/1.1" 200 7465
+INFO 2025-11-03 12:57:43,899 basehttp 30650 6125006848 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-03 12:57:43,928 basehttp 30650 6125006848 "GET /admin/ HTTP/1.1" 200 3163
+INFO 2025-11-03 12:57:44,343 basehttp 30650 6125006848 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-11-03 12:57:46,190 basehttp 30650 6125006848 "GET /admin/accounts/user/ HTTP/1.1" 200 4540
+INFO 2025-11-03 12:57:46,215 basehttp 30650 6175485952 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-11-03 12:57:46,216 basehttp 30650 6125006848 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-11-03 12:57:46,218 basehttp 30650 6192312320 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-11-03 12:57:46,218 basehttp 30650 6209138688 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-11-03 12:57:46,220 basehttp 30650 6175485952 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-11-03 12:57:46,221 basehttp 30650 6125006848 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-11-03 12:57:46,222 basehttp 30650 6192312320 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-11-03 12:57:46,222 basehttp 30650 6141833216 "GET /admin/jsi18n/ HTTP/1.1" 200 975
+INFO 2025-11-03 12:57:46,224 basehttp 30650 6175485952 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-11-03 12:57:46,225 basehttp 30650 6158659584 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-11-03 12:57:46,227 basehttp 30650 6209138688 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-11-03 12:57:46,228 basehttp 30650 6209138688 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-11-03 12:57:46,243 basehttp 30650 6209138688 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-11-03 12:57:46,244 basehttp 30650 6158659584 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-11-03 12:57:46,244 basehttp 30650 6175485952 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-11-03 12:58:00,061 basehttp 30650 6175485952 "POST /admin/accounts/user/ HTTP/1.1" 200 3550
+INFO 2025-11-03 12:58:00,074 basehttp 30650 6175485952 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-11-03 12:58:01,767 basehttp 30650 6175485952 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-11-03 12:58:01,787 basehttp 30650 6175485952 "GET /admin/accounts/user/ HTTP/1.1" 200 4578
+INFO 2025-11-03 12:58:01,799 basehttp 30650 6175485952 "GET /admin/jsi18n/ HTTP/1.1" 200 992
+INFO 2025-11-03 12:59:23,164 basehttp 30650 6175485952 "POST /admin/logout/ HTTP/1.1" 200 1335
+INFO 2025-11-03 12:59:29,577 basehttp 30650 6175485952 "GET / HTTP/1.1" 200 7280
+INFO 2025-11-03 12:59:31,270 basehttp 30650 6175485952 "GET /accounts/register/ HTTP/1.1" 200 3951
+INFO 2025-11-03 12:59:35,093 basehttp 30650 6175485952 "GET /accounts/register/pro/ HTTP/1.1" 200 3995
+INFO 2025-11-03 13:00:03,152 basehttp 30650 6175485952 "GET / HTTP/1.1" 200 7278
+INFO 2025-11-03 13:01:59,946 basehttp 30650 6175485952 "GET /accounts/register/ HTTP/1.1" 200 3928
+INFO 2025-11-03 13:02:02,470 basehttp 30650 6175485952 "GET /accounts/register/pro/ HTTP/1.1" 200 4030
+INFO 2025-11-03 13:02:13,573 views 30650 6175485952 Starting Pro plan user registration...
+INFO 2025-11-03 13:02:13,808 views 30650 6175485952 User created successfully: tom@meettoad.co.uk
+INFO 2025-11-03 13:02:13,809 views 30650 6175485952 User tier set to free: tom@meettoad.co.uk
+INFO 2025-11-03 13:02:13,809 views 30650 6175485952 New Pro plan user registration: tom@meettoad.co.uk (Tom) - tier set to FREE initially
+INFO 2025-11-03 13:02:13,809 views 30650 6175485952 Logging user in...
+INFO 2025-11-03 13:02:13,811 views 30650 6175485952 User logged in successfully
+INFO 2025-11-03 13:02:13,811 views 30650 6175485952 Redirecting to Stripe checkout...
+INFO 2025-11-03 13:02:13,813 basehttp 30650 6175485952 "POST /accounts/register/pro/ HTTP/1.1" 302 0
+INFO 2025-11-03 13:02:13,817 stripe_django_views 30650 6175485952 Stripe Pro checkout view accessed by user: tom@meettoad.co.uk
+INFO 2025-11-03 13:02:13,817 stripe_django_views 30650 6175485952 Stripe API key is configured, proceeding...
+INFO 2025-11-03 13:02:13,817 stripe_django_views 30650 6175485952 Rendering Stripe Pro checkout template...
+INFO 2025-11-03 13:02:13,818 stripe_django_views 30650 6175485952 Template rendered successfully
+INFO 2025-11-03 13:02:13,819 basehttp 30650 6175485952 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3209
+INFO 2025-11-03 13:02:26,403 _util 30650 6175485952 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-11-03 13:02:26,719 _util 30650 6175485952 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-11-03 13:02:26,723 _util 30650 6175485952 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-11-03 13:02:27,311 _util 30650 6175485952 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-11-03 13:02:27,314 basehttp 30650 6175485952 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-11-03 13:04:44,255 _util 30650 6125006848 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_live_a1luohW7i7L8OuFGv3A28DHvADdSZhFqVqXs49FJWlHKBbEP98VqLjMemV
+INFO 2025-11-03 13:04:44,557 _util 30650 6125006848 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_live_a1luohW7i7L8OuFGv3A28DHvADdSZhFqVqXs49FJWlHKBbEP98VqLjMemV response_code=200
+INFO 2025-11-03 13:04:44,565 stripe_django_views 30650 6125006848 User tom@meettoad.co.uk successfully subscribed to Pro plan. Session: cs_live_a1luohW7i7L8OuFGv3A28DHvADdSZhFqVqXs49FJWlHKBbEP98VqLjMemV
+INFO 2025-11-03 13:04:44,573 basehttp 30650 6125006848 "GET /accounts/stripe/success/pro/?session_id=cs_live_a1luohW7i7L8OuFGv3A28DHvADdSZhFqVqXs49FJWlHKBbEP98VqLjMemV HTTP/1.1" 200 3136
+INFO 2025-11-03 13:04:44,574 email_utils 30650 6158659584 Attempting to send pro joining email to tom@meettoad.co.uk
+WARNING 2025-11-03 13:04:44,609 basehttp 30650 6125006848 "GET /static/css/stripe/style.css HTTP/1.1" 404 1987
+INFO 2025-11-03 13:04:47,805 email_utils 30650 6158659584 Successfully sent pro joining email to tom@meettoad.co.uk
+INFO 2025-11-03 13:04:47,807 stripe_django_views 30650 6158659584 Joining email sent after payment: True for tom@meettoad.co.uk
+INFO 2025-11-03 13:04:52,284 _util 30650 6125006848 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_live_a1luohW7i7L8OuFGv3A28DHvADdSZhFqVqXs49FJWlHKBbEP98VqLjMemV
+INFO 2025-11-03 13:04:52,720 _util 30650 6125006848 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_live_a1luohW7i7L8OuFGv3A28DHvADdSZhFqVqXs49FJWlHKBbEP98VqLjMemV response_code=200
+INFO 2025-11-03 13:04:52,724 _util 30650 6125006848 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-11-03 13:04:52,942 _util 30650 6125006848 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=400
+INFO 2025-11-03 13:04:52,943 _util 30650 6125006848 error_code=None error_message='No configuration provided and your live mode default configuration has not been created. Provide a configuration or create your default by saving your customer portal settings in live mode at https://dashboard.stripe.com/settings/billing/portal.' error_param=None error_type=invalid_request_error message='Stripe v1 API error received'
+ERROR 2025-11-03 13:04:52,944 stripe_django_views 30650 6125006848 Stripe error in create_portal_session: Request req_ZZFAVK9ioXKNFW: No configuration provided and your live mode default configuration has not been created. Provide a configuration or create your default by saving your customer portal settings in live mode at https://dashboard.stripe.com/settings/billing/portal.
+INFO 2025-11-03 13:04:52,949 basehttp 30650 6125006848 "POST /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-11-03 13:04:52,966 basehttp 30650 6125006848 "GET /accounts/settings/ HTTP/1.1" 200 3743
+INFO 2025-11-03 13:04:56,112 basehttp 30650 6125006848 "GET /grids/ HTTP/1.1" 200 11789
+INFO 2025-11-03 13:04:59,604 basehttp 30650 6125006848 "GET /accounts/settings/ HTTP/1.1" 200 3741
+INFO 2025-11-03 13:07:02,416 autoreload 30650 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 13:07:03,077 autoreload 31073 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 13:07:09,716 autoreload 31073 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 13:07:10,175 autoreload 31084 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 13:07:19,831 autoreload 31084 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 13:07:20,410 autoreload 31091 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 13:08:04,751 autoreload 31091 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 13:08:05,298 autoreload 31192 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-03 13:08:19,169 autoreload 31192 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-11-03 13:08:19,609 autoreload 31207 8398642944 Watching for file changes with StatReloader

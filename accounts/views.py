@@ -845,6 +845,52 @@ class RegisterPersonalView(FormView):
         return super().form_invalid(form)
 
 
+class RegisterProView(FormView):
+    """
+    Custom registration view for Pro plan using email authentication
+    """
+    template_name = 'accounts/pages/registration/register_pro.html'
+    form_class = CustomUserCreationForm
+    
+    def form_valid(self, form):
+        """Create the user and redirect to Stripe checkout"""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            logger.info("Starting Pro plan user registration...")
+            user = form.save()
+            logger.info(f"User created successfully: {user.email}")
+            
+            # Set user tier to FREE initially - will be upgraded to pro after successful payment
+            if hasattr(user, 'tier'):
+                user.tier = 'free'  # Default to free tier
+                user.save()
+                logger.info(f"User tier set to free: {user.email}")
+            
+            # Log registration attempt
+            logger.info(f"New Pro plan user registration: {user.email} ({user.get_short_name()}) - tier set to FREE initially")
+            
+            # Log the user in immediately so they can proceed to checkout
+            logger.info("Logging user in...")
+            login(self.request, user)
+            logger.info("User logged in successfully")
+            
+            # Redirect to Stripe checkout for Pro plan
+            logger.info("Redirecting to Stripe checkout...")
+            messages.success(self.request, 'Account created successfully! Please complete your subscription to activate Pro features.')
+            return redirect('accounts:stripe_checkout_pro')
+            
+        except Exception as e:
+            logger.error(f"Error in RegisterProView.form_valid: {e}", exc_info=True)
+            raise
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+
+
 class RegisterTrialView(FormView):
     """
     Registration view for 6-month free trial users

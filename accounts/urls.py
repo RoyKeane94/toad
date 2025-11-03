@@ -4,6 +4,7 @@ from .views import (
     LoginView, 
     RegisterFreeView, 
     RegisterPersonalView,
+    RegisterProView,
     RegisterChoicesView,
     RegisterTrialView,
     Register3MonthTrialView,
@@ -36,6 +37,10 @@ from .stripe_django_views import (
     create_checkout_session,
     stripe_success_view,
     stripe_cancel_view,
+    stripe_checkout_pro_view,
+    create_checkout_session_pro,
+    stripe_success_pro_view,
+    stripe_cancel_pro_view,
     create_portal_session,
     stripe_webhook
 )
@@ -48,6 +53,7 @@ urlpatterns = [
     path('register/', RegisterChoicesView.as_view(), name='register_choices'),
     path('register/free/', RegisterFreeView.as_view(), name='register_free'),
     path('register/personal/', RegisterPersonalView.as_view(), name='register_personal'),
+    path('register/pro/', RegisterProView.as_view(), name='register_pro'),
     path('register/trial/', RegisterTrialView.as_view(), name='register_trial'),
     path('register/trial-3-month/', Register3MonthTrialView.as_view(), name='register_3_month_trial'),
     path('register/trial-3-month-pro/', Register3MonthProTrialView.as_view(), name='register_3_month_pro_trial'),
@@ -86,6 +92,10 @@ urlpatterns = [
     path('stripe/create-checkout-session/', create_checkout_session, name='create_checkout_session'),
     path('stripe/success/', stripe_success_view, name='stripe_success'),
     path('stripe/cancel/', stripe_cancel_view, name='stripe_cancel'),
+    path('stripe/checkout/pro/', stripe_checkout_pro_view, name='stripe_checkout_pro'),
+    path('stripe/create-checkout-session/pro/', create_checkout_session_pro, name='create_checkout_session_pro'),
+    path('stripe/success/pro/', stripe_success_pro_view, name='stripe_success_pro'),
+    path('stripe/cancel/pro/', stripe_cancel_pro_view, name='stripe_cancel_pro'),
     path('stripe/create-portal-session/', create_portal_session, name='create_portal_session'),
     path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
 ]
