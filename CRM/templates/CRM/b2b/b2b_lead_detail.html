@@ -29,27 +29,86 @@
                             <dd class="text-sm text-[var(--text-primary)] mt-1">{{ lead.name }}</dd>
                         </div>
                         
-                        {% if lead.b2b_link %}
+                        {% if lead.company %}
                         <div>
                             <dt class="text-sm font-medium text-[var(--text-secondary)]">Company</dt>
                             <dd class="text-sm text-[var(--text-primary)] mt-1">
-                                {% if lead.b2b_link.company %}
-                                    <div>
-                                        <p class="font-medium">{{ lead.b2b_link.company.name }}</p>
-                                        {% if lead.b2b_link.company.sector %}
-                                        <p class="text-xs text-[var(--text-secondary)] mt-1">
-                                            <i class="fas fa-tag mr-1"></i>{{ lead.b2b_link.company.sector.name }}
-                                        </p>
-                                        {% endif %}
-                                        {% if lead.b2b_link.company.website %}
-                                        <a href="{{ lead.b2b_link.company.website }}" target="_blank" class="text-xs text-[var(--primary-action-bg)] hover:underline mt-1 inline-block">
-                                            <i class="fas fa-external-link-alt mr-1"></i>Visit website
-                                        </a>
+                                <div>
+                                    <p class="font-medium">{{ lead.company.name }}</p>
+                                </div>
+                            </dd>
+                        </div>
+                        {% endif %}
+                        
+                        {% if lead.company and lead.company.contact_email %}
+                        <div>
+                            <dt class="text-sm font-medium text-[var(--text-secondary)]">Contact Email</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1">
+                                <a href="mailto:{{ lead.company.contact_email }}" class="text-[var(--primary-action-bg)] hover:underline">
+                                    {{ lead.company.contact_email }}
+                                </a>
+                            </dd>
+                        </div>
+                        {% endif %}
+                        
+                        {% if lead.company and (lead.company.email_template or lead.company.email_subject or lead.company.personalised_email_text) %}
+                        <div class="border-t border-[var(--border-color)] pt-4">
+                            <dt class="text-sm font-semibold text-[var(--text-primary)]">Email Outreach</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-2 space-y-3">
+                                {% if lead.company.email_template %}
+                                <div>
+                                    <span class="text-[var(--text-secondary)] text-xs uppercase tracking-wide">Template</span>
+                                    <p class="mt-1">{{ lead.company.email_template.name }}</p>
+                                </div>
+                                {% endif %}
+                                {% if lead.company.email_subject %}
+                                <div>
+                                    <span class="text-[var(--text-secondary)] text-xs uppercase tracking-wide">Subject</span>
+                                    <p class="mt-1">{{ lead.company.email_subject }}</p>
+                                </div>
+                                {% endif %}
+                                {% if lead.company.personalised_email_text %}
+                                <div>
+                                    <span class="text-[var(--text-secondary)] text-xs uppercase tracking-wide">Personalised Email</span>
+                                    <p class="mt-1 whitespace-pre-wrap">{{ lead.company.personalised_email_text }}</p>
+                                </div>
+                                {% endif %}
+                                <div class="grid grid-cols-1 gap-3">
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[var(--text-secondary)] text-xs uppercase tracking-wide">Initial Email Sent</span>
+                                        {% if lead.company.initial_email_sent %}
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                                            <i class="fas fa-paper-plane mr-1"></i>Sent
+                                        </span>
+                                        {% else %}
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-yellow-100 text-yellow-800">
+                                            <i class="fas fa-clock mr-1"></i>Pending
+                                        </span>
                                         {% endif %}
                                     </div>
-                                {% else %}
-                                    <span class="text-[var(--text-secondary)] italic">No company assigned</span>
-                                {% endif %}
+                                    {% if lead.company.initial_email_sent_date %}
+                                    <p class="text-xs text-[var(--text-secondary)]">
+                                        {{ lead.company.initial_email_sent_date|date:"F d, Y" }}
+                                    </p>
+                                    {% endif %}
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[var(--text-secondary)] text-xs uppercase tracking-wide">Initial Email Response</span>
+                                        {% if lead.company.initial_email_response %}
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">
+                                            <i class="fas fa-check-circle mr-1"></i>Received
+                                        </span>
+                                        {% else %}
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
+                                            <i class="fas fa-minus-circle mr-1"></i>No Response
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                    {% if lead.company.initial_email_response_date %}
+                                    <p class="text-xs text-[var(--text-secondary)]">
+                                        {{ lead.company.initial_email_response_date|date:"F d, Y" }}
+                                    </p>
+                                    {% endif %}
+                                </div>
                             </dd>
                         </div>
                         {% endif %}

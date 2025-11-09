@@ -63,6 +63,21 @@
                     </p>
                 </div>
 
+                <!-- Contact Email -->
+                <div>
+                    <label for="{{ form.contact_email.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Contact Email
+                    </label>
+                    {{ form.contact_email }}
+                    {% if form.contact_email.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.contact_email.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
                 <!-- Contact Method Field -->
                 <div>
                     <label for="{{ form.contact_method.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
@@ -79,6 +94,119 @@
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">
                         Select a contact method or <a href="{% url 'crm:contact_method_create' %}" class="text-[var(--primary-action-bg)] hover:underline">create a new one</a>
                     </p>
+                </div>
+
+                <!-- Email Outreach Section -->
+                <div class="border-t border-[var(--border-color)] pt-6">
+                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Email Outreach</h3>
+
+                    <!-- Email Template -->
+                    <div>
+                        <label for="{{ form.email_template.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Email Template
+                        </label>
+                        {{ form.email_template }}
+                        {% if form.email_template.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.email_template.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Choose a template to start from, then customise the copy below. Need a new template? <a href="{% url 'crm:email_template_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">Create one in a new tab</a>.
+                        </p>
+                    </div>
+
+                    <!-- Email Subject -->
+                    <div>
+                        <label for="{{ form.email_subject.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Email Subject
+                        </label>
+                        {{ form.email_subject }}
+                        {% if form.email_subject.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.email_subject.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Personalised Email Copy -->
+                    <div>
+                        <label for="{{ form.personalised_email_text.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Personalised Email Text
+                        </label>
+                        {{ form.personalised_email_text }}
+                        {% if form.personalised_email_text.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.personalised_email_text.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Initial Email Sent -->
+                    <div class="flex items-center mb-4">
+                        {{ form.initial_email_sent }}
+                        <label for="{{ form.initial_email_sent.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            Initial Email Sent
+                        </label>
+                        {% if form.initial_email_sent.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_email_sent.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Initial Email Sent Date -->
+                    <div>
+                        <label for="{{ form.initial_email_sent_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Initial Email Sent Date
+                        </label>
+                        {{ form.initial_email_sent_date }}
+                        {% if form.initial_email_sent_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_email_sent_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Initial Email Response -->
+                    <div class="flex items-center mb-4">
+                        {{ form.initial_email_response }}
+                        <label for="{{ form.initial_email_response.id_for_label }}" class="ml-2 text-sm font-medium text-[var(--text-primary)]">
+                            Initial Email Response
+                        </label>
+                        {% if form.initial_email_response.errors %}
+                        <div class="ml-4 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_email_response.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Initial Email Response Date -->
+                    <div>
+                        <label for="{{ form.initial_email_response_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Initial Email Response Date
+                        </label>
+                        {{ form.initial_email_response_date }}
+                        {% if form.initial_email_response_date.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.initial_email_response_date.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
                 </div>
 
                 <!-- Toad Customer Fields -->

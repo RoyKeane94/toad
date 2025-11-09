@@ -1,5 +1,16 @@
 from django import forms
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, SocietyUniversity, Feedback, Company, CompanySector, B2BLink
+from .models import (
+    Lead,
+    LeadFocus,
+    ContactMethod,
+    LeadMessage,
+    SocietyLink,
+    SocietyUniversity,
+    Feedback,
+    Company,
+    CompanySector,
+    EmailTemplate,
+)
 
 # Base styling constants
 BASE_INPUT_CLASS = 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent'
@@ -47,6 +58,40 @@ class B2BLeadForm(forms.ModelForm):
         empty_label="Select a company (optional)",
         widget=forms.Select(attrs={'class': BASE_INPUT_CLASS})
     )
+    contact_email = forms.EmailField(
+        required=False,
+        widget=forms.EmailInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'name@example.com'})
+    )
+    email_template = forms.ModelChoiceField(
+        queryset=EmailTemplate.objects.all(),
+        required=False,
+        empty_label="Select a template (optional)",
+        widget=forms.Select(attrs={'class': BASE_INPUT_CLASS})
+    )
+    email_subject = forms.CharField(
+        required=False,
+        widget=forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter email subject'})
+    )
+    personalised_email_text = forms.CharField(
+        required=False,
+        widget=forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 6, 'placeholder': 'Personalised email copy'})
+    )
+    initial_email_sent = forms.BooleanField(
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS})
+    )
+    initial_email_sent_date = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'})
+    )
+    initial_email_response = forms.BooleanField(
+        required=False,
+        widget=forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS})
+    )
+    initial_email_response_date = forms.DateField(
+        required=False,
+        widget=forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'})
+    )
     
     class Meta:
         model = Lead
@@ -67,14 +112,22 @@ class B2BLeadForm(forms.ModelForm):
         self.fields['toad_customer_date'].required = False
         self.fields['initial_message_sent_date'].required = False
         self.fields['no_response_date'].required = False
+        self.fields['company'].queryset = Company.objects.order_by('name')
+        self.fields['email_template'].queryset = EmailTemplate.objects.order_by('name')
         
-        # If editing existing lead, populate company from B2BLink
+        # If editing existing lead, populate company data
         if self.instance and self.instance.pk:
-            try:
-                if hasattr(self.instance, 'b2b_link') and self.instance.b2b_link:
-                    self.fields['company'].initial = self.instance.b2b_link.company
-            except:
-                pass
+            company = getattr(self.instance, 'company', None)
+            self.fields['company'].initial = company
+            if company:
+                self.fields['contact_email'].initial = company.contact_email
+                self.fields['email_template'].initial = company.email_template
+                self.fields['email_subject'].initial = company.email_subject
+                self.fields['personalised_email_text'].initial = company.personalised_email_text
+                self.fields['initial_email_sent'].initial = company.initial_email_sent
+                self.fields['initial_email_sent_date'].initial = company.initial_email_sent_date
+                self.fields['initial_email_response'].initial = company.initial_email_response
+                self.fields['initial_email_response_date'].initial = company.initial_email_response_date
     
     def save(self, commit=True):
         instance = super().save(commit=False)
@@ -82,18 +135,29 @@ class B2BLeadForm(forms.ModelForm):
         if commit:
             instance.save()
             
-            # Handle company association via B2BLink
+            # Handle B2B email automation metadata
             company = self.cleaned_data.get('company')
+            contact_email = self.cleaned_data.get('contact_email') or ''
+            email_template = self.cleaned_data.get('email_template')
+            email_subject = self.cleaned_data.get('email_subject') or ''
+            personalised_email_text = self.cleaned_data.get('personalised_email_text') or ''
+            initial_email_sent = bool(self.cleaned_data.get('initial_email_sent'))
+            initial_email_sent_date = self.cleaned_data.get('initial_email_sent_date')
+            initial_email_response = bool(self.cleaned_data.get('initial_email_response'))
+            initial_email_response_date = self.cleaned_data.get('initial_email_response_date')
+
+            instance.company = company
             if company:
-                # Create or update B2BLink
-                b2b_link, created = B2BLink.objects.get_or_create(
-                    lead=instance,
-                    defaults={'name': instance.name, 'company': company}
-                )
-                if not created:
-                    b2b_link.company = company
-                    b2b_link.name = instance.name
-                    b2b_link.save()
+                company.contact_email = contact_email
+                company.email_template = email_template
+                company.email_subject = email_subject
+                company.personalised_email_text = personalised_email_text
+                company.initial_email_sent = initial_email_sent
+                company.initial_email_sent_date = initial_email_sent_date
+                company.initial_email_response = initial_email_response
+                company.initial_email_response_date = initial_email_response_date
+                company.save()
+            instance.save(update_fields=['company'])
         return instance
 
 class LeadMessageForm(forms.ModelForm):
@@ -116,37 +180,52 @@ class CompanySectorForm(forms.ModelForm):
 class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ['name', 'sector', 'website']
+        fields = [
+            'name',
+            'contact_email',
+            'email_template',
+            'email_subject',
+            'personalised_email_text',
+            'initial_email_sent',
+            'initial_email_sent_date',
+            'initial_email_response',
+            'initial_email_response_date',
+        ]
         widgets = {
             'name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter company name'}),
-            'sector': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
-            'website': forms.URLInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'https://example.com'})
+            'contact_email': forms.EmailInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'name@example.com'}),
+            'email_template': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
+            'email_subject': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter email subject'}),
+            'personalised_email_text': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 5, 'placeholder': 'Personalised email copy'}),
+            'initial_email_sent': forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS}),
+            'initial_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
+            'initial_email_response': forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS}),
+            'initial_email_response_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
         }
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['sector'].required = False
-        self.fields['sector'].empty_label = "Select a sector (optional)"
-        self.fields['website'].required = False
+        self.fields['email_template'].required = False
+        self.fields['email_template'].empty_label = "Select a template (optional)"
+        self.fields['email_template'].queryset = EmailTemplate.objects.order_by('name')
 
-class B2BLinkForm(forms.ModelForm):
+
+class EmailTemplateForm(forms.ModelForm):
     class Meta:
-        model = B2BLink
-        fields = ['name', 'company', 'lead']
+        model = EmailTemplate
+        fields = ['name', 'text']
         widgets = {
-            'name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter contact person name'}),
-            'company': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
-            'lead': forms.Select(attrs={'class': BASE_INPUT_CLASS})
+            'name': forms.TextInput(attrs={
+                'class': BASE_INPUT_CLASS,
+                'placeholder': 'Enter template name'
+            }),
+            'text': forms.Textarea(attrs={
+                'class': BASE_INPUT_CLASS,
+                'rows': 12,
+                'placeholder': 'Write your email template content here...'
+            }),
         }
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields['company'].required = False
-        self.fields['company'].empty_label = "Select a company (optional)"
-        self.fields['lead'].required = False
-        self.fields['lead'].empty_label = "Select a lead (optional)"
-        # Filter leads to only show B2B leads
-        self.fields['lead'].queryset = Lead.objects.filter(lead_type='b2b')
+
 
 class LeadFocusForm(forms.ModelForm):
     class Meta:

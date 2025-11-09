@@ -4,10 +4,10 @@ from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpRespon
 from django.contrib import messages
 from django.urls import reverse
 from django.db import models
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback, Company, CompanySector, B2BLink
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback, Company, CompanySector
 from .forms import (
     B2BLeadForm, SocietyLeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, 
-    SocietyLinkForm, SocietyUniversityForm, FeedbackForm, CompanyForm, CompanySectorForm, B2BLinkForm
+    SocietyLinkForm, SocietyUniversityForm, FeedbackForm, CompanyForm, CompanySectorForm, EmailTemplateForm
 )
 from django.core.files.base import ContentFile
 
@@ -30,7 +30,6 @@ def crm_home(request):
     total_b2b_leads = b2b_leads.count()
     b2b_customers = b2b_leads.filter(toad_customer=True).count()
     recent_b2b_leads = b2b_leads.select_related('lead_focus', 'contact_method').order_by('-created_at')[:5]
-    recent_b2b_links = B2BLink.objects.select_related('company', 'lead').order_by('-id')[:3]
     total_companies = Company.objects.count()
     
     context = {
@@ -39,7 +38,6 @@ def crm_home(request):
         'total_b2b_leads': total_b2b_leads,
         'b2b_customers': b2b_customers,
         'recent_b2b_leads': recent_b2b_leads,
-        'recent_b2b_links': recent_b2b_links,
         'total_companies': total_companies,
     }
     return render(request, 'CRM/b2b/b2b_home.html', context)
@@ -52,7 +50,7 @@ def b2b_lead_list(request):
     """
     List all B2B leads with filtering, search, and sorting.
     """
-    leads = Lead.objects.filter(lead_type='b2b').select_related('lead_focus', 'contact_method')
+    leads = Lead.objects.filter(lead_type='b2b').select_related('lead_focus', 'contact_method', 'company')
     
     # Search functionality
     search_query = request.GET.get('search', '')
@@ -134,7 +132,7 @@ def b2b_lead_update(request, pk):
     """
     Update an existing B2B lead.
     """
-    lead = get_object_or_404(Lead, pk=pk, lead_type='b2b')
+    lead = get_object_or_404(Lead.objects.select_related('company', 'lead_focus', 'contact_method'), pk=pk, lead_type='b2b')
     
     if request.method == 'POST':
         form = B2BLeadForm(request.POST, instance=lead)
@@ -159,7 +157,7 @@ def b2b_lead_delete(request, pk):
     """
     Delete a B2B lead.
     """
-    lead = get_object_or_404(Lead, pk=pk, lead_type='b2b')
+    lead = get_object_or_404(Lead.objects.select_related('company'), pk=pk, lead_type='b2b')
     
     if request.method == 'POST':
         lead.delete()
@@ -195,7 +193,7 @@ def company_list(request):
     """
     List all companies.
     """
-    companies = Company.objects.select_related('sector').all()
+    companies = Company.objects.select_related('email_template').all()
     
     # Search functionality
     search_query = request.GET.get('search', '')
@@ -250,6 +248,28 @@ def company_sector_create(request):
         'title': 'Create New Company Sector',
     }
     return render(request, 'CRM/b2b/company_sector_form.html', context)
+
+
+@login_required
+@user_passes_test(is_superuser)
+def email_template_create(request):
+    """
+    Create a new email template for B2B outreach.
+    """
+    if request.method == 'POST':
+        form = EmailTemplateForm(request.POST)
+        if form.is_valid():
+            template = form.save()
+            messages.success(request, f'Email template "{template.name}" created successfully!')
+            return redirect('crm:b2b_lead_create')
+    else:
+        form = EmailTemplateForm()
+
+    context = {
+        'form': form,
+        'title': 'Create Email Template',
+    }
+    return render(request, 'CRM/b2b/email_template_form.html', context)
 
 # ==================== SOCIETY CRM VIEWS ====================
 

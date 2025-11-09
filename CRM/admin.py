@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Lead, LeadFocus, LeadMessage, SocietyLink, SocietyUniversity, Feedback, Company, CompanySector, B2BLink, ContactMethod
+from .models import Lead, LeadFocus, LeadMessage, SocietyLink, SocietyUniversity, Feedback, Company, CompanySector, ContactMethod
 
 # Register your models here.
 
@@ -10,8 +10,6 @@ admin.site.register(SocietyUniversity)
 # B2B-related models
 admin.site.register(Company)
 admin.site.register(CompanySector)
-admin.site.register(B2BLink)
-
 # Shared models
 admin.site.register(Lead)
 admin.site.register(LeadFocus)

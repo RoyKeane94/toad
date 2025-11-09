@@ -65,6 +65,7 @@ class Lead(models.Model):
     
     name = models.CharField(max_length=100)
     lead_type = models.CharField(max_length=10, choices=LEAD_TYPE_CHOICES, default='b2b')
+    company = models.ForeignKey('Company', on_delete=models.SET_NULL, null=True, blank=True, related_name='leads')
     society_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     toad_customer = models.BooleanField(default=False)
     toad_customer_date = models.DateField(null=True, blank=True)
@@ -80,12 +81,8 @@ class Lead(models.Model):
         if self.lead_type == 'society' and self.society_university:
             return f"{self.name} - {self.society_university.name}"
         elif self.lead_type == 'b2b':
-            # Try to get company from B2BLink
-            try:
-                if hasattr(self, 'b2b_link') and self.b2b_link.company:
-                    return f"{self.name} - {self.b2b_link.company.name}"
-            except:
-                pass
+            if self.company:
+                return f"{self.name} - {self.company.name}"
         return self.name
 
 class SocietyLink(models.Model):
@@ -105,21 +102,37 @@ class SocietyLink(models.Model):
         return self.name or f"SocietyLink-{self.id}" if self.id else "SocietyLink-New"
 
 # B2B Models
+
 class CompanySector(models.Model):
     name = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    
+
     class Meta:
         ordering = ['name']
-    
+        verbose_name = 'Company Sector'
+        verbose_name_plural = 'Company Sectors'
+
     def __str__(self):
         return self.name
 
+
 class Company(models.Model):
     name = models.CharField(max_length=200)
-    sector = models.ForeignKey(CompanySector, on_delete=models.SET_NULL, null=True, blank=True)
-    website = models.URLField(max_length=500, blank=True)
+    contact_email = models.EmailField(blank=True)
+    email_template = models.ForeignKey(
+        'EmailTemplate',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='companies'
+    )
+    email_subject = models.CharField(max_length=200, blank=True)
+    personalised_email_text = models.TextField(blank=True)
+    initial_email_sent = models.BooleanField(default=False)
+    initial_email_sent_date = models.DateField(null=True, blank=True)
+    initial_email_response = models.BooleanField(default=False)
+    initial_email_response_date = models.DateField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -130,19 +143,21 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-class B2BLink(models.Model):
-    name = models.CharField(max_length=100, help_text="Contact person name")
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, null=True, blank=True)
-    lead = models.OneToOneField(Lead, on_delete=models.CASCADE, null=True, blank=True, related_name='b2b_link')
-    
+
+class EmailTemplate(models.Model):
+    name = models.CharField(max_length=150, unique=True)
+    text = models.TextField(help_text="Template body text")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
     class Meta:
-        verbose_name = 'B2B Link'
-        verbose_name_plural = 'B2B Links'
-    
+        ordering = ['name']
+        verbose_name = 'Email Template'
+        verbose_name_plural = 'Email Templates'
+
     def __str__(self):
-        if self.company:
-            return f"{self.name} - {self.company.name}"
-        return self.name or f"B2BLink-{self.id}" if self.id else "B2BLink-New"
+        return self.name
+
 
 class LeadMessage(models.Model):
     lead = models.ForeignKey(Lead, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)

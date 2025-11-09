@@ -26,8 +26,9 @@
                 <thead class="bg-[var(--grid-header-bg)]">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Name</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Sector</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Website</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Contact Email</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Template</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Created</th>
                     </tr>
                 </thead>
@@ -36,14 +37,38 @@
                     <tr class="hover:bg-[var(--bg-secondary)]">
                         <td class="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">{{ company.name }}</td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
-                            {% if company.sector %}{{ company.sector.name }}{% else %}-{% endif %}
-                        </td>
-                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
-                            {% if company.website %}
-                            <a href="{{ company.website }}" target="_blank" class="text-[var(--primary-action-bg)] hover:underline">
-                                Visit <i class="fas fa-external-link-alt text-xs"></i>
+                            {% if company.contact_email %}
+                            <a href="mailto:{{ company.contact_email }}" class="text-[var(--primary-action-bg)] hover:underline">
+                                {{ company.contact_email }}
                             </a>
                             {% else %}-{% endif %}
+                        </td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
+                            {% if company.email_template %}
+                                {{ company.email_template.name }}
+                            {% else %}-{% endif %}
+                        </td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
+                            <div class="flex items-center space-x-2">
+                                {% if company.initial_email_sent %}
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    <i class="fas fa-paper-plane mr-1"></i>Sent
+                                </span>
+                                {% else %}
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    <i class="fas fa-clock mr-1"></i>Pending
+                                </span>
+                                {% endif %}
+                                {% if company.initial_email_response %}
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    <i class="fas fa-check-circle mr-1"></i>Response
+                                </span>
+                                {% else %}
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                    <i class="fas fa-minus-circle mr-1"></i>No Response
+                                </span>
+                                {% endif %}
+                            </div>
                         </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.created_at|date:"M d, Y" }}</td>
                     </tr>

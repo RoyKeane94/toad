@@ -19,6 +19,7 @@ urlpatterns = [
     path('b2b/companies/', views.company_list, name='company_list'),
     path('b2b/companies/create/', views.company_create, name='company_create'),
     path('b2b/sectors/create/', views.company_sector_create, name='company_sector_create'),
+    path('b2b/email-templates/create/', views.email_template_create, name='email_template_create'),
     
     # ==================== SOCIETY CRM URLS ====================
     path('society/', views.society_crm_home, name='society_home'),
