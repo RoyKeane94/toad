@@ -33791,3 +33791,108 @@ ERROR 2025-11-09 20:10:54,382 basehttp 4285 6132019200 "GET /lilypad/b2b/email-t
 INFO 2025-11-09 20:11:32,635 basehttp 4285 6132019200 "GET /lilypad/b2b/email-templates/create/ HTTP/1.1" 200 3151
 INFO 2025-11-09 20:16:29,376 autoreload 4285 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
 INFO 2025-11-09 20:16:29,913 autoreload 4404 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-10 20:53:42,704 autoreload 13073 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-10 20:53:45,248 basehttp 13073 6164983808 "GET / HTTP/1.1" 200 8786
+INFO 2025-11-10 20:53:45,265 basehttp 13073 6164983808 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-11-10 20:53:45,270 basehttp 13073 6164983808 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-10 20:53:45,565 basehttp 13073 6164983808 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-10 20:53:45,629 basehttp 13073 6164983808 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-11-10 20:53:47,922 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3783
+INFO 2025-11-10 20:53:51,342 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7269
+INFO 2025-11-10 20:53:58,169 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7269
+INFO 2025-11-10 20:54:02,189 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7267
+INFO 2025-11-10 20:54:05,331 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7287
+INFO 2025-11-10 20:54:08,649 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7269
+INFO 2025-11-10 20:56:52,151 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7339
+INFO 2025-11-10 20:56:57,114 stripe_django_views 13073 6164983808 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-11-10 20:56:57,114 stripe_django_views 13073 6164983808 Stripe API key is configured, proceeding...
+INFO 2025-11-10 20:56:57,114 stripe_django_views 13073 6164983808 Rendering Stripe checkout template...
+INFO 2025-11-10 20:56:57,118 stripe_django_views 13073 6164983808 Template rendered successfully
+INFO 2025-11-10 20:56:57,120 basehttp 13073 6164983808 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3187
+INFO 2025-11-10 20:58:31,264 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3823
+INFO 2025-11-10 20:58:32,714 basehttp 13073 6164983808 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-11-10 20:58:32,729 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7276
+INFO 2025-11-10 20:58:35,385 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7319
+INFO 2025-11-10 20:59:25,474 basehttp 13073 6164983808 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-11-10 20:59:25,483 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7323
+INFO 2025-11-10 20:59:34,005 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3823
+INFO 2025-11-10 20:59:36,259 basehttp 13073 6164983808 "GET / HTTP/1.1" 200 8754
+INFO 2025-11-10 20:59:37,384 basehttp 13073 6164983808 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-10 20:59:37,413 basehttp 13073 6164983808 "GET /admin/ HTTP/1.1" 200 3192
+INFO 2025-11-10 20:59:37,420 basehttp 13073 6181810176 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-11-10 20:59:37,420 basehttp 13073 6164983808 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-11-10 20:59:37,421 basehttp 13073 6198636544 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-11-10 20:59:37,422 basehttp 13073 6181810176 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-11-10 20:59:37,422 basehttp 13073 6164983808 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-11-10 20:59:37,423 basehttp 13073 6198636544 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-11-10 20:59:37,424 basehttp 13073 6198636544 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-11-10 20:59:37,427 basehttp 13073 6198636544 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-11-10 20:59:37,428 basehttp 13073 6181810176 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-11-10 20:59:37,428 basehttp 13073 6164983808 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-11-10 20:59:37,428 basehttp 13073 6198636544 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-11-10 20:59:39,830 basehttp 13073 6164983808 "GET /admin/accounts/user/ HTTP/1.1" 200 4566
+INFO 2025-11-10 20:59:39,853 basehttp 13073 6164983808 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-11-10 20:59:39,855 basehttp 13073 6215462912 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-11-10 20:59:39,856 basehttp 13073 6232289280 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-11-10 20:59:39,857 basehttp 13073 6249115648 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-11-10 20:59:39,858 basehttp 13073 6164983808 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-11-10 20:59:39,860 basehttp 13073 6215462912 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-11-10 20:59:39,861 basehttp 13073 6232289280 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-11-10 20:59:39,862 basehttp 13073 6181810176 "GET /admin/jsi18n/ HTTP/1.1" 200 982
+INFO 2025-11-10 20:59:39,863 basehttp 13073 6215462912 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-11-10 20:59:39,864 basehttp 13073 6164983808 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-11-10 20:59:39,866 basehttp 13073 6198636544 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-11-10 20:59:39,867 basehttp 13073 6249115648 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-11-10 20:59:39,869 basehttp 13073 6198636544 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-11-10 20:59:39,886 basehttp 13073 6198636544 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-11-10 20:59:39,886 basehttp 13073 6249115648 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-11-10 20:59:39,886 basehttp 13073 6164983808 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-11-10 20:59:43,768 basehttp 13073 6164983808 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6792
+INFO 2025-11-10 20:59:43,785 basehttp 13073 6164983808 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-11-10 20:59:43,785 basehttp 13073 6198636544 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-11-10 20:59:43,787 basehttp 13073 6215462912 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-11-10 20:59:43,787 basehttp 13073 6181810176 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-11-10 20:59:43,789 basehttp 13073 6198636544 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-11-10 20:59:43,789 basehttp 13073 6249115648 "GET /admin/jsi18n/ HTTP/1.1" 200 1033
+INFO 2025-11-10 20:59:43,790 basehttp 13073 6198636544 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-11-10 20:59:43,820 basehttp 13073 6198636544 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-11-10 20:59:43,821 basehttp 13073 6249115648 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-11-10 20:59:48,681 basehttp 13073 6164983808 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-11-10 20:59:48,694 basehttp 13073 6164983808 "GET /admin/accounts/user/ HTTP/1.1" 200 4621
+INFO 2025-11-10 20:59:48,715 basehttp 13073 6164983808 "GET /admin/jsi18n/ HTTP/1.1" 200 1046
+INFO 2025-11-10 20:59:49,846 basehttp 13073 6164983808 "GET / HTTP/1.1" 200 8735
+INFO 2025-11-10 20:59:52,722 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3744
+INFO 2025-11-10 20:59:54,049 basehttp 13073 6164983808 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-11-10 20:59:54,061 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7320
+INFO 2025-11-10 21:00:01,337 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7291
+INFO 2025-11-10 21:00:24,885 stripe_django_views 13073 6164983808 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-11-10 21:00:24,885 stripe_django_views 13073 6164983808 Stripe API key is configured, proceeding...
+INFO 2025-11-10 21:00:24,885 stripe_django_views 13073 6164983808 Rendering Stripe checkout template...
+INFO 2025-11-10 21:00:24,890 stripe_django_views 13073 6164983808 Template rendered successfully
+INFO 2025-11-10 21:00:24,891 basehttp 13073 6164983808 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3143
+INFO 2025-11-10 21:00:58,581 stripe_django_views 13073 6164983808 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-11-10 21:00:58,581 stripe_django_views 13073 6164983808 Stripe API key is configured, proceeding...
+INFO 2025-11-10 21:00:58,582 stripe_django_views 13073 6164983808 Rendering Stripe checkout template...
+INFO 2025-11-10 21:00:58,586 stripe_django_views 13073 6164983808 Template rendered successfully
+INFO 2025-11-10 21:00:58,588 basehttp 13073 6164983808 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3157
+INFO 2025-11-10 21:01:00,379 _util 13073 6164983808 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product
+INFO 2025-11-10 21:01:00,686 _util 13073 6164983808 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product response_code=200
+INFO 2025-11-10 21:01:00,694 _util 13073 6164983808 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-11-10 21:01:01,202 _util 13073 6164983808 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-11-10 21:01:01,203 basehttp 13073 6164983808 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-11-10 21:01:11,012 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3767
+INFO 2025-11-10 21:01:12,681 basehttp 13073 6164983808 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-11-10 21:01:12,699 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7330
+INFO 2025-11-10 21:01:21,828 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7335
+INFO 2025-11-10 21:01:24,067 stripe_django_views 13073 6164983808 Stripe Pro checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-11-10 21:01:24,067 stripe_django_views 13073 6164983808 Stripe API key is configured, proceeding...
+INFO 2025-11-10 21:01:24,067 stripe_django_views 13073 6164983808 Rendering Stripe Pro checkout template...
+INFO 2025-11-10 21:01:24,072 stripe_django_views 13073 6164983808 Template rendered successfully
+INFO 2025-11-10 21:01:24,074 basehttp 13073 6164983808 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3250
+INFO 2025-11-10 21:01:26,618 _util 13073 6164983808 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-11-10 21:01:26,923 _util 13073 6164983808 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-11-10 21:01:26,926 _util 13073 6164983808 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-11-10 21:01:27,434 _util 13073 6164983808 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-11-10 21:01:27,438 basehttp 13073 6164983808 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-11-10 21:01:56,110 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3809
+INFO 2025-11-10 21:02:29,105 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7309

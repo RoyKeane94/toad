@@ -132,7 +132,12 @@ def stripe_success_view(request):
         
         # Update user tier to personal
         request.user.tier = 'personal'
-        request.user.save()
+        customer_id = session.get('customer')
+        update_fields = ['tier']
+        if customer_id and getattr(request.user, 'stripe_customer_id', None) != customer_id:
+            request.user.stripe_customer_id = customer_id
+            update_fields.append('stripe_customer_id')
+        request.user.save(update_fields=update_fields)
         
         # Send joining email after successful payment (user is already verified)
         try:
@@ -197,35 +202,25 @@ def create_portal_session(request):
     """
     Create a Stripe customer portal session for managing billing
     """
-    if request.method != 'POST':
+    if not stripe.api_key:
+        logger.error("Stripe API key not configured - cannot create billing portal session")
+        messages.error(request, 'Billing system is not configured. Please contact support.')
         return redirect('accounts:account_settings')
-    
-    session_id = request.POST.get('session_id')
-    
-    if not session_id:
-        messages.error(request, 'Invalid session. Please contact support.')
-        return redirect('accounts:account_settings')
+
+    customer_id = getattr(request.user, 'stripe_customer_id', None)
+    if not customer_id:
+        messages.info(request, 'Upgrade to a paid plan to unlock billing management.')
+        return redirect('accounts:manage_subscription')
     
     try:
-        # Retrieve the checkout session to get customer ID
-        checkout_session = stripe.checkout.Session.retrieve(session_id)
-        
-        # Verify the session belongs to the current user
-        if checkout_session.metadata.get('user_id') != str(request.user.id):
-            messages.error(request, 'Session verification failed.')
-            return redirect('accounts:account_settings')
-        
-        # Create portal session
         portal_session = stripe.billing_portal.Session.create(
-            customer=checkout_session.customer,
+            customer=customer_id,
             return_url=request.build_absolute_uri(reverse('accounts:account_settings')),
         )
-        
         return redirect(portal_session.url, code=303)
-        
     except stripe.error.StripeError as e:
         logger.error(f"Stripe error in create_portal_session: {e}")
-        messages.error(request, 'There was an error accessing your billing portal. Please contact support.')
+        messages.error(request, 'We could not open your billing portal. Please try again or contact support.')
         return redirect('accounts:account_settings')
     except Exception as e:
         logger.error(f"Unexpected error in create_portal_session: {e}")
@@ -277,6 +272,7 @@ def stripe_webhook(request):
                 User = get_user_model()
                 user = User.objects.get(id=user_id)
                 
+                customer_id = session.get('customer')
                 # Update tier based on plan_type in metadata, default to personal for backward compatibility
                 if plan_type == 'pro':
                     user.tier = 'pro'
@@ -284,8 +280,11 @@ def stripe_webhook(request):
                 else:
                     user.tier = 'personal'
                     logger.info(f'User {user.email} tier updated to personal via webhook')
-                
-                user.save()
+                update_fields = ['tier']
+                if customer_id and getattr(user, 'stripe_customer_id', None) != customer_id:
+                    user.stripe_customer_id = customer_id
+                    update_fields.append('stripe_customer_id')
+                user.save(update_fields=update_fields)
             except User.DoesNotExist:
                 logger.error(f'User with ID {user_id} not found in webhook')
             except Exception as e:
@@ -461,7 +460,12 @@ def stripe_success_pro_view(request):
         
         # Update user tier to pro
         request.user.tier = 'pro'
-        request.user.save()
+        customer_id = session.get('customer')
+        update_fields = ['tier']
+        if customer_id and getattr(request.user, 'stripe_customer_id', None) != customer_id:
+            request.user.stripe_customer_id = customer_id
+            update_fields.append('stripe_customer_id')
+        request.user.save(update_fields=update_fields)
         
         # Send joining email after successful payment (user is already verified)
         try:

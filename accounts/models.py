@@ -57,6 +57,7 @@ class User(AbstractUser):
     second_grid_created = models.BooleanField(default=False, help_text='Whether the user has created their second grid.')
     regular_user = models.BooleanField(default=False, help_text='Whether the user is a regular user.')
     email_subscribed = models.BooleanField(default=True, help_text='Whether the user has subscribed to the email list.')
+    stripe_customer_id = models.CharField(max_length=255, blank=True, null=True, help_text='Stripe customer ID for billing portal access.')
     
     # Trial and billing fields
     trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')

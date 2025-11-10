@@ -309,8 +309,8 @@
                     Current Plan
                 </button>
             {% else %}
-                <a href="#" class="subscription-button pro">
-                    Request Early Access
+                <a href="{% url 'accounts:stripe_checkout_pro' %}" class="subscription-button pro">
+                    Upgrade to Pro
                 </a>
             {% endif %}
         </div>
