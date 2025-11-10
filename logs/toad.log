@@ -33896,3 +33896,12 @@ INFO 2025-11-10 21:01:27,434 _util 13073 6164983808 message='Stripe API response
 INFO 2025-11-10 21:01:27,438 basehttp 13073 6164983808 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
 INFO 2025-11-10 21:01:56,110 basehttp 13073 6164983808 "GET /accounts/settings/ HTTP/1.1" 200 3809
 INFO 2025-11-10 21:02:29,105 basehttp 13073 6164983808 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7309
+INFO 2025-11-10 21:26:30,777 autoreload 14410 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-10 21:26:31,645 basehttp 14410 6157463552 "GET / HTTP/1.1" 200 8757
+INFO 2025-11-10 21:26:36,360 basehttp 14410 6157463552 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-10 21:26:36,389 basehttp 14410 6157463552 "GET /admin/ HTTP/1.1" 200 3110
+INFO 2025-11-10 21:26:38,119 basehttp 14410 6157463552 "GET /admin/accounts/user/ HTTP/1.1" 200 4518
+INFO 2025-11-10 21:26:38,146 basehttp 14410 6157463552 "GET /admin/jsi18n/ HTTP/1.1" 200 1043
+INFO 2025-11-10 21:26:38,983 basehttp 14410 6157463552 "GET /admin/ HTTP/1.1" 200 3049
+INFO 2025-11-10 21:26:41,712 autoreload 14410 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-11-10 21:26:42,173 autoreload 14431 8398642944 Watching for file changes with StatReloader

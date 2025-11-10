@@ -5,11 +5,12 @@ from .models import User
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'first_name', 'last_name', 'tier', 'associated_university', 'trial_status', 'email_subscribed', 'email_verified', 'is_active', 'date_joined')
+    list_display = ('email', 'first_name', 'last_name', 'tier', 'associated_university', 'email_subscribed', 'email_verified', 'is_active', 'date_joined')
     list_filter = ('email_subscribed', 'email_verified', 'tier', 'associated_university', 'is_active', 'is_staff', 'is_superuser', 'date_joined')
     search_fields = ('email', 'first_name', 'last_name', 'associated_university__name')
     ordering = ('-date_joined',)
-    readonly_fields = ('date_joined', 'last_login', 'trial_status')
+    readonly_fields = ('date_joined', 'last_login')
+    list_select_related = ('associated_university', 'associated_society')
     
     fieldsets = (
         ('Personal Info', {
@@ -23,7 +24,7 @@ class UserAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
         ('Trial Information', {
-            'fields': ('trial_status', 'trial_started_at', 'trial_ends_at'),
+            'fields': ('trial_started_at', 'trial_ends_at'),
             'classes': ('collapse',)
         }),
         ('Permissions', {
