@@ -2,7 +2,7 @@
 
 {% block title %}Welcome to Toad Personal{% endblock %}
 
-{% block header_title %}Welcome to Toad Personal, {{ user.first_name|default:user.get_short_name }}! <span class="personal-badge">PERSONAL</span>{% endblock %}
+{% block header_title %}Welcome to Toad Personal, {{ user.first_name|default:user.get_short_name }}! {% endblock %}
 
 {% block content %}
 
