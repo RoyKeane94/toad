@@ -19,6 +19,49 @@ stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
 if not stripe.api_key:
     logger.error("STRIPE_SECRET_KEY environment variable is not set!")
 
+PERSONAL_PRICE_ID = os.environ.get('STRIPE_PERSONAL_PRICE_ID', 'price_1S308oImvDyA3xukKtKWjXPI')
+PRO_PRICE_ID = os.environ.get('STRIPE_PRO_PRICE_ID', 'price_1SPN4iImvDyA3xuknMiIWMe5')
+
+PRICE_TIER_MAP = {
+    PERSONAL_PRICE_ID: 'personal',
+    PRO_PRICE_ID: 'pro',
+}
+
+
+def update_user_tier_for_customer(customer_id, tier=None, status=None):
+    """
+    Update the user's tier based on Stripe customer/subscription status.
+    """
+    if not customer_id:
+        return
+
+    from django.contrib.auth import get_user_model
+    User = get_user_model()
+
+    try:
+        user = User.objects.filter(stripe_customer_id=customer_id).first()
+        if not user:
+            logger.warning(f"No user found with stripe_customer_id={customer_id} when updating tier.")
+            return
+
+        original_tier = user.tier
+
+        if status and status not in ['active', 'trialing']:
+            # Subscription is no longer active – downgrade to free
+            if user.tier != 'free':
+                user.tier = 'free'
+                user.save(update_fields=['tier'])
+                logger.info(f"User {user.email} downgraded to free (Stripe status: {status}).")
+            return
+
+        if tier and tier != user.tier:
+            user.tier = tier
+            user.save(update_fields=['tier'])
+            logger.info(f"User {user.email} tier updated from {original_tier} to {tier} based on Stripe portal change.")
+
+    except Exception as exc:
+        logger.error(f"Failed to update tier for customer {customer_id}: {exc}")
+
 @login_required
 def stripe_checkout_view(request):
     """
@@ -294,15 +337,16 @@ def stripe_webhook(request):
         logger.info(f'Subscription created: {event["id"]}')
         subscription = event['data']['object']
         customer_id = subscription.get('customer')
+        status = subscription.get('status')
+        price = None
+        items = subscription.get('items', {}).get('data', [])
+        if items:
+            price = items[0].get('price', {}).get('id')
         
         if customer_id:
             try:
-                # Find user by customer ID in metadata or by email
-                from django.contrib.auth import get_user_model
-                User = get_user_model()
-                # You might need to store customer_id in user model or find by email
-                # For now, we'll rely on checkout.session.completed
-                logger.info(f'Subscription created for customer: {customer_id}')
+                tier = PRICE_TIER_MAP.get(price)
+                update_user_tier_for_customer(customer_id, tier=tier, status=status)
             except Exception as e:
                 logger.error(f'Error handling subscription created: {e}')
         
@@ -310,15 +354,15 @@ def stripe_webhook(request):
         logger.info(f'Subscription updated: {event["id"]}')
         subscription = event['data']['object']
         status = subscription.get('status')
+        customer_id = subscription.get('customer')
+        price = None
+        items = subscription.get('items', {}).get('data', [])
+        if items:
+            price = items[0].get('price', {}).get('id')
         
-        if status == 'active':
-            # Subscription is active, ensure user has personal tier
-            customer_id = subscription.get('customer')
-            logger.info(f'Subscription active for customer: {customer_id}')
-        elif status in ['canceled', 'unpaid', 'past_due']:
-            # Subscription is inactive, you might want to downgrade user
-            customer_id = subscription.get('customer')
-            logger.info(f'Subscription inactive for customer: {customer_id}')
+        if customer_id:
+            tier = PRICE_TIER_MAP.get(price) if status in ['active', 'trialing'] else None
+            update_user_tier_for_customer(customer_id, tier=tier, status=status)
         
     elif event['type'] == 'customer.subscription.deleted':
         logger.info(f'Subscription canceled: {event["id"]}')
@@ -327,14 +371,7 @@ def stripe_webhook(request):
         
         if customer_id:
             try:
-                # Find user and downgrade to free tier
-                from django.contrib.auth import get_user_model
-                User = get_user_model()
-                
-                # Try to find user by customer_id in metadata or by email
-                # For now, we'll log it and handle manually if needed
-                logger.info(f'Subscription canceled for customer: {customer_id}')
-                logger.warning('Manual intervention may be needed to downgrade user tier')
+                update_user_tier_for_customer(customer_id, tier=None, status='canceled')
             except Exception as e:
                 logger.error(f'Error handling subscription deletion: {e}')
         
