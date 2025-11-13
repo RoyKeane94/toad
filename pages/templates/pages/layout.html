@@ -60,6 +60,10 @@
                         </a>
                         {% endif %}
                     </div>
+                    {% else %}
+                    <a href="{% url 'pages:toad_in_action' %}" class="text-[var(--primary-action-bg)] font-semibold whitespace-nowrap tracking-[0.5px] relative after:absolute after:left-0 after:-bottom-1 after:w-full after:h-0.5 after:bg-[var(--primary-action-bg)] after:scale-x-0 after:origin-left after:transition-transform after:duration-200 hover:after:scale-x-100">
+                        See Toad in Action
+                    </a>
                     {% endif %}
                 </div>
 
@@ -135,6 +139,9 @@
                     </a>
                     {% endif %}
                     {% else %}
+                    <a href="{% url 'pages:toad_in_action' %}" class="text-[var(--primary-action-bg)] font-semibold tracking-[0.5px]">
+                        See Toad in Action
+                    </a>
                     <a href="{% url 'pages:templates_overview' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         Templates
                     </a>
