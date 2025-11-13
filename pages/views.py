@@ -28,6 +28,7 @@ from .specific_views.general_views import (
     origination_director_template_view,
     professionals_jobs_template_view,
     professionals_templates_view,
+    toad_in_action_view,
     entrepreneurs_templates_view,
     personal_templates_view,
     habit_development_tracker_template_view,

@@ -11,6 +11,7 @@ urlpatterns = [
     # Pro Trial Intro
     path('pro-trial/', views.three_month_pro_trial_intro_view, name='three_month_pro_trial_intro'),
     path('pro-comparison/', views.pro_comparison_view, name='pro_comparison'),
+    path('toad-in-action/', views.toad_in_action_view, name='toad_in_action'),
     
     # Superuser Dashboard
     path('dashboard/', views.dashboard_view, name='dashboard'),

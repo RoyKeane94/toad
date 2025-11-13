@@ -348,6 +348,10 @@ def professionals_templates_view(request):
     """Display the professionals templates overview page"""
     return render_simple_template(request, 'pages/general/specific_templates/professionals/professionals_overview.html')
 
+def toad_in_action_view(request):
+    """Display the Toad in Action page"""
+    return render_simple_template(request, 'pages/general/specific_templates/toad_in_action.html')
+
 def entrepreneurs_templates_view(request):
     """Display the entrepreneurs templates overview page"""
     return render(request, 'pages/general/specific_templates/entrepreneurs/entrepreneurs_overview.html')

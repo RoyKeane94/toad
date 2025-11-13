@@ -33914,3 +33914,313 @@ INFO 2025-11-12 20:07:07,719 basehttp 17828 6169096192 "GET /static/js/general/g
 INFO 2025-11-12 20:08:12,076 basehttp 17828 6135443456 "GET / HTTP/1.1" 200 8925
 INFO 2025-11-12 20:10:31,941 autoreload 18191 8398642944 Watching for file changes with StatReloader
 INFO 2025-11-12 20:10:32,892 basehttp 18191 6129168384 "GET / HTTP/1.1" 200 8929
+INFO 2025-11-12 20:34:49,159 autoreload 19290 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-12 20:35:18,725 basehttp 19290 6132625408 "GET / HTTP/1.1" 200 8881
+INFO 2025-11-12 20:35:33,053 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 13039
+INFO 2025-11-12 20:35:38,789 basehttp 19290 6132625408 "GET /grids/245/delete/ HTTP/1.1" 200 2939
+INFO 2025-11-12 20:35:39,982 basehttp 19290 6132625408 "POST /grids/245/delete/ HTTP/1.1" 302 0
+INFO 2025-11-12 20:35:39,998 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 12878
+INFO 2025-11-12 20:35:42,739 basehttp 19290 6132625408 "GET /grids/249/delete/ HTTP/1.1" 200 2978
+INFO 2025-11-12 20:35:43,893 basehttp 19290 6132625408 "POST /grids/249/delete/ HTTP/1.1" 302 0
+INFO 2025-11-12 20:35:43,911 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 12672
+INFO 2025-11-12 20:35:48,500 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 22379
+INFO 2025-11-12 20:35:48,521 basehttp 19290 6149451776 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-11-12 20:35:48,521 basehttp 19290 6132625408 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-11-12 20:35:55,347 basehttp 19290 6132625408 "GET / HTTP/1.1" 200 8849
+INFO 2025-11-12 20:35:56,096 basehttp 19290 6132625408 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-12 20:35:56,124 basehttp 19290 6132625408 "GET /admin/ HTTP/1.1" 200 3181
+INFO 2025-11-12 20:36:02,801 basehttp 19290 6132625408 "GET /admin/accounts/user/ HTTP/1.1" 200 4479
+INFO 2025-11-12 20:36:02,826 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1009
+INFO 2025-11-12 20:36:07,388 basehttp 19290 6132625408 "GET /admin/accounts/user/2/change/ HTTP/1.1" 200 6805
+INFO 2025-11-12 20:36:07,409 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 990
+INFO 2025-11-12 20:36:11,184 basehttp 19290 6132625408 "POST /admin/accounts/user/2/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 20:36:11,196 basehttp 19290 6132625408 "GET /admin/accounts/user/ HTTP/1.1" 200 4592
+INFO 2025-11-12 20:36:11,217 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 990
+INFO 2025-11-12 20:47:30,748 basehttp 19290 6132625408 "GET /admin/accounts/user/add/ HTTP/1.1" 200 6581
+INFO 2025-11-12 20:47:30,781 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1057
+INFO 2025-11-12 20:47:53,621 basehttp 19290 6132625408 "POST /admin/accounts/user/add/ HTTP/1.1" 302 0
+INFO 2025-11-12 20:47:53,639 basehttp 19290 6132625408 "GET /admin/accounts/user/ HTTP/1.1" 200 4625
+INFO 2025-11-12 20:47:53,660 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1024
+INFO 2025-11-12 20:48:00,617 basehttp 19290 6132625408 "GET /admin/pages/project/ HTTP/1.1" 200 3530
+INFO 2025-11-12 20:48:00,638 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 966
+INFO 2025-11-12 20:48:03,839 basehttp 19290 6132625408 "GET /admin/pages/project/247/change/ HTTP/1.1" 200 4285
+INFO 2025-11-12 20:48:03,860 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1047
+INFO 2025-11-12 20:48:09,127 basehttp 19290 6132625408 "POST /admin/pages/project/247/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 20:48:09,143 basehttp 19290 6132625408 "GET /admin/pages/project/ HTTP/1.1" 200 3562
+INFO 2025-11-12 20:48:09,164 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1059
+INFO 2025-11-12 20:48:12,582 basehttp 19290 6132625408 "GET / HTTP/1.1" 200 8902
+INFO 2025-11-12 20:48:14,433 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 12724
+INFO 2025-11-12 20:48:16,187 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 23006
+INFO 2025-11-12 20:48:36,539 basehttp 19290 6132625408 "POST /grids/247/edit/ HTTP/1.1" 200 100
+INFO 2025-11-12 20:49:14,820 basehttp 19290 6132625408 "POST /grids/247/columns/984/edit/ HTTP/1.1" 200 125
+INFO 2025-11-12 20:49:25,924 basehttp 19290 6132625408 "POST /grids/247/columns/984/edit/ HTTP/1.1" 200 95
+INFO 2025-11-12 20:49:31,789 basehttp 19290 6132625408 "POST /grids/247/columns/989/edit/ HTTP/1.1" 200 101
+INFO 2025-11-12 20:49:37,247 basehttp 19290 6132625408 "POST /grids/247/columns/990/edit/ HTTP/1.1" 200 119
+INFO 2025-11-12 20:49:41,017 project_views_functions 19290 6132625408 User None deleted task: "Team Toad feature highlights to be showcased on the landing page" from project: Team Command Centre
+INFO 2025-11-12 20:49:41,022 basehttp 19290 6132625408 "POST /tasks/2543/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:49:55,805 project_views_functions 19290 6132625408 User None deleted task: "Implement feedback from 10 biggest customers for Toad Pro v2" from project: Team Command Centre
+INFO 2025-11-12 20:49:55,810 basehttp 19290 6132625408 "POST /tasks/2537/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:49:58,109 project_views_functions 19290 6132625408 User None deleted task: "Explore new mediums through which to promote Team Toad" from project: Team Command Centre
+INFO 2025-11-12 20:49:58,114 basehttp 19290 6132625408 "POST /tasks/2540/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:50:00,310 project_views_functions 19290 6132625408 User None deleted task: "Launch Team Toad on Reddit" from project: Team Command Centre
+INFO 2025-11-12 20:50:00,313 basehttp 19290 6132625408 "POST /tasks/2539/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:50:02,860 project_views_functions 19290 6132625408 User None deleted task: "Fix login bug" from project: Team Command Centre
+INFO 2025-11-12 20:50:02,865 basehttp 19290 6132625408 "POST /tasks/2553/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:50:05,395 project_views_functions 19290 6132625408 User None deleted task: "Conduct individual feedback from 10 biggest customers" from project: Team Command Centre
+INFO 2025-11-12 20:50:05,398 basehttp 19290 6132625408 "POST /tasks/2530/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:50:07,710 project_views_functions 19290 6132625408 User None deleted task: "Redesign the feedback process to make it easier" from project: Team Command Centre
+INFO 2025-11-12 20:50:07,714 basehttp 19290 6132625408 "POST /tasks/2542/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 20:51:01,274 basehttp 19290 6132625408 "POST /grids/247/tasks/create/863/984/ HTTP/1.1" 200 1496
+INFO 2025-11-12 20:51:26,080 basehttp 19290 6132625408 "POST /grids/247/tasks/create/863/989/ HTTP/1.1" 200 1513
+INFO 2025-11-12 20:51:45,192 basehttp 19290 6132625408 "POST /grids/247/tasks/create/863/990/ HTTP/1.1" 200 1498
+INFO 2025-11-12 20:52:27,452 basehttp 19290 6132625408 "POST /grids/247/tasks/create/863/990/ HTTP/1.1" 200 1542
+INFO 2025-11-12 20:52:41,933 basehttp 19290 6132625408 "POST /tasks/2632/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-12 20:53:02,635 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1496
+INFO 2025-11-12 20:53:11,694 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1544
+INFO 2025-11-12 20:53:26,868 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1541
+INFO 2025-11-12 20:53:36,795 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/990/ HTTP/1.1" 200 1551
+INFO 2025-11-12 20:53:43,493 basehttp 19290 6132625408 "POST /tasks/2636/edit/ HTTP/1.1" 200 111
+INFO 2025-11-12 20:54:01,889 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/990/ HTTP/1.1" 200 1540
+INFO 2025-11-12 20:54:24,851 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/990/ HTTP/1.1" 200 1517
+INFO 2025-11-12 21:18:00,167 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:18:04,148 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 23529
+INFO 2025-11-12 21:18:09,160 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:18:24,317 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/989/ HTTP/1.1" 200 1553
+INFO 2025-11-12 21:18:41,831 basehttp 19290 6132625408 "POST /tasks/2639/edit/ HTTP/1.1" 200 117
+INFO 2025-11-12 21:18:49,266 project_views_functions 19290 6132625408 User None assigned task: ""Look into why the invoice issuing bug keeps recurring" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 21:18:49,267 basehttp 19290 6132625408 "POST /tasks/2630/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 21:18:56,638 project_views_functions 19290 6132625408 User None assigned task: ""Review new design mock ups" to Tom " from project: Team Command Centre
+INFO 2025-11-12 21:18:56,638 basehttp 19290 6132625408 "POST /tasks/2629/assign/ HTTP/1.1" 200 113
+INFO 2025-11-12 21:19:01,452 project_views_functions 19290 6132625408 User None assigned task: ""Test the new payment flow on the website" to Tom " from project: Team Command Centre
+INFO 2025-11-12 21:19:01,453 basehttp 19290 6132625408 "POST /tasks/2634/assign/ HTTP/1.1" 200 113
+INFO 2025-11-12 21:19:03,954 project_views_functions 19290 6132625408 User None assigned task: ""Finalise new features specs" to Tom " from project: Team Command Centre
+INFO 2025-11-12 21:19:03,954 basehttp 19290 6132625408 "POST /tasks/2633/assign/ HTTP/1.1" 200 113
+INFO 2025-11-12 21:19:07,482 project_views_functions 19290 6132625408 User None assigned task: ""Set a date with the sales team to run through pipeline" to Nigel Jones" from project: Team Command Centre
+INFO 2025-11-12 21:19:07,483 basehttp 19290 6132625408 "POST /tasks/2632/assign/ HTTP/1.1" 200 128
+INFO 2025-11-12 21:19:11,569 project_views_functions 19290 6132625408 User None assigned task: ""Approve December adverts launch date" to Nigel Jones" from project: Team Command Centre
+INFO 2025-11-12 21:19:11,570 basehttp 19290 6132625408 "POST /tasks/2631/assign/ HTTP/1.1" 200 128
+INFO 2025-11-12 21:19:41,716 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1506
+INFO 2025-11-12 21:20:00,243 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1559
+INFO 2025-11-12 21:20:09,005 project_views_functions 19290 6132625408 User None assigned task: ""Redesign user onboarding" to Tom " from project: Team Command Centre
+INFO 2025-11-12 21:20:09,006 basehttp 19290 6132625408 "POST /tasks/2641/assign/ HTTP/1.1" 200 113
+INFO 2025-11-12 21:20:11,401 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 product roadmap" to Tom " from project: Team Command Centre
+INFO 2025-11-12 21:20:11,402 basehttp 19290 6132625408 "POST /tasks/2640/assign/ HTTP/1.1" 200 113
+INFO 2025-11-12 21:20:28,381 basehttp 19290 6132625408 "GET /grids/246/ HTTP/1.1" 200 19885
+INFO 2025-11-12 21:20:42,606 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24500
+INFO 2025-11-12 21:20:59,250 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:21:22,775 basehttp 19290 6132625408 "POST /grids/247/tasks/create/864/989/ HTTP/1.1" 200 1559
+INFO 2025-11-12 21:21:40,229 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/989/ HTTP/1.1" 200 1520
+INFO 2025-11-12 21:22:21,687 basehttp 19290 6132625408 "POST /grids/247/tasks/create/863/989/ HTTP/1.1" 200 1510
+INFO 2025-11-12 21:22:26,933 basehttp 19290 6132625408 "POST /tasks/2630/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:22:28,751 basehttp 19290 6132625408 "POST /tasks/2634/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:22:47,759 basehttp 19290 6132625408 "POST /tasks/2642/note/ HTTP/1.1" 200 198
+INFO 2025-11-12 21:22:47,770 basehttp 19290 6132625408 "GET /tasks/2642/notes/ HTTP/1.1" 200 172
+INFO 2025-11-12 21:23:04,959 basehttp 19290 6132625408 "POST /tasks/2642/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-12 21:23:17,902 basehttp 19290 6132625408 "GET / HTTP/1.1" 200 8871
+INFO 2025-11-12 21:23:18,953 basehttp 19290 6132625408 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-12 21:23:18,966 basehttp 19290 6132625408 "GET /admin/ HTTP/1.1" 200 3094
+INFO 2025-11-12 21:23:20,354 basehttp 19290 6132625408 "GET /admin/accounts/user/ HTTP/1.1" 200 4586
+INFO 2025-11-12 21:23:20,382 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1026
+INFO 2025-11-12 21:23:21,488 basehttp 19290 6132625408 "GET /admin/accounts/user/43/change/ HTTP/1.1" 200 6749
+INFO 2025-11-12 21:23:21,515 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 988
+INFO 2025-11-12 21:23:28,369 basehttp 19290 6132625408 "POST /admin/accounts/user/43/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:23:28,389 basehttp 19290 6132625408 "GET /admin/accounts/user/ HTTP/1.1" 200 4678
+INFO 2025-11-12 21:23:28,415 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 984
+INFO 2025-11-12 21:23:30,381 basehttp 19290 6132625408 "GET /admin/accounts/user/39/change/ HTTP/1.1" 200 6828
+INFO 2025-11-12 21:23:30,402 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1023
+INFO 2025-11-12 21:23:38,601 basehttp 19290 6132625408 "POST /admin/accounts/user/39/change/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:23:38,621 basehttp 19290 6132625408 "GET /admin/accounts/user/ HTTP/1.1" 200 4631
+INFO 2025-11-12 21:23:38,646 basehttp 19290 6132625408 "GET /admin/jsi18n/ HTTP/1.1" 200 1004
+INFO 2025-11-12 21:26:13,108 basehttp 19290 6132625408 "GET / HTTP/1.1" 200 8940
+INFO 2025-11-12 21:26:15,276 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 12805
+INFO 2025-11-12 21:26:16,661 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 25380
+INFO 2025-11-12 21:31:02,129 project_views_functions 19290 6132625408 User None deleted task: "Launch new affiliate programme" from project: Team Command Centre
+INFO 2025-11-12 21:31:02,134 basehttp 19290 6132625408 "POST /tasks/2639/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:31:05,237 project_views_functions 19290 6132625408 User None deleted task: "Redesign user onboarding" from project: Team Command Centre
+INFO 2025-11-12 21:31:05,241 basehttp 19290 6132625408 "POST /tasks/2641/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:33:41,104 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:33:51,760 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:34:12,298 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:34:17,246 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:34:31,957 basehttp 19290 6132625408 "POST /tasks/2636/note/ HTTP/1.1" 200 172
+INFO 2025-11-12 21:34:31,967 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 199
+INFO 2025-11-12 21:34:37,079 project_views_functions 19290 6132625408 User None assigned task: ""Write a "How to" guide for the last update" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 21:34:37,080 basehttp 19290 6132625408 "POST /tasks/2635/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 21:34:56,165 basehttp 19290 6132625408 "GET /tasks/2642/notes/ HTTP/1.1" 200 172
+INFO 2025-11-12 21:35:00,363 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:35:02,544 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:35:07,908 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 199
+INFO 2025-11-12 21:35:09,808 basehttp 19290 6132625408 "DELETE /tasks/2636/note/ HTTP/1.1" 200 78
+INFO 2025-11-12 21:35:10,100 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24975
+INFO 2025-11-12 21:35:29,139 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 product roadmap" from project: Team Command Centre
+INFO 2025-11-12 21:35:29,143 basehttp 19290 6132625408 "POST /tasks/2640/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:35:40,657 project_views_functions 19290 6132625408 User None assigned task: ""Follow up on support ticket #45526" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 21:35:40,657 basehttp 19290 6132625408 "POST /tasks/2644/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 21:36:01,467 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:36:18,553 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:36:19,776 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:36:21,940 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:36:44,317 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:37:00,682 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:37:34,826 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:37:40,003 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:37:48,089 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1510
+INFO 2025-11-12 21:37:51,479 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 Product Launch" to Cecilie Potter" from project: Team Command Centre
+INFO 2025-11-12 21:37:51,480 basehttp 19290 6132625408 "POST /tasks/2645/assign/ HTTP/1.1" 200 134
+INFO 2025-11-12 21:38:05,580 basehttp 19290 6132625408 "POST /tasks/2636/note/ HTTP/1.1" 200 183
+INFO 2025-11-12 21:38:05,588 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 196
+INFO 2025-11-12 21:38:11,357 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 196
+INFO 2025-11-12 21:38:12,875 basehttp 19290 6132625408 "DELETE /tasks/2636/note/ HTTP/1.1" 200 78
+INFO 2025-11-12 21:38:13,164 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 25010
+INFO 2025-11-12 21:38:14,388 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:38:18,820 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 Product Launch" from project: Team Command Centre
+INFO 2025-11-12 21:38:18,824 basehttp 19290 6132625408 "POST /tasks/2645/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:38:21,654 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:38:23,652 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24654
+INFO 2025-11-12 21:38:54,184 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:39:13,945 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:39:36,291 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:39:50,355 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:42:24,545 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:42:30,242 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:42:37,910 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1501
+INFO 2025-11-12 21:42:41,350 project_views_functions 19290 6132625408 User None assigned task: ""Plan new product launch map for Q1" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 21:42:41,351 basehttp 19290 6132625408 "POST /tasks/2646/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 21:42:58,480 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:43:00,888 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:43:04,056 project_views_functions 19290 6132625408 User None deleted task: "Plan new product launch map for Q1" from project: Team Command Centre
+INFO 2025-11-12 21:43:04,061 basehttp 19290 6132625408 "POST /tasks/2646/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:43:20,227 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:43:28,981 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:43:38,785 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1531
+INFO 2025-11-12 21:43:43,748 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 Product Roadmap" to Cecilie Potter" from project: Team Command Centre
+INFO 2025-11-12 21:43:43,749 basehttp 19290 6132625408 "POST /tasks/2647/assign/ HTTP/1.1" 200 134
+INFO 2025-11-12 21:44:00,780 basehttp 19290 6132625408 "POST /tasks/2636/note/ HTTP/1.1" 200 195
+INFO 2025-11-12 21:44:00,789 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 197
+INFO 2025-11-12 21:45:36,523 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:45:40,251 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:45:45,026 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 Product Roadmap" from project: Team Command Centre
+INFO 2025-11-12 21:45:45,031 basehttp 19290 6132625408 "POST /tasks/2647/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:46:20,634 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1505
+INFO 2025-11-12 21:46:24,346 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 product roadmap" to Cecilie Potter" from project: Team Command Centre
+INFO 2025-11-12 21:46:24,347 basehttp 19290 6132625408 "POST /tasks/2648/assign/ HTTP/1.1" 200 134
+INFO 2025-11-12 21:46:29,379 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:46:34,277 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:46:55,380 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 product roadmap" from project: Team Command Centre
+INFO 2025-11-12 21:46:55,384 basehttp 19290 6132625408 "POST /tasks/2648/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:46:57,540 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:47:00,074 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:47:01,040 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 197
+INFO 2025-11-12 21:47:02,688 basehttp 19290 6132625408 "DELETE /tasks/2636/note/ HTTP/1.1" 200 78
+INFO 2025-11-12 21:47:02,982 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24586
+INFO 2025-11-12 21:47:04,579 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24649
+INFO 2025-11-12 21:47:39,546 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1531
+INFO 2025-11-12 21:47:43,130 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 Product roadmap" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 21:47:43,131 basehttp 19290 6132625408 "POST /tasks/2649/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 21:47:47,857 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:48:08,069 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:48:11,772 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 Product roadmap" from project: Team Command Centre
+INFO 2025-11-12 21:48:11,778 basehttp 19290 6132625408 "POST /tasks/2649/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:48:27,413 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24669
+INFO 2025-11-12 21:48:59,439 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1550
+INFO 2025-11-12 21:49:02,882 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 product roadmap" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 21:49:02,882 basehttp 19290 6132625408 "POST /tasks/2650/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 21:49:07,931 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:49:14,830 basehttp 19290 6132625408 "POST /tasks/2632/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 21:49:28,602 basehttp 19290 6132625408 "POST /tasks/2636/note/ HTTP/1.1" 200 211
+INFO 2025-11-12 21:49:28,613 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 185
+INFO 2025-11-12 21:51:10,741 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:51:12,342 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 25046
+INFO 2025-11-12 21:52:08,021 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24984
+INFO 2025-11-12 21:52:11,699 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 12745
+INFO 2025-11-12 21:52:15,688 basehttp 19290 6132625408 "POST /grids/group/28/edit/ HTTP/1.1" 200 86
+INFO 2025-11-12 21:52:31,486 basehttp 19290 6132625408 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:52:33,525 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 12680
+INFO 2025-11-12 21:52:43,838 basehttp 19290 6132625408 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:52:46,108 basehttp 19290 6132625408 "GET /grids/create/ HTTP/1.1" 200 2973
+INFO 2025-11-12 21:52:57,446 project_views_functions 19290 6132625408 User None created project: Q1 2026 Marketing
+INFO 2025-11-12 21:52:57,448 basehttp 19290 6132625408 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:52:57,471 basehttp 19290 6132625408 "GET /grids/259/ HTTP/1.1" 200 19893
+INFO 2025-11-12 21:54:10,438 basehttp 19290 6132625408 "GET /grids/create/ HTTP/1.1" 200 3009
+INFO 2025-11-12 21:54:14,659 project_views_functions 19290 6132625408 User None created project: Clients
+INFO 2025-11-12 21:54:14,660 basehttp 19290 6132625408 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:54:14,684 basehttp 19290 6132625408 "GET /grids/260/ HTTP/1.1" 200 19959
+INFO 2025-11-12 21:54:17,518 basehttp 19290 6132625408 "GET /grids/260/ HTTP/1.1" 200 19913
+INFO 2025-11-12 21:54:27,567 basehttp 19290 6132625408 "POST /grids/260/edit/ HTTP/1.1" 200 91
+INFO 2025-11-12 21:54:30,136 basehttp 19290 6132625408 "GET /grids/create/ HTTP/1.1" 200 2940
+INFO 2025-11-12 21:54:38,992 project_views_functions 19290 6132625408 User None created project: Frog Limited
+INFO 2025-11-12 21:54:38,993 basehttp 19290 6132625408 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:54:39,018 basehttp 19290 6132625408 "GET /grids/261/ HTTP/1.1" 200 19994
+INFO 2025-11-12 21:54:42,635 basehttp 19290 6132625408 "GET /grids/create/ HTTP/1.1" 200 2990
+INFO 2025-11-12 21:54:50,760 project_views_functions 19290 6132625408 User None created project: Peacock Corp
+INFO 2025-11-12 21:54:50,761 basehttp 19290 6132625408 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:54:50,784 basehttp 19290 6132625408 "GET /grids/262/ HTTP/1.1" 200 19997
+INFO 2025-11-12 21:54:52,259 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 13244
+INFO 2025-11-12 21:55:04,694 project_views_functions 19290 6132625408 User None created project group: Client Specific
+INFO 2025-11-12 21:55:04,695 basehttp 19290 6132625408 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:55:04,715 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 13292
+INFO 2025-11-12 21:55:16,651 project_views_functions 19290 6132625408 User None created project group: Marketing
+INFO 2025-11-12 21:55:16,652 basehttp 19290 6132625408 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:55:16,672 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 13312
+INFO 2025-11-12 21:55:19,283 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 25113
+INFO 2025-11-12 21:55:32,716 basehttp 19290 6132625408 "GET /grids/248/ HTTP/1.1" 200 20032
+INFO 2025-11-12 21:55:35,616 basehttp 19290 6132625408 "GET /grids/248/delete/ HTTP/1.1" 200 1102
+INFO 2025-11-12 21:55:36,525 basehttp 19290 6132625408 "POST /grids/248/delete/ HTTP/1.1" 302 0
+INFO 2025-11-12 21:55:36,539 basehttp 19290 6132625408 "GET /grids/ HTTP/1.1" 200 13212
+INFO 2025-11-12 21:55:39,879 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 25111
+INFO 2025-11-12 21:57:04,430 project_views_functions 19290 6132625408 User None deleted task: "Write a "How to" guide for the last update" from project: Team Command Centre
+INFO 2025-11-12 21:57:04,436 basehttp 19290 6132625408 "POST /tasks/2635/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:57:07,512 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:57:12,480 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 21:57:14,078 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24713
+INFO 2025-11-12 21:57:48,495 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 product roadmap" from project: Team Command Centre
+INFO 2025-11-12 21:57:48,500 basehttp 19290 6132625408 "POST /tasks/2650/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:58:01,026 project_views_functions 19290 6132625408 User None deleted task: "Follow up on support ticket #45526" from project: Team Command Centre
+INFO 2025-11-12 21:58:01,030 basehttp 19290 6132625408 "POST /tasks/2644/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:58:55,662 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1540
+INFO 2025-11-12 21:58:58,406 project_views_functions 19290 6132625408 User None deleted task: "Plan Q1 product roadmap" from project: Team Command Centre
+INFO 2025-11-12 21:58:58,411 basehttp 19290 6132625408 "POST /tasks/2663/delete/ HTTP/1.1" 200 58
+INFO 2025-11-12 21:59:51,933 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 185
+INFO 2025-11-12 21:59:53,395 basehttp 19290 6132625408 "DELETE /tasks/2636/note/ HTTP/1.1" 200 78
+INFO 2025-11-12 21:59:53,690 basehttp 19290 6132625408 "GET /grids/247/ HTTP/1.1" 200 24273
+INFO 2025-11-12 22:00:50,400 basehttp 19290 6132625408 "POST /grids/247/tasks/create/865/984/ HTTP/1.1" 200 1570
+INFO 2025-11-12 22:00:54,127 project_views_functions 19290 6132625408 User None assigned task: ""Plan Q1 product roadmap" to Toad Toad" from project: Team Command Centre
+INFO 2025-11-12 22:00:54,128 basehttp 19290 6132625408 "POST /tasks/2664/assign/ HTTP/1.1" 200 123
+INFO 2025-11-12 22:00:59,308 basehttp 19290 6132625408 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-12 22:01:03,497 basehttp 19290 6132625408 "POST /tasks/2631/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-12 22:01:23,187 basehttp 19290 6132625408 "POST /tasks/2636/note/ HTTP/1.1" 200 241
+INFO 2025-11-12 22:01:23,198 basehttp 19290 6132625408 "GET /tasks/2636/notes/ HTTP/1.1" 200 215
+INFO 2025-11-12 22:13:33,073 autoreload 19290 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/general_views.py changed, reloading.
+INFO 2025-11-12 22:13:33,753 autoreload 21006 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-12 22:13:37,308 autoreload 21006 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-11-12 22:13:37,672 autoreload 21019 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-12 22:13:41,822 autoreload 21019 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2025-11-12 22:13:42,082 autoreload 21033 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-12 22:14:08,665 autoreload 21033 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-11-12 22:14:09,028 autoreload 21049 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-12 22:14:12,228 basehttp 21049 6159380480 "GET /toad-in-action HTTP/1.1" 301 0
+INFO 2025-11-12 22:14:12,249 basehttp 21049 6176206848 "GET /toad-in-action/ HTTP/1.1" 200 3350
+INFO 2025-11-12 22:14:12,322 basehttp 21049 6176206848 "GET /static/video/Toad%20-%20Team%20Highlights.mp4 HTTP/1.1" 200 8655853
+INFO 2025-11-12 22:14:15,730 autoreload 21049 8398642944 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-11-12 22:14:16,175 autoreload 21080 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-12 22:15:12,944 basehttp 21080 6203207680 "GET /accounts/register/pro/ HTTP/1.1" 200 4215
+INFO 2025-11-12 22:16:29,422 basehttp 21080 6203207680 "GET /toad-in-action/ HTTP/1.1" 200 3686
+INFO 2025-11-12 22:16:29,447 basehttp 21080 6203207680 "GET /static/video/Toad%20-%20Team%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-11-13 06:58:02,617 autoreload 21953 8398642944 Watching for file changes with StatReloader
+INFO 2025-11-13 06:58:03,771 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 3648
+INFO 2025-11-13 06:58:03,802 basehttp 21953 6202978304 "GET /static/video/Toad%20-%20Team%20Highlights.mp4 HTTP/1.1" 304 0
+INFO 2025-11-13 06:58:33,707 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 3605
+INFO 2025-11-13 07:01:51,869 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4382
+INFO 2025-11-13 07:04:35,510 basehttp 21953 6202978304 "GET / HTTP/1.1" 200 8922
+INFO 2025-11-13 07:04:35,561 basehttp 21953 6202978304 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-13 07:05:03,380 basehttp 21953 6202978304 "GET / HTTP/1.1" 200 8905
+INFO 2025-11-13 07:07:41,344 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4435
+INFO 2025-11-13 07:08:40,451 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4330
+INFO 2025-11-13 07:10:13,966 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4354
+INFO 2025-11-13 07:10:46,036 basehttp 21953 6202978304 "GET / HTTP/1.1" 200 8871
+INFO 2025-11-13 07:13:12,550 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4351
+INFO 2025-11-13 07:13:36,938 basehttp 21953 6202978304 "GET / HTTP/1.1" 200 8848
+INFO 2025-11-13 07:14:35,807 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4290
+INFO 2025-11-13 07:15:03,885 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4341
+INFO 2025-11-13 07:15:08,616 basehttp 21953 6202978304 "GET /toad-in-action/ HTTP/1.1" 200 4356
+INFO 2025-11-13 07:15:31,784 basehttp 21953 6202978304 "GET / HTTP/1.1" 200 8860

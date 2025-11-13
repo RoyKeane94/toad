@@ -1,0 +1,229 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Toad in Action{% endblock %}
+
+{% block extra_head %}
+<style>
+    #app {
+        padding: 0 !important;
+    }
+
+    .tia-hero {
+        background: white;
+    }
+
+    .tia-container {
+        max-width: 1100px;
+    }
+
+    .tia-highlight {
+        color: var(--primary-action-bg);
+    }
+
+    .tia-subtle-highlight {
+        background: linear-gradient(120deg, rgba(16, 185, 129, 0.18), rgba(16, 185, 129, 0.05));
+        border-radius: 16px;
+        padding: 1.5rem;
+    }
+
+    .tia-benefits-table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 20px 45px -20px rgba(16, 185, 129, 0.35);
+        border: 1px solid rgba(16, 185, 129, 0.18);
+    }
+
+    .tia-benefits-table th,
+    .tia-benefits-table td {
+        padding: 1.5rem 1.75rem;
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .tia-benefits-table th {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+    }
+
+    .tia-benefits-table tbody tr + tr {
+        border-top: 1px solid rgba(16, 185, 129, 0.12);
+    }
+
+    .tia-benefits-table td:first-child {
+        font-weight: 600;
+        color: var(--text-primary);
+        background: oklch(0.98 0.02 120);
+    }
+
+    .tia-benefits-table td:last-child {
+        color: var(--text-secondary);
+        background: white;
+    }
+
+    .tia-benefits-table tbody tr:hover td:first-child {
+        background: oklch(0.96 0.03 120);
+    }
+
+    .tia-benefits-table thead th:first-child {
+        background: var(--primary-action-bg);
+        color: white;
+    }
+
+    .tia-benefits-table thead th:last-child {
+        background: white;
+        color: var(--text-secondary);
+    }
+
+    .tia-benefits-table thead th + th {
+        border-left: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .tia-benefits-table tbody td + td {
+        border-left: 1px solid rgba(16, 185, 129, 0.12);
+    }
+
+    .tia-video-wrapper {
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .tia-animate {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .tia-animate.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .tia-cta-btn {
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .tia-cta-btn:hover {
+        background: var(--primary-action-hover-bg);
+        transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+        .tia-heading {
+            font-size: clamp(2.25rem, 8vw, 3.5rem);
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="tia-hero">
+    <div class="tia-container mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 flex flex-col items-center text-center space-y-8 tia-animate">
+        <h1 class="tia-heading text-4xl sm:text-5xl font-extrabold text-gray-900 leading-tight tia-highlight">
+            The simplest way to bring your team together
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-700 max-w-3xl leading-relaxed">
+            No training, no setup, no headaches. <span class="tia-highlight font-semibold">Just one clear place</span> for everything your team’s working on.
+        </p>
+    </div>
+</section>
+
+<section class="bg-white pt-10 pb-24 sm:pt-12 sm:pb-28">
+    <div class="tia-container mx-auto px-4 sm:px-6 lg:px-8 space-y-16 text-center">
+        <div class="tia-video-wrapper tia-animate">
+            <video
+                src="{% static 'video/Toad - Team Highlights.mp4' %}"
+                class="w-full h-auto"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="auto">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="space-y-12 tia-animate">
+            <div class="space-y-4 text-center max-w-3xl mx-auto mt-12 mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--primary-action-bg)]">
+                    Built to stay simple
+                </h2>
+                <p class="text-lg sm:text-xl text-gray-700 leading-relaxed">
+                    Because the best tool for teams isn’t the one with the most features, it’s the one everyone actually uses.
+                </p>
+            </div>
+            <div class="tia-animate">
+                <table class="tia-benefits-table mx-auto text-left">
+                    <thead>
+                        <tr>
+                            <th>What it does</th>
+                            <th>What it avoids</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Grids anyone can understand</td>
+                            <td>No complicated project structures</td>
+                        </tr>
+                        <tr>
+                            <td>Instant drag-and-drop organisation</td>
+                            <td>No setup or templates to maintain</td>
+                        </tr>
+                        <tr>
+                            <td>Real-time teamwork that feels natural</td>
+                            <td>No pings, tabs, or switching between tools</td>
+                        </tr>
+                        <tr>
+                            <td>Comments and notes that keep context clear</td>
+                            <td>No cluttered chat threads or buried messages</td>
+                        </tr>
+                        <tr>
+                            <td>Custom templates when you need them</td>
+                            <td>No rigid frameworks — make it your own, simply</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="bg-white pt-8 pb-16 sm:pt-10 sm:pb-24">
+    <div class="tia-container mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 tia-animate">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 tia-highlight">
+            See how your work looks when it's all in one place
+        </h2>
+        <a
+            href="{% url 'accounts:register_pro' %}"
+            class="tia-cta-btn inline-flex items-center justify-center px-8 py-3 rounded-lg font-medium text-white bg-[var(--primary-action-bg)] cursor-pointer">
+            Sign up to Toad today
+        </a>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const animateElements = document.querySelectorAll('.tia-animate');
+    if (animateElements.length === 0) return;
+
+    const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    animateElements.forEach(el => observer.observe(el));
+});
+</script>
+{% endblock %}
+
