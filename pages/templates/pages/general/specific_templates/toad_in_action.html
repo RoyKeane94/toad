@@ -224,6 +224,49 @@ document.addEventListener('DOMContentLoaded', function() {
 
     animateElements.forEach(el => observer.observe(el));
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('hero-video');
+    if (!video) {
+        return;
+    }
+
+    const tryPlay = () => {
+        video.play().catch(() => {});
+    };
+
+    // Initial attempt
+    tryPlay();
+
+    // Retry on interaction if autoplay blocked
+    const onInteraction = () => {
+        tryPlay();
+        document.removeEventListener('click', onInteraction);
+        document.removeEventListener('scroll', onInteraction);
+        document.removeEventListener('touchstart', onInteraction);
+    };
+
+    video.addEventListener('play', () => {
+        document.removeEventListener('click', onInteraction);
+        document.removeEventListener('scroll', onInteraction);
+        document.removeEventListener('touchstart', onInteraction);
+    });
+
+    document.addEventListener('click', onInteraction);
+    document.addEventListener('scroll', onInteraction);
+    document.addEventListener('touchstart', onInteraction);
+
+    // Ensure playback when in view
+    const visibilityObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                tryPlay();
+            }
+        });
+    }, { threshold: 0.4 });
+
+    visibilityObserver.observe(video);
+});
 </script>
 {% endblock %}
 
