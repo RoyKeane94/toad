@@ -964,6 +964,18 @@ def instagram_index(request):
     """
     return render(request, 'CRM/instagram/index.html')
 
+def toad_weddings_view(request):
+    """
+    Public landing page for wedding venue outreach links.
+    Optional ?venue query parameter personalises the hero text.
+    """
+    venue_name = request.GET.get('venue', '').strip() or None
+    context = {
+        'venue_name': venue_name,
+        'title': 'Toad for Weddings',
+    }
+    return render(request, 'business_links/events/toad_weddings.html', context)
+
 # Student Society Partnership Pages
 def southampton_economics_society_page(request):
     """

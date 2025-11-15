@@ -1966,6 +1966,262 @@ input[type="checkbox"]:focus {
     }
 }
 
+/* === Wedding Landing Styles === */
+body.tw-weddings-page #app {
+    padding: 0 !important;
+    background: #fefefe;
+}
 
+.tw-weddings .tw-section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+}
 
+.tw-weddings .tw-hero {
+    background: linear-gradient(180deg, rgba(16, 185, 129, 0.08), #ffffff 65%);
+}
 
+.tw-weddings .tw-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.tw-weddings .tw-hero-visual {
+    position: relative;
+    border-radius: 28px;
+    padding: 1px;
+    background: linear-gradient(130deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
+    box-shadow: 0 35px 80px -45px rgba(16, 185, 129, 0.7);
+}
+
+.tw-weddings .tw-hero-visual-inner {
+    border-radius: 26px;
+    min-height: 320px;
+    background: #f5f6f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-action-bg);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.tw-weddings .tw-hero-cta a {
+    min-width: 210px;
+}
+
+.tw-weddings .tw-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tw-weddings .tw-cta-btn:hover {
+    transform: translateY(-2px);
+}
+
+.tw-weddings .tw-cta-primary {
+    background: var(--primary-action-bg);
+    color: #fff;
+    box-shadow: 0 20px 45px -25px rgba(16, 185, 129, 0.6);
+}
+
+.tw-weddings .tw-cta-secondary {
+    border: 1px solid var(--primary-action-bg);
+    color: var(--primary-action-bg);
+}
+
+.tw-weddings .tw-social-proof {
+    background: #fff;
+    border-top: 1px solid rgba(16, 185, 129, 0.1);
+    border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+}
+
+.tw-weddings .tw-social-proof ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    padding: 1rem 0;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+    color: var(--text-secondary);
+}
+
+.tw-weddings .tw-grid-card {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    box-shadow: 0 25px 60px -45px rgba(16, 185, 129, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.tw-weddings .tw-grid-video,
+.tw-weddings .tw-grid-visual {
+    border-radius: 20px;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+    background: linear-gradient(120deg, rgba(16, 185, 129, 0.12), rgba(255, 255, 255, 0.9));
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-action-bg);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.tw-weddings .tw-grid-visual--small {
+    min-height: 200px;
+}
+
+.tw-weddings .tw-grid-block {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.tw-weddings .tw-grid-block--reverse {
+    flex-direction: row-reverse;
+}
+
+.tw-weddings .tw-grid-text {
+    flex: 1;
+    color: #1f2933;
+}
+
+.tw-weddings .tw-grid-text h3 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 800;
+    margin-bottom: 1rem;
+}
+
+.tw-weddings .tw-grid-text p {
+    color: #4b5563;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.tw-weddings .tw-grid-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-action-bg);
+    margin-bottom: 0.75rem;
+}
+
+.tw-weddings .tw-grid-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.tw-weddings .tw-grid-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    color: #374151;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 1.75rem;
+}
+
+.tw-weddings .tw-grid-list li::before {
+    content: '✔';
+    color: var(--primary-action-bg);
+    font-size: 0.95rem;
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+}
+
+.tw-weddings .tw-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.tw-weddings .tw-feature-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 1.5rem;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    box-shadow: 0 20px 45px -45px rgba(16, 185, 129, 0.4);
+}
+
+.tw-weddings .tw-feature-card h4 {
+    color: var(--primary-action-bg);
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+}
+
+.tw-weddings .tw-section-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.tw-weddings .tw-section-heading h2 {
+    font-size: clamp(2rem, 3vw, 3rem);
+    color: var(--primary-action-bg);
+    font-weight: 800;
+}
+
+.tw-weddings .tw-case-study {
+    background: #fff;
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    box-shadow: 0 20px 45px -30px rgba(16, 185, 129, 0.4);
+    text-align: center;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.tw-animate-init {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.tw-animate-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+@media (max-width: 768px) {
+    .tw-weddings .tw-hero {
+        text-align: center;
+    }
+
+    .tw-weddings .tw-hero-cta {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .tw-weddings .tw-hero-cta a {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tw-weddings .tw-grid-block,
+    .tw-weddings .tw-grid-block--reverse {
+        flex-direction: column;
+    }
+
+    .tw-weddings .tw-grid-visual,
+    .tw-weddings .tw-grid-video {
+        width: 100%;
+    }
+}

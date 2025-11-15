@@ -454,4 +454,24 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 50);
         }, 1400);
     }
+    // Wedding landing page helpers
+    const weddingPage = document.querySelector('[data-page="tw-weddings"]');
+    if (weddingPage) {
+        document.body.classList.add('tw-weddings-page');
+    }
+
+    const twAnimateEls = document.querySelectorAll('[data-tw-animate]');
+    if (twAnimateEls.length) {
+        twAnimateEls.forEach(el => el.classList.add('tw-animate-init'));
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('tw-animate-in');
+                    obs.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        twAnimateEls.forEach(el => observer.observe(el));
+    }
 });

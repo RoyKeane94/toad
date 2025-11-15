@@ -71,4 +71,7 @@ urlpatterns = [
     path('instagram/why-users-love-toad/', views.instagram_why_users_love_toad, name='instagram_why_users_love_toad'),
     path('instagram/toad-bingo-card/', views.instagram_toad_bingo_card, name='instagram_toad_bingo_card'),
     path('instagram/preview/', views.instagram_preview, name='instagram_preview'),
+
+    # Business links / events
+    path('links/events/weddings/', views.toad_weddings_view, name='toad_weddings'),
 ]
