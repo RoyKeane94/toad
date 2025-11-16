@@ -43,7 +43,8 @@ from .specific_views.general_views import (
     online_store_tracker_template_view,
     faq_view,
     contact_us_view,
-    privacy_policy_view
+    privacy_policy_view,
+    terms_and_conditions_view
 )
 
 from pages.specific_views.project_views import (

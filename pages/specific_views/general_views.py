@@ -491,6 +491,10 @@ def privacy_policy_view(request):
     """Display the privacy policy page"""
     return render_simple_template(request, 'pages/general/bumf/privacy_policy.html')
 
+def terms_and_conditions_view(request):
+    """Display the terms and conditions page"""
+    return render_simple_template(request, 'pages/general/bumf/terms_and_conditions.html')
+
 @login_required
 def online_store_tracker_template_view(request):
     """Create an Online Store Tracker grid for the current user and redirect to it"""

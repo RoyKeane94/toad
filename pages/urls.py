@@ -62,6 +62,7 @@ urlpatterns = [
     path('faq/', views.faq_view, name='faq'),
     path('contact/', views.contact_us_view, name='contact_us'),
     path('privacy/', views.privacy_policy_view, name='privacy_policy'),
+    path('terms/', views.terms_and_conditions_view, name='terms_and_conditions'),
     
     # Grid URLs
     path('grids/', views.project_list_view, name='project_list'),
