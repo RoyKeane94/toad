@@ -1,0 +1,168 @@
+{% extends "pages/layout.html" %}
+{% load static %}
+
+{% block title %}Toad for Weddings{% endblock %}
+
+{% block extra_head %}
+<style>
+    #app {
+        padding: 0 !important;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div data-page="tw-weddings" class="tw-weddings">
+<section class="tw-section w-full" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+    <div class="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 px-5">
+        <div class="space-y-6 max-w-2xl" data-tw-animate>
+            <p class="text-xs uppercase tracking-[0.35em] text-[var(--primary-action-bg)] font-semibold">
+                Wedding Venue Playbook
+            </p>
+            <h1 class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight">
+                Hi {{ venue_name|default:"Kew Gardens" }} 👋
+            </h1>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                Toad gives your team one clear visual matrix for each event, staff and suppliers know exactly what is happening so couples simply feel that everything just works.
+            </p>
+            <p class="text-sm text-gray-500 leading-relaxed">
+                Start from these example boards or build your own in seconds. Every row, column and checklist is yours to tweak to match how your venue already runs weddings.
+            </p>
+            <div class="flex flex-wrap gap-4 tw-hero-cta">
+                <a href="#example-grids" class="tw-cta-btn tw-cta-primary">
+                    See Your Example Board →
+                </a>
+                <a href="{% url 'accounts:register_choices' %}" class="tw-cta-btn tw-cta-secondary">
+                    Try Toad Free
+                </a>
+            </div>
+        </div>
+        <div class="tw-hero-visual w-full lg:w-1/2" data-tw-animate>
+            <div class="tw-hero-visual-inner">
+                <span>Wedding Event Checklist video placeholder</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="w-full tw-social-proof bg-white py-4" data-tw-animate>
+    <div class="max-w-6xl mx-auto px-5">
+        <ul>
+            <li>Used by event teams, venues and planners</li>
+            <li>Built for small teams who need clarity</li>
+            <li>No setup, no training, no clutter</li>
+        </ul>
+    </div>
+</section>
+
+<section id="example-grids" class="tw-section w-full bg-white">
+    <div class="max-w-6xl mx-auto space-y-12 px-5">
+        <div class="tw-section-heading" data-tw-animate>
+            <h2>What Toad Looks Like for {{ venue_name|default:"Your" }} Venue</h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
+                Toad is a simple matrix of checklists. No dashboards, no complexity, just one shared view so your team knows what happens when, and who is doing it.
+            </p>
+        </div>
+
+        <div class="space-y-16">
+            <div class="tw-grid-block" data-tw-animate>
+                <div class="tw-grid-text">
+                    <p class="tw-grid-eyebrow">Grid 1 · Wedding Event Checklist</p>
+                    <h3>One calm, visible plan for the whole day.</h3>
+                    <p>Every supplier, every task and every timing in a single, shared checklist that lives quietly behind the scenes.</p>
+                    <ul class="tw-grid-list">
+                        <li>Line up catering, floristry, photography and music with clear times and owners.</li>
+                        <li>Track table plans, décor decisions and late changes without digging through emails.</li>
+                        <li>Spot gaps early so nothing is missing on the big day.</li>
+                        <li>Your team checks Toad so couples never need to think about logistics.</li>
+                        <li>Duplicate this board and tweak each checklist to match how your team already runs a wedding.</li>
+                    </ul>
+                </div>
+                <div class="tw-grid-visual tw-grid-video">
+                    <span>Video Demo Placeholder</span>
+                </div>
+            </div>
+
+            <div class="tw-grid-block tw-grid-block--reverse" data-tw-animate>
+                <div class="tw-grid-text">
+                    <p class="tw-grid-eyebrow">Grid 2 · Sales and Marketing</p>
+                    <h3>More bookings, less mental clutter.</h3>
+                    <p>Keep enquiries, show rounds and campaigns on one simple board instead of scattered across tools and inboxes.</p>
+                    <ul class="tw-grid-list">
+                        <li>Follow each enquiry from first contact to confirmed booking.</li>
+                        <li>Plan open days and showcases with clear tasks and timings.</li>
+                        <li>Keep supplier partnerships, styled shoots and campaigns visible to the whole team.</li>
+                        <li>Swap columns, add campaigns or start a fresh board for each season in a couple of clicks.</li>
+                    </ul>
+                </div>
+                <div class="tw-grid-visual">
+                    <span>Marketing Snapshot Placeholder</span>
+                </div>
+            </div>
+
+            <div class="tw-grid-block" data-tw-animate>
+                <div class="tw-grid-text">
+                    <p class="tw-grid-eyebrow">Grid 3 · Personal Planner</p>
+                    <h3>Your quiet weekly control room.</h3>
+                    <p>A private, lightweight planner for venue managers who do not want another complex system.</p>
+                    <ul class="tw-grid-list">
+                        <li>See meetings, show rounds, supplier calls and personal admin at a glance.</li>
+                        <li>Stay organised without switching between calendars, notes apps and spreadsheets.</li>
+                        <li>Share a simple summary with owners or operations when you need to.</li>
+                        <li>Make it your own, remove what you do not need and add the routines that help you stay on top of things.</li>
+                    </ul>
+                </div>
+                <div class="tw-grid-visual tw-grid-visual--small">
+                    <span>Personal Planner Snapshot Placeholder</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tw-section w-full bg-[var(--main-bg)]">
+    <div class="max-w-6xl mx-auto space-y-10 px-5">
+        <div class="tw-section-heading" data-tw-animate>
+            <h2>Why venues love Toad</h2>
+            <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-2">
+                Toad stays backstage. It adds just enough structure so your team feels calm and in control, wihtout overwhelming them.
+            </p>
+        </div>
+        <div class="tw-features">
+            <div class="tw-feature-card" data-tw-animate>
+                <h4>See setup at a glance</h4>
+                <p>Tables, flowers, music, photography, every detail visible in one place.</p>
+            </div>
+            <div class="tw-feature-card" data-tw-animate>
+                <h4>Impress your couples</h4>
+                <p>Couples never see Toad, they simply experience a day that feels beautifully organised and surprisingly stress free.</p>
+            </div>
+            <div class="tw-feature-card" data-tw-animate>
+                <h4>Share with staff and suppliers</h4>
+                <p>Give your team and trusted suppliers a clear view of what they need, and keep the rest private. Toad bends to your workflow instead of replacing it.</p>
+            </div>
+            <div class="tw-feature-card" data-tw-animate>
+                <h4>Lightweight and fast</h4>
+                <p>No training videos, no configuration, just open Toad and start planning your next wedding in minutes.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="tw-section w-full bg-white">
+    <div class="max-w-6xl mx-auto text-center space-y-6 px-5" data-tw-animate>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
+            Ready to get started?
+        </h2>
+        <p class="text-lg text-gray-600">
+            Create a grid in under 60 seconds from scratch or by copying these examples and keep it as your quiet control room for every wedding.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4">
+            <a href="{% url 'accounts:register_choices' %}" class="tw-cta-btn tw-cta-primary">
+                Try Toad Free
+            </a>
+        </div>
+    </div>
+</section>
+</div>
+{% endblock %}

@@ -119,6 +119,7 @@ class CompanySector(models.Model):
 
 class Company(models.Model):
     name = models.CharField(max_length=200)
+    contact_person = models.CharField(max_length=100, blank=True)
     contact_email = models.EmailField(blank=True)
     email_template = models.ForeignKey(
         'EmailTemplate',
