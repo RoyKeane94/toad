@@ -386,7 +386,7 @@ def stripe_webhook(request):
 @login_required
 def stripe_checkout_pro_view(request):
     """
-    Display the Stripe checkout page for Toad Pro subscription
+    Display the Stripe checkout page for Team Toad subscription
     """
     logger.info(f"Stripe Pro checkout view accessed by user: {request.user.email}")
     
@@ -533,7 +533,7 @@ def stripe_success_pro_view(request):
         # Log the successful subscription
         logger.info(f"User {request.user.email} successfully subscribed to Pro plan. Session: {session_id}")
         
-        messages.success(request, 'Welcome to Toad Pro! Your subscription is now active. Check your email for your welcome message!')
+        messages.success(request, 'Welcome to Team Toad! Your subscription is now active. Check your email for your welcome message!')
         
         return render(request, 'accounts/pages/stripe/toad_pro_stripe_success.html', {
             'session_id': session_id,

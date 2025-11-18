@@ -1136,7 +1136,7 @@ class Register3MonthProTrialView(FormView):
                 email_thread.daemon = True
                 email_thread.start()
                 
-                messages.success(self.request, f'Welcome to your 3-month Pro trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad Pro features.')
+                messages.success(self.request, f'Welcome to your 3-month Pro trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Team Toad features.')
             except Exception as e:
                 logger.error(f"Failed to start email sending: {e}")
                 messages.warning(self.request, f'Welcome to your 3-month Pro trial, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
@@ -1210,7 +1210,7 @@ class Register6MonthProTrialView(FormView):
                 email_thread.daemon = True
                 email_thread.start()
                 
-                messages.success(self.request, f'Welcome to your 6-month Pro trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Toad Pro features.')
+                messages.success(self.request, f'Welcome to your 6-month Pro trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Team Toad features.')
             except Exception as e:
                 logger.error(f"Failed to start email sending: {e}")
                 messages.warning(self.request, f'Welcome to your 6-month Pro trial, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')

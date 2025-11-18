@@ -34676,3 +34676,26 @@ INFO 2025-11-17 06:46:44,980 basehttp 2763 6229913600 "GET /static/video/Toad%20
 INFO 2025-11-17 06:46:48,272 basehttp 2763 6229913600 "GET /toad-in-action/ HTTP/1.1" 200 4369
 INFO 2025-11-17 06:46:48,311 basehttp 2763 6229913600 "GET /static/video/Toad%20-%20Team%20Highlights.mp4 HTTP/1.1" 200 8655853
 INFO 2025-11-17 06:48:26,722 basehttp 2763 6229913600 "GET /toad-in-action/ HTTP/1.1" 200 4419
+INFO 2025-11-18 21:11:35,527 autoreload 9113 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:12:02,326 basehttp 9113 6124564480 "GET / HTTP/1.1" 200 8773
+INFO 2025-11-18 21:12:02,336 basehttp 9113 6124564480 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-11-18 21:12:02,340 basehttp 9113 6124564480 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-11-18 21:12:02,341 basehttp 9113 6124564480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-18 21:12:02,813 basehttp 9113 6124564480 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-18 21:12:05,998 basehttp 9113 6124564480 "GET /accounts/login/ HTTP/1.1" 200 3814
+INFO 2025-11-18 21:12:12,056 basehttp 9113 6124564480 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-11-18 21:12:12,061 basehttp 9113 6124564480 "GET /accounts/login/ HTTP/1.1" 200 4079
+INFO 2025-11-18 21:12:28,965 basehttp 9113 6124564480 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-11-18 21:12:28,982 basehttp 9113 6124564480 "GET /grids/ HTTP/1.1" 200 13141
+INFO 2025-11-18 21:12:31,282 basehttp 9113 6124564480 "GET /accounts/settings/ HTTP/1.1" 200 3663
+INFO 2025-11-18 21:13:29,970 basehttp 9113 6124564480 "GET /accounts/settings/ HTTP/1.1" 200 3675
+INFO 2025-11-18 21:13:34,246 basehttp 9113 6124564480 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7257
+INFO 2025-11-18 21:13:39,176 basehttp 9113 6124564480 "GET /accounts/settings/ HTTP/1.1" 200 3708
+INFO 2025-11-18 21:15:00,420 basehttp 9113 6124564480 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7254
+INFO 2025-11-18 21:15:04,522 stripe_django_views 9113 6124564480 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-11-18 21:15:04,523 stripe_django_views 9113 6124564480 Stripe API key is configured, proceeding...
+INFO 2025-11-18 21:15:04,523 stripe_django_views 9113 6124564480 Rendering Stripe checkout template...
+INFO 2025-11-18 21:15:04,528 stripe_django_views 9113 6124564480 Template rendered successfully
+INFO 2025-11-18 21:15:04,529 basehttp 9113 6124564480 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3068
+INFO 2025-11-18 21:15:14,079 basehttp 9113 6124564480 "GET /accounts/settings/ HTTP/1.1" 200 3698
+INFO 2025-11-18 21:15:18,177 basehttp 9113 6124564480 "GET / HTTP/1.1" 200 8876

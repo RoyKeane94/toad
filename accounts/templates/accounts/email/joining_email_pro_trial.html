@@ -1,8 +1,8 @@
 {% extends 'accounts/email/email_layout.html' %}
 
-{% block title %}Welcome to Toad Pro Trial{% endblock %}
+{% block title %}Welcome to your Team Toad Trial{% endblock %}
 
-{% block header_title %}Welcome to Toad Pro, {{ user.first_name|default:user.get_short_name }}! <span class="pro-badge">PRO TRIAL</span>{% endblock %}
+{% block header_title %}Welcome to Team Toad, {{ user.first_name|default:user.get_short_name }}! <span class="pro-badge">PRO TRIAL</span>{% endblock %}
 
 {% block content %}
 

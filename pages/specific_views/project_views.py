@@ -2003,12 +2003,12 @@ def _handle_email_invitation(request, project, email, personal_message):
         if invited_user.tier not in valid_tiers:
             return JsonResponse({
                 'success': False,
-                'error': f'The user with email {email} doesn\'t have a Pro account. They need to upgrade to Pro, Pro Trial, Society Pro, or Beta to collaborate on grids.'
+                'error': f'The user with email {email} doesn\'t have a Team Toad account. They need to upgrade to Team Toad, Team Toad Trial, Society Pro, or Beta to collaborate on grids.'
             })
     except User.DoesNotExist:
         return JsonResponse({
             'success': False,
-            'error': f'No user found with email {email}. User must have a Toad Pro account.'
+            'error': f'No user found with email {email}. User must have a Team Toad account.'
         })
     
     # Check if user is already part of the project

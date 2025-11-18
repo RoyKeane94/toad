@@ -210,15 +210,15 @@ def send_joining_email(user, request=None, cta_url=None):
         text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
     elif user_tier == 'pro':
         template_name = 'accounts/email/joining_email_pro.html'
-        subject = "Welcome to Toad Pro — You're all set!"
-        text_intro = "Thanks for upgrading to Pro and unlocking our most powerful collaboration tools."
+        subject = "Welcome to Team Toad — You're all set!"
+        text_intro = "Thanks for upgrading to Team Toad and unlocking our most powerful collaboration tools."
     elif user_tier == 'pro_trial':
         template_name = 'accounts/email/joining_email_pro_trial.html'
-        subject = "Welcome to Toad Pro Trial — You're all set!"
+        subject = "Welcome to your Team Toad Trial — You're all set!"
         text_intro = "Thanks for starting your Pro trial and exploring our most powerful features!"
     else:  # free tier
         template_name = 'accounts/email/joining_email_free.html'
-        subject = "Welcome to Toad — You're all set!"
+        subject = "Welcome to your Team Toad — You're all set!"
         text_intro = "Thanks for joining us and helping shape a calmer way to plan."
 
     html_message = render_to_string(template_name, {
@@ -311,7 +311,7 @@ Don't start from scratch! We've created templates for students, professionals, e
 Browse Templates: https://meettoad.co.uk/templates/
 
 🚀 Unlock Pro Features
-Ready for more? Try Toad Pro free for 3 months and get access to team collaboration, custom templates, and advanced features.
+Ready for more? Try Team Toad for free for 3 months and get access to team collaboration, custom templates, and advanced features.
 Start Pro Trial: https://meettoad.co.uk/accounts/register/trial-3-month-pro/
 
 Need help getting started? Just reply to this email and we'll be happy to help you set up your first grid!
@@ -319,7 +319,7 @@ Need help getting started? Just reply to this email and we'll be happy to help y
 View Your Grids: https://meettoad.co.uk/grids/
 
 💚 Love Toad? Share it!
-Forward this email to a friend and tell them to click the button below to get a free three month trial of Toad Pro!
+Forward this email to a friend and tell them to click the button below to get a free three month trial of Team Toad!
 Share Pro Trial: https://meettoad.co.uk/accounts/register/trial-3-month-pro/
 
 — Tom, Founder of Toad
@@ -687,7 +687,7 @@ def _send_test_joining_email(user, recipient_email):
         text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
     elif user_tier == 'pro_trial':
         template_name = 'accounts/email/joining_email_pro_trial.html'
-        subject = "[TEST] Welcome to Toad Pro Trial — You're all set!"
+        subject = "[TEST] Welcome to your Team Toad Trial — You're all set!"
         text_intro = "Thanks for starting your Pro trial and exploring our most powerful features!"
     else:  # free tier
         template_name = 'accounts/email/joining_email_free.html'
