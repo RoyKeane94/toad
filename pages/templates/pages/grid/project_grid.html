@@ -687,7 +687,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         {% else %}
                         <button type="button"
                                 class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                                onclick="closeAllDropdowns(); document.getElementById('share-grid-modal').classList.remove('opacity-0', 'invisible'); document.getElementById('share-grid-modal').querySelector('div').classList.remove('scale-95'); document.getElementById('share-grid-modal').querySelector('div').classList.add('scale-100');">
+                                onclick="closeAllDropdowns(); showShareGridModal();">
                             <i class="fas fa-share text-xs w-4 text-center"></i>
                             <span>Share Grid</span>
                         </button>
@@ -1135,7 +1135,10 @@ document.addEventListener('DOMContentLoaded', function() {
             <!-- Sharing Options Tabs -->
             <div class="mb-6">
                 <div class="flex space-x-1 bg-[var(--grid-header-bg)] p-1 rounded-lg">
-                    <button type="button" id="email-tab" class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-200 cursor-pointer bg-[var(--tertiary-action-bg)] text-white">
+                    <button type="button" id="quick-add-tab" class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-200 cursor-pointer bg-[var(--tertiary-action-bg)] text-white">
+                        <i class="fas fa-user-plus mr-2"></i>Quick Add
+                    </button>
+                    <button type="button" id="email-tab" class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-200 cursor-pointer text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--container-bg)]">
                         <i class="fas fa-envelope mr-2"></i>Email Invitation
                     </button>
                     <button type="button" id="link-tab" class="flex-1 py-2 px-4 text-sm font-medium rounded-md transition-all duration-200 cursor-pointer text-[var(--text-secondary)] hover:text-[var(--text-primary)] hover:bg-[var(--container-bg)]">
@@ -1144,8 +1147,44 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
             
+            <!-- Quick Add Form -->
+            <div id="quick-add-form" class="sharing-form min-h-[280px]">
+                <div class="mb-6">
+                    <p class="text-[var(--text-primary)] mb-4">Select users from your other team grids to add them instantly. No invitations needed.</p>
+                    
+                    <!-- Error Message Display -->
+                    <div id="quick-add-error-message" class="hidden mb-4 p-3 bg-red-50 border border-red-200 rounded-md">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-exclamation-triangle text-red-400"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p id="quick-add-error-text" class="text-sm text-red-700"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Loading State -->
+                    <div id="quick-add-loading" class="text-center py-8">
+                        <i class="fas fa-spinner fa-spin text-[var(--tertiary-action-bg)] text-2xl mb-2"></i>
+                        <p class="text-sm text-[var(--text-secondary)]">Loading team members...</p>
+                    </div>
+                    
+                    <!-- Users List -->
+                    <div id="quick-add-users-list" class="hidden space-y-2 max-h-[300px] overflow-y-auto">
+                        <!-- Users will be populated here -->
+                    </div>
+                    
+                    <!-- Empty State -->
+                    <div id="quick-add-empty" class="hidden text-center py-8">
+                        <i class="fas fa-users text-[var(--text-secondary)] text-3xl mb-3"></i>
+                        <p class="text-sm text-[var(--text-secondary)]">No other team members found from your shared grids.</p>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Email Invitation Form -->
-            <div id="email-form" class="sharing-form min-h-[280px]">
+            <div id="email-form" class="sharing-form hidden min-h-[280px]">
                 <form id="share-grid-form">
                     {% csrf_token %}
                     
@@ -1252,8 +1291,11 @@ document.addEventListener('DOMContentLoaded', function() {
             <button onclick="hideShareGridModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
                 <i class="fas fa-times mr-2"></i>Cancel
             </button>
-            <button type="submit" id="submit-email-btn" form="share-grid-form" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+            <button type="submit" id="submit-email-btn" form="share-grid-form" class="hidden px-4 py-2 items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
                 <i class="fas fa-share mr-2"></i>Send Invitation
+            </button>
+            <button type="button" id="submit-quick-add-btn" class="px-4 py-2 flex items-center justify-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md opacity-50 cursor-not-allowed" disabled>
+                <i class="fas fa-user-plus mr-2"></i>Add Selected
             </button>
         </div>
     </div>
@@ -1496,6 +1538,21 @@ function hideSaveTemplateModal() {
     }
 }
 
+function showShareGridModal() {
+    const modal = document.getElementById('share-grid-modal');
+    if (modal) {
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+        
+        // Load users for Quick Add tab (default tab)
+        loadSharedTeamUsers();
+    }
+}
+
 function hideShareGridModal() {
     const modal = document.getElementById('share-grid-modal');
     if (modal) {
@@ -1510,8 +1567,13 @@ function hideShareGridModal() {
         const emailForm = document.getElementById('share-grid-form');
         if (emailForm) emailForm.reset();
         
-        // Reset to email tab
-        switchToEmailTab();
+        // Reset to Quick Add tab
+        switchToQuickAddTab();
+        
+        // Clear Quick Add selections
+        const checkboxes = document.querySelectorAll('.user-checkbox');
+        checkboxes.forEach(cb => cb.checked = false);
+        updateQuickAddButton();
         
         // Hide link display
         const linkDisplay = document.getElementById('link-display');
@@ -1528,9 +1590,11 @@ function hideShareGridModal() {
 function clearAllErrors() {
     const emailError = document.getElementById('email-error-message');
     const linkError = document.getElementById('link-error-message');
+    const quickAddError = document.getElementById('quick-add-error-message');
     
     if (emailError) emailError.classList.add('hidden');
     if (linkError) linkError.classList.add('hidden');
+    if (quickAddError) quickAddError.classList.add('hidden');
 }
 
 // Function to show error message in modal
@@ -1547,12 +1611,56 @@ function showError(message, type = 'email') {
 }
 
 // Tab switching functionality
-function switchToEmailTab() {
+function switchToQuickAddTab() {
+    const quickAddTab = document.getElementById('quick-add-tab');
     const emailTab = document.getElementById('email-tab');
     const linkTab = document.getElementById('link-tab');
+    const quickAddForm = document.getElementById('quick-add-form');
     const emailForm = document.getElementById('email-form');
     const linkForm = document.getElementById('link-form');
-    const submitBtn = document.getElementById('submit-email-btn');
+    const submitEmailBtn = document.getElementById('submit-email-btn');
+    const submitQuickAddBtn = document.getElementById('submit-quick-add-btn');
+    
+    if (quickAddTab && emailTab && linkTab && quickAddForm && emailForm && linkForm) {
+        // Clear any existing errors
+        clearAllErrors();
+        
+        // Update tab styles
+        quickAddTab.classList.add('bg-[var(--tertiary-action-bg)]', 'text-white');
+        quickAddTab.classList.remove('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        emailTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
+        emailTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        linkTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
+        linkTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
+        // Show/hide forms
+        quickAddForm.classList.remove('hidden');
+        emailForm.classList.add('hidden');
+        linkForm.classList.add('hidden');
+        
+        // Show/hide submit buttons
+        if (submitEmailBtn) {
+            submitEmailBtn.classList.add('hidden');
+            submitEmailBtn.classList.remove('flex');
+        }
+        if (submitQuickAddBtn) submitQuickAddBtn.classList.remove('hidden');
+        
+        // Load users if not already loaded
+        loadSharedTeamUsers();
+    }
+}
+
+function switchToEmailTab() {
+    const quickAddTab = document.getElementById('quick-add-tab');
+    const emailTab = document.getElementById('email-tab');
+    const linkTab = document.getElementById('link-tab');
+    const quickAddForm = document.getElementById('quick-add-form');
+    const emailForm = document.getElementById('email-form');
+    const linkForm = document.getElementById('link-form');
+    const submitEmailBtn = document.getElementById('submit-email-btn');
+    const submitQuickAddBtn = document.getElementById('submit-quick-add-btn');
     
     if (emailTab && linkTab && emailForm && linkForm) {
         // Clear any existing errors
@@ -1562,24 +1670,35 @@ function switchToEmailTab() {
         emailTab.classList.add('bg-[var(--tertiary-action-bg)]', 'text-white');
         emailTab.classList.remove('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
         
+        quickAddTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
+        quickAddTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
         linkTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
         linkTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
         
         // Show/hide forms
         emailForm.classList.remove('hidden');
+        quickAddForm.classList.add('hidden');
         linkForm.classList.add('hidden');
         
-        // Show submit button
-        if (submitBtn) submitBtn.classList.remove('hidden');
+        // Show/hide submit buttons
+        if (submitEmailBtn) {
+            submitEmailBtn.classList.remove('hidden');
+            submitEmailBtn.classList.add('flex');
+        }
+        if (submitQuickAddBtn) submitQuickAddBtn.classList.add('hidden');
     }
 }
 
 function switchToLinkTab() {
+    const quickAddTab = document.getElementById('quick-add-tab');
     const emailTab = document.getElementById('email-tab');
     const linkTab = document.getElementById('link-tab');
+    const quickAddForm = document.getElementById('quick-add-form');
     const emailForm = document.getElementById('email-form');
     const linkForm = document.getElementById('link-form');
-    const submitBtn = document.getElementById('submit-email-btn');
+    const submitEmailBtn = document.getElementById('submit-email-btn');
+    const submitQuickAddBtn = document.getElementById('submit-quick-add-btn');
     
     if (emailTab && linkTab && emailForm && linkForm) {
         // Clear any existing errors
@@ -1589,16 +1708,226 @@ function switchToLinkTab() {
         linkTab.classList.add('bg-[var(--tertiary-action-bg)]', 'text-white');
         linkTab.classList.remove('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
         
+        quickAddTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
+        quickAddTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
+        
         emailTab.classList.remove('bg-[var(--tertiary-action-bg)]', 'text-white');
         emailTab.classList.add('text-[var(--text-secondary)]', 'hover:text-[var(--text-primary)]', 'hover:bg-[var(--container-bg)]');
         
         // Show/hide forms
         linkForm.classList.remove('hidden');
+        quickAddForm.classList.add('hidden');
         emailForm.classList.add('hidden');
         
-        // Hide submit button
-        if (submitBtn) submitBtn.classList.add('hidden');
+        // Show/hide submit buttons
+        if (submitEmailBtn) {
+            submitEmailBtn.classList.add('hidden');
+            submitEmailBtn.classList.remove('flex');
+        }
+        if (submitQuickAddBtn) submitQuickAddBtn.classList.add('hidden');
     }
+}
+
+// Load shared team users
+function loadSharedTeamUsers() {
+    const loadingEl = document.getElementById('quick-add-loading');
+    const usersListEl = document.getElementById('quick-add-users-list');
+    const emptyEl = document.getElementById('quick-add-empty');
+    
+    // Show loading, hide others
+    if (loadingEl) loadingEl.classList.remove('hidden');
+    if (usersListEl) usersListEl.classList.add('hidden');
+    if (emptyEl) emptyEl.classList.add('hidden');
+    
+    fetch(`/grids/{{ project.pk }}/team/shared-users/`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success && data.users && data.users.length > 0) {
+                renderUsersList(data.users);
+            } else {
+                // Show empty state
+                if (loadingEl) loadingEl.classList.add('hidden');
+                if (emptyEl) emptyEl.classList.remove('hidden');
+            }
+        })
+        .catch(error => {
+            console.error('Error loading shared team users:', error);
+            if (loadingEl) loadingEl.classList.add('hidden');
+            showError('Failed to load team members', 'quick-add');
+        });
+}
+
+// Render users list with checkboxes
+function renderUsersList(users) {
+    const loadingEl = document.getElementById('quick-add-loading');
+    const usersListEl = document.getElementById('quick-add-users-list');
+    const emptyEl = document.getElementById('quick-add-empty');
+    
+    if (!usersListEl) return;
+    
+    // Hide loading and empty, show list
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (emptyEl) emptyEl.classList.add('hidden');
+    usersListEl.classList.remove('hidden');
+    
+    // Clear existing content
+    usersListEl.innerHTML = '';
+    
+    // Render each user
+    users.forEach(user => {
+        const userItem = document.createElement('div');
+        userItem.className = 'flex items-center space-x-3 p-3 bg-[var(--grid-header-bg)] rounded-lg hover:bg-[var(--container-bg)] transition-colors cursor-pointer';
+        userItem.innerHTML = `
+            <input type="checkbox" 
+                   id="user-${user.id}" 
+                   value="${user.id}" 
+                   class="user-checkbox w-4 h-4 text-[var(--tertiary-action-bg)] border-[var(--border-color)] rounded focus:ring-[var(--tertiary-action-bg)] cursor-pointer">
+            <label for="user-${user.id}" class="flex-1 cursor-pointer">
+                <p class="text-sm font-medium text-[var(--text-primary)]">${user.name}</p>
+                <p class="text-xs text-[var(--text-secondary)]">${user.email}</p>
+            </label>
+        `;
+        
+        // Add click handler to the whole item
+        userItem.addEventListener('click', function(e) {
+            if (e.target.type !== 'checkbox') {
+                const checkbox = userItem.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                updateQuickAddButton();
+            } else {
+                updateQuickAddButton();
+            }
+        });
+        
+        usersListEl.appendChild(userItem);
+    });
+    
+    // Update button state
+    updateQuickAddButton();
+}
+
+// Update Quick Add button state based on selections
+function updateQuickAddButton() {
+    const checkboxes = document.querySelectorAll('.user-checkbox:checked');
+    const submitBtn = document.getElementById('submit-quick-add-btn');
+    
+    if (submitBtn) {
+        if (checkboxes.length > 0) {
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            submitBtn.classList.add('cursor-pointer');
+        } else {
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            submitBtn.classList.remove('cursor-pointer');
+        }
+    }
+}
+
+// Submit selected users
+function submitQuickAddUsers() {
+    const checkboxes = document.querySelectorAll('.user-checkbox:checked');
+    const userIds = Array.from(checkboxes).map(cb => parseInt(cb.value));
+    
+    if (userIds.length === 0) {
+        showError('Please select at least one user', 'quick-add');
+        return;
+    }
+    
+    const submitBtn = document.getElementById('submit-quick-add-btn');
+    const originalText = submitBtn ? submitBtn.innerHTML : '';
+    
+    // Show loading state
+    if (submitBtn) {
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Adding...';
+        submitBtn.disabled = true;
+        submitBtn.classList.add('cursor-not-allowed');
+        submitBtn.classList.remove('cursor-pointer');
+    }
+    
+    fetch(`/grids/{{ project.pk }}/team/add-multiple/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+        },
+        body: JSON.stringify({
+            user_ids: userIds
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Show success message
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Added!';
+                submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]', 'hover:bg-[var(--tertiary-action-hover-bg)]');
+                submitBtn.classList.add('bg-green-500');
+            }
+            
+            // Close modal after short delay
+            setTimeout(() => {
+                hideShareGridModal();
+                
+                // Reset button
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-green-500');
+                    submitBtn.classList.add('bg-[var(--tertiary-action-bg)]', 'hover:bg-[var(--tertiary-action-hover-bg)]');
+                }
+                
+                // Show notification if available
+                if (window.showNotification) {
+                    window.showNotification(data.message || 'Users added successfully!', 'success');
+                }
+                
+                // Reload the page to show new team members
+                window.location.reload();
+            }, 1500);
+        } else {
+            // Show error message
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+                submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+                submitBtn.classList.add('bg-red-500');
+            }
+            
+            setTimeout(() => {
+                if (submitBtn) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.classList.remove('bg-red-500', 'cursor-not-allowed');
+                    submitBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                    // Cursor will be set by updateQuickAddButton() based on checkbox state
+                    updateQuickAddButton();
+                }
+                
+                showError(data.error || 'Failed to add users', 'quick-add');
+            }, 2000);
+        }
+    })
+    .catch(error => {
+        console.error('Error adding users:', error);
+        if (submitBtn) {
+            submitBtn.innerHTML = '<i class="fas fa-exclamation-triangle mr-2"></i>Error';
+            submitBtn.classList.remove('bg-[var(--tertiary-action-bg)]');
+            submitBtn.classList.add('bg-red-500');
+        }
+        
+        setTimeout(() => {
+            if (submitBtn) {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('bg-red-500', 'cursor-not-allowed');
+                submitBtn.classList.add('bg-[var(--tertiary-action-bg)]');
+                // Cursor will be set by updateQuickAddButton() based on checkbox state
+                updateQuickAddButton();
+            }
+            
+            showError('An error occurred while adding users', 'quick-add');
+        }, 2000);
+    });
 }
 
 // Clear Completed Modal functionality
@@ -1899,8 +2228,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Tab switching event listeners
+    const quickAddTab = document.getElementById('quick-add-tab');
     const emailTab = document.getElementById('email-tab');
     const linkTab = document.getElementById('link-tab');
+    
+    if (quickAddTab) {
+        quickAddTab.addEventListener('click', switchToQuickAddTab);
+    }
     
     if (emailTab) {
         emailTab.addEventListener('click', switchToEmailTab);
@@ -1908,6 +2242,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     if (linkTab) {
         linkTab.addEventListener('click', switchToLinkTab);
+    }
+    
+    // Quick Add submit button
+    const submitQuickAddBtn = document.getElementById('submit-quick-add-btn');
+    if (submitQuickAddBtn) {
+        submitQuickAddBtn.addEventListener('click', submitQuickAddUsers);
     }
     
     // Handle Share Grid form submission (Email invitation)

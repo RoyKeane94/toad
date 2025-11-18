@@ -113,4 +113,6 @@ urlpatterns = [
     # Team Management URLs
     path('grids/<int:project_pk>/team/add/', views.team_add_member_view, name='team_add_member'),
     path('grids/<int:project_pk>/team/remove/', views.team_remove_member_view, name='team_remove_member'),
+    path('grids/<int:project_pk>/team/shared-users/', views.get_shared_team_users_view, name='get_shared_team_users'),
+    path('grids/<int:project_pk>/team/add-multiple/', views.team_add_multiple_members_view, name='team_add_multiple_members'),
 ]

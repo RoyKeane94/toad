@@ -2172,13 +2172,6 @@ def team_add_member_view(request, project_pk):
             'error': 'Only the project owner can add team members'
         }, status=403)
     
-    # Check if this is a Team Toad project
-    if not project.is_team_toad:
-        return JsonResponse({
-            'success': False,
-            'error': 'This is not a Team Toad project'
-        }, status=400)
-    
     if request.method == 'POST':
         try:
             data = json.loads(request.body)
@@ -2206,8 +2199,10 @@ def team_add_member_view(request, project_pk):
                     'error': 'User is already a team member'
                 }, status=400)
             
-            # Add user to team
+            # Add user to team and make project a Team Toad project
             project.team_toad_user.add(user_to_add)
+            project.is_team_toad = True
+            project.save()
             
             logger.info(f"Added {user_to_add.get_full_name} ({email}) to team project {project.name}")
             
@@ -2300,6 +2295,121 @@ def team_remove_member_view(request, project_pk):
             return JsonResponse({
                 'success': False,
                 'error': 'Failed to remove team member'
+            }, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
+@login_required
+def get_shared_team_users_view(request, project_pk):
+    """Get users who share team grids with the logged-in user (excluding current grid members)"""
+    try:
+        project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+        
+        # Get all projects where the logged-in user is either owner or team member
+        user_projects = Project.objects.filter(
+            Q(user=request.user) | Q(team_toad_user=request.user),
+            is_team_toad=True
+        ).exclude(pk=project_pk).distinct()
+        
+        # Get all unique users from these projects (excluding the current user and current grid members)
+        # Users who are owners or team members of projects that the logged-in user is also on
+        shared_users = User.objects.filter(
+            Q(toad_projects__in=user_projects) | Q(team_toad_projects__in=user_projects)
+        ).exclude(
+            pk=request.user.pk
+        ).exclude(
+            pk__in=project.team_toad_user.values_list('pk', flat=True)
+        ).distinct().order_by('first_name', 'last_name', 'email').values('id', 'first_name', 'last_name', 'email')
+        
+        # Convert to list and format
+        users_list = []
+        for user in shared_users:
+            users_list.append({
+                'id': user['id'],
+                'name': f"{user['first_name']} {user['last_name']}".strip() or user['email'],
+                'email': user['email']
+            })
+        
+        return JsonResponse({
+            'success': True,
+            'users': users_list
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting shared team users: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Failed to load shared team users'
+        }, status=500)
+
+
+@login_required
+def team_add_multiple_members_view(request, project_pk):
+    """Add multiple team members to a Team Toad project at once"""
+    project = get_object_or_404(Project, pk=project_pk)
+    
+    # Check if user is the project owner
+    if project.user != request.user:
+        return JsonResponse({
+            'success': False,
+            'error': 'Only the project owner can add team members'
+        }, status=403)
+    
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user_ids = data.get('user_ids', [])
+            
+            if not user_ids or not isinstance(user_ids, list):
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User IDs are required'
+                }, status=400)
+            
+            # Get users to add
+            users_to_add = User.objects.filter(pk__in=user_ids)
+            
+            if users_to_add.count() != len(user_ids):
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Some users were not found'
+                }, status=404)
+            
+            # Filter out users who are already team members
+            existing_member_ids = set(project.team_toad_user.values_list('pk', flat=True))
+            new_users = [u for u in users_to_add if u.pk not in existing_member_ids]
+            
+            if not new_users:
+                return JsonResponse({
+                    'success': False,
+                    'error': 'All selected users are already team members'
+                }, status=400)
+            
+            # Add users to team and make project a Team Toad project
+            project.team_toad_user.add(*new_users)
+            project.is_team_toad = True
+            project.save()
+            
+            # Format success message
+            if len(new_users) == 1:
+                message = f'{new_users[0].get_full_name()} has been added to the team'
+            else:
+                message = f'{len(new_users)} users have been added to the team'
+            
+            logger.info(f"Added {len(new_users)} users to team project {project.name}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': message,
+                'added_count': len(new_users)
+            })
+            
+        except Exception as e:
+            logger.error(f"Error adding multiple team members: {e}")
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to add team members'
             }, status=500)
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)

@@ -34699,3 +34699,41 @@ INFO 2025-11-18 21:15:04,528 stripe_django_views 9113 6124564480 Template render
 INFO 2025-11-18 21:15:04,529 basehttp 9113 6124564480 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3068
 INFO 2025-11-18 21:15:14,079 basehttp 9113 6124564480 "GET /accounts/settings/ HTTP/1.1" 200 3698
 INFO 2025-11-18 21:15:18,177 basehttp 9113 6124564480 "GET / HTTP/1.1" 200 8876
+INFO 2025-11-18 21:24:58,486 autoreload 10313 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:25:32,284 autoreload 10313 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-11-18 21:25:32,658 autoreload 10329 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:25:39,293 autoreload 10329 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2025-11-18 21:25:39,778 autoreload 10343 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:25:45,134 basehttp 10343 6169800704 "GET /grids/ HTTP/1.1" 200 13155
+INFO 2025-11-18 21:25:46,494 basehttp 10343 6169800704 "GET /grids/247/ HTTP/1.1" 200 26361
+INFO 2025-11-18 21:25:46,514 basehttp 10343 6186627072 "GET /static/js/grid/grid_team.js HTTP/1.1" 200 10157
+INFO 2025-11-18 21:25:46,515 basehttp 10343 6169800704 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 57607
+INFO 2025-11-18 21:25:48,926 basehttp 10343 6169800704 "GET /grids/247/team/shared-users/ HTTP/1.1" 200 30
+INFO 2025-11-18 21:25:53,808 basehttp 10343 6169800704 "GET /grids/247/team/shared-users/ HTTP/1.1" 200 30
+INFO 2025-11-18 21:25:55,702 basehttp 10343 6169800704 "GET /grids/246/ HTTP/1.1" 200 21594
+INFO 2025-11-18 21:25:55,713 basehttp 10343 6169800704 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-11-18 21:25:58,132 basehttp 10343 6169800704 "GET /grids/246/team/shared-users/ HTTP/1.1" 200 209
+WARNING 2025-11-18 21:26:07,634 log 10343 6169800704 Bad Request: /grids/246/team/add-multiple/
+WARNING 2025-11-18 21:26:07,637 basehttp 10343 6169800704 "POST /grids/246/team/add-multiple/ HTTP/1.1" 400 62
+INFO 2025-11-18 21:26:15,748 basehttp 10343 6169800704 "GET /grids/246/team/shared-users/ HTTP/1.1" 200 228
+INFO 2025-11-18 21:27:17,956 autoreload 10343 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-11-18 21:27:18,484 autoreload 10414 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:27:23,127 autoreload 10414 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-11-18 21:27:23,450 autoreload 10426 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:27:34,148 autoreload 10426 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-11-18 21:27:34,617 autoreload 10437 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-18 21:28:17,245 basehttp 10437 6121893888 "GET /grids/246/ HTTP/1.1" 200 21667
+INFO 2025-11-18 21:28:17,255 basehttp 10437 6121893888 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-11-18 21:28:19,598 basehttp 10437 6121893888 "GET /grids/246/team/shared-users/ HTTP/1.1" 200 188
+INFO 2025-11-18 21:28:22,924 project_views 10437 6121893888 Added 2 users to team project Team Management
+INFO 2025-11-18 21:28:22,924 basehttp 10437 6121893888 "POST /grids/246/team/add-multiple/ HTTP/1.1" 200 85
+INFO 2025-11-18 21:28:24,446 basehttp 10437 6121893888 "GET /grids/246/team/shared-users/ HTTP/1.1" 200 97
+INFO 2025-11-18 21:28:24,478 basehttp 10437 6138720256 "GET /grids/246/ HTTP/1.1" 200 22690
+INFO 2025-11-18 21:28:39,066 basehttp 10437 6121893888 "GET /grids/247/ HTTP/1.1" 200 26414
+INFO 2025-11-18 21:28:39,082 basehttp 10437 6121893888 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-11-18 21:28:40,279 basehttp 10437 6121893888 "GET /grids/246/ HTTP/1.1" 200 22675
+WARNING 2025-11-18 21:28:45,131 log 10437 6138720256 Not Found: /grids/246/remove-member/
+INFO 2025-11-18 21:28:45,131 project_views 10437 6121893888 Removed <bound method User.get_full_name of <User: tom_barratt@hotmail.co.uk>> from team project Team Management
+WARNING 2025-11-18 21:28:45,131 basehttp 10437 6138720256 "POST /grids/246/remove-member/ HTTP/1.1" 404 2351
+INFO 2025-11-18 21:28:45,131 basehttp 10437 6121893888 "POST /grids/246/team/remove/ HTTP/1.1" 200 133
+INFO 2025-11-18 21:28:49,272 basehttp 10437 6121893888 "GET /grids/246/ HTTP/1.1" 200 22562
