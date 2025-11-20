@@ -34737,3 +34737,21 @@ INFO 2025-11-18 21:28:45,131 project_views 10437 6121893888 Removed <bound metho
 WARNING 2025-11-18 21:28:45,131 basehttp 10437 6138720256 "POST /grids/246/remove-member/ HTTP/1.1" 404 2351
 INFO 2025-11-18 21:28:45,131 basehttp 10437 6121893888 "POST /grids/246/team/remove/ HTTP/1.1" 200 133
 INFO 2025-11-18 21:28:49,272 basehttp 10437 6121893888 "GET /grids/246/ HTTP/1.1" 200 22562
+INFO 2025-11-20 20:28:15,953 autoreload 14163 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-20 20:28:16,617 basehttp 14163 6191181824 "GET / HTTP/1.1" 200 8889
+INFO 2025-11-20 20:28:16,632 basehttp 14163 6208008192 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-11-20 20:28:16,634 basehttp 14163 6241660928 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-11-20 20:28:16,634 basehttp 14163 6224834560 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-11-20 20:28:16,636 basehttp 14163 6191181824 "GET /static/css/output.css HTTP/1.1" 200 95657
+INFO 2025-11-20 20:28:16,821 basehttp 14163 6191181824 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-11-20 20:28:27,608 basehttp 14163 6191181824 "GET /lilypad/links/events/weddings/ HTTP/1.1" 200 4752
+INFO 2025-11-20 20:31:13,730 autoreload 14163 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/models.py changed, reloading.
+INFO 2025-11-20 20:31:14,201 autoreload 14229 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-20 20:56:53,398 autoreload 16365 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-20 20:56:55,085 basehttp 16365 6191263744 "GET / HTTP/1.1" 200 8826
+INFO 2025-11-20 20:56:57,061 basehttp 16365 6191263744 "GET /lilypad/ HTTP/1.1" 200 3512
+INFO 2025-11-20 20:57:00,309 basehttp 16365 6191263744 "GET /lilypad/b2b/customer-templates/create/ HTTP/1.1" 200 4644
+INFO 2025-11-20 21:00:59,245 basehttp 16365 6191263744 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 2903
+INFO 2025-11-20 21:01:01,801 basehttp 16365 6191263744 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3871
+INFO 2025-11-20 21:01:03,462 basehttp 16365 6191263744 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3874
+INFO 2025-11-20 21:01:09,761 basehttp 16365 6191263744 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 3964

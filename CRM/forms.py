@@ -10,6 +10,7 @@ from .models import (
     Company,
     CompanySector,
     EmailTemplate,
+    CustomerTemplate,
 )
 
 # Base styling constants
@@ -209,7 +210,6 @@ class CompanyForm(forms.ModelForm):
         self.fields['email_template'].empty_label = "Select a template (optional)"
         self.fields['email_template'].queryset = EmailTemplate.objects.order_by('name')
 
-
 class EmailTemplateForm(forms.ModelForm):
     class Meta:
         model = EmailTemplate
@@ -225,7 +225,6 @@ class EmailTemplateForm(forms.ModelForm):
                 'placeholder': 'Write your email template content here...'
             }),
         }
-
 
 class LeadFocusForm(forms.ModelForm):
     class Meta:
@@ -366,5 +365,104 @@ class FeedbackForm(forms.ModelForm):
         
         # Add empty label for organization method
         self.fields['organization_method'].empty_label = "Select an option..."
+
+
+class CustomerTemplateForm(forms.ModelForm):
+    class Meta:
+        model = CustomerTemplate
+        fields = [
+            'company_sector',
+            'playbook_name',
+            'main_header_description',
+            'video_1',
+            'used_by',
+            'grid_header',
+            'grid_1_title',
+            'grid_1_header_description',
+            'grid_1_subheader',
+            'grid_1_bullet_1',
+            'grid_1_bullet_2',
+            'grid_1_bullet_3',
+            'grid_1_bullet_4',
+            'grid_1_video',
+            'grid_2_title',
+            'grid_2_header_description',
+            'grid_2_subheader',
+            'grid_2_bullet_1',
+            'grid_2_bullet_2',
+            'grid_2_bullet_3',
+            'grid_2_bullet_4',
+            'grid_2_video',
+            'grid_3_title',
+            'grid_3_header_description',
+            'grid_3_subheader',
+            'grid_3_bullet_1',
+            'grid_3_bullet_2',
+            'grid_3_bullet_3',
+            'grid_3_bullet_4',
+            'grid_3_video',
+            'section_2_title',
+            'section_2_card_1_title',
+            'section_2_card_1_description',
+            'section_2_card_2_title',
+            'section_2_card_2_description',
+            'section_2_card_3_title',
+            'section_2_card_3_description',
+            'section_2_card_4_title',
+            'section_2_card_4_description',
+        ]
+        widgets = {
+            'company_sector': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
+            'playbook_name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter playbook name'}),
+            'main_header_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 4, 'placeholder': 'Enter main header description'}),
+            'video_1': forms.FileInput(attrs={'class': BASE_INPUT_CLASS, 'accept': 'video/*'}),
+            'used_by': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Used by event teams, venues and planners'}),
+            'grid_header': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'What Toad looks like for [x]'}),
+            'grid_1_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter grid 1 title'}),
+            'grid_1_header_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter grid 1 header description'}),
+            'grid_1_subheader': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter grid 1 subheader'}),
+            'grid_1_bullet_1': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 1'}),
+            'grid_1_bullet_2': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 2'}),
+            'grid_1_bullet_3': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 3'}),
+            'grid_1_bullet_4': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 4'}),
+            'grid_1_video': forms.FileInput(attrs={'class': BASE_INPUT_CLASS, 'accept': 'video/*'}),
+            'grid_2_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter grid 2 title'}),
+            'grid_2_header_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter grid 2 header description'}),
+            'grid_2_subheader': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter grid 2 subheader'}),
+            'grid_2_bullet_1': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 1'}),
+            'grid_2_bullet_2': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 2'}),
+            'grid_2_bullet_3': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 3'}),
+            'grid_2_bullet_4': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 4'}),
+            'grid_2_video': forms.FileInput(attrs={'class': BASE_INPUT_CLASS, 'accept': 'video/*'}),
+            'grid_3_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter grid 3 title'}),
+            'grid_3_header_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter grid 3 header description'}),
+            'grid_3_subheader': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter grid 3 subheader'}),
+            'grid_3_bullet_1': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 1'}),
+            'grid_3_bullet_2': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 2'}),
+            'grid_3_bullet_3': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 3'}),
+            'grid_3_bullet_4': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter bullet point 4'}),
+            'grid_3_video': forms.FileInput(attrs={'class': BASE_INPUT_CLASS, 'accept': 'video/*'}),
+            'section_2_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Why venues love Toad'}),
+            'section_2_card_1_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter card 1 title'}),
+            'section_2_card_1_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter card 1 description'}),
+            'section_2_card_2_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter card 2 title'}),
+            'section_2_card_2_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter card 2 description'}),
+            'section_2_card_3_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter card 3 title'}),
+            'section_2_card_3_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter card 3 description'}),
+            'section_2_card_4_title': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter card 4 title'}),
+            'section_2_card_4_description': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 3, 'placeholder': 'Enter card 4 description'}),
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        # Set up company sector field
+        self.fields['company_sector'].required = False
+        self.fields['company_sector'].empty_label = "Select a company sector (optional)"
+        self.fields['company_sector'].queryset = CompanySector.objects.order_by('name')
+        # Make video fields optional
+        self.fields['video_1'].required = False
+        self.fields['grid_1_video'].required = False
+        self.fields['grid_2_video'].required = False
+        self.fields['grid_3_video'].required = False
 
 

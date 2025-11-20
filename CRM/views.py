@@ -4,10 +4,10 @@ from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpRespon
 from django.contrib import messages
 from django.urls import reverse
 from django.db import models
-from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback, Company, CompanySector
+from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Feedback, Company, CompanySector, CustomerTemplate
 from .forms import (
     B2BLeadForm, SocietyLeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, 
-    SocietyLinkForm, SocietyUniversityForm, FeedbackForm, CompanyForm, CompanySectorForm, EmailTemplateForm
+    SocietyLinkForm, SocietyUniversityForm, FeedbackForm, CompanyForm, CompanySectorForm, EmailTemplateForm, CustomerTemplateForm
 )
 from django.core.files.base import ContentFile
 
@@ -270,6 +270,51 @@ def email_template_create(request):
         'title': 'Create Email Template',
     }
     return render(request, 'CRM/b2b/email_template_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def customer_template_create(request):
+    """
+    Create a new customer template.
+    """
+    if request.method == 'POST':
+        form = CustomerTemplateForm(request.POST, request.FILES)
+        if form.is_valid():
+            template = form.save()
+            messages.success(request, f'Customer template "{template.playbook_name}" created successfully!')
+            return redirect('crm:home')
+    else:
+        form = CustomerTemplateForm()
+
+    context = {
+        'form': form,
+        'title': 'Create Customer Template',
+    }
+    return render(request, 'CRM/b2b/new_customer_template_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def customer_template_update(request, pk):
+    """
+    Update an existing customer template.
+    """
+    template = get_object_or_404(CustomerTemplate, pk=pk)
+    
+    if request.method == 'POST':
+        form = CustomerTemplateForm(request.POST, request.FILES, instance=template)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Customer template "{template.playbook_name}" updated successfully!')
+            return redirect('crm:home')
+    else:
+        form = CustomerTemplateForm(instance=template)
+    
+    context = {
+        'form': form,
+        'template': template,
+        'title': f'Update Customer Template: {template.playbook_name}',
+    }
+    return render(request, 'CRM/b2b/new_customer_template_form.html', context)
 
 # ==================== SOCIETY CRM VIEWS ====================
 

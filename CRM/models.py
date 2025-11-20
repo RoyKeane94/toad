@@ -116,7 +116,6 @@ class CompanySector(models.Model):
     def __str__(self):
         return self.name
 
-
 class Company(models.Model):
     name = models.CharField(max_length=200)
     contact_person = models.CharField(max_length=100, blank=True)
@@ -144,7 +143,6 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
-
 class EmailTemplate(models.Model):
     name = models.CharField(max_length=150, unique=True)
     text = models.TextField(help_text="Template body text")
@@ -158,7 +156,6 @@ class EmailTemplate(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class LeadMessage(models.Model):
     lead = models.ForeignKey(Lead, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)
@@ -267,3 +264,54 @@ class Feedback(models.Model):
         elif self.name:
             return f"Feedback from {self.name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
         return f"Anonymous Feedback - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+
+class CustomerTemplate(models.Model):
+    company_sector = models.ForeignKey(CompanySector, on_delete=models.CASCADE, related_name='customer_templates', null=True, blank=True, help_text="The company sector this template is for")
+    playbook_name = models.CharField(max_length=100, help_text="The name of the playbook")
+    main_header_description = models.TextField(help_text="The description of the header")
+    video_1=models.FileField(upload_to='customer_templates/', null=True, blank=True, storage=get_storage_backend())
+    used_by = models.CharField(max_length=100, help_text="Used by event teams, venues and planners")
+
+    grid_header = models.CharField(max_length=100, help_text="What Toad looks like for [x]")
+
+    grid_1_title = models.CharField(max_length=100, help_text="The title of the first grid")
+    grid_1_header_description = models.TextField(help_text="The description of the header")
+    grid_1_subheader = models.CharField(max_length=100, help_text="The subheader of the first grid")
+    grid_1_bullet_1 = models.CharField(max_length=100, help_text="The first bullet point of the first grid")
+    grid_1_bullet_2 = models.CharField(max_length=100, help_text="The second bullet point of the first grid")
+    grid_1_bullet_3 = models.CharField(max_length=100, help_text="The third bullet point of the first grid")
+    grid_1_bullet_4 = models.CharField(max_length=100, help_text="The fourth bullet point of the first grid")
+    grid_1_video = models.FileField(upload_to='customer_templates/', null=True, blank=True, storage=get_storage_backend())
+
+    grid_2_title = models.CharField(max_length=100, help_text="The title of the second grid")
+    grid_2_header_description = models.TextField(help_text="The description of the header")
+    grid_2_subheader = models.CharField(max_length=100, help_text="The subheader of the second grid")
+    grid_2_bullet_1 = models.CharField(max_length=100, help_text="The first bullet point of the second grid")
+    grid_2_bullet_2 = models.CharField(max_length=100, help_text="The second bullet point of the second grid")
+    grid_2_bullet_3 = models.CharField(max_length=100, help_text="The third bullet point of the second grid")
+    grid_2_bullet_4 = models.CharField(max_length=100, help_text="The fourth bullet point of the second grid")
+    grid_2_video = models.FileField(upload_to='customer_templates/', null=True, blank=True, storage=get_storage_backend())
+
+    grid_3_title = models.CharField(max_length=100, help_text="The title of the third grid")
+    grid_3_header_description = models.TextField(help_text="The description of the header")
+    grid_3_subheader = models.CharField(max_length=100, help_text="The subheader of the third grid")
+    grid_3_bullet_1 = models.CharField(max_length=100, help_text="The first bullet point of the third grid")
+    grid_3_bullet_2 = models.CharField(max_length=100, help_text="The second bullet point of the third grid")
+    grid_3_bullet_3 = models.CharField(max_length=100, help_text="The third bullet point of the third grid")
+    grid_3_bullet_4 = models.CharField(max_length=100, help_text="The fourth bullet point of the third grid")
+    grid_3_video = models.FileField(upload_to='customer_templates/', null=True, blank=True, storage=get_storage_backend())
+
+    section_2_title = models.CharField(max_length=100, help_text="Why venues love Toad")
+    section_2_card_1_title = models.CharField(max_length=100, help_text="The title of the first card")
+    section_2_card_1_description = models.TextField(help_text="The description of the first card")
+    section_2_card_2_title = models.CharField(max_length=100, help_text="The title of the second card")
+    section_2_card_2_description = models.TextField(help_text="The description of the second card")
+    section_2_card_3_title = models.CharField(max_length=100, help_text="The title of the third card")
+    section_2_card_3_description = models.TextField(help_text="The description of the third card")
+    section_2_card_4_title = models.CharField(max_length=100, help_text="The title of the fourth card")
+    section_2_card_4_description = models.TextField(help_text="The description of the fourth card")
+    
+    def __str__(self):
+        return self.playbook_name
+    
+    

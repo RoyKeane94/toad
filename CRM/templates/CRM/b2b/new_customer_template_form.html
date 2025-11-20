@@ -1,0 +1,603 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        {% if template %}Update customer template{% else %}Create a new customer template{% endif %}
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:home' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to CRM
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <form method="post" enctype="multipart/form-data" class="space-y-8">
+            {% csrf_token %}
+            
+            <!-- Company Sector Section -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Company Sector</h2>
+                
+                <div>
+                    <label for="{{ form.company_sector.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Company Sector
+                    </label>
+                    {{ form.company_sector }}
+                    {% if form.company_sector.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.company_sector.errors %}<p>{{ error }}</p>{% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a company sector for this template or <a href="{% url 'crm:company_sector_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">create a new one</a>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Main Header Section -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Main Header</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="{{ form.playbook_name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Playbook Name *
+                        </label>
+                        {{ form.playbook_name }}
+                        {% if form.playbook_name.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.playbook_name.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.main_header_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Main Header Description *
+                        </label>
+                        {{ form.main_header_description }}
+                        {% if form.main_header_description.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.main_header_description.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.video_1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Main Video
+                        </label>
+                        {{ form.video_1 }}
+                        {% if form.video_1.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.video_1.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if template and template.video_1 %}
+                        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                            Current: <a href="{{ template.video_1.url }}" target="_blank" class="text-[var(--primary-action-bg)] hover:underline">{{ template.video_1.name }}</a>
+                        </p>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.used_by.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Used By *
+                        </label>
+                        {{ form.used_by }}
+                        {% if form.used_by.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.used_by.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_header.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Grid Header *
+                        </label>
+                        {{ form.grid_header }}
+                        {% if form.grid_header.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_header.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid 1 Section -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Grid 1</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="{{ form.grid_1_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Title *
+                        </label>
+                        {{ form.grid_1_title }}
+                        {% if form.grid_1_title.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_1_title.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_1_header_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Header Description *
+                        </label>
+                        {{ form.grid_1_header_description }}
+                        {% if form.grid_1_header_description.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_1_header_description.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_1_subheader.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Subheader *
+                        </label>
+                        {{ form.grid_1_subheader }}
+                        {% if form.grid_1_subheader.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_1_subheader.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="{{ form.grid_1_bullet_1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 1 *
+                            </label>
+                            {{ form.grid_1_bullet_1 }}
+                            {% if form.grid_1_bullet_1.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_1_bullet_1.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_1_bullet_2.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 2 *
+                            </label>
+                            {{ form.grid_1_bullet_2 }}
+                            {% if form.grid_1_bullet_2.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_1_bullet_2.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_1_bullet_3.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 3 *
+                            </label>
+                            {{ form.grid_1_bullet_3 }}
+                            {% if form.grid_1_bullet_3.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_1_bullet_3.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_1_bullet_4.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 4 *
+                            </label>
+                            {{ form.grid_1_bullet_4 }}
+                            {% if form.grid_1_bullet_4.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_1_bullet_4.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_1_video.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Grid 1 Video
+                        </label>
+                        {{ form.grid_1_video }}
+                        {% if form.grid_1_video.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_1_video.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if template and template.grid_1_video %}
+                        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                            Current: <a href="{{ template.grid_1_video.url }}" target="_blank" class="text-[var(--primary-action-bg)] hover:underline">{{ template.grid_1_video.name }}</a>
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid 2 Section -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Grid 2</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="{{ form.grid_2_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Title *
+                        </label>
+                        {{ form.grid_2_title }}
+                        {% if form.grid_2_title.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_2_title.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_2_header_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Header Description *
+                        </label>
+                        {{ form.grid_2_header_description }}
+                        {% if form.grid_2_header_description.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_2_header_description.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_2_subheader.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Subheader *
+                        </label>
+                        {{ form.grid_2_subheader }}
+                        {% if form.grid_2_subheader.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_2_subheader.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="{{ form.grid_2_bullet_1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 1 *
+                            </label>
+                            {{ form.grid_2_bullet_1 }}
+                            {% if form.grid_2_bullet_1.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_2_bullet_1.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_2_bullet_2.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 2 *
+                            </label>
+                            {{ form.grid_2_bullet_2 }}
+                            {% if form.grid_2_bullet_2.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_2_bullet_2.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_2_bullet_3.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 3 *
+                            </label>
+                            {{ form.grid_2_bullet_3 }}
+                            {% if form.grid_2_bullet_3.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_2_bullet_3.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_2_bullet_4.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 4 *
+                            </label>
+                            {{ form.grid_2_bullet_4 }}
+                            {% if form.grid_2_bullet_4.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_2_bullet_4.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_2_video.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Grid 2 Video
+                        </label>
+                        {{ form.grid_2_video }}
+                        {% if form.grid_2_video.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_2_video.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if template and template.grid_2_video %}
+                        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                            Current: <a href="{{ template.grid_2_video.url }}" target="_blank" class="text-[var(--primary-action-bg)] hover:underline">{{ template.grid_2_video.name }}</a>
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid 3 Section -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Grid 3</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="{{ form.grid_3_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Title *
+                        </label>
+                        {{ form.grid_3_title }}
+                        {% if form.grid_3_title.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_3_title.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_3_header_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Header Description *
+                        </label>
+                        {{ form.grid_3_header_description }}
+                        {% if form.grid_3_header_description.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_3_header_description.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_3_subheader.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Subheader *
+                        </label>
+                        {{ form.grid_3_subheader }}
+                        {% if form.grid_3_subheader.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_3_subheader.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="{{ form.grid_3_bullet_1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 1 *
+                            </label>
+                            {{ form.grid_3_bullet_1 }}
+                            {% if form.grid_3_bullet_1.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_3_bullet_1.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_3_bullet_2.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 2 *
+                            </label>
+                            {{ form.grid_3_bullet_2 }}
+                            {% if form.grid_3_bullet_2.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_3_bullet_2.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_3_bullet_3.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 3 *
+                            </label>
+                            {{ form.grid_3_bullet_3 }}
+                            {% if form.grid_3_bullet_3.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_3_bullet_3.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <label for="{{ form.grid_3_bullet_4.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Bullet 4 *
+                            </label>
+                            {{ form.grid_3_bullet_4 }}
+                            {% if form.grid_3_bullet_4.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.grid_3_bullet_4.errors %}<p>{{ error }}</p>{% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="{{ form.grid_3_video.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Grid 3 Video
+                        </label>
+                        {{ form.grid_3_video }}
+                        {% if form.grid_3_video.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.grid_3_video.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if template and template.grid_3_video %}
+                        <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                            Current: <a href="{{ template.grid_3_video.url }}" target="_blank" class="text-[var(--primary-action-bg)] hover:underline">{{ template.grid_3_video.name }}</a>
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Cards -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Section 2: Cards</h2>
+                
+                <div class="space-y-6">
+                    <div>
+                        <label for="{{ form.section_2_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Section Title *
+                        </label>
+                        {{ form.section_2_title }}
+                        {% if form.section_2_title.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.section_2_title.errors %}<p>{{ error }}</p>{% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Card 1 -->
+                        <div class="border border-[var(--border-color)] rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Card 1</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="{{ form.section_2_card_1_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Title *
+                                    </label>
+                                    {{ form.section_2_card_1_title }}
+                                    {% if form.section_2_card_1_title.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_1_title.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label for="{{ form.section_2_card_1_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Description *
+                                    </label>
+                                    {{ form.section_2_card_1_description }}
+                                    {% if form.section_2_card_1_description.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_1_description.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="border border-[var(--border-color)] rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Card 2</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="{{ form.section_2_card_2_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Title *
+                                    </label>
+                                    {{ form.section_2_card_2_title }}
+                                    {% if form.section_2_card_2_title.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_2_title.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label for="{{ form.section_2_card_2_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Description *
+                                    </label>
+                                    {{ form.section_2_card_2_description }}
+                                    {% if form.section_2_card_2_description.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_2_description.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="border border-[var(--border-color)] rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Card 3</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="{{ form.section_2_card_3_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Title *
+                                    </label>
+                                    {{ form.section_2_card_3_title }}
+                                    {% if form.section_2_card_3_title.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_3_title.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label for="{{ form.section_2_card_3_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Description *
+                                    </label>
+                                    {{ form.section_2_card_3_description }}
+                                    {% if form.section_2_card_3_description.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_3_description.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="border border-[var(--border-color)] rounded-lg p-4">
+                            <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Card 4</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="{{ form.section_2_card_4_title.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Title *
+                                    </label>
+                                    {{ form.section_2_card_4_title }}
+                                    {% if form.section_2_card_4_title.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_4_title.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    <label for="{{ form.section_2_card_4_description.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                        Description *
+                                    </label>
+                                    {{ form.section_2_card_4_description }}
+                                    {% if form.section_2_card_4_description.errors %}
+                                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                        {% for error in form.section_2_card_4_description.errors %}<p>{{ error }}</p>{% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+                <div class="flex justify-end space-x-4">
+                    <a href="{% url 'crm:home' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        Cancel
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                        {% if template %}
+                        <i class="fas fa-save mr-2"></i>
+                        Update Template
+                        {% else %}
+                        <i class="fas fa-plus mr-2"></i>
+                        Create Template
+                        {% endif %}
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
