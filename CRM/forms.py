@@ -182,7 +182,9 @@ class CompanyForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = [
-            'name',
+            'company_name',
+            'company_sector',
+            'contact_person',
             'contact_email',
             'email_template',
             'email_subject',
@@ -193,7 +195,9 @@ class CompanyForm(forms.ModelForm):
             'initial_email_response_date',
         ]
         widgets = {
-            'name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter company name'}),
+            'company_name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter company name'}),
+            'company_sector': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
+            'contact_person': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter contact person name'}),
             'contact_email': forms.EmailInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'name@example.com'}),
             'email_template': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
             'email_subject': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter email subject'}),
@@ -209,6 +213,9 @@ class CompanyForm(forms.ModelForm):
         self.fields['email_template'].required = False
         self.fields['email_template'].empty_label = "Select a template (optional)"
         self.fields['email_template'].queryset = EmailTemplate.objects.order_by('name')
+        self.fields['company_sector'].required = False
+        self.fields['company_sector'].empty_label = "Select a sector (optional)"
+        self.fields['company_sector'].queryset = CompanySector.objects.order_by('name')
 
 class EmailTemplateForm(forms.ModelForm):
     class Meta:

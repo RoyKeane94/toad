@@ -7,15 +7,17 @@
     <!-- Header -->
     <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
         <div class="max-w-full px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center space-x-4 py-6">
-                
+            <div class="flex items-center justify-between py-6">
                 <div>
                     <h1 class="text-3xl font-bold text-[var(--text-primary)]">Leads</h1>
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage your leads and prospects</p>
                 </div>
-                <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-plus mr-2"></i>
-                    Add Lead
+                <a href="{% url 'crm:b2b_lead_create' %}" class="group inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                    <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
+                        <i class="fas fa-plus text-sm"></i>
+                    </div>
+                    <span class="font-semibold">Add Lead</span>
+                    <i class="fas fa-chevron-right text-xs ml-2 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
                 </a>
             </div>
         </div>
@@ -25,18 +27,24 @@
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Search and Filters -->
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Search & Filter</h2>
             <form method="get" class="grid grid-cols-1 md:grid-cols-4 gap-4">
                 <div>
                     <label for="search" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Search</label>
-                    <input type="text" name="search" id="search" value="{{ search_query }}" 
-                           class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent"
-                           placeholder="Search by name...">
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-[var(--text-secondary)] text-sm"></i>
+                        </div>
+                        <input type="text" name="search" id="search" value="{{ search_query }}" 
+                               class="w-full pl-10 pr-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors"
+                               placeholder="Search by name...">
+                    </div>
                 </div>
                 
                 <div>
                     <label for="focus" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Focus Area</label>
                     <select name="focus" id="focus" 
-                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
                         <option value="">All Focus Areas</option>
                         {% for focus in focus_areas %}
                         <option value="{{ focus.name }}" {% if focus_filter == focus.name %}selected{% endif %}>{{ focus.name }}</option>
@@ -47,7 +55,7 @@
                 <div>
                     <label for="contact" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Contact Method</label>
                     <select name="contact" id="contact" 
-                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
                         <option value="">All Contact Methods</option>
                         {% for contact in contact_methods %}
                         <option value="{{ contact.name }}" {% if contact_filter == contact.name %}selected{% endif %}>{{ contact.name }}</option>
@@ -56,9 +64,9 @@
                 </div>
                 
                 <div class="flex items-end">
-                    <button type="submit" class="w-full px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                        <i class="fas fa-search mr-2"></i>
-                        Filter
+                    <button type="submit" class="w-full px-4 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <i class="fas fa-filter mr-2"></i>
+                        Apply Filters
                     </button>
                 </div>
             </form>
@@ -66,53 +74,53 @@
 
         <!-- Statistics Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6 hover:shadow-md transition-shadow">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-8 h-8 bg-blue-100 rounded-md flex items-center justify-center">
-                            <i class="fas fa-users text-blue-600"></i>
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-users text-blue-600 text-lg"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-[var(--text-secondary)]">Total Leads</p>
-                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ total_leads }}</p>
+                        <p class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide">Total Leads</p>
+                        <p class="text-3xl font-bold text-[var(--text-primary)] mt-1">{{ total_leads }}</p>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6 hover:shadow-md transition-shadow">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-8 h-8 bg-green-100 rounded-md flex items-center justify-center">
-                            <i class="fas fa-check-circle text-green-600"></i>
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-check-circle text-green-600 text-lg"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-[var(--text-secondary)]">Customers</p>
-                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ customer_count }}</p>
+                        <p class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide">Customers</p>
+                        <p class="text-3xl font-bold text-[var(--text-primary)] mt-1">{{ customer_count }}</p>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6 hover:shadow-md transition-shadow">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
-                        <div class="w-8 h-8 bg-red-100 rounded-md flex items-center justify-center">
-                            <i class="fas fa-times-circle text-red-600"></i>
+                        <div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-times-circle text-red-600 text-lg"></i>
                         </div>
                     </div>
                     <div class="ml-4">
-                        <p class="text-sm font-medium text-[var(--text-secondary)]">No Response</p>
-                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ no_response_count }}</p>
+                        <p class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide">No Response</p>
+                        <p class="text-3xl font-bold text-[var(--text-primary)] mt-1">{{ no_response_count }}</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Leads Table -->
-        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)]">
-            <div class="px-6 py-4 border-b border-[var(--border-color)]">
-                <h2 class="text-lg font-semibold text-[var(--text-primary)]">All Leads ({{ leads.count }})</h2>
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] overflow-hidden">
+            <div class="px-6 py-4 bg-[var(--grid-header-bg)] border-b-2 border-[var(--border-color)]">
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">All Leads <span class="text-[var(--text-secondary)] font-normal">({{ leads.count }})</span></h2>
             </div>
             
             {% if leads %}
@@ -163,7 +171,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
                                 {% if lead.company %}
                                     <div>
-                                        <p class="font-medium text-[var(--text-primary)]">{{ lead.company.name }}</p>
+                                        <p class="font-medium text-[var(--text-primary)]">{{ lead.company.company_name }}</p>
                                         {% if lead.company.contact_email %}
                                         <p class="text-xs text-[var(--text-secondary)]">{{ lead.company.contact_email }}</p>
                                         {% endif %}
@@ -272,9 +280,17 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.created_at|date:"M d, Y" }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                <a href="{% url 'crm:b2b_lead_detail' lead.pk %}" class="text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] mr-3">View</a>
-                                <a href="{% url 'crm:b2b_lead_update' lead.pk %}" class="text-[var(--tertiary-action-bg)] hover:text-[var(--tertiary-action-bg)] mr-3">Edit</a>
-                                <a href="{% url 'crm:b2b_lead_delete' lead.pk %}" class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-hover-bg)]">Delete</a>
+                                <div class="flex items-center space-x-2">
+                                    <a href="{% url 'crm:b2b_lead_detail' lead.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--primary-action-bg)] bg-blue-50 rounded-md hover:bg-blue-100 transition-colors">
+                                        <i class="fas fa-eye mr-1"></i>View
+                                    </a>
+                                    <a href="{% url 'crm:b2b_lead_update' lead.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--tertiary-action-bg)] bg-yellow-50 rounded-md hover:bg-yellow-100 transition-colors">
+                                        <i class="fas fa-edit mr-1"></i>Edit
+                                    </a>
+                                    <a href="{% url 'crm:b2b_lead_delete' lead.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--delete-button-bg)] bg-red-50 rounded-md hover:bg-red-100 transition-colors">
+                                        <i class="fas fa-trash mr-1"></i>Delete
+                                    </a>
+                                </div>
                             </td>
                         </tr>
                         {% endfor %}
@@ -292,9 +308,12 @@
                         Get started by adding your first B2B lead.
                     {% endif %}
                 </p>
-                <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-plus mr-2"></i>
-                    Add Lead
+                <a href="{% url 'crm:b2b_lead_create' %}" class="group inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                    <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
+                        <i class="fas fa-plus text-sm"></i>
+                    </div>
+                    <span class="font-semibold">Add Lead</span>
+                    <i class="fas fa-chevron-right text-xs ml-2 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
                 </a>
             </div>
             {% endif %}

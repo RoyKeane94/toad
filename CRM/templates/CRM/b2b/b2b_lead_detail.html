@@ -12,6 +12,10 @@
                     <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">Lead details and messages</p>
                 </div>
+                <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-4 py-2 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Back to Leads
+                </a>
             </div>
         </div>
     </div>
@@ -21,8 +25,8 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Lead Information -->
             <div class="lg:col-span-1">
-                <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
-                    <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Lead Information</h2>
+                <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6">
+                    <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-6 pb-3 border-b-2 border-[var(--border-color)]">Lead Information</h2>
                     <dl class="space-y-4">
                         <div>
                             <dt class="text-sm font-medium text-[var(--text-secondary)]">Contact Name</dt>
@@ -34,7 +38,31 @@
                             <dt class="text-sm font-medium text-[var(--text-secondary)]">Company</dt>
                             <dd class="text-sm text-[var(--text-primary)] mt-1">
                                 <div>
-                                    <p class="font-medium">{{ lead.company.name }}</p>
+                                    <p class="font-medium">{{ lead.company.company_name }}</p>
+                                    {% if lead.company.company_sector %}
+                                    <p class="text-xs text-[var(--text-secondary)] mt-1">Sector: {{ lead.company.company_sector.name }}</p>
+                                    {% endif %}
+                                </div>
+                            </dd>
+                        </div>
+                        {% endif %}
+                        
+                        {% if template_url %}
+                        <div class="border-t-2 border-[var(--border-color)] pt-4 mt-4">
+                            <dt class="text-sm font-semibold text-[var(--text-primary)] mb-3">Personalized Template Link</dt>
+                            <dd class="text-sm text-[var(--text-primary)] mt-1 space-y-3">
+                                <a href="{{ template_url }}" target="_blank" class="group inline-flex items-center w-full px-4 py-3 border-2 border-[var(--primary-action-bg)] rounded-lg text-sm font-semibold text-[var(--primary-action-bg)] bg-white hover:bg-[var(--primary-action-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-all duration-200 hover:scale-[1.02]">
+                                    <div class="w-8 h-8 bg-[var(--primary-action-bg)]/10 rounded-lg flex items-center justify-center mr-3 group-hover:bg-white/20 transition-colors">
+                                        <i class="fas fa-external-link-alt text-sm"></i>
+                                    </div>
+                                    <span>View Template</span>
+                                    <i class="fas fa-chevron-right text-xs ml-auto opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                                </a>
+                                <div class="bg-[var(--bg-secondary)] rounded-lg p-3">
+                                    <p class="text-xs text-[var(--text-secondary)] break-all mb-2 font-mono">{{ template_url }}</p>
+                                    <button onclick="navigator.clipboard.writeText('{{ template_url }}'); this.innerHTML='<i class=\'fas fa-check mr-1\'></i>Copied!'; setTimeout(() => { this.innerHTML='<i class=\'fas fa-copy mr-1\'></i>Copy link'; }, 2000);" class="text-xs text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] font-medium transition-colors">
+                                        <i class="fas fa-copy mr-1"></i>Copy link
+                                    </button>
                                 </div>
                             </dd>
                         </div>
@@ -202,23 +230,25 @@
 
             <!-- Messages -->
             <div class="lg:col-span-2">
-                <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-lg font-semibold text-[var(--text-primary)]">Messages ({{ lead.messages.count }})</h2>
-                        <a href="{% url 'crm:lead_message_create' lead.pk %}" class="inline-flex items-center px-3 py-1.5 border border-[var(--primary-action-bg)] rounded-md text-sm font-medium text-[var(--primary-action-bg)] bg-white hover:bg-[var(--primary-action-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                            <i class="fas fa-plus mr-1"></i>
-                            Add Message
+                <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6">
+                    <div class="flex justify-between items-center mb-6 pb-4 border-b-2 border-[var(--border-color)]">
+                        <h2 class="text-lg font-semibold text-[var(--text-primary)]">Messages <span class="text-[var(--text-secondary)] font-normal">({{ lead.messages.count }})</span></h2>
+                        <a href="{% url 'crm:lead_message_create' lead.pk %}" class="group inline-flex items-center px-4 py-2 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                            <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                                <i class="fas fa-plus text-xs"></i>
+                            </div>
+                            <span class="font-semibold text-sm">Add Message</span>
                         </a>
                     </div>
                     
                     {% if lead.messages.all %}
                     <div class="space-y-4">
                         {% for message in lead.messages.all %}
-                        <div class="border border-[var(--border-color)] rounded-lg p-4">
-                            <div class="flex justify-between items-start mb-2">
-                                <span class="text-xs text-[var(--text-secondary)]">{{ message.created_at|date:"M d, Y \a\t g:i A" }}</span>
+                        <div class="border-2 border-[var(--border-color)] rounded-lg p-4 hover:shadow-md transition-shadow bg-[var(--bg-secondary)]/30">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide">{{ message.created_at|date:"M d, Y \a\t g:i A" }}</span>
                             </div>
-                            <p class="text-sm text-[var(--text-primary)] whitespace-pre-wrap">{{ message.message }}</p>
+                            <p class="text-sm text-[var(--text-primary)] whitespace-pre-wrap leading-relaxed">{{ message.message }}</p>
                         </div>
                         {% endfor %}
                     </div>
@@ -238,21 +268,22 @@
 
         <!-- Actions -->
         <div class="mt-8">
-            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
+            <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6">
                 <div class="flex justify-between items-center">
-                    <div class="flex space-x-4">
-                        <a href="{% url 'crm:b2b_lead_update' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                            <i class="fas fa-edit mr-2"></i>
+                    <div class="flex space-x-3">
+                        <a href="{% url 'crm:b2b_lead_update' lead.pk %}" class="group inline-flex items-center px-4 py-2.5 border-2 border-[var(--tertiary-action-bg)] rounded-lg shadow-sm text-sm font-semibold text-[var(--tertiary-action-bg)] bg-white hover:bg-[var(--tertiary-action-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-all duration-200 hover:scale-[1.02]">
+                            <div class="w-7 h-7 bg-[var(--tertiary-action-bg)]/10 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/20 transition-colors">
+                                <i class="fas fa-edit text-xs"></i>
+                            </div>
                             Edit Lead
                         </a>
-                        <a href="{% url 'crm:b2b_lead_delete' lead.pk %}" class="inline-flex items-center px-4 py-2 border border-[var(--delete-button-bg)] rounded-md shadow-sm text-sm font-medium text-[var(--delete-button-bg)] bg-white hover:bg-[var(--delete-button-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--delete-button-bg)] transition-colors">
-                            <i class="fas fa-trash mr-2"></i>
+                        <a href="{% url 'crm:b2b_lead_delete' lead.pk %}" class="group inline-flex items-center px-4 py-2.5 border-2 border-[var(--delete-button-bg)] rounded-lg shadow-sm text-sm font-semibold text-[var(--delete-button-bg)] bg-white hover:bg-[var(--delete-button-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--delete-button-bg)] transition-all duration-200 hover:scale-[1.02]">
+                            <div class="w-7 h-7 bg-[var(--delete-button-bg)]/10 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/20 transition-colors">
+                                <i class="fas fa-trash text-xs"></i>
+                            </div>
                             Delete Lead
                         </a>
                     </div>
-                    <a href="{% url 'crm:b2b_lead_list' %}" class="text-sm text-[var(--text-secondary)] hover:text-[var(--text-primary)]">
-                        ← Back to B2B leads
-                    </a>
                 </div>
             </div>
         </div>

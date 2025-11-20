@@ -15,7 +15,7 @@
                     </p>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-4 py-2 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
                         <i class="fas fa-arrow-left mr-2"></i>
                         Back to Leads
                     </a>
@@ -26,8 +26,8 @@
 
     <!-- Main Content -->
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
-            <form method="post" class="space-y-6">
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-8">
+            <form method="post" class="space-y-8">
                 {% csrf_token %}
                 
                 <!-- Name Field -->
@@ -97,8 +97,8 @@
                 </div>
 
                 <!-- Email Outreach Section -->
-                <div class="border-t border-[var(--border-color)] pt-6">
-                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Email Outreach</h3>
+                <div class="border-t-2 border-[var(--border-color)] pt-6">
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-6 pb-3 border-b-2 border-[var(--border-color)]">Email Outreach</h3>
 
                     <!-- Email Template -->
                     <div>
@@ -210,8 +210,8 @@
                 </div>
 
                 <!-- Toad Customer Fields -->
-                <div class="border-t border-[var(--border-color)] pt-6">
-                    <h3 class="text-lg font-medium text-[var(--text-primary)] mb-4">Customer Status</h3>
+                <div class="border-t-2 border-[var(--border-color)] pt-6">
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-6 pb-3 border-b-2 border-[var(--border-color)]">Customer Status</h3>
                     
                     <!-- Toad Customer Checkbox -->
                     <div class="flex items-center mb-4">
@@ -314,16 +314,21 @@
                 </div>
 
                 <!-- Form Actions -->
-                <div class="flex justify-end space-x-4 pt-6 border-t border-[var(--border-color)]">
-                    <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                <div class="flex justify-end space-x-4 pt-6 border-t-2 border-[var(--border-color)]">
+                    <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center px-5 py-2.5 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-semibold text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-all duration-200">
                         Cancel
                     </a>
-                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <button type="submit" class="group inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] font-semibold">
+                        <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                            {% if lead %}
+                            <i class="fas fa-save text-xs"></i>
+                            {% else %}
+                            <i class="fas fa-plus text-xs"></i>
+                            {% endif %}
+                        </div>
                         {% if lead %}
-                        <i class="fas fa-save mr-2"></i>
                         Update Lead
                         {% else %}
-                        <i class="fas fa-plus mr-2"></i>
                         Create Lead
                         {% endif %}
                     </button>

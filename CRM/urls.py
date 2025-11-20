@@ -20,6 +20,7 @@ urlpatterns = [
     path('b2b/companies/create/', views.company_create, name='company_create'),
     path('b2b/sectors/create/', views.company_sector_create, name='company_sector_create'),
     path('b2b/email-templates/create/', views.email_template_create, name='email_template_create'),
+    path('b2b/customer-templates/', views.customer_template_list, name='customer_template_list'),
     path('b2b/customer-templates/create/', views.customer_template_create, name='customer_template_create'),
     path('b2b/customer-templates/<int:pk>/update/', views.customer_template_update, name='customer_template_update'),
     
@@ -76,4 +77,5 @@ urlpatterns = [
 
     # Business links / events
     path('links/events/weddings/', views.toad_weddings_view, name='toad_weddings'),
+    path('links/templates/<int:pk>/', views.customer_template_public_view, name='customer_template_public'),
 ]

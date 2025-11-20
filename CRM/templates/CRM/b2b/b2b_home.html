@@ -22,6 +22,25 @@
 
     <!-- Main Content -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Quick Search -->
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6 mb-8">
+            <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Quick Search</h2>
+            <form method="get" action="{% url 'crm:b2b_lead_list' %}" class="flex gap-4">
+                <div class="flex-1 relative">
+                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                        <i class="fas fa-search text-[var(--text-secondary)]"></i>
+                    </div>
+                    <input type="text" name="search" id="quick-search" 
+                           class="w-full pl-12 pr-4 py-3 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors text-[var(--text-primary)]"
+                           placeholder="Search leads by name, company, or email...">
+                </div>
+                <button type="submit" class="px-6 py-3 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                    <i class="fas fa-search mr-2"></i>
+                    Search
+                </button>
+            </form>
+        </div>
+        
         <!-- Statistics Cards -->
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
@@ -89,32 +108,97 @@
 
         <!-- Action Buttons -->
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
-            <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Quick Actions</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-plus mr-2"></i>
-                    Add B2B Lead
-                </a>
-                <a href="{% url 'crm:b2b_lead_list' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-list mr-2"></i>
-                    View All Leads
-                </a>
-                <a href="{% url 'crm:company_create' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-building mr-2"></i>
-                    Add Company
-                </a>
-                <a href="{% url 'crm:company_list' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-building mr-2"></i>
-                    View Companies
-                </a>
-                <a href="{% url 'crm:email_template_create' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-envelope mr-2"></i>
-                    Create Email Template
-                </a>
-                <a href="{% url 'crm:customer_template_create' %}" class="inline-flex items-center justify-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
-                    <i class="fas fa-file-alt mr-2"></i>
-                    Create New Sector Customer Template
-                </a>
+            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-6">Quick Actions</h2>
+            
+            <!-- Leads Section -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">Leads</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <a href="{% url 'crm:b2b_lead_create' %}" class="group relative flex items-center px-4 py-3 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center mr-3 group-hover:bg-white/30 transition-colors">
+                            <i class="fas fa-plus text-sm"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold">Add B2B Lead</p>
+                            <p class="text-xs text-white/80 truncate">Create new lead</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                    <a href="{% url 'crm:b2b_lead_list' %}" class="group relative flex items-center px-4 py-3 bg-white border-2 border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md hover:border-[var(--primary-action-bg)] transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mr-3 group-hover:bg-[var(--primary-action-bg)] group-hover:text-white transition-colors">
+                            <i class="fas fa-list text-sm text-[var(--text-primary)] group-hover:text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-[var(--text-primary)]">View All Leads</p>
+                            <p class="text-xs text-[var(--text-secondary)] truncate">Browse all leads</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-[var(--text-secondary)] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Companies Section -->
+            <div class="mb-6">
+                <h3 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">Companies</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <a href="{% url 'crm:company_create' %}" class="group relative flex items-center px-4 py-3 bg-white border-2 border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md hover:border-[var(--secondary-action-bg)] transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mr-3 group-hover:bg-[var(--secondary-action-bg)] group-hover:text-white transition-colors">
+                            <i class="fas fa-building text-sm text-[var(--text-primary)] group-hover:text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-[var(--text-primary)]">Add Company</p>
+                            <p class="text-xs text-[var(--text-secondary)] truncate">New company</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-[var(--text-secondary)] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                    <a href="{% url 'crm:company_list' %}" class="group relative flex items-center px-4 py-3 bg-white border-2 border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md hover:border-[var(--secondary-action-bg)] transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--secondary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mr-3 group-hover:bg-[var(--secondary-action-bg)] group-hover:text-white transition-colors">
+                            <i class="fas fa-building text-sm text-[var(--text-primary)] group-hover:text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-[var(--text-primary)]">View Companies</p>
+                            <p class="text-xs text-[var(--text-secondary)] truncate">Browse all companies</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-[var(--text-secondary)] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Templates Section -->
+            <div>
+                <h3 class="text-sm font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-3">Templates</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <a href="{% url 'crm:email_template_create' %}" class="group relative flex items-center px-4 py-3 bg-white border-2 border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md hover:border-[var(--tertiary-action-bg)] transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mr-3 group-hover:bg-[var(--tertiary-action-bg)] group-hover:text-white transition-colors">
+                            <i class="fas fa-envelope text-sm text-[var(--text-primary)] group-hover:text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-[var(--text-primary)]">Email Template</p>
+                            <p class="text-xs text-[var(--text-secondary)] truncate">Create email template</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-[var(--text-secondary)] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                    <a href="{% url 'crm:customer_template_create' %}" class="group relative flex items-center px-4 py-3 bg-white border-2 border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md hover:border-[var(--tertiary-action-bg)] transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mr-3 group-hover:bg-[var(--tertiary-action-bg)] group-hover:text-white transition-colors">
+                            <i class="fas fa-file-alt text-sm text-[var(--text-primary)] group-hover:text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-[var(--text-primary)]">Sector Template</p>
+                            <p class="text-xs text-[var(--text-secondary)] truncate">Create new template</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-[var(--text-secondary)] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                    <a href="{% url 'crm:customer_template_list' %}" class="group relative flex items-center px-4 py-3 bg-white border-2 border-[var(--border-color)] rounded-lg shadow-sm hover:shadow-md hover:border-[var(--tertiary-action-bg)] transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)]">
+                        <div class="flex-shrink-0 w-10 h-10 bg-[var(--bg-secondary)] rounded-lg flex items-center justify-center mr-3 group-hover:bg-[var(--tertiary-action-bg)] group-hover:text-white transition-colors">
+                            <i class="fas fa-list text-sm text-[var(--text-primary)] group-hover:text-white"></i>
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <p class="text-sm font-semibold text-[var(--text-primary)]">View Templates</p>
+                            <p class="text-xs text-[var(--text-secondary)] truncate">Browse all templates</p>
+                        </div>
+                        <i class="fas fa-chevron-right text-xs text-[var(--text-secondary)] opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
+                    </a>
+                </div>
             </div>
         </div>
 

@@ -113,9 +113,15 @@ def b2b_lead_create(request):
     if request.method == 'POST':
         form = B2BLeadForm(request.POST)
         if form.is_valid():
-            form.save()
+            lead = form.save()
             messages.success(request, 'B2B lead created successfully!')
-            return redirect('crm:b2b_lead_list')
+            
+            # Generate personalized template URL if company has a sector
+            template_url = lead.get_personalized_template_url(request)
+            if template_url:
+                messages.info(request, f'Personalized template link: <a href="{template_url}" target="_blank" class="underline">{template_url}</a>')
+            
+            return redirect('crm:b2b_lead_detail', pk=lead.pk)
     else:
         form = B2BLeadForm()
     
@@ -137,9 +143,15 @@ def b2b_lead_update(request, pk):
     if request.method == 'POST':
         form = B2BLeadForm(request.POST, instance=lead)
         if form.is_valid():
-            form.save()
+            lead = form.save()
             messages.success(request, 'B2B lead updated successfully!')
-            return redirect('crm:b2b_lead_list')
+            
+            # Generate personalized template URL if company has a sector
+            template_url = lead.get_personalized_template_url(request)
+            if template_url:
+                messages.info(request, f'Personalized template link: <a href="{template_url}" target="_blank" class="underline">{template_url}</a>')
+            
+            return redirect('crm:b2b_lead_detail', pk=lead.pk)
     else:
         form = B2BLeadForm(instance=lead)
     
@@ -177,10 +189,14 @@ def b2b_lead_detail(request, pk):
     """
     View B2B lead details.
     """
-    lead = get_object_or_404(Lead, pk=pk, lead_type='b2b')
+    lead = get_object_or_404(Lead.objects.select_related('company', 'company__company_sector'), pk=pk, lead_type='b2b')
+    
+    # Get personalized template URL if available
+    template_url = lead.get_personalized_template_url(request)
     
     context = {
         'lead': lead,
+        'template_url': template_url,
         'title': f'B2B Lead: {lead.name}',
         'crm_type': 'b2b',
     }
@@ -273,6 +289,20 @@ def email_template_create(request):
 
 @login_required
 @user_passes_test(is_superuser)
+def customer_template_list(request):
+    """
+    List all customer templates.
+    """
+    templates = CustomerTemplate.objects.select_related('company_sector').order_by('company_sector__name', 'playbook_name')
+    
+    context = {
+        'templates': templates,
+        'title': 'Customer Templates',
+    }
+    return render(request, 'CRM/b2b/customer_template_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
 def customer_template_create(request):
     """
     Create a new customer template.
@@ -282,7 +312,8 @@ def customer_template_create(request):
         if form.is_valid():
             template = form.save()
             messages.success(request, f'Customer template "{template.playbook_name}" created successfully!')
-            return redirect('crm:home')
+            # Redirect to the public view of the template
+            return redirect('crm:customer_template_public', pk=template.pk)
     else:
         form = CustomerTemplateForm()
 
@@ -305,7 +336,8 @@ def customer_template_update(request, pk):
         if form.is_valid():
             form.save()
             messages.success(request, f'Customer template "{template.playbook_name}" updated successfully!')
-            return redirect('crm:home')
+            # Redirect to the public view of the template
+            return redirect('crm:customer_template_public', pk=template.pk)
     else:
         form = CustomerTemplateForm(instance=template)
     
@@ -1020,6 +1052,33 @@ def toad_weddings_view(request):
         'title': 'Toad for Weddings',
     }
     return render(request, 'business_links/events/toad_weddings.html', context)
+
+def customer_template_public_view(request, pk):
+    """
+    Public landing page for customer templates.
+    Renders the template with CustomerTemplate data.
+    Optional ?id query parameter (lead ID) personalises the hero text with company name.
+    """
+    template = get_object_or_404(CustomerTemplate, pk=pk)
+    company_name = None
+    
+    # Get lead ID from query parameter
+    lead_id = request.GET.get('id', '').strip()
+    if lead_id:
+        try:
+            lead = Lead.objects.select_related('company').get(pk=lead_id, lead_type='b2b')
+            if lead.company:
+                company_name = lead.company.company_name
+        except (Lead.DoesNotExist, ValueError):
+            # Invalid lead ID, just continue without personalization
+            pass
+    
+    context = {
+        'template': template,
+        'company_name': company_name,
+        'title': template.playbook_name,
+    }
+    return render(request, 'business_links/events/toad_sector_template.html', context)
 
 # Student Society Partnership Pages
 def southampton_economics_society_page(request):

@@ -82,8 +82,17 @@ class Lead(models.Model):
             return f"{self.name} - {self.society_university.name}"
         elif self.lead_type == 'b2b':
             if self.company:
-                return f"{self.name} - {self.company.name}"
+                return f"{self.name} - {self.company.company_name}"
         return self.name
+    
+    def get_personalized_template_url(self, request=None):
+        """
+        Get the personalized template URL for this lead based on its company's sector.
+        Returns None if no company or template exists.
+        """
+        if not self.company:
+            return None
+        return self.company.get_personalized_template_url(lead_id=self.pk, request=request)
 
 class SocietyLink(models.Model):
     name = models.CharField(max_length=100)
@@ -117,7 +126,8 @@ class CompanySector(models.Model):
         return self.name
 
 class Company(models.Model):
-    name = models.CharField(max_length=200)
+    company_name = models.CharField(max_length=200)
+    company_sector = models.ForeignKey(CompanySector, on_delete=models.CASCADE, related_name='companies', null=True, blank=True, help_text="The company sector this company is for")
     contact_person = models.CharField(max_length=100, blank=True)
     contact_email = models.EmailField(blank=True)
     email_template = models.ForeignKey(
@@ -137,11 +147,50 @@ class Company(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     
     class Meta:
-        ordering = ['name']
+        ordering = ['company_name']
         verbose_name_plural = 'Companies'
     
     def __str__(self):
-        return self.name
+        return self.company_name
+    
+    @property
+    def name(self):
+        """Backward compatibility property"""
+        return self.company_name
+    
+    def get_personalized_template_url(self, lead_id=None, request=None):
+        """
+        Get the personalized template URL for this company based on its sector.
+        Requires a lead_id to generate the personalized URL.
+        Returns None if no template exists for the sector.
+        """
+        if not self.company_sector or not lead_id:
+            return None
+        
+        # Find the CustomerTemplate for this sector
+        # CustomerTemplate is defined later in this file, but Python resolves it at runtime
+        try:
+            template = CustomerTemplate.objects.get(company_sector=self.company_sector)
+            from django.urls import reverse
+            url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
+            # Add lead ID as query parameter
+            url += f'?id={lead_id}'
+            if request:
+                return request.build_absolute_uri(url)
+            return url
+        except CustomerTemplate.DoesNotExist:
+            return None
+        except CustomerTemplate.MultipleObjectsReturned:
+            # If multiple templates exist, use the first one
+            template = CustomerTemplate.objects.filter(company_sector=self.company_sector).first()
+            if template:
+                from django.urls import reverse
+                url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
+                url += f'?id={lead_id}'
+                if request:
+                    return request.build_absolute_uri(url)
+                return url
+            return None
 
 class EmailTemplate(models.Model):
     name = models.CharField(max_length=150, unique=True)

@@ -35,7 +35,7 @@
                 <tbody class="bg-white divide-y divide-[var(--border-color)]">
                     {% for company in companies %}
                     <tr class="hover:bg-[var(--bg-secondary)]">
-                        <td class="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">{{ company.name }}</td>
+                        <td class="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">{{ company.company_name }}</td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
                             {% if company.contact_email %}
                             <a href="mailto:{{ company.contact_email }}" class="text-[var(--primary-action-bg)] hover:underline">
