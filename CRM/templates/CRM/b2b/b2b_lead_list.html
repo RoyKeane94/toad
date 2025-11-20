@@ -34,23 +34,23 @@
                 </div>
                 
                 <div>
-                    <label for="university" class="block text-sm font-medium text-[var(--text-primary)] mb-2">University</label>
-                    <select name="university" id="university" 
-                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
-                        <option value="">All Universities</option>
-                        {% for university in universities %}
-                        <option value="{{ university.name }}" {% if university_filter == university.name %}selected{% endif %}>{{ university.name }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-                
-                <div>
                     <label for="focus" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Focus Area</label>
                     <select name="focus" id="focus" 
                             class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
                         <option value="">All Focus Areas</option>
                         {% for focus in focus_areas %}
                         <option value="{{ focus.name }}" {% if focus_filter == focus.name %}selected{% endif %}>{{ focus.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="contact" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Contact Method</label>
+                    <select name="contact" id="contact" 
+                            class="w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent">
+                        <option value="">All Contact Methods</option>
+                        {% for contact in contact_methods %}
+                        <option value="{{ contact.name }}" {% if contact_filter == contact.name %}selected{% endif %}>{{ contact.name }}</option>
                         {% endfor %}
                     </select>
                 </div>
@@ -65,7 +65,7 @@
         </div>
 
         <!-- Statistics Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
                 <div class="flex items-center">
                     <div class="flex-shrink-0">
@@ -107,20 +107,6 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <div class="w-8 h-8 bg-purple-100 rounded-md flex items-center justify-center">
-                            <i class="fas fa-university text-purple-600"></i>
-                        </div>
-                    </div>
-                    <div class="ml-4">
-                        <p class="text-sm font-medium text-[var(--text-secondary)]">Universities</p>
-                        <p class="text-2xl font-semibold text-[var(--text-primary)]">{{ university_count }}</p>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Leads Table -->
@@ -138,7 +124,7 @@
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Company</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact Method</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
-                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=customer" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}{% if contact_filter %}contact={{ contact_filter }}&{% endif %}sort=customer" class="hover:text-[var(--primary-action-bg)] flex items-center">
                                     Customer
                                     {% if sort == 'customer' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
                                 </a>
@@ -147,20 +133,20 @@
                                 Email Status
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
-                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=initial_message" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}{% if contact_filter %}contact={{ contact_filter }}&{% endif %}sort=initial_message" class="hover:text-[var(--primary-action-bg)] flex items-center">
                                     Initial Msg
                                     {% if sort == 'initial_message' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
                                 </a>
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
-                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=no_response" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}{% if contact_filter %}contact={{ contact_filter }}&{% endif %}sort=no_response" class="hover:text-[var(--primary-action-bg)] flex items-center">
                                     No Response
                                     {% if sort == 'no_response' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
                                 </a>
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
-                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if university_filter %}university={{ university_filter }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}sort=created" class="hover:text-[var(--primary-action-bg)] flex items-center">
+                                <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}{% if contact_filter %}contact={{ contact_filter }}&{% endif %}sort=created" class="hover:text-[var(--primary-action-bg)] flex items-center">
                                     Created
                                     {% if sort == 'created' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
                                 </a>
@@ -303,7 +289,7 @@
                     {% if search_query or focus_filter or contact_filter %}
                         No leads match your current filters. <a href="{% url 'crm:b2b_lead_list' %}" class="text-[var(--primary-action-bg)] hover:underline">Clear filters</a>
                     {% else %}
-                        Get started by adding your first lead.
+                        Get started by adding your first B2B lead.
                     {% endif %}
                 </p>
                 <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
