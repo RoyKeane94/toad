@@ -26,6 +26,59 @@
         }
     }
     
+    /* Interactive Before/After Styles */
+    .interactive-before-after {
+        position: relative;
+    }
+    
+    .before-state, .after-state {
+        position: relative;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+    }
+    
+    .before-state:hover {
+        background: rgba(239, 68, 68, 0.1);
+    }
+    
+    .after-state:hover {
+        background: rgba(34, 197, 94, 0.1);
+    }
+    
+    .interactive-before-after.hide-before .before-state {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    
+    .interactive-before-after.hide-after .after-state {
+        opacity: 0.3;
+        transform: scale(0.95);
+    }
+    
+    .interactive-before-after.hide-before .before-state .before-content,
+    .interactive-before-after.hide-after .after-state .after-content {
+        text-decoration: line-through;
+        opacity: 0.5;
+    }
+    
+    .toggle-btn {
+        transition: all 0.3s ease;
+    }
+    
+    .toggle-btn.active {
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .toggle-btn:not(.active) {
+        opacity: 0.6;
+    }
+    
+    .toggle-btn:not(.active):hover {
+        opacity: 0.9;
+    }
+    
     /* Comparison table styles */
     .comparison-table {
         width: 100%;
@@ -169,22 +222,32 @@
         
         
         <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-8" style="opacity: 0;">
-            <span style="color: var(--title-text);">For people who already</span>
-            <span style="color: var(--primary-action-bg);"> have a lot on their plate.</span>
+            <span style="color: var(--title-text);">For people who</span>
+            <span style="color: var(--primary-action-bg);"> have a lot on their plate</span>
         </h1>
         
-        <!-- Quick Simplicity Message -->
-        <div id="simplicity-text" class="text-center mb-6" style="opacity: 0;">
-            <p class="text-lg sm:text-xl text-gray-800 font-semibold max-w-2xl mx-auto leading-relaxed">
-                You already use lists and spreadsheets. Toad feels just as simple — but shows your work in calm, clear grids.
-            </p>
-        </div>
-
-        <!-- Secondary Text -->
+        <!-- Secondary Text - Interactive Before/After -->
         <div id="secondary-text" class="text-center mb-8" style="opacity: 0;">
-            <p class="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                Before: tabs and tools everywhere. After: a few visual grids that show what’s happening now and what’s next.
-            </p>
+            <div class="max-w-2xl mx-auto">
+                <div class="interactive-before-after text-lg sm:text-xl text-gray-600 leading-relaxed">
+                    <div class="after-state inline-block transition-all duration-500 cursor-pointer hover:scale-105 mb-3" data-state="after">
+                        <span class="font-semibold text-green-600 hover:text-green-700">With Toad:</span> 
+                        <span class="after-content">a clear set of grids where you can instantly see what's happening and what comes next</span>
+                    </div>
+                    <div class="before-state inline-block transition-all duration-500 cursor-pointer hover:scale-105" data-state="before">
+                        <span class="font-semibold text-red-600 hover:text-red-700">Before Toad:</span> 
+                        <span class="before-content">a collection of lists, tabs and spreadsheets</span>
+                    </div>
+                </div>
+                <div class="mt-4 flex justify-center gap-3">
+                    <button class="toggle-btn active px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-green-50 text-green-700 border-2 border-green-200 hover:bg-green-100" data-show="after">
+                        Show With Toad
+                    </button>
+                    <button class="toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-red-50 text-red-700 border-2 border-red-200 hover:bg-red-100" data-show="before">
+                        Show Before Toad
+                    </button>
+                </div>
+            </div>
         </div>
         
         <!-- Email Signup Form -->
@@ -216,7 +279,7 @@
         </h2>
         
         <p class="text-lg sm:text-xl text-gray-600 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Toad looks a lot like the grids and tables you already use — but updates in real time as work moves. <span class="text-green-600 font-bold">Finally, the same information, without the chaos.</span>
+            Toad looks a lot like the grids and tables you already use but updates in real time as work moves. <span class="text-green-600 font-bold">Finally, the same information, without the chaos.</span>
         </p>
         
         <div class="max-w-4xl mx-auto">
@@ -252,7 +315,7 @@
                 <span class="text-green-600">Clarity</span>, by Design.
             </h2>
             <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                We built Toad for people who already use lists, docs and boards to keep work moving. We keep that familiar feel — then add just enough structure and visibility to turn “I think it’s under control” into “I can see it’s under control”.
+                We built Toad for people who already use lists, docs and boards to keep work moving. We keep that familiar feel then add just enough structure and visibility to turn "I think it's under control" into <span class="text-green-600 font-bold">"I can see it's under control"</span>.
             </p>
         </div>
 
@@ -573,6 +636,48 @@
             emailSignup.style.transition = 'opacity 0.6s ease-out';
         }, 1400);
         
+        // Interactive Before/After functionality
+        const beforeAfterContainer = document.querySelector('.interactive-before-after');
+        const toggleButtons = document.querySelectorAll('.toggle-btn');
+        const beforeState = document.querySelector('.before-state');
+        const afterState = document.querySelector('.after-state');
+        
+        if (beforeAfterContainer && toggleButtons.length > 0) {
+            // Set default state to "With Toad" (after)
+            beforeAfterContainer.classList.add('hide-before');
+            
+            // Toggle button functionality
+            toggleButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const showState = this.getAttribute('data-show');
+                    
+                    // Update active button
+                    toggleButtons.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update container classes
+                    beforeAfterContainer.classList.remove('hide-before', 'hide-after');
+                    if (showState === 'before') {
+                        beforeAfterContainer.classList.add('hide-after');
+                    } else {
+                        beforeAfterContainer.classList.add('hide-before');
+                    }
+                });
+            });
+            
+            // Click on states to toggle
+            if (beforeState) {
+                beforeState.addEventListener('click', function() {
+                    toggleButtons[0].click();
+                });
+            }
+            
+            if (afterState) {
+                afterState.addEventListener('click', function() {
+                    toggleButtons[1].click();
+                });
+            }
+        }
         
         // Handle email signup form submission
         const emailSignupForm = document.getElementById('email-signup-form');
