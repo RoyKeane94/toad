@@ -209,12 +209,12 @@ def company_list(request):
     """
     List all companies.
     """
-    companies = Company.objects.select_related('email_template').all()
+    companies = Company.objects.select_related('email_template', 'company_sector').all()
     
     # Search functionality
     search_query = request.GET.get('search', '')
     if search_query:
-        companies = companies.filter(name__icontains=search_query)
+        companies = companies.filter(company_name__icontains=search_query)
     
     context = {
         'companies': companies,
@@ -243,6 +243,72 @@ def company_create(request):
         'title': 'Create New Company',
     }
     return render(request, 'CRM/b2b/company_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_update(request, pk):
+    """
+    Update an existing company.
+    """
+    company = get_object_or_404(Company, pk=pk)
+    
+    if request.method == 'POST':
+        form = CompanyForm(request.POST, instance=company)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Company updated successfully!')
+            return redirect('crm:company_detail', pk=company.pk)
+    else:
+        form = CompanyForm(instance=company)
+    
+    context = {
+        'form': form,
+        'company': company,
+        'title': f'Update Company: {company.company_name}',
+    }
+    return render(request, 'CRM/b2b/company_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_detail(request, pk):
+    """
+    View company details.
+    """
+    company = get_object_or_404(Company.objects.select_related('company_sector', 'email_template'), pk=pk)
+    
+    # Get template preview URL with company_id parameter for personalization
+    template_url = None
+    if company.company_sector:
+        from .models import CustomerTemplate
+        try:
+            template = CustomerTemplate.objects.get(company_sector=company.company_sector)
+            from django.urls import reverse
+            url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
+            # Add company_id query parameter to personalize the template
+            url += f'?company_id={company.pk}'
+            template_url = request.build_absolute_uri(url) if request else url
+        except CustomerTemplate.DoesNotExist:
+            pass
+        except CustomerTemplate.MultipleObjectsReturned:
+            template = CustomerTemplate.objects.filter(company_sector=company.company_sector).first()
+            if template:
+                from django.urls import reverse
+                url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
+                # Add company_id query parameter to personalize the template
+                url += f'?company_id={company.pk}'
+                template_url = request.build_absolute_uri(url) if request else url
+    
+    # Get all leads associated with this company
+    from .models import Lead
+    leads = Lead.objects.filter(company=company, lead_type='b2b').select_related('lead_focus', 'contact_method')
+    
+    context = {
+        'company': company,
+        'template_url': template_url,
+        'leads': leads,
+        'title': f'Company: {company.company_name}',
+    }
+    return render(request, 'CRM/b2b/company_detail.html', context)
 
 @login_required
 @user_passes_test(is_superuser)
@@ -1057,7 +1123,7 @@ def customer_template_public_view(request, pk):
     """
     Public landing page for customer templates.
     Renders the template with CustomerTemplate data.
-    Optional ?id query parameter (lead ID) personalises the hero text with company name.
+    Optional ?id query parameter (lead ID) or ?company_id personalises the hero text with company name.
     """
     template = get_object_or_404(CustomerTemplate, pk=pk)
     company_name = None
@@ -1072,6 +1138,17 @@ def customer_template_public_view(request, pk):
         except (Lead.DoesNotExist, ValueError):
             # Invalid lead ID, just continue without personalization
             pass
+    
+    # If no company name from lead, try company_id parameter
+    if not company_name:
+        company_id = request.GET.get('company_id', '').strip()
+        if company_id:
+            try:
+                company = Company.objects.get(pk=company_id)
+                company_name = company.company_name
+            except (Company.DoesNotExist, ValueError):
+                # Invalid company ID, just continue without personalization
+                pass
     
     context = {
         'template': template,

@@ -79,7 +79,8 @@
                         </div>
                         {% endif %}
                         
-                        {% if lead.company and (lead.company.email_template or lead.company.email_subject or lead.company.personalised_email_text) %}
+                        {% if lead.company %}
+                        {% if lead.company.email_template or lead.company.email_subject or lead.company.personalised_email_text %}
                         <div class="border-t border-[var(--border-color)] pt-4">
                             <dt class="text-sm font-semibold text-[var(--text-primary)]">Email Outreach</dt>
                             <dd class="text-sm text-[var(--text-primary)] mt-2 space-y-3">
@@ -139,6 +140,7 @@
                                 </div>
                             </dd>
                         </div>
+                        {% endif %}
                         {% endif %}
                         
                         {% if lead.contact_method %}

@@ -113,7 +113,7 @@ class B2BLeadForm(forms.ModelForm):
         self.fields['toad_customer_date'].required = False
         self.fields['initial_message_sent_date'].required = False
         self.fields['no_response_date'].required = False
-        self.fields['company'].queryset = Company.objects.order_by('name')
+        self.fields['company'].queryset = Company.objects.order_by('company_name')
         self.fields['email_template'].queryset = EmailTemplate.objects.order_by('name')
         
         # If editing existing lead, populate company data

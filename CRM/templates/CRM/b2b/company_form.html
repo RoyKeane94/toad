@@ -1,22 +1,243 @@
 {% extends 'pages/layout.html' %}
 
-{% block title %}{{ title }} - B2B CRM{% endblock %}
+{% block title %}{{ title }} - CRM{% endblock %}
 
 {% block content %}
 <div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        {% if company %}Update company information{% else %}Add a new company to your CRM{% endif %}
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:company_list' %}" class="inline-flex items-center px-4 py-2 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Companies
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6">
-            <h1 class="text-2xl font-bold text-[var(--text-primary)] mb-6">{{ title }}</h1>
-            <form method="post" class="space-y-6">
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-8">
+            <form method="post" class="space-y-8">
                 {% csrf_token %}
-                {{ form.as_p }}
-                <div class="flex justify-end space-x-4">
-                    <a href="{% url 'crm:company_list' %}" class="px-4 py-2 border border-[var(--border-color)] rounded-md text-sm font-medium">Cancel</a>
-                    <button type="submit" class="px-4 py-2 bg-[var(--primary-action-bg)] text-white rounded-md text-sm font-medium">Save Company</button>
+                
+                <!-- Company Name Field -->
+                <div>
+                    <label for="{{ form.company_name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Company Name *
+                    </label>
+                    {{ form.company_name }}
+                    {% if form.company_name.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.company_name.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Company Sector Field -->
+                <div>
+                    <label for="{{ form.company_sector.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Company Sector
+                    </label>
+                    {{ form.company_sector }}
+                    {% if form.company_sector.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.company_sector.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a sector or <a href="{% url 'crm:company_sector_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- Contact Person Field -->
+                <div>
+                    <label for="{{ form.contact_person.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Contact Person
+                    </label>
+                    {{ form.contact_person }}
+                    {% if form.contact_person.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.contact_person.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Contact Email Field -->
+                <div>
+                    <label for="{{ form.contact_email.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Contact Email
+                    </label>
+                    {{ form.contact_email }}
+                    {% if form.contact_email.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.contact_email.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Email Outreach Section -->
+                <div class="border-t-2 border-[var(--border-color)] pt-6">
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-6 pb-3 border-b-2 border-[var(--border-color)]">Email Outreach</h3>
+
+                    <!-- Email Template -->
+                    <div>
+                        <label for="{{ form.email_template.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Email Template
+                        </label>
+                        {{ form.email_template }}
+                        {% if form.email_template.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.email_template.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                            Choose a template to start from, then customise the copy below. Need a new template? <a href="{% url 'crm:email_template_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">Create one in a new tab</a>.
+                        </p>
+                    </div>
+
+                    <!-- Email Subject -->
+                    <div>
+                        <label for="{{ form.email_subject.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Email Subject
+                        </label>
+                        {{ form.email_subject }}
+                        {% if form.email_subject.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.email_subject.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Personalised Email Text -->
+                    <div>
+                        <label for="{{ form.personalised_email_text.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                            Personalised Email Text
+                        </label>
+                        {{ form.personalised_email_text }}
+                        {% if form.personalised_email_text.errors %}
+                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                            {% for error in form.personalised_email_text.errors %}
+                            <p>{{ error }}</p>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Email Status Section -->
+                    <div class="border-t border-[var(--border-color)] pt-6">
+                        <h4 class="text-md font-semibold text-[var(--text-primary)] mb-4">Email Status</h4>
+                        
+                        <!-- Initial Email Sent -->
+                        <div class="mb-4">
+                            <label class="flex items-center">
+                                {{ form.initial_email_sent }}
+                                <span class="ml-2 text-sm font-medium text-[var(--text-primary)]">Initial Email Sent</span>
+                            </label>
+                            {% if form.initial_email_sent.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.initial_email_sent.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Initial Email Sent Date -->
+                        {% if form.initial_email_sent.value %}
+                        <div class="mb-4">
+                            <label for="{{ form.initial_email_sent_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Initial Email Sent Date
+                            </label>
+                            {{ form.initial_email_sent_date }}
+                            {% if form.initial_email_sent_date.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.initial_email_sent_date.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <!-- Initial Email Response -->
+                        <div class="mb-4">
+                            <label class="flex items-center">
+                                {{ form.initial_email_response }}
+                                <span class="ml-2 text-sm font-medium text-[var(--text-primary)]">Initial Email Response</span>
+                            </label>
+                            {% if form.initial_email_response.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.initial_email_response.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Initial Email Response Date -->
+                        {% if form.initial_email_response.value %}
+                        <div>
+                            <label for="{{ form.initial_email_response_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                                Initial Email Response Date
+                            </label>
+                            {{ form.initial_email_response_date }}
+                            {% if form.initial_email_response_date.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.initial_email_response_date.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Non-field errors -->
+                {% if form.non_field_errors %}
+                    <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t-2 border-[var(--border-color)]">
+                    <a href="{% url 'crm:company_list' %}" class="group inline-flex items-center px-4 py-2.5 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        Cancel
+                    </a>
+                    <button type="submit" class="group inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                            <i class="fas fa-save text-xs"></i>
+                        </div>
+                        <span class="font-semibold">{% if company %}Update Company{% else %}Create Company{% endif %}</span>
+                    </button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 {% endblock %}
-
