@@ -63,6 +63,7 @@ class User(AbstractUser):
     trial_started_at = models.DateTimeField(null=True, blank=True, help_text='When the user started their trial period.')
     trial_ends_at = models.DateTimeField(null=True, blank=True, help_text='When the user trial period ends.')
     trial_type = models.CharField(max_length=20, choices=[
+        ('1_month', '1 Month'),
         ('3_month', '3 Month'),
         ('6_month', '6 Month'),
     ], null=True, blank=True, help_text='Type of trial period for Pro users.')

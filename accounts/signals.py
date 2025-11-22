@@ -22,6 +22,9 @@ def set_pro_trial_duration(sender, instance, created, **kwargs):
         elif instance.trial_type == '3_month':
             # Set 3-month trial (90 days)
             trial_days = 90
+        elif instance.trial_type == '1_month':
+            # Set 1-month trial (30 days)
+            trial_days = 30
         else:
             # Default to 3 months if trial_type is not recognized
             trial_days = 90

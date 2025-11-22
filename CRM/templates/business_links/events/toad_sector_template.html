@@ -8,39 +8,68 @@
     #app {
         padding: 0 !important;
     }
+    /* Remove grey background from hero video container */
+    .tw-weddings .tw-hero-visual {
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+    }
+    .tw-weddings .tw-hero-visual-inner {
+        background: transparent !important;
+        min-height: auto !important;
+    }
+    /* Remove green background from video containers on mobile */
+    @media (max-width: 768px) {
+        .tw-weddings .tw-grid-video,
+        .tw-weddings .tw-grid-visual {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+        .tw-weddings .tw-hero-visual {
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0 !important;
+        }
+        .tw-weddings .tw-hero-visual-inner {
+            background: transparent !important;
+            min-height: auto !important;
+        }
+    }
 </style>
 {% endblock %}
 
 {% block content %}
 <div data-page="tw-sector-template" class="tw-weddings">
 <section class="tw-section w-full" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
-    <div class="max-w-6xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 px-5">
+    <div class="max-w-7xl mx-auto flex flex-col-reverse lg:flex-row items-center gap-10 px-5">
         <div class="space-y-6 max-w-2xl" data-tw-animate>
             <p class="text-xs uppercase tracking-[0.35em] text-[var(--primary-action-bg)] font-semibold">
-                {{ template.playbook_name|default:"Playbook" }}
+                {{ template.playbook_name|default:"Playbook for clear, calm work" }}
             </p>
             <h1 class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight">
-                Hi {{ company_name|default:"Company Name To Be Added" }} 👋
+                One clear view of everything {{ company_name|default:"your team" }} is juggling
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed">
-                {{ template.main_header_description|default:"Toad gives your team one clear visual matrix for each event, staff and suppliers know exactly what is happening so everything just works." }}
+                {{ template.main_header_description|default:"You already have spreadsheets, notes and tools. Toad pulls your projects, tasks and people into one simple visual grid so everyone can see what’s happening now and what comes next." }}
             </p>
             <p class="text-sm text-gray-500 leading-relaxed">
-                Start from these example boards or build your own in seconds. Every row, column and checklist is yours to tweak to match how your team already works.
+                Start from these example boards shaped for {{ company_name|default:"your world" }}, or build your own in seconds. Every row, column and checklist is yours to tweak so it feels like the way you already work — just tidier.
             </p>
             <div class="flex flex-wrap gap-4 tw-hero-cta">
                 <a href="#example-grids" class="tw-cta-btn tw-cta-primary">
-                    See Your Example Board →
+                    See your example boards
                 </a>
-                <a href="{% url 'accounts:register_choices' %}" class="tw-cta-btn tw-cta-secondary">
-                    Try Toad Free
+                <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-secondary">
+                    Try Toad free for a month
                 </a>
             </div>
         </div>
         <div class="tw-hero-visual w-full lg:w-1/2" data-tw-animate>
-            <div class="tw-hero-visual-inner">
+            <div class="tw-hero-visual-inner bg-transparent">
                 {% if template.video_1 %}
-                    <video controls class="w-full rounded-lg shadow-lg">
+                    <video controls class="w-full max-w-2xl mx-auto rounded-lg shadow-lg bg-transparent scroll-play-video" style="background: transparent;" muted>
                         <source src="{{ template.video_1.url }}" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -54,22 +83,22 @@
 
 {% if template.used_by %}
 <section class="w-full tw-social-proof bg-white py-4" data-tw-animate>
-    <div class="max-w-6xl mx-auto px-5">
+    <div class="max-w-7xl mx-auto px-5">
         <ul>
             <li>{{ template.used_by }}</li>
-            <li>Built for small teams who need clarity</li>
-            <li>No setup, no training, no clutter</li>
+            <li>Built for small teams with a lot to juggle</li>
+            <li>No setup, no training, no clutter — just one shared overview</li>
         </ul>
     </div>
 </section>
 {% endif %}
 
 <section id="example-grids" class="tw-section w-full bg-white">
-    <div class="max-w-6xl mx-auto space-y-12 px-5">
+    <div class="max-w-7xl mx-auto space-y-12 px-5">
         <div class="tw-section-heading" data-tw-animate>
-            <h2>{{ template.grid_header|default:"What Toad Looks Like for Your Business" }}</h2>
+            <h2>What Toad looks like for {{ company_name|default:"your team" }}</h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
-                Toad is a simple matrix of checklists. No dashboards, no complexity, just one shared view so your team knows what happens when, and who is doing it.
+                Toad starts from something familiar — your existing lists, checklists and plans — and turns them into one shared matrix. No dashboards, no complexity, just a clear view so everyone knows what happens when, and who is doing it.
             </p>
         </div>
 
@@ -77,9 +106,9 @@
             <!-- Grid 1 -->
             <div class="tw-grid-block" data-tw-animate>
                 <div class="tw-grid-text">
-                    <p class="tw-grid-eyebrow">Grid 1 · {{ template.grid_1_title|default:"Event Checklist" }}</p>
-                    <h3>{{ template.grid_1_subheader|default:"One calm, visible plan for the whole day." }}</h3>
-                    <p>{{ template.grid_1_header_description|default:"Every supplier, every task and every timing in a single, shared checklist that lives quietly behind the scenes." }}</p>
+                    <p class="tw-grid-eyebrow">Grid 1 · {{ template.grid_1_title|default:"Delivery & operations" }}</p>
+                    <h3>{{ template.grid_1_subheader|default:"Before: scattered tasks. After: one calm, visible plan." }}</h3>
+                    <p>{{ template.grid_1_header_description|default:"Every task, dependency and owner in a single shared checklist that quietly replaces folders, printouts and long message threads." }}</p>
                     <ul class="tw-grid-list">
                         {% if template.grid_1_bullet_1 %}<li>{{ template.grid_1_bullet_1 }}</li>{% endif %}
                         {% if template.grid_1_bullet_2 %}<li>{{ template.grid_1_bullet_2 }}</li>{% endif %}
@@ -89,7 +118,7 @@
                 </div>
                 <div class="tw-grid-visual tw-grid-video">
                     {% if template.grid_1_video %}
-                        <video controls class="w-full rounded-lg shadow-lg">
+                        <video controls class="w-full max-w-xl mx-auto rounded-lg shadow-lg scroll-play-video" muted>
                             <source src="{{ template.grid_1_video.url }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -102,9 +131,9 @@
             <!-- Grid 2 -->
             <div class="tw-grid-block tw-grid-block--reverse" data-tw-animate>
                 <div class="tw-grid-text">
-                    <p class="tw-grid-eyebrow">Grid 2 · {{ template.grid_2_title|default:"Sales and Marketing" }}</p>
-                    <h3>{{ template.grid_2_subheader|default:"More bookings, less mental clutter." }}</h3>
-                    <p>{{ template.grid_2_header_description|default:"Keep enquiries, show rounds and campaigns on one simple board instead of scattered across tools and inboxes." }}</p>
+                    <p class="tw-grid-eyebrow">Grid 2 · {{ template.grid_2_title|default:"Pipeline & growth" }}</p>
+                    <h3>{{ template.grid_2_subheader|default:"Turn scattered opportunities into one clear pipeline." }}</h3>
+                    <p>{{ template.grid_2_header_description|default:"Keep enquiries, leads and follow-ups on one simple board instead of scattered across tools and inboxes, so nothing warm quietly slips away." }}</p>
                     <ul class="tw-grid-list">
                         {% if template.grid_2_bullet_1 %}<li>{{ template.grid_2_bullet_1 }}</li>{% endif %}
                         {% if template.grid_2_bullet_2 %}<li>{{ template.grid_2_bullet_2 }}</li>{% endif %}
@@ -114,7 +143,7 @@
                 </div>
                 <div class="tw-grid-visual">
                     {% if template.grid_2_video %}
-                        <video controls class="w-full rounded-lg shadow-lg">
+                        <video controls class="w-full max-w-xl mx-auto rounded-lg shadow-lg scroll-play-video" muted>
                             <source src="{{ template.grid_2_video.url }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -127,9 +156,9 @@
             <!-- Grid 3 -->
             <div class="tw-grid-block" data-tw-animate>
                 <div class="tw-grid-text">
-                    <p class="tw-grid-eyebrow">Grid 3 · {{ template.grid_3_title|default:"Personal Planner" }}</p>
+                    <p class="tw-grid-eyebrow">Grid 3 · {{ template.grid_3_title|default:"Personal planner" }}</p>
                     <h3>{{ template.grid_3_subheader|default:"Your quiet weekly control room." }}</h3>
-                    <p>{{ template.grid_3_header_description|default:"A private, lightweight planner for managers who do not want another complex system." }}</p>
+                    <p>{{ template.grid_3_header_description|default:"A private, lightweight planner for people who want to see the week and season ahead in one place, without learning a new tool or maintaining a complex system." }}</p>
                     <ul class="tw-grid-list">
                         {% if template.grid_3_bullet_1 %}<li>{{ template.grid_3_bullet_1 }}</li>{% endif %}
                         {% if template.grid_3_bullet_2 %}<li>{{ template.grid_3_bullet_2 }}</li>{% endif %}
@@ -139,7 +168,7 @@
                 </div>
                 <div class="tw-grid-visual tw-grid-visual--small">
                     {% if template.grid_3_video %}
-                        <video controls class="w-full rounded-lg shadow-lg">
+                        <video controls class="w-full max-w-lg mx-auto rounded-lg shadow-lg scroll-play-video" muted>
                             <source src="{{ template.grid_3_video.url }}" type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -153,11 +182,11 @@
 </section>
 
 <section class="tw-section w-full bg-[var(--main-bg)]">
-    <div class="max-w-6xl mx-auto space-y-10 px-5">
+    <div class="max-w-7xl mx-auto space-y-10 px-5">
         <div class="tw-section-heading" data-tw-animate>
-            <h2>{{ template.section_2_title|default:"Why teams love Toad" }}</h2>
+            <h2>{{ template.section_2_title|default:"Why teams like yours stick with Toad" }}</h2>
             <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-2">
-                Toad stays backstage. It adds just enough structure so your team feels calm and in control, without overwhelming them.
+                Toad stays backstage. It adds just enough structure so your days feel calmer and more in control, without asking your team to rip up the way they already work.
             </p>
         </div>
         <div class="tw-features">
@@ -190,19 +219,70 @@
 </section>
 
 <section class="tw-section w-full bg-white">
-    <div class="max-w-6xl mx-auto text-center space-y-6 px-5" data-tw-animate>
+    <div class="max-w-7xl mx-auto text-center space-y-6 px-5" data-tw-animate>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-            Ready to get started?
+            Ready to see everything at a glance?
         </h2>
         <p class="text-lg text-gray-600">
-            Create a grid in under 60 seconds from scratch or by copying these examples and keep it as your quiet control room.
+            Create a grid in under 60 seconds from scratch or by copying these examples, and keep it as your quiet control room for everything you’re running.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="{% url 'accounts:register_choices' %}" class="tw-cta-btn tw-cta-primary">
-                Try Toad Free
+            <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-primary">
+                Try Toad free for a month
             </a>
         </div>
     </div>
 </section>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const videos = document.querySelectorAll('.scroll-play-video');
+    
+    // Options for Intersection Observer
+    const options = {
+        root: null, // viewport
+        rootMargin: '0px',
+        threshold: 0.5 // Trigger when 50% of video is visible
+    };
+    
+    // Callback for Intersection Observer
+    const handleIntersection = (entries, observer) => {
+        entries.forEach(entry => {
+            const video = entry.target;
+            
+            if (entry.isIntersecting) {
+                // Video is in view, play it
+                video.play().catch(error => {
+                    // Autoplay was prevented, user interaction required
+                    console.log('Autoplay prevented:', error);
+                });
+            } else {
+                // Video is out of view, pause it
+                video.pause();
+            }
+        });
+    };
+    
+    // Create Intersection Observer
+    const observer = new IntersectionObserver(handleIntersection, options);
+    
+    // Observe all videos
+    videos.forEach(video => {
+        observer.observe(video);
+        
+        // Reset video to beginning when it goes out of view
+        video.addEventListener('pause', function() {
+            if (!this.ended) {
+                // Only reset if video hasn't ended
+                setTimeout(() => {
+                    if (document.hidden || !this.offsetParent) {
+                        this.currentTime = 0;
+                    }
+                }, 1000);
+            }
+        });
+    });
+});
+</script>
 {% endblock %}

@@ -1086,6 +1086,80 @@ class Register3MonthTrialView(FormView):
         return super().dispatch(request, *args, **kwargs)
 
 
+class Register1MonthProTrialView(FormView):
+    """
+    Registration view for 1-month Pro trial users
+    """
+    template_name = 'accounts/pages/registration/register_1_month_pro_trial.html'
+    form_class = CustomUserCreationForm
+    
+    def form_valid(self, form):
+        """Create the user and start their 1-month Pro trial"""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            from django.utils import timezone
+            from datetime import timedelta
+            
+            logger.info("Starting 1-month Pro trial user registration...")
+            user = form.save()
+            logger.info(f"User created successfully: {user.email}")
+            
+            # Set user tier to pro_trial and trial_type to 1_month
+            # The signal will handle setting the correct trial duration
+            user.tier = 'pro_trial'
+            user.trial_type = '1_month'
+            user.save()
+            logger.info(f"User tier set to pro_trial with 1-month trial type: {user.email}")
+            
+            # Log registration attempt
+            logger.info(f"New 1-Month Pro Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PRO_TRIAL")
+            
+            # Add session flag immediately for better UX
+            self.request.session['show_verification_message'] = True
+            
+            # Send verification email asynchronously to improve performance
+            try:
+                from .email_utils import send_verification_email
+                import threading
+                
+                def send_email_async():
+                    try:
+                        email_sent = send_verification_email(user, self.request)
+                        logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                    except Exception as e:
+                        logger.error(f"Failed to send verification email to {user.email}: {e}")
+                
+                # Start email sending in background thread
+                email_thread = threading.Thread(target=send_email_async)
+                email_thread.daemon = True
+                email_thread.start()
+                
+                messages.success(self.request, f'Welcome to your 1-month Pro trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Team Toad features.')
+            except Exception as e:
+                logger.error(f"Failed to start email sending: {e}")
+                messages.warning(self.request, f'Welcome to your 1-month Pro trial, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
+            
+            # Redirect to login page immediately
+            return redirect('accounts:login')
+            
+        except Exception as e:
+            logger.error(f"Error in Register1MonthProTrialView.form_valid: {e}", exc_info=True)
+            raise
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+    
+    def dispatch(self, request, *args, **kwargs):
+        """Redirect authenticated users away from registration page"""
+        if request.user.is_authenticated:
+            return redirect('pages:project_list')
+        return super().dispatch(request, *args, **kwargs)
+
+
 class Register3MonthProTrialView(FormView):
     """
     Registration view for 3-month Pro trial users
