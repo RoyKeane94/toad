@@ -1136,6 +1136,9 @@
       border-color: color-mix(in oklab, var(--primary-action-bg) 20%, transparent);
     }
   }
+  .border-\[var\(--secondary-action-bg\)\] {
+    border-color: var(--secondary-action-bg);
+  }
   .border-\[var\(--tertiary-action-bg\)\] {
     border-color: var(--tertiary-action-bg);
   }
@@ -2164,17 +2167,17 @@
       }
     }
   }
-  .group-hover\:bg-\[var\(--secondary-action-bg\)\] {
-    &:is(:where(.group):hover *) {
-      @media (hover: hover) {
-        background-color: var(--secondary-action-bg);
-      }
-    }
-  }
   .group-hover\:bg-\[var\(--tertiary-action-bg\)\] {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
         background-color: var(--tertiary-action-bg);
+      }
+    }
+  }
+  .group-hover\:bg-green-600 {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        background-color: var(--color-green-600);
       }
     }
   }

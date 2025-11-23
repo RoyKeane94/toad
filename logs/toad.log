@@ -35281,3 +35281,31 @@ INFO 2025-11-23 18:45:45,263 basehttp 33524 6127087616 "POST /tasks/2664/toggle/
 INFO 2025-11-23 18:45:48,155 basehttp 33524 6127087616 "POST /grids/247/clear-completed/ HTTP/1.1" 200 72
 INFO 2025-11-23 18:45:49,705 basehttp 33524 6127087616 "GET /grids/247/ HTTP/1.1" 200 22035
 INFO 2025-11-23 18:45:57,459 basehttp 33524 6127087616 "GET /lilypad/b2b/email-templates/create/ HTTP/1.1" 200 3095
+INFO 2025-11-23 18:47:03,366 autoreload 33928 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:47:04,850 basehttp 33928 6201995264 "GET /lilypad/ HTTP/1.1" 200 4089
+INFO 2025-11-23 18:49:27,789 basehttp 33928 6201995264 "GET /lilypad/b2b/customer-templates/create/ HTTP/1.1" 200 4686
+INFO 2025-11-23 18:49:30,472 basehttp 33928 6201995264 "GET /lilypad/ HTTP/1.1" 200 4137
+INFO 2025-11-23 18:49:37,400 basehttp 33928 6201995264 "GET /lilypad/b2b/sectors/create/ HTTP/1.1" 200 2797
+INFO 2025-11-23 18:49:41,698 basehttp 33928 6201995264 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 3143
+INFO 2025-11-23 18:49:43,475 basehttp 33928 6201995264 "GET /lilypad/b2b/companies/1/ HTTP/1.1" 200 3760
+INFO 2025-11-23 18:49:46,943 basehttp 33928 6201995264 "GET /lilypad/b2b/companies/1/update/ HTTP/1.1" 200 3827
+INFO 2025-11-23 18:50:00,462 basehttp 33928 6201995264 "GET /lilypad/b2b/customer-templates/create/ HTTP/1.1" 200 4701
+INFO 2025-11-23 18:50:25,602 autoreload 34477 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:50:26,508 basehttp 34477 6128726016 "GET / HTTP/1.1" 200 10458
+INFO 2025-11-23 18:50:38,759 basehttp 34477 6128726016 "GET /lilypad/ HTTP/1.1" 200 4127
+INFO 2025-11-23 18:50:38,779 basehttp 34477 6162378752 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-11-23 18:50:38,780 basehttp 34477 6145552384 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-11-23 18:50:38,781 basehttp 34477 6128726016 "GET /static/css/output.css HTTP/1.1" 200 99824
+INFO 2025-11-23 18:50:38,782 basehttp 34477 6179205120 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-11-23 18:50:38,891 basehttp 34477 6179205120 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-11-23 18:51:17,509 basehttp 34477 6128726016 "GET /lilypad/ HTTP/1.1" 200 4092
+INFO 2025-11-23 18:51:17,529 basehttp 34477 6145552384 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-11-23 18:51:17,530 basehttp 34477 6128726016 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-23 18:51:19,449 basehttp 34477 6128726016 "GET /lilypad/ HTTP/1.1" 200 4079
+INFO 2025-11-23 18:51:47,321 autoreload 34945 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:51:56,435 basehttp 34945 6162132992 "GET /lilypad/ HTTP/1.1" 200 4054
+INFO 2025-11-23 18:51:56,457 basehttp 34945 6195785728 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-11-23 18:51:56,459 basehttp 34945 6178959360 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-11-23 18:51:56,460 basehttp 34945 6212612096 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-11-23 18:51:56,461 basehttp 34945 6162132992 "GET /static/css/output.css HTTP/1.1" 200 99824
+INFO 2025-11-23 18:51:56,591 basehttp 34945 6162132992 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
