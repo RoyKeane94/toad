@@ -11,8 +11,8 @@
                     <h1 class="text-2xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">Create a reusable email template for your B2B outreach.</p>
                 </div>
-                <a href="{% url 'crm:b2b_lead_create' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">
-                    ← Back to B2B Leads
+                <a href="{% url 'crm:company_list' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">
+                    ← Back to Companies
                 </a>
             </div>
             <form method="post" class="space-y-6">
@@ -47,7 +47,7 @@
                     </p>
                 </div>
                 <div class="flex justify-end space-x-4">
-                    <a href="{% url 'crm:b2b_lead_create' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                    <a href="{% url 'crm:company_list' %}" class="inline-flex items-center px-4 py-2 border border-[var(--border-color)] rounded-md shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
                         Cancel
                     </a>
                     <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">

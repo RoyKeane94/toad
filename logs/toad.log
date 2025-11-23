@@ -35151,3 +35151,133 @@ INFO 2025-11-23 18:16:03,164 basehttp 32350 6227308544 "GET /static/admin/img/ic
 INFO 2025-11-23 18:16:03,164 basehttp 32350 6260961280 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
 INFO 2025-11-23 18:16:03,164 basehttp 32350 6210482176 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
 INFO 2025-11-23 18:16:03,165 basehttp 32350 6244134912 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-11-23 18:18:10,245 autoreload 33046 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:18:12,529 basehttp 33046 6196490240 "GET / HTTP/1.1" 200 10486
+INFO 2025-11-23 18:18:13,640 basehttp 33046 6196490240 "GET /lilypad/ HTTP/1.1" 200 4172
+INFO 2025-11-23 18:18:16,687 basehttp 33046 6196490240 "GET /lilypad/b2b/companies/create/ HTTP/1.1" 200 3866
+INFO 2025-11-23 18:20:14,992 basehttp 33046 6196490240 "GET /lilypad/b2b/leads/ HTTP/1.1" 200 4197
+INFO 2025-11-23 18:22:35,101 basehttp 33046 6196490240 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 3053
+INFO 2025-11-23 18:22:36,547 basehttp 33046 6196490240 "GET /lilypad/b2b/companies/1/ HTTP/1.1" 200 3936
+INFO 2025-11-23 18:24:24,550 autoreload 33046 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-11-23 18:24:25,137 autoreload 33183 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:24:34,782 autoreload 33183 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-11-23 18:24:35,231 autoreload 33196 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:24:36,726 autoreload 33196 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-11-23 18:24:37,151 autoreload 33206 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:36:38,175 autoreload 33206 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/urls.py changed, reloading.
+INFO 2025-11-23 18:36:38,728 autoreload 33327 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:37:32,543 autoreload 33327 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-11-23 18:37:33,130 autoreload 33351 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:37:43,830 autoreload 33351 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-11-23 18:37:44,403 autoreload 33362 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:38:35,549 basehttp 33362 6131281920 "GET /lilypad/b2b/customer-templates/ HTTP/1.1" 200 3123
+INFO 2025-11-23 18:38:37,208 basehttp 33362 6131281920 "GET /lilypad/links/templates/1/ HTTP/1.1" 200 6092
+INFO 2025-11-23 18:42:37,919 autoreload 33524 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-23 18:42:43,106 basehttp 33524 6127087616 "GET /lilypad/ HTTP/1.1" 200 4153
+INFO 2025-11-23 18:42:53,790 basehttp 33524 6127087616 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 3081
+INFO 2025-11-23 18:42:57,148 basehttp 33524 6127087616 "GET /lilypad/b2b/companies/create/ HTTP/1.1" 200 3853
+ERROR 2025-11-23 18:43:05,195 log 33524 6127087616 Internal Server Error: /lilypad/b2b/email-templates/create/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 368, in email_template_create
+    return render(request, 'CRM/b2b/email_template_form.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'b2b_lead_create' not found. 'b2b_lead_create' is not a valid view function or pattern name.
+ERROR 2025-11-23 18:43:05,201 basehttp 33524 6127087616 "GET /lilypad/b2b/email-templates/create/ HTTP/1.1" 500 19392
+INFO 2025-11-23 18:44:24,994 basehttp 33524 6127087616 "GET /lilypad/ HTTP/1.1" 200 4106
+INFO 2025-11-23 18:44:26,406 basehttp 33524 6127087616 "GET /grids/ HTTP/1.1" 200 13181
+INFO 2025-11-23 18:44:32,059 basehttp 33524 6127087616 "GET /grids/262/delete/ HTTP/1.1" 200 2882
+INFO 2025-11-23 18:44:32,866 basehttp 33524 6127087616 "POST /grids/262/delete/ HTTP/1.1" 302 0
+INFO 2025-11-23 18:44:32,875 basehttp 33524 6127087616 "GET /grids/ HTTP/1.1" 200 13081
+INFO 2025-11-23 18:44:37,702 basehttp 33524 6127087616 "GET /grids/261/delete/ HTTP/1.1" 200 2794
+INFO 2025-11-23 18:44:38,663 basehttp 33524 6127087616 "POST /grids/261/delete/ HTTP/1.1" 302 0
+INFO 2025-11-23 18:44:38,677 basehttp 33524 6127087616 "GET /grids/ HTTP/1.1" 200 12840
+INFO 2025-11-23 18:44:40,024 basehttp 33524 6127087616 "GET /grids/260/delete/ HTTP/1.1" 200 2827
+INFO 2025-11-23 18:44:41,018 basehttp 33524 6127087616 "POST /grids/260/delete/ HTTP/1.1" 302 0
+INFO 2025-11-23 18:44:41,034 basehttp 33524 6127087616 "GET /grids/ HTTP/1.1" 200 12659
+INFO 2025-11-23 18:44:53,667 basehttp 33524 6127087616 "POST /grids/259/edit/ HTTP/1.1" 200 94
+INFO 2025-11-23 18:44:59,267 basehttp 33524 6127087616 "POST /grids/group/33/edit/ HTTP/1.1" 200 87
+INFO 2025-11-23 18:45:06,824 basehttp 33524 6127087616 "POST /grids/246/edit/ HTTP/1.1" 200 95
+INFO 2025-11-23 18:45:10,264 basehttp 33524 6127087616 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-11-23 18:45:21,656 basehttp 33524 6127087616 "POST /grids/247/edit/ HTTP/1.1" 200 96
+INFO 2025-11-23 18:45:25,282 basehttp 33524 6127087616 "POST /grids/project/update-group/ HTTP/1.1" 200 76
+INFO 2025-11-23 18:45:27,541 basehttp 33524 6127087616 "GET /grids/ HTTP/1.1" 200 12592
+INFO 2025-11-23 18:45:30,300 basehttp 33524 6127087616 "GET /templates/6/delete/ HTTP/1.1" 200 1072
+INFO 2025-11-23 18:45:31,182 project_views_functions 33524 6127087616 User None deleted template: Add: N/A
+INFO 2025-11-23 18:45:31,183 basehttp 33524 6127087616 "POST /templates/6/delete/ HTTP/1.1" 302 0
+INFO 2025-11-23 18:45:31,199 basehttp 33524 6127087616 "GET /grids/ HTTP/1.1" 200 12240
+INFO 2025-11-23 18:45:32,739 basehttp 33524 6127087616 "GET /grids/247/ HTTP/1.1" 200 26149
+INFO 2025-11-23 18:45:32,757 basehttp 33524 6143913984 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-11-23 18:45:32,760 basehttp 33524 6127087616 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 57607
+INFO 2025-11-23 18:45:37,688 basehttp 33524 6127087616 "POST /tasks/2633/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:38,212 basehttp 33524 6127087616 "POST /tasks/2629/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:39,572 basehttp 33524 6127087616 "POST /tasks/2642/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:41,630 basehttp 33524 6127087616 "POST /tasks/2636/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:42,124 basehttp 33524 6127087616 "POST /tasks/2637/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:43,012 basehttp 33524 6127087616 "POST /tasks/2638/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:44,209 basehttp 33524 6127087616 "POST /tasks/2643/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:45,263 basehttp 33524 6127087616 "POST /tasks/2664/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-23 18:45:48,155 basehttp 33524 6127087616 "POST /grids/247/clear-completed/ HTTP/1.1" 200 72
+INFO 2025-11-23 18:45:49,705 basehttp 33524 6127087616 "GET /grids/247/ HTTP/1.1" 200 22035
+INFO 2025-11-23 18:45:57,459 basehttp 33524 6127087616 "GET /lilypad/b2b/email-templates/create/ HTTP/1.1" 200 3095

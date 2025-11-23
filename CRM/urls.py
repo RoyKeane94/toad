@@ -9,17 +9,13 @@ urlpatterns = [
     
     # ==================== B2B CRM URLS ====================
     path('b2b/', views.crm_home, name='b2b_home'),  # Alias for home
-    path('b2b/leads/', views.b2b_lead_list, name='b2b_lead_list'),
-    path('b2b/leads/create/', views.b2b_lead_create, name='b2b_lead_create'),
-    path('b2b/leads/<int:pk>/', views.b2b_lead_detail, name='b2b_lead_detail'),
-    path('b2b/leads/<int:pk>/update/', views.b2b_lead_update, name='b2b_lead_update'),
-    path('b2b/leads/<int:pk>/delete/', views.b2b_lead_delete, name='b2b_lead_delete'),
     
     # B2B Company Management
     path('b2b/companies/', views.company_list, name='company_list'),
     path('b2b/companies/create/', views.company_create, name='company_create'),
     path('b2b/companies/<int:pk>/', views.company_detail, name='company_detail'),
     path('b2b/companies/<int:pk>/update/', views.company_update, name='company_update'),
+    path('b2b/companies/<int:pk>/delete/', views.company_delete, name='company_delete'),
     path('b2b/sectors/create/', views.company_sector_create, name='company_sector_create'),
     path('b2b/email-templates/create/', views.email_template_create, name='email_template_create'),
     path('b2b/customer-templates/', views.customer_template_list, name='customer_template_list'),

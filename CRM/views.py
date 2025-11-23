@@ -25,20 +25,19 @@ def crm_home(request):
     """
     CRM home page view - B2B focused dashboard.
     """
-    # Get B2B statistics
-    b2b_leads = Lead.objects.filter(lead_type='b2b')
-    total_b2b_leads = b2b_leads.count()
-    b2b_customers = b2b_leads.filter(toad_customer=True).count()
-    recent_b2b_leads = b2b_leads.select_related('lead_focus', 'contact_method').order_by('-created_at')[:5]
+    # Get company statistics
     total_companies = Company.objects.count()
+    total_sectors = CompanySector.objects.count()
+    total_templates = CustomerTemplate.objects.count()
+    recent_companies = Company.objects.select_related('company_sector', 'email_template').order_by('-created_at')[:5]
     
     context = {
         'title': 'B2B CRM Dashboard',
         'user': request.user,
-        'total_b2b_leads': total_b2b_leads,
-        'b2b_customers': b2b_customers,
-        'recent_b2b_leads': recent_b2b_leads,
         'total_companies': total_companies,
+        'total_sectors': total_sectors,
+        'total_templates': total_templates,
+        'recent_companies': recent_companies,
     }
     return render(request, 'CRM/b2b/b2b_home.html', context)
 
@@ -298,17 +297,32 @@ def company_detail(request, pk):
                 url += f'?company_id={company.pk}'
                 template_url = request.build_absolute_uri(url) if request else url
     
-    # Get all leads associated with this company
-    from .models import Lead
-    leads = Lead.objects.filter(company=company, lead_type='b2b').select_related('lead_focus', 'contact_method')
-    
     context = {
         'company': company,
         'template_url': template_url,
-        'leads': leads,
         'title': f'Company: {company.company_name}',
     }
     return render(request, 'CRM/b2b/company_detail.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_delete(request, pk):
+    """
+    Delete a company.
+    """
+    company = get_object_or_404(Company, pk=pk)
+    
+    if request.method == 'POST':
+        company_name = company.company_name
+        company.delete()
+        messages.success(request, f'Company "{company_name}" has been deleted successfully.')
+        return redirect('crm:company_list')
+    
+    context = {
+        'company': company,
+        'title': f'Delete Company: {company.company_name}',
+    }
+    return render(request, 'CRM/b2b/company_confirm_delete.html', context)
 
 @login_required
 @user_passes_test(is_superuser)

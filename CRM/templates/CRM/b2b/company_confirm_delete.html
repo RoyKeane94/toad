@@ -1,0 +1,60 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6">
+            <div class="text-center">
+                <!-- Warning Icon -->
+                <div class="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-6">
+                    <i class="fas fa-exclamation-triangle text-red-600 text-2xl"></i>
+                </div>
+                
+                <!-- Warning Message -->
+                <h1 class="text-2xl font-bold text-[var(--text-primary)] mb-4">{{ title }}</h1>
+                <p class="text-[var(--text-secondary)] mb-6">
+                    Are you sure you want to delete the company "<strong>{{ company.company_name }}</strong>"? This action cannot be undone.
+                </p>
+                
+                <!-- Company Details -->
+                <div class="bg-[var(--bg-secondary)] rounded-lg p-4 mb-6 text-left">
+                    <h3 class="font-medium text-[var(--text-primary)] mb-2">Company Details:</h3>
+                    <dl class="text-sm text-[var(--text-secondary)] space-y-1">
+                        <div><strong>Company Name:</strong> {{ company.company_name }}</div>
+                        {% if company.company_sector %}
+                        <div><strong>Sector:</strong> {{ company.company_sector.name }}</div>
+                        {% endif %}
+                        {% if company.contact_email %}
+                        <div><strong>Contact Email:</strong> {{ company.contact_email }}</div>
+                        {% endif %}
+                        {% if company.contact_person %}
+                        <div><strong>Contact Person:</strong> {{ company.contact_person }}</div>
+                        {% endif %}
+                        <div><strong>Created:</strong> {{ company.created_at|date:"M d, Y" }}</div>
+                    </dl>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex justify-center space-x-4">
+                    <a href="{% url 'crm:company_list' %}" class="group inline-flex items-center px-4 py-2.5 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-all duration-200">
+                        <i class="fas fa-times mr-2"></i>
+                        Cancel
+                    </a>
+                    <form method="post" class="inline">
+                        {% csrf_token %}
+                        <button type="submit" class="group inline-flex items-center px-4 py-2.5 border-2 border-transparent rounded-lg shadow-sm text-sm font-semibold text-white bg-[var(--delete-button-bg)] hover:bg-[var(--delete-button-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--delete-button-bg)] transition-all duration-200 hover:scale-[1.02]">
+                            <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                                <i class="fas fa-trash text-xs"></i>
+                            </div>
+                            Delete Company
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

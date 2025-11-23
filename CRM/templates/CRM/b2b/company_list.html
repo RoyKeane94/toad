@@ -82,6 +82,9 @@
                                 <a href="{% url 'crm:company_update' company.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--tertiary-action-bg)] bg-yellow-50 rounded-md hover:bg-yellow-100 transition-colors">
                                     <i class="fas fa-edit mr-1"></i>Edit
                                 </a>
+                                <a href="{% url 'crm:company_delete' company.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--delete-button-bg)] bg-red-50 rounded-md hover:bg-red-100 transition-colors">
+                                    <i class="fas fa-trash mr-1"></i>Delete
+                                </a>
                                 {% if company.company_sector %}
                                 {% with template=company.company_sector.customer_templates.first %}
                                 {% if template %}
