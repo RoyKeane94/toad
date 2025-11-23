@@ -6,7 +6,6 @@ from .models import (
     LeadMessage,
     SocietyLink,
     SocietyUniversity,
-    Feedback,
     Company,
     CompanySector,
     EmailTemplate,
@@ -285,94 +284,6 @@ class SocietyLinkForm(forms.ModelForm):
         self.fields['lead'].empty_label = "Select a lead (optional)"
         # Filter leads to only show society leads
         self.fields['lead'].queryset = Lead.objects.filter(lead_type='society')
-
-class FeedbackForm(forms.ModelForm):
-    class Meta:
-        model = Feedback
-        fields = [
-            'name',
-            'regularly_using_toad', 
-            'usage_reason', 
-            'organization_method',
-            'organization_other',
-            'non_user_suggestion', 
-            'user_improvement', 
-            'team_toad_interest',
-            'would_share',
-            'testimonial_quote',
-            'testimonial_first_name',
-            'testimonial_job_title'
-        ]
-        widgets = {
-            'name': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'placeholder': 'Your name (optional)'
-            }),
-            'regularly_using_toad': forms.RadioSelect(
-                choices=[(True, 'Yes'), (False, 'No')]
-            ),
-            'usage_reason': forms.Textarea(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'rows': 4,
-                'placeholder': 'Tell us about your experience...'
-            }),
-            'organization_method': forms.Select(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent'
-            }),
-            'organization_other': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'placeholder': 'Please specify...'
-            }),
-            'non_user_suggestion': forms.Textarea(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'rows': 4,
-                'placeholder': 'What would make you use Toad?'
-            }),
-            'user_improvement': forms.Textarea(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'rows': 4,
-                'placeholder': 'How can we make Toad better for you?'
-            }),
-            'team_toad_interest': forms.Textarea(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'rows': 3,
-                'placeholder': 'Would team features be useful for you?'
-            }),
-            'would_share': forms.CheckboxInput(attrs={
-                'class': 'h-4 w-4 text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] border-[var(--inline-input-border)] rounded'
-            }),
-            'testimonial_quote': forms.Textarea(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'rows': 3,
-                'placeholder': 'Share your testimonial about why you love Toad...'
-            }),
-            'testimonial_first_name': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'placeholder': 'Your first name'
-            }),
-            'testimonial_job_title': forms.TextInput(attrs={
-                'class': 'w-full px-3 py-2 border border-[var(--inline-input-border)] rounded-md focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent',
-                'placeholder': 'Your job title (e.g., Marketing Manager)'
-            }),
-        }
-    
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Make all fields optional except the core question
-        self.fields['name'].required = False
-        self.fields['usage_reason'].required = False
-        self.fields['organization_method'].required = False
-        self.fields['organization_other'].required = False
-        self.fields['non_user_suggestion'].required = False
-        self.fields['user_improvement'].required = False
-        self.fields['team_toad_interest'].required = False
-        self.fields['testimonial_quote'].required = False
-        self.fields['testimonial_first_name'].required = False
-        self.fields['testimonial_job_title'].required = False
-        
-        # Add empty label for organization method
-        self.fields['organization_method'].empty_label = "Select an option..."
-
 
 class CustomerTemplateForm(forms.ModelForm):
     class Meta:

@@ -57,11 +57,6 @@ urlpatterns = [
     path('southampton-economics-society/load-template/', views.load_southampton_economics_template, name='load_southampton_economics_template'),
     path('southampton-economics-society/', views.southampton_economics_society_page, name='southampton_economics_society'),
     
-    # Feedback
-    path('feedback/', views.feedback_form, name='feedback_form'),
-    path('feedback/success/', views.feedback_success, name='feedback_success'),
-    path('feedback/list/', views.feedback_list, name='feedback_list'),
-    path('feedback/<int:pk>/', views.feedback_detail, name='feedback_detail'),
 
     # Society Links (Public URLs)
     path('<str:university_slug>/<str:society_slug>/', views.society_link_public, name='society_link_public'),
