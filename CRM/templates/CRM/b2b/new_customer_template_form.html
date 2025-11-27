@@ -106,18 +106,6 @@
                         </div>
                         {% endif %}
                     </div>
-
-                    <div>
-                        <label for="{{ form.grid_header.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                            Grid Header *
-                        </label>
-                        {{ form.grid_header }}
-                        {% if form.grid_header.errors %}
-                        <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
-                            {% for error in form.grid_header.errors %}<p>{{ error }}</p>{% endfor %}
-                        </div>
-                        {% endif %}
-                    </div>
                 </div>
             </div>
 

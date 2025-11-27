@@ -35366,3 +35366,315 @@ INFO 2025-11-24 20:55:21,837 basehttp 38976 6156267520 "GET / HTTP/1.1" 200 1046
 INFO 2025-11-24 20:55:21,847 basehttp 38976 6156267520 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-11-24 20:55:21,851 basehttp 38976 6156267520 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
 INFO 2025-11-24 20:55:21,856 basehttp 38976 6156267520 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-27 20:34:22,366 autoreload 43200 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-27 20:35:42,267 autoreload 43452 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-27 20:36:13,958 basehttp 43452 6123024384 "POST /grids/247/columns/984/edit/ HTTP/1.1" 200 97
+INFO 2025-11-27 20:36:18,762 basehttp 43452 6123024384 "POST /grids/247/columns/989/edit/ HTTP/1.1" 200 99
+INFO 2025-11-27 20:36:26,654 basehttp 43452 6123024384 "POST /grids/247/columns/990/edit/ HTTP/1.1" 200 103
+INFO 2025-11-27 20:37:56,745 project_views_functions 43452 6123024384 User None deleted task: "Share list of approved caterers" from project: Lincolns Wedding
+INFO 2025-11-27 20:37:56,750 basehttp 43452 6123024384 "POST /tasks/2666/delete/ HTTP/1.1" 200 58
+INFO 2025-11-27 20:37:58,974 project_views_functions 43452 6123024384 User None deleted task: "Share list of approved florists" from project: Lincolns Wedding
+INFO 2025-11-27 20:37:58,978 basehttp 43452 6123024384 "POST /tasks/2668/delete/ HTTP/1.1" 200 58
+INFO 2025-11-27 20:38:01,474 project_views_functions 43452 6123024384 User None deleted task: "Decide on caterer" from project: Lincolns Wedding
+INFO 2025-11-27 20:38:01,479 basehttp 43452 6123024384 "POST /tasks/2667/delete/ HTTP/1.1" 200 58
+INFO 2025-11-27 20:38:05,559 project_views_functions 43452 6123024384 User None deleted task: "Get signed contract" from project: Lincolns Wedding
+INFO 2025-11-27 20:38:05,564 basehttp 43452 6123024384 "POST /tasks/2665/delete/ HTTP/1.1" 200 58
+INFO 2025-11-27 20:38:07,016 basehttp 43452 6123024384 "GET /grids/247/ HTTP/1.1" 200 25102
+INFO 2025-11-27 20:38:07,038 basehttp 43452 6123024384 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-11-27 20:38:07,039 basehttp 43452 6139850752 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-11-27 20:38:07,040 basehttp 43452 6156677120 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-11-27 20:38:07,040 basehttp 43452 6173503488 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-11-27 20:38:07,040 basehttp 43452 6190329856 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-11-27 20:38:11,467 basehttp 43452 6190329856 "GET /grids/247/columns/1009/delete/ HTTP/1.1" 200 988
+INFO 2025-11-27 20:38:12,448 basehttp 43452 6190329856 "POST /grids/247/columns/1009/delete/ HTTP/1.1" 204 0
+INFO 2025-11-27 20:38:12,513 basehttp 43452 6190329856 "GET /grids/247/ HTTP/1.1" 200 24573
+INFO 2025-11-27 20:38:12,514 basehttp 43452 6190329856 - Broken pipe from ('127.0.0.1', 65063)
+INFO 2025-11-27 20:38:12,514 basehttp 43452 6173503488 "GET /grids/247/ HTTP/1.1" 200 24492
+INFO 2025-11-27 20:38:15,980 basehttp 43452 6173503488 "GET /grids/247/columns/1010/delete/ HTTP/1.1" 200 1009
+INFO 2025-11-27 20:38:16,858 basehttp 43452 6173503488 "POST /grids/247/columns/1010/delete/ HTTP/1.1" 204 0
+INFO 2025-11-27 20:38:16,908 basehttp 43452 6173503488 "GET /grids/247/ HTTP/1.1" 200 22802
+INFO 2025-11-27 20:38:16,908 basehttp 43452 6173503488 - Broken pipe from ('127.0.0.1', 65062)
+INFO 2025-11-27 20:38:16,911 basehttp 43452 6156677120 "GET /grids/247/ HTTP/1.1" 200 22810
+INFO 2025-11-27 20:38:36,174 basehttp 43452 6156677120 "POST /grids/247/rows/863/edit/ HTTP/1.1" 200 108
+INFO 2025-11-27 20:38:44,678 basehttp 43452 6156677120 "POST /grids/247/rows/864/edit/ HTTP/1.1" 200 112
+INFO 2025-11-27 20:38:51,059 basehttp 43452 6156677120 "POST /grids/247/rows/863/edit/ HTTP/1.1" 200 106
+INFO 2025-11-27 20:38:58,786 basehttp 43452 6156677120 "POST /grids/247/rows/911/edit/ HTTP/1.1" 200 102
+INFO 2025-11-27 20:39:01,585 basehttp 43452 6156677120 "GET /grids/247/rows/865/delete/ HTTP/1.1" 200 957
+INFO 2025-11-27 20:39:02,764 basehttp 43452 6156677120 "POST /grids/247/rows/865/delete/ HTTP/1.1" 200 76
+INFO 2025-11-27 20:39:02,804 basehttp 43452 6156677120 "GET /grids/247/ HTTP/1.1" 200 22506
+INFO 2025-11-27 20:40:16,796 basehttp 43452 6156677120 "POST /grids/247/tasks/create/863/984/ HTTP/1.1" 200 1534
+INFO 2025-11-27 20:40:23,444 basehttp 43452 6156677120 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1539
+INFO 2025-11-27 20:40:31,326 basehttp 43452 6156677120 "POST /grids/247/tasks/create/864/989/ HTTP/1.1" 200 1542
+INFO 2025-11-27 20:40:38,871 basehttp 43452 6156677120 "POST /grids/247/tasks/create/864/989/ HTTP/1.1" 200 1538
+INFO 2025-11-27 20:40:45,155 basehttp 43452 6156677120 "POST /grids/247/tasks/create/864/989/ HTTP/1.1" 200 1546
+INFO 2025-11-27 20:41:16,388 basehttp 43452 6156677120 "POST /grids/247/tasks/create/864/990/ HTTP/1.1" 200 1552
+INFO 2025-11-27 20:41:21,705 basehttp 43452 6156677120 "POST /grids/247/tasks/create/864/990/ HTTP/1.1" 200 1582
+INFO 2025-11-27 20:41:29,592 basehttp 43452 6156677120 "POST /grids/247/tasks/create/911/990/ HTTP/1.1" 200 1535
+INFO 2025-11-27 20:41:35,584 basehttp 43452 6156677120 "POST /grids/247/tasks/create/911/989/ HTTP/1.1" 200 1594
+INFO 2025-11-27 20:41:48,148 basehttp 43452 6156677120 "POST /tasks/2680/edit/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:06:11,588 basehttp 43452 6123024384 "POST /grids/247/tasks/create/863/984/ HTTP/1.1" 200 1539
+INFO 2025-11-27 21:06:13,682 basehttp 43452 6123024384 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-27 21:06:14,260 basehttp 43452 6123024384 "POST /tasks/2681/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:06:21,575 basehttp 43452 6123024384 "POST /grids/247/tasks/create/863/989/ HTTP/1.1" 200 1589
+INFO 2025-11-27 21:06:28,261 basehttp 43452 6123024384 "POST /grids/247/tasks/create/863/990/ HTTP/1.1" 200 1580
+INFO 2025-11-27 21:06:34,416 basehttp 43452 6123024384 "POST /grids/247/tasks/create/863/990/ HTTP/1.1" 200 1579
+INFO 2025-11-27 21:06:38,891 basehttp 43452 6123024384 "POST /grids/247/tasks/create/863/989/ HTTP/1.1" 200 1558
+INFO 2025-11-27 21:06:40,141 basehttp 43452 6123024384 "POST /tasks/2682/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:06:40,979 basehttp 43452 6123024384 "POST /tasks/2683/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:06:41,491 basehttp 43452 6123024384 "POST /tasks/2684/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:07:03,251 basehttp 43452 6123024384 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1494
+INFO 2025-11-27 21:07:42,529 basehttp 43452 6123024384 "POST /grids/247/tasks/create/911/984/ HTTP/1.1" 200 1568
+INFO 2025-11-27 21:07:56,432 basehttp 43452 6123024384 "POST /grids/247/tasks/create/911/989/ HTTP/1.1" 200 1583
+INFO 2025-11-27 21:07:59,667 basehttp 43452 6123024384 "GET /grids/247/columns/1011/delete/ HTTP/1.1" 200 1008
+INFO 2025-11-27 21:08:00,710 basehttp 43452 6123024384 "POST /grids/247/columns/1011/delete/ HTTP/1.1" 204 0
+INFO 2025-11-27 21:08:00,794 basehttp 43452 6123024384 "GET /grids/247/ HTTP/1.1" 200 26374
+INFO 2025-11-27 21:08:00,795 basehttp 43452 6123024384 - Broken pipe from ('127.0.0.1', 49470)
+INFO 2025-11-27 21:08:00,796 basehttp 43452 6139850752 "GET /grids/247/ HTTP/1.1" 200 26365
+INFO 2025-11-27 21:08:17,265 basehttp 43452 6139850752 "POST /tasks/2687/edit/ HTTP/1.1" 200 121
+INFO 2025-11-27 21:08:38,310 basehttp 43452 6139850752 "POST /grids/247/tasks/create/911/990/ HTTP/1.1" 200 1578
+INFO 2025-11-27 21:09:20,418 basehttp 43452 6139850752 "POST /grids/247/tasks/create/911/984/ HTTP/1.1" 200 1567
+INFO 2025-11-27 21:09:29,307 basehttp 43452 6139850752 "POST /grids/247/tasks/create/911/989/ HTTP/1.1" 200 1572
+INFO 2025-11-27 21:09:35,061 basehttp 43452 6139850752 "POST /grids/247/tasks/create/911/990/ HTTP/1.1" 200 1548
+INFO 2025-11-27 21:09:58,120 basehttp 43452 6139850752 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1527
+INFO 2025-11-27 21:10:16,261 basehttp 43452 6139850752 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1535
+INFO 2025-11-27 21:10:37,607 basehttp 43452 6139850752 "POST /tasks/2672/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-27 21:11:06,437 basehttp 43452 6139850752 "POST /tasks/2685/note/ HTTP/1.1" 200 203
+INFO 2025-11-27 21:11:06,450 basehttp 43452 6139850752 "GET /tasks/2685/notes/ HTTP/1.1" 200 177
+INFO 2025-11-27 21:11:12,178 project_views_functions 43452 6139850752 User None assigned task: ""Share list of approved caterers" to Toad Toad" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:12,179 basehttp 43452 6139850752 "POST /tasks/2681/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:11:15,262 project_views_functions 43452 6139850752 User None assigned task: ""Share list of approved florists" to Toad Toad" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:15,263 basehttp 43452 6139850752 "POST /tasks/2682/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:11:18,009 project_views_functions 43452 6139850752 User None assigned task: ""Share list of approved photgraphers" to Toad Toad" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:18,010 basehttp 43452 6139850752 "POST /tasks/2683/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:11:20,410 project_views_functions 43452 6139850752 User None assigned task: ""Confirm external caterer selection" to Tom Stephenson" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:20,411 basehttp 43452 6139850752 "POST /tasks/2672/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:11:23,314 project_views_functions 43452 6139850752 User None assigned task: ""Check florists PLI" to Tom Stephenson" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:23,315 basehttp 43452 6139850752 "POST /tasks/2685/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:11:26,507 project_views_functions 43452 6139850752 User None assigned task: ""Check florists PLI" to Cecilie Potter" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:26,507 basehttp 43452 6139850752 "POST /tasks/2685/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:11:28,611 project_views_functions 43452 6139850752 User None assigned task: ""Check photographer's PLI" to Cecilie Potter" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:28,612 basehttp 43452 6139850752 "POST /tasks/2684/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:11:49,218 basehttp 43452 6139850752 "POST /tasks/2686/note/ HTTP/1.1" 200 233
+INFO 2025-11-27 21:11:49,229 basehttp 43452 6139850752 "GET /tasks/2686/notes/ HTTP/1.1" 200 207
+INFO 2025-11-27 21:11:54,629 project_views_functions 43452 6139850752 User None assigned task: ""Double check latest table layout" to Cecilie Potter" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:54,630 basehttp 43452 6139850752 "POST /tasks/2686/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:11:57,548 project_views_functions 43452 6139850752 User None assigned task: ""Ensure caterers understand prohibited food and drink items" to Cecilie Potter" from project: Lincolns Wedding
+INFO 2025-11-27 21:11:57,549 basehttp 43452 6139850752 "POST /tasks/2693/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:11:58,911 basehttp 43452 6139850752 "POST /tasks/2693/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:12:31,333 basehttp 43452 6139850752 "POST /tasks/2694/note/ HTTP/1.1" 200 253
+INFO 2025-11-27 21:12:31,342 basehttp 43452 6139850752 "GET /tasks/2694/notes/ HTTP/1.1" 200 189
+INFO 2025-11-27 21:14:04,170 project_views_functions 43452 6139850752 User None assigned task: ""Approve floral installation points (arch, aisle, tables)" to Nigel Jones" from project: Lincolns Wedding
+INFO 2025-11-27 21:14:04,171 basehttp 43452 6139850752 "POST /tasks/2674/assign/ HTTP/1.1" 200 128
+INFO 2025-11-27 21:14:07,078 project_views_functions 43452 6139850752 User None assigned task: ""Discuss logistics: setup space, delivery routes, prep area" to Nigel Jones" from project: Lincolns Wedding
+INFO 2025-11-27 21:14:07,078 basehttp 43452 6139850752 "POST /tasks/2675/assign/ HTTP/1.1" 200 128
+INFO 2025-11-27 21:14:28,334 basehttp 43452 6139850752 "POST /tasks/2674/note/ HTTP/1.1" 200 214
+INFO 2025-11-27 21:14:28,344 basehttp 43452 6139850752 "GET /tasks/2674/notes/ HTTP/1.1" 200 188
+INFO 2025-11-27 21:14:39,497 basehttp 43452 6139850752 "POST /tasks/2676/edit/ HTTP/1.1" 200 118
+INFO 2025-11-27 21:15:13,089 basehttp 43452 6139850752 "POST /tasks/2694/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-27 21:15:38,529 basehttp 43452 6139850752 "POST /tasks/2675/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-27 21:15:46,011 basehttp 43452 6139850752 "POST /tasks/2677/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:16:34,827 basehttp 43452 6139850752 "GET /grids/ HTTP/1.1" 200 12245
+INFO 2025-11-27 21:16:36,983 basehttp 43452 6139850752 "GET /grids/create/ HTTP/1.1" 200 2913
+INFO 2025-11-27 21:16:42,340 project_views_functions 43452 6139850752 User None created project: Q1 2026 Marketing
+INFO 2025-11-27 21:16:42,341 basehttp 43452 6139850752 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-11-27 21:16:42,360 basehttp 43452 6139850752 "GET /grids/263/ HTTP/1.1" 200 21569
+INFO 2025-11-27 21:16:56,331 basehttp 43452 6139850752 "GET /grids/ HTTP/1.1" 200 12396
+INFO 2025-11-27 21:16:57,680 basehttp 43452 6139850752 "GET /grids/create/ HTTP/1.1" 200 2882
+INFO 2025-11-27 21:17:13,330 project_views_functions 43452 6139850752 User None created project: Personal
+INFO 2025-11-27 21:17:13,331 basehttp 43452 6139850752 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-11-27 21:17:13,353 basehttp 43452 6139850752 "GET /grids/264/ HTTP/1.1" 200 21596
+INFO 2025-11-27 21:17:24,039 basehttp 43452 6139850752 "GET /grids/263/ HTTP/1.1" 200 21579
+INFO 2025-11-27 21:17:25,181 basehttp 43452 6139850752 "GET /grids/264/ HTTP/1.1" 200 21555
+INFO 2025-11-27 21:17:25,729 basehttp 43452 6139850752 "GET /grids/263/ HTTP/1.1" 200 21618
+INFO 2025-11-27 21:17:26,240 basehttp 43452 6139850752 "GET /grids/264/ HTTP/1.1" 200 21629
+INFO 2025-11-27 21:17:26,739 basehttp 43452 6139850752 "GET /grids/263/ HTTP/1.1" 200 21539
+INFO 2025-11-27 21:17:27,226 basehttp 43452 6139850752 "GET /grids/264/ HTTP/1.1" 200 21542
+INFO 2025-11-27 21:17:27,811 basehttp 43452 6139850752 "GET /grids/263/ HTTP/1.1" 200 21604
+INFO 2025-11-27 21:17:28,357 basehttp 43452 6139850752 "GET /grids/264/ HTTP/1.1" 200 21623
+INFO 2025-11-27 21:17:32,334 basehttp 43452 6139850752 "GET /grids/ HTTP/1.1" 200 12489
+INFO 2025-11-27 21:17:39,362 project_views_functions 43452 6139850752 User None created project group: Marketing
+INFO 2025-11-27 21:17:39,363 basehttp 43452 6139850752 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-11-27 21:17:39,386 basehttp 43452 6139850752 "GET /grids/ HTTP/1.1" 200 12633
+INFO 2025-11-27 21:17:45,243 basehttp 43452 6139850752 "GET /grids/247/ HTTP/1.1" 200 29282
+INFO 2025-11-27 21:18:32,551 basehttp 43452 6123024384 "GET /grids/263/ HTTP/1.1" 200 21588
+INFO 2025-11-27 21:18:34,611 basehttp 43452 6123024384 "POST /grids/263/columns/1013/edit/ HTTP/1.1" 200 91
+INFO 2025-11-27 21:18:37,081 basehttp 43452 6123024384 "GET /grids/263/columns/create/ HTTP/1.1" 200 1039
+INFO 2025-11-27 21:18:39,272 basehttp 43452 6123024384 "POST /grids/263/columns/create/ HTTP/1.1" 204 0
+INFO 2025-11-27 21:18:39,337 basehttp 43452 6123024384 - Broken pipe from ('127.0.0.1', 49924)
+INFO 2025-11-27 21:18:39,337 basehttp 43452 6139850752 - Broken pipe from ('127.0.0.1', 49925)
+INFO 2025-11-27 21:18:39,339 basehttp 43452 6156677120 "GET /grids/263/ HTTP/1.1" 200 21954
+INFO 2025-11-27 21:18:41,563 basehttp 43452 6123024384 "GET /grids/263/columns/create/ HTTP/1.1" 200 1019
+INFO 2025-11-27 21:18:43,936 basehttp 43452 6123024384 "POST /grids/263/columns/create/ HTTP/1.1" 204 0
+INFO 2025-11-27 21:18:43,997 basehttp 43452 6123024384 - Broken pipe from ('127.0.0.1', 49927)
+INFO 2025-11-27 21:18:43,998 basehttp 43452 6139850752 - Broken pipe from ('127.0.0.1', 49928)
+INFO 2025-11-27 21:18:44,001 basehttp 43452 6156677120 "GET /grids/263/ HTTP/1.1" 200 22242
+INFO 2025-11-27 21:18:54,726 basehttp 43452 6123024384 "POST /grids/263/tasks/create/912/1017/ HTTP/1.1" 200 1516
+INFO 2025-11-27 21:19:04,384 basehttp 43452 6123024384 "POST /grids/263/tasks/create/912/1017/ HTTP/1.1" 200 1517
+INFO 2025-11-27 21:19:10,997 basehttp 43452 6123024384 "POST /grids/263/tasks/create/912/1017/ HTTP/1.1" 200 1525
+INFO 2025-11-27 21:19:22,726 basehttp 43452 6123024384 "POST /tasks/2703/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-27 21:19:35,492 basehttp 43452 6123024384 "POST /grids/263/tasks/create/912/1016/ HTTP/1.1" 200 1519
+INFO 2025-11-27 21:19:41,625 basehttp 43452 6123024384 "POST /grids/263/tasks/create/912/1016/ HTTP/1.1" 200 1470
+INFO 2025-11-27 21:19:47,862 basehttp 43452 6123024384 "POST /tasks/2695/edit/ HTTP/1.1" 200 122
+INFO 2025-11-27 21:19:55,758 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1016/ HTTP/1.1" 200 1525
+INFO 2025-11-27 21:20:07,982 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1016/ HTTP/1.1" 200 1502
+INFO 2025-11-27 21:20:13,390 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1016/ HTTP/1.1" 200 1481
+INFO 2025-11-27 21:22:00,970 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1017/ HTTP/1.1" 200 1495
+INFO 2025-11-27 21:22:06,265 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1017/ HTTP/1.1" 200 1517
+INFO 2025-11-27 21:22:11,530 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1017/ HTTP/1.1" 200 1533
+INFO 2025-11-27 21:22:46,708 basehttp 43452 6123024384 "POST /tasks/2711/note/ HTTP/1.1" 200 215
+INFO 2025-11-27 21:22:46,719 basehttp 43452 6123024384 "GET /tasks/2711/notes/ HTTP/1.1" 200 185
+INFO 2025-11-27 21:22:55,898 basehttp 43452 6123024384 "POST /tasks/2697/edit/ HTTP/1.1" 200 117
+INFO 2025-11-27 21:23:01,500 basehttp 43452 6123024384 "POST /grids/263/tasks/create/914/1013/ HTTP/1.1" 200 1474
+INFO 2025-11-27 21:23:07,775 basehttp 43452 6123024384 "POST /grids/263/tasks/create/914/1013/ HTTP/1.1" 200 1532
+INFO 2025-11-27 21:23:13,274 basehttp 43452 6123024384 "POST /grids/263/tasks/create/914/1016/ HTTP/1.1" 200 1485
+INFO 2025-11-27 21:23:18,933 basehttp 43452 6123024384 "POST /grids/263/tasks/create/914/1016/ HTTP/1.1" 200 1483
+INFO 2025-11-27 21:23:24,410 basehttp 43452 6123024384 "POST /grids/263/tasks/create/914/1017/ HTTP/1.1" 200 1544
+INFO 2025-11-27 21:23:30,740 basehttp 43452 6123024384 "POST /grids/263/tasks/create/914/1017/ HTTP/1.1" 200 1528
+INFO 2025-11-27 21:26:07,925 basehttp 43452 6123024384 "POST /tasks/2696/edit/ HTTP/1.1" 200 119
+INFO 2025-11-27 21:26:55,390 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1013/ HTTP/1.1" 200 1487
+INFO 2025-11-27 21:27:18,847 basehttp 43452 6123024384 "POST /grids/263/tasks/create/913/1013/ HTTP/1.1" 200 1510
+INFO 2025-11-27 21:27:26,651 basehttp 43452 6123024384 "POST /grids/263/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-27 21:27:41,433 basehttp 43452 6123024384 "POST /grids/263/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-11-27 21:28:23,060 basehttp 43452 6123024384 "POST /tasks/2701/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:28:29,067 basehttp 43452 6123024384 "GET / HTTP/1.1" 200 10465
+INFO 2025-11-27 21:28:30,451 basehttp 43452 6123024384 "GET /admin HTTP/1.1" 301 0
+INFO 2025-11-27 21:28:30,498 basehttp 43452 6139850752 "GET /admin/ HTTP/1.1" 200 3229
+INFO 2025-11-27 21:28:30,515 basehttp 43452 6139850752 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-11-27 21:28:30,518 basehttp 43452 6156677120 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-11-27 21:28:30,518 basehttp 43452 6123024384 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-11-27 21:28:30,519 basehttp 43452 6139850752 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-11-27 21:28:30,520 basehttp 43452 6190329856 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-11-27 21:28:30,521 basehttp 43452 6173503488 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-11-27 21:28:30,526 basehttp 43452 6173503488 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-11-27 21:28:30,530 basehttp 43452 6173503488 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-11-27 21:28:30,531 basehttp 43452 6156677120 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-11-27 21:28:30,531 basehttp 43452 6139850752 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-11-27 21:28:30,531 basehttp 43452 6190329856 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-11-27 21:28:33,161 basehttp 43452 6123024384 "GET /admin/accounts/user/ HTTP/1.1" 200 4545
+INFO 2025-11-27 21:28:33,176 basehttp 43452 6123024384 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-11-27 21:28:33,181 basehttp 43452 6156677120 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-11-27 21:28:33,184 basehttp 43452 6173503488 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-11-27 21:28:33,184 basehttp 43452 6190329856 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-11-27 21:28:33,186 basehttp 43452 6207156224 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-11-27 21:28:33,186 basehttp 43452 6156677120 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-11-27 21:28:33,189 basehttp 43452 6173503488 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-11-27 21:28:33,190 basehttp 43452 6207156224 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-11-27 21:28:33,193 basehttp 43452 6156677120 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-11-27 21:28:33,195 basehttp 43452 6123024384 "GET /admin/jsi18n/ HTTP/1.1" 200 979
+INFO 2025-11-27 21:28:33,197 basehttp 43452 6139850752 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-11-27 21:28:33,198 basehttp 43452 6190329856 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-11-27 21:28:33,201 basehttp 43452 6139850752 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-11-27 21:28:33,303 basehttp 43452 6190329856 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-11-27 21:28:33,303 basehttp 43452 6139850752 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-11-27 21:28:33,304 basehttp 43452 6123024384 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-11-27 21:28:36,570 basehttp 43452 6123024384 "GET /admin/pages/project/ HTTP/1.1" 200 3520
+INFO 2025-11-27 21:28:36,587 basehttp 43452 6123024384 "GET /admin/jsi18n/ HTTP/1.1" 200 1005
+INFO 2025-11-27 21:28:45,000 basehttp 43452 6123024384 "POST /admin/pages/project/ HTTP/1.1" 200 4167
+INFO 2025-11-27 21:28:45,017 basehttp 43452 6123024384 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-11-27 21:28:47,383 basehttp 43452 6123024384 "POST /admin/pages/project/ HTTP/1.1" 302 0
+INFO 2025-11-27 21:28:47,394 basehttp 43452 6123024384 "GET /admin/pages/project/ HTTP/1.1" 200 3480
+INFO 2025-11-27 21:28:47,409 basehttp 43452 6123024384 "GET /admin/jsi18n/ HTTP/1.1" 200 1028
+INFO 2025-11-27 21:28:48,986 basehttp 43452 6123024384 "GET /admin/pages/project/263/change/ HTTP/1.1" 200 4283
+INFO 2025-11-27 21:28:49,005 basehttp 43452 6156677120 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-11-27 21:28:49,006 basehttp 43452 6123024384 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-11-27 21:28:49,008 basehttp 43452 6123024384 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-11-27 21:28:49,009 basehttp 43452 6139850752 "GET /admin/jsi18n/ HTTP/1.1" 200 1002
+INFO 2025-11-27 21:28:49,010 basehttp 43452 6123024384 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-11-27 21:28:55,449 basehttp 43452 6123024384 "POST /admin/pages/project/263/change/ HTTP/1.1" 302 0
+INFO 2025-11-27 21:28:55,465 basehttp 43452 6123024384 "GET /admin/pages/project/ HTTP/1.1" 200 3550
+INFO 2025-11-27 21:28:55,482 basehttp 43452 6123024384 "GET /admin/jsi18n/ HTTP/1.1" 200 1010
+INFO 2025-11-27 21:28:57,659 basehttp 43452 6123024384 "GET / HTTP/1.1" 200 10483
+INFO 2025-11-27 21:28:58,015 basehttp 43452 6123024384 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-11-27 21:28:58,834 basehttp 43452 6123024384 "GET /grids/ HTTP/1.1" 200 12653
+INFO 2025-11-27 21:29:03,119 basehttp 43452 6123024384 "GET /grids/263/ HTTP/1.1" 200 27595
+INFO 2025-11-27 21:29:03,135 basehttp 43452 6123024384 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 57607
+INFO 2025-11-27 21:29:06,435 project_views_functions 43452 6123024384 User None assigned task: ""Share October bookings with finance" to Toad Toad" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:06,436 basehttp 43452 6123024384 "POST /tasks/2695/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:29:12,038 project_views_functions 43452 6123024384 User None assigned task: ""Confirm 2026 budget with finance" to Toad Toad" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:12,039 basehttp 43452 6123024384 "POST /tasks/2696/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:29:14,336 project_views_functions 43452 6123024384 User None assigned task: ""Draft email for mailing list about Spring open days" to Cecilie Potter" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:14,337 basehttp 43452 6123024384 "POST /tasks/2704/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:29:17,032 project_views_functions 43452 6123024384 User None assigned task: ""Release press on Spring open days" to Cecilie Potter" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:17,032 basehttp 43452 6123024384 "POST /tasks/2705/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:29:19,921 project_views_functions 43452 6123024384 User None assigned task: ""Confirm photographer for December brochure photoshoot" to Nigel Jones" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:19,922 basehttp 43452 6123024384 "POST /tasks/2706/assign/ HTTP/1.1" 200 128
+INFO 2025-11-27 21:29:22,047 project_views_functions 43452 6123024384 User None assigned task: ""Liaise with gardening for December layout" to Nigel Jones" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:22,050 basehttp 43452 6123024384 "POST /tasks/2707/assign/ HTTP/1.1" 200 128
+INFO 2025-11-27 21:29:24,604 project_views_functions 43452 6123024384 User None assigned task: ""Confirm partner suppliers for December shoot" to Nigel Jones" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:24,604 basehttp 43452 6123024384 "POST /tasks/2708/assign/ HTTP/1.1" 200 128
+INFO 2025-11-27 21:29:28,869 project_views_functions 43452 6123024384 User None assigned task: ""Follow up with Jones" to Cecilie Potter" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:28,869 basehttp 43452 6123024384 "POST /tasks/2702/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:29:31,401 project_views_functions 43452 6123024384 User None assigned task: ""Ensure brochures sent to last week's tours" to Cecilie Potter" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:31,401 basehttp 43452 6123024384 "POST /tasks/2703/assign/ HTTP/1.1" 200 134
+INFO 2025-11-27 21:29:35,888 project_views_functions 43452 6123024384 User None assigned task: ""Send brochure to Johnson wedding" to Toad Toad" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:35,888 basehttp 43452 6123024384 "POST /tasks/2709/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:29:44,886 project_views_functions 43452 6123024384 User None assigned task: ""Refresh approved caterers list" to Toad Toad" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:44,887 basehttp 43452 6123024384 "POST /tasks/2697/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:29:46,686 project_views_functions 43452 6123024384 User None assigned task: ""Refresh approved florists list" to Toad Toad" from project: Q1 2026 Marketing
+INFO 2025-11-27 21:29:46,688 basehttp 43452 6123024384 "POST /tasks/2712/assign/ HTTP/1.1" 200 123
+INFO 2025-11-27 21:29:55,738 basehttp 43452 6123024384 "POST /tasks/2695/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:29:59,001 basehttp 43452 6123024384 "POST /tasks/2695/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:30:17,841 basehttp 43452 6123024384 "POST /tasks/2706/note/ HTTP/1.1" 200 201
+INFO 2025-11-27 21:30:17,851 basehttp 43452 6123024384 "GET /tasks/2706/notes/ HTTP/1.1" 200 195
+INFO 2025-11-27 21:30:20,540 basehttp 43452 6123024384 "GET /tasks/2706/notes/ HTTP/1.1" 200 195
+INFO 2025-11-27 21:30:43,154 basehttp 43452 6123024384 "POST /tasks/2718/note/ HTTP/1.1" 200 189
+INFO 2025-11-27 21:30:43,163 basehttp 43452 6123024384 "GET /tasks/2718/notes/ HTTP/1.1" 200 189
+INFO 2025-11-27 21:30:54,035 basehttp 43452 6123024384 "POST /tasks/2719/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-27 21:31:02,495 basehttp 43452 6123024384 "POST /tasks/2704/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 21:54:33,088 basehttp 43452 6123024384 "GET /grids/264/ HTTP/1.1" 200 21589
+INFO 2025-11-27 21:54:33,103 basehttp 43452 6139850752 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-11-27 21:54:33,103 basehttp 43452 6156677120 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-11-27 21:54:33,105 basehttp 43452 6173503488 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 57607
+INFO 2025-11-27 21:54:33,105 basehttp 43452 6123024384 "GET /static/css/output.css HTTP/1.1" 200 99824
+INFO 2025-11-27 21:54:33,110 basehttp 43452 6190329856 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-11-27 21:54:33,227 basehttp 43452 6190329856 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-11-27 21:54:50,221 basehttp 43452 6190329856 "POST /grids/264/columns/1015/edit/ HTTP/1.1" 200 129
+INFO 2025-11-27 21:55:06,216 basehttp 43452 6190329856 "GET /grids/264/columns/create/ HTTP/1.1" 200 1034
+INFO 2025-11-27 21:55:17,378 basehttp 43452 6190329856 "POST /grids/264/columns/create/ HTTP/1.1" 204 0
+INFO 2025-11-27 21:55:17,433 basehttp 43452 6190329856 - Broken pipe from ('127.0.0.1', 50916)
+INFO 2025-11-27 21:55:17,433 basehttp 43452 6123024384 - Broken pipe from ('127.0.0.1', 50909)
+INFO 2025-11-27 21:55:17,435 basehttp 43452 6173503488 "GET /grids/264/ HTTP/1.1" 200 22010
+INFO 2025-11-27 22:03:08,757 basehttp 43452 6123024384 "GET /grids/264/columns/create/ HTTP/1.1" 200 1007
+INFO 2025-11-27 22:03:19,715 basehttp 43452 6123024384 "POST /grids/264/columns/create/ HTTP/1.1" 204 0
+INFO 2025-11-27 22:03:19,779 basehttp 43452 6123024384 - Broken pipe from ('127.0.0.1', 51066)
+INFO 2025-11-27 22:03:19,779 basehttp 43452 6139850752 "GET /grids/264/ HTTP/1.1" 200 22366
+INFO 2025-11-27 22:03:19,779 basehttp 43452 6139850752 - Broken pipe from ('127.0.0.1', 51067)
+INFO 2025-11-27 22:03:19,781 basehttp 43452 6156677120 "GET /grids/264/ HTTP/1.1" 200 22323
+INFO 2025-11-27 22:03:28,742 basehttp 43452 6156677120 "POST /tasks/2698/edit/ HTTP/1.1" 200 134
+INFO 2025-11-27 22:03:36,338 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1015/ HTTP/1.1" 200 1485
+INFO 2025-11-27 22:03:44,300 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1015/ HTTP/1.1" 200 1552
+INFO 2025-11-27 22:03:51,692 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1018/ HTTP/1.1" 200 1518
+INFO 2025-11-27 22:04:02,471 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1018/ HTTP/1.1" 200 1484
+INFO 2025-11-27 22:04:12,864 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1490
+INFO 2025-11-27 22:04:22,264 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1542
+INFO 2025-11-27 22:04:33,184 basehttp 43452 6156677120 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1492
+INFO 2025-11-27 22:04:45,830 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1019/ HTTP/1.1" 200 1504
+INFO 2025-11-27 22:05:04,764 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1019/ HTTP/1.1" 200 1561
+INFO 2025-11-27 22:05:15,514 basehttp 43452 6156677120 "POST /tasks/2699/edit/ HTTP/1.1" 200 136
+INFO 2025-11-27 22:05:22,855 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1015/ HTTP/1.1" 200 1497
+INFO 2025-11-27 22:05:30,629 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1015/ HTTP/1.1" 200 1471
+INFO 2025-11-27 22:05:37,606 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1018/ HTTP/1.1" 200 1514
+INFO 2025-11-27 22:05:51,604 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1018/ HTTP/1.1" 200 1536
+INFO 2025-11-27 22:06:01,698 basehttp 43452 6156677120 "POST /tasks/2700/edit/ HTTP/1.1" 200 130
+INFO 2025-11-27 22:06:11,404 basehttp 43452 6156677120 "POST /grids/264/tasks/create/917/1015/ HTTP/1.1" 200 1532
+INFO 2025-11-27 22:06:18,817 basehttp 43452 6156677120 "POST /grids/264/tasks/create/917/1015/ HTTP/1.1" 200 1517
+INFO 2025-11-27 22:06:26,600 basehttp 43452 6156677120 "POST /grids/264/tasks/create/917/1018/ HTTP/1.1" 200 1564
+INFO 2025-11-27 22:06:35,557 basehttp 43452 6156677120 "POST /grids/264/tasks/create/917/1018/ HTTP/1.1" 200 1474
+INFO 2025-11-27 22:06:46,408 basehttp 43452 6156677120 "POST /tasks/2736/edit/ HTTP/1.1" 200 114
+INFO 2025-11-27 22:06:57,456 basehttp 43452 6156677120 "POST /grids/264/tasks/create/917/1019/ HTTP/1.1" 200 1539
+INFO 2025-11-27 22:07:07,135 basehttp 43452 6156677120 "POST /grids/264/tasks/create/916/1019/ HTTP/1.1" 200 1537
+INFO 2025-11-27 22:08:53,782 basehttp 43452 6123024384 "POST /tasks/2698/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 22:08:54,253 basehttp 43452 6123024384 "POST /tasks/2720/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 22:09:14,811 basehttp 43452 6123024384 "POST /tasks/2699/note/ HTTP/1.1" 200 185
+INFO 2025-11-27 22:09:14,821 basehttp 43452 6123024384 "GET /tasks/2699/notes/ HTTP/1.1" 200 191
+INFO 2025-11-27 22:09:22,054 basehttp 43452 6123024384 "POST /tasks/2722/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 22:09:23,735 basehttp 43452 6123024384 "POST /tasks/2725/toggle/ HTTP/1.1" 200 79
+INFO 2025-11-27 22:09:37,561 basehttp 43452 6123024384 "POST /tasks/2726/note/ HTTP/1.1" 200 189
+INFO 2025-11-27 22:09:37,571 basehttp 43452 6123024384 "GET /tasks/2726/notes/ HTTP/1.1" 200 163
+INFO 2025-11-27 22:10:23,576 basehttp 43452 6123024384 "POST /tasks/2723/reminder/ HTTP/1.1" 200 82
+INFO 2025-11-27 22:15:32,220 autoreload 43452 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-11-27 22:15:32,875 autoreload 45769 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-27 22:15:34,434 autoreload 45769 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-11-27 22:15:34,790 autoreload 45772 8710119168 Watching for file changes with StatReloader
+INFO 2025-11-27 22:15:39,307 autoreload 45772 8710119168 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/forms.py changed, reloading.
+INFO 2025-11-27 22:15:39,757 autoreload 45784 8710119168 Watching for file changes with StatReloader
