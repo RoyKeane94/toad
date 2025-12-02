@@ -21,7 +21,7 @@ admin.site.register(GridInvitation)
 # Enhanced admin for Task model with date filtering
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ['text', 'project', 'row_header', 'column_header', 'completed', 'created_at', 'updated_at']
+    list_display = ['anonymized_text', 'project', 'row_header', 'column_header', 'completed', 'created_at', 'updated_at']
     list_filter = [
         'completed', 
         'created_at', 
@@ -32,12 +32,12 @@ class TaskAdmin(admin.ModelAdmin):
     list_editable = ['completed']
     search_fields = ['text', 'project__name', 'row_header__name', 'column_header__name']
     ordering = ['-created_at']
-    readonly_fields = ['created_at', 'updated_at']
+    readonly_fields = ['created_at', 'updated_at', 'anonymized_text']
     date_hierarchy = 'created_at'  # This adds a date drill-down navigation
     
     fieldsets = (
         ('Task Details', {
-            'fields': ('text', 'completed', 'order')
+            'fields': ('anonymized_text', 'completed', 'order')
         }),
         ('Relationships', {
             'fields': ('project', 'row_header', 'column_header')
@@ -47,6 +47,14 @@ class TaskAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+    
+    def anonymized_text(self, obj):
+        """Return anonymized version of task text"""
+        if obj.text:
+            return f"Task #{obj.id}"
+        return "Empty Task"
+    anonymized_text.short_description = 'Text'
+    anonymized_text.admin_order_field = 'text'  # Allow sorting by the actual text field
     
     def get_queryset(self, request):
         """Optimize queries by selecting related fields"""
