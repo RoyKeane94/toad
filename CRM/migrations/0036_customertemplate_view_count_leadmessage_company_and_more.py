@@ -12,9 +12,9 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.AddField(
-            model_name='customertemplate',
-            name='view_count',
-            field=models.IntegerField(default=0, help_text='Number of times this template has been viewed'),
+            model_name='company',
+            name='template_view_count',
+            field=models.IntegerField(default=0, help_text="Number of times this company's template has been viewed"),
         ),
         migrations.AddField(
             model_name='leadmessage',
@@ -23,6 +23,6 @@ class Migration(migrations.Migration):
         ),
         migrations.AddConstraint(
             model_name='leadmessage',
-            constraint=models.CheckConstraint(condition=models.Q(('lead__isnull', False), ('company__isnull', False), _connector='OR'), name='lead_or_company_required'),
+            constraint=models.CheckConstraint(check=models.Q(('lead__isnull', False), ('company__isnull', False), _connector='OR'), name='lead_or_company_required'),
         ),
     ]

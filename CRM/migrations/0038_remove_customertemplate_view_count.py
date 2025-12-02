@@ -3,6 +3,11 @@
 from django.db import migrations
 
 
+def noop(apps, schema_editor):
+    # This migration is a no-op - view_count was never added to CustomerTemplate
+    pass
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
@@ -10,8 +15,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(
-            model_name='customertemplate',
-            name='view_count',
-        ),
+        migrations.RunPython(noop, migrations.RunPython.noop),
     ]
