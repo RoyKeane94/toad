@@ -36200,3 +36200,15 @@ INFO 2025-12-02 20:10:16,941 basehttp 2804 6200209408 "GET /lilypad/b2b/companie
 INFO 2025-12-02 20:12:15,215 basehttp 2804 6200209408 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 3099
 INFO 2025-12-02 20:12:17,804 basehttp 2804 6200209408 "GET /lilypad/b2b/companies/1/ HTTP/1.1" 200 4038
 INFO 2025-12-02 20:12:21,972 basehttp 2804 6200209408 "GET /lilypad/ HTTP/1.1" 200 4068
+INFO 2025-12-02 20:12:59,224 autoreload 3821 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-02 20:13:08,497 basehttp 3821 6162362368 "GET /lilypad/ HTTP/1.1" 200 4111
+INFO 2025-12-02 20:13:08,513 basehttp 3821 6196015104 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-02 20:13:08,514 basehttp 3821 6179188736 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-02 20:13:08,514 basehttp 3821 6162362368 "GET /static/css/output.css HTTP/1.1" 200 99861
+INFO 2025-12-02 20:13:08,515 basehttp 3821 6212841472 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-02 20:13:14,524 basehttp 3821 6212841472 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 3172
+INFO 2025-12-02 20:13:14,538 basehttp 3821 6162362368 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-02 20:13:14,538 basehttp 3821 6212841472 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-02 20:13:17,014 basehttp 3821 6212841472 "GET /lilypad/b2b/companies/1/update/ HTTP/1.1" 200 4335
+INFO 2025-12-02 20:13:17,028 basehttp 3821 6162362368 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-02 20:13:17,029 basehttp 3821 6212841472 "GET /static/css/output.css HTTP/1.1" 304 0

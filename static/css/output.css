@@ -1136,9 +1136,6 @@
       border-color: color-mix(in oklab, var(--primary-action-bg) 20%, transparent);
     }
   }
-  .border-\[var\(--secondary-action-bg\)\] {
-    border-color: var(--secondary-action-bg);
-  }
   .border-\[var\(--tertiary-action-bg\)\] {
     border-color: var(--tertiary-action-bg);
   }
@@ -1150,6 +1147,9 @@
   }
   .border-blue-200 {
     border-color: var(--color-blue-200);
+  }
+  .border-blue-600 {
+    border-color: var(--color-blue-600);
   }
   .border-gray-100 {
     border-color: var(--color-gray-100);
@@ -1303,6 +1303,9 @@
   }
   .bg-blue-100 {
     background-color: var(--color-blue-100);
+  }
+  .bg-blue-600 {
+    background-color: var(--color-blue-600);
   }
   .bg-emerald-100 {
     background-color: var(--color-emerald-100);
