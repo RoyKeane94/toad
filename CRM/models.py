@@ -143,6 +143,7 @@ class Company(models.Model):
     initial_email_sent_date = models.DateField(null=True, blank=True)
     initial_email_response = models.BooleanField(default=False)
     initial_email_response_date = models.DateField(null=True, blank=True)
+    template_view_count = models.IntegerField(default=0, help_text="Number of times this company's template has been viewed")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -208,12 +209,23 @@ class EmailTemplate(models.Model):
 
 class LeadMessage(models.Model):
     lead = models.ForeignKey(Lead, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)
+    company = models.ForeignKey(Company, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        constraints = [
+            models.CheckConstraint(
+                check=models.Q(lead__isnull=False) | models.Q(company__isnull=False),
+                name='lead_or_company_required'
+            )
+        ]
     
     def __str__(self):
         if self.lead:
             return f"Message for {self.lead.name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
+        elif self.company:
+            return f"Message for {self.company.company_name} - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
         return f"Message - {self.created_at.strftime('%Y-%m-%d %H:%M')}"
 
 
@@ -262,6 +274,7 @@ class CustomerTemplate(models.Model):
     section_2_card_3_description = models.TextField(help_text="The description of the third card")
     section_2_card_4_title = models.CharField(max_length=100, help_text="The title of the fourth card")
     section_2_card_4_description = models.TextField(help_text="The description of the fourth card")
+    
     
     def __str__(self):
         return self.playbook_name

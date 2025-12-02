@@ -167,6 +167,11 @@ class LeadMessageForm(forms.ModelForm):
         widgets = {
             'message': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 4, 'placeholder': 'Enter message content'})
         }
+    
+    def clean(self):
+        cleaned_data = super().clean()
+        # Validation is handled by the model constraint, but we can add form-level validation if needed
+        return cleaned_data
 
 # B2B-specific forms
 class CompanySectorForm(forms.ModelForm):
@@ -215,6 +220,23 @@ class CompanyForm(forms.ModelForm):
         self.fields['company_sector'].required = False
         self.fields['company_sector'].empty_label = "Select a sector (optional)"
         self.fields['company_sector'].queryset = CompanySector.objects.order_by('name')
+    
+    def save(self, commit=True):
+        instance = super().save(commit=False)
+        
+        # Auto-set initial_email_sent_date to today if initial_email_sent is checked and date is not set
+        if instance.initial_email_sent and not instance.initial_email_sent_date:
+            from django.utils import timezone
+            instance.initial_email_sent_date = timezone.now().date()
+        
+        # Auto-set initial_email_response_date to today if initial_email_response is checked and date is not set
+        if instance.initial_email_response and not instance.initial_email_response_date:
+            from django.utils import timezone
+            instance.initial_email_response_date = timezone.now().date()
+        
+        if commit:
+            instance.save()
+        return instance
 
 class EmailTemplateForm(forms.ModelForm):
     class Meta:

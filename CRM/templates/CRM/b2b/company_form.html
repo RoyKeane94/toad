@@ -165,8 +165,7 @@
                         </div>
 
                         <!-- Initial Email Sent Date -->
-                        {% if form.initial_email_sent.value %}
-                        <div class="mb-4">
+                        <div class="mb-4" id="initial_email_sent_date_container">
                             <label for="{{ form.initial_email_sent_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
                                 Initial Email Sent Date
                             </label>
@@ -179,7 +178,6 @@
                             </div>
                             {% endif %}
                         </div>
-                        {% endif %}
 
                         <!-- Initial Email Response -->
                         <div class="mb-4">
@@ -197,8 +195,7 @@
                         </div>
 
                         <!-- Initial Email Response Date -->
-                        {% if form.initial_email_response.value %}
-                        <div>
+                        <div class="mb-4" id="initial_email_response_date_container">
                             <label for="{{ form.initial_email_response_date.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
                                 Initial Email Response Date
                             </label>
@@ -211,7 +208,6 @@
                             </div>
                             {% endif %}
                         </div>
-                        {% endif %}
                     </div>
                 </div>
 
@@ -240,4 +236,44 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Initial Email Sent
+    const initialEmailSentCheckbox = document.getElementById('id_initial_email_sent');
+    const initialEmailSentDateField = document.getElementById('id_initial_email_sent_date');
+    
+    // Initial Email Response
+    const initialEmailResponseCheckbox = document.getElementById('id_initial_email_response');
+    const initialEmailResponseDateField = document.getElementById('id_initial_email_response_date');
+    
+    // Function to set today's date in YYYY-MM-DD format
+    function setTodaysDate(field) {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const day = String(today.getDate()).padStart(2, '0');
+        const dateString = `${year}-${month}-${day}`;
+        field.value = dateString;
+    }
+    
+    // Handle Initial Email Sent checkbox
+    if (initialEmailSentCheckbox && initialEmailSentDateField) {
+        initialEmailSentCheckbox.addEventListener('change', function() {
+            if (this.checked && !initialEmailSentDateField.value) {
+                setTodaysDate(initialEmailSentDateField);
+            }
+        });
+    }
+    
+    // Handle Initial Email Response checkbox
+    if (initialEmailResponseCheckbox && initialEmailResponseDateField) {
+        initialEmailResponseCheckbox.addEventListener('change', function() {
+            if (this.checked && !initialEmailResponseDateField.value) {
+                setTodaysDate(initialEmailResponseDateField);
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

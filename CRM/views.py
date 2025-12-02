@@ -193,9 +193,15 @@ def b2b_lead_detail(request, pk):
     # Get personalized template URL if available
     template_url = lead.get_personalized_template_url(request)
     
+    # Get company-specific template view count if available
+    template_view_count = None
+    if lead.company:
+        template_view_count = lead.company.template_view_count
+    
     context = {
         'lead': lead,
         'template_url': template_url,
+        'template_view_count': template_view_count,
         'title': f'B2B Lead: {lead.name}',
         'crm_type': 'b2b',
     }
@@ -688,6 +694,32 @@ def lead_message_create(request, lead_pk):
 
 @login_required
 @user_passes_test(is_superuser)
+def company_message_create(request, company_pk):
+    """
+    Create a new message for a specific company.
+    """
+    company = get_object_or_404(Company, pk=company_pk)
+    
+    if request.method == 'POST':
+        form = LeadMessageForm(request.POST)
+        if form.is_valid():
+            message = form.save(commit=False)
+            message.company = company
+            message.save()
+            messages.success(request, 'Message added successfully!')
+            return redirect('crm:company_detail', pk=company_pk)
+    else:
+        form = LeadMessageForm()
+    
+    context = {
+        'form': form,
+        'company': company,
+        'title': 'Add Message',
+    }
+    return render(request, 'CRM/company_message_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
 def lead_focus_create(request):
     """
     Create a new lead focus area.
@@ -1138,9 +1170,11 @@ def customer_template_public_view(request, pk):
     Public landing page for customer templates.
     Renders the template with CustomerTemplate data.
     Optional ?id query parameter (lead ID) or ?company_id personalises the hero text with company name.
+    Increments company-specific view count when accessed.
     """
     template = get_object_or_404(CustomerTemplate, pk=pk)
     company_name = None
+    company = None
     
     # Get lead ID from query parameter
     lead_id = request.GET.get('id', '').strip()
@@ -1148,13 +1182,14 @@ def customer_template_public_view(request, pk):
         try:
             lead = Lead.objects.select_related('company').get(pk=lead_id, lead_type='b2b')
             if lead.company:
-                company_name = lead.company.company_name
+                company = lead.company
+                company_name = company.company_name
         except (Lead.DoesNotExist, ValueError):
             # Invalid lead ID, just continue without personalization
             pass
     
-    # If no company name from lead, try company_id parameter
-    if not company_name:
+    # If no company from lead, try company_id parameter
+    if not company:
         company_id = request.GET.get('company_id', '').strip()
         if company_id:
             try:
@@ -1163,6 +1198,12 @@ def customer_template_public_view(request, pk):
             except (Company.DoesNotExist, ValueError):
                 # Invalid company ID, just continue without personalization
                 pass
+    
+    # Increment company-specific view count if company is identified
+    if company:
+        from django.db.models import F
+        Company.objects.filter(pk=company.pk).update(template_view_count=F('template_view_count') + 1)
+        company.refresh_from_db()
     
     context = {
         'template': template,

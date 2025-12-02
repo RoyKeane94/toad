@@ -45,6 +45,7 @@ urlpatterns = [
     
     # ==================== SHARED URLS ====================
     path('leads/<int:lead_pk>/messages/create/', views.lead_message_create, name='lead_message_create'),
+    path('b2b/companies/<int:company_pk>/messages/create/', views.company_message_create, name='company_message_create'),
     path('focus/create/', views.lead_focus_create, name='lead_focus_create'),
     path('contact-methods/create/', views.contact_method_create, name='contact_method_create'),
     

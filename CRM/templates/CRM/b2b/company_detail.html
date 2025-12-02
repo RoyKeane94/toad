@@ -21,7 +21,7 @@
     </div>
 
     <!-- Main Content -->
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="grid grid-cols-1 gap-8">
             <!-- Company Information -->
             <div>
@@ -51,6 +51,12 @@
                                     <span>Preview Template</span>
                                     <i class="fas fa-chevron-right text-xs ml-auto opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all"></i>
                                 </a>
+                                {% if company.template_view_count is not None %}
+                                <div class="flex items-center justify-between px-3 py-2 bg-[var(--bg-secondary)] rounded-lg">
+                                    <span class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide">View Count</span>
+                                    <span class="text-sm font-semibold text-[var(--text-primary)]">{{ company.template_view_count }}</span>
+                                </div>
+                                {% endif %}
                                 <div class="bg-[var(--bg-secondary)] rounded-lg p-3">
                                     <p class="text-xs text-[var(--text-secondary)] break-all mb-2 font-mono">{{ template_url }}</p>
                                     <button onclick="navigator.clipboard.writeText('{{ template_url }}'); this.innerHTML='<i class=\'fas fa-check mr-1\'></i>Copied!'; setTimeout(() => { this.innerHTML='<i class=\'fas fa-copy mr-1\'></i>Copy link'; }, 2000);" class="text-xs text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] font-medium transition-colors cursor-pointer">
@@ -146,6 +152,43 @@
                             <dd class="text-sm text-[var(--text-primary)] mt-1">{{ company.created_at|date:"F d, Y \a\t g:i A" }}</dd>
                         </div>
                     </dl>
+                </div>
+            </div>
+
+            <!-- Messages -->
+            <div>
+                <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-6">
+                    <div class="flex justify-between items-center mb-6 pb-4 border-b-2 border-[var(--border-color)]">
+                        <h2 class="text-lg font-semibold text-[var(--text-primary)]">Messages <span class="text-[var(--text-secondary)] font-normal">({{ company.messages.count }})</span></h2>
+                        <a href="{% url 'crm:company_message_create' company.pk %}" class="group inline-flex items-center px-4 py-2 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                            <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                                <i class="fas fa-plus text-xs"></i>
+                            </div>
+                            <span class="font-semibold text-sm">Add Message</span>
+                        </a>
+                    </div>
+                    
+                    {% if company.messages.all %}
+                    <div class="space-y-4">
+                        {% for message in company.messages.all %}
+                        <div class="border-2 border-[var(--border-color)] rounded-lg p-4 hover:shadow-md transition-shadow bg-[var(--bg-secondary)]/30">
+                            <div class="flex justify-between items-start mb-3">
+                                <span class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide">{{ message.created_at|date:"M d, Y \a\t g:i A" }}</span>
+                            </div>
+                            <p class="text-sm text-[var(--text-primary)] whitespace-pre-wrap leading-relaxed">{{ message.message }}</p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="text-center py-8">
+                        <i class="fas fa-comment text-[var(--text-secondary)] text-4xl mb-4"></i>
+                        <p class="text-[var(--text-secondary)] mb-4">No messages yet for this company.</p>
+                        <a href="{% url 'crm:company_message_create' company.pk %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors">
+                            <i class="fas fa-plus mr-2"></i>
+                            Add First Message
+                        </a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
 
