@@ -153,12 +153,14 @@
                                 </a>
                             </th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Messages</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">View Count</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
                                 <a href="?{% if search_query %}search={{ search_query }}&{% endif %}{% if focus_filter %}focus={{ focus_filter }}&{% endif %}{% if contact_filter %}contact={{ contact_filter }}&{% endif %}sort=created" class="hover:text-[var(--primary-action-bg)] flex items-center">
                                     Created
                                     {% if sort == 'created' %}<i class="fas fa-sort-up ml-1"></i>{% endif %}
                                 </a>
                             </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Updated</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -278,7 +280,17 @@
                                     {{ lead.messages.count }}
                                 </span>
                             </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-primary)]">
+                                {% if lead.company %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        {{ lead.company.template_view_count|default:0 }}
+                                    </span>
+                                {% else %}
+                                    <span class="text-[var(--text-secondary)] italic">—</span>
+                                {% endif %}
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.created_at|date:"M d, Y" }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ lead.updated_at|date:"M d, Y \a\t g:i A" }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex items-center space-x-2">
                                     <a href="{% url 'crm:b2b_lead_detail' lead.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--primary-action-bg)] bg-blue-50 rounded-md hover:bg-blue-100 transition-colors">

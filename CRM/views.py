@@ -212,7 +212,7 @@ def b2b_lead_detail(request, pk):
 @user_passes_test(is_superuser)
 def company_list(request):
     """
-    List all companies.
+    List all companies with filtering, search, and sorting.
     """
     companies = Company.objects.select_related('email_template', 'company_sector').all()
     
@@ -221,9 +221,35 @@ def company_list(request):
     if search_query:
         companies = companies.filter(company_name__icontains=search_query)
     
+    # Filter by status
+    status_filter = request.GET.get('status', '')
+    if status_filter:
+        companies = companies.filter(status=status_filter)
+    
+    # Filter by email_status
+    email_status_filter = request.GET.get('email_status', '')
+    if email_status_filter:
+        companies = companies.filter(email_status=email_status_filter)
+    
+    # Calculate statistics
+    total_companies = Company.objects.count()
+    customer_count = Company.objects.filter(status='Customer').count()
+    prospect_count = Company.objects.filter(status='Prospect').count()
+    rejected_followup_count = Company.objects.filter(status='Rejected but follow up').count()
+    no_response_count = Company.objects.filter(status='No response').count()
+    rejected_count = Company.objects.filter(status='Rejected').count()
+    
     context = {
         'companies': companies,
         'search_query': search_query,
+        'status_filter': status_filter,
+        'email_status_filter': email_status_filter,
+        'total_companies': total_companies,
+        'customer_count': customer_count,
+        'prospect_count': prospect_count,
+        'rejected_followup_count': rejected_followup_count,
+        'no_response_count': no_response_count,
+        'rejected_count': rejected_count,
         'title': 'Companies',
     }
     return render(request, 'CRM/b2b/company_list.html', context)

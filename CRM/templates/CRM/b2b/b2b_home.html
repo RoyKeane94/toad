@@ -178,9 +178,13 @@
                     <thead class="bg-[var(--grid-header-bg)]">
                         <tr>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Company Name</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Status</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Email Status</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Sector</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Contact Email</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">View Count</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Created</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Updated</th>
                             <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">Actions</th>
                         </tr>
                     </thead>
@@ -189,6 +193,42 @@
                         <tr class="hover:bg-[var(--bg-secondary)]">
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[var(--text-primary)]">
                                 <a href="{% url 'crm:company_detail' company.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ company.company_name }}</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-primary)]">
+                                {% if company.status == 'Customer' %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        {{ company.status }}
+                                    </span>
+                                {% elif company.status == 'Prospect' %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        {{ company.status }}
+                                    </span>
+                                {% elif company.status == 'Rejected but follow up' %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                                        {{ company.status }}
+                                    </span>
+                                {% elif company.status == 'No response' %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                        No Response
+                                    </span>
+                                {% elif company.status == 'Rejected' %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                        {{ company.status }}
+                                    </span>
+                                {% else %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                        {{ company.status|default:"—" }}
+                                    </span>
+                                {% endif %}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-primary)]">
+                                {% if company.email_status %}
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                        {{ company.email_status }}
+                                    </span>
+                                {% else %}
+                                    <span class="text-[var(--text-secondary)]">—</span>
+                                {% endif %}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">
                                 {% if company.company_sector %}
@@ -204,7 +244,13 @@
                                 <span class="text-gray-400">—</span>
                                 {% endif %}
                             </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-primary)]">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    {{ company.template_view_count|default:0 }}
+                                </span>
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ company.created_at|date:"M d, Y" }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-[var(--text-secondary)]">{{ company.updated_at|date:"M d, Y \a\t g:i A" }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 <div class="flex items-center space-x-2">
                                     <a href="{% url 'crm:company_detail' company.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--primary-action-bg)] bg-blue-50 rounded-md hover:bg-blue-100 transition-colors">

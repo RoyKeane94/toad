@@ -76,6 +76,7 @@ class Lead(models.Model):
     lead_focus = models.ForeignKey(LeadFocus, on_delete=models.CASCADE, null=True, blank=True)
     contact_method = models.ForeignKey(ContactMethod, on_delete=models.CASCADE, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         if self.lead_type == 'society' and self.society_university:
@@ -126,7 +127,25 @@ class CompanySector(models.Model):
         return self.name
 
 class Company(models.Model):
+
+    status_choices = [
+        ('Customer', 'Customer'),
+        ('Prospect', 'Prospect'),
+        ('Rejected but follow up', 'Rejected but follow up'),
+        ('No response', 'No response'),
+        ('Rejected', 'Rejected'),
+    ]
+
+    email_status_choices = [
+        ('Initial', 'Initial'),
+        ('Initial Follow Up', 'Initial Follow Up'),
+        ('Secondary Follow Up', 'Secondary Follow Up'),
+        ('Tertiary Follow Up', 'Tertiary Follow Up'),
+    ]
+    
     company_name = models.CharField(max_length=200)
+    status = models.CharField(choices=status_choices, default='Prospect')
+    email_status = models.CharField(choices=email_status_choices, null=True, blank=True)
     company_sector = models.ForeignKey(CompanySector, on_delete=models.CASCADE, related_name='companies', null=True, blank=True, help_text="The company sector this company is for")
     contact_person = models.CharField(max_length=100, blank=True)
     contact_email = models.EmailField(blank=True)

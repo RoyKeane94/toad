@@ -45,6 +45,36 @@
                     {% endif %}
                 </div>
 
+                <!-- Status Field -->
+                <div>
+                    <label for="{{ form.status.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Status *
+                    </label>
+                    {{ form.status }}
+                    {% if form.status.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.status.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Email Status Field -->
+                <div>
+                    <label for="{{ form.email_status.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Email Status
+                    </label>
+                    {{ form.email_status }}
+                    {% if form.email_status.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.email_status.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
                 <!-- Company Sector Field -->
                 <div>
                     <label for="{{ form.company_sector.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">

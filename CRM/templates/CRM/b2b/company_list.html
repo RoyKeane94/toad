@@ -20,16 +20,98 @@
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                <p class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-1">Total</p>
+                <p class="text-2xl font-bold text-[var(--text-primary)]">{{ total_companies }}</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                <p class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-1">Customers</p>
+                <p class="text-2xl font-bold text-green-600">{{ customer_count }}</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                <p class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-1">Prospects</p>
+                <p class="text-2xl font-bold text-blue-600">{{ prospect_count }}</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                <p class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-1">Rejected Follow Up</p>
+                <p class="text-2xl font-bold text-orange-600">{{ rejected_followup_count }}</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                <p class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-1">No Response</p>
+                <p class="text-2xl font-bold text-yellow-600">{{ no_response_count }}</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
+                <p class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide mb-1">Rejected</p>
+                <p class="text-2xl font-bold text-red-600">{{ rejected_count }}</p>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
+            <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Search & Filter</h2>
+            <form method="get" class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div>
+                    <label for="search" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Search</label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-[var(--text-secondary)] text-sm"></i>
+                        </div>
+                        <input type="text" name="search" id="search" value="{{ search_query }}" 
+                               class="w-full pl-10 pr-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors"
+                               placeholder="Search by name...">
+                    </div>
+                </div>
+                
+                <div>
+                    <label for="status" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Status</label>
+                    <select name="status" id="status" 
+                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
+                        <option value="">All Statuses</option>
+                        <option value="Customer" {% if status_filter == 'Customer' %}selected{% endif %}>Customer</option>
+                        <option value="Prospect" {% if status_filter == 'Prospect' %}selected{% endif %}>Prospect</option>
+                        <option value="Rejected but follow up" {% if status_filter == 'Rejected but follow up' %}selected{% endif %}>Rejected but follow up</option>
+                        <option value="No response" {% if status_filter == 'No response' %}selected{% endif %}>No Response</option>
+                        <option value="Rejected" {% if status_filter == 'Rejected' %}selected{% endif %}>Rejected</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label for="email_status" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Email Status</label>
+                    <select name="email_status" id="email_status" 
+                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
+                        <option value="">All Email Statuses</option>
+                        <option value="Initial" {% if email_status_filter == 'Initial' %}selected{% endif %}>Initial</option>
+                        <option value="Initial Follow Up" {% if email_status_filter == 'Initial Follow Up' %}selected{% endif %}>Initial Follow Up</option>
+                        <option value="Secondary Follow Up" {% if email_status_filter == 'Secondary Follow Up' %}selected{% endif %}>Secondary Follow Up</option>
+                        <option value="Tertiary Follow Up" {% if email_status_filter == 'Tertiary Follow Up' %}selected{% endif %}>Tertiary Follow Up</option>
+                    </select>
+                </div>
+                
+                <div class="flex items-end">
+                    <button type="submit" class="w-full px-4 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <i class="fas fa-filter mr-2"></i>
+                        Apply Filters
+                    </button>
+                </div>
+            </form>
+        </div>
+
         {% if companies %}
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)]">
             <table class="min-w-full divide-y divide-[var(--border-color)]">
                 <thead class="bg-[var(--grid-header-bg)]">
                     <tr>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Name</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Contact Email</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Template</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Status</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Outreach</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">View Count</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Created</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Updated</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Actions</th>
                     </tr>
                 </thead>
@@ -38,6 +120,42 @@
                     <tr class="hover:bg-[var(--bg-secondary)]">
                         <td class="px-6 py-4 text-sm font-medium text-[var(--text-primary)]">
                             <a href="{% url 'crm:company_detail' company.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ company.company_name }}</a>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-primary)]">
+                            {% if company.status == 'Customer' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    {{ company.status }}
+                                </span>
+                            {% elif company.status == 'Prospect' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    {{ company.status }}
+                                </span>
+                            {% elif company.status == 'Rejected but follow up' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                                    {{ company.status }}
+                                </span>
+                            {% elif company.status == 'No response' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                                    No Response
+                                </span>
+                            {% elif company.status == 'Rejected' %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                                    {{ company.status }}
+                                </span>
+                            {% else %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                                    {{ company.status|default:"—" }}
+                                </span>
+                            {% endif %}
+                        </td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-primary)]">
+                            {% if company.email_status %}
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                                    {{ company.email_status }}
+                                </span>
+                            {% else %}
+                                <span class="text-[var(--text-secondary)]">—</span>
+                            {% endif %}
                         </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
                             {% if company.contact_email %}
@@ -73,7 +191,13 @@
                                 {% endif %}
                             </div>
                         </td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-primary)]">
+                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                {{ company.template_view_count|default:0 }}
+                            </span>
+                        </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.created_at|date:"M d, Y" }}</td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.updated_at|date:"M d, Y \a\t g:i A" }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex items-center space-x-2">
                                 <a href="{% url 'crm:company_detail' company.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--primary-action-bg)] bg-blue-50 rounded-md hover:bg-blue-100 transition-colors">
@@ -113,4 +237,3 @@
     </div>
 </div>
 {% endblock %}
-

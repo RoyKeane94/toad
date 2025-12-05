@@ -187,6 +187,8 @@ class CompanyForm(forms.ModelForm):
         model = Company
         fields = [
             'company_name',
+            'status',
+            'email_status',
             'company_sector',
             'contact_person',
             'contact_email',
@@ -200,6 +202,8 @@ class CompanyForm(forms.ModelForm):
         ]
         widgets = {
             'company_name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter company name'}),
+            'status': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
+            'email_status': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
             'company_sector': forms.Select(attrs={'class': BASE_INPUT_CLASS}),
             'contact_person': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter contact person name'}),
             'contact_email': forms.EmailInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'name@example.com'}),
@@ -220,6 +224,8 @@ class CompanyForm(forms.ModelForm):
         self.fields['company_sector'].required = False
         self.fields['company_sector'].empty_label = "Select a sector (optional)"
         self.fields['company_sector'].queryset = CompanySector.objects.order_by('name')
+        self.fields['email_status'].required = False
+        self.fields['email_status'].empty_label = "Select email status (optional)"
     
     def save(self, commit=True):
         instance = super().save(commit=False)
