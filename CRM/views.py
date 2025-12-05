@@ -39,173 +39,7 @@ def crm_home(request):
         'total_templates': total_templates,
         'recent_companies': recent_companies,
     }
-    return render(request, 'CRM/b2b/b2b_home.html', context)
-
-# ==================== B2B CRM VIEWS ====================
-
-@login_required
-@user_passes_test(is_superuser)
-def b2b_lead_list(request):
-    """
-    List all B2B leads with filtering, search, and sorting.
-    """
-    leads = Lead.objects.filter(lead_type='b2b').select_related('lead_focus', 'contact_method', 'company')
-    
-    # Search functionality
-    search_query = request.GET.get('search', '')
-    if search_query:
-        leads = leads.filter(name__icontains=search_query)
-    
-    # Filter by focus area
-    focus_filter = request.GET.get('focus', '')
-    if focus_filter:
-        leads = leads.filter(lead_focus__name=focus_filter)
-    
-    # Filter by contact method
-    contact_filter = request.GET.get('contact', '')
-    if contact_filter:
-        leads = leads.filter(contact_method__name=contact_filter)
-    
-    # Sorting functionality
-    sort = request.GET.get('sort', 'created')
-    if sort == 'customer':
-        leads = leads.order_by('-toad_customer', 'toad_customer_date')
-    elif sort == 'initial_message':
-        leads = leads.order_by('-initial_message_sent', 'initial_message_sent_date')
-    elif sort == 'no_response':
-        leads = leads.order_by('-no_response', 'no_response_date')
-    elif sort == 'created':
-        leads = leads.order_by('-created_at')
-    else:
-        leads = leads.order_by('-created_at')
-    
-    # Get filter options
-    focus_areas = LeadFocus.objects.all()
-    contact_methods = ContactMethod.objects.all()
-    
-    # Calculate statistics
-    total_leads = leads.count()
-    customer_count = Lead.objects.filter(lead_type='b2b', toad_customer=True).count()
-    no_response_count = Lead.objects.filter(lead_type='b2b', no_response=True).count()
-    
-    context = {
-        'leads': leads,
-        'focus_areas': focus_areas,
-        'contact_methods': contact_methods,
-        'search_query': search_query,
-        'focus_filter': focus_filter,
-        'contact_filter': contact_filter,
-        'sort': sort,
-        'total_leads': total_leads,
-        'customer_count': customer_count,
-        'no_response_count': no_response_count,
-        'crm_type': 'b2b',
-    }
-    return render(request, 'CRM/b2b/b2b_lead_list.html', context)
-
-@login_required
-@user_passes_test(is_superuser)
-def b2b_lead_create(request):
-    """
-    Create a new B2B lead.
-    """
-    if request.method == 'POST':
-        form = B2BLeadForm(request.POST)
-        if form.is_valid():
-            lead = form.save()
-            messages.success(request, 'B2B lead created successfully!')
-            
-            # Generate personalized template URL if company has a sector
-            template_url = lead.get_personalized_template_url(request)
-            if template_url:
-                messages.info(request, f'Personalized template link: <a href="{template_url}" target="_blank" class="underline">{template_url}</a>')
-            
-            return redirect('crm:b2b_lead_detail', pk=lead.pk)
-    else:
-        form = B2BLeadForm()
-    
-    context = {
-        'form': form,
-        'title': 'Create New B2B Lead',
-        'crm_type': 'b2b',
-    }
-    return render(request, 'CRM/b2b/b2b_lead_form.html', context)
-
-@login_required
-@user_passes_test(is_superuser)
-def b2b_lead_update(request, pk):
-    """
-    Update an existing B2B lead.
-    """
-    lead = get_object_or_404(Lead.objects.select_related('company', 'lead_focus', 'contact_method'), pk=pk, lead_type='b2b')
-    
-    if request.method == 'POST':
-        form = B2BLeadForm(request.POST, instance=lead)
-        if form.is_valid():
-            lead = form.save()
-            messages.success(request, 'B2B lead updated successfully!')
-            
-            # Generate personalized template URL if company has a sector
-            template_url = lead.get_personalized_template_url(request)
-            if template_url:
-                messages.info(request, f'Personalized template link: <a href="{template_url}" target="_blank" class="underline">{template_url}</a>')
-            
-            return redirect('crm:b2b_lead_detail', pk=lead.pk)
-    else:
-        form = B2BLeadForm(instance=lead)
-    
-    context = {
-        'form': form,
-        'lead': lead,
-        'title': 'Update B2B Lead',
-        'crm_type': 'b2b',
-    }
-    return render(request, 'CRM/b2b/b2b_lead_form.html', context)
-
-@login_required
-@user_passes_test(is_superuser)
-def b2b_lead_delete(request, pk):
-    """
-    Delete a B2B lead.
-    """
-    lead = get_object_or_404(Lead.objects.select_related('company'), pk=pk, lead_type='b2b')
-    
-    if request.method == 'POST':
-        lead.delete()
-        messages.success(request, 'B2B lead deleted successfully!')
-        return redirect('crm:b2b_lead_list')
-    
-    context = {
-        'lead': lead,
-        'title': 'Delete B2B Lead',
-        'crm_type': 'b2b',
-    }
-    return render(request, 'CRM/b2b/b2b_lead_confirm_delete.html', context)
-
-@login_required
-@user_passes_test(is_superuser)
-def b2b_lead_detail(request, pk):
-    """
-    View B2B lead details.
-    """
-    lead = get_object_or_404(Lead.objects.select_related('company', 'company__company_sector'), pk=pk, lead_type='b2b')
-    
-    # Get personalized template URL if available
-    template_url = lead.get_personalized_template_url(request)
-    
-    # Get company-specific template view count if available
-    template_view_count = None
-    if lead.company:
-        template_view_count = lead.company.template_view_count
-    
-    context = {
-        'lead': lead,
-        'template_url': template_url,
-        'template_view_count': template_view_count,
-        'title': f'B2B Lead: {lead.name}',
-        'crm_type': 'b2b',
-    }
-    return render(request, 'CRM/b2b/b2b_lead_detail.html', context)
+    return render(request, 'CRM/b2b/company_home.html', context)
 
 # Company Views
 @login_required
@@ -389,7 +223,7 @@ def email_template_create(request):
         if form.is_valid():
             template = form.save()
             messages.success(request, f'Email template "{template.name}" created successfully!')
-            return redirect('crm:b2b_lead_create')
+            return redirect('crm:company_list')
     else:
         form = EmailTemplateForm()
 
@@ -644,49 +478,56 @@ def society_lead_detail(request, pk):
     }
     return render(request, 'CRM/society/society_lead_detail.html', context)
 
-# ==================== LEGACY/OLD VIEWS (redirect to B2B for backward compatibility) ====================
+# ==================== LEGACY/OLD VIEWS (redirect to company views for backward compatibility) ====================
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_list(request):
     """
-    Legacy view - redirects to B2B lead list.
+    Legacy view - redirects to company list.
     """
-    return redirect('crm:b2b_lead_list')
+    return redirect('crm:company_list')
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_create(request):
     """
-    Legacy view - redirects to B2B lead create.
+    Legacy view - redirects to company create.
     """
-    return redirect('crm:b2b_lead_create')
+    return redirect('crm:company_create')
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_update(request, pk):
     """
-    Legacy view - redirects to B2B lead update.
+    Legacy view - redirects to company update if lead has company, otherwise company list.
     """
-    return redirect('crm:b2b_lead_update', pk=pk)
+    lead = get_object_or_404(Lead, pk=pk)
+    if lead.lead_type == 'b2b' and lead.company:
+        return redirect('crm:company_update', pk=lead.company.pk)
+    else:
+        return redirect('crm:company_list')
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_delete(request, pk):
     """
-    Legacy view - redirects to B2B lead delete.
+    Legacy view - redirects to company list.
     """
-    return redirect('crm:b2b_lead_delete', pk=pk)
+    return redirect('crm:company_list')
 
 @login_required
 @user_passes_test(is_superuser)
 def lead_detail(request, pk):
     """
-    Legacy view - redirects to appropriate lead detail based on lead type.
+    Legacy view - redirects to appropriate view based on lead type.
     """
     lead = get_object_or_404(Lead, pk=pk)
     if lead.lead_type == 'b2b':
-        return redirect('crm:b2b_lead_detail', pk=pk)
+        if lead.company:
+            return redirect('crm:company_detail', pk=lead.company.pk)
+        else:
+            return redirect('crm:company_list')
     else:
         return redirect('crm:society_lead_detail', pk=pk)
 

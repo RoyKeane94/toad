@@ -5,7 +5,7 @@
 {% block content %}
 <div class="min-h-screen bg-[var(--bg-primary)]">
     <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-full px-4 sm:px-6 lg:px-8">
             <div class="flex items-center space-x-4 py-6">
                 <div>
                     <h1 class="text-3xl font-bold text-[var(--text-primary)]">Companies</h1>
@@ -19,7 +19,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <!-- Statistics Cards -->
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-4">
@@ -106,8 +106,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Name</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Status</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Contact Email</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Template</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Company Sector</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Outreach</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">View Count</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Created</th>
@@ -158,16 +157,11 @@
                             {% endif %}
                         </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
-                            {% if company.contact_email %}
-                            <a href="mailto:{{ company.contact_email }}" class="text-[var(--primary-action-bg)] hover:underline">
-                                {{ company.contact_email }}
-                            </a>
-                            {% else %}-{% endif %}
-                        </td>
-                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
-                            {% if company.email_template %}
-                                {{ company.email_template.name }}
-                            {% else %}-{% endif %}
+                            {% if company.company_sector %}
+                                {{ company.company_sector.name }}
+                            {% else %}
+                                <span class="text-[var(--text-secondary)] italic">—</span>
+                            {% endif %}
                         </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">
                             <div class="flex items-center space-x-2">
@@ -196,8 +190,8 @@
                                 {{ company.template_view_count|default:0 }}
                             </span>
                         </td>
-                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.created_at|date:"M d, Y" }}</td>
-                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.updated_at|date:"M d, Y \a\t g:i A" }}</td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.created_at|date:"jS M y" }}</td>
+                        <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.updated_at|date:"jS M y" }}</td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                             <div class="flex items-center space-x-2">
                                 <a href="{% url 'crm:company_detail' company.pk %}" class="inline-flex items-center px-2.5 py-1.5 text-xs font-medium text-[var(--primary-action-bg)] bg-blue-50 rounded-md hover:bg-blue-100 transition-colors">
