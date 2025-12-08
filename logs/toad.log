@@ -36567,3 +36567,303 @@ INFO 2025-12-08 20:05:36,566 basehttp 62980 6162919424 "GET /lilypad/b2b/compani
 INFO 2025-12-08 20:05:41,097 basehttp 62980 6162919424 "POST /lilypad/b2b/companies/1/update/ HTTP/1.1" 302 0
 INFO 2025-12-08 20:05:41,104 basehttp 62980 6162919424 "GET /lilypad/b2b/companies/1/ HTTP/1.1" 200 4146
 INFO 2025-12-08 20:05:42,919 basehttp 62980 6162919424 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 4049
+INFO 2025-12-08 20:12:59,113 autoreload 64290 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-08 20:13:00,658 basehttp 64290 6124941312 "GET /grids/266/ HTTP/1.1" 200 26040
+INFO 2025-12-08 20:13:00,675 basehttp 64290 6124941312 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-12-08 20:17:49,708 basehttp 64290 6124941312 "POST /grids/266/tasks/create/922/1027/ HTTP/1.1" 200 1454
+INFO 2025-12-08 20:18:26,324 basehttp 64290 6124941312 "POST /grids/266/tasks/create/923/1026/ HTTP/1.1" 200 1469
+INFO 2025-12-08 20:18:34,418 basehttp 64290 6124941312 "POST /tasks/2808/edit/ HTTP/1.1" 200 117
+INFO 2025-12-08 20:18:37,742 basehttp 64290 6124941312 "POST /tasks/2808/edit/ HTTP/1.1" 200 116
+INFO 2025-12-08 20:18:55,568 project_views_functions 64290 6124941312 User None deleted task: "Model local delivery channel" from project: Finance & Reporting
+INFO 2025-12-08 20:18:55,573 basehttp 64290 6124941312 "POST /tasks/2794/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:19:04,372 basehttp 64290 6124941312 "GET /grids/create/ HTTP/1.1" 200 2886
+INFO 2025-12-08 20:19:10,478 project_views_functions 64290 6124941312 User None created project: Service Lines
+INFO 2025-12-08 20:19:10,479 basehttp 64290 6124941312 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-08 20:19:10,501 basehttp 64290 6124941312 "GET /grids/268/ HTTP/1.1" 200 21638
+INFO 2025-12-08 20:19:16,581 basehttp 64290 6124941312 "POST /grids/268/edit/ HTTP/1.1" 200 86
+INFO 2025-12-08 20:19:33,295 basehttp 64290 6124941312 "GET /grids/264/ HTTP/1.1" 200 25489
+INFO 2025-12-08 20:19:49,801 basehttp 64290 6124941312 "POST /grids/264/edit/ HTTP/1.1" 200 98
+INFO 2025-12-08 20:20:00,737 basehttp 64290 6124941312 "GET /grids/ HTTP/1.1" 200 12946
+INFO 2025-12-08 20:20:10,168 project_views_functions 64290 6124941312 User None created project group: Service Lines
+INFO 2025-12-08 20:20:10,170 basehttp 64290 6124941312 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-12-08 20:20:10,187 basehttp 64290 6124941312 "GET /grids/ HTTP/1.1" 200 12927
+INFO 2025-12-08 20:20:12,434 basehttp 64290 6124941312 "GET /grids/ HTTP/1.1" 200 13002
+INFO 2025-12-08 20:20:18,793 basehttp 64290 6124941312 "GET /grids/266/ HTTP/1.1" 200 26201
+INFO 2025-12-08 20:20:31,199 project_views_functions 64290 6124941312 User None deleted task: "Finalise hiring budget for Q4" from project: Finance & Reporting
+INFO 2025-12-08 20:20:31,204 basehttp 64290 6124941312 "POST /tasks/2808/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:20:32,239 basehttp 64290 6124941312 "GET /tasks/2787/notes/ HTTP/1.1" 200 168
+INFO 2025-12-08 20:20:46,336 basehttp 64290 6124941312 "DELETE /tasks/2787/note/ HTTP/1.1" 200 78
+INFO 2025-12-08 20:20:46,613 basehttp 64290 6124941312 "GET /grids/266/ HTTP/1.1" 200 26087
+INFO 2025-12-08 20:21:12,890 project_views_functions 64290 6124941312 User None deleted task: "Review raw material cost assumptions" from project: Finance & Reporting
+INFO 2025-12-08 20:21:12,895 basehttp 64290 6124941312 "POST /tasks/2788/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:21:33,332 basehttp 64290 6124941312 "POST /tasks/2791/edit/ HTTP/1.1" 200 120
+INFO 2025-12-08 20:21:40,902 basehttp 64290 6124941312 "POST /grids/266/tasks/create/923/1026/ HTTP/1.1" 200 1493
+INFO 2025-12-08 20:22:12,111 basehttp 64290 6124941312 "POST /grids/266/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 20:22:36,031 basehttp 64290 6124941312 "POST /tasks/2775/edit/ HTTP/1.1" 200 120
+INFO 2025-12-08 20:22:50,004 basehttp 64290 6124941312 "POST /tasks/2807/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-08 20:23:24,811 basehttp 64290 6124941312 "POST /grids/266/tasks/create/922/1023/ HTTP/1.1" 200 1466
+INFO 2025-12-08 20:23:34,269 project_views_functions 64290 6124941312 User None deleted task: "Schedule call with auditor" from project: Finance & Reporting
+INFO 2025-12-08 20:23:34,272 basehttp 64290 6124941312 "POST /tasks/2813/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:25:40,496 project_views_functions 64290 6124941312 User None deleted task: "WIP run through with department leads" from project: Finance & Reporting
+INFO 2025-12-08 20:25:40,503 basehttp 64290 6124941312 "POST /tasks/2812/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:26:09,302 basehttp 64290 6124941312 "POST /grids/266/tasks/create/923/1026/ HTTP/1.1" 200 1551
+INFO 2025-12-08 20:26:14,533 basehttp 64290 6124941312 "POST /grids/266/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 20:26:17,101 basehttp 64290 6124941312 "POST /tasks/2795/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:26:28,611 basehttp 64290 6124941312 "POST /tasks/2792/note/ HTTP/1.1" 200 198
+INFO 2025-12-08 20:26:28,620 basehttp 64290 6124941312 "GET /tasks/2792/notes/ HTTP/1.1" 200 179
+INFO 2025-12-08 20:26:44,962 project_views_functions 64290 6124941312 User None deleted task: "Run through WIP for Q4 with department leads" from project: Finance & Reporting
+INFO 2025-12-08 20:26:44,970 basehttp 64290 6124941312 "POST /tasks/2814/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:26:46,853 basehttp 64290 6124941312 "GET /tasks/2792/notes/ HTTP/1.1" 200 179
+INFO 2025-12-08 20:26:48,515 basehttp 64290 6124941312 "DELETE /tasks/2792/note/ HTTP/1.1" 200 78
+INFO 2025-12-08 20:26:48,806 basehttp 64290 6124941312 "GET /grids/266/ HTTP/1.1" 200 25938
+INFO 2025-12-08 20:26:52,114 basehttp 64290 6124941312 "POST /grids/266/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 20:27:22,949 basehttp 64290 6124941312 "POST /grids/266/tasks/create/923/1026/ HTTP/1.1" 200 1493
+INFO 2025-12-08 20:27:28,212 basehttp 64290 6124941312 "POST /grids/266/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 20:27:43,330 basehttp 64290 6124941312 "POST /tasks/2792/note/ HTTP/1.1" 200 212
+INFO 2025-12-08 20:27:43,344 basehttp 64290 6124941312 "GET /tasks/2792/notes/ HTTP/1.1" 200 187
+INFO 2025-12-08 20:27:46,388 basehttp 64290 6124941312 "POST /tasks/2807/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:30:19,781 basehttp 64290 6124941312 "GET /grids/264/ HTTP/1.1" 200 25511
+INFO 2025-12-08 20:30:38,371 basehttp 64290 6124941312 "POST /grids/264/columns/1015/edit/ HTTP/1.1" 200 101
+INFO 2025-12-08 20:30:45,435 basehttp 64290 6124941312 "GET /grids/267/ HTTP/1.1" 200 21687
+INFO 2025-12-08 20:30:47,034 basehttp 64290 6124941312 "GET /grids/266/ HTTP/1.1" 200 26227
+INFO 2025-12-08 20:30:48,616 basehttp 64290 6124941312 "GET /grids/264/ HTTP/1.1" 200 25444
+INFO 2025-12-08 20:32:37,636 basehttp 64290 6124941312 "POST /grids/264/columns/1018/edit/ HTTP/1.1" 200 111
+INFO 2025-12-08 20:32:58,928 basehttp 64290 6124941312 "POST /grids/264/columns/1019/edit/ HTTP/1.1" 200 131
+INFO 2025-12-08 20:33:02,524 project_views_functions 64290 6124941312 User None deleted task: "Approve shift swaps/requests" from project: People Management
+INFO 2025-12-08 20:33:02,529 basehttp 64290 6124941312 "POST /tasks/2720/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:33:04,553 project_views_functions 64290 6124941312 User None deleted task: "Check rota coverage for the next week" from project: People Management
+INFO 2025-12-08 20:33:04,558 basehttp 64290 6124941312 "POST /tasks/2769/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:33:06,851 project_views_functions 64290 6124941312 User None deleted task: "Inspect boilers/HVAC alerts" from project: People Management
+INFO 2025-12-08 20:33:06,857 basehttp 64290 6124941312 "POST /tasks/2722/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:33:08,691 project_views_functions 64290 6124941312 User None deleted task: "Do weekly safety checks" from project: People Management
+INFO 2025-12-08 20:33:08,695 basehttp 64290 6124941312 "POST /tasks/2731/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:33:11,101 project_views_functions 64290 6124941312 User None deleted task: "Approve invoices" from project: People Management
+INFO 2025-12-08 20:33:11,105 basehttp 64290 6124941312 "POST /tasks/2724/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:33:14,706 project_views_functions 64290 6124941312 User None deleted task: "Review daily numbers" from project: People Management
+INFO 2025-12-08 20:33:14,710 basehttp 64290 6124941312 "POST /tasks/2762/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:33:15,842 basehttp 64290 6124941312 "POST /tasks/2699/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:16,287 basehttp 64290 6124941312 "POST /tasks/2763/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:17,309 basehttp 64290 6124941312 "POST /tasks/2764/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:18,083 basehttp 64290 6124941312 "POST /tasks/2700/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:20,660 basehttp 64290 6124941312 "POST /tasks/2732/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:21,506 basehttp 64290 6124941312 "POST /tasks/2735/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:22,696 basehttp 64290 6124941312 "POST /tasks/2736/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:24,351 basehttp 64290 6124941312 "POST /tasks/2765/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:25,686 basehttp 64290 6124941312 "POST /tasks/2727/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:26,171 basehttp 64290 6124941312 "POST /tasks/2738/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:27,005 basehttp 64290 6124941312 "POST /tasks/2737/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:27,989 basehttp 64290 6124941312 "POST /tasks/2754/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:33:30,235 basehttp 64290 6124941312 "POST /grids/264/clear-completed/ HTTP/1.1" 200 72
+INFO 2025-12-08 20:33:31,782 basehttp 64290 6124941312 "GET /grids/264/ HTTP/1.1" 200 20961
+INFO 2025-12-08 20:33:45,662 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1015/ HTTP/1.1" 200 1491
+INFO 2025-12-08 20:33:55,382 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1018/ HTTP/1.1" 200 1499
+INFO 2025-12-08 20:34:14,594 basehttp 64290 6124941312 "POST /grids/264/tasks/create/916/1015/ HTTP/1.1" 200 1472
+INFO 2025-12-08 20:34:50,945 basehttp 64290 6124941312 "GET / HTTP/1.1" 200 10446
+INFO 2025-12-08 20:34:52,469 basehttp 64290 6124941312 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-08 20:34:52,511 basehttp 64290 6141767680 "GET /admin/ HTTP/1.1" 200 3235
+INFO 2025-12-08 20:34:52,531 basehttp 64290 6124941312 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-12-08 20:34:52,531 basehttp 64290 6141767680 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-12-08 20:34:52,566 basehttp 64290 6141767680 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-12-08 20:34:52,567 basehttp 64290 6141767680 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-12-08 20:34:57,362 basehttp 64290 6141767680 "GET /admin/pages/project/ HTTP/1.1" 200 3587
+INFO 2025-12-08 20:34:57,380 basehttp 64290 6141767680 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-12-08 20:34:57,380 basehttp 64290 6175420416 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-08 20:34:57,382 basehttp 64290 6192246784 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-08 20:34:57,386 basehttp 64290 6209073152 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-08 20:34:57,390 basehttp 64290 6124941312 "GET /admin/jsi18n/ HTTP/1.1" 200 980
+INFO 2025-12-08 20:34:57,390 basehttp 64290 6192246784 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-08 20:34:57,393 basehttp 64290 6158594048 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-08 20:34:57,394 basehttp 64290 6141767680 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-08 20:35:00,577 basehttp 64290 6141767680 "GET /admin/pages/project/264/change/ HTTP/1.1" 200 4280
+INFO 2025-12-08 20:35:00,603 basehttp 64290 6141767680 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-12-08 20:35:00,603 basehttp 64290 6192246784 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-08 20:35:00,605 basehttp 64290 6158594048 "GET /admin/jsi18n/ HTTP/1.1" 200 1004
+INFO 2025-12-08 20:35:00,606 basehttp 64290 6141767680 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-12-08 20:35:00,611 basehttp 64290 6141767680 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-08 20:35:10,770 basehttp 64290 6141767680 "POST /admin/pages/project/264/change/ HTTP/1.1" 302 0
+INFO 2025-12-08 20:35:10,782 basehttp 64290 6141767680 "GET /admin/pages/project/ HTTP/1.1" 200 3627
+INFO 2025-12-08 20:35:10,797 basehttp 64290 6141767680 "GET /admin/jsi18n/ HTTP/1.1" 200 1041
+INFO 2025-12-08 20:35:14,359 basehttp 64290 6141767680 "GET / HTTP/1.1" 200 10378
+INFO 2025-12-08 20:35:16,995 basehttp 64290 6141767680 "GET /grids/ HTTP/1.1" 200 13003
+INFO 2025-12-08 20:35:19,909 basehttp 64290 6141767680 "GET /grids/264/ HTTP/1.1" 200 23768
+INFO 2025-12-08 20:35:41,319 basehttp 64290 6141767680 "POST /grids/264/columns/1015/edit/ HTTP/1.1" 200 135
+INFO 2025-12-08 20:35:49,500 basehttp 64290 6141767680 "POST /grids/264/columns/1018/edit/ HTTP/1.1" 200 113
+INFO 2025-12-08 20:35:58,901 basehttp 64290 6141767680 "POST /grids/264/columns/1019/edit/ HTTP/1.1" 200 93
+INFO 2025-12-08 20:36:10,662 basehttp 64290 6124941312 "POST /tasks/2816/edit/ HTTP/1.1" 200 127
+INFO 2025-12-08 20:36:25,390 basehttp 64290 6124941312 "POST /tasks/2818/edit/ HTTP/1.1" 200 142
+INFO 2025-12-08 20:36:35,331 basehttp 64290 6124941312 "POST /grids/264/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 20:36:57,704 basehttp 64290 6124941312 "POST /tasks/2817/edit/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:37:07,868 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1523
+INFO 2025-12-08 20:37:27,515 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1553
+INFO 2025-12-08 20:37:35,708 basehttp 64290 6124941312 "POST /tasks/2820/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-08 20:37:46,196 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1018/ HTTP/1.1" 200 1587
+INFO 2025-12-08 20:37:54,897 basehttp 64290 6124941312 "POST /grids/264/tasks/create/916/1015/ HTTP/1.1" 200 1566
+INFO 2025-12-08 20:38:06,236 basehttp 64290 6124941312 "POST /grids/264/tasks/create/916/1018/ HTTP/1.1" 200 1579
+INFO 2025-12-08 20:38:12,544 basehttp 64290 6124941312 "POST /grids/264/tasks/create/916/1018/ HTTP/1.1" 200 1569
+INFO 2025-12-08 20:38:20,945 basehttp 64290 6124941312 "POST /grids/264/tasks/create/916/1019/ HTTP/1.1" 200 1577
+INFO 2025-12-08 20:38:35,247 basehttp 64290 6124941312 "POST /grids/264/tasks/create/916/1019/ HTTP/1.1" 200 1526
+INFO 2025-12-08 20:38:45,306 basehttp 64290 6124941312 "POST /grids/264/tasks/create/917/1015/ HTTP/1.1" 200 1580
+INFO 2025-12-08 20:39:01,318 basehttp 64290 6124941312 "POST /grids/264/tasks/create/917/1015/ HTTP/1.1" 200 1523
+INFO 2025-12-08 20:39:26,771 basehttp 64290 6124941312 "POST /tasks/2828/note/ HTTP/1.1" 200 216
+INFO 2025-12-08 20:39:26,783 basehttp 64290 6124941312 "GET /tasks/2828/notes/ HTTP/1.1" 200 191
+INFO 2025-12-08 20:39:29,316 project_views_functions 64290 6124941312 User None assigned task: ""Check in on at-risk or escalated clients" to Toad Toad" from project: People Management
+INFO 2025-12-08 20:39:29,317 basehttp 64290 6124941312 "POST /tasks/2816/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:39:31,090 project_views_functions 64290 6124941312 User None assigned task: ""Share agenda for monthly stand up with department heads" to Toad Toad" from project: People Management
+INFO 2025-12-08 20:39:31,091 basehttp 64290 6124941312 "POST /tasks/2818/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:39:33,547 project_views_functions 64290 6124941312 User None assigned task: ""Share agenda for resourcing catch up" to Cecilie Potter" from project: People Management
+INFO 2025-12-08 20:39:33,548 basehttp 64290 6124941312 "POST /tasks/2817/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:39:36,816 project_views_functions 64290 6124941312 User None assigned task: ""Review utilisation vs last month" to Tom Stephenson" from project: People Management
+INFO 2025-12-08 20:39:36,817 basehttp 64290 6124941312 "POST /tasks/2820/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:39:42,015 project_views_functions 64290 6124941312 User None assigned task: ""Review delivery timelines for major audits/accounts" to Cecilie Potter" from project: People Management
+INFO 2025-12-08 20:39:42,016 basehttp 64290 6124941312 "POST /tasks/2822/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:39:44,348 project_views_functions 64290 6124941312 User None assigned task: ""Review hiring pipeline for open roles" to Toad Toad" from project: People Management
+INFO 2025-12-08 20:39:44,349 basehttp 64290 6124941312 "POST /tasks/2823/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:39:48,980 project_views_functions 64290 6124941312 User None assigned task: ""Review marketing + business development activity" to Tom Stephenson" from project: People Management
+INFO 2025-12-08 20:39:48,981 basehttp 64290 6124941312 "POST /tasks/2825/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:39:52,702 project_views_functions 64290 6124941312 User None assigned task: ""Review and refine service offerings" to Cecilie Potter" from project: People Management
+INFO 2025-12-08 20:39:52,702 basehttp 64290 6124941312 "POST /tasks/2828/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:40:03,683 basehttp 64290 6124941312 "POST /grids/264/tasks/create/917/1018/ HTTP/1.1" 200 1519
+INFO 2025-12-08 20:40:10,793 basehttp 64290 6124941312 "POST /grids/264/tasks/create/917/1018/ HTTP/1.1" 200 1559
+INFO 2025-12-08 20:40:24,890 basehttp 64290 6124941312 "POST /tasks/2830/edit/ HTTP/1.1" 200 128
+INFO 2025-12-08 20:40:41,489 basehttp 64290 6124941312 "POST /grids/264/tasks/create/917/1019/ HTTP/1.1" 200 1519
+INFO 2025-12-08 20:41:06,590 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1526
+INFO 2025-12-08 20:41:16,916 basehttp 64290 6124941312 "GET /tasks/2828/notes/ HTTP/1.1" 200 191
+INFO 2025-12-08 20:41:18,651 basehttp 64290 6124941312 "DELETE /tasks/2828/note/ HTTP/1.1" 200 78
+INFO 2025-12-08 20:41:18,929 basehttp 64290 6124941312 "GET /grids/264/ HTTP/1.1" 200 27161
+INFO 2025-12-08 20:41:34,599 project_views_functions 64290 6124941312 User None deleted task: "Acquisition pipeline for investros" from project: People Management
+INFO 2025-12-08 20:41:34,603 basehttp 64290 6124941312 "POST /tasks/2832/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:41:51,546 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1592
+INFO 2025-12-08 20:41:54,214 project_views_functions 64290 6124941312 User None assigned task: ""Discuss acquisition pipeline with investors" to Toad Toad" from project: People Management
+INFO 2025-12-08 20:41:54,215 basehttp 64290 6124941312 "POST /tasks/2833/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:42:03,083 project_views_functions 64290 6124941312 User None assigned task: ""Review and refine service offerings" to Toad Toad" from project: People Management
+INFO 2025-12-08 20:42:03,084 basehttp 64290 6124941312 "POST /tasks/2828/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:42:18,332 project_views_functions 64290 6124941312 User None deleted task: "Discuss acquisition pipeline with investors" from project: People Management
+INFO 2025-12-08 20:42:18,337 basehttp 64290 6124941312 "POST /tasks/2833/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:42:41,240 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1531
+INFO 2025-12-08 20:42:44,137 project_views_functions 64290 6124941312 User None assigned task: ""Discuss M&A pipeline with investors" to Cecilie Potter" from project: People Management
+INFO 2025-12-08 20:42:44,137 basehttp 64290 6124941312 "POST /tasks/2834/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:43:02,393 project_views_functions 64290 6124941312 User None deleted task: "Discuss M&A pipeline with investors" from project: People Management
+INFO 2025-12-08 20:43:02,398 basehttp 64290 6124941312 "POST /tasks/2834/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:43:16,551 basehttp 64290 6124941312 "POST /grids/264/tasks/create/915/1019/ HTTP/1.1" 200 1519
+INFO 2025-12-08 20:43:21,217 project_views_functions 64290 6124941312 User None assigned task: ""Discuss M&A pipeline" to Toad Toad" from project: People Management
+INFO 2025-12-08 20:43:21,218 basehttp 64290 6124941312 "POST /tasks/2835/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:43:24,587 basehttp 64290 6124941312 "POST /tasks/2817/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 20:43:38,425 basehttp 64290 6124941312 "POST /tasks/2828/note/ HTTP/1.1" 200 203
+INFO 2025-12-08 20:43:38,441 basehttp 64290 6124941312 "GET /tasks/2828/notes/ HTTP/1.1" 200 188
+INFO 2025-12-08 20:51:20,536 basehttp 64290 6124941312 "GET /grids/247/ HTTP/1.1" 200 28215
+INFO 2025-12-08 20:51:23,054 basehttp 64290 6124941312 "GET /grids/268/ HTTP/1.1" 200 21638
+INFO 2025-12-08 20:51:52,004 basehttp 64290 6124941312 "POST /grids/268/columns/1029/edit/ HTTP/1.1" 200 127
+INFO 2025-12-08 20:51:54,573 basehttp 64290 6124941312 "GET /grids/268/columns/create/ HTTP/1.1" 200 1065
+INFO 2025-12-08 20:52:04,316 basehttp 64290 6124941312 "POST /grids/268/columns/create/ HTTP/1.1" 204 0
+INFO 2025-12-08 20:52:04,382 basehttp 64290 6141767680 - Broken pipe from ('127.0.0.1', 61396)
+INFO 2025-12-08 20:52:04,382 basehttp 64290 6124941312 "GET /grids/268/ HTTP/1.1" 200 22060
+INFO 2025-12-08 20:52:04,383 basehttp 64290 6124941312 - Broken pipe from ('127.0.0.1', 61395)
+INFO 2025-12-08 20:52:04,384 basehttp 64290 6158594048 "GET /grids/268/ HTTP/1.1" 200 22033
+INFO 2025-12-08 20:52:06,994 basehttp 64290 6158594048 "GET /grids/268/columns/create/ HTTP/1.1" 200 1069
+INFO 2025-12-08 20:52:14,601 basehttp 64290 6158594048 "POST /grids/268/columns/create/ HTTP/1.1" 204 0
+INFO 2025-12-08 20:52:14,660 basehttp 64290 6158594048 - Broken pipe from ('127.0.0.1', 61403)
+INFO 2025-12-08 20:52:14,661 basehttp 64290 6141767680 "GET /grids/268/ HTTP/1.1" 200 22479
+INFO 2025-12-08 20:52:14,663 basehttp 64290 6124941312 "GET /grids/268/ HTTP/1.1" 200 22474
+INFO 2025-12-08 20:52:14,664 basehttp 64290 6124941312 - Broken pipe from ('127.0.0.1', 61404)
+INFO 2025-12-08 20:52:17,467 basehttp 64290 6141767680 "GET / HTTP/1.1" 200 10379
+INFO 2025-12-08 20:52:42,861 basehttp 64290 6141767680 "GET /grids/ HTTP/1.1" 200 13017
+INFO 2025-12-08 20:52:53,190 basehttp 64290 6141767680 "GET /grids/268/ HTTP/1.1" 200 22454
+INFO 2025-12-08 20:53:02,018 basehttp 64290 6141767680 "POST /tasks/2809/edit/ HTTP/1.1" 200 111
+INFO 2025-12-08 20:53:09,319 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1029/ HTTP/1.1" 200 1492
+INFO 2025-12-08 20:53:13,326 basehttp 64290 6141767680 "POST /tasks/2836/edit/ HTTP/1.1" 200 111
+INFO 2025-12-08 20:53:29,757 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1030/ HTTP/1.1" 200 1465
+INFO 2025-12-08 20:53:45,909 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1030/ HTTP/1.1" 200 1533
+INFO 2025-12-08 20:53:50,958 basehttp 64290 6141767680 "POST /tasks/2838/edit/ HTTP/1.1" 200 133
+INFO 2025-12-08 20:54:02,585 basehttp 64290 6141767680 "POST /tasks/2838/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-08 20:54:10,850 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1515
+INFO 2025-12-08 20:54:17,206 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1520
+INFO 2025-12-08 20:54:23,507 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1551
+INFO 2025-12-08 20:54:34,947 basehttp 64290 6141767680 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1541
+INFO 2025-12-08 20:54:43,549 basehttp 64290 6141767680 "POST /tasks/2810/edit/ HTTP/1.1" 200 110
+INFO 2025-12-08 20:54:51,207 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1029/ HTTP/1.1" 200 1516
+INFO 2025-12-08 20:54:58,585 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1029/ HTTP/1.1" 200 1554
+INFO 2025-12-08 20:55:05,508 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1030/ HTTP/1.1" 200 1550
+INFO 2025-12-08 20:55:39,495 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1030/ HTTP/1.1" 200 1470
+INFO 2025-12-08 20:55:48,094 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1031/ HTTP/1.1" 200 1539
+INFO 2025-12-08 20:55:59,069 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1031/ HTTP/1.1" 200 1556
+INFO 2025-12-08 20:56:04,144 project_views_functions 64290 6141767680 User None deleted task: "Coordinate with client re: data access" from project: Audit
+INFO 2025-12-08 20:56:04,150 basehttp 64290 6141767680 "POST /tasks/2848/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 20:56:11,249 basehttp 64290 6141767680 "POST /grids/268/tasks/create/929/1031/ HTTP/1.1" 200 1547
+INFO 2025-12-08 20:56:23,814 basehttp 64290 6141767680 "POST /tasks/2811/edit/ HTTP/1.1" 200 121
+INFO 2025-12-08 20:56:29,690 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1029/ HTTP/1.1" 200 1500
+INFO 2025-12-08 20:56:36,092 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1029/ HTTP/1.1" 200 1551
+INFO 2025-12-08 20:56:47,095 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1030/ HTTP/1.1" 200 1449
+INFO 2025-12-08 20:56:53,906 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1030/ HTTP/1.1" 200 1472
+INFO 2025-12-08 20:57:25,181 basehttp 64290 6141767680 "POST /grids/268/rows/930/edit/ HTTP/1.1" 200 122
+INFO 2025-12-08 20:57:38,488 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1030/ HTTP/1.1" 200 1462
+INFO 2025-12-08 20:57:46,919 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1031/ HTTP/1.1" 200 1482
+INFO 2025-12-08 20:57:53,589 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1031/ HTTP/1.1" 200 1506
+INFO 2025-12-08 20:57:59,757 basehttp 64290 6141767680 "POST /grids/268/tasks/create/930/1031/ HTTP/1.1" 200 1481
+INFO 2025-12-08 20:58:09,345 basehttp 64290 6141767680 "GET / HTTP/1.1" 200 10421
+INFO 2025-12-08 20:58:10,506 basehttp 64290 6141767680 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-08 20:58:10,523 basehttp 64290 6124941312 "GET /admin/ HTTP/1.1" 200 3035
+INFO 2025-12-08 20:58:16,083 basehttp 64290 6124941312 "GET /admin/pages/project/ HTTP/1.1" 200 3562
+INFO 2025-12-08 20:58:16,111 basehttp 64290 6124941312 "GET /admin/jsi18n/ HTTP/1.1" 200 974
+INFO 2025-12-08 20:58:18,175 basehttp 64290 6124941312 "GET /admin/pages/project/268/change/ HTTP/1.1" 200 4319
+INFO 2025-12-08 20:58:18,201 basehttp 64290 6124941312 "GET /admin/jsi18n/ HTTP/1.1" 200 1033
+INFO 2025-12-08 20:58:21,915 basehttp 64290 6124941312 "POST /admin/pages/project/268/change/ HTTP/1.1" 302 0
+INFO 2025-12-08 20:58:21,931 basehttp 64290 6124941312 "GET /admin/pages/project/ HTTP/1.1" 200 3591
+INFO 2025-12-08 20:58:21,952 basehttp 64290 6124941312 "GET /admin/jsi18n/ HTTP/1.1" 200 1031
+INFO 2025-12-08 20:58:23,645 basehttp 64290 6124941312 "GET / HTTP/1.1" 200 10425
+INFO 2025-12-08 20:58:24,940 basehttp 64290 6124941312 "GET /lilypad/ HTTP/1.1" 200 4192
+INFO 2025-12-08 20:58:28,801 basehttp 64290 6124941312 "GET /grids/ HTTP/1.1" 200 13127
+INFO 2025-12-08 20:58:32,484 basehttp 64290 6124941312 "GET /grids/268/ HTTP/1.1" 200 28159
+INFO 2025-12-08 20:58:37,792 project_views_functions 64290 6124941312 User None assigned task: ""Review engagement letter" to Toad Toad" from project: Audit
+INFO 2025-12-08 20:58:37,793 basehttp 64290 6124941312 "POST /tasks/2809/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:58:39,815 project_views_functions 64290 6124941312 User None assigned task: ""Request trial balance + prior year FS" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 20:58:39,816 basehttp 64290 6124941312 "POST /tasks/2837/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:58:41,892 project_views_functions 64290 6124941312 User None assigned task: ""Schedule fieldwork dates" to Tom Stephenson" from project: Audit
+INFO 2025-12-08 20:58:41,892 basehttp 64290 6124941312 "POST /tasks/2839/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:58:43,885 project_views_functions 64290 6124941312 User None assigned task: ""Assign audit team roles" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 20:58:43,885 basehttp 64290 6124941312 "POST /tasks/2840/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:58:47,965 project_views_functions 64290 6124941312 User None assigned task: ""Review holiday rota" to Tom Stephenson" from project: Audit
+INFO 2025-12-08 20:58:47,966 basehttp 64290 6124941312 "POST /tasks/2842/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:58:57,465 basehttp 64290 6124941312 "POST /tasks/2810/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-08 20:59:01,320 project_views_functions 64290 6124941312 User None assigned task: ""Document materiality thresholds" to Toad Toad" from project: Audit
+INFO 2025-12-08 20:59:01,321 basehttp 64290 6124941312 "POST /tasks/2843/assign/ HTTP/1.1" 200 123
+INFO 2025-12-08 20:59:03,204 project_views_functions 64290 6124941312 User None assigned task: ""Review internal controls walkthroughs" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 20:59:03,205 basehttp 64290 6124941312 "POST /tasks/2844/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:59:06,150 project_views_functions 64290 6124941312 User None assigned task: ""Track incoming documentation" to Nigel Jones" from project: Audit
+INFO 2025-12-08 20:59:06,150 basehttp 64290 6124941312 "POST /tasks/2845/assign/ HTTP/1.1" 200 128
+INFO 2025-12-08 20:59:08,996 project_views_functions 64290 6124941312 User None assigned task: ""Check off data room to requests" to Nigel Jones" from project: Audit
+INFO 2025-12-08 20:59:08,997 basehttp 64290 6124941312 "POST /tasks/2846/assign/ HTTP/1.1" 200 128
+INFO 2025-12-08 20:59:11,654 project_views_functions 64290 6124941312 User None assigned task: ""Build detailed testing plans for each section" to Tom Stephenson" from project: Audit
+INFO 2025-12-08 20:59:11,654 basehttp 64290 6124941312 "POST /tasks/2847/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 20:59:15,794 project_views_functions 64290 6124941312 User None assigned task: ""Prepare templates for sampling + testing" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 20:59:15,795 basehttp 64290 6124941312 "POST /tasks/2849/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 21:00:11,579 project_views_functions 64290 6124941312 User None assigned task: ""Finalise all evidence requests" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 21:00:11,580 basehttp 64290 6124941312 "POST /tasks/2852/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 21:00:14,562 project_views_functions 64290 6124941312 User None assigned task: ""Create a clear audit file index" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 21:00:14,563 basehttp 64290 6124941312 "POST /tasks/2853/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 21:00:16,868 project_views_functions 64290 6124941312 User None assigned task: ""Build team briefing pack" to Tom Stephenson" from project: Audit
+INFO 2025-12-08 21:00:16,869 basehttp 64290 6124941312 "POST /tasks/2856/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 21:00:25,583 project_views_functions 64290 6124941312 User None deleted task: "Review holiday rota" from project: Audit
+INFO 2025-12-08 21:00:25,588 basehttp 64290 6124941312 "POST /tasks/2842/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 21:00:55,963 basehttp 64290 6124941312 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1532
+INFO 2025-12-08 21:01:00,543 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:01:02,201 basehttp 64290 6124941312 "POST /tasks/2809/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 21:01:21,940 basehttp 64290 6124941312 "POST /tasks/2809/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 21:01:24,090 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:01:26,446 project_views_functions 64290 6124941312 User None deleted task: "Review holiday rota over audit period" from project: Audit
+INFO 2025-12-08 21:01:26,451 basehttp 64290 6124941312 "POST /tasks/2858/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 21:01:56,038 basehttp 64290 6124941312 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1609
+INFO 2025-12-08 21:02:00,827 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:02:11,008 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:02:14,133 project_views_functions 64290 6124941312 User None deleted task: "Confirm team holiday commitments over the audit period" from project: Audit
+INFO 2025-12-08 21:02:14,137 basehttp 64290 6124941312 "POST /tasks/2859/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 21:04:43,975 basehttp 64290 6124941312 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1531
+INFO 2025-12-08 21:04:50,567 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:05:03,473 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:05:07,284 project_views_functions 64290 6124941312 User None deleted task: "Review holiday rota" from project: Audit
+INFO 2025-12-08 21:05:07,288 basehttp 64290 6124941312 "POST /tasks/2860/delete/ HTTP/1.1" 200 58
+INFO 2025-12-08 21:05:21,849 basehttp 64290 6124941312 "POST /grids/268/tasks/create/928/1031/ HTTP/1.1" 200 1551
+INFO 2025-12-08 21:05:24,954 basehttp 64290 6124941312 "POST /tasks/2809/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-08 21:05:29,199 basehttp 64290 6124941312 "POST /grids/268/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-08 21:05:35,416 project_views_functions 64290 6124941312 User None assigned task: ""Complete full risk assessment memo" to Cecilie Potter" from project: Audit
+INFO 2025-12-08 21:05:35,416 basehttp 64290 6124941312 "POST /tasks/2811/assign/ HTTP/1.1" 200 134
+INFO 2025-12-08 21:12:20,791 basehttp 64290 6124941312 "GET /lilypad/ HTTP/1.1" 200 4154
