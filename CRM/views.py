@@ -29,7 +29,7 @@ def crm_home(request):
     total_companies = Company.objects.count()
     total_sectors = CompanySector.objects.count()
     total_templates = CustomerTemplate.objects.count()
-    recent_companies = Company.objects.select_related('company_sector', 'email_template').order_by('-created_at')[:5]
+    recent_companies = Company.objects.select_related('company_sector', 'email_template').order_by('-updated_at')[:5]
     
     context = {
         'title': 'B2B CRM Dashboard',
@@ -65,6 +65,23 @@ def company_list(request):
     if email_status_filter:
         companies = companies.filter(email_status=email_status_filter)
     
+    # Filter by sector
+    sector_filter = request.GET.get('sector', '')
+    if sector_filter:
+        companies = companies.filter(company_sector__id=sector_filter)
+    
+    # Order by updated_at (most recent first)
+    companies = companies.order_by('-updated_at')
+    
+    # Pagination
+    from django.core.paginator import Paginator
+    paginator = Paginator(companies, 20)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    
+    # Get all sectors for filter dropdown
+    sectors = CompanySector.objects.all().order_by('name')
+    
     # Calculate statistics
     total_companies = Company.objects.count()
     customer_count = Company.objects.filter(status='Customer').count()
@@ -73,11 +90,28 @@ def company_list(request):
     no_response_count = Company.objects.filter(status='No response').count()
     rejected_count = Company.objects.filter(status='Rejected').count()
     
+    # Build query string for pagination (excluding page parameter)
+    from urllib.parse import urlencode
+    query_params = {}
+    if search_query:
+        query_params['search'] = search_query
+    if status_filter:
+        query_params['status'] = status_filter
+    if email_status_filter:
+        query_params['email_status'] = email_status_filter
+    if sector_filter:
+        query_params['sector'] = sector_filter
+    query_string = urlencode(query_params)
+    
     context = {
-        'companies': companies,
+        'companies': page_obj,
+        'page_obj': page_obj,
         'search_query': search_query,
         'status_filter': status_filter,
         'email_status_filter': email_status_filter,
+        'sector_filter': sector_filter,
+        'sectors': sectors,
+        'query_string': query_string,
         'total_companies': total_companies,
         'customer_count': customer_count,
         'prospect_count': prospect_count,

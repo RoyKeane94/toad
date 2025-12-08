@@ -137,10 +137,10 @@ class Company(models.Model):
     ]
 
     email_status_choices = [
-        ('Initial', 'Initial'),
-        ('Initial Follow Up', 'Initial Follow Up'),
-        ('Secondary Follow Up', 'Secondary Follow Up'),
-        ('Tertiary Follow Up', 'Tertiary Follow Up'),
+        ('Init', 'Init'),
+        ('Init FP', 'Init FP'),
+        ('Sec FP', 'Sec FP'),
+        ('Ter FP', 'Ter FP'),
     ]
     
     company_name = models.CharField(max_length=200)
