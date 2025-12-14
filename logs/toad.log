@@ -36867,3 +36867,483 @@ INFO 2025-12-08 21:05:29,199 basehttp 64290 6124941312 "POST /grids/268/tasks/re
 INFO 2025-12-08 21:05:35,416 project_views_functions 64290 6124941312 User None assigned task: ""Complete full risk assessment memo" to Cecilie Potter" from project: Audit
 INFO 2025-12-08 21:05:35,416 basehttp 64290 6124941312 "POST /tasks/2811/assign/ HTTP/1.1" 200 134
 INFO 2025-12-08 21:12:20,791 basehttp 64290 6124941312 "GET /lilypad/ HTTP/1.1" 200 4154
+INFO 2025-12-09 20:44:06,301 autoreload 73204 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-09 20:44:09,098 basehttp 73204 6126792704 "GET / HTTP/1.1" 200 10431
+INFO 2025-12-09 20:44:09,190 basehttp 73204 6126792704 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-09 20:44:09,202 basehttp 73204 6126792704 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-09 20:44:11,345 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 13070
+INFO 2025-12-09 20:44:15,592 basehttp 73204 6126792704 "GET /grids/247/ HTTP/1.1" 200 28238
+INFO 2025-12-09 20:44:15,603 basehttp 73204 6126792704 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-12-09 20:44:26,001 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 13097
+INFO 2025-12-09 20:44:29,143 basehttp 73204 6126792704 "GET /grids/264/delete/ HTTP/1.1" 200 2821
+INFO 2025-12-09 20:44:30,177 basehttp 73204 6126792704 "POST /grids/264/delete/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:44:30,194 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 12848
+INFO 2025-12-09 20:44:32,413 basehttp 73204 6126792704 "GET /grids/267/delete/ HTTP/1.1" 200 2810
+INFO 2025-12-09 20:44:33,301 basehttp 73204 6126792704 "POST /grids/267/delete/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:44:33,322 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 12752
+INFO 2025-12-09 20:44:35,796 basehttp 73204 6126792704 "GET /grids/create/ HTTP/1.1" 200 2861
+INFO 2025-12-09 20:44:42,974 project_views_functions 73204 6126792704 User None created project: Team Toad
+INFO 2025-12-09 20:44:42,976 basehttp 73204 6126792704 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:44:42,995 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 21594
+INFO 2025-12-09 20:44:48,848 basehttp 73204 6126792704 "GET /grids/create/ HTTP/1.1" 200 2896
+INFO 2025-12-09 20:44:53,228 project_views_functions 73204 6126792704 User None created project: Personal Toad
+INFO 2025-12-09 20:44:53,229 basehttp 73204 6126792704 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:44:53,248 basehttp 73204 6126792704 "GET /grids/270/ HTTP/1.1" 200 21682
+INFO 2025-12-09 20:44:57,709 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 13018
+INFO 2025-12-09 20:45:04,500 project_views_functions 73204 6126792704 User None created project group: Product
+INFO 2025-12-09 20:45:04,502 basehttp 73204 6126792704 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:45:04,524 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 13020
+INFO 2025-12-09 20:45:08,587 basehttp 73204 6126792704 "GET /grids/247/ HTTP/1.1" 200 28180
+INFO 2025-12-09 20:45:10,134 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 21649
+INFO 2025-12-09 20:45:11,991 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 13027
+INFO 2025-12-09 20:45:15,413 basehttp 73204 6126792704 "GET /grids/268/delete/ HTTP/1.1" 200 2867
+INFO 2025-12-09 20:45:16,454 basehttp 73204 6126792704 "POST /grids/268/delete/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:45:16,473 basehttp 73204 6126792704 "GET /grids/ HTTP/1.1" 200 12843
+INFO 2025-12-09 20:45:24,850 basehttp 73204 6126792704 "GET / HTTP/1.1" 200 10418
+INFO 2025-12-09 20:45:25,997 basehttp 73204 6126792704 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-09 20:45:26,026 basehttp 73204 6143619072 "GET /admin/ HTTP/1.1" 200 3162
+INFO 2025-12-09 20:45:30,785 basehttp 73204 6143619072 "GET /admin/pages/project/ HTTP/1.1" 200 3527
+INFO 2025-12-09 20:45:30,808 basehttp 73204 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 975
+INFO 2025-12-09 20:45:35,678 basehttp 73204 6143619072 "GET /admin/pages/project/269/change/ HTTP/1.1" 200 4324
+INFO 2025-12-09 20:45:35,700 basehttp 73204 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 984
+INFO 2025-12-09 20:45:40,054 basehttp 73204 6143619072 "POST /admin/pages/project/269/change/ HTTP/1.1" 302 0
+INFO 2025-12-09 20:45:40,070 basehttp 73204 6143619072 "GET /admin/pages/project/ HTTP/1.1" 200 3621
+INFO 2025-12-09 20:45:40,085 basehttp 73204 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 997
+INFO 2025-12-09 20:45:43,407 basehttp 73204 6143619072 "GET /admin/pages/project/ HTTP/1.1" 200 3552
+INFO 2025-12-09 20:45:43,423 basehttp 73204 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 976
+INFO 2025-12-09 20:45:46,298 basehttp 73204 6143619072 "GET / HTTP/1.1" 200 10426
+INFO 2025-12-09 20:45:47,878 basehttp 73204 6143619072 "GET /grids/ HTTP/1.1" 200 12831
+INFO 2025-12-09 20:45:50,987 basehttp 73204 6143619072 "GET /grids/269/ HTTP/1.1" 200 22891
+INFO 2025-12-09 20:47:29,422 basehttp 73204 6143619072 "POST /grids/269/columns/1033/edit/ HTTP/1.1" 200 105
+INFO 2025-12-09 20:48:57,873 basehttp 73204 6143619072 "GET /grids/269/columns/create/ HTTP/1.1" 200 1023
+INFO 2025-12-09 20:49:02,156 basehttp 73204 6143619072 "POST /grids/269/columns/create/ HTTP/1.1" 204 0
+INFO 2025-12-09 20:49:02,245 basehttp 73204 6143619072 "GET /grids/269/ HTTP/1.1" 200 23282
+INFO 2025-12-09 20:49:02,246 basehttp 73204 6143619072 - Broken pipe from ('127.0.0.1', 64175)
+INFO 2025-12-09 20:49:02,246 basehttp 73204 6160445440 "GET /grids/269/ HTTP/1.1" 200 23199
+INFO 2025-12-09 20:49:02,248 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 23199
+INFO 2025-12-09 20:49:02,248 basehttp 73204 6126792704 - Broken pipe from ('127.0.0.1', 64243)
+INFO 2025-12-09 20:49:04,713 basehttp 73204 6160445440 "GET /grids/269/columns/create/ HTTP/1.1" 200 1009
+INFO 2025-12-09 20:49:07,124 basehttp 73204 6160445440 "POST /grids/269/columns/create/ HTTP/1.1" 204 0
+INFO 2025-12-09 20:49:07,198 basehttp 73204 6143619072 "GET /grids/269/ HTTP/1.1" 200 23698
+INFO 2025-12-09 20:49:07,200 basehttp 73204 6160445440 "GET /grids/269/ HTTP/1.1" 200 23667
+INFO 2025-12-09 20:49:07,200 basehttp 73204 6160445440 - Broken pipe from ('127.0.0.1', 64244)
+INFO 2025-12-09 20:49:07,200 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 23623
+INFO 2025-12-09 20:49:07,200 basehttp 73204 6126792704 - Broken pipe from ('127.0.0.1', 64247)
+INFO 2025-12-09 20:49:16,584 basehttp 73204 6143619072 "POST /tasks/2862/edit/ HTTP/1.1" 200 111
+INFO 2025-12-09 20:50:56,550 basehttp 73204 6143619072 "POST /tasks/2862/edit/ HTTP/1.1" 200 138
+INFO 2025-12-09 20:51:05,308 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1548
+INFO 2025-12-09 20:51:19,740 basehttp 73204 6143619072 "POST /tasks/2863/edit/ HTTP/1.1" 200 123
+INFO 2025-12-09 20:51:30,791 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1036/ HTTP/1.1" 200 1551
+INFO 2025-12-09 20:51:41,422 basehttp 73204 6143619072 "POST /tasks/2869/edit/ HTTP/1.1" 200 141
+INFO 2025-12-09 20:51:55,529 basehttp 73204 6143619072 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 20:52:04,654 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1570
+INFO 2025-12-09 20:52:36,049 basehttp 73204 6143619072 "POST /tasks/2870/edit/ HTTP/1.1" 200 127
+INFO 2025-12-09 20:52:44,847 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1567
+INFO 2025-12-09 20:53:03,103 basehttp 73204 6143619072 "POST /tasks/2871/edit/ HTTP/1.1" 200 128
+INFO 2025-12-09 20:53:14,618 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1589
+INFO 2025-12-09 20:53:28,449 basehttp 73204 6143619072 "POST /tasks/2872/edit/ HTTP/1.1" 200 154
+INFO 2025-12-09 20:53:56,036 basehttp 73204 6143619072 "POST /grids/269/tasks/create/932/1033/ HTTP/1.1" 200 1582
+INFO 2025-12-09 20:54:20,821 basehttp 73204 6143619072 "POST /grids/269/tasks/create/932/1033/ HTTP/1.1" 200 1545
+INFO 2025-12-09 20:54:41,527 basehttp 73204 6143619072 "POST /grids/269/tasks/create/932/1033/ HTTP/1.1" 200 1510
+INFO 2025-12-09 20:55:11,392 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1036/ HTTP/1.1" 200 1527
+INFO 2025-12-09 20:55:13,425 basehttp 73204 6143619072 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 20:55:54,054 basehttp 73204 6143619072 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 20:55:59,153 basehttp 73204 6143619072 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 20:56:24,099 basehttp 73204 6143619072 "POST /grids/269/tasks/create/932/1037/ HTTP/1.1" 200 1514
+INFO 2025-12-09 20:57:04,497 basehttp 73204 6143619072 "POST /tasks/2877/note/ HTTP/1.1" 200 203
+INFO 2025-12-09 20:57:04,506 basehttp 73204 6143619072 "GET /tasks/2877/notes/ HTTP/1.1" 200 199
+INFO 2025-12-09 20:57:27,800 basehttp 73204 6143619072 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1540
+INFO 2025-12-09 20:57:49,845 basehttp 73204 6143619072 "POST /tasks/2864/edit/ HTTP/1.1" 200 151
+INFO 2025-12-09 20:57:59,293 basehttp 73204 6143619072 "POST /grids/269/tasks/create/933/1033/ HTTP/1.1" 200 1582
+INFO 2025-12-09 20:58:21,865 basehttp 73204 6143619072 "POST /grids/269/tasks/create/932/1036/ HTTP/1.1" 200 1543
+INFO 2025-12-09 20:58:35,909 basehttp 73204 6143619072 "POST /grids/269/tasks/create/933/1037/ HTTP/1.1" 200 1536
+INFO 2025-12-09 20:58:43,369 basehttp 73204 6143619072 "POST /grids/269/tasks/create/933/1037/ HTTP/1.1" 200 1595
+INFO 2025-12-09 21:04:25,117 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 115
+INFO 2025-12-09 21:04:28,525 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:04:34,191 project_views_functions 73204 6126792704 User None deleted task: "Add note function" from project: Team Toad
+INFO 2025-12-09 21:04:34,195 basehttp 73204 6126792704 "POST /tasks/2878/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:04:36,758 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:04:48,617 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 115
+INFO 2025-12-09 21:04:52,612 project_views_functions 73204 6126792704 User None assigned task: ""Review user codebase to keep Toad fast and lightweight" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:04:52,613 basehttp 73204 6126792704 "POST /tasks/2869/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:04:58,224 project_views_functions 73204 6126792704 User None assigned task: ""Review smoothness of drag and drop" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:04:58,225 basehttp 73204 6126792704 "POST /tasks/2876/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:05:01,911 project_views_functions 73204 6126792704 User None assigned task: ""Write a short, clear update on Team Toad" to Cecilie Potter" from project: Team Toad
+INFO 2025-12-09 21:05:01,911 basehttp 73204 6126792704 "POST /tasks/2870/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:05:04,731 project_views_functions 73204 6126792704 User None assigned task: ""Curate testimonials from teams using Toad" to Tom Stephenson" from project: Team Toad
+INFO 2025-12-09 21:05:04,731 basehttp 73204 6126792704 "POST /tasks/2871/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:05:08,641 project_views_functions 73204 6126792704 User None assigned task: ""Refine messaging around “no setup, fits to your workflow”" to Tom Stephenson" from project: Team Toad
+INFO 2025-12-09 21:05:08,641 basehttp 73204 6126792704 "POST /tasks/2872/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:05:20,980 basehttp 73204 6126792704 "POST /tasks/2877/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-09 21:05:34,382 basehttp 73204 6126792704 "POST /tasks/2877/edit/ HTTP/1.1" 200 142
+INFO 2025-12-09 21:05:38,960 basehttp 73204 6126792704 "POST /tasks/2868/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:05:49,123 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:05:54,462 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:06:07,322 project_views_functions 73204 6126792704 User None assigned task: ""Review home page colour scheme to improve readibility" to Nigel Jones" from project: Team Toad
+INFO 2025-12-09 21:06:07,323 basehttp 73204 6126792704 "POST /tasks/2873/assign/ HTTP/1.1" 200 128
+INFO 2025-12-09 21:06:10,008 project_views_functions 73204 6126792704 User None assigned task: ""Sketch out Team Toad on mobile" to Tom Stephenson" from project: Team Toad
+INFO 2025-12-09 21:06:10,008 basehttp 73204 6126792704 "POST /tasks/2874/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:06:17,454 basehttp 73204 6126792704 "POST /tasks/2875/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:06:27,806 basehttp 73204 6126792704 "POST /tasks/2862/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-09 21:06:35,323 basehttp 73204 6126792704 "POST /tasks/2880/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-09 21:06:42,981 basehttp 73204 6126792704 "POST /tasks/2880/note/ HTTP/1.1" 200 182
+INFO 2025-12-09 21:06:42,989 basehttp 73204 6126792704 "GET /tasks/2880/notes/ HTTP/1.1" 200 157
+INFO 2025-12-09 21:07:15,738 basehttp 73204 6126792704 "POST /tasks/2863/edit/ HTTP/1.1" 200 116
+INFO 2025-12-09 21:07:26,554 project_views_functions 73204 6126792704 User None assigned task: ""Explore ideas that keep Toad quietly powerful, never complicated" to Cecilie Potter" from project: Team Toad
+INFO 2025-12-09 21:07:26,555 basehttp 73204 6126792704 "POST /tasks/2864/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:07:29,040 project_views_functions 73204 6126792704 User None assigned task: ""Conduct light-touch user interviews to learn what slows teams down" to Nigel Jones" from project: Team Toad
+INFO 2025-12-09 21:07:29,040 basehttp 73204 6126792704 "POST /tasks/2879/assign/ HTTP/1.1" 200 128
+INFO 2025-12-09 21:07:44,276 basehttp 73204 6126792704 "POST /tasks/2876/edit/ HTTP/1.1" 200 124
+INFO 2025-12-09 21:08:02,312 basehttp 73204 6126792704 "POST /tasks/2874/note/ HTTP/1.1" 200 182
+INFO 2025-12-09 21:08:02,324 basehttp 73204 6126792704 "GET /tasks/2874/notes/ HTTP/1.1" 200 157
+INFO 2025-12-09 21:08:40,187 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1560
+INFO 2025-12-09 21:09:43,544 project_views_functions 73204 6126792704 User None deleted task: "Finalise simple UX for adding notes" from project: Team Toad
+INFO 2025-12-09 21:09:43,551 basehttp 73204 6126792704 "POST /tasks/2883/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:10:18,491 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:10:21,534 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:10:23,952 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:10:27,010 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 27477
+INFO 2025-12-09 21:12:04,175 project_views_functions 73204 6126792704 User None assigned task: ""Finalise a super smooth drag and drop" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:12:04,176 basehttp 73204 6126792704 "POST /tasks/2876/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:12:06,350 project_views_functions 73204 6126792704 User None unassigned task: ""Finalise a super smooth drag and drop"" from project: Team Toad
+INFO 2025-12-09 21:12:06,351 basehttp 73204 6126792704 "POST /tasks/2876/assign/ HTTP/1.1" 200 60
+INFO 2025-12-09 21:12:27,079 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:12:29,923 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:12:33,141 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:12:35,435 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 27530
+INFO 2025-12-09 21:13:55,081 basehttp 73204 6126792704 "POST /grids/269/tasks/create/933/1036/ HTTP/1.1" 200 1592
+INFO 2025-12-09 21:15:05,170 basehttp 73204 6126792704 "POST /grids/269/tasks/create/932/1036/ HTTP/1.1" 200 1584
+INFO 2025-12-09 21:15:08,920 project_views_functions 73204 6126792704 User None assigned task: ""Run Lighthouse to review code performance" to Cecilie Potter" from project: Team Toad
+INFO 2025-12-09 21:15:08,921 basehttp 73204 6126792704 "POST /tasks/2885/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:15:16,116 project_views_functions 73204 6126792704 User None assigned task: ""Ship 6th December code tweaks" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:15:16,117 basehttp 73204 6126792704 "POST /tasks/2863/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:15:48,912 project_views_functions 73204 6126792704 User None deleted task: "Build a story around Toad as “the simplest team workspace”" from project: Team Toad
+INFO 2025-12-09 21:15:48,917 basehttp 73204 6126792704 "POST /tasks/2881/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:15:51,407 project_views_functions 73204 6126792704 User None deleted task: "Create a library of clear examples across industries" from project: Team Toad
+INFO 2025-12-09 21:15:51,412 basehttp 73204 6126792704 "POST /tasks/2882/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:16:06,842 basehttp 73204 6126792704 "POST /grids/269/tasks/create/933/1037/ HTTP/1.1" 200 1588
+INFO 2025-12-09 21:16:57,422 basehttp 73204 6126792704 "POST /tasks/2886/edit/ HTTP/1.1" 200 118
+INFO 2025-12-09 21:18:32,251 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 106
+INFO 2025-12-09 21:18:34,483 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:18:45,967 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1511
+INFO 2025-12-09 21:18:55,705 basehttp 73204 6126792704 "POST /tasks/2887/note/ HTTP/1.1" 200 208
+INFO 2025-12-09 21:18:55,716 basehttp 73204 6126792704 "GET /tasks/2887/notes/ HTTP/1.1" 200 183
+INFO 2025-12-09 21:19:01,895 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:19:06,448 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:19:42,276 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:19:51,735 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 111
+INFO 2025-12-09 21:19:55,760 project_views_functions 73204 6126792704 User None deleted task: "Make it easy for users to add context to tasks" from project: Team Toad
+INFO 2025-12-09 21:19:55,765 basehttp 73204 6126792704 "POST /tasks/2887/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:20:03,261 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 107
+INFO 2025-12-09 21:20:06,732 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:20:35,778 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:20:44,514 basehttp 73204 6126792704 "POST /tasks/2863/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-09 21:20:58,413 basehttp 73204 6126792704 "POST /tasks/2863/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:21:23,902 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 122
+INFO 2025-12-09 21:21:25,664 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:21:37,236 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1572
+INFO 2025-12-09 21:21:52,385 project_views_functions 73204 6126792704 User None deleted task: "Allow users to quickly add context to tasks" from project: Team Toad
+INFO 2025-12-09 21:21:52,389 basehttp 73204 6126792704 "POST /tasks/2888/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:21:56,953 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:22:07,071 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 113
+INFO 2025-12-09 21:24:07,025 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:24:14,171 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:24:23,291 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:24:47,272 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:24:51,047 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:25:00,471 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 107
+INFO 2025-12-09 21:25:02,077 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:25:08,972 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1564
+INFO 2025-12-09 21:25:17,360 basehttp 73204 6126792704 "POST /tasks/2889/note/ HTTP/1.1" 200 188
+INFO 2025-12-09 21:25:17,370 basehttp 73204 6126792704 "GET /tasks/2889/notes/ HTTP/1.1" 200 163
+INFO 2025-12-09 21:25:31,160 basehttp 73204 6126792704 "POST /grids/269/tasks/create/933/1037/ HTTP/1.1" 200 1578
+INFO 2025-12-09 21:27:03,812 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:27:06,083 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:27:25,552 basehttp 73204 6126792704 "POST /tasks/2876/edit/ HTTP/1.1" 200 143
+INFO 2025-12-09 21:27:27,151 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:27:33,609 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 112
+INFO 2025-12-09 21:27:36,675 project_views_functions 73204 6126792704 User None deleted task: "Quickly add notes to tasks" from project: Team Toad
+INFO 2025-12-09 21:27:36,677 basehttp 73204 6126792704 "POST /tasks/2889/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:27:41,051 project_views_functions 73204 6126792704 User None deleted task: "Continue to deliver a simple tool for teams to get organised" from project: Team Toad
+INFO 2025-12-09 21:27:41,056 basehttp 73204 6126792704 "POST /tasks/2890/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:28:05,682 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:28:09,574 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:28:20,006 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 113
+INFO 2025-12-09 21:28:22,657 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:28:32,151 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1549
+INFO 2025-12-09 21:28:39,995 basehttp 73204 6126792704 "POST /tasks/2891/note/ HTTP/1.1" 200 200
+INFO 2025-12-09 21:28:40,005 basehttp 73204 6126792704 "GET /tasks/2891/notes/ HTTP/1.1" 200 175
+INFO 2025-12-09 21:29:04,486 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:29:12,452 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 112
+INFO 2025-12-09 21:29:13,870 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:29:16,635 project_views_functions 73204 6126792704 User None deleted task: "Make it really quick to add notes to tasks" from project: Team Toad
+INFO 2025-12-09 21:29:16,638 basehttp 73204 6126792704 "POST /tasks/2891/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:29:38,164 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:29:43,110 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:29:44,097 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:30:20,929 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:30:25,156 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:30:30,788 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:30:31,867 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:30:49,199 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:30:54,352 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:31:04,279 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 106
+INFO 2025-12-09 21:31:06,101 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:31:14,926 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1501
+INFO 2025-12-09 21:31:21,012 basehttp 73204 6126792704 "POST /tasks/2892/note/ HTTP/1.1" 200 188
+INFO 2025-12-09 21:31:21,018 basehttp 73204 6126792704 "GET /tasks/2892/notes/ HTTP/1.1" 200 163
+INFO 2025-12-09 21:31:24,775 project_views_functions 73204 6126792704 User None assigned task: ""Create a wicked cool video introducing Toad on LinkedIn" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:31:24,776 basehttp 73204 6126792704 "POST /tasks/2877/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:31:41,770 basehttp 73204 6126792704 "POST /grids/269/tasks/create/933/1037/ HTTP/1.1" 200 1602
+INFO 2025-12-09 21:34:29,641 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:34:36,724 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 113
+INFO 2025-12-09 21:34:39,232 project_views_functions 73204 6126792704 User None deleted task: "Make it super easy to add notes to tasks" from project: Team Toad
+INFO 2025-12-09 21:34:39,237 basehttp 73204 6126792704 "POST /tasks/2892/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:34:40,249 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:34:54,036 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:35:04,295 project_views_functions 73204 6126792704 User None deleted task: "Create a wicked cool video introducing Toad on LinkedIn" from project: Team Toad
+INFO 2025-12-09 21:35:04,299 basehttp 73204 6126792704 "POST /tasks/2877/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:35:23,748 basehttp 73204 6126792704 "POST /grids/269/tasks/create/932/1036/ HTTP/1.1" 200 1585
+INFO 2025-12-09 21:35:27,069 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:35:59,225 basehttp 73204 6126792704 "POST /grids/269/tasks/create/932/1037/ HTTP/1.1" 200 1503
+INFO 2025-12-09 21:36:04,124 project_views_functions 73204 6126792704 User None deleted task: "Make a great video introducing Toad" from project: Team Toad
+INFO 2025-12-09 21:36:04,128 basehttp 73204 6126792704 "POST /tasks/2895/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:36:15,435 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:36:19,733 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:36:50,797 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1548
+INFO 2025-12-09 21:36:56,004 project_views_functions 73204 6126792704 User None assigned task: ""Make assigning tasks seamless" to Cecilie Potter" from project: Team Toad
+INFO 2025-12-09 21:36:56,005 basehttp 73204 6126792704 "POST /tasks/2894/assign/ HTTP/1.1" 200 134
+INFO 2025-12-09 21:37:01,456 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:37:07,842 project_views_functions 73204 6126792704 User None unassigned task: ""Make assigning tasks seamless"" from project: Team Toad
+INFO 2025-12-09 21:37:07,843 basehttp 73204 6126792704 "POST /tasks/2894/assign/ HTTP/1.1" 200 60
+INFO 2025-12-09 21:37:11,432 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:37:13,655 project_views_functions 73204 6126792704 User None deleted task: "Make a great video explaining Toad for LinkedIn" from project: Team Toad
+INFO 2025-12-09 21:37:13,659 basehttp 73204 6126792704 "POST /tasks/2896/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:37:48,783 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1591
+INFO 2025-12-09 21:38:09,060 project_views_functions 73204 6126792704 User None deleted task: "Make a great video introducing Toad for LinkedIn" from project: Team Toad
+INFO 2025-12-09 21:38:09,064 basehttp 73204 6126792704 "POST /tasks/2897/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:38:52,827 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1538
+INFO 2025-12-09 21:38:58,016 project_views_functions 73204 6126792704 User None assigned task: ""Make assigning tasks seamless" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:38:58,017 basehttp 73204 6126792704 "POST /tasks/2894/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:39:08,809 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 113
+INFO 2025-12-09 21:39:11,394 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:39:19,751 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1538
+INFO 2025-12-09 21:39:28,548 basehttp 73204 6126792704 "POST /tasks/2899/note/ HTTP/1.1" 200 199
+INFO 2025-12-09 21:39:28,561 basehttp 73204 6126792704 "GET /tasks/2899/notes/ HTTP/1.1" 200 174
+INFO 2025-12-09 21:39:35,838 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:39:37,892 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:39:43,475 project_views_functions 73204 6126792704 User None deleted task: "Make Toad the go to tool for teams who want to get organised quickly" from project: Team Toad
+INFO 2025-12-09 21:39:43,479 basehttp 73204 6126792704 "POST /tasks/2893/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:39:48,015 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:39:48,740 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:39:49,356 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:39:55,119 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 115
+INFO 2025-12-09 21:40:00,998 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 109
+INFO 2025-12-09 21:40:04,110 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 115
+INFO 2025-12-09 21:40:08,380 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 109
+INFO 2025-12-09 21:40:09,973 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:40:12,807 project_views_functions 73204 6126792704 User None unassigned task: ""Make assigning tasks seamless"" from project: Team Toad
+INFO 2025-12-09 21:40:12,808 basehttp 73204 6126792704 "POST /tasks/2894/assign/ HTTP/1.1" 200 60
+INFO 2025-12-09 21:40:15,767 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:40:18,734 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:40:21,923 project_views_functions 73204 6126792704 User None deleted task: "Make it super easy to add notes to tasks" from project: Team Toad
+INFO 2025-12-09 21:40:21,927 basehttp 73204 6126792704 "POST /tasks/2899/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:40:24,269 project_views_functions 73204 6126792704 User None deleted task: "Make a great video introducing Toad!" from project: Team Toad
+INFO 2025-12-09 21:40:24,273 basehttp 73204 6126792704 "POST /tasks/2898/delete/ HTTP/1.1" 200 58
+INFO 2025-12-09 21:40:27,371 basehttp 73204 6126792704 "GET /grids/269/ HTTP/1.1" 200 27600
+INFO 2025-12-09 21:40:46,582 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1509
+INFO 2025-12-09 21:40:51,806 project_views_functions 73204 6126792704 User None assigned task: ""Make assigning tasks seamless" to Toad Toad" from project: Team Toad
+INFO 2025-12-09 21:40:51,807 basehttp 73204 6126792704 "POST /tasks/2894/assign/ HTTP/1.1" 200 123
+INFO 2025-12-09 21:40:59,757 basehttp 73204 6126792704 "POST /tasks/2862/edit/ HTTP/1.1" 200 115
+INFO 2025-12-09 21:41:01,524 basehttp 73204 6126792704 "POST /tasks/2862/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:41:10,376 basehttp 73204 6126792704 "POST /grids/269/tasks/create/931/1033/ HTTP/1.1" 200 1571
+INFO 2025-12-09 21:41:18,230 basehttp 73204 6126792704 "POST /tasks/2901/note/ HTTP/1.1" 200 193
+INFO 2025-12-09 21:41:18,242 basehttp 73204 6126792704 "GET /tasks/2901/notes/ HTTP/1.1" 200 168
+INFO 2025-12-09 21:41:25,614 basehttp 73204 6126792704 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-09 21:41:27,192 basehttp 73204 6126792704 "POST /tasks/2876/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-09 21:41:44,604 basehttp 73204 6126792704 "POST /grids/269/tasks/create/933/1037/ HTTP/1.1" 200 1589
+INFO 2025-12-14 16:10:36,701 autoreload 94364 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-14 16:14:17,685 basehttp 94364 6127316992 "GET / HTTP/1.1" 200 10275
+INFO 2025-12-14 16:14:17,701 basehttp 94364 6127316992 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-14 16:14:17,703 basehttp 94364 6144143360 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-12-14 16:14:17,705 basehttp 94364 6144143360 "GET /static/img/logo/toad_logo.png HTTP/1.1" 304 0
+INFO 2025-12-14 16:14:17,708 basehttp 94364 6127316992 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-14 16:14:17,979 basehttp 94364 6144143360 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 304 0
+INFO 2025-12-14 16:14:18,005 basehttp 94364 6127316992 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-14 16:14:19,676 basehttp 94364 6127316992 "GET /accounts/login/ HTTP/1.1" 200 3819
+INFO 2025-12-14 16:14:27,629 basehttp 94364 6127316992 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-14 16:14:27,647 basehttp 94364 6127316992 "GET /grids/ HTTP/1.1" 200 12840
+INFO 2025-12-14 16:14:31,115 basehttp 94364 6127316992 "GET /grids/247/ HTTP/1.1" 200 28187
+INFO 2025-12-14 16:14:31,133 basehttp 94364 6127316992 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-12-14 16:14:31,133 basehttp 94364 6144143360 "GET /static/js/grid/grid_team.js HTTP/1.1" 304 0
+INFO 2025-12-14 16:16:04,022 basehttp 94364 6144143360 "GET /grids/263/ HTTP/1.1" 200 27924
+INFO 2025-12-14 16:16:05,156 basehttp 94364 6144143360 "GET /grids/265/ HTTP/1.1" 200 21656
+INFO 2025-12-14 16:16:06,371 basehttp 94364 6144143360 "GET /grids/263/ HTTP/1.1" 200 27921
+INFO 2025-12-14 16:16:07,026 basehttp 94364 6144143360 "GET /grids/265/ HTTP/1.1" 200 21595
+INFO 2025-12-14 16:16:08,709 basehttp 94364 6144143360 "GET /grids/263/ HTTP/1.1" 200 27977
+INFO 2025-12-14 16:16:14,265 basehttp 94364 6144143360 "POST /grids/263/edit/ HTTP/1.1" 200 98
+INFO 2025-12-14 16:16:15,573 basehttp 94364 6144143360 "GET /grids/265/ HTTP/1.1" 200 21601
+INFO 2025-12-14 16:16:23,296 basehttp 94364 6144143360 "POST /grids/265/edit/ HTTP/1.1" 200 106
+INFO 2025-12-14 16:16:33,511 basehttp 94364 6144143360 "POST /grids/265/edit/ HTTP/1.1" 200 111
+INFO 2025-12-14 16:17:21,687 basehttp 94364 6144143360 "GET /grids/247/ HTTP/1.1" 200 28157
+INFO 2025-12-14 16:17:25,911 basehttp 94364 6144143360 "POST /grids/247/edit/ HTTP/1.1" 200 96
+INFO 2025-12-14 16:17:28,998 basehttp 94364 6144143360 "GET /grids/266/ HTTP/1.1" 200 26159
+INFO 2025-12-14 16:17:30,658 basehttp 94364 6144143360 "GET /grids/265/ HTTP/1.1" 200 21658
+INFO 2025-12-14 16:17:31,658 basehttp 94364 6144143360 "GET /grids/263/ HTTP/1.1" 200 27956
+INFO 2025-12-14 16:17:32,425 basehttp 94364 6144143360 "GET /grids/247/ HTTP/1.1" 200 28156
+INFO 2025-12-14 16:17:33,895 basehttp 94364 6144143360 "GET /grids/270/ HTTP/1.1" 200 21690
+INFO 2025-12-14 16:17:34,624 basehttp 94364 6144143360 "GET /grids/269/ HTTP/1.1" 200 29383
+INFO 2025-12-14 16:17:38,097 basehttp 94364 6144143360 "GET /grids/270/ HTTP/1.1" 200 21663
+INFO 2025-12-14 16:17:47,779 basehttp 94364 6144143360 "POST /grids/270/edit/ HTTP/1.1" 200 98
+INFO 2025-12-14 16:17:52,326 basehttp 94364 6144143360 "GET /grids/269/ HTTP/1.1" 200 29310
+INFO 2025-12-14 16:18:06,162 basehttp 94364 6144143360 "POST /grids/269/edit/ HTTP/1.1" 200 87
+INFO 2025-12-14 16:18:07,959 basehttp 94364 6144143360 "GET /grids/270/ HTTP/1.1" 200 21699
+INFO 2025-12-14 16:18:11,435 basehttp 94364 6144143360 "POST /grids/270/edit/ HTTP/1.1" 200 90
+INFO 2025-12-14 16:18:15,076 basehttp 94364 6144143360 "GET /grids/create/ HTTP/1.1" 200 2857
+INFO 2025-12-14 16:18:24,190 project_views_functions 94364 6144143360 User None created project: Coopers Spring Launch
+INFO 2025-12-14 16:18:24,191 basehttp 94364 6144143360 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-14 16:18:24,216 basehttp 94364 6144143360 "GET /grids/271/ HTTP/1.1" 200 21636
+INFO 2025-12-14 16:18:28,819 basehttp 94364 6144143360 "GET /grids/create/ HTTP/1.1" 200 2843
+INFO 2025-12-14 16:18:48,789 project_views_functions 94364 6144143360 User None created project: Trout Summer Party
+INFO 2025-12-14 16:18:48,790 basehttp 94364 6144143360 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-14 16:18:48,816 basehttp 94364 6144143360 "GET /grids/272/ HTTP/1.1" 200 21732
+INFO 2025-12-14 16:18:52,888 basehttp 94364 6144143360 "GET /grids/ HTTP/1.1" 200 13233
+INFO 2025-12-14 16:18:59,192 basehttp 94364 6144143360 "POST /grids/group/38/edit/ HTTP/1.1" 200 87
+INFO 2025-12-14 16:19:07,561 project_views_functions 94364 6144143360 User None created project group: Corporate
+INFO 2025-12-14 16:19:07,562 basehttp 94364 6144143360 "POST /grids/group/create/ HTTP/1.1" 302 0
+INFO 2025-12-14 16:19:07,581 basehttp 94364 6144143360 "GET /grids/ HTTP/1.1" 200 13179
+INFO 2025-12-14 16:19:10,024 basehttp 94364 6144143360 "GET /grids/247/ HTTP/1.1" 200 28272
+INFO 2025-12-14 16:19:13,561 basehttp 94364 6144143360 "GET /grids/270/ HTTP/1.1" 200 21765
+INFO 2025-12-14 16:19:15,281 basehttp 94364 6144143360 "GET /grids/269/ HTTP/1.1" 200 29418
+INFO 2025-12-14 16:19:34,900 basehttp 94364 6144143360 "POST /grids/269/columns/1033/edit/ HTTP/1.1" 200 117
+INFO 2025-12-14 16:19:37,336 basehttp 94364 6144143360 "POST /grids/269/columns/1033/edit/ HTTP/1.1" 200 119
+INFO 2025-12-14 16:19:53,696 basehttp 94364 6144143360 "POST /grids/269/columns/1036/edit/ HTTP/1.1" 200 129
+INFO 2025-12-14 16:20:05,051 basehttp 94364 6144143360 "POST /grids/269/columns/1037/edit/ HTTP/1.1" 200 131
+INFO 2025-12-14 16:20:20,847 basehttp 94364 6144143360 "POST /tasks/2862/edit/ HTTP/1.1" 200 121
+INFO 2025-12-14 16:20:24,635 basehttp 94364 6144143360 "POST /tasks/2862/edit/ HTTP/1.1" 200 122
+INFO 2025-12-14 16:20:35,094 basehttp 94364 6144143360 "POST /tasks/2868/edit/ HTTP/1.1" 200 120
+INFO 2025-12-14 16:20:44,765 basehttp 94364 6144143360 "POST /tasks/2901/edit/ HTTP/1.1" 200 115
+INFO 2025-12-14 16:20:54,744 basehttp 94364 6144143360 "POST /tasks/2869/edit/ HTTP/1.1" 200 114
+INFO 2025-12-14 16:21:03,284 basehttp 94364 6144143360 "POST /tasks/2863/edit/ HTTP/1.1" 200 114
+INFO 2025-12-14 16:21:16,478 basehttp 94364 6144143360 "POST /tasks/2894/edit/ HTTP/1.1" 200 109
+INFO 2025-12-14 16:21:18,667 project_views_functions 94364 6144143360 User None deleted task: "Make it easier to reorganise the grid with drag and drop" from project: Jacobs
+INFO 2025-12-14 16:21:18,674 basehttp 94364 6144143360 "POST /tasks/2876/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:21:30,428 basehttp 94364 6144143360 "POST /tasks/2870/edit/ HTTP/1.1" 200 123
+INFO 2025-12-14 16:21:39,977 basehttp 94364 6144143360 "POST /tasks/2900/edit/ HTTP/1.1" 200 128
+INFO 2025-12-14 16:21:45,894 basehttp 94364 6144143360 "POST /grids/269/tasks/create/931/1037/ HTTP/1.1" 200 1491
+INFO 2025-12-14 16:21:56,042 basehttp 94364 6144143360 "POST /tasks/2873/edit/ HTTP/1.1" 200 119
+INFO 2025-12-14 16:22:04,333 basehttp 94364 6144143360 "POST /tasks/2874/edit/ HTTP/1.1" 200 118
+INFO 2025-12-14 16:22:11,544 basehttp 94364 6144143360 "POST /tasks/2875/edit/ HTTP/1.1" 200 117
+INFO 2025-12-14 16:22:18,999 basehttp 94364 6144143360 "POST /tasks/2880/edit/ HTTP/1.1" 200 129
+INFO 2025-12-14 16:22:26,586 basehttp 94364 6144143360 "POST /tasks/2885/edit/ HTTP/1.1" 200 114
+INFO 2025-12-14 16:22:37,178 basehttp 94364 6144143360 "POST /grids/269/tasks/create/932/1036/ HTTP/1.1" 200 1572
+INFO 2025-12-14 16:22:38,423 basehttp 94364 6144143360 "POST /tasks/2875/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-14 16:22:41,297 basehttp 94364 6144143360 "POST /tasks/2910/edit/ HTTP/1.1" 200 129
+INFO 2025-12-14 16:23:01,873 basehttp 94364 6144143360 "POST /tasks/2871/edit/ HTTP/1.1" 200 135
+INFO 2025-12-14 16:23:09,036 basehttp 94364 6144143360 "POST /tasks/2872/edit/ HTTP/1.1" 200 120
+INFO 2025-12-14 16:23:19,112 basehttp 94364 6144143360 "POST /tasks/2864/edit/ HTTP/1.1" 200 108
+INFO 2025-12-14 16:23:25,592 basehttp 94364 6144143360 "POST /tasks/2879/edit/ HTTP/1.1" 200 114
+INFO 2025-12-14 16:23:37,245 basehttp 94364 6144143360 "POST /grids/269/rows/933/edit/ HTTP/1.1" 200 102
+INFO 2025-12-14 16:23:41,181 basehttp 94364 6144143360 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-14 16:23:49,871 basehttp 94364 6144143360 "POST /tasks/2884/edit/ HTTP/1.1" 200 123
+INFO 2025-12-14 16:23:58,147 basehttp 94364 6144143360 "POST /grids/269/tasks/create/933/1036/ HTTP/1.1" 200 1579
+INFO 2025-12-14 16:24:04,007 basehttp 94364 6144143360 "POST /grids/269/tasks/create/933/1036/ HTTP/1.1" 200 1576
+INFO 2025-12-14 16:24:12,830 basehttp 94364 6144143360 "POST /tasks/2886/edit/ HTTP/1.1" 200 128
+INFO 2025-12-14 16:24:19,858 basehttp 94364 6144143360 "POST /tasks/2902/edit/ HTTP/1.1" 200 128
+INFO 2025-12-14 16:24:35,881 basehttp 94364 6144143360 "GET /grids/263/ HTTP/1.1" 200 28033
+INFO 2025-12-14 16:24:48,256 basehttp 94364 6144143360 "POST /grids/263/columns/1013/edit/ HTTP/1.1" 200 115
+INFO 2025-12-14 16:25:05,354 basehttp 94364 6144143360 "POST /grids/263/columns/1016/edit/ HTTP/1.1" 200 125
+INFO 2025-12-14 16:25:13,916 basehttp 94364 6144143360 "POST /grids/263/columns/1017/edit/ HTTP/1.1" 200 105
+INFO 2025-12-14 16:25:22,132 basehttp 94364 6144143360 "POST /tasks/2695/edit/ HTTP/1.1" 200 111
+INFO 2025-12-14 16:25:37,657 basehttp 94364 6144143360 "POST /tasks/2704/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-14 16:26:05,365 basehttp 94364 6144143360 "POST /tasks/2704/edit/ HTTP/1.1" 200 126
+INFO 2025-12-14 16:26:15,414 basehttp 94364 6144143360 "POST /tasks/2701/edit/ HTTP/1.1" 200 95
+INFO 2025-12-14 16:26:25,702 basehttp 94364 6144143360 "POST /tasks/2701/edit/ HTTP/1.1" 200 112
+INFO 2025-12-14 16:26:28,085 project_views_functions 94364 6127316992 User None deleted task: "Confirm restock for regular clients" from project: Sales & Marketing
+INFO 2025-12-14 16:26:28,091 basehttp 94364 6127316992 "POST /tasks/2703/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:26:31,267 project_views_functions 94364 6127316992 User None deleted task: "Review issues log" from project: Sales & Marketing
+INFO 2025-12-14 16:26:31,272 basehttp 94364 6127316992 "POST /tasks/2802/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:26:33,997 project_views_functions 94364 6127316992 User None deleted task: "Process B2B orders" from project: Sales & Marketing
+INFO 2025-12-14 16:26:34,001 basehttp 94364 6127316992 "POST /tasks/2750/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:26:41,536 basehttp 94364 6127316992 "POST /tasks/2718/edit/ HTTP/1.1" 200 107
+INFO 2025-12-14 16:26:56,912 basehttp 94364 6127316992 "POST /tasks/2756/edit/ HTTP/1.1" 200 117
+INFO 2025-12-14 16:27:05,387 basehttp 94364 6127316992 "POST /tasks/2756/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-14 16:28:01,347 basehttp 94364 6127316992 "POST /tasks/2709/edit/ HTTP/1.1" 200 132
+INFO 2025-12-14 16:28:04,018 project_views_functions 94364 6127316992 User None deleted task: "Top 10 account customer concentration analysis" from project: Sales & Marketing
+INFO 2025-12-14 16:28:04,024 basehttp 94364 6127316992 "POST /tasks/2805/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:28:20,012 basehttp 94364 6127316992 "POST /tasks/2759/edit/ HTTP/1.1" 200 117
+INFO 2025-12-14 16:28:27,769 project_views_functions 94364 6127316992 User None deleted task: "Review descriptions for upcoming product releases" from project: Sales & Marketing
+INFO 2025-12-14 16:28:27,773 basehttp 94364 6127316992 "POST /tasks/2707/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:28:29,814 project_views_functions 94364 6127316992 User None deleted task: "Consider Easter bundles" from project: Sales & Marketing
+INFO 2025-12-14 16:28:29,819 basehttp 94364 6127316992 "POST /tasks/2706/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:28:38,904 basehttp 94364 6127316992 "POST /tasks/2705/edit/ HTTP/1.1" 200 108
+INFO 2025-12-14 16:28:50,725 basehttp 94364 6127316992 "POST /tasks/2705/edit/ HTTP/1.1" 200 125
+INFO 2025-12-14 16:29:01,240 basehttp 94364 6127316992 "POST /grids/263/tasks/create/913/1016/ HTTP/1.1" 200 1525
+INFO 2025-12-14 16:29:30,482 basehttp 94364 6127316992 "POST /tasks/2913/edit/ HTTP/1.1" 200 143
+INFO 2025-12-14 16:29:39,576 project_views_functions 94364 6127316992 User None deleted task: "Pull together subscription overview for the board" from project: Sales & Marketing
+INFO 2025-12-14 16:29:39,581 basehttp 94364 6127316992 "POST /tasks/2760/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:29:51,387 basehttp 94364 6127316992 "POST /grids/263/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-14 16:30:00,788 basehttp 94364 6127316992 "POST /grids/263/tasks/create/913/1017/ HTTP/1.1" 200 1543
+INFO 2025-12-14 16:30:03,803 basehttp 94364 6127316992 "POST /tasks/2914/edit/ HTTP/1.1" 200 125
+INFO 2025-12-14 16:30:07,320 project_views_functions 94364 6127316992 User None deleted task: "Look at how we can develop regional distributor partnerships" from project: Sales & Marketing
+INFO 2025-12-14 16:30:07,324 basehttp 94364 6127316992 "POST /tasks/2757/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:30:16,434 basehttp 94364 6127316992 "POST /grids/263/tasks/create/918/1017/ HTTP/1.1" 200 1497
+INFO 2025-12-14 16:30:31,222 basehttp 94364 6127316992 "POST /tasks/2799/edit/ HTTP/1.1" 200 134
+INFO 2025-12-14 16:30:35,960 basehttp 94364 6127316992 "POST /tasks/2799/edit/ HTTP/1.1" 200 143
+INFO 2025-12-14 16:30:55,252 basehttp 94364 6127316992 "POST /tasks/2719/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-14 16:31:06,454 basehttp 94364 6127316992 "GET /grids/247/ HTTP/1.1" 200 28295
+INFO 2025-12-14 16:31:14,467 basehttp 94364 6127316992 "POST /grids/247/columns/984/edit/ HTTP/1.1" 200 105
+INFO 2025-12-14 16:31:22,516 basehttp 94364 6127316992 "POST /grids/247/columns/989/edit/ HTTP/1.1" 200 115
+INFO 2025-12-14 16:31:32,478 basehttp 94364 6127316992 "POST /grids/247/columns/990/edit/ HTTP/1.1" 200 121
+INFO 2025-12-14 16:39:31,472 basehttp 94364 6127316992 "POST /tasks/2681/edit/ HTTP/1.1" 200 107
+INFO 2025-12-14 16:39:34,049 project_views_functions 94364 6127316992 User None deleted task: "Check raw materials levels" from project: Team & Delivery
+INFO 2025-12-14 16:39:34,055 basehttp 94364 6127316992 "POST /tasks/2672/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:39:41,870 basehttp 94364 6127316992 "POST /tasks/2745/edit/ HTTP/1.1" 200 121
+INFO 2025-12-14 16:39:44,581 project_views_functions 94364 6127316992 User None deleted task: "Finalise next week's production run" from project: Team & Delivery
+INFO 2025-12-14 16:39:44,585 basehttp 94364 6127316992 "POST /tasks/2801/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:39:46,965 basehttp 94364 6127316992 "POST /tasks/2681/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-14 16:40:16,324 basehttp 94364 6127316992 "POST /tasks/2682/edit/ HTTP/1.1" 200 127
+INFO 2025-12-14 16:40:23,976 basehttp 94364 6127316992 "POST /tasks/2682/edit/ HTTP/1.1" 200 125
+INFO 2025-12-14 16:40:26,762 basehttp 94364 6127316992 "POST /tasks/2682/edit/ HTTP/1.1" 200 126
+INFO 2025-12-14 16:40:57,974 basehttp 94364 6127316992 "POST /tasks/2685/edit/ HTTP/1.1" 200 114
+INFO 2025-12-14 16:40:59,473 basehttp 94364 6127316992 "POST /tasks/2685/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-14 16:41:01,916 project_views_functions 94364 6127316992 User None deleted task: "Reconcile stock in warehouse" from project: Team & Delivery
+INFO 2025-12-14 16:41:01,921 basehttp 94364 6127316992 "POST /tasks/2674/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:41:10,982 basehttp 94364 6127316992 "POST /tasks/2683/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-14 16:41:20,648 basehttp 94364 6127316992 "POST /tasks/2683/edit/ HTTP/1.1" 200 124
+INFO 2025-12-14 16:41:23,432 project_views_functions 94364 6127316992 User None deleted task: "Review product issues" from project: Team & Delivery
+INFO 2025-12-14 16:41:23,437 basehttp 94364 6127316992 "POST /tasks/2766/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:42:30,761 basehttp 94364 6127316992 "POST /tasks/2680/edit/ HTTP/1.1" 200 118
+INFO 2025-12-14 16:42:33,026 project_views_functions 94364 6127316992 User None deleted task: "Review alternative couriers" from project: Team & Delivery
+INFO 2025-12-14 16:42:33,029 basehttp 94364 6127316992 "POST /tasks/2688/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:42:56,230 basehttp 94364 6127316992 "POST /tasks/2690/edit/ HTTP/1.1" 200 120
+INFO 2025-12-14 16:43:18,926 basehttp 94364 6127316992 "POST /tasks/2679/edit/ HTTP/1.1" 200 125
+INFO 2025-12-14 16:43:46,019 basehttp 94364 6127316992 "POST /tasks/2677/edit/ HTTP/1.1" 200 129
+INFO 2025-12-14 16:44:12,474 basehttp 94364 6127316992 "POST /tasks/2675/edit/ HTTP/1.1" 200 119
+INFO 2025-12-14 16:44:36,979 project_views_functions 94364 6127316992 User None deleted task: "Place supplier orders for ingredients" from project: Team & Delivery
+INFO 2025-12-14 16:44:36,984 basehttp 94364 6127316992 "POST /tasks/2686/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:44:40,196 basehttp 94364 6127316992 "POST /tasks/2693/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-14 16:45:04,923 basehttp 94364 6127316992 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-14 16:45:09,316 project_views_functions 94364 6127316992 User None deleted task: "Update traceability logs" from project: Team & Delivery
+INFO 2025-12-14 16:45:09,321 basehttp 94364 6127316992 "POST /tasks/2773/delete/ HTTP/1.1" 200 58
+INFO 2025-12-14 16:45:31,340 basehttp 94364 6127316992 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1580
+INFO 2025-12-14 16:45:41,490 basehttp 94364 6127316992 "POST /grids/247/tasks/create/864/984/ HTTP/1.1" 200 1519
+INFO 2025-12-14 16:45:57,679 basehttp 94364 6127316992 "POST /grids/247/tasks/create/864/990/ HTTP/1.1" 200 1526
+INFO 2025-12-14 16:46:01,289 basehttp 94364 6127316992 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-14 16:48:23,222 basehttp 94364 6127316992 "POST /tasks/2748/edit/ HTTP/1.1" 200 113
+INFO 2025-12-14 16:48:35,024 basehttp 94364 6127316992 "POST /tasks/2748/edit/ HTTP/1.1" 200 119
+INFO 2025-12-14 16:51:15,516 basehttp 94364 6127316992 "POST /tasks/2693/edit/ HTTP/1.1" 200 114
+INFO 2025-12-14 16:51:20,970 basehttp 94364 6127316992 "POST /tasks/2916/edit/ HTTP/1.1" 200 136
+INFO 2025-12-14 16:51:24,559 basehttp 94364 6127316992 "POST /tasks/2916/edit/ HTTP/1.1" 200 142
+INFO 2025-12-14 16:52:02,953 basehttp 94364 6127316992 "POST /tasks/2679/edit/ HTTP/1.1" 200 134
+INFO 2025-12-14 17:03:06,230 autoreload 96302 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-14 17:03:15,161 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 10922
+INFO 2025-12-14 17:04:07,511 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 10885
+INFO 2025-12-14 17:05:02,346 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 10881
+INFO 2025-12-14 17:07:03,965 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 10975
+INFO 2025-12-14 17:08:29,594 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 10993
+WARNING 2025-12-14 17:18:11,436 log 96302 6135083008 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-12-14 17:18:11,438 basehttp 96302 6135083008 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2400
+INFO 2025-12-14 17:18:13,588 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 11056
+WARNING 2025-12-14 17:18:13,623 log 96302 6135083008 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-12-14 17:18:13,624 basehttp 96302 6135083008 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2404
