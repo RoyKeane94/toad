@@ -2,6 +2,50 @@
 
 {% block title %}Companies - B2B CRM{% endblock %}
 
+{% block extra_head %}
+<style>
+    /* Checkbox button styling */
+    input[type="checkbox"]:checked + span {
+        background-color: rgb(243 244 246);
+        border-color: rgb(107 114 128);
+        color: rgb(31 41 55);
+    }
+    input[type="checkbox"][value="Customer"]:checked + span {
+        background-color: rgb(220 252 231);
+        border-color: rgb(22 163 74);
+        color: rgb(22 101 52);
+    }
+    input[type="checkbox"][value="Prospect"]:checked + span {
+        background-color: rgb(219 234 254);
+        border-color: rgb(37 99 235);
+        color: rgb(30 64 175);
+    }
+    input[type="checkbox"][value="Rejected but follow up"]:checked + span {
+        background-color: rgb(255 237 213);
+        border-color: rgb(249 115 22);
+        color: rgb(154 52 18);
+    }
+    input[type="checkbox"][value="No response"]:checked + span {
+        background-color: rgb(254 249 195);
+        border-color: rgb(234 179 8);
+        color: rgb(133 77 14);
+    }
+    input[type="checkbox"][value="Rejected"]:checked + span {
+        background-color: rgb(254 226 226);
+        border-color: rgb(220 38 38);
+        color: rgb(153 27 27);
+    }
+    input[type="checkbox"][value="1"]:checked + span,
+    input[type="checkbox"][value="2"]:checked + span,
+    input[type="checkbox"][value="3"]:checked + span,
+    input[type="checkbox"][value="4"]:checked + span {
+        background-color: rgb(243 232 255);
+        border-color: rgb(147 51 234);
+        color: rgb(88 28 135);
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="min-h-screen bg-[var(--bg-primary)]">
     <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
@@ -50,9 +94,14 @@
 
         <!-- Search and Filters -->
         <div class="bg-white rounded-lg shadow-sm border border-[var(--border-color)] p-6 mb-8">
-            <h2 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Search & Filter</h2>
-            <form method="get" class="flex flex-wrap items-end gap-4">
-                <div class="flex-1 min-w-[150px]">
+            <div class="flex items-center mb-6">
+                <i class="fas fa-filter text-[var(--primary-action-bg)] mr-2 text-lg"></i>
+                <h2 class="text-lg font-semibold text-[var(--text-primary)]">Search & Filter</h2>
+            </div>
+            
+            <form method="get" class="space-y-6">
+                <!-- Search Input -->
+                <div>
                     <label for="search" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Search</label>
                     <div class="relative">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -64,44 +113,72 @@
                     </div>
                 </div>
                 
-                <div class="flex-1 min-w-[150px]">
-                    <label for="status" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Status</label>
-                    <select name="status" id="status" 
-                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
-                        <option value="">All Statuses</option>
-                        <option value="Customer" {% if status_filter == 'Customer' %}selected{% endif %}>Customer</option>
-                        <option value="Prospect" {% if status_filter == 'Prospect' %}selected{% endif %}>Prospect</option>
-                        <option value="Rejected but follow up" {% if status_filter == 'Rejected but follow up' %}selected{% endif %}>Rejected but follow up</option>
-                        <option value="No response" {% if status_filter == 'No response' %}selected{% endif %}>No Response</option>
-                        <option value="Rejected" {% if status_filter == 'Rejected' %}selected{% endif %}>Rejected</option>
-                    </select>
+                <!-- Status Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-[var(--text-primary)] mb-2">Status</label>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="status" value="Customer" class="sr-only peer" {% if 'Customer' in status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-green-100 peer-checked:border-green-600 peer-checked:text-green-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">Customer</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="status" value="Prospect" class="sr-only peer" {% if 'Prospect' in status_filters or not status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-blue-100 peer-checked:border-blue-600 peer-checked:text-blue-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">Prospect</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="status" value="Rejected but follow up" class="sr-only peer" {% if 'Rejected but follow up' in status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-orange-100 peer-checked:border-orange-600 peer-checked:text-orange-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">Rejected Follow Up</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="status" value="No response" class="sr-only peer" {% if 'No response' in status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-yellow-100 peer-checked:border-yellow-600 peer-checked:text-yellow-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">No Response</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="status" value="Rejected" class="sr-only peer" {% if 'Rejected' in status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-red-100 peer-checked:border-red-600 peer-checked:text-red-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">Rejected</span>
+                        </label>
+                    </div>
                 </div>
                 
-                <div class="flex-1 min-w-[150px]">
-                    <label for="email_status" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Email Status</label>
-                    <select name="email_status" id="email_status" 
-                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
-                        <option value="">All Email Statuses</option>
-                        <option value="Initial" {% if email_status_filter == 'Initial' %}selected{% endif %}>Initial</option>
-                        <option value="Initial Follow Up" {% if email_status_filter == 'Initial Follow Up' %}selected{% endif %}>Initial Follow Up</option>
-                        <option value="Secondary Follow Up" {% if email_status_filter == 'Secondary Follow Up' %}selected{% endif %}>Secondary Follow Up</option>
-                        <option value="Tertiary Follow Up" {% if email_status_filter == 'Tertiary Follow Up' %}selected{% endif %}>Tertiary Follow Up</option>
-                    </select>
+                <!-- Email Status Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-[var(--text-primary)] mb-2">Email Status</label>
+                    <div class="flex flex-wrap gap-2">
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="email_status" value="1" class="sr-only peer" {% if '1' in email_status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-purple-100 peer-checked:border-purple-600 peer-checked:text-purple-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">1</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="email_status" value="2" class="sr-only peer" {% if '2' in email_status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-purple-100 peer-checked:border-purple-600 peer-checked:text-purple-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">2</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="email_status" value="3" class="sr-only peer" {% if '3' in email_status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-purple-100 peer-checked:border-purple-600 peer-checked:text-purple-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">3</span>
+                        </label>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="email_status" value="4" class="sr-only peer" {% if '4' in email_status_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-purple-100 peer-checked:border-purple-600 peer-checked:text-purple-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">4</span>
+                        </label>
+                    </div>
                 </div>
                 
-                <div class="flex-1 min-w-[150px]">
-                    <label for="sector" class="block text-sm font-medium text-[var(--text-primary)] mb-2">Sector</label>
-                    <select name="sector" id="sector" 
-                            class="w-full px-3 py-2.5 border-2 border-[var(--border-color)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent transition-colors">
-                        <option value="">All Sectors</option>
+                <!-- Sector Filter -->
+                <div>
+                    <label class="block text-sm font-medium text-[var(--text-primary)] mb-2">Sector</label>
+                    <div class="flex flex-wrap gap-2">
                         {% for sector in sectors %}
-                        <option value="{{ sector.pk }}" {% if sector_filter|stringformat:"s" == sector.pk|stringformat:"s" %}selected{% endif %}>{{ sector.name }}</option>
+                        <label class="inline-flex items-center cursor-pointer">
+                            <input type="checkbox" name="sector" value="{{ sector.pk }}" class="sr-only peer" {% if sector.pk|stringformat:"s" in sector_filters %}checked{% endif %}>
+                            <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-blue-100 peer-checked:border-blue-600 peer-checked:text-blue-800 bg-white border-gray-300 text-gray-700 hover:bg-gray-50">{{ sector.name }}</span>
+                        </label>
                         {% endfor %}
-                    </select>
+                    </div>
                 </div>
                 
-                <div class="flex-shrink-0">
-                    <button type="submit" class="px-4 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] whitespace-nowrap">
+                <!-- Apply Button -->
+                <div class="flex justify-end">
+                    <button type="submit" class="px-6 py-2.5 bg-[var(--primary-action-bg)] text-white font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] whitespace-nowrap">
                         <i class="fas fa-filter mr-2"></i>
                         Apply Filters
                     </button>
@@ -295,4 +372,27 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form[method="get"]');
+    if (form) {
+        // Ensure at least one status checkbox is checked before submission
+        form.addEventListener('submit', function(e) {
+            const statusCheckboxes = form.querySelectorAll('input[name="status"]:checked');
+            if (statusCheckboxes.length === 0) {
+                e.preventDefault();
+                // Check Prospect by default
+                const prospectCheckbox = form.querySelector('input[name="status"][value="Prospect"]');
+                if (prospectCheckbox) {
+                    prospectCheckbox.checked = true;
+                }
+                // Resubmit
+                setTimeout(() => form.submit(), 10);
+                return false;
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

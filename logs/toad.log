@@ -37347,3 +37347,240 @@ WARNING 2025-12-14 17:18:11,438 basehttp 96302 6135083008 "GET /.well-known/apps
 INFO 2025-12-14 17:18:13,588 basehttp 96302 6135083008 "GET / HTTP/1.1" 200 11056
 WARNING 2025-12-14 17:18:13,623 log 96302 6135083008 Not Found: /.well-known/appspecific/com.chrome.devtools.json
 WARNING 2025-12-14 17:18:13,624 basehttp 96302 6135083008 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2404
+INFO 2025-12-16 21:42:07,848 autoreload 11254 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-16 21:42:25,014 basehttp 11254 6193754112 "GET / HTTP/1.1" 200 10980
+INFO 2025-12-16 21:42:25,024 basehttp 11254 6193754112 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-16 21:42:25,041 basehttp 11254 6193754112 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-16 21:42:25,433 basehttp 11254 6193754112 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-16 21:42:26,824 basehttp 11254 6193754112 "GET /grids/ HTTP/1.1" 200 13206
+INFO 2025-12-16 21:42:30,766 basehttp 11254 6193754112 "GET /grids/247/ HTTP/1.1" 200 27161
+INFO 2025-12-16 21:42:30,781 basehttp 11254 6193754112 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-12-16 21:42:56,180 project_views_functions 11254 6193754112 User None deleted task: "Create reusable risk checklists" from project: Team & Delivery
+INFO 2025-12-16 21:42:56,185 basehttp 11254 6193754112 "POST /tasks/2680/delete/ HTTP/1.1" 200 58
+INFO 2025-12-16 21:43:43,589 basehttp 11254 6193754112 "POST /tasks/2681/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:43:51,903 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 21:44:03,884 basehttp 11254 6193754112 "POST /grids/247/tasks/create/911/989/ HTTP/1.1" 200 1521
+INFO 2025-12-16 21:45:07,500 basehttp 11254 6193754112 "POST /tasks/2681/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:45:14,089 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 21:45:18,852 project_views_functions 11254 6193754112 User None deleted task: "Get sign off on risk assessment templates" from project: Team & Delivery
+INFO 2025-12-16 21:45:18,857 basehttp 11254 6193754112 "POST /tasks/2919/delete/ HTTP/1.1" 200 58
+INFO 2025-12-16 21:45:31,538 basehttp 11254 6193754112 "POST /tasks/2681/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:45:37,517 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 21:45:56,921 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 21:45:58,066 basehttp 11254 6193754112 "POST /tasks/2681/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:45:59,038 basehttp 11254 6193754112 "POST /tasks/2682/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:46:01,017 basehttp 11254 6193754112 "POST /tasks/2683/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:46:02,964 basehttp 11254 6193754112 "POST /tasks/2918/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:46:24,883 basehttp 11254 6193754112 "POST /tasks/2745/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 21:46:29,630 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 21:46:37,384 basehttp 11254 6193754112 "POST /grids/247/tasks/create/911/989/ HTTP/1.1" 200 1499
+INFO 2025-12-16 21:46:39,927 project_views_functions 11254 6193754112 User None assigned task: ""Finalise risk assessment memos" to Toad Toad" from project: Team & Delivery
+INFO 2025-12-16 21:46:39,928 basehttp 11254 6193754112 "POST /tasks/2920/assign/ HTTP/1.1" 200 123
+INFO 2025-12-16 21:56:02,805 basehttp 11254 6193754112 "GET /grids/263/ HTTP/1.1" 200 26890
+INFO 2025-12-16 21:58:24,862 basehttp 11254 6193754112 "POST /grids/263/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 21:58:30,636 project_views_functions 11254 6193754112 User None unassigned task: ""Draft Spring 2026 content for Instagram"" from project: Sales & Marketing
+INFO 2025-12-16 21:58:30,637 basehttp 11254 6193754112 "POST /tasks/2704/assign/ HTTP/1.1" 200 60
+INFO 2025-12-16 21:59:20,348 basehttp 11254 6193754112 "POST /tasks/2704/note/ HTTP/1.1" 200 202
+INFO 2025-12-16 21:59:20,359 basehttp 11254 6193754112 "GET /tasks/2704/notes/ HTTP/1.1" 200 177
+INFO 2025-12-16 21:59:41,761 basehttp 11254 6193754112 "GET /tasks/2704/notes/ HTTP/1.1" 200 177
+INFO 2025-12-16 21:59:43,438 basehttp 11254 6193754112 "DELETE /tasks/2704/note/ HTTP/1.1" 200 78
+INFO 2025-12-16 21:59:43,712 basehttp 11254 6193754112 "GET /grids/263/ HTTP/1.1" 200 26833
+INFO 2025-12-16 22:00:12,504 basehttp 11254 6193754112 "POST /tasks/2704/note/ HTTP/1.1" 200 191
+INFO 2025-12-16 22:00:12,516 basehttp 11254 6193754112 "GET /tasks/2704/notes/ HTTP/1.1" 200 166
+INFO 2025-12-16 22:00:18,511 project_views_functions 11254 6193754112 User None assigned task: ""Draft Spring 2026 content for Instagram" to Toad Toad" from project: Sales & Marketing
+INFO 2025-12-16 22:00:18,511 basehttp 11254 6193754112 "POST /tasks/2704/assign/ HTTP/1.1" 200 123
+INFO 2025-12-16 22:00:28,075 basehttp 11254 6193754112 "POST /grids/263/tasks/create/913/1016/ HTTP/1.1" 200 1555
+INFO 2025-12-16 22:00:30,321 basehttp 11254 6193754112 "POST /tasks/2759/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:04:30,197 basehttp 11254 6193754112 "GET /grids/247/ HTTP/1.1" 200 27340
+INFO 2025-12-16 22:04:32,457 basehttp 11254 6193754112 "POST /tasks/2745/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:04:35,153 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:04:38,501 project_views_functions 11254 6193754112 User None deleted task: "Finalise risk assessment memos" from project: Team & Delivery
+INFO 2025-12-16 22:04:38,506 basehttp 11254 6193754112 "POST /tasks/2920/delete/ HTTP/1.1" 200 58
+INFO 2025-12-16 22:04:52,374 basehttp 11254 6193754112 "POST /tasks/2745/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:05:00,133 basehttp 11254 6193754112 "POST /tasks/2745/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:05:28,966 basehttp 11254 6193754112 "POST /tasks/2745/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:05:34,194 basehttp 11254 6193754112 "POST /grids/247/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:05:45,378 basehttp 11254 6193754112 "POST /grids/247/tasks/create/911/989/ HTTP/1.1" 200 1510
+INFO 2025-12-16 22:05:48,102 project_views_functions 11254 6193754112 User None assigned task: ""Finalise risk assessment memo templates" to Cecilie Potter" from project: Team & Delivery
+INFO 2025-12-16 22:05:48,103 basehttp 11254 6193754112 "POST /tasks/2922/assign/ HTTP/1.1" 200 134
+INFO 2025-12-16 22:09:25,483 basehttp 11254 6193754112 "GET /grids/270/ HTTP/1.1" 200 21741
+INFO 2025-12-16 22:09:26,663 basehttp 11254 6193754112 "GET /grids/269/ HTTP/1.1" 200 29857
+INFO 2025-12-16 22:09:55,972 basehttp 11254 6193754112 "POST /tasks/2864/reminder/ HTTP/1.1" 200 82
+INFO 2025-12-16 22:10:17,365 basehttp 11254 6193754112 "POST /tasks/2910/edit/ HTTP/1.1" 200 113
+INFO 2025-12-16 22:10:34,146 project_views_functions 11254 6193754112 User None deleted task: "Track confirmed vs pending" from project: Jacobs
+INFO 2025-12-16 22:10:34,151 basehttp 11254 6193754112 "POST /tasks/2910/delete/ HTTP/1.1" 200 58
+INFO 2025-12-16 22:10:40,232 basehttp 11254 6193754112 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:11:40,399 basehttp 11254 6193754112 "POST /tasks/2894/edit/ HTTP/1.1" 200 133
+INFO 2025-12-16 22:11:50,637 basehttp 11254 6193754112 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:11:59,188 project_views_functions 11254 6193754112 User None assigned task: ""Share updates with all parties" to Toad Toad" from project: Jacobs
+INFO 2025-12-16 22:11:59,188 basehttp 11254 6193754112 "POST /tasks/2875/assign/ HTTP/1.1" 200 123
+INFO 2025-12-16 22:12:07,613 basehttp 11254 6193754112 "POST /grids/269/tasks/create/933/1036/ HTTP/1.1" 200 1580
+INFO 2025-12-16 22:14:15,824 basehttp 11254 6193754112 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:14:18,768 project_views_functions 11254 6193754112 User None unassigned task: ""Share updates with all parties"" from project: Jacobs
+INFO 2025-12-16 22:14:18,768 basehttp 11254 6193754112 "POST /tasks/2875/assign/ HTTP/1.1" 200 60
+INFO 2025-12-16 22:14:28,050 basehttp 11254 6193754112 "POST /tasks/2894/edit/ HTTP/1.1" 200 109
+INFO 2025-12-16 22:14:32,480 project_views_functions 11254 6193754112 User None deleted task: "Confirm venue contact on the day" from project: Jacobs
+INFO 2025-12-16 22:14:32,484 basehttp 11254 6193754112 "POST /tasks/2923/delete/ HTTP/1.1" 200 58
+INFO 2025-12-16 22:14:42,134 basehttp 11254 6193754112 "POST /tasks/2869/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:14:43,448 basehttp 11254 6193754112 "POST /tasks/2869/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:14:58,942 basehttp 11254 6193754112 "POST /tasks/2869/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:15:06,817 basehttp 11254 6193754112 "POST /tasks/2894/edit/ HTTP/1.1" 200 137
+INFO 2025-12-16 22:15:12,257 project_views_functions 11254 6193754112 User None assigned task: ""Share updates with all parties" to Toad Toad" from project: Jacobs
+INFO 2025-12-16 22:15:12,257 basehttp 11254 6193754112 "POST /tasks/2875/assign/ HTTP/1.1" 200 123
+INFO 2025-12-16 22:15:16,581 basehttp 11254 6193754112 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:15:23,639 basehttp 11254 6193754112 "POST /grids/269/tasks/create/933/1036/ HTTP/1.1" 200 1532
+INFO 2025-12-16 22:15:38,666 project_views_functions 11254 6193754112 User None unassigned task: ""Share updates with all parties"" from project: Jacobs
+INFO 2025-12-16 22:15:38,667 basehttp 11254 6193754112 "POST /tasks/2875/assign/ HTTP/1.1" 200 60
+INFO 2025-12-16 22:15:41,030 basehttp 11254 6193754112 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:15:43,015 basehttp 11254 6193754112 "POST /tasks/2869/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:15:46,827 basehttp 11254 6193754112 "POST /tasks/2894/edit/ HTTP/1.1" 200 109
+INFO 2025-12-16 22:15:49,947 project_views_functions 11254 6193754112 User None deleted task: "Confirm contact on the day" from project: Jacobs
+INFO 2025-12-16 22:15:49,949 basehttp 11254 6193754112 "POST /tasks/2924/delete/ HTTP/1.1" 200 58
+INFO 2025-12-16 22:16:22,649 basehttp 11254 6193754112 "POST /tasks/2869/toggle/ HTTP/1.1" 200 79
+INFO 2025-12-16 22:16:30,733 basehttp 11254 6193754112 "POST /tasks/2894/edit/ HTTP/1.1" 200 137
+INFO 2025-12-16 22:16:36,214 basehttp 11254 6193754112 "POST /grids/269/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2025-12-16 22:16:47,572 basehttp 11254 6193754112 "POST /grids/269/tasks/create/933/1036/ HTTP/1.1" 200 1590
+INFO 2025-12-16 22:16:50,707 project_views_functions 11254 6193754112 User None assigned task: ""Confirm the venue contact number" to Toad Toad" from project: Jacobs
+INFO 2025-12-16 22:16:50,708 basehttp 11254 6193754112 "POST /tasks/2925/assign/ HTTP/1.1" 200 123
+INFO 2025-12-17 07:03:14,999 basehttp 11254 6193754112 "GET / HTTP/1.1" 200 10999
+INFO 2025-12-17 07:03:15,414 basehttp 11254 6193754112 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-17 07:03:20,468 basehttp 11254 6193754112 "GET /lilypad/ HTTP/1.1" 200 4171
+INFO 2025-12-17 07:04:00,337 basehttp 11254 6193754112 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 3990
+INFO 2025-12-17 07:08:25,495 basehttp 11254 6193754112 "GET /lilypad/b2b/companies/?search=test HTTP/1.1" 200 4047
+INFO 2025-12-17 07:09:03,614 autoreload 11254 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:09:04,207 autoreload 15537 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:09:11,040 autoreload 15537 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:09:11,487 autoreload 15558 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:09:17,082 autoreload 15558 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:09:17,557 autoreload 15562 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:09:24,127 autoreload 15562 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:09:24,510 autoreload 15584 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:11:28,641 autoreload 15584 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:11:29,134 autoreload 15858 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:12:30,615 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4191
+INFO 2025-12-17 07:12:38,425 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 5070
+INFO 2025-12-17 07:12:49,556 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Customer&status=Rejected+but+follow+up&status=No+response&email_status=&sector= HTTP/1.1" 200 4561
+INFO 2025-12-17 07:25:07,362 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Customer&status=Rejected+but+follow+up&status=No+response&email_status=&sector= HTTP/1.1" 200 4683
+INFO 2025-12-17 07:25:19,766 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Customer&email_status=&sector= HTTP/1.1" 200 4630
+INFO 2025-12-17 07:25:25,297 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 4635
+INFO 2025-12-17 07:25:29,079 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=&email_status=&sector= HTTP/1.1" 200 4614
+INFO 2025-12-17 07:25:42,947 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=&email_status=&sector=1 HTTP/1.1" 200 4561
+INFO 2025-12-17 07:25:46,724 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/create/ HTTP/1.1" 200 4407
+INFO 2025-12-17 07:25:55,032 basehttp 15858 6199291904 "POST /lilypad/b2b/companies/create/ HTTP/1.1" 302 0
+INFO 2025-12-17 07:25:55,047 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 5292
+INFO 2025-12-17 07:26:01,118 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&status=Customer&email_status=&sector= HTTP/1.1" 200 4668
+INFO 2025-12-17 07:26:04,931 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Customer&email_status=&sector= HTTP/1.1" 200 4639
+INFO 2025-12-17 07:26:10,210 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 4647
+INFO 2025-12-17 07:29:35,826 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 4970
+INFO 2025-12-17 07:29:41,882 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 4991
+INFO 2025-12-17 07:29:49,719 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Rejected+but+follow+up&email_status=&sector= HTTP/1.1" 200 4983
+INFO 2025-12-17 07:29:52,870 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Rejected+but+follow+up&email_status=&sector=&status=Prospect HTTP/1.1" 200 5018
+INFO 2025-12-17 07:29:58,637 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4285
+INFO 2025-12-17 07:30:02,020 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 5754
+INFO 2025-12-17 07:30:16,801 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=1&sector= HTTP/1.1" 200 5034
+INFO 2025-12-17 07:30:20,298 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 4961
+INFO 2025-12-17 07:30:34,538 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector=&status=Customer HTTP/1.1" 200 5006
+INFO 2025-12-17 07:30:43,725 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4258
+INFO 2025-12-17 07:30:45,704 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 5751
+INFO 2025-12-17 07:31:17,939 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 5007
+INFO 2025-12-17 07:35:28,791 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 5660
+WARNING 2025-12-17 07:35:38,363 log 15858 6199291904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-12-17 07:35:38,364 basehttp 15858 6199291904 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2439
+INFO 2025-12-17 07:36:15,603 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4274
+INFO 2025-12-17 07:36:17,944 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 6367
+INFO 2025-12-17 07:36:21,714 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector= HTTP/1.1" 200 5685
+INFO 2025-12-17 07:39:00,435 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4275
+INFO 2025-12-17 07:39:00,457 basehttp 15858 6232944640 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-17 07:39:00,458 basehttp 15858 6216118272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-17 07:39:00,460 basehttp 15858 6199291904 "GET /static/css/output.css HTTP/1.1" 200 100084
+INFO 2025-12-17 07:39:00,460 basehttp 15858 6249771008 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-17 07:39:00,888 basehttp 15858 6199291904 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-17 07:39:02,532 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 6849
+INFO 2025-12-17 07:39:09,814 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Prospect&email_status=&sector=&status=Customer HTTP/1.1" 200 6056
+INFO 2025-12-17 07:39:14,822 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Customer&email_status=&sector= HTTP/1.1" 200 6081
+INFO 2025-12-17 07:39:18,188 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4214
+INFO 2025-12-17 07:39:20,277 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 6838
+INFO 2025-12-17 07:39:33,856 basehttp 15858 6199291904 "GET /lilypad/b2b/companies/?search=&status=Rejected+but+follow+up&email_status=&sector=&status=Prospect&status=Customer HTTP/1.1" 200 6105
+WARNING 2025-12-17 07:39:37,196 log 15858 6199291904 Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-12-17 07:39:37,197 basehttp 15858 6199291904 "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 2363
+INFO 2025-12-17 07:51:53,770 basehttp 15858 6199291904 "GET /lilypad/ HTTP/1.1" 200 4262
+INFO 2025-12-17 07:51:53,797 basehttp 15858 6232944640 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-17 07:51:53,798 basehttp 15858 6199291904 "GET /static/css/output.css HTTP/1.1" 200 100084
+INFO 2025-12-17 07:51:53,800 basehttp 15858 6216118272 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-17 07:51:53,801 basehttp 15858 6249771008 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-17 07:51:54,094 basehttp 15858 6249771008 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-17 07:51:57,561 basehttp 15858 6249771008 "GET /lilypad/b2b/companies/ HTTP/1.1" 200 4980
+INFO 2025-12-17 07:52:01,910 basehttp 15858 6249771008 "GET /lilypad/b2b/companies/?search=&status=Prospect&status=Rejected+but+follow+up&sector= HTTP/1.1" 200 4959
+INFO 2025-12-17 07:52:05,635 basehttp 15858 6249771008 "GET /lilypad/b2b/companies/?search=&status=Rejected+but+follow+up&sector= HTTP/1.1" 200 4370
+INFO 2025-12-17 07:52:09,056 basehttp 15858 6249771008 "GET /lilypad/b2b/companies/?search=&status=Prospect&status=Rejected+but+follow+up&sector= HTTP/1.1" 200 4995
+INFO 2025-12-17 07:52:18,338 basehttp 15858 6249771008 "GET /lilypad/b2b/companies/?search=Test+2&status=Prospect&status=Rejected+but+follow+up&sector= HTTP/1.1" 200 4761
+INFO 2025-12-17 07:52:31,446 basehttp 15858 6249771008 "GET /lilypad/b2b/companies/?search=Test+2&status=No+response&sector= HTTP/1.1" 200 4362
+INFO 2025-12-17 07:57:15,475 autoreload 17697 8580636416 Watching for file changes with StatReloader
+ERROR 2025-12-17 07:57:17,980 log 17697 6164410368 Internal Server Error: /lilypad/b2b/companies/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py", line 2128, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py", line 82, in company_list
+    companies = companies.filter(company_sector__id__in=sector_filters)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1588, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1415, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/lookups.py", line 38, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/lookups.py", line 536, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/lookups.py", line 321, in get_prep_lookup
+    rhs_value = self.lhs.output_field.get_prep_value(rhs_value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/fields/__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got ''.
+ERROR 2025-12-17 07:57:17,987 basehttp 17697 6164410368 "GET /lilypad/b2b/companies/?search=Test+2&status=No+response&sector= HTTP/1.1" 500 17426
+INFO 2025-12-17 07:57:18,095 basehttp 17697 6164410368 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-12-17 07:57:18,101 basehttp 17697 6164410368 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-12-17 07:57:53,098 autoreload 17697 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:57:53,605 autoreload 17735 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:57:57,152 autoreload 17735 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/CRM/views.py changed, reloading.
+INFO 2025-12-17 07:57:57,495 autoreload 17742 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-17 07:58:02,232 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=Test+2&status=No+response&sector= HTTP/1.1" 200 4242
+INFO 2025-12-17 07:58:06,487 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=Test+2&status=Prospect HTTP/1.1" 200 4724
+INFO 2025-12-17 07:58:11,146 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=Test+2&status=Prospect HTTP/1.1" 200 4678
+INFO 2025-12-17 07:58:13,163 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=Test+2&status=Prospect HTTP/1.1" 200 4735
+INFO 2025-12-17 07:58:22,117 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=&status=Prospect HTTP/1.1" 200 4897

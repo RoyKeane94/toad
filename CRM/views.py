@@ -55,23 +55,49 @@ def company_list(request):
     if search_query:
         companies = companies.filter(company_name__icontains=search_query)
     
-    # Filter by status
-    status_filter = request.GET.get('status', '')
-    if status_filter:
-        companies = companies.filter(status=status_filter)
+    # Filter by status - support multiple values
+    status_filters = request.GET.getlist('status')
+    # Default to Prospect if no status is provided
+    if not status_filters:
+        status_filters = ['Prospect']
+        status_filter = 'Prospect'  # For backward compatibility with template
+    else:
+        status_filter = status_filters[0] if len(status_filters) == 1 else ''  # For display purposes
     
-    # Filter by email_status
-    email_status_filter = request.GET.get('email_status', '')
-    if email_status_filter:
-        companies = companies.filter(email_status=email_status_filter)
+    if status_filters:
+        companies = companies.filter(status__in=status_filters)
     
-    # Filter by sector
-    sector_filter = request.GET.get('sector', '')
-    if sector_filter:
-        companies = companies.filter(company_sector__id=sector_filter)
+    # Filter by email_status - support multiple values
+    email_status_filters = request.GET.getlist('email_status')
+    email_status_filter = email_status_filters[0] if email_status_filters else ''  # For backward compatibility with template
+    
+    if email_status_filters:
+        companies = companies.filter(email_status__in=email_status_filters)
+    
+    # Filter by sector - support multiple values
+    sector_filters = [s for s in request.GET.getlist('sector') if s and s.strip()]  # Filter out empty strings
+    sector_filter = sector_filters[0] if sector_filters else ''  # For backward compatibility with template
+    
+    if sector_filters:
+        # Convert to integers for the id lookup
+        try:
+            sector_ids = [int(s) for s in sector_filters]
+            companies = companies.filter(company_sector__id__in=sector_ids)
+        except (ValueError, TypeError):
+            # If any value can't be converted to int, skip sector filtering
+            pass
     
     # Order by updated_at (most recent first)
     companies = companies.order_by('-updated_at')
+    
+    # Calculate statistics from filtered queryset (before pagination)
+    filtered_companies = companies  # This is the filtered queryset
+    total_companies = filtered_companies.count()
+    customer_count = filtered_companies.filter(status='Customer').count()
+    prospect_count = filtered_companies.filter(status='Prospect').count()
+    rejected_followup_count = filtered_companies.filter(status='Rejected but follow up').count()
+    no_response_count = filtered_companies.filter(status='No response').count()
+    rejected_count = filtered_companies.filter(status='Rejected').count()
     
     # Pagination
     from django.core.paginator import Paginator
@@ -82,34 +108,29 @@ def company_list(request):
     # Get all sectors for filter dropdown
     sectors = CompanySector.objects.all().order_by('name')
     
-    # Calculate statistics
-    total_companies = Company.objects.count()
-    customer_count = Company.objects.filter(status='Customer').count()
-    prospect_count = Company.objects.filter(status='Prospect').count()
-    rejected_followup_count = Company.objects.filter(status='Rejected but follow up').count()
-    no_response_count = Company.objects.filter(status='No response').count()
-    rejected_count = Company.objects.filter(status='Rejected').count()
-    
     # Build query string for pagination (excluding page parameter)
     from urllib.parse import urlencode
     query_params = {}
     if search_query:
         query_params['search'] = search_query
-    if status_filter:
-        query_params['status'] = status_filter
-    if email_status_filter:
-        query_params['email_status'] = email_status_filter
-    if sector_filter:
-        query_params['sector'] = sector_filter
-    query_string = urlencode(query_params)
+    if status_filters:
+        query_params['status'] = status_filters
+    if email_status_filters:
+        query_params['email_status'] = email_status_filters
+    if sector_filters:
+        query_params['sector'] = sector_filters
+    query_string = urlencode(query_params, doseq=True)
     
     context = {
         'companies': page_obj,
         'page_obj': page_obj,
         'search_query': search_query,
         'status_filter': status_filter,
+        'status_filters': status_filters,
         'email_status_filter': email_status_filter,
+        'email_status_filters': email_status_filters,
         'sector_filter': sector_filter,
+        'sector_filters': sector_filters,
         'sectors': sectors,
         'query_string': query_string,
         'total_companies': total_companies,
