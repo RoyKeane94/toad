@@ -939,6 +939,101 @@ class RegisterProView(FormView):
         return super().form_invalid(form)
 
 
+class RegisterTeamQuantityView(TemplateView):
+    """
+    Step 1: View for choosing number of team members
+    """
+    template_name = 'accounts/pages/registration/register_team_quantity.html'
+    
+    def post(self, request, *args, **kwargs):
+        """Handle quantity selection"""
+        try:
+            quantity = int(request.POST.get('quantity', 2))
+            if quantity < 2:
+                messages.error(request, 'Team subscription requires at least 2 seats.')
+                return self.get(request, *args, **kwargs)
+            if quantity > 100:
+                messages.error(request, 'Maximum 100 seats allowed.')
+                return self.get(request, *args, **kwargs)
+            
+            # Store quantity in session for next step
+            request.session['team_registration_quantity'] = quantity
+            request.session['team_registration_flow'] = True
+            
+            # Redirect to admin registration
+            return redirect('accounts:register_team_admin')
+        except ValueError:
+            messages.error(request, 'Please enter a valid number.')
+            return self.get(request, *args, **kwargs)
+
+
+class RegisterTeamAdminView(FormView):
+    """
+    Step 2: Custom registration view for Team Toad admin (multiple users)
+    """
+    template_name = 'accounts/pages/registration/register_team_admin.html'
+    form_class = CustomUserCreationForm
+    
+    def dispatch(self, request, *args, **kwargs):
+        """Check if quantity is set in session"""
+        if not request.session.get('team_registration_quantity'):
+            messages.error(request, 'Please select team size first.')
+            return redirect('accounts:register_team_quantity')
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        """Add quantity to context"""
+        context = super().get_context_data(**kwargs)
+        context['quantity'] = self.request.session.get('team_registration_quantity', 2)
+        context['total_price'] = context['quantity'] * 5  # £5 per seat
+        context['invite_count'] = context['quantity'] - 1
+        return context
+    
+    def form_valid(self, form):
+        """Create the admin user and redirect to Stripe checkout"""
+        import logging
+        logger = logging.getLogger(__name__)
+        
+        try:
+            quantity = self.request.session.get('team_registration_quantity', 2)
+            
+            logger.info(f"Starting Team Toad admin registration with {quantity} seats...")
+            user = form.save()
+            logger.info(f"Admin user created successfully: {user.email}")
+            
+            # Set user tier to FREE initially - will be upgraded to pro after successful payment
+            if hasattr(user, 'tier'):
+                user.tier = 'free'  # Default to free tier
+                user.save()
+                logger.info(f"User tier set to free: {user.email}")
+            
+            # Log registration attempt
+            logger.info(f"New Team Toad admin registration: {user.email} ({user.get_short_name()}) - tier set to FREE initially, {quantity} seats")
+            
+            # Log the user in immediately so they can proceed to checkout
+            logger.info("Logging user in...")
+            login(self.request, user)
+            logger.info("User logged in successfully")
+            
+            # Keep quantity in session for checkout
+            self.request.session['team_registration_quantity'] = quantity
+            self.request.session['team_registration_flow'] = True
+            
+            # Redirect to Stripe checkout for Team plan
+            logger.info("Redirecting to Stripe checkout...")
+            messages.success(self.request, f'Account created successfully! Proceeding to payment for {quantity} seats.')
+            return redirect('accounts:stripe_checkout_team_registration')
+            
+        except Exception as e:
+            logger.error(f"Error in RegisterTeamAdminView.form_valid: {e}", exc_info=True)
+            raise
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+
+
 class RegisterTrialView(FormView):
     """
     Registration view for 6-month free trial users

@@ -11,6 +11,8 @@ from .views import (
     Register1MonthProTrialView,
     Register3MonthProTrialView,
     Register6MonthProTrialView,
+    RegisterTeamQuantityView,
+    RegisterTeamAdminView,
     logout_view, 
     account_settings_view, 
     change_password_view, 
@@ -56,6 +58,7 @@ from .stripe_django_views import (
     create_checkout_session_team,
     stripe_success_team_view,
     stripe_cancel_team_view,
+    stripe_checkout_team_registration_view,
     create_portal_session,
     stripe_webhook
 )
@@ -69,6 +72,8 @@ urlpatterns = [
     path('register/free/', RegisterFreeView.as_view(), name='register_free'),
     path('register/personal/', RegisterPersonalView.as_view(), name='register_personal'),
     path('register/pro/', RegisterProView.as_view(), name='register_pro'),
+    path('register/team/quantity/', RegisterTeamQuantityView.as_view(), name='register_team_quantity'),
+    path('register/team/admin/', RegisterTeamAdminView.as_view(), name='register_team_admin'),
     path('register/trial/', RegisterTrialView.as_view(), name='register_trial'),
     path('register/trial-3-month/', Register3MonthTrialView.as_view(), name='register_3_month_trial'),
     path('register/trial-1-month-pro/', Register1MonthProTrialView.as_view(), name='register_1_month_pro_trial'),
@@ -114,6 +119,7 @@ urlpatterns = [
     path('stripe/success/pro/', stripe_success_pro_view, name='stripe_success_pro'),
     path('stripe/cancel/pro/', stripe_cancel_pro_view, name='stripe_cancel_pro'),
     path('stripe/checkout/team/', stripe_checkout_team_view, name='stripe_checkout_team'),
+    path('stripe/checkout/team/registration/', stripe_checkout_team_registration_view, name='stripe_checkout_team_registration'),
     path('stripe/create-checkout-session/team/', create_checkout_session_team, name='create_checkout_session_team'),
     path('stripe/success/team/', stripe_success_team_view, name='stripe_success_team'),
     path('stripe/cancel/team/', stripe_cancel_team_view, name='stripe_cancel_team'),

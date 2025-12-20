@@ -862,6 +862,78 @@ def stripe_checkout_team_view(request):
 
 
 @login_required
+def stripe_checkout_team_registration_view(request):
+    """
+    Display the Stripe checkout page for Team Toad subscription from registration flow
+    Uses quantity from session and automatically creates checkout session
+    """
+    logger.info(f"Stripe Team registration checkout view accessed by user: {request.user.email}")
+    
+    try:
+        # Check if this is from registration flow
+        if not request.session.get('team_registration_flow'):
+            messages.error(request, 'Invalid session. Please start from the registration page.')
+            return redirect('accounts:register_choices')
+        
+        # Get quantity from session
+        quantity = request.session.get('team_registration_quantity')
+        if not quantity or quantity < 2:
+            messages.error(request, 'Invalid team size. Please start over.')
+            return redirect('accounts:register_team_quantity')
+        
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured - cannot display checkout page")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('pages:project_list')
+        
+        logger.info(f"Creating checkout session for {quantity} seats from registration flow")
+        
+        # Get the price ID
+        price_id = PRO_PRICE_ID
+        
+        # Get the price from Stripe
+        try:
+            price = stripe.Price.retrieve(price_id, expand=['product'])
+        except stripe.error.InvalidRequestError:
+            messages.error(request, 'Subscription plan not found. Please contact support.')
+            return redirect('accounts:register_team_quantity')
+        
+        # Create checkout session with quantity
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[
+                {
+                    'price': price.id,
+                    'quantity': quantity,
+                },
+            ],
+            mode='subscription',
+            success_url=request.build_absolute_uri(reverse('accounts:stripe_success_team')) + '?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=request.build_absolute_uri(reverse('accounts:register_team_quantity')),
+            customer_email=request.user.email,  # Pre-fill email
+            metadata={
+                'user_id': str(request.user.id),
+                'user_email': request.user.email,
+                'plan_type': 'team',
+                'quantity': str(quantity),
+                'from_registration': 'true',  # Flag to indicate this is from registration
+            }
+        )
+        
+        logger.info(f"Checkout session created: {checkout_session.id}")
+        return redirect(checkout_session.url, code=303)
+        
+    except stripe.error.StripeError as e:
+        logger.error(f"Stripe error in stripe_checkout_team_registration_view: {e}")
+        messages.error(request, 'There was an error processing your payment. Please try again.')
+        return redirect('accounts:register_team_quantity')
+    except Exception as e:
+        logger.error(f"Error in stripe_checkout_team_registration_view: {e}", exc_info=True)
+        from django.http import HttpResponse
+        return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
+
+
+@login_required
 def create_checkout_session_team(request):
     """
     Create a Stripe checkout session for Team Toad subscription with quantity
@@ -993,11 +1065,28 @@ def stripe_success_team_view(request):
         
         # Calculate available seats (quantity - 1 for admin, since they automatically fill one spot)
         available_seats = quantity - 1
-        logger.info(f"Team subscription created for user {request.user.email} with {quantity} seats. Admin automatically fills 1 seat, {available_seats} available for invites.")
-        messages.success(request, f'Payment successful! You automatically fill one seat. Please invite {available_seats} team member(s).')
         
-        # Redirect to email input page
-        return redirect('accounts:team_invite_members')
+        # Check if this is from registration flow
+        from_registration = session.metadata.get('from_registration') == 'true'
+        
+        if from_registration:
+            # Clear registration flow session data
+            if 'team_registration_quantity' in request.session:
+                del request.session['team_registration_quantity']
+            if 'team_registration_flow' in request.session:
+                del request.session['team_registration_flow']
+            
+            logger.info(f"Team subscription created for user {request.user.email} with {quantity} seats from registration flow. Admin automatically fills 1 seat, {available_seats} available for invites.")
+            messages.success(request, f'Payment successful! Your team subscription is active. You can invite {available_seats} team member(s) from your account settings.')
+            
+            # Redirect to account settings page
+            return redirect('accounts:account_settings')
+        else:
+            logger.info(f"Team subscription created for user {request.user.email} with {quantity} seats. Admin automatically fills 1 seat, {available_seats} available for invites.")
+            messages.success(request, f'Payment successful! You automatically fill one seat. Please invite {available_seats} team member(s).')
+            
+            # Redirect to email input page (existing upgrade flow)
+            return redirect('accounts:team_invite_members')
         
     except stripe.error.StripeError as e:
         logger.error(f"Stripe error in stripe_success_team_view: {e}")

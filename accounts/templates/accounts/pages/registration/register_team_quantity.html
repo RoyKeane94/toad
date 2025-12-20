@@ -1,0 +1,197 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Choose Team Size - Toad{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+    }
+    
+    /* Make main take remaining height after navbar */
+    main {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Quantity selection styles */
+    .quantity-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 4rem 1rem;
+        background: var(--main-bg);
+    }
+    
+    .quantity-card {
+        max-width: 500px;
+        width: 100%;
+        background: var(--container-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        border: 1px solid var(--border-color);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    
+    .quantity-input-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .quantity-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 1.25rem;
+        text-align: center;
+        background: var(--main-bg);
+        color: var(--text-primary);
+    }
+    
+    .quantity-input:focus {
+        outline: none;
+        border-color: var(--primary-action-bg);
+    }
+    
+    .quantity-btn {
+        width: 3rem;
+        height: 3rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        background: var(--container-bg);
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+    }
+    
+    .quantity-btn:hover {
+        background: var(--primary-action-bg);
+        color: white;
+        border-color: var(--primary-action-bg);
+    }
+    
+    .quantity-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+    
+    .price-display {
+        text-align: center;
+        padding: 1.5rem;
+        background: var(--grid-header-bg);
+        border-radius: 8px;
+        margin: 1.5rem 0;
+    }
+    
+    .price-amount {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--text-primary);
+    }
+    
+    .price-period {
+        color: var(--text-secondary);
+        font-size: 0.875rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quantity-container">
+    <div class="quantity-card">
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <div class="mb-4">
+                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-12 w-auto mx-auto">
+            </div>
+            <h1 class="text-3xl font-bold text-[var(--primary-action-bg)] mb-2">
+                Choose Your Team Size
+            </h1>
+            <p class="text-[var(--text-secondary)]">
+                Select how many team members you need. You'll automatically fill one seat as the admin.
+            </p>
+        </div>
+        
+        <!-- Quantity Selector -->
+        <form method="POST" id="quantity-form">
+            {% csrf_token %}
+            <div class="quantity-input-group">
+                <button type="button" id="decrease-btn" class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                <input 
+                    type="number" 
+                    id="quantity-input" 
+                    name="quantity" 
+                    class="quantity-input" 
+                    value="2" 
+                    min="2" 
+                    max="100" 
+                    required
+                    onchange="updatePrice()"
+                >
+                <button type="button" id="increase-btn" class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+            
+            <!-- Price Display -->
+            <div class="price-display">
+                <div class="price-amount" id="total-price">£10</div>
+                <div class="price-period" id="price-breakdown">2 seats × £5/month</div>
+            </div>
+            
+            <!-- Info -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <p class="text-sm text-blue-800">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    <strong>Note:</strong> You'll fill one seat as the admin. You can invite the remaining <span id="invite-count">1</span> team member(s) after registration.
+                </p>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="w-full py-3 px-4 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg font-medium transition-colors cursor-pointer">
+                Continue to Registration
+            </button>
+        </form>
+    </div>
+</div>
+
+<script>
+const PRICE_PER_SEAT = 5;
+
+function changeQuantity(delta) {
+    const input = document.getElementById('quantity-input');
+    const currentValue = parseInt(input.value) || 2;
+    const newValue = Math.max(2, Math.min(100, currentValue + delta));
+    input.value = newValue;
+    updatePrice();
+}
+
+function updatePrice() {
+    const quantity = parseInt(document.getElementById('quantity-input').value) || 2;
+    const totalPrice = quantity * PRICE_PER_SEAT;
+    const inviteCount = quantity - 1;
+    
+    document.getElementById('total-price').textContent = `£${totalPrice}`;
+    document.getElementById('price-breakdown').textContent = `${quantity} seats × £${PRICE_PER_SEAT}/month`;
+    document.getElementById('invite-count').textContent = inviteCount;
+    
+    // Update button states
+    document.getElementById('decrease-btn').disabled = quantity <= 2;
+    document.getElementById('increase-btn').disabled = quantity >= 100;
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updatePrice();
+});
+</script>
+{% endblock %}

@@ -39196,3 +39196,122 @@ INFO 2025-12-20 15:52:35,740 basehttp 48445 6154956800 "GET / HTTP/1.1" 200 1088
 INFO 2025-12-20 15:52:37,351 basehttp 48445 6154956800 "GET /accounts/register/ HTTP/1.1" 200 4168
 INFO 2025-12-20 15:52:39,219 basehttp 48445 6154956800 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 302 0
 INFO 2025-12-20 15:52:39,231 basehttp 48445 6154956800 "GET /accounts/login/?next=/accounts/stripe/checkout/team/ HTTP/1.1" 200 3867
+INFO 2025-12-20 15:58:51,796 autoreload 49558 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:58:52,988 basehttp 49558 6127398912 "GET /accounts/register/personal/ HTTP/1.1" 200 4143
+INFO 2025-12-20 15:58:53,005 basehttp 49558 6127398912 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:58:53,006 basehttp 49558 6144225280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:59:46,868 basehttp 49558 6144225280 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:59:46,885 basehttp 49558 6144225280 "GET /accounts/login/?next=/accounts/stripe/checkout/team/ HTTP/1.1" 200 3792
+INFO 2025-12-20 15:59:46,904 basehttp 49558 6144225280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:59:46,905 basehttp 49558 6127398912 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 16:00:13,332 basehttp 49558 6127398912 "GET /accounts/register/ HTTP/1.1" 200 4118
+INFO 2025-12-20 16:00:14,956 basehttp 49558 6127398912 "GET /accounts/register/pro/ HTTP/1.1" 200 4117
+INFO 2025-12-20 16:00:24,883 basehttp 49558 6127398912 "POST /accounts/register/pro/ HTTP/1.1" 200 4407
+INFO 2025-12-20 16:00:39,937 views 49558 6127398912 Starting Pro plan user registration...
+INFO 2025-12-20 16:00:40,175 views 49558 6127398912 User created successfully: tom@prefequity.com
+INFO 2025-12-20 16:00:40,177 signals 49558 6127398912 User tom@prefequity.com downgraded from beta to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+INFO 2025-12-20 16:00:40,177 views 49558 6127398912 User tier set to free: tom@prefequity.com
+INFO 2025-12-20 16:00:40,177 views 49558 6127398912 New Pro plan user registration: tom@prefequity.com (Tom) - tier set to FREE initially
+INFO 2025-12-20 16:00:40,177 views 49558 6127398912 Logging user in...
+INFO 2025-12-20 16:00:40,180 views 49558 6127398912 User logged in successfully
+INFO 2025-12-20 16:00:40,180 views 49558 6127398912 Redirecting to Stripe checkout...
+INFO 2025-12-20 16:00:40,181 basehttp 49558 6127398912 "POST /accounts/register/pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:00:40,186 stripe_django_views 49558 6127398912 Stripe Pro checkout view accessed by user: tom@prefequity.com
+INFO 2025-12-20 16:00:40,186 stripe_django_views 49558 6127398912 Stripe API key is configured, proceeding...
+INFO 2025-12-20 16:00:40,186 stripe_django_views 49558 6127398912 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 16:00:40,188 stripe_django_views 49558 6127398912 Template rendered successfully
+INFO 2025-12-20 16:00:40,191 basehttp 49558 6127398912 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3117
+INFO 2025-12-20 16:02:50,215 autoreload 49558 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 16:02:50,783 autoreload 49850 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:03:49,514 autoreload 49850 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 16:03:50,025 autoreload 49927 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:03:55,639 autoreload 49927 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 16:03:56,079 autoreload 49934 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:09:45,145 autoreload 49934 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 16:09:45,605 autoreload 49999 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:10:51,707 autoreload 49999 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 16:10:52,207 autoreload 50057 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:10:53,736 autoreload 50057 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 16:10:54,373 autoreload 50074 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:10:55,871 autoreload 50074 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 16:10:56,222 autoreload 50077 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:10:57,719 autoreload 50077 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 16:10:58,075 autoreload 50080 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:11:29,241 autoreload 50080 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 16:11:29,747 autoreload 50114 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:11:41,472 autoreload 50114 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 16:11:42,066 autoreload 50138 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:14:33,345 basehttp 50138 6133985280 "GET / HTTP/1.1" 200 10956
+INFO 2025-12-20 16:14:33,380 basehttp 50138 6133985280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 16:14:33,393 basehttp 50138 6133985280 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 16:14:37,069 basehttp 50138 6133985280 "GET /accounts/settings/ HTTP/1.1" 200 3763
+INFO 2025-12-20 16:14:45,660 basehttp 50138 6133985280 "GET /accounts/settings/delete/ HTTP/1.1" 200 3832
+INFO 2025-12-20 16:14:50,297 views 50138 6133985280 Account deleted: tom@prefequity.com (Tom)
+INFO 2025-12-20 16:14:50,309 basehttp 50138 6133985280 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:14:50,317 basehttp 50138 6133985280 "GET / HTTP/1.1" 200 10876
+INFO 2025-12-20 16:14:53,209 basehttp 50138 6133985280 "GET /accounts/register/ HTTP/1.1" 200 4111
+INFO 2025-12-20 16:15:00,194 basehttp 50138 6133985280 "GET /accounts/register/team/quantity/ HTTP/1.1" 200 3825
+INFO 2025-12-20 16:15:05,767 basehttp 50138 6133985280 "POST /accounts/register/team/quantity/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:15:05,784 basehttp 50138 6133985280 "GET /accounts/register/team/admin/ HTTP/1.1" 200 4246
+INFO 2025-12-20 16:15:15,412 views 50138 6133985280 Starting Team Toad admin registration with 4 seats...
+INFO 2025-12-20 16:15:15,621 views 50138 6133985280 Admin user created successfully: tom@prefequity.com
+INFO 2025-12-20 16:15:15,623 signals 50138 6133985280 User tom@prefequity.com downgraded from beta to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+INFO 2025-12-20 16:15:15,623 views 50138 6133985280 User tier set to free: tom@prefequity.com
+INFO 2025-12-20 16:15:15,623 views 50138 6133985280 New Team Toad admin registration: tom@prefequity.com (Tom) - tier set to FREE initially, 4 seats
+INFO 2025-12-20 16:15:15,623 views 50138 6133985280 Logging user in...
+INFO 2025-12-20 16:15:15,625 views 50138 6133985280 User logged in successfully
+INFO 2025-12-20 16:15:15,625 views 50138 6133985280 Redirecting to Stripe checkout...
+INFO 2025-12-20 16:15:15,626 basehttp 50138 6133985280 "POST /accounts/register/team/admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:15:15,630 stripe_django_views 50138 6133985280 Stripe Team registration checkout view accessed by user: tom@prefequity.com
+INFO 2025-12-20 16:15:15,630 stripe_django_views 50138 6133985280 Creating checkout session for 4 seats from registration flow
+INFO 2025-12-20 16:15:15,702 _util 50138 6133985280 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 16:15:15,987 _util 50138 6133985280 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 16:15:15,995 _util 50138 6133985280 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 16:15:16,426 _util 50138 6133985280 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 16:15:16,427 stripe_django_views 50138 6133985280 Checkout session created: cs_live_a1XiM2iWd7lHc5EtNrWaaMbJwaLbVx3L61aGXZL9judEECCGw0qwHmJPA9
+INFO 2025-12-20 16:15:16,427 basehttp 50138 6133985280 "GET /accounts/stripe/checkout/team/registration/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:15:24,806 basehttp 50138 6133985280 "GET /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:15:24,833 basehttp 50138 6133985280 "GET /grids/ HTTP/1.1" 200 11723
+INFO 2025-12-20 16:15:27,129 basehttp 50138 6133985280 "GET /accounts/settings/ HTTP/1.1" 200 3735
+INFO 2025-12-20 16:15:32,542 basehttp 50138 6133985280 "GET /accounts/settings/delete/ HTTP/1.1" 200 3821
+INFO 2025-12-20 16:15:36,782 views 50138 6133985280 Account deleted: tom@prefequity.com (Tom)
+INFO 2025-12-20 16:15:36,790 basehttp 50138 6133985280 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:15:36,796 basehttp 50138 6133985280 "GET / HTTP/1.1" 200 10881
+INFO 2025-12-20 16:15:38,366 basehttp 50138 6133985280 "GET /accounts/login/ HTTP/1.1" 200 3864
+INFO 2025-12-20 16:15:45,467 basehttp 50138 6133985280 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:15:45,480 basehttp 50138 6133985280 "GET /grids/ HTTP/1.1" 200 13256
+INFO 2025-12-20 16:15:47,684 basehttp 50138 6133985280 "GET / HTTP/1.1" 200 11061
+INFO 2025-12-20 16:15:48,556 basehttp 50138 6133985280 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 16:15:48,586 basehttp 50138 6150811648 "GET /admin/ HTTP/1.1" 200 3169
+INFO 2025-12-20 16:15:48,597 basehttp 50138 6133985280 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-12-20 16:15:48,598 basehttp 50138 6168211456 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-20 16:15:48,599 basehttp 50138 6150811648 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-12-20 16:15:48,600 basehttp 50138 6133985280 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-20 16:15:48,601 basehttp 50138 6168211456 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-20 16:15:48,602 basehttp 50138 6150811648 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-12-20 16:15:48,602 basehttp 50138 6168211456 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-20 16:15:48,604 basehttp 50138 6168211456 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-12-20 16:15:48,604 basehttp 50138 6150811648 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-20 16:15:48,605 basehttp 50138 6133985280 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-20 16:15:48,606 basehttp 50138 6150811648 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-12-20 16:15:48,737 basehttp 50138 6150811648 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-12-20 16:15:48,738 basehttp 50138 6150811648 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-12-20 16:15:51,999 basehttp 50138 6150811648 "GET /admin/accounts/user/ HTTP/1.1" 200 4671
+INFO 2025-12-20 16:15:52,011 basehttp 50138 6150811648 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-12-20 16:15:52,018 basehttp 50138 6168211456 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-20 16:15:52,019 basehttp 50138 6185037824 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-20 16:15:52,020 basehttp 50138 6201864192 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-20 16:15:52,020 basehttp 50138 6218690560 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-20 16:15:52,021 basehttp 50138 6168211456 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-20 16:15:52,026 basehttp 50138 6185037824 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-20 16:15:52,026 basehttp 50138 6150811648 "GET /admin/jsi18n/ HTTP/1.1" 200 1022
+INFO 2025-12-20 16:15:52,027 basehttp 50138 6201864192 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-12-20 16:15:52,029 basehttp 50138 6133985280 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-20 16:15:52,029 basehttp 50138 6168211456 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-20 16:15:52,031 basehttp 50138 6168211456 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-20 16:15:52,036 basehttp 50138 6168211456 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-12-20 16:15:52,047 basehttp 50138 6168211456 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-12-20 16:15:52,048 basehttp 50138 6133985280 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-12-20 16:15:52,048 basehttp 50138 6168211456 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-12-20 16:16:00,504 basehttp 50138 6168211456 "GET /admin/ HTTP/1.1" 200 3065
+INFO 2025-12-20 16:16:04,126 basehttp 50138 6168211456 "GET / HTTP/1.1" 200 10992
