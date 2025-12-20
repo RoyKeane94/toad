@@ -37954,3 +37954,8 @@ INFO 2025-12-20 13:07:12,419 project_views_functions 35303 6143619072 User None 
 INFO 2025-12-20 13:07:12,420 basehttp 35303 6143619072 "POST /grids/277/save-template/ HTTP/1.1" 302 0
 INFO 2025-12-20 13:07:12,435 basehttp 35303 6143619072 "GET /grids/ HTTP/1.1" 200 12332
 INFO 2025-12-20 13:07:20,993 basehttp 35303 6143619072 "GET /accounts/settings/ HTTP/1.1" 200 3688
+INFO 2025-12-20 13:08:58,729 autoreload 36354 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:15:47,139 basehttp 36354 6170570752 "GET /accounts/settings/ HTTP/1.1" 200 3675
+INFO 2025-12-20 13:15:47,155 basehttp 36354 6170570752 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 13:15:47,155 basehttp 36354 6187397120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:16:26,634 basehttp 36354 6187397120 "GET /accounts/settings/ HTTP/1.1" 200 3614
