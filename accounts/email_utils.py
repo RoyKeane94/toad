@@ -371,6 +371,76 @@ Share Pro Trial: https://meettoad.co.uk/accounts/register/trial-3-month-pro/
         return False
 
 
+def send_team_invitation_email(invitation, request=None):
+    """
+    Send team invitation email to the invited user.
+    """
+    from accounts.models import TeamInvitation
+    
+    # Build invitation URL
+    if request:
+        invitation_url = request.build_absolute_uri(
+            reverse('accounts:accept_team_invitation', kwargs={'token': invitation.token})
+        )
+    else:
+        # Fallback for when request is not available
+        invitation_url = f"{settings.SITE_URL}/accounts/team/accept-invitation/{invitation.token}/"
+    
+    # Read and encode the image
+    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
+    image_data = ""
+    if os.path.exists(image_path):
+        with open(image_path, 'rb') as f:
+            image_data = base64.b64encode(f.read()).decode('utf-8')
+    
+    # Render email template
+    admin_name = invitation.invited_by.get_full_name() or invitation.invited_by.email
+    admin_email = invitation.invited_by.email
+    html_message = render_to_string('accounts/email/team_invitation.html', {
+        'invitation': invitation,
+        'invitation_url': invitation_url,
+        'admin_name': admin_name,
+        'admin_email': admin_email,
+        'toad_image_data': image_data,
+    })
+    
+    # Plain text version
+    admin_name = invitation.invited_by.get_full_name() or invitation.invited_by.email
+    admin_email = invitation.invited_by.email
+    text_message = f"""
+You've been invited to join a Team Toad subscription!
+
+{admin_name} ({admin_email}) has invited you to join their team subscription.
+
+Your admin: {admin_name} ({admin_email})
+
+Click the link below to accept the invitation:
+{invitation_url}
+
+This invitation will expire in 7 days.
+
+If you didn't expect this invitation, you can safely ignore this email.
+"""
+    
+    # Send email
+    try:
+        send_mail(
+            subject='You\'ve been invited to join Team Toad',
+            message=text_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[invitation.invited_email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        logger = logging.getLogger(__name__)
+        logger.info(f"Team invitation email sent to {invitation.invited_email}")
+        return True
+    except Exception as e:
+        logger = logging.getLogger(__name__)
+        logger.error(f"Error sending team invitation email to {invitation.invited_email}: {e}")
+        return False
+
+
 def send_test_email(recipient_email, email_type='simple', user=None):
     """
     Send a test email to verify email functionality.

@@ -52,20 +52,30 @@ def handle_tier_downgrade(sender, instance, created, **kwargs):
         logger = logging.getLogger(__name__)
         
         try:
-            # Remove user from all team_toad_user relationships
-            # Use distinct() to avoid duplicates if user is in multiple projects
-            projects_with_user = Project.objects.filter(team_toad_user=instance).distinct()
-            removed_count = 0
-            for project in projects_with_user:
-                if instance in project.team_toad_user.all():
-                    project.team_toad_user.remove(instance)
-                    removed_count += 1
-            
-            # Set assigned_to to null for all tasks where user is assigned
-            # Use update() to avoid triggering signals and to do it in a single query
-            tasks_updated = Task.objects.filter(assigned_to=instance).update(assigned_to=None)
-            
-            logger.info(f"User {instance.email} downgraded from {old_tier} to {new_tier}. Removed from {removed_count} project(s) team_toad_user and unassigned from {tasks_updated} task(s).")
+            # Check if user is part of a team subscription (has team_admin)
+            # If they are, delete all their grids
+            if instance.team_admin:
+                # User is part of a team - delete all their grids
+                user_projects = Project.objects.filter(user=instance)
+                grids_deleted = user_projects.count()
+                user_projects.delete()
+                logger.info(f"User {instance.email} downgraded from {old_tier} to {new_tier}. Deleted {grids_deleted} grid(s) due to team subscription cancellation.")
+            else:
+                # User is not part of a team - just remove from team_toad_user relationships
+                # Remove user from all team_toad_user relationships
+                # Use distinct() to avoid duplicates if user is in multiple projects
+                projects_with_user = Project.objects.filter(team_toad_user=instance).distinct()
+                removed_count = 0
+                for project in projects_with_user:
+                    if instance in project.team_toad_user.all():
+                        project.team_toad_user.remove(instance)
+                        removed_count += 1
+                
+                # Set assigned_to to null for all tasks where user is assigned
+                # Use update() to avoid triggering signals and to do it in a single query
+                tasks_updated = Task.objects.filter(assigned_to=instance).update(assigned_to=None)
+                
+                logger.info(f"User {instance.email} downgraded from {old_tier} to {new_tier}. Removed from {removed_count} project(s) team_toad_user and unassigned from {tasks_updated} task(s).")
         except Exception as e:
             logger.error(f"Error handling tier downgrade for user {instance.email}: {e}", exc_info=True)
 

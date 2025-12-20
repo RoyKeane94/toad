@@ -14,12 +14,16 @@ from .forms import (
     ProfileUpdateForm, 
     CustomPasswordChangeForm, 
     AccountDeletionForm,
-    ForgotPasswordForm
+    ForgotPasswordForm,
+    TeamInvitationAcceptanceForm
 )
-from .email_utils import send_verification_email, send_password_reset_email, send_joining_email
+from .email_utils import send_verification_email, send_password_reset_email, send_joining_email, send_team_invitation_email
 import base64
 import os
 from django.conf import settings
+import logging
+
+logger = logging.getLogger(__name__)
 
 # Create your views here.
 
@@ -85,8 +89,8 @@ def manage_subscription_view(request):
         'personal': 'Personal Plan',
         'personal_trial': 'Personal Trial Plan',
         'personal_3_month_trial': 'Personal 3 Month Trial Plan',
-        'pro': 'Pro Plan',
-        'pro_trial': 'Pro Trial Plan'
+        'pro': 'Team Toad Plan',
+        'pro_trial': 'Team Toad Trial Plan'
     }.get(user.tier, f"{user.tier.title()} Plan")
     
     # Get user's active grids for potential selection
@@ -105,10 +109,16 @@ def manage_subscription_view(request):
             'created_at': grid.created_at.strftime('%b %d, %Y')
         })
     
+    # Check if user is part of a team subscription
+    team_admin = None
+    if user.team_admin:
+        team_admin = user.team_admin
+    
     context = {
         'user': user,
         'tier_display': tier_display,
         'user_grids': json.dumps(user_grids_json),
+        'team_admin': team_admin,
     }
     
     return render(request, 'accounts/pages/settings/manage_subscription.html', context)
@@ -248,8 +258,8 @@ def manage_subscription_view(request):
         'personal': 'Personal Plan',
         'personal_trial': 'Personal Trial Plan',
         'personal_3_month_trial': 'Personal 3 Month Trial Plan',
-        'pro': 'Pro Plan',
-        'pro_trial': 'Pro Trial Plan'
+        'pro': 'Team Toad Plan',
+        'pro_trial': 'Team Toad Trial Plan'
     }.get(user.tier, f"{user.tier.title()} Plan")
     
     # Get user's active grids for potential selection
@@ -268,10 +278,16 @@ def manage_subscription_view(request):
             'created_at': grid.created_at.strftime('%b %d, %Y')
         })
     
+    # Check if user is part of a team subscription
+    team_admin = None
+    if user.team_admin:
+        team_admin = user.team_admin
+    
     context = {
         'user': user,
         'tier_display': tier_display,
         'user_grids': json.dumps(user_grids_json),
+        'team_admin': team_admin,
     }
     
     return render(request, 'accounts/pages/settings/manage_subscription.html', context)
@@ -367,9 +383,41 @@ def account_settings_view(request):
             else:
                 messages.error(request, 'Please correct the errors in the profile form.')
     
+    # Check if user is a team admin
+    from accounts.models import SubscriptionGroup, TeamInvitation
+    subscription_group = None
+    team_members = []
+    pending_invitations = []
+    current_members_count = 0
+    pending_count = 0
+    available_seats = 0
+    total_seats = 0
+    
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    if subscription_group:
+        team_members = subscription_group.members.all()
+        pending_invitations = TeamInvitation.objects.filter(
+            subscription_group=subscription_group,
+            status='pending'
+        ).order_by('-created_at')[:5]  # Show last 5 pending invitations
+        pending_count = TeamInvitation.objects.filter(
+            subscription_group=subscription_group,
+            status='pending'
+        ).count()
+        current_members_count = subscription_group.get_active_members_count()
+        available_seats = subscription_group.quantity - current_members_count - pending_count
+        total_seats = subscription_group.quantity
+    
     context = {
         'profile_form': profile_form,
         'user': request.user,
+        'subscription_group': subscription_group,
+        'team_members': team_members,
+        'pending_invitations': pending_invitations,
+        'current_members_count': current_members_count,
+        'pending_count': pending_count,
+        'available_seats': available_seats,
+        'total_seats': total_seats,
     }
     return render(request, 'accounts/pages/settings/account_settings.html', context)
 
@@ -1380,8 +1428,8 @@ def manage_subscription_view(request):
         'personal': 'Personal Plan',
         'personal_trial': 'Personal Trial Plan',
         'personal_3_month_trial': 'Personal 3 Month Trial Plan',
-        'pro': 'Pro Plan',
-        'pro_trial': 'Pro Trial Plan'
+        'pro': 'Team Toad Plan',
+        'pro_trial': 'Team Toad Trial Plan'
     }.get(user.tier, f"{user.tier.title()} Plan")
     
     # Get user's active grids for potential selection
@@ -1400,10 +1448,16 @@ def manage_subscription_view(request):
             'created_at': grid.created_at.strftime('%b %d, %Y')
         })
     
+    # Check if user is part of a team subscription
+    team_admin = None
+    if user.team_admin:
+        team_admin = user.team_admin
+    
     context = {
         'user': user,
         'tier_display': tier_display,
         'user_grids': json.dumps(user_grids_json),
+        'team_admin': team_admin,
     }
     
     return render(request, 'accounts/pages/settings/manage_subscription.html', context)
@@ -1496,6 +1550,772 @@ def downgrade_to_personal_view(request):
     
     messages.success(request, 'Successfully downgraded to Personal plan.')
     return redirect('accounts:manage_subscription')
+
+
+@login_required
+def team_invite_members_view(request):
+    """
+    Page for admin to input emails for team members after team subscription purchase
+    """
+    from accounts.models import SubscriptionGroup
+    
+    # Get subscription group from session or from user's admin groups
+    subscription_group_id = request.session.get('subscription_group_id')
+    if not subscription_group_id:
+        # Try to get from user's admin groups
+        subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+        if not subscription_group:
+            messages.error(request, 'No active team subscription found.')
+            return redirect('accounts:manage_subscription')
+    else:
+        try:
+            subscription_group = SubscriptionGroup.objects.get(id=subscription_group_id, admin=request.user)
+            # Clear session after use
+            del request.session['subscription_group_id']
+        except SubscriptionGroup.DoesNotExist:
+            messages.error(request, 'Invalid subscription group.')
+            return redirect('accounts:manage_subscription')
+    
+    # Calculate available seats accounting for pending invitations
+    from accounts.models import TeamInvitation
+    current_members_count = subscription_group.get_active_members_count()
+    pending_count = TeamInvitation.objects.filter(
+        subscription_group=subscription_group,
+        status='pending'
+    ).count()
+    available_seats = subscription_group.quantity - current_members_count - pending_count
+    
+    # Check if user is already a Team Toad user (pro, pro_trial, beta)
+    pro_tiers = ['pro', 'pro_trial', 'beta']
+    is_team_toad_user = request.user.tier in pro_tiers
+    
+    # Determine initial email fields - only show fields for available seats
+    # If they are Team Toad user: show all empty fields (up to available seats)
+    # If they are not: show their email in first field, rest empty (up to available seats)
+    initial_emails = []
+    if is_team_toad_user:
+        # Show empty fields for available seats only
+        initial_emails = [''] * available_seats
+    else:
+        # Show their email in first field if there's at least one available seat
+        if available_seats > 0:
+            initial_emails = [request.user.email] + [''] * (available_seats - 1)
+        else:
+            initial_emails = []
+    
+    if request.method == 'POST':
+        # Get emails from form - handle both textarea and individual input fields
+        emails = []
+        
+        # Check for individual email fields first (from the form with multiple inputs)
+        email_fields = [key for key in request.POST.keys() if key.startswith('email_')]
+        if email_fields:
+            for key in sorted(email_fields):
+                email = request.POST.get(key, '').strip()
+                if email:
+                    emails.append(email)
+        else:
+            # Fallback to textarea format
+            emails_text = request.POST.get('emails', '')
+            emails = [email.strip() for email in emails_text.split('\n') if email.strip()]
+        
+        # Remove duplicates while preserving order
+        seen = set()
+        emails = [email for email in emails if email not in seen and not seen.add(email)]
+        
+        # Allow partial submission - admin can leave fields empty and add them later
+        # Only validate if they've entered emails
+        if emails:
+            # Check if we have enough seats (accounting for pending invitations)
+            current_members_count = subscription_group.get_active_members_count()
+            from accounts.models import TeamInvitation
+            pending_count = TeamInvitation.objects.filter(
+                subscription_group=subscription_group,
+                status='pending'
+            ).count()
+            available_seats = subscription_group.quantity - current_members_count - pending_count
+            
+            if len(emails) > available_seats:
+                messages.error(request, f'You can only invite {available_seats} more member(s). You have {subscription_group.quantity} total seats, {current_members_count} in use, and {pending_count} pending invitation(s).')
+                return redirect('accounts:team_invite_members')
+        
+        # Create invitations
+        from accounts.models import TeamInvitation
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        created_count = 0
+        skipped_count = 0
+        
+        for email in emails[:available_seats]:  # Only invite up to available seats
+            # Skip if it's the admin's email
+            if email.lower() == request.user.email.lower():
+                skipped_count += 1
+                continue
+            
+            # Check if email is already a member
+            if subscription_group.members.filter(email=email).exists():
+                skipped_count += 1
+                continue
+            
+            # Check if invitation already exists and is pending
+            if TeamInvitation.objects.filter(
+                subscription_group=subscription_group,
+                invited_email=email,
+                status='pending'
+            ).exists():
+                skipped_count += 1
+                continue
+            
+            # Create invitation
+            invitation = TeamInvitation.objects.create(
+                subscription_group=subscription_group,
+                invited_by=request.user,
+                invited_email=email,
+                expires_at=timezone.now() + timedelta(days=7)  # 7 days to accept
+            )
+            
+            # Send invitation email
+            try:
+                send_team_invitation_email(invitation, request=request)
+                created_count += 1
+            except Exception as e:
+                logger.error(f"Error sending team invitation email to {email}: {e}")
+        
+        if created_count > 0:
+            messages.success(request, f'Successfully sent {created_count} invitation(s).')
+        if skipped_count > 0:
+            messages.info(request, f'{skipped_count} email(s) were skipped (already members, pending invitations, or your own email).')
+        if created_count == 0 and skipped_count == 0 and emails:
+            messages.error(request, 'No invitations were sent. Please check your email addresses.')
+        elif not emails:
+            messages.info(request, 'No emails entered. You can add team members later from the team management page.')
+        
+        # Update Stripe subscription metadata with new team info
+        from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+        update_subscription_metadata_with_team_info(subscription_group)
+        
+        return redirect('accounts:manage_team')
+    
+    # Calculate available seats accounting for pending invitations
+    from accounts.models import TeamInvitation
+    current_members_count = subscription_group.get_active_members_count()
+    pending_count = TeamInvitation.objects.filter(
+        subscription_group=subscription_group,
+        status='pending'
+    ).count()
+    available_seats = subscription_group.quantity - current_members_count - pending_count
+    
+    context = {
+        'subscription_group': subscription_group,
+        'available_seats': available_seats,
+        'total_seats': subscription_group.quantity,
+        'current_members_count': current_members_count,
+        'pending_count': pending_count,
+        'initial_emails': initial_emails,
+        'is_team_toad_user': is_team_toad_user,
+    }
+    
+    return render(request, 'accounts/pages/team/invite_members.html', context)
+
+
+@login_required
+def manage_team_view(request):
+    """
+    Admin page to manage team subscription: view members, invite, remove, cancel, transfer
+    """
+    from accounts.models import SubscriptionGroup, TeamInvitation
+    from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+    import stripe
+    import os
+    
+    # Get user's subscription group as admin
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    
+    if not subscription_group:
+        messages.error(request, 'You are not an admin of any active team subscription.')
+        return redirect('accounts:manage_subscription')
+    
+    # Get active members
+    members = subscription_group.members.all()
+    
+    # Get pending invitations with expiration status
+    pending_invitations = TeamInvitation.objects.filter(
+        subscription_group=subscription_group,
+        status='pending'
+    ).order_by('-created_at')
+    
+    # Add expiration status to each invitation for template
+    pending_invitations_list = []
+    for invitation in pending_invitations:
+        pending_invitations_list.append({
+            'invitation': invitation,
+            'is_expired': invitation.is_expired(),
+        })
+    
+    # Get current seat usage (accounting for pending invitations)
+    current_members_count = subscription_group.get_active_members_count()
+    pending_count = pending_invitations.count()
+    available_seats = subscription_group.quantity - current_members_count - pending_count
+    
+    # Calculate max reduction (can't reduce below current usage)
+    max_reduction = subscription_group.quantity - current_members_count - pending_count
+    
+    # Sync quantity from Stripe to ensure it's up to date
+    if subscription_group.stripe_subscription_id:
+        try:
+            stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+            
+            # Get the quantity from Stripe
+            if subscription.get('items', {}).get('data'):
+                stripe_quantity = subscription['items']['data'][0].get('quantity')
+                if stripe_quantity is not None and stripe_quantity != subscription_group.quantity:
+                    logger.info(f'Syncing SubscriptionGroup quantity from {subscription_group.quantity} to {stripe_quantity} (from Stripe)')
+                    subscription_group.quantity = stripe_quantity
+                    subscription_group.save(update_fields=['quantity'])
+        except Exception as e:
+            logger.warning(f"Could not sync subscription quantity from Stripe: {e}")
+    
+    # Update Stripe subscription metadata with current team info
+    if subscription_group.stripe_subscription_id:
+        try:
+            from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+            update_subscription_metadata_with_team_info(subscription_group)
+        except Exception as e:
+            logger.warning(f"Could not update subscription metadata: {e}")
+    
+    # Retrieve Stripe subscription details to show current billing amount
+    stripe_subscription_info = None
+    if subscription_group.stripe_subscription_id:
+        try:
+            stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+            
+            # Get the price and quantity from the subscription
+            if subscription['items']['data']:
+                item = subscription['items']['data'][0]
+                price_id = item['price']['id']
+                quantity = item['quantity']
+                
+                # Retrieve price details
+                price = stripe.Price.retrieve(price_id)
+                unit_amount = price['unit_amount']  # Amount in cents
+                currency = price['currency'].upper()
+                
+                # Calculate total amount
+                total_amount_cents = unit_amount * quantity
+                total_amount = total_amount_cents / 100  # Convert to dollars/pounds
+                
+                # Format currency symbol
+                currency_symbol = '£' if currency == 'GBP' else '$' if currency == 'USD' else currency
+                
+                stripe_subscription_info = {
+                    'quantity': quantity,
+                    'unit_amount': unit_amount / 100,  # Per seat amount
+                    'total_amount': total_amount,
+                    'currency': currency,
+                    'currency_symbol': currency_symbol,
+                    'status': subscription['status'],
+                    'current_period_end': subscription.get('current_period_end'),
+                    'cancel_at_period_end': subscription.get('cancel_at_period_end', False),
+                }
+        except stripe.error.StripeError as e:
+            logger.error(f"Error retrieving Stripe subscription details: {e}")
+        except Exception as e:
+            logger.error(f"Unexpected error retrieving Stripe subscription: {e}", exc_info=True)
+    
+    context = {
+        'subscription_group': subscription_group,
+        'members': members,
+        'pending_invitations': pending_invitations_list,
+        'available_seats': available_seats,
+        'current_members_count': current_members_count,
+        'pending_count': pending_count,
+        'total_seats': subscription_group.quantity,
+        'max_reduction': max_reduction,
+        'min_seats_required': current_members_count + pending_count,
+        'stripe_subscription_info': stripe_subscription_info,
+    }
+    
+    return render(request, 'accounts/pages/team/manage_team.html', context)
+
+
+@login_required
+def remove_team_member_view(request, user_id):
+    """
+    Remove a team member from the subscription group
+    """
+    from accounts.models import SubscriptionGroup
+    from django.shortcuts import get_object_or_404
+    
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    if not subscription_group:
+        messages.error(request, 'You are not an admin of any active team subscription.')
+        return redirect('accounts:manage_subscription')
+    
+    member = get_object_or_404(User, id=user_id)
+    
+    if member not in subscription_group.members.all():
+        messages.error(request, 'This user is not a member of your team.')
+        return redirect('accounts:manage_team')
+    
+    # Remove from subscription group
+    subscription_group.members.remove(member)
+    
+    # Delete all grids for this member
+    from pages.models import Project
+    member_projects = Project.objects.filter(user=member)
+    grids_deleted = member_projects.count()
+    member_projects.delete()
+    
+    # Downgrade user to free
+    member.tier = 'free'
+    member.team_admin = None
+    member.save(update_fields=['tier', 'team_admin'])
+    
+    # Update Stripe subscription metadata with new team info
+    from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+    update_subscription_metadata_with_team_info(subscription_group)
+    
+    messages.success(request, f'{member.email} has been removed from your team. {grids_deleted} grid(s) have been deleted.')
+    return redirect('accounts:manage_team')
+
+
+@login_required
+def cancel_team_subscription_view(request):
+    """
+    Cancel the team subscription - downgrades all members to free and deletes all their grids
+    """
+    from accounts.models import SubscriptionGroup
+    from pages.models import Project
+    import stripe
+    import os
+    
+    if request.method != 'POST':
+        return redirect('accounts:manage_team')
+    
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    if not subscription_group:
+        messages.error(request, 'You are not an admin of any active team subscription.')
+        return redirect('accounts:manage_subscription')
+    
+    # Cancel Stripe subscription - cancel immediately (not at period end)
+    if subscription_group.stripe_subscription_id:
+        try:
+            stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            # Cancel immediately
+            stripe.Subscription.delete(subscription_group.stripe_subscription_id)
+            logger.info(f"Stripe subscription {subscription_group.stripe_subscription_id} canceled immediately")
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error canceling subscription: {e}")
+            # Try cancel_at_period_end as fallback
+            try:
+                stripe.Subscription.modify(
+                    subscription_group.stripe_subscription_id,
+                    cancel_at_period_end=True
+                )
+                logger.info(f"Stripe subscription {subscription_group.stripe_subscription_id} scheduled for cancellation at period end")
+            except Exception as e2:
+                logger.error(f"Error scheduling Stripe subscription cancellation: {e2}")
+        except Exception as e:
+            logger.error(f"Error canceling Stripe subscription: {e}")
+    
+    # Mark subscription group as inactive
+    subscription_group.is_active = False
+    subscription_group.save()
+    
+    # Delete all grids and downgrade all members to free (including admin, who is now a member)
+    members = subscription_group.members.all()
+    total_grids_deleted = 0
+    
+    for member in members:
+        # Delete all projects (grids) for this member
+        member_projects = Project.objects.filter(user=member)
+        grids_deleted = member_projects.count()
+        member_projects.delete()
+        total_grids_deleted += grids_deleted
+        
+        # Downgrade member to free
+        member.tier = 'free'
+        member.team_admin = None
+        member.save(update_fields=['tier', 'team_admin'])
+    
+    # If admin is not in members list (shouldn't happen with new logic, but handle edge case)
+    if request.user not in members:
+        admin_projects = Project.objects.filter(user=request.user)
+        admin_grids_deleted = admin_projects.count()
+        admin_projects.delete()
+        total_grids_deleted += admin_grids_deleted
+        
+        # Downgrade admin to free
+        request.user.tier = 'free'
+        request.user.save(update_fields=['tier'])
+    
+    messages.success(request, f'Team subscription has been canceled. All {total_grids_deleted} grid(s) have been deleted and all members have been downgraded to Free.')
+    return redirect('accounts:manage_subscription')
+
+
+@login_required
+def reduce_team_subscription_view(request):
+    """
+    Reduce team subscription by removing seats
+    """
+    from accounts.models import SubscriptionGroup
+    import stripe
+    import os
+    
+    stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+    
+    if request.method != 'POST':
+        return redirect('accounts:manage_team')
+    
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    if not subscription_group:
+        messages.error(request, 'You are not an admin of any active team subscription.')
+        return redirect('accounts:manage_subscription')
+    
+    # Get reduction quantity from form
+    try:
+        reduction_quantity = int(request.POST.get('reduction_quantity', 0))
+        if reduction_quantity < 1:
+            messages.error(request, 'Please enter a valid number of seats to remove.')
+            return redirect('accounts:manage_team')
+    except ValueError:
+        messages.error(request, 'Invalid quantity. Please enter a valid number.')
+        return redirect('accounts:manage_team')
+    
+    # Check current usage
+    current_members_count = subscription_group.get_active_members_count()
+    from accounts.models import TeamInvitation
+    pending_count = TeamInvitation.objects.filter(
+        subscription_group=subscription_group,
+        status='pending'
+    ).count()
+    current_usage = current_members_count + pending_count
+    
+    # Calculate new quantity
+    new_quantity = subscription_group.quantity - reduction_quantity
+    
+    # Validate new quantity
+    if new_quantity < 1:
+        messages.error(request, 'You must have at least 1 seat in your subscription.')
+        return redirect('accounts:manage_team')
+    
+    # Allow reducing below current usage - user can manage members/invitations separately
+    # This matches Stripe Portal behavior which allows quantity changes regardless of usage
+    if new_quantity < current_usage:
+        messages.warning(request, f'Warning: Reducing to {new_quantity} seats while you have {current_usage} in use ({current_members_count} active + {pending_count} pending). You may need to remove members or cancel invitations to free up seats.')
+    
+    # Update Stripe subscription
+    if subscription_group.stripe_subscription_id:
+        try:
+            # Retrieve current subscription
+            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+            
+            # Get the subscription item
+            subscription_item_id = subscription['items']['data'][0]['id']
+            current_quantity = subscription['items']['data'][0]['quantity']
+            
+            # Update subscription quantity in Stripe
+            # The webhook will handle updating our database when Stripe confirms the change
+            updated_subscription = stripe.Subscription.modify(
+                subscription_group.stripe_subscription_id,
+                items=[{
+                    'id': subscription_item_id,
+                    'quantity': new_quantity,
+                }],
+                proration_behavior='always_invoice',  # Prorate the reduction
+            )
+            
+            # Verify the update was successful by checking the returned subscription
+            confirmed_quantity = updated_subscription['items']['data'][0]['quantity']
+            if confirmed_quantity != new_quantity:
+                logger.warning(f'Stripe subscription quantity mismatch: expected {new_quantity}, got {confirmed_quantity}')
+            
+            # Optimistically update our database (webhook will confirm)
+            # This provides immediate feedback to the user
+            subscription_group.quantity = confirmed_quantity
+            subscription_group.save()
+            
+            messages.success(request, f'Successfully reduced subscription by {reduction_quantity} seat(s). Your subscription now has {confirmed_quantity} total seats.')
+            logger.info(f'Team subscription reduced via Stripe API: {subscription_group.stripe_subscription_id} from {current_quantity} to {confirmed_quantity} seats (reduction: {reduction_quantity})')
+            
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error reducing team subscription: {e}")
+            messages.error(request, 'There was an error updating your subscription. Please contact support.')
+        except Exception as e:
+            logger.error(f"Error reducing team subscription: {e}", exc_info=True)
+            messages.error(request, 'An unexpected error occurred. Please contact support.')
+    else:
+        messages.error(request, 'No Stripe subscription found. Please contact support.')
+    
+    return redirect('accounts:manage_team')
+
+
+@login_required
+def upgrade_team_subscription_view(request):
+    """
+    Upgrade team subscription by adding more seats
+    """
+    from accounts.models import SubscriptionGroup
+    import stripe
+    import os
+    
+    stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+    
+    if request.method != 'POST':
+        return redirect('accounts:manage_team')
+    
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    if not subscription_group:
+        messages.error(request, 'You are not an admin of any active team subscription.')
+        return redirect('accounts:manage_subscription')
+    
+    # Get additional quantity from form
+    try:
+        additional_quantity = int(request.POST.get('additional_quantity', 0))
+        if additional_quantity < 1:
+            messages.error(request, 'Please enter a valid number of additional seats.')
+            return redirect('accounts:manage_team')
+    except ValueError:
+        messages.error(request, 'Invalid quantity. Please enter a valid number.')
+        return redirect('accounts:manage_team')
+    
+    # Update Stripe subscription
+    if subscription_group.stripe_subscription_id:
+        try:
+            # Retrieve current subscription
+            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+            
+            # Get the subscription item
+            subscription_item_id = subscription['items']['data'][0]['id']
+            current_quantity = subscription['items']['data'][0]['quantity']
+            new_quantity = current_quantity + additional_quantity
+            
+            # Update subscription quantity
+            stripe.Subscription.modify(
+                subscription_group.stripe_subscription_id,
+                items=[{
+                    'id': subscription_item_id,
+                    'quantity': new_quantity,
+                }],
+                proration_behavior='always_invoice',  # Charge immediately for the additional seats
+            )
+            
+            # Update subscription group quantity
+            subscription_group.quantity = new_quantity
+            subscription_group.save()
+            
+            messages.success(request, f'Successfully added {additional_quantity} seat(s). Your subscription now has {new_quantity} total seats.')
+            logger.info(f'Team subscription upgraded: {subscription_group.stripe_subscription_id} from {current_quantity} to {new_quantity} seats')
+            
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error upgrading team subscription: {e}")
+            messages.error(request, 'There was an error updating your subscription. Please contact support.')
+        except Exception as e:
+            logger.error(f"Error upgrading team subscription: {e}", exc_info=True)
+            messages.error(request, 'An unexpected error occurred. Please contact support.')
+    else:
+        messages.error(request, 'No Stripe subscription found. Please contact support.')
+    
+    return redirect('accounts:manage_team')
+
+
+@login_required
+def transfer_team_admin_view(request, user_id):
+    """
+    Transfer admin role to another team member
+    """
+    from accounts.models import SubscriptionGroup
+    from django.shortcuts import get_object_or_404
+    
+    if request.method != 'POST':
+        return redirect('accounts:manage_team')
+    
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    if not subscription_group:
+        messages.error(request, 'You are not an admin of any active team subscription.')
+        return redirect('accounts:manage_subscription')
+    
+    # Check if admin is the only member - cannot transfer if so
+    members_count = subscription_group.members.count()
+    if members_count <= 1:
+        messages.error(request, 'Cannot transfer admin role. You are the only member of the team.')
+        return redirect('accounts:manage_team')
+    
+    new_admin = get_object_or_404(User, id=user_id)
+    
+    if new_admin not in subscription_group.members.all():
+        messages.error(request, 'This user is not a member of your team.')
+        return redirect('accounts:manage_team')
+    
+    # Prevent transferring to yourself
+    if new_admin == request.user:
+        messages.error(request, 'You cannot transfer admin role to yourself.')
+        return redirect('accounts:manage_team')
+    
+    # Transfer admin
+    subscription_group.admin = new_admin
+    subscription_group.save()
+    
+    # Update team_admin for all members (including the old admin, who remains a member)
+    for member in subscription_group.members.all():
+        member.team_admin = new_admin
+        member.save(update_fields=['team_admin'])
+    
+    messages.success(request, f'Admin role has been transferred to {new_admin.email}.')
+    return redirect('accounts:manage_subscription')
+
+
+@login_required
+def cancel_team_invitation_view(request, invitation_id):
+    """
+    Cancel a pending team invitation
+    """
+    if request.method != 'POST':
+        return redirect('accounts:account_settings')
+    
+    from accounts.models import TeamInvitation
+    from django.shortcuts import get_object_or_404
+    
+    invitation = get_object_or_404(TeamInvitation, id=invitation_id)
+    
+    # Verify the invitation belongs to a subscription group where user is admin
+    if invitation.subscription_group.admin != request.user:
+        messages.error(request, 'You do not have permission to cancel this invitation.')
+        return redirect('accounts:account_settings')
+    
+    # Only allow canceling pending invitations
+    if invitation.status != 'pending':
+        messages.error(request, 'This invitation cannot be canceled.')
+        return redirect('accounts:account_settings')
+    
+    # Mark invitation as declined
+    invitation.status = 'declined'
+    invitation.save()
+    
+    # Update Stripe subscription metadata with new team info
+    from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+    update_subscription_metadata_with_team_info(invitation.subscription_group)
+    
+    messages.success(request, f'Invitation to {invitation.invited_email} has been canceled.')
+    
+    # Redirect back to the page they came from, or account settings
+    referer = request.META.get('HTTP_REFERER')
+    if referer and 'manage-team' in referer:
+        return redirect('accounts:manage_team')
+    return redirect('accounts:account_settings')
+
+
+def accept_team_invitation_view(request, token):
+    """
+    Accept a team invitation - shows password setup form for new users or accepts for existing users
+    """
+    from accounts.models import TeamInvitation
+    from django.shortcuts import get_object_or_404
+    from django.contrib.auth import login
+    
+    invitation = get_object_or_404(TeamInvitation, token=token)
+    
+    if not invitation.can_be_accepted():
+        messages.error(request, 'This invitation has expired or is no longer valid.')
+        return redirect('pages:project_list')
+    
+    # Check if user already exists with this email
+    try:
+        existing_user = User.objects.get(email=invitation.invited_email)
+        
+        # If user is logged in and email matches
+        if request.user.is_authenticated:
+            if request.user.email == invitation.invited_email:
+                if request.method == 'POST':
+                    # Accept the invitation
+                    if invitation.accept(user=request.user):
+                        # Set team_admin
+                        request.user.team_admin = invitation.subscription_group.admin
+                        request.user.save(update_fields=['team_admin'])
+                        # Update Stripe subscription metadata with new team info
+                        from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+                        update_subscription_metadata_with_team_info(invitation.subscription_group)
+                        # Don't show success message - redirect silently
+                        return redirect('pages:project_list')
+                    else:
+                        messages.error(request, 'Unable to accept invitation. The team may be full.')
+                        return redirect('pages:project_list')
+                else:
+                    # Show invitation details page for existing user
+                    admin_name = invitation.invited_by.get_full_name() or invitation.invited_by.email
+                    admin_email = invitation.invited_by.email
+                    context = {
+                        'invitation': invitation,
+                        'admin_name': admin_name,
+                        'admin_email': admin_email,
+                        'existing_user': True,
+                    }
+                    return render(request, 'accounts/pages/team/accept_invitation.html', context)
+            else:
+                messages.error(request, 'This invitation is for a different email address.')
+                return redirect('pages:project_list')
+        else:
+            # User exists but not logged in - redirect to login
+            request.session['team_invitation_token'] = token
+            messages.info(request, 'Please log in to accept this invitation.')
+            return redirect('accounts:login')
+    
+    except User.DoesNotExist:
+        # User doesn't exist - show password setup form
+        form = TeamInvitationAcceptanceForm()
+        
+        if request.method == 'POST':
+            form = TeamInvitationAcceptanceForm(request.POST)
+            if form.is_valid():
+                # Check if team has available seats before creating user
+                if not invitation.subscription_group.has_available_seats():
+                    messages.error(request, 'Unable to accept invitation. The team is full.')
+                    return redirect('pages:project_list')
+                
+                # Create the user
+                user = User.objects.create_user(
+                    email=invitation.invited_email,
+                    password=form.cleaned_data['password1'],
+                    first_name=form.cleaned_data['first_name'],
+                    tier='pro',  # Set to Team Toad (pro) tier
+                    email_verified=True,  # Auto-verify since they came from invitation
+                )
+                
+                # Accept the invitation and add to subscription group
+                if invitation.accept(user=user):
+                    # Set team_admin (invitation.accept already sets tier to pro, but ensure team_admin is set)
+                    user.team_admin = invitation.subscription_group.admin
+                    user.save(update_fields=['team_admin'])
+                    
+                    # Update Stripe subscription metadata with new team info
+                    from accounts.stripe_django_views import update_subscription_metadata_with_team_info
+                    update_subscription_metadata_with_team_info(invitation.subscription_group)
+                    
+                    # Log the user in
+                    login(request, user)
+                    
+                    # Don't show success message - redirect silently
+                    return redirect('pages:project_list')
+                else:
+                    # If invitation accept fails, delete the user and show error
+                    user.delete()
+                    messages.error(request, 'Unable to accept invitation. The team may be full.')
+                    return redirect('pages:project_list')
+        
+        # Show password setup form
+        admin_name = invitation.invited_by.get_full_name() or invitation.invited_by.email
+        admin_email = invitation.invited_by.email
+        context = {
+            'invitation': invitation,
+            'form': form,
+            'admin_name': admin_name,
+            'admin_email': admin_email,
+            'existing_user': False,
+        }
+        return render(request, 'accounts/pages/team/accept_invitation.html', context)
 
 
 def beta_feedback_email_preview(request):

@@ -28,7 +28,16 @@ from .views import (
     two_day_follow_up_email_preview,
     manage_subscription_view,
     downgrade_to_free_view,
-    downgrade_to_personal_view
+    downgrade_to_personal_view,
+    team_invite_members_view,
+    manage_team_view,
+    remove_team_member_view,
+    cancel_team_subscription_view,
+    upgrade_team_subscription_view,
+    reduce_team_subscription_view,
+    transfer_team_admin_view,
+    cancel_team_invitation_view,
+    accept_team_invitation_view
 )
 
 def secret_registration_redirect(request):
@@ -43,6 +52,10 @@ from .stripe_django_views import (
     create_checkout_session_pro,
     stripe_success_pro_view,
     stripe_cancel_pro_view,
+    stripe_checkout_team_view,
+    create_checkout_session_team,
+    stripe_success_team_view,
+    stripe_cancel_team_view,
     create_portal_session,
     stripe_webhook
 )
@@ -100,6 +113,21 @@ urlpatterns = [
     path('stripe/create-checkout-session/pro/', create_checkout_session_pro, name='create_checkout_session_pro'),
     path('stripe/success/pro/', stripe_success_pro_view, name='stripe_success_pro'),
     path('stripe/cancel/pro/', stripe_cancel_pro_view, name='stripe_cancel_pro'),
+    path('stripe/checkout/team/', stripe_checkout_team_view, name='stripe_checkout_team'),
+    path('stripe/create-checkout-session/team/', create_checkout_session_team, name='create_checkout_session_team'),
+    path('stripe/success/team/', stripe_success_team_view, name='stripe_success_team'),
+    path('stripe/cancel/team/', stripe_cancel_team_view, name='stripe_cancel_team'),
     path('stripe/create-portal-session/', create_portal_session, name='create_portal_session'),
     path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
+    
+    # Team Management
+    path('team/invite-members/', team_invite_members_view, name='team_invite_members'),
+    path('team/manage/', manage_team_view, name='manage_team'),
+    path('team/remove-member/<int:user_id>/', remove_team_member_view, name='remove_team_member'),
+    path('team/cancel/', cancel_team_subscription_view, name='cancel_team_subscription'),
+    path('team/upgrade/', upgrade_team_subscription_view, name='upgrade_team_subscription'),
+    path('team/reduce/', reduce_team_subscription_view, name='reduce_team_subscription'),
+    path('team/transfer-admin/<int:user_id>/', transfer_team_admin_view, name='transfer_team_admin'),
+    path('team/cancel-invitation/<int:invitation_id>/', cancel_team_invitation_view, name='cancel_team_invitation'),
+    path('team/accept-invitation/<str:token>/', accept_team_invitation_view, name='accept_team_invitation'),
 ]

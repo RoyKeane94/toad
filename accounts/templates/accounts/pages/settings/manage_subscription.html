@@ -201,15 +201,41 @@
         <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">
             Manage Your Subscription
         </h1>
-        <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            You're currently on the <strong>{{ tier_display }}</strong>. 
-            Choose a different plan or stay with your current one.
-        </p>
+        {% if team_admin %}
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto mb-4">
+                <p class="text-blue-800">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    You're part of a team subscription managed by <strong>{{ team_admin.email }}</strong>.
+                </p>
+                <p class="text-sm text-blue-700 mt-2">
+                    Contact your admin to update your subscription.
+                </p>
+            </div>
+        {% else %}
+            <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
+                You're currently on the <strong>{{ tier_display }}</strong>. 
+                Choose a different plan or stay with your current one.
+            </p>
+        {% endif %}
     </div>
     
     
-    <!-- Subscription Cards -->
-    <div class="subscription-cards">
+    {% if team_admin %}
+        <!-- Team Member View - Show message only -->
+        <div class="max-w-2xl mx-auto bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-8 text-center">
+            <i class="fas fa-users text-4xl text-[var(--primary-action-bg)] mb-4"></i>
+            <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4">Team Subscription</h2>
+            <p class="text-[var(--text-secondary)] mb-6">
+                Your subscription is managed by your team admin.
+            </p>
+            <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                <p class="text-sm text-[var(--text-secondary)] mb-2">Contact your admin:</p>
+                <p class="text-lg font-semibold text-[var(--text-primary)]">{{ team_admin.email }}</p>
+            </div>
+        </div>
+    {% else %}
+        <!-- Subscription Cards -->
+        <div class="subscription-cards">
         <!-- Free Plan -->
         <div class="subscription-card {% if user.tier == 'free' %}current{% endif %}">
             <h3 class="subscription-title">Free</h3>
@@ -287,9 +313,9 @@
             {% endif %}
         </div>
         
-        <!-- Pro Plan -->
+        <!-- Team Toad Plan -->
         <div class="subscription-card {% if user.tier == 'pro' or user.tier|slice:":3" == 'pro' or user.tier == 'beta' %}current{% endif %}">
-            <h3 class="subscription-title">Pro</h3>
+            <h3 class="subscription-title">Team Toad</h3>
             <p class="subscription-description">
                 For collaborating with your team. Simple, shared clarity without any unnecessary noise
             </p>
@@ -316,12 +342,18 @@
                     Current Plan
                 </button>
             {% else %}
-                <a href="{% url 'accounts:stripe_checkout_pro' %}" class="subscription-button pro">
-                    Upgrade to Pro
-                </a>
+                <div class="space-y-2">
+                    <a href="{% url 'accounts:stripe_checkout_pro' %}" class="subscription-button pro">
+                        Upgrade to Team Toad (1 user)
+                    </a>
+                    <a href="{% url 'accounts:stripe_checkout_team' %}" class="subscription-button pro" style="background: var(--tertiary-action-bg);">
+                        Upgrade to Team Toad (Multiple Users)
+                    </a>
+                </div>
             {% endif %}
         </div>
     </div>
+    {% endif %}
     
     <!-- Back to Settings -->
     <div class="mt-8 text-center">

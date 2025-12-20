@@ -52,6 +52,7 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=30, help_text='Required. Enter your first name.')
     last_name = models.CharField(max_length=30, blank=True, help_text='Optional. Enter your last name.')
     tier = models.CharField(max_length=35, choices=TIER_CHOICES, default='beta',blank=True)
+    team_admin = models.ForeignKey('self', on_delete=models.SET_NULL, null=True, blank=True, related_name='team_members', help_text='Admin user if this user is part of a team subscription.')
     associated_society = models.ForeignKey(SocietyLink, on_delete=models.CASCADE, null=True, blank=True, related_name='users')
     associated_university = models.ForeignKey(SocietyUniversity, on_delete=models.CASCADE, null=True, blank=True)
     second_grid_created = models.BooleanField(default=False, help_text='Whether the user has created their second grid.')
@@ -267,4 +268,125 @@ class User(AbstractUser):
         Uses the cached boolean field for optimal performance.
         """
         return self.second_grid_created
+
+
+class SubscriptionGroup(models.Model):
+    """
+    Represents a team subscription group where an admin pays for multiple Pro subscriptions.
+    """
+    admin = models.ForeignKey(User, on_delete=models.CASCADE, related_name='admin_subscription_groups', help_text='The admin user who manages this subscription group.')
+    members = models.ManyToManyField(User, related_name='subscription_groups', blank=True, help_text='Team members in this subscription group.')
+    stripe_subscription_id = models.CharField(max_length=255, blank=True, null=True, help_text='Stripe subscription ID for this team subscription.')
+    quantity = models.PositiveIntegerField(default=1, help_text='Number of subscriptions purchased.')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True, help_text='Whether this subscription group is active.')
+    
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['admin', 'is_active']),
+            models.Index(fields=['stripe_subscription_id']),
+        ]
+    
+    def __str__(self):
+        return f"Team Subscription - Admin: {self.admin.email} ({self.quantity} seats)"
+    
+    def get_active_members_count(self):
+        """Get the number of active members in this group."""
+        return self.members.filter(is_active=True).count()
+    
+    def has_available_seats(self):
+        """Check if there are available seats for new members."""
+        return self.get_active_members_count() < self.quantity
+
+
+class TeamInvitation(models.Model):
+    """
+    Tracks email invitations for team members to join a subscription group.
+    """
+    STATUS_CHOICES = [
+        ('pending', 'Pending'),
+        ('accepted', 'Accepted'),
+        ('declined', 'Declined'),
+        ('expired', 'Expired'),
+    ]
+    
+    subscription_group = models.ForeignKey(SubscriptionGroup, on_delete=models.CASCADE, related_name='invitations', help_text='The subscription group this invitation is for.')
+    invited_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_team_invitations', help_text='The admin who sent this invitation.')
+    invited_email = models.EmailField(help_text='Email address of the invited user.')
+    invited_user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_team_invitations', null=True, blank=True, help_text='User object if they have an account.')
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='pending', help_text='Status of the invitation.')
+    token = models.CharField(max_length=32, unique=True, help_text='Unique token for the invitation.')
+    expires_at = models.DateTimeField(help_text='When the invitation expires.')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    accepted_at = models.DateTimeField(null=True, blank=True, help_text='When the invitation was accepted.')
+    
+    class Meta:
+        ordering = ['-created_at']
+        indexes = [
+            models.Index(fields=['token']),
+            models.Index(fields=['invited_email', 'status']),
+            models.Index(fields=['subscription_group', 'status']),
+            models.Index(fields=['expires_at']),
+        ]
+    
+    def __str__(self):
+        return f"Team Invitation - {self.invited_email} ({self.status})"
+    
+    def generate_token(self):
+        """Generate a secure random token for the invitation."""
+        import secrets
+        import string
+        alphabet = string.ascii_letters + string.digits
+        return ''.join(secrets.choice(alphabet) for _ in range(32))
+    
+    def save(self, *args, **kwargs):
+        if not self.token:
+            self.token = self.generate_token()
+        super().save(*args, **kwargs)
+    
+    def is_expired(self):
+        """Check if the invitation has expired."""
+        from django.utils import timezone
+        return timezone.now() > self.expires_at
+    
+    def can_be_accepted(self):
+        """Check if the invitation can still be accepted."""
+        return self.status == 'pending' and not self.is_expired()
+    
+    def accept(self, user=None):
+        """Accept the invitation and add user to the subscription group."""
+        if not self.can_be_accepted():
+            return False
+        
+        # Check if there are available seats
+        if not self.subscription_group.has_available_seats():
+            return False
+        
+        # For existing users, use the provided user
+        if user:
+            self.invited_user = user
+        # For new users, try to find by email
+        elif not self.invited_user and self.invited_email:
+            try:
+                self.invited_user = User.objects.get(email=self.invited_email)
+            except User.DoesNotExist:
+                pass
+        
+        # Add user to the subscription group
+        if self.invited_user:
+            self.subscription_group.members.add(self.invited_user)
+            # Set user tier to pro
+            self.invited_user.tier = 'pro'
+            self.invited_user.save(update_fields=['tier'])
+        
+        # Update invitation status
+        from django.utils import timezone
+        self.status = 'accepted'
+        self.accepted_at = timezone.now()
+        self.save()
+        
+        return True
 

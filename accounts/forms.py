@@ -213,3 +213,53 @@ class ForgotPasswordForm(forms.Form):
         if not User.objects.filter(email=email).exists():
             raise forms.ValidationError('No account found with this email address.')
         return email
+
+
+class TeamInvitationAcceptanceForm(forms.Form):
+    """
+    Form for accepting team invitation - password setup for new users
+    """
+    first_name = forms.CharField(
+        widget=forms.TextInput(attrs={
+            'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
+            'placeholder': 'Enter your first name',
+        }),
+        label='First Name',
+        help_text='Required. Enter your first name.'
+    )
+    
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
+            'placeholder': 'Create a password',
+        }),
+        label='Password',
+        help_text='Your password must contain at least 8 characters.'
+    )
+    
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={
+            'class': 'w-full px-3 py-2 border border-[var(--border-color)] rounded-md shadow-sm placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] text-[var(--text-primary)]',
+            'placeholder': 'Confirm your password',
+        }),
+        label='Confirm Password'
+    )
+    
+    def clean_password2(self):
+        password1 = self.cleaned_data.get('password1')
+        password2 = self.cleaned_data.get('password2')
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError('The two password fields didn\'t match.')
+        return password2
+    
+    def clean_password1(self):
+        password1 = self.cleaned_data.get('password1')
+        if password1 and len(password1) < 8:
+            raise forms.ValidationError('Password must be at least 8 characters long.')
+        return password1
+    
+    def clean_first_name(self):
+        first_name = self.cleaned_data.get('first_name')
+        if not first_name or not first_name.strip():
+            raise forms.ValidationError('First name is required.')
+        return first_name.strip()

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import User
+from .models import User, SubscriptionGroup
 # Register your models here.
 
 
@@ -36,3 +36,13 @@ class UserAdmin(admin.ModelAdmin):
             'classes': ('collapse',)
         }),
     )
+
+@admin.register(SubscriptionGroup)
+class SubscriptionGroupAdmin(admin.ModelAdmin):
+    list_display = ('admin', 'quantity', 'is_active', 'created_at')
+    list_filter = ('is_active', 'created_at')
+    search_fields = ('admin__email', 'members__email')
+    ordering = ('-created_at',)
+    readonly_fields = ('created_at', 'updated_at')
+    list_select_related = ('admin',)  # admin is a ForeignKey
+    list_prefetch_related = ('members',)  # members is a ManyToManyField

@@ -257,9 +257,14 @@
                 </li>
             </ul>
             
-            <a href="{% url 'accounts:register_pro' %}" class="pricing-button pro">
-                Start Team Plan
-            </a>
+            <div class="space-y-2">
+                <a href="{% url 'accounts:register_pro' %}" class="pricing-button pro">
+                    Start Team Plan (1 user)
+                </a>
+                <a href="{% url 'accounts:stripe_checkout_team' %}" class="pricing-button pro" style="background: var(--tertiary-action-bg);">
+                    Start Team Plan (Multiple users)
+                </a>
+            </div>
         </div>
         
         <!-- Personal Plan -->

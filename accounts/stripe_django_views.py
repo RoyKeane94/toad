@@ -28,6 +28,40 @@ PRICE_TIER_MAP = {
 }
 
 
+def update_subscription_metadata_with_team_info(subscription_group):
+    """
+    Update Stripe subscription metadata to reflect current team member count
+    This helps admins see active users in the Stripe portal
+    """
+    if not subscription_group or not subscription_group.stripe_subscription_id:
+        return
+    
+    try:
+        from accounts.models import TeamInvitation
+        current_members_count = subscription_group.get_active_members_count()
+        pending_count = TeamInvitation.objects.filter(
+            subscription_group=subscription_group,
+            status='pending'
+        ).count()
+        total_usage = current_members_count + pending_count
+        
+        stripe.Subscription.modify(
+            subscription_group.stripe_subscription_id,
+            metadata={
+                'active_members': str(current_members_count),
+                'pending_invitations': str(pending_count),
+                'total_usage': str(total_usage),
+                'total_seats': str(subscription_group.quantity),
+                'available_seats': str(subscription_group.quantity - total_usage),
+            }
+        )
+        logger.info(f'Updated subscription {subscription_group.stripe_subscription_id} metadata: {current_members_count} active, {pending_count} pending')
+    except stripe.error.StripeError as e:
+        logger.error(f"Error updating subscription metadata: {e}")
+    except Exception as e:
+        logger.error(f"Unexpected error updating subscription metadata: {e}", exc_info=True)
+
+
 def update_user_tier_for_customer(customer_id, tier=None, status=None):
     """
     Update the user's tier based on Stripe customer/subscription status.
@@ -244,22 +278,144 @@ def stripe_cancel_view(request):
 def create_portal_session(request):
     """
     Create a Stripe customer portal session for managing billing
+    Supports both individual and team subscriptions
+    Configured to allow subscription updates but prevent cancellation of active subscriptions
     """
     if not stripe.api_key:
         logger.error("Stripe API key not configured - cannot create billing portal session")
         messages.error(request, 'Billing system is not configured. Please contact support.')
         return redirect('accounts:account_settings')
 
+    # Check if user is a team admin with a team subscription
+    from accounts.models import SubscriptionGroup
+    subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
+    
+    # Create or retrieve portal configuration
+    # This ensures subscription updates are allowed but cancellation is disabled
+    portal_config_id = None
+    try:
+        # Try to find existing configuration
+        configurations = stripe.billing_portal.Configuration.list(limit=10)
+        
+        # Look for our configuration or use the first one
+        existing_config = None
+        for config in configurations.data:
+            # Check if this config has cancellation disabled
+            if hasattr(config, 'features') and hasattr(config.features, 'subscription_cancel'):
+                if not config.features.subscription_cancel.enabled:
+                    existing_config = config
+                    break
+        
+        if existing_config:
+            portal_config_id = existing_config.id
+            logger.info(f"Using existing portal configuration: {portal_config_id}")
+        elif configurations.data:
+            # Use first existing config and update it
+            existing_config = configurations.data[0]
+            portal_config_id = existing_config.id
+            try:
+                # Update the configuration - Stripe API uses nested dict structure
+                stripe.billing_portal.Configuration.modify(
+                    portal_config_id,
+                    features={
+                        'subscription_update': {
+                            'enabled': True,
+                            'proration_behavior': 'always_invoice',
+                            'default_allowed_updates': ['quantity'],
+                        },
+                        'subscription_cancel': {
+                            'enabled': False,  # Prevent cancellation
+                        },
+                        'payment_method_update': {
+                            'enabled': True,
+                        },
+                        'invoice_history': {
+                            'enabled': True,
+                        },
+                    },
+                    business_profile={
+                        'headline': 'Manage your Toad subscription',
+                    },
+                )
+                logger.info(f"Updated portal configuration: {portal_config_id}")
+            except stripe.error.StripeError as e:
+                logger.warning(f"Could not update portal configuration: {e}. Using existing configuration.")
+        else:
+            # Create new configuration
+            config = stripe.billing_portal.Configuration.create(
+                features={
+                    'subscription_update': {
+                        'enabled': True,
+                        'proration_behavior': 'always_invoice',
+                        'default_allowed_updates': ['quantity'],
+                    },
+                    'subscription_cancel': {
+                        'enabled': False,  # Prevent cancellation
+                    },
+                    'payment_method_update': {
+                        'enabled': True,
+                    },
+                    'invoice_history': {
+                        'enabled': True,
+                    },
+                },
+                business_profile={
+                    'headline': 'Manage your Toad subscription',
+                },
+            )
+            portal_config_id = config.id
+            logger.info(f"Created new portal configuration: {portal_config_id}")
+    except stripe.error.StripeError as e:
+        logger.error(f"Error managing portal configuration: {e}. Portal may use default settings.")
+        portal_config_id = None
+    except Exception as e:
+        logger.error(f"Unexpected error managing portal configuration: {e}", exc_info=True)
+        portal_config_id = None
+    
+    if subscription_group and subscription_group.stripe_subscription_id:
+        # For team subscriptions, get the customer ID from the subscription
+        try:
+            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+            customer_id = subscription.get('customer')
+            
+            if not customer_id:
+                messages.error(request, 'Unable to access billing portal. Please contact support.')
+                return redirect('accounts:manage_team')
+            
+            # Create portal session for team subscription
+            portal_params = {
+                'customer': customer_id,
+                'return_url': request.build_absolute_uri(reverse('accounts:manage_team')),
+            }
+            if portal_config_id:
+                portal_params['configuration'] = portal_config_id
+            
+            portal_session = stripe.billing_portal.Session.create(**portal_params)
+            return redirect(portal_session.url, code=303)
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error in create_portal_session (team): {e}")
+            messages.error(request, 'We could not open your billing portal. Please try again or contact support.')
+            return redirect('accounts:manage_team')
+        except Exception as e:
+            logger.error(f"Unexpected error in create_portal_session (team): {e}")
+            messages.error(request, 'An unexpected error occurred. Please contact support.')
+            return redirect('accounts:manage_team')
+    
+    # For individual subscriptions
     customer_id = getattr(request.user, 'stripe_customer_id', None)
     if not customer_id:
         messages.info(request, 'Upgrade to a paid plan to unlock billing management.')
         return redirect('accounts:manage_subscription')
     
     try:
-        portal_session = stripe.billing_portal.Session.create(
-            customer=customer_id,
-            return_url=request.build_absolute_uri(reverse('accounts:account_settings')),
-        )
+        portal_params = {
+            'customer': customer_id,
+            'return_url': request.build_absolute_uri(reverse('accounts:account_settings')),
+        }
+        if portal_config_id:
+            portal_params['configuration'] = portal_config_id
+        
+        portal_session = stripe.billing_portal.Session.create(**portal_params)
         return redirect(portal_session.url, code=303)
     except stripe.error.StripeError as e:
         logger.error(f"Stripe error in create_portal_session: {e}")
@@ -355,10 +511,70 @@ def stripe_webhook(request):
         subscription = event['data']['object']
         status = subscription.get('status')
         customer_id = subscription.get('customer')
+        subscription_id = subscription.get('id')
         price = None
         items = subscription.get('items', {}).get('data', [])
+        quantity = None
         if items:
             price = items[0].get('price', {}).get('id')
+            quantity = items[0].get('quantity')
+            logger.info(f'Subscription {subscription_id} has quantity: {quantity}, price: {price}')
+        
+        # Check if this is a team subscription and update quantity
+        from accounts.models import SubscriptionGroup, TeamInvitation
+        subscription_group = SubscriptionGroup.objects.filter(
+            stripe_subscription_id=subscription_id
+        ).first()
+        
+        if subscription_group:
+            logger.info(f'Found SubscriptionGroup for subscription {subscription_id}: current quantity={subscription_group.quantity}')
+            
+            if quantity is not None:
+                # Update the subscription group quantity to match Stripe
+                old_quantity = subscription_group.quantity
+                
+                if old_quantity != quantity:
+                    subscription_group.quantity = quantity
+                    subscription_group.save(update_fields=['quantity'])
+                    # Refresh from database to confirm the save
+                    subscription_group.refresh_from_db()
+                    logger.info(f'✅ Updated SubscriptionGroup quantity from {old_quantity} to {quantity} for subscription {subscription_id} (confirmed: {subscription_group.quantity})')
+                else:
+                    logger.info(f'SubscriptionGroup quantity already matches Stripe: {quantity}')
+                
+                # Check if quantity was reduced below current usage
+                current_members_count = subscription_group.get_active_members_count()
+                pending_count = TeamInvitation.objects.filter(
+                    subscription_group=subscription_group,
+                    status='pending'
+                ).count()
+                current_usage = current_members_count + pending_count
+                
+                if quantity < current_usage:
+                    logger.warning(f'Team subscription {subscription_id} quantity ({quantity}) is below current usage ({current_usage}). Admin may need to remove members or cancel invitations.')
+                    # Optionally: Cancel oldest pending invitations if quantity is too low
+                    if pending_count > 0 and quantity < current_members_count:
+                        # Cancel pending invitations to free up seats
+                        excess_pending = current_usage - quantity
+                        pending_invitations = TeamInvitation.objects.filter(
+                            subscription_group=subscription_group,
+                            status='pending'
+                        ).order_by('created_at')[:excess_pending]
+                        
+                        for invitation in pending_invitations:
+                            invitation.status = 'declined'
+                            invitation.save()
+                            logger.info(f'Cancelled pending invitation {invitation.id} due to seat reduction')
+                
+                # Update subscription metadata with current team info
+                try:
+                    update_subscription_metadata_with_team_info(subscription_group)
+                except Exception as e:
+                    logger.error(f'Error updating subscription metadata: {e}', exc_info=True)
+            else:
+                logger.warning(f'No quantity found in subscription {subscription_id} items')
+        else:
+            logger.info(f'No SubscriptionGroup found for subscription {subscription_id} - may be individual subscription')
         
         if customer_id:
             tier = PRICE_TIER_MAP.get(price) if status in ['active', 'trialing'] else None
@@ -368,6 +584,61 @@ def stripe_webhook(request):
         logger.info(f'Subscription canceled: {event["id"]}')
         subscription = event['data']['object']
         customer_id = subscription.get('customer')
+        subscription_id = subscription.get('id')
+        
+        # Check if this is a team subscription
+        from accounts.models import SubscriptionGroup
+        subscription_group = SubscriptionGroup.objects.filter(
+            stripe_subscription_id=subscription_id
+        ).first()
+        
+        if subscription_group:
+            # This is a team subscription - ensure it's marked as inactive
+            # (may have already been done by the cancel_team_subscription_view)
+            was_active = subscription_group.is_active
+            subscription_group.is_active = False
+            subscription_group.save(update_fields=['is_active'])
+            
+            if was_active:
+                logger.info(f'Team subscription canceled via webhook: {subscription_id}')
+                # Only process if the subscription was still active
+                # (if it was already canceled via the view, everything is already done)
+                
+                # Delete all grids and downgrade all members to free (including admin, who is now a member)
+                from pages.models import Project
+                members = subscription_group.members.all()
+                total_grids_deleted = 0
+                
+                for member in members:
+                    # Delete all projects (grids) for this member
+                    member_projects = Project.objects.filter(user=member)
+                    grids_deleted = member_projects.count()
+                    member_projects.delete()
+                    total_grids_deleted += grids_deleted
+                    
+                    # Downgrade member to free
+                    if member.tier != 'free':
+                        member.tier = 'free'
+                        member.team_admin = None
+                        member.save(update_fields=['tier', 'team_admin'])
+                        logger.info(f'Team member {member.email} downgraded to free via webhook. {grids_deleted} grid(s) deleted.')
+                
+                # If admin is not in members list (shouldn't happen with new logic, but handle edge case)
+                if subscription_group.admin not in members:
+                    admin_projects = Project.objects.filter(user=subscription_group.admin)
+                    admin_grids_deleted = admin_projects.count()
+                    admin_projects.delete()
+                    total_grids_deleted += admin_grids_deleted
+                    
+                    # Downgrade admin to free if not already
+                    if subscription_group.admin.tier != 'free':
+                        subscription_group.admin.tier = 'free'
+                        subscription_group.admin.save(update_fields=['tier'])
+                        logger.info(f'Team admin {subscription_group.admin.email} downgraded to free via webhook. {admin_grids_deleted} grid(s) deleted.')
+                
+                logger.info(f'Team subscription cancellation complete: {total_grids_deleted} total grid(s) deleted, all members downgraded to free')
+            else:
+                logger.info(f'Team subscription {subscription_id} was already marked inactive - webhook confirms cancellation')
         
         if customer_id:
             try:
@@ -561,3 +832,187 @@ def stripe_cancel_pro_view(request):
         logger.info(f'User {request.user.email} tier reset to free after canceling checkout')
     
     return render(request, 'accounts/pages/stripe/toad_pro_stripe_cancel.html')
+
+
+@login_required
+def stripe_checkout_team_view(request):
+    """
+    Display the Stripe checkout page for Team Toad subscription with quantity selector
+    """
+    logger.info(f"Stripe Team checkout view accessed by user: {request.user.email}")
+    
+    try:
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured - cannot display checkout page")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('pages:project_list')
+        
+        logger.info("Stripe API key is configured, proceeding...")
+        
+        # Render team checkout template with quantity selector
+        response = render(request, 'accounts/pages/stripe/toad_team_stripe_checkout.html')
+        logger.info("Template rendered successfully")
+        return response
+        
+    except Exception as e:
+        logger.error(f"Error in stripe_checkout_team_view: {e}", exc_info=True)
+        from django.http import HttpResponse
+        return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
+
+
+@login_required
+def create_checkout_session_team(request):
+    """
+    Create a Stripe checkout session for Team Toad subscription with quantity
+    """
+    if request.method != 'POST':
+        return redirect('accounts:stripe_checkout_team')
+    
+    try:
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('accounts:stripe_checkout_team')
+        
+        # Get quantity from form
+        quantity = int(request.POST.get('quantity', 1))
+        if quantity < 1:
+            messages.error(request, 'Quantity must be at least 1.')
+            return redirect('accounts:stripe_checkout_team')
+        
+        # Get the price ID from the form (for live mode)
+        # Pro plan price
+        price_id = request.POST.get('price_id', PRO_PRICE_ID)
+        
+        # Get the price from Stripe
+        try:
+            price = stripe.Price.retrieve(price_id, expand=['product'])
+        except stripe.error.InvalidRequestError:
+            messages.error(request, 'Subscription plan not found. Please contact support.')
+            return redirect('accounts:stripe_checkout_team')
+        
+        # Create checkout session with quantity
+        checkout_session = stripe.checkout.Session.create(
+            line_items=[
+                {
+                    'price': price.id,
+                    'quantity': quantity,
+                },
+            ],
+            mode='subscription',
+            success_url=request.build_absolute_uri(reverse('accounts:stripe_success_team')) + '?session_id={CHECKOUT_SESSION_ID}',
+            cancel_url=request.build_absolute_uri(reverse('accounts:stripe_cancel_team')),
+            customer_email=request.user.email,  # Pre-fill email
+            metadata={
+                'user_id': str(request.user.id),
+                'user_email': request.user.email,
+                'plan_type': 'team',
+                'quantity': str(quantity),
+            }
+        )
+        
+        return redirect(checkout_session.url, code=303)
+        
+    except ValueError:
+        messages.error(request, 'Invalid quantity. Please enter a valid number.')
+        return redirect('accounts:stripe_checkout_team')
+    except stripe.error.StripeError as e:
+        logger.error(f"Stripe error in create_checkout_session_team: {e}")
+        messages.error(request, 'There was an error processing your payment. Please try again.')
+        return redirect('accounts:stripe_checkout_team')
+    except Exception as e:
+        logger.error(f"Unexpected error in create_checkout_session_team: {e}")
+        messages.error(request, 'An unexpected error occurred. Please contact support.')
+        return redirect('accounts:stripe_checkout_team')
+
+
+@login_required
+def stripe_success_team_view(request):
+    """
+    Handle successful Stripe Team checkout - redirect to email input page
+    """
+    session_id = request.GET.get('session_id')
+    
+    if not session_id:
+        messages.error(request, 'Invalid session. Please contact support.')
+        return redirect('pages:project_list')
+    
+    try:
+        # Retrieve the checkout session
+        session = stripe.checkout.Session.retrieve(session_id)
+        
+        # Verify the session belongs to the current user
+        if session.metadata.get('user_id') != str(request.user.id):
+            messages.error(request, 'Session verification failed.')
+            return redirect('pages:project_list')
+        
+        # Get quantity from metadata
+        quantity = int(session.metadata.get('quantity', 1))
+        
+        # Get customer ID
+        customer_id = session.get('customer')
+        subscription_id = session.get('subscription')
+        
+        # Create SubscriptionGroup - user automatically becomes admin
+        from accounts.models import SubscriptionGroup
+        subscription_group = SubscriptionGroup.objects.create(
+            admin=request.user,
+            stripe_subscription_id=subscription_id,
+            quantity=quantity,
+            is_active=True
+        )
+        
+        # Automatically add admin as a member (fills one seat)
+        subscription_group.members.add(request.user)
+        
+        # Update admin user tier and stripe_customer_id
+        # Only update tier if they're not already a Team Toad user
+        pro_tiers = ['pro', 'pro_trial', 'beta']
+        if request.user.tier not in pro_tiers:
+            request.user.tier = 'pro'
+            update_fields = ['tier']
+        else:
+            update_fields = []
+        
+        if customer_id and getattr(request.user, 'stripe_customer_id', None) != customer_id:
+            request.user.stripe_customer_id = customer_id
+            if 'tier' not in update_fields:
+                update_fields = []
+            update_fields.append('stripe_customer_id')
+        
+        if update_fields:
+            request.user.save(update_fields=update_fields)
+        
+        # Store subscription_group_id in session for the email input page
+        request.session['subscription_group_id'] = subscription_group.id
+        
+        # Update Stripe subscription metadata with team info (includes admin as member)
+        update_subscription_metadata_with_team_info(subscription_group)
+        
+        # Calculate available seats (quantity - 1 for admin, since they automatically fill one spot)
+        available_seats = quantity - 1
+        logger.info(f"Team subscription created for user {request.user.email} with {quantity} seats. Admin automatically fills 1 seat, {available_seats} available for invites.")
+        messages.success(request, f'Payment successful! You automatically fill one seat. Please invite {available_seats} team member(s).')
+        
+        # Redirect to email input page
+        return redirect('accounts:team_invite_members')
+        
+    except stripe.error.StripeError as e:
+        logger.error(f"Stripe error in stripe_success_team_view: {e}")
+        messages.error(request, 'There was an error processing your payment. Please contact support.')
+        return redirect('pages:project_list')
+    except Exception as e:
+        logger.error(f"Unexpected error in stripe_success_team_view: {e}", exc_info=True)
+        messages.error(request, 'An unexpected error occurred. Please contact support.')
+        return redirect('pages:project_list')
+
+
+@login_required
+def stripe_cancel_team_view(request):
+    """
+    Handle cancelled Stripe Team checkout
+    """
+    messages.info(request, 'Payment was cancelled. You can try again anytime.')
+    return redirect('accounts:stripe_checkout_team')

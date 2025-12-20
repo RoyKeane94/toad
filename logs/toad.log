@@ -37999,3 +37999,1200 @@ INFO 2025-12-20 13:22:34,137 basehttp 38234 6216298496 "GET /static/js/general/g
 INFO 2025-12-20 13:23:07,462 basehttp 38234 6216298496 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 200 3508
 INFO 2025-12-20 13:23:07,474 basehttp 38234 6216298496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-12-20 13:23:10,642 basehttp 38234 6216298496 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 200 3545
+INFO 2025-12-20 13:37:28,690 autoreload 39703 8580636416 Watching for file changes with StatReloader
+ERROR 2025-12-20 13:37:29,406 log 39703 6188855296 Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.team_admin_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.team_admin_id
+ERROR 2025-12-20 13:37:29,412 basehttp 39703 6188855296 "GET / HTTP/1.1" 500 19917
+ERROR 2025-12-20 13:37:29,500 log 39703 6188855296 Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: no such column: accounts_user.team_admin_id
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/middleware.py", line 16, in __call__
+    if (request.user.is_authenticated and
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 251, in inner
+    self._setup()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/functional.py", line 404, in _setup
+    self._wrapped = self._setupfunc()
+                    ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 40, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+                                            ^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/middleware.py", line 20, in get_user
+    request._cached_user = auth.get_user(request)
+                           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/__init__.py", line 311, in get_user
+    user = backend.get_user(user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/backends.py", line 232, in get_user
+    user = UserModel._default_manager.get(pk=user_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 629, in get
+    num = len(clone)
+          ^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1623, in execute_sql
+    cursor.execute(sql, params)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/backends/sqlite3/base.py", line 360, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: no such column: accounts_user.team_admin_id
+ERROR 2025-12-20 13:37:29,502 basehttp 39703 6188855296 "GET /favicon.ico HTTP/1.1" 500 19817
+INFO 2025-12-20 13:37:34,480 autoreload 39703 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-12-20 13:37:34,902 autoreload 39732 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:37:37,544 autoreload 39732 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-12-20 13:37:37,982 autoreload 39743 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:38:21,207 autoreload 40092 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:38:27,825 autoreload 40092 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:38:28,254 autoreload 40113 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:38:29,400 basehttp 40113 6198226944 "GET / HTTP/1.1" 200 10982
+INFO 2025-12-20 13:38:29,429 basehttp 40113 6198226944 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 13:38:29,429 basehttp 40113 6215053312 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:38:29,507 basehttp 40113 6215053312 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-20 13:38:32,838 basehttp 40113 6215053312 "GET /accounts/settings/ HTTP/1.1" 200 3661
+INFO 2025-12-20 13:38:33,860 basehttp 40113 6215053312 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7303
+INFO 2025-12-20 13:38:37,999 autoreload 40113 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/email_utils.py changed, reloading.
+INFO 2025-12-20 13:38:38,421 autoreload 40131 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:40:19,490 basehttp 40131 6135918592 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7266
+INFO 2025-12-20 13:40:19,512 basehttp 40131 6135918592 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:40:27,471 autoreload 40131 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:40:27,978 autoreload 40213 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:40:29,102 stripe_django_views 40213 6193033216 Stripe Pro checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:40:29,102 stripe_django_views 40213 6193033216 Stripe API key is configured, proceeding...
+INFO 2025-12-20 13:40:29,102 stripe_django_views 40213 6193033216 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 13:40:29,117 stripe_django_views 40213 6193033216 Template rendered successfully
+INFO 2025-12-20 13:40:29,118 basehttp 40213 6193033216 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3085
+INFO 2025-12-20 13:40:31,988 _util 40213 6193033216 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 13:40:32,285 _util 40213 6193033216 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 13:40:32,289 _util 40213 6193033216 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 13:40:32,650 autoreload 40213 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:40:33,007 autoreload 40227 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:40:37,245 basehttp 40227 6127251456 "GET /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:40:37,249 stripe_django_views 40227 6127251456 Stripe Pro checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:40:37,249 stripe_django_views 40227 6127251456 Stripe API key is configured, proceeding...
+INFO 2025-12-20 13:40:37,249 stripe_django_views 40227 6127251456 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 13:40:37,254 stripe_django_views 40227 6127251456 Template rendered successfully
+INFO 2025-12-20 13:40:37,255 basehttp 40227 6127251456 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3121
+INFO 2025-12-20 13:40:38,920 _util 40227 6127251456 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 13:40:39,197 _util 40227 6127251456 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 13:40:39,203 _util 40227 6127251456 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 13:40:39,713 _util 40227 6127251456 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 13:40:39,714 basehttp 40227 6127251456 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:40:44,125 _util 40227 6127251456 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 13:40:44,324 _util 40227 6127251456 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 13:40:44,327 _util 40227 6127251456 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 13:40:44,811 _util 40227 6127251456 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 13:40:44,814 basehttp 40227 6127251456 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:40:49,011 stripe_django_views 40227 6127251456 Stripe Team checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:40:49,012 stripe_django_views 40227 6127251456 Stripe API key is configured, proceeding...
+ERROR 2025-12-20 13:40:49,013 stripe_django_views 40227 6127251456 Error in stripe_checkout_team_view: accounts/pages/stripe/toad_team_stripe_checkout.html
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py", line 609, in stripe_checkout_team_view
+    response = render(request, 'accounts/pages/stripe/toad_team_stripe_checkout.html')
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/pages/stripe/toad_team_stripe_checkout.html
+ERROR 2025-12-20 13:40:49,017 log 40227 6127251456 Internal Server Error: /accounts/stripe/checkout/team/
+ERROR 2025-12-20 13:40:49,018 basehttp 40227 6127251456 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 500 81
+INFO 2025-12-20 13:40:49,040 basehttp 40227 6127251456 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-12-20 13:40:49,048 basehttp 40227 6127251456 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-12-20 13:43:03,282 autoreload 40227 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:43:04,737 autoreload 40338 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:43:06,366 autoreload 40338 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:43:06,950 autoreload 40351 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:43:12,600 autoreload 40351 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 13:43:13,080 autoreload 40361 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:43:33,948 autoreload 40361 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:43:34,493 autoreload 40390 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:43:44,188 autoreload 40390 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:43:44,721 autoreload 40409 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:45:30,840 stripe_django_views 40409 6164705280 Stripe Team checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:45:30,841 stripe_django_views 40409 6164705280 Stripe API key is configured, proceeding...
+INFO 2025-12-20 13:45:30,863 stripe_django_views 40409 6164705280 Template rendered successfully
+INFO 2025-12-20 13:45:30,864 basehttp 40409 6164705280 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3832
+INFO 2025-12-20 13:45:30,877 basehttp 40409 6164705280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 13:45:30,878 basehttp 40409 6325039104 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:45:36,601 _util 40409 6325039104 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 13:45:36,877 _util 40409 6325039104 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 13:45:36,881 _util 40409 6325039104 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 13:45:37,271 _util 40409 6325039104 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 13:45:37,275 basehttp 40409 6325039104 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:45:44,630 basehttp 40409 6325039104 "GET /accounts/stripe/cancel/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:45:44,636 stripe_django_views 40409 6325039104 Stripe Team checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:45:44,636 stripe_django_views 40409 6325039104 Stripe API key is configured, proceeding...
+INFO 2025-12-20 13:45:44,639 stripe_django_views 40409 6325039104 Template rendered successfully
+INFO 2025-12-20 13:45:44,640 basehttp 40409 6325039104 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3851
+INFO 2025-12-20 13:45:59,412 _util 40409 6325039104 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 13:45:59,617 _util 40409 6325039104 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 13:45:59,620 _util 40409 6325039104 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 13:46:00,031 _util 40409 6325039104 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 13:46:00,034 basehttp 40409 6325039104 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:48:03,685 _util 40409 6325039104 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_live_a1kLjQ1uIPW5JMppdvx9WS2zrXSUXSCEq5NuoIutD0fVh7CmkyglXid7wa
+INFO 2025-12-20 13:48:03,970 _util 40409 6325039104 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_live_a1kLjQ1uIPW5JMppdvx9WS2zrXSUXSCEq5NuoIutD0fVh7CmkyglXid7wa response_code=200
+INFO 2025-12-20 13:48:03,983 stripe_django_views 40409 6325039104 Team subscription created for user tj@hotmail.com with 2 seats
+INFO 2025-12-20 13:48:03,987 basehttp 40409 6325039104 "GET /accounts/stripe/success/team/?session_id=cs_live_a1kLjQ1uIPW5JMppdvx9WS2zrXSUXSCEq5NuoIutD0fVh7CmkyglXid7wa HTTP/1.1" 302 0
+ERROR 2025-12-20 13:48:04,019 log 40409 6325039104 Internal Server Error: /accounts/team/invite-members/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py", line 1653, in team_invite_members_view
+    return render(request, 'accounts/pages/team/invite_members.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/pages/team/invite_members.html
+ERROR 2025-12-20 13:48:04,022 basehttp 40409 6325039104 "GET /accounts/team/invite-members/ HTTP/1.1" 500 13511
+INFO 2025-12-20 13:48:59,036 autoreload 40409 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:48:59,573 autoreload 40809 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:49:47,131 autoreload 40809 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:49:47,682 autoreload 40870 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:49:57,451 autoreload 40870 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:49:58,030 autoreload 40895 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:50:35,368 basehttp 40895 6164901888 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3406
+INFO 2025-12-20 13:50:35,407 basehttp 40895 6164901888 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+ERROR 2025-12-20 13:50:47,213 views 40895 6164901888 Error sending team invitation email to tom.barratt@prefequity.com: accounts/email/team_invitation.html
+INFO 2025-12-20 13:50:47,213 basehttp 40895 6164901888 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+ERROR 2025-12-20 13:50:47,234 log 40895 6164901888 Internal Server Error: /accounts/team/manage/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py", line 1693, in manage_team_view
+    return render(request, 'accounts/pages/team/manage_team.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: accounts/pages/team/manage_team.html
+ERROR 2025-12-20 13:50:47,237 basehttp 40895 6164901888 "GET /accounts/team/manage/ HTTP/1.1" 500 13702
+INFO 2025-12-20 13:51:53,009 basehttp 40895 6164901888 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:51:53,024 basehttp 40895 6164901888 "GET /accounts/team/manage/ HTTP/1.1" 200 3894
+INFO 2025-12-20 13:51:53,036 basehttp 40895 6164901888 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 13:51:57,398 autoreload 40895 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:51:57,946 autoreload 41060 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:52:08,310 _util 41060 6201847808 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 13:52:08,642 _util 41060 6201847808 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 13:52:08,645 _util 41060 6201847808 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 13:52:09,735 autoreload 41060 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:52:10,194 autoreload 41085 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:52:20,805 basehttp 41085 6135017472 "GET /accounts/team/manage/ HTTP/1.1" 200 3607
+INFO 2025-12-20 13:52:22,621 _util 41085 6135017472 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 13:52:22,911 _util 41085 6135017472 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 13:52:22,918 _util 41085 6135017472 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 13:52:26,904 _util 41085 6135017472 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 13:52:26,909 views 41085 6135017472 Team subscription upgraded: sub_1SgQVlImvDyA3xukViIs6BU3 from 3 to 4 seats
+INFO 2025-12-20 13:52:26,910 basehttp 41085 6135017472 "POST /accounts/team/upgrade/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:52:26,920 basehttp 41085 6135017472 "GET /accounts/team/manage/ HTTP/1.1" 200 3773
+INFO 2025-12-20 13:52:53,512 _util 41085 6135017472 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 13:52:53,762 _util 41085 6135017472 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 13:52:53,765 _util 41085 6135017472 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 13:52:58,033 _util 41085 6135017472 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 13:52:58,041 views 41085 6135017472 Team subscription upgraded: sub_1SgQVlImvDyA3xukViIs6BU3 from 4 to 5 seats
+INFO 2025-12-20 13:52:58,043 basehttp 41085 6135017472 "POST /accounts/team/upgrade/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:52:58,066 basehttp 41085 6135017472 "GET /accounts/team/manage/ HTTP/1.1" 200 3783
+INFO 2025-12-20 13:53:06,455 basehttp 41085 6135017472 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3355
+INFO 2025-12-20 13:53:17,465 basehttp 41085 6135017472 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:53:17,478 basehttp 41085 6135017472 "GET /accounts/team/manage/ HTTP/1.1" 200 3833
+INFO 2025-12-20 13:53:44,593 basehttp 41085 6135017472 "GET / HTTP/1.1" 200 11017
+INFO 2025-12-20 13:53:44,611 basehttp 41085 6135017472 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:53:45,940 basehttp 41085 6135017472 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 13:53:45,957 basehttp 41085 6151843840 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:53:45,974 basehttp 41085 6151843840 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1547
+INFO 2025-12-20 13:53:45,986 basehttp 41085 6135017472 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-12-20 13:53:45,987 basehttp 41085 6169243648 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-20 13:53:45,988 basehttp 41085 6151843840 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-12-20 13:53:45,989 basehttp 41085 6135017472 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-20 13:53:45,990 basehttp 41085 6169243648 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-20 13:53:45,990 basehttp 41085 6151843840 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-12-20 13:53:45,991 basehttp 41085 6135017472 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-20 13:54:03,775 basehttp 41085 6135017472 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:54:03,790 basehttp 41085 6135017472 "GET /admin/ HTTP/1.1" 200 3023
+INFO 2025-12-20 13:54:03,814 basehttp 41085 6135017472 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-20 13:54:03,818 basehttp 41085 6135017472 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-20 13:54:03,818 basehttp 41085 6151843840 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-20 13:54:03,818 basehttp 41085 6169243648 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-12-20 13:54:06,011 basehttp 41085 6169243648 "GET /admin/accounts/user/ HTTP/1.1" 200 4615
+INFO 2025-12-20 13:54:06,025 basehttp 41085 6169243648 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-12-20 13:54:06,027 basehttp 41085 6186070016 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-20 13:54:06,028 basehttp 41085 6202896384 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-20 13:54:06,031 basehttp 41085 6219722752 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-20 13:54:06,032 basehttp 41085 6169243648 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-20 13:54:06,033 basehttp 41085 6186070016 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-20 13:54:06,035 basehttp 41085 6202896384 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-20 13:54:06,036 basehttp 41085 6169243648 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-12-20 13:54:06,037 basehttp 41085 6186070016 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-12-20 13:54:06,037 basehttp 41085 6151843840 "GET /admin/jsi18n/ HTTP/1.1" 200 1051
+INFO 2025-12-20 13:54:06,039 basehttp 41085 6135017472 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-20 13:54:06,040 basehttp 41085 6219722752 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-20 13:54:06,041 basehttp 41085 6219722752 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-20 13:54:06,046 basehttp 41085 6219722752 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-12-20 13:54:06,055 basehttp 41085 6135017472 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-12-20 13:54:06,056 basehttp 41085 6219722752 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-12-20 13:54:06,056 basehttp 41085 6186070016 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-12-20 13:54:28,291 basehttp 41085 6186070016 "POST /admin/accounts/user/ HTTP/1.1" 200 3995
+INFO 2025-12-20 13:54:28,307 basehttp 41085 6186070016 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2025-12-20 13:54:31,110 basehttp 41085 6186070016 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:54:31,123 basehttp 41085 6186070016 "GET /admin/accounts/user/ HTTP/1.1" 200 4621
+INFO 2025-12-20 13:54:31,141 basehttp 41085 6186070016 "GET /admin/jsi18n/ HTTP/1.1" 200 1014
+INFO 2025-12-20 13:54:32,687 basehttp 41085 6186070016 "POST /admin/logout/ HTTP/1.1" 200 1336
+INFO 2025-12-20 13:54:34,807 basehttp 41085 6186070016 "GET / HTTP/1.1" 200 10844
+INFO 2025-12-20 13:54:36,577 basehttp 41085 6186070016 "GET /accounts/login/ HTTP/1.1" 200 3879
+INFO 2025-12-20 13:54:42,687 basehttp 41085 6186070016 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:54:42,700 basehttp 41085 6186070016 "GET /grids/ HTTP/1.1" 200 12382
+INFO 2025-12-20 13:54:44,854 basehttp 41085 6186070016 "GET /accounts/settings/ HTTP/1.1" 200 3681
+INFO 2025-12-20 13:54:48,708 _util 41085 6186070016 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 13:54:49,042 _util 41085 6186070016 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 13:54:49,045 basehttp 41085 6186070016 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:55:09,087 basehttp 41085 6186070016 "GET /accounts/settings/ HTTP/1.1" 200 3602
+INFO 2025-12-20 13:56:14,350 autoreload 41085 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:56:14,922 autoreload 41518 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:56:46,272 autoreload 41518 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:56:46,776 autoreload 41561 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:57:19,171 basehttp 41561 6155563008 "GET /accounts/settings/ HTTP/1.1" 200 4228
+INFO 2025-12-20 13:57:19,200 basehttp 41561 6155563008 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:57:39,263 basehttp 41561 6155563008 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3474
+ERROR 2025-12-20 13:57:49,712 views 41561 6155563008 Error sending team invitation email to tom@meettoad.co.uk: accounts/email/team_invitation.html
+INFO 2025-12-20 13:57:49,713 basehttp 41561 6155563008 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:57:49,728 basehttp 41561 6155563008 "GET /accounts/team/manage/ HTTP/1.1" 200 3818
+INFO 2025-12-20 13:58:35,352 basehttp 41561 6155563008 "GET /accounts/team/manage/ HTTP/1.1" 200 3688
+INFO 2025-12-20 13:58:37,976 basehttp 41561 6155563008 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3342
+INFO 2025-12-20 13:58:43,082 basehttp 41561 6155563008 "GET /accounts/team/manage/ HTTP/1.1" 200 3692
+INFO 2025-12-20 13:58:49,433 basehttp 41561 6155563008 "GET /accounts/settings/ HTTP/1.1" 200 4322
+INFO 2025-12-20 13:58:49,454 basehttp 41561 6155563008 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:00:25,883 autoreload 41561 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:00:26,395 autoreload 41739 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:00:28,922 autoreload 41739 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:00:29,273 autoreload 41747 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:00:34,834 autoreload 41747 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:00:35,216 autoreload 41751 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:00:35,822 basehttp 41751 6165082112 "GET /accounts/settings/ HTTP/1.1" 200 4304
+INFO 2025-12-20 14:00:38,723 autoreload 41751 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:00:39,085 autoreload 41754 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:00:40,543 autoreload 41754 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 14:00:40,903 autoreload 41759 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:00:43,378 autoreload 41759 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 14:00:43,755 autoreload 41762 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:01:03,608 basehttp 41762 6121910272 "GET /accounts/settings/ HTTP/1.1" 200 4502
+INFO 2025-12-20 14:01:03,623 basehttp 41762 6121910272 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:01:04,754 autoreload 41762 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:01:05,277 autoreload 41809 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:01:06,787 autoreload 41809 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:01:07,144 autoreload 41810 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:01:26,926 autoreload 41810 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:01:27,424 autoreload 41855 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:03:18,139 autoreload 41855 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:03:18,663 autoreload 41991 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:03:19,339 basehttp 41991 6126415872 "GET /accounts/settings/ HTTP/1.1" 200 5289
+INFO 2025-12-20 14:03:22,765 basehttp 41991 6126415872 "GET /accounts/team/manage/ HTTP/1.1" 200 4666
+INFO 2025-12-20 14:03:25,936 basehttp 41991 6126415872 "GET /accounts/team/manage/ HTTP/1.1" 200 4628
+INFO 2025-12-20 14:03:26,305 autoreload 41991 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:03:26,737 autoreload 42011 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:03:30,899 basehttp 42011 6160986112 "POST /accounts/team/cancel-invitation/2/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:03:30,919 basehttp 42011 6160986112 "GET /accounts/settings/ HTTP/1.1" 200 5273
+INFO 2025-12-20 14:03:34,332 basehttp 42011 6160986112 "POST /accounts/team/cancel-invitation/1/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:03:34,344 basehttp 42011 6160986112 "GET /accounts/settings/ HTTP/1.1" 200 5086
+INFO 2025-12-20 14:03:37,086 basehttp 42011 6160986112 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3553
+INFO 2025-12-20 14:03:51,397 email_utils 42011 6160986112 Team invitation email sent to tom@meettoad.co.uk
+INFO 2025-12-20 14:03:51,786 email_utils 42011 6160986112 Team invitation email sent to tom.barratt@prefequity.com
+INFO 2025-12-20 14:03:51,789 basehttp 42011 6160986112 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:03:51,810 basehttp 42011 6160986112 "GET /accounts/team/manage/ HTTP/1.1" 200 4842
+INFO 2025-12-20 14:04:07,095 basehttp 42011 6160986112 "GET /accounts/team/accept-invitation/uobfQpT1XHzCf8c0n9LPa9fQZX6F3Amh/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:04:07,131 basehttp 42011 6160986112 "GET /grids/ HTTP/1.1" 200 12446
+INFO 2025-12-20 14:04:11,355 basehttp 42011 6160986112 "GET /accounts/settings/ HTTP/1.1" 200 5308
+INFO 2025-12-20 14:04:17,975 basehttp 42011 6160986112 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:04:17,988 basehttp 42011 6160986112 "GET / HTTP/1.1" 200 10893
+INFO 2025-12-20 14:04:21,341 basehttp 42011 6160986112 "GET /accounts/team/accept-invitation/uobfQpT1XHzCf8c0n9LPa9fQZX6F3Amh/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:04:21,352 basehttp 42011 6160986112 "GET /accounts/login/ HTTP/1.1" 200 4002
+INFO 2025-12-20 14:04:34,644 basehttp 42011 6160986112 "GET /accounts/team/accept-invitation/uobfQpT1XHzCf8c0n9LPa9fQZX6F3Amh/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:04:34,651 basehttp 42011 6160986112 "GET /accounts/login/ HTTP/1.1" 200 3872
+INFO 2025-12-20 14:04:52,901 basehttp 42011 6160986112 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:04:52,912 basehttp 42011 6160986112 "GET /grids/ HTTP/1.1" 200 12409
+INFO 2025-12-20 14:05:02,258 basehttp 42011 6160986112 "GET /accounts/settings/ HTTP/1.1" 200 5312
+INFO 2025-12-20 14:05:02,274 basehttp 42011 6160986112 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:05:08,625 basehttp 42011 6160986112 "POST /accounts/team/cancel-invitation/3/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:05:08,639 basehttp 42011 6160986112 "GET /accounts/settings/ HTTP/1.1" 200 5286
+INFO 2025-12-20 14:06:11,669 autoreload 42011 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-12-20 14:06:12,327 autoreload 42636 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:06:13,910 autoreload 42636 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:06:14,259 autoreload 42640 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:06:28,977 autoreload 42640 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:06:29,490 autoreload 42672 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:07:02,586 autoreload 42672 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:07:03,095 autoreload 42725 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:07:15,810 autoreload 42725 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/forms.py changed, reloading.
+INFO 2025-12-20 14:07:16,241 autoreload 42748 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:07:40,515 basehttp 42748 6167703552 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3534
+INFO 2025-12-20 14:07:40,552 basehttp 42748 6167703552 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:08:18,370 autoreload 42748 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:08:18,878 autoreload 42800 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:08:33,454 email_utils 42800 6198505472 Team invitation email sent to tom@meettoad.co.uk
+INFO 2025-12-20 14:08:33,457 basehttp 42800 6198505472 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:08:33,491 basehttp 42800 6198505472 "GET /accounts/team/manage/ HTTP/1.1" 200 4778
+INFO 2025-12-20 14:08:39,432 basehttp 42800 6198505472 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:08:39,440 basehttp 42800 6198505472 "GET / HTTP/1.1" 200 10909
+INFO 2025-12-20 14:08:42,371 basehttp 42800 6198505472 "GET /accounts/team/accept-invitation/lPb9juWt2F8xBtDtyZnqWODgr5KRWkoP/ HTTP/1.1" 200 3316
+INFO 2025-12-20 14:08:44,934 autoreload 42800 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:08:45,479 autoreload 42861 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:08:54,154 autoreload 42861 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:08:54,648 autoreload 42880 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:09:04,568 basehttp 42880 6125367296 "POST /accounts/team/accept-invitation/lPb9juWt2F8xBtDtyZnqWODgr5KRWkoP/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:09:04,587 basehttp 42880 6125367296 "GET /grids/ HTTP/1.1" 200 11704
+INFO 2025-12-20 14:09:07,380 basehttp 42880 6125367296 "GET /accounts/settings/ HTTP/1.1" 200 3692
+INFO 2025-12-20 14:09:09,562 basehttp 42880 6125367296 "GET /accounts/manage-subscription/ HTTP/1.1" 200 6831
+INFO 2025-12-20 14:09:16,221 basehttp 42880 6125367296 "GET /accounts/settings/ HTTP/1.1" 200 3677
+INFO 2025-12-20 14:09:20,670 basehttp 42880 6125367296 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:09:20,678 basehttp 42880 6125367296 "GET / HTTP/1.1" 200 10863
+INFO 2025-12-20 14:09:21,641 basehttp 42880 6125367296 "GET /accounts/login/ HTTP/1.1" 200 3811
+INFO 2025-12-20 14:09:28,478 basehttp 42880 6125367296 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:09:28,492 basehttp 42880 6125367296 "GET /grids/ HTTP/1.1" 200 13280
+INFO 2025-12-20 14:09:28,514 basehttp 42880 6125367296 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:09:32,680 basehttp 42880 6125367296 "GET / HTTP/1.1" 200 11026
+INFO 2025-12-20 14:09:33,261 basehttp 42880 6125367296 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 14:09:33,293 basehttp 42880 6142193664 "GET /admin/ HTTP/1.1" 200 3068
+INFO 2025-12-20 14:09:34,625 basehttp 42880 6142193664 "GET /admin/accounts/user/ HTTP/1.1" 200 4627
+INFO 2025-12-20 14:09:34,643 basehttp 42880 6142193664 "GET /admin/jsi18n/ HTTP/1.1" 200 1017
+INFO 2025-12-20 14:09:36,857 basehttp 42880 6142193664 "GET /admin/accounts/user/47/change/ HTTP/1.1" 200 6849
+INFO 2025-12-20 14:09:36,882 basehttp 42880 6159020032 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-12-20 14:09:36,882 basehttp 42880 6142193664 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-12-20 14:09:36,883 basehttp 42880 6341865472 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-20 14:09:36,883 basehttp 42880 6125367296 "GET /admin/jsi18n/ HTTP/1.1" 200 1027
+INFO 2025-12-20 14:09:36,884 basehttp 42880 6325039104 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-12-20 14:09:36,884 basehttp 42880 6159020032 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-12-20 14:09:36,885 basehttp 42880 6325039104 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-20 14:09:36,918 basehttp 42880 6325039104 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-12-20 14:09:36,919 basehttp 42880 6159020032 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-12-20 14:09:43,386 basehttp 42880 6159020032 "GET /admin/accounts/user/ HTTP/1.1" 200 4580
+INFO 2025-12-20 14:09:46,363 basehttp 42880 6159020032 "POST /admin/logout/ HTTP/1.1" 200 1397
+INFO 2025-12-20 14:09:48,328 basehttp 42880 6159020032 "GET / HTTP/1.1" 200 10911
+INFO 2025-12-20 14:09:50,051 basehttp 42880 6159020032 "GET /accounts/login/ HTTP/1.1" 200 3873
+INFO 2025-12-20 14:10:00,880 basehttp 42880 6159020032 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:10:00,890 basehttp 42880 6159020032 "GET /grids/ HTTP/1.1" 200 12433
+INFO 2025-12-20 14:10:05,964 basehttp 42880 6159020032 "GET /accounts/settings/ HTTP/1.1" 200 5346
+INFO 2025-12-20 14:10:12,656 basehttp 42880 6159020032 "GET /accounts/team/manage/ HTTP/1.1" 200 4983
+INFO 2025-12-20 14:13:30,335 autoreload 42880 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:13:30,913 autoreload 43082 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:13:40,585 autoreload 43082 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:13:41,049 autoreload 43104 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:13:44,621 autoreload 43104 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 14:13:44,987 autoreload 43113 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:14:33,401 autoreload 43113 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:14:33,923 autoreload 43345 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:14:46,703 autoreload 43345 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/signals.py changed, reloading.
+INFO 2025-12-20 14:14:47,163 autoreload 43366 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:14:56,849 autoreload 43366 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:14:57,451 autoreload 43429 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:15:18,539 autoreload 43429 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 14:15:19,013 autoreload 43471 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:19:43,588 basehttp 43471 6134231040 "GET /accounts/team/manage/ HTTP/1.1" 200 5954
+INFO 2025-12-20 14:19:43,646 basehttp 43471 6151057408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:19:43,646 basehttp 43471 6134231040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:20:22,825 basehttp 43471 6134231040 "GET /accounts/team/manage/ HTTP/1.1" 200 5936
+INFO 2025-12-20 14:25:46,829 basehttp 43471 6134231040 "GET /accounts/team/manage/ HTTP/1.1" 200 6635
+INFO 2025-12-20 14:25:46,852 basehttp 43471 6134231040 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:26:01,124 basehttp 43471 6134231040 "GET /accounts/team/manage/ HTTP/1.1" 200 6614
+INFO 2025-12-20 14:26:01,158 basehttp 43471 6167883776 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 14:26:01,161 basehttp 43471 6134231040 "GET /static/css/output.css HTTP/1.1" 200 103335
+INFO 2025-12-20 14:26:01,162 basehttp 43471 6151057408 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 14:26:01,162 basehttp 43471 6325039104 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 14:26:01,317 basehttp 43471 6134231040 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 14:26:17,943 autoreload 44014 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:26:29,361 basehttp 44014 6169473024 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-20 14:26:30,637 basehttp 44014 6169473024 - Broken pipe from ('127.0.0.1', 63754)
+INFO 2025-12-20 14:26:30,697 basehttp 44014 6169473024 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-20 14:26:40,049 basehttp 44014 6169473024 "GET / HTTP/1.1" 200 10992
+INFO 2025-12-20 14:26:40,086 basehttp 44014 6169473024 "GET /static/css/output.css HTTP/1.1" 200 105000
+INFO 2025-12-20 14:26:40,087 basehttp 44014 6169473024 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 14:26:40,109 basehttp 44014 6169473024 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 14:26:40,110 basehttp 44014 6186299392 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 14:26:40,293 basehttp 44014 6186299392 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 14:26:41,909 basehttp 44014 6186299392 "GET /accounts/settings/ HTTP/1.1" 200 5304
+INFO 2025-12-20 14:26:52,124 basehttp 44014 6186299392 "GET /accounts/team/manage/ HTTP/1.1" 200 6667
+INFO 2025-12-20 14:26:52,140 basehttp 44014 6186299392 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:26:52,140 basehttp 44014 6169473024 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:27:08,364 _util 44014 6169473024 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:27:08,677 _util 44014 6169473024 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:27:08,686 _util 44014 6169473024 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:27:10,304 _util 44014 6169473024 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:27:10,311 views 44014 6169473024 Team subscription reduced: sub_1SgQVlImvDyA3xukViIs6BU3 from 5 to 2 seats
+INFO 2025-12-20 14:27:10,312 basehttp 44014 6169473024 "POST /accounts/team/reduce/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:27:10,328 basehttp 44014 6169473024 "GET /accounts/team/manage/ HTTP/1.1" 200 6332
+INFO 2025-12-20 14:27:10,344 basehttp 44014 6186299392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:27:10,344 basehttp 44014 6169473024 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:27:47,967 basehttp 44014 6169473024 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3200
+INFO 2025-12-20 14:27:47,980 basehttp 44014 6169473024 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:27:47,981 basehttp 44014 6186299392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:28:27,540 basehttp 44014 6186299392 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7222
+INFO 2025-12-20 14:28:27,560 basehttp 44014 6186299392 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:28:27,565 basehttp 44014 6186299392 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:28:53,664 autoreload 44014 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:28:54,270 autoreload 44095 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:29:45,098 autoreload 44095 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:29:45,617 autoreload 44152 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:29:53,250 autoreload 44152 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:29:53,699 autoreload 44174 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:29:58,950 basehttp 44174 6200782848 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:29:58,966 basehttp 44174 6200782848 "GET / HTTP/1.1" 200 10835
+INFO 2025-12-20 14:29:58,977 basehttp 44174 6217609216 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:29:58,977 basehttp 44174 6200782848 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:30:02,122 basehttp 44174 6217609216 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 14:30:02,142 basehttp 44174 6200782848 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:30:02,161 basehttp 44174 6200782848 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1695
+INFO 2025-12-20 14:30:02,177 basehttp 44174 6217609216 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-12-20 14:30:02,178 basehttp 44174 6234435584 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-20 14:30:02,179 basehttp 44174 6200782848 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-12-20 14:30:02,188 basehttp 44174 6234435584 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-20 14:30:02,190 basehttp 44174 6200782848 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-20 14:30:02,190 basehttp 44174 6217609216 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-12-20 14:30:02,192 basehttp 44174 6234435584 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-20 14:30:02,194 basehttp 44174 6234435584 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-12-20 14:30:02,243 basehttp 44174 6234435584 "GET /favicon.ico HTTP/1.1" 301 0
+INFO 2025-12-20 14:30:02,248 basehttp 44174 6234435584 "GET /static/img/favicon.svg HTTP/1.1" 200 226
+INFO 2025-12-20 14:30:06,713 autoreload 44174 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:30:07,172 autoreload 44195 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:30:08,511 basehttp 44195 6156201984 "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:30:08,544 basehttp 44195 6156201984 "GET /admin/ HTTP/1.1" 200 3032
+INFO 2025-12-20 14:30:08,563 basehttp 44195 6156201984 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-20 14:30:08,566 basehttp 44195 6173028352 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-20 14:30:08,566 basehttp 44195 6189854720 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-12-20 14:30:08,567 basehttp 44195 6156201984 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-20 14:30:13,629 basehttp 44195 6156201984 "GET /admin/accounts/user/ HTTP/1.1" 200 4612
+INFO 2025-12-20 14:30:13,648 basehttp 44195 6206681088 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-20 14:30:13,649 basehttp 44195 6156201984 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-12-20 14:30:13,650 basehttp 44195 6240333824 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-20 14:30:13,650 basehttp 44195 6223507456 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-20 14:30:13,657 basehttp 44195 6206681088 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-20 14:30:13,657 basehttp 44195 6223507456 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-20 14:30:13,658 basehttp 44195 6189854720 "GET /admin/jsi18n/ HTTP/1.1" 200 984
+INFO 2025-12-20 14:30:13,659 basehttp 44195 6206681088 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-12-20 14:30:13,660 basehttp 44195 6240333824 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-20 14:30:13,662 basehttp 44195 6173028352 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-20 14:30:13,663 basehttp 44195 6156201984 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-20 14:30:13,664 basehttp 44195 6173028352 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-20 14:30:13,668 basehttp 44195 6173028352 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-12-20 14:30:13,677 basehttp 44195 6173028352 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-12-20 14:30:13,678 basehttp 44195 6156201984 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-12-20 14:30:13,678 basehttp 44195 6240333824 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-12-20 14:30:15,442 basehttp 44195 6240333824 "GET /admin/ HTTP/1.1" 200 3071
+INFO 2025-12-20 14:30:25,781 basehttp 44195 6240333824 "GET /admin/auth/group/ HTTP/1.1" 200 3081
+INFO 2025-12-20 14:30:25,808 basehttp 44195 6240333824 "GET /admin/jsi18n/ HTTP/1.1" 200 980
+INFO 2025-12-20 14:30:26,574 basehttp 44195 6240333824 "GET /admin/ HTTP/1.1" 200 3013
+INFO 2025-12-20 14:31:14,380 autoreload 44556 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:31:16,030 basehttp 44556 6162722816 "GET /admin/ HTTP/1.1" 200 3124
+INFO 2025-12-20 14:31:16,071 basehttp 44556 6162722816 "GET /favicon.ico HTTP/1.1" 301 0
+ERROR 2025-12-20 14:31:25,101 log 44556 6162722816 Internal Server Error: /admin/accounts/subscriptiongroup/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/admin/options.py", line 719, in wrapper
+    return self.admin_site.admin_view(view)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/views/decorators/cache.py", line 80, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/admin/sites.py", line 246, in inner
+    return view(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/decorators.py", line 48, in _wrapper
+    return bound_method(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/decorators.py", line 192, in _view_wrapper
+    result = _process_exception(request, e)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/utils/decorators.py", line 190, in _view_wrapper
+    response = view_func(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/admin/options.py", line 2163, in changelist_view
+    "selection_note": _("0 of %(cnt)s selected") % {"cnt": len(cl.result_list)},
+                                                           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 366, in __len__
+    self._fetch_all()
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 1949, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/query.py", line 91, in __iter__
+    results = compiler.execute_sql(
+              ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1610, in execute_sql
+    sql, params = self.as_sql()
+                  ^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 766, in as_sql
+    extra_select, order_by, group_by = self.pre_sql_setup(
+                                       ^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 85, in pre_sql_setup
+    self.setup_query(with_col_aliases=with_col_aliases)
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 74, in setup_query
+    self.select, self.klass_info, self.annotation_col_map = self.get_select(
+                                                            ^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 299, in get_select
+    related_klass_infos = self.get_related_selections(select, select_mask)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/db/models/sql/compiler.py", line 1396, in get_related_selections
+    raise FieldError(
+django.core.exceptions.FieldError: Invalid field name(s) given in select_related: 'members'. Choices are: admin
+ERROR 2025-12-20 14:31:25,106 basehttp 44556 6162722816 "GET /admin/accounts/subscriptiongroup/ HTTP/1.1" 500 19345
+INFO 2025-12-20 14:32:10,493 autoreload 44556 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-12-20 14:32:11,035 autoreload 44584 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:32:15,628 autoreload 44584 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/admin.py changed, reloading.
+INFO 2025-12-20 14:32:16,136 autoreload 44592 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:32:39,893 basehttp 44592 6124580864 "GET /admin/accounts/subscriptiongroup/ HTTP/1.1" 200 4102
+INFO 2025-12-20 14:32:39,925 basehttp 44592 6124580864 "GET /admin/jsi18n/ HTTP/1.1" 200 977
+INFO 2025-12-20 14:32:42,987 basehttp 44592 6124580864 "GET /admin/accounts/subscriptiongroup/1/change/ HTTP/1.1" 200 4202
+INFO 2025-12-20 14:32:43,006 basehttp 44592 6124580864 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-12-20 14:32:43,008 basehttp 44592 6158233600 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-20 14:32:43,008 basehttp 44592 6141407232 "GET /admin/jsi18n/ HTTP/1.1" 200 1054
+INFO 2025-12-20 14:32:43,011 basehttp 44592 6124580864 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-12-20 14:32:43,012 basehttp 44592 6141407232 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-20 14:32:50,194 basehttp 44592 6141407232 "POST /admin/accounts/subscriptiongroup/1/change/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:32:50,210 basehttp 44592 6141407232 "GET /admin/accounts/subscriptiongroup/ HTTP/1.1" 200 4099
+INFO 2025-12-20 14:32:50,227 basehttp 44592 6141407232 "GET /admin/jsi18n/ HTTP/1.1" 200 1035
+INFO 2025-12-20 14:32:57,427 basehttp 44592 6141407232 "POST /admin/logout/ HTTP/1.1" 200 1337
+INFO 2025-12-20 14:32:59,776 basehttp 44592 6141407232 "GET / HTTP/1.1" 200 10845
+INFO 2025-12-20 14:32:59,786 basehttp 44592 6141407232 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:32:59,790 basehttp 44592 6141407232 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:33:01,532 basehttp 44592 6141407232 "GET /accounts/login/ HTTP/1.1" 200 3870
+INFO 2025-12-20 14:33:08,429 basehttp 44592 6141407232 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:33:08,443 basehttp 44592 6141407232 "GET /grids/ HTTP/1.1" 200 12427
+INFO 2025-12-20 14:33:12,628 basehttp 44592 6141407232 "GET /accounts/settings/ HTTP/1.1" 200 5374
+INFO 2025-12-20 14:33:16,010 _util 44592 6141407232 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:33:16,319 _util 44592 6141407232 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:33:16,322 _util 44592 6141407232 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:33:16,528 _util 44592 6141407232 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:33:16,535 basehttp 44592 6141407232 "GET /accounts/team/manage/ HTTP/1.1" 200 7107
+INFO 2025-12-20 14:33:45,199 _util 44592 6141407232 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:33:45,426 _util 44592 6141407232 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:33:45,428 _util 44592 6141407232 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:33:47,067 _util 44592 6141407232 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:33:47,074 views 44592 6141407232 Team subscription reduced via Stripe API: sub_1SgQVlImvDyA3xukViIs6BU3 from 2 to 4 seats
+INFO 2025-12-20 14:33:47,076 basehttp 44592 6141407232 "POST /accounts/team/reduce/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:33:47,088 _util 44592 6141407232 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:33:47,351 _util 44592 6141407232 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:33:47,354 _util 44592 6141407232 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:33:47,561 _util 44592 6141407232 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:33:47,570 basehttp 44592 6141407232 "GET /accounts/team/manage/ HTTP/1.1" 200 7054
+INFO 2025-12-20 14:33:47,607 basehttp 44592 6141407232 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:33:47,607 basehttp 44592 6124580864 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:34:39,594 autoreload 44592 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:34:40,186 autoreload 44729 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:34:49,930 autoreload 44729 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:34:50,358 autoreload 44754 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:35:29,701 autoreload 44754 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:35:30,372 autoreload 44782 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:35:50,262 autoreload 44782 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:35:50,677 autoreload 44827 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:37:40,884 _util 44827 6170849280 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:37:41,186 _util 44827 6170849280 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:37:41,195 _util 44827 6170849280 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:37:41,401 _util 44827 6170849280 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:37:41,446 basehttp 44827 6170849280 "GET /accounts/team/manage/ HTTP/1.1" 200 7140
+INFO 2025-12-20 14:37:41,494 basehttp 44827 6170849280 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:37:41,494 basehttp 44827 6187675648 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:37:52,684 _util 44827 6187675648 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:37:53,068 _util 44827 6187675648 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:37:53,073 _util 44827 6187675648 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 14:37:53,375 _util 44827 6187675648 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 14:37:53,377 basehttp 44827 6187675648 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+WARNING 2025-12-20 14:38:34,479 log 44827 6187675648 Forbidden (CSRF token from POST incorrect.): /accounts/team/upgrade/
+WARNING 2025-12-20 14:38:34,481 basehttp 44827 6187675648 "POST /accounts/team/upgrade/ HTTP/1.1" 403 1332
+INFO 2025-12-20 14:38:41,272 _util 44827 6187675648 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:38:41,521 _util 44827 6187675648 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:38:41,525 _util 44827 6187675648 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:38:41,729 _util 44827 6187675648 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:38:41,741 basehttp 44827 6187675648 "GET /accounts/team/manage/ HTTP/1.1" 200 7167
+INFO 2025-12-20 14:42:26,229 autoreload 44827 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:42:26,888 autoreload 45080 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:42:55,078 autoreload 45080 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:42:55,584 autoreload 45107 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:42:57,101 autoreload 45107 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:42:57,453 autoreload 45110 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:42:58,949 autoreload 45110 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:42:59,331 autoreload 45111 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:43:35,683 autoreload 45111 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:43:36,174 autoreload 45146 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:44:44,415 _util 45146 6164557824 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:44:44,736 _util 45146 6164557824 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:44:44,745 _util 45146 6164557824 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:44:44,944 _util 45146 6164557824 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:44:44,982 basehttp 45146 6164557824 "GET /accounts/team/manage/ HTTP/1.1" 200 7221
+INFO 2025-12-20 14:44:45,007 basehttp 45146 6164557824 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:44:45,007 basehttp 45146 6181384192 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:44:51,681 _util 45146 6181384192 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=1
+INFO 2025-12-20 14:44:51,948 _util 45146 6181384192 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=1 response_code=200
+ERROR 2025-12-20 14:44:51,978 log 45146 6181384192 Internal Server Error: /accounts/stripe/create-portal-session/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py", line 271, in create_portal_session
+    stripe.billing_portal.Configuration.update(
+TypeError: StripeObject.update() got an unexpected keyword argument 'features'
+ERROR 2025-12-20 14:44:51,981 basehttp 45146 6181384192 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 500 12523
+INFO 2025-12-20 14:45:25,497 autoreload 45146 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:45:26,052 autoreload 45186 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:45:48,815 _util 45186 6191017984 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:45:49,132 _util 45186 6191017984 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:45:49,142 _util 45186 6191017984 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:45:49,340 _util 45186 6191017984 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:45:49,368 basehttp 45186 6191017984 "GET /accounts/team/manage/ HTTP/1.1" 200 7251
+INFO 2025-12-20 14:46:07,695 autoreload 45186 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:46:08,269 autoreload 45223 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:46:20,017 autoreload 45223 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:46:20,463 autoreload 45247 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:48:04,184 _util 45247 6161002496 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:48:04,477 _util 45247 6161002496 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:48:04,481 _util 45247 6161002496 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:48:04,674 _util 45247 6161002496 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:48:04,706 basehttp 45247 6161002496 "GET /accounts/team/manage/ HTTP/1.1" 200 7182
+INFO 2025-12-20 14:48:04,728 basehttp 45247 6161002496 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 14:48:04,728 basehttp 45247 6177828864 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:48:06,382 _util 45247 6177828864 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 14:48:06,667 _util 45247 6177828864 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 14:48:06,669 _util 45247 6177828864 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 14:48:06,888 _util 45247 6177828864 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 14:48:06,889 _util 45247 6177828864 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 14:48:06,889 stripe_django_views 45247 6177828864 Could not update portal configuration: Request req_MdrbsRgZz4sk5x: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 14:48:06,890 _util 45247 6177828864 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:48:07,147 _util 45247 6177828864 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:48:07,152 _util 45247 6177828864 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 14:48:07,437 _util 45247 6177828864 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 14:48:07,439 basehttp 45247 6177828864 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:49:44,432 basehttp 45247 6177828864 "GET / HTTP/1.1" 200 10961
+INFO 2025-12-20 14:49:45,417 basehttp 45247 6177828864 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 14:49:45,432 basehttp 45247 6161002496 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 14:49:45,451 basehttp 45247 6161002496 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1531
+INFO 2025-12-20 14:50:33,452 autoreload 45247 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:50:33,998 autoreload 45297 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:50:39,580 autoreload 45297 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 14:50:40,044 autoreload 45307 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:50:45,765 autoreload 45307 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 14:50:46,282 autoreload 45319 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 14:54:00,098 _util 45319 6190870528 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 14:54:00,405 _util 45319 6190870528 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 14:54:00,412 _util 45319 6190870528 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 14:54:00,615 _util 45319 6190870528 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 14:54:00,656 basehttp 45319 6190870528 "GET /accounts/team/manage/ HTTP/1.1" 200 7263
+INFO 2025-12-20 14:54:00,679 basehttp 45319 6207696896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 14:54:00,679 basehttp 45319 6190870528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:01:38,863 _util 45319 6190870528 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:01:39,194 _util 45319 6190870528 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:01:39,200 _util 45319 6190870528 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:01:39,400 _util 45319 6190870528 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:01:39,413 basehttp 45319 6190870528 "GET /accounts/team/manage/ HTTP/1.1" 200 7218
+INFO 2025-12-20 15:01:39,459 basehttp 45319 6190870528 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:01:39,459 basehttp 45319 6207696896 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:02:04,352 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 15:02:04,637 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 15:02:04,640 _util 45319 6207696896 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 15:02:04,848 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 15:02:04,849 _util 45319 6207696896 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 15:02:04,850 stripe_django_views 45319 6207696896 Could not update portal configuration: Request req_0BWuub7cEZDN5v: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 15:02:04,851 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:02:05,085 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:02:05,090 _util 45319 6207696896 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 15:02:05,352 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 15:02:05,355 basehttp 45319 6207696896 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:02:30,224 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:02:30,486 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:02:30,490 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:02:30,691 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:02:30,701 basehttp 45319 6207696896 "GET /accounts/team/manage/ HTTP/1.1" 200 7208
+INFO 2025-12-20 15:02:36,454 basehttp 45319 6207696896 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3257
+INFO 2025-12-20 15:04:00,056 basehttp 45319 6207696896 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7271
+INFO 2025-12-20 15:04:05,932 basehttp 45319 6207696896 "GET /accounts/settings/ HTTP/1.1" 200 5325
+INFO 2025-12-20 15:04:12,875 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 15:04:13,184 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 15:04:13,185 _util 45319 6207696896 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 15:04:13,396 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 15:04:13,396 _util 45319 6207696896 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 15:04:13,397 stripe_django_views 45319 6207696896 Could not update portal configuration: Request req_sKzUlf6Ylhzko2: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 15:04:13,397 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:04:13,638 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:04:13,641 _util 45319 6207696896 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 15:04:13,919 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 15:04:13,919 basehttp 45319 6207696896 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:04:18,747 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:04:18,965 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:04:18,966 _util 45319 6207696896 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:04:19,163 _util 45319 6207696896 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:04:19,173 basehttp 45319 6207696896 "GET /accounts/team/manage/ HTTP/1.1" 200 7209
+INFO 2025-12-20 15:04:44,021 autoreload 45319 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:04:44,671 autoreload 45842 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:04:48,271 autoreload 45842 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:04:48,690 autoreload 45851 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:04:57,295 autoreload 45851 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:04:57,704 autoreload 45873 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:05:02,391 autoreload 45873 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:05:02,759 autoreload 45878 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:05:10,917 basehttp 45878 6157873152 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:05:10,925 basehttp 45878 6157873152 "GET / HTTP/1.1" 200 10835
+INFO 2025-12-20 15:05:11,452 autoreload 45878 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:05:11,870 autoreload 45898 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:05:13,389 autoreload 45898 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:05:13,756 autoreload 45901 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:05:14,837 basehttp 45901 6128054272 "GET /accounts/register/ HTTP/1.1" 200 4099
+INFO 2025-12-20 15:05:14,851 basehttp 45901 6128054272 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:05:14,855 basehttp 45901 6128054272 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:05:16,303 autoreload 45901 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:05:16,674 autoreload 45909 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:05:27,379 autoreload 45909 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:05:27,891 autoreload 45930 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:05:34,528 basehttp 45930 6202798080 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:05:34,542 basehttp 45930 6202798080 "GET /accounts/login/?next=/accounts/stripe/checkout/team/ HTTP/1.1" 200 3811
+INFO 2025-12-20 15:05:37,706 autoreload 45930 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:05:38,166 autoreload 45952 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:06:06,069 basehttp 45952 6132183040 "GET /pro-comparison/ HTTP/1.1" 200 4094
+INFO 2025-12-20 15:06:54,226 basehttp 45952 6132183040 "GET /accounts/login/ HTTP/1.1" 200 3866
+INFO 2025-12-20 15:06:59,598 basehttp 45952 6132183040 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:06:59,615 basehttp 45952 6132183040 "GET /grids/ HTTP/1.1" 200 12446
+INFO 2025-12-20 15:07:03,224 basehttp 45952 6132183040 "GET /accounts/settings/ HTTP/1.1" 200 5348
+INFO 2025-12-20 15:07:06,390 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 15:07:06,677 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 15:07:06,685 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 15:07:06,895 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 15:07:06,895 _util 45952 6132183040 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 15:07:06,896 stripe_django_views 45952 6132183040 Could not update portal configuration: Request req_fZKjN8T49USvJx: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 15:07:06,896 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:07:07,119 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:07:07,120 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 15:07:07,372 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 15:07:07,375 basehttp 45952 6132183040 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:07:15,375 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:07:15,853 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:07:15,856 stripe_django_views 45952 6132183040 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:07:15,857 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:07:16,093 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:07:16,097 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:07:16,293 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:07:16,311 basehttp 45952 6132183040 "GET /accounts/team/manage/ HTTP/1.1" 200 6889
+INFO 2025-12-20 15:07:20,968 basehttp 45952 6132183040 "GET /accounts/settings/ HTTP/1.1" 200 5373
+INFO 2025-12-20 15:07:22,308 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:07:22,792 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:07:22,794 stripe_django_views 45952 6132183040 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:07:22,795 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:07:23,030 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:07:23,033 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:07:23,228 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:07:23,238 basehttp 45952 6132183040 "GET /accounts/team/manage/ HTTP/1.1" 200 6733
+INFO 2025-12-20 15:07:35,498 basehttp 45952 6132183040 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:07:35,506 basehttp 45952 6132183040 "GET / HTTP/1.1" 200 10899
+INFO 2025-12-20 15:07:43,348 basehttp 45952 6132183040 "GET /accounts/login/ HTTP/1.1" 200 3822
+INFO 2025-12-20 15:07:56,386 basehttp 45952 6132183040 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:07:56,399 basehttp 45952 6132183040 "GET /grids/ HTTP/1.1" 200 13231
+INFO 2025-12-20 15:07:58,055 basehttp 45952 6132183040 "GET /grids/ HTTP/1.1" 200 13249
+INFO 2025-12-20 15:08:01,499 basehttp 45952 6132183040 "GET /accounts/settings/ HTTP/1.1" 200 3741
+INFO 2025-12-20 15:08:07,170 basehttp 45952 6132183040 "GET / HTTP/1.1" 200 11003
+INFO 2025-12-20 15:08:08,039 basehttp 45952 6132183040 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 15:08:08,070 basehttp 45952 6132183040 "GET /admin/ HTTP/1.1" 200 3110
+INFO 2025-12-20 15:08:09,734 basehttp 45952 6132183040 "GET /admin/accounts/subscriptiongroup/ HTTP/1.1" 200 4081
+INFO 2025-12-20 15:08:09,756 basehttp 45952 6132183040 "GET /admin/jsi18n/ HTTP/1.1" 200 967
+INFO 2025-12-20 15:08:10,840 basehttp 45952 6132183040 "GET /admin/accounts/subscriptiongroup/1/change/ HTTP/1.1" 200 4247
+INFO 2025-12-20 15:08:10,855 basehttp 45952 6132183040 "GET /admin/jsi18n/ HTTP/1.1" 200 1019
+INFO 2025-12-20 15:08:15,271 basehttp 45952 6132183040 "POST /admin/accounts/subscriptiongroup/1/change/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:08:15,288 basehttp 45952 6132183040 "GET /admin/accounts/subscriptiongroup/ HTTP/1.1" 200 4187
+INFO 2025-12-20 15:08:15,303 basehttp 45952 6132183040 "GET /admin/jsi18n/ HTTP/1.1" 200 972
+INFO 2025-12-20 15:08:16,678 basehttp 45952 6132183040 "GET / HTTP/1.1" 200 10969
+INFO 2025-12-20 15:09:25,235 basehttp 45952 6132183040 "GET /grids/ HTTP/1.1" 200 13222
+INFO 2025-12-20 15:09:25,256 basehttp 45952 6149009408 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:09:25,257 basehttp 45952 6132183040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:09:31,289 basehttp 45952 6132183040 "GET /accounts/settings/ HTTP/1.1" 200 3721
+INFO 2025-12-20 15:09:35,649 basehttp 45952 6132183040 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:09:35,656 basehttp 45952 6132183040 "GET / HTTP/1.1" 200 10889
+INFO 2025-12-20 15:09:37,187 basehttp 45952 6132183040 "GET /accounts/login/ HTTP/1.1" 200 3796
+INFO 2025-12-20 15:09:43,155 basehttp 45952 6132183040 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:09:43,165 basehttp 45952 6132183040 "GET /grids/ HTTP/1.1" 200 12380
+INFO 2025-12-20 15:09:45,253 basehttp 45952 6132183040 "GET /accounts/settings/ HTTP/1.1" 200 5390
+INFO 2025-12-20 15:09:48,977 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 15:09:49,260 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 15:09:49,262 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 15:09:49,471 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 15:09:49,471 _util 45952 6132183040 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 15:09:49,472 stripe_django_views 45952 6132183040 Could not update portal configuration: Request req_PIp0ueG94XoqOW: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 15:09:49,473 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:09:49,715 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:09:49,718 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 15:09:50,045 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 15:09:50,047 basehttp 45952 6132183040 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:10:06,892 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:10:07,364 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:10:07,368 stripe_django_views 45952 6132183040 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:10:07,368 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:10:07,660 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:10:07,663 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:10:07,865 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:10:07,877 basehttp 45952 6132183040 "GET /accounts/team/manage/ HTTP/1.1" 200 6886
+INFO 2025-12-20 15:10:33,455 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:10:33,957 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:10:33,960 stripe_django_views 45952 6132183040 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:10:33,961 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:10:34,205 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:10:34,210 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:10:34,419 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:10:34,432 basehttp 45952 6132183040 "GET /accounts/team/manage/ HTTP/1.1" 200 6793
+INFO 2025-12-20 15:10:34,477 basehttp 45952 6166409216 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 15:10:34,479 basehttp 45952 6149009408 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 15:10:34,480 basehttp 45952 6183235584 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 15:10:34,480 basehttp 45952 6132183040 "GET /static/css/output.css HTTP/1.1" 200 105000
+INFO 2025-12-20 15:10:34,632 basehttp 45952 6132183040 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 15:11:10,585 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 15:11:10,881 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 15:11:10,884 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 15:11:11,092 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 15:11:11,093 _util 45952 6132183040 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 15:11:11,093 stripe_django_views 45952 6132183040 Could not update portal configuration: Request req_1RzHxjP6XmzMmT: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 15:11:11,094 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:11:11,352 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:11:11,357 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 15:11:11,613 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 15:11:11,614 basehttp 45952 6132183040 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:12:15,721 _util 45952 6132183040 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:12:16,184 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:12:16,187 stripe_django_views 45952 6132183040 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:12:16,187 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:12:16,424 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:12:16,431 _util 45952 6132183040 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:12:16,632 _util 45952 6132183040 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:12:16,637 basehttp 45952 6132183040 "GET /accounts/team/manage/ HTTP/1.1" 200 6754
+INFO 2025-12-20 15:12:58,851 autoreload 45952 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:12:59,423 autoreload 46225 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:13:22,415 autoreload 46225 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:13:23,158 autoreload 46250 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:13:27,762 autoreload 46250 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:13:28,225 autoreload 46254 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:13:42,175 autoreload 46254 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:13:42,712 autoreload 46273 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:16:29,165 _util 46273 6124548096 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:16:29,471 _util 46273 6124548096 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:16:29,478 _util 46273 6124548096 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:16:29,955 _util 46273 6124548096 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:16:29,956 stripe_django_views 46273 6124548096 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:16:29,957 _util 46273 6124548096 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:16:30,197 _util 46273 6124548096 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:16:30,198 _util 46273 6124548096 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:16:30,400 _util 46273 6124548096 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:16:30,443 basehttp 46273 6124548096 "GET /accounts/team/manage/ HTTP/1.1" 200 6717
+INFO 2025-12-20 15:16:30,470 basehttp 46273 6124548096 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:16:30,471 basehttp 46273 6141374464 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:18:04,166 _util 46273 6141374464 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-20 15:18:04,460 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-20 15:18:04,462 _util 46273 6141374464 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-20 15:18:04,673 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-20 15:18:04,674 _util 46273 6141374464 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-20 15:18:04,674 stripe_django_views 46273 6141374464 Could not update portal configuration: Request req_hXPnJrxIb3OErQ: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-20 15:18:04,674 _util 46273 6141374464 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:18:04,909 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:18:04,912 _util 46273 6141374464 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/sessions
+INFO 2025-12-20 15:18:05,172 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/sessions response_code=200
+INFO 2025-12-20 15:18:05,175 basehttp 46273 6141374464 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:18:28,806 _util 46273 6141374464 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:18:29,050 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:18:29,052 views 46273 6141374464 Syncing SubscriptionGroup quantity from 3 to 4 (from Stripe)
+INFO 2025-12-20 15:18:29,055 _util 46273 6141374464 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:18:29,522 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:18:29,526 stripe_django_views 46273 6141374464 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:18:29,526 _util 46273 6141374464 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:18:29,768 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:18:29,769 _util 46273 6141374464 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:18:29,968 _util 46273 6141374464 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:18:29,978 basehttp 46273 6141374464 "GET /accounts/team/manage/ HTTP/1.1" 200 6752
+INFO 2025-12-20 15:18:35,314 basehttp 46273 6141374464 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3303
+INFO 2025-12-20 15:20:27,465 autoreload 46273 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:20:28,130 autoreload 46595 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:20:37,793 autoreload 46595 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:20:38,205 autoreload 46617 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:21:22,698 autoreload 46617 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:21:23,261 autoreload 46642 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:21:29,876 autoreload 46642 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:21:30,324 autoreload 46664 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:22:10,107 _util 46664 6123876352 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:22:10,430 _util 46664 6123876352 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:22:10,441 _util 46664 6123876352 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:22:11,006 _util 46664 6123876352 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:22:11,008 stripe_django_views 46664 6123876352 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:22:11,008 _util 46664 6123876352 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:22:11,253 _util 46664 6123876352 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:22:11,254 _util 46664 6123876352 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:22:11,454 _util 46664 6123876352 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:22:11,492 basehttp 46664 6123876352 "GET /accounts/team/manage/ HTTP/1.1" 200 6790
+INFO 2025-12-20 15:22:11,510 basehttp 46664 6140702720 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:22:11,510 basehttp 46664 6123876352 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:22:53,336 autoreload 47157 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:22:54,609 basehttp 47157 6165049344 "GET / HTTP/1.1" 200 10966
+INFO 2025-12-20 15:22:56,451 basehttp 47157 6165049344 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-20 15:23:17,463 autoreload 47157 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 15:23:17,959 autoreload 47340 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:25:18,244 basehttp 47340 6125121536 "GET /accounts/settings/ HTTP/1.1" 200 5308
+INFO 2025-12-20 15:25:18,271 basehttp 47340 6158774272 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 15:25:18,274 basehttp 47340 6141947904 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 15:25:18,274 basehttp 47340 6125121536 "GET /static/css/output.css HTTP/1.1" 200 105854
+INFO 2025-12-20 15:25:18,275 basehttp 47340 6175600640 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 15:25:18,640 basehttp 47340 6175600640 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 15:25:22,138 _util 47340 6175600640 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:25:22,432 _util 47340 6175600640 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:25:22,442 _util 47340 6175600640 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:25:22,927 _util 47340 6175600640 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:25:22,930 stripe_django_views 47340 6175600640 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:25:22,931 _util 47340 6175600640 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:25:23,170 _util 47340 6175600640 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:25:23,173 _util 47340 6175600640 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:25:23,371 _util 47340 6175600640 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:25:23,388 basehttp 47340 6175600640 "GET /accounts/team/manage/ HTTP/1.1" 200 6923
+INFO 2025-12-20 15:34:35,670 _util 47340 6125121536 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:34:35,981 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:34:35,989 _util 47340 6125121536 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:34:36,444 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:34:36,447 stripe_django_views 47340 6125121536 Updated subscription sub_1SgQVlImvDyA3xukViIs6BU3 metadata: 1 active, 1 pending
+INFO 2025-12-20 15:34:36,447 _util 47340 6125121536 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:34:36,672 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:34:36,676 _util 47340 6125121536 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:34:36,870 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:34:36,886 basehttp 47340 6125121536 "GET /accounts/team/manage/ HTTP/1.1" 200 6935
+INFO 2025-12-20 15:34:36,948 basehttp 47340 6125121536 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:34:36,948 basehttp 47340 6141947904 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:35:16,368 _util 47340 6125121536 message='Request to Stripe api' method=delete url=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3
+INFO 2025-12-20 15:35:16,923 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgQVlImvDyA3xukViIs6BU3 response_code=200
+INFO 2025-12-20 15:35:16,926 views 47340 6125121536 Stripe subscription sub_1SgQVlImvDyA3xukViIs6BU3 canceled immediately
+INFO 2025-12-20 15:35:16,950 signals 47340 6125121536 User tom@meettoad.co.uk downgraded from pro to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+INFO 2025-12-20 15:35:16,962 signals 47340 6125121536 User tj@hotmail.com downgraded from pro to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+INFO 2025-12-20 15:35:16,963 basehttp 47340 6125121536 "POST /accounts/team/cancel/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:35:16,971 basehttp 47340 6125121536 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7240
+INFO 2025-12-20 15:35:22,981 stripe_django_views 47340 6125121536 Stripe Team checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 15:35:22,982 stripe_django_views 47340 6125121536 Stripe API key is configured, proceeding...
+INFO 2025-12-20 15:35:22,986 stripe_django_views 47340 6125121536 Template rendered successfully
+INFO 2025-12-20 15:35:22,987 basehttp 47340 6125121536 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 4067
+INFO 2025-12-20 15:35:48,816 _util 47340 6125121536 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 15:35:49,026 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 15:35:49,029 _util 47340 6125121536 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 15:35:49,589 _util 47340 6125121536 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 15:35:49,590 basehttp 47340 6125121536 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:38:26,463 autoreload 47340 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:38:27,039 autoreload 47953 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:38:42,912 autoreload 47953 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:38:43,346 autoreload 47978 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:38:56,085 autoreload 47978 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:38:56,623 autoreload 47999 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:39:09,390 autoreload 47999 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:39:09,828 autoreload 48020 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:39:23,599 autoreload 48020 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:39:24,087 autoreload 48041 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:39:34,775 autoreload 48041 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:39:35,219 autoreload 48064 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:39:42,826 autoreload 48064 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 15:39:43,249 autoreload 48086 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:42:09,421 _util 48086 6205272064 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/checkout/sessions/cs_live_a1ay35b0skUtXjkA85SZht5E2dtPdxy3IegVa4oKxnChdxknTCzqHYE9wG
+INFO 2025-12-20 15:42:09,800 _util 48086 6205272064 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions/cs_live_a1ay35b0skUtXjkA85SZht5E2dtPdxy3IegVa4oKxnChdxknTCzqHYE9wG response_code=200
+INFO 2025-12-20 15:42:09,813 _util 48086 6205272064 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:42:10,314 _util 48086 6205272064 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:42:10,318 stripe_django_views 48086 6205272064 Updated subscription sub_1SgSI4ImvDyA3xukd3JoXUM4 metadata: 1 active, 0 pending
+INFO 2025-12-20 15:42:10,318 stripe_django_views 48086 6205272064 Team subscription created for user tj@hotmail.com with 2 seats. Admin automatically fills 1 seat, 1 available for invites.
+INFO 2025-12-20 15:42:10,348 basehttp 48086 6205272064 "GET /accounts/stripe/success/team/?session_id=cs_live_a1ay35b0skUtXjkA85SZht5E2dtPdxy3IegVa4oKxnChdxknTCzqHYE9wG HTTP/1.1" 302 0
+INFO 2025-12-20 15:42:10,369 basehttp 48086 6205272064 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3393
+INFO 2025-12-20 15:42:10,404 basehttp 48086 6205272064 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:42:10,404 basehttp 48086 6222098432 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:42:17,710 _util 48086 6222098432 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:42:18,023 _util 48086 6222098432 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:42:18,026 _util 48086 6222098432 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:42:18,504 _util 48086 6222098432 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:42:18,507 stripe_django_views 48086 6222098432 Updated subscription sub_1SgSI4ImvDyA3xukd3JoXUM4 metadata: 1 active, 0 pending
+INFO 2025-12-20 15:42:18,508 _util 48086 6222098432 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:42:18,762 _util 48086 6222098432 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:42:18,764 _util 48086 6222098432 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:42:18,983 _util 48086 6222098432 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:42:18,998 basehttp 48086 6222098432 "GET /accounts/team/manage/ HTTP/1.1" 200 6817
+INFO 2025-12-20 15:47:27,898 autoreload 48086 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:47:28,414 autoreload 48374 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:48:11,837 autoreload 48374 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 15:48:12,369 autoreload 48445 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 15:49:41,338 _util 48445 6138130432 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:49:41,636 _util 48445 6138130432 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:49:41,648 _util 48445 6138130432 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:49:42,093 _util 48445 6138130432 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:49:42,096 stripe_django_views 48445 6138130432 Updated subscription sub_1SgSI4ImvDyA3xukd3JoXUM4 metadata: 1 active, 0 pending
+INFO 2025-12-20 15:49:42,096 _util 48445 6138130432 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:49:42,322 _util 48445 6138130432 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:49:42,323 _util 48445 6138130432 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:49:42,519 _util 48445 6138130432 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:49:42,555 basehttp 48445 6138130432 "GET /accounts/team/manage/ HTTP/1.1" 200 6630
+INFO 2025-12-20 15:49:42,580 basehttp 48445 6138130432 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:49:42,580 basehttp 48445 6154956800 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:51:18,856 _util 48445 6154956800 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:51:19,148 _util 48445 6154956800 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:51:19,155 _util 48445 6154956800 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:51:19,696 _util 48445 6154956800 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:51:19,698 stripe_django_views 48445 6154956800 Updated subscription sub_1SgSI4ImvDyA3xukd3JoXUM4 metadata: 1 active, 0 pending
+INFO 2025-12-20 15:51:19,698 _util 48445 6154956800 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:51:19,925 _util 48445 6154956800 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:51:19,926 _util 48445 6154956800 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5
+INFO 2025-12-20 15:51:20,123 _util 48445 6154956800 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5 response_code=200
+INFO 2025-12-20 15:51:20,148 basehttp 48445 6154956800 "GET /accounts/team/manage/ HTTP/1.1" 200 6641
+INFO 2025-12-20 15:51:35,991 _util 48445 6154956800 message='Request to Stripe api' method=delete url=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4
+INFO 2025-12-20 15:51:36,453 _util 48445 6154956800 message='Stripe API response' path=https://api.stripe.com/v1/subscriptions/sub_1SgSI4ImvDyA3xukd3JoXUM4 response_code=200
+INFO 2025-12-20 15:51:36,455 views 48445 6154956800 Stripe subscription sub_1SgSI4ImvDyA3xukd3JoXUM4 canceled immediately
+INFO 2025-12-20 15:51:36,466 signals 48445 6154956800 User tj@hotmail.com downgraded from pro to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+INFO 2025-12-20 15:51:36,471 basehttp 48445 6154956800 "POST /accounts/team/cancel/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:51:36,488 basehttp 48445 6154956800 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7222
+INFO 2025-12-20 15:52:18,049 basehttp 48445 6154956800 "GET /accounts/settings/ HTTP/1.1" 200 3713
+INFO 2025-12-20 15:52:23,917 basehttp 48445 6154956800 "GET /grids/ HTTP/1.1" 200 11115
+INFO 2025-12-20 15:52:23,933 basehttp 48445 6154956800 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 15:52:30,534 basehttp 48445 6154956800 "GET /accounts/settings/ HTTP/1.1" 200 3725
+INFO 2025-12-20 15:52:30,551 basehttp 48445 6154956800 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 15:52:33,017 basehttp 48445 6154956800 "GET / HTTP/1.1" 200 11038
+INFO 2025-12-20 15:52:33,104 basehttp 48445 6154956800 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-20 15:52:35,733 basehttp 48445 6154956800 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:52:35,740 basehttp 48445 6154956800 "GET / HTTP/1.1" 200 10886
+INFO 2025-12-20 15:52:37,351 basehttp 48445 6154956800 "GET /accounts/register/ HTTP/1.1" 200 4168
+INFO 2025-12-20 15:52:39,219 basehttp 48445 6154956800 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 15:52:39,231 basehttp 48445 6154956800 "GET /accounts/login/?next=/accounts/stripe/checkout/team/ HTTP/1.1" 200 3867

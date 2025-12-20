@@ -1,0 +1,146 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Accept Team Invitation - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-start justify-center bg-[var(--main-bg)] pt-8 pb-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full space-y-8">
+        <!-- Header -->
+        <div class="text-center">
+            <div class="mb-4">
+                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-16 w-auto mx-auto">
+            </div>
+            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)]">
+                {% if existing_user %}
+                    Accept Team Invitation
+                {% else %}
+                    Join Team Toad
+                {% endif %}
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                {% if existing_user %}
+                    You've been invited to join a team
+                {% else %}
+                    Set up your account to join the team
+                {% endif %}
+            </p>
+        </div>
+
+        <!-- Messages - Only show errors, not success messages -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
+                        <div>
+                            <p class="font-medium mb-1">Error</p>
+                            <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <!-- Invitation Info -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <div class="mb-6">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-[var(--text-secondary)]">Invited by</p>
+                        <p class="font-semibold text-[var(--text-primary)]">{{ admin_name }}</p>
+                        <p class="text-xs text-[var(--text-secondary)]">{{ admin_email }}</p>
+                    </div>
+                </div>
+                
+                <div class="bg-[var(--grid-header-bg)] rounded-lg p-4">
+                    <p class="text-sm text-[var(--text-secondary)] mb-1">Your email</p>
+                    <p class="font-medium text-[var(--text-primary)]">{{ invitation.invited_email }}</p>
+                </div>
+            </div>
+
+            {% if existing_user %}
+                <!-- Existing User - Just Accept -->
+                <form method="POST" action="{% url 'accounts:accept_team_invitation' invitation.token %}">
+                    {% csrf_token %}
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200">
+                        <i class="fas fa-check mr-2"></i>
+                        Accept Invitation
+                    </button>
+                </form>
+            {% else %}
+                <!-- New User - Password Setup Form -->
+                <form method="POST" action="{% url 'accounts:accept_team_invitation' invitation.token %}">
+                    {% csrf_token %}
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="{{ form.first_name.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">
+                                {{ form.first_name.label }}
+                            </label>
+                            {{ form.first_name }}
+                            {% if form.first_name.errors %}
+                                <div class="mt-1 text-sm text-red-600">
+                                    {% for error in form.first_name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if form.first_name.help_text %}
+                                <p class="mt-1 text-xs text-[var(--text-secondary)]">{{ form.first_name.help_text }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <div>
+                            <label for="{{ form.password1.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">
+                                {{ form.password1.label }}
+                            </label>
+                            {{ form.password1 }}
+                            {% if form.password1.errors %}
+                                <div class="mt-1 text-sm text-red-600">
+                                    {% for error in form.password1.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {% if form.password1.help_text %}
+                                <p class="mt-1 text-xs text-[var(--text-secondary)]">{{ form.password1.help_text }}</p>
+                            {% endif %}
+                        </div>
+                        
+                        <div>
+                            <label for="{{ form.password2.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-1">
+                                {{ form.password2.label }}
+                            </label>
+                            {{ form.password2 }}
+                            {% if form.password2.errors %}
+                                <div class="mt-1 text-sm text-red-600">
+                                    {% for error in form.password2.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="w-full mt-6 flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        Create Account & Join Team
+                    </button>
+                </form>
+            {% endif %}
+            
+            <div class="text-center mt-4">
+                <p class="text-xs text-[var(--text-secondary)]">
+                    By accepting, you'll join <strong>{{ admin_name }}</strong>'s team and get access to Team Toad features.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
