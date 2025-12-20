@@ -166,6 +166,16 @@
         color: white;
     }
     
+    .pricing-button.team-multiple {
+        background: #10b981;
+        color: white;
+    }
+    
+    .pricing-button.team-multiple:hover {
+        background: #059669;
+        color: white;
+    }
+    
     /* Mobile responsive */
     @media (max-width: 768px) {
         .pricing-cards {
@@ -261,8 +271,8 @@
                 <a href="{% url 'accounts:register_pro' %}" class="pricing-button pro">
                     Start Team Plan (1 user)
                 </a>
-                <a href="{% url 'accounts:register_team_quantity' %}" class="pricing-button pro" style="background: var(--tertiary-action-bg);">
-                    Start Team Plan (Multiple users)
+                <a href="{% url 'accounts:register_team_quantity' %}" class="pricing-button team-multiple">
+                    Start Team Plan<br>(Multiple users)
                 </a>
             </div>
         </div>
