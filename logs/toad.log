@@ -37868,3 +37868,89 @@ INFO 2025-12-20 13:02:20,151 signals 34169 6274756608 User tj@hotmail.com downgr
 INFO 2025-12-20 13:02:20,153 basehttp 34169 6274756608 "POST /accounts/downgrade-to-free/ HTTP/1.1" 302 0
 INFO 2025-12-20 13:02:20,161 basehttp 34169 6274756608 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7182
 INFO 2025-12-20 13:02:22,751 basehttp 34169 6274756608 "GET /grids/ HTTP/1.1" 200 11682
+INFO 2025-12-20 13:03:32,887 autoreload 35014 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:03:38,485 autoreload 35014 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-20 13:03:38,872 autoreload 35038 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:04:12,493 autoreload 35038 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:04:12,873 autoreload 35265 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:04:29,757 autoreload 35265 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 13:04:30,173 autoreload 35303 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:04:34,745 basehttp 35303 6126792704 "GET /accounts/settings/ HTTP/1.1" 200 3655
+INFO 2025-12-20 13:04:34,765 basehttp 35303 6143619072 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:04:34,766 basehttp 35303 6126792704 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 13:04:36,366 basehttp 35303 6143619072 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7217
+INFO 2025-12-20 13:05:07,131 stripe_django_views 35303 6143619072 Stripe checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:05:07,132 stripe_django_views 35303 6143619072 Stripe API key is configured, proceeding...
+INFO 2025-12-20 13:05:07,132 stripe_django_views 35303 6143619072 Rendering Stripe checkout template...
+INFO 2025-12-20 13:05:07,135 stripe_django_views 35303 6143619072 Template rendered successfully
+INFO 2025-12-20 13:05:07,136 basehttp 35303 6143619072 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3048
+INFO 2025-12-20 13:05:08,609 _util 35303 6143619072 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product
+INFO 2025-12-20 13:05:08,890 _util 35303 6143619072 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product response_code=200
+INFO 2025-12-20 13:05:08,893 _util 35303 6143619072 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 13:05:09,275 _util 35303 6143619072 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 13:05:09,278 basehttp 35303 6143619072 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:05:26,612 basehttp 35303 6143619072 "GET / HTTP/1.1" 200 10945
+INFO 2025-12-20 13:05:28,862 basehttp 35303 6143619072 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 13:05:28,878 basehttp 35303 6126792704 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:05:28,892 basehttp 35303 6126792704 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1524
+INFO 2025-12-20 13:05:28,903 basehttp 35303 6126792704 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-20 13:05:33,947 basehttp 35303 6126792704 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:05:33,953 basehttp 35303 6126792704 "GET / HTTP/1.1" 200 10890
+INFO 2025-12-20 13:05:35,587 basehttp 35303 6126792704 "GET /accounts/login/ HTTP/1.1" 200 3804
+INFO 2025-12-20 13:05:41,658 basehttp 35303 6126792704 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:05:41,672 basehttp 35303 6126792704 "GET /grids/ HTTP/1.1" 200 13303
+INFO 2025-12-20 13:05:43,437 basehttp 35303 6126792704 "GET / HTTP/1.1" 200 11012
+INFO 2025-12-20 13:05:45,166 basehttp 35303 6126792704 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 13:05:45,184 basehttp 35303 6143619072 "GET /admin/ HTTP/1.1" 200 3152
+INFO 2025-12-20 13:05:45,194 basehttp 35303 6143619072 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-20 13:05:45,197 basehttp 35303 6143619072 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-12-20 13:05:46,821 basehttp 35303 6143619072 "GET /admin/accounts/user/ HTTP/1.1" 200 4645
+INFO 2025-12-20 13:05:46,846 basehttp 35303 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 1013
+INFO 2025-12-20 13:05:49,038 basehttp 35303 6143619072 "GET /admin/accounts/user/46/change/ HTTP/1.1" 200 6830
+INFO 2025-12-20 13:05:49,054 basehttp 35303 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 965
+INFO 2025-12-20 13:05:54,337 basehttp 35303 6143619072 "POST /admin/accounts/user/46/change/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:05:54,357 basehttp 35303 6143619072 "GET /admin/accounts/user/ HTTP/1.1" 200 4717
+INFO 2025-12-20 13:05:54,372 basehttp 35303 6143619072 "GET /admin/jsi18n/ HTTP/1.1" 200 989
+INFO 2025-12-20 13:05:55,568 basehttp 35303 6143619072 "GET / HTTP/1.1" 200 10976
+INFO 2025-12-20 13:06:01,377 basehttp 35303 6143619072 "POST /admin/logout/ HTTP/1.1" 200 1316
+INFO 2025-12-20 13:06:02,876 basehttp 35303 6143619072 "GET / HTTP/1.1" 200 10881
+INFO 2025-12-20 13:06:05,256 basehttp 35303 6143619072 "GET /accounts/login/ HTTP/1.1" 200 3814
+INFO 2025-12-20 13:06:11,041 basehttp 35303 6143619072 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:06:11,050 basehttp 35303 6143619072 "GET /grids/ HTTP/1.1" 200 11657
+INFO 2025-12-20 13:06:12,854 basehttp 35303 6143619072 "GET /accounts/settings/ HTTP/1.1" 200 3707
+INFO 2025-12-20 13:06:14,277 basehttp 35303 6143619072 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7222
+INFO 2025-12-20 13:06:22,738 stripe_django_views 35303 6143619072 Stripe Pro checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 13:06:22,739 stripe_django_views 35303 6143619072 Stripe API key is configured, proceeding...
+INFO 2025-12-20 13:06:22,739 stripe_django_views 35303 6143619072 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 13:06:22,746 stripe_django_views 35303 6143619072 Template rendered successfully
+INFO 2025-12-20 13:06:22,748 basehttp 35303 6143619072 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3114
+INFO 2025-12-20 13:06:34,420 basehttp 35303 6143619072 "GET /grids/ HTTP/1.1" 200 11715
+INFO 2025-12-20 13:06:39,489 basehttp 35303 6143619072 "GET /grids/create/ HTTP/1.1" 200 2886
+INFO 2025-12-20 13:06:42,977 project_views_functions 35303 6143619072 User None created project: Test Archive
+INFO 2025-12-20 13:06:42,978 basehttp 35303 6143619072 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:06:43,006 basehttp 35303 6143619072 "GET /grids/276/ HTTP/1.1" 200 21512
+INFO 2025-12-20 13:06:43,023 basehttp 35303 6143619072 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:06:45,680 basehttp 35303 6143619072 "GET /upgrade-required-pro/ HTTP/1.1" 200 3378
+INFO 2025-12-20 13:06:45,703 basehttp 35303 6126792704 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:06:45,703 basehttp 35303 6143619072 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 13:06:52,875 basehttp 35303 6143619072 "GET /grids/276/archive/confirm/ HTTP/1.1" 200 888
+INFO 2025-12-20 13:06:54,968 basehttp 35303 6143619072 "POST /grids/276/archive/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:06:54,983 basehttp 35303 6143619072 "GET /grids/ HTTP/1.1" 200 11916
+INFO 2025-12-20 13:06:58,710 basehttp 35303 6143619072 "GET /grids/create/ HTTP/1.1" 200 2818
+INFO 2025-12-20 13:07:02,614 project_views_functions 35303 6143619072 User None created project: Test Template Grid
+INFO 2025-12-20 13:07:02,616 basehttp 35303 6143619072 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:07:02,639 basehttp 35303 6143619072 "GET /grids/277/ HTTP/1.1" 200 21494
+INFO 2025-12-20 13:07:12,410 project_views 35303 6143619072 Saving template with 3 tasks from project Test Template Grid
+INFO 2025-12-20 13:07:12,411 project_views 35303 6143619072 === TASK ORDERING DEBUG ===
+INFO 2025-12-20 13:07:12,413 project_views 35303 6143619072 Task 0: 'Low hanging fruit to crack on ...' in Row 0 (To Do Today) x Col 1 (Test Template Grid) with order 0
+INFO 2025-12-20 13:07:12,414 project_views 35303 6143619072 Task 1: 'Not urgent but need to do this...' in Row 1 (Weekly Priorities) x Col 1 (Test Template Grid) with order 0
+INFO 2025-12-20 13:07:12,414 project_views 35303 6143619072 Task 2: 'On my radar but let's get the ...' in Row 2 (Longer Term Projects) x Col 1 (Test Template Grid) with order 0
+INFO 2025-12-20 13:07:12,414 project_views 35303 6143619072 === END DEBUG ===
+INFO 2025-12-20 13:07:12,416 project_views 35303 6143619072 Created template task: Low hanging fruit to crack on with today in To Do Today x Test Template Grid with order 0
+INFO 2025-12-20 13:07:12,417 project_views 35303 6143619072 Created template task: Not urgent but need to do this week in Weekly Priorities x Test Template Grid with order 1
+INFO 2025-12-20 13:07:12,418 project_views 35303 6143619072 Created template task: On my radar but let's get the more urgent stuff do in Longer Term Projects x Test Template Grid with order 2
+INFO 2025-12-20 13:07:12,419 project_views 35303 6143619072 Template created with 3 tasks out of 3 original tasks
+INFO 2025-12-20 13:07:12,419 project_views_functions 35303 6143619072 User None saved project as template: Template Tasks: Test Template Grid
+INFO 2025-12-20 13:07:12,420 basehttp 35303 6143619072 "POST /grids/277/save-template/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:07:12,435 basehttp 35303 6143619072 "GET /grids/ HTTP/1.1" 200 12332
+INFO 2025-12-20 13:07:20,993 basehttp 35303 6143619072 "GET /accounts/settings/ HTTP/1.1" 200 3688

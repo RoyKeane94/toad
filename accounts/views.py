@@ -1472,6 +1472,32 @@ def downgrade_to_free_view(request):
     return redirect('accounts:manage_subscription')
 
 
+@login_required
+def downgrade_to_personal_view(request):
+    """
+    Downgrade user to Personal tier
+    """
+    if request.method != 'POST':
+        return redirect('accounts:manage_subscription')
+    
+    user = request.user
+    
+    # Define pro tiers
+    pro_tiers = ['pro', 'pro_trial', 'society_pro', 'beta']
+    
+    # Only allow downgrade if user is on a pro tier
+    if user.tier not in pro_tiers:
+        messages.info(request, 'You can only downgrade to Personal from a Pro plan.')
+        return redirect('accounts:manage_subscription')
+    
+    # Update user tier to personal
+    user.tier = 'personal'
+    user.save()
+    
+    messages.success(request, 'Successfully downgraded to Personal plan.')
+    return redirect('accounts:manage_subscription')
+
+
 def beta_feedback_email_preview(request):
     """Preview the beta feedback email template"""
     from django.template.loader import render_to_string

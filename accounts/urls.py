@@ -27,7 +27,8 @@ from .views import (
     student_follow_up_email_preview,
     two_day_follow_up_email_preview,
     manage_subscription_view,
-    downgrade_to_free_view
+    downgrade_to_free_view,
+    downgrade_to_personal_view
 )
 
 def secret_registration_redirect(request):
@@ -70,6 +71,7 @@ urlpatterns = [
     path('settings/delete/', delete_account_view, name='delete_account'),
     path('manage-subscription/', manage_subscription_view, name='manage_subscription'),
     path('downgrade-to-free/', downgrade_to_free_view, name='downgrade_to_free'),
+    path('downgrade-to-personal/', downgrade_to_personal_view, name='downgrade_to_personal'),
     
     # Email Verification
     path('verify-email/<str:token>/', verify_email_view, name='verify_email'),

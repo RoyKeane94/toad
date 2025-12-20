@@ -273,6 +273,13 @@
                 <button class="subscription-button current" disabled>
                     Current Plan
                 </button>
+            {% elif user.tier == 'pro' or user.tier|slice:":3" == 'pro' or user.tier == 'beta' %}
+                <form method="post" action="{% url 'accounts:downgrade_to_personal' %}" class="inline">
+                    {% csrf_token %}
+                    <button type="submit" class="subscription-button downgrade">
+                        Downgrade to Personal
+                    </button>
+                </form>
             {% else %}
                 <a href="{% url 'accounts:stripe_checkout' %}" class="subscription-button upgrade">
                     Upgrade to Personal
