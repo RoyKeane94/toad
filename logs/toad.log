@@ -37959,3 +37959,43 @@ INFO 2025-12-20 13:15:47,139 basehttp 36354 6170570752 "GET /accounts/settings/ 
 INFO 2025-12-20 13:15:47,155 basehttp 36354 6170570752 "GET /static/css/output.css HTTP/1.1" 304 0
 INFO 2025-12-20 13:15:47,155 basehttp 36354 6187397120 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
 INFO 2025-12-20 13:16:26,634 basehttp 36354 6187397120 "GET /accounts/settings/ HTTP/1.1" 200 3614
+INFO 2025-12-20 13:18:05,661 autoreload 37571 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:18:07,439 basehttp 37571 6201356288 "GET /grids/ HTTP/1.1" 200 12334
+INFO 2025-12-20 13:18:09,543 project_views 37571 6201356288 Creating project from template with 3 template tasks
+INFO 2025-12-20 13:18:09,543 project_views 37571 6201356288 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2025-12-20 13:18:09,546 project_views 37571 6201356288 Template Task 0: 'Low hanging fruit to crack on ...' in Row 0 (To Do Today) x Col 1 (Test Template Grid) with order 0
+INFO 2025-12-20 13:18:09,546 project_views 37571 6201356288 Template Task 1: 'Not urgent but need to do this...' in Row 1 (Weekly Priorities) x Col 1 (Test Template Grid) with order 1
+INFO 2025-12-20 13:18:09,546 project_views 37571 6201356288 Template Task 2: 'On my radar but let's get the ...' in Row 2 (Longer Term Projects) x Col 1 (Test Template Grid) with order 2
+INFO 2025-12-20 13:18:09,546 project_views 37571 6201356288 === END DEBUG ===
+INFO 2025-12-20 13:18:09,547 project_views 37571 6201356288 Created task: Low hanging fruit to crack on with today in To Do Today x Test Template Grid with order 0
+INFO 2025-12-20 13:18:09,548 project_views 37571 6201356288 Created task: Not urgent but need to do this week in Weekly Priorities x Test Template Grid with order 1
+INFO 2025-12-20 13:18:09,549 project_views 37571 6201356288 Created task: On my radar but let's get the more urgent stuff do in Longer Term Projects x Test Template Grid with order 2
+INFO 2025-12-20 13:18:09,550 project_views 37571 6201356288 Project created with 3 tasks out of 3 template tasks
+INFO 2025-12-20 13:18:09,550 project_views_functions 37571 6201356288 User None created project from template: Template Tasks: Template Tasks
+INFO 2025-12-20 13:18:09,551 basehttp 37571 6201356288 "POST /templates/7/use/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:18:09,578 basehttp 37571 6201356288 "GET /grids/278/ HTTP/1.1" 200 21496
+INFO 2025-12-20 13:18:09,587 basehttp 37571 6201356288 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:18:13,588 basehttp 37571 6201356288 "GET /grids/ HTTP/1.1" 200 12480
+INFO 2025-12-20 13:18:17,082 basehttp 37571 6201356288 "GET /accounts/settings/ HTTP/1.1" 200 3678
+INFO 2025-12-20 13:18:18,412 basehttp 37571 6201356288 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7223
+INFO 2025-12-20 13:21:43,209 autoreload 38234 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 13:21:49,259 basehttp 38234 6165819392 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7252
+INFO 2025-12-20 13:21:49,282 basehttp 38234 6199472128 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 13:21:49,285 basehttp 38234 6182645760 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 13:21:49,285 basehttp 38234 6165819392 "GET /static/css/output.css HTTP/1.1" 200 103335
+INFO 2025-12-20 13:21:49,285 basehttp 38234 6216298496 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 13:21:49,439 basehttp 38234 6216298496 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 13:22:06,448 basehttp 38234 6216298496 "POST /accounts/downgrade-to-free/ HTTP/1.1" 302 0
+INFO 2025-12-20 13:22:06,456 basehttp 38234 6216298496 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7259
+INFO 2025-12-20 13:22:06,468 basehttp 38234 6216298496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:22:08,609 basehttp 38234 6216298496 "GET /grids/ HTTP/1.1" 200 12345
+INFO 2025-12-20 13:22:12,460 basehttp 38234 6216298496 "GET /upgrade-required/ HTTP/1.1" 200 3414
+INFO 2025-12-20 13:22:12,473 basehttp 38234 6216298496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:22:21,988 basehttp 38234 6216298496 "GET /upgrade-required/ HTTP/1.1" 200 3426
+INFO 2025-12-20 13:22:22,002 basehttp 38234 6216298496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:22:24,159 basehttp 38234 6216298496 "GET /upgrade-required/ HTTP/1.1" 200 3379
+INFO 2025-12-20 13:22:34,126 basehttp 38234 6216298496 "GET /upgrade-required/ HTTP/1.1" 200 3391
+INFO 2025-12-20 13:22:34,137 basehttp 38234 6216298496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:23:07,462 basehttp 38234 6216298496 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 200 3508
+INFO 2025-12-20 13:23:07,474 basehttp 38234 6216298496 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 13:23:10,642 basehttp 38234 6216298496 "GET /upgrade-required/?reason=grid_limit HTTP/1.1" 200 3545
