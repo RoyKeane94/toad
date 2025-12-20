@@ -219,6 +219,30 @@
         {% endif %}
     </div>
     
+    <!-- Billing Management Section for Paid Subscriptions -->
+    {% if user.stripe_customer_id and not team_admin %}
+    <div class="max-w-4xl mx-auto mb-8">
+        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6">
+            <div class="flex items-center justify-between gap-4">
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-2 flex items-center">
+                        <i class="fas fa-credit-card mr-2 text-indigo-600"></i>
+                        Billing & Payment Details
+                    </h2>
+                    <p class="text-sm text-[var(--text-secondary)]">
+                        Update your payment method, view invoices, and manage billing details through Stripe's secure portal.
+                    </p>
+                </div>
+                <a href="{% url 'accounts:create_portal_session' %}" 
+                   class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md flex items-center whitespace-nowrap flex-shrink-0" 
+                   style="color: white !important;">
+                    <i class="fas fa-external-link-alt mr-2" style="color: white !important;"></i>
+                    <span style="color: white !important;">Open Billing Portal</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     
     {% if team_admin %}
         <!-- Team Member View - Show message only -->

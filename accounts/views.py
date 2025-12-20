@@ -127,7 +127,7 @@ def manage_subscription_view(request):
 @login_required
 def downgrade_to_free_view(request):
     """
-    Downgrade user to Free tier
+    Downgrade user to Free tier and cancel Stripe subscription if active
     """
     if request.method != 'POST':
         return redirect('accounts:manage_subscription')
@@ -138,6 +138,41 @@ def downgrade_to_free_view(request):
     if user.tier == 'free':
         messages.info(request, 'You are already on the Free plan.')
         return redirect('accounts:manage_subscription')
+    
+    # Cancel Stripe subscription if user has one
+    import stripe
+    import os
+    customer_id = getattr(user, 'stripe_customer_id', None)
+    if customer_id:
+        try:
+            stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            # Get active subscriptions for this customer
+            subscriptions = stripe.Subscription.list(
+                customer=customer_id,
+                status='active',
+                limit=10
+            )
+            
+            # Cancel all active subscriptions
+            for subscription in subscriptions.data:
+                try:
+                    stripe.Subscription.delete(subscription.id)
+                    logger.info(f"Stripe subscription {subscription.id} canceled for user {user.email}")
+                except stripe.error.StripeError as e:
+                    logger.error(f"Stripe error canceling subscription {subscription.id}: {e}")
+                    # Try cancel_at_period_end as fallback
+                    try:
+                        stripe.Subscription.modify(
+                            subscription.id,
+                            cancel_at_period_end=True
+                        )
+                        logger.info(f"Stripe subscription {subscription.id} scheduled for cancellation at period end")
+                    except Exception as e2:
+                        logger.error(f"Error scheduling subscription cancellation: {e2}")
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error retrieving subscriptions for customer {customer_id}: {e}")
+        except Exception as e:
+            logger.error(f"Error canceling Stripe subscription: {e}", exc_info=True)
     
     # Handle grid selection
     from pages.models import Project
@@ -296,7 +331,7 @@ def manage_subscription_view(request):
 @login_required
 def downgrade_to_free_view(request):
     """
-    Downgrade user to Free tier
+    Downgrade user to Free tier and cancel Stripe subscription if active
     """
     if request.method != 'POST':
         return redirect('accounts:manage_subscription')
@@ -307,6 +342,41 @@ def downgrade_to_free_view(request):
     if user.tier == 'free':
         messages.info(request, 'You are already on the Free plan.')
         return redirect('accounts:manage_subscription')
+    
+    # Cancel Stripe subscription if user has one
+    import stripe
+    import os
+    customer_id = getattr(user, 'stripe_customer_id', None)
+    if customer_id:
+        try:
+            stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            # Get active subscriptions for this customer
+            subscriptions = stripe.Subscription.list(
+                customer=customer_id,
+                status='active',
+                limit=10
+            )
+            
+            # Cancel all active subscriptions
+            for subscription in subscriptions.data:
+                try:
+                    stripe.Subscription.delete(subscription.id)
+                    logger.info(f"Stripe subscription {subscription.id} canceled for user {user.email}")
+                except stripe.error.StripeError as e:
+                    logger.error(f"Stripe error canceling subscription {subscription.id}: {e}")
+                    # Try cancel_at_period_end as fallback
+                    try:
+                        stripe.Subscription.modify(
+                            subscription.id,
+                            cancel_at_period_end=True
+                        )
+                        logger.info(f"Stripe subscription {subscription.id} scheduled for cancellation at period end")
+                    except Exception as e2:
+                        logger.error(f"Error scheduling subscription cancellation: {e2}")
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error retrieving subscriptions for customer {customer_id}: {e}")
+        except Exception as e:
+            logger.error(f"Error canceling Stripe subscription: {e}", exc_info=True)
     
     # Handle grid selection
     from pages.models import Project
@@ -1561,7 +1631,7 @@ def manage_subscription_view(request):
 @login_required
 def downgrade_to_free_view(request):
     """
-    Downgrade user to Free tier
+    Downgrade user to Free tier and cancel Stripe subscription if active
     """
     if request.method != 'POST':
         return redirect('accounts:manage_subscription')
@@ -1572,6 +1642,41 @@ def downgrade_to_free_view(request):
     if user.tier == 'free':
         messages.info(request, 'You are already on the Free plan.')
         return redirect('accounts:manage_subscription')
+    
+    # Cancel Stripe subscription if user has one
+    import stripe
+    import os
+    customer_id = getattr(user, 'stripe_customer_id', None)
+    if customer_id:
+        try:
+            stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            # Get active subscriptions for this customer
+            subscriptions = stripe.Subscription.list(
+                customer=customer_id,
+                status='active',
+                limit=10
+            )
+            
+            # Cancel all active subscriptions
+            for subscription in subscriptions.data:
+                try:
+                    stripe.Subscription.delete(subscription.id)
+                    logger.info(f"Stripe subscription {subscription.id} canceled for user {user.email}")
+                except stripe.error.StripeError as e:
+                    logger.error(f"Stripe error canceling subscription {subscription.id}: {e}")
+                    # Try cancel_at_period_end as fallback
+                    try:
+                        stripe.Subscription.modify(
+                            subscription.id,
+                            cancel_at_period_end=True
+                        )
+                        logger.info(f"Stripe subscription {subscription.id} scheduled for cancellation at period end")
+                    except Exception as e2:
+                        logger.error(f"Error scheduling subscription cancellation: {e2}")
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error retrieving subscriptions for customer {customer_id}: {e}")
+        except Exception as e:
+            logger.error(f"Error canceling Stripe subscription: {e}", exc_info=True)
     
     # Handle grid selection
     from pages.models import Project

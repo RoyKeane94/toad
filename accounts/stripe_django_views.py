@@ -1077,10 +1077,10 @@ def stripe_success_team_view(request):
                 del request.session['team_registration_flow']
             
             logger.info(f"Team subscription created for user {request.user.email} with {quantity} seats from registration flow. Admin automatically fills 1 seat, {available_seats} available for invites.")
-            messages.success(request, f'Payment successful! Your team subscription is active. You can invite {available_seats} team member(s) from your account settings.')
+            messages.success(request, f'Payment successful! You automatically fill one seat. Please invite {available_seats} team member(s).')
             
-            # Redirect to account settings page
-            return redirect('accounts:account_settings')
+            # Redirect to email input page (same as upgrade flow)
+            return redirect('accounts:team_invite_members')
         else:
             logger.info(f"Team subscription created for user {request.user.email} with {quantity} seats. Admin automatically fills 1 seat, {available_seats} available for invites.")
             messages.success(request, f'Payment successful! You automatically fill one seat. Please invite {available_seats} team member(s).')

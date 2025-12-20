@@ -130,18 +130,10 @@
                                 </p>
                             </div>
                             <div class="flex flex-col sm:flex-row gap-2 flex-shrink-0">
-                                
-                                {% if user.stripe_customer_id %}
-                                <a href="{% url 'accounts:create_portal_session' %}"
+                                <a href="{% url 'accounts:manage_subscription' %}"
                                    class="px-4 py-2 border border-[var(--border-color)] text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                                     Manage Subscription
                                 </a>
-                                {% else %}
-                                <a href="{% url 'accounts:manage_subscription' %}"
-                                   class="px-4 py-2 border border-dashed border-[var(--border-color)] text-[var(--text-secondary)] bg-white hover:bg-[var(--bg-secondary)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
-                                    Manage Subscription
-                                </a>
-                                {% endif %}
                             </div>
                         </div>
                         

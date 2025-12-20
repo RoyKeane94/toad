@@ -39320,3 +39320,54 @@ INFO 2025-12-20 16:18:23,346 basehttp 51217 6136131584 "GET /accounts/logout/ HT
 INFO 2025-12-20 16:18:23,358 basehttp 51217 6136131584 "GET / HTTP/1.1" 200 10916
 INFO 2025-12-20 16:18:24,431 basehttp 51217 6136131584 "GET /accounts/register/ HTTP/1.1" 200 4186
 INFO 2025-12-20 16:19:38,709 basehttp 51217 6136131584 "GET /accounts/register/ HTTP/1.1" 200 4176
+INFO 2025-12-20 16:35:41,863 autoreload 52503 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:35:43,053 basehttp 52503 6158938112 "GET / HTTP/1.1" 200 10838
+INFO 2025-12-20 16:35:43,067 basehttp 52503 6158938112 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 16:35:43,068 basehttp 52503 6175764480 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 16:35:44,503 basehttp 52503 6175764480 "GET /accounts/login/ HTTP/1.1" 200 3860
+INFO 2025-12-20 16:35:50,224 basehttp 52503 6175764480 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:35:50,235 basehttp 52503 6175764480 "GET /grids/ HTTP/1.1" 200 11094
+INFO 2025-12-20 16:35:52,390 basehttp 52503 6175764480 "GET /accounts/settings/ HTTP/1.1" 200 3723
+INFO 2025-12-20 16:35:53,723 basehttp 52503 6175764480 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7604
+INFO 2025-12-20 16:36:00,668 stripe_django_views 52503 6175764480 Stripe checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 16:36:00,668 stripe_django_views 52503 6175764480 Stripe API key is configured, proceeding...
+INFO 2025-12-20 16:36:00,668 stripe_django_views 52503 6175764480 Rendering Stripe checkout template...
+INFO 2025-12-20 16:36:00,672 stripe_django_views 52503 6175764480 Template rendered successfully
+INFO 2025-12-20 16:36:00,673 basehttp 52503 6175764480 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3093
+INFO 2025-12-20 16:36:02,106 _util 52503 6175764480 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product
+INFO 2025-12-20 16:36:02,384 _util 52503 6175764480 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product response_code=200
+INFO 2025-12-20 16:36:02,390 _util 52503 6175764480 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 16:36:02,801 _util 52503 6175764480 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 16:36:02,804 basehttp 52503 6175764480 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:36:09,662 stripe_django_views 52503 6175764480 Stripe Pro checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 16:36:09,663 stripe_django_views 52503 6175764480 Stripe API key is configured, proceeding...
+INFO 2025-12-20 16:36:09,663 stripe_django_views 52503 6175764480 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 16:36:09,668 stripe_django_views 52503 6175764480 Template rendered successfully
+INFO 2025-12-20 16:36:09,669 basehttp 52503 6175764480 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3131
+INFO 2025-12-20 16:36:10,755 _util 52503 6175764480 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 16:36:10,976 _util 52503 6175764480 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 16:36:10,980 _util 52503 6175764480 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 16:36:11,388 _util 52503 6175764480 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 16:36:11,390 basehttp 52503 6175764480 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:36:15,264 stripe_django_views 52503 6175764480 Stripe Team checkout view accessed by user: tj@hotmail.com
+INFO 2025-12-20 16:36:15,264 stripe_django_views 52503 6175764480 Stripe API key is configured, proceeding...
+INFO 2025-12-20 16:36:15,268 stripe_django_views 52503 6175764480 Template rendered successfully
+INFO 2025-12-20 16:36:15,270 basehttp 52503 6175764480 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3890
+INFO 2025-12-20 16:36:18,802 _util 52503 6175764480 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 16:36:19,005 _util 52503 6175764480 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 16:36:19,009 _util 52503 6175764480 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 16:36:19,477 _util 52503 6175764480 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 16:36:19,480 basehttp 52503 6175764480 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:36:46,029 basehttp 52503 6175764480 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:36:46,036 basehttp 52503 6175764480 "GET / HTTP/1.1" 200 10927
+INFO 2025-12-20 16:36:49,330 basehttp 52503 6175764480 "GET /accounts/login/ HTTP/1.1" 200 3880
+INFO 2025-12-20 16:36:55,415 basehttp 52503 6175764480 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 16:36:55,429 basehttp 52503 6175764480 "GET /grids/ HTTP/1.1" 200 13272
+INFO 2025-12-20 16:36:57,305 basehttp 52503 6175764480 "GET /accounts/settings/ HTTP/1.1" 200 3741
+INFO 2025-12-20 16:36:58,469 basehttp 52503 6175764480 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7472
+INFO 2025-12-20 16:38:52,670 autoreload 52503 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 16:38:53,237 autoreload 52666 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:39:22,293 autoreload 52666 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-20 16:39:22,904 autoreload 52703 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 16:39:29,528 autoreload 52703 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-20 16:39:29,944 autoreload 52734 8580636416 Watching for file changes with StatReloader
