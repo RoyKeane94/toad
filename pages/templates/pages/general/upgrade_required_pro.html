@@ -1,14 +1,15 @@
 {% extends "pages/layout.html" %}
+{% load static %}
 
 {% block title %}Upgrade to Pro Required - Toad{% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-[var(--main-bg)] py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-center justify-center bg-[var(--main-bg)] py-4 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
         <!-- Header -->
         <div class="text-center">
-            <div class="mx-auto flex items-center justify-center h-24 w-24 rounded-full bg-green-100 mb-4">
-                <i class="fas fa-crown text-5xl text-green-600"></i>
+            <div class="mx-auto flex items-center justify-center h-48 w-48 sm:h-64 sm:w-64 border-0">
+                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="w-full h-full object-contain border-0">
             </div>
             <h1 class="text-3xl font-bold text-green-600 mb-4">Upgrade Required</h1>
             <p class="text-lg text-[var(--text-secondary)] mb-8">
@@ -27,7 +28,7 @@
                 <div class="flex-1">
                     <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-2">Team Feature</h3>
                     <p class="text-[var(--text-secondary)] mb-4">
-                        You're currently on the free tier. Upgrade to Team Toad to unlock this feature and many more.
+                        This feature requires Team Toad. Upgrade to unlock collaboration features and many more.
                     </p>
                     <div class="description">
                         <div class="flex items-center">
@@ -51,28 +52,28 @@
             </div>
         </div>
 
-        <!-- Trial Card -->
+        <!-- Pricing Card -->
         <div class="border border-[var(--border-color)] rounded-xl p-6">
             <div class="text-center">
-                <h3 class="text-2xl font-bold text-green-600 mb-2">Try Team Free</h3>
+                <h3 class="text-2xl font-bold text-green-600 mb-2">Team Toad</h3>
                 <div class="mb-4">
-                    <span class="text-4xl font-bold text-green-600">3 months</span>
-                    <span class="text-lg text-[var(--text-secondary)]"> free trial</span>
+                    <span class="text-4xl font-bold text-green-600">£5</span>
+                    <span class="text-lg text-[var(--text-secondary)]">/ month</span>
                 </div>
                 
-                <!-- Trial Button -->
-                <a href="{% url 'accounts:register_3_month_pro_trial' %}" 
+                <!-- Upgrade Button -->
+                <a href="{% url 'accounts:stripe_checkout_pro' %}" 
                    class="inline-flex items-center justify-center w-full px-6 py-3 text-lg font-semibold text-white bg-green-600 hover:bg-green-700 rounded-lg transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 cursor-pointer">
-                    <i class="fas fa-gift mr-2"></i>
-                    Start Free Trial
+                    <i class="fas fa-arrow-up mr-2"></i>
+                    Upgrade to Pro
                 </a>
 
                 <p class="text-[var(--text-secondary)] mt-4 mb-6">
-                    Experience all Pro features for 3 months, completely free.
+                    Cancel anytime. No long-term commitments.
                 </p>
                 
                 <p class="text-xs text-[var(--text-secondary)] mt-4">
-                    No payment required. Cancel anytime.
+                    Secure payment powered by Stripe
                 </p>
             </div>
         </div>

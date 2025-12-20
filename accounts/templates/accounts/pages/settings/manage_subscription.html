@@ -246,7 +246,7 @@
         </div>
         
         <!-- Personal Plan -->
-        <div class="subscription-card {% if user.tier == 'personal' %}current{% endif %}">
+        <div class="subscription-card {% if user.tier == 'personal' or user.tier|slice:":8" == 'personal' %}current{% endif %}">
             <h3 class="subscription-title">Personal</h3>
             <p class="subscription-description">
                 For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
@@ -269,7 +269,7 @@
                 </li>
             </ul>
             
-            {% if user.tier == 'personal' %}
+            {% if user.tier == 'personal' or user.tier|slice:":8" == 'personal' %}
                 <button class="subscription-button current" disabled>
                     Current Plan
                 </button>
@@ -281,7 +281,7 @@
         </div>
         
         <!-- Pro Plan -->
-        <div class="subscription-card {% if user.tier == 'pro' %}current{% endif %}">
+        <div class="subscription-card {% if user.tier == 'pro' or user.tier|slice:":3" == 'pro' or user.tier == 'beta' %}current{% endif %}">
             <h3 class="subscription-title">Pro</h3>
             <p class="subscription-description">
                 For collaborating with your team. Simple, shared clarity without any unnecessary noise
@@ -304,7 +304,7 @@
                 </li>
             </ul>
             
-            {% if user.tier == 'pro' %}
+            {% if user.tier == 'pro' or user.tier|slice:":3" == 'pro' or user.tier == 'beta' %}
                 <button class="subscription-button current" disabled>
                     Current Plan
                 </button>

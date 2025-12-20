@@ -37584,3 +37584,221 @@ INFO 2025-12-17 07:58:06,487 basehttp 17742 6131904512 "GET /lilypad/b2b/compani
 INFO 2025-12-17 07:58:11,146 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=Test+2&status=Prospect HTTP/1.1" 200 4678
 INFO 2025-12-17 07:58:13,163 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=Test+2&status=Prospect HTTP/1.1" 200 4735
 INFO 2025-12-17 07:58:22,117 basehttp 17742 6131904512 "GET /lilypad/b2b/companies/?search=&status=Prospect HTTP/1.1" 200 4897
+INFO 2025-12-20 12:23:26,806 autoreload 30986 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 12:25:54,477 basehttp 30986 6158200832 "GET / HTTP/1.1" 200 11048
+INFO 2025-12-20 12:25:54,488 basehttp 30986 6158200832 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 12:25:54,492 basehttp 30986 6158200832 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 12:25:54,684 basehttp 30986 6158200832 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-20 12:25:57,109 basehttp 30986 6158200832 "GET /accounts/settings/ HTTP/1.1" 200 3669
+INFO 2025-12-20 12:25:59,752 basehttp 30986 6158200832 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7361
+INFO 2025-12-20 12:26:46,421 basehttp 30986 6158200832 "GET /grids/ HTTP/1.1" 200 13246
+INFO 2025-12-20 12:26:49,850 basehttp 30986 6158200832 "GET / HTTP/1.1" 200 10972
+INFO 2025-12-20 12:26:50,715 basehttp 30986 6158200832 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 12:26:50,744 basehttp 30986 6175027200 "GET /admin/ HTTP/1.1" 200 3180
+INFO 2025-12-20 12:26:50,751 basehttp 30986 6158200832 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2025-12-20 12:26:50,752 basehttp 30986 6175027200 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2025-12-20 12:26:50,752 basehttp 30986 6191853568 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-12-20 12:26:50,755 basehttp 30986 6158200832 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-12-20 12:26:50,756 basehttp 30986 6191853568 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-12-20 12:26:50,756 basehttp 30986 6175027200 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2025-12-20 12:26:50,757 basehttp 30986 6158200832 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-12-20 12:26:50,760 basehttp 30986 6175027200 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-12-20 12:26:50,760 basehttp 30986 6191853568 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-12-20 12:26:50,761 basehttp 30986 6158200832 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2025-12-20 12:26:50,761 basehttp 30986 6175027200 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-12-20 12:26:52,911 basehttp 30986 6175027200 "GET /admin/accounts/user/ HTTP/1.1" 200 4583
+INFO 2025-12-20 12:26:52,920 basehttp 30986 6175027200 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-12-20 12:26:52,927 basehttp 30986 6208679936 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-12-20 12:26:52,928 basehttp 30986 6158200832 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-12-20 12:26:52,929 basehttp 30986 6242332672 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-12-20 12:26:52,929 basehttp 30986 6225506304 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2025-12-20 12:26:52,933 basehttp 30986 6191853568 "GET /admin/jsi18n/ HTTP/1.1" 200 1041
+INFO 2025-12-20 12:26:52,936 basehttp 30986 6158200832 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-12-20 12:26:52,937 basehttp 30986 6242332672 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-12-20 12:26:52,937 basehttp 30986 6225506304 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-12-20 12:26:52,940 basehttp 30986 6191853568 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2025-12-20 12:26:52,941 basehttp 30986 6175027200 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-12-20 12:26:52,941 basehttp 30986 6208679936 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-12-20 12:26:52,944 basehttp 30986 6208679936 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-12-20 12:26:52,957 basehttp 30986 6208679936 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-12-20 12:26:52,958 basehttp 30986 6175027200 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-12-20 12:26:52,958 basehttp 30986 6191853568 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2025-12-20 12:27:00,566 basehttp 30986 6175027200 "GET /admin/accounts/user/add/ HTTP/1.1" 200 6637
+INFO 2025-12-20 12:27:00,577 basehttp 30986 6242332672 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2025-12-20 12:27:00,577 basehttp 30986 6175027200 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2025-12-20 12:27:00,577 basehttp 30986 6208679936 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2025-12-20 12:27:00,578 basehttp 30986 6225506304 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2025-12-20 12:27:00,579 basehttp 30986 6191853568 "GET /admin/jsi18n/ HTTP/1.1" 200 986
+INFO 2025-12-20 12:27:00,583 basehttp 30986 6175027200 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2025-12-20 12:27:00,583 basehttp 30986 6225506304 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2025-12-20 12:27:00,606 basehttp 30986 6175027200 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2025-12-20 12:27:00,607 basehttp 30986 6225506304 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2025-12-20 12:27:14,505 basehttp 30986 6225506304 "POST /admin/accounts/user/add/ HTTP/1.1" 200 6763
+INFO 2025-12-20 12:27:14,522 basehttp 30986 6225506304 "GET /admin/jsi18n/ HTTP/1.1" 200 1003
+INFO 2025-12-20 12:27:19,485 basehttp 30986 6225506304 "POST /admin/accounts/user/add/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:27:19,500 basehttp 30986 6225506304 "GET /admin/accounts/user/ HTTP/1.1" 200 4663
+INFO 2025-12-20 12:27:19,512 basehttp 30986 6225506304 "GET /admin/jsi18n/ HTTP/1.1" 200 1001
+INFO 2025-12-20 12:27:22,683 basehttp 30986 6225506304 "GET / HTTP/1.1" 200 10970
+INFO 2025-12-20 12:27:25,309 basehttp 30986 6225506304 "GET /lilypad/ HTTP/1.1" 200 4274
+INFO 2025-12-20 12:27:27,428 basehttp 30986 6225506304 "GET /grids/ HTTP/1.1" 200 13176
+INFO 2025-12-20 12:27:28,434 basehttp 30986 6225506304 "GET /grids/create/ HTTP/1.1" 200 2849
+INFO 2025-12-20 12:27:31,369 project_views_functions 30986 6225506304 User None created project: Test
+INFO 2025-12-20 12:27:31,369 basehttp 30986 6225506304 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:27:31,397 basehttp 30986 6225506304 "GET /grids/274/ HTTP/1.1" 200 21729
+INFO 2025-12-20 12:27:31,415 basehttp 30986 6225506304 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 57607
+INFO 2025-12-20 12:27:34,896 basehttp 30986 6225506304 "GET /grids/274/team/shared-users/ HTTP/1.1" 200 243
+INFO 2025-12-20 12:27:42,081 basehttp 30986 6225506304 "GET / HTTP/1.1" 200 10972
+INFO 2025-12-20 12:27:43,041 basehttp 30986 6225506304 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 12:27:43,050 basehttp 30986 6175027200 "GET /admin/ HTTP/1.1" 200 3136
+INFO 2025-12-20 12:27:44,426 basehttp 30986 6175027200 "GET /admin/accounts/user/ HTTP/1.1" 200 4602
+INFO 2025-12-20 12:27:44,443 basehttp 30986 6175027200 "GET /admin/jsi18n/ HTTP/1.1" 200 1008
+INFO 2025-12-20 12:27:50,147 basehttp 30986 6175027200 "POST /grids/274/share/ HTTP/1.1" 200 196
+INFO 2025-12-20 12:29:51,848 autoreload 30986 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-12-20 12:29:52,338 autoreload 31431 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 12:30:09,229 autoreload 31431 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2025-12-20 12:30:09,921 autoreload 31468 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 12:30:15,199 basehttp 31468 6127988736 "POST /grids/274/share/ HTTP/1.1" 200 126
+INFO 2025-12-20 12:30:24,415 basehttp 31468 6127988736 "POST /grids/274/share/ HTTP/1.1" 200 214
+INFO 2025-12-20 12:30:33,652 basehttp 31468 6127988736 "GET /grids/274/team/shared-users/ HTTP/1.1" 200 243
+INFO 2025-12-20 12:30:36,320 basehttp 31468 6127988736 "GET /lilypad/ HTTP/1.1" 200 4230
+INFO 2025-12-20 12:30:36,338 basehttp 31468 6127988736 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2025-12-20 12:30:39,737 basehttp 31468 6127988736 "GET / HTTP/1.1" 200 10975
+INFO 2025-12-20 12:30:41,058 basehttp 31468 6127988736 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 12:30:41,086 basehttp 31468 6144815104 "GET /admin/ HTTP/1.1" 200 3035
+INFO 2025-12-20 12:30:46,785 basehttp 31468 6144815104 "GET /admin/accounts/user/ HTTP/1.1" 200 4574
+INFO 2025-12-20 12:30:46,805 basehttp 31468 6144815104 "GET /admin/jsi18n/ HTTP/1.1" 200 976
+INFO 2025-12-20 12:30:50,488 basehttp 31468 6144815104 "GET /admin/accounts/user/45/change/ HTTP/1.1" 200 6654
+INFO 2025-12-20 12:30:50,508 basehttp 31468 6144815104 "GET /admin/jsi18n/ HTTP/1.1" 200 987
+INFO 2025-12-20 12:30:56,883 basehttp 31468 6144815104 "POST /admin/logout/ HTTP/1.1" 200 1331
+INFO 2025-12-20 12:30:58,936 basehttp 31468 6144815104 "GET / HTTP/1.1" 200 10910
+INFO 2025-12-20 12:31:03,035 basehttp 31468 6144815104 "GET /accounts/login/ HTTP/1.1" 200 3792
+INFO 2025-12-20 12:31:08,127 basehttp 31468 6144815104 "POST /accounts/login/ HTTP/1.1" 200 4035
+INFO 2025-12-20 12:31:12,132 basehttp 31468 6144815104 "GET /accounts/register/ HTTP/1.1" 200 4049
+INFO 2025-12-20 12:31:17,388 basehttp 31468 6144815104 "GET /accounts/register/free/ HTTP/1.1" 200 4256
+INFO 2025-12-20 12:31:31,152 views 31468 6144815104 New Free plan user registration: tj@hotmail.com (Tom Jones)
+INFO 2025-12-20 12:31:31,155 basehttp 31468 6144815104 "POST /accounts/register/free/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:31:31,161 email_utils 31468 6161641472 Attempting to send verification email to tj@hotmail.com
+INFO 2025-12-20 12:31:31,163 basehttp 31468 6144815104 "GET /accounts/login/ HTTP/1.1" 200 4032
+INFO 2025-12-20 12:31:33,682 basehttp 31468 6144815104 "GET /accounts/login/ HTTP/1.1" 200 3796
+INFO 2025-12-20 12:31:33,753 email_utils 31468 6161641472 Successfully sent verification email to tj@hotmail.com
+INFO 2025-12-20 12:31:33,754 views 31468 6161641472 Verification email sent: True for tj@hotmail.com
+INFO 2025-12-20 12:31:43,879 basehttp 31468 6144815104 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:31:43,893 basehttp 31468 6144815104 "GET /grids/ HTTP/1.1" 200 13289
+INFO 2025-12-20 12:31:45,710 basehttp 31468 6144815104 "GET / HTTP/1.1" 200 11066
+INFO 2025-12-20 12:31:46,665 basehttp 31468 6144815104 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 12:31:46,680 basehttp 31468 6127988736 "GET /admin/ HTTP/1.1" 200 3122
+INFO 2025-12-20 12:31:47,924 basehttp 31468 6127988736 "GET /admin/accounts/user/ HTTP/1.1" 200 4683
+INFO 2025-12-20 12:31:47,947 basehttp 31468 6127988736 "GET /admin/jsi18n/ HTTP/1.1" 200 988
+INFO 2025-12-20 12:31:49,372 basehttp 31468 6127988736 "GET /admin/accounts/user/46/change/ HTTP/1.1" 200 6784
+INFO 2025-12-20 12:31:49,388 basehttp 31468 6127988736 "GET /admin/jsi18n/ HTTP/1.1" 200 1037
+INFO 2025-12-20 12:31:54,684 basehttp 31468 6127988736 "POST /admin/accounts/user/46/change/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:31:54,704 basehttp 31468 6127988736 "GET /admin/accounts/user/ HTTP/1.1" 200 4728
+INFO 2025-12-20 12:31:54,717 basehttp 31468 6127988736 "GET /admin/jsi18n/ HTTP/1.1" 200 1059
+INFO 2025-12-20 12:31:56,864 basehttp 31468 6127988736 "POST /admin/logout/ HTTP/1.1" 200 1330
+INFO 2025-12-20 12:31:58,339 basehttp 31468 6127988736 "GET / HTTP/1.1" 200 10861
+INFO 2025-12-20 12:31:59,932 basehttp 31468 6127988736 "GET /accounts/login/ HTTP/1.1" 200 3796
+INFO 2025-12-20 12:32:06,363 basehttp 31468 6127988736 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:32:06,372 basehttp 31468 6127988736 "GET /grids/ HTTP/1.1" 200 11702
+INFO 2025-12-20 12:32:10,060 basehttp 31468 6127988736 "GET /grids/invite/nwpnvORm6mFj4uXPzQ4rW3YEl8SMwrB2/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:32:10,068 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3382
+INFO 2025-12-20 12:32:20,104 basehttp 31468 6127988736 "GET /accounts/register/trial-3-month-pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:32:20,117 basehttp 31468 6127988736 "GET /grids/ HTTP/1.1" 200 11743
+INFO 2025-12-20 12:32:23,460 basehttp 31468 6127988736 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:32:23,467 basehttp 31468 6127988736 "GET / HTTP/1.1" 200 10897
+INFO 2025-12-20 12:32:25,730 basehttp 31468 6127988736 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 12:32:25,732 basehttp 31468 6144815104 "GET /admin/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:32:25,742 basehttp 31468 6144815104 "GET /admin/login/?next=/admin/ HTTP/1.1" 200 1731
+INFO 2025-12-20 12:32:25,755 basehttp 31468 6144815104 "GET /static/admin/css/login.css HTTP/1.1" 200 951
+INFO 2025-12-20 12:32:31,764 basehttp 31468 6144815104 "GET /accounts/login/ HTTP/1.1" 200 3836
+INFO 2025-12-20 12:32:37,838 basehttp 31468 6144815104 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:32:37,849 basehttp 31468 6144815104 "GET /grids/ HTTP/1.1" 200 13344
+INFO 2025-12-20 12:32:39,077 basehttp 31468 6144815104 "GET / HTTP/1.1" 200 11046
+INFO 2025-12-20 12:32:39,893 basehttp 31468 6144815104 "GET /admin HTTP/1.1" 301 0
+INFO 2025-12-20 12:32:39,908 basehttp 31468 6127988736 "GET /admin/ HTTP/1.1" 200 3097
+INFO 2025-12-20 12:32:41,386 basehttp 31468 6127988736 "GET /admin/accounts/user/ HTTP/1.1" 200 4632
+INFO 2025-12-20 12:32:41,406 basehttp 31468 6127988736 "GET /admin/jsi18n/ HTTP/1.1" 200 1007
+INFO 2025-12-20 12:32:46,361 basehttp 31468 6127988736 "GET /admin/accounts/user/46/change/ HTTP/1.1" 200 6829
+INFO 2025-12-20 12:32:46,379 basehttp 31468 6127988736 "GET /admin/jsi18n/ HTTP/1.1" 200 990
+INFO 2025-12-20 12:32:51,923 basehttp 31468 6127988736 "GET /admin/accounts/user/ HTTP/1.1" 200 4636
+INFO 2025-12-20 12:32:55,844 basehttp 31468 6127988736 "GET /admin/ HTTP/1.1" 200 3104
+INFO 2025-12-20 12:33:17,371 basehttp 31468 6127988736 "GET / HTTP/1.1" 200 11013
+WARNING 2025-12-20 12:33:28,171 log 31468 6127988736 Not Found: /accounts/upgrade-required
+WARNING 2025-12-20 12:33:28,172 basehttp 31468 6127988736 "GET /accounts/upgrade-required HTTP/1.1" 404 2878
+INFO 2025-12-20 12:33:41,661 basehttp 31468 6127988736 "GET /upgrade-required HTTP/1.1" 301 0
+INFO 2025-12-20 12:33:41,666 basehttp 31468 6144815104 "GET /upgrade-required/ HTTP/1.1" 200 3394
+INFO 2025-12-20 12:34:07,289 stripe_django_views 31468 6144815104 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:34:07,289 stripe_django_views 31468 6144815104 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:34:07,290 stripe_django_views 31468 6144815104 Rendering Stripe checkout template...
+INFO 2025-12-20 12:34:07,293 stripe_django_views 31468 6144815104 Template rendered successfully
+INFO 2025-12-20 12:34:07,295 basehttp 31468 6144815104 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3091
+INFO 2025-12-20 12:34:18,611 basehttp 31468 6144815104 "GET /upgrade-required-pro HTTP/1.1" 301 0
+INFO 2025-12-20 12:34:18,618 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3441
+INFO 2025-12-20 12:34:24,470 stripe_django_views 31468 6127988736 Stripe checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:34:24,470 stripe_django_views 31468 6127988736 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:34:24,470 stripe_django_views 31468 6127988736 Rendering Stripe checkout template...
+INFO 2025-12-20 12:34:24,473 stripe_django_views 31468 6127988736 Template rendered successfully
+INFO 2025-12-20 12:34:24,473 basehttp 31468 6127988736 "GET /accounts/stripe/checkout/ HTTP/1.1" 200 3096
+INFO 2025-12-20 12:34:25,713 _util 31468 6127988736 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product
+INFO 2025-12-20 12:34:26,000 _util 31468 6127988736 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1S308oImvDyA3xukKtKWjXPI?expand[0]=product response_code=200
+INFO 2025-12-20 12:34:26,009 _util 31468 6127988736 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 12:34:26,537 _util 31468 6127988736 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 12:34:26,538 basehttp 31468 6127988736 "POST /accounts/stripe/create-checkout-session/ HTTP/1.1" 302 0
+WARNING 2025-12-20 12:34:32,447 log 31468 6127988736 Not Found: /accounts/upgrade-required
+WARNING 2025-12-20 12:34:32,448 basehttp 31468 6127988736 "GET /accounts/upgrade-required HTTP/1.1" 404 2932
+INFO 2025-12-20 12:34:33,921 basehttp 31468 6127988736 "GET /upgrade-required/ HTTP/1.1" 200 3420
+INFO 2025-12-20 12:34:41,505 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3480
+INFO 2025-12-20 12:39:30,341 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3459
+INFO 2025-12-20 12:39:32,127 stripe_django_views 31468 6127988736 Stripe Pro checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:39:32,127 stripe_django_views 31468 6127988736 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:39:32,127 stripe_django_views 31468 6127988736 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 12:39:32,131 stripe_django_views 31468 6127988736 Template rendered successfully
+INFO 2025-12-20 12:39:32,133 basehttp 31468 6127988736 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3126
+INFO 2025-12-20 12:39:34,825 stripe_django_views 31468 6127988736 Stripe Pro checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:39:34,825 stripe_django_views 31468 6127988736 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:39:34,825 stripe_django_views 31468 6127988736 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 12:39:34,828 stripe_django_views 31468 6127988736 Template rendered successfully
+INFO 2025-12-20 12:39:34,829 basehttp 31468 6127988736 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3110
+INFO 2025-12-20 12:39:37,843 stripe_django_views 31468 6127988736 Stripe Pro checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:39:37,843 stripe_django_views 31468 6127988736 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:39:37,843 stripe_django_views 31468 6127988736 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 12:39:37,845 stripe_django_views 31468 6127988736 Template rendered successfully
+INFO 2025-12-20 12:39:37,847 basehttp 31468 6127988736 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3102
+INFO 2025-12-20 12:39:46,903 stripe_django_views 31468 6127988736 Stripe Pro checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:39:46,904 stripe_django_views 31468 6127988736 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:39:46,904 stripe_django_views 31468 6127988736 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 12:39:46,907 stripe_django_views 31468 6127988736 Template rendered successfully
+INFO 2025-12-20 12:39:46,908 basehttp 31468 6127988736 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3084
+INFO 2025-12-20 12:39:54,124 _util 31468 6127988736 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-20 12:39:54,405 _util 31468 6127988736 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-20 12:39:54,407 _util 31468 6127988736 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-20 12:39:54,788 _util 31468 6127988736 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-20 12:39:54,793 basehttp 31468 6127988736 "POST /accounts/stripe/create-checkout-session/pro/ HTTP/1.1" 302 0
+INFO 2025-12-20 12:40:57,167 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3451
+INFO 2025-12-20 12:41:38,597 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3455
+INFO 2025-12-20 12:42:01,304 stripe_django_views 31468 6127988736 Stripe Pro checkout view accessed by user: thomasbarratt@yahoo.com
+INFO 2025-12-20 12:42:01,305 stripe_django_views 31468 6127988736 Stripe API key is configured, proceeding...
+INFO 2025-12-20 12:42:01,305 stripe_django_views 31468 6127988736 Rendering Stripe Pro checkout template...
+INFO 2025-12-20 12:42:01,309 stripe_django_views 31468 6127988736 Template rendered successfully
+INFO 2025-12-20 12:42:01,310 basehttp 31468 6127988736 "GET /accounts/stripe/checkout/pro/ HTTP/1.1" 200 3131
+INFO 2025-12-20 12:42:25,712 basehttp 31468 6127988736 "GET /upgrade-required-pro/ HTTP/1.1" 200 3414
+INFO 2025-12-20 12:42:53,106 autoreload 32629 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-20 12:42:53,741 basehttp 32629 6159790080 "GET / HTTP/1.1" 200 10992
+INFO 2025-12-20 12:43:08,078 basehttp 32629 6159790080 "GET /upgrade-required-pro/ HTTP/1.1" 200 3372
+INFO 2025-12-20 12:43:08,092 basehttp 32629 6193442816 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 12:43:08,095 basehttp 32629 6159790080 "GET /static/css/output.css HTTP/1.1" 200 103335
+INFO 2025-12-20 12:43:08,096 basehttp 32629 6176616448 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 12:43:08,096 basehttp 32629 6210269184 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 12:43:08,279 basehttp 32629 6210269184 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 12:44:26,774 basehttp 32629 6210269184 "GET /upgrade-required-pro/ HTTP/1.1" 200 3429
+INFO 2025-12-20 12:44:26,789 basehttp 32629 6159790080 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 12:44:26,789 basehttp 32629 6210269184 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 12:50:49,079 basehttp 32629 6159790080 "GET /upgrade-required-pro/ HTTP/1.1" 200 3435
+INFO 2025-12-20 12:50:49,102 basehttp 32629 6176616448 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2025-12-20 12:50:49,103 basehttp 32629 6159790080 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2025-12-20 12:50:57,281 basehttp 32629 6159790080 "GET /upgrade-required-pro/ HTTP/1.1" 200 3392
+INFO 2025-12-20 12:50:57,294 basehttp 32629 6193442816 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-20 12:50:57,295 basehttp 32629 6176616448 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-20 12:50:57,296 basehttp 32629 6159790080 "GET /static/css/output.css HTTP/1.1" 200 103335
+INFO 2025-12-20 12:50:57,297 basehttp 32629 6210269184 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-20 12:50:57,501 basehttp 32629 6210269184 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-20 12:51:07,317 basehttp 32629 6210269184 "GET /grids/ HTTP/1.1" 200 13323
