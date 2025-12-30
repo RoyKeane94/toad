@@ -1,11 +1,11 @@
 {% extends 'accounts/email/email_layout.html' %}
 
-{% block title %}Getting the Most Out of Toad?{% endblock %}
+{% block title %}You're probably already using Toad the right way{% endblock %}
 
-{% block header_title %}<span style="color: #10B981;">Unlock More Clarity with Toad</span>{% endblock %}
+{% block header_title %}<span style="color: #10B981;">You're probably already using Toad the right way</span>{% endblock %}
 
 {% block header_subtitle %}
-<p>Go beyond a simple list and start truly organizing.</p>
+<p>A quick note, two days in.</p>
 {% endblock %}
 
 {% block content %}
@@ -13,58 +13,40 @@
 <div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
 
 <div class="message">
-    <p>Hope you're enjoying your first look at Toad! Whether you've built your first grid or are still exploring, here are a couple of quick ways Toad helps you achieve true clarity:</p>
-
-    <div style="margin-bottom: 25px; padding-top: 15px; border-top: 1px solid #E5E7EB;">
-        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">✨ Tip 1: Create Dedicated Grids</h3>
-        <p style="margin: 0 0 12px 0; color: #4B5563;">Don't cram everything onto one list! Create <strong>separate, focused grids</strong> for each project, client, or area of your life (like 'Sales', 'Operations', 'House Move'). This keeps your command center clean and your focus sharp.</p>
-        <div class="button-container" style="margin: 12px 0;">
-            <a href="{{ base_url }}/grids/create/" class="btn btn-large" style="display: inline-block; padding: 10px 18px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px;">Create a New Grid</a>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 25px; padding-top: 15px; border-top: 1px solid #E5E7EB;">
-        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">📋 Tip 2: Start with a Template</h3>
-        <p style="margin: 0 0 12px 0; color: #4B5563;">No need to start from scratch! Explore our ready-made templates for entrepreneurs, students, creators, and more. It's the fastest way to get inspired and see how Toad can structure your specific goals.</p>
-        <div class="button-container" style="margin: 12px 0;">
-            <a href="{{ base_url }}/templates/" class="btn btn-large" style="display: inline-block; padding: 10px 18px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px;">Explore Templates</a>
-        </div>
-    </div>
-
-    <div style="margin-bottom: 25px; padding-top: 15px; border-top: 1px solid #E5E7EB;">
-        <h3 style="color: #1F2937; margin: 0 0 8px 0; font-size: 18px;">🤏 Tip 3: Remember Drag & Drop!</h3>
-        <p style="margin: 0 0 12px 0; color: #4B5563;">As your priorities change, simply drag tasks between columns or up and down within a list. It's the simple, tactile way to keep your grid perfectly organized.</p>
-    </div>
-
-    <p style="margin-top: 30px;">Need help brainstorming how Toad can fit your specific workflow? Just reply to this email – I'd love to help!</p>
+    <p>A quick note, two days in.</p>
+    
+    <p>If Toad feels familiar rather than impressive, that's intentional.</p>
+    
+    <p>Most people get the most value from Toad when they do just one thing:</p>
+    
+    <p style="font-weight: 600; font-size: 16px; margin: 20px 0;">Put one real project into one grid.</p>
+    
+    <p>Not everything. Not the perfect setup. Just something that's already on your mind.</p>
+    
+    <p>A few gentle pointers if you want them:</p>
+    
+    <ul style="margin: 20px 0; padding-left: 20px; color: #4B5563;">
+        <li style="margin-bottom: 10px;">One grid per project or area works better than cramming everything into one place</li>
+        <li style="margin-bottom: 10px;">Keep it simple — rows for when it needs to be done, columns for what needs to be done</li>
+        <li style="margin-bottom: 10px;">Don't optimise it yet. If it's readable, it's working</li>
+    </ul>
+    
+    <p>If you're coming from notebooks, lists, or spreadsheets, you don't need to "learn" Toad.</p>
+    
+    <p>You already know how to use it — this just keeps things clear and shared.</p>
+    
+    <p>If you want, reply to this email and tell me what you're trying to organise.</p>
+    
+    <p>I'm happy to suggest a simple grid that fits how you already think.</p>
+    
+    <p>No rush. No setup to get right.</p>
 </div>
 
-{% block cta %}
-<!-- Check if user is already Pro or on Pro Trial -->
-{% if user.tier != 'pro' and user.tier != 'pro_trial' %}
-<div style="background: #F9FAFB; border: 1px solid #E5E7EB; border-radius: 8px; padding: 20px; margin: 30px 0;">
-    <h3 style="color: #1F2937; margin: 0 0 12px 0; font-size: 18px;">🚀 Ready for Collaboration & More Power?</h3>
-    <p style="margin: 0 0 16px 0; color: #4B5563;">Unlock Team Toad for seamless collaboration, add Task Notes for context, save Custom Templates, and get unlimited Archiving. Try Team Toad free for 3 months!</p>
-    <div class="button-container" style="margin: 12px 0;">
-        <a href="{{ base_url }}/accounts/register/trial-3-month-pro/" class="btn btn-large" style="display: inline-block; padding: 12px 20px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px; min-width: 180px; text-align: center;">Start My Free Pro Trial</a>
-    </div>
-</div>
-{% endif %}
-
-<div style="margin: 30px 0; text-align: center;">
-    <h3 style="color: #1F2937; margin: 0 0 12px 0; font-size: 18px;">💚 Know Someone Who Needs Clarity?</h3>
-    <p style="margin: 0 0 16px 0; color: #4B5563;">Share the simplicity! Gift a friend 3 months of Team Toad completely free.</p>
-    <div class="button-container" style="margin: 12px 0;">
-        <a href="{{ base_url }}/accounts/register/trial-3-month-pro/" class="btn btn-large" style="display: inline-block; padding: 10px 18px; background-color: #10B981; color: #FFFFFF; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 14px;">Gift 3 Months Free</a>
-    </div>
-</div>
 {% endblock %}
 
 {% block additional_content %}
-<div style="text-align: center; color: #6B7280; margin-top: 30px; border-top: 1px solid #E5E7EB; padding-top: 20px; font-size: 12px;">
-    <p>Happy organising!</p>
-    <p><strong>- Tom, Founder of Toad</strong></p>
+<div style="text-align: left; color: #6B7280; margin-top: 30px; border-top: 1px solid #E5E7EB; padding-top: 20px; font-size: 14px;">
+    <p style="margin: 0;">— Tom</p>
+    <p style="margin: 5px 0 0 0;"><strong>Founder, Toad</strong></p>
 </div>
-{% endblock %}
-
 {% endblock %}

@@ -337,7 +337,7 @@ Share Pro Trial: https://meettoad.co.uk/accounts/register/trial-3-month-pro/
         
         # Create email message with personal email settings
         email = EmailMessage(
-            subject='Welcome to Toad - Getting Started',
+            subject="You're probably already using Toad the right way",
             body=html_message,
             from_email=personal_email_user,
             to=[user.email],

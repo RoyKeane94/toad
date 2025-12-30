@@ -239,7 +239,7 @@ class Command(BaseCommand):
             
             # Create email message with personal email settings
             email = EmailMessage(
-                subject='Getting the Most Out of Toad?',
+                subject="You're probably already using Toad the right way",
                 body=html_message,
                 from_email=personal_email_user,
                 to=[user.email],
