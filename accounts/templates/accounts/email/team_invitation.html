@@ -31,40 +31,6 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
         
-        .email-image-container {
-            width: 100%;
-            text-align: center;
-            padding: 30px 24px;
-        }
-        
-        .email-image-container img {
-            width: 100%;
-            max-width: 300px;
-            height: auto;
-            display: block;
-            margin: 0 auto;
-            border: 0;
-            outline: none;
-        }
-        
-        .header {
-            padding: 24px;
-            text-align: center;
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        }
-        
-        .header h1 {
-            color: white;
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .header p {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 16px;
-        }
-        
         .content {
             padding: 24px;
             line-height: 1.6;
@@ -101,6 +67,12 @@
         .alternative-link {
             text-align: center;
             margin-top: 20px;
+        }
+        
+        .alternative-link p {
+            margin: 0 0 8px 0;
+            color: #6B7280;
+            font-size: 14px;
         }
         
         .alternative-link a {
@@ -144,23 +116,18 @@
 </head>
 <body>
     <div class="email-container">
-        <!-- Toad Logo at the top -->
-        <div class="email-image-container">
-            <img src="https://meettoad.co.uk/static/img/logo/toad_logo.png" alt="Toad - For when your brain has too many tabs open" style="width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; border: 0; outline: none;">
-        </div>
-        
-        <!-- Header -->
-        <div class="header">
-            <h1>You've Been Invited to Join Team Toad</h1>
-            <p>Your team is waiting for you</p>
-        </div>
-        
         <!-- Content -->
         <div class="content">
             <div class="message">
                 <p><strong>{{ admin_name }}</strong> ({{ admin_email }}) has invited you to join their Team Toad subscription.</p>
-                <p>Your admin: <strong>{{ admin_name }}</strong> ({{ admin_email }})</p>
-                <p>Join your team and start collaborating with shared grids and premium features.</p>
+                
+                <p>This isn't a new system you're being asked to learn.</p>
+                
+                <p>Keep working how you already do — email, messages, notes, whatever works.</p>
+                
+                <p>Team Toad is simply a shared place where the important things come together, so decisions, tasks, and context don't get lost.</p>
+                
+                <p>When something matters, it lands in Toad.</p>
             </div>
             
             <div class="button-container">
@@ -177,6 +144,12 @@
             <div class="security-notice">
                 <p><strong>Important:</strong> This invitation will expire in 7 days. If you didn't expect this invitation, you can safely ignore this email.</p>
             </div>
+            
+            <div class="message" style="margin-top: 30px;">
+                <p>As always, if you have any questions or comments, just reply to this email — it comes straight to me.</p>
+                
+                <p style="margin-top: 24px;">Tom<br/>Founder, Toad</p>
+            </div>
         </div>
         
         <!-- Footer -->
@@ -192,7 +165,3 @@
     </div>
 </body>
 </html>
-
-
-
-
