@@ -5,7 +5,6 @@ from django.urls import reverse
 from django.utils import timezone
 from .models import User
 import os
-import base64
 import logging
 
 
@@ -29,18 +28,10 @@ def send_verification_email(user, request=None):
         # Fallback for when request is not available
         verification_url = f"{settings.SITE_URL}/accounts/verify-email/{token}/"
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Render email template
     html_message = render_to_string('accounts/email/email_verification.html', {
         'user': user,
         'verification_url': verification_url,
-        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -112,18 +103,10 @@ def send_password_reset_email(user, request=None):
         # Fallback for when request is not available
         reset_url = f"{settings.SITE_URL}/accounts/reset-password/{token}/"
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Render email template
     html_message = render_to_string('accounts/email/password_reset_email.html', {
         'user': user,
         'reset_url': reset_url,
-        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -190,13 +173,6 @@ def send_joining_email(user, request=None, cta_url=None):
         base_url = settings.SITE_URL.rstrip('/')
         cta_url = f"{base_url}{project_list_path}"  # generic fallback
 
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-
     # Determine template and content based on user tier
     user_tier = getattr(user, 'tier', 'free')  # Default to 'free' if tier not set
     
@@ -223,7 +199,6 @@ def send_joining_email(user, request=None, cta_url=None):
 
     html_message = render_to_string(template_name, {
         'user': user,
-        'toad_image_data': image_data,
         'cta_url': cta_url,
     })
 
@@ -274,17 +249,9 @@ def send_2_day_follow_up_email(user, request=None):
     if not getattr(user, 'email_subscribed', True):
         return False
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Render email template
     html_message = render_to_string('accounts/email/follow_up/2_day_follow_up_email.html', {
         'user': user,
-        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -386,13 +353,6 @@ def send_team_invitation_email(invitation, request=None):
         # Fallback for when request is not available
         invitation_url = f"{settings.SITE_URL}/accounts/team/accept-invitation/{invitation.token}/"
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Render email template
     admin_name = invitation.invited_by.get_full_name() or invitation.invited_by.email
     admin_email = invitation.invited_by.email
@@ -401,7 +361,6 @@ def send_team_invitation_email(invitation, request=None):
         'invitation_url': invitation_url,
         'admin_name': admin_name,
         'admin_email': admin_email,
-        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -456,15 +415,8 @@ def send_test_email(recipient_email, email_type='simple', user=None):
     import logging
     logger = logging.getLogger(__name__)
     
-    # Load the Toad image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     if email_type == 'simple':
-        return _send_simple_test_email(recipient_email, image_data)
+        return _send_simple_test_email(recipient_email)
     elif email_type == 'verification' and user:
         return _send_test_verification_email(user, recipient_email)
     elif email_type == 'password_reset' and user:
@@ -476,7 +428,7 @@ def send_test_email(recipient_email, email_type='simple', user=None):
         return False
 
 
-def _send_simple_test_email(recipient_email, image_data):
+def _send_simple_test_email(recipient_email):
     """
     Send a simple test email to verify email system functionality.
     """
@@ -595,18 +547,10 @@ def _send_test_verification_email(user, recipient_email):
     # Build verification URL
     verification_url = f"{settings.SITE_URL}/accounts/verify-email/{token}/"
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Render email template
     html_message = render_to_string('accounts/email/email_verification.html', {
         'user': user,
         'verification_url': verification_url,
-        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -667,18 +611,10 @@ def _send_test_password_reset_email(user, recipient_email):
     # Build password reset URL
     reset_url = f"{settings.SITE_URL}/accounts/reset-password/{token}/"
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Render email template
     html_message = render_to_string('accounts/email/password_reset_email.html', {
         'user': user,
         'reset_url': reset_url,
-        'toad_image_data': image_data,
     })
     
     # Plain text version
@@ -737,13 +673,6 @@ def _send_test_joining_email(user, recipient_email):
     base_url = settings.SITE_URL.rstrip('/')
     cta_url = f"{base_url}{project_list_path}"
     
-    # Read and encode the image
-    image_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'Toad Email Image.png')
-    image_data = ""
-    if os.path.exists(image_path):
-        with open(image_path, 'rb') as f:
-            image_data = base64.b64encode(f.read()).decode('utf-8')
-    
     # Determine template and content based on user tier
     user_tier = getattr(user, 'tier', 'free')
     
@@ -766,7 +695,6 @@ def _send_test_joining_email(user, recipient_email):
     
     html_message = render_to_string(template_name, {
         'user': user,
-        'toad_image_data': image_data,
         'cta_url': cta_url,
     })
     

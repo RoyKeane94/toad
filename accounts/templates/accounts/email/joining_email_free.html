@@ -2,35 +2,34 @@
 
 {% block title %}Welcome to Toad{% endblock %}
 
-{% block header_title %}Welcome to Toad, {{ user.first_name|default:user.get_short_name }}!{% endblock %}
+{% block header_title %}{% endblock %}
 
 {% block content %}
 
-
 <div class="message">
-    <p>I'm Tom, the founder of Toad. Thanks for joining us and helping shape a calmer way to plan.</p>
-    <p>Your first grid is ready and waiting. It's a quick, interactive tour — no boring pop‑ups, I promise.</p>
-    <p>You're starting with our Free plan, which gives you access to all the core features to get organised and productive.</p>
+    <p>Hi{% if user.first_name %} {{ user.first_name }},{% else %},{% endif %}</p>
+    
+    <p>Welcome to Toad.</p>
+    
+    <p>Most people don't need a new system.</p>
+    
+    <p>They just need one place where things can land.</p>
+    
+    <p>Notes. Tasks. Loose ends.</p>
+    
+    <p>Instead of staying in your head — or buried somewhere else.</p>
+    
+    <p>You don't need to set anything up.</p>
+    
+    <p>Just start putting the things you don't want to forget into Toad.</p>
+    
+    <p>If it brings a bit more clarity, keep going.</p>
+    
+    <p>If not, no pressure.</p>
+    
+    <p>As always, if you have any questions or comments, just reply to this email as it comes straight to me.</p>
+    
+    <p style="margin-top: 24px;">Tom<br/>Founder, Toad</p>
 </div>
 
-{% block cta %}
-{% if cta_url %}
-<div class="button-container">
-    <a href="{{ cta_url }}" class="btn">Go to My First Grid</a>
-</div>
-{% endif %}
-
-<div class="upgrade-section">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: var(--title-text);">Want more power?</p>
-    <p style="margin: 0 0 12px 0;">Upgrade to Personal for up to 10 grids, ability to create and save custom templates, and archive completed tasks.</p>
-    <a href="https://www.meettoad.co.uk/accounts/register/personal/" class="upgrade-btn">Upgrade to Personal</a>
-</div>
-{% endblock %}
-
-<div class="message">
-    <p>Be sure to checkout our existing templates <a href="https://www.meettoad.co.uk/templates/students/">here</a> to get some inspiration or just get going with your own new grid <a href="https://www.meettoad.co.uk/grids/create/">here</a>.</p>
-    <p style="margin-top: 16px;">Got thoughts—good, bad, or random? Just reply to this email. I read and respond to every one.</p>
-    <p style="margin-top: 16px;">All the best,<br/>Tom<br/>Founder, Toad</p>
-    <p style="margin-top: 16px; font-style: italic;">P.S. Toad works great on mobile, but the best bird's‑eye view is on a bigger screen. Try logging in on desktop at meettoad.co.uk.</p>
-</div>
 {% endblock %}
