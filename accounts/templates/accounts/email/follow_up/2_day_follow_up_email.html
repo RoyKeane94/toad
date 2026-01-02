@@ -2,44 +2,42 @@
 
 {% block title %}You're probably already using Toad the right way{% endblock %}
 
-{% block header_title %}<span style="color: #10B981;">You're probably already using Toad the right way</span>{% endblock %}
-
-{% block header_subtitle %}
-<p>A quick note, two days in.</p>
-{% endblock %}
+{% block header_title %}{% endblock %}
 
 {% block content %}
 
-<div class="greeting">Hi {{ user.first_name|default:user.get_short_name }},</div>
-
 <div class="message">
-    <p>A quick note, two days in.</p>
+    <p>Hi{% if user.first_name %} {{ user.first_name }},{% else %},{% endif %}</p>
     
     <p>If Toad feels familiar rather than impressive, that's intentional.</p>
     
-    <p>Most people get the most value from Toad when they do just one thing:</p>
+    <p>Most people don't get value from setting everything up.<br>
+    They get value from doing one small, sensible thing.</p>
     
-    <p style="font-weight: 600; font-size: 16px; margin: 20px 0;">Put one real project into one grid.</p>
+    <p style="font-weight: 600; font-size: 16px; margin: 20px 0;">
+        Put one real project into one grid.
+    </p>
     
-    <p>Not everything. Not the perfect setup. Just something that's already on your mind.</p>
+    <p>Not everything. Not a perfect system.<br>
+    Just something that's already taking up space in your head.</p>
     
-    <p>A few gentle pointers if you want them:</p>
+    <p>If it helps, a few quiet guidelines:</p>
     
     <ul style="margin: 20px 0; padding-left: 20px; color: #4B5563;">
-        <li style="margin-bottom: 10px;">One grid per project or area works better than cramming everything into one place</li>
-        <li style="margin-bottom: 10px;">Keep it simple — rows for when it needs to be done, columns for what needs to be done</li>
-        <li style="margin-bottom: 10px;">Don't optimise it yet. If it's readable, it's working</li>
+        <li style="margin-bottom: 10px;">One grid per project or area usually works better than forcing everything into one place</li>
+        <li style="margin-bottom: 10px;">Simple beats clever — if you can read it at a glance, it's doing its job</li>
+        <li style="margin-bottom: 10px;">Resist the urge to optimise. Clarity comes first</li>
     </ul>
     
-    <p>If you're coming from notebooks, lists, or spreadsheets, you don't need to "learn" Toad.</p>
+    <p>If you're coming from notebooks, lists, or spreadsheets, there's nothing new to learn.</p>
     
-    <p>You already know how to use it — this just keeps things clear and shared.</p>
+    <p>You already know how this works — Toad just keeps it clear, contained, and easy to return to.</p>
     
     <p>If you want, reply to this email and tell me what you're trying to organise.</p>
     
     <p>I'm happy to suggest a simple grid that fits how you already think.</p>
     
-    <p>No rush. No setup to get right.</p>
+    <p>No rush. Nothing to get "right".</p>
 </div>
 
 {% endblock %}
