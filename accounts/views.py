@@ -1502,9 +1502,102 @@ class Register1MonthProTrialView(FormView):
     """
     Registration view for 1-month Pro trial users
     Supports both individual and team trial signups
+    Handles both new user registration and existing logged-in users
     """
     template_name = 'accounts/pages/registration/register_1_month_pro_trial.html'
     form_class = CustomUserCreationForm
+    
+    def get(self, request, *args, **kwargs):
+        """Override get to allow both authenticated and unauthenticated users to view the page"""
+        # Allow ALL users to view the page - authenticated users will see a simplified form
+        return super().get(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        """Handle form submission"""
+        logger.info(f"Register1MonthProTrialView.post called - authenticated={request.user.is_authenticated}")
+        
+        # For authenticated users signing up for team trial
+        if request.user.is_authenticated:
+            is_team = request.POST.get('is_team', 'false') == 'true'
+            team_size = request.POST.get('team_size', '1')
+            logger.info(f"Authenticated user POST: is_team={is_team}, team_size={team_size}, user={request.user.email}")
+            
+            if is_team:
+                logger.info(f"Calling handle_existing_user_team_trial for {request.user.email}")
+                return self.handle_existing_user_team_trial(request)
+            # If authenticated but not team signup, redirect them
+            logger.info(f"User {request.user.email} tried individual signup while logged in - redirecting")
+            messages.info(request, 'You already have an account. Use the team trial option to create a team.')
+            return redirect('pages:project_list')
+        
+        # For unauthenticated users, use normal form handling
+        return super().post(request, *args, **kwargs)
+    
+    def handle_existing_user_team_trial(self, request):
+        """Handle team trial signup for existing logged-in user"""
+        from django.utils import timezone
+        from datetime import timedelta
+        from accounts.models import SubscriptionGroup
+        
+        try:
+            team_size = int(request.POST.get('team_size', 1))
+            logger.info(f"handle_existing_user_team_trial: Starting with team_size={team_size}")
+            
+            if team_size < 2:
+                team_size = 2  # Minimum team size
+            if team_size > 50:
+                team_size = 50  # Maximum for trial
+            
+            user = request.user
+            logger.info(f"handle_existing_user_team_trial: User {user.email}, current tier={user.tier}")
+            
+            # Check if user already has an active team subscription
+            existing_group = SubscriptionGroup.objects.filter(
+                admin=user,
+                is_active=True
+            ).first()
+            
+            if existing_group:
+                logger.info(f"handle_existing_user_team_trial: User already has active group {existing_group.id}")
+                messages.warning(request, 'You already have an active team subscription. Please manage it from the team management page.')
+                return redirect('accounts:manage_team')
+            
+            # Set user tier to pro_trial and trial_type to 1_month
+            logger.info(f"handle_existing_user_team_trial: Setting tier to pro_trial for {user.email}")
+            user.tier = 'pro_trial'
+            user.trial_type = '1_month'
+            user.trial_started_at = timezone.now()
+            user.trial_ends_at = timezone.now() + timedelta(days=30)
+            user.save(update_fields=['tier', 'trial_type', 'trial_started_at', 'trial_ends_at'])
+            
+            # Refresh from database to confirm save
+            user.refresh_from_db()
+            logger.info(f"handle_existing_user_team_trial: After save, tier={user.tier}, trial_type={user.trial_type}")
+            
+            # Create SubscriptionGroup for team trial
+            subscription_group = SubscriptionGroup.objects.create(
+                admin=user,
+                stripe_subscription_id=None,  # No Stripe subscription for trial
+                quantity=team_size,
+                is_active=True
+            )
+            subscription_group.members.add(user)
+            logger.info(f"Team trial SubscriptionGroup created for existing user: {subscription_group.id} with {team_size} seats")
+            
+            # Store subscription group ID for invite flow
+            request.session['subscription_group_id'] = subscription_group.id
+            request.session['team_trial_created'] = True
+            
+            messages.success(
+                request, 
+                f'Welcome to Team Toad trial, {user.get_short_name()}! Now invite your team members.'
+            )
+            return redirect('accounts:team_invite_members')
+            
+        except Exception as e:
+            logger.error(f"Error in handle_existing_user_team_trial: {e}", exc_info=True)
+            messages.error(request, 'An error occurred while setting up your team trial. Please try again.')
+            return redirect('accounts:register_1_month_pro_trial')
     
     def form_valid(self, form):
         """Create the user and start their 1-month Pro trial"""
@@ -1603,12 +1696,6 @@ class Register1MonthProTrialView(FormView):
         """Handle form validation errors"""
         messages.error(self.request, 'Please correct the errors below.')
         return super().form_invalid(form)
-    
-    def dispatch(self, request, *args, **kwargs):
-        """Redirect authenticated users away from registration page"""
-        if request.user.is_authenticated:
-            return redirect('pages:project_list')
-        return super().dispatch(request, *args, **kwargs)
 
 
 class Register3MonthProTrialView(FormView):
