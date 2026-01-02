@@ -839,21 +839,65 @@ def preview_email_templates(request):
     """Test view to preview email templates"""
     from django.template.loader import render_to_string
     from django.contrib.auth import get_user_model
+    from django.urls import reverse
     
     User = get_user_model()
     
-    # Create a test user
+    # Create test users with different tiers
     test_user, created = User.objects.get_or_create(
         email='test@example.com',
         defaults={
             'first_name': 'Test',
-            'last_name': 'User'
+            'last_name': 'User',
+            'tier': 'free'
         }
     )
     
+    test_user_free = test_user
+    test_user_free.tier = 'free'
+    
+    test_user_beta = User(
+        email='beta@example.com',
+        first_name='Sam',
+        last_name='User',
+        tier='beta'
+    )
+    
+    test_user_personal = User(
+        email='personal@example.com',
+        first_name='Alex',
+        last_name='User',
+        tier='personal'
+    )
+    
+    test_user_pro = User(
+        email='pro@example.com',
+        first_name='Jordan',
+        last_name='User',
+        tier='pro'
+    )
+    
+    test_user_pro_trial = User(
+        email='pro_trial@example.com',
+        first_name='Taylor',
+        last_name='User',
+        tier='pro_trial'
+    )
+    
     # Test URLs
-    verification_url = 'https://example.com/verify/abc123'
-    reset_url = 'https://example.com/reset/xyz789'
+    base_url = getattr(settings, 'SITE_URL', 'https://www.meettoad.co.uk').rstrip('/')
+    verification_url = f'{base_url}/accounts/verify-email/abc123/'
+    reset_url = f'{base_url}/accounts/reset-password/xyz789/'
+    invitation_url = f'{base_url}/accounts/team/accept-invitation/abc123/'
+    project_list_path = reverse('pages:project_list')
+    cta_url = f'{base_url}{project_list_path}'
+    
+    # Mock invitation for team invitation email (simple object with needed attributes)
+    class MockInvitation:
+        def __init__(self):
+            self.invited_email = 'invited@example.com'
+    
+    mock_invitation = MockInvitation()
     
     # Render email templates
     email_verification_html = render_to_string('accounts/email/email_verification.html', {
@@ -866,15 +910,60 @@ def preview_email_templates(request):
         'reset_url': reset_url
     })
     
-    # Render student follow-up email
+    # Joining emails
+    joining_email_free_html = render_to_string('accounts/email/joining_email_free.html', {
+        'user': test_user_free,
+        'cta_url': cta_url
+    })
+    
+    joining_email_beta_html = render_to_string('accounts/email/joining_email_beta.html', {
+        'user': test_user_beta,
+        'cta_url': cta_url
+    })
+    
+    joining_email_personal_html = render_to_string('accounts/email/joining_email_personal.html', {
+        'user': test_user_personal,
+        'cta_url': cta_url
+    })
+    
+    joining_email_pro_html = render_to_string('accounts/email/joining_email_pro.html', {
+        'user': test_user_pro,
+        'cta_url': cta_url
+    })
+    
+    joining_email_pro_trial_html = render_to_string('accounts/email/joining_email_pro_trial.html', {
+        'user': test_user_pro_trial,
+        'cta_url': cta_url
+    })
+    
+    # Team invitation email
+    team_invitation_html = render_to_string('accounts/email/team_invitation.html', {
+        'invitation': mock_invitation,
+        'invitation_url': invitation_url,
+        'admin_name': test_user_pro.get_full_name() or test_user_pro.email,
+        'admin_email': test_user_pro.email
+    })
+    
+    # Follow-up emails
     student_follow_up_html = render_to_string('accounts/email/student/student_follow_up_prompt_email.html', {
+        'user': test_user
+    })
+    
+    two_day_follow_up_html = render_to_string('accounts/email/follow_up/2_day_follow_up_email.html', {
         'user': test_user
     })
     
     return render(request, 'accounts/email_preview.html', {
         'email_verification_html': email_verification_html,
         'password_reset_html': password_reset_html,
-        'student_follow_up_html': student_follow_up_html
+        'joining_email_free_html': joining_email_free_html,
+        'joining_email_beta_html': joining_email_beta_html,
+        'joining_email_personal_html': joining_email_personal_html,
+        'joining_email_pro_html': joining_email_pro_html,
+        'joining_email_pro_trial_html': joining_email_pro_trial_html,
+        'team_invitation_html': team_invitation_html,
+        'student_follow_up_html': student_follow_up_html,
+        'two_day_follow_up_html': two_day_follow_up_html,
     })
 
 def beta_update_email_preview(request):

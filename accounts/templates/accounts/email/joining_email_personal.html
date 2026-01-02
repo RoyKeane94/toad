@@ -2,67 +2,32 @@
 
 {% block title %}Welcome to Toad Personal{% endblock %}
 
-{% block header_title %}Welcome to Toad Personal, {{ user.first_name|default:user.get_short_name }}! {% endblock %}
+{% block header_title %}{% endblock %}
 
 {% block content %}
 
 <div class="message">
-    <p>I'm Tom, the founder of Toad. Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective.</p>
-    <p>Your first grid is ready and waiting. It's a quick, interactive tour — no boring pop‑ups, I promise.</p>
+    <p>Hi{% if user.first_name %} {{ user.first_name }},{% else %},{% endif %}</p>
+    
+    <p>Thanks for choosing Toad Personal.</p>
+    
+    <p>You already have enough going on with emails, messages, notes, half-formed ideas.</p>
+    
+    <p>Toad works best when it becomes the place those things land.</p>
+    
+    <p>Not another thing to manage. Just somewhere reliable.</p>
+    
+    <p>No system to learn.</p>
+    
+    <p>No rules to follow.</p>
+    
+    <p>Just one place you trust.</p>
+    
+    <p>Use it lightly. Use it often. Use it your way.</p>
+    
+    <p>As always, if you have any questions or comments, just drop me a line.</p>
+    
+    <p style="margin-top: 24px;">Tom<br/>Founder, Toad</p>
 </div>
 
-<div class="features-section">
-    <p style="margin: 0 0 8px 0; font-weight: 600; color: var(--title-text);">Your Personal plan includes:</p>
-    <ul class="features-list">
-        <li>Up to 10 active grids</li>
-        <li>Create and save custom templates</li>
-        <li>Archive completed tasks</li>
-        <li>Priority support</li>
-    </ul>
-</div>
-
-{% block cta %}
-{% if cta_url %}
-<div class="button-container">
-    <a href="{{ cta_url }}" class="btn">Go to My First Grid</a>
-</div>
-{% endif %}
 {% endblock %}
-
-<div class="message">
-    <p>Be sure to checkout our existing templates <a href="https://www.meettoad.co.uk/templates/students/">here</a> to get some inspiration or just get going with your own new grid <a href="https://www.meettoad.co.uk/grids/create/">here</a>.</p>
-    <p style="margin-top: 16px;">Got thoughts—good, bad, or random? Just reply to this email. I read and respond to every one.</p>
-    <p style="margin-top: 16px;">All the best,<br/>Tom<br/>Founder, Toad</p>
-    <p style="margin-top: 16px; font-style: italic;">P.S. Toad works great on mobile, but the best bird's‑eye view is on a bigger screen. Try logging in on desktop at meettoad.co.uk.</p>
-</div>
-{% endblock %}
-
-<style>
-.personal-badge { 
-    background: #10B981; 
-    color: white; 
-    padding: 4px 8px; 
-    border-radius: 4px; 
-    font-size: 12px; 
-    font-weight: 600; 
-    margin-left: 8px; 
-}
-
-.features-section { 
-    background: #F0FDF4; 
-    border: 1px solid #BBF7D0; 
-    border-radius: 8px; 
-    padding: 16px; 
-    margin: 16px 0; 
-}
-
-.features-list { 
-    margin: 8px 0; 
-    padding-left: 20px; 
-}
-
-.features-list li { 
-    margin: 4px 0; 
-    color: var(--text-secondary); 
-}
-</style>

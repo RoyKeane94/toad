@@ -182,11 +182,11 @@ def send_joining_email(user, request=None, cta_url=None):
         text_intro = "Thanks for joining the private beta and helping shape a calmer way to plan."
     elif user_tier == 'personal':
         template_name = 'accounts/email/joining_email_personal.html'
-        subject = "Welcome to Toad Personal — You're all set!"
+        subject = "One place. That's the point."
         text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
     elif user_tier == 'pro':
         template_name = 'accounts/email/joining_email_pro.html'
-        subject = "Welcome to Team Toad — You're all set!"
+        subject = "Before you start with Toad"
         text_intro = "Thanks for upgrading to Team Toad and unlocking our most powerful collaboration tools."
     elif user_tier == 'pro_trial':
         template_name = 'accounts/email/joining_email_pro_trial.html'
@@ -682,8 +682,12 @@ def _send_test_joining_email(user, recipient_email):
         text_intro = "Thanks for joining the private beta and helping shape a calmer way to plan."
     elif user_tier == 'personal':
         template_name = 'accounts/email/joining_email_personal.html'
-        subject = "[TEST] Welcome to Toad Personal — You're all set!"
+        subject = "[TEST] One place. That's the point."
         text_intro = "Thanks for upgrading to Personal and supporting our mission to make planning calmer and more effective."
+    elif user_tier == 'pro':
+        template_name = 'accounts/email/joining_email_pro.html'
+        subject = "[TEST] Before you start with Toad"
+        text_intro = "Thanks for upgrading to Team Toad and unlocking our most powerful collaboration tools."
     elif user_tier == 'pro_trial':
         template_name = 'accounts/email/joining_email_pro_trial.html'
         subject = "[TEST] Welcome to your Team Toad Trial — You're all set!"

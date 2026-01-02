@@ -6,9 +6,13 @@
 <div class="max-w-6xl mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold text-[var(--title-text)] mb-8">Email Template Preview</h1>
     
+    <div class="mb-6 text-sm text-gray-600">
+        <p>All email templates are displayed below. Scroll down to review each one.</p>
+    </div>
+    
     <!-- Email Verification Template -->
     <div class="mb-12">
-        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Email Verification Template</h2>
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Email Verification</h2>
         <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
             <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
                 <h3 class="font-medium text-gray-700">Preview:</h3>
@@ -21,7 +25,7 @@
     
     <!-- Password Reset Template -->
     <div class="mb-12">
-        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Password Reset Template</h2>
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Password Reset</h2>
         <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
             <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
                 <h3 class="font-medium text-gray-700">Preview:</h3>
@@ -32,9 +36,110 @@
         </div>
     </div>
     
-    <!-- Student Follow-up Email Template -->
+    <!-- Joining Emails Section -->
     <div class="mb-12">
-        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Student Follow-up Email Template</h2>
+        <h2 class="text-3xl font-bold text-[var(--title-text)] mb-6 mt-12 pt-8 border-t-2 border-gray-200">Welcome/Joining Emails</h2>
+    </div>
+    
+    <!-- Free Tier -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Joining Email - Free Tier</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ joining_email_free_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Beta Tier -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Joining Email - Beta Tier</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ joining_email_beta_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Personal Tier -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Joining Email - Personal Tier</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ joining_email_personal_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pro Tier -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Joining Email - Pro/Team Toad</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ joining_email_pro_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Pro Trial Tier -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Joining Email - Pro Trial</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ joining_email_pro_trial_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Team Invitation -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Team Invitation</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ team_invitation_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Follow-up Emails Section -->
+    <div class="mb-12">
+        <h2 class="text-3xl font-bold text-[var(--title-text)] mb-6 mt-12 pt-8 border-t-2 border-gray-200">Follow-up Emails</h2>
+    </div>
+    
+    <!-- 2-Day Follow-up -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">2-Day Follow-up</h2>
+        <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
+            <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
+                <h3 class="font-medium text-gray-700">Preview:</h3>
+            </div>
+            <div class="p-6">
+                {{ two_day_follow_up_html|safe }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Student Follow-up -->
+    <div class="mb-12">
+        <h2 class="text-2xl font-semibold text-[var(--primary-action-bg)] mb-4">Student Follow-up</h2>
         <div class="bg-white border border-[var(--border-color)] rounded-lg shadow-lg overflow-hidden">
             <div class="p-4 bg-gray-50 border-b border-[var(--border-color)]">
                 <h3 class="font-medium text-gray-700">Preview:</h3>
@@ -45,4 +150,4 @@
         </div>
     </div>
 </div>
-{% endblock %} 
+{% endblock %}
