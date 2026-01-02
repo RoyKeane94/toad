@@ -13,6 +13,8 @@ from .views import (
     Register6MonthProTrialView,
     RegisterTeamQuantityView,
     RegisterTeamAdminView,
+    RegisterTeamTrialQuantityView,
+    RegisterTeamTrialAdminView,
     logout_view, 
     account_settings_view, 
     change_password_view, 
@@ -79,6 +81,8 @@ urlpatterns = [
     path('register/trial-1-month-pro/', Register1MonthProTrialView.as_view(), name='register_1_month_pro_trial'),
     path('register/trial-3-month-pro/', Register3MonthProTrialView.as_view(), name='register_3_month_pro_trial'),
     path('register/trial-6-month-pro/', Register6MonthProTrialView.as_view(), name='register_6_month_pro_trial'),
+    path('register/team-trial/quantity/', RegisterTeamTrialQuantityView.as_view(), name='register_team_trial_quantity'),
+    path('register/team-trial/admin/', RegisterTeamTrialAdminView.as_view(), name='register_team_trial_admin'),
     path('register/barnabytoad/', secret_registration_redirect, name='secret_registration'),
     path('logout/', logout_view, name='logout'),
     

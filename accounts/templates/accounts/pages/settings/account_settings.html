@@ -19,6 +19,48 @@
             </div>
         </div>
 
+        <!-- Trial Banner -->
+        {% if is_on_trial %}
+        <div class="mx-6 mt-6 bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-lg p-4">
+            <div class="flex items-center justify-between flex-wrap gap-3">
+                <div class="flex items-center">
+                    <div class="flex items-center justify-center w-10 h-10 bg-amber-100 rounded-lg mr-3 flex-shrink-0">
+                        <i class="fas fa-clock text-amber-600"></i>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-amber-800 text-sm">
+                            {% if trial_days_remaining > 0 %}
+                                Trial ends in {{ trial_days_remaining }} day{{ trial_days_remaining|pluralize }}
+                            {% elif trial_days_remaining == 0 %}
+                                Trial ends today
+                            {% else %}
+                                Trial has expired
+                            {% endif %}
+                        </p>
+                        <p class="text-xs text-amber-700 mt-0.5">
+                            {{ trial_type_display }}
+                        </p>
+                    </div>
+                </div>
+                {% if is_team_trial and subscription_group %}
+                <a href="{% url 'accounts:stripe_checkout_team' %}" 
+                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
+                   style="background: linear-gradient(to right, #10b981, #22c55e) !important; color: white !important;">
+                    <i class="fas fa-arrow-up mr-2" style="color: white !important;"></i>
+                    <span style="color: white !important;">Convert to Paid Plan</span>
+                </a>
+                {% elif not is_team_trial %}
+                <a href="{% url 'accounts:manage_subscription' %}" 
+                   class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
+                   style="background: linear-gradient(to right, #10b981, #22c55e) !important; color: white !important;">
+                    <i class="fas fa-arrow-up mr-2" style="color: white !important;"></i>
+                    <span style="color: white !important;">Upgrade Now</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Content -->
         <div class="p-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

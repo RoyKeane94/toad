@@ -16,6 +16,79 @@
             </p>
         </div>
 
+        <!-- Trial Status Banner (shown for trial users) -->
+        {% if is_trial %}
+        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-6 shadow-sm">
+            <div class="flex items-start justify-between gap-4 flex-wrap">
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="flex items-center justify-center w-10 h-10 bg-amber-100 rounded-lg">
+                            <i class="fas fa-clock text-amber-600"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-semibold text-amber-900">Team Trial Active</h2>
+                            <p class="text-sm text-amber-700">
+                                {% if trial_days_remaining > 0 %}
+                                    <strong>{{ trial_days_remaining }} day{{ trial_days_remaining|pluralize }} remaining</strong>
+                                {% else %}
+                                    <strong class="text-red-600">Trial expired</strong>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    {% if trial_ends_at %}
+                    <p class="text-xs text-amber-600 ml-13">
+                        <i class="fas fa-calendar-alt mr-1"></i>
+                        Ends {{ trial_ends_at|date:"F j, Y" }}
+                    </p>
+                    {% endif %}
+                </div>
+                <div class="flex flex-col gap-2">
+                    <a href="{% url 'accounts:stripe_checkout_team' %}" 
+                       class="inline-flex items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+                       style="background: linear-gradient(to right, #10b981, #22c55e) !important; color: white !important;">
+                        <i class="fas fa-arrow-up mr-2" style="color: white !important;"></i>
+                        <span style="color: white !important;">Convert to Paid Plan</span>
+                    </a>
+                    <p class="text-xs text-center text-amber-600">
+                        £{{ price_per_seat }}/seat/month
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Trial Progress Bar -->
+            <div class="mt-4">
+                <div class="w-full bg-amber-200 rounded-full h-2">
+                    <div class="bg-gradient-to-r from-amber-400 to-orange-400 h-2 rounded-full transition-all duration-500" 
+                         style="width: {{ trial_progress_percent }}%"></div>
+                </div>
+            </div>
+            
+            <!-- Benefits of Converting -->
+            <div class="mt-4 pt-4 border-t border-amber-200">
+                <p class="text-xs font-medium text-amber-800 mb-2">Why convert now?</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-amber-700">
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-1"></i>
+                        Keep your team
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-1"></i>
+                        Keep all grids
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-1"></i>
+                        No interruption
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-1"></i>
+                        Cancel anytime
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Billing Information -->
         {% if stripe_subscription_info %}
         <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6">
@@ -107,7 +180,8 @@
             {% endfor %}
         {% endif %}
 
-        <!-- Stripe Customer Portal Section -->
+        <!-- Stripe Customer Portal Section (hidden for trial users) -->
+        {% if not is_trial %}
         <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6 mb-6">
             <div class="flex items-center justify-between gap-4">
                 <div class="flex-1 min-w-0">
@@ -127,10 +201,11 @@
                 </a>
             </div>
         </div>
+        {% endif %}
 
         <!-- Invite New Members Section -->
         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
-            <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-4">Invite Team Members</h2>
+            <h2 class="text-xl font-semibold text-orange-500 mb-4">Invite Team Members</h2>
             <p class="text-sm text-[var(--text-secondary)] mb-4">
                 Send invitations to new team members. You have {{ available_seats }} seat(s) available ({{ total_seats }} total - {{ current_members_count }} in use - {{ pending_count }} pending).
             </p>
@@ -163,13 +238,14 @@
                         </div>
                     </div>
                     {% if member != subscription_group.admin %}
-                    <form method="POST" action="{% url 'accounts:remove_team_member' member.id %}" class="inline" onsubmit="return confirm('Are you sure you want to remove {{ member.email }} from the team?');">
-                        {% csrf_token %}
-                        <button type="submit" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors">
-                            <i class="fas fa-user-minus mr-2"></i>
-                            Remove
-                        </button>
-                    </form>
+                    <button type="button" 
+                            data-member-id="{{ member.id }}" 
+                            data-member-name="{{ member.get_full_name|default:member.email|escapejs }}" 
+                            data-member-email="{{ member.email|escapejs }}"
+                            class="remove-member-btn px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-user-minus mr-2"></i>
+                        Remove
+                    </button>
                     {% endif %}
                 </div>
                 {% endfor %}
@@ -247,22 +323,14 @@
                     <p class="text-sm text-red-600 mb-3">
                         This will cancel the subscription immediately and delete all grids for all team members.
                     </p>
-                    <button type="button" onclick="openCancelSubscriptionModal()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors">
-                        <i class="fas fa-times mr-2"></i>
-                        Cancel Subscription
+                    <button type="button" onclick="openCancelSubscriptionModal()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors" style="color: white !important;">
+                        <i class="fas fa-times mr-2" style="color: white !important;"></i>
+                        <span style="color: white !important;">Cancel Subscription</span>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Back to Settings -->
-        <div class="text-center">
-            <a href="{% url 'accounts:manage_subscription' %}" 
-               class="inline-flex items-center px-4 py-2 bg-[var(--grid-header-bg)] hover:bg-[var(--border-color)] text-[var(--text-primary)] rounded-md text-sm font-medium transition-colors">
-                <i class="fas fa-arrow-left mr-2"></i>
-                Back to Subscription Management
-            </a>
-        </div>
     </div>
 </div>
 
@@ -760,4 +828,148 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </div>
+
+<!-- Remove Team Member Modal -->
+<div id="removeMemberModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+        <!-- Modal Header with Toad -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)] bg-gradient-to-r from-red-50 to-orange-50">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-14 h-14 bg-white rounded-xl shadow-md border border-red-100">
+                    <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad" class="w-10 h-10">
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-red-700">Remove Team Member</h3>
+                    <p class="text-sm text-red-600">This action is permanent!</p>
+                </div>
+            </div>
+            <button type="button" id="close-remove-member-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <div class="text-center mb-4">
+                <p class="text-[var(--text-primary)] text-lg">
+                    Are you sure you want to remove
+                </p>
+                <p class="font-bold text-xl text-red-600 mt-1" id="remove-member-name-display"></p>
+                <p class="text-sm text-[var(--text-secondary)]" id="remove-member-email-display"></p>
+            </div>
+            
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 space-y-3">
+                <div class="flex items-start space-x-3">
+                    <div class="flex items-center justify-center w-6 h-6 bg-red-200 rounded-full flex-shrink-0 mt-0.5">
+                        <i class="fas fa-trash text-red-600 text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-red-800 text-sm">All their grids will be permanently deleted</p>
+                        <p class="text-xs text-red-700 mt-1">This cannot be undone - all data will be lost forever</p>
+                    </div>
+                </div>
+                <div class="flex items-start space-x-3">
+                    <div class="flex items-center justify-center w-6 h-6 bg-red-200 rounded-full flex-shrink-0 mt-0.5">
+                        <i class="fas fa-user-slash text-red-600 text-xs"></i>
+                    </div>
+                    <div>
+                        <p class="font-medium text-red-800 text-sm">They will be downgraded to Free plan</p>
+                        <p class="text-xs text-red-700 mt-1">They will lose all Team Toad features immediately</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-3">
+                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad" class="w-8 h-8 flex-shrink-0">
+                <p class="text-sm text-amber-800">
+                    <strong>Toad says:</strong> "Once removed, this user's grids are gone forever. Please make sure you really want to do this!"
+                </p>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <button type="button" id="cancel-remove-member" class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <form method="POST" action="" id="remove-member-form" class="m-0">
+                {% csrf_token %}
+                <button type="submit" class="w-48 h-10 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                    <i class="fas fa-user-minus mr-2"></i>Yes, Remove Member
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Remove Member Modal
+function openRemoveMemberModal(memberId, memberName, memberEmail) {
+    const modal = document.getElementById('removeMemberModal');
+    const form = document.getElementById('remove-member-form');
+    const nameDisplay = document.getElementById('remove-member-name-display');
+    const emailDisplay = document.getElementById('remove-member-email-display');
+    
+    if (modal && form && nameDisplay && emailDisplay) {
+        // Set the form action
+        form.action = '/accounts/team/remove-member/' + memberId + '/';
+        
+        // Set the displays
+        nameDisplay.textContent = memberName;
+        emailDisplay.textContent = memberEmail;
+        
+        // Show modal
+        modal.classList.remove('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+    }
+}
+
+function closeRemoveMemberModal() {
+    const modal = document.getElementById('removeMemberModal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        const modalContent = modal.querySelector('div');
+        if (modalContent) {
+            modalContent.classList.add('scale-95');
+            modalContent.classList.remove('scale-100');
+        }
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const removeMemberCloseBtn = document.getElementById('close-remove-member-modal');
+    const removeMemberCancelBtn = document.getElementById('cancel-remove-member');
+    const removeMemberModal = document.getElementById('removeMemberModal');
+    
+    // Add event listeners for remove member buttons
+    document.querySelectorAll('.remove-member-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const memberId = this.getAttribute('data-member-id');
+            const memberName = this.getAttribute('data-member-name');
+            const memberEmail = this.getAttribute('data-member-email');
+            openRemoveMemberModal(parseInt(memberId), memberName, memberEmail);
+        });
+    });
+    
+    if (removeMemberCloseBtn) {
+        removeMemberCloseBtn.addEventListener('click', closeRemoveMemberModal);
+    }
+    
+    if (removeMemberCancelBtn) {
+        removeMemberCancelBtn.addEventListener('click', closeRemoveMemberModal);
+    }
+    
+    if (removeMemberModal) {
+        removeMemberModal.addEventListener('click', function(e) {
+            if (e.target === removeMemberModal) {
+                closeRemoveMemberModal();
+            }
+        });
+    }
+});
+</script>
 {% endblock %}

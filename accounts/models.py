@@ -357,7 +357,9 @@ class TeamInvitation(models.Model):
         return self.status == 'pending' and not self.is_expired()
     
     def accept(self, user=None):
-        """Accept the invitation and add user to the subscription group."""
+        """Accept the invitation and add user to the subscription group.
+        Also verifies the user's email since clicking the invitation link acts as verification.
+        """
         if not self.can_be_accepted():
             return False
         
@@ -378,9 +380,13 @@ class TeamInvitation(models.Model):
         # Add user to the subscription group
         if self.invited_user:
             self.subscription_group.members.add(self.invited_user)
-            # Set user tier to pro
+            # Set user tier to pro and verify their email
+            # (clicking invitation link acts as email verification)
             self.invited_user.tier = 'pro'
-            self.invited_user.save(update_fields=['tier'])
+            self.invited_user.email_verified = True
+            self.invited_user.email_verification_token = None
+            self.invited_user.email_verification_sent_at = None
+            self.invited_user.save(update_fields=['tier', 'email_verified', 'email_verification_token', 'email_verification_sent_at'])
         
         # Update invitation status
         from django.utils import timezone

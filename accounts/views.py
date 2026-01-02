@@ -478,6 +478,53 @@ def account_settings_view(request):
         available_seats = subscription_group.quantity - current_members_count - pending_count
         total_seats = subscription_group.quantity
     
+    # Calculate trial information
+    is_on_trial = False
+    trial_days_remaining = 0
+    trial_type_display = None
+    is_team_trial = False
+    
+    # Check if user is directly on a trial (individual trial)
+    if request.user.is_on_trial() and request.user.trial_ends_at:
+        is_on_trial = True
+        from django.utils import timezone
+        trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
+        if request.user.tier == 'pro_trial':
+            trial_type_display = 'Team Toad Trial'
+            is_team_trial = True
+        elif request.user.tier in ['personal_trial', 'personal_3_month_trial']:
+            trial_type_display = 'Personal Trial'
+    
+    # Check if user is part of a team trial (as admin or member)
+    if not is_on_trial:
+        # Check as admin
+        if subscription_group and not subscription_group.stripe_subscription_id:
+            is_on_trial = True
+            is_team_trial = True
+            trial_type_display = 'Team Toad Trial'
+            if request.user.trial_ends_at:
+                from django.utils import timezone
+                trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
+        else:
+            # Check as member (not admin)
+            member_groups = SubscriptionGroup.objects.filter(
+                members=request.user,
+                is_active=True,
+                stripe_subscription_id__isnull=True
+            ).exclude(admin=request.user).first()
+            
+            if member_groups:
+                is_on_trial = True
+                is_team_trial = True
+                trial_type_display = 'Team Toad Trial'
+                # Get trial end date from the admin of the group
+                if member_groups.admin.trial_ends_at:
+                    from django.utils import timezone
+                    trial_days_remaining = (member_groups.admin.trial_ends_at - timezone.now()).days
+                elif request.user.trial_ends_at:
+                    from django.utils import timezone
+                    trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
+    
     context = {
         'profile_form': profile_form,
         'user': request.user,
@@ -488,6 +535,10 @@ def account_settings_view(request):
         'pending_count': pending_count,
         'available_seats': available_seats,
         'total_seats': total_seats,
+        'is_on_trial': is_on_trial,
+        'trial_days_remaining': trial_days_remaining,
+        'trial_type_display': trial_type_display,
+        'is_team_trial': is_team_trial,
     }
     return render(request, 'accounts/pages/settings/account_settings.html', context)
 
@@ -1104,6 +1155,154 @@ class RegisterTeamAdminView(FormView):
         return super().form_invalid(form)
 
 
+class RegisterTeamTrialQuantityView(TemplateView):
+    """
+    Step 1: View for choosing number of team members for team trial
+    """
+    template_name = 'accounts/pages/registration/register_team_trial_quantity.html'
+    
+    def dispatch(self, request, *args, **kwargs):
+        """Redirect authenticated users away from registration page"""
+        if request.user.is_authenticated:
+            return redirect('pages:project_list')
+        return super().dispatch(request, *args, **kwargs)
+    
+    def post(self, request, *args, **kwargs):
+        """Handle quantity selection"""
+        try:
+            quantity = int(request.POST.get('quantity', 2))
+            if quantity < 2:
+                messages.error(request, 'Team trial requires at least 2 seats.')
+                return self.get(request, *args, **kwargs)
+            if quantity > 50:
+                messages.error(request, 'Maximum 50 seats allowed for trial.')
+                return self.get(request, *args, **kwargs)
+            
+            # Store quantity in session for next step
+            request.session['team_trial_quantity'] = quantity
+            request.session['team_trial_flow'] = True
+            
+            # Redirect to admin registration
+            return redirect('accounts:register_team_trial_admin')
+        except ValueError:
+            messages.error(request, 'Please enter a valid number.')
+            return self.get(request, *args, **kwargs)
+
+
+class RegisterTeamTrialAdminView(FormView):
+    """
+    Step 2: Registration view for Team Trial admin
+    Creates user with pro_trial tier and creates a SubscriptionGroup in trial mode
+    """
+    template_name = 'accounts/pages/registration/register_team_trial_admin.html'
+    form_class = CustomUserCreationForm
+    
+    def dispatch(self, request, *args, **kwargs):
+        """Check if quantity is set in session and redirect authenticated users"""
+        if request.user.is_authenticated:
+            return redirect('pages:project_list')
+        if not request.session.get('team_trial_quantity'):
+            messages.error(request, 'Please select team size first.')
+            return redirect('accounts:register_team_trial_quantity')
+        return super().dispatch(request, *args, **kwargs)
+    
+    def get_context_data(self, **kwargs):
+        """Add quantity to context"""
+        context = super().get_context_data(**kwargs)
+        context['quantity'] = self.request.session.get('team_trial_quantity', 2)
+        context['invite_count'] = context['quantity'] - 1
+        return context
+    
+    def form_valid(self, form):
+        """Create the admin user, start trial, and create SubscriptionGroup"""
+        from django.utils import timezone
+        from datetime import timedelta
+        from accounts.models import SubscriptionGroup
+        
+        try:
+            quantity = self.request.session.get('team_trial_quantity', 2)
+            
+            logger.info(f"Starting Team Trial admin registration with {quantity} seats...")
+            user = form.save()
+            logger.info(f"Team Trial admin user created: {user.email}")
+            
+            # Set user tier to pro_trial and trial_type to 1_month
+            user.tier = 'pro_trial'
+            user.trial_type = '1_month'
+            user.trial_started_at = timezone.now()
+            user.trial_ends_at = timezone.now() + timedelta(days=30)
+            user.save()
+            logger.info(f"User tier set to pro_trial with 1-month trial: {user.email}")
+            
+            # Create SubscriptionGroup in trial mode (no stripe_subscription_id)
+            subscription_group = SubscriptionGroup.objects.create(
+                admin=user,
+                stripe_subscription_id=None,  # No Stripe subscription for trial
+                quantity=quantity,
+                is_active=True
+            )
+            
+            # Add admin as a member
+            subscription_group.members.add(user)
+            logger.info(f"SubscriptionGroup created for team trial: {subscription_group.id} with {quantity} seats")
+            
+            # Store subscription group ID in session for invite step
+            self.request.session['subscription_group_id'] = subscription_group.id
+            
+            # Clear trial flow session data
+            if 'team_trial_quantity' in self.request.session:
+                del self.request.session['team_trial_quantity']
+            if 'team_trial_flow' in self.request.session:
+                del self.request.session['team_trial_flow']
+            
+            # Add session flag for verification message
+            self.request.session['show_verification_message'] = True
+            self.request.session['team_trial_created'] = True
+            
+            # Send verification email asynchronously
+            try:
+                from .email_utils import send_verification_email
+                import threading
+                
+                def send_email_async():
+                    try:
+                        email_sent = send_verification_email(user, self.request)
+                        logger.info(f"Verification email sent: {email_sent} for {user.email}")
+                    except Exception as e:
+                        logger.error(f"Failed to send verification email to {user.email}: {e}")
+                
+                email_thread = threading.Thread(target=send_email_async)
+                email_thread.daemon = True
+                email_thread.start()
+                
+                messages.success(
+                    self.request, 
+                    f'Welcome to your team trial, {user.get_short_name()}! '
+                    f'Please check your email to verify your account. '
+                    f'You have {quantity} seats available for 1 month.'
+                )
+            except Exception as e:
+                logger.error(f"Failed to start email sending: {e}")
+                messages.warning(
+                    self.request, 
+                    f'Welcome to your team trial, {user.get_short_name()}! '
+                    f'Your account was created, but we couldn\'t send the verification email. '
+                    f'Please contact support.'
+                )
+            
+            # Redirect to login page
+            return redirect('accounts:login')
+            
+        except Exception as e:
+            logger.error(f"Error in RegisterTeamTrialAdminView.form_valid: {e}", exc_info=True)
+            raise
+    
+    def form_invalid(self, form):
+        """Handle form validation errors"""
+        messages.error(self.request, 'Please correct the errors below.')
+        return super().form_invalid(form)
+
+
 class RegisterTrialView(FormView):
     """
     Registration view for 6-month free trial users
@@ -1302,37 +1501,65 @@ class Register3MonthTrialView(FormView):
 class Register1MonthProTrialView(FormView):
     """
     Registration view for 1-month Pro trial users
+    Supports both individual and team trial signups
     """
     template_name = 'accounts/pages/registration/register_1_month_pro_trial.html'
     form_class = CustomUserCreationForm
     
     def form_valid(self, form):
         """Create the user and start their 1-month Pro trial"""
-        import logging
-        logger = logging.getLogger(__name__)
+        from django.utils import timezone
+        from datetime import timedelta
+        from accounts.models import SubscriptionGroup
         
         try:
-            from django.utils import timezone
-            from datetime import timedelta
+            # Check if this is a team signup
+            is_team = self.request.POST.get('is_team', 'false') == 'true'
+            team_size = int(self.request.POST.get('team_size', 1))
             
-            logger.info("Starting 1-month Pro trial user registration...")
+            if is_team and team_size < 2:
+                team_size = 2  # Minimum team size
+            if team_size > 50:
+                team_size = 50  # Maximum for trial
+            
+            logger.info(f"Starting 1-month Pro trial registration (is_team={is_team}, team_size={team_size})...")
             user = form.save()
             logger.info(f"User created successfully: {user.email}")
             
             # Set user tier to pro_trial and trial_type to 1_month
-            # The signal will handle setting the correct trial duration
             user.tier = 'pro_trial'
             user.trial_type = '1_month'
+            user.trial_started_at = timezone.now()
+            user.trial_ends_at = timezone.now() + timedelta(days=30)
             user.save()
             logger.info(f"User tier set to pro_trial with 1-month trial type: {user.email}")
             
+            # If team signup, create SubscriptionGroup
+            if is_team and team_size >= 2:
+                subscription_group = SubscriptionGroup.objects.create(
+                    admin=user,
+                    stripe_subscription_id=None,  # No Stripe subscription for trial
+                    quantity=team_size,
+                    is_active=True
+                )
+                subscription_group.members.add(user)
+                logger.info(f"Team trial SubscriptionGroup created: {subscription_group.id} with {team_size} seats")
+                
+                # Store subscription group ID for post-verification invite flow
+                self.request.session['subscription_group_id'] = subscription_group.id
+                self.request.session['team_trial_created'] = True
+            
             # Log registration attempt
-            logger.info(f"New 1-Month Pro Trial plan user registration: {user.email} ({user.get_short_name()}) - tier set to PRO_TRIAL")
+            if is_team:
+                logger.info(f"New Team Trial registration: {user.email} ({user.get_short_name()}) - {team_size} seats")
+            else:
+                logger.info(f"New 1-Month Pro Trial registration: {user.email} ({user.get_short_name()})")
             
-            # Add session flag immediately for better UX
-            self.request.session['show_verification_message'] = True
+            # Log the user in immediately (verification happens at the end)
+            login(self.request, user)
+            logger.info(f"User logged in immediately after registration: {user.email}")
             
-            # Send verification email asynchronously to improve performance
+            # Send verification email asynchronously
             try:
                 from .email_utils import send_verification_email
                 import threading
@@ -1344,18 +1571,29 @@ class Register1MonthProTrialView(FormView):
                     except Exception as e:
                         logger.error(f"Failed to send verification email to {user.email}: {e}")
                 
-                # Start email sending in background thread
                 email_thread = threading.Thread(target=send_email_async)
                 email_thread.daemon = True
                 email_thread.start()
-                
-                messages.success(self.request, f'Welcome to your 1-month Pro trial, {user.get_short_name()}! Please check your email to verify your account before you can start using Team Toad features.')
             except Exception as e:
                 logger.error(f"Failed to start email sending: {e}")
-                messages.warning(self.request, f'Welcome to your 1-month Pro trial, {user.get_short_name()}! Your account was created, but we couldn\'t send the verification email. Please contact support.')
             
-            # Redirect to login page immediately
-            return redirect('accounts:login')
+            # Redirect based on signup type
+            if is_team and team_size >= 2:
+                messages.success(
+                    self.request, 
+                    f'Welcome, {user.get_short_name()}! Now invite your team members. '
+                    f'We\'ve sent a verification email - please verify when you\'re done.'
+                )
+                # Redirect to team invite page
+                return redirect('accounts:team_invite_members')
+            else:
+                messages.success(
+                    self.request, 
+                    f'Welcome to your 1-month Pro trial, {user.get_short_name()}! '
+                    f'We\'ve sent a verification email to complete your setup.'
+                )
+                # Redirect to project list for individual users
+                return redirect('pages:project_list')
             
         except Exception as e:
             logger.error(f"Error in Register1MonthProTrialView.form_valid: {e}", exc_info=True)
@@ -1906,6 +2144,9 @@ def team_invite_members_view(request):
     ).count()
     available_seats = subscription_group.quantity - current_members_count - pending_count
     
+    # Check if this is a trial subscription (no Stripe subscription ID)
+    is_trial = subscription_group.stripe_subscription_id is None
+    
     context = {
         'subscription_group': subscription_group,
         'available_seats': available_seats,
@@ -1914,6 +2155,7 @@ def team_invite_members_view(request):
         'pending_count': pending_count,
         'initial_emails': initial_emails,
         'is_team_toad_user': is_team_toad_user,
+        'is_trial': is_trial,
     }
     
     return render(request, 'accounts/pages/team/invite_members.html', context)
@@ -2025,6 +2267,32 @@ def manage_team_view(request):
         except Exception as e:
             logger.error(f"Unexpected error retrieving Stripe subscription: {e}", exc_info=True)
     
+    # Check if this is a trial subscription (no Stripe subscription ID)
+    is_trial = not subscription_group.stripe_subscription_id
+    trial_days_remaining = 0
+    trial_ends_at = None
+    trial_progress_percent = 0
+    
+    if is_trial:
+        # Get trial info from admin user
+        admin = subscription_group.admin
+        if admin.trial_ends_at:
+            from django.utils import timezone
+            trial_ends_at = admin.trial_ends_at
+            now = timezone.now()
+            
+            if trial_ends_at > now:
+                trial_days_remaining = (trial_ends_at - now).days
+            else:
+                trial_days_remaining = 0
+            
+            # Calculate progress percentage (assuming 30 day trial)
+            if admin.trial_started_at:
+                total_days = (trial_ends_at - admin.trial_started_at).days
+                if total_days > 0:
+                    elapsed_days = (now - admin.trial_started_at).days
+                    trial_progress_percent = min(100, int((elapsed_days / total_days) * 100))
+    
     context = {
         'subscription_group': subscription_group,
         'members': members,
@@ -2036,6 +2304,12 @@ def manage_team_view(request):
         'max_reduction': max_reduction,
         'min_seats_required': current_members_count + pending_count,
         'stripe_subscription_info': stripe_subscription_info,
+        # Trial information
+        'is_trial': is_trial,
+        'trial_days_remaining': trial_days_remaining,
+        'trial_ends_at': trial_ends_at,
+        'trial_progress_percent': trial_progress_percent,
+        'price_per_seat': 5,  # £5 per seat/month
     }
     
     return render(request, 'accounts/pages/team/manage_team.html', context)
@@ -2430,9 +2704,10 @@ def accept_team_invitation_view(request, token):
         if request.user.is_authenticated:
             if request.user.email == invitation.invited_email:
                 if request.method == 'POST':
-                    # Accept the invitation
+                    # Accept the invitation (this also verifies email)
                     if invitation.accept(user=request.user):
                         # Set team_admin
+                        request.user.refresh_from_db()  # Refresh to get updated email_verified status
                         request.user.team_admin = invitation.subscription_group.admin
                         request.user.save(update_fields=['team_admin'])
                         # Update Stripe subscription metadata with new team info

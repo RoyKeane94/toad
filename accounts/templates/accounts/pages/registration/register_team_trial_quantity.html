@@ -1,0 +1,326 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Choose Team Size - Team Trial{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+    }
+    
+    /* Make main take remaining height after navbar */
+    main {
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+    }
+    
+    /* Quantity selection styles */
+    .quantity-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        padding: 4rem 1rem;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdfa 100%);
+    }
+    
+    .quantity-card {
+        max-width: 520px;
+        width: 100%;
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        border: 1px solid #d1fae5;
+        box-shadow: 0 10px 40px rgba(16, 185, 129, 0.12);
+    }
+    
+    .quantity-input-group {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin: 2rem 0;
+    }
+    
+    .quantity-input {
+        flex: 1;
+        padding: 0.75rem 1rem;
+        border: 2px solid var(--border-color);
+        border-radius: 8px;
+        font-size: 1.5rem;
+        text-align: center;
+        background: var(--main-bg);
+        color: var(--text-primary);
+        font-weight: 600;
+    }
+    
+    .quantity-input:focus {
+        outline: none;
+        border-color: #10b981;
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+    }
+    
+    .quantity-btn {
+        width: 3.5rem;
+        height: 3.5rem;
+        border: 2px solid var(--border-color);
+        border-radius: 10px;
+        background: white;
+        color: var(--text-primary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s;
+        font-weight: 600;
+    }
+    
+    .quantity-btn:hover {
+        background: #10b981;
+        color: white;
+        border-color: #10b981;
+        transform: scale(1.05);
+    }
+    
+    .quantity-btn:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        transform: none;
+    }
+    
+    .trial-info {
+        text-align: center;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, #ecfdf5 0%, #f0fdfa 100%);
+        border-radius: 12px;
+        margin: 1.5rem 0;
+        border: 1px solid #a7f3d0;
+    }
+    
+    .trial-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1.25rem;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        border-radius: 24px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    }
+    
+    .trial-period {
+        font-size: 1.25rem;
+        color: #065f46;
+        font-weight: 700;
+    }
+    
+    .trial-description {
+        color: #047857;
+        font-size: 0.875rem;
+        margin-top: 0.5rem;
+    }
+    
+    .step-indicator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+    }
+    
+    .step {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .step-number {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+    
+    .step-number.active {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        color: white;
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    }
+    
+    .step-number.inactive {
+        background: #e5e7eb;
+        color: #9ca3af;
+    }
+    
+    .step-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+    
+    .step-label.active {
+        color: #065f46;
+    }
+    
+    .step-label.inactive {
+        color: #9ca3af;
+    }
+    
+    .step-connector {
+        width: 40px;
+        height: 2px;
+        background: #e5e7eb;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="quantity-container">
+    <div class="quantity-card">
+        <!-- Step Indicator -->
+        <div class="step-indicator">
+            <div class="step">
+                <div class="step-number active">1</div>
+                <span class="step-label active">Team Size</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-number inactive">2</div>
+                <span class="step-label inactive">Create Account</span>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step">
+                <div class="step-number inactive">3</div>
+                <span class="step-label inactive">Invite Team</span>
+            </div>
+        </div>
+        
+        <!-- Header -->
+        <div class="text-center mb-6">
+            <div class="mb-4">
+                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-12 w-auto mx-auto">
+            </div>
+            <h1 class="text-3xl font-bold text-[#065f46] mb-2">
+                Start Your Team Trial
+            </h1>
+            <p class="text-sm text-[#047857]">
+                How many people will be using Toad?
+            </p>
+        </div>
+        
+        <!-- Quantity Selector -->
+        <form method="POST" id="quantity-form">
+            {% csrf_token %}
+            <div class="quantity-input-group">
+                <button type="button" id="decrease-btn" class="quantity-btn" onclick="changeQuantity(-1)">−</button>
+                <input 
+                    type="number" 
+                    id="quantity-input" 
+                    name="quantity" 
+                    class="quantity-input" 
+                    value="2" 
+                    min="2" 
+                    max="50" 
+                    required
+                    onchange="updateInfo()"
+                >
+                <button type="button" id="increase-btn" class="quantity-btn" onclick="changeQuantity(1)">+</button>
+            </div>
+            
+            <!-- Trial Info Display -->
+            <div class="trial-info">
+                <div class="trial-badge">
+                    <i class="fas fa-gift mr-2"></i>
+                    1 Month Free Trial
+                </div>
+                <div class="trial-period">No credit card required</div>
+                <div class="trial-description">
+                    Full Team Toad access for <strong id="team-count">2</strong> people
+                </div>
+            </div>
+            
+            <!-- Info -->
+            <div class="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-6">
+                <p class="text-sm text-emerald-800">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    You'll fill one seat as the team admin. You can invite the remaining <strong id="invite-count">1</strong> team member(s) after registration.
+                </p>
+            </div>
+            
+            <!-- Features Preview -->
+            <div class="bg-white border border-[var(--border-color)] rounded-lg p-4 mb-6">
+                <p class="text-sm font-semibold text-[var(--text-primary)] mb-3">What's included in your trial:</p>
+                <div class="grid grid-cols-2 gap-2 text-xs text-[var(--text-secondary)]">
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-2"></i>
+                        Unlimited shared grids
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-2"></i>
+                        Team collaboration
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-2"></i>
+                        Custom templates
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-check text-emerald-500 mr-2"></i>
+                        Task archiving
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Submit Button -->
+            <button type="submit" class="w-full py-3.5 px-4 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white rounded-lg font-semibold transition-all cursor-pointer shadow-lg hover:shadow-xl transform hover:-translate-y-0.5">
+                Continue to Account Setup
+                <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+            
+            <!-- Sign in link -->
+            <div class="text-center mt-4">
+                <p class="text-sm text-[var(--text-secondary)]">
+                    Already have an account?
+                    <a href="{% url 'accounts:login' %}" class="font-medium text-emerald-600 hover:text-emerald-700 transition-colors">
+                        Sign in
+                    </a>
+                </p>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+function changeQuantity(delta) {
+    const input = document.getElementById('quantity-input');
+    const currentValue = parseInt(input.value) || 2;
+    const newValue = Math.max(2, Math.min(50, currentValue + delta));
+    input.value = newValue;
+    updateInfo();
+}
+
+function updateInfo() {
+    const quantity = parseInt(document.getElementById('quantity-input').value) || 2;
+    const inviteCount = quantity - 1;
+    
+    document.getElementById('invite-count').textContent = inviteCount;
+    document.getElementById('team-count').textContent = quantity;
+    
+    // Update button states
+    document.getElementById('decrease-btn').disabled = quantity <= 2;
+    document.getElementById('increase-btn').disabled = quantity >= 50;
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateInfo();
+});
+</script>
+{% endblock %}

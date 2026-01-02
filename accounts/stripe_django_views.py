@@ -838,6 +838,7 @@ def stripe_cancel_pro_view(request):
 def stripe_checkout_team_view(request):
     """
     Display the Stripe checkout page for Team Toad subscription with quantity selector
+    Handles trial conversions by pre-populating the quantity from existing subscription group
     """
     logger.info(f"Stripe Team checkout view accessed by user: {request.user.email}")
     
@@ -850,8 +851,56 @@ def stripe_checkout_team_view(request):
         
         logger.info("Stripe API key is configured, proceeding...")
         
+        # Check if user is converting from a trial subscription
+        from accounts.models import SubscriptionGroup
+        default_quantity = 2
+        is_trial_conversion = False
+        subscription_group = SubscriptionGroup.objects.filter(
+            admin=request.user, 
+            is_active=True,
+            stripe_subscription_id__isnull=True  # Trial subscriptions have no Stripe ID
+        ).first()
+        
+        # Get current usage data for trial conversions
+        current_members_count = 0
+        pending_invitations_count = 0
+        members_list = []
+        invitations_list = []
+        
+        if subscription_group:
+            default_quantity = subscription_group.quantity
+            is_trial_conversion = True
+            logger.info(f"Trial conversion detected: pre-populating with {default_quantity} seats")
+            
+            # Get current members (excluding admin)
+            members = subscription_group.members.exclude(id=request.user.id)
+            current_members_count = members.count()
+            members_list = [{'id': m.id, 'email': m.email, 'name': f"{m.first_name} {m.last_name}".strip() or m.email} for m in members]
+            
+            # Get pending invitations
+            from accounts.models import TeamInvitation
+            pending_invitations = subscription_group.invitations.filter(status='pending')
+            pending_invitations_count = pending_invitations.count()
+            invitations_list = [{'id': inv.id, 'email': inv.invited_email} for inv in pending_invitations]
+        
+        # Calculate open seats (quantity - 1 for admin - members - pending invitations)
+        open_seats_count = max(0, default_quantity - 1 - current_members_count - pending_invitations_count)
+        open_seats_list = [{'index': i + 1} for i in range(open_seats_count)]
+        
         # Render team checkout template with quantity selector
-        response = render(request, 'accounts/pages/stripe/toad_team_stripe_checkout.html')
+        context = {
+            'default_quantity': default_quantity,
+            'is_trial_conversion': is_trial_conversion,
+            'price_per_seat': 5,  # £5 per seat/month
+            'current_members_count': current_members_count,
+            'pending_invitations_count': pending_invitations_count,
+            'open_seats_count': open_seats_count,
+            'open_seats_list': open_seats_list,
+            'members_list': members_list,
+            'invitations_list': invitations_list,
+            'subscription_group_id': subscription_group.id if subscription_group else None,
+        }
+        response = render(request, 'accounts/pages/stripe/toad_team_stripe_checkout.html', context)
         logger.info("Template rendered successfully")
         return response
         
@@ -937,6 +986,7 @@ def stripe_checkout_team_registration_view(request):
 def create_checkout_session_team(request):
     """
     Create a Stripe checkout session for Team Toad subscription with quantity
+    Handles seat reduction by removing members and invitations if specified
     """
     if request.method != 'POST':
         return redirect('accounts:stripe_checkout_team')
@@ -953,6 +1003,50 @@ def create_checkout_session_team(request):
         if quantity < 1:
             messages.error(request, 'Quantity must be at least 1.')
             return redirect('accounts:stripe_checkout_team')
+        
+        # Handle seat reduction removals for trial conversions
+        from accounts.models import SubscriptionGroup, TeamInvitation
+        import json
+        
+        remove_invitations = request.POST.get('remove_invitations', '[]')
+        remove_members = request.POST.get('remove_members', '[]')
+        
+        try:
+            invitation_ids_to_remove = json.loads(remove_invitations)
+            member_ids_to_remove = json.loads(remove_members)
+        except json.JSONDecodeError:
+            invitation_ids_to_remove = []
+            member_ids_to_remove = []
+        
+        # Get the user's trial subscription group if it exists
+        subscription_group = SubscriptionGroup.objects.filter(
+            admin=request.user,
+            is_active=True,
+            stripe_subscription_id__isnull=True
+        ).first()
+        
+        if subscription_group:
+            # Remove specified invitations
+            if invitation_ids_to_remove:
+                TeamInvitation.objects.filter(
+                    id__in=invitation_ids_to_remove,
+                    subscription_group=subscription_group,
+                    status='pending'
+                ).update(status='expired')
+                logger.info(f"Cancelled {len(invitation_ids_to_remove)} pending invitations during seat reduction")
+            
+            # Remove specified members
+            if member_ids_to_remove:
+                from django.contrib.auth import get_user_model
+                User = get_user_model()
+                members_to_remove = User.objects.filter(id__in=member_ids_to_remove)
+                
+                for member in members_to_remove:
+                    subscription_group.members.remove(member)
+                    # Downgrade member to free tier
+                    member.tier = 'free'
+                    member.save(update_fields=['tier'])
+                    logger.info(f"Removed member {member.email} from subscription group during seat reduction")
         
         # Get the price ID from the form (for live mode)
         # Pro plan price
@@ -1004,6 +1098,7 @@ def create_checkout_session_team(request):
 def stripe_success_team_view(request):
     """
     Handle successful Stripe Team checkout - redirect to email input page
+    Handles both new subscriptions and trial conversions
     """
     session_id = request.GET.get('session_id')
     
@@ -1027,31 +1122,67 @@ def stripe_success_team_view(request):
         customer_id = session.get('customer')
         subscription_id = session.get('subscription')
         
-        # Create SubscriptionGroup - user automatically becomes admin
+        # Check if this is a trial conversion (existing SubscriptionGroup without Stripe ID)
         from accounts.models import SubscriptionGroup
-        subscription_group = SubscriptionGroup.objects.create(
+        existing_trial_group = SubscriptionGroup.objects.filter(
             admin=request.user,
-            stripe_subscription_id=subscription_id,
-            quantity=quantity,
-            is_active=True
-        )
+            is_active=True,
+            stripe_subscription_id__isnull=True
+        ).first()
         
-        # Automatically add admin as a member (fills one seat)
-        subscription_group.members.add(request.user)
+        if existing_trial_group:
+            # Trial conversion - update existing SubscriptionGroup
+            logger.info(f"Converting trial SubscriptionGroup {existing_trial_group.id} to paid for user {request.user.email}")
+            existing_trial_group.stripe_subscription_id = subscription_id
+            existing_trial_group.quantity = quantity
+            existing_trial_group.save(update_fields=['stripe_subscription_id', 'quantity'])
+            subscription_group = existing_trial_group
+            is_trial_conversion = True
+        else:
+            # New subscription - create SubscriptionGroup
+            subscription_group = SubscriptionGroup.objects.create(
+                admin=request.user,
+                stripe_subscription_id=subscription_id,
+                quantity=quantity,
+                is_active=True
+            )
+            # Automatically add admin as a member (fills one seat)
+            subscription_group.members.add(request.user)
+            is_trial_conversion = False
         
         # Update admin user tier and stripe_customer_id
-        # Only update tier if they're not already a Team Toad user
-        pro_tiers = ['pro', 'pro_trial', 'beta']
-        if request.user.tier not in pro_tiers:
+        update_fields = []
+        
+        # Upgrade from pro_trial to pro on conversion
+        if request.user.tier in ['pro_trial', 'free', 'personal', 'personal_trial']:
             request.user.tier = 'pro'
-            update_fields = ['tier']
-        else:
-            update_fields = []
+            update_fields.append('tier')
+        
+        # Clear trial data on conversion
+        if is_trial_conversion:
+            request.user.trial_ends_at = None
+            request.user.trial_started_at = None
+            request.user.trial_type = None
+            update_fields.extend(['trial_ends_at', 'trial_started_at', 'trial_type'])
+            
+            # Also upgrade all existing team members from pro_trial to pro
+            team_members = subscription_group.members.exclude(id=request.user.id)
+            for member in team_members:
+                member_update_fields = []
+                if member.tier == 'pro_trial':
+                    member.tier = 'pro'
+                    member_update_fields.append('tier')
+                if member.trial_ends_at or member.trial_started_at or member.trial_type:
+                    member.trial_ends_at = None
+                    member.trial_started_at = None
+                    member.trial_type = None
+                    member_update_fields.extend(['trial_ends_at', 'trial_started_at', 'trial_type'])
+                if member_update_fields:
+                    member.save(update_fields=member_update_fields)
+                    logger.info(f"Upgraded team member {member.email} from trial to paid pro tier")
         
         if customer_id and getattr(request.user, 'stripe_customer_id', None) != customer_id:
             request.user.stripe_customer_id = customer_id
-            if 'tier' not in update_fields:
-                update_fields = []
             update_fields.append('stripe_customer_id')
         
         if update_fields:

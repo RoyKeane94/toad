@@ -3,12 +3,39 @@
 
 {% block title %}Invite Team Members - Toad{% endblock %}
 
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="min-h-screen flex items-start justify-center bg-[var(--main-bg)] pt-8 pb-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
     <div class="max-w-2xl w-full space-y-8">
+        <!-- Verification Reminder Banner -->
+        {% if not request.user.email_verified %}
+        <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+            <div class="flex items-start">
+                <div class="flex items-center justify-center w-10 h-10 bg-amber-100 rounded-lg mr-3 flex-shrink-0">
+                    <i class="fas fa-envelope text-amber-600"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="font-medium text-amber-800 text-sm">Don't forget to verify your email!</p>
+                    <p class="text-xs text-amber-700 mt-1">
+                        We've sent a verification link to <strong>{{ request.user.email }}</strong>. Please verify to complete your account setup.
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+        
         <!-- Header -->
         <div class="text-center">
-            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)]">
+            <h2 class="text-3xl font-bold text-orange-500">
                 Invite Team Members
             </h2>
             <p class="mt-2 text-sm text-[var(--text-secondary)]">
@@ -82,12 +109,35 @@
                         {% endfor %}
                     </div>
                     {% else %}
-                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
                         <p class="text-sm text-yellow-800">
                             <i class="fas fa-exclamation-triangle mr-2"></i>
                             No available seats. All seats are currently in use or have pending invitations.
                         </p>
                     </div>
+                    
+                    {% if is_trial %}
+                    <!-- Upgrade to Paid Option for Trial Users -->
+                    <div class="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg p-5">
+                        <div class="flex items-start">
+                            <div class="flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-lg mr-4 flex-shrink-0">
+                                <i class="fas fa-rocket text-emerald-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-emerald-600 text-base mb-1">Need more seats?</h4>
+                                <p class="text-sm text-emerald-700 mb-3">
+                                    Upgrade to a paid plan today to add more team members. You can choose exactly how many seats you need.
+                                </p>
+                                <a href="{% url 'accounts:stripe_checkout_team' %}" 
+                                   class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
+                                   style="background: linear-gradient(to right, #10b981, #22c55e) !important; color: white !important;">
+                                    <i class="fas fa-arrow-up mr-2" style="color: white !important;"></i>
+                                    <span style="color: white !important;">Convert to Paid Plan</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
                     {% endif %}
                 </div>
                 
@@ -129,6 +179,7 @@
     </div>
 </div>
 {% endblock %}
+
 
 
 

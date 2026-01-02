@@ -39371,3 +39371,340 @@ INFO 2025-12-20 16:39:22,293 autoreload 52666 8580636416 /Users/tombarratt/Deskt
 INFO 2025-12-20 16:39:22,904 autoreload 52703 8580636416 Watching for file changes with StatReloader
 INFO 2025-12-20 16:39:29,528 autoreload 52703 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
 INFO 2025-12-20 16:39:29,944 autoreload 52734 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:34:13,941 autoreload 85477 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:34:15,948 basehttp 85477 6129807360 "GET / HTTP/1.1" 200 10873
+INFO 2025-12-30 08:34:15,975 basehttp 85477 6163460096 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2025-12-30 08:34:15,976 basehttp 85477 6146633728 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2025-12-30 08:34:15,977 basehttp 85477 6180286464 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2025-12-30 08:34:15,977 basehttp 85477 6129807360 "GET /static/css/output.css HTTP/1.1" 200 105854
+INFO 2025-12-30 08:34:16,131 basehttp 85477 6129807360 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2025-12-30 08:34:16,171 basehttp 85477 6129807360 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2025-12-30 08:34:19,415 basehttp 85477 6129807360 "GET /accounts/register/ HTTP/1.1" 200 4134
+INFO 2025-12-30 08:34:41,863 basehttp 85477 6129807360 "GET /accounts/register/team/trial/quantity HTTP/1.1" 301 0
+INFO 2025-12-30 08:34:41,867 basehttp 85477 6180286464 "GET /accounts/register/team/trial/quantity/ HTTP/1.1" 200 3832
+INFO 2025-12-30 08:35:01,534 basehttp 85477 6180286464 "GET /accounts/register/team/trial/quantity/ HTTP/1.1" 200 3842
+INFO 2025-12-30 08:35:11,770 basehttp 85477 6180286464 "POST /accounts/register/team/trial/quantity/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:35:11,776 basehttp 85477 6180286464 "GET /accounts/register/team/trial/link/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:35:11,783 basehttp 85477 6180286464 "GET /accounts/register/team/trial/quantity/ HTTP/1.1" 200 3844
+INFO 2025-12-30 08:35:21,200 basehttp 85477 6180286464 "GET /accounts/register/team/trial/quantity/ HTTP/1.1" 200 3797
+INFO 2025-12-30 08:35:25,063 basehttp 85477 6180286464 "POST /accounts/register/team/trial/quantity/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:35:25,073 basehttp 85477 6180286464 "GET /accounts/register/team/trial/link/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:35:25,081 basehttp 85477 6180286464 "GET /accounts/register/team/trial/quantity/ HTTP/1.1" 200 3818
+INFO 2025-12-30 08:37:03,994 autoreload 85477 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-30 08:37:04,518 autoreload 85712 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:37:52,041 autoreload 85712 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-30 08:37:52,556 autoreload 85755 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:38:01,279 autoreload 85755 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2025-12-30 08:38:01,729 autoreload 85779 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:51:50,171 basehttp 85779 6190542848 "GET /accounts/register/team/trial/quantity/ HTTP/1.1" 200 3839
+INFO 2025-12-30 08:51:53,218 views 85779 6190542848 RegisterTeamTrialQuantityView POST received: <QueryDict: {'csrfmiddlewaretoken': ['RfMNtZDutR2Fd52MJ3QRmngq0ISYiivySd6dLQ2jKJQs157PbwrdyCwsdV8kC0LS'], 'quantity': ['3']}>
+INFO 2025-12-30 08:51:53,219 views 85779 6190542848 Quantity parsed: 3
+INFO 2025-12-30 08:51:53,223 views 85779 6190542848 Session saved with quantity: 3
+INFO 2025-12-30 08:51:53,223 views 85779 6190542848 Redirecting to team_trial_link_handler
+INFO 2025-12-30 08:51:53,227 basehttp 85779 6190542848 "POST /accounts/register/team/trial/quantity/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:51:53,232 basehttp 85779 6190542848 "GET /accounts/register/team/trial/link/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:51:53,251 basehttp 85779 6190542848 "GET /accounts/register/team/trial/admin/ HTTP/1.1" 200 4221
+INFO 2025-12-30 08:52:16,718 views 85779 6190542848 Starting Team Toad trial admin registration with 3 seats...
+INFO 2025-12-30 08:52:16,933 views 85779 6190542848 Admin user created successfully: tim@hotmail.co.uk
+INFO 2025-12-30 08:52:16,935 views 85779 6190542848 User tier set to pro_trial with 1-month trial: tim@hotmail.co.uk
+INFO 2025-12-30 08:52:16,936 views 85779 6190542848 New Team Toad trial admin registration: tim@hotmail.co.uk (Tim) - tier set to PRO_TRIAL, 3 seats
+INFO 2025-12-30 08:52:16,936 views 85779 6190542848 Logging user in...
+INFO 2025-12-30 08:52:16,939 views 85779 6190542848 User logged in successfully
+INFO 2025-12-30 08:52:16,939 views 85779 6190542848 Redirecting to team invite members...
+INFO 2025-12-30 08:52:16,940 basehttp 85779 6190542848 "POST /accounts/register/team/trial/admin/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:52:16,949 basehttp 85779 6190542848 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3484
+INFO 2025-12-30 08:52:46,696 basehttp 85779 6190542848 "GET /accounts/team/manage/ HTTP/1.1" 200 6338
+INFO 2025-12-30 08:53:24,954 _util 85779 6190542848 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2025-12-30 08:53:25,267 _util 85779 6190542848 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2025-12-30 08:53:25,280 _util 85779 6190542848 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2025-12-30 08:53:25,489 _util 85779 6190542848 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2025-12-30 08:53:25,490 _util 85779 6190542848 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2025-12-30 08:53:25,490 stripe_django_views 85779 6190542848 Could not update portal configuration: Request req_ftl5e68ACxnyFZ: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2025-12-30 08:53:25,492 basehttp 85779 6190542848 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:53:25,507 basehttp 85779 6190542848 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7233
+INFO 2025-12-30 08:53:30,932 basehttp 85779 6190542848 "GET /accounts/settings/ HTTP/1.1" 200 5411
+INFO 2025-12-30 08:53:38,680 stripe_django_views 85779 6190542848 Stripe Team checkout view accessed by user: tim@hotmail.co.uk
+INFO 2025-12-30 08:53:38,680 stripe_django_views 85779 6190542848 Stripe API key is configured, proceeding...
+INFO 2025-12-30 08:53:38,686 stripe_django_views 85779 6190542848 Template rendered successfully
+INFO 2025-12-30 08:53:38,688 basehttp 85779 6190542848 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3857
+INFO 2025-12-30 08:53:46,031 _util 85779 6190542848 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2025-12-30 08:53:46,244 _util 85779 6190542848 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2025-12-30 08:53:46,245 _util 85779 6190542848 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2025-12-30 08:53:46,649 _util 85779 6190542848 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2025-12-30 08:53:46,653 basehttp 85779 6190542848 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2025-12-30 08:55:28,679 autoreload 85779 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-30 08:55:29,264 autoreload 86498 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:55:55,390 autoreload 86498 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-30 08:55:55,921 autoreload 86560 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 08:56:11,741 autoreload 86560 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-30 08:56:12,271 autoreload 86592 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 09:07:24,925 basehttp 86592 6162018304 "GET /accounts/settings/ HTTP/1.1" 200 5448
+INFO 2025-12-30 09:07:31,425 stripe_django_views 86592 6162018304 Stripe Team checkout view accessed by user: tim@hotmail.co.uk
+INFO 2025-12-30 09:07:31,425 stripe_django_views 86592 6162018304 Stripe API key is configured, proceeding...
+INFO 2025-12-30 09:07:31,428 stripe_django_views 86592 6162018304 User has trial subscription with 1 members and 0 pending invitations. Setting minimum quantity to 1
+INFO 2025-12-30 09:07:31,433 stripe_django_views 86592 6162018304 Template rendered successfully
+INFO 2025-12-30 09:07:31,434 basehttp 86592 6162018304 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3885
+INFO 2025-12-30 09:07:35,987 stripe_django_views 86592 6162018304 Stripe Team checkout view accessed by user: tim@hotmail.co.uk
+INFO 2025-12-30 09:07:35,987 stripe_django_views 86592 6162018304 Stripe API key is configured, proceeding...
+INFO 2025-12-30 09:07:35,989 stripe_django_views 86592 6162018304 User has trial subscription with 1 members and 0 pending invitations. Setting minimum quantity to 1
+INFO 2025-12-30 09:07:35,991 stripe_django_views 86592 6162018304 Template rendered successfully
+INFO 2025-12-30 09:07:35,992 basehttp 86592 6162018304 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3909
+INFO 2025-12-30 09:07:45,669 basehttp 86592 6162018304 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3310
+INFO 2025-12-30 09:07:48,267 basehttp 86592 6162018304 "GET /accounts/team/manage/ HTTP/1.1" 200 6344
+INFO 2025-12-30 09:07:55,930 basehttp 86592 6162018304 "GET /accounts/team/manage/ HTTP/1.1" 200 6368
+INFO 2025-12-30 09:07:59,254 stripe_django_views 86592 6162018304 Stripe Team checkout view accessed by user: tim@hotmail.co.uk
+INFO 2025-12-30 09:07:59,254 stripe_django_views 86592 6162018304 Stripe API key is configured, proceeding...
+INFO 2025-12-30 09:07:59,257 stripe_django_views 86592 6162018304 User has trial subscription with 1 members and 0 pending invitations. Setting minimum quantity to 1
+INFO 2025-12-30 09:07:59,260 stripe_django_views 86592 6162018304 Template rendered successfully
+INFO 2025-12-30 09:07:59,266 basehttp 86592 6162018304 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3843
+INFO 2025-12-30 09:09:43,716 basehttp 86592 6162018304 "GET /accounts/settings/ HTTP/1.1" 200 5487
+INFO 2025-12-30 09:09:48,104 stripe_django_views 86592 6162018304 Stripe Team checkout view accessed by user: tim@hotmail.co.uk
+INFO 2025-12-30 09:09:48,105 stripe_django_views 86592 6162018304 Stripe API key is configured, proceeding...
+INFO 2025-12-30 09:09:48,107 stripe_django_views 86592 6162018304 User has trial subscription with 1 members and 0 pending invitations. Setting minimum quantity to 1
+INFO 2025-12-30 09:09:48,110 stripe_django_views 86592 6162018304 Template rendered successfully
+INFO 2025-12-30 09:09:48,111 basehttp 86592 6162018304 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3926
+INFO 2025-12-30 09:13:00,409 autoreload 86592 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-30 09:13:00,978 autoreload 87131 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 09:13:40,320 autoreload 87131 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-30 09:13:40,841 autoreload 87175 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 09:13:57,672 autoreload 87175 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2025-12-30 09:13:58,171 autoreload 87203 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 09:14:12,471 basehttp 87203 6162952192 "GET /accounts/settings/ HTTP/1.1" 200 5441
+INFO 2025-12-30 09:14:14,572 stripe_django_views 87203 6162952192 Stripe Team checkout view accessed by user: tim@hotmail.co.uk
+INFO 2025-12-30 09:14:14,572 stripe_django_views 87203 6162952192 Stripe API key is configured, proceeding...
+INFO 2025-12-30 09:14:14,575 stripe_django_views 87203 6162952192 User has trial subscription with 1 members and 0 pending invitations. Setting minimum quantity to 2, default to 2
+INFO 2025-12-30 09:14:14,575 stripe_django_views 87203 6162952192 Context passed to template: min_quantity=2, default_quantity=2, initial_total_price=10.0
+INFO 2025-12-30 09:14:14,581 stripe_django_views 87203 6162952192 Template rendered successfully
+INFO 2025-12-30 09:14:14,582 basehttp 87203 6162952192 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 3958
+INFO 2025-12-30 09:14:43,922 autoreload 87203 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
+INFO 2025-12-30 09:14:44,590 autoreload 87240 8580636416 Watching for file changes with StatReloader
+INFO 2025-12-30 09:14:47,921 basehttp 87240 6164557824 "GET /accounts/team/manage/ HTTP/1.1" 200 6285
+INFO 2025-12-30 09:14:49,159 basehttp 87240 6164557824 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3268
+INFO 2025-12-30 09:15:02,259 email_utils 87240 6164557824 Team invitation email sent to thomasbarratt@yahoo.com
+INFO 2025-12-30 09:15:02,262 basehttp 87240 6164557824 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2025-12-30 09:15:02,281 basehttp 87240 6164557824 "GET /accounts/team/manage/ HTTP/1.1" 200 6669
+INFO 2025-12-30 09:15:17,762 basehttp 87240 6164557824 "GET /accounts/settings/ HTTP/1.1" 200 5355
+INFO 2025-12-30 09:15:27,702 basehttp 87240 6164557824 "GET /accounts/team/manage/ HTTP/1.1" 200 6576
+INFO 2025-12-30 09:15:34,311 basehttp 87240 6164557824 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7279
+INFO 2025-12-30 09:15:36,667 basehttp 87240 6164557824 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7251
+INFO 2025-12-30 09:15:43,730 basehttp 87240 6164557824 "POST /accounts/team/cancel-invitation/6/ HTTP/1.1" 302 0
+INFO 2025-12-30 09:15:43,744 basehttp 87240 6164557824 "GET /accounts/settings/ HTTP/1.1" 200 5171
+INFO 2025-12-30 09:15:48,178 basehttp 87240 6164557824 "GET /accounts/settings/ HTTP/1.1" 200 5170
+INFO 2025-12-30 09:15:53,465 basehttp 87240 6164557824 "GET /accounts/team/manage/ HTTP/1.1" 200 6484
+INFO 2025-12-30 09:16:19,164 basehttp 87240 6164557824 "GET /accounts/settings/ HTTP/1.1" 200 5244
+INFO 2025-12-30 09:16:22,388 basehttp 87240 6164557824 "GET /accounts/settings/delete/ HTTP/1.1" 200 3788
+INFO 2025-12-30 09:16:27,429 views 87240 6164557824 Account deleted: tim@hotmail.co.uk (Tim)
+INFO 2025-12-30 09:16:27,449 basehttp 87240 6164557824 "POST /accounts/settings/delete/ HTTP/1.1" 302 0
+INFO 2025-12-30 09:16:27,461 basehttp 87240 6164557824 "GET / HTTP/1.1" 200 10844
+INFO 2025-12-30 09:16:29,862 basehttp 87240 6164557824 "GET /accounts/register/ HTTP/1.1" 200 4135
+INFO 2026-01-02 15:21:26,778 autoreload 32798 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:21:29,564 basehttp 32798 6132183040 "GET / HTTP/1.1" 200 10920
+INFO 2026-01-02 15:21:29,653 basehttp 32798 6132183040 "GET /static/css/output.css HTTP/1.1" 200 105854
+INFO 2026-01-02 15:21:29,655 basehttp 32798 6132183040 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2026-01-02 15:21:29,662 basehttp 32798 6132183040 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2026-01-02 15:21:29,663 basehttp 32798 6149009408 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2026-01-02 15:21:30,435 basehttp 32798 6149009408 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2026-01-02 15:21:33,905 basehttp 32798 6149009408 "GET /accounts/register/ HTTP/1.1" 200 4177
+INFO 2026-01-02 15:21:38,323 basehttp 32798 6149009408 "GET /accounts/register/team/quantity/ HTTP/1.1" 200 3852
+INFO 2026-01-02 15:21:51,648 basehttp 32798 6149009408 "GET / HTTP/1.1" 200 10886
+INFO 2026-01-02 15:21:53,706 basehttp 32798 6149009408 "GET /accounts/register/trial-1-month-pro/ HTTP/1.1" 200 5813
+INFO 2026-01-02 15:22:06,259 basehttp 32798 6149009408 "GET /accounts/register/pro/ HTTP/1.1" 200 4146
+INFO 2026-01-02 15:22:08,032 basehttp 32798 6149009408 "GET /accounts/register/team/quantity/ HTTP/1.1" 200 3784
+INFO 2026-01-02 15:22:17,798 basehttp 32798 6149009408 "GET / HTTP/1.1" 200 10919
+INFO 2026-01-02 15:22:19,134 basehttp 32798 6149009408 "GET /accounts/register/trial-1-month-pro/ HTTP/1.1" 200 5779
+INFO 2026-01-02 15:23:45,038 views 32798 6149009408 Starting 1-month Pro trial registration (is_team=True, team_size=4)...
+INFO 2026-01-02 15:23:45,255 views 32798 6149009408 User created successfully: tomjones@hotmail.com
+INFO 2026-01-02 15:23:45,256 views 32798 6149009408 User tier set to pro_trial with 1-month trial type: tomjones@hotmail.com
+INFO 2026-01-02 15:23:45,258 views 32798 6149009408 Team trial SubscriptionGroup created: 4 with 4 seats
+INFO 2026-01-02 15:23:45,258 views 32798 6149009408 New Team Trial registration: tomjones@hotmail.com (Tom) - 4 seats
+INFO 2026-01-02 15:23:45,260 basehttp 32798 6149009408 "POST /accounts/register/trial-1-month-pro/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:23:45,271 email_utils 32798 6165835776 Attempting to send verification email to tomjones@hotmail.com
+INFO 2026-01-02 15:23:45,273 basehttp 32798 6149009408 "GET /accounts/login/ HTTP/1.1" 200 4014
+INFO 2026-01-02 15:23:47,485 email_utils 32798 6165835776 Successfully sent verification email to tomjones@hotmail.com
+INFO 2026-01-02 15:23:47,485 views 32798 6165835776 Verification email sent: True for tomjones@hotmail.com
+INFO 2026-01-02 15:25:30,912 autoreload 32798 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:25:31,424 autoreload 32974 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:26:04,629 autoreload 32974 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:26:05,076 autoreload 33032 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:27:09,736 basehttp 33032 6135427072 "GET / HTTP/1.1" 200 10909
+INFO 2026-01-02 15:27:12,807 basehttp 33032 6135427072 "GET /accounts/register/trial-1-month-pro/ HTTP/1.1" 200 5762
+INFO 2026-01-02 15:27:45,002 basehttp 33032 6135427072 "GET /accounts/register/trial-1-month-pro/ HTTP/1.1" 200 5780
+INFO 2026-01-02 15:27:45,028 basehttp 33032 6169079808 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2026-01-02 15:27:45,030 basehttp 33032 6152253440 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2026-01-02 15:27:45,031 basehttp 33032 6135427072 "GET /static/css/output.css HTTP/1.1" 200 105854
+INFO 2026-01-02 15:27:45,031 basehttp 33032 6185906176 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2026-01-02 15:27:45,204 basehttp 33032 6185906176 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2026-01-02 15:27:59,310 views 33032 6185906176 Starting 1-month Pro trial registration (is_team=True, team_size=2)...
+INFO 2026-01-02 15:27:59,525 views 33032 6185906176 User created successfully: nickjones@hotmail.com
+INFO 2026-01-02 15:27:59,527 views 33032 6185906176 User tier set to pro_trial with 1-month trial type: nickjones@hotmail.com
+INFO 2026-01-02 15:27:59,528 views 33032 6185906176 Team trial SubscriptionGroup created: 5 with 2 seats
+INFO 2026-01-02 15:27:59,529 views 33032 6185906176 New Team Trial registration: nickjones@hotmail.com (Nick) - 2 seats
+INFO 2026-01-02 15:27:59,531 views 33032 6185906176 User logged in immediately after registration: nickjones@hotmail.com
+INFO 2026-01-02 15:27:59,534 basehttp 33032 6185906176 "POST /accounts/register/trial-1-month-pro/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:27:59,544 email_utils 33032 6202732544 Attempting to send verification email to nickjones@hotmail.com
+INFO 2026-01-02 15:27:59,545 basehttp 33032 6185906176 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3631
+INFO 2026-01-02 15:27:59,950 email_utils 33032 6202732544 Successfully sent verification email to nickjones@hotmail.com
+INFO 2026-01-02 15:27:59,951 views 33032 6202732544 Verification email sent: True for nickjones@hotmail.com
+INFO 2026-01-02 15:30:44,216 autoreload 33032 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:30:44,734 autoreload 33312 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:30:59,537 autoreload 33312 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/models.py changed, reloading.
+INFO 2026-01-02 15:30:59,994 autoreload 33336 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:31:09,674 autoreload 33336 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:31:10,111 autoreload 33378 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:31:23,893 autoreload 33378 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:31:24,337 autoreload 33400 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:32:07,829 basehttp 33400 6203371520 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3492
+INFO 2026-01-02 15:32:41,126 email_utils 33400 6203371520 Team invitation email sent to tom.barratt@prefequity.com
+INFO 2026-01-02 15:32:41,127 basehttp 33400 6203371520 "POST /accounts/team/invite-members/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:32:41,142 basehttp 33400 6203371520 "GET /accounts/team/manage/ HTTP/1.1" 200 7249
+INFO 2026-01-02 15:34:48,860 basehttp 33400 6203371520 "GET /accounts/team/manage/ HTTP/1.1" 200 7161
+INFO 2026-01-02 15:34:51,822 _util 33400 6203371520 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/billing_portal/configurations?limit=10
+INFO 2026-01-02 15:34:52,098 _util 33400 6203371520 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations?limit=10 response_code=200
+INFO 2026-01-02 15:34:52,110 _util 33400 6203371520 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy
+INFO 2026-01-02 15:34:52,327 _util 33400 6203371520 message='Stripe API response' path=https://api.stripe.com/v1/billing_portal/configurations/bpc_1SS1x1ImvDyA3xukptaKseXy response_code=400
+INFO 2026-01-02 15:34:52,328 _util 33400 6203371520 error_code=parameter_missing error_message='Missing required param: features[subscription_update][products].' error_param=features[subscription_update][products] error_type=invalid_request_error message='Stripe v1 API error received'
+WARNING 2026-01-02 15:34:52,328 stripe_django_views 33400 6203371520 Could not update portal configuration: Request req_r8EWE5hOJ3iO7c: Missing required param: features[subscription_update][products].. Using existing configuration.
+INFO 2026-01-02 15:34:52,330 basehttp 33400 6203371520 "GET /accounts/stripe/create-portal-session/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:34:52,351 basehttp 33400 6203371520 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7321
+INFO 2026-01-02 15:35:22,944 basehttp 33400 6203371520 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3591
+INFO 2026-01-02 15:37:51,520 basehttp 33400 6203371520 "GET /accounts/team/manage/ HTTP/1.1" 200 6945
+INFO 2026-01-02 15:38:34,716 basehttp 33400 6203371520 "GET /accounts/team/manage/ HTTP/1.1" 200 6995
+INFO 2026-01-02 15:38:36,483 stripe_django_views 33400 6203371520 Stripe Team checkout view accessed by user: nickjones@hotmail.com
+INFO 2026-01-02 15:38:36,483 stripe_django_views 33400 6203371520 Stripe API key is configured, proceeding...
+INFO 2026-01-02 15:38:36,485 stripe_django_views 33400 6203371520 Trial conversion detected: pre-populating with 2 seats
+INFO 2026-01-02 15:38:36,493 stripe_django_views 33400 6203371520 Template rendered successfully
+INFO 2026-01-02 15:38:36,495 basehttp 33400 6203371520 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 4086
+INFO 2026-01-02 15:40:04,883 autoreload 33400 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2026-01-02 15:40:05,463 autoreload 33967 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:41:34,788 autoreload 33967 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2026-01-02 15:41:35,294 autoreload 34057 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:41:47,035 autoreload 34057 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2026-01-02 15:41:47,480 autoreload 34079 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:42:25,772 autoreload 34079 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2026-01-02 15:42:26,262 autoreload 34118 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:43:00,264 basehttp 34118 6201028608 "GET /accounts/team/manage/ HTTP/1.1" 200 6981
+INFO 2026-01-02 15:43:05,398 stripe_django_views 34118 6201028608 Stripe Team checkout view accessed by user: nickjones@hotmail.com
+INFO 2026-01-02 15:43:05,398 stripe_django_views 34118 6201028608 Stripe API key is configured, proceeding...
+INFO 2026-01-02 15:43:05,400 stripe_django_views 34118 6201028608 Trial conversion detected: pre-populating with 2 seats
+INFO 2026-01-02 15:43:05,409 stripe_django_views 34118 6201028608 Template rendered successfully
+INFO 2026-01-02 15:43:05,411 basehttp 34118 6201028608 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 6847
+INFO 2026-01-02 15:43:20,664 _util 34118 6201028608 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2026-01-02 15:43:20,964 _util 34118 6201028608 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2026-01-02 15:43:20,972 _util 34118 6201028608 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2026-01-02 15:43:21,422 _util 34118 6201028608 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2026-01-02 15:43:21,423 basehttp 34118 6201028608 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:45:34,961 basehttp 34118 6201028608 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:45:34,972 basehttp 34118 6201028608 "GET / HTTP/1.1" 200 10835
+INFO 2026-01-02 15:45:35,078 basehttp 34118 6201028608 "GET /static/video/Toad%20Landing%20Page.mp4 HTTP/1.1" 200 8154528
+INFO 2026-01-02 15:45:48,905 basehttp 34118 6201028608 "GET /accounts/team/accept-invitation/ue6o0KIiTGJQzB6zjjSA1yl3npXIT6UP/ HTTP/1.1" 200 3337
+INFO 2026-01-02 15:45:49,490 autoreload 34118 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2026-01-02 15:45:50,064 autoreload 34279 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:45:58,497 basehttp 34279 6163558400 "POST /accounts/team/accept-invitation/ue6o0KIiTGJQzB6zjjSA1yl3npXIT6UP/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:45:58,514 basehttp 34279 6163558400 "GET /grids/ HTTP/1.1" 200 11739
+INFO 2026-01-02 15:46:01,183 basehttp 34279 6163558400 "GET /accounts/settings/ HTTP/1.1" 200 3629
+INFO 2026-01-02 15:46:02,906 autoreload 34279 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/stripe_django_views.py changed, reloading.
+INFO 2026-01-02 15:46:03,370 autoreload 34307 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:46:04,305 basehttp 34307 6171045888 "GET /accounts/manage-subscription/ HTTP/1.1" 200 6903
+INFO 2026-01-02 15:46:06,556 basehttp 34307 6171045888 "GET /accounts/settings/ HTTP/1.1" 200 3650
+INFO 2026-01-02 15:46:08,030 basehttp 34307 6171045888 "GET /accounts/manage-subscription/ HTTP/1.1" 200 6809
+INFO 2026-01-02 15:46:11,200 basehttp 34307 6171045888 "GET /accounts/logout/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:46:11,207 basehttp 34307 6171045888 "GET / HTTP/1.1" 200 10932
+INFO 2026-01-02 15:46:31,497 basehttp 34307 6171045888 "GET /accounts/login/ HTTP/1.1" 200 3878
+INFO 2026-01-02 15:46:38,850 basehttp 34307 6171045888 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:46:38,869 basehttp 34307 6171045888 "GET /grids/ HTTP/1.1" 200 13240
+INFO 2026-01-02 15:46:40,553 basehttp 34307 6171045888 "GET / HTTP/1.1" 200 10997
+INFO 2026-01-02 15:46:41,526 basehttp 34307 6171045888 "GET /admin HTTP/1.1" 301 0
+INFO 2026-01-02 15:46:41,562 basehttp 34307 6187872256 "GET /admin/ HTTP/1.1" 200 3141
+INFO 2026-01-02 15:46:41,583 basehttp 34307 6171045888 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+INFO 2026-01-02 15:46:41,583 basehttp 34307 6255177728 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2026-01-02 15:46:41,584 basehttp 34307 6221524992 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2026-01-02 15:46:41,584 basehttp 34307 6204698624 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2026-01-02 15:46:41,585 basehttp 34307 6238351360 "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+INFO 2026-01-02 15:46:41,585 basehttp 34307 6187872256 "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+INFO 2026-01-02 15:46:41,586 basehttp 34307 6238351360 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2026-01-02 15:46:41,591 basehttp 34307 6187872256 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2026-01-02 15:46:41,591 basehttp 34307 6221524992 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2026-01-02 15:46:41,591 basehttp 34307 6204698624 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2026-01-02 15:46:41,592 basehttp 34307 6238351360 "GET /static/admin/img/icon-yes.svg HTTP/1.1" 200 436
+INFO 2026-01-02 15:46:42,816 basehttp 34307 6238351360 "GET /admin/accounts/user/ HTTP/1.1" 200 4798
+INFO 2026-01-02 15:46:42,828 basehttp 34307 6238351360 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2026-01-02 15:46:42,835 basehttp 34307 6255177728 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+INFO 2026-01-02 15:46:42,835 basehttp 34307 6187872256 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2026-01-02 15:46:42,836 basehttp 34307 6221524992 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2026-01-02 15:46:42,836 basehttp 34307 6171045888 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2026-01-02 15:46:42,838 basehttp 34307 6204698624 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2026-01-02 15:46:42,838 basehttp 34307 6238351360 "GET /admin/jsi18n/ HTTP/1.1" 200 1037
+INFO 2026-01-02 15:46:42,843 basehttp 34307 6255177728 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2026-01-02 15:46:42,846 basehttp 34307 6221524992 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2026-01-02 15:46:42,847 basehttp 34307 6171045888 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2026-01-02 15:46:42,849 basehttp 34307 6171045888 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2026-01-02 15:46:42,850 basehttp 34307 6238351360 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2026-01-02 15:46:42,853 basehttp 34307 6238351360 "GET /static/admin/img/icon-no.svg HTTP/1.1" 200 560
+INFO 2026-01-02 15:46:42,864 basehttp 34307 6238351360 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2026-01-02 15:46:42,864 basehttp 34307 6171045888 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2026-01-02 15:46:42,864 basehttp 34307 6221524992 "GET /static/admin/img/icon-viewlink.svg HTTP/1.1" 200 581
+INFO 2026-01-02 15:46:59,682 basehttp 34307 6221524992 "POST /admin/accounts/user/ HTTP/1.1" 200 3963
+INFO 2026-01-02 15:46:59,695 basehttp 34307 6221524992 "GET /static/admin/js/cancel.js HTTP/1.1" 200 884
+INFO 2026-01-02 15:47:02,530 basehttp 34307 6221524992 "POST /admin/accounts/user/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:47:02,543 basehttp 34307 6221524992 "GET /admin/accounts/user/ HTTP/1.1" 200 4692
+INFO 2026-01-02 15:47:02,558 basehttp 34307 6221524992 "GET /admin/jsi18n/ HTTP/1.1" 200 982
+INFO 2026-01-02 15:47:05,326 basehttp 34307 6221524992 "GET /admin/accounts/user/52/change/ HTTP/1.1" 200 6881
+INFO 2026-01-02 15:47:05,339 basehttp 34307 6255177728 "GET /static/admin/js/prepopulate_init.js HTTP/1.1" 200 586
+INFO 2026-01-02 15:47:05,340 basehttp 34307 6221524992 "GET /static/admin/css/forms.css HTTP/1.1" 200 8525
+INFO 2026-01-02 15:47:05,340 basehttp 34307 6238351360 "GET /static/admin/js/calendar.js HTTP/1.1" 200 9141
+INFO 2026-01-02 15:47:05,342 basehttp 34307 6204698624 "GET /static/admin/js/admin/DateTimeShortcuts.js HTTP/1.1" 200 19319
+INFO 2026-01-02 15:47:05,344 basehttp 34307 6171045888 "GET /admin/jsi18n/ HTTP/1.1" 200 1055
+INFO 2026-01-02 15:47:05,344 basehttp 34307 6238351360 "GET /static/admin/css/widgets.css HTTP/1.1" 200 11991
+INFO 2026-01-02 15:47:05,346 basehttp 34307 6171045888 "GET /static/admin/js/change_form.js HTTP/1.1" 200 606
+INFO 2026-01-02 15:47:05,377 basehttp 34307 6238351360 "GET /static/admin/img/icon-clock.svg HTTP/1.1" 200 677
+INFO 2026-01-02 15:47:05,378 basehttp 34307 6171045888 "GET /static/admin/img/icon-calendar.svg HTTP/1.1" 200 1086
+INFO 2026-01-02 15:47:08,481 basehttp 34307 6171045888 "POST /admin/accounts/user/52/change/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:47:08,501 basehttp 34307 6171045888 "GET /admin/accounts/user/ HTTP/1.1" 200 4776
+INFO 2026-01-02 15:47:08,515 basehttp 34307 6171045888 "GET /admin/jsi18n/ HTTP/1.1" 200 1041
+INFO 2026-01-02 15:47:10,168 basehttp 34307 6171045888 "POST /admin/logout/ HTTP/1.1" 200 1396
+INFO 2026-01-02 15:47:11,342 basehttp 34307 6171045888 "GET / HTTP/1.1" 200 10898
+INFO 2026-01-02 15:47:12,911 basehttp 34307 6171045888 "GET /accounts/login/ HTTP/1.1" 200 3853
+INFO 2026-01-02 15:47:18,985 basehttp 34307 6171045888 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:47:18,994 basehttp 34307 6171045888 "GET /grids/ HTTP/1.1" 200 11663
+INFO 2026-01-02 15:47:22,061 basehttp 34307 6171045888 "GET /accounts/settings/ HTTP/1.1" 200 5183
+INFO 2026-01-02 15:48:54,437 autoreload 34307 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:48:54,960 autoreload 34445 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:49:32,235 autoreload 34445 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:49:32,806 autoreload 34682 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:50:15,057 basehttp 34682 6202077184 "GET /accounts/settings/ HTTP/1.1" 200 5455
+INFO 2026-01-02 15:50:53,557 basehttp 34682 6202077184 "GET /accounts/settings/ HTTP/1.1" 200 5512
+INFO 2026-01-02 15:50:56,066 stripe_django_views 34682 6202077184 Stripe Team checkout view accessed by user: nickjones@hotmail.com
+INFO 2026-01-02 15:50:56,066 stripe_django_views 34682 6202077184 Stripe API key is configured, proceeding...
+INFO 2026-01-02 15:50:56,067 stripe_django_views 34682 6202077184 Trial conversion detected: pre-populating with 2 seats
+INFO 2026-01-02 15:50:56,078 stripe_django_views 34682 6202077184 Template rendered successfully
+INFO 2026-01-02 15:50:56,079 basehttp 34682 6202077184 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 6884
+INFO 2026-01-02 15:51:08,705 basehttp 34682 6202077184 "GET /accounts/team/manage/ HTTP/1.1" 200 7015
+INFO 2026-01-02 15:51:12,668 basehttp 34682 6202077184 "GET /accounts/team/manage/ HTTP/1.1" 200 7061
+INFO 2026-01-02 15:51:22,932 basehttp 34682 6202077184 "GET /accounts/team/invite-members/ HTTP/1.1" 200 3373
+INFO 2026-01-02 15:52:10,485 autoreload 34682 8580636416 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/views.py changed, reloading.
+INFO 2026-01-02 15:52:11,012 autoreload 34770 8580636416 Watching for file changes with StatReloader
+INFO 2026-01-02 15:52:38,463 basehttp 34770 6193606656 "GET /accounts/manage-subscription/ HTTP/1.1" 200 7263
+INFO 2026-01-02 15:53:55,873 basehttp 34770 6193606656 "GET /accounts/settings/ HTTP/1.1" 200 5489
+INFO 2026-01-02 15:53:57,907 basehttp 34770 6193606656 "GET /accounts/team/manage/ HTTP/1.1" 200 7009
+INFO 2026-01-02 15:54:31,313 stripe_django_views 34770 6193606656 Stripe Team checkout view accessed by user: nickjones@hotmail.com
+INFO 2026-01-02 15:54:31,314 stripe_django_views 34770 6193606656 Stripe API key is configured, proceeding...
+INFO 2026-01-02 15:54:31,317 stripe_django_views 34770 6193606656 Trial conversion detected: pre-populating with 2 seats
+INFO 2026-01-02 15:54:31,324 stripe_django_views 34770 6193606656 Template rendered successfully
+INFO 2026-01-02 15:54:31,325 basehttp 34770 6193606656 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 6795
+INFO 2026-01-02 15:54:47,318 signals 34770 6193606656 User tom.barratt@prefequity.com downgraded from pro to free. Deleted 1 grid(s) due to team subscription cancellation.
+INFO 2026-01-02 15:54:47,319 stripe_django_views 34770 6193606656 Removed member tom.barratt@prefequity.com from subscription group during seat reduction
+INFO 2026-01-02 15:54:47,394 _util 34770 6193606656 message='Request to Stripe api' method=get url=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product
+INFO 2026-01-02 15:54:47,706 _util 34770 6193606656 message='Stripe API response' path=https://api.stripe.com/v1/prices/price_1SPN4iImvDyA3xuknMiIWMe5?expand[0]=product response_code=200
+INFO 2026-01-02 15:54:47,710 _util 34770 6193606656 message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+INFO 2026-01-02 15:54:48,112 _util 34770 6193606656 message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+INFO 2026-01-02 15:54:48,113 basehttp 34770 6193606656 "POST /accounts/stripe/create-checkout-session/team/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:54:56,147 basehttp 34770 6193606656 "GET /accounts/stripe/cancel/team/ HTTP/1.1" 302 0
+INFO 2026-01-02 15:54:56,151 stripe_django_views 34770 6193606656 Stripe Team checkout view accessed by user: nickjones@hotmail.com
+INFO 2026-01-02 15:54:56,151 stripe_django_views 34770 6193606656 Stripe API key is configured, proceeding...
+INFO 2026-01-02 15:54:56,152 stripe_django_views 34770 6193606656 Trial conversion detected: pre-populating with 2 seats
+INFO 2026-01-02 15:54:56,159 stripe_django_views 34770 6193606656 Template rendered successfully
+INFO 2026-01-02 15:54:56,161 basehttp 34770 6193606656 "GET /accounts/stripe/checkout/team/ HTTP/1.1" 200 6785
+INFO 2026-01-02 15:55:00,278 basehttp 34770 6193606656 "GET /accounts/settings/ HTTP/1.1" 200 5445
+INFO 2026-01-02 15:55:03,548 basehttp 34770 6193606656 "GET /accounts/team/manage/ HTTP/1.1" 200 6658
+INFO 2026-01-02 15:57:17,006 basehttp 34770 6193606656 "GET /accounts/team/manage/ HTTP/1.1" 200 7352
+INFO 2026-01-02 15:57:20,473 basehttp 34770 6193606656 "GET /accounts/team/manage/ HTTP/1.1" 200 7394
