@@ -194,7 +194,7 @@ def send_joining_email(user, request=None, cta_url=None):
         text_intro = "Thanks for starting your Pro trial and exploring our most powerful features!"
     else:  # free tier
         template_name = 'accounts/email/joining_email_free.html'
-        subject = "Welcome to your Team Toad — You're all set!"
+        subject = "You don't need a new system"
         text_intro = "Thanks for joining us and helping shape a calmer way to plan."
 
     html_message = render_to_string(template_name, {
@@ -690,7 +690,7 @@ def _send_test_joining_email(user, recipient_email):
         text_intro = "Thanks for starting your Pro trial and exploring our most powerful features!"
     else:  # free tier
         template_name = 'accounts/email/joining_email_free.html'
-        subject = "[TEST] Welcome to Toad — You're all set!"
+        subject = "[TEST] You don't need a new system"
         text_intro = "Thanks for joining us and helping shape a calmer way to plan."
     
     html_message = render_to_string(template_name, {
