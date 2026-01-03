@@ -378,7 +378,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const newValue = currentValue - 1;
             if (checkSeatReduction(newValue)) {
                 quantityInput.value = newValue;
-                updateTotal();
+            updateTotal();
             }
         }
     });
@@ -400,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset to previous value, modal will handle it
             this.value = originalQuantity;
         } else {
-            this.value = value;
+        this.value = value;
         }
         updateTotal();
     });

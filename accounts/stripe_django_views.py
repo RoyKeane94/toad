@@ -1146,9 +1146,10 @@ def stripe_success_team_view(request):
                 quantity=quantity,
                 is_active=True
             )
-            # Automatically add admin as a member (fills one seat)
-            subscription_group.members.add(request.user)
             is_trial_conversion = False
+        
+        # Automatically add admin as a member (fills one seat)
+        subscription_group.members.add(request.user)
         
         # Update admin user tier and stripe_customer_id
         update_fields = []
