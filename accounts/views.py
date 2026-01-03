@@ -953,6 +953,10 @@ def preview_email_templates(request):
         'user': test_user
     })
     
+    new_year_html = render_to_string('accounts/email/follow_up/new_year_26.html', {
+        'user': test_user
+    })
+    
     return render(request, 'accounts/email_preview.html', {
         'email_verification_html': email_verification_html,
         'password_reset_html': password_reset_html,
@@ -964,6 +968,7 @@ def preview_email_templates(request):
         'team_invitation_html': team_invitation_html,
         'student_follow_up_html': student_follow_up_html,
         'two_day_follow_up_html': two_day_follow_up_html,
+        'new_year_html': new_year_html,
     })
 
 def beta_update_email_preview(request):

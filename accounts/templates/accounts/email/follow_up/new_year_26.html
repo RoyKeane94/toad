@@ -1,0 +1,49 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}January is a good excuse{% endblock %}
+
+{% block header_title %}{% endblock %}
+
+{% block content %}
+
+<div class="message">
+    <p>Hi{% if user.first_name %} {{ user.first_name }},{% else %},{% endif %}</p>
+    
+    <p>Happy New Year.</p>
+    
+    <p>Some people use Toad every day. Others mean to, but don't quite get round to it.</p>
+    
+    <p>Both are normal.</p>
+    
+    <p>January is a good excuse to put one real project in and see how it feels.</p>
+    
+    <p>You don't need a fresh setup or a new system.<br>
+    Just open a grid and drop in something that's already on your mind.</p>
+    
+    <p>If Toad has been useful to you, you might know someone else who'd appreciate a calmer place to keep track.</p>
+    
+    <p>Here's a simple free Team Toad trial you can share with friends or your team — no setup, no expectations.</p>
+</div>
+
+{% block cta %}
+<div class="button-container">
+    <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="btn">
+        Share a free trial
+    </a>
+</div>
+{% endblock %}
+
+<div class="message">
+    <p>Use it yourself, pass it on, or ignore it — whatever makes sense.</p>
+    
+    <p>As always, if you have any questions or comments, just reply to this email — it comes straight to me.</p>
+</div>
+
+{% endblock %}
+
+{% block additional_content %}
+<div style="text-align: left; color: #6B7280; margin-top: 30px; border-top: 1px solid #E5E7EB; padding-top: 20px; font-size: 14px;">
+    <p style="margin: 0;">— Tom</p>
+    <p style="margin: 5px 0 0 0;"><strong>Founder, Toad</strong></p>
+</div>
+{% endblock %}
