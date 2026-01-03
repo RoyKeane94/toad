@@ -238,7 +238,7 @@
                         Drop one real project into a grid and see the whole story at a glance
                     </p>
                     <p class="text-sm sm:text-base text-gray-600 mb-4" style="line-height: 1.75;">
-                        A calmer alternative to juggling lists, docs, and spreadsheets — in one clear grid
+                        A calmer alternative to juggling lists, docs, and spreadsheets, in one clear grid
                     </p>
                 </div>
                 
@@ -271,7 +271,7 @@
                              onmouseover="this.style.filter='blur(0px)'"
                              onmouseout="this.style.filter='blur(0.5px)'">
                     </div>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center lg:text-left">
+                    <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center">
                         This is one grid. Most people start with just one.
                     </p>
                 </div>
@@ -646,10 +646,10 @@
 <section class="py-16 sm:py-24 bg-white">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
-            Ready to go from <span style="color: var(--primary-action-bg);">tabs everywhere</span> to a calm set of grids?
+            If other people are involved, <span style="color: var(--primary-action-bg);">start with a Team grid</span>
         </h2>
         <p class="text-xl text-gray-600 mb-8">
-            Start by dropping one real project into Toad.
+            Drop one real project into a grid. You’ll know quickly if it fits.
         </p>
         
         <!-- Before/After Comparison -->
@@ -667,13 +667,13 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                         </svg>
                         <p class="text-gray-700 font-medium leading-relaxed">
-                            Checking three different places to know what's going on
+                            Checking a few places just to feel sure you’re not missing something
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Multiple tabs</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Scattered info</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Time wasted</span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Too many places</span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Loose ends</span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Low confidence</span>
                     </div>
                 </div>
             </div>
@@ -691,27 +691,29 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                         </svg>
                         <p class="text-gray-700 font-medium leading-relaxed">
-                            Opening the right grid and seeing the whole story in a few seconds
+                            Opening one grid and seeing what’s happening and what’s next
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">One view</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">Everything clear</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">Instant clarity</span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">One place</span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">Clear next steps</span>
+                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">More headspace</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div class="flex flex-col items-center">
             <a href="{% url 'accounts:register_choices' %}"
-               class="inline-block w-full sm:w-auto px-8 py-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white text-center"
+               class="inline-block w-full sm:w-auto px-8 py-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white text-center mb-3"
                style="background: var(--primary-action-bg);"
                onmouseover="this.style.background='var(--primary-action-hover-bg)'" 
                onmouseout="this.style.background='var(--primary-action-bg)'">
-                Try Toad today for free
+                Start with a grid
             </a>
-            
+            <p class="text-sm text-gray-600">
+                No setup. No migration. Start with one grid.
+            </p>
         </div>
     </div>
 </section>
