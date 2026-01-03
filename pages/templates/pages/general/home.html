@@ -216,56 +216,62 @@
     <!-- Initial Logo and Text (shown first) -->
     <div id="initial-content" class="text-center">
         <div class="mb-2" id="logo-container" style="opacity: 0;">
-            <div class="w-48 h-48 sm:w-64 sm:h-64 mx-auto">
-                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
+            <div class="w-64 h-64 sm:w-80 sm:h-80 mx-auto">
+                <img src="{% static 'img/logo/toad_icon_color.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
             </div>
         </div>
         
         
-        <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-8" style="opacity: 0;">
-            <span style="color: var(--title-text);">For people who</span>
-            <span style="color: var(--primary-action-bg);"> have a lot on their plate</span>
+        <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-4" style="opacity: 0;">
+            <span style="color: var(--title-text);">Toad fits the way you </span><span style="color: var(--primary-action-bg);">already work</span>
         </h1>
         
-        <!-- Secondary Text - Interactive Before/After -->
-        <div id="secondary-text" class="text-center mb-8" style="opacity: 0;">
+        <!-- Secondary Text -->
+        <div id="secondary-text" class="text-center mb-6" style="opacity: 0;">
             <div class="max-w-2xl mx-auto">
-                <div class="interactive-before-after text-lg sm:text-xl text-gray-600 leading-relaxed">
-                    <div class="after-state inline-block transition-all duration-500 cursor-pointer hover:scale-105 mb-3" data-state="after">
-                        <span class="font-semibold text-green-600 hover:text-green-700">With Toad:</span> 
-                        <span class="after-content">a clear set of grids where you can instantly see what's happening and what comes next</span>
-                    </div>
-                    <div class="before-state inline-block transition-all duration-500 cursor-pointer hover:scale-105" data-state="before">
-                        <span class="font-semibold text-red-600 hover:text-red-700">Before Toad:</span> 
-                        <span class="before-content">a collection of lists, tabs and spreadsheets</span>
-                    </div>
-                </div>
-                <div class="mt-4 flex justify-center gap-3">
-                    <button class="toggle-btn active px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-green-50 text-green-700 border-2 border-green-200 hover:bg-green-100" data-show="after">
-                        Show With Toad
-                    </button>
-                    <button class="toggle-btn px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 bg-red-50 text-red-700 border-2 border-red-200 hover:bg-red-100" data-show="before">
-                        Show Before Toad
-                    </button>
+                <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-3">
+                    Drop one real project into a grid and see the whole story at a glance
+                </p>
+                <p class="text-sm sm:text-base text-gray-600 mb-4" style="line-height: 1.75;">
+                    A calmer alternative to juggling lists, docs, and spreadsheets — in one clear grid
+                </p>
+            </div>
+        </div>
+        
+        <!-- Toad Example Image -->
+        <div id="toad-example-image" class="text-center mt-8 mb-8" style="opacity: 0;">
+            <div class="max-w-4xl mx-auto px-4">
+                <p class="text-xs sm:text-sm text-gray-500 mb-4">
+                    This is one grid. Most people start with just one.
+                </p>
+                <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
+                    <img src="{% static 'img/home/Toad Example.png' %}" 
+                         alt="Toad Example" 
+                         class="w-full h-auto transition-all duration-300"
+                         style="filter: blur(0.5px); margin-bottom: -5%; margin-right: -5%; width: 105%;"
+                         onmouseover="this.style.filter='blur(0px)'"
+                         onmouseout="this.style.filter='blur(0.5px)'">
                 </div>
             </div>
         </div>
         
-        <!-- Email Signup Form -->
+        <!-- CTA Buttons -->
         <div id="email-signup" class="text-center mt-8 mb-8" style="opacity: 0;">
-            <form id="email-signup-form" class="max-w-md mx-auto">
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input type="email" 
-                           id="signup-email" 
-                           placeholder="Enter your email"
-                           class="flex-1 px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)]"
-                           required>
-                    <button type="submit" 
-                            class="px-6 py-3 bg-[var(--primary-action-bg)] text-white rounded-lg font-medium hover:bg-[var(--primary-action-hover-bg)] transition-all duration-200 cursor-pointer whitespace-nowrap">
-                        Join Today for Free
-                    </button>
+            <div class="max-w-2xl mx-auto">
+                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
+                    <a href="{% url 'accounts:register_choices' %}"
+                       class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-[var(--primary-action-bg)] text-white rounded-lg font-medium hover:bg-[var(--primary-action-hover-bg)] transition-all duration-200 cursor-pointer text-center">
+                        Create a free grid
+                    </a>
+                    <a href="#video-section"
+                       class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-white text-[var(--primary-action-bg)] border-2 border-[var(--primary-action-bg)] rounded-lg font-medium hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer text-center">
+                        See Toad in Action
+                    </a>
                 </div>
-            </form>
+                <p class="text-sm text-gray-600">
+                    No setup. No migration. Start with one grid.
+                </p>
+            </div>
         </div>
         
     </div>
@@ -689,12 +695,11 @@
         // Animation sequence elements
         const logoContainer = document.getElementById('logo-container');
         const initialText = document.getElementById('initial-text');
-        const simplicityText = document.getElementById('simplicity-text');
         const secondaryText = document.getElementById('secondary-text');
         const emailSignup = document.getElementById('email-signup');
         const initialContent = document.getElementById('initial-content');
         
-        // Animation sequence: Logo → headline → Secondary text → Email signup
+        // Animation sequence: Logo → headline → Secondary text → CTA
         initialContent.style.display = 'block';
         
         // Phase 1: Show logo first
@@ -709,80 +714,26 @@
             initialText.style.transition = 'opacity 0.6s ease-out';
         }, 400);
         
-        // Phase 3: Show simplicity message
-        setTimeout(() => {
-            simplicityText.style.opacity = '1';
-            simplicityText.style.transition = 'opacity 0.6s ease-out';
-        }, 800);
-        
-        // Phase 4: Show secondary text
+        // Phase 3: Show secondary text
         setTimeout(() => {
             secondaryText.style.opacity = '1';
             secondaryText.style.transition = 'opacity 0.6s ease-out';
-        }, 1100);
+        }, 800);
+        
+        // Phase 4: Show Toad example image
+        const toadExampleImage = document.getElementById('toad-example-image');
+        if (toadExampleImage) {
+            setTimeout(() => {
+                toadExampleImage.style.opacity = '1';
+                toadExampleImage.style.transition = 'opacity 0.6s ease-out';
+            }, 1100);
+        }
 
-        // Phase 5: Show email signup form
+        // Phase 5: Show CTA buttons
         setTimeout(() => {
             emailSignup.style.opacity = '1';
             emailSignup.style.transition = 'opacity 0.6s ease-out';
         }, 1400);
-        
-        // Interactive Before/After functionality
-        const beforeAfterContainer = document.querySelector('.interactive-before-after');
-        const toggleButtons = document.querySelectorAll('.toggle-btn');
-        const beforeState = document.querySelector('.before-state');
-        const afterState = document.querySelector('.after-state');
-        
-        if (beforeAfterContainer && toggleButtons.length > 0) {
-            // Set default state to "With Toad" (after)
-            beforeAfterContainer.classList.add('hide-before');
-            
-            // Toggle button functionality
-            toggleButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const showState = this.getAttribute('data-show');
-                    
-                    // Update active button
-                    toggleButtons.forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // Update container classes
-                    beforeAfterContainer.classList.remove('hide-before', 'hide-after');
-                    if (showState === 'before') {
-                        beforeAfterContainer.classList.add('hide-after');
-                    } else {
-                        beforeAfterContainer.classList.add('hide-before');
-                    }
-                });
-            });
-            
-            // Click on states to toggle
-            if (beforeState) {
-                beforeState.addEventListener('click', function() {
-                    toggleButtons[0].click();
-                });
-            }
-            
-            if (afterState) {
-                afterState.addEventListener('click', function() {
-                    toggleButtons[1].click();
-                });
-            }
-        }
-        
-        // Handle email signup form submission
-        const emailSignupForm = document.getElementById('email-signup-form');
-        const signupEmailInput = document.getElementById('signup-email');
-        
-        emailSignupForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const email = signupEmailInput.value.trim();
-            if (email) {
-                // Redirect to registration with email parameter
-                window.location.href = `{% url 'accounts:register_free' %}?email=${encodeURIComponent(email)}`;
-            }
-        });
     });
     
     // Force video autoplay
