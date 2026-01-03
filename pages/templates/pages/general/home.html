@@ -25,6 +25,11 @@
             white-space: normal !important;
             word-wrap: break-word !important;
         }
+        
+        /* Remove blur on mobile */
+        #toad-example-image img {
+            filter: blur(0px) !important;
+        }
     }
     
     /* Interactive Before/After Styles */
@@ -212,70 +217,67 @@
 
 {% block content %}
 <!-- Hero Section -->
-<div class="min-h-[80vh] sm:min-h-[80vh] flex flex-col items-center justify-start px-4 pt-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
-    <!-- Initial Logo and Text (shown first) -->
-    <div id="initial-content" class="text-center">
-        <div class="mb-2" id="logo-container" style="opacity: 0;">
-            <div class="w-64 h-64 sm:w-80 sm:h-80 mx-auto">
-                <img src="{% static 'img/logo/toad_icon_color.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
+<div class="min-h-[80vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-4 pt-8 pb-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+    <div id="initial-content" class="max-w-7xl mx-auto w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end">
+            <!-- Left Side: Logo and Text -->
+            <div class="flex flex-col order-2 lg:order-1">
+                <div class="mb-4" id="logo-container" style="opacity: 0;">
+                    <div class="w-48 h-48 sm:w-56 sm:h-56">
+                        <img src="{% static 'img/logo/toad_icon_color.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
+                    </div>
+                </div>
+                
+                <h1 id="initial-text" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" style="opacity: 0;">
+                    <span style="color: var(--title-text);">Toad fits the way you </span><span style="color: var(--primary-action-bg);">already work</span>
+                </h1>
+                
+                <!-- Secondary Text -->
+                <div id="secondary-text" class="mb-6" style="opacity: 0;">
+                    <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-3">
+                        Drop one real project into a grid and see the whole story at a glance
+                    </p>
+                    <p class="text-sm sm:text-base text-gray-600 mb-4" style="line-height: 1.75;">
+                        A calmer alternative to juggling lists, docs, and spreadsheets — in one clear grid
+                    </p>
+                </div>
+                
+                <!-- CTA Buttons -->
+                <div id="email-signup" class="mt-4 mb-8 order-3" style="opacity: 0;">
+                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
+                        <a href="{% url 'accounts:register_choices' %}"
+                           class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-[var(--primary-action-bg)] text-white rounded-lg font-medium hover:bg-[var(--primary-action-hover-bg)] transition-all duration-200 cursor-pointer text-center">
+                            Create a free grid
+                        </a>
+                        <a href="#video-section"
+                           class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-white text-[var(--primary-action-bg)] border-2 border-[var(--primary-action-bg)] rounded-lg font-medium hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer text-center">
+                            See Toad in Action
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-600">
+                        No setup. No migration. Start with one grid.
+                    </p>
+                </div>
             </div>
-        </div>
-        
-        
-        <h1 id="initial-text" class="text-4xl sm:text-6xl font-extrabold leading-tight mb-4" style="opacity: 0;">
-            <span style="color: var(--title-text);">Toad fits the way you </span><span style="color: var(--primary-action-bg);">already work</span>
-        </h1>
-        
-        <!-- Secondary Text -->
-        <div id="secondary-text" class="text-center mb-6" style="opacity: 0;">
-            <div class="max-w-2xl mx-auto">
-                <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-3">
-                    Drop one real project into a grid and see the whole story at a glance
-                </p>
-                <p class="text-sm sm:text-base text-gray-600 mb-4" style="line-height: 1.75;">
-                    A calmer alternative to juggling lists, docs, and spreadsheets — in one clear grid
-                </p>
-            </div>
-        </div>
-        
-        <!-- Toad Example Image -->
-        <div id="toad-example-image" class="text-center mt-8 mb-8" style="opacity: 0;">
-            <div class="max-w-4xl mx-auto px-4">
-                <p class="text-xs sm:text-sm text-gray-500 mb-4">
-                    This is one grid. Most people start with just one.
-                </p>
-                <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
-                    <img src="{% static 'img/home/Toad Example.png' %}" 
-                         alt="Toad Example" 
-                         class="w-full h-auto transition-all duration-300"
-                         style="filter: blur(0.5px); margin-bottom: -5%; margin-right: -5%; width: 105%;"
-                         onmouseover="this.style.filter='blur(0px)'"
-                         onmouseout="this.style.filter='blur(0.5px)'">
+            
+            <!-- Right Side: Image -->
+            <div id="toad-example-image" class="flex items-start justify-center order-1 lg:order-2" style="opacity: 0; margin-top: -2rem;">
+                <div class="w-full max-w-2xl">
+                    <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
+                        <img src="{% static 'img/home/Toad Example.png' %}" 
+                             alt="Toad Example" 
+                             class="w-full h-auto transition-all duration-300"
+                             style="filter: blur(0.5px); margin-bottom: -5%; margin-right: -5%; width: 105%;"
+                             onmouseover="this.style.filter='blur(0px)'"
+                             onmouseout="this.style.filter='blur(0.5px)'">
+                    </div>
+                    <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center lg:text-left">
+                        This is one grid. Most people start with just one.
+                    </p>
                 </div>
             </div>
         </div>
-        
-        <!-- CTA Buttons -->
-        <div id="email-signup" class="text-center mt-8 mb-8" style="opacity: 0;">
-            <div class="max-w-2xl mx-auto">
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
-                    <a href="{% url 'accounts:register_choices' %}"
-                       class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-[var(--primary-action-bg)] text-white rounded-lg font-medium hover:bg-[var(--primary-action-hover-bg)] transition-all duration-200 cursor-pointer text-center">
-                        Create a free grid
-                    </a>
-                    <a href="#video-section"
-                       class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-white text-[var(--primary-action-bg)] border-2 border-[var(--primary-action-bg)] rounded-lg font-medium hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer text-center">
-                        See Toad in Action
-                    </a>
-                </div>
-                <p class="text-sm text-gray-600">
-                    No setup. No migration. Start with one grid.
-                </p>
-            </div>
-        </div>
-        
     </div>
-
 </div>
 
 <!-- See Toad in Action Section -->
