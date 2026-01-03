@@ -17,7 +17,7 @@ from django.views.decorators.cache import cache_control, never_cache
 from django.views.decorators.vary import vary_on_headers
 from django.views.decorators.csrf import csrf_exempt
 from pages.models import Project, RowHeader, ColumnHeader, Task, PersonalTemplate, TemplateRowHeader, TemplateColumnHeader, TemplateTask, ProjectGroup
-from accounts.models import User
+from accounts.models import User, SubscriptionGroup
 from pages.forms import ProjectForm, RowHeaderForm, ColumnHeaderForm, QuickTaskForm, TaskForm, ProjectGroupForm, ProjectGroupAssignmentForm
 from pages.specific_views_functions.project_views_functions import (
     get_user_project_optimized,
@@ -2302,7 +2302,7 @@ def team_remove_member_view(request, project_pk):
 
 @login_required
 def get_shared_team_users_view(request, project_pk):
-    """Get users who share team grids with the logged-in user (excluding current grid members)"""
+    """Get users who share team grids with the logged-in user and users from SubscriptionGroups (excluding current grid members)"""
     try:
         project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
         
@@ -2320,11 +2320,51 @@ def get_shared_team_users_view(request, project_pk):
             pk=request.user.pk
         ).exclude(
             pk__in=project.team_toad_user.values_list('pk', flat=True)
-        ).distinct().order_by('first_name', 'last_name', 'email').values('id', 'first_name', 'last_name', 'email')
+        ).distinct()
+        
+        # Get users from SubscriptionGroups where the current user is admin or member
+        subscription_group_user_ids = set()
+        
+        # Get groups where user is admin
+        admin_groups = SubscriptionGroup.objects.filter(
+            admin=request.user,
+            is_active=True
+        ).prefetch_related('members')
+        
+        for group in admin_groups:
+            # Add all members of this group
+            subscription_group_user_ids.update(group.members.values_list('pk', flat=True))
+        
+        # Get groups where user is a member
+        member_groups = request.user.subscription_groups.filter(is_active=True).prefetch_related('members', 'admin')
+        
+        for group in member_groups:
+            # Add all members of this group
+            subscription_group_user_ids.update(group.members.values_list('pk', flat=True))
+            # Add the admin (they're not automatically a member)
+            subscription_group_user_ids.add(group.admin_id)
+        
+        # Get users from SubscriptionGroups, excluding current user and current grid members
+        subscription_users = User.objects.filter(
+            pk__in=subscription_group_user_ids
+        ).exclude(
+            pk=request.user.pk
+        ).exclude(
+            pk__in=project.team_toad_user.values_list('pk', flat=True)
+        ).distinct()
+        
+        # Combine both sets of users and get unique users
+        all_user_ids = set(shared_users.values_list('pk', flat=True))
+        all_user_ids.update(subscription_users.values_list('pk', flat=True))
+        
+        # Get final list of users, ordered by name
+        final_users = User.objects.filter(
+            pk__in=all_user_ids
+        ).order_by('first_name', 'last_name', 'email').values('id', 'first_name', 'last_name', 'email')
         
         # Convert to list and format
         users_list = []
-        for user in shared_users:
+        for user in final_users:
             users_list.append({
                 'id': user['id'],
                 'name': f"{user['first_name']} {user['last_name']}".strip() or user['email'],
