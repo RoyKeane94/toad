@@ -3,6 +3,7 @@ from django.contrib.auth import get_user_model
 from django.template.loader import render_to_string
 from django.core.mail import EmailMessage, get_connection
 from django.conf import settings
+from django.urls import reverse
 import logging
 import os
 
@@ -81,13 +82,14 @@ class Command(BaseCommand):
     def send_new_year_email(self, user):
         """Send the New Year 2026 email to a user"""
         try:
-            # Get base URL for URL reversing in template
-            base_url = getattr(settings, 'BASE_URL', 'https://www.meettoad.co.uk')
+            # Build absolute URL for the trial registration (always use production URL for emails)
+            base_url = 'https://www.meettoad.co.uk'
+            trial_url = f"{base_url}{reverse('accounts:register_1_month_pro_trial')}"
             
             # Render the email template
             html_message = render_to_string('accounts/email/follow_up/new_year_26.html', {
                 'user': user,
-                'base_url': base_url
+                'trial_url': trial_url
             })
             
             # Get personal email settings (same as 2_day_follow_up_email)
@@ -169,10 +171,11 @@ class Command(BaseCommand):
             self.stdout.write(self.style.WARNING('No users found for preview'))
             return
         
-        base_url = getattr(settings, 'BASE_URL', 'https://www.meettoad.co.uk')
+        base_url = 'https://www.meettoad.co.uk'
+        trial_url = f"{base_url}{reverse('accounts:register_1_month_pro_trial')}"
         html_content = render_to_string('accounts/email/follow_up/new_year_26.html', {
             'user': user,
-            'base_url': base_url
+            'trial_url': trial_url
         })
         
         self.stdout.write('\n' + '='*50)
