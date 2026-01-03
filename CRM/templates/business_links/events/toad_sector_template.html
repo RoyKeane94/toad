@@ -52,18 +52,21 @@
                 One clear view of everything {{ company_name|default:"your team" }} is juggling
             </h1>
             <p class="text-lg text-gray-600 leading-relaxed">
-                {{ template.main_header_description|default:"You already have spreadsheets, notes and tools. Toad pulls your projects, tasks and people into one simple visual grid so everyone can see what’s happening now and what comes next." }}
+                {{ template.main_header_description|default:"You already have spreadsheets, notes and tools. Toad gives your team one shared grid to track the work, with the option to add more grids as different projects need their own space." }}
             </p>
             <p class="text-sm text-gray-500 leading-relaxed">
-                Start from these example boards shaped for {{ company_name|default:"your world" }}, or build your own in seconds. Every row, column and checklist is yours to tweak so it feels like the way you already work — just tidier.
+                Start from these example grids shaped for {{ company_name|default:"your world" }}, or build your own in seconds. Every row, column and checklist is yours to tweak so it feels like the way you already work — just tidier.
             </p>
             <div class="flex flex-wrap gap-4 tw-hero-cta">
-                <a href="#example-grids" class="tw-cta-btn tw-cta-primary">
-                    See your example boards
-                </a>
                 <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-secondary">
-                    Try Toad free for a month
+                    Start a team trial
                 </a>
+                <a href="#example-grids" class="tw-cta-btn tw-cta-primary">
+                    See your example grids
+                </a>
+                <p class="text-sm text-gray-500 mt-4 text-center">
+                    Invite your team. Share one grid. See if it helps.
+                </p>
             </div>
         </div>
         <div class="tw-hero-visual w-full lg:w-1/2" data-tw-animate>
@@ -88,6 +91,7 @@
             <li>{{ template.used_by }}</li>
             <li>Built for small teams with a lot to juggle</li>
             <li>No setup, no training, no clutter — just one shared overview</li>
+            <li>Less “quick question” messages because the plan is visible</li>
         </ul>
     </div>
 </section>
@@ -98,7 +102,7 @@
         <div class="tw-section-heading" data-tw-animate>
             <h2>What Toad looks like for {{ company_name|default:"your team" }}</h2>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto mt-4">
-                Toad starts from something familiar — your existing lists, checklists and plans — and turns them into one shared matrix. No dashboards, no complexity, just a clear view so everyone knows what happens when, and who is doing it.
+                Toad starts from something familiar — your existing lists, checklists and plans — and turns them into one shared grid. No dashboards, no complexity, just a clear view so everyone knows what happens when, and who is doing it.
             </p>
         </div>
 
@@ -108,7 +112,7 @@
                 <div class="tw-grid-text">
                     <p class="tw-grid-eyebrow">Grid 1 · {{ template.grid_1_title|default:"Delivery & operations" }}</p>
                     <h3>{{ template.grid_1_header_description|default:"Before: scattered tasks. After: one calm, visible plan." }}</h3>
-                    <p>{{ template.grid_1_subheader|default:"Every task, dependency and owner in a single shared checklist that quietly replaces folders, printouts and long message threads." }}</p>
+                    <p>{{ template.grid_1_subheader|default:"Every task, dependency and owner in a single shared grid that …so you don’t need to rely on folders, printouts, and long message threads to remember what’s going on." }}</p>
                     <ul class="tw-grid-list">
                         {% if template.grid_1_bullet_1 %}<li>{{ template.grid_1_bullet_1 }}</li>{% endif %}
                         {% if template.grid_1_bullet_2 %}<li>{{ template.grid_1_bullet_2 }}</li>{% endif %}
@@ -186,7 +190,7 @@
         <div class="tw-section-heading" data-tw-animate>
             <h2>{{ template.section_2_title|default:"Why teams like yours stick with Toad" }}</h2>
             <p class="text-sm text-gray-500 max-w-2xl mx-auto mt-2">
-                Toad stays backstage. It adds just enough structure so your days feel calmer and more in control, without asking your team to rip up the way they already work.
+                Toad stays backstage. It gives you a shared picture, without adding a new process.
             </p>
         </div>
         <div class="tw-features">
@@ -220,16 +224,24 @@
 
 <section class="tw-section w-full bg-white">
     <div class="max-w-7xl mx-auto text-center space-y-6 px-5" data-tw-animate>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900">
-            Ready to see everything at a glance?
-        </h2>
+        <div class="tw-section-heading">
+            <h2>
+                Ready to try this with your team?
+            </h2>
+        </div>
         <p class="text-lg text-gray-600">
-            Create a grid in under 60 seconds from scratch or by copying these examples, and keep it as your quiet control room for everything you’re running.
+            Start with one shared grid. Invite a couple of people.
         </p>
-        <div class="flex flex-wrap justify-center gap-4">
-            <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-primary">
-                Try Toad free for a month
+        <p class="text-lg text-gray-600">
+            You'll know quickly if it makes work feel calmer and clearer.
+        </p>
+        <div class="flex flex-col items-center">
+            <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-primary mb-3">
+                Start a Team trial
             </a>
+            <p class="text-sm text-gray-500">
+                No setup. No migration. Cancel anytime.
+            </p>
         </div>
     </div>
 </section>
