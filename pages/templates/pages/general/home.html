@@ -27,7 +27,8 @@
         }
         
         /* Remove blur on mobile */
-        #toad-example-image img {
+        #toad-example-image img,
+        #toad-example-image-mobile img {
             filter: blur(0px) !important;
         }
     }
@@ -221,7 +222,7 @@
     <div id="initial-content" class="max-w-7xl mx-auto w-full">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end">
             <!-- Left Side: Logo and Text -->
-            <div class="flex flex-col order-2 lg:order-1">
+            <div class="flex flex-col order-1 lg:order-1">
                 <div class="mb-4" id="logo-container" style="opacity: 0;">
                     <div class="w-48 h-48 sm:w-56 sm:h-56">
                         <img src="{% static 'img/logo/toad_icon_color.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
@@ -242,6 +243,23 @@
                     </p>
                 </div>
                 
+                <!-- Mobile Image (shown only on mobile, positioned after secondary text) -->
+                <div id="toad-example-image-mobile" class="flex items-start justify-center mb-6 lg:hidden" style="opacity: 0;">
+                    <div class="w-full max-w-2xl">
+                        <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
+                            <img src="{% static 'img/home/Toad Example.png' %}" 
+                                 alt="Toad Example" 
+                                 class="w-full h-auto transition-all duration-300"
+                                 style="filter: blur(0.5px); margin-bottom: -5%; margin-right: -5%; width: 105%;"
+                                 onmouseover="this.style.filter='blur(0px)'"
+                                 onmouseout="this.style.filter='blur(0.5px)'">
+                        </div>
+                        <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center">
+                            This is one grid. Most people start with just one.
+                        </p>
+                    </div>
+                </div>
+                
                 <!-- CTA Buttons -->
                 <div id="email-signup" class="mt-4 mb-8 order-3" style="opacity: 0;">
                     <div class="flex flex-col sm:flex-row gap-4 mb-4">
@@ -260,8 +278,8 @@
                 </div>
             </div>
             
-            <!-- Right Side: Image -->
-            <div id="toad-example-image" class="flex items-start justify-center order-1 lg:order-2" style="opacity: 0; margin-top: -2rem;">
+            <!-- Right Side: Image (desktop only) -->
+            <div id="toad-example-image" class="hidden lg:flex items-start justify-center lg:order-2" style="opacity: 0; margin-top: -2rem;">
                 <div class="w-full max-w-2xl">
                     <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
                         <img src="{% static 'img/home/Toad Example.png' %}" 
@@ -748,12 +766,19 @@
             secondaryText.style.transition = 'opacity 0.6s ease-out';
         }, 800);
         
-        // Phase 4: Show Toad example image
+        // Phase 4: Show Toad example image (both mobile and desktop versions)
         const toadExampleImage = document.getElementById('toad-example-image');
+        const toadExampleImageMobile = document.getElementById('toad-example-image-mobile');
         if (toadExampleImage) {
             setTimeout(() => {
                 toadExampleImage.style.opacity = '1';
                 toadExampleImage.style.transition = 'opacity 0.6s ease-out';
+            }, 1100);
+        }
+        if (toadExampleImageMobile) {
+            setTimeout(() => {
+                toadExampleImageMobile.style.opacity = '1';
+                toadExampleImageMobile.style.transition = 'opacity 0.6s ease-out';
             }, 1100);
         }
 
