@@ -197,8 +197,12 @@ class CompanyForm(forms.ModelForm):
             'personalised_email_text',
             'initial_email_sent',
             'initial_email_sent_date',
+            'second_email_sent_date',
+            'third_email_sent_date',
+            'fourth_email_sent_date',
             'initial_email_response',
             'initial_email_response_date',
+            'email_failed_date',
         ]
         widgets = {
             'company_name': forms.TextInput(attrs={'class': BASE_INPUT_CLASS, 'placeholder': 'Enter company name'}),
@@ -212,20 +216,28 @@ class CompanyForm(forms.ModelForm):
             'personalised_email_text': forms.Textarea(attrs={'class': BASE_INPUT_CLASS, 'rows': 5, 'placeholder': 'Personalised email copy'}),
             'initial_email_sent': forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS}),
             'initial_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
+            'second_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
+            'third_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
+            'fourth_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
             'initial_email_response': forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS}),
             'initial_email_response_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
+            'email_failed_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
         }
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['email_template'].required = False
         self.fields['email_template'].empty_label = "Select a template (optional)"
-        self.fields['email_template'].queryset = EmailTemplate.objects.order_by('name')
+        self.fields['email_template'].queryset = EmailTemplate.objects.order_by('company_sector', 'email_number')
         self.fields['company_sector'].required = False
         self.fields['company_sector'].empty_label = "Select a sector (optional)"
         self.fields['company_sector'].queryset = CompanySector.objects.order_by('name')
         self.fields['email_status'].required = False
         self.fields['email_status'].empty_label = "Select email status (optional)"
+        self.fields['second_email_sent_date'].required = False
+        self.fields['third_email_sent_date'].required = False
+        self.fields['fourth_email_sent_date'].required = False
+        self.fields['email_failed_date'].required = False
     
     def save(self, commit=True):
         instance = super().save(commit=False)
@@ -247,18 +259,37 @@ class CompanyForm(forms.ModelForm):
 class EmailTemplateForm(forms.ModelForm):
     class Meta:
         model = EmailTemplate
-        fields = ['name', 'text']
+        fields = ['name', 'company_sector', 'email_number', 'subject', 'body']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': BASE_INPUT_CLASS,
-                'placeholder': 'Enter template name'
+                'placeholder': 'Enter template name (e.g., "Wedding Venues - Initial Outreach")'
             }),
-            'text': forms.Textarea(attrs={
+            'company_sector': forms.Select(attrs={
+                'class': BASE_INPUT_CLASS,
+            }),
+            'email_number': forms.Select(attrs={
+                'class': BASE_INPUT_CLASS,
+            }),
+            'subject': forms.TextInput(attrs={
+                'class': BASE_INPUT_CLASS,
+                'placeholder': 'Email subject - use {company_name}, {contact_person} for personalization'
+            }),
+            'body': forms.Textarea(attrs={
                 'class': BASE_INPUT_CLASS,
                 'rows': 12,
-                'placeholder': 'Write your email template content here...'
+                'placeholder': 'Email body - use {company_name}, {contact_person}, {personalised_template_url} for personalization'
             }),
         }
+        help_texts = {
+            'subject': 'Available placeholders: {company_name}, {contact_person}',
+            'body': 'Available placeholders: {company_name}, {contact_person}, {personalised_template_url}',
+        }
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['company_sector'].queryset = CompanySector.objects.order_by('name')
+        self.fields['company_sector'].empty_label = "Select a sector"
 
 class LeadFocusForm(forms.ModelForm):
     class Meta:

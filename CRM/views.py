@@ -269,6 +269,51 @@ def company_sector_create(request):
 
 @login_required
 @user_passes_test(is_superuser)
+def email_template_list(request):
+    """
+    List all email templates grouped by sector.
+    """
+    from .models import EmailTemplate, CompanySector
+    
+    # Email sequence info
+    EMAIL_INFO = {
+        1: {'label': 'Initial', 'color': 'blue', 'delay': 'Sent immediately'},
+        2: {'label': '+4 days', 'color': 'purple', 'delay': '4 days after Email 1'},
+        3: {'label': '+5 days', 'color': 'orange', 'delay': '5 days after Email 2'},
+        4: {'label': '+10 days', 'color': 'red', 'delay': '10 days after Email 3'},
+    }
+    
+    # Get all sectors with their templates
+    sectors = CompanySector.objects.prefetch_related('email_templates').order_by('name')
+    
+    # Build structured data for each sector
+    sectors_data = []
+    for sector in sectors:
+        templates = {t.email_number: t for t in sector.email_templates.all()}
+        
+        # Build email slots (1-4) with template or None
+        email_slots = []
+        for num in [1, 2, 3, 4]:
+            email_slots.append({
+                'number': num,
+                'template': templates.get(num),
+                'info': EMAIL_INFO[num],
+            })
+        
+        sectors_data.append({
+            'sector': sector,
+            'email_slots': email_slots,
+            'template_count': len(templates),
+        })
+    
+    context = {
+        'sectors_data': sectors_data,
+        'title': 'Email Templates',
+    }
+    return render(request, 'CRM/b2b/email_template_list.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
 def email_template_create(request):
     """
     Create a new email template for B2B outreach.
@@ -278,15 +323,140 @@ def email_template_create(request):
         if form.is_valid():
             template = form.save()
             messages.success(request, f'Email template "{template.name}" created successfully!')
-            return redirect('crm:company_list')
+            return redirect('crm:email_template_list')
     else:
-        form = EmailTemplateForm()
+        # Pre-select sector if provided
+        initial = {}
+        sector_id = request.GET.get('sector')
+        email_number = request.GET.get('email_number')
+        if sector_id:
+            initial['company_sector'] = sector_id
+        if email_number:
+            initial['email_number'] = email_number
+        form = EmailTemplateForm(initial=initial)
 
     context = {
         'form': form,
         'title': 'Create Email Template',
     }
     return render(request, 'CRM/b2b/email_template_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def email_template_update(request, pk):
+    """
+    Update an existing email template.
+    """
+    from .models import EmailTemplate
+    template = get_object_or_404(EmailTemplate, pk=pk)
+    
+    if request.method == 'POST':
+        form = EmailTemplateForm(request.POST, instance=template)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Email template "{template.name}" updated successfully!')
+            return redirect('crm:email_template_list')
+    else:
+        form = EmailTemplateForm(instance=template)
+    
+    context = {
+        'form': form,
+        'template': template,
+        'title': f'Update Email Template: {template.name}',
+    }
+    return render(request, 'CRM/b2b/email_template_form.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def email_template_delete(request, pk):
+    """
+    Delete an email template.
+    """
+    from .models import EmailTemplate
+    template = get_object_or_404(EmailTemplate, pk=pk)
+    
+    if request.method == 'POST':
+        template_name = template.name
+        template.delete()
+        messages.success(request, f'Email template "{template_name}" has been deleted.')
+        return redirect('crm:email_template_list')
+    
+    context = {
+        'template': template,
+        'title': f'Delete Email Template: {template.name}',
+    }
+    return render(request, 'CRM/b2b/email_template_confirm_delete.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def email_template_preview(request, pk):
+    """
+    Preview an email template with sample data.
+    """
+    from .models import EmailTemplate, CustomerTemplate
+    from django.conf import settings
+    
+    template = get_object_or_404(EmailTemplate, pk=pk)
+    
+    # Check if this sector has a CustomerTemplate (required for personalised_template_url)
+    customer_template = None
+    personalised_url = None
+    url_warning = None
+    
+    if template.company_sector:
+        try:
+            customer_template = CustomerTemplate.objects.get(company_sector=template.company_sector)
+            # Generate a real preview URL
+            url = reverse('crm:customer_template_public', kwargs={'pk': customer_template.pk})
+            url += '?company_id=SAMPLE'
+            personalised_url = request.build_absolute_uri(url)
+        except CustomerTemplate.DoesNotExist:
+            url_warning = f'No CustomerTemplate exists for sector "{template.company_sector.name}". The {{personalised_template_url}} placeholder will be empty when emails are sent.'
+            personalised_url = '[NO TEMPLATE CONFIGURED]'
+        except CustomerTemplate.MultipleObjectsReturned:
+            customer_template = CustomerTemplate.objects.filter(company_sector=template.company_sector).first()
+            url = reverse('crm:customer_template_public', kwargs={'pk': customer_template.pk})
+            url += '?company_id=SAMPLE'
+            personalised_url = request.build_absolute_uri(url)
+    else:
+        url_warning = 'This email template has no sector assigned. The {personalised_template_url} placeholder cannot be generated.'
+        personalised_url = '[NO SECTOR ASSIGNED]'
+    
+    # Sample data for preview
+    sample_company_name = 'Acme Weddings Ltd'
+    sample_data = {
+        'company_name': sample_company_name,
+        'contact_person': 'Jane Smith',
+        'personalised_template_url': personalised_url,
+        'personalised_link': f'<b><a href="{personalised_url}">Toad x {sample_company_name}</a></b>',
+    }
+    
+    rendered_subject = template.subject
+    rendered_body = template.body
+    
+    for key, value in sample_data.items():
+        rendered_subject = rendered_subject.replace(f'{{{key}}}', value)
+        rendered_body = rendered_body.replace(f'{{{key}}}', value)
+    
+    # Check if placeholder is actually used in template
+    placeholder_used = (
+        '{personalised_template_url}' in template.body or 
+        '{personalised_template_url}' in template.subject or
+        '{personalised_link}' in template.body or 
+        '{personalised_link}' in template.subject
+    )
+    
+    context = {
+        'template': template,
+        'rendered_subject': rendered_subject,
+        'rendered_body': rendered_body,
+        'sample_data': sample_data,
+        'customer_template': customer_template,
+        'url_warning': url_warning,
+        'placeholder_used': placeholder_used,
+        'title': f'Preview: {template.name}',
+    }
+    return render(request, 'CRM/b2b/email_template_preview.html', context)
 
 @login_required
 @user_passes_test(is_superuser)

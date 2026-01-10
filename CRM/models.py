@@ -158,10 +158,42 @@ class Company(models.Model):
     )
     email_subject = models.CharField(max_length=200, blank=True)
     personalised_email_text = models.TextField(blank=True)
+    
+    # Email sequence tracking
     initial_email_sent = models.BooleanField(default=False)
     initial_email_sent_date = models.DateField(null=True, blank=True)
+    second_email_sent_date = models.DateField(null=True, blank=True, help_text="Date second follow-up email was sent")
+    third_email_sent_date = models.DateField(null=True, blank=True, help_text="Date third follow-up email was sent")
+    fourth_email_sent_date = models.DateField(null=True, blank=True, help_text="Date fourth/final email was sent")
+    
+    # Email response tracking
     initial_email_response = models.BooleanField(default=False)
     initial_email_response_date = models.DateField(null=True, blank=True)
+    
+    # Email threading - stores the Message-ID and subject of the first email for threading replies
+    first_email_message_id = models.CharField(
+        max_length=255, 
+        blank=True, 
+        help_text="Message-ID header from first email, used for threading subsequent emails"
+    )
+    first_email_subject = models.CharField(
+        max_length=255,
+        blank=True,
+        help_text="Subject of first email, follow-ups use 'Re: [this subject]' for threading"
+    )
+    last_email_body = models.TextField(
+        blank=True,
+        help_text="Body of the last email sent, used to quote in follow-up replies"
+    )
+    last_email_date = models.DateTimeField(
+        null=True,
+        blank=True,
+        help_text="DateTime of the last email sent, used for 'On [date], [name] wrote:' quote"
+    )
+    
+    # Error tracking
+    email_failed_date = models.DateField(null=True, blank=True, help_text="Date of last email send failure")
+    
     template_view_count = models.IntegerField(default=0, help_text="Number of times this company's template has been viewed")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -178,53 +210,160 @@ class Company(models.Model):
         """Backward compatibility property"""
         return self.company_name
     
-    def get_personalized_template_url(self, lead_id=None, request=None):
+    def get_personalized_template_url(self, lead_id=None, request=None, base_url=None):
         """
         Get the personalized template URL for this company based on its sector.
-        Requires a lead_id to generate the personalized URL.
-        Returns None if no template exists for the sector.
+        
+        Args:
+            lead_id: Optional lead ID for backward compatibility
+            request: Optional request object to build absolute URI
+            base_url: Optional base URL (e.g., from settings.SITE_URL) for building full URLs
+            
+        Returns:
+            Full URL to the personalized template, or None if no template exists
         """
-        if not self.company_sector or not lead_id:
+        if not self.company_sector:
             return None
         
         # Find the CustomerTemplate for this sector
-        # CustomerTemplate is defined later in this file, but Python resolves it at runtime
         try:
             template = CustomerTemplate.objects.get(company_sector=self.company_sector)
-            from django.urls import reverse
-            url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
-            # Add lead ID as query parameter
-            url += f'?id={lead_id}'
-            if request:
-                return request.build_absolute_uri(url)
-            return url
         except CustomerTemplate.DoesNotExist:
             return None
         except CustomerTemplate.MultipleObjectsReturned:
-            # If multiple templates exist, use the first one
             template = CustomerTemplate.objects.filter(company_sector=self.company_sector).first()
-            if template:
-                from django.urls import reverse
-                url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
-                url += f'?id={lead_id}'
-                if request:
-                    return request.build_absolute_uri(url)
-                return url
-            return None
+            if not template:
+                return None
+        
+        from django.urls import reverse
+        url = reverse('crm:customer_template_public', kwargs={'pk': template.pk})
+        
+        # Add company_id as query parameter (preferred) or lead_id for backward compatibility
+        if lead_id:
+            url += f'?id={lead_id}'
+        else:
+            url += f'?company_id={self.pk}'
+        
+        # Build full URL
+        if request:
+            return request.build_absolute_uri(url)
+        elif base_url:
+            # Use provided base URL (e.g., settings.SITE_URL)
+            base_url = base_url.rstrip('/')
+            return f"{base_url}{url}"
+        return url
+    
+    def get_last_email_sent_date(self):
+        """Get the date of the most recent email sent to this company."""
+        dates = [
+            self.fourth_email_sent_date,
+            self.third_email_sent_date,
+            self.second_email_sent_date,
+            self.initial_email_sent_date,
+        ]
+        for date in dates:
+            if date:
+                return date
+        return None
+    
+    def get_next_email_number(self):
+        """
+        Determine which email should be sent next based on email_status.
+        Returns 1-4, or None if all emails have been sent.
+        """
+        if not self.email_status:
+            return 1
+        try:
+            current = int(self.email_status)
+            if current < 4:
+                return current + 1
+            return None  # All 4 emails sent
+        except (ValueError, TypeError):
+            return 1
 
 class EmailTemplate(models.Model):
-    name = models.CharField(max_length=150, unique=True)
-    text = models.TextField(help_text="Template body text")
+    """
+    Email templates for automated CRM email sequences.
+    Each sector can have up to 4 email templates (email 1, 2, 3, 4).
+    
+    Supported placeholders in subject and body:
+    - {company_name} - The company's name
+    - {contact_person} - The contact person's name
+    - {personalised_template_url} - The raw personalized landing page URL
+    - {personalised_link} - Bold linked text: "Toad x Company Name" with embedded URL
+    """
+    EMAIL_NUMBER_CHOICES = [
+        (1, 'Email 1 (Initial)'),
+        (2, 'Email 2 (Follow-up 1)'),
+        (3, 'Email 3 (Follow-up 2)'),
+        (4, 'Email 4 (Final)'),
+    ]
+    
+    name = models.CharField(max_length=150, help_text="Internal name for this template")
+    company_sector = models.ForeignKey(
+        CompanySector, 
+        on_delete=models.CASCADE, 
+        related_name='email_templates',
+        null=True,  # Allow null for migration of existing templates
+        blank=True,
+        help_text="The sector this template belongs to"
+    )
+    email_number = models.IntegerField(
+        choices=EMAIL_NUMBER_CHOICES,
+        default=1,  # Default for migration
+        help_text="Which email in the sequence (1-4)"
+    )
+    subject = models.CharField(
+        max_length=200, 
+        default='',  # Default for migration
+        blank=True,
+        help_text="Email subject line. Use {company_name}, {contact_person} for personalization"
+    )
+    body = models.TextField(
+        default='',  # Default for migration
+        blank=True,
+        help_text="Email body text. Use {company_name}, {contact_person}, {personalised_template_url} for personalization"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['name']
+        ordering = ['company_sector', 'email_number']
         verbose_name = 'Email Template'
         verbose_name_plural = 'Email Templates'
+        # Note: unique_together with nullable field allows multiple nulls
+        unique_together = ['company_sector', 'email_number']
 
     def __str__(self):
-        return self.name
+        if self.company_sector:
+            return f"{self.company_sector.name} - Email {self.email_number}: {self.name}"
+        return f"(No Sector) - Email {self.email_number}: {self.name}"
+    
+    def render_subject(self, company):
+        """Render the subject line with company data."""
+        return self._render_template(self.subject, company)
+    
+    def render_body(self, company, template_url=None):
+        """Render the body with company data and optional template URL."""
+        return self._render_template(self.body, company, template_url)
+    
+    def _render_template(self, template_text, company, template_url=None):
+        """Replace placeholders with actual values."""
+        result = template_text
+        company_name = company.company_name or ''
+        result = result.replace('{company_name}', company_name)
+        result = result.replace('{contact_person}', company.contact_person or '')
+        
+        if template_url:
+            # {personalised_template_url} - raw URL
+            result = result.replace('{personalised_template_url}', template_url)
+            # {personalised_link} - bold linked text: "Toad x Company Name"
+            personalised_link = f'<b><a href="{template_url}">Toad x {company_name}</a></b>'
+            result = result.replace('{personalised_link}', personalised_link)
+        else:
+            result = result.replace('{personalised_template_url}', '')
+            result = result.replace('{personalised_link}', '')
+        return result
 
 class LeadMessage(models.Model):
     lead = models.ForeignKey(Lead, on_delete=models.CASCADE, related_name='messages', null=True, blank=True)
