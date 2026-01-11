@@ -1,0 +1,68 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a sector for bulk uploading companies
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:company_list' %}" class="inline-flex items-center px-4 py-2 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Companies
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-8">
+            <form method="post" class="space-y-8">
+                {% csrf_token %}
+                
+                <!-- Company Sector Field -->
+                <div>
+                    <label for="{{ form.company_sector.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Company Sector *
+                    </label>
+                    {{ form.company_sector }}
+                    {% if form.company_sector.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.company_sector.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Select a sector or <a href="{% url 'crm:company_sector_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t-2 border-[var(--border-color)]">
+                    <a href="{% url 'crm:company_list' %}" class="group inline-flex items-center px-4 py-2.5 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        Cancel
+                    </a>
+                    <button type="submit" class="group inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                            <i class="fas fa-arrow-right text-xs"></i>
+                        </div>
+                        <span class="font-semibold">Continue</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

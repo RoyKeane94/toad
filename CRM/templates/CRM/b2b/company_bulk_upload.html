@@ -1,0 +1,230 @@
+{% extends 'pages/layout.html' %}
+
+{% block title %}{{ title }} - CRM{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-[var(--bg-primary)]">
+    <!-- Header -->
+    <div class="bg-white shadow-sm border-b border-[var(--border-color)]">
+        <div class="max-w-full px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-6">
+                <div>
+                    <h1 class="text-3xl font-bold text-[var(--text-primary)]">{{ title }}</h1>
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Add multiple companies at once. All companies will be set to "Prospect" status.
+                    </p>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="{% url 'crm:company_list' %}" class="inline-flex items-center px-4 py-2 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <i class="fas fa-arrow-left mr-2"></i>
+                        Back to Companies
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-8">
+            <!-- Sector Info -->
+            <div class="mb-6 pb-4 border-b-2 border-[var(--border-color)]">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm text-[var(--text-secondary)]">Sector:</p>
+                        <p class="text-lg font-semibold text-[var(--text-primary)]">{{ sector.name }}</p>
+                    </div>
+                    <a href="{% url 'crm:company_bulk_upload_select_sector' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">
+                        Change Sector
+                    </a>
+                </div>
+            </div>
+
+            <form method="post" class="space-y-6" id="bulk-upload-form">
+                {% csrf_token %}
+                {{ formset.management_form }}
+                
+                <!-- Formset Forms -->
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-[var(--border-color)]">
+                        <thead class="bg-[var(--bg-secondary)]">
+                            <tr>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider w-12">#</th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                    Company Name *
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                    Contact Person
+                                </th>
+                                <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                    Contact Email
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody id="forms-container" class="bg-white divide-y divide-[var(--border-color)]">
+                            {% for form in formset %}
+                            <tr class="company-form-row">
+                                <td class="px-4 py-2 text-sm text-[var(--text-secondary)]">
+                                    {{ forloop.counter }}
+                                </td>
+                                <td class="px-4 py-2">
+                                    {{ form.company_name }}
+                                    {% if form.company_name.errors %}
+                                    <div class="mt-1 text-xs text-[var(--delete-button-bg)]">
+                                        {% for error in form.company_name.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td class="px-4 py-2">
+                                    {{ form.contact_person }}
+                                    {% if form.contact_person.errors %}
+                                    <div class="mt-1 text-xs text-[var(--delete-button-bg)]">
+                                        {% for error in form.contact_person.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </td>
+                                <td class="px-4 py-2">
+                                    {{ form.contact_email }}
+                                    {% if form.contact_email.errors %}
+                                    <div class="mt-1 text-xs text-[var(--delete-button-bg)]">
+                                        {% for error in form.contact_email.errors %}
+                                        <p>{{ error }}</p>
+                                        {% endfor %}
+                                    </div>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Add More Companies Button -->
+                <div class="mt-4">
+                    <button type="button" id="add-company-form" class="inline-flex items-center px-4 py-2 border-2 border-[var(--primary-action-bg)] rounded-lg shadow-sm text-sm font-medium text-[var(--primary-action-bg)] bg-white hover:bg-[var(--bg-secondary)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add 10 More Companies
+                    </button>
+                </div>
+
+                {% if formset.non_form_errors %}
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div class="text-sm text-red-800">
+                        {{ formset.non_form_errors }}
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Form Actions -->
+                <div class="flex justify-end space-x-4 pt-6 border-t-2 border-[var(--border-color)]">
+                    <a href="{% url 'crm:company_list' %}" class="group inline-flex items-center px-4 py-2.5 border-2 border-[var(--border-color)] rounded-lg shadow-sm text-sm font-medium text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] hover:border-[var(--primary-action-bg)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        Cancel
+                    </a>
+                    <button type="submit" class="group inline-flex items-center px-6 py-2.5 bg-gradient-to-r from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] text-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
+                        <div class="w-7 h-7 bg-white/20 rounded-lg flex items-center justify-center mr-2 group-hover:bg-white/30 transition-colors">
+                            <i class="fas fa-save text-xs"></i>
+                        </div>
+                        <span class="font-semibold">Create Companies</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const addButton = document.getElementById('add-company-form');
+    const formsContainer = document.getElementById('forms-container');
+    // Find the TOTAL_FORMS input - it can be named form-TOTAL_FORMS or have id starting with id_
+    const totalFormsInput = document.querySelector('input[name$="-TOTAL_FORMS"]') || document.querySelector('input[id$="-TOTAL_FORMS"]');
+    
+    if (!addButton || !formsContainer || !totalFormsInput) {
+        return; // Exit if elements don't exist
+    }
+    
+    // Extract the prefix from the totalFormsInput name (e.g., "form" from "form-TOTAL_FORMS")
+    const inputName = totalFormsInput.name || totalFormsInput.id;
+    const prefix = inputName.replace('-TOTAL_FORMS', '');
+    
+    addButton.addEventListener('click', function() {
+        // Get the current total number of forms
+        let currentTotal = parseInt(totalFormsInput.value, 10);
+        
+        // Get the template row (the last form row) to clone from
+        const templateRow = formsContainer.querySelector('tr.company-form-row:last-child');
+        if (!templateRow) {
+            console.error('Could not find template form row');
+            return;
+        }
+        
+        // Get the template index from the template row's first input field
+        const templateInput = templateRow.querySelector('input');
+        let templateIndex = 0;
+        if (templateInput && templateInput.name) {
+            const match = templateInput.name.match(new RegExp(prefix + '-(\\d+)-'));
+            if (match) {
+                templateIndex = parseInt(match[1], 10);
+            }
+        }
+        
+        // Add 10 new forms
+        const formsToAdd = 10;
+        for (let i = 0; i < formsToAdd; i++) {
+            // Clone the template row
+            const newFormRow = templateRow.cloneNode(true);
+            
+            // Create regex to replace the template index with the new index
+            const indexRegex = new RegExp(prefix + '-' + templateIndex + '-', 'g');
+            const newIndexString = prefix + '-' + currentTotal + '-';
+            
+            // Update all field names and IDs in the new form
+            newFormRow.querySelectorAll('input').forEach(function(element) {
+                // Update input names
+                if (element.name) {
+                    element.name = element.name.replace(indexRegex, newIndexString);
+                }
+                
+                // Update input IDs
+                if (element.id) {
+                    element.id = element.id.replace(indexRegex, newIndexString);
+                }
+            });
+            
+            // Update the row number cell
+            const numberCell = newFormRow.querySelector('td:first-child');
+            if (numberCell) {
+                numberCell.textContent = currentTotal + 1;
+            }
+            
+            // Clear all input values in the new form
+            newFormRow.querySelectorAll('input').forEach(function(input) {
+                input.value = '';
+            });
+            
+            // Remove any error message divs
+            const errorDivs = newFormRow.querySelectorAll('div');
+            errorDivs.forEach(function(div) {
+                if (div.textContent.trim() && div.classList.contains('text-xs')) {
+                    div.remove();
+                }
+            });
+            
+            // Append the new form row to the container
+            formsContainer.appendChild(newFormRow);
+            
+            // Increment the counter for the next form
+            currentTotal++;
+        }
+        
+        // Update the total forms count
+        totalFormsInput.value = currentTotal;
+    });
+});
+</script>
+{% endblock %}
+

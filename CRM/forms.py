@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import formset_factory
 from .models import (
     Lead,
     LeadFocus,
@@ -439,5 +440,51 @@ class CustomerTemplateForm(forms.ModelForm):
         self.fields['grid_1_video'].required = False
         self.fields['grid_2_video'].required = False
         self.fields['grid_3_video'].required = False
+
+
+# Bulk Upload Forms
+class CompanyBulkSectorForm(forms.Form):
+    """Form for selecting sector in bulk upload"""
+    company_sector = forms.ModelChoiceField(
+        queryset=CompanySector.objects.order_by('name'),
+        required=True,
+        empty_label="Select a sector",
+        widget=forms.Select(attrs={'class': BASE_INPUT_CLASS})
+    )
+
+
+class CompanyBulkForm(forms.Form):
+    """Form for a single company entry in bulk upload"""
+    company_name = forms.CharField(
+        max_length=200,
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': BASE_INPUT_CLASS,
+            'placeholder': 'Enter company name'
+        })
+    )
+    contact_person = forms.CharField(
+        max_length=100,
+        required=False,
+        widget=forms.TextInput(attrs={
+            'class': BASE_INPUT_CLASS,
+            'placeholder': 'Enter contact person name'
+        })
+    )
+    contact_email = forms.EmailField(
+        required=False,
+        widget=forms.EmailInput(attrs={
+            'class': BASE_INPUT_CLASS,
+            'placeholder': 'name@example.com'
+        })
+    )
+
+
+CompanyBulkFormSet = formset_factory(
+    CompanyBulkForm,
+    extra=50,  # Start with 50 empty forms
+    min_num=1,  # At least 1 form required
+    can_delete=False
+)
 
 

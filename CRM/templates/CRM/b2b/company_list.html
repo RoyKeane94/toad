@@ -55,10 +55,16 @@
                     <h1 class="text-3xl font-bold text-[var(--text-primary)]">Companies</h1>
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">Manage B2B companies</p>
                 </div>
-                <a href="{% url 'crm:company_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] transition-colors">
-                    <i class="fas fa-plus mr-2"></i>
-                    Add Company
-                </a>
+                <div class="flex items-center space-x-3">
+                    <a href="{% url 'crm:company_bulk_upload_select_sector' %}" class="inline-flex items-center px-4 py-2 border-2 border-[var(--primary-action-bg)] rounded-md shadow-sm text-sm font-medium text-[var(--primary-action-bg)] bg-white hover:bg-[var(--bg-secondary)] transition-colors">
+                        <i class="fas fa-upload mr-2"></i>
+                        Bulk Upload
+                    </a>
+                    <a href="{% url 'crm:company_create' %}" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Company
+                    </a>
+                </div>
             </div>
         </div>
     </div>

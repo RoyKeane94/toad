@@ -7,7 +7,8 @@ from django.db import models
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Company, CompanySector, CustomerTemplate
 from .forms import (
     B2BLeadForm, SocietyLeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, 
-    SocietyLinkForm, SocietyUniversityForm, CompanyForm, CompanySectorForm, EmailTemplateForm, CustomerTemplateForm
+    SocietyLinkForm, SocietyUniversityForm, CompanyForm, CompanySectorForm, EmailTemplateForm, CustomerTemplateForm,
+    CompanyBulkSectorForm, CompanyBulkFormSet
 )
 from django.core.files.base import ContentFile
 
@@ -244,6 +245,64 @@ def company_delete(request, pk):
         'title': f'Delete Company: {company.company_name}',
     }
     return render(request, 'CRM/b2b/company_confirm_delete.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_bulk_upload_select_sector(request):
+    """
+    Select sector for bulk upload.
+    """
+    if request.method == 'POST':
+        form = CompanyBulkSectorForm(request.POST)
+        if form.is_valid():
+            sector_id = form.cleaned_data['company_sector'].pk
+            return redirect('crm:company_bulk_upload', sector_id=sector_id)
+    else:
+        form = CompanyBulkSectorForm()
+    
+    context = {
+        'form': form,
+        'title': 'Bulk Upload Companies - Select Sector',
+    }
+    return render(request, 'CRM/b2b/company_bulk_upload_select_sector.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_bulk_upload(request, sector_id):
+    """
+    Bulk upload companies for a specific sector.
+    """
+    sector = get_object_or_404(CompanySector, pk=sector_id)
+    
+    if request.method == 'POST':
+        formset = CompanyBulkFormSet(request.POST)
+        if formset.is_valid():
+            created_count = 0
+            for form in formset:
+                if form.cleaned_data.get('company_name'):  # Only process non-empty forms
+                    company = Company.objects.create(
+                        company_name=form.cleaned_data['company_name'],
+                        status='Prospect',  # Default status as requested
+                        company_sector=sector,
+                        contact_person=form.cleaned_data.get('contact_person', ''),
+                        contact_email=form.cleaned_data.get('contact_email', '')
+                    )
+                    created_count += 1
+            
+            if created_count > 0:
+                messages.success(request, f'Successfully created {created_count} companies!')
+            else:
+                messages.warning(request, 'No companies were created. Please fill in at least one company name.')
+            return redirect('crm:company_list')
+    else:
+        formset = CompanyBulkFormSet()
+    
+    context = {
+        'formset': formset,
+        'sector': sector,
+        'title': f'Bulk Upload Companies - {sector.name}',
+    }
+    return render(request, 'CRM/b2b/company_bulk_upload.html', context)
 
 @login_required
 @user_passes_test(is_superuser)
