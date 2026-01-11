@@ -72,22 +72,16 @@ def get_user_choice():
         print("Invalid choice. Please enter a valid region number.")
 
 
-def extract_venues_from_html(html, debug=False):
+def extract_venues_from_html(html):
     """
     Extract venue names and URLs from page HTML.
     
     Args:
         html: Raw HTML string
-        debug: If True, save HTML to file for inspection
         
     Returns:
         List of tuples (venue_name, venue_url)
     """
-    if debug:
-        with open("debug_page.html", "w", encoding="utf-8") as f:
-            f.write(html)
-        print("  [DEBUG] Saved page HTML to debug_page.html")
-    
     soup = BeautifulSoup(html, "html.parser")
     venues = []
     
@@ -129,10 +123,53 @@ def extract_venues_from_html(html, debug=False):
 
 
 def has_next_page(page):
-    """Check if there's a next page button."""
+    """Check if there's a next page button that's enabled."""
     try:
-        next_btn = page.locator("span.pagination__next button").first
-        return next_btn.is_visible()
+        # Try multiple selectors for next button
+        selectors = [
+            "span.pagination__next button:not([disabled])",
+            ".pagination__next button:not([disabled])",
+            "button[aria-label*='next' i]:not([disabled])",
+            "button[aria-label*='Next' i]:not([disabled])",
+            # Also check for enabled state via aria-disabled
+            "span.pagination__next button[aria-disabled='false']",
+            ".pagination__next button[aria-disabled='false']",
+        ]
+        
+        for selector in selectors:
+            try:
+                next_btn = page.locator(selector).first
+                if next_btn.is_visible(timeout=2000):
+                    # Double-check it's not disabled via class or attribute
+                    is_disabled = next_btn.get_attribute("disabled") is not None
+                    aria_disabled = next_btn.get_attribute("aria-disabled") == "true"
+                    classes = next_btn.get_attribute("class") or ""
+                    has_disabled_class = "disabled" in classes.lower()
+                    if not is_disabled and not has_disabled_class and not aria_disabled:
+                        return True
+            except:
+                continue
+        
+        # Fallback: check if ANY next button exists (even without :not([disabled]))
+        # and manually verify its state
+        fallback_selectors = [
+            "span.pagination__next button",
+            ".pagination__next button",
+        ]
+        for selector in fallback_selectors:
+            try:
+                next_btn = page.locator(selector).first
+                if next_btn.is_visible(timeout=1000):
+                    is_disabled = next_btn.get_attribute("disabled") is not None
+                    aria_disabled = next_btn.get_attribute("aria-disabled") == "true"
+                    classes = next_btn.get_attribute("class") or ""
+                    has_disabled_class = "disabled" in classes.lower()
+                    if not is_disabled and not has_disabled_class and not aria_disabled:
+                        return True
+            except:
+                continue
+        
+        return False
     except:
         return False
 
@@ -140,31 +177,90 @@ def has_next_page(page):
 def click_next_page(page):
     """Click the next page button and wait for content to load."""
     try:
-        next_btn = page.locator("span.pagination__next button").first
-        next_btn.click()
-        # Wait for the page content to update
-        page.wait_for_load_state("networkidle")
-        time.sleep(1)  # Small delay to ensure content is loaded
-        return True
+        # Try multiple selectors for next button
+        selectors = [
+            "span.pagination__next button:not([disabled])",
+            ".pagination__next button:not([disabled])",
+            "button[aria-label*='next' i]:not([disabled])",
+            "button[aria-label*='Next' i]:not([disabled])",
+            "span.pagination__next button",
+            ".pagination__next button",
+        ]
+        
+        for selector in selectors:
+            try:
+                next_btn = page.locator(selector).first
+                if next_btn.is_visible(timeout=2000):
+                    is_disabled = next_btn.get_attribute("disabled") is not None
+                    aria_disabled = next_btn.get_attribute("aria-disabled") == "true"
+                    classes = next_btn.get_attribute("class") or ""
+                    has_disabled_class = "disabled" in classes.lower()
+                    if not is_disabled and not has_disabled_class and not aria_disabled:
+                        # Scroll the button into view first
+                        next_btn.scroll_into_view_if_needed()
+                        time.sleep(0.5)
+                        next_btn.click()
+                        
+                        # Wait for network activity to settle
+                        try:
+                            page.wait_for_load_state("networkidle", timeout=20000)
+                        except:
+                            pass  # Continue even if timeout
+                        
+                        time.sleep(3)  # Increased wait for dynamic content
+                        
+                        # Wait for venue listings to load - try multiple selectors
+                        try:
+                            page.wait_for_selector("[data-test-id='storefrontTitle']", timeout=15000)
+                        except:
+                            try:
+                                page.wait_for_selector(".vendorTile__title", timeout=10000)
+                            except:
+                                try:
+                                    page.wait_for_selector(".vendorTile", timeout=10000)
+                                except:
+                                    pass  # Continue anyway
+                        
+                        time.sleep(2)  # Additional delay to ensure content is loaded
+                        return True
+            except:
+                continue
+        
+        return False
     except Exception as e:
-        print(f"Error clicking next page: {e}")
+        print(f"  Click error: {e}")
         return False
 
 
 def get_total_pages_from_html(html):
     """Extract total page count from pagination."""
     soup = BeautifulSoup(html, "html.parser")
+    
+    # Try multiple methods to find pagination
     pagination = soup.find("nav", class_="pagination")
+    if not pagination:
+        pagination = soup.find("nav", class_=lambda x: x and "pagination" in x.lower())
+    if not pagination:
+        pagination = soup.find("div", class_=lambda x: x and "pagination" in x.lower())
     
     if not pagination:
         return 1
     
     max_page = 1
+    # Try multiple button selectors
     buttons = pagination.find_all("button", class_="app-pagination-link")
+    if not buttons:
+        buttons = pagination.find_all("button", class_=lambda x: x and "pagination" in x.lower())
+    if not buttons:
+        buttons = pagination.find_all("a", class_=lambda x: x and "pagination" in x.lower())
     
     for button in buttons:
         text = button.get_text(strip=True)
         if text.isdigit():
+            max_page = max(max_page, int(text))
+        # Also check aria-label or data attributes
+        aria_label = button.get("aria-label", "")
+        if "page" in aria_label.lower() and text.isdigit():
             max_page = max(max_page, int(text))
     
     return max_page
@@ -256,42 +352,189 @@ def scrape_region(region_slug, region_name):
                 page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                 time.sleep(2)
                 
-                # Get total pages
+                # Get total pages (for information only - we'll use has_next_page for control)
                 html = page.content()
                 total_pages = get_total_pages_from_html(html)
-                print(f"Found {total_pages} page(s) of venues")
+                print(f"Detected approximately {total_pages} page(s) of venues")
                 
+                # === IMPROVED PAGINATION LOGIC ===
                 current_page = 1
+                max_pages = 100  # Safety limit to prevent infinite loops
+                seen_venue_urls = set()  # Track ALL venues seen to avoid duplicates
+                consecutive_no_new = 0  # Track consecutive pages with no new venues
                 
-                while True:
-                    print(f"Scraping page {current_page}/{total_pages}...")
-                    
-                    # Extract venues from current page (debug on first page)
-                    html = page.content()
-                    page_venues = extract_venues_from_html(html, debug=(current_page == 1))
-                    all_venues.extend(page_venues)
-                    print(f"  Found {len(page_venues)} venues on this page")
-                    
-                    # Check if there's a next page
-                    if current_page >= total_pages:
-                        break
-                    
+                # Scrape page 1 first (we're already on it)
+                print(f"\nScraping page {current_page}...", end=" ")
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
+                time.sleep(1)
+                page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                time.sleep(1)
+                html = page.content()
+                page_venues = extract_venues_from_html(html)
+                
+                # Add only new venues
+                new_count = 0
+                for venue in page_venues:
+                    if venue[1] not in seen_venue_urls:
+                        all_venues.append(venue)
+                        seen_venue_urls.add(venue[1])
+                        new_count += 1
+                
+                print(f"Found {len(page_venues)} venues ({new_count} new)")
+                
+                # Continue scraping while there's a next page button available
+                while current_page < max_pages:
+                    # Check if next button exists and is enabled BEFORE clicking
+                    print(f"\n  Checking for next page...", end=" ")
                     if not has_next_page(page):
+                        print("No more pages (next button disabled or not found)")
                         break
+                    print("found!")
                     
-                    # Click next and wait
+                    next_page_num = current_page + 1
+                    
+                    # Step 1: Click next to go to the next page
+                    print(f"  Clicking next to go to page {next_page_num}...")
+                    
+                    # Store current URL and venue count to detect navigation
+                    current_url = page.url
+                    expected_venue_count = len(page_venues)  # Expect similar count to previous page
+                    
                     if not click_next_page(page):
+                        print(f"  Could not click next button - stopping")
                         break
                     
-                    current_page += 1
+                    # Step 2: Wait for content to load and verify page changed
+                    print(f"  Waiting for new content...", end=" ", flush=True)
+                    time.sleep(3)  # Longer initial wait after click
                     
-                    # Wait for new content to load after pagination
-                    time.sleep(2)
-                    page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
+                    # Wait for new content - need BOTH new venues AND a reasonable count
+                    max_wait_attempts = 60  # Increased attempts
+                    page_loaded = False
+                    best_venue_count = 0
+                    best_new_count = 0
+                    
+                    for wait_attempt in range(max_wait_attempts):
+                        # Scroll to trigger lazy loading on each check
+                        if wait_attempt % 5 == 0:
+                            page.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)")
+                            time.sleep(0.3)
+                            page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                        
+                        # Get current page content
+                        html_check = page.content()
+                        check_venues = extract_venues_from_html(html_check)
+                        
+                        if check_venues and len(check_venues) > 0:
+                            # Count how many are new (not seen before)
+                            current_urls = set(url for _, url in check_venues)
+                            new_urls = current_urls - seen_venue_urls
+                            
+                            # Track the best result we've seen
+                            if len(new_urls) > best_new_count:
+                                best_new_count = len(new_urls)
+                                best_venue_count = len(check_venues)
+                            
+                            # Success criteria: 
+                            # - Have new venues AND
+                            # - Either have a good count (>20) OR count has stabilized
+                            if len(new_urls) > 0:
+                                # If we have a lot of new venues, we're good
+                                if len(new_urls) >= 20:
+                                    page_loaded = True
+                                    print(f"OK ({len(check_venues)} venues, {len(new_urls)} new)")
+                                    break
+                                # If we have fewer but count seems stable (waited long enough)
+                                elif wait_attempt >= 20 and len(check_venues) >= best_venue_count:
+                                    page_loaded = True
+                                    print(f"OK ({len(check_venues)} venues, {len(new_urls)} new)")
+                                    break
+                        
+                        if wait_attempt % 15 == 14:
+                            print(".", end="", flush=True)
+                        time.sleep(0.5)
+                    
+                    if not page_loaded:
+                        # One more aggressive attempt - scroll fully and wait
+                        print(f" retrying...", end="", flush=True)
+                        page.evaluate("window.scrollTo(0, 0)")
+                        time.sleep(1)
+                        page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                        time.sleep(3)
+                        
+                        html_check = page.content()
+                        check_venues = extract_venues_from_html(html_check)
+                        if check_venues:
+                            current_urls = set(url for _, url in check_venues)
+                            new_urls = current_urls - seen_venue_urls
+                            if len(new_urls) > 0:
+                                page_loaded = True
+                                print(f" recovered ({len(check_venues)} venues, {len(new_urls)} new)")
+                        
+                        if not page_loaded:
+                            print(f"\n  Warning: Page may not have fully loaded (best: {best_venue_count} venues, {best_new_count} new)")
+                    
+                    # Update current_page
+                    current_page = next_page_num
+                    
+                    # Step 3: Scroll thoroughly to ensure all lazy-loaded content appears
+                    # Scroll in stages to trigger all lazy loading
+                    page.evaluate("window.scrollTo(0, 0)")
+                    time.sleep(0.5)
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight * 0.25)")
+                    time.sleep(0.5)
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight * 0.5)")
+                    time.sleep(0.5)
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight * 0.75)")
+                    time.sleep(0.5)
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+                    time.sleep(2)  # Longer wait at bottom for lazy loading
+                    
+                    # Scroll back up and down once more to catch anything missed
+                    page.evaluate("window.scrollTo(0, 0)")
+                    time.sleep(0.5)
+                    page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
                     time.sleep(1)
+                    
+                    # Step 4: Extract venues from this page
+                    html = page.content()
+                    page_venues = extract_venues_from_html(html)
+                    
+                    if not page_venues:
+                        print(f"  Warning: No venues found on page {current_page}")
+                        consecutive_no_new += 1
+                        if consecutive_no_new >= 2:
+                            print(f"  Stopping: {consecutive_no_new} consecutive pages with no venues")
+                            break
+                        continue
+                    
+                    # Add only new venues (avoid duplicates)
+                    new_count = 0
+                    for venue in page_venues:
+                        if venue[1] not in seen_venue_urls:
+                            all_venues.append(venue)
+                            seen_venue_urls.add(venue[1])
+                            new_count += 1
+                    
+                    print(f"  Page {current_page}: Found {len(page_venues)} venues, added {new_count} new (total: {len(all_venues)})")
+                    
+                    if new_count == 0:
+                        consecutive_no_new += 1
+                        if consecutive_no_new >= 2:
+                            print(f"  Stopping: {consecutive_no_new} consecutive pages with no new venues")
+                            break
+                    else:
+                        consecutive_no_new = 0
+                    
+                    # Small delay to be polite to the server
+                    time.sleep(0.5)
+                
+                print(f"\n  Pagination complete. Scraped {current_page} pages.")
                 
             except Exception as e:
                 print(f"Error during scraping: {e}")
+                import traceback
+                traceback.print_exc()
             
             finally:
                 browser.close()
@@ -460,7 +703,7 @@ def main():
             print("\nNo venues found or an error occurred.")
             continue
         
-        # Remove duplicates while preserving order
+        # Remove duplicates while preserving order (should already be handled, but double-check)
         seen = set()
         unique_venues = []
         for venue in venues:
@@ -478,10 +721,9 @@ def main():
         print("  [1] Display in terminal")
         print("  [2] Save to CSV file")
         print("  [3] Both")
-        print("  [4] Extract emails from venue pages (then save)")
-        print("  [5] Skip")
+        print("  [4] Skip")
         
-        action = input("\nEnter choice (1-5): ").strip()
+        action = input("\nEnter choice (1-4): ").strip()
         
         if action in ["1", "3"]:
             print_venues(unique_venues)
@@ -490,35 +732,6 @@ def main():
             safe_region = region_slug.replace("-", "_")
             filename = f"hitched_venues_{safe_region}.csv"
             save_to_csv(unique_venues, filename)
-        
-        if action == "4":
-            print("\nHow many venues to process?")
-            print(f"  [1] All {len(unique_venues)} venues")
-            print("  [2] First 10 (test run)")
-            print("  [3] First 50")
-            print("  [4] Custom number")
-            
-            limit_choice = input("\nEnter choice (1-4): ").strip()
-            
-            if limit_choice == "1":
-                max_venues = None
-            elif limit_choice == "2":
-                max_venues = 10
-            elif limit_choice == "3":
-                max_venues = 50
-            elif limit_choice == "4":
-                try:
-                    max_venues = int(input("Enter number: ").strip())
-                except:
-                    max_venues = 10
-            else:
-                max_venues = 10
-            
-            venues_with_emails = scrape_venue_emails(unique_venues, max_venues)
-            
-            safe_region = region_slug.replace("-", "_")
-            filename = f"hitched_venues_{safe_region}_with_emails.csv"
-            save_to_csv(venues_with_emails, filename)
         
         input("\nPress Enter to continue...")
 

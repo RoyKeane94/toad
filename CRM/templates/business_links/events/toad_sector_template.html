@@ -58,13 +58,16 @@
                 Start from these example grids shaped for {{ company_name|default:"your world" }}, or build your own in seconds. Every row, column and checklist is yours to tweak so it feels like the way you already work — just tidier.
             </p>
             <div class="flex flex-wrap gap-4 tw-hero-cta">
-                <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-secondary">
-                    Start a team trial
-                </a>
                 <a href="#example-grids" class="tw-cta-btn tw-cta-primary">
                     See your example grids
                 </a>
-                <p class="text-sm text-gray-500 mt-4 text-center">
+                <a href="{% url 'accounts:register_1_month_pro_trial' %}" class="tw-cta-btn tw-cta-secondary">
+                    Start a team trial
+                </a>
+                <p class="text-sm text-gray-500 mt-4 text-left w-full">
+                    30-day trial, no card required. Cancel anytime.
+                </p>
+                <p class="text-sm text-gray-500 mt-4 text-left w-full">
                     Invite your team. Share one grid. See if it helps.
                 </p>
             </div>
