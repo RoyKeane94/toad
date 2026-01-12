@@ -2,7 +2,7 @@
 """
 Hitched.co.uk Wedding Venue Scraper (Playwright Version)
 =========================================================
-A web scraping tool to extract wedding venue names and URLs from Hitched.co.uk
+A web scraping tool to extract wedding venue names, URLs, and locations from Hitched.co.uk
 Uses Playwright to handle anti-bot protection.
 
 Setup:
@@ -74,13 +74,13 @@ def get_user_choice():
 
 def extract_venues_from_html(html):
     """
-    Extract venue names and URLs from page HTML.
+    Extract venue names, URLs, and locations from page HTML.
     
     Args:
         html: Raw HTML string
         
     Returns:
-        List of tuples (venue_name, venue_url)
+        List of tuples (venue_name, venue_url, location)
     """
     soup = BeautifulSoup(html, "html.parser")
     venues = []
@@ -116,8 +116,96 @@ def extract_venues_from_html(html):
             href = f"{BASE_URL}{href}"
         
         # Only include actual venue pages (contain _XXXX.htm pattern)
-        if re.search(r"_\d+\.htm$", href):
-            venues.append((name, href))
+        if not re.search(r"_\d+\.htm$", href):
+            continue
+        
+        # Find location - it's typically in a sibling or parent container near the venue name
+        location = ""
+        
+        # Try to find the parent tile container
+        parent_tile = link.find_parent(class_=lambda x: x and "vendorTile" in str(x))
+        if not parent_tile:
+            parent_tile = link.find_parent("div")
+        
+        if parent_tile:
+            # Method 1: Look for location in common class patterns
+            location_elements = parent_tile.find_all(class_=lambda x: x and (
+                "location" in str(x).lower() or 
+                "address" in str(x).lower() or
+                "vendorTile__location" in str(x) or
+                "vendorTile__address" in str(x) or
+                "vendorTile__subtitle" in str(x) or
+                "vendorTile__info" in str(x) or
+                "vendorTile__meta" in str(x)
+            ))
+            
+            if location_elements:
+                # Get the first location element that's not the title link itself
+                for elem in location_elements:
+                    if elem != link and elem.get_text(strip=True):
+                        location = elem.get_text(strip=True)
+                        break
+            
+            # Method 2: Look for the parent of the link and find next sibling element
+            if not location:
+                link_parent = link.parent
+                if link_parent:
+                    # Look for next sibling element after the link's parent
+                    current = link_parent.next_sibling
+                    while current:
+                        if hasattr(current, 'get_text') and hasattr(current, 'name'):
+                            text = current.get_text(strip=True)
+                            if text and text != name and len(text) < 200:
+                                if not re.search(r'[£$€]|\d+\.\d+\s*(stars?|rating)', text, re.I):
+                                    location = text
+                                    break
+                        current = current.next_sibling
+            
+            # Method 3: Look for text nodes that come after the title link
+            if not location:
+                current = link.next_sibling
+                while current:
+                    if hasattr(current, 'get_text'):
+                        text = current.get_text(strip=True)
+                        if text and len(text) > 0 and len(text) < 200:
+                            # Skip if it looks like a price or rating
+                            if not re.search(r'[£$€]|\d+\.\d+\s*(stars?|rating)', text, re.I):
+                                location = text
+                                break
+                    elif isinstance(current, str) and current.strip():
+                        text = current.strip()
+                        if text and len(text) < 200 and not re.search(r'[£$€]|\d+\.\d+\s*(stars?|rating)', text, re.I):
+                            location = text
+                            break
+                    current = current.next_sibling
+                
+                # Method 4: If still no location, look for any div/span/p that's a sibling or child of the tile
+                if not location:
+                    # Look in all children of the tile
+                    for child in parent_tile.find_all(["div", "span", "p"]):
+                        # Skip the link itself and its parent
+                        if child == link or link in child.find_all("a"):
+                            continue
+                        text = child.get_text(strip=True)
+                        if text and text != name and len(text) < 200 and len(text) > 2:
+                            # Skip if it looks like description text (too long) or price
+                            if not re.search(r'[£$€]|\d+\.\d+\s*(stars?|rating)', text, re.I):
+                                # Prefer shorter text that looks like a location (contains common location words or patterns)
+                                if any(word in text.lower() for word in ['road', 'street', 'lane', 'avenue', 'place', ',', 'sussex', 'england', 'uk']) or re.search(r'[A-Z][a-z]+\s*,?\s*[A-Z]', text):
+                                    location = text
+                                    break
+                    # If still no location with location keywords, take any reasonable text
+                    if not location:
+                        for child in parent_tile.find_all(["div", "span", "p"]):
+                            if child == link or link in child.find_all("a"):
+                                continue
+                            text = child.get_text(strip=True)
+                            if text and text != name and len(text) < 200 and len(text) > 2:
+                                if not re.search(r'[£$€]|\d+\.\d+\s*(stars?|rating)', text, re.I):
+                                    location = text
+                                    break
+        
+        venues.append((name, href, location))
     
     return venues
 
@@ -275,7 +363,7 @@ def scrape_region(region_slug, region_name):
         region_name: Display name of the region
         
     Returns:
-        List of tuples (venue_name, venue_url)
+        List of tuples (venue_name, venue_url, location)
     """
     all_venues = []
     start_url = f"{VENUES_BASE}/{region_slug}.htm"
@@ -427,7 +515,7 @@ def scrape_region(region_slug, region_name):
                         
                         if check_venues and len(check_venues) > 0:
                             # Count how many are new (not seen before)
-                            current_urls = set(url for _, url in check_venues)
+                            current_urls = set(venue[1] for venue in check_venues)
                             new_urls = current_urls - seen_venue_urls
                             
                             # Track the best result we've seen
@@ -465,7 +553,7 @@ def scrape_region(region_slug, region_name):
                         html_check = page.content()
                         check_venues = extract_venues_from_html(html_check)
                         if check_venues:
-                            current_urls = set(url for _, url in check_venues)
+                            current_urls = set(venue[1] for venue in check_venues)
                             new_urls = current_urls - seen_venue_urls
                             if len(new_urls) > 0:
                                 page_loaded = True
@@ -551,17 +639,36 @@ def scrape_region(region_slug, region_name):
 
 
 def save_to_csv(venues, filename):
-    """Save venues to a CSV file."""
-    # Check if venues have email data (3 columns) or not (2 columns)
-    has_emails = len(venues[0]) == 3 if venues else False
+    """Save venues to a CSV file (without URL)."""
+    if not venues:
+        print("No venues to save.")
+        return
     
+    # Prepare data without URL - keep only name and location/email
+    output_data = []
+    for venue in venues:
+        if len(venue) >= 3:
+            # Has location or email - keep name and the third field
+            output_data.append([venue[0], venue[2]])
+        elif len(venue) == 2:
+            # Just name and URL - keep only name
+            output_data.append([venue[0]])
+        else:
+            output_data.append([venue[0]])
+    
+    # Determine header based on data
     with open(filename, "w", newline="", encoding="utf-8") as f:
         writer = csv.writer(f)
-        if has_emails:
-            writer.writerow(["Venue Name", "URL", "Email"])
+        if venues and len(venues[0]) >= 3:
+            # Check if third column looks like email or location
+            third_col = venues[0][2] if venues else ""
+            if "@" in str(third_col):
+                writer.writerow(["Venue Name", "Email"])
+            else:
+                writer.writerow(["Venue Name", "Location"])
         else:
-            writer.writerow(["Venue Name", "URL"])
-        writer.writerows(venues)
+            writer.writerow(["Venue Name"])
+        writer.writerows(output_data)
     print(f"\nResults saved to: {filename}")
 
 
@@ -590,11 +697,11 @@ def scrape_venue_emails(venues, max_venues=None):
     Visit each venue's Hitched page and extract email addresses.
     
     Args:
-        venues: List of tuples (venue_name, venue_url)
+        venues: List of tuples (venue_name, venue_url) or (venue_name, venue_url, location)
         max_venues: Maximum number of venues to process (None for all)
         
     Returns:
-        List of tuples (venue_name, venue_url, email)
+        List of tuples (venue_name, venue_url, location, email) or (venue_name, venue_url, email)
     """
     results = []
     total = len(venues) if max_venues is None else min(len(venues), max_venues)
@@ -627,7 +734,12 @@ def scrape_venue_emails(venues, max_venues=None):
                 });
             """)
             
-            for i, (name, url) in enumerate(venues[:total]):
+            for i, venue in enumerate(venues[:total]):
+                # Handle both 2-tuple and 3-tuple formats
+                name = venue[0]
+                url = venue[1]
+                location = venue[2] if len(venue) > 2 else ""
+                
                 print(f"[{i+1}/{total}] {name}...", end=" ", flush=True)
                 
                 try:
@@ -640,38 +752,64 @@ def scrape_venue_emails(venues, max_venues=None):
                     if emails:
                         email_str = "; ".join(emails)
                         print(f"Found: {email_str}")
-                        results.append((name, url, email_str))
+                        if location:
+                            results.append((name, url, location, email_str))
+                        else:
+                            results.append((name, url, email_str))
                     else:
                         print("No email found")
-                        results.append((name, url, ""))
+                        if location:
+                            results.append((name, url, location, ""))
+                        else:
+                            results.append((name, url, ""))
                     
                     # Small delay between requests
                     time.sleep(1)
                     
                 except Exception as e:
                     print(f"Error: {e}")
-                    results.append((name, url, ""))
+                    if location:
+                        results.append((name, url, location, ""))
+                    else:
+                        results.append((name, url, ""))
             
             browser.close()
             
     except Exception as e:
         print(f"Browser error: {e}")
     
-    # Count results
-    found = sum(1 for _, _, email in results if email)
+    # Count results - handle both 3 and 4 tuple formats
+    found = sum(1 for venue in results if len(venue) > 2 and venue[-1] and "@" in str(venue[-1]))
     print(f"\nEmail extraction complete: Found emails for {found}/{total} venues")
     
     return results
 
 
 def print_venues(venues):
-    """Display venues in a formatted table."""
+    """Display venues in a formatted table (without URL)."""
+    if not venues:
+        print("No venues to display.")
+        return
+    
     print("\n" + "=" * 100)
-    print(f"{'#':<5} {'VENUE NAME':<50} | URL")
-    print("=" * 100)
-    for i, (name, url) in enumerate(venues, 1):
-        display_name = name[:47] + "..." if len(name) > 50 else name
-        print(f"{i:<5} {display_name:<50} | {url}")
+    # Check if venues have location/email data
+    has_extra = len(venues[0]) >= 3 if venues else False
+    if has_extra:
+        print(f"{'#':<5} {'VENUE NAME':<50} | {'LOCATION':<40}")
+        print("=" * 100)
+        for i, venue in enumerate(venues, 1):
+            name = venue[0]
+            location = venue[2] if len(venue) > 2 else ""
+            display_name = name[:48] + "..." if len(name) > 50 else name
+            display_location = location[:38] + "..." if len(location) > 40 else location
+            print(f"{i:<5} {display_name:<50} | {display_location:<40}")
+    else:
+        print(f"{'#':<5} {'VENUE NAME':<70}")
+        print("=" * 80)
+        for i, venue in enumerate(venues, 1):
+            name = venue[0]
+            display_name = name[:68] + "..." if len(name) > 70 else name
+            print(f"{i:<5} {display_name:<70}")
     print("=" * 100)
 
 

@@ -195,6 +195,7 @@ class Company(models.Model):
     email_failed_date = models.DateField(null=True, blank=True, help_text="Date of last email send failure")
     
     template_view_count = models.IntegerField(default=0, help_text="Number of times this company's template has been viewed")
+    template_sign_up_click_count = models.IntegerField(default=0, help_text="Number of times sign-up links were clicked on this company's template")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

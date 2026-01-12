@@ -78,4 +78,6 @@ urlpatterns = [
     # Business links / events
     path('links/events/weddings/', views.toad_weddings_view, name='toad_weddings'),
     path('links/templates/<int:pk>/', views.customer_template_public_view, name='customer_template_public'),
+    path('links/templates/track-view/<int:company_id>/', views.track_template_view, name='track_template_view'),
+    path('links/templates/track-signup-click/<int:company_id>/', views.track_sign_up_click, name='track_sign_up_click'),
 ]

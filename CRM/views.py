@@ -4,6 +4,7 @@ from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpRespon
 from django.contrib import messages
 from django.urls import reverse
 from django.db import models
+from django.views.decorators.csrf import csrf_exempt
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Company, CompanySector, CustomerTemplate
 from .forms import (
     B2BLeadForm, SocietyLeadForm, LeadMessageForm, LeadFocusForm, ContactMethodForm, 
@@ -1350,18 +1351,58 @@ def customer_template_public_view(request, pk):
                 # Invalid company ID, just continue without personalization
                 pass
     
-    # Increment company-specific view count if company is identified
-    if company:
-        from django.db.models import F
-        Company.objects.filter(pk=company.pk).update(template_view_count=F('template_view_count') + 1)
-        company.refresh_from_db()
+    # Don't increment view count immediately - let client-side JavaScript do it after 2 seconds
+    # This filters out accidental/bot views
     
     context = {
         'template': template,
         'company_name': company_name,
+        'company_id': company.pk if company else None,
         'title': template.playbook_name,
     }
     return render(request, 'business_links/events/toad_sector_template.html', context)
+
+
+@csrf_exempt
+def track_template_view(request, company_id):
+    """
+    Track template view count after user has been on page for 2+ seconds.
+    This filters out accidental/bot views.
+    Public endpoint - no authentication required.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+    try:
+        company = Company.objects.get(pk=company_id)
+        from django.db.models import F
+        Company.objects.filter(pk=company.pk).update(template_view_count=F('template_view_count') + 1)
+        return JsonResponse({'success': True, 'view_count': company.template_view_count + 1})
+    except Company.DoesNotExist:
+        return JsonResponse({'error': 'Company not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
+
+@csrf_exempt
+def track_sign_up_click(request, company_id):
+    """
+    Track sign-up link click count.
+    Public endpoint - no authentication required.
+    """
+    if request.method != 'POST':
+        return JsonResponse({'error': 'Method not allowed'}, status=405)
+    
+    try:
+        company = Company.objects.get(pk=company_id)
+        from django.db.models import F
+        Company.objects.filter(pk=company.pk).update(template_sign_up_click_count=F('template_sign_up_click_count') + 1)
+        return JsonResponse({'success': True, 'click_count': company.template_sign_up_click_count + 1})
+    except Company.DoesNotExist:
+        return JsonResponse({'error': 'Company not found'}, status=404)
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
+
 
 # Student Society Partnership Pages
 def southampton_economics_society_page(request):
