@@ -192,6 +192,18 @@
                                         {{ company.initial_email_response_date|date:"F d, Y" }}
                                     </p>
                                     {% endif %}
+                                    <div class="flex items-center justify-between">
+                                        <span class="text-[var(--text-secondary)] text-xs uppercase tracking-wide">Call Made</span>
+                                        {% if company.call_made %}
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800">
+                                            <i class="fas fa-phone mr-1"></i>Yes
+                                        </span>
+                                        {% else %}
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-600">
+                                            <i class="fas fa-phone-slash mr-1"></i>No
+                                        </span>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </dd>
                         </div>

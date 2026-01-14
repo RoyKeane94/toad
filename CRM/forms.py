@@ -203,6 +203,7 @@ class CompanyForm(forms.ModelForm):
             'fourth_email_sent_date',
             'initial_email_response',
             'initial_email_response_date',
+            'call_made',
             'email_failed_date',
         ]
         widgets = {
@@ -220,6 +221,7 @@ class CompanyForm(forms.ModelForm):
             'second_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
             'third_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
             'fourth_email_sent_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
+            'call_made': forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS}),
             'initial_email_response': forms.CheckboxInput(attrs={'class': BASE_CHECKBOX_CLASS}),
             'initial_email_response_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),
             'email_failed_date': forms.DateInput(attrs={'class': BASE_INPUT_CLASS, 'type': 'date'}),

@@ -238,6 +238,21 @@
                             </div>
                             {% endif %}
                         </div>
+
+                        <!-- Call Made -->
+                        <div class="mb-4">
+                            <label class="flex items-center">
+                                {{ form.call_made }}
+                                <span class="ml-2 text-sm font-medium text-[var(--text-primary)]">Call Made</span>
+                            </label>
+                            {% if form.call_made.errors %}
+                            <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                                {% for error in form.call_made.errors %}
+                                <p>{{ error }}</p>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
 

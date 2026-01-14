@@ -165,6 +165,10 @@ class Company(models.Model):
     second_email_sent_date = models.DateField(null=True, blank=True, help_text="Date second follow-up email was sent")
     third_email_sent_date = models.DateField(null=True, blank=True, help_text="Date third follow-up email was sent")
     fourth_email_sent_date = models.DateField(null=True, blank=True, help_text="Date fourth/final email was sent")
+
+    # Call tracking
+
+    call_made = models.BooleanField(default=False)
     
     # Email response tracking
     initial_email_response = models.BooleanField(default=False)
