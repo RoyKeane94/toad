@@ -396,3 +396,7 @@ class TeamInvitation(models.Model):
         
         return True
 
+
+# Import passwordless login model at the end to avoid circular imports
+from .passwordless_models import LoginCode
+

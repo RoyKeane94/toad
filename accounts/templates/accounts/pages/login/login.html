@@ -177,6 +177,27 @@
                         </button>
                     </div>
                     
+                    <!-- Alternative Login Options -->
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-[var(--border-color)]"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-[var(--container-bg)] text-[var(--text-secondary)]">or</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Passwordless Login Option -->
+                    <div class="text-center">
+                        <a href="{% url 'accounts:passwordless_request' %}" class="inline-flex items-center justify-center w-full py-2.5 px-4 border-2 border-[var(--primary-action-bg)] text-sm font-medium rounded-md text-[var(--primary-action-bg)] bg-transparent hover:bg-[var(--primary-action-bg)] hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] transition-colors duration-200 cursor-pointer">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Sign in with email code
+                        </a>
+                        <p class="mt-2 text-xs text-[var(--text-secondary)]">
+                            No password needed - we'll send you a code
+                        </p>
+                    </div>
+                    
                     <!-- Resend Verification Link -->
                     <div class="text-center">
                         <p class="text-sm text-[var(--text-secondary)]">

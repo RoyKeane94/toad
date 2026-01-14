@@ -83,6 +83,57 @@ This email was sent to {user.email}. If you have any questions, please contact o
         return False
 
 
+def send_passwordless_login_code(user, code, request=None):
+    """
+    Send passwordless login code email to the user.
+    """
+    # Render email template
+    html_message = render_to_string('accounts/email/passwordless_login_code.html', {
+        'user': user,
+        'code': code,
+    })
+    
+    # Plain text version
+    text_message = f"""
+Hi {user.first_name},
+
+Your Toad login code is: {code}
+
+Enter this code to sign in to your account. This code will expire in 10 minutes.
+
+If you didn't request this code, you can safely ignore this email. Your account remains secure.
+
+Security Notice: Never share this code with anyone. Toad staff will never ask for your login code.
+
+Thanks for using Toad!
+
+This email was sent to {user.email}. If you have any questions, please contact our support team.
+
+© 2024 Toad. All rights reserved.
+    """
+    
+    # Send email
+    try:
+        logger = logging.getLogger(__name__)
+        logger.info(f"Attempting to send passwordless login code to {user.email}")
+        
+        send_mail(
+            subject='Your Toad Login Code',
+            message=text_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[user.email],
+            html_message=html_message,
+            fail_silently=False,
+        )
+        
+        logger.info(f"Successfully sent passwordless login code to {user.email}")
+        return True
+    except Exception as e:
+        logger = logging.getLogger(__name__)
+        logger.error(f"Failed to send passwordless login code to {user.email}: {e}")
+        return False
+
+
 def send_password_reset_email(user, request=None):
     """
     Send password reset email to the user.

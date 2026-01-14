@@ -43,6 +43,7 @@ from .views import (
     cancel_team_invitation_view,
     accept_team_invitation_view
 )
+from .passwordless_views import RequestLoginCodeView, VerifyLoginCodeView
 
 def secret_registration_redirect(request):
     """Redirect secret registration to 3-month pro trial registration"""
@@ -70,6 +71,8 @@ app_name = 'accounts'
 urlpatterns = [
     # Authentication
     path('login/', LoginView.as_view(), name='login'),
+    path('login/passwordless/', RequestLoginCodeView.as_view(), name='passwordless_request'),
+    path('login/passwordless/verify/', VerifyLoginCodeView.as_view(), name='passwordless_verify'),
     path('register/', RegisterChoicesView.as_view(), name='register_choices'),
     path('register/free/', RegisterFreeView.as_view(), name='register_free'),
     path('register/personal/', RegisterPersonalView.as_view(), name='register_personal'),
