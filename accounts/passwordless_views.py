@@ -173,6 +173,8 @@ class VerifyLoginCodeView(FormView):
                 'Invalid or expired code. Please request a new code.'
             )
             logger.warning(f"Failed login code attempt for {email}")
+            # Clear form errors to avoid duplicate messages
+            form.errors.clear()
             return self.form_invalid(form)
         
         # Check if email is verified (allow Personal plan users)
@@ -203,6 +205,7 @@ class VerifyLoginCodeView(FormView):
     
     def form_invalid(self, form):
         """Handle invalid form."""
-        messages.error(self.request, 'Please enter a valid 6-digit code.')
+        # Don't show duplicate error messages - the view already shows specific error messages
+        # Only show form errors if they're not already covered by view-level messages
         return super().form_invalid(form)
 
