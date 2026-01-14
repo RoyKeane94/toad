@@ -202,7 +202,7 @@
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Status</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Company Sector</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Email Outreach</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">View Count</th>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Views / Clicks</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Created</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Updated</th>
                         <th class="px-6 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase">Actions</th>
@@ -280,9 +280,14 @@
                             </div>
                         </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-primary)]">
-                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                                {{ company.template_view_count|default:0 }}
-                            </span>
+                            <div class="flex items-center gap-2">
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                    {{ company.template_view_count|default:0 }}
+                                </span>
+                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                    {{ company.template_sign_up_click_count|default:0 }}
+                                </span>
+                            </div>
                         </td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.created_at|date:"jS M y" }}</td>
                         <td class="px-6 py-4 text-sm text-[var(--text-secondary)]">{{ company.updated_at|date:"jS M y" }}</td>

@@ -101,6 +101,12 @@
                                     <span class="text-sm font-semibold text-[var(--text-primary)]">{{ company.template_view_count }}</span>
                                 </div>
                                 {% endif %}
+                                {% if company.template_sign_up_click_count is not None %}
+                                <div class="flex items-center justify-between px-3 py-2 bg-[var(--bg-secondary)] rounded-lg">
+                                    <span class="text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wide">Sign-Up Clicks</span>
+                                    <span class="text-sm font-semibold text-[var(--text-primary)]">{{ company.template_sign_up_click_count }}</span>
+                                </div>
+                                {% endif %}
                                 <div class="bg-[var(--bg-secondary)] rounded-lg p-3">
                                     <p class="text-xs text-[var(--text-secondary)] break-all mb-2 font-mono">{{ template_url }}</p>
                                     <button onclick="navigator.clipboard.writeText('{{ template_url }}'); this.innerHTML='<i class=\'fas fa-check mr-1\'></i>Copied!'; setTimeout(() => { this.innerHTML='<i class=\'fas fa-copy mr-1\'></i>Copy link'; }, 2000);" class="text-xs text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] font-medium transition-colors cursor-pointer">
