@@ -181,10 +181,14 @@ def handle_htmx_form_errors(request, form):
 
 # Template Rendering Helpers
 
-def render_task_item(task, request=None):
+def render_task_item(task, request=None, project=None):
     """Render task item HTML"""
+    # If project not provided, get it from task
+    if project is None and hasattr(task, 'project'):
+        project = task.project
     return render_to_string('pages/grid/actions_in_page/task_item.html', {
-        'task': task
+        'task': task,
+        'project': project
     }, request=request)
 
 def render_modal_content(request, template_name, context):

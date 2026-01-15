@@ -254,12 +254,21 @@ def project_grid_view(request, pk):
     Serves different templates for mobile and desktop.
     """
     # Single optimized query to load all required data at once
-    # Prefetch notes to avoid N+1 queries when checking task.notes.exists in template
+    # Prefetch notes and assigned_to to avoid N+1 queries when checking task.notes.exists and task.assigned_to in template
+    # Also prefetch team_toad_user since template accesses project.team_toad_user.all for every assigned task
     project = get_user_project_optimized(
         pk, 
         request.user,
         select_related=['user'],
-        prefetch_related=['row_headers', 'column_headers', 'tasks__row_header', 'tasks__column_header', 'tasks__notes'],
+        prefetch_related=[
+            'row_headers', 
+            'column_headers', 
+            'tasks__row_header', 
+            'tasks__column_header', 
+            'tasks__notes',
+            'tasks__assigned_to',
+            'team_toad_user'
+        ],
     )
 
     is_mobile = is_mobile_device(request)
@@ -383,8 +392,15 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             ).count()
         
         def htmx_response(task):
-            # Prefetch notes to avoid N+1 query when template checks task.notes.exists
-            task = Task.objects.prefetch_related('notes').get(pk=task.pk)
+            # Prefetch notes, assigned_to, and project team_toad_user to avoid N+1 queries
+            # Template accesses: task.notes.exists, task.assigned_to, project.team_toad_user.all
+            task = Task.objects.prefetch_related('notes', 'assigned_to').select_related('assigned_to', 'project').get(pk=task.pk)
+            # Prefetch project's team_toad_user for template (line 90 in task_item.html)
+            from django.db.models import Prefetch
+            from accounts.models import User
+            project = Project.objects.prefetch_related(
+                Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+            ).get(pk=project.pk)
             return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task, 'project': project})
         
         def success_message_callback(task):
@@ -478,11 +494,20 @@ def task_edit_view(request, task_pk):
         if form.is_valid():
             updated_task = form.save()
             if request.headers.get('HX-Request'):
+                # Prefetch related data to avoid N+1 queries when rendering task item
+                # Template accesses: task.notes.exists, task.assigned_to, project.team_toad_user.all
+                updated_task = Task.objects.prefetch_related('notes', 'assigned_to').select_related('assigned_to', 'project').get(pk=updated_task.pk)
+                # Prefetch project's team_toad_user for template (line 90 in task_item.html)
+                from django.db.models import Prefetch
+                from accounts.models import User
+                project = Project.objects.prefetch_related(
+                    Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
+                ).get(pk=updated_task.project.pk)
                 return create_json_response(
                     True,
                     'Task updated successfully!',
                     task_id=updated_task.pk,
-                    task_html=render_task_item(updated_task, request)
+                    task_html=render_task_item(updated_task, request, project=project)
                 )
             messages.success(request, 'Task updated successfully!')
             return redirect('pages:project_grid', pk=task.project.pk)
