@@ -4,7 +4,7 @@
 {% block title %}Toad – From too many tabs to clear, organised grids{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ csp_nonce }}">
     /* Override layout padding for home page */
     #app {
         padding: 0 !important;
@@ -690,7 +690,7 @@
     </div>
 </section>
 
-<script>
+<script nonce="{{ csp_nonce }}">
     document.addEventListener('DOMContentLoaded', function() {
         // Animation sequence elements
         const logoContainer = document.getElementById('logo-container');
@@ -769,7 +769,7 @@
     });
 </script>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 // Interactive Use Case Section JS
 (function() {
     const personas = [

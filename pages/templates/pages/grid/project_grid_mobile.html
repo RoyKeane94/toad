@@ -11,7 +11,7 @@
 {% else %}
     <script src="{% static 'js/grid/grid_mobile.js' %}"></script>
 {% endif %}
-<style>
+<style nonce="{{ csp_nonce }}">
 /* Prevent horizontal page scrolling on mobile */
 html, body {
     overflow-x: hidden !important;
@@ -625,7 +625,7 @@ main, #app {
     </div>
 </div>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 // Grid Actions Dropdown functionality
 function closeGridActionsDropdown() {
     const dropdown = document.getElementById('grid-actions-dropdown');

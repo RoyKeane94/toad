@@ -4,7 +4,7 @@
 {% block title %}Toad for Weddings{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ csp_nonce }}">
     #app {
         padding: 0 !important;
     }

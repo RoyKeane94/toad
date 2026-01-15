@@ -4,7 +4,7 @@
 {% block title %}3-Month Pro Trial - Toad{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ csp_nonce }}">
     /* Override layout padding for intro page */
     #app {
         padding: 0 !important;
@@ -443,7 +443,7 @@
     </div>
 </section>
 
-<script>
+<script nonce="{{ csp_nonce }}">
     document.addEventListener('DOMContentLoaded', function() {
         // Animation sequence elements
         const initialText = document.getElementById('initial-text');

@@ -8,7 +8,7 @@
 <!-- CSRF Token for AJAX requests -->
 {% csrf_token %}
 
-<style>
+<style nonce="{{ csp_nonce }}">
     /* Drag and drop styles */
     .sortable-drag {
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -776,7 +776,7 @@
     </div>
 </div>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 // Project List Manager for drag and drop functionality
 class ProjectListManager {
     constructor() {

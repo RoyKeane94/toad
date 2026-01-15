@@ -3,7 +3,7 @@
 {% block title %}Companies - B2B CRM{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ csp_nonce }}">
     /* Checkbox button styling */
     input[type="checkbox"]:checked + span {
         background-color: rgb(243 244 246);
@@ -393,7 +393,7 @@
     </div>
 </div>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.querySelector('form[method="get"]');
     if (form) {

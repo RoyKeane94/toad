@@ -3,7 +3,7 @@
 {% block title %}FAQ - Toad{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ csp_nonce }}">
     .faq-category-btn {
         @apply px-4 py-2 rounded-lg font-medium transition-colors duration-200 cursor-pointer;
         @apply bg-[var(--grid-header-bg)] text-[var(--text-secondary)] hover:bg-[var(--primary-action-bg)] hover:text-[var(--primary-action-text)];
@@ -119,7 +119,7 @@
     </div>
 </div>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 document.addEventListener('DOMContentLoaded', function() {
     // FAQ Category Filtering
     const faqCategoryButtons = document.querySelectorAll('.faq-category-btn');

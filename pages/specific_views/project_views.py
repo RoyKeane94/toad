@@ -254,11 +254,12 @@ def project_grid_view(request, pk):
     Serves different templates for mobile and desktop.
     """
     # Single optimized query to load all required data at once
+    # Prefetch notes to avoid N+1 queries when checking task.notes.exists in template
     project = get_user_project_optimized(
         pk, 
         request.user,
         select_related=['user'],
-        prefetch_related=['row_headers', 'column_headers', 'tasks__row_header', 'tasks__column_header'],
+        prefetch_related=['row_headers', 'column_headers', 'tasks__row_header', 'tasks__column_header', 'tasks__notes'],
     )
 
     is_mobile = is_mobile_device(request)
@@ -374,14 +375,16 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             task.row_header = row_header
             task.column_header = column_header
             # Set the order to be the next order in this cell
-            existing_tasks = Task.objects.filter(
+            # Optimize: Use count() directly instead of fetching all tasks
+            task.order = Task.objects.filter(
                 project=project,
                 row_header=row_header,
                 column_header=column_header
-            )
-            task.order = get_next_order(existing_tasks)
+            ).count()
         
         def htmx_response(task):
+            # Prefetch notes to avoid N+1 query when template checks task.notes.exists
+            task = Task.objects.prefetch_related('notes').get(pk=task.pk)
             return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task, 'project': project})
         
         def success_message_callback(task):

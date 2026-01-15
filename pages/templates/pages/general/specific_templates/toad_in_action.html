@@ -4,7 +4,7 @@
 {% block title %}Toad in Action{% endblock %}
 
 {% block extra_head %}
-<style>
+<style nonce="{{ csp_nonce }}">
     #app {
         padding: 0 !important;
     }
@@ -208,7 +208,7 @@
     </div>
 </section>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 document.addEventListener('DOMContentLoaded', function() {
     const animateElements = document.querySelectorAll('.tia-animate');
     if (animateElements.length === 0) return;

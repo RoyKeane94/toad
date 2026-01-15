@@ -312,7 +312,7 @@
     </div>
 </div>
 
-<script>
+<script nonce="{{ csp_nonce }}">
 // Show/hide the "Other" organization method field
 document.addEventListener('DOMContentLoaded', function() {
     const orgMethodSelect = document.getElementById('{{ form.organization_method.id_for_label }}');
