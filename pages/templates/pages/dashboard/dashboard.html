@@ -323,7 +323,7 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
 {# Safely embed JSON data for the chart #}
 {{ task_distribution_labels|json_script:"task-dist-labels" }}
 {{ task_distribution_counts|json_script:"task-dist-counts" }}
