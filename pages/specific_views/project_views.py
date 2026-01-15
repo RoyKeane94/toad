@@ -371,8 +371,16 @@ def project_grid_view(request, pk):
 
 @login_required
 def task_create_view(request, project_pk, row_pk, col_pk):
-    # Use optimized queries
-    project = get_user_project_optimized(project_pk, request.user, only_fields=['id', 'name', 'user'])
+    # Use optimized queries - need to load project with team_toad_user for template
+    from django.db.models import Prefetch
+    from accounts.models import User
+    # Load project with team_toad_user prefetched for template rendering
+    project = get_user_project_optimized(
+        project_pk, 
+        request.user, 
+        only_fields=['id', 'name', 'user'],
+        prefetch_related=[Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))]
+    )
     row_header = get_user_row_optimized(row_pk, project, only_fields=['id', 'name', 'project'])
     column_header = get_user_column_optimized(col_pk, project, only_fields=['id', 'name', 'project'])
 
@@ -392,15 +400,10 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             ).count()
         
         def htmx_response(task):
-            # Prefetch notes, assigned_to, and project team_toad_user to avoid N+1 queries
+            # Prefetch notes and assigned_to to avoid N+1 queries
             # Template accesses: task.notes.exists, task.assigned_to, project.team_toad_user.all
+            # Project already has team_toad_user prefetched from outer scope
             task = Task.objects.prefetch_related('notes', 'assigned_to').select_related('assigned_to', 'project').get(pk=task.pk)
-            # Prefetch project's team_toad_user for template (line 90 in task_item.html)
-            from django.db.models import Prefetch
-            from accounts.models import User
-            project = Project.objects.prefetch_related(
-                Prefetch('team_toad_user', queryset=User.objects.only('id', 'first_name', 'last_name'))
-            ).get(pk=project.pk)
             return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task, 'project': project})
         
         def success_message_callback(task):
