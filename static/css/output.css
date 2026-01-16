@@ -1725,6 +1725,9 @@
   .p-1 {
     padding: calc(var(--spacing) * 1);
   }
+  .p-1\.5 {
+    padding: calc(var(--spacing) * 1.5);
+  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -1832,9 +1835,6 @@
   }
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
-  }
-  .pr-2 {
-    padding-right: calc(var(--spacing) * 2);
   }
   .pr-3 {
     padding-right: calc(var(--spacing) * 3);
@@ -3758,11 +3758,6 @@
       width: calc(1/2 * 100%);
     }
   }
-  .lg\:w-72 {
-    @media (width >= 64rem) {
-      width: calc(var(--spacing) * 72);
-    }
-  }
   .lg\:flex-1 {
     @media (width >= 64rem) {
       flex: 1;
@@ -3830,11 +3825,6 @@
     @media (width >= 64rem) {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
-    }
-  }
-  .xl\:w-80 {
-    @media (width >= 80rem) {
-      width: calc(var(--spacing) * 80);
     }
   }
   .xl\:grid-cols-8 {

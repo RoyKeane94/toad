@@ -9,13 +9,13 @@
 {% csrf_token %}
 
 <style nonce="{{ csp_nonce }}">
-    /* Drag and drop styles */
+    /* Drag and drop styles for table rows */
     .sortable-drag {
         box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         cursor: grabbing;
         background-color: var(--container-bg);
         opacity: 0.8;
-        transform: rotate(2deg);
+        transform: rotate(1deg);
         z-index: 1000;
     }
 
@@ -29,97 +29,52 @@
         opacity: 0;
     }
     
-    /* Project card hover effects */
-    .project-card {
+    /* Table row hover effects */
+    .project-row {
         transition: all 0.2s ease-out;
         cursor: grab;
     }
     
-    .project-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    .project-row:hover {
+        background-color: var(--bg-secondary) !important;
     }
     
-    .project-card:active {
+    .project-row:active {
         cursor: grabbing;
-    }
-    
-    /* Responsive layout improvements */
-    .project-group, #ungrouped-projects {
-        min-height: 200px;
-        padding: 1rem 0;
-        border: 2px solid transparent;
-        border-radius: 0.5rem;
-        transition: all 0.2s ease-out;
-    }
-    
-    /* Smooth transitions for all interactive elements */
-    .project-card * {
-        transition: all 0.2s ease-out;
     }
     
     /* Drag active states - green dotted box drop zones */
     .drag-active {
         background-color: var(--grid-header-bg);
-        border: 2px dashed #10B981 !important; /* Green dotted border */
+        border: 2px dashed #10B981 !important;
         border-radius: 0.5rem;
         transition: all 0.2s ease-out;
-        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1); /* Green glow */
+        box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
     }
     
     /* Dragging state */
-    .project-card.dragging {
-        transform: scale(1.02);
+    .project-row.dragging {
+        transform: scale(1.01);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
     }
     
     /* Hold-to-drag visual feedback */
-    .project-card.hold-active {
-        transform: scale(1.01);
+    .project-row.hold-active {
+        transform: scale(1.005);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         transition: all 0.1s ease-out;
     }
     
-    /* Responsive improvements */
-    @media (max-width: 768px) {
-        .project-group, #ungrouped-projects {
-            justify-content: center;
-        }
-        
-        .project-card {
-            width: 100%;
-            max-width: 100%;
-        }
-    }
-    
-    @media (min-width: 769px) and (max-width: 1024px) {
-        .project-card {
-            width: calc(50% - 0.75rem);
-            max-width: calc(50% - 0.75rem);
-        }
-    }
-    
-    @media (min-width: 1025px) {
-        .project-card {
-            width: calc(33.333% - 1rem);
-            max-width: calc(33.333% - 1rem);
-        }
-    }
-
-    /* Delete button styling - hidden by default, grey on hover, red on button hover */
+    /* Delete button styling - always visible, light grey by default, dark grey on hover */
     .delete-btn {
-        opacity: 0;
-        color: #6B7280 !important; /* Grey by default */
+        opacity: 1;
+        color: #D1D5DB !important;
         transition: all 0.2s ease-out;
     }
     
-    .project-card:hover .delete-btn {
-        opacity: 1;
-    }
-    
     .delete-btn:hover {
-        color: #EF4444 !important; /* Red on button hover */
-        background-color: rgba(239, 68, 68, 0.1) !important;
+        color: #6B7280 !important;
+        background-color: rgba(107, 114, 128, 0.1) !important;
     }
     
     /* Inline editing styles */
@@ -131,6 +86,7 @@
         margin: -4px -8px;
         min-height: 24px;
         border: 2px solid transparent;
+        display: inline-block;
     }
     
     .grid-name-editable:hover {
@@ -151,16 +107,6 @@
     .grid-name-editable.editing:focus {
         box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2) !important;
         border-color: var(--tertiary-action-bg) !important;
-    }
-    
-    /* Adjust delete button position when editing */
-    .project-card .grid-name-editable.editing + .flex-shrink-0 {
-        margin-left: 8px;
-    }
-    
-    /* Alternative approach: adjust the flex container when editing */
-    .project-card:has(.grid-name-editable.editing) .flex.items-start.justify-between {
-        gap: 12px;
     }
     
     /* Group name inline editing styles */
@@ -227,35 +173,9 @@
         border-color: var(--tertiary-action-bg) !important;
     }
     
-    /* Adjust delete button position when editing template name */
-    .template-name-editable.editing + .flex-shrink-0 {
-        margin-left: 8px;
-    }
-    
     /* Show delete button on hover for template cards */
     .template-card:hover .delete-btn {
         opacity: 1;
-    }
-    
-    /* Consistent button styling */
-    .action-button {
-        width: 180px;
-        height: 48px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 24px;
-        border-radius: 0.5rem;
-        font-weight: 500;
-        transition: all 0.2s ease-out;
-        box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-        text-decoration: none;
-        border: none;
-        cursor: pointer;
-    }
-    
-    .action-button:hover {
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     }
     
     /* Team member avatar styling */
@@ -267,12 +187,104 @@
         color: white;
         font-weight: 600;
         font-size: 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 4px;
+    }
+    
+    /* Table styling */
+    .projects-table {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background-color: var(--container-bg);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+    }
+    
+    .table-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .projects-table thead {
+        background-color: var(--grid-header-bg);
+    }
+    
+    .projects-table th {
+        padding: 12px 16px;
+        text-align: left;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+        border-bottom: 2px solid var(--border-color);
+    }
+    
+    /* Column width consistency for grids and templates */
+    .projects-table th:nth-child(1),
+    .projects-table td:nth-child(1) {
+        width: 35%;
+    }
+    
+    .projects-table th:nth-child(2),
+    .projects-table td:nth-child(2) {
+        width: 15%;
+    }
+    
+    .projects-table th:nth-child(3),
+    .projects-table td:nth-child(3) {
+        width: 12%;
+    }
+    
+    .projects-table th:nth-child(4),
+    .projects-table td:nth-child(4) {
+        width: 20%;
+    }
+    
+    .projects-table th:last-child,
+    .projects-table td:last-child {
+        width: 1%;
+        white-space: nowrap;
+    }
+    
+    .projects-table td {
+        padding: 16px;
+        border-bottom: 1px solid var(--border-color);
+        vertical-align: middle;
+    }
+    
+    .projects-table tbody tr:last-child td {
+        border-bottom: none;
     }
     
     /* Mobile buttons - hide on larger screens */
     @media (min-width: 768px) {
         .mobile-buttons {
             display: none !important;
+        }
+    }
+    
+    /* Responsive table */
+    @media (max-width: 768px) {
+        .projects-table {
+            font-size: 0.875rem;
+        }
+        
+        .projects-table th,
+        .projects-table td {
+            padding: 10px 8px;
+        }
+        
+        .projects-table th:nth-child(3),
+        .projects-table td:nth-child(3),
+        .projects-table th:nth-child(4),
+        .projects-table td:nth-child(4) {
+            display: none;
         }
     }
 </style>
@@ -354,80 +366,81 @@
     </div>
 </div>
 
-    <!-- Grids Overview -->
+<!-- Grids Overview -->
 {% if projects %}
     <div class="max-w-7xl mx-auto px-4">
-
         <!-- Display ungrouped projects first -->
         {% if ungrouped_projects %}
             <div class="mb-8">
-                <!-- Group container for ungrouped projects -->
-                <div class="flex flex-wrap justify-start gap-6" 
-                     id="ungrouped-projects" 
-                     data-group-id="null">
-                    
-                    <!-- Ungrouped projects -->
-                    {% for project in ungrouped_projects %}
-                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 project-card" 
-                             data-project-id="{{ project.pk }}" 
-                             data-project-group="null">
-                            <div class="p-6">
-                                <div class="flex items-start justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2 grid-name-editable" 
-                                        data-project-id="{{ project.pk }}" 
-                                        data-original-text="{{ project.name }}"
-                                        title="Click to edit grid name">
-                                        {{ project.name }}
-                                    </h3>
-                                    <div class="flex space-x-2 flex-shrink-0">
+                <div class="table-container">
+                    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
+                        <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Grid Name</th>
+                                <th>Created</th>
+                                <th>Tasks</th>
+                                <th>Team Members</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ungrouped-projects" data-group-id="null">
+                            {% for project in ungrouped_projects %}
+                            <tr class="project-row" 
+                                data-project-id="{{ project.pk }}" 
+                                data-project-group="null">
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="grid-name-editable" 
+                                              data-project-id="{{ project.pk }}" 
+                                              data-original-text="{{ project.name }}"
+                                              title="Click to edit grid name">
+                                            {{ project.name }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)]">
+                                    <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                    {{ project.created_at|date:"d M Y" }}
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)]">
+                                    <i class="fas fa-tasks mr-2 text-xs"></i>
+                                    {{ project.task_count }} task{{ project.task_count|pluralize }}
+                                </td>
+                                <td>
+                                    {% if project.is_team_toad %}
+                                        <div class="flex items-center flex-wrap gap-1">
+                                            {% for team_member in project.team_toad_user.all %}
+                                            <div class="team-member-avatar" 
+                                                 style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
+                                                 title="{{ team_member.get_full_name }}">
+                                                {{ team_member.get_full_name|get_initials }}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <span class="text-sm text-[var(--text-secondary)]">—</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="flex items-center justify-end space-x-4">
+                                        <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                           class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] rounded-md transition-colors">
+                                            <i class="fas fa-th-large mr-3"></i>
+                                            Open
+                                        </a>
                                         <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                                           class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer delete-btn"
+                                           class="delete-btn p-1.5 rounded hover:bg-red-50 cursor-pointer"
                                            title="Delete grid">
                                             <i class="fas fa-trash text-sm"></i>
                                         </a>
                                     </div>
-                                </div>
-                                
-                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                        <span>Created {{ project.created_at|date:"d M Y" }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-tasks mr-2 text-xs"></i>
-                                        <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
-                                    </div>
-                                    {% if project.is_team_toad %}
-                                    <div class="flex items-center">
-                                        <i class="fas fa-users mr-2 text-xs"></i>
-                                        <span class="font-medium">Group Grid</span>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                                
-                                {% if project.is_team_toad %}
-                                <!-- Team Members Display -->
-                                <div class="mb-4">
-                                    <div class="flex items-center space-x-1">
-                                        {% for team_member in project.team_toad_user.all %}
-                                        <div class="flex items-center justify-center team-member-avatar" 
-                                             style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
-                                             title="{{ team_member.get_full_name }}">
-                                            {{ team_member.get_full_name|get_initials }}
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                {% endif %}
-                                
-                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                                   class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm">
-                                    <i class="fas fa-th-large mr-2"></i>
-                                    Open Grid
-                                </a>
-                            </div>
-                        </div>
-                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
         {% endif %}
@@ -436,7 +449,7 @@
         {% for group_data in grouped_projects %}
             <div class="mb-8">
                 <!-- Group header -->
-                <div class="text-center mb-6">
+                <div class="text-center mb-4">
                     <h3 class="text-xl font-semibold text-[var(--primary-action-bg)] group-name-editable" 
                         data-group-id="{{ group_data.group.pk }}" 
                         data-original-text="{{ group_data.group.name }}"
@@ -445,73 +458,78 @@
                     </h3>
                 </div>
                 
-                <!-- Group container -->
-                <div class="flex flex-wrap justify-start gap-6 project-group" 
-                     id="group-{{ group_data.group.pk }}" 
-                     data-group-id="{{ group_data.group.pk }}">
-                    
-                    <!-- Projects in this group -->
-                    {% for project in group_data.projects %}
-                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 project-card" 
-                             data-project-id="{{ project.pk }}" 
-                             data-project-group="{{ group_data.group.pk }}">
-                            <div class="p-6">
-                                <div class="flex items-start justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2 grid-name-editable" 
-                                        data-project-id="{{ project.pk }}" 
-                                        data-original-text="{{ project.name }}"
-                                        title="Click to edit grid name">
-                                        {{ project.name }}
-                                    </h3>
-                                    <div class="flex space-x-2 flex-shrink-0">
+                <!-- Group table -->
+                <div class="table-container">
+                    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
+                        <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Grid Name</th>
+                                <th>Created</th>
+                                <th>Tasks</th>
+                                <th>Team Members</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="project-group" 
+                               id="group-{{ group_data.group.pk }}" 
+                               data-group-id="{{ group_data.group.pk }}">
+                            {% for project in group_data.projects %}
+                            <tr class="project-row" 
+                                data-project-id="{{ project.pk }}" 
+                                data-project-group="{{ group_data.group.pk }}">
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="grid-name-editable" 
+                                              data-project-id="{{ project.pk }}" 
+                                              data-original-text="{{ project.name }}"
+                                              title="Click to edit grid name">
+                                            {{ project.name }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)]">
+                                    <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                    {{ project.created_at|date:"d M Y" }}
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)]">
+                                    <i class="fas fa-tasks mr-2 text-xs"></i>
+                                    {{ project.task_count }} task{{ project.task_count|pluralize }}
+                                </td>
+                                <td>
+                                    {% if project.is_team_toad %}
+                                        <div class="flex items-center flex-wrap gap-1">
+                                            {% for team_member in project.team_toad_user.all %}
+                                            <div class="team-member-avatar" 
+                                                 style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
+                                                 title="{{ team_member.get_full_name }}">
+                                                {{ team_member.get_full_name|get_initials }}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <span class="text-sm text-[var(--text-secondary)]">—</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="flex items-center justify-end space-x-4">
+                                        <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                           class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] rounded-md transition-colors">
+                                            <i class="fas fa-th-large mr-3"></i>
+                                            Open
+                                        </a>
                                         <a href="{% url 'pages:project_delete' pk=project.pk %}" 
-                                           class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer delete-btn"
+                                           class="delete-btn p-1.5 rounded hover:bg-red-50 cursor-pointer"
                                            title="Delete grid">
                                             <i class="fas fa-trash text-sm"></i>
                                         </a>
                                     </div>
-                                </div>
-                                
-                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                        <span>Created {{ project.created_at|date:"d M Y" }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-tasks mr-2 text-xs"></i>
-                                        <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
-                                    </div>
-                                    {% if project.is_team_toad %}
-                                    <div class="flex items-center">
-                                        <i class="fas fa-users mr-2 text-xs"></i>
-                                        <span class="font-medium">Group Grid</span>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                                
-                                {% if project.is_team_toad %}
-                                <!-- Team Members Display -->
-                                <div class="mb-4">
-                                    <div class="flex items-center space-x-1">
-                                        {% for team_member in project.team_toad_user.all %}
-                                        <div class="flex items-center justify-center team-member-avatar" 
-                                             style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
-                                             title="{{ team_member.get_full_name }}">
-                                            {{ team_member.get_full_name|get_initials }}
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                {% endif %}
-                                
-                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                                   class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm">
-                                    <i class="fas fa-th-large mr-2"></i>
-                                    Open Grid
-                                </a>
-                            </div>
-                        </div>
-                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             </div>
         {% endfor %}
@@ -520,23 +538,56 @@
     <!-- My Templates Section -->
     <div class="max-w-7xl mx-auto px-4 mt-16">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">My Templates</h2>
+            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">Templates</h2>
             {% if personal_templates %}
                 <p class="text-[var(--subtitle-text)] text-lg mb-8">Stop reinventing the wheel. Save any grid as a template and turn your best work into your new starting point</p>
-                <div class="flex flex-wrap justify-start gap-6">
-                    {% for template in personal_templates %}
-                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 template-card">
-                            <div class="p-6">
-                                <div class="flex items-start justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-[var(--title-text)] truncate flex-1 pr-2 template-name-editable text-left" 
-                                        data-template-id="{{ template.pk }}" 
-                                        data-original-text="{{ template.name }}"
-                                        title="Click to edit template name">
-                                        {{ template.name }}
-                                    </h3>
-                                    <div class="flex space-x-2 flex-shrink-0">
+                <div class="table-container">
+                    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
+                        <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Template Name</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for template in personal_templates %}
+                            <tr class="project-row">
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="template-name-editable" 
+                                              data-template-id="{{ template.pk }}" 
+                                              data-original-text="{{ template.name }}"
+                                              title="Click to edit template name">
+                                            {{ template.name }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)] text-left">
+                                    <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                    {{ template.created_at|date:"d M Y" }}
+                                </td>
+                                <td>
+                                    <div class="flex items-center justify-end space-x-4">
+                                        {% if user_tier == 'free' %}
+                                        <a href="{% url 'pages:upgrade_required' %}" 
+                                           class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--tertiary-action-text)] bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] rounded-md transition-colors">
+                                            <i class="fas fa-copy mr-3"></i>
+                                            Use Template
+                                        </a>
+                                        {% else %}
+                                        <form method="post" action="{% url 'pages:use_template' pk=template.pk %}" class="inline">
+                                            {% csrf_token %}
+                                            <button type="submit" 
+                                                    class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--tertiary-action-text)] bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] rounded-md transition-colors">
+                                                <i class="fas fa-copy mr-3"></i>
+                                                Use Template
+                                            </button>
+                                        </form>
+                                        {% endif %}
                                         <button type="button"
-                                                class="text-[var(--delete-button-bg)] hover:text-[var(--delete-button-bg)] transition-colors p-1 rounded hover:bg-red-50 cursor-pointer delete-btn"
+                                                class="delete-btn p-1.5 rounded cursor-pointer"
                                                 title="Delete template"
                                                 hx-get="{% url 'pages:template_delete' pk=template.pk %}"
                                                 hx-target="#modal-content"
@@ -549,32 +600,12 @@
                                             <i class="fas fa-trash text-sm"></i>
                                         </button>
                                     </div>
-                                </div>
-                                
-                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                        <span>Created {{ template.created_at|date:"d M Y" }}</span>
-                                    </div>
-                                </div>
-                                
-                                {% if user_tier == 'free' %}
-                                <a href="{% url 'pages:upgrade_required' %}" class="block w-full text-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] py-3 px-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
-                                    <i class="fas fa-copy mr-2"></i>
-                                    Use Template
-                                </a>
-                                {% else %}
-                                <form method="post" action="{% url 'pages:use_template' pk=template.pk %}" class="inline">
-                                    {% csrf_token %}
-                                    <button type="submit" class="block w-full text-center bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] text-[var(--tertiary-action-text)] py-3 px-4 rounded-lg font-medium transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer">
-                                        <i class="fas fa-copy mr-2"></i>
-                                        Use Template
-                                    </button>
-                                </form>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             {% else %}
                 <p class="text-[var(--subtitle-text)] text-lg">No templates saved yet. Create your first template from any grid!</p>
@@ -588,18 +619,69 @@
             <h2 class="text-3xl font-bold text-[var(--primary-action-bg)] mb-3">Archives</h2>
             {% if archived_projects %}
                 <p class="text-[var(--subtitle-text)] text-lg mb-8">Your archived projects are stored here</p>
-                <div class="flex flex-wrap justify-center gap-6">
-                    {% for project in archived_projects %}
-                        <div class="w-full max-w-sm sm:w-80 lg:w-72 xl:w-80 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-xl transition-all duration-200 opacity-75">
-                            <div class="p-6">
-                                <div class="flex items-start justify-between mb-4">
-                                    <h3 class="text-lg font-semibold text-[var(--primary-action-bg)] truncate flex-1 pr-2">
-                                        {{ project.name }}
-                                    </h3>
-                                    <div class="flex space-x-2 flex-shrink-0">
+                <div class="table-container">
+                    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden opacity-75">
+                        <table class="projects-table">
+                        <thead>
+                            <tr>
+                                <th>Grid Name</th>
+                                <th>Created</th>
+                                <th>Tasks</th>
+                                <th>Team Members</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for project in archived_projects %}
+                            <tr class="project-row">
+                                <td>
+                                    <div class="flex items-center">
+                                        <span class="text-[var(--primary-action-bg)] font-semibold">
+                                            {{ project.name }}
+                                        </span>
+                                    </div>
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)] text-left">
+                                    <i class="fas fa-calendar-alt mr-2 text-xs"></i>
+                                    {{ project.created_at|date:"d M Y" }}
+                                </td>
+                                <td class="text-sm text-[var(--text-secondary)] text-left">
+                                    <i class="fas fa-tasks mr-2 text-xs"></i>
+                                    {{ project.task_count }} task{{ project.task_count|pluralize }}
+                                </td>
+                                <td>
+                                    {% if project.is_team_toad %}
+                                        <div class="flex items-center flex-wrap gap-1">
+                                            {% for team_member in project.team_toad_user.all %}
+                                            <div class="team-member-avatar" 
+                                                 style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
+                                                 title="{{ team_member.get_full_name }}">
+                                                {{ team_member.get_full_name|get_initials }}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                    {% else %}
+                                        <span class="text-sm text-[var(--text-secondary)]">—</span>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <div class="flex items-center justify-end space-x-4">
+                                        {% if user_tier == 'free' %}
+                                        <a href="{% url 'pages:upgrade_required' %}" 
+                                           class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] rounded-md transition-colors opacity-75 hover:opacity-100">
+                                            <i class="fas fa-th-large mr-3"></i>
+                                            Open
+                                        </a>
+                                        {% else %}
+                                        <a href="{% url 'pages:project_grid' pk=project.pk %}" 
+                                           class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--primary-action-text)] bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] rounded-md transition-colors opacity-75 hover:opacity-100">
+                                            <i class="fas fa-th-large mr-3"></i>
+                                            Open
+                                        </a>
+                                        {% endif %}
                                         {% if user_tier == 'free' %}
                                         <a href="{% url 'pages:upgrade_required' %}"
-                                           class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                           class="delete-btn p-1.5 rounded hover:bg-[var(--task-bg)] cursor-pointer text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"
                                            title="Restore project">
                                             <i class="fas fa-undo text-sm"></i>
                                         </a>
@@ -607,63 +689,19 @@
                                         <form method="post" action="{% url 'pages:restore_project' pk=project.pk %}" class="inline">
                                             {% csrf_token %}
                                             <button type="submit"
-                                                    class="text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors p-1 rounded hover:bg-[var(--task-bg)] cursor-pointer"
+                                                    class="delete-btn p-1.5 rounded hover:bg-[var(--task-bg)] cursor-pointer text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)]"
                                                     title="Restore project">
                                                 <i class="fas fa-undo text-sm"></i>
                                             </button>
                                         </form>
                                         {% endif %}
                                     </div>
-                                </div>
-                                
-                                <div class="text-sm text-[var(--subtitle-text)] mb-6 space-y-1">
-                                    <div class="flex items-center">
-                                        <i class="fas fa-calendar-alt mr-2 text-xs"></i>
-                                        <span>Created {{ project.created_at|date:"d M Y" }}</span>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <i class="fas fa-tasks mr-2 text-xs"></i>
-                                        <span>{{ project.task_count }} task{{ project.task_count|pluralize }}</span>
-                                    </div>
-                                    {% if project.is_team_toad %}
-                                    <div class="flex items-center">
-                                        <i class="fas fa-users mr-2 text-xs"></i>
-                                        <span class="font-medium">Group Grid</span>
-                                    </div>
-                                    {% endif %}
-                                </div>
-                                
-                                {% if project.is_team_toad %}
-                                <!-- Team Members Display -->
-                                <div class="mb-4">
-                                    <div class="flex items-center space-x-1">
-                                        {% for team_member in project.team_toad_user.all %}
-                                        <div class="flex items-center justify-center team-member-avatar" 
-                                             style="--avatar-color: {{ team_member.pk|get_avatar_color|default:'#6B7280' }};"
-                                             title="{{ team_member.get_full_name }}">
-                                            {{ team_member.get_full_name|get_initials }}
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-                                </div>
-                                {% endif %}
-                                
-                                {% if user_tier == 'free' %}
-                                <a href="{% url 'pages:upgrade_required' %}" 
-                                   class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm opacity-75 hover:opacity-100">
-                                    <i class="fas fa-th-large mr-2"></i>
-                                    View Grid
-                                </a>
-                                {% else %}
-                                <a href="{% url 'pages:project_grid' pk=project.pk %}" 
-                                   class="inline-block mx-auto text-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] py-3 px-6 rounded-lg font-medium transition-colors shadow-sm opacity-75 hover:opacity-100">
-                                    <i class="fas fa-th-large mr-2"></i>
-                                    View Grid
-                                </a>
-                                {% endif %}
-                            </div>
-                        </div>
-                    {% endfor %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    </div>
                 </div>
             {% else %}
                 <p class="text-[var(--subtitle-text)] text-lg mb-8">To keep your main grids tidy, you can archive completed tasks from any of your active grids.</p>
@@ -796,7 +834,6 @@ class ProjectListManager {
 
     init() {
         this.setupDragAndDrop();
-        this.setupResponsiveLayout();
         this.setupInlineEditing();
         this.setupTemplateEditing();
     }
@@ -810,7 +847,7 @@ class ProjectListManager {
     }
 
     initializeSortable() {
-        // Get all project containers (groups and ungrouped)
+        // Get all project containers (groups and ungrouped) - now tbody elements
         const ungroupedContainer = document.getElementById('ungrouped-projects');
         const groupContainers = document.querySelectorAll('.project-group');
         
@@ -845,6 +882,9 @@ class ProjectListManager {
                     touchStartThreshold: 0,
                     forceFallback: window.innerWidth <= 768,
                     
+                    // Handle element - use the row itself
+                    handle: '.project-row',
+                    
                     // Callback when sorting starts
                     onStart: (evt) => {
                         this.handleDragStart(evt);
@@ -867,21 +907,21 @@ class ProjectListManager {
     }
 
     handleDragStart(evt) {
-        const projectCard = evt.item;
-        projectCard.style.zIndex = '1000';
+        const projectRow = evt.item;
+        projectRow.style.zIndex = '1000';
         
         // Add visual feedback
-        projectCard.classList.add('dragging');
+        projectRow.classList.add('dragging');
         
         // Show drop zones more prominently
         document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
-            container.classList.add('drag-active');
+            container.closest('table')?.classList.add('drag-active');
         });
     }
 
-    triggerDragStart(card) {
-        // Find the Sortable instance for this card's container
-        const container = card.closest('.project-group, #ungrouped-projects');
+    triggerDragStart(row) {
+        // Find the Sortable instance for this row's container
+        const container = row.closest('tbody');
         if (!container) return;
         
         // Get the Sortable instance
@@ -890,11 +930,11 @@ class ProjectListManager {
         
         // Create a synthetic event
         const syntheticEvent = {
-            item: card,
+            item: row,
             from: container,
             to: container,
-            oldIndex: Array.from(container.children).indexOf(card),
-            newIndex: Array.from(container.children).indexOf(card)
+            oldIndex: Array.from(container.children).indexOf(row),
+            newIndex: Array.from(container.children).indexOf(row)
         };
         
         // Trigger the drag start
@@ -907,18 +947,18 @@ class ProjectListManager {
     }
 
     handleProjectMove(evt) {
-        const projectCard = evt.item;
-        const projectId = projectCard.dataset.projectId;
+        const projectRow = evt.item;
+        const projectId = projectRow.dataset.projectId;
         const oldGroupId = evt.from.dataset.groupId || 'null';
         const newGroupId = evt.to.dataset.groupId || 'null';
         
         // Remove visual feedback
-        projectCard.style.zIndex = '';
-        projectCard.classList.remove('dragging');
+        projectRow.style.zIndex = '';
+        projectRow.classList.remove('dragging');
         
         // Remove drag-active class from all containers
         document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
-            container.classList.remove('drag-active');
+            container.closest('table')?.classList.remove('drag-active');
         });
         
         // Check if the move actually changed groups
@@ -929,7 +969,7 @@ class ProjectListManager {
         }
         
         // Update the data attribute to reflect the new group
-        projectCard.dataset.projectGroup = newGroupId;
+        projectRow.dataset.projectGroup = newGroupId;
         
         // Save the new group assignment and order to the server
         this.saveProjectGroupAssignment(projectId, newGroupId, oldGroupId, evt.to);
@@ -961,7 +1001,8 @@ class ProjectListManager {
             this.showLoadingState(projectId, false);
             
             if (data.success) {
-                // Move was successful, no feedback needed
+                // Move was successful, reload page to show updated structure
+                window.location.reload();
             } else {
                 // Revert the move on error
                 this.revertProjectMove(projectId, oldGroupId);
@@ -990,7 +1031,7 @@ class ProjectListManager {
                 'X-CSRFToken': csrfToken
             },
             body: JSON.stringify({
-                project_id: newOrder[0]?.project_id || 0,  // Use first project as dummy
+                project_id: newOrder[0]?.project_id || 0,
                 group_id: groupId === 'null' ? null : parseInt(groupId),
                 order: newOrder
             })
@@ -1007,7 +1048,7 @@ class ProjectListManager {
     }
 
     getProjectOrderFromContainer(container) {
-        const projects = Array.from(container.querySelectorAll('.project-card'));
+        const projects = Array.from(container.querySelectorAll('.project-row'));
         return projects.map((project, index) => ({
             project_id: project.dataset.projectId,
             order: index
@@ -1015,24 +1056,22 @@ class ProjectListManager {
     }
 
     showLoadingState(projectId, isLoading) {
-        const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
-        if (!projectCard) return;
+        const projectRow = document.querySelector(`[data-project-id="${projectId}"]`);
+        if (!projectRow) return;
 
         if (isLoading) {
-            projectCard.style.opacity = '0.7';
-            projectCard.style.pointerEvents = 'none';
+            projectRow.style.opacity = '0.7';
+            projectRow.style.pointerEvents = 'none';
         } else {
-            projectCard.style.opacity = '';
-            projectCard.style.pointerEvents = '';
+            projectRow.style.opacity = '';
+            projectRow.style.pointerEvents = '';
         }
     }
 
-
-
     revertProjectMove(projectId, oldGroupId) {
-        // Find the project card
-        const projectCard = document.querySelector(`[data-project-id="${projectId}"]`);
-        if (!projectCard) return;
+        // Find the project row
+        const projectRow = document.querySelector(`[data-project-id="${projectId}"]`);
+        if (!projectRow) return;
 
         // Find the old container
         let oldContainer;
@@ -1043,9 +1082,9 @@ class ProjectListManager {
         }
 
         if (oldContainer) {
-            // Move the card back to its original position
-            oldContainer.appendChild(projectCard);
-            projectCard.dataset.projectGroup = oldGroupId;
+            // Move the row back to its original position
+            oldContainer.appendChild(projectRow);
+            projectRow.dataset.projectGroup = oldGroupId;
         }
     }
 
@@ -1053,16 +1092,16 @@ class ProjectListManager {
         // Only apply hold-to-drag on mobile devices
         if (window.innerWidth > 768) return;
         
-        const projectCards = document.querySelectorAll('.project-card');
+        const projectRows = document.querySelectorAll('.project-row');
         
-        projectCards.forEach(card => {
+        projectRows.forEach(row => {
             let holdTimer = null;
             let isHolding = false;
             let startX = 0;
             let startY = 0;
             
             // Touch start - start the hold timer
-            card.addEventListener('touchstart', (e) => {
+            row.addEventListener('touchstart', (e) => {
                 // Only start if this is a single touch
                 if (e.touches.length !== 1) return;
                 
@@ -1071,32 +1110,32 @@ class ProjectListManager {
                 startY = touch.clientY;
                 
                 // Add immediate visual feedback
-                card.classList.add('hold-active');
+                row.classList.add('hold-active');
                 
                 // Start the hold timer
                 holdTimer = setTimeout(() => {
                     isHolding = true;
                     
                     // Remove hold-active and add dragging class
-                    card.classList.remove('hold-active');
-                    card.classList.add('dragging');
-                    card.style.transform = 'scale(1.02)';
-                    card.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.2)';
-                    card.style.zIndex = '1000';
+                    row.classList.remove('hold-active');
+                    row.classList.add('dragging');
+                    row.style.transform = 'scale(1.01)';
+                    row.style.boxShadow = '0 8px 25px rgba(0, 0, 0, 0.2)';
+                    row.style.zIndex = '1000';
                     
                     // Show drop zones
                     document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
-                        container.classList.add('drag-active');
+                        container.closest('table')?.classList.add('drag-active');
                     });
                     
                     // Trigger the drag start event for SortableJS
-                    this.triggerDragStart(card);
+                    this.triggerDragStart(row);
                     
                 }, 500); // 0.5 second hold
             }, { passive: true });
             
             // Touch move - cancel hold if moved too much
-            card.addEventListener('touchmove', (e) => {
+            row.addEventListener('touchmove', (e) => {
                 if (!holdTimer) return;
                 
                 const touch = e.touches[0];
@@ -1111,25 +1150,25 @@ class ProjectListManager {
             }, { passive: true });
             
             // Touch end - cancel hold if not completed
-            card.addEventListener('touchend', (e) => {
+            row.addEventListener('touchend', (e) => {
                 if (holdTimer) {
                     clearTimeout(holdTimer);
                     holdTimer = null;
                 }
                 
                 // Remove hold-active class
-                card.classList.remove('hold-active');
+                row.classList.remove('hold-active');
                 
                 if (isHolding) {
                     // Reset visual state
-                    card.classList.remove('dragging');
-                    card.style.transform = '';
-                    card.style.boxShadow = '';
-                    card.style.zIndex = '';
+                    row.classList.remove('dragging');
+                    row.style.transform = '';
+                    row.style.boxShadow = '';
+                    row.style.zIndex = '';
                     
                     // Hide drop zones
                     document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
-                        container.classList.remove('drag-active');
+                        container.closest('table')?.classList.remove('drag-active');
                     });
                     
                     isHolding = false;
@@ -1137,44 +1176,28 @@ class ProjectListManager {
             }, { passive: true });
             
             // Touch cancel - cleanup
-            card.addEventListener('touchcancel', (e) => {
+            row.addEventListener('touchcancel', (e) => {
                 if (holdTimer) {
                     clearTimeout(holdTimer);
                     holdTimer = null;
                 }
                 
                 // Remove hold-active class
-                card.classList.remove('hold-active');
+                row.classList.remove('hold-active');
                 
                 if (isHolding) {
-                    card.classList.remove('dragging');
-                    card.style.transform = '';
-                    card.style.boxShadow = '';
-                    card.style.zIndex = '';
+                    row.classList.remove('dragging');
+                    row.style.transform = '';
+                    row.style.boxShadow = '';
+                    row.style.zIndex = '';
                     
                     document.querySelectorAll('.project-group, #ungrouped-projects').forEach(container => {
-                        container.classList.remove('drag-active');
+                        container.closest('table')?.classList.remove('drag-active');
                     });
                     
                     isHolding = false;
                 }
             }, { passive: true });
-        });
-    }
-
-    setupResponsiveLayout() {
-        // Ensure proper wrapping on different screen sizes
-        const projectCards = document.querySelectorAll('.project-card');
-        const containers = document.querySelectorAll('.project-group, #ungrouped-projects');
-        
-        // Add responsive classes for better wrapping
-        containers.forEach(container => {
-            container.classList.add('flex', 'flex-wrap', 'justify-start', 'gap-6');
-        });
-        
-        // Ensure cards have consistent sizing for proper wrapping
-        projectCards.forEach(card => {
-            card.classList.add('flex-shrink-0');
         });
     }
 
@@ -1187,7 +1210,7 @@ class ProjectListManager {
         
         // Listen for new content being added (HTMX updates)
         document.addEventListener('htmx:afterSwap', (e) => {
-            if (e.detail.target && e.detail.target.closest('.project-card')) {
+            if (e.detail.target && e.detail.target.closest('.project-row')) {
                 this.addInlineEditingListeners();
             }
             if (e.detail.target && e.detail.target.closest('.project-group')) {
@@ -1274,9 +1297,6 @@ class ProjectListManager {
             element.setAttribute('data-original-text', element.textContent);
         }
         
-        // Adjust spacing for delete button when editing
-        this.adjustTemplateDeleteButtonSpacing(element, true);
-        
         // Add a one-time click handler to close this template name when clicking elsewhere
         setTimeout(() => {
             document.addEventListener('click', this.handleOutsideTemplateNameClick.bind(this, element), { once: true });
@@ -1294,9 +1314,6 @@ class ProjectListManager {
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 
-                // Reset spacing for delete button when editing ends
-                this.adjustTemplateDeleteButtonSpacing(element, false);
-                
                 this.saveTemplateNameEdit(element);
             }
         }, 10);
@@ -1313,9 +1330,6 @@ class ProjectListManager {
             element.contentEditable = false;
             element.classList.remove('editing');
             
-            // Reset spacing for delete button when editing ends
-            this.adjustTemplateDeleteButtonSpacing(element, false);
-            
             this.saveTemplateNameEdit(element);
         } else if (e.key === 'Escape') {
             e.preventDefault();
@@ -1324,9 +1338,6 @@ class ProjectListManager {
             element.classList.remove('editing');
             const originalText = element.getAttribute('data-original-text') || element.textContent;
             element.textContent = originalText;
-            
-            // Reset spacing for delete button when editing ends
-            this.adjustTemplateDeleteButtonSpacing(element, false);
         }
     }
 
@@ -1353,18 +1364,12 @@ class ProjectListManager {
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 
-                // Reset spacing for delete button when editing ends
-                this.adjustTemplateDeleteButtonSpacing(element, false);
-                
                 this.saveTemplateNameEdit(element);
             } else {
                 // No changes, just close editing
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 element.classList.remove('saving');
-                
-                // Reset spacing for delete button when editing ends
-                this.adjustTemplateDeleteButtonSpacing(element, false);
             }
         }
     }
@@ -1434,25 +1439,6 @@ class ProjectListManager {
         });
     }
 
-    // Adjust delete button spacing when editing template names
-    adjustTemplateDeleteButtonSpacing(element, isEditing) {
-        // Find the template card container
-        const templateCard = element.closest('.template-card');
-        if (!templateCard) return;
-        
-        // Find the delete button container (the flex-shrink-0 div)
-        const deleteButtonContainer = templateCard.querySelector('.flex.items-start.justify-between .flex-shrink-0');
-        if (!deleteButtonContainer) return;
-        
-        if (isEditing) {
-            // Add more spacing when editing
-            deleteButtonContainer.style.marginLeft = '12px';
-        } else {
-            // Reset spacing when not editing
-            deleteButtonContainer.style.marginLeft = '';
-        }
-    }
-
     // Handle grid name click for inline editing
     handleGridNameClick(e) {
         const element = e.target;
@@ -1475,9 +1461,6 @@ class ProjectListManager {
             element.setAttribute('data-original-text', element.textContent);
         }
         
-        // Adjust spacing for delete button when editing
-        this.adjustDeleteButtonSpacing(element, true);
-        
         // Add a one-time click handler to close this grid name when clicking elsewhere
         setTimeout(() => {
             document.addEventListener('click', this.handleOutsideGridNameClick.bind(this, element), { once: true });
@@ -1495,9 +1478,6 @@ class ProjectListManager {
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 
-                // Reset spacing for delete button when editing ends
-                this.adjustDeleteButtonSpacing(element, false);
-                
                 this.saveGridNameEdit(element);
             }
         }, 10);
@@ -1514,9 +1494,6 @@ class ProjectListManager {
             element.contentEditable = false;
             element.classList.remove('editing');
             
-            // Reset spacing for delete button when editing ends
-            this.adjustDeleteButtonSpacing(element, false);
-            
             this.saveGridNameEdit(element);
         } else if (e.key === 'Escape') {
             e.preventDefault();
@@ -1525,9 +1502,6 @@ class ProjectListManager {
             element.classList.remove('editing');
             const originalText = element.getAttribute('data-original-text') || element.textContent;
             element.textContent = originalText;
-            
-            // Reset spacing for delete button when editing ends
-            this.adjustDeleteButtonSpacing(element, false);
         }
     }
 
@@ -1626,18 +1600,12 @@ class ProjectListManager {
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 
-                // Reset spacing for delete button when editing ends
-                this.adjustDeleteButtonSpacing(element, false);
-                
                 this.saveGridNameEdit(element);
             } else {
                 // No changes, just close editing
                 element.contentEditable = false;
                 element.classList.remove('editing');
                 element.classList.remove('saving');
-                
-                // Reset spacing for delete button when editing ends
-                this.adjustDeleteButtonSpacing(element, false);
             }
         }
     }
@@ -1796,25 +1764,6 @@ class ProjectListManager {
         });
     }
 
-    // Adjust delete button spacing when editing grid names
-    adjustDeleteButtonSpacing(element, isEditing) {
-        // Find the project card container
-        const projectCard = element.closest('.project-card');
-        if (!projectCard) return;
-        
-        // Find the delete button container (the flex-shrink-0 div)
-        const deleteButtonContainer = projectCard.querySelector('.flex.items-start.justify-between .flex-shrink-0');
-        if (!deleteButtonContainer) return;
-        
-        if (isEditing) {
-            // Add more spacing when editing
-            deleteButtonContainer.style.marginLeft = '12px';
-        } else {
-            // Reset spacing when not editing
-            deleteButtonContainer.style.marginLeft = '';
-        }
-    }
-
     // Get CSRF token
     getCSRFToken() {
         const token = document.querySelector('[name=csrfmiddlewaretoken]');
@@ -1910,4 +1859,4 @@ if (document.readyState === 'loading') {
     }
 }
 </script>
-{% endblock %} 
+{% endblock %}

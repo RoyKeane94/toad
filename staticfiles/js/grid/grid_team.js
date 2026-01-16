@@ -154,14 +154,19 @@ function showAssignPopup(button, taskId, taskText, currentAssignedTo) {
     });
     
     // Add unassign option if someone is currently assigned
-    if (currentAssignedTo) {
-        const unassignDiv = document.createElement('div');
-        unassignDiv.className = 'unassign-option';
-        unassignDiv.textContent = 'Unassign';
-        unassignDiv.addEventListener('click', function() {
-            assignTaskToUser(taskId, null, null);
-        });
-        userList.appendChild(unassignDiv);
+    const unassignContainer = document.getElementById('unassign-container');
+    if (unassignContainer) {
+        unassignContainer.innerHTML = ''; // Clear any existing unassign option
+        
+        if (currentAssignedTo) {
+            const unassignDiv = document.createElement('div');
+            unassignDiv.className = 'unassign-option';
+            unassignDiv.textContent = 'UNASSIGN';
+            unassignDiv.addEventListener('click', function() {
+                assignTaskToUser(taskId, null, null);
+            });
+            unassignContainer.appendChild(unassignDiv);
+        }
     }
     
     // Position popup near the button
