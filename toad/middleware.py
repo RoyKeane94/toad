@@ -2,6 +2,7 @@
 Custom middleware for Content Security Policy (CSP) headers
 """
 from django.utils.deprecation import MiddlewareMixin
+from django.conf import settings
 
 
 class CSPMiddleware(MiddlewareMixin):
@@ -14,6 +15,13 @@ class CSPMiddleware(MiddlewareMixin):
         """
         Add CSP headers to the response.
         """
+        # Get S3 bucket URL for media-src if using S3
+        media_src = "'self'"
+        if hasattr(settings, 'AWS_STORAGE_BUCKET_NAME') and settings.AWS_STORAGE_BUCKET_NAME:
+            # Allow videos from S3 bucket
+            s3_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.{getattr(settings, 'AWS_S3_REGION_NAME', 'us-east-1')}.amazonaws.com"
+            media_src = f"'self' {s3_url}"
+        
         # Build CSP policy
         csp_policy = (
             "default-src 'self'; "
@@ -29,6 +37,7 @@ class CSPMiddleware(MiddlewareMixin):
             "https://fonts.gstatic.com "
             "data:; "
             "img-src 'self' data: https:; "
+            f"media-src {media_src} https:; "
             "connect-src 'self' "
             "https://plausible.io; "
             "frame-ancestors 'self'; "

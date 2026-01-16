@@ -230,6 +230,23 @@ if IS_PRODUCTION or FORCE_S3_TESTING:
         'CacheControl': 'max-age=86400',  # Cache for 24 hours
     }
     
+    # CORS Configuration for S3
+    # Videos need CORS headers to be playable in browsers
+    # Add this CORS configuration to your S3 bucket in AWS Console:
+    # 1. Go to your S3 bucket
+    # 2. Click "Permissions" tab
+    # 3. Scroll to "Cross-origin resource sharing (CORS)"
+    # 4. Add this configuration:
+    # [
+    #   {
+    #     "AllowedHeaders": ["*"],
+    #     "AllowedMethods": ["GET", "HEAD"],
+    #     "AllowedOrigins": ["*"],
+    #     "ExposeHeaders": ["ETag", "Content-Length"],
+    #     "MaxAgeSeconds": 3000
+    #   }
+    # ]
+    
     # Use the correct S3 endpoint format
     MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com/'
 else:
