@@ -302,33 +302,40 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-bottom: 8px;
+        margin-bottom: 0;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .unassign-container {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-color);
+        display: flex;
         justify-content: center;
         align-items: center;
     }
     
     .unassign-option {
         width: auto;
-        padding: 4px;
+        padding: 4px 8px;
         background: transparent;
         border: none;
-        border-radius: 50%;
+        border-radius: 4px;
         color: var(--primary-action-bg);
-        font-size: 16px;
+        font-size: 11px;
         text-align: center;
         cursor: pointer;
         transition: all 0.2s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        min-width: 24px;
-        min-height: 24px;
     }
     
     .unassign-option:hover {
-        background: transparent;
+        background: var(--grid-header-bg);
         color: var(--primary-action-hover-bg);
-        transform: scale(1.1);
+        transform: none;
     }
     
     /* Ensure smooth opacity transitions for delete buttons */
@@ -926,6 +933,9 @@ document.addEventListener('DOMContentLoaded', function() {
     <div class="assign-popup-arrow"></div>
     <div class="user-list" id="user-list">
         <!-- User avatars will be dynamically added here -->
+    </div>
+    <div class="unassign-container" id="unassign-container">
+        <!-- Unassign option will be dynamically added here -->
     </div>
 </div>
 
