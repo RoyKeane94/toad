@@ -37,8 +37,8 @@ from .views import (
     manage_team_view,
     remove_team_member_view,
     cancel_team_subscription_view,
-    upgrade_team_subscription_view,
-    reduce_team_subscription_view,
+    increase_team_seats_view,
+    reduce_team_seats_view,
     transfer_team_admin_view,
     cancel_team_invitation_view,
     accept_team_invitation_view
@@ -63,7 +63,9 @@ from .stripe_django_views import (
     stripe_cancel_team_view,
     stripe_checkout_team_registration_view,
     create_portal_session,
-    stripe_webhook
+    stripe_webhook,
+    stripe_checkout_seat_change_view,
+    stripe_success_seat_change_view
 )
 
 app_name = 'accounts'
@@ -132,14 +134,16 @@ urlpatterns = [
     path('stripe/cancel/team/', stripe_cancel_team_view, name='stripe_cancel_team'),
     path('stripe/create-portal-session/', create_portal_session, name='create_portal_session'),
     path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
+    path('stripe/checkout/seat-change/', stripe_checkout_seat_change_view, name='stripe_checkout_seat_change'),
+    path('stripe/success/seat-change/', stripe_success_seat_change_view, name='stripe_success_seat_change'),
     
     # Team Management
     path('team/invite-members/', team_invite_members_view, name='team_invite_members'),
     path('team/manage/', manage_team_view, name='manage_team'),
     path('team/remove-member/<int:user_id>/', remove_team_member_view, name='remove_team_member'),
     path('team/cancel/', cancel_team_subscription_view, name='cancel_team_subscription'),
-    path('team/upgrade/', upgrade_team_subscription_view, name='upgrade_team_subscription'),
-    path('team/reduce/', reduce_team_subscription_view, name='reduce_team_subscription'),
+    path('team/increase-seats/', increase_team_seats_view, name='increase_team_seats'),
+    path('team/reduce-seats/', reduce_team_seats_view, name='reduce_team_seats'),
     path('team/transfer-admin/<int:user_id>/', transfer_team_admin_view, name='transfer_team_admin'),
     path('team/cancel-invitation/<int:invitation_id>/', cancel_team_invitation_view, name='cancel_team_invitation'),
     path('team/accept-invitation/<str:token>/', accept_team_invitation_view, name='accept_team_invitation'),

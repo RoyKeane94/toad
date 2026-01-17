@@ -2374,14 +2374,6 @@ def manage_team_view(request):
             'is_expired': invitation.is_expired(),
         })
     
-    # Get current seat usage (accounting for pending invitations)
-    current_members_count = subscription_group.get_active_members_count()
-    pending_count = pending_invitations.count()
-    available_seats = subscription_group.quantity - current_members_count - pending_count
-    
-    # Calculate max reduction (can't reduce below current usage)
-    max_reduction = subscription_group.quantity - current_members_count - pending_count
-    
     # Sync quantity from Stripe to ensure it's up to date
     if subscription_group.stripe_subscription_id:
         try:
@@ -2397,6 +2389,29 @@ def manage_team_view(request):
                     subscription_group.save(update_fields=['quantity'])
         except Exception as e:
             logger.warning(f"Could not sync subscription quantity from Stripe: {e}")
+    
+    # Get current seat usage (accounting for pending invitations)
+    current_members_count = subscription_group.get_active_members_count()
+    pending_count = pending_invitations.count()
+    current_usage = current_members_count + pending_count
+    available_seats = subscription_group.quantity - current_usage
+    
+    # Calculate max reduction (can't reduce below current usage)
+    max_reduction = subscription_group.quantity - current_members_count - pending_count
+    
+    # Check if seats were reduced below current usage (e.g., via Stripe portal)
+    seats_need_removal = False
+    members_to_remove_count = 0
+    invitations_to_cancel_count = 0
+    if subscription_group.quantity < current_usage:
+        seats_need_removal = True
+        excess_usage = current_usage - subscription_group.quantity
+        # Prioritize canceling pending invitations first, then removing members
+        if pending_count > 0:
+            invitations_to_cancel_count = min(excess_usage, pending_count)
+            members_to_remove_count = excess_usage - invitations_to_cancel_count
+        else:
+            members_to_remove_count = excess_usage
     
     # Update Stripe subscription metadata with current team info
     if subscription_group.stripe_subscription_id:
@@ -2489,6 +2504,11 @@ def manage_team_view(request):
         'trial_ends_at': trial_ends_at,
         'trial_progress_percent': trial_progress_percent,
         'price_per_seat': 5,  # £5 per seat/month
+        # Seat reduction warnings
+        'seats_need_removal': seats_need_removal,
+        'members_to_remove_count': members_to_remove_count,
+        'invitations_to_cancel_count': invitations_to_cancel_count,
+        'current_usage': current_usage,
     }
     
     return render(request, 'accounts/pages/team/manage_team.html', context)
@@ -2539,6 +2559,7 @@ def remove_team_member_view(request, user_id):
 def cancel_team_subscription_view(request):
     """
     Cancel the team subscription - downgrades all members to free and deletes all their grids
+    Optionally deletes the admin account if delete_account is True
     """
     from accounts.models import SubscriptionGroup
     from pages.models import Project
@@ -2552,6 +2573,9 @@ def cancel_team_subscription_view(request):
     if not subscription_group:
         messages.error(request, 'You are not an admin of any active team subscription.')
         return redirect('accounts:manage_subscription')
+    
+    # Check if user wants to delete account
+    delete_account = request.POST.get('delete_account') == 'true'
     
     # Cancel Stripe subscription - cancel immediately (not at period end)
     if subscription_group.stripe_subscription_id:
@@ -2605,174 +2629,147 @@ def cancel_team_subscription_view(request):
         request.user.tier = 'free'
         request.user.save(update_fields=['tier'])
     
+    # If delete_account is True, delete the admin account
+    if delete_account:
+        user_email = request.user.email
+        user_name = request.user.get_short_name()
+        logger.info(f'Team admin account deleted: {user_email} ({user_name})')
+        
+        # Delete the user account (this will log them out)
+        request.user.delete()
+        
+        messages.success(request, f'Your account has been permanently deleted. We\'re sorry to see you go!')
+        return redirect('pages:home')
+    
     messages.success(request, f'Team subscription has been canceled. All {total_grids_deleted} grid(s) have been deleted and all members have been downgraded to Free.')
     return redirect('accounts:manage_subscription')
 
 
 @login_required
-def reduce_team_subscription_view(request):
+def reduce_team_seats_view(request):
     """
-    Reduce team subscription by removing seats
+    Page to select number of seats to reduce and which members/invitations to remove
     """
-    from accounts.models import SubscriptionGroup
-    import stripe
-    import os
-    
-    stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
-    
-    if request.method != 'POST':
-        return redirect('accounts:manage_team')
+    from accounts.models import SubscriptionGroup, TeamInvitation
     
     subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
     if not subscription_group:
         messages.error(request, 'You are not an admin of any active team subscription.')
         return redirect('accounts:manage_subscription')
     
-    # Get reduction quantity from form
-    try:
-        reduction_quantity = int(request.POST.get('reduction_quantity', 0))
-        if reduction_quantity < 1:
-            messages.error(request, 'Please enter a valid number of seats to remove.')
-            return redirect('accounts:manage_team')
-    except ValueError:
-        messages.error(request, 'Invalid quantity. Please enter a valid number.')
-        return redirect('accounts:manage_team')
-    
-    # Check current usage
-    current_members_count = subscription_group.get_active_members_count()
-    from accounts.models import TeamInvitation
-    pending_count = TeamInvitation.objects.filter(
+    # Get current members and invitations
+    members = subscription_group.members.exclude(id=request.user.id)  # Exclude admin
+    pending_invitations = TeamInvitation.objects.filter(
         subscription_group=subscription_group,
         status='pending'
-    ).count()
-    current_usage = current_members_count + pending_count
+    ).order_by('-created_at')
     
-    # Calculate new quantity
-    new_quantity = subscription_group.quantity - reduction_quantity
+    current_members_count = subscription_group.get_active_members_count() - 1  # Exclude admin from count
+    pending_count = pending_invitations.count()
+    # current_usage includes admin (1) + other members + pending invitations
+    # Since admin always uses 1 seat, total usage is 1 + current_members_count + pending_count
+    current_usage = 1 + current_members_count + pending_count
     
-    # Validate new quantity
-    if new_quantity < 1:
-        messages.error(request, 'You must have at least 1 seat in your subscription.')
-        return redirect('accounts:manage_team')
-    
-    # Allow reducing below current usage - user can manage members/invitations separately
-    # This matches Stripe Portal behavior which allows quantity changes regardless of usage
-    if new_quantity < current_usage:
-        messages.warning(request, f'Warning: Reducing to {new_quantity} seats while you have {current_usage} in use ({current_members_count} active + {pending_count} pending). You may need to remove members or cancel invitations to free up seats.')
-    
-    # Update Stripe subscription
-    if subscription_group.stripe_subscription_id:
+    if request.method == 'POST':
+        # Get reduction quantity and selections from form
         try:
-            # Retrieve current subscription
-            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
-            
-            # Get the subscription item
-            subscription_item_id = subscription['items']['data'][0]['id']
-            current_quantity = subscription['items']['data'][0]['quantity']
-            
-            # Update subscription quantity in Stripe
-            # The webhook will handle updating our database when Stripe confirms the change
-            updated_subscription = stripe.Subscription.modify(
-                subscription_group.stripe_subscription_id,
-                items=[{
-                    'id': subscription_item_id,
-                    'quantity': new_quantity,
-                }],
-                proration_behavior='always_invoice',  # Prorate the reduction
-            )
-            
-            # Verify the update was successful by checking the returned subscription
-            confirmed_quantity = updated_subscription['items']['data'][0]['quantity']
-            if confirmed_quantity != new_quantity:
-                logger.warning(f'Stripe subscription quantity mismatch: expected {new_quantity}, got {confirmed_quantity}')
-            
-            # Optimistically update our database (webhook will confirm)
-            # This provides immediate feedback to the user
-            subscription_group.quantity = confirmed_quantity
-            subscription_group.save()
-            
-            messages.success(request, f'Successfully reduced subscription by {reduction_quantity} seat(s). Your subscription now has {confirmed_quantity} total seats.')
-            logger.info(f'Team subscription reduced via Stripe API: {subscription_group.stripe_subscription_id} from {current_quantity} to {confirmed_quantity} seats (reduction: {reduction_quantity})')
-            
-        except stripe.error.StripeError as e:
-            logger.error(f"Stripe error reducing team subscription: {e}")
-            messages.error(request, 'There was an error updating your subscription. Please contact support.')
-        except Exception as e:
-            logger.error(f"Error reducing team subscription: {e}", exc_info=True)
-            messages.error(request, 'An unexpected error occurred. Please contact support.')
-    else:
-        messages.error(request, 'No Stripe subscription found. Please contact support.')
+            reduction_quantity = int(request.POST.get('reduction_quantity', 0))
+            if reduction_quantity < 1:
+                messages.error(request, 'Please enter a valid number of seats to remove.')
+                return redirect('accounts:reduce_team_seats')
+        except ValueError:
+            messages.error(request, 'Invalid quantity. Please enter a valid number.')
+            return redirect('accounts:reduce_team_seats')
+        
+        # Calculate new quantity
+        current_quantity = subscription_group.quantity
+        new_quantity = current_quantity - reduction_quantity
+        
+        # Validate new quantity
+        if new_quantity < 1:
+            messages.error(request, 'You must have at least 1 seat in your subscription.')
+            return redirect('accounts:reduce_team_seats')
+        
+        # Get selected members and invitations to remove
+        selected_member_ids = [int(id) for id in request.POST.getlist('remove_members') if id]
+        selected_invitation_ids = [int(id) for id in request.POST.getlist('cancel_invitations') if id]
+        
+        # If reducing below current usage, require member/invitation selection
+        if new_quantity < current_usage:
+            total_selected = len(selected_member_ids) + len(selected_invitation_ids)
+            seats_to_free = current_usage - new_quantity
+            if total_selected < seats_to_free:
+                messages.error(request, f'You must select {seats_to_free} member(s) or invitation(s) to remove to match your new subscription size.')
+                return redirect('accounts:reduce_team_seats')
+        
+        # Store in session for checkout
+        request.session['seat_change_type'] = 'decrease'
+        request.session['seat_change_current_quantity'] = current_quantity
+        request.session['seat_change_new_quantity'] = new_quantity
+        request.session['seat_change_reduction_quantity'] = reduction_quantity
+        request.session['seat_change_subscription_group_id'] = subscription_group.id
+        request.session['seat_change_remove_member_ids'] = selected_member_ids
+        request.session['seat_change_cancel_invitation_ids'] = selected_invitation_ids
+        
+        # Redirect to Stripe checkout for seat decrease
+        return redirect('accounts:stripe_checkout_seat_change')
     
-    return redirect('accounts:manage_team')
+    # GET - show form
+    context = {
+        'subscription_group': subscription_group,
+        'current_quantity': subscription_group.quantity,
+        'members': members,
+        'pending_invitations': pending_invitations,
+        'current_members_count': current_members_count,
+        'pending_count': pending_count,
+        'current_usage': current_usage,
+        'price_per_seat': 5,
+    }
+    return render(request, 'accounts/pages/team/reduce_seats.html', context)
 
 
 @login_required
-def upgrade_team_subscription_view(request):
+def increase_team_seats_view(request):
     """
-    Upgrade team subscription by adding more seats
+    Page to select number of seats to add, then redirects to Stripe checkout
     """
     from accounts.models import SubscriptionGroup
-    import stripe
-    import os
-    
-    stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
-    
-    if request.method != 'POST':
-        return redirect('accounts:manage_team')
     
     subscription_group = SubscriptionGroup.objects.filter(admin=request.user, is_active=True).first()
     if not subscription_group:
         messages.error(request, 'You are not an admin of any active team subscription.')
         return redirect('accounts:manage_subscription')
     
-    # Get additional quantity from form
-    try:
-        additional_quantity = int(request.POST.get('additional_quantity', 0))
-        if additional_quantity < 1:
-            messages.error(request, 'Please enter a valid number of additional seats.')
-            return redirect('accounts:manage_team')
-    except ValueError:
-        messages.error(request, 'Invalid quantity. Please enter a valid number.')
-        return redirect('accounts:manage_team')
-    
-    # Update Stripe subscription
-    if subscription_group.stripe_subscription_id:
+    if request.method == 'POST':
+        # Get additional quantity from form
         try:
-            # Retrieve current subscription
-            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
-            
-            # Get the subscription item
-            subscription_item_id = subscription['items']['data'][0]['id']
-            current_quantity = subscription['items']['data'][0]['quantity']
-            new_quantity = current_quantity + additional_quantity
-            
-            # Update subscription quantity
-            stripe.Subscription.modify(
-                subscription_group.stripe_subscription_id,
-                items=[{
-                    'id': subscription_item_id,
-                    'quantity': new_quantity,
-                }],
-                proration_behavior='always_invoice',  # Charge immediately for the additional seats
-            )
-            
-            # Update subscription group quantity
-            subscription_group.quantity = new_quantity
-            subscription_group.save()
-            
-            messages.success(request, f'Successfully added {additional_quantity} seat(s). Your subscription now has {new_quantity} total seats.')
-            logger.info(f'Team subscription upgraded: {subscription_group.stripe_subscription_id} from {current_quantity} to {new_quantity} seats')
-            
-        except stripe.error.StripeError as e:
-            logger.error(f"Stripe error upgrading team subscription: {e}")
-            messages.error(request, 'There was an error updating your subscription. Please contact support.')
-        except Exception as e:
-            logger.error(f"Error upgrading team subscription: {e}", exc_info=True)
-            messages.error(request, 'An unexpected error occurred. Please contact support.')
-    else:
-        messages.error(request, 'No Stripe subscription found. Please contact support.')
+            additional_quantity = int(request.POST.get('additional_quantity', 0))
+            if additional_quantity < 1:
+                messages.error(request, 'Please enter a valid number of additional seats.')
+                return redirect('accounts:increase_team_seats')
+        except ValueError:
+            messages.error(request, 'Invalid quantity. Please enter a valid number.')
+            return redirect('accounts:increase_team_seats')
+        
+        # Store in session for checkout
+        current_quantity = subscription_group.quantity
+        new_quantity = current_quantity + additional_quantity
+        request.session['seat_change_type'] = 'increase'
+        request.session['seat_change_current_quantity'] = current_quantity
+        request.session['seat_change_new_quantity'] = new_quantity
+        request.session['seat_change_additional_quantity'] = additional_quantity
+        request.session['seat_change_subscription_group_id'] = subscription_group.id
+        
+        # Redirect to Stripe checkout for seat increase
+        return redirect('accounts:stripe_checkout_seat_change')
     
-    return redirect('accounts:manage_team')
+    # GET - show form
+    context = {
+        'subscription_group': subscription_group,
+        'current_quantity': subscription_group.quantity,
+        'price_per_seat': 5,
+    }
+    return render(request, 'accounts/pages/team/increase_seats.html', context)
 
 
 @login_required

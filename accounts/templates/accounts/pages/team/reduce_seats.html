@@ -1,0 +1,294 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Remove Seats - Team Toad{% endblock %}
+
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+    .selectable-item {
+        transition: all 0.2s ease;
+        cursor: pointer;
+    }
+    .selectable-item:hover {
+        background-color: rgba(239, 68, 68, 0.05);
+    }
+    .selectable-item.selected {
+        background-color: rgba(239, 68, 68, 0.15);
+        border-color: rgb(239, 68, 68);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+    <div class="max-w-3xl w-full space-y-8">
+        <!-- Header -->
+        <div class="text-center">
+            <h2 class="text-3xl font-bold text-green-500">
+                Remove Seats from Your Team
+            </h2>
+            <p class="mt-2 text-sm text-[var(--text-secondary)]">
+                Reduce your Team Toad subscription and manage team members
+            </p>
+        </div>
+
+        <!-- Messages -->
+        {% if messages %}
+            {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-md text-sm">
+                    <div class="flex items-start">
+                        <i class="fas fa-exclamation-triangle mr-2 mt-0.5 flex-shrink-0"></i>
+                        <div>
+                            <p class="font-medium mb-1">Error</p>
+                            <p class="text-red-600 text-xs leading-relaxed">{{ message }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <!-- Current Status -->
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Current Subscription</h3>
+            <div class="space-y-2">
+                <p class="text-sm text-[var(--text-secondary)]">
+                    <span class="font-medium">Current seats:</span> {{ current_quantity }}
+                </p>
+                <p class="text-sm text-[var(--text-secondary)]">
+                    <span class="font-medium">Active members:</span> {{ current_members_count }}
+                </p>
+                <p class="text-sm text-[var(--text-secondary)]">
+                    <span class="font-medium">Pending invitations:</span> {{ pending_count }}
+                </p>
+                <p class="text-sm text-[var(--text-secondary)]">
+                    <span class="font-medium">Total in use:</span> {{ current_usage }}
+                </p>
+            </div>
+        </div>
+
+        <!-- Reduce Seats Form -->
+        <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
+            <form method="POST" action="{% url 'accounts:reduce_team_seats' %}" id="reduceSeatsForm">
+                {% csrf_token %}
+                
+                <!-- Quantity Input -->
+                <div class="mb-6">
+                    <label for="reduction_quantity" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        How many seats would you like to remove?
+                    </label>
+                    <input 
+                        type="number" 
+                        id="reduction_quantity" 
+                        name="reduction_quantity" 
+                        min="1" 
+                        max="{{ current_quantity|add:'-1' }}"
+                        value="1" 
+                        required
+                        class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] bg-[var(--main-bg)] focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        onchange="updateRequiredSelections()"
+                    >
+                    <p class="mt-2 text-xs text-[var(--text-secondary)]">
+                        You must keep at least 1 seat. You'll receive a prorated credit for removed seats.
+                    </p>
+                </div>
+
+                <!-- Member Selection (if reducing below current usage) -->
+                {% if members or pending_invitations %}
+                <div id="memberSelectionSection" class="mb-6" style="display: none;">
+                    <p class="text-sm font-medium text-[var(--text-primary)] mb-3">
+                        Select members or invitations to remove:
+                    </p>
+                    
+                    {% if members %}
+                    <div class="mb-4">
+                        <h4 class="text-sm font-semibold text-[var(--text-primary)] mb-2">Team Members</h4>
+                        <div class="space-y-2">
+                            {% for member in members %}
+                            <label class="selectable-item flex items-center p-3 border border-[var(--border-color)] rounded-lg cursor-pointer">
+                                <input 
+                                    type="checkbox" 
+                                    name="remove_members" 
+                                    value="{{ member.id }}"
+                                    class="mr-3 w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
+                                    onchange="toggleSelection(this)"
+                                >
+                                <div class="flex-1">
+                                    <p class="font-medium text-[var(--text-primary)]">{{ member.get_full_name|default:member.email }}</p>
+                                    <p class="text-xs text-[var(--text-secondary)]">{{ member.email }}</p>
+                                </div>
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if pending_invitations %}
+                    <div>
+                        <h4 class="text-sm font-semibold text-[var(--text-primary)] mb-2">Pending Invitations</h4>
+                        <div class="space-y-2">
+                            {% for invitation in pending_invitations %}
+                            <label class="selectable-item flex items-center p-3 border border-[var(--border-color)] rounded-lg cursor-pointer">
+                                <input 
+                                    type="checkbox" 
+                                    name="cancel_invitations" 
+                                    value="{{ invitation.id }}"
+                                    class="mr-3 w-4 h-4 text-orange-600 border-gray-300 rounded focus:ring-orange-500"
+                                    onchange="toggleSelection(this)"
+                                >
+                                <div class="flex-1">
+                                    <p class="font-medium text-[var(--text-primary)]">{{ invitation.invited_email }}</p>
+                                    <p class="text-xs text-[var(--text-secondary)]">Sent {{ invitation.created_at|timesince }} ago</p>
+                                </div>
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    <div id="selectionWarning" class="mt-4 bg-amber-50 border border-amber-200 rounded-lg p-4 hidden">
+                        <p class="text-sm text-amber-800">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            You need to select <strong id="requiredSelections">0</strong> more item(s) to match your new subscription size.
+                        </p>
+                    </div>
+                </div>
+                {% endif %}
+
+                <!-- Error message for form submission -->
+                <div id="formErrorMessage" class="hidden mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p class="text-sm text-red-800">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        <strong id="formErrorText">Please correct the errors above.</strong>
+                    </p>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                    <div class="flex items-start">
+                        <i class="fas fa-info-circle text-blue-600 mr-2 mt-0.5"></i>
+                        <div class="flex-1">
+                            <p class="text-sm text-blue-800">
+                                <strong>Note:</strong> After removing seats, you'll be redirected to complete the change.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between gap-4">
+                    <a href="{% url 'accounts:manage_team' %}" class="px-6 py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                        Cancel
+                    </a>
+                    <button type="submit" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
+                            style="background-color: #f97316 !important; color: white !important;" 
+                            onmouseover="this.style.backgroundColor='#ea580c'" 
+                            onmouseout="this.style.backgroundColor='#f97316'">
+                        <i class="fas fa-minus mr-2" style="color: white !important;"></i>
+                        <span style="color: white !important;">Continue to Update</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+function updateRequiredSelections() {
+    const quantityInput = document.getElementById('reduction_quantity');
+    const memberSelectionSection = document.getElementById('memberSelectionSection');
+    const selectionWarning = document.getElementById('selectionWarning');
+    const requiredSelectionsSpan = document.getElementById('requiredSelections');
+    
+    if (!quantityInput || !memberSelectionSection) {
+        return;
+    }
+    
+    const reductionQuantity = parseInt(quantityInput.value) || 0;
+    const currentQuantity = {{ current_quantity }};
+    const currentUsage = {{ current_usage }};
+    const newQuantity = currentQuantity - reductionQuantity;
+    
+    // Show selection section if reducing below current usage
+    if (newQuantity < currentUsage) {
+        memberSelectionSection.style.display = 'block';
+        const seatsToFree = currentUsage - newQuantity;
+        const selectedCount = document.querySelectorAll('input[name="remove_members"]:checked, input[name="cancel_invitations"]:checked').length;
+        const remaining = seatsToFree - selectedCount;
+        
+        if (remaining > 0) {
+            if (selectionWarning) {
+                selectionWarning.classList.remove('hidden');
+                if (requiredSelectionsSpan) {
+                    requiredSelectionsSpan.textContent = remaining;
+                }
+            }
+        } else {
+            if (selectionWarning) {
+                selectionWarning.classList.add('hidden');
+            }
+        }
+    } else {
+        memberSelectionSection.style.display = 'none';
+        if (selectionWarning) {
+            selectionWarning.classList.add('hidden');
+        }
+    }
+}
+
+function toggleSelection(checkbox) {
+    const label = checkbox.closest('label');
+    if (checkbox.checked) {
+        label.classList.add('selected');
+    } else {
+        label.classList.remove('selected');
+    }
+    updateRequiredSelections();
+}
+
+// Validate form submission
+document.getElementById('reduceSeatsForm').addEventListener('submit', function(e) {
+    const quantityInput = document.getElementById('reduction_quantity');
+    const reductionQuantity = parseInt(quantityInput.value) || 0;
+    const currentQuantity = {{ current_quantity }};
+    const currentUsage = {{ current_usage }};
+    const newQuantity = currentQuantity - reductionQuantity;
+    const errorMessageDiv = document.getElementById('formErrorMessage');
+    const errorText = document.getElementById('formErrorText');
+    
+    // Hide error message initially
+    if (errorMessageDiv) {
+        errorMessageDiv.classList.add('hidden');
+    }
+    
+    if (newQuantity < currentUsage) {
+        const seatsToFree = currentUsage - newQuantity;
+        const selectedCount = document.querySelectorAll('input[name="remove_members"]:checked, input[name="cancel_invitations"]:checked').length;
+        
+        if (selectedCount < seatsToFree) {
+            e.preventDefault();
+            
+            // Show styled error message
+            if (errorMessageDiv && errorText) {
+                errorText.textContent = `You must select ${seatsToFree} member(s) or invitation(s) to remove to match your new subscription size.`;
+                errorMessageDiv.classList.remove('hidden');
+                
+                // Scroll to error message
+                errorMessageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }
+            
+            return false;
+        }
+    }
+});
+
+// Run on page load to check if initial value requires selection
+document.addEventListener('DOMContentLoaded', function() {
+    updateRequiredSelections();
+});
+</script>
+{% endblock %}

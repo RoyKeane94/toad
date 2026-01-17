@@ -26,6 +26,40 @@
             </p>
         </div>
 
+        <!-- Critical: Seats Reduced Below Usage - Action Required -->
+        {% if seats_need_removal %}
+        <div class="bg-gradient-to-r from-red-50 to-orange-50 border-2 border-red-300 rounded-xl p-6 shadow-lg">
+            <div class="flex items-start gap-4">
+                <div class="flex items-center justify-center w-12 h-12 bg-red-100 rounded-lg flex-shrink-0">
+                    <i class="fas fa-exclamation-triangle text-red-600 text-xl"></i>
+                </div>
+                <div class="flex-1">
+                    <h2 class="text-xl font-bold text-red-800 mb-2">⚠️ Action Required: Remove Team Members</h2>
+                    <p class="text-sm text-red-700 mb-4">
+                        You reduced your subscription to <strong>{{ total_seats }} seat(s)</strong>, but you currently have <strong>{{ current_usage }} in use</strong> ({{ current_members_count }} active members + {{ pending_count }} pending invitations).
+                    </p>
+                    <div class="bg-white border border-red-200 rounded-lg p-4 mb-4">
+                        <p class="font-semibold text-red-800 mb-2">You must remove the following to match your new subscription:</p>
+                        <ul class="list-disc list-inside space-y-1 text-sm text-red-700">
+                            {% if invitations_to_cancel_count > 0 %}
+                            <li><strong>{{ invitations_to_cancel_count }} pending invitation{{ invitations_to_cancel_count|pluralize }}</strong> must be cancelled</li>
+                            {% endif %}
+                            {% if members_to_remove_count > 0 %}
+                            <li><strong>{{ members_to_remove_count }} team member{{ members_to_remove_count|pluralize }}</strong> must be removed</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="bg-red-100 border border-red-300 rounded-lg p-3">
+                        <p class="text-sm font-medium text-red-800">
+                            <i class="fas fa-info-circle mr-2"></i>
+                            <strong>Important:</strong> Please review the sections below and remove members or cancel invitations until you have no more than {{ total_seats }} seat{{ total_seats|pluralize }} in use.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
         <!-- Trial Status Banner (shown for trial users) -->
         {% if is_trial %}
         <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-xl p-6 shadow-sm">
@@ -190,25 +224,47 @@
             {% endfor %}
         {% endif %}
 
-        <!-- Stripe Customer Portal Section (hidden for trial users) -->
-        {% if not is_trial %}
-        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6 mb-6">
-            <div class="flex items-center justify-between gap-4">
-                <div class="flex-1 min-w-0">
-                    <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-2 flex items-center">
-                        <i class="fas fa-credit-card mr-2 text-indigo-600"></i>
-                        Billing Management
-                    </h2>
-                    <p class="text-sm text-[var(--text-secondary)]">
-                        Use Stripe's secure portal to manage your subscription, update payment methods, view invoices, and add or remove seats.
+        <!-- Manage Subscription Section (only for paid subscriptions) -->
+        {% if not is_trial and stripe_subscription_info %}
+        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
+            <h2 class="text-xl font-semibold text-green-500 mb-4">Manage Seats</h2>
+            <p class="text-sm text-[var(--text-secondary)] mb-6">
+                Add or remove seats from your team subscription. Changes will be processed through secure payment via Stripe.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Increase Seats -->
+                <div class="border border-[var(--border-color)] rounded-lg p-4 flex flex-col h-full">
+                    <h3 class="font-semibold text-[var(--text-primary)] mb-2 flex items-center">
+                        <i class="fas fa-plus-circle text-green-500 mr-2"></i>
+                        Add Seats
+                    </h3>
+                    <p class="text-sm text-[var(--text-secondary)] mb-4 flex-grow">
+                        Add more seats to your subscription at £5 per seat/month.
                     </p>
+                    <a href="{% url 'accounts:increase_team_seats' %}" 
+                       class="inline-flex items-center justify-center w-44 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-plus mr-2"></i>
+                        Add Seats
+                    </a>
                 </div>
-                <a href="{% url 'accounts:create_portal_session' %}" 
-                   class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md flex items-center whitespace-nowrap flex-shrink-0" 
-                   style="color: white !important;">
-                    <i class="fas fa-external-link-alt mr-2" style="color: white !important;"></i>
-                    <span style="color: white !important;">Open Billing Portal</span>
-                </a>
+                
+                <!-- Decrease Seats -->
+                <div class="border border-[var(--border-color)] rounded-lg p-4 flex flex-col h-full">
+                    <h3 class="font-semibold text-[var(--text-primary)] mb-2 flex items-center">
+                        <i class="fas fa-minus-circle text-orange-500 mr-2"></i>
+                        Remove Seats
+                    </h3>
+                    <p class="text-sm text-[var(--text-secondary)] mb-4 flex-grow">
+                        Remove seats from your subscription.
+                    </p>
+                    <a href="{% url 'accounts:reduce_team_seats' %}" 
+                       class="inline-flex items-center justify-center w-44 px-4 py-2 bg-orange-500 hover:bg-orange-600 text-white rounded-md text-sm font-medium transition-colors"
+                       style="background-color: #f97316 !important; color: white !important;">
+                        <i class="fas fa-minus mr-2" style="color: white !important;"></i>
+                        <span style="color: white !important;">Remove Seats</span>
+                    </a>
+                </div>
             </div>
         </div>
         {% endif %}
@@ -333,7 +389,7 @@
                     <p class="text-sm text-red-600 mb-3">
                         This will cancel the subscription immediately and delete all grids for all team members.
                     </p>
-                    <button type="button" onclick="openCancelSubscriptionModal()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors" style="color: white !important;">
+                    <button type="button" onclick="openCancelSubscriptionModal()" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md text-sm font-medium transition-colors" style="color: white !important; background-color: #dc2626 !important;" onmouseover="this.style.backgroundColor='#b91c1c'" onmouseout="this.style.backgroundColor='#dc2626'">
                         <i class="fas fa-times mr-2" style="color: white !important;"></i>
                         <span style="color: white !important;">Cancel Subscription</span>
                     </button>
@@ -572,143 +628,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Reduce Seats Modal
-function openReduceSeatsModal() {
-    const quantityInput = document.getElementById('reduction_quantity');
-    const modal = document.getElementById('reduceSeatsModal');
-    const quantityDisplay = document.getElementById('reduce-seats-quantity-display');
-    const newTotalDisplay = document.getElementById('reduce-seats-new-total-display');
-    
-    if (quantityInput && modal) {
-        const quantity = parseInt(quantityInput.value) || 1;
-        const currentTotal = parseInt('{{ total_seats }}') || 0;
-        const newTotal = currentTotal - quantity;
-        
-        if (quantityDisplay) {
-            quantityDisplay.textContent = quantity;
-        }
-        if (newTotalDisplay) {
-            newTotalDisplay.textContent = newTotal;
-        }
-        
-        // Set form action and quantity
-        const submitForm = document.getElementById('reduce-seats-submit-form');
-        if (submitForm) {
-            // Copy the quantity value to the submit form
-            const submitQuantityInput = document.getElementById('reduce-seats-hidden-quantity');
-            if (submitQuantityInput) {
-                submitQuantityInput.value = quantity;
-            }
-        }
-        
-        // Show modal
-        modal.classList.remove('opacity-0', 'invisible');
-        const modalContent = modal.querySelector('div');
-        if (modalContent) {
-            modalContent.classList.remove('scale-95');
-            modalContent.classList.add('scale-100');
-        }
-    }
-}
-
-function closeReduceSeatsModal() {
-    const modal = document.getElementById('reduceSeatsModal');
-    if (modal) {
-        modal.classList.add('opacity-0', 'invisible');
-        const modalContent = modal.querySelector('div');
-        if (modalContent) {
-            modalContent.classList.add('scale-95');
-            modalContent.classList.remove('scale-100');
-        }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    const reduceSeatsCloseBtn = document.getElementById('close-reduce-seats-modal');
-    const reduceSeatsCancelBtn = document.getElementById('cancel-reduce-seats');
-    const reduceSeatsModal = document.getElementById('reduceSeatsModal');
-    
-    if (reduceSeatsCloseBtn) {
-        reduceSeatsCloseBtn.addEventListener('click', closeReduceSeatsModal);
-    }
-    
-    if (reduceSeatsCancelBtn) {
-        reduceSeatsCancelBtn.addEventListener('click', closeReduceSeatsModal);
-    }
-    
-    if (reduceSeatsModal) {
-        reduceSeatsModal.addEventListener('click', function(e) {
-            if (e.target === reduceSeatsModal) {
-                closeReduceSeatsModal();
-            }
-        });
-    }
-});
 </script>
-
-<!-- Reduce Seats Modal -->
-<div id="reduceSeatsModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
-    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
-        <!-- Modal Header -->
-        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
-            <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-lg shadow-sm">
-                    <i class="fas fa-minus-circle text-orange-600"></i>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Reduce Team Seats</h3>
-                    <p class="text-sm text-[var(--text-secondary)]">Confirm seat reduction</p>
-                </div>
-            </div>
-            <button type="button" id="close-reduce-seats-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <!-- Modal Body -->
-        <div class="p-6">
-            <p class="text-[var(--text-primary)] mb-4">
-                Are you sure you want to reduce your team subscription?
-            </p>
-            
-            <div class="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4 space-y-2">
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-orange-800">Current Total Seats:</span>
-                    <span class="font-semibold text-orange-900">{{ total_seats }}</span>
-                </div>
-                <div class="flex items-center justify-between">
-                    <span class="text-sm text-orange-800">Seats to Remove:</span>
-                    <span class="font-semibold text-orange-900" id="reduce-seats-quantity-display">1</span>
-                </div>
-                <div class="flex items-center justify-between pt-2 border-t border-orange-200">
-                    <span class="text-sm font-medium text-orange-900">New Total Seats:</span>
-                    <span class="font-bold text-lg text-orange-900" id="reduce-seats-new-total-display">{{ total_seats }}</span>
-                </div>
-            </div>
-            
-            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <p class="text-sm text-blue-800">
-                    <i class="fas fa-info-circle mr-2"></i>
-                    You'll receive a prorated credit for the remaining billing period.
-                </p>
-            </div>
-        </div>
-        
-        <!-- Modal Footer -->
-        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
-            <button type="button" id="cancel-reduce-seats" class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
-                <i class="fas fa-times mr-2"></i>Cancel
-            </button>
-            <form method="POST" action="{% url 'accounts:reduce_team_subscription' %}" id="reduce-seats-submit-form" class="m-0">
-                {% csrf_token %}
-                <input type="hidden" name="reduction_quantity" id="reduce-seats-hidden-quantity" value="1">
-                <button type="submit" class="w-40 h-10 flex items-center justify-center bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
-                    <i class="fas fa-minus-circle mr-2"></i>Confirm
-                </button>
-            </form>
-        </div>
-    </div>
-</div>
 
 <!-- Cancel Subscription Modal -->
 <div id="cancelSubscriptionModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
@@ -774,16 +694,28 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
         
         <!-- Modal Footer -->
-        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
-            <button type="button" id="cancel-subscription-close" class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
-                <i class="fas fa-times mr-2"></i>Cancel
-            </button>
-            <form method="POST" action="{% url 'accounts:cancel_team_subscription' %}" class="inline" id="cancel-subscription-form">
-                {% csrf_token %}
-                <button type="submit" class="w-52 h-10 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap">
-                    <i class="fas fa-trash mr-2"></i>Cancel Subscription
+        <div class="flex flex-col space-y-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <div class="flex items-center justify-end space-x-3">
+                <button type="button" id="cancel-subscription-close" class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                    <i class="fas fa-times mr-2"></i>Cancel
                 </button>
-            </form>
+                <form method="POST" action="{% url 'accounts:cancel_team_subscription' %}" class="inline" id="cancel-subscription-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_account" value="false">
+                    <button type="submit" class="w-52 h-10 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer whitespace-nowrap">
+                        <i class="fas fa-trash mr-2"></i>Cancel Subscription
+                    </button>
+                </form>
+            </div>
+            <div class="border-t border-[var(--border-color)] pt-3">
+                <form method="POST" action="{% url 'accounts:cancel_team_subscription' %}" class="inline w-full" id="cancel-and-delete-form">
+                    {% csrf_token %}
+                    <input type="hidden" name="delete_account" value="true">
+                    <button type="submit" class="w-full h-10 flex items-center justify-center bg-red-800 hover:bg-red-900 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer" onclick="return confirm('Are you absolutely sure? This will permanently delete your account and cannot be undone.')">
+                        <i class="fas fa-user-times mr-2"></i>Cancel Subscription & Delete Account
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

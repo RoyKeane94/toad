@@ -994,6 +994,312 @@ def stripe_checkout_team_registration_view(request):
 
 
 @login_required
+def stripe_checkout_seat_change_view(request):
+    """
+    Create Stripe checkout session for team seat changes (increase or decrease)
+    """
+    logger.info(f"Stripe seat change checkout view accessed by user: {request.user.email}")
+    
+    try:
+        # Check session data
+        seat_change_type = request.session.get('seat_change_type')
+        if not seat_change_type or seat_change_type not in ['increase', 'decrease']:
+            messages.error(request, 'Invalid session. Please start from the team management page.')
+            return redirect('accounts:manage_team')
+        
+        subscription_group_id = request.session.get('seat_change_subscription_group_id')
+        if not subscription_group_id:
+            messages.error(request, 'Subscription data not found. Please try again.')
+            return redirect('accounts:manage_team')
+        
+        from accounts.models import SubscriptionGroup
+        try:
+            subscription_group = SubscriptionGroup.objects.get(id=subscription_group_id, admin=request.user)
+        except SubscriptionGroup.DoesNotExist:
+            messages.error(request, 'Subscription group not found.')
+            return redirect('accounts:manage_team')
+        
+        if not subscription_group.stripe_subscription_id:
+            messages.error(request, 'No Stripe subscription found. Please contact support.')
+            return redirect('accounts:manage_team')
+        
+        # Get quantities from session
+        current_quantity = request.session.get('seat_change_current_quantity')
+        new_quantity = request.session.get('seat_change_new_quantity')
+        
+        if not current_quantity or not new_quantity:
+            messages.error(request, 'Invalid session data. Please try again.')
+            return redirect('accounts:manage_team')
+        
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured - cannot create checkout session")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('accounts:manage_team')
+        
+        # Get the customer ID from the existing subscription
+        try:
+            subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+            customer_id = subscription.get('customer')
+            
+            if not customer_id:
+                messages.error(request, 'Unable to retrieve customer information. Please contact support.')
+                return redirect('accounts:manage_team')
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error retrieving subscription: {e}")
+            messages.error(request, 'There was an error accessing your subscription. Please try again.')
+            return redirect('accounts:manage_team')
+        
+        # For increases, create a checkout session with the additional seats
+        if seat_change_type == 'increase':
+            additional_quantity = request.session.get('seat_change_additional_quantity', new_quantity - current_quantity)
+            logger.info(f"Creating checkout session for {additional_quantity} additional seats")
+            
+            # Get the price ID
+            price_id = PRO_PRICE_ID
+            
+            try:
+                price = stripe.Price.retrieve(price_id, expand=['product'])
+            except stripe.error.InvalidRequestError:
+                messages.error(request, 'Subscription plan not found. Please contact support.')
+                return redirect('accounts:manage_team')
+            
+            # Create checkout session for the additional seats, linked to existing customer
+            checkout_session = stripe.checkout.Session.create(
+                line_items=[
+                    {
+                        'price': price.id,
+                        'quantity': additional_quantity,
+                    },
+                ],
+                mode='subscription',
+                customer=customer_id,  # Link to existing customer
+                success_url=request.build_absolute_uri(reverse('accounts:stripe_success_seat_change')) + '?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=request.build_absolute_uri(reverse('accounts:manage_team')),
+                metadata={
+                    'user_id': str(request.user.id),
+                    'user_email': request.user.email,
+                    'seat_change_type': 'increase',
+                    'subscription_group_id': str(subscription_group_id),
+                    'current_quantity': str(current_quantity),
+                    'new_quantity': str(new_quantity),
+                    'additional_quantity': str(additional_quantity),
+                }
+            )
+        else:
+            # For decreases, create a checkout session for confirmation
+            # We'll create a $0 payment to confirm the change
+            reduction_quantity = request.session.get('seat_change_reduction_quantity')
+            logger.info(f"Creating checkout session for seat reduction confirmation: removing {reduction_quantity} seats")
+            
+            # Create a payment intent for $0 to confirm the subscription change
+            # We'll use a custom amount of 0
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                line_items=[
+                    {
+                        'price_data': {
+                            'currency': 'gbp',
+                            'product_data': {
+                                'name': f'Reduce Team Subscription by {reduction_quantity} seat(s)',
+                                'description': f'Confirm reduction from {current_quantity} to {new_quantity} seats',
+                            },
+                            'unit_amount': 0,  # $0 confirmation
+                        },
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',  # Use payment mode for one-time confirmation
+                customer=customer_id,  # Link to existing customer
+                success_url=request.build_absolute_uri(reverse('accounts:stripe_success_seat_change')) + '?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=request.build_absolute_uri(reverse('accounts:manage_team')),
+                metadata={
+                    'user_id': str(request.user.id),
+                    'user_email': request.user.email,
+                    'seat_change_type': 'decrease',
+                    'subscription_group_id': str(subscription_group_id),
+                    'current_quantity': str(current_quantity),
+                    'new_quantity': str(new_quantity),
+                    'reduction_quantity': str(reduction_quantity),
+                    'remove_member_ids': ','.join([str(id) for id in request.session.get('seat_change_remove_member_ids', [])]),
+                    'cancel_invitation_ids': ','.join([str(id) for id in request.session.get('seat_change_cancel_invitation_ids', [])]),
+                }
+            )
+        
+        logger.info(f"Checkout session created: {checkout_session.id}")
+        from django.http import HttpResponseRedirect
+        return HttpResponseRedirect(checkout_session.url, status=303)
+        
+    except stripe.error.StripeError as e:
+        logger.error(f"Stripe error in stripe_checkout_seat_change_view: {e}")
+        messages.error(request, 'There was an error processing your payment. Please try again.')
+        return redirect('accounts:manage_team')
+    except Exception as e:
+        logger.error(f"Error in stripe_checkout_seat_change_view: {e}", exc_info=True)
+        from django.http import HttpResponse
+        return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
+
+
+@login_required
+def stripe_success_seat_change_view(request):
+    """
+    Handle successful Stripe checkout for seat changes
+    """
+    session_id = request.GET.get('session_id')
+    
+    if not session_id:
+        messages.error(request, 'Invalid session. Please contact support.')
+        return redirect('accounts:manage_team')
+    
+    try:
+        # Retrieve the checkout session
+        session = stripe.checkout.Session.retrieve(session_id)
+        
+        # Get metadata
+        seat_change_type = session.metadata.get('seat_change_type')
+        subscription_group_id = session.metadata.get('subscription_group_id')
+        
+        if not subscription_group_id:
+            messages.error(request, 'Subscription data not found. Please contact support.')
+            return redirect('accounts:manage_team')
+        
+        from accounts.models import SubscriptionGroup
+        
+        try:
+            subscription_group = SubscriptionGroup.objects.get(id=subscription_group_id, admin=request.user)
+        except SubscriptionGroup.DoesNotExist:
+            messages.error(request, 'Subscription group not found.')
+            return redirect('accounts:manage_team')
+        
+        # For seat increases, we need to cancel the new subscription created by checkout
+        # and merge the quantity into the existing subscription
+        if seat_change_type == 'increase':
+            current_quantity = int(session.metadata.get('current_quantity', 0))
+            new_quantity = int(session.metadata.get('new_quantity', 0))
+            additional_quantity = new_quantity - current_quantity
+            
+            # Get the subscription created by checkout
+            checkout_subscription_id = session.subscription
+            
+            if subscription_group.stripe_subscription_id:
+                try:
+                    # Get the existing subscription
+                    existing_subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+                    subscription_item_id = existing_subscription['items']['data'][0]['id']
+                    current_stripe_quantity = existing_subscription['items']['data'][0]['quantity']
+                    
+                    # Update existing subscription quantity to include the new seats
+                    updated_subscription = stripe.Subscription.modify(
+                        subscription_group.stripe_subscription_id,
+                        items=[{
+                            'id': subscription_item_id,
+                            'quantity': new_quantity,
+                        }],
+                        proration_behavior='none',  # Don't prorate since we already charged for additional seats in checkout
+                    )
+                    
+                    # Cancel the new subscription created by checkout (we've merged it into existing)
+                    if checkout_subscription_id and checkout_subscription_id != subscription_group.stripe_subscription_id:
+                        try:
+                            stripe.Subscription.delete(checkout_subscription_id)
+                            logger.info(f"Cancelled temporary checkout subscription {checkout_subscription_id}")
+                        except Exception as e:
+                            logger.warning(f"Could not cancel checkout subscription {checkout_subscription_id}: {e}")
+                    
+                    # Update our database
+                    subscription_group.quantity = new_quantity
+                    subscription_group.save()
+                    
+                    logger.info(f"Seat increase completed: {subscription_group.stripe_subscription_id} from {current_quantity} to {new_quantity} seats")
+                    
+                    messages.success(request, f'Successfully added {additional_quantity} seat(s). Your subscription now has {new_quantity} total seats.')
+                    
+                except stripe.error.StripeError as e:
+                    logger.error(f"Stripe error updating subscription after seat increase: {e}")
+                    messages.error(request, 'There was an error updating your subscription. Please contact support.')
+                    return redirect('accounts:manage_team')
+        
+        # For seat decreases, update the subscription and handle member removals
+        elif seat_change_type == 'decrease':
+            current_quantity = int(session.metadata.get('current_quantity', 0))
+            new_quantity = int(session.metadata.get('new_quantity', 0))
+            reduction_quantity = int(session.metadata.get('reduction_quantity', 0))
+            
+            if subscription_group.stripe_subscription_id:
+                try:
+                    # Get the subscription
+                    subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
+                    subscription_item_id = subscription['items']['data'][0]['id']
+                    
+                    # Update subscription quantity
+                    updated_subscription = stripe.Subscription.modify(
+                        subscription_group.stripe_subscription_id,
+                        items=[{
+                            'id': subscription_item_id,
+                            'quantity': new_quantity,
+                        }],
+                        proration_behavior='always_invoice',
+                    )
+                    
+                    # Update our database
+                    subscription_group.quantity = new_quantity
+                    subscription_group.save()
+                    
+                    # Remove selected members and cancel invitations if specified
+                    remove_member_ids_str = session.metadata.get('remove_member_ids', '')
+                    cancel_invitation_ids_str = session.metadata.get('cancel_invitation_ids', '')
+                    
+                    remove_member_ids = [int(id) for id in remove_member_ids_str.split(',') if id] if remove_member_ids_str else []
+                    cancel_invitation_ids = [int(id) for id in cancel_invitation_ids_str.split(',') if id] if cancel_invitation_ids_str else []
+                    
+                    if remove_member_ids:
+                        from django.contrib.auth import get_user_model
+                        User = get_user_model()
+                        members_to_remove = User.objects.filter(id__in=remove_member_ids)
+                        for member in members_to_remove:
+                            subscription_group.members.remove(member)
+                            member.tier = 'free'
+                            member.save(update_fields=['tier'])
+                            logger.info(f"Removed member {member.email} due to seat reduction")
+                    
+                    if cancel_invitation_ids:
+                        from accounts.models import TeamInvitation
+                        TeamInvitation.objects.filter(
+                            id__in=cancel_invitation_ids,
+                            subscription_group=subscription_group
+                        ).update(status='declined')
+                        logger.info(f"Cancelled {len(cancel_invitation_ids)} invitations due to seat reduction")
+                    
+                    logger.info(f"Seat decrease completed: {subscription_group.stripe_subscription_id} from {current_quantity} to {new_quantity} seats")
+                    
+                    messages.success(request, f'Successfully reduced subscription by {reduction_quantity} seat(s). Your subscription now has {new_quantity} total seats.')
+                    
+                except stripe.error.StripeError as e:
+                    logger.error(f"Stripe error updating subscription after seat decrease: {e}")
+                    messages.error(request, 'There was an error updating your subscription. Please contact support.')
+                    return redirect('accounts:manage_team')
+        
+        # Clear session
+        for key in ['seat_change_type', 'seat_change_current_quantity', 'seat_change_new_quantity', 
+                   'seat_change_additional_quantity', 'seat_change_reduction_quantity', 
+                   'seat_change_subscription_group_id', 'seat_change_remove_member_ids', 
+                   'seat_change_cancel_invitation_ids']:
+            if key in request.session:
+                del request.session[key]
+        
+        return redirect('accounts:manage_team')
+        
+    except stripe.error.StripeError as e:
+        logger.error(f"Stripe error in stripe_success_seat_change_view: {e}")
+        messages.error(request, 'There was an error processing your payment. Please contact support.')
+        return redirect('accounts:manage_team')
+    except Exception as e:
+        logger.error(f"Error in stripe_success_seat_change_view: {e}", exc_info=True)
+        messages.error(request, 'An unexpected error occurred. Please contact support.')
+        return redirect('accounts:manage_team')
+
+
+@login_required
 def create_checkout_session_team(request):
     """
     Create a Stripe checkout session for Team Toad subscription with quantity
