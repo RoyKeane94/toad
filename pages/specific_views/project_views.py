@@ -435,6 +435,8 @@ def task_create_view(request, project_pk, row_pk, col_pk):
 
 @login_required
 def task_edit_view(request, task_pk):
+    logger.info(f"Task edit view called - Task PK: {task_pk}, Method: {request.method}, User: {request.user.email}, Content-Type: {request.headers.get('Content-Type', 'N/A')}")
+    
     # For JSON requests, load the full task to ensure proper saving
     if request.method == 'POST' and request.headers.get('Content-Type') == 'application/json':
         task = get_user_task_optimized(
@@ -443,6 +445,7 @@ def task_edit_view(request, task_pk):
             select_related=['project', 'project__user']
             # Don't restrict fields for JSON updates to ensure proper saving
         )
+        logger.debug(f"Loaded task for JSON edit - Task ID: {task.pk}, Current text: '{task.text[:50]}...' (length: {len(task.text)})")
     else:
         # For regular form requests, use optimized loading
         task = get_user_task_optimized(
@@ -456,23 +459,36 @@ def task_edit_view(request, task_pk):
         # Check if this is a JSON request for inline editing
         if request.headers.get('Content-Type') == 'application/json':
             try:
+                logger.debug(f"Processing JSON request body - Raw length: {len(request.body)}, Body: {request.body.decode('utf-8')[:200]}")
                 data = json.loads(request.body)
                 new_text = data.get('text', '').strip()
                 
+                logger.info(f"Task edit JSON request - Task ID: {task_pk}, New text length: {len(new_text)}, New text preview: '{new_text[:50]}...'")
+                
                 if not new_text:
+                    logger.warning(f"Task edit rejected - Empty text provided for task {task_pk} by user {request.user.email}")
                     return JsonResponse({'success': False, 'error': 'Task text cannot be empty'}, status=400)
                 
                 # Update the task
                 old_text = task.text
+                logger.debug(f"Before update - Task {task_pk} text: Old='{old_text[:50]}...' (length: {len(old_text)}), New='{new_text[:50]}...' (length: {len(new_text)})")
+                
                 task.text = new_text
                 
                 # Try to save and log the result
                 try:
                     # Force a database save
+                    logger.debug(f"Attempting to save task {task_pk} with new text...")
                     task.save(update_fields=['text', 'updated_at'])
+                    logger.info(f"Task {task_pk} save() completed successfully")
                     
                     # Verify the save worked by refreshing from database
                     task.refresh_from_db()
+                    saved_text = task.text
+                    logger.info(f"Task {task_pk} refreshed from DB - Saved text: '{saved_text[:50]}...' (length: {len(saved_text)}), Matches intended: {saved_text == new_text}")
+                    
+                    if saved_text != new_text:
+                        logger.warning(f"Task {task_pk} text mismatch after save - Intended: '{new_text[:50]}...', Saved: '{saved_text[:50]}...'")
                     
                     return JsonResponse({
                         'success': True, 
@@ -482,14 +498,14 @@ def task_edit_view(request, task_pk):
                     })
                     
                 except Exception as save_error:
-                    logger.error(f"Error saving task {task_pk}: {save_error}")
+                    logger.error(f"Error saving task {task_pk} - Exception type: {type(save_error).__name__}, Error: {save_error}", exc_info=True)
                     return JsonResponse({'success': False, 'error': f'Save failed: {str(save_error)}'}, status=500)
                 
             except json.JSONDecodeError as json_error:
-                logger.error(f"JSON decode error for task {task_pk}: {json_error}")
+                logger.error(f"JSON decode error for task {task_pk} - Error: {json_error}, Body preview: {request.body.decode('utf-8', errors='replace')[:200]}")
                 return JsonResponse({'success': False, 'error': 'Invalid JSON data'}, status=400)
             except Exception as e:
-                logger.error(f"Error updating task {task_pk}: {e}")
+                logger.error(f"Unexpected error updating task {task_pk} - Exception type: {type(e).__name__}, Error: {e}", exc_info=True)
                 return JsonResponse({'success': False, 'error': 'Failed to update task'}, status=500)
         
         # Handle regular form submission
