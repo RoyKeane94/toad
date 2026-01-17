@@ -23,7 +23,7 @@
         align-items: center;
         min-height: 100vh;
         padding: 4rem 1rem;
-        background: var(--main-bg);
+        background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);
     }
     
     .subscription-cards {
@@ -165,12 +165,12 @@
     }
     
     .subscription-button.pro {
-        background: var(--tertiary-action-bg);
+        background: var(--primary-action-bg);
         color: white;
     }
     
     .subscription-button.pro:hover {
-        background: var(--tertiary-action-hover-bg);
+        background: var(--primary-action-hover-bg);
         color: white;
     }
     
@@ -219,31 +219,6 @@
         {% endif %}
     </div>
     
-    <!-- Billing Management Section for Paid Subscriptions -->
-    {% if user.stripe_customer_id and not team_admin %}
-    <div class="max-w-4xl mx-auto mb-8">
-        <div class="bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-200 rounded-lg p-6">
-            <div class="flex items-center justify-between gap-4">
-                <div class="flex-1 min-w-0">
-                    <h2 class="text-xl font-semibold text-[var(--text-primary)] mb-2 flex items-center">
-                        <i class="fas fa-credit-card mr-2 text-indigo-600"></i>
-                        Billing & Payment Details
-                    </h2>
-                    <p class="text-sm text-[var(--text-secondary)]">
-                        Update your payment method, view invoices, and manage billing details through Stripe's secure portal.
-                    </p>
-                </div>
-                <a href="{% url 'accounts:create_portal_session' %}" 
-                   class="px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-medium transition-colors shadow-sm hover:shadow-md flex items-center whitespace-nowrap flex-shrink-0" 
-                   style="color: white !important;">
-                    <i class="fas fa-external-link-alt mr-2" style="color: white !important;"></i>
-                    <span style="color: white !important;">Open Billing Portal</span>
-                </a>
-            </div>
-        </div>
-    </div>
-    {% endif %}
-    
     {% if team_admin %}
         <!-- Team Member View - Show message only -->
         <div class="max-w-2xl mx-auto bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-8 text-center">
@@ -260,41 +235,6 @@
     {% else %}
         <!-- Subscription Cards -->
         <div class="subscription-cards">
-        <!-- Free Plan -->
-        <div class="subscription-card {% if user.tier == 'free' %}current{% endif %}">
-            <h3 class="subscription-title">Free</h3>
-            <p class="subscription-description">
-                The perfect place to start. Organise your most important projects and see what clarity feels like
-            </p>
-            <div class="subscription-amount">Free</div>
-            <div class="subscription-period">forever</div>
-            
-            <ul class="subscription-features">
-                <li>
-                    <i class="fas fa-check"></i>
-                    Manage up to 2 active grids
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Create unlimited tasks
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Use any of our pre-built templates
-                </li>
-            </ul>
-            
-            {% if user.tier == 'free' %}
-                <button class="subscription-button current" disabled>
-                    Current Plan
-                </button>
-            {% else %}
-                <button class="subscription-button downgrade" onclick="openDowngradeModal()">
-                    Downgrade to Free
-                </button>
-            {% endif %}
-        </div>
-        
         <!-- Personal Plan -->
         <div class="subscription-card {% if user.tier == 'personal' or user.tier|slice:":8" == 'personal' %}current{% endif %}">
             <h3 class="subscription-title">Personal</h3>
@@ -370,10 +310,45 @@
                     <a href="{% url 'accounts:stripe_checkout_pro' %}" class="subscription-button pro">
                         Upgrade to Team Toad (1 user)
                     </a>
-                    <a href="{% url 'accounts:stripe_checkout_team' %}" class="subscription-button pro" style="background: var(--tertiary-action-bg);">
+                    <a href="{% url 'accounts:stripe_checkout_team' %}" class="subscription-button pro">
                         Upgrade to Team Toad (Multiple Users)
                     </a>
                 </div>
+            {% endif %}
+        </div>
+        
+        <!-- Free Plan -->
+        <div class="subscription-card {% if user.tier == 'free' %}current{% endif %}">
+            <h3 class="subscription-title">Free</h3>
+            <p class="subscription-description">
+                The perfect place to start. Organise your most important projects and see what clarity feels like
+            </p>
+            <div class="subscription-amount">Free</div>
+            <div class="subscription-period">forever</div>
+            
+            <ul class="subscription-features">
+                <li>
+                    <i class="fas fa-check"></i>
+                    Manage up to 2 active grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Create unlimited tasks
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Use any of our pre-built templates
+                </li>
+            </ul>
+            
+            {% if user.tier == 'free' %}
+                <button class="subscription-button current" disabled>
+                    Current Plan
+                </button>
+            {% else %}
+                <button class="subscription-button downgrade" onclick="openDowngradeModal()">
+                    Downgrade to Free
+                </button>
             {% endif %}
         </div>
     </div>

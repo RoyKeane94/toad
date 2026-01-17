@@ -3,15 +3,25 @@
 
 {% block title %}Accept Team Invitation - Toad{% endblock %}
 
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="min-h-screen flex items-start justify-center bg-[var(--main-bg)] pt-8 pb-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
     <div class="max-w-md w-full space-y-8">
         <!-- Header -->
         <div class="text-center">
             <div class="mb-4">
                 <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-16 w-auto mx-auto">
             </div>
-            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)]">
+            <h2 class="text-3xl font-bold text-green-600">
                 {% if existing_user %}
                     Accept Team Invitation
                 {% else %}
@@ -48,7 +58,7 @@
         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
             <div class="mb-6">
                 <div class="flex items-center space-x-3 mb-4">
-                    <div class="w-10 h-10 bg-[var(--tertiary-action-bg)] rounded-full flex items-center justify-center text-white">
+                    <div class="w-10 h-10 bg-green-600 rounded-full flex items-center justify-center text-white" style="background-color: rgb(22, 163, 74) !important;">
                         <i class="fas fa-users"></i>
                     </div>
                     <div>
@@ -68,7 +78,7 @@
                 <!-- Existing User - Just Accept -->
                 <form method="POST" action="{% url 'accounts:accept_team_invitation' invitation.token %}">
                     {% csrf_token %}
-                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200">
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition-colors duration-200 cursor-pointer" style="background-color: rgb(22, 163, 74) !important;">
                         <i class="fas fa-check mr-2"></i>
                         Accept Invitation
                     </button>
@@ -128,7 +138,7 @@
                         </div>
                     </div>
                     
-                    <button type="submit" class="w-full mt-6 flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200">
+                    <button type="submit" class="w-full mt-6 flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition-colors duration-200 cursor-pointer" style="background-color: rgb(22, 163, 74) !important;">
                         <i class="fas fa-user-plus mr-2"></i>
                         Create Account & Join Team
                     </button>

@@ -18,7 +18,7 @@
     <div class="max-w-4xl w-full space-y-8">
         <!-- Header -->
         <div class="text-center">
-            <h1 class="text-3xl font-bold text-green-500 mb-2">
+            <h1 class="text-3xl font-bold text-green-600 mb-2">
                 Manage Team Subscription
             </h1>
             <p class="text-sm text-[var(--text-secondary)]">
@@ -227,7 +227,7 @@
         <!-- Manage Subscription Section (only for paid subscriptions) -->
         {% if not is_trial and stripe_subscription_info %}
         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
-            <h2 class="text-xl font-semibold text-green-500 mb-4">Manage Seats</h2>
+            <h2 class="text-xl font-semibold text-green-600 mb-4">Manage Seats</h2>
             <p class="text-sm text-[var(--text-secondary)] mb-6">
                 Add or remove seats from your team subscription. Changes will be processed through secure payment via Stripe.
             </p>
@@ -236,14 +236,14 @@
                 <!-- Increase Seats -->
                 <div class="border border-[var(--border-color)] rounded-lg p-4 flex flex-col h-full">
                     <h3 class="font-semibold text-[var(--text-primary)] mb-2 flex items-center">
-                        <i class="fas fa-plus-circle text-green-500 mr-2"></i>
+                        <i class="fas fa-plus-circle text-green-600 mr-2"></i>
                         Add Seats
                     </h3>
                     <p class="text-sm text-[var(--text-secondary)] mb-4 flex-grow">
                         Add more seats to your subscription at £5 per seat/month.
                     </p>
                     <a href="{% url 'accounts:increase_team_seats' %}" 
-                       class="inline-flex items-center justify-center w-44 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md text-sm font-medium transition-colors">
+                       class="inline-flex items-center justify-center w-44 px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md text-sm font-medium transition-colors" style="background-color: rgb(22, 163, 74) !important;">
                         <i class="fas fa-plus mr-2"></i>
                         Add Seats
                     </a>
