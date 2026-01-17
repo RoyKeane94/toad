@@ -534,7 +534,8 @@
             </div>
         {% endfor %}
     </div>
-    
+{% endif %}
+
     <!-- My Templates Section -->
     <div class="max-w-7xl mx-auto px-4 mt-16">
         <div class="text-center mb-8">
@@ -708,7 +709,8 @@
             {% endif %}
         </div>
     </div>
-{% else %}
+
+{% if not projects %}
     <!-- Empty State -->
     <div class="text-center py-16 max-w-md mx-auto px-4">
         <div class="mb-6">
