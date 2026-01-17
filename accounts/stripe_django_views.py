@@ -910,19 +910,29 @@ def stripe_checkout_team_view(request):
         return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
 
 
-@login_required
 def stripe_checkout_team_registration_view(request):
     """
-    Display the Stripe checkout page for Team Toad subscription from registration flow
+    Redirect directly to Stripe checkout for Team Toad subscription from registration flow
     Uses quantity from session and automatically creates checkout session
     """
-    logger.info(f"Stripe Team registration checkout view accessed by user: {request.user.email}")
-    
     try:
         # Check if this is from registration flow
         if not request.session.get('team_registration_flow'):
             messages.error(request, 'Invalid session. Please start from the registration page.')
             return redirect('accounts:register_choices')
+        
+        # Get form data from session
+        form_data = request.session.get('team_registration_form_data')
+        if not form_data:
+            messages.error(request, 'Registration data not found. Please start over.')
+            return redirect('accounts:register_team_quantity')
+        
+        email = form_data.get('email')
+        if not email:
+            messages.error(request, 'Invalid registration data. Please start over.')
+            return redirect('accounts:register_team_quantity')
+        
+        logger.info(f"Stripe Team registration checkout view accessed for email: {email}")
         
         # Get quantity from session
         quantity = request.session.get('team_registration_quantity')
@@ -959,10 +969,9 @@ def stripe_checkout_team_registration_view(request):
             mode='subscription',
             success_url=request.build_absolute_uri(reverse('accounts:stripe_success_team')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('accounts:register_team_quantity')),
-            customer_email=request.user.email,  # Pre-fill email
+            customer_email=email,  # Pre-fill email from form data
             metadata={
-                'user_id': str(request.user.id),
-                'user_email': request.user.email,
+                'user_email': email,
                 'plan_type': 'team',
                 'quantity': str(quantity),
                 'from_registration': 'true',  # Flag to indicate this is from registration
@@ -970,7 +979,9 @@ def stripe_checkout_team_registration_view(request):
         )
         
         logger.info(f"Checkout session created: {checkout_session.id}")
-        return redirect(checkout_session.url, code=303)
+        logger.info(f"Redirecting to Stripe checkout URL: {checkout_session.url}")
+        from django.http import HttpResponseRedirect
+        return HttpResponseRedirect(checkout_session.url, status=303)
         
     except stripe.error.StripeError as e:
         logger.error(f"Stripe error in stripe_checkout_team_registration_view: {e}")
@@ -1094,11 +1105,10 @@ def create_checkout_session_team(request):
         return redirect('accounts:stripe_checkout_team')
 
 
-@login_required
 def stripe_success_team_view(request):
     """
     Handle successful Stripe Team checkout - redirect to email input page
-    Handles both new subscriptions and trial conversions
+    Handles both new subscriptions, trial conversions, and new user registrations
     """
     session_id = request.GET.get('session_id')
     
@@ -1110,10 +1120,63 @@ def stripe_success_team_view(request):
         # Retrieve the checkout session
         session = stripe.checkout.Session.retrieve(session_id)
         
-        # Verify the session belongs to the current user
-        if session.metadata.get('user_id') != str(request.user.id):
-            messages.error(request, 'Session verification failed.')
-            return redirect('pages:project_list')
+        # Check if this is from registration flow (user doesn't exist yet)
+        from_registration = session.metadata.get('from_registration') == 'true'
+        user_email = session.metadata.get('user_email')
+        
+        # If from registration, create the user first
+        if from_registration and not request.user.is_authenticated:
+            # Get form data from session
+            form_data = request.session.get('team_registration_form_data')
+            if not form_data:
+                messages.error(request, 'Registration data not found. Please contact support.')
+                return redirect('accounts:register_team_quantity')
+            
+            # Verify email matches
+            if form_data.get('email') != user_email:
+                messages.error(request, 'Email mismatch. Please contact support.')
+                return redirect('accounts:register_team_quantity')
+            
+            # Create the user account
+            from django.contrib.auth import get_user_model
+            from django.contrib.auth import login
+            User = get_user_model()
+            
+            # Check if user already exists (shouldn't happen, but safety check)
+            try:
+                user = User.objects.get(email=form_data['email'])
+                # User already exists - this shouldn't happen, but handle it
+                logger.warning(f"User {user.email} already exists during registration flow")
+            except User.DoesNotExist:
+                # Create new user
+                user = User.objects.create_user(
+                    email=form_data['email'],
+                    password=form_data['password'],
+                    first_name=form_data['first_name'],
+                    last_name=form_data.get('last_name', ''),
+                    tier='pro',  # Set to Team Toad tier immediately
+                    email_verified=True,  # Auto-verify for paid registration
+                )
+                logger.info(f"User created after payment: {user.email} with tier pro (Team Toad)")
+            
+            # Log the user in
+            login(request, user)
+            logger.info(f"User logged in after payment: {user.email}")
+            
+            # Clear form data from session
+            if 'team_registration_form_data' in request.session:
+                del request.session['team_registration_form_data']
+        
+        # Verify the session belongs to the current user (if authenticated)
+        if request.user.is_authenticated:
+            # For existing users, verify session belongs to them
+            if session.metadata.get('user_id') and session.metadata.get('user_id') != str(request.user.id):
+                messages.error(request, 'Session verification failed.')
+                return redirect('pages:project_list')
+        elif not from_registration:
+            # If not authenticated and not from registration, require login
+            messages.error(request, 'Please log in to complete your subscription.')
+            return redirect('accounts:login')
         
         # Get quantity from metadata
         quantity = int(session.metadata.get('quantity', 1))
@@ -1154,8 +1217,19 @@ def stripe_success_team_view(request):
         # Update admin user tier and stripe_customer_id
         update_fields = []
         
-        # Upgrade from pro_trial to pro on conversion
-        if request.user.tier in ['pro_trial', 'free', 'personal', 'personal_trial']:
+        # For new registrations, tier is already set to pro
+        # For existing users, upgrade to pro if needed
+        if from_registration:
+            # User was just created with tier='pro', ensure it's still set
+            if request.user.tier != 'pro':
+                request.user.tier = 'pro'
+                update_fields.append('tier')
+            # Ensure email is verified
+            if not request.user.email_verified:
+                request.user.email_verified = True
+                update_fields.append('email_verified')
+        elif request.user.tier in ['pro_trial', 'free', 'personal', 'personal_trial']:
+            # Upgrade existing user to pro
             request.user.tier = 'pro'
             update_fields.append('tier')
         

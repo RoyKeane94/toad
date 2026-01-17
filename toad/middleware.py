@@ -22,6 +22,11 @@ class CSPMiddleware(MiddlewareMixin):
             s3_url = f"https://{settings.AWS_STORAGE_BUCKET_NAME}.s3.{getattr(settings, 'AWS_S3_REGION_NAME', 'us-east-1')}.amazonaws.com"
             media_src = f"'self' {s3_url}"
         
+        # Build form-action directive - allow same origin and Stripe checkout
+        # 'self' should work, but explicitly allowing current origin as well
+        current_origin = f"{request.scheme}://{request.get_host()}"
+        form_action = f"'self' {current_origin} https://checkout.stripe.com"
+        
         # Build CSP policy
         csp_policy = (
             "default-src 'self'; "
@@ -42,7 +47,7 @@ class CSPMiddleware(MiddlewareMixin):
             "https://plausible.io; "
             "frame-ancestors 'self'; "
             "base-uri 'self'; "
-            "form-action 'self';"
+            f"form-action {form_action};"
         )
         
         # Add CSP header

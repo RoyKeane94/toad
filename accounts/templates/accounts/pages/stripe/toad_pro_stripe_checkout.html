@@ -45,7 +45,12 @@
                 </div>
                 <div class="description">
                     <h3 class="text-2xl font-bold text-[var(--text-primary)] mb-2">Team Toad</h3>
-                    <h5 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-4">£5.00 / month</h5>
+                    {% if quantity and total_price %}
+                        <h5 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-2">£{{ total_price }} / month</h5>
+                        <p class="text-sm text-[var(--text-secondary)] mb-4">{{ quantity }} seat{{ quantity|pluralize }} × £{{ price_per_seat|default:5 }} per seat</p>
+                    {% else %}
+                        <h5 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-4">£5.00 / month</h5>
+                    {% endif %}
                     <div class="text-left space-y-2 text-sm text-[var(--text-secondary)]">
                         <div class="flex items-center">
                             <i class="fas fa-check text-[var(--tertiary-action-bg)] mr-2"></i>
@@ -63,7 +68,11 @@
                 </div>
             </div>
             
+            {% if quantity and total_price %}
+            <form action="{% url 'accounts:stripe_checkout_team_registration' %}" method="POST">
+            {% else %}
             <form action="{% url 'accounts:create_checkout_session_pro' %}" method="POST">
+            {% endif %}
                 {% csrf_token %}
                 <input type="hidden" name="price_id" value="price_1SPN4iImvDyA3xuknMiIWMe5" />
                 <button id="checkout-and-portal-button" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200">

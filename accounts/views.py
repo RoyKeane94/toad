@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, update_session_auth_hash, logout
 from django.contrib import messages
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import FormView, TemplateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -1205,7 +1205,7 @@ class RegisterTeamAdminView(FormView):
         return context
     
     def form_valid(self, form):
-        """Create the admin user and redirect to Stripe checkout"""
+        """Store form data in session and redirect to Stripe checkout (user will be created after payment)"""
         import logging
         logger = logging.getLogger(__name__)
         
@@ -1213,31 +1213,29 @@ class RegisterTeamAdminView(FormView):
             quantity = self.request.session.get('team_registration_quantity', 2)
             
             logger.info(f"Starting Team Toad admin registration with {quantity} seats...")
-            user = form.save()
-            logger.info(f"Admin user created successfully: {user.email}")
             
-            # Set user tier to FREE initially - will be upgraded to pro after successful payment
-            if hasattr(user, 'tier'):
-                user.tier = 'free'  # Default to free tier
-                user.save()
-                logger.info(f"User tier set to free: {user.email}")
+            # Store form data in session instead of creating user
+            # User will be created after successful Stripe payment
+            self.request.session['team_registration_form_data'] = {
+                'email': form.cleaned_data['email'],
+                'first_name': form.cleaned_data['first_name'],
+                'last_name': form.cleaned_data.get('last_name', ''),
+                'password': form.cleaned_data['password1'],  # Store password temporarily
+            }
             
-            # Log registration attempt
-            logger.info(f"New Team Toad admin registration: {user.email} ({user.get_short_name()}) - tier set to FREE initially, {quantity} seats")
+            logger.info(f"Form data stored in session for email: {form.cleaned_data['email']}")
             
-            # Log the user in immediately so they can proceed to checkout
-            logger.info("Logging user in...")
-            login(self.request, user)
-            logger.info("User logged in successfully")
-            
-            # Keep quantity in session for checkout
+            # Keep quantity and flow flags in session
             self.request.session['team_registration_quantity'] = quantity
             self.request.session['team_registration_flow'] = True
             
+            # Ensure session is saved before redirect
+            self.request.session.modified = True
+            
             # Redirect to Stripe checkout for Team plan
             logger.info("Redirecting to Stripe checkout...")
-            messages.success(self.request, f'Account created successfully! Proceeding to payment for {quantity} seats.')
-            return redirect('accounts:stripe_checkout_team_registration')
+            from django.http import HttpResponseRedirect
+            return HttpResponseRedirect(reverse('accounts:stripe_checkout_team_registration'))
             
         except Exception as e:
             logger.error(f"Error in RegisterTeamAdminView.form_valid: {e}", exc_info=True)
