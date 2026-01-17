@@ -3,12 +3,22 @@
 
 {% block title %}Manage Team - Toad{% endblock %}
 
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width design */
+    #app {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<div class="min-h-screen bg-[var(--main-bg)] pt-8 pb-12 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto space-y-8">
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+    <div class="max-w-4xl w-full space-y-8">
         <!-- Header -->
         <div class="text-center">
-            <h1 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-2">
+            <h1 class="text-3xl font-bold text-green-500 mb-2">
                 Manage Team Subscription
             </h1>
             <p class="text-sm text-[var(--text-secondary)]">
