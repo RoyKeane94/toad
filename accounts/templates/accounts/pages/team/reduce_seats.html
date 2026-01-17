@@ -75,7 +75,7 @@
 
         <!-- Reduce Seats Form -->
         <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
-            <form method="POST" action="{% url 'accounts:reduce_team_seats' %}" id="reduceSeatsForm">
+            <form method="POST" action="{% url 'accounts:reduce_team_seats' %}" id="reduceSeatsForm" data-current-quantity="{{ current_quantity }}" data-current-usage="{{ current_usage }}">
                 {% csrf_token %}
                 
                 <!-- Quantity Input -->
@@ -198,6 +198,11 @@
 </div>
 
 <script>
+// Template values - read from data attributes to avoid linter issues with Django template tags
+const formElement = document.getElementById('reduceSeatsForm');
+const TEMPLATE_CURRENT_QUANTITY = formElement ? parseInt(formElement.dataset.currentQuantity, 10) : 0;
+const TEMPLATE_CURRENT_USAGE = formElement ? parseInt(formElement.dataset.currentUsage, 10) : 0;
+
 function updateRequiredSelections() {
     const quantityInput = document.getElementById('reduction_quantity');
     const memberSelectionSection = document.getElementById('memberSelectionSection');
@@ -209,8 +214,8 @@ function updateRequiredSelections() {
     }
     
     const reductionQuantity = parseInt(quantityInput.value) || 0;
-    const currentQuantity = {{ current_quantity }};
-    const currentUsage = {{ current_usage }};
+    const currentQuantity = TEMPLATE_CURRENT_QUANTITY;
+    const currentUsage = TEMPLATE_CURRENT_USAGE;
     const newQuantity = currentQuantity - reductionQuantity;
     
     // Show selection section if reducing below current usage
@@ -254,8 +259,8 @@ function toggleSelection(checkbox) {
 document.getElementById('reduceSeatsForm').addEventListener('submit', function(e) {
     const quantityInput = document.getElementById('reduction_quantity');
     const reductionQuantity = parseInt(quantityInput.value) || 0;
-    const currentQuantity = {{ current_quantity }};
-    const currentUsage = {{ current_usage }};
+    const currentQuantity = TEMPLATE_CURRENT_QUANTITY;
+    const currentUsage = TEMPLATE_CURRENT_USAGE;
     const newQuantity = currentQuantity - reductionQuantity;
     const errorMessageDiv = document.getElementById('formErrorMessage');
     const errorText = document.getElementById('formErrorText');
