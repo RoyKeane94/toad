@@ -766,13 +766,70 @@ def stripe_success_pro_view(request):
             messages.error(request, 'Session verification failed.')
             return redirect('pages:project_list')
         
+        # Get subscription ID and customer ID from session
+        subscription_id = session.get('subscription')
+        customer_id = session.get('customer')
+        
+        # Create or update SubscriptionGroup for single Team Toad subscription
+        from accounts.models import SubscriptionGroup
+        quantity = 1  # Single seat subscription
+        
+        # Check if this is a trial conversion (existing SubscriptionGroup without Stripe ID)
+        existing_trial_group = SubscriptionGroup.objects.filter(
+            admin=request.user,
+            is_active=True,
+            stripe_subscription_id__isnull=True
+        ).first()
+        
+        if existing_trial_group:
+            # Trial conversion - update existing SubscriptionGroup
+            logger.info(f"Converting trial SubscriptionGroup {existing_trial_group.id} to paid for user {request.user.email}")
+            existing_trial_group.stripe_subscription_id = subscription_id
+            existing_trial_group.quantity = quantity
+            existing_trial_group.save(update_fields=['stripe_subscription_id', 'quantity'])
+            subscription_group = existing_trial_group
+            is_trial_conversion = True
+        else:
+            # Check if SubscriptionGroup already exists for this subscription (avoid duplicates)
+            existing_group = SubscriptionGroup.objects.filter(
+                stripe_subscription_id=subscription_id
+            ).first()
+            
+            if existing_group:
+                # SubscriptionGroup already exists (duplicate call protection)
+                logger.info(f"SubscriptionGroup already exists for subscription {subscription_id}, using existing group")
+                subscription_group = existing_group
+                is_trial_conversion = False
+            else:
+                # New subscription - create SubscriptionGroup
+                subscription_group = SubscriptionGroup.objects.create(
+                    admin=request.user,
+                    stripe_subscription_id=subscription_id,
+                    quantity=quantity,
+                    is_active=True
+                )
+                logger.info(f"Created new SubscriptionGroup {subscription_group.id} for single Team Toad subscription")
+                is_trial_conversion = False
+        
+        # Automatically add admin as a member (fills the seat)
+        if request.user not in subscription_group.members.all():
+            subscription_group.members.add(request.user)
+            logger.info(f"Added admin {request.user.email} as member of SubscriptionGroup {subscription_group.id}")
+        
         # Update user tier to pro
         request.user.tier = 'pro'
-        customer_id = session.get('customer')
         update_fields = ['tier']
         if customer_id and getattr(request.user, 'stripe_customer_id', None) != customer_id:
             request.user.stripe_customer_id = customer_id
             update_fields.append('stripe_customer_id')
+        
+        # Clear trial data on conversion
+        if is_trial_conversion:
+            request.user.trial_ends_at = None
+            request.user.trial_started_at = None
+            request.user.trial_type = None
+            update_fields.extend(['trial_ends_at', 'trial_started_at', 'trial_type'])
+        
         request.user.save(update_fields=update_fields)
         
         # Send joining email after successful payment (user is already verified)
