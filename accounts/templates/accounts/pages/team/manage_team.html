@@ -772,71 +772,86 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>
 
 <!-- Remove Team Member Modal -->
-<div id="removeMemberModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
-    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
-        <!-- Modal Header with Toad -->
-        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)] bg-gradient-to-r from-red-50 to-orange-50">
-            <div class="flex items-center space-x-3">
-                <div class="flex items-center justify-center w-14 h-14 bg-white rounded-xl shadow-md border border-red-100">
-                    <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad" class="w-10 h-10">
+<div id="removeMemberModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300 p-4">
+    <div class="bg-white rounded-2xl shadow-2xl border-2 border-red-100 max-w-lg w-full transform scale-95 transition-all duration-300 overflow-hidden">
+        <!-- Modal Header -->
+        <div class="bg-gradient-to-r from-red-50 via-red-50 to-red-100 border-b-2 border-red-200 px-6 py-5">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 bg-red-500 rounded-xl shadow-lg">
+                        <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-red-900">Remove Team Member</h3>
+                        <p class="text-sm font-medium text-red-700 mt-0.5">This action cannot be undone</p>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="text-lg font-semibold text-red-700">Remove Team Member</h3>
-                    <p class="text-sm text-red-600">This action is permanent!</p>
-                </div>
+                <button type="button" id="close-remove-member-modal" class="w-8 h-8 flex items-center justify-center rounded-lg text-red-600 hover:bg-red-100 hover:text-red-800 transition-colors">
+                    <i class="fas fa-times text-lg"></i>
+                </button>
             </div>
-            <button type="button" id="close-remove-member-modal" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
-                <i class="fas fa-times"></i>
-            </button>
         </div>
         
         <!-- Modal Body -->
-        <div class="p-6">
-            <div class="text-center mb-4">
-                <p class="text-[var(--text-primary)] text-lg">
-                    Are you sure you want to remove
+        <div class="p-6 bg-gradient-to-b from-white to-gray-50">
+            <!-- Member Info -->
+            <div class="text-center mb-6 pb-6 border-b border-gray-200">
+                <p class="text-gray-700 text-base font-medium mb-3">
+                    Are you sure you want to remove this team member?
                 </p>
-                <p class="font-bold text-xl text-red-600 mt-1" id="remove-member-name-display"></p>
-                <p class="text-sm text-[var(--text-secondary)]" id="remove-member-email-display"></p>
+                <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-3">
+                    <span class="text-2xl font-bold text-red-600" id="remove-member-initials-display"></span>
+                </div>
+                <p class="font-bold text-xl text-gray-900 mb-1" id="remove-member-name-display"></p>
+                <p class="text-sm text-gray-600" id="remove-member-email-display"></p>
             </div>
             
-            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4 space-y-3">
-                <div class="flex items-start space-x-3">
-                    <div class="flex items-center justify-center w-6 h-6 bg-red-200 rounded-full flex-shrink-0 mt-0.5">
-                        <i class="fas fa-trash text-red-600 text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium text-red-800 text-sm">All their grids will be permanently deleted</p>
-                        <p class="text-xs text-red-700 mt-1">This cannot be undone - all data will be lost forever</p>
+            <!-- Critical Warnings -->
+            <div class="space-y-4 mb-6">
+                <div class="bg-red-50 border-2 border-red-200 rounded-xl p-4 shadow-sm">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex items-center justify-center w-10 h-10 bg-red-500 rounded-lg flex-shrink-0 shadow-sm">
+                            <i class="fas fa-database text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-bold text-red-900 text-base mb-1">All grids will be permanently deleted</p>
+                            <p class="text-sm text-red-800 leading-relaxed">Every grid created by this member will be immediately and permanently removed. This includes all tasks, data, and associated information. This action cannot be reversed.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="flex items-start space-x-3">
-                    <div class="flex items-center justify-center w-6 h-6 bg-red-200 rounded-full flex-shrink-0 mt-0.5">
-                        <i class="fas fa-user-slash text-red-600 text-xs"></i>
-                    </div>
-                    <div>
-                        <p class="font-medium text-red-800 text-sm">They will be downgraded to Free plan</p>
-                        <p class="text-xs text-red-700 mt-1">They will lose all Team Toad features immediately</p>
+                
+                <div class="bg-red-50 border-2 border-red-200 rounded-xl p-4 shadow-sm">
+                    <div class="flex items-start space-x-4">
+                        <div class="flex items-center justify-center w-10 h-10 bg-red-500 rounded-lg flex-shrink-0 shadow-sm">
+                            <i class="fas fa-user-times text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <p class="font-bold text-red-900 text-base mb-1">Account will be downgraded to Free</p>
+                            <p class="text-sm text-red-800 leading-relaxed">The member will immediately lose access to all Team Toad features, including collaboration tools, shared grids, and premium templates. They will be switched to the free plan.</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 flex items-start space-x-3">
-                <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad" class="w-8 h-8 flex-shrink-0">
-                <p class="text-sm text-amber-800">
-                    <strong>Toad says:</strong> "Once removed, this user's grids are gone forever. Please make sure you really want to do this!"
-                </p>
+            <!-- Final Warning -->
+            <div class="bg-amber-50 border-2 border-amber-300 rounded-xl p-4 mb-4">
+                <div class="flex items-start space-x-3">
+                    <i class="fas fa-info-circle text-amber-600 text-lg mt-0.5 flex-shrink-0"></i>
+                    <p class="text-sm text-amber-900 font-medium leading-relaxed">
+                        <strong>Please verify:</strong> Once you confirm this removal, all of this member's data will be permanently deleted and cannot be recovered. Make sure you've exported or backed up any important information before proceeding.
+                    </p>
+                </div>
             </div>
         </div>
         
         <!-- Modal Footer -->
-        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
-            <button type="button" id="cancel-remove-member" class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+        <div class="bg-gray-50 border-t-2 border-gray-200 px-6 py-5 flex items-center justify-end space-x-3">
+            <button type="button" id="cancel-remove-member" class="px-6 py-2.5 flex items-center justify-center border-2 border-gray-300 text-gray-700 bg-white rounded-xl hover:bg-gray-50 hover:border-gray-400 transition-all duration-200 font-semibold cursor-pointer shadow-sm hover:shadow">
                 <i class="fas fa-times mr-2"></i>Cancel
             </button>
             <form method="POST" action="" id="remove-member-form" class="m-0">
                 {% csrf_token %}
-                <button type="submit" class="w-48 h-10 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                <button type="submit" class="px-6 py-2.5 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-xl transition-all duration-200 font-semibold shadow-lg hover:shadow-xl cursor-pointer transform hover:scale-105">
                     <i class="fas fa-user-minus mr-2"></i>Yes, Remove Member
                 </button>
             </form>
@@ -851,6 +866,7 @@ function openRemoveMemberModal(memberId, memberName, memberEmail) {
     const form = document.getElementById('remove-member-form');
     const nameDisplay = document.getElementById('remove-member-name-display');
     const emailDisplay = document.getElementById('remove-member-email-display');
+    const initialsDisplay = document.getElementById('remove-member-initials-display');
     
     if (modal && form && nameDisplay && emailDisplay) {
         // Set the form action
@@ -859,6 +875,21 @@ function openRemoveMemberModal(memberId, memberName, memberEmail) {
         // Set the displays
         nameDisplay.textContent = memberName;
         emailDisplay.textContent = memberEmail;
+        
+        // Extract and display initials
+        if (initialsDisplay) {
+            const nameParts = memberName.trim().split(' ').filter(part => part.length > 0);
+            let initials = '';
+            if (nameParts.length >= 2) {
+                initials = (nameParts[0][0] + nameParts[nameParts.length - 1][0]).toUpperCase();
+            } else if (nameParts.length === 1) {
+                initials = nameParts[0][0].toUpperCase();
+            } else {
+                // Fallback to first two letters of email
+                initials = memberEmail.substring(0, 2).toUpperCase();
+            }
+            initialsDisplay.textContent = initials;
+        }
         
         // Show modal
         modal.classList.remove('opacity-0', 'invisible');
