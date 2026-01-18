@@ -5,10 +5,17 @@
 
 {% block extra_head %}
     <link rel="stylesheet" href="{% static 'css/stripe/style.css' %}">
+    <style>
+        /* Override layout padding for full-width green fade background */
+        #app {
+            padding: 0 !important;
+            background: transparent !important;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-center justify-center bg-[var(--main-bg)] py-12 px-4 sm:px-6 lg:px-8">
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
     <div class="max-w-md w-full space-y-8">
         <!-- Success Card -->
         <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)] text-center">
@@ -19,24 +26,20 @@
                     </div>
                 </div>
                 <div class="description">
-                    <h3 class="text-2xl font-bold text-[var(--text-primary)] mb-2">Welcome to Team Toad!</h3>
+                    <h3 class="text-2xl font-bold text-green-600 mb-2">Welcome to Team Toad!</h3>
                     <p class="text-[var(--text-secondary)] mb-6">
-                        Your subscription is now active. You can start using all Pro features immediately.
+                        Your subscription is now active. You can start using all Team features immediately.
                     </p>
                 </div>
             </div>
             
             <div class="space-y-4">
-                <a href="{% url 'pages:project_list' %}" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--tertiary-action-bg)] transition-colors duration-200">
+                <a href="{% url 'pages:project_list' %}" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition-colors duration-200 cursor-pointer">
                     <i class="fas fa-th-large mr-2"></i>
                     Go to My Grids
                 </a>
-                <p class="text-xs text-[var(--text-secondary)] text-center">You can manage billing from your account settings once enabled.</p>
-            </div>
-            
-            <div class="mt-6 text-center">
-                <p class="text-xs text-[var(--text-secondary)]">
-                    You can manage your subscription anytime from your account settings.
+                <p class="text-xs text-[var(--text-secondary)] text-center mt-4">
+                    You can manage billing from account settings.
                 </p>
             </div>
         </div>
