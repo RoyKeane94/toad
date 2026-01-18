@@ -484,46 +484,57 @@ def account_settings_view(request):
     trial_type_display = None
     is_team_trial = False
     
-    # Check if user is directly on a trial (individual trial)
-    if request.user.is_on_trial() and request.user.trial_ends_at:
-        is_on_trial = True
-        from django.utils import timezone
-        trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
-        if request.user.tier == 'pro_trial':
-            trial_type_display = 'Team Toad Trial'
-            is_team_trial = True
-        elif request.user.tier in ['personal_trial', 'personal_3_month_trial']:
-            trial_type_display = 'Personal Trial'
+    # Paid tiers and free tier should never show trial banner
+    paid_tiers = ['pro', 'personal', 'society_pro', 'beta']
+    free_tier = 'free'
     
-    # Check if user is part of a team trial (as admin or member)
-    if not is_on_trial:
-        # Check as admin
-        if subscription_group and not subscription_group.stripe_subscription_id:
+    # Only check for trials if user is not on a paid tier and not on free tier
+    if request.user.tier not in paid_tiers and request.user.tier != free_tier:
+        # Check if user is directly on a trial (individual trial)
+        trial_tiers = ['pro_trial', 'personal_trial', 'personal_3_month_trial']
+        if request.user.tier in trial_tiers and request.user.is_on_trial() and request.user.trial_ends_at:
             is_on_trial = True
-            is_team_trial = True
-            trial_type_display = 'Team Toad Trial'
-            if request.user.trial_ends_at:
-                from django.utils import timezone
-                trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
-        else:
-            # Check as member (not admin)
-            member_groups = SubscriptionGroup.objects.filter(
-                members=request.user,
-                is_active=True,
-                stripe_subscription_id__isnull=True
-            ).exclude(admin=request.user).first()
-            
-            if member_groups:
+            from django.utils import timezone
+            trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
+            if request.user.tier == 'pro_trial':
+                trial_type_display = 'Team Toad Trial'
+                is_team_trial = True
+            elif request.user.tier in ['personal_trial', 'personal_3_month_trial']:
+                trial_type_display = 'Personal Trial'
+        
+        # Check if user is part of a team trial (as admin or member)
+        # Only show trial banner for admin, not for free tier members
+        if not is_on_trial:
+            # Check as admin (admin should have a trial tier, not free tier)
+            if subscription_group and not subscription_group.stripe_subscription_id and request.user.tier != free_tier:
                 is_on_trial = True
                 is_team_trial = True
                 trial_type_display = 'Team Toad Trial'
-                # Get trial end date from the admin of the group
-                if member_groups.admin.trial_ends_at:
-                    from django.utils import timezone
-                    trial_days_remaining = (member_groups.admin.trial_ends_at - timezone.now()).days
-                elif request.user.trial_ends_at:
+                if request.user.trial_ends_at:
                     from django.utils import timezone
                     trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
+            elif request.user.tier != free_tier:
+                # Check as member (not admin) - but only if not free tier
+                member_groups = SubscriptionGroup.objects.filter(
+                    members=request.user,
+                    is_active=True,
+                    stripe_subscription_id__isnull=True
+                ).exclude(admin=request.user).first()
+                
+                if member_groups:
+                    is_on_trial = True
+                    is_team_trial = True
+                    trial_type_display = 'Team Toad Trial'
+                    # Get trial end date from the admin of the group
+                    if member_groups.admin.trial_ends_at:
+                        from django.utils import timezone
+                        trial_days_remaining = (member_groups.admin.trial_ends_at - timezone.now()).days
+                    elif request.user.trial_ends_at:
+                        from django.utils import timezone
+                        trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
+    
+    # Check if user is Team Toad (pro) but not in a subscription group
+    is_team_toad_without_group = (request.user.tier == 'pro' and not subscription_group)
     
     context = {
         'profile_form': profile_form,
@@ -539,6 +550,7 @@ def account_settings_view(request):
         'trial_days_remaining': trial_days_remaining,
         'trial_type_display': trial_type_display,
         'is_team_trial': is_team_trial,
+        'is_team_toad_without_group': is_team_toad_without_group,
     }
     return render(request, 'accounts/pages/settings/account_settings.html', context)
 
@@ -2421,11 +2433,13 @@ def manage_team_view(request):
         except Exception as e:
             logger.warning(f"Could not update subscription metadata: {e}")
     
-    # Retrieve Stripe subscription details to show current billing amount
+    # Retrieve Stripe subscription details from the subscription group's Stripe subscription
+    # This fetches the current billing information directly from Stripe using the subscription group's subscription ID
     stripe_subscription_info = None
     if subscription_group.stripe_subscription_id:
         try:
             stripe.api_key = os.environ.get('STRIPE_SECRET_KEY')
+            # Retrieve the Stripe subscription associated with this subscription group
             subscription = stripe.Subscription.retrieve(subscription_group.stripe_subscription_id)
             
             # Get the price and quantity from the subscription
@@ -2487,6 +2501,9 @@ def manage_team_view(request):
                     elapsed_days = (now - admin.trial_started_at).days
                     trial_progress_percent = min(100, int((elapsed_days / total_days) * 100))
     
+    # Check if user is on paid pro plan
+    is_pro = (request.user.tier == 'pro' and subscription_group.stripe_subscription_id is not None)
+    
     context = {
         'subscription_group': subscription_group,
         'members': members,
@@ -2500,6 +2517,7 @@ def manage_team_view(request):
         'stripe_subscription_info': stripe_subscription_info,
         # Trial information
         'is_trial': is_trial,
+        'is_pro': is_pro,
         'trial_days_remaining': trial_days_remaining,
         'trial_ends_at': trial_ends_at,
         'trial_progress_percent': trial_progress_percent,

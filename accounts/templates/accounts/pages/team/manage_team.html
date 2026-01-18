@@ -225,7 +225,7 @@
         {% endif %}
 
         <!-- Manage Subscription Section (only for paid subscriptions) -->
-        {% if not is_trial and stripe_subscription_info %}
+        {% if is_pro and stripe_subscription_info %}
         <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
             <h2 class="text-xl font-semibold text-green-600 mb-4">Manage Seats</h2>
             <p class="text-sm text-[var(--text-secondary)] mb-6">

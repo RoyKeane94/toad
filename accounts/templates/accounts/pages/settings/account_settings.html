@@ -3,11 +3,21 @@
 
 {% block title %}Account Settings - Toad{% endblock %}
 
+{% block extra_head %}
+<style>
+    /* Override layout padding for full-width green fade background */
+    #app {
+        padding: 0 !important;
+        background: transparent !important;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
+<div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
 <div class="max-w-4xl mx-auto">
-    <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
         <!-- Header -->
-        <div class="p-6 border-b border-[var(--border-color)]">
+        <div class="p-6">
             <div class="flex items-center space-x-3">
                 <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
                     <i class="fas fa-user-cog text-white"></i>
@@ -57,6 +67,28 @@
                     <span style="color: white !important;">Upgrade Now</span>
                 </a>
                 {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Create Team Subscription Banner (for Team Toad users without subscription group) -->
+        {% if is_team_toad_without_group %}
+        <div class="mt-6 bg-gradient-to-br from-green-50 to-emerald-50 border-2 border-green-200 rounded-lg p-6">
+            <div class="flex items-center justify-between flex-wrap gap-4">
+                <div class="flex items-center space-x-4">
+                    <div class="flex items-center justify-center w-12 h-12 bg-green-600 rounded-lg shadow-sm">
+                        <i class="fas fa-users text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-green-900">Create Team Subscription</h3>
+                        <p class="text-sm text-green-700 mt-0.5">Invite team members and manage seats for your team</p>
+                    </div>
+                </div>
+                <a href="{% url 'accounts:stripe_checkout_team' %}" 
+                   class="inline-flex items-center justify-center px-6 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg text-sm font-semibold transition-all duration-200 shadow-md hover:shadow-lg">
+                    <i class="fas fa-user-plus mr-2"></i>
+                    Create Team Subscription
+                </a>
             </div>
         </div>
         {% endif %}
@@ -257,6 +289,30 @@
                         </div>
                         <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
                     </a>
+                    <a href="{% url 'accounts:increase_team_seats' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-plus text-emerald-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-[var(--text-primary)]">Add Seats</p>
+                                <p class="text-xs text-[var(--text-secondary)]">Increase your subscription seats</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
+                    </a>
+                    <a href="{% url 'accounts:reduce_team_seats' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-minus text-orange-600"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium text-[var(--text-primary)]">Remove Seats</p>
+                                <p class="text-xs text-[var(--text-secondary)]">Reduce your subscription seats</p>
+                            </div>
+                        </div>
+                        <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
+                    </a>
                 </div>
 
                 <!-- Current Team Members Preview -->
@@ -326,6 +382,7 @@
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <!-- Cancel Invitation Modal -->
