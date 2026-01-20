@@ -159,4 +159,20 @@
             title="Next columns">
         <i class="fas fa-chevron-right"></i>
     </button>
+</div>
+
+<!-- Add Row Button - Bottom Left -->
+<div class="mt-4 pl-2">
+    <button type="button"
+            class="add-row-trigger text-left py-2 px-3 text-[var(--primary-action-bg)] hover:text-[var(--primary-action-hover-bg)] hover:bg-[var(--grid-header-bg)] transition-all duration-200 text-sm cursor-pointer rounded-md"
+            hx-get="{% url 'pages:row_create' project_pk=project.pk %}"
+            hx-target="#modal-content"
+            hx-trigger="click throttle:500ms"
+            hx-disabled-elt="this"
+            hx-indicator="#modal-content"
+            hx-swap="innerHTML"
+            hx-headers='{"Cache-Control": "no-cache"}'
+            onclick="closeAllDropdowns(); document.getElementById('modal').classList.remove('opacity-0', 'invisible'); document.getElementById('modal').querySelector('div').classList.remove('scale-95'); document.getElementById('modal').querySelector('div').classList.add('scale-100');">
+        <i class="fas fa-plus text-xs mr-2"></i>Add row
+    </button>
 </div> 

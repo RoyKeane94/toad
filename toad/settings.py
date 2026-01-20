@@ -391,14 +391,22 @@ if IS_PRODUCTION:
                 'backupCount': 5,
                 'formatter': 'verbose',
             },
+            'error_file': {
+                'level': 'ERROR',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'filename': BASE_DIR / 'logs' / 'toad_errors.log',
+                'maxBytes': 1024 * 1024 * 5,  # 5 MB
+                'backupCount': 5,
+                'formatter': 'verbose',
+            },
         },
         'root': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console', 'file', 'error_file'],
             'level': 'INFO',
         },
         'loggers': {
             'django': {
-                'handlers': ['console', 'file'],
+                'handlers': ['console', 'file', 'error_file'],
                 'level': 'INFO',
                 'propagate': False,
             },
@@ -433,14 +441,22 @@ else:
                 'backupCount': 5,
                 'formatter': 'verbose',
             },
+            'error_file': {
+                'level': 'ERROR',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'filename': BASE_DIR / 'logs' / 'toad_errors.log',
+                'maxBytes': 1024 * 1024 * 5,  # 5 MB
+                'backupCount': 5,
+                'formatter': 'verbose',
+            },
         },
         'root': {
-            'handlers': ['console', 'file'],
+            'handlers': ['console', 'file', 'error_file'],
             'level': 'INFO',
         },
         'loggers': {
             'django': {
-                'handlers': ['console', 'file'],
+                'handlers': ['console', 'file', 'error_file'],
                 'level': 'INFO',
                 'propagate': False,
             },
