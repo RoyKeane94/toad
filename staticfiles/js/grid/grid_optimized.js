@@ -2209,10 +2209,23 @@ class GridManager {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
             e.stopPropagation();
-            // IMMEDIATELY blur and remove contentEditable to prevent browser outline
+            // Read the new text BEFORE disabling contentEditable to ensure we capture the user's input
+            // Save the text content immediately before any DOM changes
+            const newText = element.textContent.trim();
+            const originalText = element.getAttribute('data-original-text') || element.textContent.trim();
+            
+            // Only proceed if text has actually changed
+            if (newText !== originalText && newText !== '') {
+                // Store the new text in a temporary attribute before disabling contentEditable
+                element.setAttribute('data-pending-text', newText);
+            }
+            
+            // Now disable contentEditable and blur
             element.blur();
             element.contentEditable = false;
             element.classList.remove('editing');
+            
+            // Call saveTaskEdit which will use the stored text
             this.saveTaskEdit(element);
         } else if (e.key === 'Escape') {
             e.preventDefault();
@@ -2246,17 +2259,18 @@ class GridManager {
             }
         }
         
-        const newText = element.textContent.trim();
-        const originalText = element.getAttribute('data-original-text') || element.textContent;
+        // Get the new text - prefer data-pending-text if it exists (set before contentEditable was disabled)
+        // Otherwise fall back to current textContent
+        const newText = (element.getAttribute('data-pending-text') || element.textContent).trim();
+        const originalText = element.getAttribute('data-original-text') || element.textContent.trim();
+        
+        // Remove the pending text attribute if it exists
+        if (element.hasAttribute('data-pending-text')) {
+            element.removeAttribute('data-pending-text');
+        }
         
         // Check if we have a valid task ID
         if (!taskId) {
-            element.classList.remove('saving');
-            return;
-        }
-        
-        // Don't save if text hasn't changed
-        if (newText === originalText) {
             element.classList.remove('saving');
             return;
         }
@@ -2267,6 +2281,18 @@ class GridManager {
             element.classList.remove('saving');
             return;
         }
+        
+        // Don't save if text hasn't changed
+        if (newText === originalText) {
+            element.classList.remove('saving');
+            // Still update the UI to show the text (in case contentEditable reverted it)
+            element.textContent = newText;
+            return;
+        }
+        
+        // Update element textContent with the new text to ensure it's displayed correctly
+        // This ensures the UI shows the new text even if contentEditable was disabled
+        element.textContent = newText;
         
         // Store original text for comparison
         element.setAttribute('data-original-text', originalText);

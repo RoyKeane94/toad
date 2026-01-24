@@ -182,6 +182,47 @@
                     </div>
                 </div>
                 
+                <!-- Template Clicks and Sign Up Link Clicks Filters (on same line) -->
+                <div class="flex flex-wrap items-start gap-4">
+                    <!-- Template Clicks Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--text-primary)] mb-2">Template Clicks</label>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="inline-flex items-center cursor-pointer relative">
+                                <input type="radio" name="template_clicks" value="" class="sr-only peer" {% if not template_clicks_filter %}checked{% endif %}>
+                                <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-gray-100 peer-checked:border-gray-600 peer-checked:text-gray-800 {% if not template_clicks_filter %}bg-gray-100 border-gray-600 text-gray-800{% else %}bg-white border-gray-300 text-gray-700{% endif %} hover:bg-gray-50">All</span>
+                            </label>
+                            <label class="inline-flex items-center cursor-pointer relative">
+                                <input type="radio" name="template_clicks" value="has_clicks" class="sr-only peer" {% if template_clicks_filter == 'has_clicks' %}checked{% endif %}>
+                                <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-blue-100 peer-checked:border-blue-600 peer-checked:text-blue-800 {% if template_clicks_filter == 'has_clicks' %}bg-blue-100 border-blue-600 text-blue-800{% else %}bg-white border-gray-300 text-gray-700{% endif %} hover:bg-gray-50">Has Clicks</span>
+                            </label>
+                            <label class="inline-flex items-center cursor-pointer relative">
+                                <input type="radio" name="template_clicks" value="no_clicks" class="sr-only peer" {% if template_clicks_filter == 'no_clicks' %}checked{% endif %}>
+                                <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-gray-100 peer-checked:border-gray-600 peer-checked:text-gray-800 {% if template_clicks_filter == 'no_clicks' %}bg-gray-100 border-gray-600 text-gray-800{% else %}bg-white border-gray-300 text-gray-700{% endif %} hover:bg-gray-50">No Clicks</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Sign Up Link Clicks Filter -->
+                    <div>
+                        <label class="block text-sm font-medium text-[var(--text-primary)] mb-2">Sign Up Link Clicks</label>
+                        <div class="flex flex-wrap gap-2">
+                            <label class="inline-flex items-center cursor-pointer relative">
+                                <input type="radio" name="signup_clicks" value="" class="sr-only peer" {% if not signup_clicks_filter %}checked{% endif %}>
+                                <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-gray-100 peer-checked:border-gray-600 peer-checked:text-gray-800 {% if not signup_clicks_filter %}bg-gray-100 border-gray-600 text-gray-800{% else %}bg-white border-gray-300 text-gray-700{% endif %} hover:bg-gray-50">All</span>
+                            </label>
+                            <label class="inline-flex items-center cursor-pointer relative">
+                                <input type="radio" name="signup_clicks" value="has_clicks" class="sr-only peer" {% if signup_clicks_filter == 'has_clicks' %}checked{% endif %}>
+                                <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-green-100 peer-checked:border-green-600 peer-checked:text-green-800 {% if signup_clicks_filter == 'has_clicks' %}bg-green-100 border-green-600 text-green-800{% else %}bg-white border-gray-300 text-gray-700{% endif %} hover:bg-gray-50">Has Clicks</span>
+                            </label>
+                            <label class="inline-flex items-center cursor-pointer relative">
+                                <input type="radio" name="signup_clicks" value="no_clicks" class="sr-only peer" {% if signup_clicks_filter == 'no_clicks' %}checked{% endif %}>
+                                <span class="px-4 py-2 text-sm font-medium rounded-full border-2 transition-all peer-checked:bg-gray-100 peer-checked:border-gray-600 peer-checked:text-gray-800 {% if signup_clicks_filter == 'no_clicks' %}bg-gray-100 border-gray-600 text-gray-800{% else %}bg-white border-gray-300 text-gray-700{% endif %} hover:bg-gray-50">No Clicks</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                
                 <!-- Apply Button -->
                 <div class="flex justify-end">
                     <button type="submit" class="px-6 py-2.5 bg-[var(--primary-action-bg)] text-white font-semibold rounded-lg shadow-sm hover:shadow-md transition-all duration-200 hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)] whitespace-nowrap">
@@ -412,6 +453,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return false;
             }
         });
+        
     }
 });
 </script>

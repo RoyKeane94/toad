@@ -4,6 +4,7 @@ from django.http import HttpResponseForbidden, JsonResponse, Http404, HttpRespon
 from django.contrib import messages
 from django.urls import reverse
 from django.db import models
+from django.db.models import Q
 from django.views.decorators.csrf import csrf_exempt
 from .models import Lead, LeadFocus, ContactMethod, LeadMessage, SocietyLink, Company, CompanySector, CustomerTemplate
 from .forms import (
@@ -89,6 +90,20 @@ def company_list(request):
             # If any value can't be converted to int, skip sector filtering
             pass
     
+    # Filter by template clicks
+    template_clicks_filter = request.GET.get('template_clicks', '')
+    if template_clicks_filter == 'has_clicks':
+        companies = companies.filter(template_view_count__gt=0)
+    elif template_clicks_filter == 'no_clicks':
+        companies = companies.filter(Q(template_view_count=0) | Q(template_view_count__isnull=True))
+    
+    # Filter by sign up link clicks
+    signup_clicks_filter = request.GET.get('signup_clicks', '')
+    if signup_clicks_filter == 'has_clicks':
+        companies = companies.filter(template_sign_up_click_count__gt=0)
+    elif signup_clicks_filter == 'no_clicks':
+        companies = companies.filter(Q(template_sign_up_click_count=0) | Q(template_sign_up_click_count__isnull=True))
+    
     # Order by updated_at (most recent first)
     companies = companies.order_by('-updated_at')
     
@@ -121,6 +136,10 @@ def company_list(request):
         query_params['email_status'] = email_status_filters
     if sector_filters:
         query_params['sector'] = sector_filters
+    if template_clicks_filter:
+        query_params['template_clicks'] = template_clicks_filter
+    if signup_clicks_filter:
+        query_params['signup_clicks'] = signup_clicks_filter
     query_string = urlencode(query_params, doseq=True)
     
     context = {
@@ -133,6 +152,8 @@ def company_list(request):
         'email_status_filters': email_status_filters,
         'sector_filter': sector_filter,
         'sector_filters': sector_filters,
+        'template_clicks_filter': template_clicks_filter,
+        'signup_clicks_filter': signup_clicks_filter,
         'sectors': sectors,
         'query_string': query_string,
         'total_companies': total_companies,
