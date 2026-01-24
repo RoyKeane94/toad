@@ -1609,6 +1609,14 @@ class Register3MonthTrialView(FormView):
         return super().dispatch(request, *args, **kwargs)
 
 
+@login_required
+def trial_not_eligible_view(request):
+    """
+    View shown when a user tries to access the trial page but has already accessed Team Toad
+    """
+    return render(request, 'accounts/pages/registration/trial_not_eligible.html')
+
+
 class Register1MonthProTrialView(FormView):
     """
     Registration view for 1-month Pro trial users
@@ -1620,7 +1628,19 @@ class Register1MonthProTrialView(FormView):
     
     def get(self, request, *args, **kwargs):
         """Override get to allow both authenticated and unauthenticated users to view the page"""
-        # Allow ALL users to view the page - authenticated users will see a simplified form
+        # Check if authenticated user is or was in a subscription group
+        if request.user.is_authenticated:
+            from accounts.models import SubscriptionGroup
+            # Check if user is admin of any subscription group (active or inactive)
+            is_admin_of_group = SubscriptionGroup.objects.filter(admin=request.user).exists()
+            # Check if user is member of any subscription group (active or inactive)
+            is_member_of_group = SubscriptionGroup.objects.filter(members=request.user).exists()
+            
+            if is_admin_of_group or is_member_of_group:
+                logger.info(f"User {request.user.email} redirected from trial page - already in subscription group")
+                return redirect('accounts:trial_not_eligible')
+        
+        # Allow ALL other users to view the page
         return super().get(request, *args, **kwargs)
     
     def post(self, request, *args, **kwargs):

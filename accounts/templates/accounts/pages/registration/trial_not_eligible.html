@@ -1,0 +1,52 @@
+{% extends 'pages/layout.html' %}
+{% load static %}
+
+{% block title %}Trial Not Available - Toad{% endblock %}
+
+{% block content %}
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)]">
+    <div class="max-w-md w-full">
+        <div class="bg-white rounded-lg shadow-sm p-8 text-center">
+            <!-- Icon -->
+            <div class="mx-auto w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
+                <i class="fas fa-exclamation-triangle text-amber-600 text-2xl"></i>
+            </div>
+            
+            <!-- Heading -->
+            <h1 class="text-2xl font-bold text-[var(--title-text)] mb-4">
+                Trial Not Available
+            </h1>
+            
+            <!-- Message -->
+            <p class="text-[var(--text-secondary)] mb-6">
+                You are not eligible for this trial because you have already accessed Team Toad.
+            </p>
+            
+            <!-- Info Box -->
+            <div class="bg-[var(--grid-header-bg)] rounded-lg p-4 mb-6 text-left">
+                <p class="text-sm text-[var(--text-secondary)] mb-3">
+                    <strong class="text-[var(--text-primary)]">Why am I seeing this?</strong><br>
+                    Your account has been part of a Team Toad subscription (either as an admin or member).
+                </p>
+                <p class="text-sm text-[var(--text-secondary)]">
+                    The free trial is only available to users who haven't previously used Team Toad.
+                </p>
+            </div>
+            
+            <!-- Actions -->
+            <div class="space-y-3">
+                <a href="{% url 'accounts:manage_subscription' %}" 
+                   class="w-full inline-flex items-center justify-center px-6 py-3 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-lg font-medium transition-colors">
+                    <i class="fas fa-credit-card mr-2"></i>
+                    View Subscription Options
+                </a>
+                <a href="{% url 'pages:project_list' %}" 
+                   class="w-full inline-flex items-center justify-center px-6 py-3 bg-[var(--container-bg)] hover:bg-[var(--grid-header-bg)] text-[var(--text-primary)] border border-[var(--border-color)] rounded-lg font-medium transition-colors">
+                    <i class="fas fa-arrow-left mr-2"></i>
+                    Go to My Grids
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
