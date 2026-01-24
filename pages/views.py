@@ -55,7 +55,8 @@ from pages.specific_views.project_views import (
     create_from_template_view, task_create_view, task_edit_view, task_toggle_complete_view,
     task_delete_view, task_assign_view, create_task_reminder, task_note_view, task_notes_view, task_reorder_view, row_create_view, row_edit_view, row_delete_view,
     column_create_view, column_edit_view, column_delete_view, share_grid_view, accept_grid_invitation_view,
-    team_add_member_view, team_remove_member_view, get_shared_team_users_view, team_add_multiple_members_view
+    team_add_member_view, team_remove_member_view, get_shared_team_users_view, team_add_multiple_members_view,
+    share_template_view, get_subscription_group_members_view, unshare_template_view, unsubscribe_from_template_view
 )
 
 # Import analytics functions

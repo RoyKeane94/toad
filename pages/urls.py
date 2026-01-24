@@ -79,6 +79,10 @@ urlpatterns = [
     path('templates/<int:pk>/use/', views.use_template_view, name='use_template'),
     path('templates/<int:pk>/edit/', views.template_edit_view, name='template_edit'),
     path('templates/<int:pk>/delete/', views.template_delete_view, name='template_delete'),
+    path('templates/<int:pk>/share/', views.share_template_view, name='share_template'),
+    path('templates/<int:pk>/unshare/<int:user_id>/', views.unshare_template_view, name='unshare_template'),
+    path('templates/<int:pk>/unsubscribe/', views.unsubscribe_from_template_view, name='unsubscribe_from_template'),
+    path('templates/subscription-group-members/', views.get_subscription_group_members_view, name='get_subscription_group_members'),
     
     # Task URLs
     path('grids/<int:project_pk>/tasks/create/<int:row_pk>/<int:col_pk>/', views.task_create_view, name='task_create'),

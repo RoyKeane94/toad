@@ -89,6 +89,13 @@ def project_list_view(request):
         user=request.user
     ).only('id', 'name', 'created_at').order_by('name')
     
+    # Get team templates:
+    # 1. Templates shared with the user (from their subscription group)
+    # 2. Templates created by the user that have been shared with others
+    shared_templates = PersonalTemplate.objects.filter(
+        Q(shared_with=request.user) | (Q(user=request.user) & Q(shared_with__isnull=False))
+    ).select_related('user').prefetch_related('shared_with').distinct().order_by('name')
+    
     # Get archived projects (owner OR team member)
     archived_projects = Project.objects.filter(
         Q(user=request.user) | Q(team_toad_user=request.user),
@@ -107,6 +114,7 @@ def project_list_view(request):
         'grouped_projects': grouped_projects_list,
         'ungrouped_projects': ungrouped_projects,
         'personal_templates': personal_templates,
+        'shared_templates': shared_templates,
         'archived_projects': archived_projects,
         'user_tier': getattr(request.user, 'tier', 'free'),
     }
@@ -2501,4 +2509,245 @@ def team_add_multiple_members_view(request, project_pk):
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
+
+@login_required
+def share_template_view(request, pk):
+    """Share a template with users from the subscription group"""
+    template = get_object_or_404(PersonalTemplate, pk=pk)
+    
+    # Check if user is in the same subscription group as the template owner
+    # Get the template owner's subscription group
+    template_owner_group = SubscriptionGroup.objects.filter(
+        Q(admin=template.user) | Q(members=template.user),
+        is_active=True
+    ).first()
+    
+    # Get the current user's subscription group
+    user_group = SubscriptionGroup.objects.filter(
+        Q(admin=request.user) | Q(members=request.user),
+        is_active=True
+    ).first()
+    
+    # Allow sharing if:
+    # 1. User is the template owner, OR
+    # 2. Both users are in the same subscription group
+    if template.user != request.user:
+        if not template_owner_group or not user_group or template_owner_group.pk != user_group.pk:
+            return JsonResponse({
+                'success': False,
+                'error': 'You can only share templates within your subscription group'
+            }, status=403)
+    
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            user_ids = data.get('user_ids', [])
+            
+            if not user_ids or not isinstance(user_ids, list):
+                return JsonResponse({
+                    'success': False,
+                    'error': 'User IDs are required'
+                }, status=400)
+            
+            # Get users to share with
+            users_to_share = User.objects.filter(pk__in=user_ids)
+            
+            if users_to_share.count() != len(user_ids):
+                return JsonResponse({
+                    'success': False,
+                    'error': 'Some users were not found'
+                }, status=404)
+            
+            # Filter out the template owner (can't share with yourself)
+            users_to_share = users_to_share.exclude(pk=request.user.pk)
+            
+            if not users_to_share.exists():
+                return JsonResponse({
+                    'success': False,
+                    'error': 'No valid users to share with'
+                }, status=400)
+            
+            # Add users to shared_with
+            template.shared_with.add(*users_to_share)
+            
+            # Format success message
+            shared_count = users_to_share.count()
+            if shared_count == 1:
+                user_name = users_to_share.first().get_full_name() or users_to_share.first().email
+                message = f'Template shared with {user_name}'
+            else:
+                message = f'Template shared with {shared_count} users'
+            
+            logger.info(f"User {request.user.email} shared template '{template.name}' with {shared_count} users")
+            
+            return JsonResponse({
+                'success': True,
+                'message': message,
+                'shared_count': shared_count
+            })
+            
+        except Exception as e:
+            logger.error(f"Error sharing template: {e}")
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to share template'
+            }, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
+@login_required
+def get_subscription_group_members_view(request):
+    """Get users from the current user's subscription group for template sharing"""
+    try:
+        template_id = request.GET.get('template_id')
+        already_shared_user_ids = set()
+        
+        # If template_id is provided, get users already shared with this template
+        if template_id:
+            try:
+                template = PersonalTemplate.objects.get(pk=template_id)
+                # Check if user is in the same subscription group as template owner
+                template_owner_group = SubscriptionGroup.objects.filter(
+                    Q(admin=template.user) | Q(members=template.user),
+                    is_active=True
+                ).first()
+                
+                user_group = SubscriptionGroup.objects.filter(
+                    Q(admin=request.user) | Q(members=request.user),
+                    is_active=True
+                ).first()
+                
+                # Only show already-shared users if user is owner or in same subscription group
+                if template.user == request.user or (template_owner_group and user_group and template_owner_group.pk == user_group.pk):
+                    already_shared_user_ids = set(template.shared_with.values_list('pk', flat=True))
+            except PersonalTemplate.DoesNotExist:
+                pass
+        
+        # Get the user's subscription group (as admin or member)
+        subscription_group = SubscriptionGroup.objects.filter(
+            Q(admin=request.user) | Q(members=request.user),
+            is_active=True
+        ).first()
+        
+        if not subscription_group:
+            return JsonResponse({
+                'success': True,
+                'users': [],
+                'message': 'No subscription group found'
+            })
+        
+        # Get all members of the subscription group
+        admin_id = subscription_group.admin_id
+        member_ids = set(subscription_group.members.values_list('pk', flat=True))
+        
+        # Combine admin and members, excluding current user
+        all_user_ids = member_ids | {admin_id}
+        all_user_ids.discard(request.user.pk)
+        
+        # Get user details
+        users = User.objects.filter(
+            pk__in=all_user_ids
+        ).order_by('first_name', 'last_name', 'email').values('id', 'first_name', 'last_name', 'email')
+        
+        users_list = []
+        for user in users:
+            users_list.append({
+                'id': user['id'],
+                'name': f"{user['first_name']} {user['last_name']}".strip() or user['email'],
+                'email': user['email'],
+                'already_shared': user['id'] in already_shared_user_ids
+            })
+        
+        return JsonResponse({
+            'success': True,
+            'users': users_list
+        })
+        
+    except Exception as e:
+        logger.error(f"Error getting subscription group members: {e}")
+        return JsonResponse({
+            'success': False,
+            'error': 'Failed to load subscription group members'
+        }, status=500)
+
+
+@login_required
+def unshare_template_view(request, pk, user_id):
+    """Remove a user from a shared template"""
+    template = get_object_or_404(PersonalTemplate, pk=pk)
+    
+    # Check if user is the template owner
+    if template.user != request.user:
+        return JsonResponse({
+            'success': False,
+            'error': 'Only the template owner can manage sharing'
+        }, status=403)
+    
+    if request.method == 'POST':
+        try:
+            user_to_remove = get_object_or_404(User, pk=user_id)
+            template.shared_with.remove(user_to_remove)
+            
+            logger.info(f"User {request.user.email} unshared template '{template.name}' with {user_to_remove.email}")
+            
+            return JsonResponse({
+                'success': True,
+                'message': f'Template unshared with {user_to_remove.get_full_name() or user_to_remove.email}'
+            })
+            
+        except Exception as e:
+            logger.error(f"Error unsharing template: {e}")
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to unshare template'
+            }, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
+
+
+@login_required
+def unsubscribe_from_template_view(request, pk):
+    """Allow a user to unsubscribe themselves from a shared template, or owner to remove all shares"""
+    template = get_object_or_404(PersonalTemplate, pk=pk)
+    
+    # Check if user is the owner or in the shared_with list
+    is_owner = template.user == request.user
+    is_shared_user = request.user in template.shared_with.all()
+    
+    if not is_owner and not is_shared_user:
+        return JsonResponse({
+            'success': False,
+            'error': 'You are not subscribed to this template'
+        }, status=400)
+    
+    if request.method == 'POST':
+        try:
+            if is_owner:
+                # Owner unsubscribing removes all shared users (makes it a personal template again)
+                template.shared_with.clear()
+                logger.info(f"Template owner {request.user.email} unsubscribed from template '{template.name}' (removed all shared users)")
+                
+                return JsonResponse({
+                    'success': True,
+                    'message': f'Template "{template.name}" is now a personal template'
+                })
+            else:
+                # Regular user unsubscribing removes themselves
+                template.shared_with.remove(request.user)
+                logger.info(f"User {request.user.email} unsubscribed from template '{template.name}'")
+                
+                return JsonResponse({
+                    'success': True,
+                    'message': f'You have unsubscribed from "{template.name}"'
+                })
+            
+        except Exception as e:
+            logger.error(f"Error unsubscribing from template: {e}")
+            return JsonResponse({
+                'success': False,
+                'error': 'Failed to unsubscribe from template'
+            }, status=500)
+    
+    return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 

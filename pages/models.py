@@ -155,6 +155,7 @@ class TaskNote(models.Model):
 class PersonalTemplate(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='personal_templates')
     name = models.CharField(max_length=100)
+    shared_with = models.ManyToManyField(User, related_name='shared_templates', blank=True, help_text='Users this template is shared with')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

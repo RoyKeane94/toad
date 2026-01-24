@@ -539,9 +539,8 @@
     <!-- My Templates Section -->
     <div class="max-w-7xl mx-auto px-4 mt-16">
         <div class="text-center mb-8">
-            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">Templates</h2>
+            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">My Templates</h2>
             {% if personal_templates %}
-                <p class="text-[var(--subtitle-text)] text-lg mb-8">Stop reinventing the wheel. Save any grid as a template and turn your best work into your new starting point</p>
                 <div class="table-container">
                     <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
                         <table class="projects-table">
@@ -588,6 +587,12 @@
                                         </form>
                                         {% endif %}
                                         <button type="button"
+                                                class="p-1.5 rounded cursor-pointer text-[var(--primary-action-bg)] hover:bg-[var(--primary-action-bg)] hover:text-white transition-colors"
+                                                title="Share template"
+                                                onclick="openShareTemplateModal({{ template.pk }}, '{{ template.name|escapejs }}');">
+                                            <i class="fas fa-share text-sm"></i>
+                                        </button>
+                                        <button type="button"
                                                 class="delete-btn p-1.5 rounded cursor-pointer"
                                                 title="Delete template"
                                                 hx-get="{% url 'pages:template_delete' pk=template.pk %}"
@@ -613,6 +618,71 @@
             {% endif %}
         </div>
     </div>
+    
+    <!-- Team Templates Section -->
+    {% if shared_templates %}
+    <div class="max-w-7xl mx-auto px-4 mt-16">
+        <div class="text-center mb-8">
+            <h2 class="text-3xl font-bold text-[var(--tertiary-action-bg)] mb-3">Team Templates</h2>
+            <div class="table-container">
+                <div class="bg-[var(--container-bg)] rounded-lg shadow-sm border border-[var(--border-color)] overflow-hidden">
+                    <table class="projects-table">
+                    <thead>
+                        <tr>
+                            <th>Template Name</th>
+                            <th>Author</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for template in shared_templates %}
+                        <tr class="project-row">
+                            <td>
+                                <div class="flex items-center">
+                                    <span class="text-[var(--text-primary)] font-medium">
+                                        {{ template.name }}
+                                    </span>
+                                </div>
+                            </td>
+                            <td class="text-sm text-[var(--text-secondary)] text-left">
+                                <i class="fas fa-user mr-2 text-xs"></i>
+                                {{ template.user.get_full_name|default:template.user.email }}
+                            </td>
+                            <td>
+                                <div class="flex items-center justify-end space-x-4">
+                                    <form method="post" action="{% url 'pages:use_template' pk=template.pk %}" class="inline">
+                                        {% csrf_token %}
+                                        <button type="submit" 
+                                                class="inline-flex items-center px-3 py-1.5 text-sm font-medium text-[var(--tertiary-action-text)] bg-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-hover-bg)] rounded-md transition-colors">
+                                            <i class="fas fa-copy mr-3"></i>
+                                            Use Template
+                                        </button>
+                                    </form>
+                                    <button type="button"
+                                            class="p-1.5 rounded cursor-pointer text-[var(--primary-action-bg)] hover:bg-[var(--primary-action-bg)] hover:text-white transition-colors"
+                                            title="Share template"
+                                            onclick="openShareTemplateModal({{ template.pk }}, '{{ template.name|escapejs }}');">
+                                        <i class="fas fa-share text-sm"></i>
+                                    </button>
+                                    {% if template.user == request.user or request.user in template.shared_with.all %}
+                                    <button type="button"
+                                            class="delete-btn p-1.5 rounded cursor-pointer"
+                                            title="{% if template.user == request.user %}Remove sharing (make personal template){% else %}Unsubscribe from template{% endif %}"
+                                            onclick="unsubscribeFromTemplate({{ template.pk }}, '{{ template.name|escapejs }}', {% if template.user == request.user %}true{% else %}false{% endif %});">
+                                        <i class="fas fa-times text-sm"></i>
+                                    </button>
+                                    {% endif %}
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
     
     <!-- Archives Section -->
     <div class="max-w-7xl mx-auto px-4 mt-16">
@@ -804,6 +874,105 @@
             </button>
             <button type="submit" form="new-group-form" class="px-4 py-2 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
                 <i class="fas fa-save mr-2"></i>Create Group
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Share Template Modal -->
+<div id="share-template-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-lg w-full mx-4 transform scale-95 transition-all duration-300">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-[var(--primary-action-bg)] rounded-lg shadow-sm">
+                    <i class="fas fa-share text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Share Template</h3>
+                    <p class="text-sm text-[var(--text-secondary)]" id="share-template-name">Share with your team members</p>
+                </div>
+            </div>
+            <button type="button" onclick="closeShareTemplateModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <input type="hidden" id="share-template-id" value="">
+            
+            <!-- Loading State -->
+            <div id="share-template-loading" class="text-center py-8">
+                <i class="fas fa-spinner fa-spin text-2xl text-[var(--primary-action-bg)]"></i>
+                <p class="text-sm text-[var(--text-secondary)] mt-2">Loading team members...</p>
+            </div>
+            
+            <!-- No Users State -->
+            <div id="share-template-no-users" class="text-center py-8 hidden">
+                <i class="fas fa-users-slash text-4xl text-[var(--text-secondary)] mb-4"></i>
+                <p class="text-[var(--text-primary)] font-medium">No team members found</p>
+                <p class="text-sm text-[var(--text-secondary)] mt-2">You need to be part of a Team Toad subscription to share templates.</p>
+            </div>
+            
+            <!-- User Selection -->
+            <div id="share-template-users" class="hidden">
+                <label class="block text-sm font-medium text-[var(--text-primary)] mb-3">Select team members to share with</label>
+                <div class="max-h-64 overflow-y-auto border border-[var(--border-color)] rounded-md p-3 bg-[var(--grid-header-bg)]" id="share-template-users-list">
+                    <!-- Users will be loaded here via JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="closeShareTemplateModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="button" onclick="shareTemplate()" id="share-template-btn" class="px-4 py-2 flex items-center justify-center bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <i class="fas fa-share mr-2"></i>Share Template
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Unsubscribe Template Modal -->
+<div id="unsubscribe-template-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 bg-red-600 rounded-lg shadow-sm">
+                    <i class="fas fa-times text-white"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Unsubscribe from Template</h3>
+                </div>
+            </div>
+            <button type="button" onclick="closeUnsubscribeTemplateModal()" class="text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6">
+            <input type="hidden" id="unsubscribe-template-id" value="">
+            <input type="hidden" id="unsubscribe-is-owner" value="false">
+            <p class="text-[var(--text-primary)] mb-4" id="unsubscribe-message">
+                Are you sure you want to unsubscribe from <strong id="unsubscribe-template-name"></strong>?
+            </p>
+            <p class="text-sm text-[var(--text-secondary)]" id="unsubscribe-warning">
+                You will no longer have access to this template.
+            </p>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)]">
+            <button onclick="closeUnsubscribeTemplateModal()" class="px-4 py-2 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Cancel
+            </button>
+            <button type="button" onclick="confirmUnsubscribeTemplate()" id="unsubscribe-template-btn" class="px-4 py-2 flex items-center justify-center bg-red-600 hover:bg-red-700 text-white rounded-lg transition-all duration-200 font-medium shadow-sm hover:shadow-md cursor-pointer">
+                <i class="fas fa-times mr-2"></i>Unsubscribe
             </button>
         </div>
     </div>
@@ -1804,6 +1973,8 @@ document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
         closeModal();
         closeNewGroupModal();
+        closeShareTemplateModal();
+        closeUnsubscribeTemplateModal();
     }
 });
 
@@ -1829,6 +2000,265 @@ document.addEventListener('click', function(e) {
     const newGroupModal = document.getElementById('new-group-modal');
     if (newGroupModal && e.target === newGroupModal) {
         closeNewGroupModal();
+    }
+});
+
+// Share Template Modal functions
+let shareTemplateUsers = [];
+
+function openShareTemplateModal(templateId, templateName) {
+    const modal = document.getElementById('share-template-modal');
+    if (modal) {
+        // Set the template ID and name
+        document.getElementById('share-template-id').value = templateId;
+        document.getElementById('share-template-name').textContent = `Share "${templateName}"`;
+        
+        // Show loading, hide others
+        document.getElementById('share-template-loading').classList.remove('hidden');
+        document.getElementById('share-template-no-users').classList.add('hidden');
+        document.getElementById('share-template-users').classList.add('hidden');
+        document.getElementById('share-template-btn').disabled = true;
+        
+        // Show modal
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('scale-100');
+        
+        // Load users from subscription group
+        loadSubscriptionGroupMembers();
+    }
+}
+
+function closeShareTemplateModal() {
+    const modal = document.getElementById('share-template-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        modal.classList.remove('scale-100');
+        
+        // Reset state
+        shareTemplateUsers = [];
+        document.getElementById('share-template-id').value = '';
+    }
+}
+
+function loadSubscriptionGroupMembers() {
+    const templateId = document.getElementById('share-template-id').value;
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const url = templateId 
+        ? `/templates/subscription-group-members/?template_id=${templateId}`
+        : '/templates/subscription-group-members/';
+    
+    fetch(url, {
+        method: 'GET',
+        headers: {
+            'X-CSRFToken': csrfToken
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('share-template-loading').classList.add('hidden');
+        
+        if (data.success && data.users && data.users.length > 0) {
+            shareTemplateUsers = data.users;
+            renderShareTemplateUsers(data.users);
+            document.getElementById('share-template-users').classList.remove('hidden');
+        } else {
+            document.getElementById('share-template-no-users').classList.remove('hidden');
+        }
+    })
+    .catch(error => {
+        console.error('Error loading subscription group members:', error);
+        document.getElementById('share-template-loading').classList.add('hidden');
+        document.getElementById('share-template-no-users').classList.remove('hidden');
+    });
+}
+
+function renderShareTemplateUsers(users) {
+    const container = document.getElementById('share-template-users-list');
+    container.innerHTML = '';
+    
+    users.forEach(user => {
+        const isAlreadyShared = user.already_shared || false;
+        const label = document.createElement('label');
+        label.className = isAlreadyShared 
+            ? 'flex items-center space-x-3 py-2 rounded px-2 opacity-50 cursor-not-allowed'
+            : 'flex items-center space-x-3 py-2 hover:bg-[var(--container-bg)] rounded px-2 cursor-pointer';
+        label.innerHTML = `
+            <input type="checkbox" 
+                   name="share_users" 
+                   value="${user.id}"
+                   ${isAlreadyShared ? 'checked disabled' : 'onchange="updateShareButtonState()"'}
+                   class="h-4 w-4 rounded border-[var(--border-color)] text-[var(--primary-action-bg)] focus:ring-[var(--primary-action-bg)] ${isAlreadyShared ? 'opacity-50' : ''}">
+            <div class="flex flex-col">
+                <span class="text-sm ${isAlreadyShared ? 'text-[var(--text-secondary)]' : 'text-[var(--text-primary)]'}">${user.name}</span>
+                <span class="text-xs text-[var(--text-secondary)]">${user.email}</span>
+            </div>
+        `;
+        container.appendChild(label);
+    });
+}
+
+function updateShareButtonState() {
+    // Only count enabled checkboxes (exclude already-shared users)
+    const checkboxes = document.querySelectorAll('input[name="share_users"]:checked:not(:disabled)');
+    const shareBtn = document.getElementById('share-template-btn');
+    shareBtn.disabled = checkboxes.length === 0;
+}
+
+function shareTemplate() {
+    const templateId = document.getElementById('share-template-id').value;
+    // Only get enabled checkboxes (exclude already-shared users)
+    const checkboxes = document.querySelectorAll('input[name="share_users"]:checked:not(:disabled)');
+    const userIds = Array.from(checkboxes).map(cb => parseInt(cb.value));
+    
+    if (!templateId || userIds.length === 0) {
+        return;
+    }
+    
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const shareBtn = document.getElementById('share-template-btn');
+    
+    // Disable button and show loading
+    shareBtn.disabled = true;
+    shareBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Sharing...';
+    
+    fetch(`/templates/${templateId}/share/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        },
+        body: JSON.stringify({
+            user_ids: userIds
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            closeShareTemplateModal();
+            // Reload the page to reflect the change
+            window.location.reload();
+        } else {
+            // Reset button
+            shareBtn.disabled = false;
+            shareBtn.innerHTML = '<i class="fas fa-share mr-2"></i>Share Template';
+            alert(data.error || 'Failed to share template');
+        }
+    })
+    .catch(error => {
+        console.error('Error sharing template:', error);
+        shareBtn.disabled = false;
+        shareBtn.innerHTML = '<i class="fas fa-share mr-2"></i>Share Template';
+        alert('Failed to share template. Please try again.');
+    });
+}
+
+function unsubscribeFromTemplate(templateId, templateName, isOwner) {
+    const modal = document.getElementById('unsubscribe-template-modal');
+    if (modal) {
+        // Set the template ID, name, and owner flag
+        document.getElementById('unsubscribe-template-id').value = templateId;
+        document.getElementById('unsubscribe-template-name').textContent = `"${templateName}"`;
+        document.getElementById('unsubscribe-is-owner').value = isOwner ? 'true' : 'false';
+        
+        // Update modal message based on whether user is owner
+        const messageEl = document.getElementById('unsubscribe-message');
+        const warningEl = document.getElementById('unsubscribe-warning');
+        
+        if (isOwner) {
+            messageEl.innerHTML = `Are you sure you want to remove sharing from <strong>"${templateName}"</strong>?`;
+            warningEl.textContent = 'This template will become a personal template and will no longer be shared with your team.';
+        } else {
+            messageEl.innerHTML = `Are you sure you want to unsubscribe from <strong>"${templateName}"</strong>?`;
+            warningEl.textContent = 'You will no longer have access to this template.';
+        }
+        
+        // Show modal
+        modal.classList.remove('opacity-0', 'invisible');
+        modal.classList.add('scale-100');
+    }
+}
+
+function closeUnsubscribeTemplateModal() {
+    const modal = document.getElementById('unsubscribe-template-modal');
+    if (modal) {
+        modal.classList.add('opacity-0', 'invisible');
+        modal.classList.remove('scale-100');
+        
+        // Reset state
+        document.getElementById('unsubscribe-template-id').value = '';
+        document.getElementById('unsubscribe-template-name').textContent = '';
+        document.getElementById('unsubscribe-is-owner').value = 'false';
+    }
+}
+
+function confirmUnsubscribeTemplate() {
+    const templateId = document.getElementById('unsubscribe-template-id').value;
+    if (!templateId) {
+        return;
+    }
+    
+    const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const unsubscribeBtn = document.getElementById('unsubscribe-template-btn');
+    
+    // Disable button and show loading
+    unsubscribeBtn.disabled = true;
+    unsubscribeBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Unsubscribing...';
+    
+    fetch(`/templates/${templateId}/unsubscribe/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': csrfToken
+        }
+    })
+    .then(response => {
+        // Check if response is successful (200-299)
+        if (response.ok) {
+            response.json().then(data => {
+                if (data.success) {
+                    // Reload immediately - don't wait for modal to close
+                    window.location.reload();
+                } else {
+                    // Response was ok but success is false
+                    unsubscribeBtn.disabled = false;
+                    unsubscribeBtn.innerHTML = '<i class="fas fa-times mr-2"></i>Unsubscribe';
+                    alert(data.error || 'Failed to unsubscribe from template');
+                }
+            }).catch(() => {
+                // JSON parsing failed but response was ok - assume success and reload
+                window.location.reload();
+            });
+        } else {
+            // Response was not ok (400+)
+            response.json().then(data => {
+                unsubscribeBtn.disabled = false;
+                unsubscribeBtn.innerHTML = '<i class="fas fa-times mr-2"></i>Unsubscribe';
+                alert(data.error || 'Failed to unsubscribe from template');
+            }).catch(() => {
+                unsubscribeBtn.disabled = false;
+                unsubscribeBtn.innerHTML = '<i class="fas fa-times mr-2"></i>Unsubscribe';
+                alert('Failed to unsubscribe from template. Please try again.');
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Network error unsubscribing from template:', error);
+        // Even on network error, if the request might have succeeded, reload
+        // This handles cases where the response was sent but connection was lost
+        window.location.reload();
+    });
+}
+
+// Close share template modal when clicking outside
+document.addEventListener('click', function(e) {
+    const shareTemplateModal = document.getElementById('share-template-modal');
+    if (shareTemplateModal && e.target === shareTemplateModal) {
+        closeShareTemplateModal();
+    }
+    
+    const unsubscribeTemplateModal = document.getElementById('unsubscribe-template-modal');
+    if (unsubscribeTemplateModal && e.target === unsubscribeTemplateModal) {
+        closeUnsubscribeTemplateModal();
     }
 });
 
