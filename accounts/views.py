@@ -533,8 +533,9 @@ def account_settings_view(request):
                         from django.utils import timezone
                         trial_days_remaining = (request.user.trial_ends_at - timezone.now()).days
     
-    # Check if user is Team Toad (pro) but not in a subscription group
-    is_team_toad_without_group = (request.user.tier == 'pro' and not subscription_group)
+    # Check if user is Team Toad (pro) and in a subscription group with 1 seat
+    # Show "Create Team Subscription" banner only for single-seat subscriptions
+    is_team_toad_without_group = (request.user.tier == 'pro' and subscription_group and subscription_group.quantity == 1)
     
     context = {
         'profile_form': profile_form,

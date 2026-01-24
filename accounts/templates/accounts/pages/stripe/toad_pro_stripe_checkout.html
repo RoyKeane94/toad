@@ -72,12 +72,37 @@
             </div>
             
             {% if quantity and total_price %}
-            <form action="{% url 'accounts:stripe_checkout_team_registration' %}" method="POST">
+            <form action="{% url 'accounts:stripe_checkout_team_registration' %}" method="POST" id="checkout-form">
             {% else %}
-            <form action="{% url 'accounts:create_checkout_session_pro' %}" method="POST">
+            <form action="{% url 'accounts:create_checkout_session_pro' %}" method="POST" id="checkout-form">
             {% endif %}
                 {% csrf_token %}
                 <input type="hidden" name="price_id" value="price_1SPN4iImvDyA3xuknMiIWMe5" />
+                
+                <!-- Promo Code Field -->
+                <div class="mb-4">
+                    <label for="promo_code" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        Promo Code (Optional)
+                    </label>
+                    <div class="flex gap-2">
+                        <input 
+                            type="text" 
+                            id="promo_code" 
+                            name="promo_code" 
+                            placeholder="Enter promo code"
+                            class="flex-1 px-3 py-2 border border-[var(--border-color)] rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                        >
+                        <button 
+                            type="button" 
+                            id="apply-promo-btn"
+                            class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-[var(--text-primary)] rounded-md text-sm font-medium transition-colors border border-[var(--border-color)]"
+                        >
+                            Apply
+                        </button>
+                    </div>
+                    <div id="promo-message" class="mt-2 text-sm hidden"></div>
+                </div>
+                
                 <button id="checkout-and-portal-button" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-600 transition-colors duration-200 cursor-pointer">
                     <i class="fas fa-credit-card mr-2"></i>
                     Subscribe Now
@@ -92,5 +117,97 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const promoCodeInput = document.getElementById('promo_code');
+    const applyPromoBtn = document.getElementById('apply-promo-btn');
+    const promoMessage = document.getElementById('promo-message');
+    const checkoutForm = document.getElementById('checkout-form');
+    let appliedPromoCode = null;
+    
+    // Validate promo code when Apply button is clicked
+    applyPromoBtn.addEventListener('click', async function() {
+        const promoCode = promoCodeInput.value.trim();
+        
+        if (!promoCode) {
+            showPromoMessage('Please enter a promo code', 'error');
+            return;
+        }
+        
+        // Disable button while validating
+        applyPromoBtn.disabled = true;
+        applyPromoBtn.textContent = 'Validating...';
+        
+        try {
+            // Validate promo code with Stripe
+            const response = await fetch('{% url "accounts:validate_promo_code" %}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                },
+                body: JSON.stringify({ promo_code: promoCode })
+            });
+            
+            const data = await response.json();
+            
+            if (data.valid) {
+                appliedPromoCode = promoCode;
+                showPromoMessage(`Promo code "${promoCode}" applied successfully!`, 'success');
+                promoCodeInput.classList.add('border-green-500');
+                promoCodeInput.classList.remove('border-red-500');
+            } else {
+                appliedPromoCode = null;
+                showPromoMessage(data.error || 'Invalid promo code', 'error');
+                promoCodeInput.classList.add('border-red-500');
+                promoCodeInput.classList.remove('border-green-500');
+            }
+        } catch (error) {
+            console.error('Error validating promo code:', error);
+            showPromoMessage('Error validating promo code. Please try again.', 'error');
+            appliedPromoCode = null;
+        } finally {
+            applyPromoBtn.disabled = false;
+            applyPromoBtn.textContent = 'Apply';
+        }
+    });
+    
+    function showPromoMessage(message, type) {
+        promoMessage.textContent = message;
+        promoMessage.classList.remove('hidden');
+        promoMessage.classList.remove('text-green-600', 'text-red-600');
+        
+        if (type === 'success') {
+            promoMessage.classList.add('text-green-600');
+        } else {
+            promoMessage.classList.add('text-red-600');
+        }
+    }
+    
+    // Allow Enter key to apply promo code
+    promoCodeInput.addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            applyPromoBtn.click();
+        }
+    });
+    
+    // Ensure promo code is submitted with the form
+    checkoutForm.addEventListener('submit', function(e) {
+        if (appliedPromoCode) {
+            // Add a hidden input with the applied promo code
+            let promoInput = checkoutForm.querySelector('input[name="promo_code"]');
+            if (!promoInput) {
+                promoInput = document.createElement('input');
+                promoInput.type = 'hidden';
+                promoInput.name = 'promo_code';
+                checkoutForm.appendChild(promoInput);
+            }
+            promoInput.value = appliedPromoCode;
+        }
+    });
+});
+</script>
 {% endblock %}
 

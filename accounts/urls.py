@@ -65,7 +65,8 @@ from .stripe_django_views import (
     create_portal_session,
     stripe_webhook,
     stripe_checkout_seat_change_view,
-    stripe_success_seat_change_view
+    stripe_success_seat_change_view,
+    validate_promo_code
 )
 
 app_name = 'accounts'
@@ -136,6 +137,7 @@ urlpatterns = [
     path('stripe/webhook/', stripe_webhook, name='stripe_webhook'),
     path('stripe/checkout/seat-change/', stripe_checkout_seat_change_view, name='stripe_checkout_seat_change'),
     path('stripe/success/seat-change/', stripe_success_seat_change_view, name='stripe_success_seat_change'),
+    path('stripe/validate-promo-code/', validate_promo_code, name='validate_promo_code'),
     
     # Team Management
     path('team/invite-members/', team_invite_members_view, name='team_invite_members'),

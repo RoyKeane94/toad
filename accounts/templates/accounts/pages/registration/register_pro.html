@@ -12,14 +12,14 @@
     
     /* Override layout padding for full-width design */
     #app {
-        padding: 0 !important;
+        padding: 0;
     }
     
     /* Make main take remaining height after navbar */
     main {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     
     /* Register specific styles */
@@ -53,7 +53,7 @@
 {% block content %}
 <div class="register-split">
     <!-- Registration Form - Centered -->
-    <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+    <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 bg-[var(--main-bg)]">
         <div class="max-w-md w-full space-y-8">
             <!-- Header --> 
             <div class="text-center">
@@ -61,7 +61,7 @@
                 <div class="mb-6">
                     <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-12 w-auto mx-auto">
                 </div>
-                <h2 class="text-3xl font-bold text-[var(--primary-action-bg)]">
+                <h2 class="text-3xl font-bold text-green-600">
                     Start Your Team Plan
                 </h2>
                 <p class="mt-2 text-sm text-[var(--subtitle-text)]">
@@ -90,8 +90,8 @@
             </div>
 
             <!-- Registration Form -->
-            <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
-                <form onsubmit="plausible('user_signup_pro');" method="post" class="space-y-6">
+            <div class="bg-[var(--container-bg)] py-8 px-6 shadow-sm rounded-lg border border-[var(--border-color)]">
+                <form id="register-form" method="post" class="space-y-6">
                     {% csrf_token %}
                     
                     <!-- First Name Field -->
@@ -222,23 +222,30 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const form = document.querySelector('form');
+    const form = document.getElementById('register-form');
     const registerBtn = document.getElementById('register-btn');
     const registerText = document.getElementById('register-text');
     const registerLoading = document.getElementById('register-loading');
     const registerIcon = document.getElementById('register-icon');
     
-    form.addEventListener('submit', function() {
-        // Show loading state
-        registerBtn.disabled = true;
-        registerText.classList.add('hidden');
-        registerLoading.classList.remove('hidden');
-        registerIcon.classList.add('hidden');
-        
-        // Change button appearance
-        registerBtn.classList.add('opacity-75', 'cursor-not-allowed');
-        registerBtn.classList.remove('hover:bg-[var(--primary-action-hover-bg)]');
-    });
+    if (form && registerBtn) {
+        form.addEventListener('submit', function() {
+            // Track with Plausible if available
+            if (typeof plausible !== 'undefined') {
+                plausible('user_signup_pro');
+            }
+            
+            // Show loading state
+            registerBtn.disabled = true;
+            registerText.classList.add('hidden');
+            registerLoading.classList.remove('hidden');
+            registerIcon.classList.add('hidden');
+            
+            // Change button appearance
+            registerBtn.classList.add('opacity-75', 'cursor-not-allowed');
+            registerBtn.classList.remove('hover:bg-[var(--primary-action-hover-bg)]');
+        });
+    }
 });
 </script>
 {% endblock %}

@@ -7,14 +7,14 @@
 <style>
     /* Override layout padding for full-width design */
     #app {
-        padding: 0 !important;
-        background: transparent !important;
+        padding: 0;
+        background: transparent;
     }
 </style>
 {% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)]">
     <div class="max-w-2xl w-full space-y-8">
         <!-- Verification Reminder Banner -->
         {% if not request.user.email_verified %}
@@ -35,15 +35,15 @@
         
         <!-- Header -->
         <div class="text-center">
-            <h2 class="text-3xl font-bold text-green-500">
+            <h2 class="text-3xl font-bold text-[var(--primary-action-bg)]">
                 Invite Team Members
             </h2>
             <p class="mt-2 text-sm text-[var(--text-secondary)]">
-                You have {{ total_seats }} seat(s) total, {{ current_members_count }} in use, {{ pending_count }} pending, {{ available_seats }} available. Invite team members now or add them later.
+                Invite team members now or add them later.
             </p>
         </div>
 
-        <!-- Messages -->
+        <!-- Messages (excluding success) -->
         {% if messages %}
             {% for message in messages %}
                 {% if message.tags == 'error' %}
@@ -56,17 +56,7 @@
                         </div>
                     </div>
                 </div>
-                {% elif message.tags == 'success' %}
-                <div class="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-md text-sm">
-                    <div class="flex items-start">
-                        <i class="fas fa-check-circle mr-2 mt-0.5 flex-shrink-0"></i>
-                        <div>
-                            <p class="font-medium mb-1">Success</p>
-                            <p class="text-green-600 text-xs leading-relaxed">{{ message }}</p>
-                        </div>
-                    </div>
-                </div>
-                {% else %}
+                {% elif message.tags != 'success' %}
                 <div class="bg-blue-50 border border-blue-200 text-blue-700 px-4 py-3 rounded-md text-sm">
                     <div class="flex items-start">
                         <i class="fas fa-info-circle mr-2 mt-0.5 flex-shrink-0"></i>
@@ -80,8 +70,28 @@
             {% endfor %}
         {% endif %}
 
+        <!-- Seat Count Stats Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-[var(--container-bg)] rounded-lg p-4">
+                <p class="text-xs text-[var(--text-secondary)] mb-1">Total Seats</p>
+                <p class="text-2xl font-bold text-[var(--text-primary)]">{{ total_seats }}</p>
+            </div>
+            <div class="bg-[var(--container-bg)] rounded-lg p-4">
+                <p class="text-xs text-[var(--text-secondary)] mb-1">In Use</p>
+                <p class="text-2xl font-bold text-[var(--text-primary)]">{{ current_members_count }}</p>
+            </div>
+            <div class="bg-[var(--container-bg)] rounded-lg p-4">
+                <p class="text-xs text-[var(--text-secondary)] mb-1">Pending</p>
+                <p class="text-2xl font-bold text-[var(--text-primary)]">{{ pending_count }}</p>
+            </div>
+            <div class="bg-[var(--container-bg)] rounded-lg p-4">
+                <p class="text-xs text-[var(--text-secondary)] mb-1">Available</p>
+                <p class="text-2xl font-bold text-[var(--text-primary)]">{{ available_seats }}</p>
+            </div>
+        </div>
+
         <!-- Invitation Form -->
-        <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
+        <div class="bg-[var(--container-bg)] py-8 px-6 rounded-lg border border-[var(--border-color)]">
             <form method="POST" action="{% url 'accounts:team_invite_members' %}">
                 {% csrf_token %}
                 
@@ -101,9 +111,9 @@
                                 type="email" 
                                 id="email_{{ forloop.counter }}" 
                                 name="email_{{ forloop.counter }}" 
-                                value="{{ email }}" 
                                 placeholder="email@example.com"
-                                class="w-full px-4 py-2 border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+                                autocomplete="off"
+                                class="w-full px-4 py-2 border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent"
                             >
                         </div>
                         {% endfor %}
@@ -118,42 +128,40 @@
                     
                     {% if is_trial %}
                     <!-- Upgrade to Paid Option for Trial Users -->
-                    <div class="bg-gradient-to-r from-emerald-50 to-green-50 border border-emerald-200 rounded-lg p-5">
+                    <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-5">
                         <div class="flex items-start">
-                            <div class="flex items-center justify-center w-12 h-12 bg-emerald-100 rounded-lg mr-4 flex-shrink-0">
-                                <i class="fas fa-rocket text-emerald-600 text-lg"></i>
+                            <div class="flex items-center justify-center w-12 h-12 bg-[var(--primary-action-bg)]/10 rounded-lg mr-4 flex-shrink-0">
+                                <i class="fas fa-rocket text-[var(--primary-action-bg)] text-lg"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-semibold text-emerald-600 text-base mb-1">Need more seats?</h4>
-                                <p class="text-sm text-emerald-700 mb-3">
+                                <h4 class="font-semibold text-[var(--primary-action-bg)] text-base mb-1">Need more seats?</h4>
+                                <p class="text-sm text-[var(--text-secondary)] mb-3">
                                     Upgrade to a paid plan today to add more team members. You can choose exactly how many seats you need.
                                 </p>
                                 <a href="{% url 'accounts:stripe_checkout_team' %}" 
-                                   class="inline-flex items-center px-5 py-2.5 bg-gradient-to-r from-emerald-500 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
-                                   style="background: linear-gradient(to right, #10b981, #22c55e) !important; color: white !important;">
-                                    <i class="fas fa-arrow-up mr-2" style="color: white !important;"></i>
-                                    <span style="color: white !important;">Convert to Paid Plan</span>
+                                   class="inline-flex items-center px-5 py-2.5 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] text-sm font-semibold rounded-lg transition-colors">
+                                    <i class="fas fa-arrow-up mr-2"></i>
+                                    Convert to Paid Plan
                                 </a>
                             </div>
                         </div>
                     </div>
                     {% else %}
                     <!-- Add More Seats Option for Paid Users -->
-                    <div class="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-5">
+                    <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-5">
                         <div class="flex items-start">
-                            <div class="flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mr-4 flex-shrink-0">
-                                <i class="fas fa-plus-circle text-green-600 text-lg"></i>
+                            <div class="flex items-center justify-center w-12 h-12 bg-[var(--primary-action-bg)]/10 rounded-lg mr-4 flex-shrink-0">
+                                <i class="fas fa-plus-circle text-[var(--primary-action-bg)] text-lg"></i>
                             </div>
                             <div class="flex-1">
-                                <h4 class="font-semibold text-green-600 text-base mb-1">Need more seats?</h4>
-                                <p class="text-sm text-green-700 mb-3">
+                                <h4 class="font-semibold text-[var(--primary-action-bg)] text-base mb-1">Need more seats?</h4>
+                                <p class="text-sm text-[var(--text-secondary)] mb-3">
                                     Add more seats to your subscription to invite additional team members.
                                 </p>
                                 <a href="{% url 'accounts:increase_team_seats' %}" 
-                                   class="inline-flex items-center px-5 py-2.5 bg-green-500 hover:bg-green-600 text-white text-sm font-semibold rounded-lg shadow-md hover:shadow-lg transition-all"
-                                   style="background-color: #22c55e !important; color: white !important;">
-                                    <i class="fas fa-plus mr-2" style="color: white !important;"></i>
-                                    <span style="color: white !important;">Add More Seats</span>
+                                   class="inline-flex items-center px-5 py-2.5 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] text-sm font-semibold rounded-lg transition-colors">
+                                    <i class="fas fa-plus mr-2"></i>
+                                    Add More Seats
                                 </a>
                             </div>
                         </div>
@@ -167,7 +175,7 @@
                         Skip for now
                     </a>
                     {% if available_seats > 0 %}
-                    <button type="submit" class="px-6 py-2 bg-green-500 hover:bg-green-600 text-white rounded-md text-sm font-medium transition-colors">
+                    <button type="submit" class="px-6 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-sm font-medium transition-colors cursor-pointer">
                         <i class="fas fa-paper-plane mr-2"></i>
                         Send Invitations
                     </button>
@@ -183,7 +191,7 @@
             <div class="mt-6 pt-6 border-t border-[var(--border-color)]">
                 <div class="bg-[var(--grid-header-bg)] rounded-lg p-4">
                     <div class="flex items-start">
-                        <i class="fas fa-info-circle text-[var(--tertiary-action-bg)] mr-3 mt-0.5"></i>
+                        <i class="fas fa-info-circle text-[var(--primary-action-bg)] mr-3 mt-0.5"></i>
                         <div class="text-sm text-[var(--text-secondary)]">
                             <p class="font-medium text-[var(--text-primary)] mb-1">About Team Invitations</p>
                             <ul class="list-disc list-inside space-y-1 text-xs">

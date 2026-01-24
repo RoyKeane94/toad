@@ -7,8 +7,8 @@
 <style>
     /* Override layout padding for full-width design */
     #app {
-        padding: 0 !important;
-        background: transparent !important;
+        padding: 0;
+        background: transparent;
     }
     .selectable-item {
         transition: all 0.2s ease;
@@ -25,16 +25,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+<div class="min-h-screen flex items-start justify-center pt-8 pb-12 px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)]">
     <div class="max-w-3xl w-full space-y-8">
         <!-- Header -->
         <div class="text-center">
-            <h2 class="text-3xl font-bold text-green-500">
+            <h2 class="text-3xl font-bold text-green-600">
                 Remove Seats from Your Team
             </h2>
-            <p class="mt-2 text-sm text-[var(--text-secondary)]">
-                Reduce your Team Toad subscription and manage team members
-            </p>
         </div>
 
         <!-- Messages -->
@@ -54,27 +51,8 @@
             {% endfor %}
         {% endif %}
 
-        <!-- Current Status -->
-        <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-6">
-            <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-4">Current Subscription</h3>
-            <div class="space-y-2">
-                <p class="text-sm text-[var(--text-secondary)]">
-                    <span class="font-medium">Current seats:</span> {{ current_quantity }}
-                </p>
-                <p class="text-sm text-[var(--text-secondary)]">
-                    <span class="font-medium">Active members:</span> {{ current_members_count }}
-                </p>
-                <p class="text-sm text-[var(--text-secondary)]">
-                    <span class="font-medium">Pending invitations:</span> {{ pending_count }}
-                </p>
-                <p class="text-sm text-[var(--text-secondary)]">
-                    <span class="font-medium">Total in use:</span> {{ current_usage }}
-                </p>
-            </div>
-        </div>
-
         <!-- Reduce Seats Form -->
-        <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
+        <div class="bg-[var(--container-bg)] py-8 px-6 rounded-lg border border-[var(--border-color)]">
             <form method="POST" action="{% url 'accounts:reduce_team_seats' %}" id="reduceSeatsForm" data-current-quantity="{{ current_quantity }}" data-current-usage="{{ current_usage }}">
                 {% csrf_token %}
                 
@@ -91,11 +69,11 @@
                         max="{{ current_quantity|add:'-1' }}"
                         value="1" 
                         required
-                        class="w-full px-4 py-3 border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] bg-[var(--main-bg)] focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                        class="w-32 px-4 py-3 border border-[var(--border-color)] rounded-lg text-[var(--text-primary)] bg-[var(--main-bg)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-transparent"
                         onchange="updateRequiredSelections()"
                     >
                     <p class="mt-2 text-xs text-[var(--text-secondary)]">
-                        You must keep at least 1 seat. You'll receive a prorated credit for removed seats.
+                        You must keep at least 1 seat.
                     </p>
                 </div>
 
@@ -169,27 +147,16 @@
                     </p>
                 </div>
 
-                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-                    <div class="flex items-start">
-                        <i class="fas fa-info-circle text-blue-600 mr-2 mt-0.5"></i>
-                        <div class="flex-1">
-                            <p class="text-sm text-blue-800">
-                                <strong>Note:</strong> After removing seats, you'll be redirected to complete the change.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                <p class="text-xs text-[var(--text-secondary)] mb-6">
+                    Note: After removing seats, you'll be redirected to complete the change.
+                </p>
 
                 <div class="flex items-center justify-between gap-4">
                     <a href="{% url 'accounts:manage_team' %}" class="px-6 py-3 text-[var(--text-secondary)] hover:text-[var(--text-primary)] transition-colors">
                         Cancel
                     </a>
-                    <button type="submit" class="px-6 py-3 bg-orange-500 hover:bg-orange-600 text-white rounded-lg font-medium transition-colors shadow-sm hover:shadow-md"
-                            style="background-color: #f97316 !important; color: white !important;" 
-                            onmouseover="this.style.backgroundColor='#ea580c'" 
-                            onmouseout="this.style.backgroundColor='#f97316'">
-                        <i class="fas fa-minus mr-2" style="color: white !important;"></i>
-                        <span style="color: white !important;">Continue to Update</span>
+                    <button type="submit" class="px-6 py-3 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-lg font-medium transition-colors cursor-pointer">
+                        Continue to Update
                     </button>
                 </div>
             </form>

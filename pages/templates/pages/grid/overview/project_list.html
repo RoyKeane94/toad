@@ -713,30 +713,23 @@
 {% if not projects %}
     <!-- Empty State -->
     <div class="text-center py-16 max-w-md mx-auto px-4">
-        <div class="mb-6">
-            <div class="w-20 h-20 bg-[var(--task-bg)] rounded-full flex items-center justify-center mx-auto mb-4">
-                <i class="fas fa-th-large text-2xl text-[var(--text-secondary)]"></i>
-            </div>
-        </div>
-        <h3 class="text-2xl font-medium text-[var(--title-text)] mb-3">No grids yet</h3>
-        <p class="text-[var(--subtitle-text)] mb-8 text-lg">Create your first grid to start organising your tasks and boost your productivity</p>
         {% if user_tier == 'free' and projects|length >= 2 %}
         <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit" 
-           class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+           class="inline-flex items-center justify-center whitespace-nowrap px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
            title="Upgrade to create more grids">
             <i class="fas fa-plus mr-2"></i>
             Create Your First Grid
         </a>
         {% elif user_tier == 'personal' and projects|length >= 10 %}
         <a href="{% url 'pages:upgrade_required' %}?reason=grid_limit&tier=personal" 
-           class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+           class="inline-flex items-center justify-center whitespace-nowrap px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer"
            title="Archive some grids to create new ones">
             <i class="fas fa-plus mr-2"></i>
             Create Your First Grid
         </a>
         {% else %}
         <a href="{% url 'pages:project_create' %}" 
-           class="inline-flex items-center justify-center w-48 px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
+           class="inline-flex items-center justify-center whitespace-nowrap px-6 py-1.5 text-sm font-medium text-[var(--primary-action-bg)] bg-white border border-[var(--primary-action-bg)] rounded-lg hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer">
             <i class="fas fa-plus mr-2"></i>
             Create Your First Grid
         </a>

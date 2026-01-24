@@ -682,6 +682,67 @@ def stripe_checkout_pro_view(request):
         return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
 
 @login_required
+@csrf_exempt
+def validate_promo_code(request):
+    """
+    Validate a promo code with Stripe
+    """
+    if request.method != 'POST':
+        return JsonResponse({'valid': False, 'error': 'Invalid request method'}, status=405)
+    
+    try:
+        import json
+        data = json.loads(request.body)
+        promo_code = data.get('promo_code', '').strip().upper()
+        
+        if not promo_code:
+            return JsonResponse({'valid': False, 'error': 'Please enter a promo code'})
+        
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            return JsonResponse({'valid': False, 'error': 'Payment system not configured'})
+        
+        # Validate promo code with Stripe
+        try:
+            # Try to retrieve the promotion code
+            promotion_codes = stripe.PromotionCode.list(
+                code=promo_code,
+                active=True,
+                limit=1
+            )
+            
+            if promotion_codes.data:
+                promotion_code = promotion_codes.data[0]
+                coupon = promotion_code.coupon
+                
+                # Check if coupon is valid
+                if coupon.valid:
+                    return JsonResponse({
+                        'valid': True,
+                        'promo_code': promo_code,
+                        'coupon_id': coupon.id,
+                        'discount': {
+                            'percent_off': coupon.percent_off,
+                            'amount_off': coupon.amount_off,
+                            'currency': coupon.currency if coupon.amount_off else None
+                        }
+                    })
+                else:
+                    return JsonResponse({'valid': False, 'error': 'This promo code is no longer valid'})
+            else:
+                return JsonResponse({'valid': False, 'error': 'Invalid promo code'})
+                
+        except stripe.error.StripeError as e:
+            logger.error(f"Stripe error validating promo code: {e}")
+            return JsonResponse({'valid': False, 'error': 'Error validating promo code'})
+            
+    except json.JSONDecodeError:
+        return JsonResponse({'valid': False, 'error': 'Invalid request data'}, status=400)
+    except Exception as e:
+        logger.error(f"Error validating promo code: {e}")
+        return JsonResponse({'valid': False, 'error': 'An error occurred'}, status=500)
+
+@login_required
 def create_checkout_session_pro(request):
     """
     Create a Stripe checkout session for Toad Pro subscription
@@ -716,24 +777,57 @@ def create_checkout_session_pro(request):
                 return redirect('accounts:stripe_checkout_pro')
             price = prices.data[0]
         
+        # Get promo code if provided
+        promo_code = request.POST.get('promo_code', '').strip().upper()
+        discounts = []
+        
+        if promo_code:
+            try:
+                # Validate and get the promotion code
+                promotion_codes = stripe.PromotionCode.list(
+                    code=promo_code,
+                    active=True,
+                    limit=1
+                )
+                
+                if promotion_codes.data:
+                    promotion_code_obj = promotion_codes.data[0]
+                    discounts = [{
+                        'promotion_code': promotion_code_obj.id
+                    }]
+                else:
+                    messages.warning(request, 'Invalid promo code. Proceeding without discount.')
+            except stripe.error.StripeError as e:
+                logger.error(f"Error applying promo code: {e}")
+                messages.warning(request, 'Error applying promo code. Proceeding without discount.')
+        
         # Create checkout session
-        checkout_session = stripe.checkout.Session.create(
-            line_items=[
+        checkout_session_params = {
+            'line_items': [
                 {
                     'price': price.id,
                     'quantity': 1,
                 },
             ],
-            mode='subscription',
-            success_url=request.build_absolute_uri(reverse('accounts:stripe_success_pro')) + '?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url=request.build_absolute_uri(reverse('accounts:stripe_cancel_pro')),
-            customer_email=request.user.email,  # Pre-fill email
-            metadata={
+            'mode': 'subscription',
+            'success_url': request.build_absolute_uri(reverse('accounts:stripe_success_pro')) + '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url': request.build_absolute_uri(reverse('accounts:stripe_cancel_pro')),
+            'customer_email': request.user.email,  # Pre-fill email
+            'allow_promotion_codes': True,  # Enable promo codes in Stripe checkout
+            'metadata': {
                 'user_id': str(request.user.id),
                 'user_email': request.user.email,
                 'plan_type': 'pro',
             }
-        )
+        }
+        
+        # Add discounts if promo code was provided
+        if discounts:
+            checkout_session_params['discounts'] = discounts
+        
+        logger.info(f"Creating checkout session with allow_promotion_codes={checkout_session_params.get('allow_promotion_codes')}")
+        checkout_session = stripe.checkout.Session.create(**checkout_session_params)
+        logger.info(f"Checkout session created: {checkout_session.id}, allow_promotion_codes: {checkout_session.allow_promotion_codes}")
         
         return redirect(checkout_session.url, code=303)
         
@@ -762,9 +856,25 @@ def stripe_success_pro_view(request):
         session = stripe.checkout.Session.retrieve(session_id)
         
         # Verify the session belongs to the current user
-        if session.metadata.get('user_id') != str(request.user.id):
+        # Check by user_id in metadata first, then fallback to email
+        session_user_id = session.metadata.get('user_id')
+        session_user_email = session.metadata.get('user_email')
+        session_customer_email = session.get('customer_email')
+        
+        if session_user_id and session_user_id != str(request.user.id):
+            logger.warning(f"Session verification failed: user_id mismatch. Session user_id: {session_user_id}, current user_id: {request.user.id}")
             messages.error(request, 'Session verification failed.')
             return redirect('pages:project_list')
+        elif not session_user_id:
+            # Fallback to email verification if user_id not in metadata
+            if session_user_email and session_user_email != request.user.email:
+                logger.warning(f"Session verification failed: email mismatch. Session email: {session_user_email}, current email: {request.user.email}")
+                messages.error(request, 'Session verification failed.')
+                return redirect('pages:project_list')
+            elif session_customer_email and session_customer_email != request.user.email:
+                logger.warning(f"Session verification failed: customer email mismatch. Session email: {session_customer_email}, current email: {request.user.email}")
+                messages.error(request, 'Session verification failed.')
+                return redirect('pages:project_list')
         
         # Get subscription ID and customer ID from session
         subscription_id = session.get('subscription')
@@ -817,20 +927,27 @@ def stripe_success_pro_view(request):
             logger.info(f"Added admin {request.user.email} as member of SubscriptionGroup {subscription_group.id}")
         
         # Update user tier to pro
-        request.user.tier = 'pro'
-        update_fields = ['tier']
+        original_tier = request.user.tier
+        logger.info(f"Updating user {request.user.email} tier from {original_tier} to 'pro' after Pro subscription")
+        
+        # Use direct database update to ensure tier change persists regardless of current tier
+        from accounts.models import User
+        update_kwargs = {'tier': 'pro'}
         if customer_id and getattr(request.user, 'stripe_customer_id', None) != customer_id:
-            request.user.stripe_customer_id = customer_id
-            update_fields.append('stripe_customer_id')
+            update_kwargs['stripe_customer_id'] = customer_id
         
         # Clear trial data on conversion
         if is_trial_conversion:
-            request.user.trial_ends_at = None
-            request.user.trial_started_at = None
-            request.user.trial_type = None
-            update_fields.extend(['trial_ends_at', 'trial_started_at', 'trial_type'])
+            update_kwargs['trial_ends_at'] = None
+            update_kwargs['trial_started_at'] = None
+            update_kwargs['trial_type'] = None
         
-        request.user.save(update_fields=update_fields)
+        # Direct database update to ensure persistence
+        User.objects.filter(pk=request.user.pk).update(**update_kwargs)
+        
+        # Refresh from database to ensure the update is reflected in the request.user object
+        request.user.refresh_from_db()
+        logger.info(f"User {request.user.email} tier updated from {original_tier} to {request.user.tier} after Pro subscription (verified)")
         
         # Send joining email after successful payment (user is already verified)
         try:
@@ -1027,6 +1144,7 @@ def stripe_checkout_team_registration_view(request):
             success_url=request.build_absolute_uri(reverse('accounts:stripe_success_team')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('accounts:register_team_quantity')),
             customer_email=email,  # Pre-fill email from form data
+            allow_promotion_codes=True,  # Enable promo codes in Stripe checkout
             metadata={
                 'user_email': email,
                 'plan_type': 'team',
@@ -1133,6 +1251,7 @@ def stripe_checkout_seat_change_view(request):
                 customer=customer_id,  # Link to existing customer
                 success_url=request.build_absolute_uri(reverse('accounts:stripe_success_seat_change')) + '?session_id={CHECKOUT_SESSION_ID}',
                 cancel_url=request.build_absolute_uri(reverse('accounts:manage_team')),
+                allow_promotion_codes=True,  # Enable promo codes in Stripe checkout
                 metadata={
                     'user_id': str(request.user.id),
                     'user_email': request.user.email,
@@ -1445,6 +1564,7 @@ def create_checkout_session_team(request):
             success_url=request.build_absolute_uri(reverse('accounts:stripe_success_team')) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=request.build_absolute_uri(reverse('accounts:stripe_cancel_team')),
             customer_email=request.user.email,  # Pre-fill email
+            allow_promotion_codes=True,  # Enable promo codes in Stripe checkout
             metadata={
                 'user_id': str(request.user.id),
                 'user_email': request.user.email,
@@ -1579,6 +1699,7 @@ def stripe_success_team_view(request):
         
         # Update admin user tier and stripe_customer_id
         update_fields = []
+        original_tier = request.user.tier
         
         # For new registrations, tier is already set to pro
         # For existing users, upgrade to pro if needed
@@ -1591,8 +1712,9 @@ def stripe_success_team_view(request):
             if not request.user.email_verified:
                 request.user.email_verified = True
                 update_fields.append('email_verified')
-        elif request.user.tier in ['pro_trial', 'free', 'personal', 'personal_trial']:
-            # Upgrade existing user to pro
+        elif request.user.tier != 'pro':
+            # Upgrade existing user to pro (from any tier: free, personal, personal_trial, pro_trial, society_pro, etc.)
+            logger.info(f"Upgrading user {request.user.email} from {request.user.tier} to 'pro'")
             request.user.tier = 'pro'
             update_fields.append('tier')
         
@@ -1624,7 +1746,26 @@ def stripe_success_team_view(request):
             update_fields.append('stripe_customer_id')
         
         if update_fields:
-            request.user.save(update_fields=update_fields)
+            # Use direct database update to ensure tier change persists
+            from accounts.models import User
+            update_kwargs = {}
+            if 'tier' in update_fields:
+                update_kwargs['tier'] = 'pro'
+            if 'email_verified' in update_fields:
+                update_kwargs['email_verified'] = True
+            if 'stripe_customer_id' in update_fields:
+                update_kwargs['stripe_customer_id'] = customer_id
+            if 'trial_ends_at' in update_fields:
+                update_kwargs['trial_ends_at'] = None
+            if 'trial_started_at' in update_fields:
+                update_kwargs['trial_started_at'] = None
+            if 'trial_type' in update_fields:
+                update_kwargs['trial_type'] = None
+            
+            if update_kwargs:
+                User.objects.filter(pk=request.user.pk).update(**update_kwargs)
+                request.user.refresh_from_db()
+                logger.info(f"User {request.user.email} updated: {update_kwargs}, tier is now: {request.user.tier}")
         
         # Store subscription_group_id in session for the email input page
         request.session['subscription_group_id'] = subscription_group.id

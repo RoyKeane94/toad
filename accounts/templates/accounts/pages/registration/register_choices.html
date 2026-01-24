@@ -7,14 +7,14 @@
 <style>
     /* Override layout padding for full-width design */
     #app {
-        padding: 0 !important;
+        padding: 0;
     }
     
     /* Make main take remaining height after navbar */
     main {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     
     /* Pricing page specific styles */
@@ -24,7 +24,7 @@
         align-items: center;
         min-height: 100vh;
         padding: 4rem 1rem;
-        background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);
+        background: var(--main-bg);
     }
     
     .pricing-cards {
@@ -203,7 +203,7 @@
         <div class="mb-8">
             <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-16 w-auto mx-auto">
         </div>
-        <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">
+        <h1 class="text-4xl font-bold text-green-600 mb-4">
             Our pricing is as simple as our product
         </h1>
         <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">

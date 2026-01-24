@@ -4,18 +4,6 @@
 
 {% block extra_head %}
 <style>
-    /* Override layout padding for full-width design */
-    #app {
-        padding: 0 !important;
-    }
-    
-    /* Make main take remaining height after navbar */
-    main {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
-    }
-    
     /* Subscription management specific styles */
     .subscription-container {
         display: flex;
@@ -23,7 +11,7 @@
         align-items: center;
         min-height: 100vh;
         padding: 4rem 1rem;
-        background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);
+        background: var(--main-bg);
     }
     
     .subscription-cards {
@@ -47,11 +35,12 @@
         transition: all 0.2s ease-out;
         display: flex;
         flex-direction: column;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     }
     
     .subscription-card:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     }
     
     .subscription-card.current {
@@ -198,7 +187,7 @@
 <div class="subscription-container">
     <!-- Header -->
     <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold text-[var(--primary-action-bg)] mb-4">
+        <h1 class="text-4xl font-bold text-green-600 mb-4">
             Manage Your Subscription
         </h1>
         {% if team_admin %}
@@ -346,7 +335,7 @@
                     Current Plan
                 </button>
             {% else %}
-                <button class="subscription-button downgrade" onclick="openDowngradeModal()">
+                <button type="button" class="subscription-button downgrade" id="downgrade-to-free-btn">
                     Downgrade to Free
                 </button>
             {% endif %}
@@ -366,7 +355,7 @@
 
 <!-- Downgrade Confirmation Modal -->
 <div id="downgradeModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
-    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-sm border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
         <!-- Modal Header -->
         <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
             <div class="flex items-center space-x-3">
@@ -725,6 +714,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show the modal
         showDowngradeModal();
     };
+    
+    // Add event listener for downgrade button
+    const downgradeToFreeBtn = document.getElementById('downgrade-to-free-btn');
+    if (downgradeToFreeBtn) {
+        downgradeToFreeBtn.addEventListener('click', function() {
+            openDowngradeModal();
+        });
+    }
 });
 </script>
 {% endblock %}

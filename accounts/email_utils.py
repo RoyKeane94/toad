@@ -424,6 +424,8 @@ You've been invited to join a Team Toad subscription!
 
 Your admin: {admin_name} ({admin_email})
 
+IMPORTANT: If you have an account, please ensure that you are logged in before accepting the invitation.
+
 Click the link below to accept the invitation:
 {invitation_url}
 

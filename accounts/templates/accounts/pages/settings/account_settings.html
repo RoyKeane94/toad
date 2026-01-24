@@ -4,10 +4,11 @@
 {% block title %}Account Settings - Toad{% endblock %}
 
 {% block content %}
-<div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+<div class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 bg-[var(--main-bg)]">
 <div class="max-w-4xl mx-auto">
+    <div class="bg-white rounded-lg shadow-sm p-8">
         <!-- Header -->
-        <div class="p-6">
+        <div class="pb-6">
             <div class="flex items-center space-x-3">
                 <div class="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-[var(--primary-action-bg)] to-[var(--primary-action-hover-bg)] rounded-lg shadow-sm">
                     <i class="fas fa-user-cog text-white"></i>
@@ -84,10 +85,10 @@
         {% endif %}
 
         <!-- Content -->
-        <div class="p-6">
+        <div class="pt-6">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Profile Information -->
-                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-6">
+                <div class="bg-[var(--grid-header-bg)]  rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Profile Information</h2>
                     <form method="post" action="{% url 'accounts:account_settings' %}">
                         {% csrf_token %}
@@ -137,10 +138,10 @@
                 </div>
 
                 <!-- Change Password -->
-                <div class="bg-[var(--grid-header-bg)] border border-[var(--border-color)] rounded-lg p-6">
+                <div class="bg-[var(--grid-header-bg)]  rounded-lg p-6">
                     <h2 class="text-lg font-semibold text-[var(--title-text)] mb-4">Security</h2>
                     <div class="space-y-4">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg ">
                             <div class="min-w-0 flex-1">
                                 <h3 class="font-medium text-[var(--text-primary)]">Password</h3>
                             </div>
@@ -150,7 +151,7 @@
                             </a>
                         </div>
                         
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg ">
                             <div class="min-w-0 flex-1">
                                 <h3 class="font-medium text-[var(--text-primary)]">Email</h3>
                                 <p class="text-sm text-[var(--text-secondary)] break-words">{{ user.email }}</p>
@@ -172,7 +173,7 @@
                             {% endif %}
                         </div>
                         
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg ">
                             <div class="min-w-0 flex-1">
                                 <h3 class="font-medium text-[var(--text-primary)]">Current Plan</h3>
                                 <p class="text-sm text-[var(--text-secondary)]">
@@ -195,13 +196,13 @@
                             </div>
                             <div class="flex flex-col sm:flex-row gap-2 flex-shrink-0">
                                 <a href="{% url 'accounts:manage_subscription' %}"
-                                   class="px-4 py-2 border border-[var(--border-color)] text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
+                                   class="px-4 py-2 text-[var(--text-primary)] bg-white hover:bg-[var(--bg-secondary)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                                     Manage Subscription
                                 </a>
                             </div>
                         </div>
                         
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg border border-[var(--border-color)]">
+                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 p-4 bg-[var(--container-bg)] rounded-lg ">
                             <div class="min-w-0 flex-1">
                                 <h3 class="font-medium text-[var(--text-primary)]">Account Created</h3>
                                 <p class="text-sm text-[var(--text-secondary)]">{{ user.date_joined|date:"F j, Y" }}</p>
@@ -235,19 +236,19 @@
 
                 <!-- Team Stats -->
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-                    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="bg-[var(--container-bg)]  rounded-lg p-4">
                         <p class="text-xs text-[var(--text-secondary)] mb-1">Total Seats</p>
                         <p class="text-2xl font-bold text-[var(--text-primary)]">{{ total_seats }}</p>
                     </div>
-                    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="bg-[var(--container-bg)]  rounded-lg p-4">
                         <p class="text-xs text-[var(--text-secondary)] mb-1">In Use</p>
                         <p class="text-2xl font-bold text-[var(--text-primary)]">{{ current_members_count }}</p>
                     </div>
-                    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="bg-[var(--container-bg)]  rounded-lg p-4">
                         <p class="text-xs text-[var(--text-secondary)] mb-1">Pending</p>
                         <p class="text-2xl font-bold text-[var(--text-primary)]">{{ pending_count }}</p>
                     </div>
-                    <div class="bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-4">
+                    <div class="bg-[var(--container-bg)]  rounded-lg p-4">
                         <p class="text-xs text-[var(--text-secondary)] mb-1">Available</p>
                         <p class="text-2xl font-bold text-[var(--text-primary)]">{{ available_seats }}</p>
                     </div>
@@ -255,7 +256,7 @@
 
                 <!-- Quick Actions -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                    <a href="{% url 'accounts:team_invite_members' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
+                    <a href="{% url 'accounts:team_invite_members' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)]  rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-user-plus text-green-600"></i>
@@ -267,7 +268,7 @@
                         </div>
                         <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
                     </a>
-                    <a href="{% url 'accounts:manage_team' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
+                    <a href="{% url 'accounts:manage_team' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)]  rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-list text-blue-600"></i>
@@ -279,7 +280,7 @@
                         </div>
                         <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
                     </a>
-                    <a href="{% url 'accounts:increase_team_seats' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
+                    <a href="{% url 'accounts:increase_team_seats' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)]  rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-plus text-emerald-600"></i>
@@ -291,7 +292,7 @@
                         </div>
                         <i class="fas fa-chevron-right text-[var(--text-secondary)]"></i>
                     </a>
-                    <a href="{% url 'accounts:reduce_team_seats' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
+                    <a href="{% url 'accounts:reduce_team_seats' %}" class="flex items-center justify-between p-4 bg-[var(--container-bg)]  rounded-lg hover:bg-[var(--grid-header-bg)] transition-colors">
                         <div class="flex items-center space-x-3">
                             <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
                                 <i class="fas fa-minus text-orange-600"></i>
@@ -311,7 +312,7 @@
                     <h3 class="text-sm font-semibold text-[var(--text-primary)] mb-3">Current Team Members</h3>
                     <div class="space-y-2">
                         {% for member in team_members|slice:":5" %}
-                        <div class="flex items-center justify-between p-3 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg">
+                        <div class="flex items-center justify-between p-3 bg-[var(--container-bg)]  rounded-lg">
                             <div class="flex items-center space-x-3">
                                 <div class="w-8 h-8 bg-[var(--tertiary-action-bg)] rounded-full flex items-center justify-center text-white text-xs font-semibold">
                                     {{ member.first_name|first|upper }}{{ member.last_name|first|upper }}
@@ -338,7 +339,7 @@
                     <h3 class="text-sm font-semibold text-[var(--text-primary)] mb-3">Recent Pending Invitations</h3>
                     <div class="space-y-2">
                         {% for invitation in pending_invitations %}
-                        <div class="flex items-center justify-between p-3 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg">
+                        <div class="flex items-center justify-between p-3 bg-[var(--container-bg)]  rounded-lg">
                             <div>
                                 <p class="text-sm font-medium text-[var(--text-primary)]">{{ invitation.invited_email }}</p>
                                 <p class="text-xs text-[var(--text-secondary)]">
@@ -349,7 +350,7 @@
                                 <span class="px-2 py-1 bg-yellow-100 text-yellow-700 rounded-full text-xs font-medium">
                                     Pending
                                 </span>
-                                <button type="button" onclick="openCancelInvitationModal({{ invitation.id }}, '{{ invitation.invited_email }}')" class="px-2 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded text-xs font-medium transition-colors" title="Cancel invitation">
+                                <button type="button" data-invitation-id="{{ invitation.id }}" data-invitation-email="{{ invitation.invited_email|escapejs }}" class="cancel-invitation-btn-settings px-2 py-1 bg-red-100 hover:bg-red-200 text-red-700 rounded text-xs font-medium transition-colors" title="Cancel invitation">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </div>
@@ -372,15 +373,16 @@
             </div>
         </div>
     </div>
+    </div>
 </div>
 </div>
 
 <!-- Cancel Invitation Modal -->
 {% if subscription_group %}
 <div id="cancelInvitationModal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
-    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl  max-w-md w-full mx-4 transform scale-95 transition-all duration-300">
         <!-- Modal Header -->
-        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+        <div class="flex items-center justify-between p-6">
             <div class="flex items-center space-x-3">
                 <div class="flex items-center justify-center w-10 h-10 bg-red-100 rounded-lg shadow-sm">
                     <i class="fas fa-exclamation-triangle text-red-600"></i>
@@ -406,8 +408,8 @@
         </div>
         
         <!-- Modal Footer -->
-        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
-            <button type="button" id="cancel-invitation-close" class="w-32 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+        <div class="flex items-center justify-end space-x-3 p-6 bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <button type="button" id="cancel-invitation-close" class="w-32 h-10 flex items-center justify-center text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
                 <i class="fas fa-times mr-2"></i>Cancel
             </button>
             <form method="POST" action="" id="cancel-invitation-form" class="inline">
@@ -460,6 +462,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeBtn = document.getElementById('close-cancel-invitation-modal');
     const cancelBtn = document.getElementById('cancel-invitation-close');
     const modal = document.getElementById('cancelInvitationModal');
+    
+    // Add event listeners for cancel invitation buttons in settings page
+    document.querySelectorAll('.cancel-invitation-btn-settings').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            const invitationId = this.getAttribute('data-invitation-id');
+            const email = this.getAttribute('data-invitation-email');
+            openCancelInvitationModal(parseInt(invitationId), email);
+        });
+    });
     
     if (closeBtn) {
         closeBtn.addEventListener('click', closeCancelInvitationModal);

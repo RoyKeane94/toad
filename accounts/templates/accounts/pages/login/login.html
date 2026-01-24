@@ -11,14 +11,14 @@
     
     /* Override layout padding for full-width design */
     #app {
-        padding: 0 !important;
+        padding: 0;
     }
     
     /* Make main take remaining height after navbar */
     main {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     
     /* Login specific styles */
@@ -52,11 +52,11 @@
 {% block content %}
 <div class="login-split">
     <!-- Login Form - Centered -->
-    <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
+    <div class="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8 py-8 bg-[var(--main-bg)]">
         <div class="max-w-md w-full space-y-8">
             <!-- Header -->
             <div class="text-center">
-                <h2 class="text-3xl font-bold text-[var(--primary-action-bg)]">
+                <h2 class="text-3xl font-bold text-green-600">
                     Welcome back
                 </h2>
                 <p class="mt-2 text-sm text-[var(--subtitle-text)]">
@@ -98,7 +98,7 @@
             </div>
 
             <!-- Login Form -->
-            <div class="bg-[var(--container-bg)] py-8 px-6 shadow-xl rounded-lg border border-[var(--border-color)]">
+            <div class="bg-[var(--container-bg)] py-8 px-6 shadow-sm rounded-lg border border-[var(--border-color)]">
                 <form method="post" class="space-y-6">
                     {% csrf_token %}
                     

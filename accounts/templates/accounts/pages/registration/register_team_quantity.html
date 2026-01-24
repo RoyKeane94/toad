@@ -7,14 +7,14 @@
 <style>
     /* Override layout padding for full-width design */
     #app {
-        padding: 0 !important;
+        padding: 0;
     }
     
     /* Make main take remaining height after navbar */
     main {
-        flex: 1 !important;
-        display: flex !important;
-        flex-direction: column !important;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
     }
     
     /* Quantity selection styles */
@@ -24,7 +24,7 @@
         align-items: center;
         min-height: 100vh;
         padding: 4rem 1rem;
-        background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);
+        background: var(--main-bg);
     }
     
     .quantity-card {
@@ -34,7 +34,7 @@
         border-radius: 12px;
         padding: 2rem;
         border: 1px solid var(--border-color);
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     }
     
     .quantity-input-group {
@@ -115,7 +115,7 @@
             <div class="mb-4">
                 <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-12 w-auto mx-auto">
             </div>
-            <h1 class="text-3xl font-bold text-[var(--primary-action-bg)] mb-2">
+            <h1 class="text-3xl font-bold text-green-600 mb-2">
                 Choose Your Team Size
             </h1>
         </div>
@@ -124,7 +124,7 @@
         <form method="POST" id="quantity-form">
             {% csrf_token %}
             <div class="quantity-input-group">
-                <button type="button" id="decrease-btn" class="quantity-btn" onclick="changeQuantity(-1)">-</button>
+                <button type="button" id="decrease-btn" class="quantity-btn">-</button>
                 <input 
                     type="number" 
                     id="quantity-input" 
@@ -134,9 +134,8 @@
                     min="2" 
                     max="1000" 
                     required
-                    onchange="updatePrice()"
                 >
-                <button type="button" id="increase-btn" class="quantity-btn" onclick="changeQuantity(1)">+</button>
+                <button type="button" id="increase-btn" class="quantity-btn">+</button>
             </div>
             
             <!-- Price Display -->
@@ -167,7 +166,7 @@ const PRICE_PER_SEAT = 5;
 function changeQuantity(delta) {
     const input = document.getElementById('quantity-input');
     const currentValue = parseInt(input.value) || 2;
-    const newValue = Math.max(2, Math.min(100, currentValue + delta));
+    const newValue = Math.max(2, Math.min(1000, currentValue + delta));
     input.value = newValue;
     updatePrice();
 }
@@ -183,11 +182,31 @@ function updatePrice() {
     
     // Update button states
     document.getElementById('decrease-btn').disabled = quantity <= 2;
-    document.getElementById('increase-btn').disabled = quantity >= 100;
+    document.getElementById('increase-btn').disabled = quantity >= 1000;
 }
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
+    const decreaseBtn = document.getElementById('decrease-btn');
+    const increaseBtn = document.getElementById('increase-btn');
+    const quantityInput = document.getElementById('quantity-input');
+    
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', function() {
+            changeQuantity(-1);
+        });
+    }
+    
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', function() {
+            changeQuantity(1);
+        });
+    }
+    
+    if (quantityInput) {
+        quantityInput.addEventListener('change', updatePrice);
+    }
+    
     updatePrice();
 });
 </script>
