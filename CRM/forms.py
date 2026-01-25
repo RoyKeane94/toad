@@ -453,6 +453,14 @@ class CompanyBulkSectorForm(forms.Form):
         empty_label="Select a sector",
         widget=forms.Select(attrs={'class': BASE_INPUT_CLASS})
     )
+    csv_file = forms.FileField(
+        required=False,
+        widget=forms.FileInput(attrs={
+            'class': BASE_INPUT_CLASS,
+            'accept': '.csv',
+        }),
+        help_text='Optional: Upload a CSV file with columns: company_name, contact_person, contact_email'
+    )
 
 
 class CompanyBulkForm(forms.Form):

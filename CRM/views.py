@@ -13,6 +13,8 @@ from .forms import (
     CompanyBulkSectorForm, CompanyBulkFormSet
 )
 from django.core.files.base import ContentFile
+import csv
+import io
 
 # Create your views here.
 
@@ -275,10 +277,54 @@ def company_bulk_upload_select_sector(request):
     Select sector for bulk upload.
     """
     if request.method == 'POST':
-        form = CompanyBulkSectorForm(request.POST)
+        form = CompanyBulkSectorForm(request.POST, request.FILES)
         if form.is_valid():
             sector_id = form.cleaned_data['company_sector'].pk
-            return redirect('crm:company_bulk_upload', sector_id=sector_id)
+            csv_file = form.cleaned_data.get('csv_file')
+            
+            if csv_file:
+                # Store CSV data in session for processing in next step
+                try:
+                    # Read CSV content
+                    csv_content = csv_file.read().decode('utf-8')
+                    csv_reader = csv.DictReader(io.StringIO(csv_content))
+                    
+                    # Parse CSV data
+                    csv_data = []
+                    for row in csv_reader:
+                        # Normalize column names (case-insensitive, handle spaces/underscores)
+                        normalized_row = {}
+                        for key, value in row.items():
+                            key_lower = key.lower().strip().replace(' ', '_').replace('-', '_')
+                            normalized_row[key_lower] = value.strip() if value else ''
+                        
+                        # Map to our form fields
+                        company_data = {
+                            'company_name': normalized_row.get('company_name', ''),
+                            'contact_person': normalized_row.get('contact_person', ''),
+                            'contact_email': normalized_row.get('contact_email', ''),
+                        }
+                        
+                        # Only add rows with at least a company name
+                        if company_data['company_name']:
+                            csv_data.append(company_data)
+                    
+                    if csv_data:
+                        # Store in session
+                        request.session['bulk_upload_csv_data'] = csv_data
+                        request.session['bulk_upload_sector_id'] = sector_id
+                        return redirect('crm:company_bulk_upload_csv_review', sector_id=sector_id)
+                    else:
+                        messages.error(request, 'CSV file is empty or contains no valid company names.')
+                except Exception as e:
+                    messages.error(request, f'Error reading CSV file: {str(e)}')
+                    return render(request, 'CRM/b2b/company_bulk_upload_select_sector.html', {
+                        'form': form,
+                        'title': 'Bulk Upload Companies - Select Sector',
+                    })
+            else:
+                # No CSV file, proceed to manual entry
+                return redirect('crm:company_bulk_upload', sector_id=sector_id)
     else:
         form = CompanyBulkSectorForm()
     
@@ -287,6 +333,79 @@ def company_bulk_upload_select_sector(request):
         'title': 'Bulk Upload Companies - Select Sector',
     }
     return render(request, 'CRM/b2b/company_bulk_upload_select_sector.html', context)
+
+@login_required
+@user_passes_test(is_superuser)
+def company_bulk_upload_csv_review(request, sector_id):
+    """
+    Review and confirm CSV data before bulk upload.
+    """
+    sector = get_object_or_404(CompanySector, pk=sector_id)
+    
+    # Get CSV data from session
+    csv_data = request.session.get('bulk_upload_csv_data')
+    session_sector_id = request.session.get('bulk_upload_sector_id')
+    
+    if not csv_data or session_sector_id != sector_id:
+        messages.error(request, 'CSV data not found. Please upload the CSV file again.')
+        return redirect('crm:company_bulk_upload_select_sector')
+    
+    if request.method == 'POST':
+        formset = CompanyBulkFormSet(request.POST)
+        if formset.is_valid():
+            created_count = 0
+            for form in formset:
+                if form.cleaned_data.get('company_name'):  # Only process non-empty forms
+                    company = Company.objects.create(
+                        company_name=form.cleaned_data['company_name'],
+                        status='Prospect',  # Default status as requested
+                        company_sector=sector,
+                        contact_person=form.cleaned_data.get('contact_person', ''),
+                        contact_email=form.cleaned_data.get('contact_email', '')
+                    )
+                    created_count += 1
+            
+            # Clear session data
+            if 'bulk_upload_csv_data' in request.session:
+                del request.session['bulk_upload_csv_data']
+            if 'bulk_upload_sector_id' in request.session:
+                del request.session['bulk_upload_sector_id']
+            
+            if created_count > 0:
+                messages.success(request, f'Successfully created {created_count} companies!')
+            else:
+                messages.warning(request, 'No companies were created. Please fill in at least one company name.')
+            return redirect('crm:company_list')
+    else:
+        # Pre-populate formset with CSV data
+        initial_data = []
+        for row in csv_data:
+            initial_data.append({
+                'company_name': row.get('company_name', ''),
+                'contact_person': row.get('contact_person', ''),
+                'contact_email': row.get('contact_email', ''),
+            })
+        
+        # Create formset with initial data and proper form count
+        from django.forms import formset_factory
+        from .forms import CompanyBulkForm
+        
+        # Create a custom formset factory with the right number of forms
+        CustomFormSet = formset_factory(
+            CompanyBulkForm,
+            extra=0,
+            min_num=len(initial_data),
+            can_delete=False
+        )
+        formset = CustomFormSet(initial=initial_data)
+    
+    context = {
+        'formset': formset,
+        'sector': sector,
+        'title': f'Bulk Upload Companies - {sector.name}',
+        'from_csv': True,
+    }
+    return render(request, 'CRM/b2b/company_bulk_upload.html', context)
 
 @login_required
 @user_passes_test(is_superuser)
@@ -323,6 +442,7 @@ def company_bulk_upload(request, sector_id):
         'formset': formset,
         'sector': sector,
         'title': f'Bulk Upload Companies - {sector.name}',
+        'from_csv': False,
     }
     return render(request, 'CRM/b2b/company_bulk_upload.html', context)
 

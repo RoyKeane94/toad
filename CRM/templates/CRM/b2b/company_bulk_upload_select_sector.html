@@ -27,7 +27,7 @@
     <!-- Main Content -->
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="bg-white rounded-lg shadow-sm border-2 border-[var(--border-color)] p-8">
-            <form method="post" class="space-y-8">
+            <form method="post" class="space-y-8" enctype="multipart/form-data">
                 {% csrf_token %}
                 
                 <!-- Company Sector Field -->
@@ -45,6 +45,24 @@
                     {% endif %}
                     <p class="mt-1 text-sm text-[var(--text-secondary)]">
                         Select a sector or <a href="{% url 'crm:company_sector_create' %}" class="text-[var(--primary-action-bg)] hover:underline" target="_blank">create a new one</a>
+                    </p>
+                </div>
+
+                <!-- CSV Upload Field -->
+                <div>
+                    <label for="{{ form.csv_file.id_for_label }}" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+                        CSV File (Optional)
+                    </label>
+                    {{ form.csv_file }}
+                    {% if form.csv_file.errors %}
+                    <div class="mt-1 text-sm text-[var(--delete-button-bg)]">
+                        {% for error in form.csv_file.errors %}
+                        <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <p class="mt-1 text-sm text-[var(--text-secondary)]">
+                        Upload a CSV file with columns: <code class="bg-[var(--bg-secondary)] px-1 py-0.5 rounded">company_name</code>, <code class="bg-[var(--bg-secondary)] px-1 py-0.5 rounded">contact_person</code>, <code class="bg-[var(--bg-secondary)] px-1 py-0.5 rounded">contact_email</code>. If no CSV is provided, you can enter companies manually.
                     </p>
                 </div>
 

@@ -18,6 +18,7 @@ urlpatterns = [
     path('b2b/companies/<int:pk>/delete/', views.company_delete, name='company_delete'),
     path('b2b/companies/bulk-upload/', views.company_bulk_upload_select_sector, name='company_bulk_upload_select_sector'),
     path('b2b/companies/bulk-upload/<int:sector_id>/', views.company_bulk_upload, name='company_bulk_upload'),
+    path('b2b/companies/bulk-upload/<int:sector_id>/csv-review/', views.company_bulk_upload_csv_review, name='company_bulk_upload_csv_review'),
     path('b2b/sectors/create/', views.company_sector_create, name='company_sector_create'),
     path('b2b/email-templates/', views.email_template_list, name='email_template_list'),
     path('b2b/email-templates/create/', views.email_template_create, name='email_template_create'),

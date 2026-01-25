@@ -33,6 +33,12 @@
                     <div>
                         <p class="text-sm text-[var(--text-secondary)]">Sector:</p>
                         <p class="text-lg font-semibold text-[var(--text-primary)]">{{ sector.name }}</p>
+                        {% if from_csv %}
+                        <p class="mt-2 text-sm text-[var(--primary-action-bg)]">
+                            <i class="fas fa-file-csv mr-1"></i>
+                            Data loaded from CSV file. Review and confirm below.
+                        </p>
+                        {% endif %}
                     </div>
                     <a href="{% url 'crm:company_bulk_upload_select_sector' %}" class="text-sm text-[var(--primary-action-bg)] hover:underline">
                         Change Sector
@@ -104,12 +110,14 @@
                 </div>
 
                 <!-- Add More Companies Button -->
+                {% if not from_csv %}
                 <div class="mt-4">
                     <button type="button" id="add-company-form" class="inline-flex items-center px-4 py-2 border-2 border-[var(--primary-action-bg)] rounded-lg shadow-sm text-sm font-medium text-[var(--primary-action-bg)] bg-white hover:bg-[var(--bg-secondary)] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-action-bg)]">
                         <i class="fas fa-plus mr-2"></i>
                         Add 10 More Companies
                     </button>
                 </div>
+                {% endif %}
 
                 {% if formset.non_form_errors %}
                 <div class="bg-red-50 border border-red-200 rounded-lg p-4">
