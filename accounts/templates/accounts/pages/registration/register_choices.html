@@ -30,7 +30,7 @@
     .pricing-cards {
         display: flex;
         gap: 2rem;
-        max-width: 1200px;
+        max-width: 500px;
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
@@ -39,7 +39,7 @@
     .pricing-card {
         flex: 1;
         min-width: 300px;
-        max-width: 350px;
+        max-width: 450px;
         background: var(--container-bg);
         border-radius: 12px;
         padding: 2rem;
@@ -48,32 +48,6 @@
         transition: all 0.2s ease-out;
         display: flex;
         flex-direction: column;
-    }
-    
-    .pricing-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    }
-    
-    .pricing-card.popular {
-        border: 2px solid var(--primary-action-bg);
-        background: white;
-        transform: translateY(-16px);
-    }
-    
-    .popular-badge {
-        position: absolute;
-        top: -12px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--primary-action-bg);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
     }
     
     .pricing-title {
@@ -92,19 +66,64 @@
     .pricing-amount {
         font-size: 3rem;
         font-weight: 700;
-        color: var(--text-primary);
-        margin-bottom: 0.25rem;
+        color: #10b981;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
     }
     
-    .pricing-period {
+    .pricing-amount .period {
+        font-size: 1.25rem;
+        font-weight: 400;
         color: var(--text-secondary);
-        margin-bottom: 2rem;
+    }
+    
+    .signup-options {
+        margin-top: 1rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--border-color);
+    }
+    
+    .signup-options-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: #10b981;
+        margin-bottom: 1rem;
+        text-align: center;
+    }
+    
+    .signup-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .signup-button {
+        width: 100%;
+        padding: 0.75rem 1.5rem;
+        border-radius: 8px;
+        font-weight: 500;
+        text-decoration: none;
+        text-align: center;
+        display: inline-block;
+        transition: all 0.2s ease-out;
+        border: 2px solid var(--border-color);
+        background: white;
+        color: var(--text-primary);
+        cursor: pointer;
+    }
+    
+    .signup-button:hover {
+        background: #10b981;
+        border-color: #10b981;
+        color: white;
     }
     
     .pricing-features {
         list-style: none;
         padding: 0;
-        margin: 0 0 2rem 0;
+        margin: 0 0 1rem 0;
     }
     
     .pricing-features li {
@@ -133,27 +152,6 @@
         border: none;
         cursor: pointer;
         margin-top: auto;
-    }
-    
-    .pricing-button.free {
-        background: white;
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
-    }
-    
-    .pricing-button.free:hover {
-        background: var(--grid-header-bg);
-        color: var(--text-primary);
-    }
-    
-    .pricing-button.personal {
-        background: var(--primary-action-bg);
-        color: white;
-    }
-    
-    .pricing-button.personal:hover {
-        background: var(--primary-action-hover-bg);
-        color: white;
     }
     
     .pricing-button.pro {
@@ -204,118 +202,50 @@
             <img src="{% static 'img/logo/toad_logo.png' %}" alt="Toad Logo" class="h-16 w-auto mx-auto">
         </div>
         <h1 class="text-4xl font-bold text-green-600 mb-4">
-            Our pricing is as simple as our product
+            We keep everything simple
         </h1>
         <p class="text-lg text-[var(--text-secondary)] max-w-2xl mx-auto">
-            No complex tiers, no hidden fees. Just a clear, honest price for a tool that brings you clarity.
+            No complex tiers, no hidden fees. Just one clear, honest price.
         </p>
     </div>
     
     <!-- Pricing Cards -->
     <div class="pricing-cards">
-        <!-- Free Plan -->
+        <!-- Pricing Plan -->
         <div class="pricing-card">
-            <h3 class="pricing-title">Free</h3>
-            <p class="pricing-description">
-                The perfect place to start. Organise your most important projects and see what clarity feels like
-            </p>
-            <div class="pricing-amount">Free</div>
-            <div class="pricing-period">forever</div>
+            <div class="pricing-amount">£5<span class="period">/ month</span></div>
             
             <ul class="pricing-features">
                 <li>
                     <i class="fas fa-check"></i>
-                    Manage up to 2 active grids
+                    Unlimited grids, projects and tasks
                 </li>
                 <li>
                     <i class="fas fa-check"></i>
-                    Create unlimited tasks
+                    Create, save and share templates
                 </li>
                 <li>
                     <i class="fas fa-check"></i>
-                    Use any of our pre-built templates
+                    Archive grids
+                </li>
+                <li>
+                    <i class="fas fa-check"></i>
+                    Work solo or collaborate
                 </li>
             </ul>
             
-            <a href="{% url 'accounts:register_free' %}" class="pricing-button free">
-                Get Started for Free
-            </a>
-        </div>
-        
-        <!-- Pro Plan -->
-        <div class="pricing-card popular">
-            <div class="popular-badge">Most Popular</div>
-            <h3 class="pricing-title">Team</h3>
-            <p class="pricing-description">
-                For collaborating with your team. Simple, shared clarity without any unnecesarry noise
-            </p>
-            <div class="pricing-amount">£5</div>
-            <div class="pricing-period">/ month</div>
-            
-            <ul class="pricing-features">
-                <li>
-                    <i class="fas fa-check"></i>
-                    Everything in Personal, plus...
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Unlimited shared grids
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Access to Team Toad, our premium collaboration tool
-                </li>
-            </ul>
-            
-            <div class="space-y-2">
-                <a href="{% url 'accounts:register_pro' %}" class="pricing-button pro">
-                    Start Team Plan (1 user)
-                </a>
-                <a href="{% url 'accounts:register_team_quantity' %}" class="pricing-button team-multiple">
-                    Start Team Plan<br>(Multiple users)
-                </a>
+            <div class="signup-options">
+                <h4 class="signup-options-title">Who's signing up?</h4>
+                <div class="signup-buttons">
+                    <a href="{% url 'accounts:register_pro' %}" class="signup-button">
+                        Just me
+                    </a>
+                    <a href="{% url 'accounts:register_team_quantity' %}" class="signup-button">
+                        Me and my team
+                    </a>
+                </div>
             </div>
         </div>
-        
-        <!-- Personal Plan -->
-        <div class="pricing-card">
-            <h3 class="pricing-title">Personal</h3>
-            <p class="pricing-description">
-                For when Toad becomes your go-to. Get more space and unlock power features to build your perfect system
-            </p>
-            <div class="pricing-amount">£2</div>
-            <div class="pricing-period">/ month</div>
-            
-            <ul class="pricing-features">
-                <li>
-                    <i class="fas fa-check"></i>
-                    Manage up to 10 active grids
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Save time by creating custom templates
-                </li>
-                <li>
-                    <i class="fas fa-check"></i>
-                    Stay focused by archiving completed tasks
-                </li>
-            </ul>
-            
-            <a href="{% url 'accounts:register_personal' %}" class="pricing-button personal">
-                Start Personal
-            </a>
-        </div>
-    </div>
-    
-    <!-- Compare Plans Button -->
-    <div class="text-center mt-12">
-        <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
-            Find the best Toad plan for you
-        </h2>
-        <a href="{% url 'pages:pro_comparison' %}" 
-           class="inline-block px-6 py-3 rounded-lg font-medium transition-all duration-200 cursor-pointer text-gray-900 bg-white border border-gray-300 text-center hover:bg-gray-50">
-            Compare all plans
-        </a>
     </div>
 </div>
 {% endblock %}
