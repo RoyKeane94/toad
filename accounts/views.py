@@ -1134,6 +1134,12 @@ class RegisterProView(FormView):
     template_name = 'accounts/pages/registration/register_pro.html'
     form_class = CustomUserCreationForm
     
+    def get(self, request, *args, **kwargs):
+        """Redirect to Stripe checkout if user is already logged in"""
+        if request.user.is_authenticated:
+            return redirect('accounts:stripe_checkout_pro_direct')
+        return super().get(request, *args, **kwargs)
+    
     def form_valid(self, form):
         """Create the user and redirect to Stripe checkout"""
         import logging
@@ -1161,7 +1167,7 @@ class RegisterProView(FormView):
             # Redirect to Stripe checkout for Pro plan
             logger.info("Redirecting to Stripe checkout...")
             messages.success(self.request, 'Account created successfully! Please complete your subscription to activate Pro features.')
-            return redirect('accounts:stripe_checkout_pro')
+            return redirect('accounts:stripe_checkout_pro_direct')
             
         except Exception as e:
             logger.error(f"Error in RegisterProView.form_valid: {e}", exc_info=True)

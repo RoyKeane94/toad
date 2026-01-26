@@ -682,6 +682,65 @@ def stripe_checkout_pro_view(request):
         return HttpResponse(f"Error loading checkout page: {str(e)}", status=500)
 
 @login_required
+def stripe_checkout_pro_direct_view(request):
+    """
+    Create Stripe checkout session immediately and redirect to Stripe hosted checkout
+    """
+    logger.info(f"Direct Stripe Pro checkout accessed by user: {request.user.email}")
+    
+    try:
+        # Check if Stripe is configured
+        if not stripe.api_key:
+            logger.error("Stripe API key not configured")
+            messages.error(request, 'Payment system is not configured. Please contact support.')
+            return redirect('pages:project_list')
+        
+        # Get the price ID (Pro plan price)
+        price_id = PRO_PRICE_ID
+        
+        # Get the price from Stripe
+        try:
+            price = stripe.Price.retrieve(price_id, expand=['product'])
+        except stripe.error.InvalidRequestError:
+            messages.error(request, 'Subscription plan not found. Please contact support.')
+            return redirect('accounts:stripe_checkout_pro')
+        
+        # Create checkout session
+        checkout_session_params = {
+            'line_items': [
+                {
+                    'price': price.id,
+                    'quantity': 1,
+                },
+            ],
+            'mode': 'subscription',
+            'success_url': request.build_absolute_uri(reverse('accounts:stripe_success_pro')) + '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url': request.build_absolute_uri(reverse('accounts:register_choices')),
+            'customer_email': request.user.email,  # Pre-fill email
+            'allow_promotion_codes': True,  # Enable promo codes in Stripe checkout
+            'metadata': {
+                'user_id': str(request.user.id),
+                'user_email': request.user.email,
+                'plan_type': 'pro',
+            }
+        }
+        
+        logger.info(f"Creating checkout session with allow_promotion_codes={checkout_session_params.get('allow_promotion_codes')}")
+        checkout_session = stripe.checkout.Session.create(**checkout_session_params)
+        logger.info(f"Checkout session created: {checkout_session.id}")
+        
+        return redirect(checkout_session.url, code=303)
+        
+    except stripe.error.StripeError as e:
+        logger.error(f"Stripe error in stripe_checkout_pro_direct_view: {e}")
+        messages.error(request, 'There was an error processing your payment. Please try again.')
+        return redirect('accounts:stripe_checkout_pro')
+    except Exception as e:
+        logger.error(f"Unexpected error in stripe_checkout_pro_direct_view: {e}", exc_info=True)
+        messages.error(request, 'An unexpected error occurred. Please contact support.')
+        return redirect('accounts:stripe_checkout_pro')
+
+@login_required
 @csrf_exempt
 def validate_promo_code(request):
     """
