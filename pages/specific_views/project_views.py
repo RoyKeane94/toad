@@ -316,6 +316,32 @@ def project_grid_view(request, pk):
         # --- Desktop-specific data processing ---
         row_headers, category_column, data_column_headers, tasks_by_cell, row_min_heights = process_grid_data_optimized(project)
         
+        # Tasks that have reminders set, used for the "Show Reminders" modal
+        # Calculate days until for each task
+        from django.utils import timezone
+        from datetime import timedelta
+        reminder_tasks_queryset = Task.objects.filter(
+            project=project,
+            reminder__isnull=False
+        ).select_related('assigned_to').order_by('reminder', 'row_header__order', 'column_header__order', 'order')
+        
+        # Add days_until to each task
+        now = timezone.now()
+        reminder_tasks_with_days = []
+        for task in reminder_tasks_queryset:
+            if task.reminder:
+                # Calculate days difference
+                reminder_date = task.reminder.date() if hasattr(task.reminder, 'date') else task.reminder
+                today = now.date()
+                days_diff = (reminder_date - today).days
+                task.days_until = days_diff
+                # Add display value for days ago (absolute value)
+                task.days_ago = abs(days_diff) if days_diff < 0 else None
+            else:
+                task.days_until = None
+                task.days_ago = None
+            reminder_tasks_with_days.append(task)
+        
         context = {
             'project': project,
             'row_headers': row_headers,
@@ -326,6 +352,7 @@ def project_grid_view(request, pk):
             'quick_task_form': QuickTaskForm(),
             'total_data_columns': len(data_column_headers),
             'user_tier': getattr(request.user, 'tier', 'free'),
+            'reminder_tasks': reminder_tasks_with_days,
         }
         template_name = 'pages/grid/project_grid.html'
         if request.headers.get('HX-Request'):

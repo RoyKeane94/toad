@@ -754,6 +754,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         </button>
                         {% endif %}
                         
+                        <!-- Show Reminders -->
+                        <button type="button"
+                                class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                                onclick="closeAllDropdowns(); showRemindersModal();">
+                            <i class="fas fa-bell text-xs w-4 text-center text-[var(--tertiary-action-bg)]"></i>
+                            <span>Show Reminders</span>
+                        </button>
+                        
                         <!-- Divider -->
                         <div class="border-t border-[var(--border-color)] my-2"></div>
                         
@@ -925,6 +933,99 @@ document.addEventListener('DOMContentLoaded', function() {
                 </button>
             </div>
         </form>
+    </div>
+</div>
+
+<!-- Reminders Overview Modal -->
+<div id="reminders-modal" class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
+    <div class="bg-[var(--container-bg)] rounded-xl shadow-2xl border border-[var(--border-color)] w-[80%] mx-4 transform scale-95 transition-all duration-300">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-6 border-b border-[var(--border-color)]">
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--task-bg)]">
+                    <i class="fas fa-bell text-[var(--primary-action-bg)]"></i>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold text-[var(--text-primary)]">Reminders</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="p-6 max-h-[60vh] overflow-y-auto">
+            {% if reminder_tasks %}
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-[var(--border-color)]">
+                    <thead class="bg-[var(--grid-header-bg)]">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                Task
+                            </th>
+                            <th class="px-4 py-3 text-center text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                Owner
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                Date
+                            </th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-[var(--text-secondary)] uppercase tracking-wider">
+                                Due
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-[var(--container-bg)] divide-y divide-[var(--border-color)]">
+                        {% for task in reminder_tasks %}
+                        <tr>
+                            <td class="px-4 py-3 text-sm font-bold text-[var(--text-primary)] align-top">
+                                {{ task.text }}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-[var(--text-secondary)] align-top text-center opacity-70">
+                                {% if task.assigned_to %}
+                                    <div class="flex items-center justify-center">
+                                        <div class="assignee-avatar" 
+                                             style="width: 24px; height: 24px; border-radius: 50%; background-color: {{ task.assigned_to.pk|get_avatar_color }}; color: white; font-weight: 600; font-size: 10px; display: flex; align-items: center; justify-content: center;"
+                                             title="{{ task.assigned_to.get_full_name }}">
+                                            {{ task.assigned_to.get_full_name|get_smart_initials:project.team_toad_user.all }}
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-[var(--text-primary)] align-top opacity-70">
+                                {{ task.get_reminder_date_display|default:"-" }}
+                            </td>
+                            <td class="px-4 py-3 text-sm text-[var(--text-primary)] align-top opacity-70">
+                                {% if task.days_until is not None %}
+                                    {% if task.days_until < 0 %}
+                                        <span class="text-red-600">{{ task.days_ago }} days ago</span>
+                                    {% elif task.days_until == 0 %}
+                                        <span class="text-orange-600">Today</span>
+                                    {% else %}
+                                        {{ task.days_until }} day{{ task.days_until|pluralize }}
+                                    {% endif %}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-sm text-[var(--text-secondary)]">
+                There are no reminders set on this grid yet.
+            </p>
+            {% endif %}
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="flex items-center justify-end space-x-3 p-6 border-t border-[var(--border-color)] bg-[var(--grid-header-bg)]/30 rounded-b-xl">
+            <button type="button" 
+                    id="close-reminders-footer"
+                    onclick="typeof hideRemindersModal === 'function' && hideRemindersModal();"
+                    class="px-4 h-10 flex items-center justify-center border border-[var(--border-color)] text-[var(--text-secondary)] rounded-lg hover:bg-[var(--container-bg)] hover:text-[var(--text-primary)] transition-all duration-200 font-medium cursor-pointer">
+                Close
+            </button>
+        </div>
     </div>
 </div>
 
@@ -2187,7 +2288,44 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
+// Reminders overview modal functionality
+window.showRemindersModal = function() {
+    const modal = document.getElementById('reminders-modal');
+    if (!modal) return;
+    modal.classList.remove('opacity-0', 'invisible');
+    const content = modal.querySelector('div');
+    if (content) {
+        content.classList.remove('scale-95');
+        content.classList.add('scale-100');
+    }
+};
+
+window.hideRemindersModal = function() {
+    const modal = document.getElementById('reminders-modal');
+    if (!modal) return;
+    const content = modal.querySelector('div');
+    if (content) {
+        content.classList.add('scale-95');
+        content.classList.remove('scale-100');
+    }
+    modal.classList.add('opacity-0', 'invisible');
+};
+
+    // Reminders modal event listeners (same DOMContentLoaded as calendar modal above)
+    const remindersModal = document.getElementById('reminders-modal');
+    const closeRemindersFooter = document.getElementById('close-reminders-footer');
+    if (closeRemindersFooter) {
+        closeRemindersFooter.addEventListener('click', hideRemindersModal);
+    }
+    if (remindersModal) {
+        remindersModal.addEventListener('click', function(e) {
+            if (e.target === remindersModal) {
+                hideRemindersModal();
+            }
+        });
+    }
+
     // Clear Completed modal event listeners
     const closeClearCompletedModal = document.getElementById('close-clear-completed-modal');
     const cancelClearCompleted = document.getElementById('cancel-clear-completed');
