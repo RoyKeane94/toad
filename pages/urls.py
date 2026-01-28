@@ -69,6 +69,7 @@ urlpatterns = [
     path('grids/create/', views.project_create_view, name='project_create'),
 
     path('grids/<int:pk>/', views.project_grid_view, name='project_grid'),
+    path('grids/<int:pk>/reminders/', views.project_reminders_partial_view, name='project_reminders_partial'),
     path('grids/<int:pk>/edit/', views.project_edit_view, name='project_edit'),
     path('grids/<int:pk>/delete/', views.project_delete_view, name='project_delete'),
     path('grids/<int:pk>/clear-completed/', views.delete_completed_tasks_view, name='delete_completed_tasks'),

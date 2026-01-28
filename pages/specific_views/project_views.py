@@ -915,6 +915,46 @@ def create_task_reminder(request, task_pk):
         except Exception as e:
             logger.error(f"Error creating task reminder for task {task_pk}: {e}")
             return JsonResponse({'success': False, 'error': 'Failed to create reminder'}, status=500)
+
+
+@login_required
+def project_reminders_partial_view(request, pk):
+    """
+    Returns the reminders table HTML for a project (used to refresh the Show Reminders modal without a full page reload).
+    """
+    from django.utils import timezone
+
+    project = get_user_project_optimized(
+        pk,
+        request.user,
+        select_related=['user'],
+        prefetch_related=['team_toad_user'],
+    )
+
+    reminder_tasks_queryset = Task.objects.filter(
+        project=project,
+        reminder__isnull=False
+    ).select_related('assigned_to').order_by('reminder', 'row_header__order', 'column_header__order', 'order')
+
+    now = timezone.now()
+    today = now.date()
+    reminder_tasks_with_days = []
+
+    for task in reminder_tasks_queryset:
+        if task.reminder:
+            reminder_date = task.reminder.date() if hasattr(task.reminder, 'date') else task.reminder
+            days_diff = (reminder_date - today).days
+            task.days_until = days_diff
+            task.days_ago = abs(days_diff) if days_diff < 0 else None
+        else:
+            task.days_until = None
+            task.days_ago = None
+        reminder_tasks_with_days.append(task)
+
+    return render(request, 'pages/grid/partials/reminders_table.html', {
+        'project': project,
+        'reminder_tasks': reminder_tasks_with_days,
+    })
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
