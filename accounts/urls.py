@@ -42,7 +42,8 @@ from .views import (
     transfer_team_admin_view,
     cancel_team_invitation_view,
     accept_team_invitation_view,
-    trial_not_eligible_view
+    trial_not_eligible_view,
+    start_team_trial_view
 )
 from .passwordless_views import RequestLoginCodeView, VerifyLoginCodeView
 
@@ -88,6 +89,7 @@ urlpatterns = [
     path('register/trial-3-month/', Register3MonthTrialView.as_view(), name='register_3_month_trial'),
     path('register/trial-1-month-pro/', Register1MonthProTrialView.as_view(), name='register_1_month_pro_trial'),
     path('register/trial-not-eligible/', trial_not_eligible_view, name='trial_not_eligible'),
+    path('start-team-trial/', start_team_trial_view, name='start_team_trial'),
     path('register/trial-3-month-pro/', Register3MonthProTrialView.as_view(), name='register_3_month_pro_trial'),
     path('register/trial-6-month-pro/', Register6MonthProTrialView.as_view(), name='register_6_month_pro_trial'),
     path('register/team-trial/quantity/', RegisterTeamTrialQuantityView.as_view(), name='register_team_trial_quantity'),

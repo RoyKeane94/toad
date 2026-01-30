@@ -380,13 +380,30 @@ class TeamInvitation(models.Model):
         # Add user to the subscription group
         if self.invited_user:
             self.subscription_group.members.add(self.invited_user)
-            # Set user tier to pro and verify their email
-            # (clicking invitation link acts as email verification)
-            self.invited_user.tier = 'pro'
+            # Verify email (clicking invitation link acts as verification)
             self.invited_user.email_verified = True
             self.invited_user.email_verification_token = None
             self.invited_user.email_verification_sent_at = None
-            self.invited_user.save(update_fields=['tier', 'email_verified', 'email_verification_token', 'email_verification_sent_at'])
+
+            admin = self.subscription_group.admin
+            is_trial = self.subscription_group.stripe_subscription_id is None
+
+            if is_trial:
+                # Team is on trial: put invited user on the same trial period
+                self.invited_user.tier = 'pro_trial'
+                self.invited_user.trial_type = admin.trial_type
+                self.invited_user.trial_started_at = admin.trial_started_at
+                self.invited_user.trial_ends_at = admin.trial_ends_at
+                self.invited_user.save(update_fields=[
+                    'tier', 'trial_type', 'trial_started_at', 'trial_ends_at',
+                    'email_verified', 'email_verification_token', 'email_verification_sent_at'
+                ])
+            else:
+                # Paid subscription: set tier to pro
+                self.invited_user.tier = 'pro'
+                self.invited_user.save(update_fields=[
+                    'tier', 'email_verified', 'email_verification_token', 'email_verification_sent_at'
+                ])
         
         # Update invitation status
         from django.utils import timezone
