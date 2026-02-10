@@ -8,6 +8,7 @@ Email Sequence (Production):
 - Email 2: First follow-up (4 days after Email 1)
 - Email 3: Second follow-up (5 days after Email 2)
 - Email 4: Final follow-up (10 days after Email 3)
+- Auto-update: 7 days after Email 4, company status set to "No response" if no reply
 
 Emails are only sent on Tuesday, Wednesday, and Thursday.
 If the scheduled date falls on Fri/Sat/Sun/Mon, it will be sent on the next Tuesday.
@@ -217,6 +218,17 @@ class Command(BaseCommand):
             all_companies = all_companies[:limit]
             self.stdout.write(f'\nLimit applied: Processing {len(all_companies)} of {total_eligible}')
         
+        # Check for companies to mark as "No response" (7 days after 4th email)
+        self.stdout.write('\n' + '=' * 60)
+        self.stdout.write('CHECKING FOR NO RESPONSE COMPANIES')
+        self.stdout.write('=' * 60)
+        
+        no_response_count = self.update_no_response_companies(dry_run, today)
+        if no_response_count > 0:
+            self.stdout.write(self.style.SUCCESS(f'✓ Updated {no_response_count} companies to "No response" status'))
+        else:
+            self.stdout.write('No companies to update')
+        
         # Process and send emails
         success_count = 0
         error_count = 0
@@ -236,9 +248,9 @@ class Command(BaseCommand):
         self.stdout.write('\n' + '=' * 60)
         self.stdout.write('SUMMARY')
         self.stdout.write('=' * 60)
-        self.stdout.write(f'Total processed: {len(all_companies)}')
-        self.stdout.write(f'Successful: {success_count}')
+        self.stdout.write(f'Emails sent: {success_count}')
         self.stdout.write(f'Failed: {error_count}')
+        self.stdout.write(f'Companies marked "No response": {no_response_count}')
         self.stdout.write('=' * 60 + '\n')
 
     def get_next_email_to_send(self, company, today):
@@ -577,6 +589,48 @@ On {date_str}, {sender_email} wrote:
         update_fields.append('email_failed_date')
         
         company.save(update_fields=update_fields)
+
+    def update_no_response_companies(self, dry_run, today):
+        """
+        Find companies where the 4th email was sent 7+ days ago and they haven't responded.
+        Update their status to "No response".
+        Returns count of companies updated.
+        """
+        from CRM.models import Company
+        
+        # Calculate the cutoff date (7 days ago)
+        cutoff_date = today - timedelta(days=7)
+        
+        # Find companies where:
+        # 1. Fourth email was sent at least 7 days ago
+        # 2. They haven't responded (initial_email_response is False)
+        # 3. Status is not already "No response", "Rejected", or "Customer"
+        companies_to_update = Company.objects.filter(
+            fourth_email_sent_date__lte=cutoff_date,
+            initial_email_response=False,
+        ).exclude(
+            status__in=['No response', 'Rejected', 'Customer']
+        )
+        
+        count = companies_to_update.count()
+        
+        if count == 0:
+            return 0
+        
+        self.stdout.write(f'\nFound {count} companies to mark as "No response":')
+        
+        for company in companies_to_update:
+            days_since = (today - company.fourth_email_sent_date).days
+            self.stdout.write(f'  - {company.company_name} (4th email sent {days_since} days ago)')
+            
+            if not dry_run:
+                company.status = 'No response'
+                company.save(update_fields=['status'])
+        
+        if dry_run:
+            self.stdout.write(self.style.WARNING(f'\n  Would update {count} companies (dry run)'))
+        
+        return count
 
     def send_test_email(self, test_email, dry_run):
         """
