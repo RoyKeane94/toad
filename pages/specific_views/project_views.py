@@ -2862,15 +2862,15 @@ def project_export_excel_view(request, pk):
     )
     
     # Build grid structure
-    # First row: empty cell + column headers (skip first two columns)
+    # First row: empty cell + column headers (skip first column only)
     ws.cell(row=1, column=1, value="")
     ws.cell(row=1, column=1).fill = header_fill
     ws.cell(row=1, column=1).border = border
     
     col_idx = 2
     columns_list = list(columns)
-    # Skip the first two columns (including Time/Category)
-    for col in columns_list[2:]:
+    # Skip the first column only
+    for col in columns_list[1:]:
         cell = ws.cell(row=1, column=col_idx, value=col.name)
         cell.fill = header_fill
         cell.font = header_font
@@ -2899,9 +2899,9 @@ def project_export_excel_view(request, pk):
         cell.border = border
         cell.fill = PatternFill(start_color="F9FAFB", end_color="F9FAFB", fill_type="solid")
         
-        # Tasks for each column (skip first two columns)
+        # Tasks for each column (skip first column only)
         col_idx = 2
-        for col in columns_list[2:]:
+        for col in columns_list[1:]:
             task_texts = task_grid[row.id][col.id]
             task_value = "\n".join(task_texts) if task_texts else ""
             
