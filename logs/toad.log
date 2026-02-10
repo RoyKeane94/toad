@@ -2982,3 +2982,207 @@ INFO 2026-02-10 20:58:56,513 autoreload 56035 8412226112 Watching for file chang
 INFO 2026-02-10 20:59:37,964 autoreload 56035 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/accounts/urls.py changed, reloading.
 INFO 2026-02-10 20:59:38,465 autoreload 56057 8412226112 Watching for file changes with StatReloader
 INFO 2026-02-10 20:59:47,111 basehttp 56057 6204190720 "GET /grids/342/ HTTP/1.1" 200 37977
+INFO 2026-02-10 21:33:39,442 autoreload 58849 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 21:33:40,727 basehttp 58849 6129250304 "GET /grids/341/ HTTP/1.1" 200 23272
+INFO 2026-02-10 21:33:40,747 basehttp 58849 6129250304 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 21:33:40,747 basehttp 58849 6146076672 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2026-02-10 21:33:40,748 basehttp 58849 6162903040 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2026-02-10 21:33:44,384 basehttp 58849 6129250304 "GET /grids/341/delete/ HTTP/1.1" 200 1153
+INFO 2026-02-10 21:33:45,274 basehttp 58849 6129250304 "POST /grids/341/delete/ HTTP/1.1" 302 0
+INFO 2026-02-10 21:33:45,302 basehttp 58849 6129250304 "GET /grids/ HTTP/1.1" 200 16611
+INFO 2026-02-10 21:33:51,596 basehttp 58849 6129250304 "GET /grids/342/ HTTP/1.1" 200 37919
+INFO 2026-02-10 21:33:53,999 basehttp 58849 6129250304 "GET /grids/342/archive/confirm/ HTTP/1.1" 200 889
+INFO 2026-02-10 21:33:54,995 basehttp 58849 6129250304 "POST /grids/342/archive/ HTTP/1.1" 302 0
+INFO 2026-02-10 21:33:55,022 basehttp 58849 6129250304 "GET /grids/ HTTP/1.1" 200 16613
+INFO 2026-02-10 21:34:08,961 basehttp 58849 6129250304 "GET /grids/create/ HTTP/1.1" 200 3237
+INFO 2026-02-10 21:34:13,058 project_views_functions 58849 6129250304 User None created project: Project Lincoln
+INFO 2026-02-10 21:34:13,059 basehttp 58849 6129250304 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2026-02-10 21:34:13,074 basehttp 58849 6129250304 "GET /grids/344/ HTTP/1.1" 200 23241
+INFO 2026-02-10 21:42:52,225 basehttp 58849 6129250304 "POST /grids/344/columns/1234/edit/ HTTP/1.1" 200 133
+INFO 2026-02-10 21:43:00,482 basehttp 58849 6129250304 "GET /grids/344/columns/create/ HTTP/1.1" 200 1051
+INFO 2026-02-10 21:43:07,398 basehttp 58849 6129250304 "POST /grids/344/columns/create/ HTTP/1.1" 204 0
+INFO 2026-02-10 21:43:07,462 basehttp 58849 6146076672 "GET /grids/344/ HTTP/1.1" 200 23641
+INFO 2026-02-10 21:43:07,463 basehttp 58849 6129250304 - Broken pipe from ('127.0.0.1', 62706)
+INFO 2026-02-10 21:43:07,463 basehttp 58849 6146076672 - Broken pipe from ('127.0.0.1', 62710)
+INFO 2026-02-10 21:43:07,465 basehttp 58849 6162903040 "GET /grids/344/ HTTP/1.1" 200 23642
+INFO 2026-02-10 21:43:13,238 basehttp 58849 6162903040 "GET /grids/344/columns/create/ HTTP/1.1" 200 977
+INFO 2026-02-10 21:43:18,045 basehttp 58849 6162903040 "POST /grids/344/columns/create/ HTTP/1.1" 204 0
+INFO 2026-02-10 21:43:18,115 basehttp 58849 6146076672 "GET /grids/344/ HTTP/1.1" 200 23948
+INFO 2026-02-10 21:43:18,115 basehttp 58849 6129250304 - Broken pipe from ('127.0.0.1', 62714)
+INFO 2026-02-10 21:43:18,119 basehttp 58849 6162903040 - Broken pipe from ('127.0.0.1', 62711)
+INFO 2026-02-10 21:43:30,919 basehttp 58849 6146076672 "POST /grids/344/rows/1170/edit/ HTTP/1.1" 200 112
+INFO 2026-02-10 21:43:38,793 basehttp 58849 6146076672 "POST /grids/344/rows/1171/edit/ HTTP/1.1" 200 128
+INFO 2026-02-10 21:43:49,554 basehttp 58849 6146076672 "POST /grids/344/rows/1172/edit/ HTTP/1.1" 200 110
+INFO 2026-02-10 21:44:04,960 project_views 58849 6129250304 Task edit view called - Task PK: 3970, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:44:04,964 project_views 58849 6129250304 Task edit JSON request - Task ID: 3970, New text length: 24, New text preview: 'Log pipeline opportunity...'
+INFO 2026-02-10 21:44:04,967 project_views 58849 6129250304 Task 3970 save() completed successfully
+INFO 2026-02-10 21:44:04,968 project_views 58849 6129250304 Task 3970 refreshed from DB - Saved text: 'Log pipeline opportunity...' (length: 24), Matches intended: True
+INFO 2026-02-10 21:44:04,968 basehttp 58849 6129250304 "POST /tasks/3970/edit/ HTTP/1.1" 200 111
+INFO 2026-02-10 21:44:11,562 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1234/ HTTP/1.1" 200 1516
+INFO 2026-02-10 21:44:22,795 project_views 58849 6129250304 Task edit view called - Task PK: 3973, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:44:22,800 project_views 58849 6129250304 Task edit JSON request - Task ID: 3973, New text length: 32, New text preview: 'Schedule IC screening discussion...'
+INFO 2026-02-10 21:44:22,802 project_views 58849 6129250304 Task 3973 save() completed successfully
+INFO 2026-02-10 21:44:22,804 project_views 58849 6129250304 Task 3973 refreshed from DB - Saved text: 'Schedule IC screening discussion...' (length: 32), Matches intended: True
+INFO 2026-02-10 21:44:22,804 basehttp 58849 6129250304 "POST /tasks/3973/edit/ HTTP/1.1" 200 119
+INFO 2026-02-10 21:44:31,378 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1234/ HTTP/1.1" 200 1496
+INFO 2026-02-10 21:44:39,419 basehttp 58849 6129250304 "POST /tasks/3973/reminder/ HTTP/1.1" 200 82
+INFO 2026-02-10 21:44:39,439 basehttp 58849 6129250304 "GET /grids/344/reminders/ HTTP/1.1" 200 519
+INFO 2026-02-10 21:44:46,212 basehttp 58849 6129250304 "POST /tasks/3974/reminder/ HTTP/1.1" 200 82
+INFO 2026-02-10 21:44:46,225 basehttp 58849 6129250304 "GET /grids/344/reminders/ HTTP/1.1" 200 499
+INFO 2026-02-10 21:44:51,833 basehttp 58849 6129250304 "POST /tasks/3974/note/ HTTP/1.1" 200 181
+INFO 2026-02-10 21:44:51,840 basehttp 58849 6129250304 "GET /tasks/3974/notes/ HTTP/1.1" 200 156
+INFO 2026-02-10 21:45:06,439 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1235/ HTTP/1.1" 200 1527
+INFO 2026-02-10 21:45:14,067 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1235/ HTTP/1.1" 200 1468
+INFO 2026-02-10 21:45:17,594 basehttp 58849 6129250304 "POST /tasks/3976/note/ HTTP/1.1" 200 181
+INFO 2026-02-10 21:45:17,600 basehttp 58849 6129250304 "GET /tasks/3976/notes/ HTTP/1.1" 200 156
+INFO 2026-02-10 21:45:22,948 basehttp 58849 6129250304 "POST /tasks/3976/reminder/ HTTP/1.1" 200 82
+INFO 2026-02-10 21:45:22,969 basehttp 58849 6129250304 "GET /grids/344/reminders/ HTTP/1.1" 200 590
+INFO 2026-02-10 21:45:36,429 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1529
+INFO 2026-02-10 21:45:59,558 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1512
+INFO 2026-02-10 21:47:20,797 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1234/ HTTP/1.1" 200 1540
+INFO 2026-02-10 21:47:28,811 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1235/ HTTP/1.1" 200 1462
+INFO 2026-02-10 21:47:36,446 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1546
+INFO 2026-02-10 21:47:45,466 project_views 58849 6129250304 Task edit view called - Task PK: 3971, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:47:45,470 project_views 58849 6129250304 Task edit JSON request - Task ID: 3971, New text length: 30, New text preview: 'Coordinate advisor workstreams...'
+INFO 2026-02-10 21:47:45,472 project_views 58849 6129250304 Task 3971 save() completed successfully
+INFO 2026-02-10 21:47:45,473 project_views 58849 6129250304 Task 3971 refreshed from DB - Saved text: 'Coordinate advisor workstreams...' (length: 30), Matches intended: True
+INFO 2026-02-10 21:47:45,474 basehttp 58849 6129250304 "POST /tasks/3971/edit/ HTTP/1.1" 200 117
+INFO 2026-02-10 21:47:55,358 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1454
+INFO 2026-02-10 21:48:02,443 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1234/ HTTP/1.1" 200 1499
+INFO 2026-02-10 21:48:22,013 project_views 58849 6129250304 Task edit view called - Task PK: 3983, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:48:22,018 project_views 58849 6129250304 Task edit JSON request - Task ID: 3983, New text length: 49, New text preview: 'Set up regular deal team calls for every Thursday...'
+INFO 2026-02-10 21:48:22,020 project_views 58849 6129250304 Task 3983 save() completed successfully
+INFO 2026-02-10 21:48:22,021 project_views 58849 6129250304 Task 3983 refreshed from DB - Saved text: 'Set up regular deal team calls for every Thursday...' (length: 49), Matches intended: True
+INFO 2026-02-10 21:48:22,021 basehttp 58849 6129250304 "POST /tasks/3983/edit/ HTTP/1.1" 200 136
+INFO 2026-02-10 21:48:26,608 basehttp 58849 6129250304 "POST /tasks/3983/note/ HTTP/1.1" 200 181
+INFO 2026-02-10 21:48:26,619 basehttp 58849 6129250304 "GET /tasks/3983/notes/ HTTP/1.1" 200 156
+INFO 2026-02-10 21:48:36,103 project_views 58849 6129250304 Task edit view called - Task PK: 3971, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:48:36,107 project_views 58849 6129250304 Task edit JSON request - Task ID: 3971, New text length: 27, New text preview: 'Review adviser DD proposals...'
+INFO 2026-02-10 21:48:36,109 project_views 58849 6129250304 Task 3971 save() completed successfully
+INFO 2026-02-10 21:48:36,110 project_views 58849 6129250304 Task 3971 refreshed from DB - Saved text: 'Review adviser DD proposals...' (length: 27), Matches intended: True
+INFO 2026-02-10 21:48:36,111 basehttp 58849 6129250304 "POST /tasks/3971/edit/ HTTP/1.1" 200 114
+INFO 2026-02-10 21:48:42,734 project_views 58849 6129250304 Task edit view called - Task PK: 3971, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:48:42,737 project_views 58849 6129250304 Task edit JSON request - Task ID: 3971, New text length: 57, New text preview: 'Review adviser DD proposals, and then make final d...'
+INFO 2026-02-10 21:48:42,740 project_views 58849 6129250304 Task 3971 save() completed successfully
+INFO 2026-02-10 21:48:42,741 project_views 58849 6129250304 Task 3971 refreshed from DB - Saved text: 'Review adviser DD proposals, and then make final d...' (length: 57), Matches intended: True
+INFO 2026-02-10 21:48:42,741 basehttp 58849 6129250304 "POST /tasks/3971/edit/ HTTP/1.1" 200 144
+INFO 2026-02-10 21:48:49,934 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1234/ HTTP/1.1" 200 1489
+INFO 2026-02-10 21:49:00,891 basehttp 58849 6129250304 "POST /tasks/3984/note/ HTTP/1.1" 200 199
+INFO 2026-02-10 21:49:00,901 basehttp 58849 6129250304 "GET /tasks/3984/notes/ HTTP/1.1" 200 174
+INFO 2026-02-10 21:49:12,370 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1235/ HTTP/1.1" 200 1515
+INFO 2026-02-10 21:49:14,211 project_views 58849 6129250304 Task edit view called - Task PK: 3985, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:49:14,214 project_views 58849 6129250304 Task edit JSON request - Task ID: 3985, New text length: 24, New text preview: 'Build detailed LBO model...'
+INFO 2026-02-10 21:49:14,217 project_views 58849 6129250304 Task 3985 save() completed successfully
+INFO 2026-02-10 21:49:14,219 project_views 58849 6129250304 Task 3985 refreshed from DB - Saved text: 'Build detailed LBO model...' (length: 24), Matches intended: True
+INFO 2026-02-10 21:49:14,219 basehttp 58849 6129250304 "POST /tasks/3985/edit/ HTTP/1.1" 200 111
+INFO 2026-02-10 21:49:23,563 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1235/ HTTP/1.1" 200 1463
+INFO 2026-02-10 21:49:35,152 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1235/ HTTP/1.1" 200 1455
+INFO 2026-02-10 21:49:46,307 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1235/ HTTP/1.1" 200 1503
+INFO 2026-02-10 21:49:56,202 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1235/ HTTP/1.1" 200 1558
+INFO 2026-02-10 21:50:07,142 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1533
+INFO 2026-02-10 21:50:09,673 project_views 58849 6129250304 Task edit view called - Task PK: 3990, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:50:09,676 project_views 58849 6129250304 Task edit JSON request - Task ID: 3990, New text length: 44, New text preview: 'Identify key legal and structuring questions...'
+INFO 2026-02-10 21:50:09,678 project_views 58849 6129250304 Task 3990 save() completed successfully
+INFO 2026-02-10 21:50:09,679 project_views 58849 6129250304 Task 3990 refreshed from DB - Saved text: 'Identify key legal and structuring questions...' (length: 44), Matches intended: True
+INFO 2026-02-10 21:50:09,680 basehttp 58849 6129250304 "POST /tasks/3990/edit/ HTTP/1.1" 200 131
+INFO 2026-02-10 21:50:12,396 project_views_functions 58849 6129250304 User None deleted task: "Submit indicative bid" from project: Project Lincoln
+INFO 2026-02-10 21:50:12,400 basehttp 58849 6129250304 "POST /tasks/3982/delete/ HTTP/1.1" 200 58
+INFO 2026-02-10 21:50:21,176 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1236/ HTTP/1.1" 200 1466
+INFO 2026-02-10 21:50:32,133 project_views 58849 6129250304 Task edit view called - Task PK: 3991, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:50:32,136 project_views 58849 6129250304 Task edit JSON request - Task ID: 3991, New text length: 65, New text preview: 'Review financial and tax DD reports, first comment...'
+INFO 2026-02-10 21:50:32,138 project_views 58849 6129250304 Task 3991 save() completed successfully
+INFO 2026-02-10 21:50:32,139 project_views 58849 6129250304 Task 3991 refreshed from DB - Saved text: 'Review financial and tax DD reports, first comment...' (length: 65), Matches intended: True
+INFO 2026-02-10 21:50:32,140 basehttp 58849 6129250304 "POST /tasks/3991/edit/ HTTP/1.1" 200 152
+INFO 2026-02-10 21:50:38,405 basehttp 58849 6129250304 "POST /tasks/3991/reminder/ HTTP/1.1" 200 82
+INFO 2026-02-10 21:50:38,425 basehttp 58849 6129250304 "GET /grids/344/reminders/ HTTP/1.1" 200 662
+INFO 2026-02-10 21:50:49,690 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1236/ HTTP/1.1" 200 1539
+INFO 2026-02-10 21:50:57,444 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1236/ HTTP/1.1" 200 1527
+INFO 2026-02-10 21:51:12,203 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1171/1236/ HTTP/1.1" 200 1546
+INFO 2026-02-10 21:51:23,928 project_views 58849 6129250304 Task edit view called - Task PK: 3972, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 21:51:23,933 project_views 58849 6129250304 Task edit JSON request - Task ID: 3972, New text length: 33, New text preview: 'Prepare investment committee memo...'
+INFO 2026-02-10 21:51:23,935 project_views 58849 6129250304 Task 3972 save() completed successfully
+INFO 2026-02-10 21:51:23,936 project_views 58849 6129250304 Task 3972 refreshed from DB - Saved text: 'Prepare investment committee memo...' (length: 33), Matches intended: True
+INFO 2026-02-10 21:51:23,936 basehttp 58849 6129250304 "POST /tasks/3972/edit/ HTTP/1.1" 200 120
+INFO 2026-02-10 21:51:33,220 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1234/ HTTP/1.1" 200 1549
+INFO 2026-02-10 21:51:38,955 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1234/ HTTP/1.1" 200 1466
+INFO 2026-02-10 21:51:47,373 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1234/ HTTP/1.1" 200 1463
+INFO 2026-02-10 21:51:58,028 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1235/ HTTP/1.1" 200 1543
+INFO 2026-02-10 21:52:01,097 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1235/ HTTP/1.1" 200 1546
+INFO 2026-02-10 21:52:10,838 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1235/ HTTP/1.1" 200 1468
+INFO 2026-02-10 21:52:22,643 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1235/ HTTP/1.1" 200 1491
+INFO 2026-02-10 21:52:33,576 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1236/ HTTP/1.1" 200 1528
+INFO 2026-02-10 21:52:39,337 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1236/ HTTP/1.1" 200 1503
+INFO 2026-02-10 21:52:46,532 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1236/ HTTP/1.1" 200 1505
+INFO 2026-02-10 21:53:32,031 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1172/1236/ HTTP/1.1" 200 1541
+INFO 2026-02-10 21:53:35,614 basehttp 58849 6129250304 "GET /grids/344/team/shared-users/ HTTP/1.1" 200 271
+INFO 2026-02-10 21:53:42,403 project_views 58849 6129250304 Added 3 users to team project Project Lincoln
+INFO 2026-02-10 21:53:42,403 basehttp 58849 6129250304 "POST /grids/344/team/add-multiple/ HTTP/1.1" 200 85
+INFO 2026-02-10 21:53:43,949 basehttp 58849 6129250304 "GET /grids/344/team/shared-users/ HTTP/1.1" 200 151
+INFO 2026-02-10 21:53:43,993 basehttp 58849 6146076672 "GET /grids/344/ HTTP/1.1" 200 33647
+INFO 2026-02-10 21:53:48,809 project_views_functions 58849 6129250304 User None assigned task: ""Sense check management case assumptions" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 21:53:48,809 basehttp 58849 6129250304 "POST /tasks/3980/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 21:53:50,803 project_views_functions 58849 6129250304 User None assigned task: ""Build detailed LBO model" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 21:53:50,804 basehttp 58849 6129250304 "POST /tasks/3985/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 21:53:53,055 project_views_functions 58849 6129250304 User None assigned task: ""Review IM for key risks and red flags" to Nikki Varak" from project: Project Lincoln
+INFO 2026-02-10 21:53:53,056 basehttp 58849 6129250304 "POST /tasks/3981/assign/ HTTP/1.1" 200 128
+INFO 2026-02-10 21:53:54,940 project_views_functions 58849 6129250304 User None assigned task: ""Get a feeling for process timeline with adviser" to Brooklyn Beckham" from project: Project Lincoln
+INFO 2026-02-10 21:53:54,940 basehttp 58849 6129250304 "POST /tasks/3978/assign/ HTTP/1.1" 200 138
+INFO 2026-02-10 21:53:56,891 project_views_functions 58849 6129250304 User None assigned task: ""Flag any obvious deal breakers" to Brooklyn Beckham" from project: Project Lincoln
+INFO 2026-02-10 21:53:56,891 basehttp 58849 6129250304 "POST /tasks/3977/assign/ HTTP/1.1" 200 138
+INFO 2026-02-10 21:53:58,090 basehttp 58849 6129250304 "POST /tasks/3977/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 21:54:00,502 basehttp 58849 6129250304 "POST /tasks/3979/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 21:54:01,787 basehttp 58849 6129250304 "POST /tasks/3970/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 21:54:03,900 project_views_functions 58849 6129250304 User None assigned task: ""Write one pager for screening discussion" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 21:54:03,901 basehttp 58849 6129250304 "POST /tasks/3974/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 21:54:06,590 project_views_functions 58849 6129250304 User None assigned task: ""Prep for management presentation" to Brooklyn Beckham" from project: Project Lincoln
+INFO 2026-02-10 21:54:06,591 basehttp 58849 6129250304 "POST /tasks/3984/assign/ HTTP/1.1" 200 138
+INFO 2026-02-10 21:54:08,468 project_views_functions 58849 6129250304 User None assigned task: ""Review adviser DD proposals, and then make final decision" to Nikki Varak" from project: Project Lincoln
+INFO 2026-02-10 21:54:08,468 basehttp 58849 6129250304 "POST /tasks/3971/assign/ HTTP/1.1" 200 128
+INFO 2026-02-10 21:54:10,474 project_views_functions 58849 6129250304 User None assigned task: ""Run downside and sensitivity scenarios" to Nikki Varak" from project: Project Lincoln
+INFO 2026-02-10 21:54:10,475 basehttp 58849 6129250304 "POST /tasks/3986/assign/ HTTP/1.1" 200 128
+INFO 2026-02-10 21:54:12,790 project_views_functions 58849 6129250304 User None assigned task: ""QoE discussion with Deloitte" to Nikki Varak" from project: Project Lincoln
+INFO 2026-02-10 21:54:12,791 basehttp 58849 6129250304 "POST /tasks/3987/assign/ HTTP/1.1" 200 128
+INFO 2026-02-10 21:54:14,859 project_views_functions 58849 6129250304 User None assigned task: ""Model working capital and cash conversion" to Brooklyn Beckham" from project: Project Lincoln
+INFO 2026-02-10 21:54:14,859 basehttp 58849 6129250304 "POST /tasks/3988/assign/ HTTP/1.1" 200 138
+INFO 2026-02-10 21:54:17,872 project_views_functions 58849 6129250304 User None assigned task: ""Identify any legal and structuring questions" to Brooklyn Beckham" from project: Project Lincoln
+INFO 2026-02-10 21:54:17,872 basehttp 58849 6129250304 "POST /tasks/3993/assign/ HTTP/1.1" 200 138
+INFO 2026-02-10 21:54:19,692 project_views_functions 58849 6129250304 User None assigned task: ""Review key contracts and change of control" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 21:54:19,692 basehttp 58849 6129250304 "POST /tasks/3992/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 21:54:22,022 project_views_functions 58849 6129250304 User None assigned task: ""Review financial and tax DD reports, first comments due in 3 days" to Toad Toad" from project: Project Lincoln
+INFO 2026-02-10 21:54:22,023 basehttp 58849 6129250304 "POST /tasks/3991/assign/ HTTP/1.1" 200 124
+INFO 2026-02-10 21:54:27,329 basehttp 58849 6129250304 "POST /tasks/3972/note/ HTTP/1.1" 200 186
+INFO 2026-02-10 21:54:27,340 basehttp 58849 6129250304 "GET /tasks/3972/notes/ HTTP/1.1" 200 161
+INFO 2026-02-10 21:54:30,278 basehttp 58849 6129250304 "POST /tasks/3999/note/ HTTP/1.1" 200 179
+INFO 2026-02-10 21:54:30,292 basehttp 58849 6129250304 "GET /tasks/3999/notes/ HTTP/1.1" 200 154
+INFO 2026-02-10 21:54:33,062 project_views_functions 58849 6129250304 User None assigned task: ""Finalise S&U" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 21:54:33,063 basehttp 58849 6129250304 "POST /tasks/3999/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 21:54:36,057 basehttp 58849 6129250304 "POST /tasks/4000/note/ HTTP/1.1" 200 183
+INFO 2026-02-10 21:54:36,063 basehttp 58849 6129250304 "GET /tasks/4000/notes/ HTTP/1.1" 200 158
+INFO 2026-02-10 21:54:39,442 basehttp 58849 6129250304 "POST /tasks/4004/note/ HTTP/1.1" 200 181
+INFO 2026-02-10 21:54:39,453 basehttp 58849 6129250304 "GET /tasks/4004/notes/ HTTP/1.1" 200 156
+INFO 2026-02-10 21:54:43,202 basehttp 58849 6129250304 "POST /tasks/3981/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 21:54:44,452 basehttp 58849 6129250304 "POST /tasks/3975/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 21:57:22,301 project_views_functions 58849 6129250304 User None deleted task: "Identify key legal and structuring questions" from project: Project Lincoln
+INFO 2026-02-10 21:57:22,308 basehttp 58849 6129250304 "POST /tasks/3990/delete/ HTTP/1.1" 200 58
+INFO 2026-02-10 21:58:23,641 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1545
+INFO 2026-02-10 21:58:26,322 project_views_functions 58849 6129250304 User None assigned task: ""Flag obvious legal concerns" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 21:58:26,322 basehttp 58849 6129250304 "POST /tasks/4006/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 21:58:31,179 basehttp 58849 6129250304 "POST /tasks/3976/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 21:58:38,562 project_views_functions 58849 6129250304 User None assigned task: ""Prepare investment committee memo" to Nikki Varak" from project: Project Lincoln
+INFO 2026-02-10 21:58:38,563 basehttp 58849 6129250304 "POST /tasks/3972/assign/ HTTP/1.1" 200 128
+INFO 2026-02-10 21:59:01,098 project_views_functions 58849 6129250304 User None deleted task: "Flag obvious legal concerns" from project: Project Lincoln
+INFO 2026-02-10 21:59:01,104 basehttp 58849 6129250304 "POST /tasks/4006/delete/ HTTP/1.1" 200 58
+INFO 2026-02-10 22:01:12,676 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1554
+INFO 2026-02-10 22:01:23,563 basehttp 58849 6129250304 "POST /grids/344/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2026-02-10 22:01:37,432 project_views_functions 58849 6129250304 User None deleted task: "Flag legal risks" from project: Project Lincoln
+INFO 2026-02-10 22:01:37,437 basehttp 58849 6129250304 "POST /tasks/4007/delete/ HTTP/1.1" 200 58
+INFO 2026-02-10 22:01:52,348 basehttp 58849 6129250304 "POST /grids/344/tasks/create/1170/1236/ HTTP/1.1" 200 1498
+INFO 2026-02-10 22:01:58,468 basehttp 58849 6129250304 "POST /grids/344/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2026-02-10 22:02:02,228 basehttp 58849 6129250304 "POST /tasks/3980/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 22:02:09,696 project_views_functions 58849 6129250304 User None assigned task: ""Lock down base case and entry valuation" to Lily Moore" from project: Project Lincoln
+INFO 2026-02-10 22:02:09,697 basehttp 58849 6129250304 "POST /tasks/3998/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 22:05:28,029 basehttp 58849 6129250304 "GET /grids/344/archive/confirm/ HTTP/1.1" 200 983
+INFO 2026-02-10 22:05:29,073 basehttp 58849 6129250304 "POST /grids/344/archive/ HTTP/1.1" 302 0
+INFO 2026-02-10 22:05:29,180 basehttp 58849 6129250304 "GET /grids/ HTTP/1.1" 200 16667
+INFO 2026-02-10 22:07:06,741 basehttp 58849 6129250304 "GET /grids/344/ HTTP/1.1" 200 37354
+INFO 2026-02-10 22:07:06,761 basehttp 58849 6129250304 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0

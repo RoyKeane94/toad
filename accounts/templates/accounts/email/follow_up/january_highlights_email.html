@@ -1,0 +1,53 @@
+{% extends 'accounts/email/email_layout.html' %}
+
+{% block title %}Three quiet improvements to Toad{% endblock %}
+
+{% block header_title %}{% endblock %}
+
+{% block content %}
+
+<div class="message">
+    <p>Hi{% if user.first_name %} {{ user.first_name }},{% else %},{% endif %}</p>
+    
+    <p>Three things we've added to Toad this month.<br>
+    Nothing complicated. Just useful.</p>
+    
+    <p style="font-weight: 600; font-size: 16px; margin: 20px 0;">
+        Export to Excel
+    </p>
+    
+    <p>Sometimes you need to do deeper analysis or share data outside Toad.<br>
+    Now you can export any grid to Excel when that moment arrives.</p>
+    
+    <p style="font-weight: 600; font-size: 16px; margin: 20px 0;">
+        All your reminders in one place
+    </p>
+    
+    <p>Every deadline visible in one view.<br>
+    So nothing slips when you're juggling multiple projects.</p>
+    
+    <p style="font-weight: 600; font-size: 16px; margin: 20px 0;">
+        Redesigned grids
+    </p>
+    
+    <p>We've made the grids slicker and cleaner.<br>
+    Same simplicity, just more pleasant to look at all day.</p>
+    
+    <div style="border-left: 3px solid #10B981; padding-left: 15px; margin: 25px 0; color: #4B5563;">
+        <p style="margin: 0;">January was busy — we onboarded teams across banking, finance, operations, account management and strategy.</p>
+        <p style="margin: 10px 0 0 0;">The feedback's been the same: "This is exactly what we needed without the usual complexity."</p>
+    </div>
+    
+    <p>If you have thoughts on these updates,you'd like a chat to discuss how Toad can help youor there's something you'd like to see, just reply.</p>
+    
+    <p>No rush. Always listening.</p>
+</div>
+
+{% endblock %}
+
+{% block additional_content %}
+<div style="text-align: left; color: #6B7280; margin-top: 30px; border-top: 1px solid #E5E7EB; padding-top: 20px; font-size: 14px;">
+    <p style="margin: 0;">— Tom</p>
+    <p style="margin: 5px 0 0 0;"><strong>Founder, Toad</strong></p>
+</div>
+{% endblock %}
