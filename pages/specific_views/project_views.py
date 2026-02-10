@@ -2818,3 +2818,114 @@ def unsubscribe_from_template_view(request, pk):
     
     return JsonResponse({'success': False, 'error': 'Invalid request method'}, status=405)
 
+
+@login_required
+def project_export_excel_view(request, pk):
+    """
+    Export project tasks, row headers, and column headers to Excel.
+    Does not include reminders, notes, or task allocations.
+    """
+    from openpyxl import Workbook
+    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+    from django.utils.text import slugify
+    
+    project = get_user_project_optimized(
+        pk,
+        request.user,
+        select_related=['user'],
+        prefetch_related=['team_toad_user'],
+    )
+    
+    # Get all row and column headers
+    rows = RowHeader.objects.filter(project=project).order_by('order')
+    columns = ColumnHeader.objects.filter(project=project).order_by('order')
+    
+    # Get all tasks
+    tasks = Task.objects.filter(project=project).select_related(
+        'row_header', 'column_header'
+    ).order_by('row_header__order', 'column_header__order', 'order')
+    
+    # Create workbook
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Grid"
+    
+    # Style definitions
+    header_fill = PatternFill(start_color="10b981", end_color="10b981", fill_type="solid")
+    header_font = Font(bold=True, color="FFFFFF", size=12)
+    cell_alignment = Alignment(horizontal="left", vertical="top", wrap_text=True)
+    border = Border(
+        left=Side(style='thin', color='D1D5DB'),
+        right=Side(style='thin', color='D1D5DB'),
+        top=Side(style='thin', color='D1D5DB'),
+        bottom=Side(style='thin', color='D1D5DB')
+    )
+    
+    # Build grid structure
+    # First row: empty cell + column headers (skip first two columns)
+    ws.cell(row=1, column=1, value="")
+    ws.cell(row=1, column=1).fill = header_fill
+    ws.cell(row=1, column=1).border = border
+    
+    col_idx = 2
+    columns_list = list(columns)
+    # Skip the first two columns (including Time/Category)
+    for col in columns_list[2:]:
+        cell = ws.cell(row=1, column=col_idx, value=col.name)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = Alignment(horizontal="center", vertical="center")
+        cell.border = border
+        col_idx += 1
+    
+    # Set column widths
+    ws.column_dimensions['A'].width = 20
+    for i in range(2, col_idx):
+        ws.column_dimensions[chr(64 + i)].width = 30
+    
+    # Build task grid by row and column
+    task_grid = defaultdict(lambda: defaultdict(list))
+    for task in tasks:
+        if task.row_header and task.column_header:
+            task_grid[task.row_header.id][task.column_header.id].append(task.text)
+    
+    # Data rows: row header + tasks (skip first column)
+    row_idx = 2
+    for row in rows:
+        # Row header
+        cell = ws.cell(row=row_idx, column=1, value=row.name)
+        cell.font = Font(bold=True, size=11)
+        cell.alignment = cell_alignment
+        cell.border = border
+        cell.fill = PatternFill(start_color="F9FAFB", end_color="F9FAFB", fill_type="solid")
+        
+        # Tasks for each column (skip first two columns)
+        col_idx = 2
+        for col in columns_list[2:]:
+            task_texts = task_grid[row.id][col.id]
+            task_value = "\n".join(task_texts) if task_texts else ""
+            
+            cell = ws.cell(row=row_idx, column=col_idx, value=task_value)
+            cell.alignment = cell_alignment
+            cell.border = border
+            col_idx += 1
+        
+        row_idx += 1
+    
+    # Set row heights
+    for row in range(2, row_idx):
+        ws.row_dimensions[row].height = 60
+    
+    # Create response
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    filename = slugify(project.name) or 'grid'
+    response['Content-Disposition'] = f'attachment; filename="{filename}.xlsx"'
+    
+    wb.save(response)
+    
+    logger.info(f"User {request.user.email} exported project '{project.name}' to Excel")
+    
+    return response
+

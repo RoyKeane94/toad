@@ -57,7 +57,7 @@ from pages.specific_views.project_views import (
     column_create_view, column_edit_view, column_delete_view, share_grid_view, accept_grid_invitation_view,
     team_add_member_view, team_remove_member_view, get_shared_team_users_view, team_add_multiple_members_view,
     share_template_view, get_subscription_group_members_view, unshare_template_view, unsubscribe_from_template_view,
-    project_reminders_partial_view
+    project_reminders_partial_view, project_export_excel_view
 )
 
 # Import analytics functions

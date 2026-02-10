@@ -868,6 +868,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             <span>Show Reminders</span>
                         </button>
                         
+                        <!-- Export to Excel -->
+                        <a href="{% url 'pages:project_export_excel' pk=project.pk %}"
+                           class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           onclick="closeAllDropdowns();">
+                            <i class="fas fa-file-excel text-xs w-4 text-center text-[var(--tertiary-action-bg)]"></i>
+                            <span>Export to Excel</span>
+                        </a>
+                        
                         <!-- Divider -->
                         <div class="border-t border-[var(--border-color)] my-2"></div>
                         

@@ -2582,3 +2582,399 @@ INFO 2026-02-10 07:25:26,907 basehttp 48354 6151450624 "GET /static/js/grid/grid
 INFO 2026-02-10 07:25:37,999 basehttp 48354 6151450624 "GET /grids/339/ HTTP/1.1" 200 37289
 INFO 2026-02-10 07:26:24,805 autoreload 48682 8412226112 Watching for file changes with StatReloader
 INFO 2026-02-10 07:26:26,018 basehttp 48682 6123335680 "GET /grids/339/ HTTP/1.1" 200 37244
+INFO 2026-02-10 07:28:41,494 autoreload 49389 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 07:28:43,316 basehttp 49389 6171947008 "GET / HTTP/1.1" 200 10271
+INFO 2026-02-10 07:28:43,342 basehttp 49389 6171947008 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 07:28:44,191 basehttp 49389 6171947008 "GET /grids/ HTTP/1.1" 200 16536
+INFO 2026-02-10 07:28:45,743 basehttp 49389 6171947008 "GET /grids/339/ HTTP/1.1" 200 37331
+INFO 2026-02-10 07:28:45,756 basehttp 49389 6171947008 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 10:25:23,780 basehttp 49389 6171947008 "GET / HTTP/1.1" 200 10230
+INFO 2026-02-10 10:25:23,793 basehttp 49389 6188773376 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2026-02-10 10:25:23,793 basehttp 49389 6205599744 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 10:25:23,793 basehttp 49389 6171947008 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2026-02-10 10:25:25,581 basehttp 49389 6171947008 "GET /grids/ HTTP/1.1" 200 16462
+INFO 2026-02-10 10:25:27,723 basehttp 49389 6171947008 "GET /grids/339/ HTTP/1.1" 200 37259
+INFO 2026-02-10 10:25:27,732 basehttp 49389 6171947008 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 10:33:09,982 basehttp 49389 6171947008 "POST /grids/339/tasks/create/1150/1209/ HTTP/1.1" 200 1443
+INFO 2026-02-10 10:33:11,281 basehttp 49389 6171947008 "POST /tasks/3900/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 10:33:13,729 basehttp 49389 6171947008 "POST /grids/339/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2026-02-10 10:33:18,857 basehttp 49389 6171947008 "POST /tasks/3818/note/ HTTP/1.1" 200 185
+INFO 2026-02-10 10:33:18,864 basehttp 49389 6171947008 "GET /tasks/3818/notes/ HTTP/1.1" 200 160
+INFO 2026-02-10 10:33:22,715 basehttp 49389 6171947008 "GET /grids/339/team/shared-users/ HTTP/1.1" 200 232
+INFO 2026-02-10 10:33:25,788 project_views 49389 6171947008 Added 2 users to team project Simpson Wedding
+INFO 2026-02-10 10:33:25,789 basehttp 49389 6171947008 "POST /grids/339/team/add-multiple/ HTTP/1.1" 200 85
+INFO 2026-02-10 10:33:27,365 basehttp 49389 6171947008 "GET /grids/339/team/shared-users/ HTTP/1.1" 200 204
+INFO 2026-02-10 10:33:27,433 basehttp 49389 6188773376 "GET /grids/339/ HTTP/1.1" 200 40293
+INFO 2026-02-10 10:33:30,099 project_views_functions 49389 6171947008 User None assigned task: ""Florist PI Insurance" to Lily Moore" from project: Simpson Wedding
+INFO 2026-02-10 10:33:30,099 basehttp 49389 6171947008 "POST /tasks/3817/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 10:33:31,998 project_views_functions 49389 6171947008 User None assigned task: ""Caterer booked" to Nikki Varak" from project: Simpson Wedding
+INFO 2026-02-10 10:33:31,998 basehttp 49389 6171947008 "POST /tasks/3819/assign/ HTTP/1.1" 200 128
+INFO 2026-02-10 10:33:35,163 project_views_functions 49389 6171947008 User None assigned task: ""Final planning meeting complete" to Lily Moore" from project: Simpson Wedding
+INFO 2026-02-10 10:33:35,163 basehttp 49389 6171947008 "POST /tasks/3811/assign/ HTTP/1.1" 200 126
+INFO 2026-02-10 10:33:40,318 basehttp 49389 6171947008 "POST /tasks/3811/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 10:33:41,449 basehttp 49389 6171947008 "POST /tasks/3814/toggle/ HTTP/1.1" 200 79
+INFO 2026-02-10 10:34:20,890 basehttp 49389 6171947008 "GET /grids/340/ HTTP/1.1" 200 27382
+INFO 2026-02-10 10:36:40,329 basehttp 49389 6171947008 "GET /grids/339/ HTTP/1.1" 200 40621
+INFO 2026-02-10 10:37:26,135 project_views 49389 6171947008 Saving template with 65 tasks from project Simpson Wedding
+INFO 2026-02-10 10:37:26,136 project_views 49389 6171947008 === TASK ORDERING DEBUG ===
+INFO 2026-02-10 10:37:26,141 project_views 49389 6171947008 Task 0: 'Final planning meeting complet...' in Row 0 (Key Milestones) x Col 1 (Planning & Coordination) with order 0
+INFO 2026-02-10 10:37:26,142 project_views 49389 6171947008 Task 1: 'Timeline locked...' in Row 0 (Key Milestones) x Col 1 (Planning & Coordination) with order 1
+INFO 2026-02-10 10:37:26,143 project_views 49389 6171947008 Task 2: 'All suppliers confirmed...' in Row 0 (Key Milestones) x Col 1 (Planning & Coordination) with order 2
+INFO 2026-02-10 10:37:26,143 project_views 49389 6171947008 Task 3: 'Share approved florist list...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 0
+INFO 2026-02-10 10:37:26,143 project_views 49389 6171947008 Task 4: 'Florist PI Insurance...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 1
+INFO 2026-02-10 10:37:26,144 project_views 49389 6171947008 Task 5: 'Delivery access agreed...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 2
+INFO 2026-02-10 10:37:26,144 project_views 49389 6171947008 Task 6: 'Set up time agreed...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 3
+INFO 2026-02-10 10:37:26,145 project_views 49389 6171947008 Task 7: 'Super simple...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 4
+INFO 2026-02-10 10:37:26,145 project_views 49389 6171947008 Task 8: 'Share approved caterer list...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 0
+INFO 2026-02-10 10:37:26,145 project_views 49389 6171947008 Task 9: 'Caterer booked...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 1
+INFO 2026-02-10 10:37:26,146 project_views 49389 6171947008 Task 10: 'Caterer PI Insurance...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 2
+INFO 2026-02-10 10:37:26,146 project_views 49389 6171947008 Task 11: 'Menu finalised and final numbe...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 3
+INFO 2026-02-10 10:37:26,146 project_views 49389 6171947008 Task 12: 'Photographer booked...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 0
+INFO 2026-02-10 10:37:26,147 project_views 49389 6171947008 Task 13: 'Photographer PI Insurance...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 1
+INFO 2026-02-10 10:37:26,147 project_views 49389 6171947008 Task 14: 'Access times agreed...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 2
+INFO 2026-02-10 10:37:26,148 project_views 49389 6171947008 Task 15: 'Venue areas confirmed...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 3
+INFO 2026-02-10 10:37:26,149 project_views 49389 6171947008 Task 16: 'Final balance paid...' in Row 0 (Key Milestones) x Col 5 (Day & Follow Up) with order 0
+INFO 2026-02-10 10:37:26,149 project_views 49389 6171947008 Task 17: 'Check in on planning progress...' in Row 1 (3 - 6 months out) x Col 1 (Planning & Coordination) with order 0
+INFO 2026-02-10 10:37:26,150 project_views 49389 6171947008 Task 18: 'Schedule sit down planning day...' in Row 1 (3 - 6 months out) x Col 1 (Planning & Coordination) with order 1
+INFO 2026-02-10 10:37:26,150 project_views 49389 6171947008 Task 19: 'Introduce on day co-ordinator...' in Row 1 (3 - 6 months out) x Col 1 (Planning & Coordination) with order 2
+INFO 2026-02-10 10:37:26,151 project_views 49389 6171947008 Task 20: 'Confirm florist booking...' in Row 1 (3 - 6 months out) x Col 2 (Florist) with order 0
+INFO 2026-02-10 10:37:26,151 project_views 49389 6171947008 Task 21: 'Share access and setup guideli...' in Row 1 (3 - 6 months out) x Col 2 (Florist) with order 1
+INFO 2026-02-10 10:37:26,152 project_views 49389 6171947008 Task 22: 'Discuss any installation requi...' in Row 1 (3 - 6 months out) x Col 2 (Florist) with order 2
+INFO 2026-02-10 10:37:26,152 project_views 49389 6171947008 Task 23: 'Menu tasting scheduled...' in Row 1 (3 - 6 months out) x Col 3 (Catering) with order 0
+INFO 2026-02-10 10:37:26,153 project_views 49389 6171947008 Task 24: 'Confirm kitchen and prep facil...' in Row 1 (3 - 6 months out) x Col 3 (Catering) with order 1
+INFO 2026-02-10 10:37:26,153 project_views 49389 6171947008 Task 25: 'Confirm serving style and timi...' in Row 1 (3 - 6 months out) x Col 3 (Catering) with order 2
+INFO 2026-02-10 10:37:26,154 project_views 49389 6171947008 Task 26: 'Confirm photographer booked...' in Row 1 (3 - 6 months out) x Col 4 (Photography) with order 0
+INFO 2026-02-10 10:37:26,154 project_views 49389 6171947008 Task 27: 'Share venue photo locations...' in Row 1 (3 - 6 months out) x Col 4 (Photography) with order 1
+INFO 2026-02-10 10:37:26,155 project_views 49389 6171947008 Task 28: 'Note any restricted areas...' in Row 1 (3 - 6 months out) x Col 4 (Photography) with order 2
+INFO 2026-02-10 10:37:26,155 project_views 49389 6171947008 Task 29: 'Initial invoice paid...' in Row 1 (3 - 6 months out) x Col 5 (Day & Follow Up) with order 0
+INFO 2026-02-10 10:37:26,155 project_views 49389 6171947008 Task 30: 'Send checklist of outstanding ...' in Row 1 (3 - 6 months out) x Col 5 (Day & Follow Up) with order 1
+INFO 2026-02-10 10:37:26,156 project_views 49389 6171947008 Task 31: 'Confirm all suppliers booked...' in Row 2 (3 - 1 Months Out) x Col 1 (Planning & Coordination) with order 0
+INFO 2026-02-10 10:37:26,157 project_views 49389 6171947008 Task 32: 'Review day timeline with coupl...' in Row 2 (3 - 1 Months Out) x Col 1 (Planning & Coordination) with order 1
+INFO 2026-02-10 10:37:26,159 project_views 49389 6171947008 Task 33: 'Confirm transport and parking...' in Row 2 (3 - 1 Months Out) x Col 1 (Planning & Coordination) with order 2
+INFO 2026-02-10 10:37:26,159 project_views 49389 6171947008 Task 34: 'Confirm delivery and setup tim...' in Row 2 (3 - 1 Months Out) x Col 2 (Florist) with order 0
+INFO 2026-02-10 10:37:26,160 project_views 49389 6171947008 Task 35: 'Agree breakdown and collection...' in Row 2 (3 - 1 Months Out) x Col 2 (Florist) with order 1
+INFO 2026-02-10 10:37:26,160 project_views 49389 6171947008 Task 36: 'Confirm water and storage for ...' in Row 2 (3 - 1 Months Out) x Col 2 (Florist) with order 2
+INFO 2026-02-10 10:37:26,161 project_views 49389 6171947008 Task 37: 'Confirm staff arrival time...' in Row 2 (3 - 1 Months Out) x Col 3 (Catering) with order 0
+INFO 2026-02-10 10:37:26,161 project_views 49389 6171947008 Task 38: 'Double check any allergies...' in Row 2 (3 - 1 Months Out) x Col 3 (Catering) with order 1
+INFO 2026-02-10 10:37:26,162 project_views 49389 6171947008 Task 39: 'Confirm cake delivery and stor...' in Row 2 (3 - 1 Months Out) x Col 3 (Catering) with order 2
+INFO 2026-02-10 10:37:26,162 project_views 49389 6171947008 Task 40: 'Confirm arrival time for getti...' in Row 2 (3 - 1 Months Out) x Col 4 (Photography) with order 0
+INFO 2026-02-10 10:37:26,162 project_views 49389 6171947008 Task 41: 'Agree areas for couple portrai...' in Row 2 (3 - 1 Months Out) x Col 4 (Photography) with order 1
+INFO 2026-02-10 10:37:26,163 project_views 49389 6171947008 Task 42: 'Send timeline to all suppliers...' in Row 2 (3 - 1 Months Out) x Col 5 (Day & Follow Up) with order 0
+INFO 2026-02-10 10:37:26,163 project_views 49389 6171947008 Task 43: 'Confirm wet weather contingenc...' in Row 2 (3 - 1 Months Out) x Col 5 (Day & Follow Up) with order 1
+INFO 2026-02-10 10:37:26,163 project_views 49389 6171947008 Task 44: 'Final planning meeting with co...' in Row 3 (Final Week) x Col 1 (Planning & Coordination) with order 0
+INFO 2026-02-10 10:37:26,164 project_views 49389 6171947008 Task 45: 'Walk through day timeline...' in Row 3 (Final Week) x Col 1 (Planning & Coordination) with order 1
+INFO 2026-02-10 10:37:26,164 project_views 49389 6171947008 Task 46: 'Confirm all access times and k...' in Row 3 (Final Week) x Col 1 (Planning & Coordination) with order 2
+INFO 2026-02-10 10:37:26,165 project_views 49389 6171947008 Task 47: 'Confirm floral delivery slot...' in Row 3 (Final Week) x Col 2 (Florist) with order 0
+INFO 2026-02-10 10:37:26,165 project_views 49389 6171947008 Task 48: 'Confirm venue contact for flor...' in Row 3 (Final Week) x Col 2 (Florist) with order 1
+INFO 2026-02-10 10:37:26,166 project_views 49389 6171947008 Task 49: 'Confirm catering contact on th...' in Row 3 (Final Week) x Col 3 (Catering) with order 0
+INFO 2026-02-10 10:37:26,166 project_views 49389 6171947008 Task 50: 'Confirm dietary labels receive...' in Row 3 (Final Week) x Col 3 (Catering) with order 1
+INFO 2026-02-10 10:37:26,167 project_views 49389 6171947008 Task 51: 'Confirm venue contact for phot...' in Row 3 (Final Week) x Col 4 (Photography) with order 0
+INFO 2026-02-10 10:37:26,167 project_views 49389 6171947008 Task 52: 'Confirm photographer schedule...' in Row 3 (Final Week) x Col 4 (Photography) with order 1
+INFO 2026-02-10 10:37:26,168 project_views 49389 6171947008 Task 53: 'Note any sunset or golden hour...' in Row 3 (Final Week) x Col 4 (Photography) with order 2
+INFO 2026-02-10 10:37:26,168 project_views 49389 6171947008 Task 54: 'Brief venue team on running or...' in Row 3 (Final Week) x Col 5 (Day & Follow Up) with order 0
+INFO 2026-02-10 10:37:26,168 project_views 49389 6171947008 Task 55: 'Prepare welcome signage and ta...' in Row 3 (Final Week) x Col 5 (Day & Follow Up) with order 1
+INFO 2026-02-10 10:37:26,169 project_views 49389 6171947008 Task 56: 'Morning walk-through and setup...' in Row 4 (Day & Post Event) x Col 1 (Planning & Coordination) with order 0
+INFO 2026-02-10 10:37:26,169 project_views 49389 6171947008 Task 57: 'Troubleshoot any issues on the...' in Row 4 (Day & Post Event) x Col 1 (Planning & Coordination) with order 1
+INFO 2026-02-10 10:37:26,170 project_views 49389 6171947008 Task 58: 'Ensure florist has access and ...' in Row 4 (Day & Post Event) x Col 2 (Florist) with order 0
+INFO 2026-02-10 10:37:26,170 project_views 49389 6171947008 Task 59: 'Confirm flower collection and ...' in Row 4 (Day & Post Event) x Col 2 (Florist) with order 1
+INFO 2026-02-10 10:37:26,170 project_views 49389 6171947008 Task 60: 'Inform security regarding cate...' in Row 4 (Day & Post Event) x Col 3 (Catering) with order 0
+INFO 2026-02-10 10:37:26,171 project_views 49389 6171947008 Task 61: 'Ensure photographer has access...' in Row 4 (Day & Post Event) x Col 4 (Photography) with order 0
+INFO 2026-02-10 10:37:26,171 project_views 49389 6171947008 Task 62: 'Speak to security re special a...' in Row 4 (Day & Post Event) x Col 4 (Photography) with order 1
+INFO 2026-02-10 10:37:26,172 project_views 49389 6171947008 Task 63: 'Add photos to portfolio with p...' in Row 4 (Day & Post Event) x Col 5 (Day & Follow Up) with order 0
+INFO 2026-02-10 10:37:26,173 project_views 49389 6171947008 Task 64: 'Send thank you and request rev...' in Row 4 (Day & Post Event) x Col 5 (Day & Follow Up) with order 1
+INFO 2026-02-10 10:37:26,173 project_views 49389 6171947008 === END DEBUG ===
+INFO 2026-02-10 10:37:26,176 project_views 49389 6171947008 Created template task: Final planning meeting complete in Key Milestones x Planning & Coordination with order 0
+INFO 2026-02-10 10:37:26,177 project_views 49389 6171947008 Created template task: Timeline locked in Key Milestones x Planning & Coordination with order 1
+INFO 2026-02-10 10:37:26,178 project_views 49389 6171947008 Created template task: All suppliers confirmed in Key Milestones x Planning & Coordination with order 2
+INFO 2026-02-10 10:37:26,178 project_views 49389 6171947008 Created template task: Share approved florist list in Key Milestones x Florist with order 3
+INFO 2026-02-10 10:37:26,179 project_views 49389 6171947008 Created template task: Florist PI Insurance in Key Milestones x Florist with order 4
+INFO 2026-02-10 10:37:26,180 project_views 49389 6171947008 Created template task: Delivery access agreed in Key Milestones x Florist with order 5
+INFO 2026-02-10 10:37:26,181 project_views 49389 6171947008 Created template task: Set up time agreed in Key Milestones x Florist with order 6
+INFO 2026-02-10 10:37:26,181 project_views 49389 6171947008 Created template task: Super simple in Key Milestones x Florist with order 7
+INFO 2026-02-10 10:37:26,183 project_views 49389 6171947008 Created template task: Share approved caterer list in Key Milestones x Catering with order 8
+INFO 2026-02-10 10:37:26,184 project_views 49389 6171947008 Created template task: Caterer booked in Key Milestones x Catering with order 9
+INFO 2026-02-10 10:37:26,184 project_views 49389 6171947008 Created template task: Caterer PI Insurance in Key Milestones x Catering with order 10
+INFO 2026-02-10 10:37:26,185 project_views 49389 6171947008 Created template task: Menu finalised and final numbers received in Key Milestones x Catering with order 11
+INFO 2026-02-10 10:37:26,186 project_views 49389 6171947008 Created template task: Photographer booked in Key Milestones x Photography with order 12
+INFO 2026-02-10 10:37:26,187 project_views 49389 6171947008 Created template task: Photographer PI Insurance in Key Milestones x Photography with order 13
+INFO 2026-02-10 10:37:26,187 project_views 49389 6171947008 Created template task: Access times agreed in Key Milestones x Photography with order 14
+INFO 2026-02-10 10:37:26,188 project_views 49389 6171947008 Created template task: Venue areas confirmed in Key Milestones x Photography with order 15
+INFO 2026-02-10 10:37:26,189 project_views 49389 6171947008 Created template task: Final balance paid in Key Milestones x Day & Follow Up with order 16
+INFO 2026-02-10 10:37:26,190 project_views 49389 6171947008 Created template task: Check in on planning progress in 3 - 6 months out x Planning & Coordination with order 17
+INFO 2026-02-10 10:37:26,190 project_views 49389 6171947008 Created template task: Schedule sit down planning day in 3 - 6 months out x Planning & Coordination with order 18
+INFO 2026-02-10 10:37:26,191 project_views 49389 6171947008 Created template task: Introduce on day co-ordinator in 3 - 6 months out x Planning & Coordination with order 19
+INFO 2026-02-10 10:37:26,192 project_views 49389 6171947008 Created template task: Confirm florist booking in 3 - 6 months out x Florist with order 20
+INFO 2026-02-10 10:37:26,193 project_views 49389 6171947008 Created template task: Share access and setup guidelines in 3 - 6 months out x Florist with order 21
+INFO 2026-02-10 10:37:26,193 project_views 49389 6171947008 Created template task: Discuss any installation requirements in 3 - 6 months out x Florist with order 22
+INFO 2026-02-10 10:37:26,194 project_views 49389 6171947008 Created template task: Menu tasting scheduled in 3 - 6 months out x Catering with order 23
+INFO 2026-02-10 10:37:26,195 project_views 49389 6171947008 Created template task: Confirm kitchen and prep facilities in 3 - 6 months out x Catering with order 24
+INFO 2026-02-10 10:37:26,196 project_views 49389 6171947008 Created template task: Confirm serving style and timings on the day in 3 - 6 months out x Catering with order 25
+INFO 2026-02-10 10:37:26,196 project_views 49389 6171947008 Created template task: Confirm photographer booked in 3 - 6 months out x Photography with order 26
+INFO 2026-02-10 10:37:26,197 project_views 49389 6171947008 Created template task: Share venue photo locations in 3 - 6 months out x Photography with order 27
+INFO 2026-02-10 10:37:26,197 project_views 49389 6171947008 Created template task: Note any restricted areas in 3 - 6 months out x Photography with order 28
+INFO 2026-02-10 10:37:26,197 project_views 49389 6171947008 Created template task: Initial invoice paid in 3 - 6 months out x Day & Follow Up with order 29
+INFO 2026-02-10 10:37:26,198 project_views 49389 6171947008 Created template task: Send checklist of outstanding items in 3 - 6 months out x Day & Follow Up with order 30
+INFO 2026-02-10 10:37:26,198 project_views 49389 6171947008 Created template task: Confirm all suppliers booked in 3 - 1 Months Out x Planning & Coordination with order 31
+INFO 2026-02-10 10:37:26,200 project_views 49389 6171947008 Created template task: Review day timeline with couple in 3 - 1 Months Out x Planning & Coordination with order 32
+INFO 2026-02-10 10:37:26,201 project_views 49389 6171947008 Created template task: Confirm transport and parking in 3 - 1 Months Out x Planning & Coordination with order 33
+INFO 2026-02-10 10:37:26,201 project_views 49389 6171947008 Created template task: Confirm delivery and setup time in 3 - 1 Months Out x Florist with order 34
+INFO 2026-02-10 10:37:26,202 project_views 49389 6171947008 Created template task: Agree breakdown and collection time in 3 - 1 Months Out x Florist with order 35
+INFO 2026-02-10 10:37:26,203 project_views 49389 6171947008 Created template task: Confirm water and storage for flowers in 3 - 1 Months Out x Florist with order 36
+INFO 2026-02-10 10:37:26,204 project_views 49389 6171947008 Created template task: Confirm staff arrival time in 3 - 1 Months Out x Catering with order 37
+INFO 2026-02-10 10:37:26,204 project_views 49389 6171947008 Created template task: Double check any allergies in 3 - 1 Months Out x Catering with order 38
+INFO 2026-02-10 10:37:26,207 project_views 49389 6171947008 Created template task: Confirm cake delivery and storage in 3 - 1 Months Out x Catering with order 39
+INFO 2026-02-10 10:37:26,210 project_views 49389 6171947008 Created template task: Confirm arrival time for getting ready shots in 3 - 1 Months Out x Photography with order 40
+INFO 2026-02-10 10:37:26,211 project_views 49389 6171947008 Created template task: Agree areas for couple portraits in 3 - 1 Months Out x Photography with order 41
+INFO 2026-02-10 10:37:26,212 project_views 49389 6171947008 Created template task: Send timeline to all suppliers in 3 - 1 Months Out x Day & Follow Up with order 42
+INFO 2026-02-10 10:37:26,212 project_views 49389 6171947008 Created template task: Confirm wet weather contingency with the couple in 3 - 1 Months Out x Day & Follow Up with order 43
+INFO 2026-02-10 10:37:26,213 project_views 49389 6171947008 Created template task: Final planning meeting with couple in Final Week x Planning & Coordination with order 44
+INFO 2026-02-10 10:37:26,213 project_views 49389 6171947008 Created template task: Walk through day timeline in Final Week x Planning & Coordination with order 45
+INFO 2026-02-10 10:37:26,214 project_views 49389 6171947008 Created template task: Confirm all access times and keys in Final Week x Planning & Coordination with order 46
+INFO 2026-02-10 10:37:26,214 project_views 49389 6171947008 Created template task: Confirm floral delivery slot in Final Week x Florist with order 47
+INFO 2026-02-10 10:37:26,215 project_views 49389 6171947008 Created template task: Confirm venue contact for florist in Final Week x Florist with order 48
+INFO 2026-02-10 10:37:26,215 project_views 49389 6171947008 Created template task: Confirm catering contact on the day in Final Week x Catering with order 49
+INFO 2026-02-10 10:37:26,216 project_views 49389 6171947008 Created template task: Confirm dietary labels received in Final Week x Catering with order 50
+INFO 2026-02-10 10:37:26,217 project_views 49389 6171947008 Created template task: Confirm venue contact for photographer in Final Week x Photography with order 51
+INFO 2026-02-10 10:37:26,218 project_views 49389 6171947008 Created template task: Confirm photographer schedule in Final Week x Photography with order 52
+INFO 2026-02-10 10:37:26,218 project_views 49389 6171947008 Created template task: Note any sunset or golden hour timing in Final Week x Photography with order 53
+INFO 2026-02-10 10:37:26,219 project_views 49389 6171947008 Created template task: Brief venue team on running order in Final Week x Day & Follow Up with order 54
+INFO 2026-02-10 10:37:26,219 project_views 49389 6171947008 Created template task: Prepare welcome signage and table plan display in Final Week x Day & Follow Up with order 55
+INFO 2026-02-10 10:37:26,220 project_views 49389 6171947008 Created template task: Morning walk-through and setup check in Day & Post Event x Planning & Coordination with order 56
+INFO 2026-02-10 10:37:26,221 project_views 49389 6171947008 Created template task: Troubleshoot any issues on the day in Day & Post Event x Planning & Coordination with order 57
+INFO 2026-02-10 10:37:26,223 project_views 49389 6171947008 Created template task: Ensure florist has access and setup space in Day & Post Event x Florist with order 58
+INFO 2026-02-10 10:37:26,224 project_views 49389 6171947008 Created template task: Confirm flower collection and disposal in Day & Post Event x Florist with order 59
+INFO 2026-02-10 10:37:26,225 project_views 49389 6171947008 Created template task: Inform security regarding catering delivery slot in Day & Post Event x Catering with order 60
+INFO 2026-02-10 10:37:26,226 project_views 49389 6171947008 Created template task: Ensure photographer has access to key areas in Day & Post Event x Photography with order 61
+INFO 2026-02-10 10:37:26,226 project_views 49389 6171947008 Created template task: Speak to security re special access in Day & Post Event x Photography with order 62
+INFO 2026-02-10 10:37:26,226 project_views 49389 6171947008 Created template task: Add photos to portfolio with permission in Day & Post Event x Day & Follow Up with order 63
+INFO 2026-02-10 10:37:26,227 project_views 49389 6171947008 Created template task: Send thank you and request review in Day & Post Event x Day & Follow Up with order 64
+INFO 2026-02-10 10:37:26,227 project_views 49389 6171947008 Template created with 65 tasks out of 65 original tasks
+INFO 2026-02-10 10:37:26,227 project_views_functions 49389 6171947008 User None saved project as template: Sample Wedding: Simpson Wedding
+INFO 2026-02-10 10:37:26,228 basehttp 49389 6171947008 "POST /grids/339/save-template/ HTTP/1.1" 302 0
+INFO 2026-02-10 10:37:26,246 basehttp 49389 6171947008 "GET /grids/ HTTP/1.1" 200 16693
+INFO 2026-02-10 10:37:30,561 project_views 49389 6171947008 Creating project from template with 65 template tasks
+INFO 2026-02-10 10:37:30,561 project_views 49389 6171947008 === TEMPLATE TASK ORDERING DEBUG ===
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 0: 'Final planning meeting complet...' in Row 0 (Key Milestones) x Col 1 (Planning & Coordination) with order 0
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 1: 'Timeline locked...' in Row 0 (Key Milestones) x Col 1 (Planning & Coordination) with order 1
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 2: 'All suppliers confirmed...' in Row 0 (Key Milestones) x Col 1 (Planning & Coordination) with order 2
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 3: 'Share approved florist list...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 3
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 4: 'Florist PI Insurance...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 4
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 5: 'Delivery access agreed...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 5
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 6: 'Set up time agreed...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 6
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 7: 'Super simple...' in Row 0 (Key Milestones) x Col 2 (Florist) with order 7
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 8: 'Share approved caterer list...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 8
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 9: 'Caterer booked...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 9
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 10: 'Caterer PI Insurance...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 10
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 11: 'Menu finalised and final numbe...' in Row 0 (Key Milestones) x Col 3 (Catering) with order 11
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 12: 'Photographer booked...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 12
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 13: 'Photographer PI Insurance...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 13
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 14: 'Access times agreed...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 14
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 15: 'Venue areas confirmed...' in Row 0 (Key Milestones) x Col 4 (Photography) with order 15
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 16: 'Final balance paid...' in Row 0 (Key Milestones) x Col 5 (Day & Follow Up) with order 16
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 17: 'Check in on planning progress...' in Row 1 (3 - 6 months out) x Col 1 (Planning & Coordination) with order 17
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 18: 'Schedule sit down planning day...' in Row 1 (3 - 6 months out) x Col 1 (Planning & Coordination) with order 18
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 19: 'Introduce on day co-ordinator...' in Row 1 (3 - 6 months out) x Col 1 (Planning & Coordination) with order 19
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 20: 'Confirm florist booking...' in Row 1 (3 - 6 months out) x Col 2 (Florist) with order 20
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 21: 'Share access and setup guideli...' in Row 1 (3 - 6 months out) x Col 2 (Florist) with order 21
+INFO 2026-02-10 10:37:30,564 project_views 49389 6171947008 Template Task 22: 'Discuss any installation requi...' in Row 1 (3 - 6 months out) x Col 2 (Florist) with order 22
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 23: 'Menu tasting scheduled...' in Row 1 (3 - 6 months out) x Col 3 (Catering) with order 23
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 24: 'Confirm kitchen and prep facil...' in Row 1 (3 - 6 months out) x Col 3 (Catering) with order 24
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 25: 'Confirm serving style and timi...' in Row 1 (3 - 6 months out) x Col 3 (Catering) with order 25
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 26: 'Confirm photographer booked...' in Row 1 (3 - 6 months out) x Col 4 (Photography) with order 26
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 27: 'Share venue photo locations...' in Row 1 (3 - 6 months out) x Col 4 (Photography) with order 27
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 28: 'Note any restricted areas...' in Row 1 (3 - 6 months out) x Col 4 (Photography) with order 28
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 29: 'Initial invoice paid...' in Row 1 (3 - 6 months out) x Col 5 (Day & Follow Up) with order 29
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 30: 'Send checklist of outstanding ...' in Row 1 (3 - 6 months out) x Col 5 (Day & Follow Up) with order 30
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 31: 'Confirm all suppliers booked...' in Row 2 (3 - 1 Months Out) x Col 1 (Planning & Coordination) with order 31
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 32: 'Review day timeline with coupl...' in Row 2 (3 - 1 Months Out) x Col 1 (Planning & Coordination) with order 32
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 33: 'Confirm transport and parking...' in Row 2 (3 - 1 Months Out) x Col 1 (Planning & Coordination) with order 33
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 34: 'Confirm delivery and setup tim...' in Row 2 (3 - 1 Months Out) x Col 2 (Florist) with order 34
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 35: 'Agree breakdown and collection...' in Row 2 (3 - 1 Months Out) x Col 2 (Florist) with order 35
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 36: 'Confirm water and storage for ...' in Row 2 (3 - 1 Months Out) x Col 2 (Florist) with order 36
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 37: 'Confirm staff arrival time...' in Row 2 (3 - 1 Months Out) x Col 3 (Catering) with order 37
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 38: 'Double check any allergies...' in Row 2 (3 - 1 Months Out) x Col 3 (Catering) with order 38
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 39: 'Confirm cake delivery and stor...' in Row 2 (3 - 1 Months Out) x Col 3 (Catering) with order 39
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 40: 'Confirm arrival time for getti...' in Row 2 (3 - 1 Months Out) x Col 4 (Photography) with order 40
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 41: 'Agree areas for couple portrai...' in Row 2 (3 - 1 Months Out) x Col 4 (Photography) with order 41
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 42: 'Send timeline to all suppliers...' in Row 2 (3 - 1 Months Out) x Col 5 (Day & Follow Up) with order 42
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 43: 'Confirm wet weather contingenc...' in Row 2 (3 - 1 Months Out) x Col 5 (Day & Follow Up) with order 43
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 44: 'Final planning meeting with co...' in Row 3 (Final Week) x Col 1 (Planning & Coordination) with order 44
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 45: 'Walk through day timeline...' in Row 3 (Final Week) x Col 1 (Planning & Coordination) with order 45
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 46: 'Confirm all access times and k...' in Row 3 (Final Week) x Col 1 (Planning & Coordination) with order 46
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 47: 'Confirm floral delivery slot...' in Row 3 (Final Week) x Col 2 (Florist) with order 47
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 48: 'Confirm venue contact for flor...' in Row 3 (Final Week) x Col 2 (Florist) with order 48
+INFO 2026-02-10 10:37:30,565 project_views 49389 6171947008 Template Task 49: 'Confirm catering contact on th...' in Row 3 (Final Week) x Col 3 (Catering) with order 49
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 50: 'Confirm dietary labels receive...' in Row 3 (Final Week) x Col 3 (Catering) with order 50
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 51: 'Confirm venue contact for phot...' in Row 3 (Final Week) x Col 4 (Photography) with order 51
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 52: 'Confirm photographer schedule...' in Row 3 (Final Week) x Col 4 (Photography) with order 52
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 53: 'Note any sunset or golden hour...' in Row 3 (Final Week) x Col 4 (Photography) with order 53
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 54: 'Brief venue team on running or...' in Row 3 (Final Week) x Col 5 (Day & Follow Up) with order 54
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 55: 'Prepare welcome signage and ta...' in Row 3 (Final Week) x Col 5 (Day & Follow Up) with order 55
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 56: 'Morning walk-through and setup...' in Row 4 (Day & Post Event) x Col 1 (Planning & Coordination) with order 56
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 57: 'Troubleshoot any issues on the...' in Row 4 (Day & Post Event) x Col 1 (Planning & Coordination) with order 57
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 58: 'Ensure florist has access and ...' in Row 4 (Day & Post Event) x Col 2 (Florist) with order 58
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 59: 'Confirm flower collection and ...' in Row 4 (Day & Post Event) x Col 2 (Florist) with order 59
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 60: 'Inform security regarding cate...' in Row 4 (Day & Post Event) x Col 3 (Catering) with order 60
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 61: 'Ensure photographer has access...' in Row 4 (Day & Post Event) x Col 4 (Photography) with order 61
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 62: 'Speak to security re special a...' in Row 4 (Day & Post Event) x Col 4 (Photography) with order 62
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 63: 'Add photos to portfolio with p...' in Row 4 (Day & Post Event) x Col 5 (Day & Follow Up) with order 63
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 Template Task 64: 'Send thank you and request rev...' in Row 4 (Day & Post Event) x Col 5 (Day & Follow Up) with order 64
+INFO 2026-02-10 10:37:30,566 project_views 49389 6171947008 === END DEBUG ===
+INFO 2026-02-10 10:37:30,567 project_views 49389 6171947008 Created task: Final planning meeting complete in Key Milestones x Planning & Coordination with order 0
+INFO 2026-02-10 10:37:30,568 project_views 49389 6171947008 Created task: Timeline locked in Key Milestones x Planning & Coordination with order 1
+INFO 2026-02-10 10:37:30,569 project_views 49389 6171947008 Created task: All suppliers confirmed in Key Milestones x Planning & Coordination with order 2
+INFO 2026-02-10 10:37:30,570 project_views 49389 6171947008 Created task: Share approved florist list in Key Milestones x Florist with order 3
+INFO 2026-02-10 10:37:30,571 project_views 49389 6171947008 Created task: Florist PI Insurance in Key Milestones x Florist with order 4
+INFO 2026-02-10 10:37:30,572 project_views 49389 6171947008 Created task: Delivery access agreed in Key Milestones x Florist with order 5
+INFO 2026-02-10 10:37:30,572 project_views 49389 6171947008 Created task: Set up time agreed in Key Milestones x Florist with order 6
+INFO 2026-02-10 10:37:30,573 project_views 49389 6171947008 Created task: Super simple in Key Milestones x Florist with order 7
+INFO 2026-02-10 10:37:30,574 project_views 49389 6171947008 Created task: Share approved caterer list in Key Milestones x Catering with order 8
+INFO 2026-02-10 10:37:30,575 project_views 49389 6171947008 Created task: Caterer booked in Key Milestones x Catering with order 9
+INFO 2026-02-10 10:37:30,575 project_views 49389 6171947008 Created task: Caterer PI Insurance in Key Milestones x Catering with order 10
+INFO 2026-02-10 10:37:30,576 project_views 49389 6171947008 Created task: Menu finalised and final numbers received in Key Milestones x Catering with order 11
+INFO 2026-02-10 10:37:30,577 project_views 49389 6171947008 Created task: Photographer booked in Key Milestones x Photography with order 12
+INFO 2026-02-10 10:37:30,577 project_views 49389 6171947008 Created task: Photographer PI Insurance in Key Milestones x Photography with order 13
+INFO 2026-02-10 10:37:30,578 project_views 49389 6171947008 Created task: Access times agreed in Key Milestones x Photography with order 14
+INFO 2026-02-10 10:37:30,579 project_views 49389 6171947008 Created task: Venue areas confirmed in Key Milestones x Photography with order 15
+INFO 2026-02-10 10:37:30,580 project_views 49389 6171947008 Created task: Final balance paid in Key Milestones x Day & Follow Up with order 16
+INFO 2026-02-10 10:37:30,581 project_views 49389 6171947008 Created task: Check in on planning progress in 3 - 6 months out x Planning & Coordination with order 17
+INFO 2026-02-10 10:37:30,581 project_views 49389 6171947008 Created task: Schedule sit down planning day in 3 - 6 months out x Planning & Coordination with order 18
+INFO 2026-02-10 10:37:30,583 project_views 49389 6171947008 Created task: Introduce on day co-ordinator in 3 - 6 months out x Planning & Coordination with order 19
+INFO 2026-02-10 10:37:30,584 project_views 49389 6171947008 Created task: Confirm florist booking in 3 - 6 months out x Florist with order 20
+INFO 2026-02-10 10:37:30,584 project_views 49389 6171947008 Created task: Share access and setup guidelines in 3 - 6 months out x Florist with order 21
+INFO 2026-02-10 10:37:30,585 project_views 49389 6171947008 Created task: Discuss any installation requirements in 3 - 6 months out x Florist with order 22
+INFO 2026-02-10 10:37:30,587 project_views 49389 6171947008 Created task: Menu tasting scheduled in 3 - 6 months out x Catering with order 23
+INFO 2026-02-10 10:37:30,591 project_views 49389 6171947008 Created task: Confirm kitchen and prep facilities in 3 - 6 months out x Catering with order 24
+INFO 2026-02-10 10:37:30,593 project_views 49389 6171947008 Created task: Confirm serving style and timings on the day in 3 - 6 months out x Catering with order 25
+INFO 2026-02-10 10:37:30,593 project_views 49389 6171947008 Created task: Confirm photographer booked in 3 - 6 months out x Photography with order 26
+INFO 2026-02-10 10:37:30,594 project_views 49389 6171947008 Created task: Share venue photo locations in 3 - 6 months out x Photography with order 27
+INFO 2026-02-10 10:37:30,595 project_views 49389 6171947008 Created task: Note any restricted areas in 3 - 6 months out x Photography with order 28
+INFO 2026-02-10 10:37:30,596 project_views 49389 6171947008 Created task: Initial invoice paid in 3 - 6 months out x Day & Follow Up with order 29
+INFO 2026-02-10 10:37:30,596 project_views 49389 6171947008 Created task: Send checklist of outstanding items in 3 - 6 months out x Day & Follow Up with order 30
+INFO 2026-02-10 10:37:30,597 project_views 49389 6171947008 Created task: Confirm all suppliers booked in 3 - 1 Months Out x Planning & Coordination with order 31
+INFO 2026-02-10 10:37:30,598 project_views 49389 6171947008 Created task: Review day timeline with couple in 3 - 1 Months Out x Planning & Coordination with order 32
+INFO 2026-02-10 10:37:30,599 project_views 49389 6171947008 Created task: Confirm transport and parking in 3 - 1 Months Out x Planning & Coordination with order 33
+INFO 2026-02-10 10:37:30,599 project_views 49389 6171947008 Created task: Confirm delivery and setup time in 3 - 1 Months Out x Florist with order 34
+INFO 2026-02-10 10:37:30,600 project_views 49389 6171947008 Created task: Agree breakdown and collection time in 3 - 1 Months Out x Florist with order 35
+INFO 2026-02-10 10:37:30,601 project_views 49389 6171947008 Created task: Confirm water and storage for flowers in 3 - 1 Months Out x Florist with order 36
+INFO 2026-02-10 10:37:30,601 project_views 49389 6171947008 Created task: Confirm staff arrival time in 3 - 1 Months Out x Catering with order 37
+INFO 2026-02-10 10:37:30,602 project_views 49389 6171947008 Created task: Double check any allergies in 3 - 1 Months Out x Catering with order 38
+INFO 2026-02-10 10:37:30,603 project_views 49389 6171947008 Created task: Confirm cake delivery and storage in 3 - 1 Months Out x Catering with order 39
+INFO 2026-02-10 10:37:30,603 project_views 49389 6171947008 Created task: Confirm arrival time for getting ready shots in 3 - 1 Months Out x Photography with order 40
+INFO 2026-02-10 10:37:30,604 project_views 49389 6171947008 Created task: Agree areas for couple portraits in 3 - 1 Months Out x Photography with order 41
+INFO 2026-02-10 10:37:30,605 project_views 49389 6171947008 Created task: Send timeline to all suppliers in 3 - 1 Months Out x Day & Follow Up with order 42
+INFO 2026-02-10 10:37:30,605 project_views 49389 6171947008 Created task: Confirm wet weather contingency with the couple in 3 - 1 Months Out x Day & Follow Up with order 43
+INFO 2026-02-10 10:37:30,606 project_views 49389 6171947008 Created task: Final planning meeting with couple in Final Week x Planning & Coordination with order 44
+INFO 2026-02-10 10:37:30,607 project_views 49389 6171947008 Created task: Walk through day timeline in Final Week x Planning & Coordination with order 45
+INFO 2026-02-10 10:37:30,607 project_views 49389 6171947008 Created task: Confirm all access times and keys in Final Week x Planning & Coordination with order 46
+INFO 2026-02-10 10:37:30,608 project_views 49389 6171947008 Created task: Confirm floral delivery slot in Final Week x Florist with order 47
+INFO 2026-02-10 10:37:30,609 project_views 49389 6171947008 Created task: Confirm venue contact for florist in Final Week x Florist with order 48
+INFO 2026-02-10 10:37:30,609 project_views 49389 6171947008 Created task: Confirm catering contact on the day in Final Week x Catering with order 49
+INFO 2026-02-10 10:37:30,610 project_views 49389 6171947008 Created task: Confirm dietary labels received in Final Week x Catering with order 50
+INFO 2026-02-10 10:37:30,611 project_views 49389 6171947008 Created task: Confirm venue contact for photographer in Final Week x Photography with order 51
+INFO 2026-02-10 10:37:30,611 project_views 49389 6171947008 Created task: Confirm photographer schedule in Final Week x Photography with order 52
+INFO 2026-02-10 10:37:30,612 project_views 49389 6171947008 Created task: Note any sunset or golden hour timing in Final Week x Photography with order 53
+INFO 2026-02-10 10:37:30,613 project_views 49389 6171947008 Created task: Brief venue team on running order in Final Week x Day & Follow Up with order 54
+INFO 2026-02-10 10:37:30,614 project_views 49389 6171947008 Created task: Prepare welcome signage and table plan display in Final Week x Day & Follow Up with order 55
+INFO 2026-02-10 10:37:30,615 project_views 49389 6171947008 Created task: Morning walk-through and setup check in Day & Post Event x Planning & Coordination with order 56
+INFO 2026-02-10 10:37:30,615 project_views 49389 6171947008 Created task: Troubleshoot any issues on the day in Day & Post Event x Planning & Coordination with order 57
+INFO 2026-02-10 10:37:30,616 project_views 49389 6171947008 Created task: Ensure florist has access and setup space in Day & Post Event x Florist with order 58
+INFO 2026-02-10 10:37:30,617 project_views 49389 6171947008 Created task: Confirm flower collection and disposal in Day & Post Event x Florist with order 59
+INFO 2026-02-10 10:37:30,617 project_views 49389 6171947008 Created task: Inform security regarding catering delivery slot in Day & Post Event x Catering with order 60
+INFO 2026-02-10 10:37:30,618 project_views 49389 6171947008 Created task: Ensure photographer has access to key areas in Day & Post Event x Photography with order 61
+INFO 2026-02-10 10:37:30,619 project_views 49389 6171947008 Created task: Speak to security re special access in Day & Post Event x Photography with order 62
+INFO 2026-02-10 10:37:30,619 project_views 49389 6171947008 Created task: Add photos to portfolio with permission in Day & Post Event x Day & Follow Up with order 63
+INFO 2026-02-10 10:37:30,622 project_views 49389 6171947008 Created task: Send thank you and request review in Day & Post Event x Day & Follow Up with order 64
+INFO 2026-02-10 10:37:30,622 project_views 49389 6171947008 Project created with 65 tasks out of 65 template tasks
+INFO 2026-02-10 10:37:30,622 project_views_functions 49389 6171947008 User None created project from template: Sample Wedding: Sample Wedding
+INFO 2026-02-10 10:37:30,623 basehttp 49389 6171947008 "POST /templates/16/use/ HTTP/1.1" 302 0
+INFO 2026-02-10 10:37:30,668 basehttp 49389 6171947008 "GET /grids/342/ HTTP/1.1" 200 37956
+INFO 2026-02-10 10:39:15,355 basehttp 49389 6171947008 "GET /grids/340/ HTTP/1.1" 200 27400
+INFO 2026-02-10 10:39:34,609 basehttp 49389 6171947008 "POST /tasks/3874/reminder/ HTTP/1.1" 200 82
+INFO 2026-02-10 10:39:34,628 basehttp 49389 6171947008 "GET /grids/340/reminders/ HTTP/1.1" 200 513
+INFO 2026-02-10 10:39:40,974 basehttp 49389 6171947008 "POST /tasks/3878/reminder/ HTTP/1.1" 200 82
+INFO 2026-02-10 10:39:40,996 basehttp 49389 6171947008 "GET /grids/340/reminders/ HTTP/1.1" 200 575
+INFO 2026-02-10 10:39:44,524 basehttp 49389 6171947008 "GET /grids/340/reminders/ HTTP/1.1" 200 523
+INFO 2026-02-10 10:40:00,771 basehttp 49389 6171947008 "GET /grids/create/ HTTP/1.1" 200 3179
+INFO 2026-02-10 10:40:04,101 project_views_functions 49389 6171947008 User None created project: Pipeline
+INFO 2026-02-10 10:40:04,102 basehttp 49389 6171947008 "POST /grids/create/ HTTP/1.1" 302 0
+INFO 2026-02-10 10:40:04,129 basehttp 49389 6171947008 "GET /grids/343/ HTTP/1.1" 200 23210
+INFO 2026-02-10 10:40:09,570 basehttp 49389 6171947008 "POST /grids/343/columns/1229/edit/ HTTP/1.1" 200 113
+INFO 2026-02-10 10:40:11,778 basehttp 49389 6171947008 "GET /grids/343/columns/create/ HTTP/1.1" 200 974
+INFO 2026-02-10 10:40:17,017 basehttp 49389 6171947008 "POST /grids/343/columns/create/ HTTP/1.1" 204 0
+INFO 2026-02-10 10:40:17,073 basehttp 49389 6171947008 "GET /grids/343/ HTTP/1.1" 200 23612
+INFO 2026-02-10 10:40:17,139 basehttp 49389 6171947008 - Broken pipe from ('127.0.0.1', 58125)
+INFO 2026-02-10 10:40:17,149 basehttp 49389 6188773376 "GET /grids/343/ HTTP/1.1" 200 23663
+INFO 2026-02-10 10:40:17,149 basehttp 49389 6188773376 - Broken pipe from ('127.0.0.1', 58126)
+INFO 2026-02-10 10:40:17,151 basehttp 49389 6205599744 "GET /grids/343/ HTTP/1.1" 200 23633
+INFO 2026-02-10 10:40:19,460 basehttp 49389 6171947008 "GET /grids/343/columns/create/ HTTP/1.1" 200 1042
+INFO 2026-02-10 10:40:23,089 basehttp 49389 6171947008 "POST /grids/343/columns/create/ HTTP/1.1" 204 0
+INFO 2026-02-10 10:40:23,144 basehttp 49389 6188773376 "GET /grids/343/ HTTP/1.1" 200 23979
+INFO 2026-02-10 10:40:23,151 basehttp 49389 6171947008 "GET /grids/343/ HTTP/1.1" 200 23975
+INFO 2026-02-10 10:40:23,151 basehttp 49389 6188773376 - Broken pipe from ('127.0.0.1', 58129)
+INFO 2026-02-10 10:40:23,152 basehttp 49389 6171947008 - Broken pipe from ('127.0.0.1', 58128)
+INFO 2026-02-10 10:40:23,154 basehttp 49389 6205599744 "GET /grids/343/ HTTP/1.1" 200 23954
+INFO 2026-02-10 10:40:26,159 project_views 49389 6171947008 Task edit view called - Task PK: 3966, Method: POST, User: thomasbarratt@yahoo.com, Content-Type: application/json
+INFO 2026-02-10 10:40:26,162 project_views 49389 6171947008 Task edit JSON request - Task ID: 3966, New text length: 7, New text preview: 'Stevens...'
+INFO 2026-02-10 10:40:26,164 project_views 49389 6171947008 Task 3966 save() completed successfully
+INFO 2026-02-10 10:40:26,165 project_views 49389 6171947008 Task 3966 refreshed from DB - Saved text: 'Stevens...' (length: 7), Matches intended: True
+INFO 2026-02-10 10:40:26,166 basehttp 49389 6171947008 "POST /tasks/3966/edit/ HTTP/1.1" 200 94
+INFO 2026-02-10 10:40:28,627 basehttp 49389 6171947008 "POST /grids/343/tasks/create/1167/1229/ HTTP/1.1" 200 1526
+INFO 2026-02-10 10:40:31,175 basehttp 49389 6171947008 "POST /grids/343/tasks/reorder/ HTTP/1.1" 200 76
+INFO 2026-02-10 10:40:40,848 basehttp 49389 6171947008 "POST /tasks/3966/note/ HTTP/1.1" 200 192
+INFO 2026-02-10 10:40:40,856 basehttp 49389 6171947008 "GET /tasks/3966/notes/ HTTP/1.1" 200 167
+INFO 2026-02-10 10:41:22,672 basehttp 49389 6171947008 "GET /grids/343/reminders/ HTTP/1.1" 200 108
+INFO 2026-02-10 10:41:30,424 basehttp 49389 6171947008 "GET /tasks/3966/notes/ HTTP/1.1" 200 167
+INFO 2026-02-10 10:42:52,877 basehttp 49389 6171947008 "GET /grids/343/columns/create/ HTTP/1.1" 200 1020
+INFO 2026-02-10 10:42:55,257 basehttp 49389 6171947008 "POST /grids/343/columns/create/ HTTP/1.1" 204 0
+INFO 2026-02-10 10:42:55,328 basehttp 49389 6205599744 "GET /grids/343/ HTTP/1.1" 200 24640
+INFO 2026-02-10 10:42:55,338 basehttp 49389 6171947008 - Broken pipe from ('127.0.0.1', 58162)
+INFO 2026-02-10 10:42:55,341 basehttp 49389 6188773376 - Broken pipe from ('127.0.0.1', 58163)
+INFO 2026-02-10 19:59:49,600 basehttp 49389 6171947008 "GET / HTTP/1.1" 200 10261
+INFO 2026-02-10 19:59:49,626 basehttp 49389 6171947008 "GET /static/css/output.css HTTP/1.1" 304 0
+INFO 2026-02-10 19:59:49,630 basehttp 49389 6188773376 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 304 0
+INFO 2026-02-10 19:59:49,631 basehttp 49389 6205599744 "GET /static/js/general/general.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 20:37:50,517 autoreload 49389 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:37:51,909 autoreload 53948 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:38:03,731 autoreload 53948 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/views.py changed, reloading.
+INFO 2026-02-10 20:38:04,191 autoreload 53957 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:38:10,810 autoreload 53957 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/urls.py changed, reloading.
+INFO 2026-02-10 20:38:11,269 autoreload 53963 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:40:30,027 autoreload 54461 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:40:31,016 basehttp 54461 6130610176 "GET / HTTP/1.1" 200 10224
+INFO 2026-02-10 20:40:31,016 basehttp 54461 6130610176 - Broken pipe from ('127.0.0.1', 60220)
+INFO 2026-02-10 20:40:31,017 basehttp 54461 6147436544 "GET / HTTP/1.1" 200 10222
+INFO 2026-02-10 20:40:32,877 basehttp 54461 6130610176 "GET /grids/ HTTP/1.1" 200 16976
+INFO 2026-02-10 20:40:35,730 basehttp 54461 6130610176 "GET /grids/339/ HTTP/1.1" 200 40720
+INFO 2026-02-10 20:40:35,742 basehttp 54461 6130610176 "GET /static/js/grid/grid.min.js HTTP/1.1" 304 0
+INFO 2026-02-10 20:40:38,461 project_views 54461 6130610176 User thomasbarratt@yahoo.com exported project 'Simpson Wedding' to Excel
+INFO 2026-02-10 20:40:38,462 basehttp 54461 6130610176 "GET /grids/339/export-excel/ HTTP/1.1" 200 5856
+INFO 2026-02-10 20:45:25,787 autoreload 55044 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:45:30,837 basehttp 55044 6125236224 "GET /grids/339/ HTTP/1.1" 200 40665
+INFO 2026-02-10 20:51:30,388 autoreload 55044 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:51:31,073 autoreload 55132 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:51:37,710 autoreload 55132 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:51:38,310 autoreload 55137 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:51:59,562 basehttp 55137 6133116928 "GET /grids/339/archive/confirm/ HTTP/1.1" 200 922
+INFO 2026-02-10 20:52:06,628 basehttp 55137 6133116928 "POST /grids/339/archive/ HTTP/1.1" 302 0
+INFO 2026-02-10 20:52:06,664 basehttp 55137 6133116928 "GET /grids/ HTTP/1.1" 200 16871
+INFO 2026-02-10 20:52:11,757 basehttp 55137 6133116928 "GET /grids/339/ HTTP/1.1" 200 40794
+INFO 2026-02-10 20:52:13,582 basehttp 55137 6133116928 "GET /grids/ HTTP/1.1" 200 16889
+INFO 2026-02-10 20:52:22,973 basehttp 55137 6133116928 "GET /grids/ HTTP/1.1" 200 16883
+INFO 2026-02-10 20:52:24,049 basehttp 55137 6133116928 "GET /grids/ HTTP/1.1" 200 16917
+INFO 2026-02-10 20:52:54,027 basehttp 55137 6133116928 "GET /grids/342/ HTTP/1.1" 200 38005
+INFO 2026-02-10 20:52:56,594 project_views 55137 6133116928 User thomasbarratt@yahoo.com exported project 'Sample Wedding' to Excel
+INFO 2026-02-10 20:52:56,594 basehttp 55137 6133116928 "GET /grids/342/export-excel/ HTTP/1.1" 200 5717
+INFO 2026-02-10 20:53:49,821 autoreload 55137 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:53:50,402 autoreload 55413 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:53:57,010 autoreload 55413 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:53:57,447 autoreload 55418 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:55:30,505 basehttp 55418 6192115712 "GET /grids/342/ HTTP/1.1" 200 37977
+INFO 2026-02-10 20:55:34,085 project_views 55418 6192115712 User thomasbarratt@yahoo.com exported project 'Sample Wedding' to Excel
+INFO 2026-02-10 20:55:34,085 basehttp 55418 6192115712 "GET /grids/342/export-excel/ HTTP/1.1" 200 5801
+INFO 2026-02-10 20:56:59,113 autoreload 55418 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:56:59,756 autoreload 55500 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:57:08,552 autoreload 55500 8412226112 /Users/tombarratt/Desktop/Coding_Projects/toad/pages/specific_views/project_views.py changed, reloading.
+INFO 2026-02-10 20:57:09,066 autoreload 55516 8412226112 Watching for file changes with StatReloader
+INFO 2026-02-10 20:58:23,388 project_views 55516 6163673088 User thomasbarratt@yahoo.com exported project 'Sample Wedding' to Excel
+INFO 2026-02-10 20:58:23,390 basehttp 55516 6163673088 "GET /grids/342/export-excel/ HTTP/1.1" 200 5816
