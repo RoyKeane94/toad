@@ -382,7 +382,7 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     border: none;
     border-radius: 12px;
     background-color: var(--container-bg);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
     /* overflow: hidden removed to allow sticky headers to work */
     /* Ensure proper box sizing for width calculations */
     box-sizing: border-box;

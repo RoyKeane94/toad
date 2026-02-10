@@ -519,6 +519,112 @@
         margin: 0 auto;
     }
 
+    /* White background for tabs container only - full page width */
+    #app {
+        padding: 0 !important;
+        padding-bottom: 2rem !important;
+    }
+
+    @media (min-width: 640px) {
+        #app {
+            padding-bottom: 1.5rem !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #app {
+            padding-bottom: 2rem !important;
+        }
+    }
+
+    #grid-tabs-container {
+        position: relative;
+        margin-top: 0 !important;
+        margin-bottom: 1.5rem !important;
+        background-color: white;
+    }
+
+    #grid-tabs-container::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        top: 0;
+        bottom: 0;
+        background-color: white;
+        z-index: -1;
+    }
+
+    #grid-tabs-container::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        right: 50%;
+        margin-left: -50vw;
+        margin-right: -50vw;
+        bottom: 0;
+        height: 1px;
+        background-color: #e5e7eb;
+        z-index: 1;
+    }
+
+    #grid-tabs {
+        padding: 1.5rem 0;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Row and column headers: light grey background */
+    .grid-table-fixed-col .grid-table-fixed thead th,
+    .grid-table-fixed-col .grid-table-fixed tbody td,
+    .grid-table-scrollable .grid-table thead th {
+        background-color: #f3f4f6 !important;
+    }
+
+    /* Column headers: category label style - smaller, uppercase, letter-spacing, lighter grey */
+    .grid-table-scrollable .grid-table thead th .column-header-editable {
+        font-size: 0.6875rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+        color: #9ca3af !important;
+    }
+
+    /* Row headers: bigger text, add green bar, no uppercase */
+    .grid-table-fixed-col .grid-table-fixed tbody td .row-header-editable {
+        font-size: 0.875rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.05em !important;
+        color: #374151 !important;
+        padding-left: 0.5rem !important;
+        border-left: 3px solid #10b981 !important;
+    }
+
+    /* Add padding to content below tabs */
+    #grid-header-container,
+    #grid-content-wrapper {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    @media (min-width: 640px) {
+        #grid-header-container,
+        #grid-content-wrapper {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    @media (min-width: 768px) {
+        #grid-header-container,
+        #grid-content-wrapper {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
 </style>
 {% endblock %}
 
@@ -555,7 +661,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="flex flex-wrap gap-1">
                         {% for p in ungrouped_projects %}
                             <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-4 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
                                 {{ p.name }}
                             </a>
                         {% endfor %}
@@ -570,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="flex flex-wrap gap-1">
                         {% for p in group_data.projects %}
                             <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
+                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap {% if p.pk == project.pk %}text-[var(--text-primary)] border-b-4 border-[var(--primary-action-bg)]{% else %}text-[var(--text-primary)]{% endif %}">
                                 {{ p.name }}
                             </a>
                         {% endfor %}
@@ -585,7 +691,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="flex flex-wrap gap-1">
                         {% for p in archived_projects %}
                             <a href="{% url 'pages:project_grid' pk=p.pk %}" 
-                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap opacity-60 {% if p.pk == project.pk %}text-[var(--primary-action-bg)] border-b-2 border-[var(--primary-action-bg)]{% else %}text-[var(--text-secondary)]{% endif %}">
+                               class="inline-flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 cursor-pointer whitespace-nowrap opacity-60 {% if p.pk == project.pk %}text-[var(--primary-action-bg)] border-b-4 border-[var(--primary-action-bg)]{% else %}text-[var(--text-secondary)]{% endif %}">
                                 {{ p.name }}
                             </a>
                         {% endfor %}
@@ -626,7 +732,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 grid-actions-mobile">
             <div class="w-full sm:w-auto flex items-center gap-1">
                 <button type="button"
-                        class="inline-flex items-center justify-center w-full sm:w-48 py-1.5 text-sm font-medium text-[var(--clear-button-bg)] bg-white border border-[var(--clear-button-bg)] rounded-lg hover:bg-[var(--clear-button-bg)] hover:text-white transition-all duration-200 cursor-pointer"
+                        class="inline-flex items-center justify-center w-full sm:w-48 py-1.5 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-emerald-500 hover:text-white hover:border-emerald-500 transition-all duration-200 cursor-pointer"
                         onclick="showClearCompletedModal()">
                     <i class="fas fa-check mr-1"></i>Clear Completed
                 </button>
