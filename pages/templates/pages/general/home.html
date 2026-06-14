@@ -1,964 +1,996 @@
-{% extends "pages/layout.html" %}
 {% load static %}
-
-{% block title %}Toad – From too many tabs to clear, organised grids{% endblock %}
-
-{% block extra_head %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Toad - One grid. Everything in focus.{% endblock %}</title>
+<link rel="icon" href="{% static 'img/logo/toad_favicon.ico' %}" type="image/x-icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-3B6NwesSXE7YJlcLI9RpRqGf2p/EgVH8BgoKTaUrmKNDkHPStTQ3EyoYjCGXaOTS" crossorigin="anonymous">
 <style nonce="{{ csp_nonce }}">
-    /* Override layout padding for home page */
-    #app {
-        padding: 0 !important;
-        background: white !important;
-    }
-    
-    /* Mobile-specific text wrapping */
-    @media (max-width: 767px) {
-        #typewriter-text {
-            white-space: normal !important;
-            word-wrap: break-word !important;
-            overflow-wrap: break-word !important;
-            width: auto !important;
-            overflow: visible !important;
-        }
-        
-        #headline-container h1 {
-            white-space: normal !important;
-            word-wrap: break-word !important;
-        }
-        
-        /* Remove blur on mobile */
-        #toad-example-image img,
-        #toad-example-image-mobile img {
-            filter: blur(0px) !important;
-        }
-    }
-    
-    /* Interactive Before/After Styles */
-    .interactive-before-after {
-        position: relative;
-    }
-    
-    .before-state, .after-state {
-        position: relative;
-        padding: 0.5rem 0.75rem;
-        border-radius: 0.5rem;
-        transition: all 0.3s ease;
-    }
-    
-    .before-state:hover {
-        background: rgba(239, 68, 68, 0.1);
-    }
-    
-    .after-state:hover {
-        background: rgba(34, 197, 94, 0.1);
-    }
-    
-    .interactive-before-after.hide-before .before-state {
-        opacity: 0.3;
-        transform: scale(0.95);
-    }
-    
-    .interactive-before-after.hide-after .after-state {
-        opacity: 0.3;
-        transform: scale(0.95);
-    }
-    
-    .interactive-before-after.hide-before .before-state .before-content,
-    .interactive-before-after.hide-after .after-state .after-content {
-        text-decoration: line-through;
-        opacity: 0.5;
-    }
-    
-    .toggle-btn {
-        transition: all 0.3s ease;
-    }
-    
-    .toggle-btn.active {
-        transform: scale(1.05);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
-    
-    .toggle-btn:not(.active) {
-        opacity: 0.6;
-    }
-    
-    .toggle-btn:not(.active):hover {
-        opacity: 0.9;
-    }
-    
-    /* Comparison table styles */
-    .comparison-table {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1), 0 2px 6px rgba(0, 0, 0, 0.08);
-        border: 1px solid var(--border-color);
-        display: table;
-    }
-    
-    #home-comparison-table {
-        padding: 1rem;
-        margin: 2rem 0;
-    }
-    
-    .comparison-table thead {
-        background: white;
-    }
-    
-    .comparison-table th {
-        padding: 1.5rem 1rem;
-        text-align: center;
-        font-weight: 700;
-        font-size: 1.125rem;
-        color: var(--text-primary);
-        border-bottom: 2px solid var(--border-color);
-    }
-    
-    .comparison-table th:first-child {
-        text-align: left;
-        font-weight: 600;
-        color: var(--text-secondary);
-    }
-    
-    .comparison-table th.popular {
-        background: var(--primary-action-bg);
-        color: white;
-        position: relative;
-    }
-    
-    .comparison-table th.popular::before {
-        content: 'Best for shared work';
-        position: absolute;
-        top: 0.5rem;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 0.75rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        opacity: 0.9;
-    }
-    
-    .comparison-table td {
-        padding: 1.25rem 1rem;
-        text-align: center;
-        border-bottom: 1px solid var(--border-color);
-        color: var(--text-primary);
-    }
-    
-    .comparison-table td:first-child {
-        text-align: left;
-        font-weight: 500;
-        color: var(--text-primary);
-    }
-    
-    .comparison-table tbody tr:last-child td {
-        border-bottom: none;
-    }
-    
-    .comparison-table tbody tr:hover {
-        background: var(--grid-header-bg);
-    }
-    
-    /* Light green shading for Team column */
-    .comparison-table tbody tr td:last-child {
-        background: oklch(0.98 0.02 120);
-    }
-    
-    .comparison-table tbody tr:hover td:last-child {
-        background: oklch(0.96 0.03 120);
-    }
-    
-    .tick {
-        color: var(--primary-action-bg);
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-    
-    .cross {
-        color: #dc2626;
-        font-size: 1.5rem;
-        font-weight: bold;
-    }
-    
-    .plan-name {
-        font-size: 1.5rem;
-        margin-top: 1.5rem;
-        display: block;
-    }
-    
-    @media (max-width: 768px) {
-        .comparison-table {
-            font-size: 0.875rem;
-        }
-        
-        .comparison-table th,
-        .comparison-table td {
-            padding: 0.75rem 0.5rem;
-        }
-        
-        .comparison-table th:first-child,
-        .comparison-table td:first-child {
-            min-width: 140px;
-        }
-        
-        .plan-name {
-            font-size: 1.125rem;
-        }
-        
-        .tick, .cross {
-            font-size: 1.25rem;
-        }
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --page-bg: #ffffff;
+    --surface: #ffffff;
+    --surface-2: #f7f7f7;
+    --border: #e0e0e0;
+    --border-subtle: #ebebeb;
+    --text-primary: #0d0d0d;
+    --text-secondary: #4a4a4a;
+    --text-tertiary: #999999;
+    --green: #10b981;
+    --green-dark: #059669;
+    --green-dim: rgba(16,185,129,0.09);
+    --green-dim-2: rgba(16,185,129,0.05);
+    --ink: #0d0d0d;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--page-bg);
+    color: var(--text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 60px;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid #d8d8d8;
+  }
+
+  .nav-logo {
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .nav-logo span { color: var(--green); }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link {
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 6px 14px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .nav-link:hover { color: var(--text-primary); background: var(--surface-2); }
+
+  .nav-cta {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--green);
+    text-decoration: none;
+    padding: 7px 18px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+
+  .nav-cta:hover { background: var(--green-dark); }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 120px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 28px;
+  }
+
+  .hero-headline {
+    font-size: clamp(46px, 6vw, 78px);
+    font-weight: 300;
+    letter-spacing: -0.035em;
+    line-height: 1.07;
+    color: var(--text-primary);
+    max-width: 820px;
+    margin-bottom: 28px;
+  }
+
+  .hero-headline strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    line-height: 1.65;
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 80px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: #fff;
+    background: var(--green);
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 7px;
+    transition: background 0.15s, transform 0.1s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-size: 14.5px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 7px;
+    border: 0.5px solid #d0d0d0;
+    transition: color 0.15s, border-color 0.15s, background 0.15s;
+  }
+
+  .btn-ghost:hover { color: var(--text-primary); border-color: #aaa; background: var(--surface); }
+
+  /* PRODUCT PREVIEW */
+  .product-preview {
+    background: var(--surface);
+    border: 0.5px solid #d0d0d0;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 16px 48px rgba(0,0,0,0.07);
+  }
+
+  .preview-chrome {
+    background: var(--surface-2);
+    border-bottom: 0.5px solid #e0e0e0;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot-red { background: #ff5f57; }
+  .dot-yellow { background: #febc2e; }
+  .dot-green { background: #28c840; }
+
+  .preview-title {
+    margin-left: 12px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    letter-spacing: 0.01em;
+  }
+
+  .preview-body { padding: 28px 28px 24px; }
+
+  .preview-grid-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 20px;
+  }
+
+  /* Demo grid mirrors actual Toad grid */
+  .demo-grid-container {
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    overflow-x: auto;
+  }
+
+  .demo-grid-table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+  }
+
+  .demo-grid-table th,
+  .demo-grid-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .demo-grid-table thead th {
+    background: #fafafa;
+  }
+
+  .demo-grid-table thead th:first-child,
+  .demo-grid-table tbody td:first-child {
+    background: #fafafa;
+    width: 155px;
+    min-width: 155px;
+    max-width: 155px;
+  }
+
+  .demo-grid-table thead th:not(:first-child) {
+    min-width: 200px;
+  }
+
+  .demo-col-header {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+  }
+
+  .demo-row-header {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #374151;
+    padding-left: 0.5rem;
+    border-left: 3px solid #10b981;
+    line-height: 1.4;
+  }
+
+  .demo-cell {
+    position: relative;
+    background: #fff;
+    min-height: 140px;
+    padding-bottom: 52px !important;
+  }
+
+  .demo-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .demo-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 6px 8px;
+    border-radius: 8px;
+  }
+
+  .demo-task-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .demo-task input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    accent-color: #10b981;
+    border-radius: 4px;
+    cursor: default;
+  }
+
+  .demo-task input[type="checkbox"].demo-checkbox-completed {
+    accent-color: #f59e0b;
+  }
+
+  .demo-task-text {
+    font-size: 0.875rem;
+    color: #111827;
+    line-height: 1.5;
+  }
+
+  .demo-task-text.demo-task-completed {
+    color: #059669;
+    text-decoration: line-through;
+    text-decoration-color: #059669;
+    text-decoration-thickness: 1.5px;
+  }
+
+  .demo-assignee {
+    display: flex;
+    align-items: center;
+    margin-top: 4px;
+  }
+
+  .demo-assignee-avatar {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .demo-task-reminder {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: #10b981;
+  }
+
+  .demo-add-task {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(229, 231, 235, 0.5);
+    font-size: 0.875rem;
+    color: #9ca3af;
+  }
+
+  .demo-add-task span::before {
+    content: '\f067';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    margin-right: 6px;
+    font-size: 0.625rem;
+  }
+
+  .preview-caption {
+    margin-top: 16px;
+    font-size: 12px;
+    color: var(--text-tertiary);
+    text-align: center;
+    letter-spacing: 0.01em;
+  }
+
+  /* DIVIDER */
+  .section-divider {
+    border: none;
+    border-top: 0.5px solid #d8d8d8;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* SECTION */
+  .section {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 100px 48px;
+  }
+
+  .section-eyebrow {
+    font-size: 11.5px;
+    font-weight: 500;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--text-tertiary);
+    margin-bottom: 48px;
+  }
+
+  /* BEFORE / AFTER */
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid #d0d0d0;
+  }
+
+  .ba-panel {
+    padding: 44px 40px;
+    background: var(--surface);
+  }
+
+  .ba-panel.after {
+    background: rgba(16,185,129,0.03);
+    border-left: 0.5px solid rgba(16,185,129,0.2);
+  }
+
+  .ba-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .ba-label.before-label { color: var(--text-tertiary); }
+  .ba-label.after-label { color: var(--green); }
+
+  .ba-headline {
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    line-height: 1.4;
+    margin-bottom: 32px;
+    color: var(--text-primary);
+  }
+
+  .ba-panel.before .ba-headline { color: var(--text-secondary); }
+
+  .ba-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .ba-tag {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
+
+  .ba-tag.neg { background: rgba(239,68,68,0.06); color: #b91c1c; border: 1px solid rgba(239,68,68,0.12); }
+  .ba-tag.pos { background: var(--green-dim); color: var(--green-dark); border: 1px solid rgba(16,185,129,0.2); }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    background: #e8e8e8;
+    border: 0.5px solid #d0d0d0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 60px;
+  }
+
+  .feature {
+    background: #fff;
+    padding: 44px 36px;
+  }
+
+  .feature + .feature {
+    border-left: 0.5px solid #e8e8e8;
+  }
+
+  .feature-number {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    letter-spacing: 0.08em;
+    margin-bottom: 24px;
+  }
+
+  .feature-title {
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+    line-height: 1.3;
+  }
+
+  .feature-body {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  /* MANIFESTO */
+  .manifesto {
+    padding: 100px 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .manifesto-headline {
+    font-size: clamp(34px, 4vw, 52px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--text-primary);
+  }
+
+  .manifesto-headline em {
+    font-style: italic;
+    color: var(--text-tertiary);
+  }
+
+  .manifesto-body {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .manifesto-body p {
+    font-size: 15px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .manifesto-body p strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* CTA SECTION */
+  .cta-section {
+    background: var(--ink);
+    text-align: center;
+    padding: 120px 48px;
+  }
+
+  .cta-headline {
+    font-size: clamp(34px, 4.5vw, 58px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: #fff;
+    max-width: 620px;
+    margin: 0 auto 20px;
+  }
+
+  .cta-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 44px;
+    font-weight: 300;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding: 40px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .footer-logo {
+    font-size: 15px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--green); }
+
+  .footer-links { display: flex; gap: 28px; }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.35);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .footer-links a:hover { color: rgba(255,255,255,0.65); }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.25);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 0 20px; }
+    .hero { padding: 120px 24px 80px; }
+    .hero-headline { font-size: 40px; }
+    .section { padding: 72px 24px; }
+    .ba-grid { grid-template-columns: 1fr; }
+    .ba-panel.after { border-left: none; border-top: 0.5px solid rgba(16,185,129,0.2); }
+    .features-grid { grid-template-columns: 1fr; }
+    .feature + .feature { border-left: none; border-top: 0.5px solid #e8e8e8; }
+    .manifesto { grid-template-columns: 1fr; gap: 48px; padding: 72px 24px; }
+    .cta-section { padding: 80px 24px; }
+    footer { padding: 40px 24px; }
+    .footer-inner { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .demo-grid-table thead th:first-child,
+    .demo-grid-table tbody td:first-child { width: 120px; min-width: 120px; max-width: 120px; }
+    .demo-grid-table thead th:not(:first-child) { min-width: 140px; }
+    .demo-col-header { font-size: 0.625rem; }
+    .demo-row-header { font-size: 0.75rem; }
+    .demo-task-text { font-size: 0.8125rem; }
+    .nav-links .nav-link:not(.nav-cta) { display: none; }
+  }
 </style>
-{% endblock %}
+<script defer data-domain="meettoad.co.uk" src="https://plausible.io/js/script.tagged-events.js"></script>
+<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+</head>
+<body>
 
-{% block content %}
-<!-- Hero Section -->
-<div class="min-h-[80vh] sm:min-h-[80vh] flex flex-col items-center justify-center px-4 pt-8 pb-8" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
-    <div id="initial-content" class="max-w-7xl mx-auto w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-end">
-            <!-- Left Side: Logo and Text -->
-            <div class="flex flex-col order-1 lg:order-1">
-                <div class="mb-4" id="logo-container" style="opacity: 0;">
-                    <div class="w-48 h-48 sm:w-56 sm:h-56">
-                        <img src="{% static 'img/logo/toad_icon_color.png' %}" alt="Toad Logo" class="w-full h-full object-contain">
-                    </div>
-                </div>
-                
-                <h1 id="initial-text" class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4" style="opacity: 0;">
-                    <span style="color: var(--title-text);">Toad fits the way you </span><span style="color: var(--primary-action-bg);">already work</span>
-                </h1>
-                
-                <!-- Secondary Text -->
-                <div id="secondary-text" class="mb-6" style="opacity: 0;">
-                    <p class="text-lg sm:text-xl text-gray-700 leading-relaxed mb-3">
-                        Drop one real project into a grid and see the whole story at a glance
-                    </p>
-                    <p class="text-sm sm:text-base text-gray-600 mb-4" style="line-height: 1.75;">
-                        A calmer alternative to juggling lists, docs, and spreadsheets, in one clear grid
-                    </p>
-                </div>
-                
-                <!-- Mobile Image (shown only on mobile, positioned after secondary text) -->
-                <div id="toad-example-image-mobile" class="flex items-start justify-center mb-6 lg:hidden" style="opacity: 0;">
-                    <div class="w-full max-w-2xl">
-                        <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
-                            <img src="{% static 'img/home/Toad Example.png' %}" 
-                                 alt="Toad Example" 
-                                 class="w-full h-auto transition-all duration-300"
-                                 style="margin-bottom: -5%; margin-right: -5%; width: 105%;">
-                        </div>
-                        <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center">
-                            This is one grid. Most people start with just one.
-                        </p>
-                    </div>
-                </div>
-                
-                <!-- CTA Buttons -->
-                <div id="email-signup" class="mt-4 mb-8 order-3" style="opacity: 0;">
-                    <div class="flex flex-col sm:flex-row gap-4 mb-4">
-                        <a href="{% url 'accounts:register_choices' %}"
-                           class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-[var(--primary-action-bg)] text-white rounded-lg font-medium hover:bg-[var(--primary-action-hover-bg)] transition-all duration-200 cursor-pointer text-center">
-                            Create your first grid
-                        </a>
-                        <a href="#video-section"
-                           class="w-full sm:w-auto sm:min-w-[200px] px-8 py-4 bg-white text-[var(--primary-action-bg)] border-2 border-[var(--primary-action-bg)] rounded-lg font-medium hover:bg-[var(--primary-action-bg)] hover:text-white transition-all duration-200 cursor-pointer text-center">
-                            See Toad in Action
-                        </a>
-                    </div>
-                    <p class="text-sm text-gray-600">
-                        No setup. No migration. Start with one grid.
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Right Side: Image (desktop only) -->
-            <div id="toad-example-image" class="hidden lg:flex items-start justify-center lg:order-2" style="opacity: 0; margin-top: -2rem;">
-                <div class="w-full max-w-2xl">
-                    <div class="overflow-hidden shadow-2xl transition-all duration-300" style="border-radius: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.3);">
-                        <img src="{% static 'img/home/Toad Example.png' %}" 
-                             alt="Toad Example" 
-                             class="w-full h-auto transition-all duration-300"
-                             style="margin-bottom: -5%; margin-right: -5%; width: 105%;">
-                    </div>
-                    <p class="text-xs sm:text-sm text-gray-500 mt-4 text-center">
-                        This is one grid. Most people start with just one.
-                    </p>
-                </div>
-            </div>
-        </div>
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="{% url 'pages:home' %}">Toad<span>.</span></a>
+  <div class="nav-links">
+    <a class="nav-link" href="#how-it-works">How it works</a>
+    {% if user.is_authenticated %}
+    <a class="nav-link" href="{% url 'pages:project_list' %}">My Grids</a>
+    <a class="nav-cta" href="{% url 'pages:project_create' %}">New Grid</a>
+    {% else %}
+    <a class="nav-link" href="{% url 'accounts:login' %}">Sign in</a>
+    <a class="nav-cta" href="{% url 'accounts:register_choices' %}">Start free</a>
+    {% endif %}
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Radically simple project clarity</div>
+
+  <h1 class="hero-headline">
+    One grid.<br>
+    <strong>Everything in focus.</strong>
+  </h1>
+
+  <p class="hero-sub">
+    Drop a real project into a grid and see the whole story at once. No migration, no setup, no learning curve.
+  </p>
+
+  <div class="hero-actions">
+    {% if user.is_authenticated %}
+    <a class="btn-primary" href="{% url 'pages:project_create' %}">Create your first grid</a>
+    {% else %}
+    <a class="btn-primary" href="{% url 'accounts:register_choices' %}">Create your first grid</a>
+    {% endif %}
+    <a class="btn-ghost" href="{% url 'pages:toad_in_action' %}">See it in action →</a>
+  </div>
+
+  <!-- PRODUCT PREVIEW -->
+  <div class="product-preview">
+    <div class="preview-chrome">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+      <span class="preview-title">Toad: Year End Close</span>
     </div>
+    <div class="preview-body">
+      <div class="preview-grid-title">Year End Close</div>
+
+      <div class="demo-grid-container">
+        <table class="demo-grid-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th><span class="demo-col-header">Reconciliations</span></th>
+              <th><span class="demo-col-header">Journals &amp; Adjustments</span></th>
+              <th><span class="demo-col-header">Statutory Filings</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="demo-row-header">Final month</span></td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled checked class="demo-checkbox-completed">
+                    <div class="demo-task-content">
+                      <span class="demo-task-text demo-task-completed">Bank reconciliation complete</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #6366f1;">SK</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">VAT return submitted</span>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Petty cash reconciled</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #ec4899;">JM</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Accruals posted</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #10b981;">AL</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Prepayments reviewed</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #f59e0b;">RP</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Payroll year end filed</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #8b5cf6;">TH</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="demo-row-header">Year end close</span></td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Fixed asset register updated</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #6366f1;">SK</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Stock take completed</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled checked class="demo-checkbox-completed">
+                    <div class="demo-task-content">
+                      <span class="demo-task-text demo-task-completed">Depreciation run</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #10b981;">AL</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Year end adjustments posted</span>
+                      <div class="demo-task-reminder"><i class="fas fa-calendar-check"></i> 31 Mar 2026</div>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #ec4899;">JM</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Draft accounts to auditor</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #f59e0b;">RP</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Corporation tax provision</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+            </tr>
+            <tr>
+              <td><span class="demo-row-header">Post close</span></td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Archive working papers</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #ec4899;">JM</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Lock prior year periods</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Open new year journals</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #10b981;">AL</span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+              <td class="demo-cell">
+                <div class="demo-tasks">
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">File confirmation statement</span>
+                      <div class="demo-assignee"><span class="demo-assignee-avatar" style="background-color: #6366f1;">SK</span></div>
+                    </div>
+                  </div>
+                  <div class="demo-task">
+                    <input type="checkbox" disabled>
+                    <div class="demo-task-content">
+                      <span class="demo-task-text">Board sign off received</span>
+                      <div class="demo-task-reminder"><i class="fas fa-calendar-check"></i> 15 Apr 2026</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="demo-add-task"><span>Add task...</span></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="preview-caption">This is one grid. Most people start with just one.</p>
+    </div>
+  </div>
 </div>
 
-<!-- See Toad in Action Section -->
-<section id="video-section" class="py-16 sm:py-24 bg-white opacity-0 translate-y-8 transition-all duration-700">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-5xl sm:text-7xl font-bold text-gray-900 mb-4">
-            See Toad in action
-        </h2>
-        
-        <p class="text-lg sm:text-xl text-gray-600 mb-2 max-w-2xl mx-auto leading-relaxed">
-            Toad is a <span class="text-green-600 font-bold"> simple grid </span> you update as work changes
-        </p>
-        
-        <p class="text-sm sm:text-base text-gray-700 mb-12 max-w-2xl mx-auto leading-relaxed">
-            No syncing. No automation. Just a clear view that stays current.
-        </p>     
-        
-       
-        
-        <div class="max-w-4xl mx-auto">
-            <video 
-                id="hero-video"
-                src="{% static 'video/Toad Landing Page.mp4' %}" 
-                autoplay 
-                muted 
-                loop 
-                playsinline
-                preload="auto"
-                class="w-full h-auto rounded-lg shadow-2xl"
-                style="box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);">
-                Your browser does not support the video tag.
-            </video>
-        </div>
+<hr class="section-divider">
+
+<!-- BEFORE / AFTER -->
+<div class="section" id="how-it-works">
+  <div class="section-eyebrow">The shift</div>
+
+  <div class="ba-grid">
+    <div class="ba-panel before">
+      <div class="ba-label before-label">Without Toad</div>
+      <p class="ba-headline">Checking four places just to feel sure you're not missing something</p>
+      <div class="ba-tags">
+        <span class="ba-tag neg">Scattered across tabs</span>
+        <span class="ba-tag neg">Loose ends</span>
+        <span class="ba-tag neg">Low confidence</span>
+        <span class="ba-tag neg">Mental overhead</span>
+      </div>
     </div>
-    <div class="flex justify-center mt-10">
-        <a
-            href="{% url 'pages:toad_in_action' %}"
-            class="inline-flex items-center px-8 py-3 rounded-lg font-medium text-white bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] transition-colors duration-200 cursor-pointer">
-            See Toad in Action
-        </a>
+
+    <div class="ba-panel after">
+      <div class="ba-label after-label">With Toad</div>
+      <p class="ba-headline">Opening one grid and seeing what's happening and what's next</p>
+      <div class="ba-tags">
+        <span class="ba-tag pos">One place</span>
+        <span class="ba-tag pos">Clear next steps</span>
+        <span class="ba-tag pos">More headspace</span>
+        <span class="ba-tag pos">Nothing missed</span>
+      </div>
     </div>
-</section>    
-
-<!-- Main Value Prop -->
-<div class="w-full px-4 py-12" style="background: linear-gradient(to bottom, oklch(0.95 0.05 120), oklch(0.97 0.03 120) 25%, oklch(0.99 0.01 120) 50%, white 75%);">
-    <div class="w-full">
-        <!-- Full width layout -->
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-bold mb-3 text-gray-900">
-                <span class="text-green-600">Clarity</span> that fits what you already do
-            </h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                We built Toad for people who already have a system - it’s just spread out. 
-            </p>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                Instead of asking you to change how you work, Toad gives you a clearer place to see it.
-            </p>
-        </div>
-
-        <!-- Four Feature Points in 2x2 Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <!-- Point 1 -->
-            <div class="feature-point opacity-0 translate-y-4 transition-all duration-500" data-delay="0">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-green-600 mb-3">A clearer surface for what you already track</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Start with the same information you already keep in lists and spreadsheets.
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mt-2">
-                            Toad lays it out in a simple grid so each project has its own clear space — instead of being buried across tabs.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Point 2 -->
-            <div class="feature-point opacity-0 translate-y-4 transition-all duration-500" data-delay="100">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-green-600 mb-3">Start small, without setup</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            There's no system to configure and nothing to migrate.
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mt-2">
-                            Create one grid in under a minute. Add to it only when it's useful.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Point 3 -->
-            <div class="feature-point opacity-0 translate-y-4 transition-all duration-500" data-delay="200">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-green-600 mb-3">See the whole picture, not just a list</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            A simple list is fine for quick notes.
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mt-2">
-                            A grid lets you see stages, progress, and loose ends together — so projects feel understandable, not scattered.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Point 4 -->
-            <div class="feature-point opacity-0 translate-y-4 transition-all duration-500" data-delay="300">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-8 h-8 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-4 h-4 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-green-600 mb-3">One grid per thing you're thinking about</h3>
-                        <p class="text-sm text-gray-600 leading-relaxed">
-                            Keep separate grids for different projects, clients, or areas of life.
-                        </p>
-                        <p class="text-sm text-gray-600 leading-relaxed mt-2">
-                            Open one, close it again, and keep your attention where it belongs.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  </div>
 </div>
 
-<!-- Separator Text -->
-<div class="w-full px-4 py-12 text-center bg-white">
-    <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Most people use Toad lightly, as a place to park what matters.
+<hr class="section-divider">
+
+<!-- FEATURES -->
+<div class="section">
+  <div class="section-eyebrow">Why it works</div>
+
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-number">01</div>
+      <h3 class="feature-title">Start in under a minute</h3>
+      <p class="feature-body">There's nothing to configure and nothing to migrate. Create one grid, add columns that match how you already think, and go. No onboarding flow, no tutorial.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-number">02</div>
+      <h3 class="feature-title">See stages, not just lists</h3>
+      <p class="feature-body">A list is fine for quick notes. A grid shows progress, loose ends, and what's next, all at once. Projects feel understandable rather than scattered.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-number">03</div>
+      <h3 class="feature-title">One grid per thing</h3>
+      <p class="feature-body">Keep separate grids for different projects, clients, or areas of life. Open one, close it, keep your attention where it belongs. Most people use three or fewer.</p>
+    </div>
+  </div>
+</div>
+
+<hr class="section-divider">
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <h2 class="manifesto-headline">
+    Toad fits the way <em>you already</em> work
+  </h2>
+
+  <div class="manifesto-body">
+    <p>
+      Most tools ask you to change how you work. <strong>Toad doesn't.</strong> It gives you a clearer surface for information you're already keeping somewhere: in spreadsheets, sticky notes, half-finished docs.
     </p>
+    <p>
+      Start with one real project. Drop in the columns that make sense to you. <strong>You'll know in a few minutes whether it fits</strong>, and for most people, it fits immediately.
+    </p>
+    <p>
+      It's not a system. It's a window into the work you're already doing.
+    </p>
+    <div style="margin-top: 8px;">
+      {% if user.is_authenticated %}
+      <a class="btn-primary" href="{% url 'pages:project_create' %}">Create your first grid</a>
+      {% else %}
+      <a class="btn-primary" href="{% url 'accounts:register_choices' %}">Create your first grid</a>
+      {% endif %}
+    </div>
+  </div>
 </div>
 
-<!-- Clarity in Practice Section -->
-<section class="py-16 sm:py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-5xl md:text-6xl font-bold mb-3 text-gray-900">
-                <span class="text-green-600">Clarity</span> in Practice
-            </h2>
-            <p class="text-lg text-gray-600 mt-4">
-                What using one grid actually looks like
-            </p>
-        </div>
-        
-        <!-- Four Cards in 2x2 Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <!-- Card 1 -->
-            <div class="clarity-card opacity-0 translate-y-4 transition-all duration-500 bg-white border border-gray-200 rounded-lg p-10" data-delay="0">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-7 h-7 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-                            Start with one grid
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed mb-3">
-                            Create rows and columns that match how you already think about the work.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Nothing to configure, nothing to get right.
-                        </p>
-                        <p class="text-sm font-medium text-green-600">
-                            No setup. No rules.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="clarity-card opacity-0 translate-y-4 transition-all duration-500 bg-white border border-gray-200 rounded-lg p-10" data-delay="100">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-7 h-7 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-                            Update as you go
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed mb-3">
-                            Add a task, tweak a note, move something along.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            The grid updates as you do — without getting in the way.
-                        </p>
-                        <p class="text-sm font-medium text-green-600">
-                            It stays out of your head.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 3 -->
-            <div class="clarity-card opacity-0 translate-y-4 transition-all duration-500 bg-white border border-gray-200 rounded-lg p-10" data-delay="200">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-7 h-7 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-                            Keep what already works
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed mb-3">
-                            If a grid works well, save it and reuse it.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Good structures don't need reinventing every time.
-                        </p>
-                        <p class="text-sm font-medium text-green-600">
-                            Familiar is fine.
-                        </p>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Card 4 -->
-            <div class="clarity-card opacity-0 translate-y-4 transition-all duration-500 bg-white border border-gray-200 rounded-lg p-10" data-delay="300">
-                <div class="flex items-start space-x-4">
-                    <div class="flex-shrink-0 w-7 h-7 rounded-full bg-green-50 flex items-center justify-center">
-                        <svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                        </svg>
-                    </div>
-                    <div class="flex-1">
-                        <h3 class="text-2xl font-semibold text-gray-900 mb-4">
-                            Open one thing at a time
-                        </h3>
-                        <p class="text-gray-600 leading-relaxed mb-3">
-                            Use one grid, or a few — whatever feels right.
-                        </p>
-                        <p class="text-gray-600 leading-relaxed mb-4">
-                            Open what matters now, close it when it doesn't.
-                        </p>
-                        <p class="text-sm font-medium text-green-600">
-                            Your attention stays intact.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- CTA -->
+<div class="cta-section">
+  <h2 class="cta-headline">Drop one real project in. You'll know quickly if it fits.</h2>
+  <p class="cta-sub">No setup. No migration. Start with one grid.</p>
+  {% if user.is_authenticated %}
+  <a class="btn-primary" href="{% url 'pages:project_create' %}">Start for free</a>
+  {% else %}
+  <a class="btn-primary" href="{% url 'accounts:register_choices' %}">Start for free</a>
+  {% endif %}
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a class="footer-logo" href="{% url 'pages:home' %}">Toad<span>.</span></a>
+    <div class="footer-links">
+      <a href="{% url 'pages:toad_in_action' %}">How it works</a>
+      <a href="{% url 'pages:faq' %}">FAQ</a>
+      <a href="{% url 'pages:contact_us' %}">Contact</a>
+      <a href="{% url 'pages:privacy_policy' %}">Privacy</a>
     </div>
-</section>
+    <span class="footer-copy">© {% now "Y" %} Toad</span>
+  </div>
+</footer>
 
-
-<!-- Call to Action Section -->
-<section class="py-16 sm:py-24 bg-white">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h2 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
-            <span class="text-green-600">Drop one real project into a grid.</span><br>
-            You'll know quickly if it fits.
-        </h2>
-        
-        <!-- Before/After Comparison -->
-        <div id="before-after-comparison" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16 max-w-3xl mx-auto opacity-0 translate-y-8 transition-all duration-700 ease-out">
-            <!-- Without Toad -->
-            <div class="before-card bg-red-50 border-2 border-red-200 rounded-lg p-6 relative opacity-0 transition-all duration-700 ease-out" style="transform: translateX(-20px);">
-                <div class="flex justify-center mb-4">
-                    <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-semibold bg-red-100 text-red-700 border border-red-300 w-32">
-                        Without Toad
-                    </span>
-                </div>
-                <div>
-                    <div class="flex items-start mb-3">
-                        <svg class="w-6 h-6 text-red-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                        <p class="text-gray-700 font-medium leading-relaxed">
-                            Checking a few places just to feel sure you’re not missing something
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Too many places</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Loose ends</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-red-100 text-red-700">Low confidence</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- With Toad -->
-            <div class="after-card bg-green-50 border-2 border-green-200 rounded-lg p-6 relative opacity-0 transition-all duration-700 ease-out" style="transform: translateX(20px);">
-                <div class="flex justify-center mb-4">
-                    <span class="inline-flex items-center justify-center px-3 py-1 rounded-full text-xs font-semibold bg-green-100 text-green-700 border border-green-300 w-32">
-                        With Toad
-                    </span>
-                </div>
-                <div>
-                    <div class="flex items-start mb-3">
-                        <svg class="w-6 h-6 text-green-500 mr-3 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                        </svg>
-                        <p class="text-gray-700 font-medium leading-relaxed">
-                            Opening one grid and seeing what’s happening and what’s next
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2 mt-4">
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">One place</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">Clear next steps</span>
-                        <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium bg-green-100 text-green-700">More headspace</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="flex flex-col items-center">
-            <a href="{% url 'accounts:register_choices' %}"
-               class="inline-block w-full sm:w-auto px-8 py-4 rounded-lg font-medium transition-all duration-200 cursor-pointer text-white text-center mb-3"
-               style="background: var(--primary-action-bg);"
-               onmouseover="this.style.background='var(--primary-action-hover-bg)'" 
-               onmouseout="this.style.background='var(--primary-action-bg)'">
-                Start with a grid
-            </a>
-            <p class="text-sm text-gray-600">
-                No setup. No migration. Start with one grid.
-            </p>
-        </div>
-    </div>
-</section>
-
-<script nonce="{{ csp_nonce }}">
-    document.addEventListener('DOMContentLoaded', function() {
-        // Animation sequence elements
-        const logoContainer = document.getElementById('logo-container');
-        const initialText = document.getElementById('initial-text');
-        const secondaryText = document.getElementById('secondary-text');
-        const emailSignup = document.getElementById('email-signup');
-        const initialContent = document.getElementById('initial-content');
-        
-        // Animation sequence: Logo → headline → Secondary text → CTA
-        initialContent.style.display = 'block';
-        
-        // Phase 1: Show logo first
-        setTimeout(() => {
-            logoContainer.style.opacity = '1';
-            logoContainer.style.transition = 'opacity 0.6s ease-out';
-        }, 50);
-        
-        // Phase 2: Show headline text
-        setTimeout(() => {
-            initialText.style.opacity = '1';
-            initialText.style.transition = 'opacity 0.6s ease-out';
-        }, 400);
-        
-        // Phase 3: Show secondary text
-        setTimeout(() => {
-            secondaryText.style.opacity = '1';
-            secondaryText.style.transition = 'opacity 0.6s ease-out';
-        }, 800);
-        
-        // Phase 4: Show Toad example image (both mobile and desktop versions)
-        const toadExampleImage = document.getElementById('toad-example-image');
-        const toadExampleImageMobile = document.getElementById('toad-example-image-mobile');
-        if (toadExampleImage) {
-            setTimeout(() => {
-                toadExampleImage.style.opacity = '1';
-                toadExampleImage.style.transition = 'opacity 0.6s ease-out';
-            }, 1100);
-        }
-        if (toadExampleImageMobile) {
-            setTimeout(() => {
-                toadExampleImageMobile.style.opacity = '1';
-                toadExampleImageMobile.style.transition = 'opacity 0.6s ease-out';
-            }, 1100);
-        }
-
-        // Phase 5: Show CTA buttons
-        setTimeout(() => {
-            emailSignup.style.opacity = '1';
-            emailSignup.style.transition = 'opacity 0.6s ease-out';
-        }, 1400);
-    });
-    
-    // Force video autoplay
-    document.addEventListener('DOMContentLoaded', function() {
-        const video = document.getElementById('hero-video');
-        if (video) {
-            // Try to play immediately
-            video.play().catch(() => {
-                // If autoplay fails, try again after any user interaction
-                const playVideoOnInteraction = () => {
-                    video.play().catch(() => {});
-                    document.removeEventListener('click', playVideoOnInteraction);
-                    document.removeEventListener('scroll', playVideoOnInteraction);
-                    document.removeEventListener('touchstart', playVideoOnInteraction);
-                };
-                
-                document.addEventListener('click', playVideoOnInteraction);
-                document.addEventListener('scroll', playVideoOnInteraction);
-                document.addEventListener('touchstart', playVideoOnInteraction);
-            });
-            
-            // Ensure video plays when it comes into view
-            const videoObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        video.play().catch(() => {});
-                    }
-                });
-            }, { threshold: 0.5 });
-            
-            videoObserver.observe(video);
-        }
-    });
-</script>
-
-<script nonce="{{ csp_nonce }}">
-// Interactive Use Case Section JS
-(function() {
-    const personas = [
-        {
-            id: 'persona-students',
-            img: {
-                desktop: '{% static "gif/Course Planner GIF.gif" %}',
-                mobile: '{% static "img/Mobile - Student Grid.png" %}'
-            },
-            video: {
-                desktop: '{% static "video/Toad - Students Highlights.mp4" %}'
-            },
-            alt: 'A screenshot of a Toad grid for students',
-        },
-        {
-            id: 'persona-professionals',
-            img: {
-                desktop: '{% static "gif/Professionals GIF.gif" %}',
-                mobile: '{% static "img/Mobile - Professionals Grid.png" %}'
-            },
-            alt: 'A screenshot of a Toad grid for professionals',
-        },
-        {
-            id: 'persona-entrepreneurs',
-            img: {
-                desktop: '{% static "gif/Entrepreneurs GIF.gif" %}',
-                mobile: '{% static "img/Mobile - Entrepreneurs Grid.png" %}'
-            },
-            alt: 'A screenshot of a Toad grid for entrepreneurs',
-        },
-    ];
-    const triggers = document.querySelectorAll('.persona-trigger');
-    const showcaseImg = document.getElementById('showcase-image');
-    const showcaseVideo = document.getElementById('showcase-video');
-    // Always pre-select Students persona on load
-    function setActivePersona(personaId) {
-        triggers.forEach(t => {
-            t.classList.remove('active');
-            t.style.borderLeftColor = 'transparent';
-            t.style.borderLeftWidth = '6px';
-            const title = t.querySelector('.persona-title');
-            if (title) title.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-primary');
-        });
-        const active = document.getElementById(personaId);
-        if (active) {
-            active.classList.add('active');
-            active.style.borderLeftColor = getComputedStyle(document.documentElement).getPropertyValue('--tertiary-action-bg');
-            active.style.borderLeftWidth = '8px';
-            const title = active.querySelector('.persona-title');
-            if (title) title.style.color = getComputedStyle(document.documentElement).getPropertyValue('--tertiary-action-bg');
-            active.style.boxShadow = '0 4px 16px 0 rgba(16,185,129,0.10)';
-            const persona = personas.find(p => p.id === personaId);
-            if (persona && showcaseImg) {
-                const isMobile = window.innerWidth < 768;
-                // If desktop and persona has a desktop video, show video instead of image
-                if (!isMobile && persona.video && persona.video.desktop && showcaseVideo) {
-                    // Hide image, show video
-                    showcaseImg.style.display = 'none';
-                    showcaseVideo.style.display = 'block';
-                    if (showcaseVideo.src !== persona.video.desktop) {
-                        showcaseVideo.src = persona.video.desktop;
-                    }
-                } else {
-                    // Show image, hide video
-                    showcaseVideo.style.display = 'none';
-                    showcaseImg.style.display = 'block';
-                    if (persona.id === 'persona-students' || persona.id === 'persona-professionals' || persona.id === 'persona-entrepreneurs') {
-                        showcaseImg.src = isMobile ? persona.img.mobile : persona.img.desktop;
-                    } else {
-                        showcaseImg.src = persona.img;
-                    }
-                    showcaseImg.alt = persona.alt;
-                }
-            }
-        }
-    }
-    setActivePersona('persona-students');
-    triggers.forEach(trigger => {
-        trigger.addEventListener('click', function() {
-            setActivePersona(this.id);
-        });
-        trigger.addEventListener('blur', function() {
-            this.style.boxShadow = '';
-        });
-    });
-
-    // Intersection Observer for fade-in sections
-    const greenSection = document.getElementById('green-section');
-    const videoSection = document.getElementById('video-section');
-    const useCaseSection = document.getElementById('use-case-section');
-    
-    if (videoSection) {
-        const videoObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    videoSection.classList.remove('opacity-0', 'translate-y-8');
-                    videoSection.classList.add('opacity-100', 'translate-y-0');
-                    videoObserver.disconnect();
-                }
-            });
-        }, { threshold: 0.2 });
-        videoObserver.observe(videoSection);
-    }
-    
-    if (greenSection) {
-        const greenObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    greenSection.classList.remove('opacity-0', 'translate-y-8');
-                    greenSection.classList.add('opacity-100', 'translate-y-0');
-                    greenObserver.disconnect();
-                }
-            });
-        }, { threshold: 0.2 });
-        greenObserver.observe(greenSection);
-    }
-    
-    if (useCaseSection) {
-        const useCaseObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    useCaseSection.classList.remove('opacity-0', 'translate-y-8');
-                    useCaseSection.classList.add('opacity-100', 'translate-y-0');
-                    useCaseObserver.disconnect();
-                }
-            });
-        }, { threshold: 0.2 });
-        useCaseObserver.observe(useCaseSection);
-    }
-    
-    // Feature points animation
-    const featurePoints = document.querySelectorAll('.feature-point');
-    if (featurePoints.length > 0) {
-        const featureObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const delay = parseInt(entry.target.getAttribute('data-delay'));
-                    setTimeout(() => {
-                        entry.target.classList.remove('opacity-0', 'translate-y-4');
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                    }, delay);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        featurePoints.forEach(point => {
-            featureObserver.observe(point);
-        });
-    }
-    
-    // Clarity cards animation
-    const clarityCards = document.querySelectorAll('.clarity-card');
-    if (clarityCards.length > 0) {
-        const clarityObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const delay = parseInt(entry.target.getAttribute('data-delay'));
-                    setTimeout(() => {
-                        entry.target.classList.remove('opacity-0', 'translate-y-4');
-                        entry.target.classList.add('opacity-100', 'translate-y-0');
-                    }, delay);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        clarityCards.forEach(card => {
-            clarityObserver.observe(card);
-        });
-    }
-    
-    // Comparison table section animation
-    const comparisonHeading = document.getElementById('comparison-heading');
-    const comparisonTable = document.getElementById('home-comparison-table');
-    
-    if (comparisonHeading && comparisonTable) {
-        const comparisonObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate heading first
-                    setTimeout(() => {
-                        comparisonHeading.classList.remove('opacity-0', 'translate-y-8');
-                        comparisonHeading.classList.add('opacity-100', 'translate-y-0');
-                    }, 100);
-                    
-                    // Animate table after heading
-                    setTimeout(() => {
-                        comparisonTable.classList.remove('opacity-0', 'translate-y-8');
-                        comparisonTable.classList.add('opacity-100', 'translate-y-0');
-                    }, 400);
-                    
-                    comparisonObserver.disconnect();
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        // Observe both elements
-        comparisonObserver.observe(comparisonHeading);
-    }
-    
-    // Before/After comparison animation
-    const beforeAfterComparison = document.getElementById('before-after-comparison');
-    if (beforeAfterComparison) {
-        const beforeAfterObserver = new window.IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Animate the container
-                    entry.target.classList.remove('opacity-0', 'translate-y-8');
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    
-                    // Animate the individual cards
-                    const beforeCard = entry.target.querySelector('.before-card');
-                    const afterCard = entry.target.querySelector('.after-card');
-                    
-                    if (beforeCard) {
-                        setTimeout(() => {
-                            beforeCard.classList.remove('opacity-0');
-                            beforeCard.classList.add('opacity-100');
-                            beforeCard.style.transform = 'translateX(0)';
-                        }, 200);
-                    }
-                    
-                    if (afterCard) {
-                        setTimeout(() => {
-                            afterCard.classList.remove('opacity-0');
-                            afterCard.classList.add('opacity-100');
-                            afterCard.style.transform = 'translateX(0)';
-                        }, 400);
-                    }
-                    
-                    beforeAfterObserver.disconnect();
-                }
-            });
-        }, { threshold: 0.2 });
-        
-        beforeAfterObserver.observe(beforeAfterComparison);
-    }
-})();
-</script>
-
-{% endblock %}
+</body>
+</html>
