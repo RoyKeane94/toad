@@ -13,12 +13,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='company',
             name='email_status',
-            field=models.CharField(blank=True, choices=[('Initial', 'Initial'), ('Initial Follow Up', 'Initial Follow Up'), ('Secondary Follow Up', 'Secondary Follow Up'), ('Tertiary Follow Up', 'Tertiary Follow Up')], null=True),
+            field=models.CharField(blank=True, choices=[('Initial', 'Initial'), ('Initial Follow Up', 'Initial Follow Up'), ('Secondary Follow Up', 'Secondary Follow Up'), ('Tertiary Follow Up', 'Tertiary Follow Up')], max_length=50, null=True),
         ),
         migrations.AddField(
             model_name='company',
             name='status',
-            field=models.CharField(choices=[('Customer', 'Customer'), ('Prospect', 'Prospect'), ('Rejected but follow up', 'Rejected but follow up'), ('No response', 'No response'), ('Rejected', 'Rejected')], default='Prospect'),
+            field=models.CharField(choices=[('Customer', 'Customer'), ('Prospect', 'Prospect'), ('Rejected but follow up', 'Rejected but follow up'), ('No response', 'No response'), ('Rejected', 'Rejected')], default='Prospect', max_length=50),
         ),
         migrations.AddField(
             model_name='lead',

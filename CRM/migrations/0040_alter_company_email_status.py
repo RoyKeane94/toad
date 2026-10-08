@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='company',
             name='email_status',
-            field=models.CharField(blank=True, choices=[('Init', 'Init'), ('Init FP', 'Init FP'), ('Sec FP', 'Sec FP'), ('Ter FP', 'Ter FP')], null=True),
+            field=models.CharField(blank=True, choices=[('Init', 'Init'), ('Init FP', 'Init FP'), ('Sec FP', 'Sec FP'), ('Ter FP', 'Ter FP')], max_length=10, null=True),
         ),
     ]

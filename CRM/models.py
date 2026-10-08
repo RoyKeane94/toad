@@ -144,8 +144,8 @@ class Company(models.Model):
     ]
     
     company_name = models.CharField(max_length=200)
-    status = models.CharField(choices=status_choices, default='Prospect')
-    email_status = models.CharField(choices=email_status_choices, null=True, blank=True)
+    status = models.CharField(max_length=50, choices=status_choices, default='Prospect')
+    email_status = models.CharField(max_length=10, choices=email_status_choices, null=True, blank=True)
     company_sector = models.ForeignKey(CompanySector, on_delete=models.CASCADE, related_name='companies', null=True, blank=True, help_text="The company sector this company is for")
     contact_person = models.CharField(max_length=100, blank=True)
     contact_email = models.EmailField(blank=True)

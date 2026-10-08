@@ -45,6 +45,7 @@ from .views import (
     trial_not_eligible_view,
     start_team_trial_view
 )
+from mcp_api.token_views import generate_mcp_token_view, revoke_mcp_token_view
 from .passwordless_views import RequestLoginCodeView, VerifyLoginCodeView
 
 def secret_registration_redirect(request):
@@ -100,6 +101,8 @@ urlpatterns = [
     path('settings/', account_settings_view, name='account_settings'),
     path('settings/password/', change_password_view, name='change_password'),
     path('settings/delete/', delete_account_view, name='delete_account'),
+    path('settings/mcp-token/generate/', generate_mcp_token_view, name='mcp_token_generate'),
+    path('settings/mcp-token/revoke/', revoke_mcp_token_view, name='mcp_token_revoke'),
     path('manage-subscription/', manage_subscription_view, name='manage_subscription'),
     path('downgrade-to-free/', downgrade_to_free_view, name='downgrade_to_free'),
     path('downgrade-to-personal/', downgrade_to_personal_view, name='downgrade_to_personal'),

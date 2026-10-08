@@ -536,6 +536,10 @@ def account_settings_view(request):
     # Check if user is Team Toad (pro) and in a subscription group with 1 seat
     # Show "Create Team Subscription" banner only for single-seat subscriptions
     is_team_toad_without_group = (request.user.tier == 'pro' and subscription_group and subscription_group.quantity == 1)
+
+    from mcp_api.models import PersonalAccessToken
+    new_mcp_token = request.session.pop('new_mcp_token', None)
+    mcp_token = PersonalAccessToken.objects.filter(user=request.user).first()
     
     context = {
         'profile_form': profile_form,
@@ -552,6 +556,9 @@ def account_settings_view(request):
         'trial_type_display': trial_type_display,
         'is_team_trial': is_team_trial,
         'is_team_toad_without_group': is_team_toad_without_group,
+        'mcp_token': mcp_token,
+        'new_mcp_token': new_mcp_token,
+        'mcp_server_url': settings.MCP_SERVER_PUBLIC_URL,
     }
     return render(request, 'accounts/pages/settings/account_settings.html', context)
 

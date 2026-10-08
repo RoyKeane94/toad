@@ -94,6 +94,7 @@ INSTALLED_APPS = [
     'accounts',
     'pages',
     'CRM',
+    'mcp_api',
 
     # Third-party apps
     'tailwind',
@@ -120,6 +121,9 @@ WSGI_APPLICATION = 'toad.wsgi.application'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'accounts.User'
 TAILWIND_APP_NAME = 'theme'
+
+# Public URL Grok Bot should use for the remote MCP server (path /mcp).
+MCP_SERVER_PUBLIC_URL = os.environ.get('MCP_SERVER_PUBLIC_URL', 'http://localhost:3001/mcp')
 
 
 # ---

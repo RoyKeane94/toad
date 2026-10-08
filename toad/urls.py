@@ -32,6 +32,7 @@ urlpatterns = [
     path('', include('pages.urls')),
     path('accounts/', include('accounts.urls')),
     path('lilypad/', include('CRM.urls')),
+    path('api/mcp/', include('mcp_api.urls')),
     path('favicon.svg', favicon_view, name='favicon'),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg', permanent=True)),
 ]

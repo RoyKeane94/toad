@@ -3338,3 +3338,26 @@ INFO 2026-06-14 20:35:24,616 basehttp 85060 6162149376 "GET /accounts/register/ 
 INFO 2026-06-14 20:35:31,591 basehttp 85060 6162149376 "GET /accounts/login/ HTTP/1.1" 200 4320
 INFO 2026-06-14 20:35:40,467 basehttp 85060 6162149376 "GET /toad-in-action/ HTTP/1.1" 200 4708
 INFO 2026-06-14 20:35:40,522 basehttp 85060 6162149376 "GET /static/video/Toad%20-%20Team%20Highlights.mp4 HTTP/1.1" 200 8655853
+WARNING 2026-10-08 20:19:52,470 log 79160 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-08 20:19:52,774 log 79160 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-08 20:19:53,099 log 79160 8703812160 Not Found: /api/mcp/update_task
+WARNING 2026-10-08 20:19:54,038 log 79160 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:19:54,953 log 79160 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:19:55,261 log 79160 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:20:10,150 log 79311 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-08 20:20:10,530 log 79311 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-08 20:20:10,847 log 79311 8703812160 Not Found: /api/mcp/update_task
+WARNING 2026-10-08 20:20:11,774 log 79311 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:20:12,709 log 79311 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:20:13,018 log 79311 8703812160 Unauthorized: /api/mcp/list_grids
+INFO 2026-10-08 20:22:52,215 autoreload 80890 8703812160 Watching for file changes with StatReloader
+INFO 2026-10-08 20:22:57,393 basehttp 80890 6129364992 "GET / HTTP/1.1" 200 6065
+INFO 2026-10-08 20:22:58,505 basehttp 80890 6129364992 "GET /static/img/logo/toad_favicon.ico HTTP/1.1" 200 760
+INFO 2026-10-08 20:23:00,241 basehttp 80890 6129364992 "GET /accounts/login/ HTTP/1.1" 200 4377
+INFO 2026-10-08 20:23:00,251 basehttp 80890 6129364992 "GET /static/css/output.css HTTP/1.1" 200 114417
+INFO 2026-10-08 20:23:00,253 basehttp 80890 6163017728 "GET /static/js/general/general.min.js HTTP/1.1" 200 12322
+INFO 2026-10-08 20:23:00,254 basehttp 80890 6146191360 "GET /static/css/non-tailwind/non-tailwind.css HTTP/1.1" 200 52639
+INFO 2026-10-08 20:23:00,254 basehttp 80890 6179844096 "GET /static/img/logo/toad_logo.png HTTP/1.1" 200 142200
+INFO 2026-10-08 20:23:07,538 basehttp 80890 6179844096 "POST /accounts/login/ HTTP/1.1" 302 0
+INFO 2026-10-08 20:23:07,561 basehttp 80890 6179844096 "GET /grids/ HTTP/1.1" 200 14782
+INFO 2026-10-08 20:23:11,360 basehttp 80890 6179844096 "GET /accounts/settings/ HTTP/1.1" 200 7133
