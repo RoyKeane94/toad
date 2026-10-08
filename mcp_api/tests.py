@@ -258,6 +258,10 @@ class MCPApiTestCase(TestCase):
                 'add_column',
                 'reorder_rows',
                 'reorder_columns',
+                'rename_row',
+                'rename_column',
+                'delete_row',
+                'delete_column',
                 'log_request',
             },
         )
@@ -426,6 +430,62 @@ class MCPApiTestCase(TestCase):
             token=self.raw_token,
         )
         self.assertEqual(response.status_code, 400)
+
+    def test_rename_and_delete_rows_and_columns(self):
+        renamed_row = self.post(
+            'rename_row',
+            {'row_id': self.later_row.id, 'name': 'Someday'},
+            token=self.raw_token,
+        )
+        self.assertEqual(renamed_row.status_code, 200)
+        self.assertEqual(renamed_row.json()['row']['name'], 'Someday')
+
+        renamed_column = self.post(
+            'rename_column',
+            {'column_id': self.column.id, 'name': 'Now'},
+            token=self.raw_token,
+        )
+        self.assertEqual(renamed_column.status_code, 200)
+        self.assertEqual(renamed_column.json()['column']['name'], 'Now')
+
+        extra_column = ColumnHeader.objects.create(
+            project=self.project, name='Drop me', order=2
+        )
+        deleted_column = self.post(
+            'delete_column',
+            {'column_id': extra_column.id},
+            token=self.raw_token,
+        )
+        self.assertEqual(deleted_column.status_code, 200)
+        self.assertFalse(ColumnHeader.objects.filter(pk=extra_column.id).exists())
+
+        deleted_row = self.post(
+            'delete_row',
+            {'row_id': self.later_row.id},
+            token=self.raw_token,
+        )
+        self.assertEqual(deleted_row.status_code, 200)
+        self.assertFalse(RowHeader.objects.filter(pk=self.later_row.id).exists())
+        self.assertTrue(Task.objects.filter(pk=self.task.id).exists())
+        self.assertTrue(TaskActivity.objects.filter(action='renamed row to Someday').exists())
+        self.assertTrue(TaskActivity.objects.filter(action='deleted column Drop me').exists())
+
+        blocked = self.post(
+            'delete_column',
+            {'column_id': self.category.id},
+            token=self.raw_token,
+        )
+        self.assertEqual(blocked.status_code, 400)
+
+        other = self.post(
+            'rename_row',
+            {
+                'row_id': self.other_task.row_header_id,
+                'name': 'Nope',
+            },
+            token=self.raw_token,
+        )
+        self.assertEqual(other.status_code, 404)
 
     def test_regenerating_one_agent_does_not_revoke_another(self):
         ramble_token = PersonalAccessToken.issue_for_user(self.user, name='Ramble')

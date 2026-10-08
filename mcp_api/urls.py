@@ -16,5 +16,9 @@ urlpatterns = [
     path('add_column', views.add_column, name='add_column'),
     path('reorder_rows', views.reorder_rows, name='reorder_rows'),
     path('reorder_columns', views.reorder_columns, name='reorder_columns'),
+    path('rename_row', views.rename_row, name='rename_row'),
+    path('rename_column', views.rename_column, name='rename_column'),
+    path('delete_row', views.delete_row, name='delete_row'),
+    path('delete_column', views.delete_column, name='delete_column'),
     path('log_request', views.log_request, name='log_request'),
 ]

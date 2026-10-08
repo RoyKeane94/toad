@@ -40,7 +40,9 @@ mcp = FastMCP(
         'Put lasting context in the brief with update_grid. '
         'Tasks you add are owned by the agent unless you set owner to you. '
         'Set needs_review true when handing drafted work back. '
-        'Add or reorder rows and columns with add_row, add_column, reorder_rows and reorder_columns. '
+        'Add, rename, reorder or delete rows and columns with add_row, rename_row, '
+        'reorder_rows, delete_row, add_column, rename_column, reorder_columns and delete_column. '
+        'Deleting a row or column also deletes the tasks in it. The category column cannot be deleted. '
         'Call log_request after helping someone, with who asked, what they asked, '
         'and whether a follow-up is needed. Do not store tool output in log_request.'
     ),
@@ -192,6 +194,32 @@ async def reorder_columns(grid_id: int, column_ids: list[int]) -> dict:
     return await toad_post(
         'reorder_columns', current_token(), {'grid_id': grid_id, 'column_ids': column_ids}
     )
+
+
+@mcp.tool
+async def rename_row(row_id: int, name: str) -> dict:
+    """Rename a row."""
+    return await toad_post('rename_row', current_token(), {'row_id': row_id, 'name': name})
+
+
+@mcp.tool
+async def rename_column(column_id: int, name: str) -> dict:
+    """Rename a column, including the category column."""
+    return await toad_post(
+        'rename_column', current_token(), {'column_id': column_id, 'name': name}
+    )
+
+
+@mcp.tool
+async def delete_row(row_id: int) -> dict:
+    """Delete a row and every task in it."""
+    return await toad_post('delete_row', current_token(), {'row_id': row_id})
+
+
+@mcp.tool
+async def delete_column(column_id: int) -> dict:
+    """Delete a data column and every task in it. The category column cannot be deleted."""
+    return await toad_post('delete_column', current_token(), {'column_id': column_id})
 
 
 @mcp.tool

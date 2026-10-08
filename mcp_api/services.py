@@ -88,6 +88,36 @@ def _require_grid(user, grid_id):
         raise ApiError('Grid not found', status=404)
 
 
+def _accessible_row(user, row_id):
+    if row_id is None:
+        raise ApiError('row_id is required')
+    row = (
+        RowHeader.objects.select_related('project')
+        .filter(pk=row_id)
+        .filter(Q(project__user=user) | Q(project__team_toad_user=user))
+        .distinct()
+        .first()
+    )
+    if not row:
+        raise ApiError('Row not found', status=404)
+    return row
+
+
+def _accessible_column(user, column_id):
+    if column_id is None:
+        raise ApiError('column_id is required')
+    column = (
+        ColumnHeader.objects.select_related('project')
+        .filter(pk=column_id)
+        .filter(Q(project__user=user) | Q(project__team_toad_user=user))
+        .distinct()
+        .first()
+    )
+    if not column:
+        raise ApiError('Column not found', status=404)
+    return column
+
+
 def _require_name(name):
     name = (name or '').strip()
     if not name:
@@ -223,6 +253,64 @@ def reorder_columns_for_user(user, grid_id, column_ids, agent=None):
     )
     log_activity(user, agent, 'reordered columns', project=project, task_text=names)
     return {'ok': True, 'columns': columns_payload}
+
+
+def rename_row_for_user(user, row_id, name, agent=None):
+    name = _require_name(name)
+    row = _accessible_row(user, row_id)
+    old_name = row.name
+    if name != old_name:
+        row.name = name
+        row.save(update_fields=['name', 'updated_at'])
+        log_activity(
+            user, agent, f'renamed row to {name}', project=row.project, task_text=old_name
+        )
+    return {'ok': True, 'row': serialize_row(row)}
+
+
+def rename_column_for_user(user, column_id, name, agent=None):
+    name = _require_name(name)
+    column = _accessible_column(user, column_id)
+    old_name = column.name
+    if name != old_name:
+        column.name = name
+        column.save(update_fields=['name', 'updated_at'])
+        log_activity(
+            user, agent, f'renamed column to {name}', project=column.project, task_text=old_name
+        )
+    return {'ok': True, 'column': serialize_column(column)}
+
+
+def delete_row_for_user(user, row_id, agent=None):
+    row = _accessible_row(user, row_id)
+    project = row.project
+    name = row.name
+    deleted_id = row.id
+    with transaction.atomic():
+        row.delete()
+        remaining = [item.id for item in _ordered_rows(project)]
+        rows_payload = _apply_row_order(project, remaining) if remaining else []
+    log_activity(user, agent, f'deleted row {name}', project=project, task_text=name)
+    return {'ok': True, 'deleted_row_id': deleted_id, 'rows': rows_payload}
+
+
+def delete_column_for_user(user, column_id, agent=None):
+    column = _accessible_column(user, column_id)
+    if column.is_category_column:
+        raise ApiError('Cannot delete the category column')
+    project = column.project
+    name = column.name
+    deleted_id = column.id
+    with transaction.atomic():
+        column.delete()
+        data_ids = [
+            item.id for item in _ordered_columns(project) if not item.is_category_column
+        ]
+        columns_payload = _apply_column_order(project, data_ids) if data_ids else [
+            serialize_column(item) for item in _ordered_columns(project)
+        ]
+    log_activity(user, agent, f'deleted column {name}', project=project, task_text=name)
+    return {'ok': True, 'deleted_column_id': deleted_id, 'columns': columns_payload}
 
 
 def list_grids_for_user(user):
@@ -546,6 +634,24 @@ def call_tool(user, name, arguments, agent=None):
             arguments.get('column_ids'),
             agent=agent,
         )
+    if name == 'rename_row':
+        return rename_row_for_user(
+            user,
+            arguments.get('row_id'),
+            arguments.get('name'),
+            agent=agent,
+        )
+    if name == 'rename_column':
+        return rename_column_for_user(
+            user,
+            arguments.get('column_id'),
+            arguments.get('name'),
+            agent=agent,
+        )
+    if name == 'delete_row':
+        return delete_row_for_user(user, arguments.get('row_id'), agent=agent)
+    if name == 'delete_column':
+        return delete_column_for_user(user, arguments.get('column_id'), agent=agent)
     if name == 'log_request':
         return log_request_for_user(
             user,

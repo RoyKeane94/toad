@@ -7,10 +7,14 @@ from .services import (
     add_column_for_user,
     add_row_for_user,
     add_task_for_user,
+    delete_column_for_user,
+    delete_row_for_user,
     delete_task_for_user,
     get_grid_for_user,
     list_grids_for_user,
     log_request_for_user,
+    rename_column_for_user,
+    rename_row_for_user,
     reorder_columns_for_user,
     reorder_rows_for_user,
     update_grid_for_user,
@@ -198,6 +202,60 @@ def reorder_columns(request):
         data.get('grid_id'),
         data.get('column_ids'),
         agent=_agent(request),
+    )
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def rename_row(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(
+        rename_row_for_user,
+        request.user,
+        data.get('row_id'),
+        data.get('name'),
+        agent=_agent(request),
+    )
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def rename_column(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(
+        rename_column_for_user,
+        request.user,
+        data.get('column_id'),
+        data.get('name'),
+        agent=_agent(request),
+    )
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def delete_row(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(delete_row_for_user, request.user, data.get('row_id'), agent=_agent(request))
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def delete_column(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(
+        delete_column_for_user, request.user, data.get('column_id'), agent=_agent(request)
     )
 
 

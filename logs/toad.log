@@ -3411,3 +3411,13 @@ WARNING 2026-10-08 21:04:12,699 log 88332 8703812160 Unauthorized: /mcp
 WARNING 2026-10-08 21:04:13,014 log 88332 8703812160 Unauthorized: /api/mcp/list_grids
 WARNING 2026-10-08 21:04:13,990 log 88332 8703812160 Unauthorized: /api/mcp/list_grids
 WARNING 2026-10-08 21:04:14,336 log 88332 8703812160 Bad Request: /api/mcp/reorder_rows
+WARNING 2026-10-08 21:10:01,892 log 89044 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-08 21:10:02,282 log 89044 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-08 21:10:02,594 log 89044 8703812160 Not Found: /api/mcp/update_task
+WARNING 2026-10-08 21:10:04,153 log 89044 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 21:10:06,176 log 89044 8703812160 Unauthorized: /mcp
+WARNING 2026-10-08 21:10:06,488 log 89044 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 21:10:07,429 log 89044 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 21:10:07,750 log 89044 8703812160 Bad Request: /api/mcp/delete_column
+WARNING 2026-10-08 21:10:07,752 log 89044 8703812160 Not Found: /api/mcp/rename_row
+WARNING 2026-10-08 21:10:08,066 log 89044 8703812160 Bad Request: /api/mcp/reorder_rows

@@ -15,7 +15,9 @@ MCP_INSTRUCTIONS = (
     "needs_review, and recent activity. Put lasting context in the brief with update_grid. "
     "Tasks you add are owned by the agent unless you set owner to you. "
     "Set needs_review true when handing drafted work back. "
-    "Add or reorder rows and columns with add_row, add_column, reorder_rows and reorder_columns. "
+    "Add, rename, reorder or delete rows and columns with add_row, rename_row, "
+    "reorder_rows, delete_row, add_column, rename_column, reorder_columns and delete_column. "
+    "Deleting a row or column also deletes the tasks in it. The category column cannot be deleted. "
     "Call log_request after helping someone, with who asked, what they asked, "
     "and whether a follow-up is needed. Do not store tool output in log_request."
 )
@@ -163,6 +165,50 @@ TOOL_DEFINITIONS = [
                 'column_ids': {'type': 'array', 'items': {'type': 'integer'}},
             },
             'required': ['grid_id', 'column_ids'],
+        },
+    },
+    {
+        'name': 'rename_row',
+        'description': 'Rename a row.',
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'row_id': {'type': 'integer'},
+                'name': {'type': 'string'},
+            },
+            'required': ['row_id', 'name'],
+        },
+    },
+    {
+        'name': 'rename_column',
+        'description': 'Rename a column, including the category column.',
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'column_id': {'type': 'integer'},
+                'name': {'type': 'string'},
+            },
+            'required': ['column_id', 'name'],
+        },
+    },
+    {
+        'name': 'delete_row',
+        'description': 'Delete a row and every task in it.',
+        'inputSchema': {
+            'type': 'object',
+            'properties': {'row_id': {'type': 'integer'}},
+            'required': ['row_id'],
+        },
+    },
+    {
+        'name': 'delete_column',
+        'description': (
+            'Delete a data column and every task in it. The category column cannot be deleted.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {'column_id': {'type': 'integer'}},
+            'required': ['column_id'],
         },
     },
     {
