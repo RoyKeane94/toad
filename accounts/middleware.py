@@ -23,7 +23,8 @@ class EmailVerificationMiddleware:
             not request.path.startswith('/faq/') and       # Allow access to FAQ
             not request.path.startswith('/contact/') and   # Allow access to contact
             not request.path.startswith('/privacy/') and   # Allow access to privacy policy
-            not request.path.startswith('/api/')):         # Allow token-authenticated MCP API
+            not request.path.startswith('/api/') and       # Allow token-authenticated MCP API
+            not request.path.startswith('/mcp')):          # Allow Grok Bot MCP endpoint
             
             messages.warning(request, 'Please verify your email address to access all features.')
             return redirect('accounts:account_settings')

@@ -3361,3 +3361,10 @@ INFO 2026-10-08 20:23:00,254 basehttp 80890 6179844096 "GET /static/img/logo/toa
 INFO 2026-10-08 20:23:07,538 basehttp 80890 6179844096 "POST /accounts/login/ HTTP/1.1" 302 0
 INFO 2026-10-08 20:23:07,561 basehttp 80890 6179844096 "GET /grids/ HTTP/1.1" 200 14782
 INFO 2026-10-08 20:23:11,360 basehttp 80890 6179844096 "GET /accounts/settings/ HTTP/1.1" 200 7133
+WARNING 2026-10-08 20:42:04,034 log 84326 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-08 20:42:04,349 log 84326 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-08 20:42:04,659 log 84326 8703812160 Not Found: /api/mcp/update_task
+WARNING 2026-10-08 20:42:05,617 log 84326 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:42:07,465 log 84326 8703812160 Unauthorized: /mcp
+WARNING 2026-10-08 20:42:07,772 log 84326 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 20:42:08,090 log 84326 8703812160 Unauthorized: /api/mcp/list_grids

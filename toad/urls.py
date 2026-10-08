@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from django.views.static import serve
 from django.http import HttpResponse
 from django.views.generic import RedirectView
+from mcp_api.protocol import mcp_endpoint
 import os
 
 # Favicon view
@@ -33,6 +34,8 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('lilypad/', include('CRM.urls')),
     path('api/mcp/', include('mcp_api.urls')),
+    path('mcp', mcp_endpoint, name='mcp'),
+    path('mcp/', mcp_endpoint, name='mcp_slash'),
     path('favicon.svg', favicon_view, name='favicon'),
     path('favicon.ico', RedirectView.as_view(url='/static/img/favicon.svg', permanent=True)),
 ]

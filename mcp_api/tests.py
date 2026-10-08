@@ -194,6 +194,59 @@ class MCPApiTestCase(TestCase):
         self.assertEqual(old_response.status_code, 401)
         self.assertEqual(new_response.status_code, 200)
 
+    def mcp_rpc(self, method, params=None, token=None, rpc_id=1):
+        headers = {'HTTP_ACCEPT': 'application/json, text/event-stream'}
+        if token is not None:
+            headers['HTTP_AUTHORIZATION'] = f'Bearer {token}'
+        return self.client.post(
+            '/mcp',
+            data=json.dumps({
+                'jsonrpc': '2.0',
+                'id': rpc_id,
+                'method': method,
+                'params': params or {},
+            }),
+            content_type='application/json',
+            **headers,
+        )
+
+    def test_mcp_get_is_not_a_404(self):
+        response = self.client.get('/mcp', HTTP_ACCEPT='text/html')
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'Toad MCP is running')
+
+    def test_mcp_initialize_and_list_tools(self):
+        response = self.mcp_rpc(
+            'initialize',
+            {'protocolVersion': '2025-03-26', 'capabilities': {}, 'clientInfo': {'name': 'test'}},
+            token=self.raw_token,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['result']['serverInfo']['name'], 'Toad')
+
+        listed = self.mcp_rpc('tools/list', token=self.raw_token)
+        names = {tool['name'] for tool in listed.json()['result']['tools']}
+        self.assertEqual(
+            names,
+            {'list_grids', 'get_grid', 'add_task', 'update_task', 'delete_task', 'log_request'},
+        )
+
+    def test_mcp_list_grids_tool_call(self):
+        response = self.mcp_rpc(
+            'tools/call',
+            {'name': 'list_grids', 'arguments': {}},
+            token=self.raw_token,
+        )
+        self.assertEqual(response.status_code, 200)
+        result = response.json()['result']
+        self.assertFalse(result['isError'])
+        names = {grid['name'] for grid in result['structuredContent']['grids']}
+        self.assertIn('Work Grid', names)
+
+    def test_mcp_rejects_missing_token_on_post(self):
+        response = self.mcp_rpc('tools/list', token=None)
+        self.assertEqual(response.status_code, 401)
+
 
 class MCPTokenSettingsTestCase(TestCase):
     def setUp(self):
