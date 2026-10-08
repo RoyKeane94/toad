@@ -2,6 +2,7 @@
 
 Talks to Toad's token-authenticated API. Run next to Django:
 
+    pip install -r mcp_server/requirements.txt
     TOAD_API_BASE_URL=http://127.0.0.1:8000 python mcp_server/server.py
 
 Grok Bot connects with this server's public URL (path /mcp) plus the user's
