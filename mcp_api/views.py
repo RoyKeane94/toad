@@ -9,12 +9,18 @@ from .services import (
     get_grid_for_user,
     list_grids_for_user,
     log_request_for_user,
+    update_grid_for_user,
     update_task_for_user,
 )
 
 
 def _json_error(message, status=400):
     return JsonResponse({'error': message}, status=status)
+
+
+def _agent(request):
+    token = getattr(request, 'mcp_token', None)
+    return token.name if token else None
 
 
 def _call(func, *args, **kwargs):
@@ -33,6 +39,7 @@ def whoami(request):
         'id': request.user.id,
         'email': request.user.email,
         'name': request.user.get_full_name(),
+        'agent': _agent(request),
     })
 
 
@@ -54,6 +61,22 @@ def get_grid(request):
 
 @mcp_token_required
 @require_http_methods(['POST'])
+def update_grid(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(
+        update_grid_for_user,
+        request.user,
+        data.get('grid_id'),
+        brief=data.get('brief'),
+        agent=_agent(request),
+    )
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
 def add_task(request):
     try:
         data = parse_json_body(request)
@@ -67,6 +90,9 @@ def add_task(request):
             data.get('column_id'),
             data.get('text'),
             note=data.get('note'),
+            owner=data.get('owner'),
+            needs_review=data.get('needs_review'),
+            agent=_agent(request),
         )
     except ApiError as exc:
         return _json_error(exc.message, status=exc.status)
@@ -80,7 +106,13 @@ def update_task(request):
         data = parse_json_body(request)
     except ValueError as exc:
         return _json_error(str(exc))
-    return _call(update_task_for_user, request.user, data.get('task_id'), data=data)
+    return _call(
+        update_task_for_user,
+        request.user,
+        data.get('task_id'),
+        data=data,
+        agent=_agent(request),
+    )
 
 
 @mcp_token_required
@@ -90,7 +122,7 @@ def delete_task(request):
         data = parse_json_body(request)
     except ValueError as exc:
         return _json_error(str(exc))
-    return _call(delete_task_for_user, request.user, data.get('task_id'))
+    return _call(delete_task_for_user, request.user, data.get('task_id'), agent=_agent(request))
 
 
 @mcp_token_required

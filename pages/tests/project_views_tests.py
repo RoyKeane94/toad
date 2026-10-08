@@ -166,6 +166,39 @@ class ProjectViewsTestCase(TestCase):
         response = self.client.get(reverse('pages:project_edit', kwargs={'pk': self.project.pk}))
         
         self.assertEqual(response.status_code, 404)
+
+    def test_project_brief_view_post(self):
+        self.client.login(email='test@example.com', password='testpass123')
+        response = self.client.post(
+            reverse('pages:project_brief', kwargs={'pk': self.project.pk}),
+            {'brief': 'Ramble frozen positioning.'},
+        )
+        self.assertEqual(response.status_code, 302)
+        self.project.refresh_from_db()
+        self.assertEqual(self.project.brief, 'Ramble frozen positioning.')
+
+    def test_task_claim_and_hand_to_agent(self):
+        self.client.login(email='test@example.com', password='testpass123')
+        self.task.owner = Task.OWNER_AGENT
+        self.task.needs_review = True
+        self.task.save(update_fields=['owner', 'needs_review'])
+
+        claim = self.client.post(reverse('pages:task_claim', kwargs={'task_pk': self.task.pk}))
+        self.assertRedirects(
+            claim,
+            reverse('pages:project_grid', kwargs={'pk': self.project.pk}),
+            fetch_redirect_response=False,
+        )
+        self.task.refresh_from_db()
+        self.assertEqual(self.task.owner, Task.OWNER_YOU)
+        self.assertFalse(self.task.needs_review)
+
+        hand_over = self.client.post(
+            reverse('pages:task_hand_to_agent', kwargs={'task_pk': self.task.pk})
+        )
+        self.assertEqual(hand_over.status_code, 302)
+        self.task.refresh_from_db()
+        self.assertEqual(self.task.owner, Task.OWNER_AGENT)
     
     def test_project_delete_view_get(self):
         """Test project delete view GET request"""

@@ -5,7 +5,7 @@ from django.urls import reverse
 from django.contrib.auth import get_user_model
 
 from pages.models import Project, RowHeader, ColumnHeader, Task, TaskNote
-from .models import PersonalAccessToken, MCPRequestLog
+from .models import PersonalAccessToken, MCPRequestLog, TaskActivity
 
 User = get_user_model()
 
@@ -28,7 +28,11 @@ class MCPApiTestCase(TestCase):
         self.raw_token = PersonalAccessToken.issue_for_user(self.user)
         self.other_token = PersonalAccessToken.issue_for_user(self.other_user)
 
-        self.project = Project.objects.create(name='Work Grid', user=self.user)
+        self.project = Project.objects.create(
+            name='Work Grid',
+            user=self.user,
+            brief='Ramble frozen positioning. My Stamp spec lives here.',
+        )
         self.other_project = Project.objects.create(name='Secret Grid', user=self.other_user)
 
         self.category = ColumnHeader.objects.create(
@@ -95,6 +99,10 @@ class MCPApiTestCase(TestCase):
         self.assertEqual(task['column'], 'This week')
         self.assertFalse(task['ticked'])
         self.assertEqual(task['note'], 'Cover the MCP API')
+        self.assertEqual(body['brief'], 'Ramble frozen positioning. My Stamp spec lives here.')
+        self.assertEqual(task['owner'], 'you')
+        self.assertFalse(task['needs_review'])
+        self.assertEqual(body['activity'], [])
 
     def test_cannot_read_another_users_grid(self):
         response = self.post('get_grid', {'grid_id': self.other_project.id}, token=self.raw_token)
@@ -119,7 +127,13 @@ class MCPApiTestCase(TestCase):
         self.assertEqual(task['column'], 'This week')
         self.assertFalse(task['ticked'])
         self.assertEqual(task['note'], 'First test')
+        self.assertEqual(task['owner'], 'agent')
+        self.assertFalse(task['needs_review'])
         self.assertTrue(Task.objects.filter(pk=task['id'], project=self.project).exists())
+        activity = TaskActivity.objects.get(action='added')
+        self.assertEqual(activity.agent, 'Grok Bot')
+        self.assertEqual(activity.task_id, task['id'])
+        self.assertEqual(activity.task_text, 'Ship MCP')
 
     def test_cannot_add_task_to_category_column(self):
         response = self.post(
@@ -228,7 +242,15 @@ class MCPApiTestCase(TestCase):
         names = {tool['name'] for tool in listed.json()['result']['tools']}
         self.assertEqual(
             names,
-            {'list_grids', 'get_grid', 'add_task', 'update_task', 'delete_task', 'log_request'},
+            {
+                'list_grids',
+                'get_grid',
+                'update_grid',
+                'add_task',
+                'update_task',
+                'delete_task',
+                'log_request',
+            },
         )
 
     def test_mcp_list_grids_tool_call(self):
@@ -246,6 +268,65 @@ class MCPApiTestCase(TestCase):
     def test_mcp_rejects_missing_token_on_post(self):
         response = self.mcp_rpc('tools/list', token=None)
         self.assertEqual(response.status_code, 401)
+
+    def test_update_grid_sets_brief(self):
+        response = self.post(
+            'update_grid',
+            {'grid_id': self.project.id, 'brief': 'Keep the hero frozen on scroll.'},
+            token=self.raw_token,
+        )
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()['brief'], 'Keep the hero frozen on scroll.')
+        self.project.refresh_from_db()
+        self.assertEqual(self.project.brief, 'Keep the hero frozen on scroll.')
+        activity = TaskActivity.objects.get(action='brief_updated')
+        self.assertEqual(activity.agent, 'Grok Bot')
+
+    def test_update_task_owner_and_needs_review(self):
+        response = self.post(
+            'update_task',
+            {
+                'task_id': self.task.id,
+                'owner': 'agent',
+                'needs_review': True,
+            },
+            token=self.raw_token,
+        )
+        self.assertEqual(response.status_code, 200)
+        task = response.json()['task']
+        self.assertEqual(task['owner'], 'agent')
+        self.assertTrue(task['needs_review'])
+        self.task.refresh_from_db()
+        self.assertEqual(self.task.owner, Task.OWNER_AGENT)
+        self.assertTrue(self.task.needs_review)
+        self.assertTrue(TaskActivity.objects.filter(action='updated', task=self.task).exists())
+
+    def test_delete_task_keeps_activity_text(self):
+        response = self.post('delete_task', {'task_id': self.task.id}, token=self.raw_token)
+        self.assertEqual(response.status_code, 200)
+        activity = TaskActivity.objects.get(action='deleted')
+        self.assertEqual(activity.agent, 'Grok Bot')
+        self.assertEqual(activity.task_text, 'Write tests')
+        self.assertIsNone(activity.task_id)
+
+    def test_get_grid_includes_recent_activity(self):
+        self.post(
+            'add_task',
+            {
+                'grid_id': self.project.id,
+                'row_id': self.row.id,
+                'column_id': self.column.id,
+                'text': 'Draft the stamp spec',
+                'needs_review': True,
+            },
+            token=self.raw_token,
+        )
+        response = self.post('get_grid', {'grid_id': self.project.id}, token=self.raw_token)
+        activity = response.json()['activity']
+        self.assertEqual(activity[0]['agent'], 'Grok Bot')
+        self.assertEqual(activity[0]['action'], 'added')
+        self.assertEqual(activity[0]['task'], 'Draft the stamp spec')
+        self.assertIn('created_at', activity[0])
 
 
 class MCPTokenSettingsTestCase(TestCase):

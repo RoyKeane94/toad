@@ -11,6 +11,10 @@ from .services import ApiError, call_tool
 MCP_INSTRUCTIONS = (
     "Read and edit the signed-in user's Toad grids. "
     "Call list_grids to find grid IDs, then get_grid before adding or changing tasks. "
+    "get_grid returns the grid brief (standing context), task owner (you or agent), "
+    "needs_review, and recent activity. Put lasting context in the brief with update_grid. "
+    "Tasks you add are owned by the agent unless you set owner to you. "
+    "Set needs_review true when handing drafted work back. "
     "Call log_request after helping someone, with who asked, what they asked, "
     "and whether a follow-up is needed. Do not store tool output in log_request."
 )
@@ -24,8 +28,9 @@ TOOL_DEFINITIONS = [
     {
         'name': 'get_grid',
         'description': (
-            "Return a grid's rows, columns and tasks. "
-            "Each task is tagged with its row, column, ticked state and note."
+            "Return a grid's brief, rows, columns and tasks, plus recent activity. "
+            "Each task is tagged with its row, column, ticked state, note, owner "
+            "(you or agent) and needs_review."
         ),
         'inputSchema': {
             'type': 'object',
@@ -34,8 +39,26 @@ TOOL_DEFINITIONS = [
         },
     },
     {
+        'name': 'update_grid',
+        'description': (
+            "Set the grid brief. This is standing context other agents should see "
+            "on get_grid (specs, positioning, constraints)."
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'brief': {'type': 'string'},
+            },
+            'required': ['grid_id', 'brief'],
+        },
+    },
+    {
         'name': 'add_task',
-        'description': 'Add a task to a grid cell (row and column). An optional note can be included.',
+        'description': (
+            'Add a task to a grid cell (row and column). An optional note can be included. '
+            'Defaults to owner=agent. Set needs_review true to hand it back for review.'
+        ),
         'inputSchema': {
             'type': 'object',
             'properties': {
@@ -44,13 +67,18 @@ TOOL_DEFINITIONS = [
                 'column_id': {'type': 'integer'},
                 'text': {'type': 'string'},
                 'note': {'type': 'string'},
+                'owner': {'type': 'string', 'enum': ['you', 'agent']},
+                'needs_review': {'type': 'boolean'},
             },
             'required': ['grid_id', 'row_id', 'column_id', 'text'],
         },
     },
     {
         'name': 'update_task',
-        'description': 'Tick, untick, rename, or move a task to another row or column.',
+        'description': (
+            'Tick, untick, rename, or move a task to another row or column. '
+            'Can also set owner (you or agent) and needs_review.'
+        ),
         'inputSchema': {
             'type': 'object',
             'properties': {
@@ -59,6 +87,8 @@ TOOL_DEFINITIONS = [
                 'text': {'type': 'string'},
                 'row_id': {'type': 'integer'},
                 'column_id': {'type': 'integer'},
+                'owner': {'type': 'string', 'enum': ['you', 'agent']},
+                'needs_review': {'type': 'boolean'},
             },
             'required': ['task_id'],
         },
@@ -159,7 +189,7 @@ def _html_info():
 </html>'''
 
 
-def _handle_rpc(user, message):
+def _handle_rpc(user, message, agent=None):
     if not isinstance(message, dict):
         return _jsonrpc_error(None, -32600, 'Invalid Request')
 
@@ -191,7 +221,7 @@ def _handle_rpc(user, message):
         name = params.get('name')
         arguments = params.get('arguments') or {}
         try:
-            result = call_tool(user, name, arguments)
+            result = call_tool(user, name, arguments, agent=agent)
             is_error = isinstance(result, dict) and 'error' in result
         except ApiError as exc:
             result = {'error': exc.message}
@@ -223,14 +253,14 @@ def mcp_endpoint(request):
         return _cors(JsonResponse(_info_payload()))
 
     raw_token = extract_bearer_token(request)
-    user = PersonalAccessToken.authenticate(raw_token) if raw_token else None
+    token = PersonalAccessToken.authenticate_token(raw_token) if raw_token else None
 
     try:
         message = json.loads(request.body or b'{}')
     except json.JSONDecodeError:
         return _jsonrpc_error(None, -32700, 'Parse error')
 
-    if user is None:
+    if token is None:
         request_id = message.get('id') if isinstance(message, dict) else None
         return _jsonrpc_error(
             request_id,
@@ -239,4 +269,4 @@ def mcp_endpoint(request):
             status=401,
         )
 
-    return _handle_rpc(user, message)
+    return _handle_rpc(token.user, message, agent=token.name)

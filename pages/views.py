@@ -48,12 +48,12 @@ from .specific_views.general_views import (
 )
 
 from pages.specific_views.project_views import (
-    project_list_view, project_create_view, project_edit_view, project_delete_view,
+    project_list_view, project_create_view, project_edit_view, project_brief_view, project_delete_view,
     project_grid_view, delete_completed_tasks_view, archive_project_confirm_view, archive_project_view, restore_project_view,
     project_group_create_view, project_group_update_view, project_group_edit_view,
     save_as_template_view, use_template_view, template_edit_view, template_delete_view,
     create_from_template_view, task_create_view, task_edit_view, task_toggle_complete_view,
-    task_delete_view, task_assign_view, create_task_reminder, task_note_view, task_notes_view, task_reorder_view, row_create_view, row_edit_view, row_delete_view,
+    task_delete_view, task_claim_view, task_hand_to_agent_view, task_assign_view, create_task_reminder, task_note_view, task_notes_view, task_reorder_view, row_create_view, row_edit_view, row_delete_view,
     column_create_view, column_edit_view, column_delete_view, share_grid_view, accept_grid_invitation_view,
     team_add_member_view, team_remove_member_view, get_shared_team_users_view, team_add_multiple_members_view,
     share_template_view, get_subscription_group_members_view, unshare_template_view, unsubscribe_from_template_view,

@@ -36,6 +36,10 @@ mcp = FastMCP(
     instructions=(
         'Read and edit the signed-in user\'s Toad grids. '
         'Call list_grids to find grid IDs, then get_grid before adding or changing tasks. '
+        'get_grid returns the grid brief, task owner, needs_review, and recent activity. '
+        'Put lasting context in the brief with update_grid. '
+        'Tasks you add are owned by the agent unless you set owner to you. '
+        'Set needs_review true when handing drafted work back. '
         'Call log_request after helping someone, with who asked, what they asked, '
         'and whether a follow-up is needed. Do not store tool output in log_request.'
     ),
@@ -81,11 +85,18 @@ async def list_grids() -> dict:
 
 @mcp.tool
 async def get_grid(grid_id: int) -> dict:
-    """Return a grid's rows, columns and tasks.
+    """Return a grid's brief, rows, columns and tasks, plus recent activity.
 
-    Each task is tagged with its row, column, ticked state and note.
+    Each task is tagged with its row, column, ticked state, note, owner
+    (you or agent) and needs_review.
     """
     return await toad_post('get_grid', current_token(), {'grid_id': grid_id})
+
+
+@mcp.tool
+async def update_grid(grid_id: int, brief: str) -> dict:
+    """Set the grid brief. Standing context other agents should see on get_grid."""
+    return await toad_post('update_grid', current_token(), {'grid_id': grid_id, 'brief': brief})
 
 
 @mcp.tool
@@ -95,8 +106,13 @@ async def add_task(
     column_id: int,
     text: str,
     note: str | None = None,
+    owner: str | None = None,
+    needs_review: bool | None = None,
 ) -> dict:
-    """Add a task to a grid cell (row and column). An optional note can be included."""
+    """Add a task to a grid cell (row and column). An optional note can be included.
+
+    Defaults to owner=agent. Set needs_review true to hand it back for review.
+    """
     payload = {
         'grid_id': grid_id,
         'row_id': row_id,
@@ -105,6 +121,10 @@ async def add_task(
     }
     if note:
         payload['note'] = note
+    if owner:
+        payload['owner'] = owner
+    if needs_review is not None:
+        payload['needs_review'] = needs_review
     return await toad_post('add_task', current_token(), payload)
 
 
@@ -115,8 +135,10 @@ async def update_task(
     text: str | None = None,
     row_id: int | None = None,
     column_id: int | None = None,
+    owner: str | None = None,
+    needs_review: bool | None = None,
 ) -> dict:
-    """Tick, untick, rename, or move a task to another row or column."""
+    """Tick, untick, rename, or move a task. Can also set owner and needs_review."""
     payload = {'task_id': task_id}
     if ticked is not None:
         payload['ticked'] = ticked
@@ -126,6 +148,10 @@ async def update_task(
         payload['row_id'] = row_id
     if column_id is not None:
         payload['column_id'] = column_id
+    if owner is not None:
+        payload['owner'] = owner
+    if needs_review is not None:
+        payload['needs_review'] = needs_review
     return await toad_post('update_task', current_token(), payload)
 
 

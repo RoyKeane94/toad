@@ -80,6 +80,37 @@
                     <span>{{ task.get_reminder_date_display }}</span>
                 </div>
             {% endif %}
+
+            {% if task.owner == 'agent' or task.needs_review %}
+                <div class="flex items-center flex-wrap gap-1 mt-1 ml-1">
+                    {% if task.owner == 'agent' %}
+                    <form method="post"
+                          action="{% url 'pages:task_claim' task.pk %}"
+                          class="inline"
+                          hx-post="{% url 'pages:task_claim' task.pk %}"
+                          hx-target="#task-{{ task.id }}"
+                          hx-swap="outerHTML">
+                        {% csrf_token %}
+                        <button type="submit"
+                                class="text-[10px] leading-none px-1.5 py-0.5 rounded border border-[var(--border-color)] bg-[var(--grid-header-bg)] text-[var(--text-secondary)] hover:border-[var(--primary-action-bg)] hover:text-[var(--primary-action-bg)] transition-colors"
+                                title="Agent owns this. Click to take over.">Agent</button>
+                    </form>
+                    {% endif %}
+                    {% if task.needs_review %}
+                    <form method="post"
+                          action="{% url 'pages:task_claim' task.pk %}"
+                          class="inline"
+                          hx-post="{% url 'pages:task_claim' task.pk %}"
+                          hx-target="#task-{{ task.id }}"
+                          hx-swap="outerHTML">
+                        {% csrf_token %}
+                        <button type="submit"
+                                class="text-[10px] leading-none px-1.5 py-0.5 rounded border border-[var(--tertiary-action-bg)] text-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-colors"
+                                title="Drafted, needs your review. Click to take over.">Needs review</button>
+                    </form>
+                    {% endif %}
+                </div>
+            {% endif %}
             
             <!-- Assignee Display -->
             {% if project.is_team_toad and task.assigned_to %}
@@ -115,6 +146,21 @@
                 data-has-note="false">
             <i class="fas fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors"></i>
         </button>
+        {% endif %}
+        {% if task.owner != 'agent' %}
+        <form method="post"
+              action="{% url 'pages:task_hand_to_agent' task.pk %}"
+              class="inline"
+              hx-post="{% url 'pages:task_hand_to_agent' task.pk %}"
+              hx-target="#task-{{ task.id }}"
+              hx-swap="outerHTML">
+            {% csrf_token %}
+            <button type="submit"
+                    class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                    title="Hand to agent">
+                <i class="fas fa-robot text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors"></i>
+            </button>
+        </form>
         {% endif %}
         <button type="button"
                 class="calendar-reminder-btn p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer" 

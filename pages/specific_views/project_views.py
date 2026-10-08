@@ -226,6 +226,23 @@ def project_edit_view(request, pk):
     })
 
 
+@login_required
+def project_brief_view(request, pk):
+    project = get_user_project_optimized(
+        pk, request.user, only_fields=['id', 'name', 'user', 'brief', 'updated_at']
+    )
+    if request.method != 'POST':
+        return redirect('pages:project_grid', pk=project.pk)
+
+    project.brief = request.POST.get('brief', '')
+    project.save(update_fields=['brief', 'updated_at'])
+
+    if request.headers.get('HX-Request'):
+        return HttpResponse('<span class="text-xs text-[var(--text-secondary)]">Saved</span>')
+    messages.success(request, 'Grid brief saved.')
+    return redirect('pages:project_grid', pk=project.pk)
+
+
 def project_delete_view(request, pk):
     project = get_user_project_optimized(pk, request.user, only_fields=['id', 'name', 'user'])
     
@@ -307,6 +324,7 @@ def project_grid_view(request, pk):
             'tasks_by_row_col': tasks_by_row_col,
             'quick_task_form': QuickTaskForm(),
             'user_tier': getattr(request.user, 'tier', 'free'),
+            'recent_activity': _recent_activity_for_project(project),
         }
         
         template_name = 'pages/grid/project_grid_mobile.html'
@@ -353,6 +371,7 @@ def project_grid_view(request, pk):
             'total_data_columns': len(data_column_headers),
             'user_tier': getattr(request.user, 'tier', 'free'),
             'reminder_tasks': reminder_tasks_with_days,
+            'recent_activity': _recent_activity_for_project(project),
         }
         template_name = 'pages/grid/project_grid.html'
         if request.headers.get('HX-Request'):
@@ -616,6 +635,55 @@ def task_toggle_complete_view(request, task_pk):
         messages.success(request, f'Task {"completed" if task.completed else "reopened"} successfully!')
         return redirect('pages:project_grid', pk=task.project.pk)
     
+    return redirect('pages:project_grid', pk=task.project.pk)
+
+
+def _recent_activity_for_project(project):
+    from mcp_api.models import TaskActivity
+    return TaskActivity.objects.filter(project=project).order_by('-created_at')[:20]
+
+
+def _render_updated_task_item(request, task):
+    task = Task.objects.select_related('project', 'assigned_to').prefetch_related(
+        'notes', 'project__team_toad_user'
+    ).get(pk=task.pk)
+    return render(
+        request,
+        'pages/grid/actions_in_page/task_item.html',
+        {'task': task, 'project': task.project},
+    )
+
+
+@login_required
+def task_claim_view(request, task_pk):
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project'],
+    )
+    if request.method == 'POST':
+        task.owner = Task.OWNER_YOU
+        task.needs_review = False
+        task.save(update_fields=['owner', 'needs_review', 'updated_at'])
+        if request.headers.get('HX-Request'):
+            return _render_updated_task_item(request, task)
+        messages.success(request, 'Task is yours now.')
+    return redirect('pages:project_grid', pk=task.project.pk)
+
+
+@login_required
+def task_hand_to_agent_view(request, task_pk):
+    task = get_user_task_optimized(
+        task_pk,
+        request.user,
+        select_related=['project'],
+    )
+    if request.method == 'POST':
+        task.owner = Task.OWNER_AGENT
+        task.save(update_fields=['owner', 'updated_at'])
+        if request.headers.get('HX-Request'):
+            return _render_updated_task_item(request, task)
+        messages.success(request, 'Task handed to the agent.')
     return redirect('pages:project_grid', pk=task.project.pk)
 
 

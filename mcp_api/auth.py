@@ -39,10 +39,11 @@ def mcp_token_required(view_func):
         raw_token = extract_bearer_token(request)
         if not raw_token:
             return JsonResponse({'error': 'Missing personal access token'}, status=401)
-        user = PersonalAccessToken.authenticate(raw_token)
-        if not user:
+        token = PersonalAccessToken.authenticate_token(raw_token)
+        if not token:
             return JsonResponse({'error': 'Invalid personal access token'}, status=401)
-        request.user = user
+        request.user = token.user
+        request.mcp_token = token
         return view_func(request, *args, **kwargs)
 
     return wrapped

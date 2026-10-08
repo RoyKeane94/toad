@@ -1,0 +1,44 @@
+<div class="mt-2 max-w-xl space-y-2" id="grid-brief-panel">
+    <details class="group" {% if project.brief %}open{% endif %}>
+        <summary class="text-sm text-[var(--text-secondary)] cursor-pointer hover:text-[var(--primary-action-bg)] transition-colors list-none flex items-center gap-2">
+            <i class="fas fa-align-left text-xs w-3"></i>
+            <span>{% if project.brief %}Grid brief{% else %}Add a grid brief for agents{% endif %}</span>
+            <i class="fas fa-chevron-down text-[10px] transition-transform group-open:rotate-180"></i>
+        </summary>
+        <form method="post"
+              action="{% url 'pages:project_brief' pk=project.pk %}"
+              class="mt-2"
+              hx-post="{% url 'pages:project_brief' pk=project.pk %}"
+              hx-target="#grid-brief-status"
+              hx-swap="innerHTML"
+              hx-trigger="keyup changed delay:600ms from:textarea, change">
+            {% csrf_token %}
+            <textarea name="brief"
+                      rows="4"
+                      placeholder="Standing context for this grid. Agents see this on get_grid — specs, positioning, constraints."
+                      class="w-full px-3 py-2 text-sm border border-[var(--border-color)] rounded-md shadow-sm bg-[var(--container-bg)] text-[var(--text-primary)] placeholder-[var(--text-secondary)] focus:outline-none focus:ring-2 focus:ring-[var(--primary-action-bg)] focus:border-[var(--primary-action-bg)] resize-y">{{ project.brief }}</textarea>
+            <div class="flex items-center justify-between mt-1">
+                <p class="text-xs text-[var(--text-secondary)]">Agents read this before they change the grid.</p>
+                <span id="grid-brief-status" class="text-xs text-[var(--text-secondary)]"></span>
+            </div>
+        </form>
+    </details>
+    {% if recent_activity %}
+    <details>
+        <summary class="text-sm text-[var(--text-secondary)] cursor-pointer hover:text-[var(--primary-action-bg)] transition-colors list-none flex items-center gap-2">
+            <i class="fas fa-history text-xs w-3"></i>
+            <span>Agent activity</span>
+        </summary>
+        <ul class="mt-2 space-y-1 text-xs text-[var(--text-secondary)]">
+            {% for item in recent_activity %}
+            <li class="flex flex-wrap gap-x-2">
+                <span class="font-medium text-[var(--text-primary)]">{{ item.agent }}</span>
+                <span>{{ item.action }}</span>
+                {% if item.task_text %}<span class="truncate max-w-[18rem]">{{ item.task_text|truncatechars:60 }}</span>{% endif %}
+                <span class="opacity-70">{{ item.created_at|timesince }} ago</span>
+            </li>
+            {% endfor %}
+        </ul>
+    </details>
+    {% endif %}
+</div>

@@ -19,6 +19,7 @@ class EmailVerificationMiddleware:
             not request.path.startswith('/admin/') and     # Allow admin access
             request.path != '/' and                        # Allow home page
             not request.path.startswith('/grids/') and    # Allow access to grids
+            not request.path.startswith('/tasks/') and    # Task actions from the grid
             not request.path.startswith('/templates/') and # Allow access to templates
             not request.path.startswith('/faq/') and       # Allow access to FAQ
             not request.path.startswith('/contact/') and   # Allow access to contact

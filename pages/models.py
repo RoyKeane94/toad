@@ -28,6 +28,11 @@ class Project(models.Model):
     is_archived = models.BooleanField(default=False)
     project_group = models.ForeignKey(ProjectGroup, on_delete=models.CASCADE, related_name='projects', null=True, blank=True)
     order = models.PositiveIntegerField(default=0)  # For maintaining project order within groups
+    brief = models.TextField(
+        blank=True,
+        default='',
+        help_text='Standing context for this grid. Returned by get_grid so agents can see it.',
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
@@ -111,6 +116,22 @@ class Task(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     reminder = models.DateTimeField(blank=True, null=True)
     assigned_to = models.ForeignKey(User, on_delete=models.CASCADE, related_name='tasks', null=True, blank=True)
+    OWNER_YOU = 'you'
+    OWNER_AGENT = 'agent'
+    OWNER_CHOICES = [
+        (OWNER_YOU, 'You'),
+        (OWNER_AGENT, 'Agent'),
+    ]
+    owner = models.CharField(
+        max_length=16,
+        choices=OWNER_CHOICES,
+        default=OWNER_YOU,
+        help_text='Who currently owns this task: you, or an agent.',
+    )
+    needs_review = models.BooleanField(
+        default=False,
+        help_text='Agent has handed this back for review.',
+    )
 
     def __str__(self):
         return f"{self.text[:50]} - {self.created_at} - project: {self.project.name} - user: {self.project.user}" if self.text else 'Empty Task'

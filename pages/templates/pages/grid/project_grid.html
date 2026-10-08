@@ -711,6 +711,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="flex items-center space-x-3">
                 <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)] grid-name-editable cursor-text" data-project-id="{{ project.pk }}">{{ project.name }}</h1>
             </div>
+            {% include 'pages/grid/partials/grid_brief.html' %}
             
             <!-- Team Members Display - Only show for team_toad projects -->
             {% if project.is_team_toad and project.team_toad_user.all %}
