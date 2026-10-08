@@ -1,15 +1,13 @@
 # 1. Use an official, slim Python image
-FROM python:3.11-slim-bullseye
+FROM python:3.11-slim-bookworm
 
 # 2. Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# 3. Install Node.js and npm
+# 3. Install Node.js and npm from Debian (avoids EOL Bullseye security mirrors)
 RUN apt-get update \
-    && apt-get install -y curl \
-    && curl -fsSL https://deb.nodesource.com/setup_18.x | bash - \
-    && apt-get install -y nodejs \
+    && apt-get install -y --no-install-recommends nodejs npm \
     && rm -rf /var/lib/apt/lists/*
 
 # 4. Set the working directory
