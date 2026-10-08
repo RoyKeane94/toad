@@ -4,11 +4,15 @@ from django.views.decorators.http import require_http_methods
 from .auth import mcp_token_required, parse_json_body
 from .services import (
     ApiError,
+    add_column_for_user,
+    add_row_for_user,
     add_task_for_user,
     delete_task_for_user,
     get_grid_for_user,
     list_grids_for_user,
     log_request_for_user,
+    reorder_columns_for_user,
+    reorder_rows_for_user,
     update_grid_for_user,
     update_task_for_user,
 )
@@ -123,6 +127,78 @@ def delete_task(request):
     except ValueError as exc:
         return _json_error(str(exc))
     return _call(delete_task_for_user, request.user, data.get('task_id'), agent=_agent(request))
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def add_row(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    try:
+        result = add_row_for_user(
+            request.user,
+            data.get('grid_id'),
+            data.get('name'),
+            after_row_id=data.get('after_row_id'),
+            agent=_agent(request),
+        )
+    except ApiError as exc:
+        return _json_error(exc.message, status=exc.status)
+    return JsonResponse(result, status=201)
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def add_column(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    try:
+        result = add_column_for_user(
+            request.user,
+            data.get('grid_id'),
+            data.get('name'),
+            after_column_id=data.get('after_column_id'),
+            agent=_agent(request),
+        )
+    except ApiError as exc:
+        return _json_error(exc.message, status=exc.status)
+    return JsonResponse(result, status=201)
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def reorder_rows(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(
+        reorder_rows_for_user,
+        request.user,
+        data.get('grid_id'),
+        data.get('row_ids'),
+        agent=_agent(request),
+    )
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def reorder_columns(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    return _call(
+        reorder_columns_for_user,
+        request.user,
+        data.get('grid_id'),
+        data.get('column_ids'),
+        agent=_agent(request),
+    )
 
 
 @mcp_token_required

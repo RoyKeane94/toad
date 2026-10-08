@@ -222,8 +222,8 @@
                         <i class="fas fa-robot text-white"></i>
                     </div>
                     <div>
-                        <h2 class="text-lg font-semibold text-[var(--title-text)]">Grok Bot</h2>
-                        <p class="text-sm text-[var(--text-secondary)]">Connect Grok Bot to your grids with this server URL and a personal access token</p>
+                        <h2 class="text-lg font-semibold text-[var(--title-text)]">Agents</h2>
+                        <p class="text-sm text-[var(--text-secondary)]">Give each agent its own token so the activity log shows whether it was Grok Bot, Ramble or Research</p>
                     </div>
                 </div>
 
@@ -231,9 +231,9 @@
                     <div class="p-4 bg-[var(--container-bg)] rounded-lg">
                         <h3 class="font-medium text-[var(--text-primary)] mb-1">Server URL</h3>
                         {% if mcp_server_is_local %}
-                        <p class="text-xs text-[var(--text-secondary)] mb-2">Grok Bot needs a public HTTPS URL. For a local test, tunnel port 3001 or set MCP_SERVER_PUBLIC_URL.</p>
+                        <p class="text-xs text-[var(--text-secondary)] mb-2">Agents need a public HTTPS URL. For a local test, tunnel port 3001 or set MCP_SERVER_PUBLIC_URL.</p>
                         {% else %}
-                        <p class="text-xs text-[var(--text-secondary)] mb-2">Use this URL and your personal access token when connecting Grok Bot.</p>
+                        <p class="text-xs text-[var(--text-secondary)] mb-2">Use this URL with each agent's personal access token.</p>
                         {% endif %}
                         <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                             <code id="mcp-server-url" class="flex-1 text-sm break-all bg-white border border-[var(--border-color,#e5e7eb)] rounded-md px-3 py-2 text-[var(--text-primary)]">{{ mcp_server_url }}</code>
@@ -245,8 +245,8 @@
 
                     {% if new_mcp_token %}
                     <div class="p-4 bg-emerald-50 border border-emerald-200 rounded-lg">
-                        <h3 class="font-medium text-emerald-900 mb-1">Copy your token now</h3>
-                        <p class="text-xs text-emerald-800 mb-2">This is the only time the full token will be shown. Paste it into Grok Bot as the authorization token.</p>
+                        <h3 class="font-medium text-emerald-900 mb-1">Copy the {{ new_mcp_token_name|default:"agent" }} token now</h3>
+                        <p class="text-xs text-emerald-800 mb-2">This is the only time the full token will be shown. Paste it into that agent as the authorization token.</p>
                         <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                             <code id="mcp-new-token" class="flex-1 text-sm break-all bg-white border border-emerald-200 rounded-md px-3 py-2 text-[var(--text-primary)]">{{ new_mcp_token }}</code>
                             <button type="button" data-copy-target="mcp-new-token" class="copy-mcp-value px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-md text-sm font-medium transition-colors whitespace-nowrap">
@@ -254,11 +254,13 @@
                             </button>
                         </div>
                     </div>
-                    {% elif mcp_token %}
+                    {% endif %}
+
+                    {% for mcp_token in mcp_tokens %}
                     <div class="p-4 bg-[var(--container-bg)] rounded-lg">
                         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
                             <div class="min-w-0 flex-1">
-                                <h3 class="font-medium text-[var(--text-primary)]">Personal access token</h3>
+                                <h3 class="font-medium text-[var(--text-primary)]">{{ mcp_token.name }}</h3>
                                 <p class="text-sm text-[var(--text-secondary)] font-mono">{{ mcp_token.token_prefix }}…</p>
                                 <p class="text-xs text-[var(--text-secondary)] mt-1">
                                     Created {{ mcp_token.created_at|date:"j M Y" }}
@@ -270,13 +272,14 @@
                                 </p>
                             </div>
                             <div class="flex flex-col sm:flex-row gap-2 flex-shrink-0">
-                                <form method="post" action="{% url 'accounts:mcp_token_generate' %}" onsubmit="return confirm('This will replace your current token. Grok Bot will need the new one.');">
+                                <form method="post" action="{% url 'accounts:mcp_token_generate' %}" onsubmit="return confirm('This will replace the {{ mcp_token.name }} token. That agent will need the new one.');">
                                     {% csrf_token %}
+                                    <input type="hidden" name="name" value="{{ mcp_token.name }}">
                                     <button type="submit" class="w-full px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                                         Regenerate
                                     </button>
                                 </form>
-                                <form method="post" action="{% url 'accounts:mcp_token_revoke' %}" onsubmit="return confirm('Revoke this token? Grok Bot will no longer be able to access your grids.');">
+                                <form method="post" action="{% url 'accounts:mcp_token_revoke' token_id=mcp_token.pk %}" onsubmit="return confirm('Revoke the {{ mcp_token.name }} token? That agent will no longer be able to access your grids.');">
                                     {% csrf_token %}
                                     <button type="submit" class="w-full px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                                         Revoke
@@ -285,25 +288,26 @@
                             </div>
                         </div>
                     </div>
-                    {% else %}
+                    {% endfor %}
+
                     <div class="p-4 bg-[var(--container-bg)] rounded-lg">
-                        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                            <div>
-                                <h3 class="font-medium text-[var(--text-primary)]">Personal access token</h3>
-                                <p class="text-sm text-[var(--text-secondary)]">Generate a token, then add this server in Grok Bot with the URL above and that token.</p>
-                            </div>
-                            <form method="post" action="{% url 'accounts:mcp_token_generate' %}">
-                                {% csrf_token %}
-                                <button type="submit" class="px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
-                                    Generate token
-                                </button>
-                            </form>
-                        </div>
+                        <h3 class="font-medium text-[var(--text-primary)] mb-1">New agent token</h3>
+                        <p class="text-sm text-[var(--text-secondary)] mb-3">Name it after the agent, then connect that agent with this URL and the new token.</p>
+                        <form method="post" action="{% url 'accounts:mcp_token_generate' %}" class="flex flex-col sm:flex-row gap-2">
+                            {% csrf_token %}
+                            <input type="text"
+                                   name="name"
+                                   maxlength="100"
+                                   placeholder="Ramble"
+                                   class="flex-1 px-3 py-2 text-sm border border-[var(--border-color,#e5e7eb)] rounded-md bg-white text-[var(--text-primary)] placeholder-[var(--text-secondary)]">
+                            <button type="submit" class="px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">
+                                Generate token
+                            </button>
+                        </form>
                     </div>
-                    {% endif %}
 
                     <p class="text-xs text-[var(--text-secondary)]">
-                        In Grok Bot, add a custom MCP server with the URL and paste your token as the bearer token. A typical prompt is: “Add a custom MCP server named Toad at {{ mcp_server_url }}”.
+                        Add a custom MCP server with the URL above and paste that agent's token as the bearer token. Generating a token with an existing name replaces only that agent's token.
                     </p>
                 </div>
             </div>

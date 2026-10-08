@@ -167,6 +167,11 @@ class MCPApiTestCase(TestCase):
         self.task.refresh_from_db()
         self.assertTrue(self.task.completed)
         self.assertEqual(self.task.row_header_id, self.later_row.id)
+        actions = list(TaskActivity.objects.filter(task=self.task).values_list('action', flat=True))
+        self.assertIn('ticked', actions)
+        self.assertIn('renamed', actions)
+        self.assertIn('moved to Later', actions)
+        self.assertNotIn('updated', actions)
 
     def test_cannot_update_another_users_task(self):
         response = self.post(
@@ -249,6 +254,10 @@ class MCPApiTestCase(TestCase):
                 'add_task',
                 'update_task',
                 'delete_task',
+                'add_row',
+                'add_column',
+                'reorder_rows',
+                'reorder_columns',
                 'log_request',
             },
         )
@@ -279,7 +288,7 @@ class MCPApiTestCase(TestCase):
         self.assertEqual(response.json()['brief'], 'Keep the hero frozen on scroll.')
         self.project.refresh_from_db()
         self.assertEqual(self.project.brief, 'Keep the hero frozen on scroll.')
-        activity = TaskActivity.objects.get(action='brief_updated')
+        activity = TaskActivity.objects.get(action='updated the brief')
         self.assertEqual(activity.agent, 'Grok Bot')
 
     def test_update_task_owner_and_needs_review(self):
@@ -299,7 +308,12 @@ class MCPApiTestCase(TestCase):
         self.task.refresh_from_db()
         self.assertEqual(self.task.owner, Task.OWNER_AGENT)
         self.assertTrue(self.task.needs_review)
-        self.assertTrue(TaskActivity.objects.filter(action='updated', task=self.task).exists())
+        actions = list(
+            TaskActivity.objects.filter(task=self.task).values_list('action', flat=True)
+        )
+        self.assertIn('handed to agent', actions)
+        self.assertIn('marked for review', actions)
+        self.assertNotIn('updated', actions)
 
     def test_delete_task_keeps_activity_text(self):
         response = self.post('delete_task', {'task_id': self.task.id}, token=self.raw_token)
@@ -327,6 +341,100 @@ class MCPApiTestCase(TestCase):
         self.assertEqual(activity[0]['action'], 'added')
         self.assertEqual(activity[0]['task'], 'Draft the stamp spec')
         self.assertIn('created_at', activity[0])
+
+    def test_named_tokens_log_the_agent_that_made_the_change(self):
+        ramble_token = PersonalAccessToken.issue_for_user(self.user, name='Ramble')
+        research_token = PersonalAccessToken.issue_for_user(self.user, name='Research')
+
+        self.post(
+            'update_task',
+            {'task_id': self.task.id, 'ticked': True},
+            token=ramble_token,
+        )
+        self.post(
+            'update_task',
+            {'task_id': self.task.id, 'row_id': self.later_row.id},
+            token=research_token,
+        )
+
+        actions = list(TaskActivity.objects.filter(task=self.task).values_list('agent', 'action'))
+        self.assertIn(('Ramble', 'ticked'), actions)
+        self.assertIn(('Research', 'moved to Later'), actions)
+        self.assertTrue(PersonalAccessToken.objects.filter(user=self.user, name='Grok Bot').exists())
+
+    def test_add_row_and_column_and_reorder(self):
+        row_response = self.post(
+            'add_row',
+            {'grid_id': self.project.id, 'name': 'This month', 'after_row_id': self.row.id},
+            token=self.raw_token,
+        )
+        self.assertEqual(row_response.status_code, 201)
+        row_names = [row['name'] for row in row_response.json()['rows']]
+        self.assertEqual(row_names, ['Today', 'This month', 'Later'])
+        new_row_id = row_response.json()['row']['id']
+
+        reorder_rows = self.post(
+            'reorder_rows',
+            {'grid_id': self.project.id, 'row_ids': [new_row_id, self.later_row.id, self.row.id]},
+            token=self.raw_token,
+        )
+        self.assertEqual(reorder_rows.status_code, 200)
+        self.assertEqual(
+            [row['name'] for row in reorder_rows.json()['rows']],
+            ['This month', 'Later', 'Today'],
+        )
+
+        column_response = self.post(
+            'add_column',
+            {
+                'grid_id': self.project.id,
+                'name': 'Design',
+                'after_column_id': self.column.id,
+            },
+            token=self.raw_token,
+        )
+        self.assertEqual(column_response.status_code, 201)
+        design_id = column_response.json()['column']['id']
+        self.assertFalse(column_response.json()['column']['is_category_column'])
+
+        next_week = ColumnHeader.objects.create(
+            project=self.project, name='Next week', order=3
+        )
+        reorder_columns = self.post(
+            'reorder_columns',
+            {
+                'grid_id': self.project.id,
+                'column_ids': [design_id, next_week.id, self.column.id],
+            },
+            token=self.raw_token,
+        )
+        self.assertEqual(reorder_columns.status_code, 200)
+        data_names = [
+            column['name']
+            for column in reorder_columns.json()['columns']
+            if not column['is_category_column']
+        ]
+        self.assertEqual(data_names, ['Design', 'Next week', 'This week'])
+        self.assertTrue(reorder_columns.json()['columns'][0]['is_category_column'])
+        self.assertTrue(TaskActivity.objects.filter(action='added row This month').exists())
+        self.assertTrue(TaskActivity.objects.filter(action='reordered columns').exists())
+
+    def test_reorder_rows_rejects_partial_list(self):
+        response = self.post(
+            'reorder_rows',
+            {'grid_id': self.project.id, 'row_ids': [self.row.id]},
+            token=self.raw_token,
+        )
+        self.assertEqual(response.status_code, 400)
+
+    def test_regenerating_one_agent_does_not_revoke_another(self):
+        ramble_token = PersonalAccessToken.issue_for_user(self.user, name='Ramble')
+        PersonalAccessToken.issue_for_user(self.user, name='Research')
+        new_research = PersonalAccessToken.issue_for_user(self.user, name='Research')
+
+        self.assertEqual(self.post('list_grids', token=ramble_token).status_code, 200)
+        self.assertEqual(self.post('list_grids', token=self.raw_token).status_code, 200)
+        self.assertEqual(self.post('list_grids', token=new_research).status_code, 200)
 
 
 class MCPTokenSettingsTestCase(TestCase):
@@ -356,12 +464,35 @@ class MCPTokenSettingsTestCase(TestCase):
         second_load = self.client.get(reverse('accounts:account_settings'))
         self.assertNotContains(second_load, raw_token)
 
-    def test_revoke_token_from_settings(self):
-        PersonalAccessToken.issue_for_user(self.user)
+    def test_generate_named_token_from_settings(self):
         self.client.login(email='settings@example.com', password='testpass123')
-        response = self.client.post(reverse('accounts:mcp_token_revoke'))
+        response = self.client.post(
+            reverse('accounts:mcp_token_generate'),
+            {'name': 'Ramble'},
+        )
+        self.assertRedirects(
+            response,
+            reverse('accounts:account_settings'),
+            fetch_redirect_response=False,
+        )
+        token = PersonalAccessToken.objects.get(user=self.user, name='Ramble')
+        self.assertEqual(self.client.session['new_mcp_token_name'], 'Ramble')
+        settings_page = self.client.get(reverse('accounts:account_settings'))
+        self.assertContains(settings_page, 'Ramble')
+        self.assertContains(settings_page, token.token_prefix)
+
+    def test_revoke_token_from_settings(self):
+        PersonalAccessToken.issue_for_user(self.user, name='Ramble')
+        PersonalAccessToken.issue_for_user(self.user, name='Research')
+        ramble = PersonalAccessToken.objects.get(user=self.user, name='Ramble')
+        research = PersonalAccessToken.objects.get(user=self.user, name='Research')
+        self.client.login(email='settings@example.com', password='testpass123')
+        response = self.client.post(
+            reverse('accounts:mcp_token_revoke', kwargs={'token_id': ramble.pk})
+        )
         self.assertRedirects(response, reverse('accounts:account_settings'))
-        self.assertFalse(PersonalAccessToken.objects.filter(user=self.user).exists())
+        self.assertFalse(PersonalAccessToken.objects.filter(pk=ramble.pk).exists())
+        self.assertTrue(PersonalAccessToken.objects.filter(pk=research.pk).exists())
 
     @override_settings(DEBUG=True, MCP_SERVER_PUBLIC_URL='')
     def test_settings_shows_localhost_mcp_url_in_development(self):

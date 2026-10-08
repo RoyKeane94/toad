@@ -40,6 +40,7 @@ mcp = FastMCP(
         'Put lasting context in the brief with update_grid. '
         'Tasks you add are owned by the agent unless you set owner to you. '
         'Set needs_review true when handing drafted work back. '
+        'Add or reorder rows and columns with add_row, add_column, reorder_rows and reorder_columns. '
         'Call log_request after helping someone, with who asked, what they asked, '
         'and whether a follow-up is needed. Do not store tool output in log_request.'
     ),
@@ -159,6 +160,38 @@ async def update_task(
 async def delete_task(task_id: int) -> dict:
     """Remove a task from a grid."""
     return await toad_post('delete_task', current_token(), {'task_id': task_id})
+
+
+@mcp.tool
+async def add_row(grid_id: int, name: str, after_row_id: int | None = None) -> dict:
+    """Add a row to a grid. Omit after_row_id to append at the bottom."""
+    payload = {'grid_id': grid_id, 'name': name}
+    if after_row_id is not None:
+        payload['after_row_id'] = after_row_id
+    return await toad_post('add_row', current_token(), payload)
+
+
+@mcp.tool
+async def add_column(grid_id: int, name: str, after_column_id: int | None = None) -> dict:
+    """Add a data column. Omit after_column_id to append on the right. Category stays first."""
+    payload = {'grid_id': grid_id, 'name': name}
+    if after_column_id is not None:
+        payload['after_column_id'] = after_column_id
+    return await toad_post('add_column', current_token(), payload)
+
+
+@mcp.tool
+async def reorder_rows(grid_id: int, row_ids: list[int]) -> dict:
+    """Set the top-to-bottom order of rows. Pass every row_id from get_grid exactly once."""
+    return await toad_post('reorder_rows', current_token(), {'grid_id': grid_id, 'row_ids': row_ids})
+
+
+@mcp.tool
+async def reorder_columns(grid_id: int, column_ids: list[int]) -> dict:
+    """Set data column order. Pass every data column_id; do not include the category column."""
+    return await toad_post(
+        'reorder_columns', current_token(), {'grid_id': grid_id, 'column_ids': column_ids}
+    )
 
 
 @mcp.tool

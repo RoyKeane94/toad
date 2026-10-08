@@ -1,3 +1,4 @@
+from django.db import transaction
 from django.db.models import Prefetch, Q
 from django.http import Http404
 
@@ -65,6 +66,165 @@ def serialize_activity(activity):
     }
 
 
+def serialize_row(row):
+    return {'id': row.id, 'name': row.name, 'order': row.order}
+
+
+def serialize_column(column):
+    return {
+        'id': column.id,
+        'name': column.name,
+        'order': column.order,
+        'is_category_column': column.is_category_column,
+    }
+
+
+def _require_grid(user, grid_id):
+    if grid_id is None:
+        raise ApiError('grid_id is required')
+    try:
+        return get_user_project_optimized(grid_id, user)
+    except Http404:
+        raise ApiError('Grid not found', status=404)
+
+
+def _require_name(name):
+    name = (name or '').strip()
+    if not name:
+        raise ApiError('name is required')
+    if len(name) > 100:
+        raise ApiError('name must be 100 characters or fewer')
+    return name
+
+
+def _as_id_list(value, field):
+    if not isinstance(value, list) or not value:
+        raise ApiError(f'{field} must be a non-empty list of IDs')
+    ids = []
+    for item in value:
+        try:
+            ids.append(int(item))
+        except (TypeError, ValueError):
+            raise ApiError(f'{field} must be a list of integers')
+    if len(ids) != len(set(ids)):
+        raise ApiError(f'{field} must not contain duplicates')
+    return ids
+
+
+def _ordered_rows(project):
+    return list(project.row_headers.order_by('order', 'id'))
+
+
+def _ordered_columns(project):
+    return list(project.column_headers.order_by('order', 'id'))
+
+
+def _apply_row_order(project, row_ids):
+    rows = _ordered_rows(project)
+    by_id = {row.id: row for row in rows}
+    if set(row_ids) != set(by_id):
+        raise ApiError('row_ids must include every row in the grid exactly once')
+    for index, row_id in enumerate(row_ids):
+        row = by_id[row_id]
+        if row.order != index:
+            row.order = index
+            row.save(update_fields=['order', 'updated_at'])
+    return [serialize_row(by_id[row_id]) for row_id in row_ids]
+
+
+def _apply_column_order(project, column_ids):
+    columns = _ordered_columns(project)
+    category = [column for column in columns if column.is_category_column]
+    data = [column for column in columns if not column.is_category_column]
+    by_id = {column.id: column for column in data}
+    category_ids = {column.id for column in category}
+    if any(column_id in category_ids for column_id in column_ids):
+        raise ApiError('Do not include the category column; it stays first')
+    if set(column_ids) != set(by_id):
+        raise ApiError('column_ids must include every data column in the grid exactly once')
+    for column in category:
+        if column.order != 0:
+            column.order = 0
+            column.save(update_fields=['order', 'updated_at'])
+    for index, column_id in enumerate(column_ids, start=1):
+        column = by_id[column_id]
+        if column.order != index:
+            column.order = index
+            column.save(update_fields=['order', 'updated_at'])
+    return [serialize_column(column) for column in _ordered_columns(project)]
+
+
+def add_row_for_user(user, grid_id, name, after_row_id=None, agent=None):
+    name = _require_name(name)
+    project = _require_grid(user, grid_id)
+    rows = _ordered_rows(project)
+    row_ids = [row.id for row in rows]
+    if after_row_id is not None:
+        if after_row_id not in row_ids:
+            raise ApiError('after_row_id does not belong to this grid', status=404)
+        insert_at = row_ids.index(after_row_id) + 1
+    else:
+        insert_at = len(row_ids)
+
+    with transaction.atomic():
+        row = RowHeader.objects.create(project=project, name=name, order=insert_at)
+        row_ids.insert(insert_at, row.id)
+        rows_payload = _apply_row_order(project, row_ids)
+    log_activity(user, agent, f'added row {name}', project=project, task_text=name)
+    return {'ok': True, 'row': serialize_row(row), 'rows': rows_payload}
+
+
+def add_column_for_user(user, grid_id, name, after_column_id=None, agent=None):
+    name = _require_name(name)
+    project = _require_grid(user, grid_id)
+    columns = _ordered_columns(project)
+    data_ids = [column.id for column in columns if not column.is_category_column]
+    if after_column_id is not None:
+        after = next((column for column in columns if column.id == after_column_id), None)
+        if after is None:
+            raise ApiError('after_column_id does not belong to this grid', status=404)
+        if after.is_category_column:
+            insert_at = 0
+        else:
+            insert_at = data_ids.index(after_column_id) + 1
+    else:
+        insert_at = len(data_ids)
+
+    with transaction.atomic():
+        column = ColumnHeader.objects.create(
+            project=project,
+            name=name,
+            is_category_column=False,
+            order=insert_at + 1,
+        )
+        data_ids.insert(insert_at, column.id)
+        columns_payload = _apply_column_order(project, data_ids)
+    log_activity(user, agent, f'added column {name}', project=project, task_text=name)
+    return {'ok': True, 'column': serialize_column(column), 'columns': columns_payload}
+
+
+def reorder_rows_for_user(user, grid_id, row_ids, agent=None):
+    row_ids = _as_id_list(row_ids, 'row_ids')
+    project = _require_grid(user, grid_id)
+    with transaction.atomic():
+        rows_payload = _apply_row_order(project, row_ids)
+    names = ', '.join(row['name'] for row in rows_payload)
+    log_activity(user, agent, 'reordered rows', project=project, task_text=names)
+    return {'ok': True, 'rows': rows_payload}
+
+
+def reorder_columns_for_user(user, grid_id, column_ids, agent=None):
+    column_ids = _as_id_list(column_ids, 'column_ids')
+    project = _require_grid(user, grid_id)
+    with transaction.atomic():
+        columns_payload = _apply_column_order(project, column_ids)
+    names = ', '.join(
+        column['name'] for column in columns_payload if not column['is_category_column']
+    )
+    log_activity(user, agent, 'reordered columns', project=project, task_text=names)
+    return {'ok': True, 'columns': columns_payload}
+
+
 def list_grids_for_user(user):
     grids = _accessible_grids(user).only('id', 'name').order_by('name')
     return {'grids': [{'id': grid.id, 'name': grid.name} for grid in grids]}
@@ -126,7 +286,7 @@ def update_grid_for_user(user, grid_id, brief=None, agent=None):
         raise ApiError('Grid not found', status=404)
     project.brief = brief
     project.save(update_fields=['brief', 'updated_at'])
-    log_activity(user, agent, 'brief_updated', project=project, task_text=brief[:200])
+    log_activity(user, agent, 'updated the brief', project=project, task_text=brief[:200])
     return {'ok': True, 'id': project.id, 'name': project.name, 'brief': project.brief}
 
 
@@ -238,7 +398,7 @@ def update_task_for_user(user, task_id, ticked=None, text=None, row_id=None, col
         if owner not in {Task.OWNER_YOU, Task.OWNER_AGENT}:
             raise ApiError("owner must be 'you' or 'agent'")
         if owner != task.owner:
-            actions.append('owner_changed')
+            actions.append('handed to agent' if owner == Task.OWNER_AGENT else 'handed to you')
         task.owner = owner
         update_fields.append('owner')
 
@@ -247,7 +407,7 @@ def update_task_for_user(user, task_id, ticked=None, text=None, row_id=None, col
         if not isinstance(needs_review, bool):
             raise ApiError('needs_review must be true or false')
         if needs_review != task.needs_review:
-            actions.append('needs_review_changed')
+            actions.append('marked for review' if needs_review else 'cleared review')
         task.needs_review = needs_review
         update_fields.append('needs_review')
 
@@ -267,6 +427,7 @@ def update_task_for_user(user, task_id, ticked=None, text=None, row_id=None, col
             raise ApiError('Row or column does not belong to this grid', status=404)
         if new_column.is_category_column:
             raise ApiError('Cannot move a task into the category column.')
+        destination = new_column.name if new_column_id != task.column_header_id else new_row.name
         task.row_header = new_row
         task.column_header = new_column
         task.order = get_next_order(Task.objects.filter(
@@ -275,14 +436,14 @@ def update_task_for_user(user, task_id, ticked=None, text=None, row_id=None, col
             column_header=new_column,
         ).exclude(pk=task.pk))
         update_fields.extend(['row_header', 'column_header', 'order'])
-        actions.append('moved')
+        actions.append(f'moved to {destination}')
 
     if len(update_fields) == 1:
         raise ApiError('Provide ticked, text, row_id, column_id, owner or needs_review to update')
 
     task.save(update_fields=update_fields)
-    action = actions[0] if len(actions) == 1 else 'updated'
-    log_activity(user, agent, action, task=task, project=task.project)
+    for action in actions:
+        log_activity(user, agent, action, task=task, project=task.project)
 
     task = Task.objects.select_related('row_header', 'column_header').prefetch_related(
         Prefetch('notes', queryset=TaskNote.objects.order_by('-created_at'))
@@ -355,6 +516,36 @@ def call_tool(user, name, arguments, agent=None):
         )
     if name == 'delete_task':
         return delete_task_for_user(user, arguments.get('task_id'), agent=agent)
+    if name == 'add_row':
+        return add_row_for_user(
+            user,
+            arguments.get('grid_id'),
+            arguments.get('name'),
+            after_row_id=arguments.get('after_row_id'),
+            agent=agent,
+        )
+    if name == 'add_column':
+        return add_column_for_user(
+            user,
+            arguments.get('grid_id'),
+            arguments.get('name'),
+            after_column_id=arguments.get('after_column_id'),
+            agent=agent,
+        )
+    if name == 'reorder_rows':
+        return reorder_rows_for_user(
+            user,
+            arguments.get('grid_id'),
+            arguments.get('row_ids'),
+            agent=agent,
+        )
+    if name == 'reorder_columns':
+        return reorder_columns_for_user(
+            user,
+            arguments.get('grid_id'),
+            arguments.get('column_ids'),
+            agent=agent,
+        )
     if name == 'log_request':
         return log_request_for_user(
             user,

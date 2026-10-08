@@ -186,7 +186,6 @@ main, #app {
             <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">{{ project.name }}</h1>
             
         </div>
-        {% include 'pages/grid/partials/grid_brief.html' %}
         
     </div>
     
@@ -362,6 +361,9 @@ main, #app {
 
 <!-- Task Grid -->
 {% include 'pages/grid/partials/mobile_grid_content.html' %}
+<div class="px-4">
+{% include 'pages/grid/partials/grid_brief.html' %}
+</div>
 
 
 <!-- Row Deletion Modal -->

@@ -15,6 +15,7 @@ MCP_INSTRUCTIONS = (
     "needs_review, and recent activity. Put lasting context in the brief with update_grid. "
     "Tasks you add are owned by the agent unless you set owner to you. "
     "Set needs_review true when handing drafted work back. "
+    "Add or reorder rows and columns with add_row, add_column, reorder_rows and reorder_columns. "
     "Call log_request after helping someone, with who asked, what they asked, "
     "and whether a follow-up is needed. Do not store tool output in log_request."
 )
@@ -100,6 +101,68 @@ TOOL_DEFINITIONS = [
             'type': 'object',
             'properties': {'task_id': {'type': 'integer'}},
             'required': ['task_id'],
+        },
+    },
+    {
+        'name': 'add_row',
+        'description': (
+            'Add a row to a grid. Omit after_row_id to append at the bottom. '
+            'Pass after_row_id to insert below that row.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'name': {'type': 'string'},
+                'after_row_id': {'type': 'integer'},
+            },
+            'required': ['grid_id', 'name'],
+        },
+    },
+    {
+        'name': 'add_column',
+        'description': (
+            'Add a data column to a grid. Omit after_column_id to append on the right. '
+            'Pass after_column_id to insert to the right of that column. '
+            'The category column stays first.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'name': {'type': 'string'},
+                'after_column_id': {'type': 'integer'},
+            },
+            'required': ['grid_id', 'name'],
+        },
+    },
+    {
+        'name': 'reorder_rows',
+        'description': (
+            'Set the top-to-bottom order of rows. Pass every row_id from get_grid exactly once.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'row_ids': {'type': 'array', 'items': {'type': 'integer'}},
+            },
+            'required': ['grid_id', 'row_ids'],
+        },
+    },
+    {
+        'name': 'reorder_columns',
+        'description': (
+            'Set the left-to-right order of data columns. Pass every data column_id from get_grid '
+            'exactly once. Do not include the category column; it stays first.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'column_ids': {'type': 'array', 'items': {'type': 'integer'}},
+            },
+            'required': ['grid_id', 'column_ids'],
         },
     },
     {

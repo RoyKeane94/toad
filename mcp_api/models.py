@@ -24,11 +24,11 @@ def hash_personal_access_token(raw_token):
 
 
 class PersonalAccessToken(models.Model):
-    """One Grok Bot token per user. The plaintext value is shown only at creation."""
-    user = models.OneToOneField(
+    """Named agent token. Each agent (Ramble, Research, Grok Bot) should have its own."""
+    user = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='mcp_access_token',
+        related_name='mcp_access_tokens',
     )
     name = models.CharField(max_length=100, default='Grok Bot', help_text='Agent name recorded on the activity log.')
     token_prefix = models.CharField(max_length=16, help_text='First characters shown in settings.')
@@ -39,20 +39,23 @@ class PersonalAccessToken(models.Model):
     class Meta:
         indexes = [
             models.Index(fields=['token_hash']),
+            models.Index(fields=['user', 'name']),
+        ]
+        constraints = [
+            models.UniqueConstraint(fields=['user', 'name'], name='unique_mcp_token_name_per_user'),
         ]
 
     def __str__(self):
-        return f'{self.user.email} ({self.token_prefix}…)'
+        return f'{self.user.email} / {self.name} ({self.token_prefix}…)'
 
     @classmethod
-    def issue_for_user(cls, user):
-        """Create or replace the user's token and return the plaintext value."""
+    def issue_for_user(cls, user, name='Grok Bot'):
+        """Create or replace the token for this agent name and return the plaintext value."""
+        name = (name or '').strip() or 'Grok Bot'
         raw_token = generate_personal_access_token()
         token_hash = hash_personal_access_token(raw_token)
         prefix = raw_token[:12]
-        existing = cls.objects.filter(user=user).first()
-        name = existing.name if existing else 'Grok Bot'
-        cls.objects.filter(user=user).delete()
+        cls.objects.filter(user=user, name=name).delete()
         cls.objects.create(user=user, name=name, token_prefix=prefix, token_hash=token_hash)
         return raw_token
 
@@ -122,7 +125,7 @@ class TaskActivity(models.Model):
         blank=True,
     )
     agent = models.CharField(max_length=100, help_text='Token / agent name that made the change.')
-    action = models.CharField(max_length=40)
+    action = models.CharField(max_length=200)
     task_text = models.TextField(blank=True, default='')
     created_at = models.DateTimeField(auto_now_add=True)
 

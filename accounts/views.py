@@ -540,7 +540,8 @@ def account_settings_view(request):
     from mcp_api.models import PersonalAccessToken
     from mcp_api.utils import mcp_server_public_url
     new_mcp_token = request.session.pop('new_mcp_token', None)
-    mcp_token = PersonalAccessToken.objects.filter(user=request.user).first()
+    new_mcp_token_name = request.session.pop('new_mcp_token_name', None)
+    mcp_tokens = PersonalAccessToken.objects.filter(user=request.user).order_by('name')
     mcp_server_url = mcp_server_public_url(request)
     
     context = {
@@ -558,8 +559,9 @@ def account_settings_view(request):
         'trial_type_display': trial_type_display,
         'is_team_trial': is_team_trial,
         'is_team_toad_without_group': is_team_toad_without_group,
-        'mcp_token': mcp_token,
+        'mcp_tokens': mcp_tokens,
         'new_mcp_token': new_mcp_token,
+        'new_mcp_token_name': new_mcp_token_name,
         'mcp_server_url': mcp_server_url,
         'mcp_server_is_local': mcp_server_url.startswith(('http://localhost', 'http://127.0.0.1')),
     }
