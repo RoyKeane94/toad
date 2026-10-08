@@ -193,6 +193,13 @@ class ProjectViewsTestCase(TestCase):
         self.assertEqual(self.task.owner, Task.OWNER_YOU)
         self.assertFalse(self.task.needs_review)
 
+        from mcp_api.models import PersonalAccessToken
+        blocked = self.client.post(
+            reverse('pages:task_hand_to_agent', kwargs={'task_pk': self.task.pk})
+        )
+        self.assertEqual(blocked.status_code, 404)
+
+        PersonalAccessToken.issue_for_user(self.user)
         hand_over = self.client.post(
             reverse('pages:task_hand_to_agent', kwargs={'task_pk': self.task.pk})
         )

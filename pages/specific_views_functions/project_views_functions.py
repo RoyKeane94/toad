@@ -186,9 +186,14 @@ def render_task_item(task, request=None, project=None):
     # If project not provided, get it from task
     if project is None and hasattr(task, 'project'):
         project = task.project
+    has_mcp_token = False
+    if request is not None and getattr(request, 'user', None) and request.user.is_authenticated:
+        from mcp_api.models import PersonalAccessToken
+        has_mcp_token = PersonalAccessToken.objects.filter(user=request.user).exists()
     return render_to_string('pages/grid/actions_in_page/task_item.html', {
         'task': task,
-        'project': project
+        'project': project,
+        'has_mcp_token': has_mcp_token,
     }, request=request)
 
 def render_modal_content(request, template_name, context):

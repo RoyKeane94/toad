@@ -147,7 +147,7 @@
             <i class="fas fa-sticky-note text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors"></i>
         </button>
         {% endif %}
-        {% if task.owner != 'agent' %}
+        {% if task.owner != 'agent' and has_mcp_token %}
         <form method="post"
               action="{% url 'pages:task_hand_to_agent' task.pk %}"
               class="inline"
@@ -157,7 +157,7 @@
             {% csrf_token %}
             <button type="submit"
                     class="p-1 rounded hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
-                    title="Hand to agent">
+                    title="Mark as agent work. Connected agents will see this task as theirs.">
                 <i class="fas fa-robot text-gray-400 hover:text-[var(--primary-action-bg)] text-xs transition-colors"></i>
             </button>
         </form>

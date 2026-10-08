@@ -325,6 +325,7 @@ def project_grid_view(request, pk):
             'quick_task_form': QuickTaskForm(),
             'user_tier': getattr(request.user, 'tier', 'free'),
             'recent_activity': _recent_activity_for_project(project),
+            'has_mcp_token': _user_has_mcp_token(request.user),
         }
         
         template_name = 'pages/grid/project_grid_mobile.html'
@@ -372,6 +373,7 @@ def project_grid_view(request, pk):
             'user_tier': getattr(request.user, 'tier', 'free'),
             'reminder_tasks': reminder_tasks_with_days,
             'recent_activity': _recent_activity_for_project(project),
+            'has_mcp_token': _user_has_mcp_token(request.user),
         }
         template_name = 'pages/grid/project_grid.html'
         if request.headers.get('HX-Request'):
@@ -458,7 +460,15 @@ def task_create_view(request, project_pk, row_pk, col_pk):
             # Template accesses: task.notes.exists, task.assigned_to, project.team_toad_user.all
             # Project already has team_toad_user prefetched from outer scope
             task = Task.objects.prefetch_related('notes', 'assigned_to').select_related('assigned_to', 'project').get(pk=task.pk)
-            return render(request, 'pages/grid/actions_in_page/task_item.html', {'task': task, 'project': project})
+            return render(
+                request,
+                'pages/grid/actions_in_page/task_item.html',
+                {
+                    'task': task,
+                    'project': project,
+                    'has_mcp_token': _user_has_mcp_token(request.user),
+                },
+            )
         
         def success_message_callback(task):
             return f'Task "{task.text}" added successfully!'
@@ -643,6 +653,11 @@ def _recent_activity_for_project(project):
     return TaskActivity.objects.filter(project=project).order_by('-created_at')[:20]
 
 
+def _user_has_mcp_token(user):
+    from mcp_api.models import PersonalAccessToken
+    return PersonalAccessToken.objects.filter(user=user).exists()
+
+
 def _render_updated_task_item(request, task):
     task = Task.objects.select_related('project', 'assigned_to').prefetch_related(
         'notes', 'project__team_toad_user'
@@ -650,7 +665,11 @@ def _render_updated_task_item(request, task):
     return render(
         request,
         'pages/grid/actions_in_page/task_item.html',
-        {'task': task, 'project': task.project},
+        {
+            'task': task,
+            'project': task.project,
+            'has_mcp_token': _user_has_mcp_token(request.user),
+        },
     )
 
 
@@ -673,6 +692,8 @@ def task_claim_view(request, task_pk):
 
 @login_required
 def task_hand_to_agent_view(request, task_pk):
+    if not _user_has_mcp_token(request.user):
+        raise Http404
     task = get_user_task_optimized(
         task_pk,
         request.user,
