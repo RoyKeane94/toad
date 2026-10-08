@@ -1,6 +1,6 @@
 import json
 
-from django.test import TestCase, Client
+from django.test import TestCase, Client, override_settings
 from django.urls import reverse
 from django.contrib.auth import get_user_model
 
@@ -228,3 +228,24 @@ class MCPTokenSettingsTestCase(TestCase):
         response = self.client.post(reverse('accounts:mcp_token_revoke'))
         self.assertRedirects(response, reverse('accounts:account_settings'))
         self.assertFalse(PersonalAccessToken.objects.filter(user=self.user).exists())
+
+    @override_settings(DEBUG=True, MCP_SERVER_PUBLIC_URL='')
+    def test_settings_shows_localhost_mcp_url_in_development(self):
+        self.client.login(email='settings@example.com', password='testpass123')
+        response = self.client.get(reverse('accounts:account_settings'))
+        self.assertContains(response, 'http://localhost:3001/mcp')
+
+    @override_settings(
+        DEBUG=False,
+        MCP_SERVER_PUBLIC_URL='',
+        ALLOWED_HOSTS=['www.meettoad.co.uk', 'testserver'],
+    )
+    def test_settings_shows_current_host_mcp_url_in_production(self):
+        self.client.login(email='settings@example.com', password='testpass123')
+        response = self.client.get(
+            reverse('accounts:account_settings'),
+            HTTP_HOST='www.meettoad.co.uk',
+            secure=True,
+        )
+        self.assertContains(response, 'https://www.meettoad.co.uk/mcp')
+        self.assertNotContains(response, 'http://localhost:3001/mcp')

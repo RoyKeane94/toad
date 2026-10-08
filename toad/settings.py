@@ -123,7 +123,8 @@ AUTH_USER_MODEL = 'accounts.User'
 TAILWIND_APP_NAME = 'theme'
 
 # Public URL Grok Bot should use for the remote MCP server (path /mcp).
-MCP_SERVER_PUBLIC_URL = os.environ.get('MCP_SERVER_PUBLIC_URL', 'http://localhost:3001/mcp')
+# Leave unset to show localhost in development and https://<current-host>/mcp in production.
+MCP_SERVER_PUBLIC_URL = os.environ.get('MCP_SERVER_PUBLIC_URL', '').strip()
 
 
 # ---

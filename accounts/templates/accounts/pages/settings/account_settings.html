@@ -230,7 +230,11 @@
                 <div class="space-y-4">
                     <div class="p-4 bg-[var(--container-bg)] rounded-lg">
                         <h3 class="font-medium text-[var(--text-primary)] mb-1">Server URL</h3>
-                        <p class="text-xs text-[var(--text-secondary)] mb-2">Grok Bot needs a public HTTPS URL. For a local test, tunnel port 3001 and paste that URL here via MCP_SERVER_PUBLIC_URL.</p>
+                        {% if mcp_server_is_local %}
+                        <p class="text-xs text-[var(--text-secondary)] mb-2">Grok Bot needs a public HTTPS URL. For a local test, tunnel port 3001 or set MCP_SERVER_PUBLIC_URL.</p>
+                        {% else %}
+                        <p class="text-xs text-[var(--text-secondary)] mb-2">Use this URL and your personal access token when connecting Grok Bot.</p>
+                        {% endif %}
                         <div class="flex flex-col sm:flex-row sm:items-center gap-2">
                             <code id="mcp-server-url" class="flex-1 text-sm break-all bg-white border border-[var(--border-color,#e5e7eb)] rounded-md px-3 py-2 text-[var(--text-primary)]">{{ mcp_server_url }}</code>
                             <button type="button" data-copy-target="mcp-server-url" class="copy-mcp-value px-4 py-2 bg-[var(--primary-action-bg)] hover:bg-[var(--primary-action-hover-bg)] text-[var(--primary-action-text)] rounded-md text-sm font-medium transition-colors whitespace-nowrap">

@@ -538,8 +538,10 @@ def account_settings_view(request):
     is_team_toad_without_group = (request.user.tier == 'pro' and subscription_group and subscription_group.quantity == 1)
 
     from mcp_api.models import PersonalAccessToken
+    from mcp_api.utils import mcp_server_public_url
     new_mcp_token = request.session.pop('new_mcp_token', None)
     mcp_token = PersonalAccessToken.objects.filter(user=request.user).first()
+    mcp_server_url = mcp_server_public_url(request)
     
     context = {
         'profile_form': profile_form,
@@ -558,7 +560,8 @@ def account_settings_view(request):
         'is_team_toad_without_group': is_team_toad_without_group,
         'mcp_token': mcp_token,
         'new_mcp_token': new_mcp_token,
-        'mcp_server_url': settings.MCP_SERVER_PUBLIC_URL,
+        'mcp_server_url': mcp_server_url,
+        'mcp_server_is_local': mcp_server_url.startswith(('http://localhost', 'http://127.0.0.1')),
     }
     return render(request, 'accounts/pages/settings/account_settings.html', context)
 
