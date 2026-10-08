@@ -313,6 +313,68 @@ def delete_column_for_user(user, column_id, agent=None):
     return {'ok': True, 'deleted_column_id': deleted_id, 'columns': columns_payload}
 
 
+def _enforce_grid_limit(user):
+    tier = getattr(user, 'tier', 'free')
+    count = Project.objects.filter(user=user, is_archived=False).count()
+    if tier == 'free' and count >= 2:
+        raise ApiError('Free users can have a maximum of 2 active grids.', status=403)
+    if tier in {'personal', 'personal_trial'} and count >= 10:
+        raise ApiError('Personal users can have a maximum of 10 active grids.', status=403)
+
+
+def _as_name_list(value, field):
+    if not isinstance(value, list):
+        raise ApiError(f'{field} must be a list of names')
+    return [_require_name(item) for item in value]
+
+
+def create_grid_for_user(user, name, brief=None, rows=None, columns=None, agent=None):
+    name = _require_name(name)
+    _enforce_grid_limit(user)
+    if brief is None:
+        brief = ''
+    else:
+        brief = str(brief)
+    if rows is None:
+        row_names = ['To do']
+    elif rows == []:
+        row_names = []
+    else:
+        row_names = _as_name_list(rows, 'rows')
+    if columns is None or columns == []:
+        column_names = [name]
+    else:
+        column_names = _as_name_list(columns, 'columns')
+
+    with transaction.atomic():
+        project = Project.objects.create(user=user, name=name, brief=brief)
+        ColumnHeader.objects.create(
+            project=project,
+            name='Time / Category',
+            order=0,
+            is_category_column=True,
+        )
+        for index, column_name in enumerate(column_names, start=1):
+            ColumnHeader.objects.create(
+                project=project,
+                name=column_name,
+                order=index,
+                is_category_column=False,
+            )
+        for index, row_name in enumerate(row_names):
+            RowHeader.objects.create(project=project, name=row_name, order=index)
+        if not getattr(user, 'second_grid_created', True):
+            active = Project.objects.filter(user=user, is_archived=False).count()
+            if active >= 2:
+                user.second_grid_created = True
+                user.save(update_fields=['second_grid_created'])
+
+    log_activity(user, agent, f'created grid {name}', project=project, task_text=name)
+    payload = get_grid_for_user(user, project.id)
+    payload['ok'] = True
+    return payload
+
+
 def list_grids_for_user(user):
     grids = _accessible_grids(user).only('id', 'name').order_by('name')
     return {'grids': [{'id': grid.id, 'name': grid.name} for grid in grids]}
@@ -574,6 +636,15 @@ def call_tool(user, name, arguments, agent=None):
     arguments = arguments or {}
     if name == 'list_grids':
         return list_grids_for_user(user)
+    if name == 'create_grid':
+        return create_grid_for_user(
+            user,
+            arguments.get('name'),
+            brief=arguments.get('brief'),
+            rows=arguments.get('rows'),
+            columns=arguments.get('columns'),
+            agent=agent,
+        )
     if name == 'get_grid':
         return get_grid_for_user(user, arguments.get('grid_id'))
     if name == 'update_grid':

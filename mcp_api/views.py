@@ -7,6 +7,7 @@ from .services import (
     add_column_for_user,
     add_row_for_user,
     add_task_for_user,
+    create_grid_for_user,
     delete_column_for_user,
     delete_row_for_user,
     delete_task_for_user,
@@ -55,6 +56,27 @@ def whoami(request):
 @require_http_methods(['POST'])
 def list_grids(request):
     return _call(list_grids_for_user, request.user)
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def create_grid(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    try:
+        result = create_grid_for_user(
+            request.user,
+            data.get('name'),
+            brief=data.get('brief'),
+            rows=data.get('rows'),
+            columns=data.get('columns'),
+            agent=_agent(request),
+        )
+    except ApiError as exc:
+        return _json_error(exc.message, status=exc.status)
+    return JsonResponse(result, status=201)
 
 
 @mcp_token_required

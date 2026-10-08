@@ -35,7 +35,8 @@ mcp = FastMCP(
     name='Toad',
     instructions=(
         'Read and edit the signed-in user\'s Toad grids. '
-        'Call list_grids to find grid IDs, then get_grid before adding or changing tasks. '
+        'Call list_grids to find grid IDs, or create_grid to make a new one. '
+        'Call get_grid before adding or changing tasks. '
         'get_grid returns the grid brief, task owner, needs_review, and recent activity. '
         'Put lasting context in the brief with update_grid. '
         'Tasks you add are owned by the agent unless you set owner to you. '
@@ -84,6 +85,29 @@ async def health_check(request):
 async def list_grids() -> dict:
     """Return the user's Toad grids with their IDs and names."""
     return await toad_post('list_grids', current_token())
+
+
+@mcp.tool
+async def create_grid(
+    name: str,
+    brief: str | None = None,
+    rows: list[str] | None = None,
+    columns: list[str] | None = None,
+) -> dict:
+    """Create a new grid. Optional brief, row names and data column names.
+
+    If rows are omitted, one 'To do' row is created. If columns are omitted,
+    one data column named after the grid is created. Returns the new grid
+    the same way as get_grid.
+    """
+    payload = {'name': name}
+    if brief is not None:
+        payload['brief'] = brief
+    if rows is not None:
+        payload['rows'] = rows
+    if columns is not None:
+        payload['columns'] = columns
+    return await toad_post('create_grid', current_token(), payload)
 
 
 @mcp.tool

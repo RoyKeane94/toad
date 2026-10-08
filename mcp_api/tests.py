@@ -249,6 +249,7 @@ class MCPApiTestCase(TestCase):
             names,
             {
                 'list_grids',
+                'create_grid',
                 'get_grid',
                 'update_grid',
                 'add_task',
@@ -265,6 +266,52 @@ class MCPApiTestCase(TestCase):
                 'log_request',
             },
         )
+
+    def test_create_grid_with_rows_columns_and_brief(self):
+        response = self.post(
+            'create_grid',
+            {
+                'name': 'My Stamp',
+                'brief': 'Clinic listings. Never invent fees.',
+                'rows': ['Twenty-preview test', 'Launch'],
+                'columns': ['Setup & infra', 'Data & extraction'],
+            },
+            token=self.raw_token,
+        )
+        self.assertEqual(response.status_code, 201)
+        body = response.json()
+        self.assertTrue(body['ok'])
+        self.assertEqual(body['name'], 'My Stamp')
+        self.assertEqual(body['brief'], 'Clinic listings. Never invent fees.')
+        self.assertEqual(
+            [row['name'] for row in body['rows']],
+            ['Twenty-preview test', 'Launch'],
+        )
+        data_columns = [
+            column['name'] for column in body['columns'] if not column['is_category_column']
+        ]
+        self.assertEqual(data_columns, ['Setup & infra', 'Data & extraction'])
+        self.assertTrue(body['columns'][0]['is_category_column'])
+        self.assertEqual(body['tasks'], [])
+        self.assertTrue(
+            Project.objects.filter(pk=body['id'], user=self.user, name='My Stamp').exists()
+        )
+        self.assertTrue(TaskActivity.objects.filter(action='created grid My Stamp').exists())
+
+    def test_create_grid_defaults_and_free_tier_limit(self):
+        response = self.post('create_grid', {'name': 'Scratch'}, token=self.raw_token)
+        self.assertEqual(response.status_code, 201)
+        body = response.json()
+        self.assertEqual([row['name'] for row in body['rows']], ['To do'])
+        data_columns = [
+            column['name'] for column in body['columns'] if not column['is_category_column']
+        ]
+        self.assertEqual(data_columns, ['Scratch'])
+
+        self.user.tier = 'free'
+        self.user.save(update_fields=['tier'])
+        blocked = self.post('create_grid', {'name': 'Too many'}, token=self.raw_token)
+        self.assertEqual(blocked.status_code, 403)
 
     def test_mcp_list_grids_tool_call(self):
         response = self.mcp_rpc(

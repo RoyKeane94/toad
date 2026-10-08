@@ -3421,3 +3421,15 @@ WARNING 2026-10-08 21:10:07,429 log 89044 8703812160 Unauthorized: /api/mcp/list
 WARNING 2026-10-08 21:10:07,750 log 89044 8703812160 Bad Request: /api/mcp/delete_column
 WARNING 2026-10-08 21:10:07,752 log 89044 8703812160 Not Found: /api/mcp/rename_row
 WARNING 2026-10-08 21:10:08,066 log 89044 8703812160 Bad Request: /api/mcp/reorder_rows
+WARNING 2026-10-08 21:15:00,473 log 89797 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-08 21:15:00,801 log 89797 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-08 21:15:01,114 log 89797 8703812160 Not Found: /api/mcp/update_task
+INFO 2026-10-08 21:15:01,435 signals 89797 8703812160 User owner@example.com downgraded from beta to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+WARNING 2026-10-08 21:15:01,436 log 89797 8703812160 Forbidden: /api/mcp/create_grid
+WARNING 2026-10-08 21:15:03,343 log 89797 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 21:15:05,436 log 89797 8703812160 Unauthorized: /mcp
+WARNING 2026-10-08 21:15:05,767 log 89797 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 21:15:06,901 log 89797 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-08 21:15:07,293 log 89797 8703812160 Bad Request: /api/mcp/delete_column
+WARNING 2026-10-08 21:15:07,295 log 89797 8703812160 Not Found: /api/mcp/rename_row
+WARNING 2026-10-08 21:15:07,728 log 89797 8703812160 Bad Request: /api/mcp/reorder_rows

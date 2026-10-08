@@ -7,6 +7,7 @@ app_name = 'mcp_api'
 urlpatterns = [
     path('whoami', views.whoami, name='whoami'),
     path('list_grids', views.list_grids, name='list_grids'),
+    path('create_grid', views.create_grid, name='create_grid'),
     path('get_grid', views.get_grid, name='get_grid'),
     path('update_grid', views.update_grid, name='update_grid'),
     path('add_task', views.add_task, name='add_task'),

@@ -10,7 +10,8 @@ from .services import ApiError, call_tool
 
 MCP_INSTRUCTIONS = (
     "Read and edit the signed-in user's Toad grids. "
-    "Call list_grids to find grid IDs, then get_grid before adding or changing tasks. "
+    "Call list_grids to find grid IDs, or create_grid to make a new one. "
+    "Call get_grid before adding or changing tasks. "
     "get_grid returns the grid brief (standing context), task owner (you or agent), "
     "needs_review, and recent activity. Put lasting context in the brief with update_grid. "
     "Tasks you add are owned by the agent unless you set owner to you. "
@@ -27,6 +28,25 @@ TOOL_DEFINITIONS = [
         'name': 'list_grids',
         'description': "Return the user's Toad grids with their IDs and names.",
         'inputSchema': {'type': 'object', 'properties': {}},
+    },
+    {
+        'name': 'create_grid',
+        'description': (
+            "Create a new grid. Optional brief, row names and data column names. "
+            "If rows are omitted, one 'To do' row is created. If columns are omitted, "
+            "one data column named after the grid is created. Returns the new grid "
+            "the same way as get_grid."
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'name': {'type': 'string'},
+                'brief': {'type': 'string'},
+                'rows': {'type': 'array', 'items': {'type': 'string'}},
+                'columns': {'type': 'array', 'items': {'type': 'string'}},
+            },
+            'required': ['name'],
+        },
     },
     {
         'name': 'get_grid',
