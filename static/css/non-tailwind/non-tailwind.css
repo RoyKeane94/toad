@@ -210,9 +210,9 @@ input:invalid:not(:focus):not(:placeholder-shown) {
 /* Remove all fallback animation-based visibility rules */
 /* (Removed ensureVisibility and forceVisibility animations) */
 
-/* Fix for production environment where first column might be cut off */
+/* Column widths are set on <col> by grid JS — don't expand from content */
 .grid-table-scrollable .grid-table {
-    min-width: max-content; /* Ensure table doesn't shrink below content width */
+    min-width: 0;
 }
 
 /* Ensure data columns have equal widths controlled by JavaScript */
@@ -356,10 +356,6 @@ input:invalid:not(:focus):not(:placeholder-shown) {
         --category-col-width: 200px;
     }
     
-    .grid-table th {
-        min-width: 200px; /* Match tablet category column width */
-    }
-    
     .grid-table th .truncate {
         word-wrap: break-word;
         word-break: break-word;
@@ -433,10 +429,18 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     height: 100%; /* For row height sync */
 }
 
-/* Ensure column headers have enough space and don't get cut off */
+/* Data columns: width comes from <col>; keep cells from forcing unequal columns */
+.grid-table-scrollable .grid-table th,
+.grid-table-scrollable .grid-table td {
+    min-width: 0;
+    max-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
 .grid-table th {
-    min-width: 200px; /* Reduced minimum width for better fit */
-    overflow: visible; /* Allow text to be visible */
+    overflow: visible;
     word-wrap: break-word;
     word-break: break-word;
     overflow-wrap: break-word;
@@ -449,11 +453,6 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     word-wrap: break-word;
     word-break: break-word;
     overflow-wrap: break-word;
-}
-
-/* Special handling for first column header to prevent cutoff */
-.grid-table th:first-child {
-    min-width: 225px; /* Match the category column width */
 }
 
 .grid-table th:first-child .truncate {
@@ -651,7 +650,6 @@ input:invalid:not(:focus):not(:placeholder-shown) {
     .grid-table th {
         font-size: 12px;
         font-weight: 600;
-        min-width: 175px; /* Match mobile category column width */
     }
     
     .grid-table th .truncate {
