@@ -654,8 +654,8 @@ def _recent_activity_for_project(project):
 
 
 def _user_has_mcp_token(user):
-    from mcp_api.models import PersonalAccessToken
-    return PersonalAccessToken.objects.filter(user=user).exists()
+    from mcp_api.models import user_has_agent_access
+    return user_has_agent_access(user)
 
 
 def _render_updated_task_item(request, task):

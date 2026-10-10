@@ -20,7 +20,10 @@ MCP_INSTRUCTIONS = (
     "reorder_rows, delete_row, add_column, rename_column, reorder_columns and delete_column. "
     "Deleting a row or column also deletes the tasks in it. The category column cannot be deleted. "
     "Call log_request after helping someone, with who asked, what they asked, "
-    "and whether a follow-up is needed. Do not store tool output in log_request."
+    "and whether a follow-up is needed. Do not store tool output in log_request. "
+    "Call log_decision after making a recommendation or taking an action that a human "
+    "should review: what was asked, what you did, the decision, and why. "
+    "To correct a decision, log a new entry with supersedes set to the earlier id."
 )
 
 TOOL_DEFINITIONS = [
@@ -247,6 +250,68 @@ TOOL_DEFINITIONS = [
             'required': ['what'],
         },
     },
+    {
+        'name': 'log_decision',
+        'description': (
+            'Append an audit-trail decision: what was asked, what you did, the outcome, '
+            'and why. Optional sources and output_link. Sets the task needs_review if '
+            'task_id is given. To correct a prior decision, pass supersedes. Unknown '
+            'fields are rejected. Returns the saved entry with id and created_at.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'task_id': {'type': 'integer'},
+                'request': {'type': 'string'},
+                'action_summary': {'type': 'string'},
+                'decision': {'type': 'string'},
+                'rationale': {'type': 'string'},
+                'sources': {'type': 'array', 'items': {'type': 'string'}},
+                'output_link': {'type': 'string'},
+                'requested_by': {'type': 'string'},
+                'supersedes': {'type': 'integer'},
+                'agent': {'type': 'string'},
+            },
+            'required': ['grid_id', 'request', 'action_summary', 'decision'],
+            'additionalProperties': False,
+        },
+    },
+    {
+        'name': 'list_decisions',
+        'description': (
+            'List decision log entries, newest first. Filter by grid, task, status, '
+            'agent_name or since. Unknown fields are rejected.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {
+                'grid_id': {'type': 'integer'},
+                'task_id': {'type': 'integer'},
+                'status': {
+                    'type': 'string',
+                    'enum': ['pending_review', 'approved', 'rejected', 'superseded'],
+                },
+                'agent_name': {'type': 'string'},
+                'since': {'type': 'string'},
+                'limit': {'type': 'integer'},
+            },
+            'additionalProperties': False,
+        },
+    },
+    {
+        'name': 'get_decision',
+        'description': (
+            'Return a decision entry plus its review events and supersede chain. '
+            'Unknown fields are rejected.'
+        ),
+        'inputSchema': {
+            'type': 'object',
+            'properties': {'decision_id': {'type': 'integer'}},
+            'required': ['decision_id'],
+            'additionalProperties': False,
+        },
+    },
 ]
 
 
@@ -318,7 +383,7 @@ def _html_info():
 </html>'''
 
 
-def _handle_rpc(user, message, agent=None):
+def _handle_rpc(user, message, agent=None, token=None):
     if not isinstance(message, dict):
         return _jsonrpc_error(None, -32600, 'Invalid Request')
 
@@ -350,7 +415,7 @@ def _handle_rpc(user, message, agent=None):
         name = params.get('name')
         arguments = params.get('arguments') or {}
         try:
-            result = call_tool(user, name, arguments, agent=agent)
+            result = call_tool(user, name, arguments, agent=agent, token=token)
             is_error = isinstance(result, dict) and 'error' in result
         except ApiError as exc:
             result = {'error': exc.message}
@@ -398,4 +463,4 @@ def mcp_endpoint(request):
             status=401,
         )
 
-    return _handle_rpc(token.user, message, agent=token.name)
+    return _handle_rpc(token.user, message, agent=token.name, token=token)

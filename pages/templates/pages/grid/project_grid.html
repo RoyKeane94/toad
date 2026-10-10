@@ -860,6 +860,15 @@ document.addEventListener('DOMContentLoaded', function() {
                         </button>
                         {% endif %}
                         
+                        {% if user_has_agent_access %}
+                        <a href="{% url 'pages:grid_decision_log' pk=project.pk %}"
+                           class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"
+                           onclick="closeAllDropdowns();">
+                            <i class="fas fa-clipboard-check text-xs w-4 text-center"></i>
+                            <span>Decision log</span>
+                        </a>
+                        {% endif %}
+
                         <!-- Show Reminders -->
                         <button type="button"
                                 class="w-full flex items-center space-x-3 px-4 py-2 text-sm text-[var(--tertiary-action-bg)] hover:bg-[var(--grid-header-bg)] transition-colors cursor-pointer"

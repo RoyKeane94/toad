@@ -52,6 +52,11 @@
                         <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
                             My Grids
                         </a>
+                        {% if user_has_agent_access %}
+                        <a href="{% url 'pages:decision_log' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
+                            Decision log
+                        </a>
+                        {% endif %}
                         {% if user.is_superuser %}
                         <a href="{% url 'crm:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium whitespace-nowrap">
                             Lilypad
@@ -131,6 +136,11 @@
                     <a href="{% url 'pages:project_list' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         My Grids
                     </a>
+                    {% if user_has_agent_access %}
+                    <a href="{% url 'pages:decision_log' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
+                        Decision log
+                    </a>
+                    {% endif %}
                     {% if user.is_superuser %}
                     <a href="{% url 'crm:home' %}" class="text-[var(--text-secondary)] hover:text-[var(--title-text)] transition-colors duration-200 font-medium">
                         Lilypad

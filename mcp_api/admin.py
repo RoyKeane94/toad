@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import MCPRequestLog, PersonalAccessToken, TaskActivity
+from .models import DecisionEntry, DecisionReview, MCPRequestLog, PersonalAccessToken, TaskActivity
 
 
 @admin.register(PersonalAccessToken)
@@ -38,3 +38,34 @@ class TaskActivityAdmin(admin.ModelAdmin):
 
     def has_add_permission(self, request):
         return False
+
+
+class AppendOnlyAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return False
+
+    def has_change_permission(self, request, obj=None):
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+
+@admin.register(DecisionEntry)
+class DecisionEntryAdmin(AppendOnlyAdmin):
+    list_display = (
+        'created_at', 'agent_name', 'request', 'decision', 'status', 'reviewer', 'user',
+    )
+    list_filter = ('status', 'agent_name', 'created_at')
+    search_fields = ('request', 'decision', 'action_summary', 'agent_name', 'user__email')
+    readonly_fields = [field.name for field in DecisionEntry._meta.fields]
+    ordering = ('-created_at',)
+
+
+@admin.register(DecisionReview)
+class DecisionReviewAdmin(AppendOnlyAdmin):
+    list_display = ('created_at', 'actor', 'old_status', 'new_status', 'entry')
+    list_filter = ('new_status', 'created_at')
+    search_fields = ('actor', 'comment')
+    readonly_fields = [field.name for field in DecisionReview._meta.fields]
+    ordering = ('-created_at',)

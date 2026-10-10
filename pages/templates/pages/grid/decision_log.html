@@ -1,0 +1,173 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}{% if task %}Decisions · {{ task.text }}{% elif project %}Decision log · {{ project.name }}{% else %}Decision log{% endif %}{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-6">
+        <div>
+            <p class="text-xs uppercase tracking-wide text-[var(--text-secondary)] mb-1">
+                {% if task %}
+                    <a href="{% url 'pages:project_grid' pk=project.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ project.name }}</a>
+                    · task
+                {% elif project %}
+                    <a href="{% url 'pages:project_grid' pk=project.pk %}" class="hover:text-[var(--primary-action-bg)]">{{ project.name }}</a>
+                {% else %}
+                    All grids
+                {% endif %}
+            </p>
+            <h1 class="text-2xl sm:text-3xl font-bold text-[var(--primary-action-bg)]">
+                {% if task %}Decisions{% else %}Decision log{% endif %}
+            </h1>
+            {% if task %}
+            <p class="text-sm text-[var(--text-secondary)] mt-1">{{ task.text }}</p>
+            {% else %}
+            <p class="text-sm text-[var(--text-secondary)] mt-1">What agents were asked, what they decided, and what you did about it.</p>
+            {% endif %}
+        </div>
+        <div class="flex flex-wrap gap-2">
+            {% if project and not task %}
+            <form method="post" action="{% url 'pages:grid_decision_log_verify' pk=project.pk %}">
+            {% else %}
+            <form method="post" action="{% url 'pages:decision_log_verify' %}">
+            {% endif %}
+                {% csrf_token %}
+                <button type="submit" class="px-3 py-2 text-sm border border-[var(--border-color)] rounded-md text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] hover:border-[var(--primary-action-bg)] transition-colors">
+                    Verify chain
+                </button>
+            </form>
+            {% if task %}
+            <a href="{% url 'pages:task_decision_log_export' task_pk=task.pk %}?{{ request.GET.urlencode }}" class="px-3 py-2 text-sm bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md hover:bg-[var(--primary-action-hover-bg)] transition-colors">Export CSV</a>
+            {% elif project %}
+            <a href="{% url 'pages:grid_decision_log_export' pk=project.pk %}?{{ request.GET.urlencode }}" class="px-3 py-2 text-sm bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md hover:bg-[var(--primary-action-hover-bg)] transition-colors">Export CSV</a>
+            {% else %}
+            <a href="{% url 'pages:decision_log_export' %}?{{ request.GET.urlencode }}" class="px-3 py-2 text-sm bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md hover:bg-[var(--primary-action-hover-bg)] transition-colors">Export CSV</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% if verify_result %}
+    <div class="mb-4 px-4 py-3 rounded-md {% if verify_result.ok %}bg-emerald-50 text-emerald-900 border border-emerald-200{% else %}bg-red-50 text-red-900 border border-red-200{% endif %}">
+        {% if verify_result.ok %}
+            Chain intact — {{ verify_result.checked }} {{ verify_result.checked|pluralize:"entry,entries" }} checked.
+        {% else %}
+            Chain broken at
+            {% for item in verify_result.broken %}
+                #{{ item.id }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            ({{ verify_result.checked }} checked).
+        {% endif %}
+    </div>
+    {% endif %}
+
+    <form method="get" class="mb-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg p-4">
+        {% if not project %}
+        <label class="text-xs text-[var(--text-secondary)]">
+            Grid
+            <select name="grid" class="mt-1 w-full px-2 py-2 text-sm border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)]">
+                <option value="">All grids</option>
+                {% for grid in grids %}
+                <option value="{{ grid.id }}" {% if filters.grid == grid.id|stringformat:"s" %}selected{% endif %}>{{ grid.name }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        {% endif %}
+        <label class="text-xs text-[var(--text-secondary)]">
+            Agent
+            <select name="agent" class="mt-1 w-full px-2 py-2 text-sm border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)]">
+                <option value="">All agents</option>
+                {% for agent in agents %}
+                <option value="{{ agent }}" {% if filters.agent == agent %}selected{% endif %}>{{ agent }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label class="text-xs text-[var(--text-secondary)]">
+            Status
+            <select name="status" class="mt-1 w-full px-2 py-2 text-sm border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)]">
+                <option value="">All statuses</option>
+                {% for value, label in status_choices %}
+                <option value="{{ value }}" {% if filters.status == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+            </select>
+        </label>
+        <label class="text-xs text-[var(--text-secondary)]">
+            From
+            <input type="date" name="date_from" value="{{ filters.date_from }}" class="mt-1 w-full px-2 py-2 text-sm border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)]">
+        </label>
+        <label class="text-xs text-[var(--text-secondary)]">
+            To
+            <input type="date" name="date_to" value="{{ filters.date_to }}" class="mt-1 w-full px-2 py-2 text-sm border border-[var(--border-color)] rounded-md bg-white text-[var(--text-primary)]">
+        </label>
+        <div class="sm:col-span-2 lg:col-span-5 flex gap-2">
+            <button type="submit" class="px-3 py-2 text-sm bg-[var(--primary-action-bg)] text-[var(--primary-action-text)] rounded-md">Filter</button>
+            {% if project and task %}
+            <a href="{% url 'pages:task_decision_log' task_pk=task.pk %}" class="px-3 py-2 text-sm text-[var(--text-secondary)]">Clear</a>
+            {% elif project %}
+            <a href="{% url 'pages:grid_decision_log' pk=project.pk %}" class="px-3 py-2 text-sm text-[var(--text-secondary)]">Clear</a>
+            {% else %}
+            <a href="{% url 'pages:decision_log' %}" class="px-3 py-2 text-sm text-[var(--text-secondary)]">Clear</a>
+            {% endif %}
+        </div>
+    </form>
+
+    <div class="overflow-x-auto bg-[var(--container-bg)] border border-[var(--border-color)] rounded-lg">
+        <table class="min-w-full text-sm">
+            <thead class="bg-[var(--grid-header-bg)] text-[var(--text-secondary)] text-left">
+                <tr>
+                    <th class="px-3 py-2 font-medium">Time</th>
+                    <th class="px-3 py-2 font-medium">Agent</th>
+                    <th class="px-3 py-2 font-medium">Task</th>
+                    <th class="px-3 py-2 font-medium">Decision</th>
+                    <th class="px-3 py-2 font-medium">Status</th>
+                    <th class="px-3 py-2 font-medium">Reviewer</th>
+                    <th class="px-3 py-2 font-medium"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for entry in entries %}
+                <tr class="border-t border-[var(--border-color)] align-top">
+                    <td class="px-3 py-3 whitespace-nowrap text-[var(--text-secondary)]">{{ entry.created_at|date:"j M Y H:i" }}</td>
+                    <td class="px-3 py-3">{{ entry.agent_name }}</td>
+                    <td class="px-3 py-3 max-w-[12rem]">
+                        {% if entry.task_id %}
+                        <a href="{% url 'pages:task_decision_log' task_pk=entry.task_id %}" class="hover:text-[var(--primary-action-bg)]">{{ entry.task_text_snapshot|truncatechars:60 }}</a>
+                        {% else %}
+                        {{ entry.task_text_snapshot|truncatechars:60|default:"—" }}
+                        {% endif %}
+                    </td>
+                    <td class="px-3 py-3 max-w-sm">
+                        <div class="text-[var(--text-primary)]">{{ entry.decision }}</div>
+                        <div class="text-xs text-[var(--text-secondary)] mt-1">{{ entry.request }}</div>
+                        {% if entry.rationale %}<div class="text-xs text-[var(--text-secondary)] mt-1">{{ entry.rationale }}</div>{% endif %}
+                    </td>
+                    <td class="px-3 py-3 whitespace-nowrap">
+                        <span class="text-xs px-2 py-0.5 rounded border border-[var(--border-color)]">{{ entry.get_status_display }}</span>
+                    </td>
+                    <td class="px-3 py-3 text-[var(--text-secondary)]">
+                        {{ entry.reviewer|default:"—" }}
+                        {% if entry.review_comment %}<div class="text-xs mt-1">{{ entry.review_comment }}</div>{% endif %}
+                    </td>
+                    <td class="px-3 py-3">
+                        {% if entry.status == status_pending %}
+                        <form method="post" action="{% url 'pages:decision_review' decision_id=entry.pk %}" class="flex flex-col gap-1 min-w-[10rem]">
+                            {% csrf_token %}
+                            <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                            <input type="text" name="comment" placeholder="Comment (optional)" class="px-2 py-1 text-xs border border-[var(--border-color)] rounded-md">
+                            <div class="flex gap-1">
+                                <button type="submit" name="status" value="approved" class="flex-1 px-2 py-1 text-xs rounded-md bg-emerald-600 text-white">Approve</button>
+                                <button type="submit" name="status" value="rejected" class="flex-1 px-2 py-1 text-xs rounded-md bg-red-100 text-red-700">Reject</button>
+                            </div>
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="px-3 py-8 text-center text-[var(--text-secondary)]">No decisions yet.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -3446,3 +3446,400 @@ INFO 2026-10-09 05:59:04,386 basehttp 93363 6160445440 "GET /grids/ HTTP/1.1" 20
 INFO 2026-10-09 05:59:16,108 basehttp 93363 6160445440 "GET /grids/328/ HTTP/1.1" 200 25007
 INFO 2026-10-09 05:59:16,126 basehttp 93363 6160445440 "GET /static/js/grid/grid.min.js HTTP/1.1" 200 57911
 INFO 2026-10-09 05:59:21,488 basehttp 93363 6160445440 "GET /accounts/settings/ HTTP/1.1" 200 7254
+ERROR 2026-10-10 07:09:18,511 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:18,514 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:18,955 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:18,956 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:19,419 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:19,421 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:19,937 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:19,938 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:20,382 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:20,383 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:20,820 error_views_functions 4737 8703812160 500 error: /mcp - User: Anonymous
+ERROR 2026-10-10 07:09:20,820 log 4737 8703812160 Internal Server Error: /mcp
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/protocol.py", line 466, in mcp_endpoint
+    return _handle_rpc(token.user, message, agent=token.name, token=token)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/protocol.py", line 418, in _handle_rpc
+    result = call_tool(user, name, arguments, agent=agent, token=token)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 1110, in call_tool
+    return log_decision_for_user(user, arguments, agent=agent, token=token)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:21,249 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:21,250 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:21,683 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:21,684 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+ERROR 2026-10-10 07:09:22,299 error_views_functions 4737 8703812160 500 error: /api/mcp/log_decision - User: None
+ERROR 2026-10-10 07:09:22,300 log 4737 8703812160 Internal Server Error: /api/mcp/log_decision
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/auth.py", line 47, in wrapped
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/views.py", line 311, in log_decision
+    result = log_decision_for_user(
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/services.py", line 890, in log_decision_for_user
+    entry.entry_hash = entry.compute_hash()
+                       ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 257, in compute_hash
+    self.canonical_payload(),
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/mcp_api/models.py", line 236, in canonical_payload
+    created_at = created_at.astimezone(timezone.utc)
+                                       ^^^^^^^^^^^^
+AttributeError: module 'django.utils.timezone' has no attribute 'utc'
+WARNING 2026-10-10 07:09:22,935 error_views_functions 4737 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:09:22,937 log 4737 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:09:22,938 error_views_functions 4737 8703812160 404 error: /grids/5/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:09:22,939 log 4737 8703812160 Not Found: /grids/5/decisions/
+WARNING 2026-10-10 07:09:22,940 error_views_functions 4737 8703812160 404 error: /tasks/20/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:09:22,940 log 4737 8703812160 Not Found: /tasks/20/decisions/
+WARNING 2026-10-10 07:09:24,301 log 4737 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-10 07:09:24,740 log 4737 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-10 07:09:25,174 log 4737 8703812160 Not Found: /api/mcp/update_task
+INFO 2026-10-10 07:09:25,605 signals 4737 8703812160 User owner@example.com downgraded from beta to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+WARNING 2026-10-10 07:09:25,606 log 4737 8703812160 Forbidden: /api/mcp/create_grid
+WARNING 2026-10-10 07:09:28,188 log 4737 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-10 07:09:30,740 log 4737 8703812160 Unauthorized: /mcp
+WARNING 2026-10-10 07:09:31,164 log 4737 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-10 07:09:32,442 log 4737 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-10 07:09:32,874 log 4737 8703812160 Bad Request: /api/mcp/delete_column
+WARNING 2026-10-10 07:09:32,876 log 4737 8703812160 Not Found: /api/mcp/rename_row
+WARNING 2026-10-10 07:09:33,299 log 4737 8703812160 Bad Request: /api/mcp/reorder_rows
+WARNING 2026-10-10 07:09:37,772 error_views_functions 4737 8703812160 404 error: /tasks/19/hand-to-agent/ - User: None - Exception: 
+WARNING 2026-10-10 07:09:37,775 log 4737 8703812160 Not Found: /tasks/19/hand-to-agent/
+WARNING 2026-10-10 07:10:16,365 error_views_functions 4876 8703812160 404 error: /decisions/export/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:16,367 log 4876 8703812160 Not Found: /decisions/export/
+WARNING 2026-10-10 07:10:19,253 log 4876 8703812160 Bad Request: /api/mcp/list_decisions
+WARNING 2026-10-10 07:10:21,055 error_views_functions 4876 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:21,057 log 4876 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:10:21,802 error_views_functions 4876 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:21,804 log 4876 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:10:21,805 error_views_functions 4876 8703812160 404 error: /grids/5/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:21,806 log 4876 8703812160 Not Found: /grids/5/decisions/
+WARNING 2026-10-10 07:10:21,807 error_views_functions 4876 8703812160 404 error: /tasks/20/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:21,809 log 4876 8703812160 Not Found: /tasks/20/decisions/
+WARNING 2026-10-10 07:10:23,442 error_views_functions 4876 8703812160 404 error: /tasks/19/hand-to-agent/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:23,443 log 4876 8703812160 Not Found: /tasks/19/hand-to-agent/
+WARNING 2026-10-10 07:10:38,833 error_views_functions 4946 8703812160 404 error: /decisions/export/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:38,835 log 4946 8703812160 Not Found: /decisions/export/
+WARNING 2026-10-10 07:10:41,891 log 4946 8703812160 Bad Request: /api/mcp/list_decisions
+WARNING 2026-10-10 07:10:43,677 error_views_functions 4946 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:43,678 log 4946 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:10:44,320 error_views_functions 4946 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:44,321 log 4946 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:10:44,322 error_views_functions 4946 8703812160 404 error: /grids/5/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:44,323 log 4946 8703812160 Not Found: /grids/5/decisions/
+WARNING 2026-10-10 07:10:44,324 error_views_functions 4946 8703812160 404 error: /tasks/20/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:10:44,325 log 4946 8703812160 Not Found: /tasks/20/decisions/
+WARNING 2026-10-10 07:10:45,795 log 4946 8703812160 Bad Request: /api/mcp/add_task
+WARNING 2026-10-10 07:10:46,240 log 4946 8703812160 Not Found: /api/mcp/get_grid
+WARNING 2026-10-10 07:10:46,678 log 4946 8703812160 Not Found: /api/mcp/update_task
+INFO 2026-10-10 07:10:47,126 signals 4946 8703812160 User owner@example.com downgraded from beta to free. Removed from 0 project(s) team_toad_user and unassigned from 0 task(s).
+WARNING 2026-10-10 07:10:47,127 log 4946 8703812160 Forbidden: /api/mcp/create_grid
+WARNING 2026-10-10 07:10:49,865 log 4946 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-10 07:10:52,671 log 4946 8703812160 Unauthorized: /mcp
+WARNING 2026-10-10 07:10:53,104 log 4946 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-10 07:10:54,461 log 4946 8703812160 Unauthorized: /api/mcp/list_grids
+WARNING 2026-10-10 07:10:54,916 log 4946 8703812160 Bad Request: /api/mcp/delete_column
+WARNING 2026-10-10 07:10:54,918 log 4946 8703812160 Not Found: /api/mcp/rename_row
+WARNING 2026-10-10 07:10:55,396 log 4946 8703812160 Bad Request: /api/mcp/reorder_rows
+INFO 2026-10-10 07:11:11,855 project_views_functions 5033 8703812160 User None created project: Integration Test Project
+INFO 2026-10-10 07:11:12,334 project_views_functions 5033 8703812160 User None created project from template: student_jobs: Student Job Applications
+WARNING 2026-10-10 07:11:13,525 error_views_functions 5033 8703812160 404 error: /grids/4/ - User: None - Exception: No Project matches the given query.
+WARNING 2026-10-10 07:11:13,527 log 5033 8703812160 Not Found: /grids/4/
+WARNING 2026-10-10 07:11:13,529 error_views_functions 5033 8703812160 404 error: /grids/4/edit/ - User: None - Exception: No Project matches the given query.
+WARNING 2026-10-10 07:11:13,530 log 5033 8703812160 Not Found: /grids/4/edit/
+WARNING 2026-10-10 07:11:13,531 error_views_functions 5033 8703812160 404 error: /grids/4/delete/ - User: None - Exception: No Project matches the given query.
+WARNING 2026-10-10 07:11:13,532 log 5033 8703812160 Not Found: /grids/4/delete/
+WARNING 2026-10-10 07:11:15,712 project_views 5033 8703812160 User None failed to create project - form errors: <ul class="errorlist"><li>name<ul class="errorlist" id="id_name_error"><li>This field is required.</li></ul></li></ul>
+INFO 2026-10-10 07:11:16,381 project_views_functions 5033 8703812160 User None created project: New Test Project
+WARNING 2026-10-10 07:11:19,695 error_views_functions 5033 8703812160 404 error: /grids/3/edit/ - User: None - Exception: No Project matches the given query.
+WARNING 2026-10-10 07:11:19,697 log 5033 8703812160 Not Found: /grids/3/edit/
+WARNING 2026-10-10 07:11:21,230 error_views_functions 5033 8703812160 404 error: /grids/3/ - User: None - Exception: No Project matches the given query.
+WARNING 2026-10-10 07:11:21,232 log 5033 8703812160 Not Found: /grids/3/
+WARNING 2026-10-10 07:11:23,670 error_views_functions 5033 8703812160 404 error: /tasks/19/hand-to-agent/ - User: None - Exception: 
+WARNING 2026-10-10 07:11:23,671 log 5033 8703812160 Not Found: /tasks/19/hand-to-agent/
+INFO 2026-10-10 07:11:31,103 project_views_functions 5033 8703812160 User None deleted task: "Test Task" from project: Test Project
+INFO 2026-10-10 07:11:31,658 project_views_functions 5033 8703812160 User None deleted task: "Test Task" from project: Test Project
+INFO 2026-10-10 07:11:32,107 project_views 5033 8703812160 Task edit view called - Task PK: 10, Method: GET, User: test@example.com, Content-Type: N/A
+ERROR 2026-10-10 07:11:32,110 error_views_functions 5033 8703812160 500 error: /tasks/10/edit/ - User: None
+ERROR 2026-10-10 07:11:32,112 log 5033 8703812160 Internal Server Error: /tasks/10/edit/
+Traceback (most recent call last):
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/contrib/auth/decorators.py", line 59, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/pages/specific_views/project_views.py", line 618, in task_edit_view
+    return render(request, 'pages/grid/task_form.html', {
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tombarratt/Desktop/Coding_Projects/Archived/toad/venv/lib/python3.12/site-packages/django/template/loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: pages/grid/task_form.html
+INFO 2026-10-10 07:11:32,557 project_views 5033 8703812160 Task edit view called - Task PK: 10, Method: GET, User: test@example.com, Content-Type: N/A
+INFO 2026-10-10 07:11:32,988 project_views 5033 8703812160 Task edit view called - Task PK: 10, Method: POST, User: test@example.com, Content-Type: multipart/form-data; boundary=BoUnDaRyStRiNg
+INFO 2026-10-10 07:11:35,218 project_views_functions 5033 8703812160 User None created project from template: professionals_jobs: Professional Career Tracker
+INFO 2026-10-10 07:11:35,637 project_views_functions 5033 8703812160 User None created project from template: student_jobs: Student Job Applications
+INFO 2026-10-10 07:11:36,064 project_views_functions 5033 8703812160 User None created project from template: student_revision: Student Revision Planner
+WARNING 2026-10-10 07:12:03,397 error_views_functions 5136 8703812160 404 error: /decisions/export/ - User: None - Exception: 
+WARNING 2026-10-10 07:12:03,400 log 5136 8703812160 Not Found: /decisions/export/
+WARNING 2026-10-10 07:12:06,205 log 5136 8703812160 Bad Request: /api/mcp/list_decisions
+WARNING 2026-10-10 07:12:07,899 error_views_functions 5136 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:12:07,900 log 5136 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:12:08,537 error_views_functions 5136 8703812160 404 error: /decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:12:08,538 log 5136 8703812160 Not Found: /decisions/
+WARNING 2026-10-10 07:12:08,539 error_views_functions 5136 8703812160 404 error: /grids/5/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:12:08,540 log 5136 8703812160 Not Found: /grids/5/decisions/
+WARNING 2026-10-10 07:12:08,541 error_views_functions 5136 8703812160 404 error: /tasks/20/decisions/ - User: None - Exception: 
+WARNING 2026-10-10 07:12:08,541 log 5136 8703812160 Not Found: /tasks/20/decisions/

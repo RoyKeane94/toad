@@ -23,6 +23,12 @@
             </div>
         </form>
     </details>
+    {% if user_has_agent_access %}
+    <a href="{% url 'pages:grid_decision_log' pk=project.pk %}" class="text-sm text-[var(--text-secondary)] hover:text-[var(--primary-action-bg)] transition-colors inline-flex items-center gap-2">
+        <i class="fas fa-clipboard-check text-xs w-3"></i>
+        <span>Decision log</span>
+    </a>
+    {% endif %}
     {% if recent_activity %}
     <details>
         <summary class="text-sm text-[var(--text-secondary)] cursor-pointer hover:text-[var(--primary-action-bg)] transition-colors list-none flex items-center gap-2">

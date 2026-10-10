@@ -3,7 +3,10 @@ from django.views.decorators.http import require_http_methods
 
 from .auth import mcp_token_required, parse_json_body
 from .services import (
+    GET_DECISION_FIELDS,
+    LIST_DECISIONS_FIELDS,
     ApiError,
+    _reject_unknown_fields,
     add_column_for_user,
     add_row_for_user,
     add_task_for_user,
@@ -11,8 +14,11 @@ from .services import (
     delete_column_for_user,
     delete_row_for_user,
     delete_task_for_user,
+    get_decision_for_user,
     get_grid_for_user,
+    list_decisions_for_user,
     list_grids_for_user,
+    log_decision_for_user,
     log_request_for_user,
     rename_column_for_user,
     rename_row_for_user,
@@ -295,3 +301,60 @@ def log_request(request):
         asked_by=data.get('asked_by'),
         follow_up_needed=data.get('follow_up_needed', False),
     )
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def log_decision(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    try:
+        result = log_decision_for_user(
+            request.user,
+            data,
+            agent=_agent(request),
+            token=getattr(request, 'mcp_token', None),
+        )
+    except ApiError as exc:
+        return _json_error(exc.message, status=exc.status)
+    return JsonResponse(result, status=201)
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def list_decisions(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    try:
+        _reject_unknown_fields(data, LIST_DECISIONS_FIELDS)
+        result = list_decisions_for_user(
+            request.user,
+            grid_id=data.get('grid_id'),
+            task_id=data.get('task_id'),
+            status=data.get('status'),
+            agent_name=data.get('agent_name'),
+            since=data.get('since'),
+            limit=data.get('limit'),
+        )
+    except ApiError as exc:
+        return _json_error(exc.message, status=exc.status)
+    return JsonResponse(result)
+
+
+@mcp_token_required
+@require_http_methods(['POST'])
+def get_decision(request):
+    try:
+        data = parse_json_body(request)
+    except ValueError as exc:
+        return _json_error(str(exc))
+    try:
+        _reject_unknown_fields(data, GET_DECISION_FIELDS)
+        result = get_decision_for_user(request.user, data.get('decision_id'))
+    except ApiError as exc:
+        return _json_error(exc.message, status=exc.status)
+    return JsonResponse(result)

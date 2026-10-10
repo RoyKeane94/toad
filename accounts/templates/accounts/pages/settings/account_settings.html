@@ -292,7 +292,8 @@
 
                     <div class="p-4 bg-[var(--container-bg)] rounded-lg">
                         <h3 class="font-medium text-[var(--text-primary)] mb-1">New agent token</h3>
-                        <p class="text-sm text-[var(--text-secondary)] mb-3">Name it after the agent, then connect that agent with this URL and the new token.</p>
+                        <p class="text-sm text-[var(--text-secondary)] mb-1">Name it after the agent, then connect that agent with this URL and the new token.</p>
+                        <p class="text-sm text-[var(--text-secondary)] mb-3">Creating a token turns on the agent decision log for your grids.</p>
                         <form method="post" action="{% url 'accounts:mcp_token_generate' %}" class="flex flex-col sm:flex-row gap-2">
                             {% csrf_token %}
                             <input type="text"

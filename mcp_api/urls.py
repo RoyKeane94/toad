@@ -22,4 +22,7 @@ urlpatterns = [
     path('delete_row', views.delete_row, name='delete_row'),
     path('delete_column', views.delete_column, name='delete_column'),
     path('log_request', views.log_request, name='log_request'),
+    path('log_decision', views.log_decision, name='log_decision'),
+    path('list_decisions', views.list_decisions, name='list_decisions'),
+    path('get_decision', views.get_decision, name='get_decision'),
 ]

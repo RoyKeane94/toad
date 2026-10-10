@@ -81,7 +81,7 @@
                 </div>
             {% endif %}
 
-            {% if task.owner == 'agent' or task.needs_review %}
+            {% if task.owner == 'agent' or task.needs_review or user_has_agent_access %}
                 <div class="flex items-center flex-wrap gap-1 mt-1 ml-1">
                     {% if task.owner == 'agent' %}
                     <form method="post"
@@ -108,6 +108,11 @@
                                 class="text-[10px] leading-none px-1.5 py-0.5 rounded border border-[var(--tertiary-action-bg)] text-[var(--tertiary-action-bg)] hover:bg-[var(--tertiary-action-bg)] hover:text-white transition-colors"
                                 title="Drafted, needs your review. Click to take over.">Needs review</button>
                     </form>
+                    {% endif %}
+                    {% if user_has_agent_access %}
+                    <a href="{% url 'pages:task_decision_log' task_pk=task.pk %}"
+                       class="text-[10px] leading-none px-1.5 py-0.5 rounded border border-[var(--border-color)] text-[var(--text-secondary)] hover:border-[var(--primary-action-bg)] hover:text-[var(--primary-action-bg)] transition-colors"
+                       title="View agent decisions for this task">Decisions</a>
                     {% endif %}
                 </div>
             {% endif %}

@@ -1,6 +1,10 @@
+from datetime import datetime, timezone as dt_timezone
+
 from django.db import transaction
 from django.db.models import Prefetch, Q
 from django.http import Http404
+from django.utils import timezone
+from django.utils.dateparse import parse_datetime, parse_date
 
 from pages.models import ColumnHeader, Project, RowHeader, Task, TaskNote
 from pages.specific_views_functions.project_views_functions import (
@@ -9,7 +13,30 @@ from pages.specific_views_functions.project_views_functions import (
     get_user_task_optimized,
 )
 
-from .models import MCPRequestLog, TaskActivity
+from .models import DecisionEntry, DecisionReview, MCPRequestLog, TaskActivity
+
+LOG_DECISION_FIELDS = {
+    'grid_id',
+    'task_id',
+    'request',
+    'action_summary',
+    'decision',
+    'rationale',
+    'sources',
+    'output_link',
+    'requested_by',
+    'supersedes',
+    'agent',
+}
+LIST_DECISIONS_FIELDS = {
+    'grid_id',
+    'task_id',
+    'status',
+    'agent_name',
+    'since',
+    'limit',
+}
+GET_DECISION_FIELDS = {'decision_id'}
 
 
 class ApiError(Exception):
@@ -632,7 +659,356 @@ def log_request_for_user(user, what, asked_by=None, follow_up_needed=False):
     return {'ok': True}
 
 
-def call_tool(user, name, arguments, agent=None):
+def _reject_unknown_fields(arguments, allowed):
+    unknown = sorted(set(arguments) - allowed)
+    if unknown:
+        raise ApiError(f'Unknown field(s): {", ".join(unknown)}')
+
+
+def _text_value(value, field, required=True, max_length=None, one_line=False):
+    if value is None:
+        text = ''
+    else:
+        text = str(value)
+        if one_line:
+            text = text.replace('\n', ' ').replace('\r', ' ')
+        text = text.strip()
+    if required and not text:
+        raise ApiError(f'{field} is required')
+    if max_length is not None and len(text) > max_length:
+        raise ApiError(f'{field} must be {max_length} characters or fewer')
+    return text
+
+
+def _as_url_list(value):
+    if value is None:
+        return []
+    if not isinstance(value, list):
+        raise ApiError('sources must be a list of URLs')
+    urls = []
+    for item in value:
+        if not isinstance(item, str) or not item.strip():
+            raise ApiError('sources must be a list of URLs')
+        urls.append(item.strip())
+    return urls
+
+
+def serialize_decision(entry, include_reviews=False, include_chain=False):
+    payload = {
+        'id': entry.id,
+        'created_at': entry.created_at.isoformat(),
+        'grid_id': entry.grid_id,
+        'task_id': entry.task_id,
+        'task_id_snapshot': entry.task_id_snapshot,
+        'task_text_snapshot': entry.task_text_snapshot,
+        'agent_name': entry.agent_name,
+        'requested_by': entry.requested_by,
+        'request': entry.request,
+        'action_summary': entry.action_summary,
+        'decision': entry.decision,
+        'rationale': entry.rationale,
+        'sources': entry.sources or [],
+        'output_link': entry.output_link or '',
+        'status': entry.status,
+        'reviewer': entry.reviewer,
+        'reviewed_at': entry.reviewed_at.isoformat() if entry.reviewed_at else None,
+        'review_comment': entry.review_comment,
+        'supersedes': entry.supersedes_id,
+        'prev_hash': entry.prev_hash,
+        'entry_hash': entry.entry_hash,
+    }
+    if include_reviews:
+        payload['reviews'] = [
+            {
+                'id': review.id,
+                'actor': review.actor,
+                'old_status': review.old_status,
+                'new_status': review.new_status,
+                'comment': review.comment,
+                'created_at': review.created_at.isoformat(),
+            }
+            for review in entry.reviews.all()
+        ]
+    if include_chain:
+        payload['supersede_chain'] = [
+            serialize_decision(item) for item in _supersede_chain(entry)
+        ]
+    return payload
+
+
+def _supersede_chain(entry):
+    current = entry
+    seen = {current.id}
+    while current.supersedes_id and current.supersedes_id not in seen:
+        current = current.supersedes
+        seen.add(current.id)
+    chain = [current]
+    while True:
+        nxt = (
+            DecisionEntry.objects.filter(supersedes=current)
+            .exclude(id__in={item.id for item in chain})
+            .order_by('id')
+            .first()
+        )
+        if nxt is None:
+            break
+        chain.append(nxt)
+        current = nxt
+    return chain
+
+
+def _accessible_decision_qs(user):
+    return DecisionEntry.objects.filter(
+        Q(user=user) | Q(grid__user=user) | Q(grid__team_toad_user=user)
+    ).distinct()
+
+
+def apply_decision_review(entry, new_status, actor, comment='', update_task=True):
+    if new_status not in DecisionEntry.REVIEW_STATUSES and new_status != DecisionEntry.STATUS_PENDING:
+        raise ApiError('status must be pending_review, approved, rejected or superseded')
+    old_status = entry.status
+    if old_status == new_status:
+        return entry
+    comment = (comment or '').strip()
+    now = timezone.now()
+    DecisionReview.objects.create(
+        entry=entry,
+        actor=actor,
+        old_status=old_status,
+        new_status=new_status,
+        comment=comment,
+        created_at=now,
+    )
+    entry.status = new_status
+    entry.reviewer = actor
+    entry.reviewed_at = now
+    entry.review_comment = comment
+    entry.save(update_fields=['status', 'reviewer', 'reviewed_at', 'review_comment'])
+    if update_task and entry.task_id and new_status in {
+        DecisionEntry.STATUS_APPROVED,
+        DecisionEntry.STATUS_REJECTED,
+    }:
+        task = entry.task
+        task.needs_review = False
+        update_fields = ['needs_review', 'updated_at']
+        if new_status == DecisionEntry.STATUS_APPROVED:
+            task.owner = Task.OWNER_YOU
+            update_fields.append('owner')
+        task.save(update_fields=update_fields)
+    return entry
+
+
+def review_decision_for_user(user, decision_id, new_status, comment=''):
+    entry = _accessible_decision_qs(user).filter(pk=decision_id).first()
+    if entry is None:
+        raise ApiError('Decision not found', status=404)
+    if new_status not in {DecisionEntry.STATUS_APPROVED, DecisionEntry.STATUS_REJECTED}:
+        raise ApiError("status must be 'approved' or 'rejected'")
+    if entry.status != DecisionEntry.STATUS_PENDING:
+        raise ApiError('Only pending decisions can be approved or rejected')
+    actor = user.get_full_name() or user.email
+    return serialize_decision(
+        apply_decision_review(entry, new_status, actor, comment=comment),
+        include_reviews=True,
+    )
+
+
+def log_decision_for_user(user, arguments, agent=None, token=None):
+    arguments = arguments or {}
+    _reject_unknown_fields(arguments, LOG_DECISION_FIELDS)
+    if token is None:
+        raise ApiError('A personal access token is required to log a decision', status=401)
+
+    grid_id = arguments.get('grid_id')
+    project = _require_grid(user, grid_id)
+    task = None
+    task_id = arguments.get('task_id')
+    if task_id is not None:
+        try:
+            task = get_user_task_optimized(task_id, user, select_related=['project'])
+        except Http404:
+            raise ApiError('Task not found', status=404)
+        if task.project_id != project.id:
+            raise ApiError('task_id does not belong to this grid')
+
+    request_text = _text_value(
+        arguments.get('request'), 'request', max_length=500, one_line=True
+    )
+    action_summary = _text_value(arguments.get('action_summary'), 'action_summary')
+    decision = _text_value(arguments.get('decision'), 'decision')
+    rationale = _text_value(arguments.get('rationale'), 'rationale', required=False)
+    output_link = _text_value(arguments.get('output_link'), 'output_link', required=False)
+    requested_by = _text_value(
+        arguments.get('requested_by'),
+        'requested_by',
+        required=False,
+        max_length=200,
+        one_line=True,
+    ) or (user.get_full_name() or user.email)
+    agent_name = _text_value(
+        arguments.get('agent'), 'agent', required=False, max_length=100, one_line=True
+    ) or (agent or (token.name if token else ''))
+    if not agent_name:
+        raise ApiError('agent is required')
+    sources = _as_url_list(arguments.get('sources'))
+
+    supersedes = None
+    supersedes_id = arguments.get('supersedes')
+    if supersedes_id is not None:
+        supersedes = _accessible_decision_qs(user).filter(pk=supersedes_id).first()
+        if supersedes is None:
+            raise ApiError('supersedes decision not found', status=404)
+
+    with transaction.atomic():
+        previous = (
+            DecisionEntry.objects.select_for_update()
+            .filter(user=user)
+            .order_by('-id')
+            .first()
+        )
+        entry = DecisionEntry(
+            user=user,
+            created_at=timezone.now(),
+            grid=project,
+            task=task,
+            task_id_snapshot=task.id if task is not None else None,
+            task_text_snapshot=task.text if task is not None else '',
+            agent_name=agent_name,
+            token=token,
+            requested_by=requested_by,
+            request=request_text,
+            action_summary=action_summary,
+            decision=decision,
+            rationale=rationale,
+            sources=sources,
+            output_link=output_link,
+            status=DecisionEntry.STATUS_PENDING,
+            supersedes=supersedes,
+            prev_hash=previous.entry_hash if previous else '',
+        )
+        entry.save()
+        entry.entry_hash = entry.compute_hash()
+        entry.save(update_fields=['entry_hash'])
+        if supersedes is not None and supersedes.status != DecisionEntry.STATUS_SUPERSEDED:
+            apply_decision_review(
+                supersedes,
+                DecisionEntry.STATUS_SUPERSEDED,
+                actor=agent_name,
+                comment=f'Superseded by decision {entry.id}',
+                update_task=False,
+            )
+        if task is not None:
+            task.needs_review = True
+            task.save(update_fields=['needs_review', 'updated_at'])
+
+    return serialize_decision(entry)
+
+
+def _parse_since(value):
+    if value is None or value == '':
+        return None
+    if isinstance(value, datetime):
+        return value
+    text = str(value).strip()
+    parsed = parse_datetime(text)
+    if parsed is None:
+        day = parse_date(text)
+        if day is not None:
+            parsed = datetime(day.year, day.month, day.day)
+    if parsed is None:
+        raise ApiError('since must be an ISO date or datetime')
+    if timezone.is_naive(parsed):
+        parsed = timezone.make_aware(parsed, dt_timezone.utc)
+    return parsed
+
+
+def list_decisions_for_user(
+    user,
+    grid_id=None,
+    task_id=None,
+    status=None,
+    agent_name=None,
+    since=None,
+    limit=None,
+):
+    qs = _accessible_decision_qs(user).select_related('grid', 'task')
+    if grid_id is not None:
+        qs = qs.filter(grid_id=grid_id)
+    if task_id is not None:
+        qs = qs.filter(Q(task_id=task_id) | Q(task_id_snapshot=task_id))
+    if status:
+        valid = {choice[0] for choice in DecisionEntry.STATUS_CHOICES}
+        if status not in valid:
+            raise ApiError(f'status must be one of {", ".join(sorted(valid))}')
+        qs = qs.filter(status=status)
+    if agent_name:
+        qs = qs.filter(agent_name=agent_name)
+    since_at = _parse_since(since)
+    if since_at is not None:
+        qs = qs.filter(created_at__gte=since_at)
+    if limit is None:
+        limit = 50
+    try:
+        limit = int(limit)
+    except (TypeError, ValueError):
+        raise ApiError('limit must be an integer')
+    if limit < 1 or limit > 200:
+        raise ApiError('limit must be between 1 and 200')
+    entries = list(qs.order_by('-created_at', '-id')[:limit])
+    return {'decisions': [serialize_decision(entry) for entry in entries]}
+
+
+def get_decision_for_user(user, decision_id):
+    if decision_id is None:
+        raise ApiError('decision_id is required')
+    entry = (
+        _accessible_decision_qs(user)
+        .select_related('grid', 'task', 'supersedes')
+        .prefetch_related('reviews')
+        .filter(pk=decision_id)
+        .first()
+    )
+    if entry is None:
+        raise ApiError('Decision not found', status=404)
+    return serialize_decision(entry, include_reviews=True, include_chain=True)
+
+
+def verify_decision_chain(user, grid_id=None):
+    if grid_id is not None:
+        user_ids = list(
+            DecisionEntry.objects.filter(grid_id=grid_id)
+            .filter(Q(user=user) | Q(grid__user=user) | Q(grid__team_toad_user=user))
+            .values_list('user_id', flat=True)
+            .distinct()
+        )
+        if not user_ids:
+            user_ids = [user.id]
+        qs = DecisionEntry.objects.filter(user_id__in=user_ids)
+    else:
+        qs = DecisionEntry.objects.filter(user=user)
+    entries = list(qs.order_by('id'))
+    broken = []
+    previous_by_user = {}
+    for entry in entries:
+        expected = entry.compute_hash()
+        reasons = []
+        if entry.entry_hash != expected:
+            reasons.append('entry_hash does not match recomputed hash')
+        prev = previous_by_user.get(entry.user_id)
+        expected_prev = prev.entry_hash if prev else ''
+        if entry.prev_hash != expected_prev:
+            reasons.append('prev_hash does not match previous entry')
+        if reasons:
+            broken.append({'id': entry.id, 'reasons': reasons})
+        previous_by_user[entry.user_id] = entry
+    return {
+        'ok': not broken,
+        'checked': len(entries),
+        'broken': broken,
+    }
+
+
+def call_tool(user, name, arguments, agent=None, token=None):
     arguments = arguments or {}
     if name == 'list_grids':
         return list_grids_for_user(user)
@@ -730,4 +1106,20 @@ def call_tool(user, name, arguments, agent=None):
             asked_by=arguments.get('asked_by'),
             follow_up_needed=arguments.get('follow_up_needed', False),
         )
+    if name == 'log_decision':
+        return log_decision_for_user(user, arguments, agent=agent, token=token)
+    if name == 'list_decisions':
+        _reject_unknown_fields(arguments, LIST_DECISIONS_FIELDS)
+        return list_decisions_for_user(
+            user,
+            grid_id=arguments.get('grid_id'),
+            task_id=arguments.get('task_id'),
+            status=arguments.get('status'),
+            agent_name=arguments.get('agent_name'),
+            since=arguments.get('since'),
+            limit=arguments.get('limit'),
+        )
+    if name == 'get_decision':
+        _reject_unknown_fields(arguments, GET_DECISION_FIELDS)
+        return get_decision_for_user(user, arguments.get('decision_id'))
     raise ApiError(f'Unknown tool: {name}', status=404)

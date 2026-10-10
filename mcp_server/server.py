@@ -45,7 +45,9 @@ mcp = FastMCP(
         'reorder_rows, delete_row, add_column, rename_column, reorder_columns and delete_column. '
         'Deleting a row or column also deletes the tasks in it. The category column cannot be deleted. '
         'Call log_request after helping someone, with who asked, what they asked, '
-        'and whether a follow-up is needed. Do not store tool output in log_request.'
+        'and whether a follow-up is needed. Do not store tool output in log_request. '
+        'Call log_decision after making a recommendation or taking an action that a human '
+        'should review. To correct a decision, log a new entry with supersedes set.'
     ),
 )
 
@@ -260,6 +262,76 @@ async def log_request(
     if asked_by:
         payload['asked_by'] = asked_by
     return await toad_post('log_request', current_token(), payload)
+
+
+@mcp.tool
+async def log_decision(
+    grid_id: int,
+    request: str,
+    action_summary: str,
+    decision: str,
+    task_id: int | None = None,
+    rationale: str | None = None,
+    sources: list[str] | None = None,
+    output_link: str | None = None,
+    requested_by: str | None = None,
+    supersedes: int | None = None,
+    agent: str | None = None,
+) -> dict:
+    """Append an audit-trail decision. Sets the task needs_review if task_id is given."""
+    payload = {
+        'grid_id': grid_id,
+        'request': request,
+        'action_summary': action_summary,
+        'decision': decision,
+    }
+    if task_id is not None:
+        payload['task_id'] = task_id
+    if rationale is not None:
+        payload['rationale'] = rationale
+    if sources is not None:
+        payload['sources'] = sources
+    if output_link is not None:
+        payload['output_link'] = output_link
+    if requested_by is not None:
+        payload['requested_by'] = requested_by
+    if supersedes is not None:
+        payload['supersedes'] = supersedes
+    if agent is not None:
+        payload['agent'] = agent
+    return await toad_post('log_decision', current_token(), payload)
+
+
+@mcp.tool
+async def list_decisions(
+    grid_id: int | None = None,
+    task_id: int | None = None,
+    status: str | None = None,
+    agent_name: str | None = None,
+    since: str | None = None,
+    limit: int | None = None,
+) -> dict:
+    """List decision log entries, newest first."""
+    payload = {}
+    if grid_id is not None:
+        payload['grid_id'] = grid_id
+    if task_id is not None:
+        payload['task_id'] = task_id
+    if status is not None:
+        payload['status'] = status
+    if agent_name is not None:
+        payload['agent_name'] = agent_name
+    if since is not None:
+        payload['since'] = since
+    if limit is not None:
+        payload['limit'] = limit
+    return await toad_post('list_decisions', current_token(), payload)
+
+
+@mcp.tool
+async def get_decision(decision_id: int) -> dict:
+    """Return a decision entry plus its review events and supersede chain."""
+    return await toad_post('get_decision', current_token(), {'decision_id': decision_id})
 
 
 app = mcp.http_app(

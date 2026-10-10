@@ -60,6 +60,11 @@ from pages.specific_views.project_views import (
     project_reminders_partial_view, project_export_excel_view
 )
 
+from pages.specific_views.decision_views import (
+    decision_log_view, grid_decision_log_view, task_decision_log_view,
+    decision_review_view, decision_log_export_view, decision_log_verify_view,
+)
+
 # Import analytics functions
 from .specific_views_functions.analytics_views_functions import get_dashboard_analytics
 
